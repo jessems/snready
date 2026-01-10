@@ -37,3 +37,9 @@ This is a Next.js 16 project using the App Router pattern with React 19.
 - Tailwind CSS 4.x for all styling
 - CSS variables defined in `globals.css` for theming
 - Dark mode support via `prefers-color-scheme`
+
+## Deployment
+
+- **Hosting:** Cloudflare Pages
+- **Repository:** https://github.com/jessems/snready
+- **Deploy:** Push to `main` branch triggers automatic deployment
