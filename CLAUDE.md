@@ -42,4 +42,5 @@ This is a Next.js 16 project using the App Router pattern with React 19.
 
 - **Hosting:** Cloudflare Pages
 - **Repository:** https://github.com/jessems/snready
-- **Deploy:** Push to `main` branch triggers automatic deployment
+- **Deploy:** Push to `main` triggers GitHub Actions workflow (`.github/workflows/deploy.yml`)
+- **Secrets required:** `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`
