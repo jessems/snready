@@ -8,6 +8,8 @@ import {
 } from "@/lib/data";
 import { getAllComparisonSlugs } from "@/lib/comparisons";
 
+export const dynamic = "force-static";
+
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://snready.com";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {

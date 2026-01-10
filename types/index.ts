@@ -43,6 +43,13 @@ export interface ExamDomain {
   description: string;
 }
 
+// Extended certification with readiness status
+export interface CertificationWithReadiness extends Certification {
+  isReady: boolean;
+  topicCount: number;
+  totalQuestions: number;
+}
+
 // Topic types
 export interface TopicIntroduction {
   overview: string;      // What is this topic?

@@ -1,6 +1,6 @@
 import certificationsData from "@/data/certifications.json";
 import csaTopics from "@/data/topics/csa-topics.json";
-import type { Certification, Topic, Question, ExamDomain, CertificationCategory } from "@/types";
+import type { Certification, CertificationWithReadiness, Topic, Question, ExamDomain, CertificationCategory } from "@/types";
 
 // Category display names mapping
 const categoryDisplayNames: Record<CertificationCategory, string> = {
@@ -250,4 +250,43 @@ export async function getAdjacentQuestions(
     prev: currentIndex > 0 ? questions[currentIndex - 1] : null,
     next: currentIndex < questions.length - 1 ? questions[currentIndex + 1] : null,
   };
+}
+
+// Readiness helpers - determine if a certification has topics/questions available
+export function isCertificationReady(certSlug: string): boolean {
+  return getTopicsForCertification(certSlug).length > 0;
+}
+
+export function getAllCertificationsWithReadiness(): CertificationWithReadiness[] {
+  return getAllCertifications().map((cert) => ({
+    ...cert,
+    isReady: isCertificationReady(cert.slug),
+    topicCount: getTopicsForCertification(cert.slug).length,
+    totalQuestions: getTotalQuestionCount(cert.slug),
+  }));
+}
+
+export function getCertificationsGroupedByCategoryWithReadiness(): Record<
+  CertificationCategory,
+  CertificationWithReadiness[]
+> {
+  const grouped: Record<string, CertificationWithReadiness[]> = {};
+
+  for (const cert of getAllCertificationsWithReadiness()) {
+    if (!grouped[cert.category]) {
+      grouped[cert.category] = [];
+    }
+    grouped[cert.category].push(cert);
+  }
+
+  // Sort within each category: ready certifications first
+  for (const category of Object.keys(grouped)) {
+    grouped[category].sort((a, b) => {
+      if (a.isReady && !b.isReady) return -1;
+      if (!a.isReady && b.isReady) return 1;
+      return 0;
+    });
+  }
+
+  return grouped as Record<CertificationCategory, CertificationWithReadiness[]>;
 }

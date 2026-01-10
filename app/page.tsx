@@ -3,14 +3,15 @@ import {
   getAllCertifications,
   getTotalQuestionCount,
   getTotalFreeQuestionCount,
-  getCertificationsGroupedByCategory,
+  getCertificationsGroupedByCategoryWithReadiness,
   getCategoryDisplayName,
   getSortedCategories,
 } from "@/lib/data";
+import CertificationCard from "@/components/CertificationCard";
 
 export default function Home() {
   const certifications = getAllCertifications();
-  const groupedCerts = getCertificationsGroupedByCategory();
+  const groupedCerts = getCertificationsGroupedByCategoryWithReadiness();
   const sortedCategories = getSortedCategories();
   const csaQuestionCount = getTotalQuestionCount("csa");
   const csaFreeCount = getTotalFreeQuestionCount("csa");
@@ -115,35 +116,7 @@ export default function Home() {
                   </div>
                   <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                     {certs.map((cert) => (
-                      <Link
-                        key={cert.slug}
-                        href={`/certifications/${cert.slug}`}
-                        className="group rounded-xl border border-zinc-200 bg-white p-5 transition-all hover:border-emerald-300 hover:shadow-lg dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-emerald-700"
-                      >
-                        <div className="flex items-center justify-between">
-                          <span
-                            className={`inline-flex rounded-full px-2.5 py-0.5 text-xs font-medium ${
-                              cert.level === "entry"
-                                ? "bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300"
-                                : cert.level === "professional"
-                                  ? "bg-purple-100 text-purple-700 dark:bg-purple-900 dark:text-purple-300"
-                                  : "bg-amber-100 text-amber-700 dark:bg-amber-900 dark:text-amber-300"
-                            }`}
-                          >
-                            {cert.level}
-                          </span>
-                          <span className="text-sm text-zinc-500">${cert.examDetails.cost}</span>
-                        </div>
-                        <h4 className="mt-3 text-lg font-semibold text-zinc-900 group-hover:text-emerald-600 dark:text-zinc-100">
-                          {cert.name}
-                        </h4>
-                        <p className="mt-1 text-sm text-zinc-500 line-clamp-1">{cert.fullName}</p>
-                        <div className="mt-3 flex items-center gap-3 text-xs text-zinc-500">
-                          <span>{cert.examDetails.questionCount} Q</span>
-                          <span>{cert.examDetails.duration} min</span>
-                          <span>{cert.examDetails.passingScore}%</span>
-                        </div>
-                      </Link>
+                      <CertificationCard key={cert.slug} certification={cert} />
                     ))}
                   </div>
                 </div>

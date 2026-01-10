@@ -7,6 +7,7 @@ import {
   getTopicsForCertification,
   getTotalQuestionCount,
   getTotalFreeQuestionCount,
+  isCertificationReady,
 } from "@/lib/data";
 import { breadcrumbs, generateBreadcrumbJsonLd } from "@/lib/breadcrumbs";
 
@@ -57,6 +58,7 @@ export default async function CertificationPage({ params }: PageProps) {
   const topics = getTopicsForCertification(slug);
   const totalQuestions = getTotalQuestionCount(slug);
   const freeQuestions = getTotalFreeQuestionCount(slug);
+  const isReady = isCertificationReady(slug);
 
   // JSON-LD structured data - Course schema
   const courseJsonLd = {
@@ -152,18 +154,31 @@ export default async function CertificationPage({ params }: PageProps) {
           <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
               <div>
-                <div className="flex items-center gap-3">
+                <div className="flex flex-wrap items-center gap-2">
                   <span
-                    className={`inline-flex rounded-full px-3 py-1 text-xs font-medium ${
+                    className={`inline-flex items-center rounded-md px-2.5 py-1 text-xs font-semibold uppercase tracking-wide ring-1 ${
                       cert.level === "entry"
-                        ? "bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300"
+                        ? "bg-sky-50 text-sky-700 ring-sky-200/50 dark:bg-sky-950 dark:text-sky-300 dark:ring-sky-800/50"
                         : cert.level === "professional"
-                          ? "bg-purple-100 text-purple-700 dark:bg-purple-900 dark:text-purple-300"
-                          : "bg-amber-100 text-amber-700 dark:bg-amber-900 dark:text-amber-300"
+                          ? "bg-violet-50 text-violet-700 ring-violet-200/50 dark:bg-violet-950 dark:text-violet-300 dark:ring-violet-800/50"
+                          : "bg-amber-50 text-amber-700 ring-amber-200/50 dark:bg-amber-950 dark:text-amber-300 dark:ring-amber-800/50"
                     }`}
                   >
-                    {cert.level} level
+                    {cert.level}
                   </span>
+                  {isReady ? (
+                    <span className="inline-flex items-center gap-1.5 rounded-md bg-emerald-50 px-2.5 py-1 text-xs font-semibold text-emerald-700 ring-1 ring-emerald-200/60 dark:bg-emerald-950 dark:text-emerald-300 dark:ring-emerald-800/60">
+                      <span className="relative flex h-1.5 w-1.5">
+                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+                        <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-500" />
+                      </span>
+                      Practice Available
+                    </span>
+                  ) : (
+                    <span className="inline-flex items-center rounded-md bg-zinc-100 px-2.5 py-1 text-xs font-medium text-zinc-500 dark:bg-zinc-800 dark:text-zinc-400">
+                      Coming Soon
+                    </span>
+                  )}
                   <span className="text-sm text-zinc-500">
                     {cert.release} Release
                   </span>
@@ -176,7 +191,7 @@ export default async function CertificationPage({ params }: PageProps) {
                 </p>
               </div>
               <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
-                {topics.length > 0 ? (
+                {isReady ? (
                   <>
                     <Link
                       href={`/${slug}/questions/${topics[0].slug}`}
@@ -192,9 +207,18 @@ export default async function CertificationPage({ params }: PageProps) {
                     </Link>
                   </>
                 ) : (
-                  <span className="inline-flex h-12 items-center justify-center rounded-lg bg-zinc-200 px-6 text-base font-medium text-zinc-500 dark:bg-zinc-700 dark:text-zinc-400">
-                    Questions Coming Soon
-                  </span>
+                  <div className="flex flex-col gap-3">
+                    <div className="inline-flex h-12 items-center justify-center gap-2 rounded-lg bg-zinc-100 px-6 text-base font-medium text-zinc-400 dark:bg-zinc-800 dark:text-zinc-500">
+                      <span className="h-2 w-2 rounded-full bg-zinc-300 dark:bg-zinc-600" />
+                      Questions Coming Soon
+                    </div>
+                    <Link
+                      href="/certifications/csa"
+                      className="inline-flex h-12 items-center justify-center rounded-lg border-2 border-emerald-200 bg-emerald-50 px-6 text-base font-medium text-emerald-700 transition-colors hover:border-emerald-300 hover:bg-emerald-100 dark:border-emerald-800 dark:bg-emerald-950/50 dark:text-emerald-300 dark:hover:border-emerald-700"
+                    >
+                      Try CSA Practice Instead
+                    </Link>
+                  </div>
                 )}
               </div>
             </div>
@@ -230,14 +254,14 @@ export default async function CertificationPage({ params }: PageProps) {
                 <div className="text-sm text-zinc-500">Exam Cost</div>
               </div>
               <div>
-                <div className="text-2xl font-bold text-emerald-600">
-                  {totalQuestions}+
+                <div className={`text-2xl font-bold ${isReady ? "text-emerald-600" : "text-zinc-400 dark:text-zinc-500"}`}>
+                  {isReady ? `${totalQuestions}+` : "—"}
                 </div>
                 <div className="text-sm text-zinc-500">Practice Questions</div>
               </div>
               <div>
-                <div className="text-2xl font-bold text-emerald-600">
-                  {freeQuestions}
+                <div className={`text-2xl font-bold ${isReady ? "text-emerald-600" : "text-zinc-400 dark:text-zinc-500"}`}>
+                  {isReady ? freeQuestions : "—"}
                 </div>
                 <div className="text-sm text-zinc-500">Free Questions</div>
               </div>
@@ -328,7 +352,7 @@ export default async function CertificationPage({ params }: PageProps) {
             <p className="mt-2 text-zinc-600 dark:text-zinc-400">
               Focus on specific areas to strengthen your weak points.
             </p>
-            {topics.length > 0 ? (
+            {isReady ? (
               <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {topics.map((topic) => (
                   <Link
@@ -352,20 +376,27 @@ export default async function CertificationPage({ params }: PageProps) {
                 ))}
               </div>
             ) : (
-              <div className="mt-8 rounded-xl border border-zinc-200 bg-white p-8 text-center dark:border-zinc-800 dark:bg-zinc-800">
-                <p className="text-zinc-600 dark:text-zinc-400">
-                  Practice questions for {cert.name} are coming soon!
+              <div className="mt-8 rounded-xl border-2 border-dashed border-zinc-200 bg-zinc-50/50 p-10 text-center dark:border-zinc-700 dark:bg-zinc-800/50">
+                <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-zinc-100 dark:bg-zinc-800">
+                  <svg className="h-6 w-6 text-zinc-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <p className="text-lg font-medium text-zinc-600 dark:text-zinc-300">
+                  Practice questions coming soon
                 </p>
-                <p className="mt-2 text-sm text-zinc-500">
-                  Check back later or explore our{" "}
-                  <Link
-                    href="/certifications/csa"
-                    className="text-emerald-600 hover:text-emerald-700"
-                  >
-                    CSA practice questions
-                  </Link>{" "}
-                  in the meantime.
+                <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">
+                  We&apos;re preparing {cert.name} practice questions. In the meantime:
                 </p>
+                <Link
+                  href="/certifications/csa"
+                  className="mt-4 inline-flex items-center gap-2 rounded-lg border-2 border-emerald-200 bg-emerald-50 px-5 py-2.5 text-sm font-medium text-emerald-700 transition-colors hover:border-emerald-300 hover:bg-emerald-100 dark:border-emerald-800 dark:bg-emerald-950/50 dark:text-emerald-300"
+                >
+                  Try CSA Practice Questions
+                  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                  </svg>
+                </Link>
               </div>
             )}
           </div>
@@ -426,17 +457,17 @@ export default async function CertificationPage({ params }: PageProps) {
         <section className="bg-emerald-600 py-16 dark:bg-emerald-700">
           <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
             <h2 className="text-2xl font-bold text-white">
-              {topics.length > 0
+              {isReady
                 ? "Ready to Start Practicing?"
                 : "Interested in This Certification?"}
             </h2>
             <p className="mt-4 text-emerald-100">
-              {topics.length > 0
+              {isReady
                 ? "Begin with our free questions to assess your current knowledge level."
                 : "Practice questions are coming soon. In the meantime, explore our CSA materials."}
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              {topics.length > 0 ? (
+              {isReady ? (
                 <>
                   <Link
                     href={`/${slug}/questions/${topics[0].slug}`}
