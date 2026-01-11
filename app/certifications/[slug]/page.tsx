@@ -8,6 +8,8 @@ import {
   getTotalQuestionCount,
   getTotalFreeQuestionCount,
   isCertificationReady,
+  getDaysUntilDeltaDeadline,
+  isDeltaWindowOpen,
 } from "@/lib/data";
 import { breadcrumbs, generateBreadcrumbJsonLd } from "@/lib/breadcrumbs";
 
@@ -59,6 +61,12 @@ export default async function CertificationPage({ params }: PageProps) {
   const totalQuestions = getTotalQuestionCount(slug);
   const freeQuestions = getTotalFreeQuestionCount(slug);
   const isReady = isCertificationReady(slug);
+
+  // Delta exam info
+  const hasDeltaExam = cert.deltaExam?.isMainline === true;
+  const daysLeft = getDaysUntilDeltaDeadline(cert);
+  const isWindowOpen = isDeltaWindowOpen(cert);
+  const deltaUrgency = daysLeft !== null && daysLeft <= 14 ? "urgent" : daysLeft !== null && daysLeft <= 30 ? "warning" : "normal";
 
   // JSON-LD structured data - Course schema
   const courseJsonLd = {
@@ -149,6 +157,38 @@ export default async function CertificationPage({ params }: PageProps) {
       />
 
       <div className="min-h-screen">
+        {/* Delta Exam Banner */}
+        {hasDeltaExam && isWindowOpen && daysLeft !== null && (
+          <Link
+            href={`/delta/${slug}-${cert.deltaExam?.currentRelease?.toLowerCase()}`}
+            className={`block py-3 text-center text-sm font-medium transition-colors ${
+              deltaUrgency === "urgent"
+                ? "bg-red-600 text-white hover:bg-red-700"
+                : deltaUrgency === "warning"
+                  ? "bg-amber-500 text-white hover:bg-amber-600"
+                  : "bg-blue-600 text-white hover:bg-blue-700"
+            }`}
+          >
+            {deltaUrgency === "urgent" ? (
+              <>
+                <span className="font-bold">Delta Exam Deadline!</span> Only{" "}
+                {daysLeft} days left to complete the {cert.deltaExam?.currentRelease} delta exam
+                <span className="ml-2">→</span>
+              </>
+            ) : deltaUrgency === "warning" ? (
+              <>
+                {daysLeft} days remaining for the {cert.deltaExam?.currentRelease} delta exam
+                <span className="ml-2">→</span>
+              </>
+            ) : (
+              <>
+                {cert.deltaExam?.currentRelease} Delta Exam is now open - {daysLeft} days remaining
+                <span className="ml-2">→</span>
+              </>
+            )}
+          </Link>
+        )}
+
         {/* Hero Section */}
         <section className="bg-gradient-to-b from-emerald-50 to-white py-16 dark:from-zinc-900 dark:to-zinc-950">
           <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">

@@ -1,6 +1,6 @@
 import certificationsData from "@/data/certifications.json";
 import csaTopics from "@/data/topics/csa-topics.json";
-import type { Certification, CertificationWithReadiness, Topic, Question, ExamDomain, CertificationCategory } from "@/types";
+import type { Certification, CertificationWithReadiness, Topic, Question, ExamDomain, CertificationCategory, ServiceNowRelease, DeltaExamInfo } from "@/types";
 
 // Category display names mapping
 const categoryDisplayNames: Record<CertificationCategory, string> = {
@@ -289,4 +289,170 @@ export function getCertificationsGroupedByCategoryWithReadiness(): Record<
   }
 
   return grouped as Record<CertificationCategory, CertificationWithReadiness[]>;
+}
+
+// =============================================================================
+// Delta Exam Helpers
+// =============================================================================
+
+// All ServiceNow releases in order (oldest to newest)
+const releaseOrder: ServiceNowRelease[] = [
+  "Vancouver",
+  "Washington",
+  "Xanadu",
+  "Yokohama",
+  "Zurich",
+];
+
+// Release display metadata
+const releaseInfo: Record<ServiceNowRelease, { year: number; season: string }> = {
+  Vancouver: { year: 2023, season: "March" },
+  Washington: { year: 2023, season: "September" },
+  Xanadu: { year: 2024, season: "March" },
+  Yokohama: { year: 2024, season: "September" },
+  Zurich: { year: 2025, season: "March" },
+};
+
+export function getAllReleases(): ServiceNowRelease[] {
+  return releaseOrder;
+}
+
+export function getReleaseInfo(release: ServiceNowRelease): { year: number; season: string } {
+  return releaseInfo[release];
+}
+
+export function getReleaseDisplayName(release: ServiceNowRelease): string {
+  const info = releaseInfo[release];
+  return `${release} (${info.season} ${info.year})`;
+}
+
+// Get all certifications that have mainline delta exams
+export function getMainlineCertifications(): Certification[] {
+  return getAllCertifications().filter(
+    (cert) => cert.deltaExam?.isMainline === true
+  );
+}
+
+// Get certifications by their current release version
+export function getCertificationsByRelease(release: ServiceNowRelease): Certification[] {
+  return getAllCertifications().filter(
+    (cert) => cert.deltaExam?.currentRelease === release
+  );
+}
+
+// Get all unique releases that have certifications
+export function getActiveReleases(): ServiceNowRelease[] {
+  const releases = new Set<ServiceNowRelease>();
+  for (const cert of getAllCertifications()) {
+    if (cert.deltaExam?.currentRelease) {
+      releases.add(cert.deltaExam.currentRelease);
+    }
+  }
+  return releaseOrder.filter((r) => releases.has(r));
+}
+
+// Get certifications with upcoming delta deadlines
+export function getCertificationsWithUpcomingDelta(): Certification[] {
+  const now = new Date();
+  return getAllCertifications().filter((cert) => {
+    if (!cert.deltaExam?.deltaWindow?.closes) return false;
+    const deadline = new Date(cert.deltaExam.deltaWindow.closes);
+    return deadline > now;
+  });
+}
+
+// Calculate days until delta deadline
+export function getDaysUntilDeltaDeadline(cert: Certification): number | null {
+  if (!cert.deltaExam?.deltaWindow?.closes) return null;
+  const now = new Date();
+  const deadline = new Date(cert.deltaExam.deltaWindow.closes);
+  const diffTime = deadline.getTime() - now.getTime();
+  return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+}
+
+// Check if delta window is currently open
+export function isDeltaWindowOpen(cert: Certification): boolean {
+  if (!cert.deltaExam?.deltaWindow) return false;
+  const now = new Date();
+  const opens = new Date(cert.deltaExam.deltaWindow.opens);
+  const closes = new Date(cert.deltaExam.deltaWindow.closes);
+  return now >= opens && now <= closes;
+}
+
+// Generate all delta page slugs for static generation
+export function getAllDeltaSlugs(): { certification: string; release: string }[] {
+  const slugs: { certification: string; release: string }[] = [];
+
+  for (const cert of getMainlineCertifications()) {
+    if (cert.deltaExam?.currentRelease) {
+      slugs.push({
+        certification: cert.slug,
+        release: cert.deltaExam.currentRelease.toLowerCase(),
+      });
+    }
+  }
+
+  return slugs;
+}
+
+// Get delta exam info for a specific certification and release
+export function getDeltaExamInfo(
+  certSlug: string,
+  release: string
+): { certification: Certification; deltaInfo: DeltaExamInfo } | null {
+  const cert = getCertificationBySlug(certSlug);
+  if (!cert || !cert.deltaExam) return null;
+
+  // Check if the release matches
+  if (cert.deltaExam.currentRelease.toLowerCase() !== release.toLowerCase()) {
+    return null;
+  }
+
+  return {
+    certification: cert,
+    deltaInfo: cert.deltaExam,
+  };
+}
+
+// Get certifications grouped by delta deadline status
+export function getCertificationsByDeltaStatus(): {
+  urgent: Certification[];      // < 14 days
+  upcoming: Certification[];    // 14-30 days
+  active: Certification[];      // > 30 days
+  notStarted: Certification[];  // Delta window not yet open
+} {
+  const now = new Date();
+  const result = {
+    urgent: [] as Certification[],
+    upcoming: [] as Certification[],
+    active: [] as Certification[],
+    notStarted: [] as Certification[],
+  };
+
+  for (const cert of getMainlineCertifications()) {
+    if (!cert.deltaExam?.deltaWindow) continue;
+
+    const opens = new Date(cert.deltaExam.deltaWindow.opens);
+    const closes = new Date(cert.deltaExam.deltaWindow.closes);
+
+    if (now < opens) {
+      result.notStarted.push(cert);
+    } else if (now > closes) {
+      // Expired, skip
+      continue;
+    } else {
+      const daysLeft = getDaysUntilDeltaDeadline(cert);
+      if (daysLeft !== null) {
+        if (daysLeft <= 14) {
+          result.urgent.push(cert);
+        } else if (daysLeft <= 30) {
+          result.upcoming.push(cert);
+        } else {
+          result.active.push(cert);
+        }
+      }
+    }
+  }
+
+  return result;
 }

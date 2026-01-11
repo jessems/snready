@@ -16,6 +16,32 @@ export type CertificationCategory =
   | "specialist"
   | "micro";
 
+// ServiceNow release versions
+export type ServiceNowRelease =
+  | "Vancouver"
+  | "Washington"
+  | "Xanadu"
+  | "Yokohama"
+  | "Zurich";
+
+export interface DeltaExamInfo {
+  isMainline: boolean; // Only mainline certs have delta exams
+  currentRelease: ServiceNowRelease;
+  previousRelease?: ServiceNowRelease;
+  deltaExamDetails?: {
+    questionCount: number; // Typically 7-10 questions
+    duration: number; // Typically 20 minutes
+    passingScore: number;
+    format: string;
+    retakeAllowed: number; // Number of retakes allowed (typically 3)
+  };
+  deltaWindow?: {
+    opens: string; // ISO date string
+    closes: string; // ISO date string (typically 90 days)
+  };
+  studyGuideUrl?: string;
+}
+
 export interface Certification {
   slug: string;
   name: string;
@@ -32,8 +58,9 @@ export interface Certification {
   };
   prerequisites: string[];
   domains: ExamDomain[];
-  release: string; // e.g., "Yokohama"
+  release: ServiceNowRelease;
   lastUpdated: string;
+  deltaExam?: DeltaExamInfo;
 }
 
 export interface ExamDomain {

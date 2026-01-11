@@ -5,6 +5,8 @@ import {
   getTopicsForCertification,
   getAllCategories,
   getAllQuestionIds,
+  getAllDeltaSlugs,
+  getActiveReleases,
 } from "@/lib/data";
 import { getAllComparisonSlugs } from "@/lib/comparisons";
 
@@ -18,6 +20,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const categories = getAllCategories();
   const comparisonSlugs = getAllComparisonSlugs();
   const questionIds = await getAllQuestionIds();
+  const deltaSlugs = getAllDeltaSlugs();
+  const activeReleases = getActiveReleases();
 
   // Static pages
   const staticPages: MetadataRoute.Sitemap = [
@@ -107,11 +111,31 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   }
 
+  // Delta exam pages (HIGH PRIORITY for SEO during delta season)
+  const deltaPages: MetadataRoute.Sitemap = deltaSlugs.map(
+    ({ certification, release }) => ({
+      url: `${BASE_URL}/delta/${certification}-${release}`,
+      lastModified: new Date(),
+      changeFrequency: "weekly" as const,
+      priority: 0.9, // High priority - timely content
+    })
+  );
+
+  // Release hub pages
+  const releasePages: MetadataRoute.Sitemap = activeReleases.map((release) => ({
+    url: `${BASE_URL}/release/${release.toLowerCase()}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
+  }));
+
   return [
     ...staticPages,
     ...certPages,
     ...categoryPages,
     ...comparisonPages,
+    ...deltaPages,
+    ...releasePages,
     ...practiceTestPages,
     ...topicPages,
     ...individualQuestionPages,
