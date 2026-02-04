@@ -98,23 +98,80 @@ export interface Topic {
 }
 
 // Question types
-export interface Question {
-  id: string;
-  certification: string;
-  topic: string;
-  difficulty: "easy" | "medium" | "hard";
-  type: "single" | "multiple"; // single or multiple choice
-  question: string;
-  options: QuestionOption[];
-  correctAnswers: string[]; // array of option IDs
-  explanation: string;
-  references?: string[];
-  isFree: boolean;
-}
+export type CognitiveLevel = "knowledge" | "understanding" | "application";
+export type QuestionType = "multiple_choice" | "multiple_select";
+export type SourceType = "course" | "documentation" | "both";
 
 export interface QuestionOption {
-  id: string;
+  id: string;       // lowercase: "a", "b", "c", "d"
   text: string;
+}
+
+export interface WrongAnswerExplanation {
+  choiceId: string;
+  explanation: string;
+  reference?: string;  // optional source reference
+}
+
+export interface QuestionExplanation {
+  correct: string;
+  wrongAnswers: WrongAnswerExplanation[];
+}
+
+export interface QuestionSource {
+  type: SourceType;
+  course?: {
+    courseSlug: string;
+    moduleTitle: string;
+    lessonSlug: string;
+    lessonTitle: string;
+    url?: string;         // link to lesson on Now Learning
+  };
+  documentation?: {
+    docSlug: string;
+    section: string;
+    url: string;          // link to docs.servicenow.com
+  };
+  path: string;           // absolute path to source file
+  excerpt: string;        // key supporting text from source
+}
+
+export interface QuestionLabels {
+  certification: string;           // "csa"
+  domain: string;                  // "Incident Management"
+  domainSlug: string;              // "incident-management"
+  domainPercentage: number;        // 12
+  subtopics: string[];             // ["Major Incidents", "Escalation"]
+  course?: string;                 // course slug
+  module?: string;                 // module name
+  lesson?: string;                 // lesson slug
+  tags: string[];                  // ["SLA", "assignment rules"]
+}
+
+export interface QuestionMetadata {
+  generatedAt: string;             // ISO timestamp
+  version: string;                 // "1.0"
+  release: string;                 // "Xanadu"
+  reviewed: boolean;               // manual review flag
+}
+
+export interface Question {
+  id: string;                      // "csa-incident-management-0001"
+  certification: string;           // "csa" (denormalized for querying)
+  topic: string;                   // "incident-management"
+  cognitiveLevel: CognitiveLevel;  // "knowledge" | "understanding" | "application"
+  type: QuestionType;              // "multiple_choice" | "multiple_select"
+  question: string;
+  options: QuestionOption[];
+  correctAnswers: string[];        // ["b"] or ["a", "c"]
+  explanation: QuestionExplanation;
+  references?: string[];           // general references
+  isFree: boolean;
+
+  // Extended fields for generation pipeline
+  source: QuestionSource;
+  labels: QuestionLabels;
+  meta: QuestionMetadata;
 }
 
 // Quiz/Test types

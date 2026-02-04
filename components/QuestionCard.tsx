@@ -19,7 +19,7 @@ export default function QuestionCard({
   const [selectedAnswers, setSelectedAnswers] = useState<string[]>([]);
   const [revealed, setRevealed] = useState(showAnswer);
 
-  const isMultipleChoice = question.type === "multiple";
+  const isMultipleSelect = question.type === "multiple_select";
   const isCorrect =
     selectedAnswers.length === question.correctAnswers.length &&
     selectedAnswers.every((a) => question.correctAnswers.includes(a));
@@ -28,7 +28,7 @@ export default function QuestionCard({
     if (revealed) return;
 
     let newAnswers: string[];
-    if (isMultipleChoice) {
+    if (isMultipleSelect) {
       if (selectedAnswers.includes(optionId)) {
         newAnswers = selectedAnswers.filter((a) => a !== optionId);
       } else {
@@ -69,6 +69,28 @@ export default function QuestionCard({
     return `${base} border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900 opacity-60`;
   };
 
+  const getCognitiveLevelStyles = (level: string) => {
+    switch (level) {
+      case "knowledge":
+        return "bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300";
+      case "understanding":
+        return "bg-amber-100 text-amber-700 dark:bg-amber-900 dark:text-amber-300";
+      case "application":
+        return "bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300";
+      default:
+        return "bg-zinc-100 text-zinc-700 dark:bg-zinc-900 dark:text-zinc-300";
+    }
+  };
+
+  const getWrongAnswerExplanation = (optionId: string) => {
+    if (typeof question.explanation === "string") {
+      return null;
+    }
+    return question.explanation.wrongAnswers?.find(
+      (wa) => wa.choiceId === optionId
+    );
+  };
+
   return (
     <div className="rounded-xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900">
       {/* Question Header */}
@@ -79,17 +101,11 @@ export default function QuestionCard({
           </span>
           <div className="flex items-center gap-2">
             <span
-              className={`rounded px-2 py-0.5 text-xs font-medium ${
-                question.difficulty === "easy"
-                  ? "bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300"
-                  : question.difficulty === "medium"
-                    ? "bg-amber-100 text-amber-700 dark:bg-amber-900 dark:text-amber-300"
-                    : "bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300"
-              }`}
+              className={`rounded px-2 py-0.5 text-xs font-medium ${getCognitiveLevelStyles(question.cognitiveLevel)}`}
             >
-              {question.difficulty}
+              {question.cognitiveLevel}
             </span>
-            {isMultipleChoice && (
+            {isMultipleSelect && (
               <span className="rounded bg-blue-100 px-2 py-0.5 text-xs font-medium text-blue-700 dark:bg-blue-900 dark:text-blue-300">
                 Select all that apply
               </span>
@@ -159,9 +175,42 @@ export default function QuestionCard({
               </>
             )}
           </div>
+
+          {/* Main explanation */}
           <p className="mt-3 text-sm text-zinc-600 dark:text-zinc-400">
-            {question.explanation}
+            {typeof question.explanation === "string"
+              ? question.explanation
+              : question.explanation.correct}
           </p>
+
+          {/* Wrong answer explanations for selected wrong answers */}
+          {!isCorrect &&
+            typeof question.explanation !== "string" &&
+            selectedAnswers
+              .filter((id) => !question.correctAnswers.includes(id))
+              .map((wrongId) => {
+                const wrongExplanation = getWrongAnswerExplanation(wrongId);
+                if (!wrongExplanation) return null;
+                return (
+                  <div
+                    key={wrongId}
+                    className="mt-3 border-l-2 border-red-300 pl-3 dark:border-red-700"
+                  >
+                    <p className="text-sm text-zinc-600 dark:text-zinc-400">
+                      <span className="font-medium">
+                        Why {wrongId.toUpperCase()} is wrong:{" "}
+                      </span>
+                      {wrongExplanation.explanation}
+                    </p>
+                    {wrongExplanation.reference && (
+                      <p className="mt-1 text-xs text-zinc-500">
+                        Reference: {wrongExplanation.reference}
+                      </p>
+                    )}
+                  </div>
+                );
+              })}
+
           {question.references && question.references.length > 0 && (
             <div className="mt-3">
               <span className="text-xs font-medium text-zinc-500">

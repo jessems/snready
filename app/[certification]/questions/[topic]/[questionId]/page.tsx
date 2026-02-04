@@ -47,19 +47,19 @@ export async function generateMetadata({
 
   return {
     title: `${truncatedQuestion} - ${cert.name} ${topic.name}`,
-    description: `${question.difficulty.charAt(0).toUpperCase() + question.difficulty.slice(1)} ${cert.name} ${topic.name} practice question. ${truncateText(question.explanation, 120)}`,
+    description: `${question.cognitiveLevel.charAt(0).toUpperCase() + question.cognitiveLevel.slice(1)} ${cert.name} ${topic.name} practice question. ${truncateText(typeof question.explanation === "string" ? question.explanation : question.explanation.correct, 120)}`,
     keywords: [
       `${cert.name} ${topic.name} question`,
       `ServiceNow ${topic.name} practice`,
       `${cert.name} exam question`,
-      `${question.difficulty} ${cert.name} question`,
+      `${question.cognitiveLevel} ${cert.name} question`,
     ],
     alternates: {
       canonical: `/${certification}/questions/${topicSlug}/${questionId}`,
     },
     openGraph: {
       title: `${cert.name} Practice Question #${questionNumber} | SNReady`,
-      description: `Test your ${topic.name} knowledge with this ${question.difficulty} ${cert.name} exam question.`,
+      description: `Test your ${topic.name} knowledge with this ${question.cognitiveLevel} ${cert.name} exam question.`,
     },
   };
 }
@@ -103,6 +103,9 @@ export default async function QuestionPage({ params }: PageProps) {
   );
 
   // JSON-LD structured data - Question/Answer schema
+  const explanationText = typeof question.explanation === "string"
+    ? question.explanation
+    : question.explanation.correct;
   const questionJsonLd = {
     "@context": "https://schema.org",
     "@type": "Question",
@@ -111,7 +114,7 @@ export default async function QuestionPage({ params }: PageProps) {
     answerCount: 1,
     acceptedAnswer: {
       "@type": "Answer",
-      text: question.explanation,
+      text: explanationText,
       author: {
         "@type": "Organization",
         name: "SNReady",
@@ -196,19 +199,19 @@ export default async function QuestionPage({ params }: PageProps) {
             <div className="mt-2 flex items-center gap-3">
               <span
                 className={`inline-flex rounded-full px-2.5 py-0.5 text-xs font-medium ${
-                  question.difficulty === "easy"
+                  question.cognitiveLevel === "knowledge"
                     ? "bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300"
-                    : question.difficulty === "medium"
+                    : question.cognitiveLevel === "understanding"
                       ? "bg-amber-100 text-amber-700 dark:bg-amber-900 dark:text-amber-300"
                       : "bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300"
                 }`}
               >
-                {question.difficulty}
+                {question.cognitiveLevel}
               </span>
               <span className="text-sm text-zinc-500">
-                {question.type === "single"
+                {question.type === "multiple_choice"
                   ? "Single choice"
-                  : "Multiple choice"}
+                  : "Multiple select"}
               </span>
             </div>
           </div>
