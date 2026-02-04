@@ -1,0 +1,617 @@
+{
+  "certification": "csa",
+  "topic": "database-administration",
+  "questions": [
+    {
+      "id": "csa-db-001",
+      "certification": "csa",
+      "topic": "database-administration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "How is data organized in ServiceNow?",
+      "options": [
+        { "id": "a", "text": "Files, folders, and documents" },
+        { "id": "b", "text": "Tables, records, fields, and values" },
+        { "id": "c", "text": "Sheets, cells, and formulas" },
+        { "id": "d", "text": "Objects, classes, and methods" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "In ServiceNow, data is organized in a database with tables, records, fields, and values. Tables store records, records contain fields, fields hold individual pieces of data, and values are accessed through fields and records.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "ServiceNow uses a relational database structure, not a file system.", "reference": "Data Model" },
+          { "choiceId": "c", "explanation": "These are spreadsheet concepts, not ServiceNow's data structure.", "reference": "Database Structure" },
+          { "choiceId": "d", "explanation": "While ServiceNow uses object-oriented concepts, data is stored in tables.", "reference": "Data Organization" }
+        ]
+      },
+      "references": ["ServiceNow Data Model"],
+      "isFree": true,
+      "source": {
+        "type": "course",
+        "course": {
+          "courseSlug": "servicenow-administration-fundamentals-xanadu",
+          "moduleTitle": "SNAF Module 4: Manage data",
+          "lessonSlug": "01-manage-data",
+          "lessonTitle": "Manage data",
+          "url": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1"
+        },
+        "path": "sn-course-scraper/scraped-courses/servicenow-administration-fundamentals-xanadu/01-manage-data.md",
+        "excerpt": "In ServiceNow, data is organized in a database with tables, records, fields, and values."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Database Administration",
+        "domainSlug": "database-administration",
+        "domainPercentage": 12,
+        "subtopics": ["Tables and table relationships"],
+        "tags": ["tables", "records", "fields", "data model"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-04T23:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-db-002",
+      "certification": "csa",
+      "topic": "database-administration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What is a sys_id in ServiceNow?",
+      "options": [
+        { "id": "a", "text": "A user's login name" },
+        { "id": "b", "text": "A unique 32-character ID that identifies each record" },
+        { "id": "c", "text": "The table name" },
+        { "id": "d", "text": "A field label" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "Records have a unique 32-character ID called a sys_id. This identifier is automatically generated and uniquely identifies each record in the database.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "User login names are stored in the user_name field, not sys_id.", "reference": "User Records" },
+          { "choiceId": "c", "explanation": "Table names are separate from record identifiers.", "reference": "Table Names" },
+          { "choiceId": "d", "explanation": "Field labels are display names, not unique record identifiers.", "reference": "Field Labels" }
+        ]
+      },
+      "references": ["ServiceNow sys_id"],
+      "isFree": true,
+      "source": {
+        "type": "course",
+        "course": {
+          "courseSlug": "servicenow-administration-fundamentals-xanadu",
+          "moduleTitle": "SNAF Module 4: Manage data",
+          "lessonSlug": "01-manage-data",
+          "lessonTitle": "Manage data",
+          "url": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1"
+        },
+        "path": "sn-course-scraper/scraped-courses/servicenow-administration-fundamentals-xanadu/01-manage-data.md",
+        "excerpt": "Records have a unique 32-character ID called a sys_id."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Database Administration",
+        "domainSlug": "database-administration",
+        "domainPercentage": 12,
+        "subtopics": ["Tables and table relationships"],
+        "tags": ["sys_id", "unique identifier", "records"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-04T23:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-db-003",
+      "certification": "csa",
+      "topic": "database-administration",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What does a reference field store in ServiceNow?",
+      "options": [
+        { "id": "a", "text": "The full content of the referenced record" },
+        { "id": "b", "text": "The unique sys_id of a record from another table" },
+        { "id": "c", "text": "A copy of the referenced table" },
+        { "id": "d", "text": "The URL of an external system" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "A reference field stores the unique sys_id of a record from another table, creating a link between them. This link makes fields from the reference table accessible in the form. Reference fields only connect to one table.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "Reference fields store the sys_id, not the full record content.", "reference": "Reference Fields" },
+          { "choiceId": "c", "explanation": "Tables are not copied; only a reference link is created.", "reference": "Table Relationships" },
+          { "choiceId": "d", "explanation": "External URLs are stored differently; reference fields link internal records.", "reference": "Integration" }
+        ]
+      },
+      "references": ["ServiceNow Reference Fields"],
+      "isFree": true,
+      "source": {
+        "type": "course",
+        "course": {
+          "courseSlug": "servicenow-administration-fundamentals-xanadu",
+          "moduleTitle": "SNAF Module 4: Manage data",
+          "lessonSlug": "01-manage-data",
+          "lessonTitle": "Manage data",
+          "url": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1"
+        },
+        "path": "sn-course-scraper/scraped-courses/servicenow-administration-fundamentals-xanadu/01-manage-data.md",
+        "excerpt": "A reference field stores the unique sys_id of a record from another table, creating a link between them."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Database Administration",
+        "domainSlug": "database-administration",
+        "domainPercentage": 12,
+        "subtopics": ["Reference fields"],
+        "tags": ["reference field", "sys_id", "table relationships"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-04T23:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-db-004",
+      "certification": "csa",
+      "topic": "database-administration",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What happens when a table extends another table in ServiceNow?",
+      "options": [
+        { "id": "a", "text": "The parent table is deleted" },
+        { "id": "b", "text": "The child table inherits all fields from its parent table along with its unique fields" },
+        { "id": "c", "text": "Both tables become identical" },
+        { "id": "d", "text": "The parent table can no longer be used" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "An extended table inherits all fields from its parent table along with its unique fields. When extending a table, all fields and properties from the parent table are inherited, while unique fields can be added to the child table.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "The parent table remains intact; extension creates a relationship.", "reference": "Table Extension" },
+          { "choiceId": "c", "explanation": "Child tables have additional unique fields beyond inherited ones.", "reference": "Table Inheritance" },
+          { "choiceId": "d", "explanation": "Parent tables remain fully functional after extension.", "reference": "Parent Tables" }
+        ]
+      },
+      "references": ["ServiceNow Table Extension"],
+      "isFree": true,
+      "source": {
+        "type": "course",
+        "course": {
+          "courseSlug": "servicenow-administration-fundamentals-xanadu",
+          "moduleTitle": "SNAF Module 4: Manage data",
+          "lessonSlug": "01-manage-data",
+          "lessonTitle": "Manage data",
+          "url": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1"
+        },
+        "path": "sn-course-scraper/scraped-courses/servicenow-administration-fundamentals-xanadu/01-manage-data.md",
+        "excerpt": "An extended table inherits all fields from its parent table along with its unique fields."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Database Administration",
+        "domainSlug": "database-administration",
+        "domainPercentage": 12,
+        "subtopics": ["Table inheritance"],
+        "tags": ["table extension", "inheritance", "child table"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-04T23:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-db-005",
+      "certification": "csa",
+      "topic": "database-administration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which of the following are examples of tables that extend the Task table?",
+      "options": [
+        { "id": "a", "text": "User and Group" },
+        { "id": "b", "text": "Incident, Problem, and Change Request" },
+        { "id": "c", "text": "Location and Department" },
+        { "id": "d", "text": "Knowledge and Article" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "Examples of parent tables in ServiceNow include the Task and Configuration Item tables, which are extended to create child classes like change, request, incident, and problem.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "User and Group are separate tables, not extensions of Task.", "reference": "Table Structure" },
+          { "choiceId": "c", "explanation": "Location and Department are reference tables, not Task extensions.", "reference": "Reference Tables" },
+          { "choiceId": "d", "explanation": "Knowledge tables extend different parent tables.", "reference": "Knowledge Management" }
+        ]
+      },
+      "references": ["ServiceNow Task Table"],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "course": {
+          "courseSlug": "servicenow-administration-fundamentals-xanadu",
+          "moduleTitle": "SNAF Module 4: Manage data",
+          "lessonSlug": "01-manage-data",
+          "lessonTitle": "Manage data",
+          "url": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1"
+        },
+        "path": "sn-course-scraper/scraped-courses/servicenow-administration-fundamentals-xanadu/01-manage-data.md",
+        "excerpt": "Examples of parent tables in ServiceNow include the Task and Configuration Item tables, which are extended to create child classes, like change, request, incident, and problem."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Database Administration",
+        "domainSlug": "database-administration",
+        "domainPercentage": 12,
+        "subtopics": ["Table inheritance"],
+        "tags": ["task table", "incident", "problem", "change"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-04T23:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-db-006",
+      "certification": "csa",
+      "topic": "database-administration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What is a base table in ServiceNow?",
+      "options": [
+        { "id": "a", "text": "A table that has been deleted" },
+        { "id": "b", "text": "A table that serves as a foundation for other tables but isn't an extension itself" },
+        { "id": "c", "text": "A temporary table for testing" },
+        { "id": "d", "text": "A table that cannot have child tables" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "A base table serves as a foundation for other tables but isn't an extension itself. A parent table without a parent is a base class. It can also be a parent and/or core table.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "Base tables are active tables, not deleted ones.", "reference": "Table Types" },
+          { "choiceId": "c", "explanation": "Base tables are permanent production tables, not temporary.", "reference": "Table Administration" },
+          { "choiceId": "d", "explanation": "Base tables can have child tables; that's often their purpose.", "reference": "Table Inheritance" }
+        ]
+      },
+      "references": ["ServiceNow Base Tables"],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "course": {
+          "courseSlug": "servicenow-administration-fundamentals-xanadu",
+          "moduleTitle": "SNAF Module 4: Manage data",
+          "lessonSlug": "01-manage-data",
+          "lessonTitle": "Manage data",
+          "url": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1"
+        },
+        "path": "sn-course-scraper/scraped-courses/servicenow-administration-fundamentals-xanadu/01-manage-data.md",
+        "excerpt": "Base table serves as a foundation for other tables, but isn't an extension itself."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Database Administration",
+        "domainSlug": "database-administration",
+        "domainPercentage": 12,
+        "subtopics": ["Table inheritance"],
+        "tags": ["base table", "foundation", "table hierarchy"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-04T23:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-db-007",
+      "certification": "csa",
+      "topic": "database-administration",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What is the purpose of a Schema Map in ServiceNow?",
+      "options": [
+        { "id": "a", "text": "To display user permissions" },
+        { "id": "b", "text": "To visualize table relationships" },
+        { "id": "c", "text": "To track system performance" },
+        { "id": "d", "text": "To manage email notifications" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "The Schema Map visualizes table relationships. You can use the schema map to identify which columns originate on a table and which columns are inherited from parent tables, plus what tables are referenced.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "User permissions are managed in the security modules, not schema map.", "reference": "User Administration" },
+          { "choiceId": "c", "explanation": "System performance is tracked with different tools.", "reference": "Performance Analytics" },
+          { "choiceId": "d", "explanation": "Notifications are managed in System Notification modules.", "reference": "Notifications" }
+        ]
+      },
+      "references": ["ServiceNow Schema Map"],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "course": {
+          "courseSlug": "servicenow-administration-fundamentals-xanadu",
+          "moduleTitle": "SNAF Module 4: Manage data",
+          "lessonSlug": "01-manage-data",
+          "lessonTitle": "Manage data",
+          "url": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1"
+        },
+        "path": "sn-course-scraper/scraped-courses/servicenow-administration-fundamentals-xanadu/01-manage-data.md",
+        "excerpt": "Schema map visualizes table relationships."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Database Administration",
+        "domainSlug": "database-administration",
+        "domainPercentage": 12,
+        "subtopics": ["Tables and table relationships"],
+        "tags": ["schema map", "visualization", "relationships"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-04T23:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-db-008",
+      "certification": "csa",
+      "topic": "database-administration",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What is the difference between a field name and a field label?",
+      "options": [
+        { "id": "a", "text": "They are always identical" },
+        { "id": "b", "text": "Field names are unique and may differ from labels, which are display names" },
+        { "id": "c", "text": "Field labels are used in scripts; field names are for display" },
+        { "id": "d", "text": "There is no difference" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "Field names are unique and may differ from labels. For instance, 'city' is the field name in the sys_user table for the label 'Location'. Labels are display names shown to users.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "Field names and labels often differ, as shown with city/Location example.", "reference": "Field Properties" },
+          { "choiceId": "c", "explanation": "It's the opposite - field names are used in scripts, labels are for display.", "reference": "Scripting" },
+          { "choiceId": "d", "explanation": "There is a clear difference between technical names and display labels.", "reference": "Data Dictionary" }
+        ]
+      },
+      "references": ["ServiceNow Field Names"],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "course": {
+          "courseSlug": "servicenow-administration-fundamentals-xanadu",
+          "moduleTitle": "SNAF Module 4: Manage data",
+          "lessonSlug": "01-manage-data",
+          "lessonTitle": "Manage data",
+          "url": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1"
+        },
+        "path": "sn-course-scraper/scraped-courses/servicenow-administration-fundamentals-xanadu/01-manage-data.md",
+        "excerpt": "Field names are unique and may differ from labels. For instance, city is the field name in the sys_user table for the label Location."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Database Administration",
+        "domainSlug": "database-administration",
+        "domainPercentage": 12,
+        "subtopics": ["Fields and field types"],
+        "tags": ["field name", "field label", "data dictionary"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-04T23:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-db-009",
+      "certification": "csa",
+      "topic": "database-administration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What type of field allows selecting multiple records from a table?",
+      "options": [
+        { "id": "a", "text": "Reference field" },
+        { "id": "b", "text": "Choice field" },
+        { "id": "c", "text": "GlideList field" },
+        { "id": "d", "text": "String field" }
+      ],
+      "correctAnswers": ["c"],
+      "explanation": {
+        "correct": "GlideList allows selecting multiple records from a table. For example, the Watch List field on the Incident table can link to multiple User table records. Reference fields only allow selecting one record.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "Reference fields allow selecting only one record from a specific table.", "reference": "Reference Fields" },
+          { "choiceId": "b", "explanation": "Choice fields provide predefined value options, not table record selections.", "reference": "Choice Fields" },
+          { "choiceId": "d", "explanation": "String fields hold text values, not record references.", "reference": "Field Types" }
+        ]
+      },
+      "references": ["ServiceNow GlideList"],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "course": {
+          "courseSlug": "servicenow-administration-fundamentals-xanadu",
+          "moduleTitle": "SNAF Module 4: Manage data",
+          "lessonSlug": "01-manage-data",
+          "lessonTitle": "Manage data",
+          "url": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1"
+        },
+        "path": "sn-course-scraper/scraped-courses/servicenow-administration-fundamentals-xanadu/01-manage-data.md",
+        "excerpt": "GlideList allows selecting multiple records from a table. Example, Watch List field on the Incident table can link to multiple User table records."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Database Administration",
+        "domainSlug": "database-administration",
+        "domainPercentage": 12,
+        "subtopics": ["Fields and field types", "Reference fields"],
+        "tags": ["GlideList", "multiple select", "watch list"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-04T23:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-db-010",
+      "certification": "csa",
+      "topic": "database-administration",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What is the difference between scoped apps and global apps?",
+      "options": [
+        { "id": "a", "text": "Scoped apps are free; global apps require licensing" },
+        { "id": "b", "text": "Scoped apps are sandboxed with restricted API; global apps have access to all parts of the system" },
+        { "id": "c", "text": "Global apps are more secure than scoped apps" },
+        { "id": "d", "text": "There is no difference" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "Scoped apps are sandboxed from the system at large and utilize a restricted API to minimize or prevent damage outside their scope. Global apps have access to all parts of the system and can cause damage/impact beyond their intent.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "The difference is about access scope, not licensing costs.", "reference": "Application Scopes" },
+          { "choiceId": "c", "explanation": "Scoped apps are more secure because they have restricted access.", "reference": "Security" },
+          { "choiceId": "d", "explanation": "There is a significant difference in system access and security.", "reference": "App Development" }
+        ]
+      },
+      "references": ["ServiceNow Application Scopes"],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "course": {
+          "courseSlug": "servicenow-administration-fundamentals-xanadu",
+          "moduleTitle": "SNAF Module 4: Manage data",
+          "lessonSlug": "01-manage-data",
+          "lessonTitle": "Manage data",
+          "url": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1"
+        },
+        "path": "sn-course-scraper/scraped-courses/servicenow-administration-fundamentals-xanadu/01-manage-data.md",
+        "excerpt": "Scoped apps are sandboxed from the system at large and utilize a restricted API to minimize or prevent damage to anything outside of their scope."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Database Administration",
+        "domainSlug": "database-administration",
+        "domainPercentage": 12,
+        "subtopics": ["Tables and table relationships"],
+        "tags": ["scoped apps", "global apps", "sandbox", "security"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-04T23:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-db-011",
+      "certification": "csa",
+      "topic": "database-administration",
+      "cognitiveLevel": "application",
+      "type": "multiple_select",
+      "question": "In the schema map, what do tables with blue bars indicate? (Choose two)",
+      "options": [
+        { "id": "a", "text": "Tables that extend the focused table" },
+        { "id": "b", "text": "Tables that are referenced by the focused table" },
+        { "id": "c", "text": "Child tables of the focused table" },
+        { "id": "d", "text": "Deleted tables" }
+      ],
+      "correctAnswers": ["a", "c"],
+      "explanation": {
+        "correct": "In the schema map, tables with blue bars are tables that extend the focused table (child tables). Tables with red bars are tables that are referenced by the focused table.",
+        "wrongAnswers": [
+          { "choiceId": "b", "explanation": "Referenced tables are shown with red bars, not blue.", "reference": "Schema Map" },
+          { "choiceId": "d", "explanation": "Deleted tables don't appear in the schema map.", "reference": "Schema Visualization" }
+        ]
+      },
+      "references": ["ServiceNow Schema Map"],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "course": {
+          "courseSlug": "servicenow-administration-fundamentals-xanadu",
+          "moduleTitle": "SNAF Module 4: Manage data",
+          "lessonSlug": "01-manage-data",
+          "lessonTitle": "Manage data",
+          "url": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1"
+        },
+        "path": "sn-course-scraper/scraped-courses/servicenow-administration-fundamentals-xanadu/01-manage-data.md",
+        "excerpt": "Tables with blue bars, including problem and change phase, are tables that extend the task table."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Database Administration",
+        "domainSlug": "database-administration",
+        "domainPercentage": 12,
+        "subtopics": ["Tables and table relationships"],
+        "tags": ["schema map", "blue bars", "table extension"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-04T23:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-db-012",
+      "certification": "csa",
+      "topic": "database-administration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What is a Document ID field used for?",
+      "options": [
+        { "id": "a", "text": "To store document attachments" },
+        { "id": "b", "text": "To reference one record from any table" },
+        { "id": "c", "text": "To create PDF exports" },
+        { "id": "d", "text": "To store version history" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "Document ID fields allow selecting one record from any table, unlike reference fields which only connect to one specific table. Example: Document field in the Translated Text table.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "Attachments are stored differently, not through Document ID fields.", "reference": "Attachments" },
+          { "choiceId": "c", "explanation": "PDF exports are handled by reporting functions.", "reference": "Reporting" },
+          { "choiceId": "d", "explanation": "Version history is tracked separately.", "reference": "Versioning" }
+        ]
+      },
+      "references": ["ServiceNow Document ID Fields"],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "course": {
+          "courseSlug": "servicenow-administration-fundamentals-xanadu",
+          "moduleTitle": "SNAF Module 4: Manage data",
+          "lessonSlug": "01-manage-data",
+          "lessonTitle": "Manage data",
+          "url": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1"
+        },
+        "path": "sn-course-scraper/scraped-courses/servicenow-administration-fundamentals-xanadu/01-manage-data.md",
+        "excerpt": "Document ID fields allows selecting one record from any table. Example, Document field in the Translated Text table."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Database Administration",
+        "domainSlug": "database-administration",
+        "domainPercentage": 12,
+        "subtopics": ["Fields and field types"],
+        "tags": ["document ID", "any table", "field types"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-04T23:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    }
+  ]
+}
