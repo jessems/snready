@@ -1,0 +1,1094 @@
+{
+  "questions": [
+    {
+      "id": "cad-business-rules-001",
+      "certification": "cad",
+      "topic": "business-rules",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Where do business rules execute in the ServiceNow architecture?",
+      "options": [
+        {
+          "id": "a",
+          "text": "In the user's web browser (client-side)"
+        },
+        {
+          "id": "b",
+          "text": "On the ServiceNow server (server-side)"
+        },
+        {
+          "id": "c",
+          "text": "In the MID Server"
+        },
+        {
+          "id": "d",
+          "text": "In the browser's service worker"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Business rules execute on the server side, not in the browser. They deal primarily with interaction with the database table itself. See: https://docs.servicenow.com/bundle/yokohama-application-development/page/script/business-rules/concept/c_BusinessRules.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Business rules run on the server, not the client. Client-side scripts such as Client Scripts and UI Policies run in the browser.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/business-rules/concept/c_BusinessRules.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "MID Servers are used for integrations and discovery, not for executing business rules.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-servicenow-platform/page/product/mid-server/concept/mid-server-landing.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Service workers are a browser technology unrelated to ServiceNow business rule execution.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/business-rules/concept/c_BusinessRules.html"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow Docs - Business Rules"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "course",
+        "path": "scripting-in-servicenow-fundamentals/07-ssnf-business-rules.md",
+        "excerpt": "And these business rules execute on the server side, not in the browser. So they are faster, but they generally don't work on things like the form that you see in your browser or a list. They are dealing primarily with interaction with the table itself."
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Business Rules",
+        "domainSlug": "business-rules",
+        "domainPercentage": 15,
+        "subtopics": [
+          "Business rule types (before, after, async, display)"
+        ],
+        "tags": [
+          "business-rules",
+          "server-side",
+          "execution"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-05T20:24:19.143Z",
+        "version": "1.0",
+        "release": "Yokohama",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-business-rules-002",
+      "certification": "cad",
+      "topic": "business-rules",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_select",
+      "question": "Which of the following are types of business rules based on when they execute in the transaction lifecycle? (Select all that apply)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Before"
+        },
+        {
+          "id": "b",
+          "text": "After"
+        },
+        {
+          "id": "c",
+          "text": "Concurrent"
+        },
+        {
+          "id": "d",
+          "text": "Async"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b",
+        "d"
+      ],
+      "explanation": {
+        "correct": "ServiceNow business rules can be configured as before, after, display, before query, or async (asynchronous) types. Before, After, and Async are all valid business rule execution types. See: https://docs.servicenow.com/bundle/yokohama-application-development/page/script/business-rules/concept/c_BusinessRules.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "c",
+            "explanation": "There is no 'Concurrent' business rule type in ServiceNow. The valid types are before, after, async, display, and before query.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/business-rules/concept/c_BusinessRules.html"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow Docs - Business Rules"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "course",
+        "path": "scripting-in-servicenow-fundamentals/07-ssnf-business-rules.md",
+        "excerpt": "before rules, before we do something like a database update. After rules. After we have done a database update. And lastly, asynchronous rules are where it is not tied to the user's UI that's executing this."
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Business Rules",
+        "domainSlug": "business-rules",
+        "domainPercentage": 15,
+        "subtopics": [
+          "Business rule types (before, after, async, display)"
+        ],
+        "tags": [
+          "business-rules",
+          "types",
+          "before",
+          "after",
+          "async"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-05T20:24:19.143Z",
+        "version": "1.0",
+        "release": "Yokohama",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-business-rules-003",
+      "certification": "cad",
+      "topic": "business-rules",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What is the primary purpose of an asynchronous business rule?",
+      "options": [
+        {
+          "id": "a",
+          "text": "To execute before a record is displayed to the user"
+        },
+        {
+          "id": "b",
+          "text": "To run non-time-sensitive logic without blocking the user's session"
+        },
+        {
+          "id": "c",
+          "text": "To validate field values before a record is saved to the database"
+        },
+        {
+          "id": "d",
+          "text": "To pass server-side data to client-side scripts using g_scratchpad"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Asynchronous business rules are used for operations that are not time-sensitive. They are added to the job queue and execute at the next available moment, returning control to the user's UI immediately. See: https://docs.servicenow.com/bundle/yokohama-application-development/page/script/business-rules/concept/c_BusinessRules.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Executing before a record is displayed describes a display business rule, not an asynchronous one.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/business-rules/concept/c_BusinessRules.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Validating field values before saving describes a before business rule. Async rules run after the database operation and are queued as scheduled jobs.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/business-rules/concept/c_BusinessRules.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Passing data to the client side via g_scratchpad is a feature of display business rules, not asynchronous rules.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/business-rules/reference/r_DisplayBusinessRules.html"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow Docs - Business Rules"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "course",
+        "path": "scripting-in-servicenow-fundamentals/07-ssnf-business-rules.md",
+        "excerpt": "If something is not time sensitive and we don't want our user to be waiting around to get control of their resources again, their UI, we can create something as an asynchronous rule. Means it gets added to our job queue, and it executes when the next available spot is there."
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Business Rules",
+        "domainSlug": "business-rules",
+        "domainPercentage": 15,
+        "subtopics": [
+          "Business rule types (before, after, async, display)"
+        ],
+        "tags": [
+          "business-rules",
+          "async",
+          "asynchronous",
+          "job-queue"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-05T20:24:19.143Z",
+        "version": "1.0",
+        "release": "Yokohama",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-business-rules-004",
+      "certification": "cad",
+      "topic": "business-rules",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "Which type of business rule supports the use of g_scratchpad to pass data from the server to the client?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Before business rule"
+        },
+        {
+          "id": "b",
+          "text": "After business rule"
+        },
+        {
+          "id": "c",
+          "text": "Display business rule"
+        },
+        {
+          "id": "d",
+          "text": "Async business rule"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "The g_scratchpad object is only available in display business rules. It provides a mechanism to pass server-side data to client-side scripts. See: https://docs.servicenow.com/bundle/yokohama-application-development/page/script/business-rules/reference/r_DisplayBusinessRules.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Before business rules execute before a database operation and do not have access to g_scratchpad. They use the current and previous objects for field manipulation.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/business-rules/concept/c_BusinessRules.html"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "After business rules execute after the database operation completes. They do not support g_scratchpad for passing data to the client.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/business-rules/concept/c_BusinessRules.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Async business rules run as scheduled jobs separate from the user's session and have no mechanism to pass data to the client UI.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/business-rules/concept/c_BusinessRules.html"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow Docs - Display Business Rules"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "course",
+        "path": "scripting-in-servicenow-fundamentals/07-ssnf-business-rules.md",
+        "excerpt": "we have this thing called g_scratchpad, which only works with display business rules. And it allows us to take data from the server side and pass it to the client side."
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Business Rules",
+        "domainSlug": "business-rules",
+        "domainPercentage": 15,
+        "subtopics": [
+          "Business rule types (before, after, async, display)",
+          "current and previous objects"
+        ],
+        "tags": [
+          "business-rules",
+          "display",
+          "g_scratchpad",
+          "server-to-client"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-05T20:24:19.143Z",
+        "version": "1.0",
+        "release": "Yokohama",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-business-rules-005",
+      "certification": "cad",
+      "topic": "business-rules",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A developer needs to automatically populate a calculated field value on an Incident record before it is written to the database, without the user explicitly setting it. Which type of business rule should the developer use?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Display business rule"
+        },
+        {
+          "id": "b",
+          "text": "Before business rule"
+        },
+        {
+          "id": "c",
+          "text": "After business rule"
+        },
+        {
+          "id": "d",
+          "text": "Async business rule"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "A before business rule runs after the form is submitted but before the record is written to the database, making it ideal for populating or modifying field values before the save occurs. See: https://docs.servicenow.com/bundle/yokohama-application-development/page/script/business-rules/concept/c_BusinessRules.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Display business rules run when a record is read and before it is displayed. They are used for passing data to the client via g_scratchpad, not for modifying field values before a save.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/business-rules/reference/r_DisplayBusinessRules.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "After business rules run after the record is already saved to the database, so they cannot populate field values before the write occurs.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/business-rules/concept/c_BusinessRules.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Async business rules are queued as scheduled jobs and run independently of the current transaction, making them unsuitable for modifying field values before a record is saved.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/business-rules/concept/c_BusinessRules.html"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow Docs - Business Rules"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "course",
+        "path": "scripting-in-servicenow-fundamentals/07-ssnf-business-rules.md",
+        "excerpt": "Before we do a record update. So maybe we have submitted the record, but before it actually gets written to the database, we're going to execute this rule. Maybe we need to populate fields that are not populated by the user. Populate a field in that record."
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Business Rules",
+        "domainSlug": "business-rules",
+        "domainPercentage": 15,
+        "subtopics": [
+          "Business rule types (before, after, async, display)",
+          "When to use business rules vs other methods"
+        ],
+        "tags": [
+          "business-rules",
+          "before",
+          "field-population",
+          "scenario"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-05T20:24:19.143Z",
+        "version": "1.0",
+        "release": "Yokohama",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-business-rules-006",
+      "certification": "cad",
+      "topic": "business-rules",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "Why are the current and previous objects NOT available in scheduled script executions?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Scheduled scripts run on the client side where these objects are not supported"
+        },
+        {
+          "id": "b",
+          "text": "Scheduled scripts are not associated with a specific table record"
+        },
+        {
+          "id": "c",
+          "text": "Scheduled scripts only support GlideForm (g_form) APIs"
+        },
+        {
+          "id": "d",
+          "text": "The current and previous objects are deprecated in the Yokohama release"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The current and previous objects are only available in server-side scripts that are associated with a specific table record (i.e., scripts with a table field on the trigger). Scheduled scripts have no table association, so GlideRecord or GlideQuery must be used instead. See: https://docs.servicenow.com/bundle/yokohama-application-development/page/script/server-scripting/concept/c_ScheduledJobs.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Scheduled scripts run on the server side, not the client side. The reason current/previous are unavailable is the lack of a table record context, not the execution environment.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/server-scripting/concept/c_ScheduledJobs.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "GlideForm (g_form) is a client-side API and is not available in scheduled scripts. Scheduled scripts use server-side APIs like GlideRecord and GlideQuery.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/server-scripting/concept/c_ScheduledJobs.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The current and previous objects are not deprecated. They remain fully supported in business rules and other table-associated server-side scripts.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/business-rules/concept/c_BusinessRules.html"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow Docs - Scheduled Script Executions"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "application-development-fundamentals-on-demand/07-adf-scheduled-script-execution-and-email.md",
+        "excerpt": "we cannot use the current or previous object... Generally speaking, the current and previous objects are only available in server-side script that are associated with a specific table record. And that means, generally, that there is a table field on the trigger. No table field on this trigger."
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Business Rules",
+        "domainSlug": "business-rules",
+        "domainPercentage": 15,
+        "subtopics": [
+          "current and previous objects",
+          "Scheduled script execution"
+        ],
+        "tags": [
+          "scheduled-scripts",
+          "current-object",
+          "previous-object",
+          "gliderecord"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-05T20:24:19.143Z",
+        "version": "1.0",
+        "release": "Yokohama",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-business-rules-007",
+      "certification": "cad",
+      "topic": "business-rules",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A developer writes the expression current.caller_id.department.name in a business rule on the Incident table. What technique is being used and what value is returned?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Dot-walking — returns the name of the department of the caller on the incident"
+        },
+        {
+          "id": "b",
+          "text": "GlideRecord chaining — returns the sys_id of the caller's department"
+        },
+        {
+          "id": "c",
+          "text": "Reference querying — returns the caller's user name"
+        },
+        {
+          "id": "d",
+          "text": "Object inheritance — returns the incident's department field"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "This is dot-walking, which traverses reference fields across tables. Starting from the current Incident record, it follows caller_id to the User table, then department to the Department table, and retrieves the Name field value. See: https://docs.servicenow.com/bundle/yokohama-application-development/page/script/server-scripting/concept/c_DotWalkingInScripts.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "This is dot-walking, not GlideRecord chaining. Dot-walking resolves the display value (the name), not the sys_id, when accessing the .name field.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/server-scripting/concept/c_DotWalkingInScripts.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The expression navigates to the department's name, not the caller's user name. Reference querying is not a ServiceNow term for this technique.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/server-scripting/concept/c_DotWalkingInScripts.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Object inheritance is a general programming concept unrelated to traversing reference fields in ServiceNow. The expression returns the caller's department name, not a field on the incident itself.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/server-scripting/concept/c_DotWalkingInScripts.html"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow Docs - Dot-Walking"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "scripting-in-servicenow-fundamentals/07-ssnf-business-rules.md",
+        "excerpt": "current.caller_id.department.name is going to give us sales because that's what that callers department's name is. And we're going from table to table to table. This is Dot-walking."
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Business Rules",
+        "domainSlug": "business-rules",
+        "domainPercentage": 15,
+        "subtopics": [
+          "Business rule conditions and scripts"
+        ],
+        "tags": [
+          "dot-walking",
+          "reference-fields",
+          "current-object",
+          "scripting"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-05T20:24:19.143Z",
+        "version": "1.0",
+        "release": "Yokohama",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-business-rules-008",
+      "certification": "cad",
+      "topic": "business-rules",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_select",
+      "question": "Which of the following are valid database operations that can trigger a business rule in ServiceNow? (Select all that apply)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Insert"
+        },
+        {
+          "id": "b",
+          "text": "Update"
+        },
+        {
+          "id": "c",
+          "text": "Export"
+        },
+        {
+          "id": "d",
+          "text": "Delete"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b",
+        "d"
+      ],
+      "explanation": {
+        "correct": "Business rules can be triggered on insert, update, delete, and query operations against a table. Export is not a database operation that triggers business rules. See: https://docs.servicenow.com/bundle/yokohama-application-development/page/script/business-rules/concept/c_BusinessRules.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "c",
+            "explanation": "Export is a UI/reporting operation, not a database operation. Business rules are triggered by database-level operations such as insert, update, delete, and query.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/business-rules/concept/c_BusinessRules.html"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow Docs - Business Rules"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "scripting-in-servicenow-fundamentals/07-ssnf-business-rules.md",
+        "excerpt": "business rule is a record that we create that contains JavaScript to do something related to a table. We want to display a record, we want to insert a record, update a record, or delete a record, or just query the table. We can run the business rule when any of these things happen."
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Business Rules",
+        "domainSlug": "business-rules",
+        "domainPercentage": 15,
+        "subtopics": [
+          "Business rule conditions and scripts"
+        ],
+        "tags": [
+          "business-rules",
+          "triggers",
+          "insert",
+          "update",
+          "delete",
+          "database-operations"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-05T20:24:19.143Z",
+        "version": "1.0",
+        "release": "Yokohama",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-business-rules-009",
+      "certification": "cad",
+      "topic": "business-rules",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "In an onChange client script, what does the 'oldValue' parameter represent?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The value of the field immediately before the most recent user edit on the client side"
+        },
+        {
+          "id": "b",
+          "text": "The value stored on the server when the form was loaded"
+        },
+        {
+          "id": "c",
+          "text": "The default value defined in the field's dictionary entry"
+        },
+        {
+          "id": "d",
+          "text": "The value from the same field on the previously viewed record"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The oldValue parameter in an onChange client script represents the value that was stored on the server when the form loaded. It does not track intermediate client-side edits — if a user changes the field 20 times before saving, oldValue still reflects the original server-side value. See: https://docs.servicenow.com/bundle/yokohama-application-development/page/script/client-scripts/concept/c_ClientScripts.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "oldValue does not track each intermediate client-side change. It specifically reflects the server-side stored value at form load time, regardless of how many times the field has been edited in the current session.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/client-scripts/concept/c_ClientScripts.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "oldValue is not the dictionary default value. It is the actual value stored in the database when the form loaded. For a new record, oldValue would be null or blank, which may coincide with a default but is not derived from the dictionary definition.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/client-scripts/concept/c_ClientScripts.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "oldValue has no relation to previously viewed records. It is scoped to the current record and form session, representing only the server-side stored value at load time.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/client-scripts/concept/c_ClientScripts.html"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow Docs - Client Scripts"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "application-development-fundamentals-on-demand/07-adf-scripting-demo-part-2-of-4.md",
+        "excerpt": "Know that 'oldValue' is equivalent to the previous value when the form loaded, not what was previously there if you've edited the field 20 times before saving it, but rather, you can think of it as what's stored there on the server."
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Business Rules",
+        "domainSlug": "business-rules",
+        "domainPercentage": 15,
+        "subtopics": [
+          "When to use business rules vs other methods"
+        ],
+        "tags": [
+          "client-script",
+          "onChange",
+          "oldValue",
+          "client-side-scripting"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-05T20:26:32.000Z",
+        "version": "1.0",
+        "release": "Yokohama",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-business-rules-010",
+      "certification": "cad",
+      "topic": "business-rules",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What is the purpose of the 'Execute if false' script section in a UI policy?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It runs validation logic before the UI policy condition is evaluated"
+        },
+        {
+          "id": "b",
+          "text": "It defines scripted actions to perform when the UI policy condition is no longer true"
+        },
+        {
+          "id": "c",
+          "text": "It prevents the UI policy from executing on specific form views"
+        },
+        {
+          "id": "d",
+          "text": "It logs diagnostic information when the UI policy condition fails to evaluate"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The 'Execute if false' script section in a UI policy allows developers to define actions that should occur when the UI policy condition evaluates to false (i.e., is no longer met). This is essential for undoing scripted changes such as clearing field messages when the triggering condition changes. See: https://docs.servicenow.com/bundle/yokohama-application-development/page/client_scripting/client-side_policies/concept/c_UIPolicies.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The 'Execute if false' script does not run validation before condition evaluation. It is triggered after the condition is evaluated and found to be false, allowing the developer to reverse previously applied scripted changes.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/client_scripting/client-side_policies/concept/c_UIPolicies.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Restricting a UI policy to specific form views is controlled by the View field on the UI policy record, not the 'Execute if false' script. The script is exclusively for defining reversal logic when the condition is no longer met.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/client_scripting/client-side_policies/concept/c_UIPolicies.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The 'Execute if false' script does not provide logging or diagnostic capabilities. It is a scripting area for defining what should happen when the UI policy condition evaluates to false, such as removing field messages or resetting styles.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/client_scripting/client-side_policies/concept/c_UIPolicies.html"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow Docs - UI Policies"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "application-development-fundamentals-on-demand/06-adf-scripting-demo-part-1-of-4.md",
+        "excerpt": "That's what the execute if false field is for. And, remember, during my lecture, I said that, at least at present, despite all the advances in Now Assist and GenAI and stuff like that, ServiceNow can't parse this and figure out the opposite of what you intended it to do and then just do that."
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Business Rules",
+        "domainSlug": "business-rules",
+        "domainPercentage": 15,
+        "subtopics": [
+          "Business rule conditions and scripts"
+        ],
+        "tags": [
+          "ui-policy",
+          "execute-if-false",
+          "client-side-scripting",
+          "form-configuration"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-05T20:26:32.000Z",
+        "version": "1.0",
+        "release": "Yokohama",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-business-rules-011",
+      "certification": "cad",
+      "topic": "business-rules",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "A developer creates a scripted UI policy that uses g_form.showFieldMessage() to display an informational message beneath a field when a condition is met. After testing, the developer notices the message remains visible even after the condition is no longer true. What is the most likely cause?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The showFieldMessage() method requires a form save before it can be cleared"
+        },
+        {
+          "id": "b",
+          "text": "The developer did not add a corresponding script in the 'Execute if false' section to clear the message"
+        },
+        {
+          "id": "c",
+          "text": "UI policy scripts cannot interact with field messages and a client script should be used instead"
+        },
+        {
+          "id": "d",
+          "text": "The UI policy's 'Reverse if false' checkbox is not selected on the UI policy record"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "When a UI policy uses scripting (such as g_form.showFieldMessage()) to modify the form, the platform cannot automatically reverse those scripted changes when the condition becomes false. The developer must explicitly add reversal logic in the 'Execute if false' script section — for example, calling g_form.hideFieldMessage() to remove the message. UI policy actions auto-reverse, but scripts do not. See: https://docs.servicenow.com/bundle/yokohama-application-development/page/client_scripting/client-side_policies/concept/c_UIPolicies.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "g_form.showFieldMessage() is a client-side method that takes effect immediately without a form save. Clearing the message also does not require saving — it requires the corresponding clearance logic in the 'Execute if false' script.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/client_scripting/client-side_policies/concept/c_UIPolicies.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "UI policy scripts can absolutely interact with field messages using GlideForm methods like showFieldMessage() and hideFieldMessage(). This is a common and supported pattern for scripted UI policies.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/client_scripting/client-side_policies/concept/c_UIPolicies.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "'Reverse if false' applies to UI policy action records (such as making a field read-only or mandatory), not to scripted behavior. Scripted actions in the 'Execute if true' section must be manually reversed in the 'Execute if false' section.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/client_scripting/client-side_policies/concept/c_UIPolicies.html"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow Docs - UI Policies"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "application-development-fundamentals-on-demand/06-adf-scripting-demo-part-1-of-4.md",
+        "excerpt": "I told it indeed to create this message every time the condition became true. But I never told it to undo the message. That's what the execute if false field is for."
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Business Rules",
+        "domainSlug": "business-rules",
+        "domainPercentage": 15,
+        "subtopics": [
+          "Script debugging techniques"
+        ],
+        "tags": [
+          "ui-policy",
+          "showFieldMessage",
+          "execute-if-false",
+          "troubleshooting"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-05T20:26:32.000Z",
+        "version": "1.0",
+        "release": "Yokohama",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-business-rules-012",
+      "certification": "cad",
+      "topic": "business-rules",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_select",
+      "question": "Which of the following are parameters provided by the onChange client script template function? (Select all that apply)",
+      "options": [
+        {
+          "id": "a",
+          "text": "control"
+        },
+        {
+          "id": "b",
+          "text": "current"
+        },
+        {
+          "id": "c",
+          "text": "isLoading"
+        },
+        {
+          "id": "d",
+          "text": "previous"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "c"
+      ],
+      "explanation": {
+        "correct": "The onChange client script template function provides five parameters: control, oldValue, newValue, isLoading, and isTemplate. The 'control' parameter gives access to the UI element of the field, while 'isLoading' is a boolean indicating whether the form is still loading. See: https://docs.servicenow.com/bundle/yokohama-application-development/page/script/client-scripts/concept/c_ClientScripts.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "'current' is a server-side GlideRecord object available in business rules, not a client script parameter. In business rules, 'current' represents the record being inserted, updated, deleted, or queried. Client scripts use GlideForm (g_form) methods and the onChange template parameters instead.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/server-scripting/concept/c_BusinessRules.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "'previous' is a server-side GlideRecord object available in business rules that contains the record values before the current update. It is not available in client scripts. The client-side equivalent for tracking value changes is the 'oldValue' parameter in the onChange template.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/server-scripting/concept/c_BusinessRules.html"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow Docs - Client Scripts"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "application-development-fundamentals-on-demand/07-adf-scripting-demo-part-2-of-4.md",
+        "excerpt": "I'm going to leverage a few of these values that are given to me as part of 'onChange' Template function. New value will let me grab whatever's currently in that field at any given time, and 'control' actually gives me access to that UI element of the field itself."
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Business Rules",
+        "domainSlug": "business-rules",
+        "domainPercentage": 15,
+        "subtopics": [
+          "When to use business rules vs other methods",
+          "current and previous objects"
+        ],
+        "tags": [
+          "client-script",
+          "onChange",
+          "control",
+          "isLoading",
+          "template-parameters"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-05T20:26:32.000Z",
+        "version": "1.0",
+        "release": "Yokohama",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-business-rules-013",
+      "certification": "cad",
+      "topic": "business-rules",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "A developer needs to make a field read-only when a UI policy condition is true. The developer is deciding whether to use a UI policy action record or accomplish this entirely through scripting. What is a key advantage of using a UI policy action record for this requirement?",
+      "options": [
+        {
+          "id": "a",
+          "text": "UI policy actions execute on the server side, providing better security than client-side scripts"
+        },
+        {
+          "id": "b",
+          "text": "UI policy actions automatically reverse the change when the condition is no longer met, without requiring additional scripting"
+        },
+        {
+          "id": "c",
+          "text": "UI policy actions support conditional logic that cannot be replicated in scripts"
+        },
+        {
+          "id": "d",
+          "text": "UI policy actions allow setting multiple field attributes in a single line of code"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "UI policy action records are lightweight and automatically reverse their effects when the UI policy condition is no longer true. For example, if an action sets a field to read-only, the platform automatically makes it editable again when the condition becomes false — no additional scripting required. This auto-reversal is a key advantage over scripted approaches, which require explicit 'Execute if false' logic. See: https://docs.servicenow.com/bundle/yokohama-application-development/page/client_scripting/client-side_policies/concept/c_UIPolicies.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "UI policy actions are client-side configurations, not server-side. They control the form presentation in the user's browser. For server-side enforcement of field values, Access Control Rules (ACLs) or business rules would be used.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/client_scripting/client-side_policies/concept/c_UIPolicies.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "UI policy actions do not support conditional logic themselves — the condition is defined on the parent UI policy record. Scripts actually offer more flexibility for complex conditional logic than action records do.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/client_scripting/client-side_policies/concept/c_UIPolicies.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "UI policy actions are configured as separate records (one per field attribute change), not as single lines of code. Each action record controls one attribute (read-only, mandatory, or visible) for one field.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/client_scripting/client-side_policies/concept/c_UIPolicies.html"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow Docs - UI Policies"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "application-development-fundamentals-on-demand/06-adf-scripting-demo-part-1-of-4.md",
+        "excerpt": "UI policy action records are so lightweight and so clear, I can make it once and never worry about it... It can parse and figure out the opposite of this true value on the read-onlyness of our original CP field, as dictated in the UI policy action record."
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Business Rules",
+        "domainSlug": "business-rules",
+        "domainPercentage": 15,
+        "subtopics": [
+          "When to use business rules vs other methods"
+        ],
+        "tags": [
+          "ui-policy",
+          "ui-policy-actions",
+          "read-only",
+          "best-practices"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-05T20:26:32.000Z",
+        "version": "1.0",
+        "release": "Yokohama",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-business-rules-014",
+      "certification": "cad",
+      "topic": "business-rules",
+      "cognitiveLevel": "application",
+      "type": "multiple_select",
+      "question": "A developer is writing an onChange client script that must replace the current value of a field with a corrected value and display an error message to the user when an invalid entry is detected. Which two GlideForm (g_form) methods should the developer use? (Select all that apply)",
+      "options": [
+        {
+          "id": "a",
+          "text": "g_form.setValue()"
+        },
+        {
+          "id": "b",
+          "text": "g_form.setDisplay()"
+        },
+        {
+          "id": "c",
+          "text": "g_form.addErrorMessage()"
+        },
+        {
+          "id": "d",
+          "text": "g_form.setReadOnly()"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "c"
+      ],
+      "explanation": {
+        "correct": "To programmatically replace a field value on the client side, the developer should use g_form.setValue() with the field name and new value as arguments. To display an error message banner at the top of the form, g_form.addErrorMessage() is the appropriate method. These two methods together fulfill the requirements of replacing the invalid value and notifying the user. See: https://docs.servicenow.com/bundle/yokohama-application-development/page/app-store/dev_portal/API_reference/GlideForm/concept/c_GlideFormAPI.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "g_form.setDisplay() controls whether a field is visible or hidden on the form. It does not replace field values or display error messages. It is used for showing/hiding fields based on conditions.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/app-store/dev_portal/API_reference/GlideForm/concept/c_GlideFormAPI.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "g_form.setReadOnly() makes a field read-only or editable. While this might be used as an additional step to prevent further editing, it does not replace the field value or display an error message, which are the two specific requirements stated.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/app-store/dev_portal/API_reference/GlideForm/concept/c_GlideFormAPI.html"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow Docs - GlideForm (g_form)"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "application-development-fundamentals-on-demand/07-adf-scripting-demo-part-2-of-4.md",
+        "excerpt": "When we set values client-side, we usually have to use a GlideForm method-- I bet you know this-- called 'setValue.' And in this case, I'm going to call out the field name explicitly using its system name."
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Business Rules",
+        "domainSlug": "business-rules",
+        "domainPercentage": 15,
+        "subtopics": [
+          "Business rule conditions and scripts"
+        ],
+        "tags": [
+          "GlideForm",
+          "setValue",
+          "addErrorMessage",
+          "client-script",
+          "onChange"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-05T20:26:32.000Z",
+        "version": "1.0",
+        "release": "Yokohama",
+        "reviewed": false
+      }
+    }
+  ]
+}

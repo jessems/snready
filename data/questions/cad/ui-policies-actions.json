@@ -1,0 +1,1021 @@
+{
+  "questions": [
+    {
+      "id": "cad-ui-policies-actions-001",
+      "certification": "cad",
+      "topic": "ui-policies-actions",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which field is used to identify a UI Policy instead of a Name field?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Label"
+        },
+        {
+          "id": "b",
+          "text": "Short description"
+        },
+        {
+          "id": "c",
+          "text": "Title"
+        },
+        {
+          "id": "d",
+          "text": "Display name"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "UI Policies do not have a Name field. Instead, they use the Short description field, which can hold up to 255 characters and should describe what the UI policy does (e.g., 'If category is software, then subcategory is mandatory').",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Label is used for fields/columns on tables, not as the identifying field for UI Policies.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/administer/form-administration/concept/c_UIPolicies.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Title is not a field on the UI Policy form. The Short description field serves as the identifier.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/administer/form-administration/concept/c_UIPolicies.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Display name is not a field on the UI Policy form. UI Policies are identified by their Short description.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/administer/form-administration/concept/c_UIPolicies.html"
+          }
+        ]
+      },
+      "references": [
+        "https://docs.servicenow.com/bundle/yokohama-application-development/page/administer/form-administration/concept/c_UIPolicies.html"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "course",
+        "path": "scripting-in-servicenow-fundamentals/06-ssnf-ui-policies.md",
+        "excerpt": "there is no Name field on a UI policy. Instead, we use the Short description field. And what you want to do here is provide a very robust description of what the UI policy is going to do."
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "UI Policies & Actions",
+        "domainSlug": "ui-policies-actions",
+        "domainPercentage": 10,
+        "subtopics": [
+          "UI Policy conditions and actions"
+        ],
+        "tags": [
+          "ui-policy",
+          "short-description",
+          "form-configuration"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2025-07-18T02:30:00.000Z",
+        "version": "1.0",
+        "release": "Yokohama",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-ui-policies-actions-002",
+      "certification": "cad",
+      "topic": "ui-policies-actions",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "In what order do UI policies execute relative to client scripts on a form?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Before client scripts"
+        },
+        {
+          "id": "b",
+          "text": "At the same time as client scripts"
+        },
+        {
+          "id": "c",
+          "text": "After client scripts"
+        },
+        {
+          "id": "d",
+          "text": "The order depends on the Order field value set on each"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "UI policies always execute after client scripts on a form. This is important to understand because if both a client script and a UI policy affect the same field, the UI policy will take effect last.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "UI policies do not execute before client scripts. Client scripts execute first, then UI policies run afterward.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/administer/form-administration/concept/c_UIPolicies.html"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "UI policies and client scripts do not execute simultaneously. Client scripts run first, followed by UI policies.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/administer/form-administration/concept/c_UIPolicies.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "While both UI policies and client scripts have an Order field, UI policies as a category always execute after all client scripts have completed, regardless of individual order values.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/administer/form-administration/concept/c_UIPolicies.html"
+          }
+        ]
+      },
+      "references": [
+        "https://docs.servicenow.com/bundle/yokohama-application-development/page/administer/form-administration/concept/c_UIPolicies.html"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "course",
+        "path": "scripting-in-servicenow-fundamentals/06-ssnf-ui-policies.md",
+        "excerpt": "UI policies are going to execute after your client scripts execute."
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "UI Policies & Actions",
+        "domainSlug": "ui-policies-actions",
+        "domainPercentage": 10,
+        "subtopics": [
+          "UI Policy execution order"
+        ],
+        "tags": [
+          "ui-policy",
+          "client-script",
+          "execution-order"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2025-07-18T02:30:00.000Z",
+        "version": "1.0",
+        "release": "Yokohama",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-ui-policies-actions-003",
+      "certification": "cad",
+      "topic": "ui-policies-actions",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What is the effect of selecting the 'Reverse if false' checkbox on a UI Policy?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It prevents the UI policy from executing when conditions are false"
+        },
+        {
+          "id": "b",
+          "text": "It reverses the UI policy actions and executes the 'Execute if false' script when conditions evaluate to false"
+        },
+        {
+          "id": "c",
+          "text": "It reverses the condition logic so the UI policy triggers on the opposite condition"
+        },
+        {
+          "id": "d",
+          "text": "It automatically creates a duplicate UI policy with the inverse condition"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "When the 'Reverse if false' checkbox is selected, the UI policy actions are reversed and the 'Execute if false' script runs when the UI policy conditions evaluate to false. This allows developers to define both true and false behaviors within a single UI policy.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Without 'Reverse if false' checked, the UI policy simply does nothing when conditions are false. Checking the box enables the reverse behavior, not prevention of execution.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/administer/form-administration/concept/c_UIPolicies.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "'Reverse if false' does not change the condition logic itself. The condition remains the same; the checkbox controls what happens when the condition evaluates to false—the UI policy actions are reversed.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/administer/form-administration/concept/c_UIPolicies.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "No duplicate UI policy is created. The 'Reverse if false' checkbox simply enables the reverse behavior within the same UI policy when conditions are false.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/administer/form-administration/concept/c_UIPolicies.html"
+          }
+        ]
+      },
+      "references": [
+        "https://docs.servicenow.com/bundle/yokohama-application-development/page/administer/form-administration/concept/c_UIPolicies.html"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "course",
+        "path": "scripting-in-servicenow-fundamentals/06-ssnf-ui-policies.md",
+        "excerpt": "when this gets selected, the UI policy actions are reversed, and the Execute if fail script is executed when the UI policy conditions evaluate to False."
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "UI Policies & Actions",
+        "domainSlug": "ui-policies-actions",
+        "domainPercentage": 10,
+        "subtopics": [
+          "UI Policy conditions and actions"
+        ],
+        "tags": [
+          "ui-policy",
+          "reverse-if-false",
+          "conditions"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2025-07-18T02:30:00.000Z",
+        "version": "1.0",
+        "release": "Yokohama",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-ui-policies-actions-004",
+      "certification": "cad",
+      "topic": "ui-policies-actions",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "Why does ServiceNow recommend using a UI Policy instead of a client script when both can accomplish the same task?",
+      "options": [
+        {
+          "id": "a",
+          "text": "UI policies execute faster and improve page load performance"
+        },
+        {
+          "id": "b",
+          "text": "UI policies have access to more APIs than client scripts"
+        },
+        {
+          "id": "c",
+          "text": "UI policies are typically unscripted and easier to maintain"
+        },
+        {
+          "id": "d",
+          "text": "UI policies can also run on the server side for data consistency"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "ServiceNow recommends UI policies over client scripts when both can achieve the same result because UI policies are usually unscripted. They use the Condition builder and UI policy actions, making them easier to maintain—especially for less technical administrators who may not know how to script.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "There are no inherent performance advantages of UI policies over client scripts. In fact, too many UI policies can lead to long page load times. The recommendation is based on maintainability, not performance.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/administer/form-administration/concept/c_UIPolicies.html"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "UI policies do not have access to more APIs than client scripts. Both have access to GlideForm (g_form) and GlideUser (g_user). Client scripts actually have additional capabilities like accessing old field values.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/administer/form-administration/concept/c_UIPolicies.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "UI policies execute on the client side only, not on the server side. Data policies are used for server-side data consistency enforcement.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/administer/form-administration/concept/c_UIPolicies.html"
+          }
+        ]
+      },
+      "references": [
+        "https://docs.servicenow.com/bundle/yokohama-application-development/page/administer/form-administration/concept/c_UIPolicies.html"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "course",
+        "path": "scripting-in-servicenow-fundamentals/06-ssnf-ui-policies.md",
+        "excerpt": "UI policies are usually unscripted. And they're going to be easier to maintain than a client script. And so those potentially less technical people that may come after you, and they don't know about scripting, or they don't know how to script, it's far easier to build a condition, using the Condition builder"
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "UI Policies & Actions",
+        "domainSlug": "ui-policies-actions",
+        "domainPercentage": 10,
+        "subtopics": [
+          "UI Policy vs Client Script decision criteria"
+        ],
+        "tags": [
+          "ui-policy",
+          "client-script",
+          "best-practices",
+          "maintainability"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2025-07-18T02:30:00.000Z",
+        "version": "1.0",
+        "release": "Yokohama",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-ui-policies-actions-005",
+      "certification": "cad",
+      "topic": "ui-policies-actions",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_select",
+      "question": "Which of the following scenarios require using a client script instead of a UI policy? (Select all that apply)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Making a field mandatory based on the value of another field"
+        },
+        {
+          "id": "b",
+          "text": "Executing validation logic when a form is submitted"
+        },
+        {
+          "id": "c",
+          "text": "Accessing a field's previous value before a change was made"
+        },
+        {
+          "id": "d",
+          "text": "Setting a field to read-only based on a condition"
+        }
+      ],
+      "correctAnswers": [
+        "b",
+        "c"
+      ],
+      "explanation": {
+        "correct": "Client scripts are required when executing logic on form save/submit (onSubmit type) and when accessing a field's old value before a change (using the oldValue parameter in onChange scripts). These capabilities are not available in UI policies.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Making a field mandatory based on another field's value is a standard UI policy action. A condition can be set on the UI policy, and a UI policy action can set the target field to mandatory—no scripting required.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/administer/form-administration/concept/c_UIPolicies.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Setting a field to read-only based on a condition is a core UI policy action. This can be configured using the Condition builder and UI policy actions without any script.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/administer/form-administration/concept/c_UIPolicies.html"
+          }
+        ]
+      },
+      "references": [
+        "https://docs.servicenow.com/bundle/yokohama-application-development/page/administer/form-administration/concept/c_UIPolicies.html"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "course",
+        "path": "scripting-in-servicenow-fundamentals/06-ssnf-ui-policies.md",
+        "excerpt": "if you want something to execute when the form gets saved or that form gets submitted or updated, then you have to use a client script. Or if you need to have access to what was in a field before a change-- we call that the field's old value-- then again, you have to use a client script because you won't have that in a UI policy."
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "UI Policies & Actions",
+        "domainSlug": "ui-policies-actions",
+        "domainPercentage": 10,
+        "subtopics": [
+          "UI Policy vs Client Script decision criteria"
+        ],
+        "tags": [
+          "ui-policy",
+          "client-script",
+          "onsubmit",
+          "old-value"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2025-07-18T02:30:00.000Z",
+        "version": "1.0",
+        "release": "Yokohama",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-ui-policies-actions-006",
+      "certification": "cad",
+      "topic": "ui-policies-actions",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A developer needs to ensure that when the Priority field on the Incident form is set to Critical, the Description field becomes mandatory and a message is displayed. If the Priority is not Critical, the Description should not be mandatory and no message should appear. How should the developer configure this?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Create two separate UI policies—one for the Critical condition and one for the non-Critical condition"
+        },
+        {
+          "id": "b",
+          "text": "Create a single UI policy with the condition Priority is Critical, configure UI policy actions and scripts, and enable the 'Reverse if false' checkbox"
+        },
+        {
+          "id": "c",
+          "text": "Create an onLoad client script that checks the Priority field and uses g_form.setMandatory()"
+        },
+        {
+          "id": "d",
+          "text": "Create a business rule that sets the Description field mandatory attribute on the server side"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The correct approach is to create a single UI policy with the condition Priority is Critical, set the UI policy action to make Description mandatory, enable 'Run scripts' to display the message in 'Execute if true', and check 'Reverse if false' so the actions are reversed and the 'Execute if false' script handles the non-Critical scenario.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Creating two separate UI policies is unnecessary and adds maintenance overhead. The 'Reverse if false' checkbox on a single UI policy handles both the true and false conditions within one configuration.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/administer/form-administration/concept/c_UIPolicies.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "While an onLoad client script could achieve this, ServiceNow recommends using UI policies over client scripts when both can accomplish the same task, because UI policies are easier to maintain. Additionally, a UI policy with 'Reverse if false' handles both conditions elegantly.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/administer/form-administration/concept/c_UIPolicies.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "A business rule runs on the server side and cannot display client-side messages or dynamically control field behavior on the form in real time. This scenario requires client-side form manipulation, which is handled by UI policies.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/administer/form-administration/concept/c_UIPolicies.html"
+          }
+        ]
+      },
+      "references": [
+        "https://docs.servicenow.com/bundle/yokohama-application-development/page/administer/form-administration/concept/c_UIPolicies.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "scripting-in-servicenow-fundamentals/06-ssnf-ui-policies.md",
+        "excerpt": "Priority is critical. You're going to apply that when the record-- when the Priority field is critical. And if it's true, you're going to get a message box that says Please describe your critical problem here. It's making the description field mandatory... However, if it comes in, and the priority is not critical... it's going to execute what is false."
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "UI Policies & Actions",
+        "domainSlug": "ui-policies-actions",
+        "domainPercentage": 10,
+        "subtopics": [
+          "UI Policy conditions and actions"
+        ],
+        "tags": [
+          "ui-policy",
+          "reverse-if-false",
+          "mandatory",
+          "scenario"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2025-07-18T02:30:00.000Z",
+        "version": "1.0",
+        "release": "Yokohama",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-ui-policies-actions-007",
+      "certification": "cad",
+      "topic": "ui-policies-actions",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What does the 'Global' checkbox on a UI Policy control?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Whether the UI policy applies to all tables in the instance"
+        },
+        {
+          "id": "b",
+          "text": "Whether the UI policy applies to all form views"
+        },
+        {
+          "id": "c",
+          "text": "Whether the UI policy is available across all application scopes"
+        },
+        {
+          "id": "d",
+          "text": "Whether the UI policy inherits to all extended tables"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The Global checkbox on a UI Policy determines whether the policy applies to all form views. When checked, the UI policy applies globally across all views. When unchecked, the developer must specify the particular form view name the UI policy should execute against.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The Global checkbox does not control which tables the UI policy applies to. The table is specified separately on the UI policy record. Global only controls whether it applies to all form views of that table.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/administer/form-administration/concept/c_UIPolicies.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Application scope is managed through the application scope settings, not the Global checkbox. The Global checkbox specifically controls form view applicability.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/administer/form-administration/concept/c_UIPolicies.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Table inheritance for UI policies is controlled by the 'Inherit' checkbox, not the Global checkbox. The Inherit checkbox determines if the UI policy applies to tables that extend the specified table.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/administer/form-administration/concept/c_UIPolicies.html"
+          }
+        ]
+      },
+      "references": [
+        "https://docs.servicenow.com/bundle/yokohama-application-development/page/administer/form-administration/concept/c_UIPolicies.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "scripting-in-servicenow-fundamentals/06-ssnf-ui-policies.md",
+        "excerpt": "the Global checkbox here, this is the UI policy is going to apply to all form views if that gets selected. Now, you can also uncheck that and specify the form view that the UI policy is going to get executed against."
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "UI Policies & Actions",
+        "domainSlug": "ui-policies-actions",
+        "domainPercentage": 10,
+        "subtopics": [
+          "UI Policy conditions and actions"
+        ],
+        "tags": [
+          "ui-policy",
+          "global-checkbox",
+          "form-views"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2025-07-18T02:30:00.000Z",
+        "version": "1.0",
+        "release": "Yokohama",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-ui-policies-actions-008",
+      "certification": "cad",
+      "topic": "ui-policies-actions",
+      "cognitiveLevel": "application",
+      "type": "multiple_select",
+      "question": "A developer is reviewing their instance's UI Policies to optimize performance and maintainability. Which of the following are ServiceNow recommended best practices for UI Policies? (Select all that apply)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Use the Condition builder instead of scripting for UI policy conditions whenever possible"
+        },
+        {
+          "id": "b",
+          "text": "Always enable the 'On load' checkbox to ensure the UI policy fires immediately when the form opens"
+        },
+        {
+          "id": "c",
+          "text": "Provide a descriptive Short description that clearly explains what the UI policy does"
+        },
+        {
+          "id": "d",
+          "text": "Create as many UI policies as possible to handle every possible field combination on a form"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "c"
+      ],
+      "explanation": {
+        "correct": "ServiceNow recommends using the Condition builder instead of scripting whenever possible, as it is easier to maintain. Additionally, providing a clear, descriptive Short description is essential so that other administrators can quickly understand the purpose of each UI policy.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "ServiceNow recommends unchecking the 'On load' checkbox if it is not a requirement, to avoid unnecessary execution when the form loads and to help reduce page load times.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/administer/form-administration/concept/c_UIPolicies.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "ServiceNow warns against using too many UI policies, as they can lead to long page load times. Developers should use them judiciously rather than creating excessive policies for every scenario.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/administer/form-administration/concept/c_UIPolicies.html"
+          }
+        ]
+      },
+      "references": [
+        "https://docs.servicenow.com/bundle/yokohama-application-development/page/administer/form-administration/concept/c_UIPolicies.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "scripting-in-servicenow-fundamentals/06-ssnf-ui-policies.md",
+        "excerpt": "You do not want to use too many UI policies, as they can lead to long page load times. Also, give a good short description for the UI policy. Make sure it provides a description of what that UI policy is doing... you can use the Condition builder versus a UI policy script. You want to try and use the Condition builder for your conditions of when your UI policy is going to execute, whenever possible."
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "UI Policies & Actions",
+        "domainSlug": "ui-policies-actions",
+        "domainPercentage": 10,
+        "subtopics": [
+          "UI Policy conditions and actions"
+        ],
+        "tags": [
+          "ui-policy",
+          "best-practices",
+          "performance",
+          "condition-builder"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2025-07-18T02:30:00.000Z",
+        "version": "1.0",
+        "release": "Yokohama",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-ui-policies-actions-009",
+      "certification": "cad",
+      "topic": "ui-policies-actions",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What determines whether a UI policy defined on a parent table is applied to an extended (child) table?",
+      "options": [
+        {
+          "id": "a",
+          "text": "UI policies are always automatically inherited by all child tables"
+        },
+        {
+          "id": "b",
+          "text": "A field on the UI policy record controls whether it is inherited by child tables"
+        },
+        {
+          "id": "c",
+          "text": "Only UI policies with scripting enabled can be inherited"
+        },
+        {
+          "id": "d",
+          "text": "UI policies are never inherited and must be recreated on each child table"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Each UI policy record has an 'Inherit' field that determines whether the policy will be inherited by extended (child) tables. This gives administrators granular control over which client-side customizations propagate to child tables. See: https://docs.servicenow.com/bundle/yokohama-application-development/page/administer/form-administration/concept/c_UIPolicy.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "UI policies are not automatically inherited. Inheritance is controlled by a specific field on each UI policy record, giving developers the choice of which policies propagate to child tables.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/administer/form-administration/concept/c_UIPolicy.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The inheritance behavior is not related to whether a UI policy uses scripting. It is controlled by the Inherit field on the UI policy record regardless of the policy's configuration.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/administer/form-administration/concept/c_UIPolicy.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "UI policies can be inherited by child tables when the Inherit field is set to true. They do not need to be manually recreated on each child table.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/administer/form-administration/concept/c_UIPolicy.html"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow Docs - UI Policies",
+        "Application Development Fundamentals Course"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "application-development-fundamentals-on-demand/04-adf-configure-the-application.md",
+        "excerpt": "UI policies and client scripts can be hereditary. They might be inherited by the child. That's actually up to you. Each of those kinds of records have a field that allows you to determine whether they're going to be hereditary or not."
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "UI Policies & Actions",
+        "domainSlug": "ui-policies-actions",
+        "domainPercentage": 10,
+        "subtopics": [
+          "UI Policy conditions and actions"
+        ],
+        "tags": [
+          "ui-policy",
+          "table-extension",
+          "inheritance"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2025-07-16T22:30:00.000Z",
+        "version": "1.0",
+        "release": "Yokohama",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-ui-policies-actions-010",
+      "certification": "cad",
+      "topic": "ui-policies-actions",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "How can a developer quickly view all UI policies, business rules, client scripts, and other customizations configured on a specific table?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Navigate to System Definition > Tables & Columns and filter by table name"
+        },
+        {
+          "id": "b",
+          "text": "Right-click the form header, select Configure > All to see a page of related lists"
+        },
+        {
+          "id": "c",
+          "text": "Open the Application Navigator and search for 'table customizations'"
+        },
+        {
+          "id": "d",
+          "text": "Use the System Diagnostics > Table Inspector module"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Right-clicking the form header (or accessing the context menu) and selecting Configure > All displays a page of related lists showing the business logic and customizations on that table, including UI policies, business rules, client scripts, and more. This is valuable for troubleshooting unexpected behavior. See: https://docs.servicenow.com/bundle/yokohama-application-development/page/administer/table-administration/concept/table-administration.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "System Definition > Tables & Columns shows table structure and dictionary entries, not a consolidated view of all customizations like UI policies, business rules, and client scripts.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/administer/table-administration/concept/table-administration.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The Application Navigator provides navigation to modules but does not have a built-in 'table customizations' search that consolidates all business logic for a specific table.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-platform-user-interface/page/use/navigation/concept/c_ApplicationNavigator.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "There is no standard 'Table Inspector' module in ServiceNow. The Configure > All page from the form context menu is the correct way to see all customizations on a table.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/administer/table-administration/concept/table-administration.html"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow Docs - Table Administration",
+        "Application Development Fundamentals Course"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "application-development-fundamentals-on-demand/04-adf-configure-the-application.md",
+        "excerpt": "right-click the header or enter the Context menu, and go to the Configure menu option and then the submenu option called All. And you get this. It's basically a page of related lists that show a lot of the customizations or business logic that exist on the table."
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "UI Policies & Actions",
+        "domainSlug": "ui-policies-actions",
+        "domainPercentage": 10,
+        "subtopics": [
+          "UI Actions (form buttons, list choices, context menus)"
+        ],
+        "tags": [
+          "configure-all",
+          "context-menu",
+          "troubleshooting",
+          "table-configuration"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2025-07-16T22:30:00.000Z",
+        "version": "1.0",
+        "release": "Yokohama",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-ui-policies-actions-011",
+      "certification": "cad",
+      "topic": "ui-policies-actions",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "When extending a table in ServiceNow, how does the inheritance of server-side customizations (such as business rules) compare to client-side customizations (such as UI policies)?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Both server-side and client-side customizations are always fully inherited by child tables"
+        },
+        {
+          "id": "b",
+          "text": "Server-side customizations are inherited automatically, while client-side customizations like UI policies may or may not be inherited depending on a per-record setting"
+        },
+        {
+          "id": "c",
+          "text": "Client-side customizations are always inherited, but server-side customizations require manual configuration"
+        },
+        {
+          "id": "d",
+          "text": "Neither server-side nor client-side customizations are inherited; all must be recreated on child tables"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "When extending a table, server-side customizations like business rules and access controls are automatically inherited by the child table. Client-side customizations such as UI policies and client scripts have a configurable 'Inherit' field on each record that determines whether they propagate to child tables. See: https://docs.servicenow.com/bundle/yokohama-application-development/page/administer/form-administration/concept/c_UIPolicy.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "While server-side customizations are always inherited, client-side customizations like UI policies and client scripts are only inherited if their individual 'Inherit' field is set to true. This is not automatic for all records.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/administer/form-administration/concept/c_UIPolicy.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "This is the opposite of how inheritance works. Server-side logic is inherited automatically, while client-side logic (UI policies, client scripts) has a configurable inheritance setting.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/administer/table-administration/concept/extending-a-table.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "One of the key benefits of extending a table is inheriting existing customizations. Server-side logic is always inherited, and client-side logic can be inherited when configured to do so.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/administer/table-administration/concept/extending-a-table.html"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow Docs - Table Extension",
+        "ServiceNow Docs - UI Policies",
+        "Application Development Fundamentals Course"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "application-development-fundamentals-on-demand/04-adf-configure-the-application.md",
+        "excerpt": "when we extend a table, we get the structure, and we get all the server-side customizations, and we maybe get some of the client-side customizations all for free, making it an easy jumping-off point when we're storing some similar subset of data."
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "UI Policies & Actions",
+        "domainSlug": "ui-policies-actions",
+        "domainPercentage": 10,
+        "subtopics": [
+          "UI Policy vs Client Script decision criteria"
+        ],
+        "tags": [
+          "ui-policy",
+          "client-script",
+          "inheritance",
+          "table-extension",
+          "server-side"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2025-07-16T22:30:00.000Z",
+        "version": "1.0",
+        "release": "Yokohama",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-ui-policies-actions-012",
+      "certification": "cad",
+      "topic": "ui-policies-actions",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_select",
+      "question": "A developer is troubleshooting unexpected form behavior on a custom table that extends the Task table. Which of the following can be reviewed from the table's Configure > All page to identify the source of the issue? (Select all that apply)",
+      "options": [
+        {
+          "id": "a",
+          "text": "UI policies that may be setting field visibility or mandatory status"
+        },
+        {
+          "id": "b",
+          "text": "Business rules executing server-side logic on record changes"
+        },
+        {
+          "id": "c",
+          "text": "Client scripts running on form load or field change"
+        },
+        {
+          "id": "d",
+          "text": "The table's data rows and individual record values"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b",
+        "c"
+      ],
+      "explanation": {
+        "correct": "The Configure > All page displays related lists of the customizations and business logic on a table, including UI policies, business rules, client scripts, access controls, and other artifacts. This makes it a valuable troubleshooting tool for understanding what logic is acting on a table. It does not display the table's actual data records. See: https://docs.servicenow.com/bundle/yokohama-application-development/page/administer/table-administration/concept/table-administration.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "d",
+            "explanation": "The Configure > All page shows customizations and business logic (UI policies, business rules, client scripts, etc.), not the table's data records. To view data rows, you would use a list view or table module.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/administer/table-administration/concept/table-administration.html"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow Docs - Table Administration",
+        "Application Development Fundamentals Course"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "application-development-fundamentals-on-demand/04-adf-configure-the-application.md",
+        "excerpt": "if you're troubleshooting behavior on your table. It can be really handy to go to this Configure page for your table and, at a glance see, a lot of the business logic that's there on the table and quickly hunt down what might be causing the behavior that you can't explain or that you don't want."
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "UI Policies & Actions",
+        "domainSlug": "ui-policies-actions",
+        "domainPercentage": 10,
+        "subtopics": [
+          "UI Policy conditions and actions",
+          "UI Actions (form buttons, list choices, context menus)"
+        ],
+        "tags": [
+          "configure-all",
+          "troubleshooting",
+          "ui-policy",
+          "business-rule",
+          "client-script"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2025-07-16T22:30:00.000Z",
+        "version": "1.0",
+        "release": "Yokohama",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-ui-policies-actions-013",
+      "certification": "cad",
+      "topic": "ui-policies-actions",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A developer creates a new Loaner Request table by extending the Task table. Several UI policies on the Task table control field visibility and mandatory settings. The developer notices that some Task UI policies appear on the Loaner Request form but others do not. What is the most likely explanation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "UI policies on extended tables are randomly inherited based on system load"
+        },
+        {
+          "id": "b",
+          "text": "Only UI policies created after the child table was created are inherited"
+        },
+        {
+          "id": "c",
+          "text": "The missing UI policies have their Inherit field set to false on the Task table, preventing propagation to child tables"
+        },
+        {
+          "id": "d",
+          "text": "The Loaner Request table's application scope blocks all parent UI policies by default"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "Each UI policy record has an 'Inherit' field. When set to true, the UI policy propagates to child (extended) tables. If some Task UI policies appear on the Loaner Request form and others do not, it is because the missing policies have their Inherit field set to false. See: https://docs.servicenow.com/bundle/yokohama-application-development/page/administer/form-administration/concept/c_UIPolicy.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "UI policy inheritance is deterministic, controlled by the Inherit field on each UI policy record. System load has no effect on which policies are inherited.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/administer/form-administration/concept/c_UIPolicy.html"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "The timing of UI policy creation relative to child table creation does not determine inheritance. Inheritance is controlled by the Inherit field on each UI policy record, regardless of when the policy or table was created.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/administer/form-administration/concept/c_UIPolicy.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Application scope controls cross-scope access to tables and records, but UI policy inheritance from parent to child tables within the same scope hierarchy is governed by the Inherit field on individual UI policy records, not by application access settings.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/administer/table-administration/concept/application-access.html"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow Docs - UI Policies",
+        "ServiceNow Docs - Table Extension",
+        "Application Development Fundamentals Course"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "application-development-fundamentals-on-demand/04-adf-configure-the-application.md",
+        "excerpt": "UI policies and client scripts can be hereditary. They might be inherited by the child. That's actually up to you. Each of those kinds of records have a field that allows you to determine whether they're going to be hereditary or not."
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "UI Policies & Actions",
+        "domainSlug": "ui-policies-actions",
+        "domainPercentage": 10,
+        "subtopics": [
+          "UI Policy conditions and actions"
+        ],
+        "tags": [
+          "ui-policy",
+          "inheritance",
+          "table-extension",
+          "task-table",
+          "troubleshooting"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2025-07-16T22:30:00.000Z",
+        "version": "1.0",
+        "release": "Yokohama",
+        "reviewed": false
+      }
+    }
+  ]
+}

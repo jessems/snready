@@ -1,0 +1,1893 @@
+{
+  "questions": [
+    {
+      "id": "cad-scripting-apis-001",
+      "certification": "cad",
+      "topic": "scripting-apis",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Where do client-side scripts execute in ServiceNow?",
+      "options": [
+        {
+          "id": "a",
+          "text": "On the ServiceNow application server"
+        },
+        {
+          "id": "b",
+          "text": "In the user's web browser"
+        },
+        {
+          "id": "c",
+          "text": "On the MID Server"
+        },
+        {
+          "id": "d",
+          "text": "In the ServiceNow database layer"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Client-side scripts execute in the user's web browser. They generally handle UI modifications such as hiding fields, making fields mandatory, or responding to user interactions on the form. See: https://docs.servicenow.com/bundle/yokohama-application-development/page/script/general-scripting/concept/c_ScriptingOverview.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Server-side scripts, not client-side scripts, execute on the ServiceNow application server. Examples include business rules and script includes.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/general-scripting/concept/c_ScriptingOverview.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The MID Server is a separate component that executes scripts in a local network environment for tasks like Discovery and integrations, not standard client-side scripts.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/product/mid-server/concept/mid-server-landing.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The database layer stores data but does not execute JavaScript. Script execution occurs either in the browser (client-side) or the application server (server-side).",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/general-scripting/concept/c_ScriptingOverview.html"
+          }
+        ]
+      },
+      "references": [
+        "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/general-scripting/concept/c_ScriptingOverview.html"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "course",
+        "path": "scripting-in-servicenow-fundamentals/04-ssnf-scripting-overview.md",
+        "excerpt": "When I have client-side scripts, which generally revolve around doing something with the UI itself... that is a client-side script that executes in your browser."
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Scripting & APIs",
+        "domainSlug": "scripting-apis",
+        "domainPercentage": 25,
+        "subtopics": [
+          "Server-side scripting patterns"
+        ],
+        "tags": [
+          "client-side",
+          "script-execution",
+          "browser"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-05T20:26:37.000Z",
+        "version": "1.0",
+        "release": "Yokohama",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-scripting-apis-002",
+      "certification": "cad",
+      "topic": "scripting-apis",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which prefix is used to access GlideSystem methods in server-side scripts?",
+      "options": [
+        {
+          "id": "a",
+          "text": "g_system"
+        },
+        {
+          "id": "b",
+          "text": "glide"
+        },
+        {
+          "id": "c",
+          "text": "gs"
+        },
+        {
+          "id": "d",
+          "text": "g_form"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "GlideSystem methods are accessed using the 'gs' prefix in server-side scripts (e.g., gs.addInfoMessage(), gs.hasRole()). This is the standard shorthand for the GlideSystem class in ServiceNow. See: https://docs.servicenow.com/bundle/yokohama-application-development/page/app-store/dev_portal/API_reference/glideSystem/concept/c_GlideSystemScopedAPI.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "g_system is not a valid ServiceNow API prefix. The correct prefix for GlideSystem is 'gs'.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/app-store/dev_portal/API_reference/glideSystem/concept/c_GlideSystemScopedAPI.html"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "While 'Glide' appears in many ServiceNow class names, the GlideSystem API is specifically accessed via the 'gs' shorthand, not 'glide'.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/app-store/dev_portal/API_reference/glideSystem/concept/c_GlideSystemScopedAPI.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "g_form is the client-side GlideForm API used to interact with forms in the browser. It is not related to the server-side GlideSystem API.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/client-scripting/concept/c_GlideFormAPI.html"
+          }
+        ]
+      },
+      "references": [
+        "https://docs.servicenow.com/bundle/yokohama-application-development/page/app-store/dev_portal/API_reference/glideSystem/concept/c_GlideSystemScopedAPI.html"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "course",
+        "path": "scripting-in-servicenow-fundamentals/08-ssnf-glidesystem.md",
+        "excerpt": "gs is how we access the GlideSystem methods. Do you see that just about all the JavaScript you see on this slide starts with gs?"
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Scripting & APIs",
+        "domainSlug": "scripting-apis",
+        "domainPercentage": 25,
+        "subtopics": [
+          "GlideSystem methods and utilities"
+        ],
+        "tags": [
+          "GlideSystem",
+          "gs",
+          "server-side",
+          "API"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-05T20:26:37.000Z",
+        "version": "1.0",
+        "release": "Yokohama",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-scripting-apis-003",
+      "certification": "cad",
+      "topic": "scripting-apis",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which GlideSystem method returns the first and last name of the currently logged-in user concatenated together?",
+      "options": [
+        {
+          "id": "a",
+          "text": "gs.getUserName()"
+        },
+        {
+          "id": "b",
+          "text": "gs.getUserID()"
+        },
+        {
+          "id": "c",
+          "text": "gs.getUserDisplayName()"
+        },
+        {
+          "id": "d",
+          "text": "gs.getUser()"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "gs.getUserDisplayName() returns the currently logged-in user's first and last name concatenated together, providing a human-friendly display of the user's identity without requiring separate calls for first and last name. See: https://docs.servicenow.com/bundle/yokohama-application-development/page/app-store/dev_portal/API_reference/glideSystem/concept/c_GlideSystemScopedAPI.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "gs.getUserName() returns the login name (username) used to authenticate, not the concatenated first and last name.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/app-store/dev_portal/API_reference/glideSystem/concept/c_GlideSystemScopedAPI.html"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "gs.getUserID() returns the Sys ID (a 32-character unique identifier) of the currently logged-in user record, not their display name.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/app-store/dev_portal/API_reference/glideSystem/concept/c_GlideSystemScopedAPI.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "gs.getUser() returns the user object, which can then be used with additional utility methods to retrieve specific user properties. By itself, it does not return the display name string.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/app-store/dev_portal/API_reference/glideSystem/concept/c_GlideSystemScopedAPI.html"
+          }
+        ]
+      },
+      "references": [
+        "https://docs.servicenow.com/bundle/yokohama-application-development/page/app-store/dev_portal/API_reference/glideSystem/concept/c_GlideSystemScopedAPI.html"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "course",
+        "path": "scripting-in-servicenow-fundamentals/08-ssnf-glidesystem.md",
+        "excerpt": "getUserDisplayName, well, I bet you know what that is. That's the human friendly way of looking at the currently logged in user, both by their first and last name put together."
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Scripting & APIs",
+        "domainSlug": "scripting-apis",
+        "domainPercentage": 25,
+        "subtopics": [
+          "GlideSystem methods and utilities"
+        ],
+        "tags": [
+          "GlideSystem",
+          "getUserDisplayName",
+          "user-methods"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-05T20:26:37.000Z",
+        "version": "1.0",
+        "release": "Yokohama",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-scripting-apis-004",
+      "certification": "cad",
+      "topic": "scripting-apis",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "A developer needs to implement a new requirement on the ServiceNow platform. According to ServiceNow customization best practices, what approach should they evaluate first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Write a comprehensive server-side script to handle all logic"
+        },
+        {
+          "id": "b",
+          "text": "Determine whether a no-code or low-code solution can meet the requirement"
+        },
+        {
+          "id": "c",
+          "text": "Create a custom scoped application with script includes"
+        },
+        {
+          "id": "d",
+          "text": "Modify the baseline business rule to add the required functionality"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "ServiceNow customization best practices recommend first determining whether a no-code solution (configuration via the UI) can be used. If not, evaluate a low-code solution (minimal scripting). Only if neither approach works should developers resort to more complex scripting, as custom scripts can complicate upgrades between family releases. See: https://docs.servicenow.com/bundle/yokohama-application-development/page/script/general-scripting/concept/c_ScriptingOverview.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Writing a comprehensive script should be a last resort, not the first approach. Scripts can complicate upgrades and may need rework when ServiceNow releases family updates.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/general-scripting/concept/c_ScriptingOverview.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Creating a scoped application with custom scripts is a valid approach for complex requirements, but it should only be considered after evaluating no-code and low-code alternatives first.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/build/applications/concept/c_ApplicationDevelopment.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Modifying baseline records directly is generally discouraged as it creates upgrade conflicts. ServiceNow recommends evaluating no-code and low-code solutions before modifying any baseline configurations.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/general-scripting/concept/c_ScriptingOverview.html"
+          }
+        ]
+      },
+      "references": [
+        "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/general-scripting/concept/c_ScriptingOverview.html"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "course",
+        "path": "scripting-in-servicenow-fundamentals/04-ssnf-scripting-overview.md",
+        "excerpt": "Determine whether a no-code solution can be used... If the no-code solution will work, implement that no-code approach. If not, is there a low-code solution, meaning minimal scripting involved? If it is, use that approach."
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Scripting & APIs",
+        "domainSlug": "scripting-apis",
+        "domainPercentage": 25,
+        "subtopics": [
+          "Scripting best practices and debugging"
+        ],
+        "tags": [
+          "best-practices",
+          "customization",
+          "no-code",
+          "upgrade"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-05T20:26:37.000Z",
+        "version": "1.0",
+        "release": "Yokohama",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-scripting-apis-005",
+      "certification": "cad",
+      "topic": "scripting-apis",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "Why does ServiceNow provide the gs.nil() method when standard JavaScript already has a nil function?",
+      "options": [
+        {
+          "id": "a",
+          "text": "gs.nil() is faster and more performant than standard JavaScript nil"
+        },
+        {
+          "id": "b",
+          "text": "gs.nil() handles ServiceNow data types differently than standard JavaScript nil"
+        },
+        {
+          "id": "c",
+          "text": "Standard JavaScript nil does not work at all in ServiceNow server-side scripts"
+        },
+        {
+          "id": "d",
+          "text": "gs.nil() can only be used within business rules, unlike standard JavaScript nil"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "ServiceNow's gs.nil() method handles data types slightly differently than plain JavaScript's nil function. Due to ServiceNow's special dialect of JavaScript and the way GlideElement objects store field values, gs.nil() provides more reliable empty/null checking for ServiceNow record fields. See: https://docs.servicenow.com/bundle/yokohama-application-development/page/app-store/dev_portal/API_reference/glideSystem/concept/c_GlideSystemScopedAPI.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The difference between gs.nil() and standard nil is not about performance. It is about how each handles the unique data types used in ServiceNow's JavaScript dialect.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/app-store/dev_portal/API_reference/glideSystem/concept/c_GlideSystemScopedAPI.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Standard JavaScript nil can work in ServiceNow, but gs.nil() is recommended because it handles ServiceNow-specific data types and GlideElement objects more reliably.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/app-store/dev_portal/API_reference/glideSystem/concept/c_GlideSystemScopedAPI.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "gs.nil() is a general server-side method that can be used anywhere server-side JavaScript is accepted in ServiceNow, not just in business rules.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/app-store/dev_portal/API_reference/glideSystem/concept/c_GlideSystemScopedAPI.html"
+          }
+        ]
+      },
+      "references": [
+        "https://docs.servicenow.com/bundle/yokohama-application-development/page/app-store/dev_portal/API_reference/glideSystem/concept/c_GlideSystemScopedAPI.html"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "course",
+        "path": "scripting-in-servicenow-fundamentals/08-ssnf-glidesystem.md",
+        "excerpt": "what I've come to learn about gs.nil, so ServiceNow's baked-in, special, dialectical version of the nil method, is that it handles data types just a little bit differently than plain old vanilla JavaScript does."
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Scripting & APIs",
+        "domainSlug": "scripting-apis",
+        "domainPercentage": 25,
+        "subtopics": [
+          "GlideSystem methods and utilities"
+        ],
+        "tags": [
+          "GlideSystem",
+          "gs.nil",
+          "data-types",
+          "server-side"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-05T20:26:37.000Z",
+        "version": "1.0",
+        "release": "Yokohama",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-scripting-apis-006",
+      "certification": "cad",
+      "topic": "scripting-apis",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_select",
+      "question": "Which of the following are valid scenarios for using scripting in ServiceNow? (Select all that apply)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Adding new functionality that cannot be achieved through configuration"
+        },
+        {
+          "id": "b",
+          "text": "Replacing an existing access control rule with a simpler script-based implementation"
+        },
+        {
+          "id": "c",
+          "text": "Automating a manual process within the platform"
+        },
+        {
+          "id": "d",
+          "text": "Interacting with third-party applications to exchange data"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "c",
+        "d"
+      ],
+      "explanation": {
+        "correct": "Scripting is appropriate when adding new functionality to ServiceNow that cannot be achieved through configuration, automating manual processes to remove the human element, and interacting with third-party applications for data exchange. These are scenarios where configuration alone may not be sufficient.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "If an access control rule already performs the required function, replacing it with a script is unnecessary and goes against best practices. ServiceNow recommends using existing platform features like ACLs over custom scripts when possible.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/general-scripting/concept/c_ScriptingOverview.html"
+          }
+        ]
+      },
+      "references": [
+        "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/general-scripting/concept/c_ScriptingOverview.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "scripting-in-servicenow-fundamentals/04-ssnf-scripting-overview.md",
+        "excerpt": "When we want to add new functionality to ServiceNow... We can automate that process with scripting. And then, if we want to interact with third-party applications... we can generally do that with scripting."
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Scripting & APIs",
+        "domainSlug": "scripting-apis",
+        "domainPercentage": 25,
+        "subtopics": [
+          "Scripting best practices and debugging"
+        ],
+        "tags": [
+          "scripting-scenarios",
+          "best-practices",
+          "automation"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-05T20:26:37.000Z",
+        "version": "1.0",
+        "release": "Yokohama",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-scripting-apis-007",
+      "certification": "cad",
+      "topic": "scripting-apis",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A developer writes a business rule on the Incident table that needs to set the incident's location to the caller's location when the location field is empty. Which server-side script correctly accomplishes this?",
+      "options": [
+        {
+          "id": "a",
+          "text": "if (gs.nil(current.location)) { current.location.setValue(current.caller_id.location); }"
+        },
+        {
+          "id": "b",
+          "text": "if (g_form.getValue('location') == '') { g_form.setValue('location', current.caller_id.location); }"
+        },
+        {
+          "id": "c",
+          "text": "if (current.location == null) { current.location = gs.getUser().getLocation(); }"
+        },
+        {
+          "id": "d",
+          "text": "if (gs.nil(current.location)) { current.location = current.caller_id.getDisplayValue(); }"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "This script uses gs.nil() to check if the location field is empty, then uses dot walking (current.caller_id.location) to traverse the reference field to the caller's user record and access their location, and setValue() to set the field value server-side. This is the exact pattern demonstrated in the GlideSystem course content. See: https://docs.servicenow.com/bundle/yokohama-application-development/page/app-store/dev_portal/API_reference/glideSystem/concept/c_GlideSystemScopedAPI.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "g_form is a client-side API (GlideForm) and cannot be used in business rules, which are server-side scripts. Business rules use the 'current' object to access and manipulate record fields.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/client-scripting/concept/c_GlideFormAPI.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "gs.getUser().getLocation() retrieves the currently logged-in user's location, not the caller's location. The caller and the logged-in user may be different people. Additionally, comparing with == null is less reliable than gs.nil() for ServiceNow GlideElement fields.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/app-store/dev_portal/API_reference/glideSystem/concept/c_GlideSystemScopedAPI.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "getDisplayValue() on caller_id returns the caller's display name (a string), not their location value. This would incorrectly set the location field to a person's name rather than an actual location.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/app-store/dev_portal/API_reference/GlideRecord/concept/c_GlideRecordScopedAPI.html"
+          }
+        ]
+      },
+      "references": [
+        "https://docs.servicenow.com/bundle/yokohama-application-development/page/app-store/dev_portal/API_reference/glideSystem/concept/c_GlideSystemScopedAPI.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "scripting-in-servicenow-fundamentals/08-ssnf-glidesystem.md",
+        "excerpt": "If there's no value in the current records location field, then let's set the value of that current location field to the current records caller's location... current.caller_id.location is an example of something called dot walking."
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Scripting & APIs",
+        "domainSlug": "scripting-apis",
+        "domainPercentage": 25,
+        "subtopics": [
+          "GlideSystem methods and utilities",
+          "Server-side scripting patterns"
+        ],
+        "tags": [
+          "GlideSystem",
+          "gs.nil",
+          "dot-walking",
+          "business-rule",
+          "setValue"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-05T20:26:37.000Z",
+        "version": "1.0",
+        "release": "Yokohama",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-scripting-apis-008",
+      "certification": "cad",
+      "topic": "scripting-apis",
+      "cognitiveLevel": "application",
+      "type": "multiple_select",
+      "question": "A developer is writing a business rule that needs to display an informational message showing the logged-in user's full name and verify whether they have the 'itil' role. Which GlideSystem methods should the developer use? (Select all that apply)",
+      "options": [
+        {
+          "id": "a",
+          "text": "gs.getUserDisplayName()"
+        },
+        {
+          "id": "b",
+          "text": "gs.hasRole('itil')"
+        },
+        {
+          "id": "c",
+          "text": "g_user.hasRole('itil')"
+        },
+        {
+          "id": "d",
+          "text": "gs.getUserName()"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b"
+      ],
+      "explanation": {
+        "correct": "gs.getUserDisplayName() returns the user's first and last name concatenated (full name), and gs.hasRole('itil') checks if the currently logged-in user has the itil role. Both are server-side GlideSystem methods appropriate for use in business rules.",
+        "wrongAnswers": [
+          {
+            "choiceId": "c",
+            "explanation": "g_user is the client-side GlideUser API that cannot be used in business rules. Business rules are server-side scripts and must use GlideSystem (gs) methods for user information and role checks.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/client-scripting/concept/c_GlideUserAPI.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "gs.getUserName() returns the login username (e.g., 'admin'), not the user's full display name. The requirement specifies showing the user's full name, which requires gs.getUserDisplayName().",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/app-store/dev_portal/API_reference/glideSystem/concept/c_GlideSystemScopedAPI.html"
+          }
+        ]
+      },
+      "references": [
+        "https://docs.servicenow.com/bundle/yokohama-application-development/page/app-store/dev_portal/API_reference/glideSystem/concept/c_GlideSystemScopedAPI.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "scripting-in-servicenow-fundamentals/08-ssnf-glidesystem.md",
+        "excerpt": "gs.hasRole in our if statement there... getUserDisplayName, well, I bet you know what that is. That's the human friendly way of looking at the currently logged in user, both by their first and last name put together."
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Scripting & APIs",
+        "domainSlug": "scripting-apis",
+        "domainPercentage": 25,
+        "subtopics": [
+          "GlideSystem methods and utilities"
+        ],
+        "tags": [
+          "GlideSystem",
+          "hasRole",
+          "getUserDisplayName",
+          "business-rule",
+          "server-side"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-05T20:26:37.000Z",
+        "version": "1.0",
+        "release": "Yokohama",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-scripting-apis-009",
+      "certification": "cad",
+      "topic": "scripting-apis",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What is the correct order of steps when building a GlideRecord query in ServiceNow?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Create the GlideRecord object, execute the query, add query conditions, process the returned records"
+        },
+        {
+          "id": "b",
+          "text": "Add query conditions, create the GlideRecord object, execute the query, process the returned records"
+        },
+        {
+          "id": "c",
+          "text": "Create the GlideRecord object, add query conditions, execute the query, process the returned records"
+        },
+        {
+          "id": "d",
+          "text": "Execute the query, create the GlideRecord object, add query conditions, process the returned records"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "The four steps to creating a GlideRecord query are: (1) create the GlideRecord object by instantiating it with the table name, (2) add query conditions using methods like addQuery, (3) execute the query using the query() method, and (4) process the returned records using next() or hasNext(). See https://docs.servicenow.com/bundle/yokohama-api-reference/page/app-store/dev_portal/API_reference/GlideRecord/concept/c_GlideRecordAPI.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "You must add query conditions before executing the query, not after. Executing the query sends the request to the database, so all conditions must be defined first.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-api-reference/page/app-store/dev_portal/API_reference/GlideRecord/concept/c_GlideRecordAPI.html"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "You cannot add query conditions before creating the GlideRecord object. The object must be instantiated first to provide the context for the query.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-api-reference/page/app-store/dev_portal/API_reference/GlideRecord/concept/c_GlideRecordAPI.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Executing the query before creating the object or adding conditions is not possible. The GlideRecord object must exist and conditions must be set before the query is executed.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-api-reference/page/app-store/dev_portal/API_reference/GlideRecord/concept/c_GlideRecordAPI.html"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow Docs - GlideRecord API"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "scripting-in-servicenow-fundamentals/09-ssnf-gliderecord.md",
+        "excerpt": "There are four steps to creating the GlideRecord query. First, you want to create your GlideRecord object. Then add your query conditions, followed by executing your query. And then when your records get returned from the database, now you want to process through those records."
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Scripting & APIs",
+        "domainSlug": "scripting-apis",
+        "domainPercentage": 25,
+        "subtopics": [
+          "GlideRecord queries and operations"
+        ],
+        "tags": [
+          "gliderecord",
+          "query-building",
+          "server-side-scripting"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-05T20:25:36.000Z",
+        "version": "1.0",
+        "release": "Yokohama",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-scripting-apis-010",
+      "certification": "cad",
+      "topic": "scripting-apis",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "When using the GlideRecord addQuery method, what does the system assume if no operator is specified between the field name and the value?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The query throws a syntax error"
+        },
+        {
+          "id": "b",
+          "text": "The system assumes a CONTAINS operator"
+        },
+        {
+          "id": "c",
+          "text": "The system assumes an equality (=) operator"
+        },
+        {
+          "id": "d",
+          "text": "The system assumes a LIKE operator"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "When the operator is omitted from the addQuery method, the system automatically assumes equality. For example, addQuery('category', 'Hardware') is equivalent to addQuery('category', '=', 'Hardware'). See https://docs.servicenow.com/bundle/yokohama-api-reference/page/app-store/dev_portal/API_reference/GlideRecord/concept/c_GlideRecordAPI.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Omitting the operator does not cause a syntax error. The addQuery method accepts two parameters (field, value) where equality is the default, or three parameters (field, operator, value) for other comparison types.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-api-reference/page/app-store/dev_portal/API_reference/GlideRecord/concept/c_GlideRecordAPI.html"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "CONTAINS is not the default operator. It must be explicitly specified in the addQuery method using the string 'CONTAINS' in capital letters as the operator parameter.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-api-reference/page/app-store/dev_portal/API_reference/GlideRecord/concept/c_GlideRecordAPI.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "LIKE is not the default operator when omitting the operator parameter. LIKE must be explicitly specified when needed for pattern matching queries.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-api-reference/page/app-store/dev_portal/API_reference/GlideRecord/concept/c_GlideRecordAPI.html"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow Docs - GlideRecord addQuery"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "scripting-in-servicenow-fundamentals/09-ssnf-gliderecord.md",
+        "excerpt": "Now, if you don't include an operator, so if you got rid of the equal sign here, the system assumes that you are wanting to test for equality."
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Scripting & APIs",
+        "domainSlug": "scripting-apis",
+        "domainPercentage": 25,
+        "subtopics": [
+          "GlideRecord queries and operations"
+        ],
+        "tags": [
+          "gliderecord",
+          "addquery",
+          "query-operators"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-05T20:25:36.000Z",
+        "version": "1.0",
+        "release": "Yokohama",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-scripting-apis-011",
+      "certification": "cad",
+      "topic": "scripting-apis",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "A developer writes a GlideRecord script using while(gr.hasNext()) to iterate through query results. What is the expected outcome?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Only the first record in the result set is processed"
+        },
+        {
+          "id": "b",
+          "text": "The script processes all records but skips every other record"
+        },
+        {
+          "id": "c",
+          "text": "The script enters an infinite loop"
+        },
+        {
+          "id": "d",
+          "text": "The script processes all returned records normally"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "Using while with hasNext() causes an infinite loop because hasNext() checks if a next record exists but does not advance the pointer to it. The pointer never moves forward, so hasNext() always returns true. The correct approach is while(gr.next()), which both checks for and advances to the next record. See https://docs.servicenow.com/bundle/yokohama-api-reference/page/app-store/dev_portal/API_reference/GlideRecord/concept/c_GlideRecordAPI.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Processing only the first record would occur with an if(gr.next()) statement. Using while(gr.hasNext()) does not process a single record and return — it creates an infinite loop because hasNext() never advances the record pointer.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-api-reference/page/app-store/dev_portal/API_reference/GlideRecord/concept/c_GlideRecordAPI.html"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "Records are not skipped. The hasNext() method does not load or advance through records at all, which is why using it in a while loop creates an infinite loop rather than a skip pattern.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-api-reference/page/app-store/dev_portal/API_reference/GlideRecord/concept/c_GlideRecordAPI.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The script does not process records normally. Since hasNext() returns true without advancing the pointer, the while condition is always true, resulting in an infinite loop rather than normal iteration.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-api-reference/page/app-store/dev_portal/API_reference/GlideRecord/concept/c_GlideRecordAPI.html"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow Docs - GlideRecord API"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "scripting-in-servicenow-fundamentals/09-ssnf-gliderecord.md",
+        "excerpt": "If you use a while statement with a hasNext method, you're going to get into an infinite loop. So you would only use the while with the next and never with the hasNext, or else you're going to get into a loop."
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Scripting & APIs",
+        "domainSlug": "scripting-apis",
+        "domainPercentage": 25,
+        "subtopics": [
+          "GlideRecord queries and operations",
+          "Scripting best practices and debugging"
+        ],
+        "tags": [
+          "gliderecord",
+          "next",
+          "hasnext",
+          "infinite-loop",
+          "debugging"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-05T20:25:36.000Z",
+        "version": "1.0",
+        "release": "Yokohama",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-scripting-apis-012",
+      "certification": "cad",
+      "topic": "scripting-apis",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_select",
+      "question": "Which of the following approaches can be used to determine the number of records returned by a GlideRecord query? (Select all that apply)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Use the getRowCount() method on the GlideRecord object"
+        },
+        {
+          "id": "b",
+          "text": "Use a GlideAggregate query with a COUNT aggregate"
+        },
+        {
+          "id": "c",
+          "text": "Use the getRecordCount() method on the GlideRecord object"
+        },
+        {
+          "id": "d",
+          "text": "Use the length property on the GlideRecord object"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b"
+      ],
+      "explanation": {
+        "correct": "ServiceNow provides two approaches to count returned records: getRowCount() on the GlideRecord object, and GlideAggregate with a COUNT aggregate type. While getRowCount() requires less code, it has significant performance impact on large tables because it retrieves rows one by one. GlideAggregate is recommended for tables with more than 100 records or tables that grow continuously. See https://docs.servicenow.com/bundle/yokohama-api-reference/page/app-store/dev_portal/API_reference/GlideRecord/concept/c_GlideRecordAPI.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "c",
+            "explanation": "getRecordCount() is not a valid GlideRecord method. The correct method name is getRowCount(). Using incorrect method names will result in a script error.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-api-reference/page/app-store/dev_portal/API_reference/GlideRecord/concept/c_GlideRecordAPI.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "GlideRecord does not have a length property. GlideRecord is not a JavaScript array and does not expose array-like properties. The getRowCount() method or GlideAggregate must be used instead.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-api-reference/page/app-store/dev_portal/API_reference/GlideRecord/concept/c_GlideRecordAPI.html"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow Docs - GlideRecord API",
+        "ServiceNow Docs - GlideAggregate API"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "scripting-in-servicenow-fundamentals/09-ssnf-gliderecord.md",
+        "excerpt": "There are two different ways you can confirm if records were returned. You can use the getRowCount method or you can use the GlideAggregate objects and methods to see if your query returned records."
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Scripting & APIs",
+        "domainSlug": "scripting-apis",
+        "domainPercentage": 25,
+        "subtopics": [
+          "GlideRecord queries and operations",
+          "Scripting best practices and debugging"
+        ],
+        "tags": [
+          "gliderecord",
+          "getrowcount",
+          "glideaggregate",
+          "record-counting"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-05T20:25:36.000Z",
+        "version": "1.0",
+        "release": "Yokohama",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-scripting-apis-013",
+      "certification": "cad",
+      "topic": "scripting-apis",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A developer needs to build a GlideRecord query with complex conditions involving date comparisons and reference field lookups. The developer wants the fastest method to construct this query. What is the recommended approach?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Use multiple addQuery() and addOrCondition() methods chained together in the script"
+        },
+        {
+          "id": "b",
+          "text": "Use the addEncodedQuery() method with a query string copied from the list view Condition Builder"
+        },
+        {
+          "id": "c",
+          "text": "Use the get() method with the sys_id of each matching record"
+        },
+        {
+          "id": "d",
+          "text": "Use GlideAggregate with groupBy to filter the complex conditions"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The addEncodedQuery() method is the best option for complex queries, especially those involving dates and reference fields. Developers can build the query visually using the list view Condition Builder, right-click the breadcrumb to select 'Copy Query', and paste the encoded string into addEncodedQuery(). This passes all WHERE clauses as a single argument. See https://docs.servicenow.com/bundle/yokohama-api-reference/page/app-store/dev_portal/API_reference/GlideRecord/concept/c_GlideRecordAPI.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "While chaining addQuery() and addOrCondition() methods works for building complex queries, it is more time-consuming and error-prone for complex date and reference field conditions compared to using addEncodedQuery() with a Condition Builder-generated string.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-api-reference/page/app-store/dev_portal/API_reference/GlideRecord/concept/c_GlideRecordAPI.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The get() method retrieves a single specific record by sys_id or display value. It is not designed for querying multiple records based on complex conditions involving dates and reference fields.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-api-reference/page/app-store/dev_portal/API_reference/GlideRecord/concept/c_GlideRecordAPI.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "GlideAggregate is designed for aggregate operations like COUNT, SUM, and AVG — not for filtering records with complex query conditions. It does not replace the need for addEncodedQuery() in this scenario.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-api-reference/page/app-store/dev_portal/API_reference/GlideAggregate/concept/c_GlideAggregateAPI.html"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow Docs - GlideRecord addEncodedQuery"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "scripting-in-servicenow-fundamentals/09-ssnf-gliderecord.md",
+        "excerpt": "For complex queries, you can use what is called an addEncodedQuery method... it is the best option if you are absolutely in a hurry. This is a nice example of when an addEncodedQuery can be used, especially when you are working with dates and when you are working with those items from reference fields."
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Scripting & APIs",
+        "domainSlug": "scripting-apis",
+        "domainPercentage": 25,
+        "subtopics": [
+          "GlideRecord queries and operations",
+          "Server-side scripting patterns"
+        ],
+        "tags": [
+          "gliderecord",
+          "addencodedquery",
+          "condition-builder",
+          "complex-queries"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-05T20:25:36.000Z",
+        "version": "1.0",
+        "release": "Yokohama",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-scripting-apis-014",
+      "certification": "cad",
+      "topic": "scripting-apis",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What is the primary difference between GlideRecordSecure and GlideRecord in ServiceNow?",
+      "options": [
+        {
+          "id": "a",
+          "text": "GlideRecordSecure supports client-side execution while GlideRecord is server-side only"
+        },
+        {
+          "id": "b",
+          "text": "GlideRecordSecure performs the same functions as GlideRecord but also enforces access control rules"
+        },
+        {
+          "id": "c",
+          "text": "GlideRecordSecure provides encrypted database connections while GlideRecord does not"
+        },
+        {
+          "id": "d",
+          "text": "GlideRecordSecure is used exclusively in scoped applications while GlideRecord is for global scope"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "GlideRecordSecure is inherited from GlideRecord and performs the same functions, but additionally enforces access control rules. Non-writable fields are set to null when writing, and if an element cannot be read due to ACL restrictions, a null value is created in memory for that record. See https://docs.servicenow.com/bundle/yokohama-api-reference/page/app-store/dev_portal/API_reference/GlideRecordSecure/concept/c_GlideRecordSecureAPI.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "GlideRecordSecure does not add client-side execution capabilities. Both GlideRecord and GlideRecordSecure are server-side APIs. While GlideRecord can be called from the client side, it is not recommended due to performance impacts.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-api-reference/page/app-store/dev_portal/API_reference/GlideRecordSecure/concept/c_GlideRecordSecureAPI.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "GlideRecordSecure does not relate to encrypted database connections. It enforces access control list (ACL) rules on field-level read and write operations, not encryption of the underlying database communication.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-api-reference/page/app-store/dev_portal/API_reference/GlideRecordSecure/concept/c_GlideRecordSecureAPI.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "GlideRecordSecure is not limited to scoped applications. It can be used in both global and scoped contexts. Its purpose is to enforce ACL rules regardless of application scope.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-api-reference/page/app-store/dev_portal/API_reference/GlideRecordSecure/concept/c_GlideRecordSecureAPI.html"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow Docs - GlideRecordSecure API"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "scripting-in-servicenow-fundamentals/09-ssnf-gliderecord.md",
+        "excerpt": "GlideRecordSecure is inherited from GlideRecord. And it performs the same functions as GlideRecord, but it also enforces access controls."
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Scripting & APIs",
+        "domainSlug": "scripting-apis",
+        "domainPercentage": 25,
+        "subtopics": [
+          "GlideRecord queries and operations",
+          "Scripting best practices and debugging"
+        ],
+        "tags": [
+          "gliderecordsecure",
+          "gliderecord",
+          "access-controls",
+          "security"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-05T20:25:36.000Z",
+        "version": "1.0",
+        "release": "Yokohama",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-scripting-apis-015",
+      "certification": "cad",
+      "topic": "scripting-apis",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "How does a subflow differ from a flow in ServiceNow Flow Designer?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A subflow requires a trigger and at least two actions, while a flow requires only one action"
+        },
+        {
+          "id": "b",
+          "text": "A subflow is a sequence of reusable actions that can be started from a flow, another subflow, or a script, and does not require a trigger"
+        },
+        {
+          "id": "c",
+          "text": "A subflow can only be used within playbooks, while a flow can be used anywhere in the platform"
+        },
+        {
+          "id": "d",
+          "text": "A subflow is a read-only template provided by ServiceNow that cannot be customized"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "A subflow is a sequence of reusable actions that can be started from a flow, a subflow, or a script. Unlike flows, subflows do not require a trigger — they are called by other automation components. Subflows can also be used to group together common actions and brought into a flow like a template. See https://docs.servicenow.com/bundle/yokohama-build-workflows/page/administer/flow-designer/concept/flow-designer.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "This is incorrect. A flow requires a trigger and at least one action. A subflow does not require a trigger at all — it is invoked by other flows, subflows, or scripts.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-build-workflows/page/administer/flow-designer/concept/flow-designer.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Subflows are not limited to playbooks. They are reusable sequences of actions that can be called from flows, other subflows, or scripts across the platform.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-build-workflows/page/administer/flow-designer/concept/flow-designer.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Subflows are not read-only templates. Developers can create custom subflows, copy existing ones, and modify them. ServiceNow delivers subflows that can also be copied and customized.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-build-workflows/page/administer/flow-designer/concept/flow-designer.html"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow Docs - Flow Designer"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "scripting-in-servicenow-fundamentals/11-ssnf-flow-designer-scripting.md",
+        "excerpt": "Subflow. A sequence of reusable actions that can be started from a flow, a subflow, or a script. So subflows don't have to have a trigger. You can actually call a subflow from a script."
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Scripting & APIs",
+        "domainSlug": "scripting-apis",
+        "domainPercentage": 25,
+        "subtopics": [
+          "Flow Designer scripting actions"
+        ],
+        "tags": [
+          "flow-designer",
+          "subflow",
+          "workflow-studio",
+          "automation"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-05T20:25:36.000Z",
+        "version": "1.0",
+        "release": "Yokohama",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-scripting-apis-016",
+      "certification": "cad",
+      "topic": "scripting-apis",
+      "cognitiveLevel": "application",
+      "type": "multiple_select",
+      "question": "A developer needs to count incident records matching specific criteria on a production table containing over 500,000 records. Which of the following statements about counting approaches are correct? (Select all that apply)",
+      "options": [
+        {
+          "id": "a",
+          "text": "getRowCount() retrieves rows one by one and increments a counter, which has a significant performance impact on large tables"
+        },
+        {
+          "id": "b",
+          "text": "GlideAggregate results in faster execution and should be used when the expected record count exceeds 100 or on continuously growing tables"
+        },
+        {
+          "id": "c",
+          "text": "getRowCount() is the recommended approach for production tables with large amounts of data"
+        },
+        {
+          "id": "d",
+          "text": "GlideAggregate requires less code to implement than getRowCount()"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b"
+      ],
+      "explanation": {
+        "correct": "getRowCount() retrieves rows one by one and increments a counter, which causes significant performance issues on large tables. GlideAggregate results in faster execution and is the recommended method when the number of records returned is greater than 100 or for tables that grow continuously. For a production table with 500,000+ records, GlideAggregate is clearly the correct choice. See https://docs.servicenow.com/bundle/yokohama-api-reference/page/app-store/dev_portal/API_reference/GlideAggregate/concept/c_GlideAggregateAPI.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "c",
+            "explanation": "getRowCount() is explicitly not recommended for tables with large amounts of data due to its significant performance impact. The GlideAggregate approach is recommended for large tables.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-api-reference/page/app-store/dev_portal/API_reference/GlideRecord/concept/c_GlideRecordAPI.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "GlideAggregate actually requires more code than getRowCount(), not less. The source material states that getRowCount is less code to write, while GlideAggregate is more work for the developer but results in faster execution.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-api-reference/page/app-store/dev_portal/API_reference/GlideAggregate/concept/c_GlideAggregateAPI.html"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow Docs - GlideRecord API",
+        "ServiceNow Docs - GlideAggregate API"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "scripting-in-servicenow-fundamentals/09-ssnf-gliderecord.md",
+        "excerpt": "The getRowCount is a lot less code to write, but it does have a significantly larger performance impact and is not recommended for use with tables with large amounts of data. This strategy retrieves the rows one by one, and it increments a counter. Then there is the GlideAggregate, and it is more work for you as the developer, but it does result in faster execution. You will want to use this method when records returned is greater than 100 and for tables that grow continuously."
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Scripting & APIs",
+        "domainSlug": "scripting-apis",
+        "domainPercentage": 25,
+        "subtopics": [
+          "GlideRecord queries and operations",
+          "Scripting best practices and debugging"
+        ],
+        "tags": [
+          "gliderecord",
+          "glideaggregate",
+          "getrowcount",
+          "performance",
+          "best-practices"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-05T20:25:36.000Z",
+        "version": "1.0",
+        "release": "Yokohama",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-scripting-apis-017",
+      "certification": "cad",
+      "topic": "scripting-apis",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What is the primary specialty of a UI policy in ServiceNow?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Executing server-side GlideRecord queries when a form loads"
+        },
+        {
+          "id": "b",
+          "text": "Toggling field attributes such as mandatory, visible, and read-only"
+        },
+        {
+          "id": "c",
+          "text": "Sending notifications when a record is submitted"
+        },
+        {
+          "id": "d",
+          "text": "Validating records before they are saved to the database"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "UI policies specialize in toggling one or more of three field attributes: mandatory/optional, visible/hidden, and read-only/editable. They can do this without any JavaScript by using UI policy actions. See: https://docs.servicenow.com/bundle/yokohama-application-development/page/script/ui-policies/concept/c_UIPolicies.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "GlideRecord queries are server-side operations. UI policies are client-side and cannot directly execute GlideRecord queries.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/ui-policies/concept/c_UIPolicies.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Sending notifications is handled by notification rules and events, not UI policies. UI policies focus on form field behavior.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/ui-policies/concept/c_UIPolicies.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Record validation before saving is typically handled by before business rules on the server side. UI policies operate client-side to control form field attributes.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/business-rules/concept/c_BusinessRules.html"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow Docs - UI Policies",
+        "Application Development Fundamentals Course"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "application-development-fundamentals-on-demand/04-adf-scripting-part-1-of-2.md",
+        "excerpt": "UI policies have this specialty-- toggling one or more of the following three attributes of one or more fields-- is that field mandatory or optional? Is that field visible or is it hidden? Is that field read-only or its opposite, editable?"
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Scripting & APIs",
+        "domainSlug": "scripting-apis",
+        "domainPercentage": 25,
+        "subtopics": [
+          "Server-side scripting patterns"
+        ],
+        "tags": [
+          "ui-policy",
+          "field-attributes",
+          "client-side"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-05T20:25:53.000Z",
+        "version": "1.0",
+        "release": "Yokohama",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-scripting-apis-018",
+      "certification": "cad",
+      "topic": "scripting-apis",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "When configuring an onChange client script, which additional trigger field must be specified that is not required by other client script types?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The table name"
+        },
+        {
+          "id": "b",
+          "text": "The field name to monitor"
+        },
+        {
+          "id": "c",
+          "text": "The view name"
+        },
+        {
+          "id": "d",
+          "text": "The application scope"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "An onChange client script requires specifying which field to monitor for changes. Without setting the field name, the script will never fire as expected. See: https://docs.servicenow.com/bundle/yokohama-application-development/page/script/client-scripts/concept/c_ClientScripts.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The table name is required for all client script types, not just onChange. It defines which table's form the client script applies to.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/client-scripts/concept/c_ClientScripts.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The view name is not a required trigger field for onChange client scripts. The Global checkbox controls whether the script applies to all views or a specific one.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/client-scripts/concept/c_ClientScripts.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The application scope is determined by the application the script belongs to, not a separate trigger field specific to onChange client scripts.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/client-scripts/concept/c_ClientScripts.html"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow Docs - Client Scripts",
+        "Application Development Fundamentals Course"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "application-development-fundamentals-on-demand/05-adf-scripting-part-2-of-2.md",
+        "excerpt": "when you choose an onChange client script, as you can see here, it sensibly asks you, OK, on which field change should this fire? This is another thing that's easy to forget to set in the trigger."
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Scripting & APIs",
+        "domainSlug": "scripting-apis",
+        "domainPercentage": 25,
+        "subtopics": [
+          "Server-side scripting patterns"
+        ],
+        "tags": [
+          "client-script",
+          "onChange",
+          "trigger-configuration"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-05T20:25:53.000Z",
+        "version": "1.0",
+        "release": "Yokohama",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-scripting-apis-019",
+      "certification": "cad",
+      "topic": "scripting-apis",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "Why does a UI policy in advanced view provide two separate scripting fields — 'Execute if true' and 'Execute if false'?",
+      "options": [
+        {
+          "id": "a",
+          "text": "One field is for client-side script and the other is for server-side script"
+        },
+        {
+          "id": "b",
+          "text": "ServiceNow cannot determine the opposite of custom script logic, so developers must define both behaviors"
+        },
+        {
+          "id": "c",
+          "text": "One field runs during form load and the other runs on form submission"
+        },
+        {
+          "id": "d",
+          "text": "One field is for synchronous execution and the other is for asynchronous execution"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Unlike UI policy actions where ServiceNow can easily reverse a Boolean (e.g., mandatory back to optional), ServiceNow cannot read custom JavaScript and work out the opposite intent. Therefore, developers must write separate scripts for when the condition is true and when it is false. See: https://docs.servicenow.com/bundle/yokohama-application-development/page/script/ui-policies/concept/c_UIPolicies.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Both scripting fields in a UI policy execute client-side. UI policies are a client-side mechanism and do not contain server-side script fields.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/ui-policies/concept/c_UIPolicies.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Both script fields are tied to the UI policy's condition evaluation, not to form lifecycle events. They fire based on whether the condition evaluates to true or false.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/ui-policies/concept/c_UIPolicies.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Both script fields execute synchronously in the client browser. The distinction between them is based on the condition's Boolean result, not execution timing.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/ui-policies/concept/c_UIPolicies.html"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow Docs - UI Policies",
+        "Application Development Fundamentals Course"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "application-development-fundamentals-on-demand/04-adf-scripting-part-1-of-2.md",
+        "excerpt": "With scripting, ServiceNow can't read your script and work out your intent and know how to do the exact opposite of it... if we resort to scripting and we have something happen when the condition is true, that will go in the Execute if true script-- well, we're also on the hook for telling ServiceNow what to do when the condition is false."
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Scripting & APIs",
+        "domainSlug": "scripting-apis",
+        "domainPercentage": 25,
+        "subtopics": [
+          "Scripting best practices and debugging"
+        ],
+        "tags": [
+          "ui-policy",
+          "advanced-view",
+          "scripting",
+          "execute-if-true",
+          "execute-if-false"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-05T20:25:53.000Z",
+        "version": "1.0",
+        "release": "Yokohama",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-scripting-apis-020",
+      "certification": "cad",
+      "topic": "scripting-apis",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_select",
+      "question": "Which of the following capabilities are exclusive to client scripts and NOT available in UI policies? (Select all that apply)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Executing script when a record is submitted"
+        },
+        {
+          "id": "b",
+          "text": "Using the filter condition builder to define conditions"
+        },
+        {
+          "id": "c",
+          "text": "Executing from a list view"
+        },
+        {
+          "id": "d",
+          "text": "Toggling field mandatory, visible, and read-only attributes without JavaScript"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "c"
+      ],
+      "explanation": {
+        "correct": "Only client scripts can execute on record submission (onSubmit type) and from a list view (onCellEdit type). UI policies cannot fire on submission and do not operate on lists. See: https://docs.servicenow.com/bundle/yokohama-application-development/page/script/client-scripts/concept/c_ClientScripts.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "The filter condition builder is actually a feature of UI policies, not client scripts. UI policies, unlike client scripts, give you access to the filter condition builder.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/ui-policies/concept/c_UIPolicies.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Toggling field attributes without JavaScript is a specialty of UI policies through UI policy actions. Client scripts always require JavaScript to function.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/ui-policies/concept/c_UIPolicies.html"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow Docs - Client Scripts",
+        "ServiceNow Docs - UI Policies",
+        "Application Development Fundamentals Course"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "application-development-fundamentals-on-demand/05-adf-scripting-part-2-of-2.md",
+        "excerpt": "only client scripts know how to execute on the submission of a record... And only client scripts can execute from a list. That should give you a little hint as to the fourth flavor of client script, which I've left out."
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Scripting & APIs",
+        "domainSlug": "scripting-apis",
+        "domainPercentage": 25,
+        "subtopics": [
+          "Server-side scripting patterns",
+          "Scripting best practices and debugging"
+        ],
+        "tags": [
+          "client-script",
+          "ui-policy",
+          "comparison",
+          "onSubmit",
+          "onCellEdit"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-05T20:25:53.000Z",
+        "version": "1.0",
+        "release": "Yokohama",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-scripting-apis-021",
+      "certification": "cad",
+      "topic": "scripting-apis",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "When writing server-side scripts in ServiceNow, which API becomes available to replace the client-side GlideForm and GlideUser APIs?",
+      "options": [
+        {
+          "id": "a",
+          "text": "GlideRecord"
+        },
+        {
+          "id": "b",
+          "text": "GlideSystem"
+        },
+        {
+          "id": "c",
+          "text": "GlideAjax"
+        },
+        {
+          "id": "d",
+          "text": "GlideElement"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "When switching to server-side scripting, the available APIs change. GlideForm (g_form) and GlideUser (g_user) are no longer available; instead, GlideSystem (gs) provides server-side utility methods. See: https://docs.servicenow.com/bundle/yokohama-application-development/page/script/glide-server-apis/concept/c_GlideSystemAPI.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "GlideRecord is a server-side API for querying and manipulating database records, but it does not replace the utility functions of GlideForm and GlideUser. GlideSystem is the direct server-side counterpart for system utilities.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/glide-server-apis/concept/c_GlideRecordAPI.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "GlideAjax is used for client-to-server communication, allowing client scripts to call server-side script includes. It is not the server-side replacement for GlideForm and GlideUser.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/ajax/concept/c_GlideAjax.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "GlideElement represents a single field value within a GlideRecord object. It does not serve as the server-side equivalent of GlideForm and GlideUser.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/glide-server-apis/concept/c_GlideElementAPI.html"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow Docs - GlideSystem API",
+        "Application Development Fundamentals Course"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "application-development-fundamentals-on-demand/05-adf-scripting-part-2-of-2.md",
+        "excerpt": "when we switch to server-side script in ServiceNow, our available APIs change. No more GlideUser user. No more GlideForm. Instead, we get stuff like GlideSystem."
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Scripting & APIs",
+        "domainSlug": "scripting-apis",
+        "domainPercentage": 25,
+        "subtopics": [
+          "GlideSystem methods and utilities"
+        ],
+        "tags": [
+          "GlideSystem",
+          "server-side",
+          "APIs",
+          "GlideForm",
+          "GlideUser"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-05T20:25:53.000Z",
+        "version": "1.0",
+        "release": "Yokohama",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-scripting-apis-022",
+      "certification": "cad",
+      "topic": "scripting-apis",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A developer needs to display the requesting user's manager email address on an incident form, but this data is not included with the default form payload. Which approach should the developer use?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Write an onChange client script to query the database directly using client-side GlideRecord"
+        },
+        {
+          "id": "b",
+          "text": "Create a display business rule that writes the data to the g_scratchpad object"
+        },
+        {
+          "id": "c",
+          "text": "Configure a before business rule to populate a custom form field"
+        },
+        {
+          "id": "d",
+          "text": "Use a UI policy action to retrieve the data from the server"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Display business rules write to the g_scratchpad object to send additional server data to the client that would not ordinarily be included with the form. The scratchpad data is then accessible to client scripts and UI policies. See: https://docs.servicenow.com/bundle/yokohama-application-development/page/script/business-rules/concept/c_DisplayBusinessRules.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Client-side GlideRecord is not available in scoped applications and is considered a bad practice. GlideRecord queries should come from server scripts.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/client-scripts/concept/c_ClientScriptsBestPractice.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Before business rules fire when a record is being saved to the database, not when a form is loaded. They cannot supply additional data to the form during the initial load.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/business-rules/concept/c_BusinessRules.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "UI policy actions can toggle field attributes (mandatory, visible, read-only) and clear field values, but they cannot make server-side queries to retrieve additional data.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/ui-policies/concept/c_UIPolicies.html"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow Docs - Display Business Rules",
+        "Application Development Fundamentals Course"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "application-development-fundamentals-on-demand/05-adf-scripting-part-2-of-2.md",
+        "excerpt": "display business rules in the scratchpad are meant to help when you anticipate extra stuff that the record's going to need that wouldn't ordinarily come with it. And that's why it's called a scratchpad. It's a place to write additional things."
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Scripting & APIs",
+        "domainSlug": "scripting-apis",
+        "domainPercentage": 25,
+        "subtopics": [
+          "Server-side scripting patterns"
+        ],
+        "tags": [
+          "display-business-rule",
+          "scratchpad",
+          "g_scratchpad",
+          "form-data"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-05T20:25:53.000Z",
+        "version": "1.0",
+        "release": "Yokohama",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-scripting-apis-023",
+      "certification": "cad",
+      "topic": "scripting-apis",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_select",
+      "question": "Which of the following correctly describe the execution timing of business rule types in ServiceNow? (Select all that apply)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Before business rules fire after a database operation is attempted but before the record is committed to the database"
+        },
+        {
+          "id": "b",
+          "text": "Display business rules fire after the database query completes but before any onLoad client scripts execute"
+        },
+        {
+          "id": "c",
+          "text": "After business rules fire before the record reaches the database"
+        },
+        {
+          "id": "d",
+          "text": "Async business rules execute synchronously in a linear fashion with other business rules"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b"
+      ],
+      "explanation": {
+        "correct": "Before business rules fire once a database save is attempted but before the record is actually committed, making them ideal for validation. Display business rules fire after the query completes and the form begins rendering, but before onLoad client scripts fire, giving client scripts access to the scratchpad data. See: https://docs.servicenow.com/bundle/yokohama-application-development/page/script/business-rules/concept/c_BusinessRules.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "c",
+            "explanation": "After business rules fire once the record has been saved to the database, not before. They are useful for passing values from the newly saved record to other records or tables on the server.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/business-rules/concept/c_BusinessRules.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Async (asynchronous) business rules execute in parallel in the background, like a scheduled job. They do not execute synchronously or in a linear fashion with other business rules.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/business-rules/concept/c_BusinessRules.html"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow Docs - Business Rules",
+        "Application Development Fundamentals Course"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "application-development-fundamentals-on-demand/05-adf-scripting-part-2-of-2.md",
+        "excerpt": "before business rules take place, once we've tried to assert the database but before that record finally lands at the database... the form begins to render but before any onLoad client scripts fire-- that's key-- a display business rule can run."
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Scripting & APIs",
+        "domainSlug": "scripting-apis",
+        "domainPercentage": 25,
+        "subtopics": [
+          "Server-side scripting patterns"
+        ],
+        "tags": [
+          "business-rules",
+          "execution-order",
+          "before-rule",
+          "display-rule",
+          "after-rule",
+          "async-rule"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-05T20:25:53.000Z",
+        "version": "1.0",
+        "release": "Yokohama",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-scripting-apis-024",
+      "certification": "cad",
+      "topic": "scripting-apis",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A developer working in a scoped application needs to retrieve data from the server within a client script to populate a field on a form. Which technique should the developer use?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Use a client-side GlideRecord query directly in the client script"
+        },
+        {
+          "id": "b",
+          "text": "Switch the application to global scope to enable client-side GlideRecord"
+        },
+        {
+          "id": "c",
+          "text": "Use a GlideAjax call to invoke a server-side script include"
+        },
+        {
+          "id": "d",
+          "text": "Use the g_form.getReference() method, which is unrestricted in scoped apps"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "In scoped applications, client-side GlideRecord is not available. The recommended approach for performing server-side lookups from a client script is to use GlideAjax, which calls a server-side script include and returns the results asynchronously. See: https://docs.servicenow.com/bundle/yokohama-application-development/page/script/ajax/concept/c_GlideAjax.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Client-side GlideRecord is not available in scoped applications. It was deprecated due to performance and security concerns and cannot be re-enabled via system properties.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/client-scripts/concept/c_ClientScriptsBestPractice.html"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "Switching to global scope solely to access client-side GlideRecord is not a recommended practice. Even in global scope, client-side GlideRecord is considered a bad practice due to synchronous server calls that degrade performance.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/build/applications/concept/c_ScopedApps.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The g_form.getReference() method makes synchronous server calls and has restrictions in scoped applications. GlideAjax is the preferred asynchronous approach for server lookups from client scripts.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/ajax/concept/c_GlideAjax.html"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow Docs - GlideAjax",
+        "Application Development Fundamentals Course"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "application-development-fundamentals-on-demand/05-adf-scripting-part-2-of-2.md",
+        "excerpt": "your GlideRecord queries should come from server scripts. And if you really need to do GlideRecord style lookups from a client script, you're probably going to get stuck doing a Glide Ajax call"
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Scripting & APIs",
+        "domainSlug": "scripting-apis",
+        "domainPercentage": 25,
+        "subtopics": [
+          "GlideAjax for client-server communication"
+        ],
+        "tags": [
+          "GlideAjax",
+          "scoped-app",
+          "client-side",
+          "GlideRecord",
+          "best-practices"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-05T20:25:53.000Z",
+        "version": "1.0",
+        "release": "Yokohama",
+        "reviewed": false
+      }
+    }
+  ]
+}

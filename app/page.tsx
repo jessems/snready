@@ -16,7 +16,7 @@ export default function Home() {
   const sortedCategories = getSortedCategories();
   
   // Calculate total questions across all ready certifications
-  const readyCerts = ["csa", "cis-df"];
+  const readyCerts = ["csa", "cis-df", "cad"];
   const totalQuestions = readyCerts.reduce((sum, cert) => sum + getTotalQuestionCount(cert), 0);
   const totalFreeQuestions = readyCerts.reduce((sum, cert) => sum + getTotalFreeQuestionCount(cert), 0);
   const activeCertifications = readyCerts.length;
@@ -171,6 +171,50 @@ export default function Home() {
               className="text-emerald-600 hover:text-emerald-700 dark:text-emerald-400"
             >
               View all CSA topics →
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Topics Preview (CAD) */}
+      <section className="py-20">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <h2 className="text-3xl font-bold text-zinc-900 dark:text-zinc-50">
+              CAD Exam Topics
+            </h2>
+            <p className="mt-4 text-lg text-zinc-600 dark:text-zinc-400">
+              Master ServiceNow application development with 130+ practice questions
+            </p>
+          </div>
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              { name: "Scripting & APIs", slug: "scripting-apis", icon: "💻" },
+              { name: "Business Rules", slug: "business-rules", icon: "⚙️" },
+              { name: "Client Scripts", slug: "client-scripts", icon: "🖥️" },
+              { name: "UI Policies", slug: "ui-policies-actions", icon: "🎨" },
+              { name: "Script Includes", slug: "script-includes", icon: "📦" },
+              { name: "REST APIs", slug: "integration-rest", icon: "🔗" },
+              { name: "App Development", slug: "application-development", icon: "🏗️" },
+            ].map((topic) => (
+              <Link
+                key={topic.slug}
+                href={`/cad/questions/${topic.slug}`}
+                className="flex items-center gap-3 rounded-lg border border-zinc-200 bg-white p-4 transition-all hover:border-emerald-300 hover:shadow dark:border-zinc-800 dark:bg-zinc-800 dark:hover:border-emerald-700"
+              >
+                <span className="text-2xl">{topic.icon}</span>
+                <span className="font-medium text-zinc-900 dark:text-zinc-100">
+                  {topic.name}
+                </span>
+              </Link>
+            ))}
+          </div>
+          <div className="mt-8 text-center">
+            <Link
+              href="/certifications/cad"
+              className="text-emerald-600 hover:text-emerald-700 dark:text-emerald-400"
+            >
+              View all CAD topics →
             </Link>
           </div>
         </div>
