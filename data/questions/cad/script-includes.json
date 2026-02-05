@@ -1,0 +1,947 @@
+{
+  "questions": [
+    {
+      "id": "cad-script-includes-001",
+      "certification": "cad",
+      "topic": "script-includes",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What is the primary purpose of a Script Include in ServiceNow?",
+      "options": [
+        {
+          "id": "a",
+          "text": "To execute client-side scripts automatically when a form loads"
+        },
+        {
+          "id": "b",
+          "text": "To store reusable JavaScript for execution on the server"
+        },
+        {
+          "id": "c",
+          "text": "To define UI Policies that dynamically control form field behavior"
+        },
+        {
+          "id": "d",
+          "text": "To create scheduled automation jobs that run at defined intervals"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "A Script Include stores reusable JavaScript for server-side execution. Script Includes follow a 'write once, use many' pattern — they are written once and can be called from anywhere server-side JavaScript is accepted. They must be explicitly called to run and do not have automatic triggers. See: https://docs.servicenow.com/bundle/yokohama-api-reference/page/script/script-includes/concept/c_ScriptIncludes.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Client-side scripts that execute on form load are Client Scripts (onLoad type), not Script Includes. Script Includes execute on the server side.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-api-reference/page/script/client-scripts/concept/c_ClientScripts.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "UI Policies are a separate no-code mechanism for controlling form field visibility, mandatory status, and read-only state. They are not Script Includes.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-platform-administration/page/administer/form-administration/concept/c_UIPolicies.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Scheduled Jobs are used to run automation at defined time intervals. Script Includes do not run on a schedule — they must be explicitly called from other scripts or processes.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-platform-administration/page/administer/time/concept/c_ScheduledJobs.html"
+          }
+        ]
+      },
+      "references": [
+        "https://docs.servicenow.com/bundle/yokohama-api-reference/page/script/script-includes/concept/c_ScriptIncludes.html"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "course",
+        "path": "scripting-in-servicenow-fundamentals/10-ssnf-script-includes.md",
+        "excerpt": "it stores reusable JavaScript for execution on the server... Key word here being reusable, and therefore, it must be called to run."
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Script Includes",
+        "domainSlug": "script-includes",
+        "domainPercentage": 12,
+        "subtopics": [
+          "Script Include structure and extending classes"
+        ],
+        "tags": [
+          "script-include",
+          "server-side",
+          "reusable-code"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-05T20:28:03.000Z",
+        "version": "1.0",
+        "release": "Yokohama",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-script-includes-002",
+      "certification": "cad",
+      "topic": "script-includes",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Why is the 'current' object NOT available inside a Script Include?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Script Includes only execute on the client side where current is not defined"
+        },
+        {
+          "id": "b",
+          "text": "Script Includes are not associated with a specific table, so there is no current record context"
+        },
+        {
+          "id": "c",
+          "text": "The current object was deprecated and replaced by GlideRecord in the Yokohama release"
+        },
+        {
+          "id": "d",
+          "text": "Script Includes can only access records through the previous object"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The 'current' object is only available in scripts that are associated with a specific table (such as Business Rules). Since the Script Include form has no table field or condition builder, there is no record context, and therefore the current object does not exist within a Script Include. Developers must use GlideRecord to access specific records instead. See: https://docs.servicenow.com/bundle/yokohama-api-reference/page/script/script-includes/concept/c_ScriptIncludes.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Script Includes execute on the server side, not the client side. The reason current is unavailable is the lack of a table association, not the execution context.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-api-reference/page/script/script-includes/concept/c_ScriptIncludes.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The current object has not been deprecated. It remains fully functional in scripts that are associated with a table, such as Business Rules, and is available across all ServiceNow releases.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-api-reference/page/script/general-scripting/concept/c_UsingGlideRecordToQueryTables.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The previous object is also unavailable in Script Includes for the same reason — there is no table association. The previous object is available in Business Rules alongside current.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-api-reference/page/script/business-rules/concept/c_BusinessRules.html"
+          }
+        ]
+      },
+      "references": [
+        "https://docs.servicenow.com/bundle/yokohama-api-reference/page/script/script-includes/concept/c_ScriptIncludes.html"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "course",
+        "path": "scripting-in-servicenow-fundamentals/10-ssnf-script-includes.md",
+        "excerpt": "there's no access to objects like current or previous... you only really get access to that current object generally is only available to us for scripts where we have a field that says table. If we don't get to pick a table, current basically doesn't exist."
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Script Includes",
+        "domainSlug": "script-includes",
+        "domainPercentage": 12,
+        "subtopics": [
+          "Script Include structure and extending classes",
+          "Script Include best practices"
+        ],
+        "tags": [
+          "script-include",
+          "current-object",
+          "server-side",
+          "gliderecord"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-05T20:28:03.000Z",
+        "version": "1.0",
+        "release": "Yokohama",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-script-includes-003",
+      "certification": "cad",
+      "topic": "script-includes",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What must a developer do differently when creating a classless (on-demand function) Script Include compared to a class-based Script Include?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Enable the Client callable / GlideAjax checkbox so the function can be invoked"
+        },
+        {
+          "id": "b",
+          "text": "Delete the default class template code that ServiceNow places in the Script field and define a standalone function instead"
+        },
+        {
+          "id": "c",
+          "text": "Select a target table on the Script Include form so the function knows which records to process"
+        },
+        {
+          "id": "d",
+          "text": "Extend the AbstractAjaxProcessor class to make the function available server-side"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "When creating a new Script Include, ServiceNow automatically populates the Script field with a class template (prototype pattern). For a classless on-demand function, the developer must manually clear out this template code and define a standalone function using the standard 'function functionName() { }' syntax. The function name must exactly match the Script Include Name field. See: https://docs.servicenow.com/bundle/yokohama-api-reference/page/script/script-includes/concept/c_ScriptIncludes.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Classless Script Includes cannot be made client callable. The Client callable / GlideAjax checkbox is used only with Script Includes that extend the AbstractAjaxProcessor class.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-api-reference/page/script/script-includes/concept/c_ScriptIncludes.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Script Includes do not have a table field on their form. They are not tied to any specific table, which is why the current object is not available within them.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-api-reference/page/script/script-includes/concept/c_ScriptIncludes.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Extending the AbstractAjaxProcessor class is done when creating client-callable Script Includes for use with GlideAjax, not for creating simple server-side on-demand functions.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-api-reference/page/script/ajax/concept/c_GlideAjax.html"
+          }
+        ]
+      },
+      "references": [
+        "https://docs.servicenow.com/bundle/yokohama-api-reference/page/script/script-includes/concept/c_ScriptIncludes.html"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "course",
+        "path": "scripting-in-servicenow-fundamentals/10-ssnf-script-includes.md",
+        "excerpt": "when we start to work on a Script Include, ServiceNow assumes we're going to write a custom class. So ServiceNow tries to do us a solid... In this case, we're not writing a whole new class. We're just writing a single function. So what we do is we say, thank you, ServiceNow, and we just go ahead and go, but no thank you. And we clear out the script field."
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Script Includes",
+        "domainSlug": "script-includes",
+        "domainPercentage": 12,
+        "subtopics": [
+          "Script Include structure and extending classes",
+          "Script Include best practices"
+        ],
+        "tags": [
+          "script-include",
+          "classless",
+          "on-demand-function",
+          "template"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-05T20:28:03.000Z",
+        "version": "1.0",
+        "release": "Yokohama",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-script-includes-004",
+      "certification": "cad",
+      "topic": "script-includes",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_select",
+      "question": "Which of the following are true about Script Includes in ServiceNow? (Select all that apply)",
+      "options": [
+        {
+          "id": "a",
+          "text": "They must be explicitly called to execute and do not run based on table events"
+        },
+        {
+          "id": "b",
+          "text": "The Script Include record name must exactly match the function or class name defined in the Script field"
+        },
+        {
+          "id": "c",
+          "text": "They automatically have access to the current and previous objects"
+        },
+        {
+          "id": "d",
+          "text": "They can only be called from Business Rules"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b"
+      ],
+      "explanation": {
+        "correct": "Script Includes must be explicitly called to run — they have no automatic triggers tied to table events. Additionally, the Name field of the Script Include record must exactly match the function name (for classless) or the class variable name (for class-based) defined in the Script field. This naming match is critical for the Script Include to work properly. See: https://docs.servicenow.com/bundle/yokohama-api-reference/page/script/script-includes/concept/c_ScriptIncludes.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "c",
+            "explanation": "Script Includes do NOT have access to the current or previous objects because they are not associated with a specific table. To access record data, developers must use GlideRecord queries or pass data as parameters.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-api-reference/page/script/script-includes/concept/c_ScriptIncludes.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Script Includes can be called from anywhere server-side JavaScript is accepted, not just Business Rules. This includes reference qualifiers, workflow scripts, scheduled jobs, email notifications, and more.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-api-reference/page/script/script-includes/concept/c_ScriptIncludes.html"
+          }
+        ]
+      },
+      "references": [
+        "https://docs.servicenow.com/bundle/yokohama-api-reference/page/script/script-includes/concept/c_ScriptIncludes.html"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "course",
+        "path": "scripting-in-servicenow-fundamentals/10-ssnf-script-includes.md",
+        "excerpt": "these things only run when we ask them to. We write them once and reuse them as many times as we like... the name of our Script Include record exactly matches the name of our function or our class that we create down in the script include."
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Script Includes",
+        "domainSlug": "script-includes",
+        "domainPercentage": 12,
+        "subtopics": [
+          "Script Include structure and extending classes",
+          "Script Include best practices"
+        ],
+        "tags": [
+          "script-include",
+          "naming",
+          "server-side",
+          "reusable-code"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-05T20:28:03.000Z",
+        "version": "1.0",
+        "release": "Yokohama",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-script-includes-005",
+      "certification": "cad",
+      "topic": "script-includes",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What is the strongly observed naming convention for class-based Script Includes that contain a library of reusable methods?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Prefix the name with 'SI_' followed by the application name"
+        },
+        {
+          "id": "b",
+          "text": "Include the word 'Utils' in the Script Include name"
+        },
+        {
+          "id": "c",
+          "text": "End the name with 'Handler' to indicate server-side processing"
+        },
+        {
+          "id": "d",
+          "text": "Start the name with 'Ajax' to indicate it supports asynchronous calls"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "There is a strongly observed convention in ServiceNow to include the word 'Utils' in the name of class-based Script Includes that serve as function libraries (e.g., ClaimsUtils, LoanerUtils). These Script Includes follow JavaScript class conventions with PascalCase naming and camelCase for subsequent words. See: https://docs.servicenow.com/bundle/yokohama-api-reference/page/script/script-includes/concept/c_ScriptIncludes.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "There is no standard convention in ServiceNow to prefix Script Include names with 'SI_'. The convention is to use descriptive PascalCase names, typically with 'Utils' for utility class libraries.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-api-reference/page/script/script-includes/concept/c_ScriptIncludes.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "'Handler' is not a standard Script Include naming convention in ServiceNow. While some custom Script Includes may use it, the widely observed convention for utility class libraries is to use 'Utils'.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-api-reference/page/script/script-includes/concept/c_ScriptIncludes.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Starting with 'Ajax' is not the standard naming convention. While Script Includes that extend AbstractAjaxProcessor for client-callable functionality may include 'Ajax' in their name, the convention for general utility class libraries is to use 'Utils'.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-api-reference/page/script/ajax/concept/c_GlideAjax.html"
+          }
+        ]
+      },
+      "references": [
+        "https://docs.servicenow.com/bundle/yokohama-api-reference/page/script/script-includes/concept/c_ScriptIncludes.html"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "course",
+        "path": "application-development-fundamentals-on-demand/10-adf-script-include.md",
+        "excerpt": "There's a strongly observed convention to call these kinds of function libraries Utils Script includes. Like, you can see this one is called ClaimsUtils."
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Script Includes",
+        "domainSlug": "script-includes",
+        "domainPercentage": 12,
+        "subtopics": [
+          "Script Include best practices",
+          "Script Include structure and extending classes"
+        ],
+        "tags": [
+          "script-include",
+          "naming-convention",
+          "utils",
+          "best-practices"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-05T20:28:03.000Z",
+        "version": "1.0",
+        "release": "Yokohama",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-script-includes-006",
+      "certification": "cad",
+      "topic": "script-includes",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_select",
+      "question": "Which of the following correctly describe the initialize function in a class-based Script Include? (Select all that apply)",
+      "options": [
+        {
+          "id": "a",
+          "text": "It must be manually invoked each time before calling any method on the Script Include"
+        },
+        {
+          "id": "b",
+          "text": "It runs automatically when a new object of the Script Include class is created"
+        },
+        {
+          "id": "c",
+          "text": "Properties defined using the 'this' keyword in initialize are accessible to all methods in the class"
+        },
+        {
+          "id": "d",
+          "text": "It is required only when creating client-callable Script Includes that extend AbstractAjaxProcessor"
+        }
+      ],
+      "correctAnswers": [
+        "b",
+        "c"
+      ],
+      "explanation": {
+        "correct": "The initialize function in a class-based Script Include runs automatically when a new instance of the class is created (e.g., var obj = new MyUtils()). Properties defined using 'this.propertyName' within initialize are available throughout the entire Script Include class, accessible to all methods. This is commonly used to set up shared GlideRecord queries or property values needed across multiple methods. See: https://docs.servicenow.com/bundle/yokohama-api-reference/page/script/script-includes/concept/c_ScriptIncludes.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The initialize function does NOT need to be manually invoked. It runs automatically when a new object of the class is instantiated, similar to a constructor in object-oriented programming.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-api-reference/page/script/script-includes/concept/c_ScriptIncludes.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The initialize function is part of the standard class prototype pattern used in all class-based Script Includes, not just those extending AbstractAjaxProcessor. Any Script Include using the Class.create() pattern includes an initialize function.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-api-reference/page/script/script-includes/concept/c_ScriptIncludes.html"
+          }
+        ]
+      },
+      "references": [
+        "https://docs.servicenow.com/bundle/yokohama-api-reference/page/script/script-includes/concept/c_ScriptIncludes.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "application-development-fundamentals-on-demand/10-adf-script-include.md",
+        "excerpt": "the initialize function runs automatically when the JavaScript object is created... Stuff that we define this way, in the initialize, will be available throughout the entire Script include, throughout the rest of the class."
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Script Includes",
+        "domainSlug": "script-includes",
+        "domainPercentage": 12,
+        "subtopics": [
+          "Script Include structure and extending classes"
+        ],
+        "tags": [
+          "script-include",
+          "initialize",
+          "class-based",
+          "prototype"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-05T20:28:03.000Z",
+        "version": "1.0",
+        "release": "Yokohama",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-script-includes-007",
+      "certification": "cad",
+      "topic": "script-includes",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A developer needs to retrieve server-side data from a Script Include and display it on a form without reloading the page. Which approach should the developer take?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Create a classless Script Include and call it directly from a Client Script using the Script Include name"
+        },
+        {
+          "id": "b",
+          "text": "Create a Script Include that extends AbstractAjaxProcessor, enable the Client callable checkbox, and invoke it from a Client Script using GlideAjax"
+        },
+        {
+          "id": "c",
+          "text": "Create a UI Script marked as global and call the server-side function from the form's Client Script"
+        },
+        {
+          "id": "d",
+          "text": "Create a synchronous Business Rule on the target table that populates a scratchpad variable for the client to read"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "To retrieve server-side data asynchronously from a client-side script, the developer should create a Script Include that extends AbstractAjaxProcessor and check the Client callable (GlideAjax enabled) checkbox. The client-side code then uses the GlideAjax API to call methods on this Script Include without reloading the page. This is the standard pattern for client-to-server communication in ServiceNow. See: https://docs.servicenow.com/bundle/yokohama-api-reference/page/script/ajax/concept/c_GlideAjax.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Classless Script Includes cannot be made client callable. They can only be invoked from server-side scripts. To call a Script Include from the client side, it must extend AbstractAjaxProcessor and have the Client callable checkbox enabled.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-api-reference/page/script/script-includes/concept/c_ScriptIncludes.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "UI Scripts run on the client side and cannot directly execute server-side logic. They are used to include reusable client-side JavaScript libraries, not to call server-side functions.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-api-reference/page/script/client-scripts/concept/c_UIScripts.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "While the g_scratchpad technique works to pass data from a display Business Rule to the client, it only executes when the form loads — it does not support dynamic, on-demand data retrieval without a page reload. GlideAjax with AbstractAjaxProcessor is the correct approach for asynchronous requests.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-api-reference/page/script/business-rules/concept/c_DisplayBusinessRules.html"
+          }
+        ]
+      },
+      "references": [
+        "https://docs.servicenow.com/bundle/yokohama-api-reference/page/script/ajax/concept/c_GlideAjax.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "scripting-in-servicenow-fundamentals/10-ssnf-script-includes.md",
+        "excerpt": "we're going to see how we can extend an existing JavaScript class in ServiceNow called the AbstractAjaxProcessor class... indicate whether it is client callable. Now, the label of that client callable field on this Script Include screenshot for this form says Glide AJAX enabled."
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Script Includes",
+        "domainSlug": "script-includes",
+        "domainPercentage": 12,
+        "subtopics": [
+          "Client-callable Script Includes",
+          "Using Script Includes with GlideAjax",
+          "AbstractAjaxProcessor"
+        ],
+        "tags": [
+          "script-include",
+          "glideajax",
+          "abstractajaxprocessor",
+          "client-callable"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-05T20:28:03.000Z",
+        "version": "1.0",
+        "release": "Yokohama",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-script-includes-008",
+      "certification": "cad",
+      "topic": "script-includes",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "When creating a new Script Include in ServiceNow, what happens to the variable name in the generated template script when the Name field is populated?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The variable name is set to a system-generated unique identifier"
+        },
+        {
+          "id": "b",
+          "text": "The variable name is automatically set to match the value in the Name field"
+        },
+        {
+          "id": "c",
+          "text": "The variable name defaults to 'ScriptInclude' and must be manually changed"
+        },
+        {
+          "id": "d",
+          "text": "The variable name is set to the Name field value converted to camelCase"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "When a Script Include name is entered and the user tabs out of the Name field, ServiceNow automatically generates a template script where the variable name exactly matches the Name field value. This ensures the class name and the Script Include record name stay in sync. See: https://docs.servicenow.com/bundle/yokohama-api-reference/page/script/script-includes/concept/c_ScriptIncludes.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "ServiceNow does not generate a unique identifier for the variable name. It uses the exact Name field value to keep the Script Include identifiable and callable by that name.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-api-reference/page/script/script-includes/concept/c_ScriptIncludes.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The template does not default to a generic name like 'ScriptInclude'. The platform automatically populates the variable name from the Name field to reduce errors.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-api-reference/page/script/script-includes/concept/c_ScriptIncludes.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "ServiceNow does not convert the Name field to camelCase. The variable name is an exact match of whatever was entered in the Name field.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-api-reference/page/script/script-includes/concept/c_ScriptIncludes.html"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow Docs - Script Includes"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "application-development-fundamentals-on-demand/11-adf-script-include-demo.md",
+        "excerpt": "Remember that this variable name here needs to exactly match the name in the Name field, so don't go messing with it. ServiceNow is doing you a favor by bringing that down."
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Script Includes",
+        "domainSlug": "script-includes",
+        "domainPercentage": 12,
+        "subtopics": [
+          "Script Include structure and extending classes"
+        ],
+        "tags": [
+          "script-include",
+          "naming",
+          "template"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-05T20:24:19.143Z",
+        "version": "1.0",
+        "release": "Yokohama",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-script-includes-009",
+      "certification": "cad",
+      "topic": "script-includes",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "In a Script Include class, which function runs automatically when an object of the class is instantiated?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The constructor function defined in the prototype"
+        },
+        {
+          "id": "b",
+          "text": "The first function listed in the type definition"
+        },
+        {
+          "id": "c",
+          "text": "The initialize function"
+        },
+        {
+          "id": "d",
+          "text": "The onLoad function"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "The initialize function in a Script Include class runs automatically when an object of that class is created. It is commonly used to store properties using the 'this' keyword and to fetch records that will be needed throughout the class methods. See: https://docs.servicenow.com/bundle/yokohama-api-reference/page/script/script-includes/concept/c_ScriptIncludes.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "While 'constructor' is a concept in standard JavaScript ES6 classes, ServiceNow Script Includes use the 'initialize' function pattern within the prototype object, not a constructor function.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-api-reference/page/script/script-includes/concept/c_ScriptIncludes.html"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "The order of functions in the type definition does not determine which runs first. Only the 'initialize' function is automatically invoked upon instantiation.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-api-reference/page/script/script-includes/concept/c_ScriptIncludes.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "onLoad is not a Script Include lifecycle function. It is associated with client scripts that run when a form loads, not with server-side Script Include instantiation.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-api-reference/page/script/script-includes/concept/c_ScriptIncludes.html"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow Docs - Script Includes"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "application-development-fundamentals-on-demand/11-adf-script-include-demo.md",
+        "excerpt": "Remember, the initialize runs automatically when object is created. So when we create an object of this class, in order to access these things that the class provides to us, this initialize runs right away."
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Script Includes",
+        "domainSlug": "script-includes",
+        "domainPercentage": 12,
+        "subtopics": [
+          "Script Include structure and extending classes"
+        ],
+        "tags": [
+          "script-include",
+          "initialize",
+          "instantiation"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-05T20:24:19.143Z",
+        "version": "1.0",
+        "release": "Yokohama",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-script-includes-010",
+      "certification": "cad",
+      "topic": "script-includes",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "Why is the 'this' keyword used inside the initialize function of a Script Include to store variable values?",
+      "options": [
+        {
+          "id": "a",
+          "text": "To make the values available to client-side scripts via GlideAjax"
+        },
+        {
+          "id": "b",
+          "text": "To make the values accessible across all methods within the Script Include class"
+        },
+        {
+          "id": "c",
+          "text": "To persist the values in the database for future Script Include executions"
+        },
+        {
+          "id": "d",
+          "text": "To override system properties with custom values during runtime"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Using 'this.' in the initialize function stores values as instance properties of the class object. This makes them accessible throughout all methods defined in the Script Include, avoiding the need to re-fetch or re-declare values in each function. See: https://docs.servicenow.com/bundle/yokohama-api-reference/page/script/script-includes/concept/c_ScriptIncludes.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The 'this' keyword stores values for server-side use within the class instance. Making values available to client-side scripts requires extending AbstractAjaxProcessor and using specific methods like getAnswer().",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-api-reference/page/script/script-includes/concept/c_ScriptIncludes.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The 'this' keyword stores values in memory on the class instance for the duration of that execution. It does not write anything to the database. Database persistence requires explicit GlideRecord operations.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-api-reference/page/script/script-includes/concept/c_ScriptIncludes.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The 'this' keyword does not override system properties. System properties are managed through the sys_properties table and are accessed via gs.getProperty(), not through Script Include instance variables.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-api-reference/page/script/script-includes/concept/c_ScriptIncludes.html"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow Docs - Script Includes"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "application-development-fundamentals-on-demand/11-adf-script-include-demo.md",
+        "excerpt": "So there's a better way, and that's the initialize. Remember, the initialize runs automatically when object is created... what people tend to do is store things with a keyword called 'this.' ... And, that way, we can use them all throughout."
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Script Includes",
+        "domainSlug": "script-includes",
+        "domainPercentage": 12,
+        "subtopics": [
+          "Script Include structure and extending classes",
+          "Script Include best practices"
+        ],
+        "tags": [
+          "script-include",
+          "this-keyword",
+          "initialize",
+          "instance-properties"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-05T20:24:19.143Z",
+        "version": "1.0",
+        "release": "Yokohama",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-script-includes-011",
+      "certification": "cad",
+      "topic": "script-includes",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_select",
+      "question": "A developer needs to call a Script Include from a different application scope. Select all that apply. Which requirements must be met for this cross-scope call to succeed?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The Script Include must have the 'Accessible from' field set to allow access from other scopes"
+        },
+        {
+          "id": "b",
+          "text": "The calling script must reference the Script Include using its full API name including the namespace"
+        },
+        {
+          "id": "c",
+          "text": "The Script Include must extend AbstractAjaxProcessor to support cross-scope calls"
+        },
+        {
+          "id": "d",
+          "text": "The calling script must import the Script Include using gs.include()"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b"
+      ],
+      "explanation": {
+        "correct": "Two conditions must be met for cross-scope Script Include calls: (1) The Script Include's 'Accessible from' setting must allow access beyond its own application scope, and (2) the calling script must use the full API name (namespace prefix) to reference the Script Include. See: https://docs.servicenow.com/bundle/yokohama-application-development/page/build/applications/concept/c_ApplicationScope.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "c",
+            "explanation": "AbstractAjaxProcessor is used to make Script Includes callable from client-side scripts via GlideAjax. It is not a requirement for server-side cross-scope access between application scopes.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-api-reference/page/script/script-includes/concept/c_ScriptIncludes.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "gs.include() is used for legacy global Script Includes that are not class-based. Scoped Script Includes do not use gs.include(); they are accessed by instantiating the class using the full API name.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-api-reference/page/script/script-includes/concept/c_ScriptIncludes.html"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow Docs - Application Scope",
+        "ServiceNow Docs - Script Includes"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "application-development-fundamentals-on-demand/11-adf-script-include-demo.md",
+        "excerpt": "So what happens if I want to call it from out of scope? Well, if I decide that that's OK, then we need to use the full API name... But this only works if we've given it permission, right? The minute I switch this back to this application scope only, calling from out of scope is no good, won't work."
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Script Includes",
+        "domainSlug": "script-includes",
+        "domainPercentage": 12,
+        "subtopics": [
+          "Scoped vs global Script Includes"
+        ],
+        "tags": [
+          "script-include",
+          "cross-scope",
+          "api-name",
+          "accessible-from"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-05T20:24:19.143Z",
+        "version": "1.0",
+        "release": "Yokohama",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-script-includes-012",
+      "certification": "cad",
+      "topic": "script-includes",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A developer is building a Script Include called 'IncidentUtils' that contains multiple methods. Several of these methods need to reference the currently logged-in user's GlideRecord and a specific system property value. Where should the developer fetch and store these values to follow Script Include best practices?",
+      "options": [
+        {
+          "id": "a",
+          "text": "In a separate helper Script Include that is called by each method"
+        },
+        {
+          "id": "b",
+          "text": "At the beginning of each method that needs the values"
+        },
+        {
+          "id": "c",
+          "text": "In the initialize function using the 'this' keyword"
+        },
+        {
+          "id": "d",
+          "text": "In a global business rule that runs before the Script Include is called"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "Best practice is to fetch commonly needed values in the initialize function and store them using 'this.' so they are available across all methods in the Script Include. The initialize function runs automatically when the class is instantiated, making it the ideal place for setup logic such as fetching the current user record or system properties. See: https://docs.servicenow.com/bundle/yokohama-api-reference/page/script/script-includes/concept/c_ScriptIncludes.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Creating a separate Script Include adds unnecessary complexity. The initialize function within the same Script Include is designed for this exact purpose — centralizing shared setup logic.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-api-reference/page/script/script-includes/concept/c_ScriptIncludes.html"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "Fetching the same values at the beginning of each method leads to redundant code and multiple unnecessary queries. The initialize function centralizes this logic and executes once upon instantiation.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-api-reference/page/script/script-includes/concept/c_ScriptIncludes.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "A global business rule runs in response to database operations, not as a setup mechanism for Script Includes. Script Include initialization logic belongs in the initialize function, not in external business rules.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-api-reference/page/script/script-includes/concept/c_ScriptIncludes.html"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow Docs - Script Includes"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "application-development-fundamentals-on-demand/11-adf-script-include-demo.md",
+        "excerpt": "So you'll see things like this done quite a bit in the initialize, things that you know you're going to want and things that are likely to be needed throughout more than one of the methods. Especially if both of those descriptions apply, then it's a good idea to just fetch it up here and store it to this."
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Script Includes",
+        "domainSlug": "script-includes",
+        "domainPercentage": 12,
+        "subtopics": [
+          "Script Include best practices",
+          "Script Include structure and extending classes"
+        ],
+        "tags": [
+          "script-include",
+          "initialize",
+          "best-practices",
+          "this-keyword",
+          "gliderecord"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-05T20:24:19.143Z",
+        "version": "1.0",
+        "release": "Yokohama",
+        "reviewed": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,866 @@
+{
+  "questions": [
+    {
+      "id": "cad-client-scripts-001",
+      "certification": "cad",
+      "topic": "client-scripts",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which of the following is NOT one of the four types of client scripts in ServiceNow?",
+      "options": [
+        {
+          "id": "a",
+          "text": "onLoad"
+        },
+        {
+          "id": "b",
+          "text": "onChange"
+        },
+        {
+          "id": "c",
+          "text": "onBefore"
+        },
+        {
+          "id": "d",
+          "text": "onSubmit"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "The four types of client scripts in ServiceNow are onLoad, onChange, onSubmit, and onCellEdit. 'onBefore' is not a client script type; it relates to business rule timing (before business rules). See: https://docs.servicenow.com/bundle/yokohama-application-development/page/script/client-scripts/concept/c_ClientScripts.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "onLoad is a valid client script type that runs when a form loads and before control is given to the user.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/client-scripts/concept/c_ClientScripts.html"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "onChange is a valid client script type that runs when a specific field value changes on a form.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/client-scripts/concept/c_ClientScripts.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "onSubmit is a valid client script type that runs when a form is submitted, saved, or updated.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/client-scripts/concept/c_ClientScripts.html"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow Docs - Client Scripts"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "course",
+        "path": "scripting-in-servicenow-fundamentals/05-ssnf-client-scripts.md",
+        "excerpt": "we're going to talk about the four different times a client script can execute"
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Client Scripts",
+        "domainSlug": "client-scripts",
+        "domainPercentage": 12,
+        "subtopics": [
+          "Client script types (onLoad, onChange, onSubmit, onCellEdit)"
+        ],
+        "tags": [
+          "client-scripts",
+          "script-types",
+          "onLoad",
+          "onChange",
+          "onSubmit",
+          "onCellEdit"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-05T20:26:59.000Z",
+        "version": "1.0",
+        "release": "Yokohama",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-client-scripts-002",
+      "certification": "cad",
+      "topic": "client-scripts",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Where do ServiceNow client scripts execute?",
+      "options": [
+        {
+          "id": "a",
+          "text": "On the ServiceNow application server"
+        },
+        {
+          "id": "b",
+          "text": "On the client's web browser"
+        },
+        {
+          "id": "c",
+          "text": "On the MID Server"
+        },
+        {
+          "id": "d",
+          "text": "On the database server"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Client scripts execute on the client's web browser. When a form loads, client scripts are loaded with the form and execute in the browser, waiting for user interaction to trigger them. See: https://docs.servicenow.com/bundle/yokohama-application-development/page/script/client-scripts/concept/c_ClientScripts.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Server-side scripts such as business rules execute on the application server. Client scripts run in the user's browser.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/client-scripts/concept/c_ClientScripts.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The MID Server facilitates communication between the ServiceNow instance and external resources for integrations and discovery. It does not execute client scripts.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-it-operations-management/page/product/mid-server/concept/mid-server-landing.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The database server stores and retrieves data. Client scripts do not execute on the database server.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/client-scripts/concept/c_ClientScripts.html"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow Docs - Client Scripts"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "course",
+        "path": "scripting-in-servicenow-fundamentals/05-ssnf-client-scripts.md",
+        "excerpt": "Client Scripts are going to execute on the browser. So when you load a form, for example-- maybe I'm on an incident, I click on an incident number and I'm bringing up that form. Client Scripts are going to load with that form and are going to wait for something to happen."
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Client Scripts",
+        "domainSlug": "client-scripts",
+        "domainPercentage": 12,
+        "subtopics": [
+          "Client script best practices"
+        ],
+        "tags": [
+          "client-scripts",
+          "browser",
+          "client-side",
+          "execution-environment"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-05T20:26:59.000Z",
+        "version": "1.0",
+        "release": "Yokohama",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-client-scripts-003",
+      "certification": "cad",
+      "topic": "client-scripts",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "A developer creates a client script on the Task table and enables the Inherited checkbox. What is the effect of this configuration?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The client script will only execute on the Task table and no other tables"
+        },
+        {
+          "id": "b",
+          "text": "The client script can also execute on child tables of Task, such as Incident, Problem, and Change Request"
+        },
+        {
+          "id": "c",
+          "text": "The client script will be automatically copied as separate records to all child tables"
+        },
+        {
+          "id": "d",
+          "text": "The client script will execute on every table in the ServiceNow instance"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "When the Inherited checkbox is enabled on a client script, the script can execute on child tables that extend the selected table. For example, a client script on the Task table with Inherited enabled can execute on Incident, Problem, and Change Request tables. See: https://docs.servicenow.com/bundle/yokohama-application-development/page/script/client-scripts/concept/c_ClientScripts.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "This would be the behavior if the Inherited checkbox is NOT enabled. With Inherited enabled, the script extends execution to child tables.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/client-scripts/concept/c_ClientScripts.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The Inherited checkbox does not create separate copies of the client script on child tables. The single script record executes on child tables through table hierarchy inheritance.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/client-scripts/concept/c_ClientScripts.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The Inherited checkbox only affects child tables that extend the selected table through the table hierarchy, not every table in the instance.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/client-scripts/concept/c_ClientScripts.html"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow Docs - Client Scripts"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "course",
+        "path": "scripting-in-servicenow-fundamentals/05-ssnf-client-scripts.md",
+        "excerpt": "Inherited is also very nice if you're creating a client script on a table that might have child tables. So Incident, as we see here, is not a parent of any other table. But Task is. So if I was creating this client script, and I had selected the Task table, if I had inherited turned on, it could potentially execute against the Incident table or the Problem table or the Change Request table"
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Client Scripts",
+        "domainSlug": "client-scripts",
+        "domainPercentage": 12,
+        "subtopics": [
+          "Client script best practices"
+        ],
+        "tags": [
+          "client-scripts",
+          "inherited",
+          "task-table",
+          "table-hierarchy"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-05T20:26:59.000Z",
+        "version": "1.0",
+        "release": "Yokohama",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-client-scripts-004",
+      "certification": "cad",
+      "topic": "client-scripts",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_select",
+      "question": "Which of the following statements about the Order field on client scripts are correct? (Select all that apply)",
+      "options": [
+        {
+          "id": "a",
+          "text": "The Order field appears on the Client Script form by default"
+        },
+        {
+          "id": "b",
+          "text": "Client scripts with a lower Order value execute first"
+        },
+        {
+          "id": "c",
+          "text": "The Order field should be used when multiple client scripts of the same type exist on the same table"
+        },
+        {
+          "id": "d",
+          "text": "The Order field determines whether a client script is active or inactive"
+        }
+      ],
+      "correctAnswers": [
+        "b",
+        "c"
+      ],
+      "explanation": {
+        "correct": "Client scripts execute in order from lowest to highest Order value. The Order field should be used when multiple client scripts of the same type exist for the same table and may have conflicting logic, to control which executes first. See: https://docs.servicenow.com/bundle/yokohama-application-development/page/script/client-scripts/concept/c_ClientScripts.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The Order field does not appear on the Client Script form by default (baseline). It must be added manually through Form Layout, Form Design, or Form Builder.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/client-scripts/concept/c_ClientScripts.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The Active checkbox determines whether a client script is active or inactive. The Order field only controls the execution sequence among multiple scripts of the same type.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/client-scripts/concept/c_ClientScripts.html"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow Docs - Client Scripts"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "course",
+        "path": "scripting-in-servicenow-fundamentals/05-ssnf-client-scripts.md",
+        "excerpt": "Use the Order field when multiple Client Scripts for the same table have conflicting logic. Execute in order from lowest to highest. And it does not appear on the Client Script form baseline."
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Client Scripts",
+        "domainSlug": "client-scripts",
+        "domainPercentage": 12,
+        "subtopics": [
+          "Client script best practices"
+        ],
+        "tags": [
+          "client-scripts",
+          "order-field",
+          "execution-order"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-05T20:26:59.000Z",
+        "version": "1.0",
+        "release": "Yokohama",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-client-scripts-005",
+      "certification": "cad",
+      "topic": "client-scripts",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_select",
+      "question": "When a user clicks 'New' to open a new incident form, which of the following can fire during the form rendering process? (Select all that apply)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Query business rules"
+        },
+        {
+          "id": "b",
+          "text": "Display business rules"
+        },
+        {
+          "id": "c",
+          "text": "onLoad client scripts"
+        },
+        {
+          "id": "d",
+          "text": "Before business rules"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b",
+        "c"
+      ],
+      "explanation": {
+        "correct": "When clicking 'New' to open a form, query business rules fire when the table is queried for a new record, display business rules fire as the form renders to populate the scratchpad, and onLoad client scripts fire in the browser after the form loads but before the user gets control. See: https://docs.servicenow.com/bundle/yokohama-application-development/page/script/client-scripts/concept/c_ClientScripts.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "d",
+            "explanation": "Before business rules fire when a record is being inserted or updated (e.g., when clicking Submit or Save), not when a new empty form is being opened for display.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/business-rules/concept/c_BusinessRules.html"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow Docs - Client Scripts",
+        "ServiceNow Docs - Business Rules"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "course",
+        "path": "application-development-fundamentals-on-demand/08-adf-scripting-demo-part-3-of-4.md",
+        "excerpt": "When I click New, that's going to send a request to the server and query the table, asking for a new incident form... that's when a query business rule could fire... as the form is rendering, a display business rule may have fired by then, as well... immediately after that display business rule, an onLoad client script could fire, as well."
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Client Scripts",
+        "domainSlug": "client-scripts",
+        "domainPercentage": 12,
+        "subtopics": [
+          "Client script types (onLoad, onChange, onSubmit, onCellEdit)"
+        ],
+        "tags": [
+          "client-scripts",
+          "onLoad",
+          "business-rules",
+          "execution-order",
+          "form-rendering"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-05T20:26:59.000Z",
+        "version": "1.0",
+        "release": "Yokohama",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-client-scripts-006",
+      "certification": "cad",
+      "topic": "client-scripts",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A developer needs to highlight VIP callers when the Caller field changes on the Incident form, but only when users are viewing the Self-Service (ESS) view. Which client script configuration should the developer use?",
+      "options": [
+        {
+          "id": "a",
+          "text": "An onLoad client script with the View field set to ESS"
+        },
+        {
+          "id": "b",
+          "text": "An onChange client script on the Caller field with the View field set to ESS"
+        },
+        {
+          "id": "c",
+          "text": "An onSubmit client script with a condition that checks the current view"
+        },
+        {
+          "id": "d",
+          "text": "An onChange client script on the Caller field with no View specified"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "An onChange client script is required because the action must trigger when the Caller field value changes. Setting the View field to ESS restricts the script to execute only when users view the Self-Service view. See: https://docs.servicenow.com/bundle/yokohama-application-development/page/script/client-scripts/concept/c_ClientScripts.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "An onLoad client script runs when the form loads, not when a specific field value changes. It would not respond to changes in the Caller field.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/client-scripts/concept/c_ClientScripts.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "An onSubmit client script runs when the form is submitted, saved, or updated — not when a field value changes. This would not highlight VIP callers in real time.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/client-scripts/concept/c_ClientScripts.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "While using an onChange client script on the Caller field is partially correct, not specifying a View would cause the script to execute on all views, not just the Self-Service (ESS) view as required.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/client-scripts/concept/c_ClientScripts.html"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow Docs - Client Scripts"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "scripting-in-servicenow-fundamentals/05-ssnf-client-scripts.md",
+        "excerpt": "we have onChange of the Caller field... this client script is specifically executing onChange of the Caller field when someone is looking at the ESS or self-service view. But because it's only that view, this wouldn't necessarily execute when you're on the default view, for example, or maybe another view that you created."
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Client Scripts",
+        "domainSlug": "client-scripts",
+        "domainPercentage": 12,
+        "subtopics": [
+          "Client script types (onLoad, onChange, onSubmit, onCellEdit)"
+        ],
+        "tags": [
+          "client-scripts",
+          "onChange",
+          "view-filtering",
+          "ESS",
+          "self-service",
+          "VIP"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-05T20:26:59.000Z",
+        "version": "1.0",
+        "release": "Yokohama",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-client-scripts-007",
+      "certification": "cad",
+      "topic": "client-scripts",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which GlideForm (g_form) method is used to retrieve the current value of a field on a form in a client script?",
+      "options": [
+        {
+          "id": "a",
+          "text": "g_form.getFieldValue()"
+        },
+        {
+          "id": "b",
+          "text": "g_form.getValue()"
+        },
+        {
+          "id": "c",
+          "text": "g_form.get()"
+        },
+        {
+          "id": "d",
+          "text": "g_form.readValue()"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The g_form.getValue('fieldName') method retrieves the value of a specified field on the current form. This is the standard GlideForm API method for reading field values in client scripts and UI policies.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "getFieldValue() is not a valid GlideForm method. The correct method is getValue().",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/app-store/dev_portal/API_reference/GlideForm/concept/GlideFormAPI.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "g_form.get() is not a valid method for retrieving field values. getValue() is the correct GlideForm method for this purpose.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/app-store/dev_portal/API_reference/GlideForm/concept/GlideFormAPI.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "readValue() is not a valid GlideForm method. The GlideForm API uses getValue() and setValue() for reading and writing field values.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/app-store/dev_portal/API_reference/GlideForm/concept/GlideFormAPI.html"
+          }
+        ]
+      },
+      "references": [
+        "https://docs.servicenow.com/bundle/yokohama-application-development/page/app-store/dev_portal/API_reference/GlideForm/concept/GlideFormAPI.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "application-development-fundamentals-on-demand/09-adf-scripting-demo-part-4-of-4.md",
+        "excerpt": "I know that if I want to get the value of the impact field, say from a UI policy or a client script, I need to use this GlideForm method, getValue. Maybe add store it into a variable."
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Client Scripts",
+        "domainSlug": "client-scripts",
+        "domainPercentage": 12,
+        "subtopics": [
+          "g_form API methods"
+        ],
+        "tags": [
+          "g_form",
+          "getValue",
+          "client-script",
+          "GlideForm"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2025-07-17T20:30:00.000Z",
+        "version": "1.0",
+        "release": "Yokohama",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-client-scripts-008",
+      "certification": "cad",
+      "topic": "client-scripts",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "In which type of ServiceNow script are the 'current' and 'previous' objects available for accessing record field values?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Client scripts"
+        },
+        {
+          "id": "b",
+          "text": "UI policies"
+        },
+        {
+          "id": "c",
+          "text": "Business rules"
+        },
+        {
+          "id": "d",
+          "text": "UI scripts"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "The 'current' and 'previous' objects are available in server-side scripts that are associated with a table, such as business rules. The 'current' object contains the values being submitted, while 'previous' contains the values before the update. These objects are not available client-side.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Client scripts run in the browser (client-side) and do not have access to the current or previous objects. They use the g_form API to interact with form fields.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/client-scripts/concept/c_ClientScripts.html"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "UI policies are client-side configurations and do not have access to the current or previous objects. They use g_form methods to get and set field values.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/administer/ui-policies/concept/c_UIPolicies.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "UI scripts are client-side script libraries that run in the browser. They do not have access to server-side objects like current and previous.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/client-scripts/concept/c_UIScripts.html"
+          }
+        ]
+      },
+      "references": [
+        "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/server-scripting/concept/c_BusinessRules.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "application-development-fundamentals-on-demand/09-adf-scripting-demo-part-4-of-4.md",
+        "excerpt": "Test number one-- are you dealing with a server-side script, like a business rule? If so, you're halfway there. There is no current or previous object available client-side."
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Client Scripts",
+        "domainSlug": "client-scripts",
+        "domainPercentage": 12,
+        "subtopics": [
+          "Client script best practices"
+        ],
+        "tags": [
+          "current",
+          "previous",
+          "business-rule",
+          "server-side"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2025-07-17T20:30:00.000Z",
+        "version": "1.0",
+        "release": "Yokohama",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-client-scripts-009",
+      "certification": "cad",
+      "topic": "client-scripts",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "Why are display business rules with the g_scratchpad object preferred over GlideAjax calls when server-side data is needed at form load?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Display business rules can dynamically update data when field values change on the form"
+        },
+        {
+          "id": "b",
+          "text": "Display business rules send data along with the initial form load, avoiding an additional round trip to the server"
+        },
+        {
+          "id": "c",
+          "text": "The g_scratchpad object allows client scripts to directly query the database without server involvement"
+        },
+        {
+          "id": "d",
+          "text": "Display business rules execute asynchronously and therefore do not impact form load performance"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Display business rules run on the server before the form is sent to the client. By writing values to the g_scratchpad object, the data 'rides along' with the form response, eliminating the need for a separate asynchronous server call (GlideAjax). This avoids an additional round trip and improves performance.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Display business rules only fire once when the form loads. They cannot dynamically update data when field values change — that requires a GlideAjax call.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/server-scripting/concept/c_DisplayBusinessRules.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The g_scratchpad object is simply a data-passing mechanism between a display business rule and client scripts. It does not allow direct database queries from the client side.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/server-scripting/concept/c_DisplayBusinessRules.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Display business rules are synchronous server-side scripts that execute before the form is rendered. They are not asynchronous. Their advantage is that they piggyback on the existing form load request.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/server-scripting/concept/c_DisplayBusinessRules.html"
+          }
+        ]
+      },
+      "references": [
+        "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/server-scripting/concept/c_DisplayBusinessRules.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "application-development-fundamentals-on-demand/09-adf-scripting-demo-part-4-of-4.md",
+        "excerpt": "we're saying, if you're going to be there anyway, please bring back this extra thing for me so I can avoid making a round trip. That is what display business rules in scratchpad do for us. That's why we like them."
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Client Scripts",
+        "domainSlug": "client-scripts",
+        "domainPercentage": 12,
+        "subtopics": [
+          "Client script best practices",
+          "GlideAjax from client side"
+        ],
+        "tags": [
+          "display-business-rule",
+          "g_scratchpad",
+          "GlideAjax",
+          "performance"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2025-07-17T20:30:00.000Z",
+        "version": "1.0",
+        "release": "Yokohama",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-client-scripts-010",
+      "certification": "cad",
+      "topic": "client-scripts",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_select",
+      "question": "In which of the following server-side script types must a developer query records using GlideRecord or GlideQuery instead of relying on the 'current' object? (Select all that apply)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Business rules"
+        },
+        {
+          "id": "b",
+          "text": "Scheduled scripts"
+        },
+        {
+          "id": "c",
+          "text": "Script includes"
+        },
+        {
+          "id": "d",
+          "text": "Script actions"
+        }
+      ],
+      "correctAnswers": [
+        "b",
+        "c"
+      ],
+      "explanation": {
+        "correct": "Scheduled scripts and script includes are server-side scripts that are not directly associated with a table record operation. They do not have the 'current' or 'previous' objects automatically provided. To access records, developers must explicitly query using GlideRecord or GlideQuery.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Business rules are associated with a specific table and fire in response to record operations (insert, update, delete, query). They automatically receive the 'current' and 'previous' objects.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/server-scripting/concept/c_BusinessRules.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Script actions are triggered by events that are associated with a specific record, so they do have access to the 'current' object representing the record that triggered the event.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/server-scripting/concept/c_ScriptActions.html"
+          }
+        ]
+      },
+      "references": [
+        "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/server-scripting/concept/c_ServerSideScripting.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "application-development-fundamentals-on-demand/09-adf-scripting-demo-part-4-of-4.md",
+        "excerpt": "other types of server-side scripts, like fixed scripts, scheduled scripts, script includes, in all of those, if you want to access a particular record, you're going to have to query it with GlideRecord or GlideQuery."
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Client Scripts",
+        "domainSlug": "client-scripts",
+        "domainPercentage": 12,
+        "subtopics": [
+          "Client script best practices"
+        ],
+        "tags": [
+          "current",
+          "previous",
+          "GlideRecord",
+          "GlideQuery",
+          "server-side"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2025-07-17T20:30:00.000Z",
+        "version": "1.0",
+        "release": "Yokohama",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-client-scripts-011",
+      "certification": "cad",
+      "topic": "client-scripts",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A developer needs to display the Assigned To user's manager's email address in a field message on the Incident form. The email should appear when the form loads but does not need to update when the Assigned To field value changes. What is the recommended approach?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Use dot-walking in an onLoad client script to access current.assigned_to.manager.email"
+        },
+        {
+          "id": "b",
+          "text": "Write a GlideAjax call in an onChange client script to fetch the manager's email from the server"
+        },
+        {
+          "id": "c",
+          "text": "Use a display business rule to dot-walk to the manager's email and pass it to the client via g_scratchpad"
+        },
+        {
+          "id": "d",
+          "text": "Create a UI macro that queries the manager's email and renders it on the form"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "A display business rule can dot-walk server-side to retrieve the assigned user's manager's email (e.g., current.assigned_to.manager.email) and write it to g_scratchpad. The client script then reads the value from g_scratchpad when the form loads. This avoids an extra round trip to the server since the data is sent along with the form.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Client scripts cannot use dot-walking on the 'current' object because it is a server-side object. Client scripts do not have access to 'current' or 'previous', and dot-walking to related records is not possible client-side.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/client-scripts/concept/c_ClientScripts.html"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "While GlideAjax would work, it makes an additional asynchronous round trip to the server. Since the requirement only needs the data at form load and not dynamically, a display business rule with g_scratchpad is more efficient and the recommended approach.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/ajax/concept/c_GlideAjax.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "UI macros are used for reusable UI components (Jelly-based) and are not the recommended pattern for passing server-side data to client scripts. The display business rule and scratchpad pattern is the standard approach for this use case.",
+            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/server-scripting/concept/c_DisplayBusinessRules.html"
+          }
+        ]
+      },
+      "references": [
+        "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/server-scripting/concept/c_DisplayBusinessRules.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "application-development-fundamentals-on-demand/09-adf-scripting-demo-part-4-of-4.md",
+        "excerpt": "this technique, dot walking in a display business rule and writing it to the scratchpad, allows us to get this information which our client script wouldn't ordinarily be able to figure out because it involves a server call."
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Client Scripts",
+        "domainSlug": "client-scripts",
+        "domainPercentage": 12,
+        "subtopics": [
+          "GlideAjax from client side",
+          "Client script best practices"
+        ],
+        "tags": [
+          "display-business-rule",
+          "g_scratchpad",
+          "dot-walking",
+          "field-message",
+          "GlideAjax"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2025-07-17T20:30:00.000Z",
+        "version": "1.0",
+        "release": "Yokohama",
+        "reviewed": false
+      }
+    }
+  ]
+}

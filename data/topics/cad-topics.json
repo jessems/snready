@@ -1,0 +1,173 @@
+{
+  "certification": "cad",
+  "topics": [
+    {
+      "slug": "scripting-apis",
+      "name": "Scripting & APIs",
+      "domain": "scripting-apis",
+      "description": "Master GlideRecord, GlideSystem, GlideAjax, and server-side scripting on the ServiceNow platform. Learn essential APIs for querying, updating, and managing records programmatically.",
+      "introduction": {
+        "overview": "Server-side scripting is the core of ServiceNow application development. The platform provides powerful APIs like GlideRecord for database operations, GlideSystem for system-level utilities, and GlideAjax for client-server communication. Understanding these APIs and their proper usage is fundamental to building reliable, performant applications.",
+        "whyItMatters": "Scripting & APIs is the largest domain on the CAD exam at 25%. Questions test your ability to write effective server-side scripts, use the correct API for the right situation, and understand scripting contexts. Expect questions about GlideRecord queries, GlideSystem methods, and debugging techniques.",
+        "keyConcepts": "Focus on GlideRecord CRUD operations (query, insert, update, delete), GlideSystem utility methods (gs.log, gs.getUser, gs.addInfoMessage), and GlideAjax for asynchronous client-server communication. Understand the difference between server-side and client-side scripting contexts.",
+        "examTips": "Know the difference between getValue() and getDisplayValue(). Understand addQuery(), addEncodedQuery(), and query chaining. Be familiar with GlideAggregate for counting and summing. Remember that GlideRecord scripts run on the server while g_form scripts run on the client."
+      },
+      "keyConcepts": [
+        "GlideRecord queries and CRUD operations",
+        "GlideSystem utility methods",
+        "GlideAjax client-server communication",
+        "GlideAggregate for reporting",
+        "Script debugging and logging",
+        "Server-side scripting contexts",
+        "Flow Designer scripting actions",
+        "Scoped vs global scripting"
+      ],
+      "questionCount": 24,
+      "freeQuestionCount": 5
+    },
+    {
+      "slug": "business-rules",
+      "name": "Business Rules",
+      "domain": "business-rules",
+      "description": "Create and manage business rules for server-side automation. Understand when business rules execute, how to use conditions and scripts, and best practices for server-side logic.",
+      "introduction": {
+        "overview": "Business Rules are server-side scripts that execute when database records are displayed, inserted, updated, deleted, or queried. They are one of the most powerful automation tools in ServiceNow, allowing developers to enforce data policies, automate workflows, and implement complex business logic.",
+        "whyItMatters": "Business Rules account for 15% of the CAD exam. Questions focus on understanding the different types of business rules (before, after, async, display), when each type executes, and how to use the current and previous objects effectively.",
+        "keyConcepts": "Understand the four types of business rules and their execution order. Know how to use conditions vs scripts for rule logic. Learn when to use before rules (data validation/modification) vs after rules (related record updates) vs async rules (heavy processing).",
+        "examTips": "Remember that 'before' business rules can modify the current record without an explicit update() call, while 'after' rules require update() for changes to related records. Know that 'display' business rules run when a form loads and can set scratchpad values for client scripts."
+      },
+      "keyConcepts": [
+        "Before, after, async, and display business rules",
+        "current and previous objects",
+        "Business rule conditions and scripts",
+        "Execution order and when to run",
+        "Scheduled script execution",
+        "Script debugging techniques",
+        "g_scratchpad for display rules",
+        "Business rule best practices"
+      ],
+      "questionCount": 14,
+      "freeQuestionCount": 5
+    },
+    {
+      "slug": "client-scripts",
+      "name": "Client Scripts",
+      "domain": "client-scripts",
+      "description": "Implement client-side scripting for form customization and improved user experience. Master g_form, g_user, and g_list APIs for dynamic form behavior.",
+      "introduction": {
+        "overview": "Client Scripts run in the user's web browser and allow developers to customize form behavior dynamically. They respond to user actions like loading a form, changing a field, or submitting a record. The g_form API provides methods to manipulate form fields, while g_user gives access to the current user's information.",
+        "whyItMatters": "Client Scripts represent 12% of the CAD exam. Questions test your knowledge of different client script types, the g_form API, and when to use client scripts vs UI policies. Understanding the client-side context and its limitations is crucial.",
+        "keyConcepts": "Master the four client script types: onLoad (form display), onChange (field value change), onSubmit (form submission), and onCellEdit (list editing). Know the g_form API methods for showing/hiding fields, setting values, and making fields mandatory.",
+        "examTips": "Remember that client scripts run in the browser so they cannot use server-side APIs like GlideRecord directly \u2014 use GlideAjax instead. Know that onChange scripts receive control, oldValue, newValue, and isLoading parameters. The isLoading parameter helps prevent unwanted execution during form load."
+      },
+      "keyConcepts": [
+        "onLoad, onChange, onSubmit, onCellEdit types",
+        "g_form API methods",
+        "g_user and g_list objects",
+        "GlideAjax from client side",
+        "Client script vs UI Policy decisions",
+        "Mobile/Service Portal considerations",
+        "Client script debugging",
+        "Performance best practices"
+      ],
+      "questionCount": 11,
+      "freeQuestionCount": 5
+    },
+    {
+      "slug": "ui-policies-actions",
+      "name": "UI Policies & Actions",
+      "domain": "ui-policies-actions",
+      "description": "Dynamically change form behavior without scripting using UI Policies. Create custom buttons and menu items with UI Actions for streamlined workflows.",
+      "introduction": {
+        "overview": "UI Policies provide a no-code/low-code approach to dynamically changing form behavior based on conditions. They can make fields mandatory, read-only, or visible/hidden without writing client scripts. UI Actions extend the interface with custom buttons, links, and context menu items that trigger server-side or client-side logic.",
+        "whyItMatters": "UI Policies & Actions make up 10% of the CAD exam. Questions test your understanding of when to use UI Policies vs Client Scripts, how UI Policy conditions work, and how to create effective UI Actions for custom form buttons.",
+        "keyConcepts": "Understand UI Policy conditions (simple vs scripted), UI Policy actions (mandatory, visible, read-only), and execution order. Know how UI Actions create form buttons, list buttons, and context menu items. Learn when each approach is appropriate.",
+        "examTips": "UI Policies are preferred over client scripts for simple show/hide and mandatory behavior because they work across all interfaces (desktop, mobile, Service Portal). Remember that UI Policies execute in order and can override each other. Know the difference between client-side and server-side UI Actions."
+      },
+      "keyConcepts": [
+        "UI Policy conditions and actions",
+        "UI Policy vs Client Script decisions",
+        "UI Actions (form, list, context menu)",
+        "Data Policies for server-side enforcement",
+        "Execution order and priority",
+        "Scripted UI Policy conditions",
+        "UI Action visibility conditions",
+        "Cross-platform considerations"
+      ],
+      "questionCount": 13,
+      "freeQuestionCount": 5
+    },
+    {
+      "slug": "script-includes",
+      "name": "Script Includes",
+      "domain": "script-includes",
+      "description": "Build reusable server-side JavaScript libraries with Script Includes. Learn to extend classes, create client-callable scripts, and implement the AbstractAjaxProcessor pattern.",
+      "introduction": {
+        "overview": "Script Includes are reusable server-side JavaScript objects that are loaded on demand. They promote code reuse and maintainability by encapsulating logic in class-based structures. Client-callable Script Includes enable client-server communication through the GlideAjax framework, following the AbstractAjaxProcessor pattern.",
+        "whyItMatters": "Script Includes account for 12% of the CAD exam. Questions focus on creating and using Script Includes, extending base classes, making Script Includes client-callable, and understanding scope implications.",
+        "keyConcepts": "Master the Script Include structure with initialize() and prototype patterns. Understand how to extend AbstractAjaxProcessor for client-callable Script Includes. Know the difference between scoped and global Script Includes and when each is appropriate.",
+        "examTips": "Remember that client-callable Script Includes must extend AbstractAjaxProcessor and have the 'Client callable' checkbox selected. The getParameter() method retrieves values passed from GlideAjax. Script Includes are loaded on demand \u2014 they don't execute until called."
+      },
+      "keyConcepts": [
+        "Script Include structure and prototypes",
+        "Extending classes (AbstractAjaxProcessor)",
+        "Client-callable Script Includes",
+        "GlideAjax integration patterns",
+        "Scoped vs global Script Includes",
+        "Code reuse best practices",
+        "Script Include debugging",
+        "initialize() and type patterns"
+      ],
+      "questionCount": 12,
+      "freeQuestionCount": 5
+    },
+    {
+      "slug": "integration-rest",
+      "name": "Integration & REST APIs",
+      "domain": "integration-rest",
+      "description": "Build integrations using REST APIs, web services, and data import tools. Master inbound and outbound REST, Import Sets, and Transform Maps.",
+      "introduction": {
+        "overview": "ServiceNow provides comprehensive integration capabilities through REST APIs, SOAP web services, Import Sets, and Integration Hub. Developers can create Scripted REST APIs for inbound integrations, use RESTMessageV2 for outbound calls, and leverage Import Sets with Transform Maps for bulk data loading.",
+        "whyItMatters": "Integration & REST APIs represent 15% of the CAD exam. Questions cover building REST integrations, creating Scripted REST APIs, configuring Import Sets and Transform Maps, and understanding authentication methods for web services.",
+        "keyConcepts": "Understand the difference between inbound and outbound integrations. Know how to create Scripted REST APIs with custom endpoints. Master RESTMessageV2 for outbound REST calls. Learn Import Sets and Transform Maps for data loading workflows.",
+        "examTips": "Know the difference between Table API (standard) and Scripted REST API (custom). Understand REST authentication methods (Basic, OAuth, mutual TLS). Remember that Import Sets create staging tables and Transform Maps define the mapping to target tables. Be familiar with coalesce fields for update-or-insert logic."
+      },
+      "keyConcepts": [
+        "Scripted REST APIs",
+        "Outbound REST Messages (RESTMessageV2)",
+        "Import Sets and Transform Maps",
+        "Table API vs Scripted REST API",
+        "Authentication methods",
+        "JSON/XML parsing",
+        "Coalesce fields for upsert",
+        "Integration Hub basics"
+      ],
+      "questionCount": 13,
+      "freeQuestionCount": 5
+    },
+    {
+      "slug": "application-development",
+      "name": "Application Development",
+      "domain": "application-development",
+      "description": "Build and deploy scoped applications using ServiceNow Studio. Manage update sets, implement application security, and test with the Automated Test Framework.",
+      "introduction": {
+        "overview": "ServiceNow Studio is the IDE for building scoped applications. Scoped applications provide isolation and portability, with their own tables, scripts, and security rules. The application lifecycle includes development, testing with ATF, and deployment via update sets or the App Repository.",
+        "whyItMatters": "Application Development covers 11% of the CAD exam. Questions test your knowledge of the scoped application model, Studio IDE capabilities, update set management, and the Automated Test Framework (ATF) for testing.",
+        "keyConcepts": "Understand application scope and how it affects script access. Know how to use Studio for development. Master update sets for migration between instances. Learn ATF for automated testing of application functionality.",
+        "examTips": "Remember that scoped applications have their own namespace and cannot access global tables without explicit cross-scope access. Know the difference between application scope and update set scope. Understand that ATF tests can validate forms, workflows, and security rules. Be familiar with the application deployment lifecycle."
+      },
+      "keyConcepts": [
+        "Scoped applications and namespaces",
+        "ServiceNow Studio IDE",
+        "Update sets management",
+        "Application deployment lifecycle",
+        "Automated Test Framework (ATF)",
+        "Application security (ACLs)",
+        "Cross-scope access",
+        "Source control integration"
+      ],
+      "questionCount": 43,
+      "freeQuestionCount": 5
+    }
+  ]
+}
