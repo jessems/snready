@@ -1,0 +1,769 @@
+{
+  "certification": "csa",
+  "topic": "ui-navigation",
+  "questions": [
+    {
+      "id": "csa-ui-001",
+      "certification": "csa",
+      "topic": "ui-navigation",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What does a list in ServiceNow display?",
+      "options": [
+        { "id": "a", "text": "A single record from a table" },
+        { "id": "b", "text": "Records from a table where each row is a record and each column is a field" },
+        { "id": "c", "text": "Only the fields marked as mandatory" },
+        { "id": "d", "text": "Configuration settings for applications" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "A list shows records from a table. In both the core platform and workspace, each row is a record and each column is a field. Lists can be interacted with in various ways including filtering and sorting.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "A single record is displayed on a form, not a list. Lists show multiple records.", "reference": "Lists vs Forms" },
+          { "choiceId": "c", "explanation": "Lists show all configured fields, not just mandatory ones.", "reference": "List Configuration" },
+          { "choiceId": "d", "explanation": "Configuration settings are managed in different modules, not in lists.", "reference": "System Configuration" }
+        ]
+      },
+      "references": ["ServiceNow List Documentation"],
+      "isFree": true,
+      "source": {
+        "type": "course",
+        "course": {
+          "courseSlug": "servicenow-administration-fundamentals-xanadu",
+          "moduleTitle": "SNAF Module 3: Configure applications for business",
+          "lessonSlug": "01-lists-and-filters",
+          "lessonTitle": "Lists and filters",
+          "url": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=5115a7d447335ad4ca332a81736d436e&spa=1"
+        },
+        "path": "sn-course-scraper/scraped-courses/servicenow-administration-fundamentals-xanadu/01-lists-and-filters.md",
+        "excerpt": "A list shows records from a table. On the ServiceNow platform, lists can be interacted with in various ways. In both the core platform and workspace, each row is a record and each column is a field."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "User Interface & Navigation",
+        "domainSlug": "ui-navigation",
+        "domainPercentage": 15,
+        "subtopics": ["Lists and list controls"],
+        "tags": ["lists", "records", "fields", "tables"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-04T23:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-ui-002",
+      "certification": "csa",
+      "topic": "ui-navigation",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What is the purpose of views in ServiceNow?",
+      "options": [
+        { "id": "a", "text": "To delete records from the database" },
+        { "id": "b", "text": "To display lists or forms in different ways for different user types" },
+        { "id": "c", "text": "To create new tables automatically" },
+        { "id": "d", "text": "To import data from external sources" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "Views allow users to display lists or forms in different ways. System administrators can create views for different user types, such as employee, self-service, and mobile users. The number of records stays the same, but field order may vary.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "Views don't delete records; they only control how data is displayed.", "reference": "Views" },
+          { "choiceId": "c", "explanation": "Table creation is a separate administrative function.", "reference": "Table Administration" },
+          { "choiceId": "d", "explanation": "Data import is handled by Import Sets, not views.", "reference": "Import Sets" }
+        ]
+      },
+      "references": ["ServiceNow Views"],
+      "isFree": true,
+      "source": {
+        "type": "course",
+        "course": {
+          "courseSlug": "servicenow-administration-fundamentals-xanadu",
+          "moduleTitle": "SNAF Module 3: Configure applications for business",
+          "lessonSlug": "01-lists-and-filters",
+          "lessonTitle": "Lists and filters",
+          "url": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=5115a7d447335ad4ca332a81736d436e&spa=1"
+        },
+        "path": "sn-course-scraper/scraped-courses/servicenow-administration-fundamentals-xanadu/01-lists-and-filters.md",
+        "excerpt": "Views allow users to display lists or forms in different ways. System administrators can create views for different user types, such as employee, self-service, and mobile users."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "User Interface & Navigation",
+        "domainSlug": "ui-navigation",
+        "domainPercentage": 15,
+        "subtopics": ["Lists and list controls"],
+        "tags": ["views", "display", "user types", "customization"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-04T23:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-ui-003",
+      "certification": "csa",
+      "topic": "ui-navigation",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What is dot-walking in ServiceNow?",
+      "options": [
+        { "id": "a", "text": "A method to delete multiple records at once" },
+        { "id": "b", "text": "Collecting data from related tables via reference fields" },
+        { "id": "c", "text": "A type of user authentication" },
+        { "id": "d", "text": "A workflow execution pattern" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "Dot-walking collects data from related tables via reference fields. It works in form layout, but not in form design. It's commonly used in form builder, list views, platform analytics, and Workflow Studio.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "Deleting records is done through list editing or bulk delete, not dot-walking.", "reference": "Record Deletion" },
+          { "choiceId": "c", "explanation": "Authentication is managed separately and unrelated to dot-walking.", "reference": "Authentication" },
+          { "choiceId": "d", "explanation": "Workflow execution follows different patterns; dot-walking is about data relationships.", "reference": "Workflows" }
+        ]
+      },
+      "references": ["ServiceNow Dot-Walking"],
+      "isFree": true,
+      "source": {
+        "type": "course",
+        "course": {
+          "courseSlug": "servicenow-administration-fundamentals-xanadu",
+          "moduleTitle": "SNAF Module 3: Configure applications for business",
+          "lessonSlug": "01-lists-and-filters",
+          "lessonTitle": "Lists and filters",
+          "url": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=5115a7d447335ad4ca332a81736d436e&spa=1"
+        },
+        "path": "sn-course-scraper/scraped-courses/servicenow-administration-fundamentals-xanadu/01-lists-and-filters.md",
+        "excerpt": "Dot-walking collects data from related tables via reference fields. It works in form layout, but not in form design."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "User Interface & Navigation",
+        "domainSlug": "ui-navigation",
+        "domainPercentage": 15,
+        "subtopics": ["Lists and list controls", "Forms and form sections"],
+        "tags": ["dot-walking", "reference fields", "related tables"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-04T23:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-ui-004",
+      "certification": "csa",
+      "topic": "ui-navigation",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What are the three parts of a filter condition in ServiceNow?",
+      "options": [
+        { "id": "a", "text": "Table, Record, and Value" },
+        { "id": "b", "text": "Field, Operator, and Value" },
+        { "id": "c", "text": "User, Role, and Permission" },
+        { "id": "d", "text": "Name, Description, and Category" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "A filter condition has three parts: Field (can include related tables), Operator (varies by field type, like 'greater than' for numbers), and Value (text entry or choice list based on field type).",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "While tables and records are concepts in ServiceNow, they're not the three parts of a filter condition.", "reference": "Filters" },
+          { "choiceId": "c", "explanation": "User, Role, and Permission relate to security, not filter conditions.", "reference": "Security" },
+          { "choiceId": "d", "explanation": "These are common field types but not the components of a filter condition.", "reference": "Fields" }
+        ]
+      },
+      "references": ["ServiceNow Filters"],
+      "isFree": true,
+      "source": {
+        "type": "course",
+        "course": {
+          "courseSlug": "servicenow-administration-fundamentals-xanadu",
+          "moduleTitle": "SNAF Module 3: Configure applications for business",
+          "lessonSlug": "01-lists-and-filters",
+          "lessonTitle": "Lists and filters",
+          "url": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=5115a7d447335ad4ca332a81736d436e&spa=1"
+        },
+        "path": "sn-course-scraper/scraped-courses/servicenow-administration-fundamentals-xanadu/01-lists-and-filters.md",
+        "excerpt": "A filter condition has three parts. Field-- able to be chosen based on user access, can include related tables. Operator-- varies by field type. Value-- text entry or choice list based on field."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "User Interface & Navigation",
+        "domainSlug": "ui-navigation",
+        "domainPercentage": 15,
+        "subtopics": ["Filters and breadcrumbs"],
+        "tags": ["filters", "conditions", "operators"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-04T23:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-ui-005",
+      "certification": "csa",
+      "topic": "ui-navigation",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What is the difference between personalize list and configure list layout?",
+      "options": [
+        { "id": "a", "text": "They are the same function with different names" },
+        { "id": "b", "text": "Personalize list affects only the individual user; configure list layout affects everyone" },
+        { "id": "c", "text": "Personalize list is for admins only; configure list layout is for all users" },
+        { "id": "d", "text": "Personalize list is permanent; configure list layout is temporary" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "Where the list layout configuration affects everyone, the personalize list modifies the layout of a list for an individual user. It does not affect the platform default. Personalization should be used for temporary situations.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "They have different scopes - one affects all users, one affects only the individual.", "reference": "List Configuration" },
+          { "choiceId": "c", "explanation": "The distinction is about scope of changes, not user permissions.", "reference": "Personalization" },
+          { "choiceId": "d", "explanation": "Actually, personalization persists for the user, but system changes override it.", "reference": "List Views" }
+        ]
+      },
+      "references": ["ServiceNow List Personalization"],
+      "isFree": true,
+      "source": {
+        "type": "course",
+        "course": {
+          "courseSlug": "servicenow-administration-fundamentals-xanadu",
+          "moduleTitle": "SNAF Module 3: Configure applications for business",
+          "lessonSlug": "01-lists-and-filters",
+          "lessonTitle": "Lists and filters",
+          "url": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=5115a7d447335ad4ca332a81736d436e&spa=1"
+        },
+        "path": "sn-course-scraper/scraped-courses/servicenow-administration-fundamentals-xanadu/01-lists-and-filters.md",
+        "excerpt": "Where the list layout configuration affects everyone, the personalize list modifies the layout of a list for an individual user. It does not affect the platform default."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "User Interface & Navigation",
+        "domainSlug": "ui-navigation",
+        "domainPercentage": 15,
+        "subtopics": ["Lists and list controls"],
+        "tags": ["personalization", "list configuration", "user settings"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-04T23:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-ui-006",
+      "certification": "csa",
+      "topic": "ui-navigation",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A user has personalized their incident list view. Later, an administrator adds a new column to the default list view. What will happen for that user?",
+      "options": [
+        { "id": "a", "text": "The user will automatically see the new column" },
+        { "id": "b", "text": "The user will not see the new column until they choose 'reset to column defaults'" },
+        { "id": "c", "text": "The user's personalization will be automatically deleted" },
+        { "id": "d", "text": "The administrator's change will be rejected" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "Any global changes that occur at the system level will not be reflected in a personalized list. If the system administrator configures a list view a user has personalized, they will not see those newly added default changes until they choose reset to column defaults.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "Personalization overrides system defaults; users must manually reset to see new default columns.", "reference": "Personalization" },
+          { "choiceId": "c", "explanation": "User personalization is preserved; it just overrides the system view.", "reference": "List Views" },
+          { "choiceId": "d", "explanation": "Admin changes are applied to the system default, they just don't override user personalizations.", "reference": "List Configuration" }
+        ]
+      },
+      "references": ["ServiceNow List Personalization"],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "course": {
+          "courseSlug": "servicenow-administration-fundamentals-xanadu",
+          "moduleTitle": "SNAF Module 3: Configure applications for business",
+          "lessonSlug": "01-lists-and-filters",
+          "lessonTitle": "Lists and filters",
+          "url": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=5115a7d447335ad4ca332a81736d436e&spa=1"
+        },
+        "path": "sn-course-scraper/scraped-courses/servicenow-administration-fundamentals-xanadu/01-lists-and-filters.md",
+        "excerpt": "Any global changes that occur at the system level will not be reflected in a personalized list. If the system administrator configures a list view a user has personalized, they will not see those newly added default changes until they choose reset to column defaults."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "User Interface & Navigation",
+        "domainSlug": "ui-navigation",
+        "domainPercentage": 15,
+        "subtopics": ["Lists and list controls"],
+        "tags": ["personalization", "list configuration", "defaults"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-04T23:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-ui-007",
+      "certification": "csa",
+      "topic": "ui-navigation",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Where is the view name displayed on a list or form?",
+      "options": [
+        { "id": "a", "text": "At the bottom of the page" },
+        { "id": "b", "text": "In brackets beside the table or form title (unless it's the default view)" },
+        { "id": "c", "text": "In the Application Navigator" },
+        { "id": "d", "text": "In the user profile settings" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "The view name will appear in brackets beside the table or form title, unless it's the default view. This helps users identify which view they are currently using.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "View names are displayed near the title, not at the bottom of the page.", "reference": "Views" },
+          { "choiceId": "c", "explanation": "The Application Navigator shows modules and menus, not current view names.", "reference": "Navigator" },
+          { "choiceId": "d", "explanation": "User profile settings contain user preferences, not current view indicators.", "reference": "User Settings" }
+        ]
+      },
+      "references": ["ServiceNow Views"],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "course": {
+          "courseSlug": "servicenow-administration-fundamentals-xanadu",
+          "moduleTitle": "SNAF Module 3: Configure applications for business",
+          "lessonSlug": "01-lists-and-filters",
+          "lessonTitle": "Lists and filters",
+          "url": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=5115a7d447335ad4ca332a81736d436e&spa=1"
+        },
+        "path": "sn-course-scraper/scraped-courses/servicenow-administration-fundamentals-xanadu/01-lists-and-filters.md",
+        "excerpt": "The view name will appear in brackets beside the table or form title, unless it's the default view."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "User Interface & Navigation",
+        "domainSlug": "ui-navigation",
+        "domainPercentage": 15,
+        "subtopics": ["Lists and list controls", "Forms and form sections"],
+        "tags": ["views", "UI", "navigation"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-04T23:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-ui-008",
+      "certification": "csa",
+      "topic": "ui-navigation",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What does a form in ServiceNow display?",
+      "options": [
+        { "id": "a", "text": "Multiple records from multiple tables" },
+        { "id": "b", "text": "Information from a single record in a table" },
+        { "id": "c", "text": "Only read-only data" },
+        { "id": "d", "text": "System configuration settings" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "Forms in ServiceNow show information from a single record in a table, and can be accessed through global search or lists. The form's content varies with the record type, and users can view or edit this content.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "Forms show a single record; lists show multiple records.", "reference": "Forms vs Lists" },
+          { "choiceId": "c", "explanation": "Forms can contain both read-only and editable fields based on configuration.", "reference": "Form Fields" },
+          { "choiceId": "d", "explanation": "System configuration has dedicated modules; forms display record data.", "reference": "System Configuration" }
+        ]
+      },
+      "references": ["ServiceNow Forms"],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "course": {
+          "courseSlug": "servicenow-administration-fundamentals-xanadu",
+          "moduleTitle": "SNAF Module 3: Configure applications for business",
+          "lessonSlug": "02-form-configuration",
+          "lessonTitle": "Form configuration",
+          "url": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=a7d52b9847335ad4ca332a81736d43a3&spa=1"
+        },
+        "path": "sn-course-scraper/scraped-courses/servicenow-administration-fundamentals-xanadu/02-form-configuration.md",
+        "excerpt": "Forms in ServiceNow show information from a single record in a table, and can be accessed through global search or lists."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "User Interface & Navigation",
+        "domainSlug": "ui-navigation",
+        "domainPercentage": 15,
+        "subtopics": ["Forms and form sections"],
+        "tags": ["forms", "records", "data display"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-04T23:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-ui-009",
+      "certification": "csa",
+      "topic": "ui-navigation",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_select",
+      "question": "Which elements are included on ServiceNow forms? (Choose two)",
+      "options": [
+        { "id": "a", "text": "Fields and sections" },
+        { "id": "b", "text": "Import sets" },
+        { "id": "c", "text": "Related lists" },
+        { "id": "d", "text": "Scheduled jobs" }
+      ],
+      "correctAnswers": ["a", "c"],
+      "explanation": {
+        "correct": "Forms include fields, sections, formatters, UI actions, and related lists. These elements enhance how users navigate and interact with forms. Import sets and scheduled jobs are separate functionalities.",
+        "wrongAnswers": [
+          { "choiceId": "b", "explanation": "Import sets are for data loading, not form elements.", "reference": "Import Sets" },
+          { "choiceId": "d", "explanation": "Scheduled jobs run automated tasks, they're not form components.", "reference": "Scheduled Jobs" }
+        ]
+      },
+      "references": ["ServiceNow Form Elements"],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "course": {
+          "courseSlug": "servicenow-administration-fundamentals-xanadu",
+          "moduleTitle": "SNAF Module 3: Configure applications for business",
+          "lessonSlug": "02-form-configuration",
+          "lessonTitle": "Form configuration",
+          "url": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=a7d52b9847335ad4ca332a81736d43a3&spa=1"
+        },
+        "path": "sn-course-scraper/scraped-courses/servicenow-administration-fundamentals-xanadu/02-form-configuration.md",
+        "excerpt": "Forms include fields, sections, formatters, UI actions, and related lists. These elements enhance how users navigate and interact with forms."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "User Interface & Navigation",
+        "domainSlug": "ui-navigation",
+        "domainPercentage": 15,
+        "subtopics": ["Forms and form sections", "Related lists"],
+        "tags": ["forms", "fields", "sections", "related lists"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-04T23:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-ui-010",
+      "certification": "csa",
+      "topic": "ui-navigation",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What happens when you navigate away from a form without saving changes?",
+      "options": [
+        { "id": "a", "text": "Changes are automatically saved" },
+        { "id": "b", "text": "You will be prompted to save or discard changes before reloading the form" },
+        { "id": "c", "text": "Changes are lost without any warning" },
+        { "id": "d", "text": "The form becomes read-only" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "When changing views or navigating away, you will be prompted to save or discard changes before reloading the form. This prevents accidental data loss.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "ServiceNow doesn't auto-save form changes; users must explicitly save.", "reference": "Form Saving" },
+          { "choiceId": "c", "explanation": "ServiceNow provides warnings to prevent accidental data loss.", "reference": "Data Protection" },
+          { "choiceId": "d", "explanation": "Navigating away doesn't change the form's editability.", "reference": "Form Behavior" }
+        ]
+      },
+      "references": ["ServiceNow Form Behavior"],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "course": {
+          "courseSlug": "servicenow-administration-fundamentals-xanadu",
+          "moduleTitle": "SNAF Module 3: Configure applications for business",
+          "lessonSlug": "02-form-configuration",
+          "lessonTitle": "Form configuration",
+          "url": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=a7d52b9847335ad4ca332a81736d43a3&spa=1"
+        },
+        "path": "sn-course-scraper/scraped-courses/servicenow-administration-fundamentals-xanadu/02-form-configuration.md",
+        "excerpt": "Changing views will prompt you to save or discard changes before reloading the form."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "User Interface & Navigation",
+        "domainSlug": "ui-navigation",
+        "domainPercentage": 15,
+        "subtopics": ["Forms and form sections"],
+        "tags": ["forms", "saving", "navigation"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-04T23:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-ui-011",
+      "certification": "csa",
+      "topic": "ui-navigation",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What are the three ways to modify a form in ServiceNow?",
+      "options": [
+        { "id": "a", "text": "Import, Export, and Copy" },
+        { "id": "b", "text": "Form Builder, Form Design, and Form Layout" },
+        { "id": "c", "text": "Create, Update, and Delete" },
+        { "id": "d", "text": "View, Edit, and Preview" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "There are several ways to modify a form: Form Builder, Form Design, and Form Layout. Each provides different capabilities for form customization. Administrators should avoid adding the same editable field in multiple sections.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "Import, Export, and Copy are data operations, not form modification methods.", "reference": "Data Operations" },
+          { "choiceId": "c", "explanation": "These are CRUD operations on records, not form configuration tools.", "reference": "CRUD" },
+          { "choiceId": "d", "explanation": "These describe user interactions, not form modification methods.", "reference": "User Actions" }
+        ]
+      },
+      "references": ["ServiceNow Form Configuration"],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "course": {
+          "courseSlug": "servicenow-administration-fundamentals-xanadu",
+          "moduleTitle": "SNAF Module 3: Configure applications for business",
+          "lessonSlug": "02-form-configuration",
+          "lessonTitle": "Form configuration",
+          "url": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=a7d52b9847335ad4ca332a81736d43a3&spa=1"
+        },
+        "path": "sn-course-scraper/scraped-courses/servicenow-administration-fundamentals-xanadu/02-form-configuration.md",
+        "excerpt": "There are several ways to modify a form-- Form Builder, Form Design, and Form Layout."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "User Interface & Navigation",
+        "domainSlug": "ui-navigation",
+        "domainPercentage": 15,
+        "subtopics": ["Forms and form sections"],
+        "tags": ["form builder", "form design", "form layout", "configuration"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-04T23:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-ui-012",
+      "certification": "csa",
+      "topic": "ui-navigation",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What is the purpose of templates in ServiceNow?",
+      "options": [
+        { "id": "a", "text": "To create new tables automatically" },
+        { "id": "b", "text": "To pre-fill common field values when creating records" },
+        { "id": "c", "text": "To backup database records" },
+        { "id": "d", "text": "To generate automated reports" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "Templates allow users to fill in the most common fields for a table, save it as a template, and make it available to users. Users can apply templates manually when creating records, or administrators can set scripts to apply them automatically.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "Table creation is separate from templates.", "reference": "Table Administration" },
+          { "choiceId": "c", "explanation": "Backups are handled by different system functions.", "reference": "Backups" },
+          { "choiceId": "d", "explanation": "Reports are generated separately, not through templates.", "reference": "Reporting" }
+        ]
+      },
+      "references": ["ServiceNow Templates"],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "course": {
+          "courseSlug": "servicenow-administration-fundamentals-xanadu",
+          "moduleTitle": "SNAF Module 3: Configure applications for business",
+          "lessonSlug": "02-form-configuration",
+          "lessonTitle": "Form configuration",
+          "url": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=a7d52b9847335ad4ca332a81736d43a3&spa=1"
+        },
+        "path": "sn-course-scraper/scraped-courses/servicenow-administration-fundamentals-xanadu/02-form-configuration.md",
+        "excerpt": "To use a template, fill in the most common fields for a table. Save it as a template, and make it available to users. Users can apply templates manually when creating records, or administrators can set scripts to apply them automatically."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "User Interface & Navigation",
+        "domainSlug": "ui-navigation",
+        "domainPercentage": 15,
+        "subtopics": ["Forms and form sections"],
+        "tags": ["templates", "record creation", "efficiency"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-04T23:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-ui-013",
+      "certification": "csa",
+      "topic": "ui-navigation",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "Why should only certain groups be allowed to create templates?",
+      "options": [
+        { "id": "a", "text": "To reduce system storage usage" },
+        { "id": "b", "text": "To avoid bypassing processes like mandatory fields and UI policies" },
+        { "id": "c", "text": "To prevent users from seeing each other's data" },
+        { "id": "d", "text": "To improve system performance" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "Only certain groups should create templates to avoid bypassing processes, like mandatory fields and UI policies, particularly for records using condition based flows or workflows. Templates can potentially skip validation rules if not properly controlled.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "Storage is not the primary concern with template creation.", "reference": "Templates" },
+          { "choiceId": "c", "explanation": "Data visibility is controlled by ACLs, not template permissions.", "reference": "Security" },
+          { "choiceId": "d", "explanation": "System performance is not significantly impacted by template creation.", "reference": "Performance" }
+        ]
+      },
+      "references": ["ServiceNow Template Best Practices"],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "course": {
+          "courseSlug": "servicenow-administration-fundamentals-xanadu",
+          "moduleTitle": "SNAF Module 3: Configure applications for business",
+          "lessonSlug": "02-form-configuration",
+          "lessonTitle": "Form configuration",
+          "url": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=a7d52b9847335ad4ca332a81736d43a3&spa=1"
+        },
+        "path": "sn-course-scraper/scraped-courses/servicenow-administration-fundamentals-xanadu/02-form-configuration.md",
+        "excerpt": "Only certain groups should create templates to avoid bypassing processes, like mandatory fields and UI policies, particularly for records using condition based flows or workflows."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "User Interface & Navigation",
+        "domainSlug": "ui-navigation",
+        "domainPercentage": 15,
+        "subtopics": ["Forms and form sections"],
+        "tags": ["templates", "best practices", "governance"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-04T23:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-ui-014",
+      "certification": "csa",
+      "topic": "ui-navigation",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What happens when a user personalizes a form using the personalize form feature?",
+      "options": [
+        { "id": "a", "text": "The changes affect all users on the platform" },
+        { "id": "b", "text": "The personalized form will remain each time the user logs in" },
+        { "id": "c", "text": "Mandatory fields can be hidden" },
+        { "id": "d", "text": "The changes are temporary and reset on logout" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "The personalized form will remain each time the user logs in. Only fields configured to display are available in the personalize form menu. Mandatory fields cannot be hidden through personalization.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "Personalization only affects the individual user, not all users.", "reference": "Personalization" },
+          { "choiceId": "c", "explanation": "Mandatory fields cannot be hidden through the personalize form feature.", "reference": "Form Personalization" },
+          { "choiceId": "d", "explanation": "Personalization persists across sessions for the user.", "reference": "User Settings" }
+        ]
+      },
+      "references": ["ServiceNow Form Personalization"],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "course": {
+          "courseSlug": "servicenow-administration-fundamentals-xanadu",
+          "moduleTitle": "SNAF Module 3: Configure applications for business",
+          "lessonSlug": "02-form-configuration",
+          "lessonTitle": "Form configuration",
+          "url": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=a7d52b9847335ad4ca332a81736d43a3&spa=1"
+        },
+        "path": "sn-course-scraper/scraped-courses/servicenow-administration-fundamentals-xanadu/02-form-configuration.md",
+        "excerpt": "The personalized form will remain each time the user logs in. Only fields configured to display are available in the personalize form menu."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "User Interface & Navigation",
+        "domainSlug": "ui-navigation",
+        "domainPercentage": 15,
+        "subtopics": ["Forms and form sections"],
+        "tags": ["personalization", "forms", "user settings"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-04T23:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-ui-015",
+      "certification": "csa",
+      "topic": "ui-navigation",
+      "cognitiveLevel": "application",
+      "type": "multiple_select",
+      "question": "In Form Builder, which elements can administrators configure in the policies and rules section? (Choose two)",
+      "options": [
+        { "id": "a", "text": "UI policies" },
+        { "id": "b", "text": "Database schemas" },
+        { "id": "c", "text": "Business rules" },
+        { "id": "d", "text": "Network settings" }
+      ],
+      "correctAnswers": ["a", "c"],
+      "explanation": {
+        "correct": "In the Form Builder policies and rules section, administrators can configure UI policies, access control rules, client scripts, business rules, and workspace view rules. Database schemas and network settings are managed elsewhere.",
+        "wrongAnswers": [
+          { "choiceId": "b", "explanation": "Database schemas are managed through table configuration, not Form Builder.", "reference": "Database Administration" },
+          { "choiceId": "d", "explanation": "Network settings are system-level configurations, not form-related.", "reference": "System Administration" }
+        ]
+      },
+      "references": ["ServiceNow Form Builder"],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "course": {
+          "courseSlug": "servicenow-administration-fundamentals-xanadu",
+          "moduleTitle": "SNAF Module 3: Configure applications for business",
+          "lessonSlug": "02-form-configuration",
+          "lessonTitle": "Form configuration",
+          "url": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=a7d52b9847335ad4ca332a81736d43a3&spa=1"
+        },
+        "path": "sn-course-scraper/scraped-courses/servicenow-administration-fundamentals-xanadu/02-form-configuration.md",
+        "excerpt": "In the policies and rules section, administrators can configure UI policies, access control rules, client scripts, business rules, workspace view rules."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "User Interface & Navigation",
+        "domainSlug": "ui-navigation",
+        "domainPercentage": 15,
+        "subtopics": ["Forms and form sections"],
+        "tags": ["form builder", "UI policies", "business rules", "configuration"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-04T23:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    }
+  ]
+}

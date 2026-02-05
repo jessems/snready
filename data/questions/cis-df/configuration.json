@@ -1,0 +1,2148 @@
+{
+  "certification": "cis-df",
+  "topic": "configuration",
+  "questions": [
+    {
+      "id": "cis-df-configuration-001",
+      "certification": "cis-df",
+      "topic": "configuration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "In the CSDM Foundation domain, what is the primary purpose of the lifecycle stage and stage status attributes introduced in CSDM 4?",
+      "options": [
+        {
+          "id": "a",
+          "text": "To replace all existing CI attributes with a single status field"
+        },
+        {
+          "id": "b",
+          "text": "To provide standardized, non-customizable lifecycle tracking for assets and CIs"
+        },
+        {
+          "id": "c",
+          "text": "To allow customers to create unlimited custom status values"
+        },
+        {
+          "id": "d",
+          "text": "To sync status values automatically between different ServiceNow instances"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The lifecycle stage and stage status attributes were introduced in CSDM 4 to solve the problem of having nine different state/status attributes that didn't sync well, and over 50% of customers customizing them. The new attributes are standardized and non-customizable to ensure ServiceNow can develop consistent functionality around them. See: https://docs.servicenow.com/bundle/zurich-servicenow-platform/page/product/configuration-management/concept/csdm-lifecycle.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The lifecycle attributes don't replace all existing attributes - the nine legacy state/status fields still exist. The new attributes work alongside them.",
+            "reference": "CSDM 5 White Paper - Lifecycle Management"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The opposite is true - lifecycle stage and stage status values cannot be customized. ServiceNow provides the out-of-box choices and reviews customer requests for additions.",
+            "reference": "https://docs.servicenow.com/bundle/zurich-servicenow-platform/page/product/configuration-management/concept/csdm-lifecycle.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Instance synchronization is not the purpose of lifecycle attributes. They are designed to standardize status tracking within a single instance.",
+            "reference": "CSDM Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "CSDM 5 White Paper",
+        "ServiceNow CMDB Documentation"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "course",
+        "course": {
+          "courseSlug": "common-service-data-model-csdm-fundamentals",
+          "moduleTitle": "CSDM Presentations",
+          "lessonSlug": "03-foundation-domain",
+          "lessonTitle": "Foundation Domain",
+          "url": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=62ebf27e53f26ed0c2245a01a0490e19&child_id=ad3299774787ae98c00af235126d4368&spa=1"
+        },
+        "path": "/root/.openclaw/workspace/sn-course-scraper/scraped-courses/common-service-data-model-csdm-fundamentals/03-foundation-domain.md",
+        "excerpt": "With these new life cycle stage and stage status, we don't allow any editing or configuring of those at all. So what we provide out of box are the choices."
+      },
+      "labels": {
+        "certification": "cis-df",
+        "domain": "Configuration",
+        "domainSlug": "configuration",
+        "domainPercentage": 15,
+        "subtopics": [
+          "CMDB schema",
+          "lifecycle controls"
+        ],
+        "course": "common-service-data-model-csdm-fundamentals",
+        "module": "CSDM Presentations",
+        "lesson": "03-foundation-domain",
+        "tags": [
+          "lifecycle",
+          "CSDM",
+          "stage status",
+          "CMDB"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-04T00:00:00Z",
+        "version": "1.0",
+        "release": "Zurich",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-df-configuration-002",
+      "certification": "cis-df",
+      "topic": "configuration",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "Why is the Business Process CI class placed in the Foundation domain rather than other CSDM domains?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Because business processes are always created before any other CIs"
+        },
+        {
+          "id": "b",
+          "text": "Because it can reference objects outside the CMDB, such as locations and users"
+        },
+        {
+          "id": "c",
+          "text": "Because it is the most commonly used CI class in ServiceNow"
+        },
+        {
+          "id": "d",
+          "text": "Because business processes do not have relationships with other CIs"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The Business Process CI is unique because it can reference multiple elements throughout the entire platform that are not in the CMDB, including locations, documentation, and users critical to the process. This cross-platform referencing capability is why it belongs in the Foundation domain. See: https://docs.servicenow.com/bundle/zurich-servicenow-platform/page/product/configuration-management/concept/csdm-foundation-domain.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The timing of creation is not the reason. Business processes can be created at any point in the implementation.",
+            "reference": "CSDM Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Frequency of use does not determine domain placement. The Foundation domain is about referential data that supports other domains.",
+            "reference": "CSDM 5 White Paper"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The opposite is true - business processes have extensive relationships, including to non-CMDB objects, which is exactly why they're in Foundation.",
+            "reference": "https://docs.servicenow.com/bundle/zurich-servicenow-platform/page/product/configuration-management/reference/cmdb-csdm-business-process.html"
+          }
+        ]
+      },
+      "references": [
+        "CSDM 5 White Paper",
+        "Business Continuity Management"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "course",
+        "course": {
+          "courseSlug": "common-service-data-model-csdm-fundamentals",
+          "moduleTitle": "CSDM Presentations",
+          "lessonSlug": "03-foundation-domain",
+          "lessonTitle": "Foundation Domain",
+          "url": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=62ebf27e53f26ed0c2245a01a0490e19&child_id=ad3299774787ae98c00af235126d4368&spa=1"
+        },
+        "path": "/root/.openclaw/workspace/sn-course-scraper/scraped-courses/common-service-data-model-csdm-fundamentals/03-foundation-domain.md",
+        "excerpt": "The business process CI is one of the few CIs in the CMDB that has the ability to reference multiple elements throughout the entire platform that is not in the CMDB... for example, a location; for example, particular documentation; for example, particular users that are critical to that particular process."
+      },
+      "labels": {
+        "certification": "cis-df",
+        "domain": "Configuration",
+        "domainSlug": "configuration",
+        "domainPercentage": 15,
+        "subtopics": [
+          "CMDB schema",
+          "CMDB relationships"
+        ],
+        "course": "common-service-data-model-csdm-fundamentals",
+        "module": "CSDM Presentations",
+        "lesson": "03-foundation-domain",
+        "tags": [
+          "business process",
+          "Foundation domain",
+          "CMDB",
+          "CI classes"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-04T00:00:00Z",
+        "version": "1.0",
+        "release": "Zurich",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-df-configuration-003",
+      "certification": "cis-df",
+      "topic": "configuration",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What is the key difference between lifecycle stages for tangible (physical) CIs versus intangible (logical) CIs in CSDM?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Tangible CIs have more stages because they require physical disposal at end of life"
+        },
+        {
+          "id": "b",
+          "text": "Intangible CIs have more stages to track software licensing"
+        },
+        {
+          "id": "c",
+          "text": "Both types share identical lifecycle stages and statuses"
+        },
+        {
+          "id": "d",
+          "text": "Only tangible CIs can use the operational stage"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "Tangible/physical CIs (like servers and hardware) include an 'End of Life' stage because they require physical disposal, while intangible/logical CIs (like business services and applications) don't need disposal stages since you don't physically dispose of logical objects. See: https://docs.servicenow.com/bundle/zurich-servicenow-platform/page/product/configuration-management/concept/csdm-lifecycle.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Software licensing is tracked through SAM (Software Asset Management), not through additional lifecycle stages for logical CIs.",
+            "reference": "https://docs.servicenow.com/bundle/zurich-it-asset-management/page/product/software-asset-management2/concept/c_SoftwareAssetManagement.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Different CI types have different lifecycle stage choices. Physical CIs have stages like 'End of Life' that logical CIs don't have.",
+            "reference": "CSDM 5 White Paper - Lifecycle Stages"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Both tangible and intangible CIs can use the operational stage. The difference is in stages like End of Life for physical disposal.",
+            "reference": "CSDM Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "CSDM 5 White Paper",
+        "CMDB Lifecycle Documentation"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "course",
+        "course": {
+          "courseSlug": "common-service-data-model-csdm-fundamentals",
+          "moduleTitle": "CSDM Presentations",
+          "lessonSlug": "03-foundation-domain",
+          "lessonTitle": "Foundation Domain",
+          "url": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=62ebf27e53f26ed0c2245a01a0490e19&child_id=ad3299774787ae98c00af235126d4368&spa=1"
+        },
+        "path": "/root/.openclaw/workspace/sn-course-scraper/scraped-courses/common-service-data-model-csdm-fundamentals/03-foundation-domain.md",
+        "excerpt": "You don't see the end of life, where we have to dispose of something, because you don't do that with an intangible or logical object inside of the CMDB. So that's where I was saying that you get choices that are specific to that type of CI."
+      },
+      "labels": {
+        "certification": "cis-df",
+        "domain": "Configuration",
+        "domainSlug": "configuration",
+        "domainPercentage": 15,
+        "subtopics": [
+          "CMDB schema",
+          "lifecycle controls"
+        ],
+        "course": "common-service-data-model-csdm-fundamentals",
+        "module": "CSDM Presentations",
+        "lesson": "03-foundation-domain",
+        "tags": [
+          "lifecycle",
+          "tangible CI",
+          "intangible CI",
+          "physical assets",
+          "logical CI"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-04T00:00:00Z",
+        "version": "1.0",
+        "release": "Zurich",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-df-configuration-004",
+      "certification": "cis-df",
+      "topic": "configuration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_select",
+      "question": "Which of the following are components of Value Streams in the CSDM Foundation domain? (Select all that apply)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Value stream categories (approximately 15 out-of-box)"
+        },
+        {
+          "id": "b",
+          "text": "Stages that reference CMDB objects and business capabilities"
+        },
+        {
+          "id": "c",
+          "text": "Direct storage in CMDB tables"
+        },
+        {
+          "id": "d",
+          "text": "Processes linked to each stage"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b",
+        "d"
+      ],
+      "explanation": {
+        "correct": "Value streams in CSDM consist of: (1) categories (about 15 out-of-box, based on Harvard research), (2) stages that reference CMDB objects and business capabilities, and (3) processes linked to stages. Value streams do NOT live inside the CMDB but reference objects within it. See: https://docs.servicenow.com/bundle/zurich-servicenow-platform/page/product/configuration-management/concept/csdm-foundation-domain.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "c",
+            "explanation": "Value stream objects do not live inside the CMDB. They are stored in separate tables but reference objects inside the CMDB.",
+            "reference": "CSDM Fundamentals course - Foundation Domain lesson"
+          }
+        ]
+      },
+      "references": [
+        "CSDM 5 White Paper",
+        "Harvard Value Stream Research"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "course",
+        "course": {
+          "courseSlug": "common-service-data-model-csdm-fundamentals",
+          "moduleTitle": "CSDM Presentations",
+          "lessonSlug": "03-foundation-domain",
+          "lessonTitle": "Foundation Domain",
+          "url": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=62ebf27e53f26ed0c2245a01a0490e19&child_id=ad3299774787ae98c00af235126d4368&spa=1"
+        },
+        "path": "/root/.openclaw/workspace/sn-course-scraper/scraped-courses/common-service-data-model-csdm-fundamentals/03-foundation-domain.md",
+        "excerpt": "This is actually multiple tables that come together. None of this lives inside of the CMDB, but it references objects inside of the CMDB. So we have the actual value stream object that gets categorized... we have many categories, 15 approximately... stages that occur inside of a value stream... then those stages reference the various pieces inside of the CMDB."
+      },
+      "labels": {
+        "certification": "cis-df",
+        "domain": "Configuration",
+        "domainSlug": "configuration",
+        "domainPercentage": 15,
+        "subtopics": [
+          "CMDB schema",
+          "CMDB relationships"
+        ],
+        "course": "common-service-data-model-csdm-fundamentals",
+        "module": "CSDM Presentations",
+        "lesson": "03-foundation-domain",
+        "tags": [
+          "value stream",
+          "Foundation domain",
+          "business capabilities",
+          "stages"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-04T00:00:00Z",
+        "version": "1.0",
+        "release": "Zurich",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-df-configuration-005",
+      "certification": "cis-df",
+      "topic": "configuration",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "An organization wants to track that a server is still operational but will be retired in the next quarter. Which lifecycle stage and status combination in CSDM would best represent this scenario?",
+      "options": [
+        {
+          "id": "a",
+          "text": "End of Operation stage with Pending Retirement status"
+        },
+        {
+          "id": "b",
+          "text": "Operational stage with Pending Retirement status"
+        },
+        {
+          "id": "c",
+          "text": "End of Life stage with Operational status"
+        },
+        {
+          "id": "d",
+          "text": "Build stage with Inventory status"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "When a CI is still operational but scheduled for retirement, it should be in the Operational stage with a Pending Retirement status. This indicates it's still in use ('operational') but has been identified for upcoming retirement. The CSDM provides these 'flavors of operational' to distinguish between active use, pending end of support, and pending retirement. See: https://docs.servicenow.com/bundle/zurich-servicenow-platform/page/product/configuration-management/concept/csdm-lifecycle.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "End of Operation is a stage used after a CI stops being operational, for evaluation before end of life. A server still in use would not be in this stage.",
+            "reference": "CSDM 5 White Paper - Lifecycle Stages"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "End of Life is an end state after disposal. A CI cannot be both operational and at end of life simultaneously.",
+            "reference": "https://docs.servicenow.com/bundle/zurich-servicenow-platform/page/product/configuration-management/concept/csdm-lifecycle.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Build stage with Inventory status is for CIs that are being prepared for deployment, not for operational equipment scheduled for retirement.",
+            "reference": "CSDM Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "CSDM 5 White Paper",
+        "CMDB Lifecycle Documentation"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "course",
+        "course": {
+          "courseSlug": "common-service-data-model-csdm-fundamentals",
+          "moduleTitle": "CSDM Presentations",
+          "lessonSlug": "03-foundation-domain",
+          "lessonTitle": "Foundation Domain",
+          "url": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=62ebf27e53f26ed0c2245a01a0490e19&child_id=ad3299774787ae98c00af235126d4368&spa=1"
+        },
+        "path": "/root/.openclaw/workspace/sn-course-scraper/scraped-courses/common-service-data-model-csdm-fundamentals/03-foundation-domain.md",
+        "excerpt": "It could be something that is operational. But sometime in the near future, it's going to be out of support. We're going to need to that and want to that. Or we've identified that we're going to retire this soon. So it's pending retirement. It's still operational. So all of those are operational. But these are flavors of operational."
+      },
+      "labels": {
+        "certification": "cis-df",
+        "domain": "Configuration",
+        "domainSlug": "configuration",
+        "domainPercentage": 15,
+        "subtopics": [
+          "CMDB schema",
+          "lifecycle controls"
+        ],
+        "course": "common-service-data-model-csdm-fundamentals",
+        "module": "CSDM Presentations",
+        "lesson": "03-foundation-domain",
+        "tags": [
+          "lifecycle",
+          "stage status",
+          "operational",
+          "retirement",
+          "CMDB"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-04T00:00:00Z",
+        "version": "1.0",
+        "release": "Zurich",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-df-configuration-006",
+      "certification": "cis-df",
+      "topic": "configuration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "In the CMDB CI Class Models store app, which parent class does the Nutanix Controller VM [cmdb_ci_nutanix_controller_vm] class extend?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Virtual Machine Object [cmdb_ci_vm_object]"
+        },
+        {
+          "id": "b",
+          "text": "Application [cmdb_ci_appl]"
+        },
+        {
+          "id": "c",
+          "text": "Virtual Machine Instance [cmdb_ci_vm_instance]"
+        },
+        {
+          "id": "d",
+          "text": "Virtualization Server [cmdb_ci_virtualization_server]"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The Nutanix Controller VM class [cmdb_ci_nutanix_controller_vm] extends the Application [cmdb_ci_appl] class. This is because the Controller VM provides storage clustering and management capabilities on each node, functioning as an application rather than a virtual machine instance.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Virtual Machine Object [cmdb_ci_vm_object] is the parent class for Nutanix Cluster and Nutanix Prism Central, not the Controller VM."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Virtual Machine Instance [cmdb_ci_vm_instance] is the parent class for the Nutanix Virtual Machine Instance class, not the Controller VM."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Virtualization Server [cmdb_ci_virtualization_server] is the parent class for the Nutanix Host class, not the Controller VM."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Nutanix Controller VM[cmdb_ci_nutanix_controller_vm] | Application [cmdb_ci_appl] | Nutanix controller virtual machine that is present in each node and that provides the storage clustering and management capabilities.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/servicenow-platform/configuration-management-database-cmdb/cmdb-ci-class-models-nutanix.html"
+      },
+      "labels": {
+        "domain": "Configuration",
+        "domainSlug": "configuration",
+        "subtopics": [
+          "CI classes and attributes",
+          "CMDB schema and class hierarchy"
+        ],
+        "tags": [
+          "nutanix",
+          "cmdb-class-models",
+          "class-hierarchy",
+          "extension-classes"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": true,
+      "references": []
+    },
+    {
+      "id": "cis-df-configuration-007",
+      "certification": "cis-df",
+      "topic": "configuration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which table stores technical services in the Manage Technical Services domain of the CSDM framework?",
+      "options": [
+        {
+          "id": "a",
+          "text": "[cmdb_ci_service_discovered]"
+        },
+        {
+          "id": "b",
+          "text": "[cmdb_ci_service_auto]"
+        },
+        {
+          "id": "c",
+          "text": "[cmdb_ci_service_technical]"
+        },
+        {
+          "id": "d",
+          "text": "[cmdb_ci_query_based_service]"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "The Technical service table [cmdb_ci_service_technical] is the designated table for storing technical services in the Manage Technical Services domain of the CSDM framework.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The [cmdb_ci_service_discovered] table is the Mapped Application Service table, used for application services created through Top Down Discovery (Service Mapping) or manually."
+          },
+          {
+            "choiceId": "b",
+            "explanation": "The [cmdb_ci_service_auto] table is the CMDB Application Service table used for common reporting of application services, not for storing technical services."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The [cmdb_ci_query_based_service] table stores Dynamic CI groups, which can be classified as application or technical services but is not the primary technical service table."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "The domain includes the following tables: Technical service table [cmdb_ci_service_technical]",
+        "url": "https://www.servicenow.com/docs/r/xanadu/servicenow-platform/common-service-data-model-csdm/manage-tech-servs-domain.html"
+      },
+      "labels": {
+        "domain": "Configuration",
+        "domainSlug": "configuration",
+        "subtopics": [
+          "CSDM data model and domains",
+          "CSDM foundation and service delivery"
+        ],
+        "tags": [
+          "csdm",
+          "technical-services",
+          "manage-technical-services",
+          "tables"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": true,
+      "references": []
+    },
+    {
+      "id": "cis-df-configuration-008",
+      "certification": "cis-df",
+      "topic": "configuration",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What is the primary purpose of the Nutanix Storage Container class [cmdb_ci_nutanix_storage_container] in the CMDB?",
+      "options": [
+        {
+          "id": "a",
+          "text": "To represent the grouping of physical disks within a Nutanix cluster for physical separation between virtual machines"
+        },
+        {
+          "id": "b",
+          "text": "To represent a subset of a storage pool used to apply policies such as reserved capacity, replication factor, and storage optimization"
+        },
+        {
+          "id": "c",
+          "text": "To manage the Nutanix Controller VM that provides storage clustering capabilities on each node"
+        },
+        {
+          "id": "d",
+          "text": "To represent the physical host infrastructure on which Nutanix virtual machines run"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The Nutanix Storage Container class represents a subset of the Nutanix storage pool used to apply policies such as reserved capacity, replication factor, and storage optimization options. It extends the Storage Volume [cmdb_ci_storage_volume] class.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "This describes the Nutanix Storage Pool class [cmdb_ci_nutanix_storage_pool], which groups physical disks for physical separation between virtual machines."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "This describes the Nutanix Controller VM class [cmdb_ci_nutanix_controller_vm], which provides storage clustering and management capabilities."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "This describes the Nutanix Host class [cmdb_ci_nutanix_host], which represents the physical host running all virtual machines."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Nutanix Storage Container[cmdb_ci_nutanix_storage_container] | Storage Volume [cmdb_ci_storage_volume] | Subset of Nutanix storage pool used to apply policies such as reserved capacity, replication factor, and storage optimization options.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/servicenow-platform/configuration-management-database-cmdb/cmdb-ci-class-models-nutanix.html"
+      },
+      "labels": {
+        "domain": "Configuration",
+        "domainSlug": "configuration",
+        "subtopics": [
+          "CI classes and attributes",
+          "CMDB schema and class hierarchy"
+        ],
+        "tags": [
+          "nutanix",
+          "storage-container",
+          "cmdb-class-models",
+          "storage"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": true,
+      "references": []
+    },
+    {
+      "id": "cis-df-configuration-009",
+      "certification": "cis-df",
+      "topic": "configuration",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What restriction applies to CIs that are associated through a Dynamic CI Group in the Manage Technical Services domain?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Each CI can be associated with a maximum of three Dynamic CI Groups simultaneously"
+        },
+        {
+          "id": "b",
+          "text": "Each CI can be related to only one Technical Service or Technical Service Offering"
+        },
+        {
+          "id": "c",
+          "text": "Each CI must be manually approved before it can be included in a Dynamic CI Group"
+        },
+        {
+          "id": "d",
+          "text": "Each CI must have an active Discovery schedule configured before being added to a group"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Each CI associated through a Dynamic CI Group can be related to only one Technical Service or Technical Service Offering. Conflicts can result when one service includes multiple offerings with different SLAs, OLAs, Support Groups, and commitments.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "There is no documented three-group maximum. The restriction is about the relationship to Technical Services or Technical Service Offerings, not the number of groups."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Dynamic CI Groups are populated automatically by CMDB Groups queries, not through manual approval. The dynamic nature is a key benefit of this approach."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "While Discovery can populate CIs, there is no requirement for an active Discovery schedule before a CI can be included in a Dynamic CI Group."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Each CI associated through a Dynamic CI Group can be related to only one Technical Service or Technical Service Offering. Conflicts can result when one service includes multiple offerings with different SLAs, OLAs, Support Groups, and commitments.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/servicenow-platform/common-service-data-model-csdm/manage-tech-servs-domain.html"
+      },
+      "labels": {
+        "domain": "Configuration",
+        "domainSlug": "configuration",
+        "subtopics": [
+          "CSDM data model and domains",
+          "CI relationships and relationship types"
+        ],
+        "tags": [
+          "dynamic-ci-groups",
+          "technical-service",
+          "service-offering",
+          "constraints"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": true,
+      "references": []
+    },
+    {
+      "id": "cis-df-configuration-010",
+      "certification": "cis-df",
+      "topic": "configuration",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "An organization does not yet have Service Mapping enabled but needs to represent an application service consisting of 12 servers and 3 database instances in ServiceNow. Which approach should they use?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Create a technical service in the [cmdb_ci_service_technical] table and manually add CI relationships"
+        },
+        {
+          "id": "b",
+          "text": "Create a Dynamic CI Group as a query-based application service to replace manual tracking"
+        },
+        {
+          "id": "c",
+          "text": "Wait until Service Mapping is enabled since application services require Top Down Discovery"
+        },
+        {
+          "id": "d",
+          "text": "Import CI data into the [cmdb_ci_service_discovered] table using a spreadsheet upload"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "When Service Mapping is not yet enabled, a Dynamic CI Group can be used as a query-based application service. The documentation specifically states: 'You don't have Service Mapping enabled yet, but you have 12 servers and three database instances in MyAppServiceProd. You can replace your spreadsheets with a dynamic CI group as an application service.'",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "A technical service is different from an application service. The scenario calls for an application service, and Dynamic CI Groups are the recommended approach when Service Mapping is unavailable."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Application services do not require Service Mapping. They can be created via Dynamic CI Groups, Tags, or manually using the Create an Application Service form."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "While the [cmdb_ci_service_discovered] table stores manually created application services, the recommended approach without Service Mapping is to use Dynamic CI Groups, which automate CI membership through queries."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "You don't have Service Mapping enabled yet, but you have 12 servers and three database instances in MyAppServiceProd. You can replace your spreadsheets with a dynamic CI group as an application service.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/servicenow-platform/common-service-data-model-csdm/manage-tech-servs-domain.html"
+      },
+      "labels": {
+        "domain": "Configuration",
+        "domainSlug": "configuration",
+        "subtopics": [
+          "CSDM data model and domains",
+          "CSDM foundation and service delivery"
+        ],
+        "tags": [
+          "dynamic-ci-groups",
+          "application-service",
+          "service-mapping",
+          "query-based"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": true,
+      "references": []
+    },
+    {
+      "id": "cis-df-configuration-011",
+      "certification": "cis-df",
+      "topic": "configuration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_select",
+      "question": "Which of the following are features that technology consumers can typically select when requesting a technical service offering through the request catalog? (Select TWO)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Level of performance and availability"
+        },
+        {
+          "id": "b",
+          "text": "CMDB class hierarchy and identification rules"
+        },
+        {
+          "id": "c",
+          "text": "Location or geography and environment"
+        },
+        {
+          "id": "d",
+          "text": "Discovery schedule frequency and scan depth"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "c"
+      ],
+      "explanation": {
+        "correct": "When requesting technical service offerings through the request catalog, technology consumers can typically select: level of performance, location or geography, environment, pricing, availability, capability, support group (for incident), technical approval group (for change), and packaging options (commitments).",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "CMDB class hierarchy and identification rules are administrative CMDB configuration elements, not features that consumers select when requesting a technical service offering."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Discovery schedule frequency and scan depth are ITOM operational settings configured by administrators, not options available to technology consumers requesting service offerings."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "The consumer can typically select the following features and options: Level of performance, Location or geography, Environment, Pricing, Availability, Capability, Support group (for incident), Technical approval group (for change), Packaging options (commitments)",
+        "url": "https://www.servicenow.com/docs/r/xanadu/servicenow-platform/common-service-data-model-csdm/manage-tech-servs-domain.html"
+      },
+      "labels": {
+        "domain": "Configuration",
+        "domainSlug": "configuration",
+        "subtopics": [
+          "CSDM data model and domains",
+          "CSDM foundation and service delivery"
+        ],
+        "tags": [
+          "technical-service-offering",
+          "service-catalog",
+          "csdm",
+          "request-catalog"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": false,
+      "references": []
+    },
+    {
+      "id": "cis-df-configuration-012",
+      "certification": "cis-df",
+      "topic": "configuration",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "The Nutanix Prism Central class [cmdb_ci_nutanix_prism_central] was added in CMDB CI Class Models Release 1.6.0. What is the role of a Nutanix Prism Central component, and which class does it extend?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It is a storage clustering controller that extends Application [cmdb_ci_appl]"
+        },
+        {
+          "id": "b",
+          "text": "It is a multi-cluster manager for centralized management that extends Virtual Machine Object [cmdb_ci_vm_object]"
+        },
+        {
+          "id": "c",
+          "text": "It is a physical host for running virtual machines that extends Virtualization Server [cmdb_ci_virtualization_server]"
+        },
+        {
+          "id": "d",
+          "text": "It is a grouping of physical disks for storage that extends Storage Pool [cmdb_ci_storage_pool]"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Nutanix Prism Central extends Virtual Machine Object [cmdb_ci_vm_object] and is described as a multi-cluster manager responsible for managing multiple Acropolis Clusters to provide a single, centralized management interface. It was introduced in Release 1.6.0.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The storage clustering controller that extends Application [cmdb_ci_appl] is the Nutanix Controller VM class, not Prism Central."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The physical host extending Virtualization Server [cmdb_ci_virtualization_server] is the Nutanix Host class, not Prism Central."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The grouping of physical disks extending Storage Pool [cmdb_ci_storage_pool] is the Nutanix Storage Pool class, not Prism Central."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Nutanix Prism Central[cmdb_ci_nutanix_prism_central] | Virtual Machine Object[cmdb_ci_vm_object] | Multi-cluster manager responsible for managing multiple Acropolis Clusters to provide a single, centralized management interface.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/servicenow-platform/configuration-management-database-cmdb/cmdb-ci-class-models-nutanix.html"
+      },
+      "labels": {
+        "domain": "Configuration",
+        "domainSlug": "configuration",
+        "subtopics": [
+          "CI classes and attributes",
+          "CMDB schema and class hierarchy"
+        ],
+        "tags": [
+          "nutanix",
+          "prism-central",
+          "cmdb-class-models",
+          "class-hierarchy"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": false,
+      "references": []
+    },
+    {
+      "id": "cis-df-configuration-013",
+      "certification": "cis-df",
+      "topic": "configuration",
+      "cognitiveLevel": "application",
+      "type": "multiple_select",
+      "question": "A ServiceNow administrator wants to use Dynamic CI Groups in the Manage Technical Services domain. Which of the following are valid use cases for Dynamic CI Groups? (Select TWO)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Replacing spreadsheet-based tracking with a query-based application service when Service Mapping is not yet enabled"
+        },
+        {
+          "id": "b",
+          "text": "Creating nested groups where one Dynamic CI Group contains other CI groups for hierarchical management"
+        },
+        {
+          "id": "c",
+          "text": "Relating a Technical Service Offering to a managed group of infrastructure CIs without manually creating individual relationships"
+        },
+        {
+          "id": "d",
+          "text": "Automatically generating service commitments and SLAs for all CIs in the group based on the parent service"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "c"
+      ],
+      "explanation": {
+        "correct": "Two documented use cases for Dynamic CI Groups are: (1) using them as a query-based application service when Service Mapping is not enabled, replacing manual spreadsheet tracking; and (2) relating a Technical Service Offering to a managed group of infrastructure CIs through a single relationship instead of manually creating individual relationships.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Dynamic CI groups contain only CIs and cannot contain other CI groups. Nesting of groups is explicitly not supported."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Dynamic CI Groups do not automatically generate service commitments or SLAs. Service commitments are separately defined components of technical service offerings."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Dynamic CI groups contain only CIs and can't contain other CI groups. [...] You don't have Service Mapping enabled yet, but you have 12 servers and three database instances in MyAppServiceProd. You can replace your spreadsheets with a dynamic CI group as an application service. [...] Instead of manually creating relationships from Technical Service Offerings to Infrastructure CIs, use a Dynamic CI group.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/servicenow-platform/common-service-data-model-csdm/manage-tech-servs-domain.html"
+      },
+      "labels": {
+        "domain": "Configuration",
+        "domainSlug": "configuration",
+        "subtopics": [
+          "CSDM data model and domains",
+          "CSDM foundation and service delivery"
+        ],
+        "tags": [
+          "dynamic-ci-groups",
+          "application-service",
+          "technical-service-offering",
+          "infrastructure"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": false,
+      "references": []
+    },
+    {
+      "id": "cis-df-configuration-014",
+      "certification": "cis-df",
+      "topic": "configuration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "In the CSDM Foundation domain, which table stores business process configuration items?",
+      "options": [
+        {
+          "id": "a",
+          "text": "cmdb_ci_service"
+        },
+        {
+          "id": "b",
+          "text": "cmdb_ci_business_process"
+        },
+        {
+          "id": "c",
+          "text": "ast_contract"
+        },
+        {
+          "id": "d",
+          "text": "cmdb_business_workflow"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Business processes in the CSDM Foundation domain are stored in the cmdb_ci_business_process table. Business processes are manually-maintained CIs that can track declared and determined criticality as well as impact to confidentiality, integrity, and availability.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "cmdb_ci_service stores service CIs, not business processes. Services belong to the Service Delivery domain of the CSDM, not the Foundation domain."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The ast_contract table stores contracts, which are a separate element in the Foundation domain. Contracts are not CIs."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "cmdb_business_workflow is not a standard ServiceNow table. Business processes are stored in cmdb_ci_business_process."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Business processes are stored in the cmdb_ci_business_process table.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/servicenow-platform/common-service-data-model-csdm/foundation-domain.html"
+      },
+      "labels": {
+        "domain": "Configuration",
+        "domainSlug": "configuration",
+        "subtopics": [
+          "CSDM data model and domains",
+          "CSDM foundation and service delivery"
+        ],
+        "tags": [
+          "CSDM",
+          "foundation domain",
+          "business process",
+          "cmdb_ci_business_process"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": false,
+      "references": []
+    },
+    {
+      "id": "cis-df-configuration-015",
+      "certification": "cis-df",
+      "topic": "configuration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "In the CMDB CI Class Models store app, which class does the API Gateway [cmdb_ci_api_gateway] class extend?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Configuration Item [cmdb_ci]"
+        },
+        {
+          "id": "b",
+          "text": "API [cmdb_ci_api]"
+        },
+        {
+          "id": "c",
+          "text": "Application [cmdb_ci_appl]"
+        },
+        {
+          "id": "d",
+          "text": "API Component [cmdb_ci_api_component]"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "The API Gateway [cmdb_ci_api_gateway] class extends the Application [cmdb_ci_appl] class. This makes sense because an API gateway is an application-level infrastructure component that centralizes client API requests and manages backend processes and services.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "While Configuration Item is the root CMDB class, API Gateway does not directly extend it. API Gateway extends Application, which itself extends Configuration Item."
+          },
+          {
+            "choiceId": "b",
+            "explanation": "The API class [cmdb_ci_api] is a peer class, not a parent. API Gateway extends Application [cmdb_ci_appl], not API [cmdb_ci_api]."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "API Component [cmdb_ci_api_component] is extended by API Frontend and API Backend, not by API Gateway. API Gateway extends Application."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "API Gateway[cmdb_ci_api_gateway] | Application[cmdb_ci_appl] | API infrastructure that centralizes client API requests and manages backend processes and services.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/servicenow-platform/configuration-management-database-cmdb/cmdb-ci-class-models-api.html"
+      },
+      "labels": {
+        "domain": "Configuration",
+        "domainSlug": "configuration",
+        "subtopics": [
+          "CMDB schema and class hierarchy",
+          "CI classes and attributes"
+        ],
+        "tags": [
+          "CMDB",
+          "API Gateway",
+          "class hierarchy",
+          "cmdb_ci_api_gateway",
+          "cmdb_ci_appl"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": false,
+      "references": []
+    },
+    {
+      "id": "cis-df-configuration-016",
+      "certification": "cis-df",
+      "topic": "configuration",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "How are contracts classified within the CSDM Foundation domain, and where are they stored?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Contracts are CIs stored in the cmdb_ci_contract table"
+        },
+        {
+          "id": "b",
+          "text": "Contracts are not CIs and are stored in the ast_contract table"
+        },
+        {
+          "id": "c",
+          "text": "Contracts are CIs stored in the cmdb_model table alongside product models"
+        },
+        {
+          "id": "d",
+          "text": "Contracts are not CIs and are stored in the sla_contract table"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "In the CSDM Foundation domain, a contract is explicitly not a CI. Contracts are stored in the [ast_contract] table and use contract model types from the Product Models module. They contain detailed information such as contract number, start/end dates, terms and conditions, and financial terms.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Contracts are explicitly not CIs in the CSDM Foundation domain. There is no cmdb_ci_contract table used for this purpose. Contracts are stored in the ast_contract table."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Contracts are not CIs and are not stored in the cmdb_model table. The cmdb_model table stores product models. Contracts reference contract model types but are stored in the ast_contract table."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "While contracts are correctly identified as not being CIs, they are stored in the ast_contract table, not a sla_contract table. SLAs and contracts are related but stored separately."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "A contract is not a CI. Contracts use contract model types from the Product Models module. Contracts are stored in the [ast_contract] table.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/servicenow-platform/common-service-data-model-csdm/foundation-domain.html"
+      },
+      "labels": {
+        "domain": "Configuration",
+        "domainSlug": "configuration",
+        "subtopics": [
+          "CSDM data model and domains",
+          "CSDM foundation and service delivery"
+        ],
+        "tags": [
+          "CSDM",
+          "foundation domain",
+          "contracts",
+          "ast_contract",
+          "non-CI"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": false,
+      "references": []
+    },
+    {
+      "id": "cis-df-configuration-017",
+      "certification": "cis-df",
+      "topic": "configuration",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What is the relationship between a life cycle stage and a life cycle stage status in the CSDM framework?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Life cycle stage and life cycle stage status are interchangeable terms that describe the same CI attribute"
+        },
+        {
+          "id": "b",
+          "text": "Life cycle stage is the particular status within a phase, while life cycle stage status is the broad phase"
+        },
+        {
+          "id": "c",
+          "text": "Life cycle stage is one of the broad phases a CI moves through, while life cycle stage status is the particular status within that stage"
+        },
+        {
+          "id": "d",
+          "text": "Life cycle stage applies only to hardware CIs, while life cycle stage status applies to all CI types"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "A life cycle stage is one of the broad phases that a CI moves through, from inception or procurement to retirement and end of life. Life cycle stage status is the particular status of a CI within its current life cycle stage. For example, a hardware CI in the Operational stage might have statuses such as In Use, In Maintenance, or End of Support.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Life cycle stage and life cycle stage status are distinct concepts. Stage represents the broad phase (e.g., Operational), while stage status represents the specific status within that phase (e.g., In Use)."
+          },
+          {
+            "choiceId": "b",
+            "explanation": "This reverses the definitions. Life cycle stage is the broad phase, and life cycle stage status is the particular status within that stage, not the other way around."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Life-cycle value pairs are not limited to hardware CIs. They track life cycles for products, assets, contracts, CIs, locations, and other objects across the platform."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "A life cycle stage is one of the broad phases that a CI moves through, from inception or procurement to retirement and end of life. life cycle stage status is the particular status of a CI within its current life cycle stage.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/servicenow-platform/common-service-data-model-csdm/foundation-domain.html"
+      },
+      "labels": {
+        "domain": "Configuration",
+        "domainSlug": "configuration",
+        "subtopics": [
+          "CSDM data model and domains",
+          "CSDM foundation and service delivery"
+        ],
+        "tags": [
+          "CSDM",
+          "life cycle",
+          "life cycle stage",
+          "life cycle stage status",
+          "foundation domain"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": false,
+      "references": []
+    },
+    {
+      "id": "cis-df-configuration-018",
+      "certification": "cis-df",
+      "topic": "configuration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which of the following is a valid value for the Type attribute on the API [cmdb_ci_api] class?",
+      "options": [
+        {
+          "id": "a",
+          "text": "MQTT"
+        },
+        {
+          "id": "b",
+          "text": "gRPC"
+        },
+        {
+          "id": "c",
+          "text": "FTP"
+        },
+        {
+          "id": "d",
+          "text": "AMQP"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The Type attribute on the API [cmdb_ci_api] class is a choice list that includes: REST, SOAP, HTTP, gRPC, GraphQL, and Websocket. gRPC is one of the six valid values for this attribute.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "MQTT (Message Queuing Telemetry Transport) is a messaging protocol but is not a valid value for the API Type choice list. The valid values are REST, SOAP, HTTP, gRPC, GraphQL, and Websocket."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "FTP (File Transfer Protocol) is a file transfer protocol, not an API type. The valid values for the API Type attribute are REST, SOAP, HTTP, gRPC, GraphQL, and Websocket."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "AMQP (Advanced Message Queuing Protocol) is a messaging protocol but is not included in the API Type choice list. The valid values are REST, SOAP, HTTP, gRPC, GraphQL, and Websocket."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Type | Choice list | Type of API. You can specify: REST, SOAP, HTTP, gRPC, GraphQL, Websocket",
+        "url": "https://www.servicenow.com/docs/r/xanadu/servicenow-platform/configuration-management-database-cmdb/cmdb-ci-class-models-api.html"
+      },
+      "labels": {
+        "domain": "Configuration",
+        "domainSlug": "configuration",
+        "subtopics": [
+          "CI classes and attributes",
+          "CMDB schema and class hierarchy"
+        ],
+        "tags": [
+          "CMDB",
+          "API class",
+          "cmdb_ci_api",
+          "API type",
+          "class attributes"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": false,
+      "references": []
+    },
+    {
+      "id": "cis-df-configuration-019",
+      "certification": "cis-df",
+      "topic": "configuration",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_select",
+      "question": "Which TWO of the following are base types that product models can be extended into in the CSDM Foundation domain? (Select TWO)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Facility model"
+        },
+        {
+          "id": "b",
+          "text": "Network model"
+        },
+        {
+          "id": "c",
+          "text": "Consumable model"
+        },
+        {
+          "id": "d",
+          "text": "Subscription model"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "c"
+      ],
+      "explanation": {
+        "correct": "Product models are extended into seven base types: application model (version agnostic), software model (version specific), contract model, facility model, hardware model, consumable model, and service model. Both facility model and consumable model are among these seven base types.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Network model is not one of the seven product model base types. The seven types are: application model, software model, contract model, facility model, hardware model, consumable model, and service model."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Subscription model is not one of the seven product model base types. The correct base types are: application model, software model, contract model, facility model, hardware model, consumable model, and service model."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Product models are extended into seven base types: application model (version agnostic), software model (version specific), contract model, facility model, hardware model, consumable model, service model.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/servicenow-platform/common-service-data-model-csdm/foundation-domain.html"
+      },
+      "labels": {
+        "domain": "Configuration",
+        "domainSlug": "configuration",
+        "subtopics": [
+          "CSDM data model and domains",
+          "CSDM foundation and service delivery"
+        ],
+        "tags": [
+          "CSDM",
+          "product models",
+          "cmdb_model",
+          "foundation domain",
+          "base types"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": false,
+      "references": []
+    },
+    {
+      "id": "cis-df-configuration-020",
+      "certification": "cis-df",
+      "topic": "configuration",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "An administrator needs to convert existing CI Install Status values to CSDM life-cycle value pairs so that ServiceNow products can properly recognize legacy CIs. Which module should they use to configure this mapping?",
+      "options": [
+        {
+          "id": "a",
+          "text": "CMDB > CI Status Converter"
+        },
+        {
+          "id": "b",
+          "text": "CSDM > Life Cycle Mapping"
+        },
+        {
+          "id": "c",
+          "text": "Asset > Life Cycle Configuration"
+        },
+        {
+          "id": "d",
+          "text": "CSDM > Status Migration Wizard"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The Life Cycle Mapping module (CSDM > Life Cycle Mapping) is used to specify how existing life-cycle values should be converted to CSDM life-cycle value pairs. This mapping ensures ServiceNow products can properly recognize legacy CIs in the environment. Legacy status fields such as CI Install Status, Asset State, and Product Model Status can be mapped to the Life Cycle Stage and Life Cycle Stage Status fields.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "CMDB > CI Status Converter is not a standard ServiceNow module. The correct module for mapping legacy status values to CSDM life-cycle value pairs is CSDM > Life Cycle Mapping."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Asset > Life Cycle Configuration is not the correct module. Life-cycle value pair mapping is performed through the CSDM > Life Cycle Mapping module, which handles the conversion of legacy statuses across multiple object types including assets, CIs, and contracts."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "CSDM > Status Migration Wizard is not a standard ServiceNow module. The correct approach is to use the CSDM > Life Cycle Mapping module to define how existing values map to CSDM life-cycle value pairs."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Use the Life Cycle Mapping module (CSDM > Life Cycle Mapping) to specify how your existing life-cycle values should be converted to CSDM life-cycle value pairs. The mapping ensures ServiceNow AI Platform products \"see\" legacy CIs in your environment.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/servicenow-platform/common-service-data-model-csdm/foundation-domain.html"
+      },
+      "labels": {
+        "domain": "Configuration",
+        "domainSlug": "configuration",
+        "subtopics": [
+          "CSDM data model and domains",
+          "Properties and system settings"
+        ],
+        "tags": [
+          "CSDM",
+          "life cycle mapping",
+          "legacy status",
+          "life-cycle value pairs",
+          "CI Install Status"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": false,
+      "references": []
+    },
+    {
+      "id": "cis-df-configuration-021",
+      "certification": "cis-df",
+      "topic": "configuration",
+      "cognitiveLevel": "application",
+      "type": "multiple_select",
+      "question": "A ServiceNow administrator is configuring API CI relationships in the CMDB using the API extension classes. Which TWO of the following are correctly defined relationship structures? (Select TWO)",
+      "options": [
+        {
+          "id": "a",
+          "text": "API Gateway 'Provides::Provided By' Managed API, with a Dependent relationship type"
+        },
+        {
+          "id": "b",
+          "text": "API Frontend 'Contains::Contained by' API Backend, with a Dependent relationship type"
+        },
+        {
+          "id": "c",
+          "text": "API 'Uses::Used by' API Component, with a Suggested relationship type"
+        },
+        {
+          "id": "d",
+          "text": "API Component 'Depends on::Used by' API Gateway, with a Suggested relationship type"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "c"
+      ],
+      "explanation": {
+        "correct": "The API extension classes define specific relationship structures: API [cmdb_ci_api] has a 'Uses::Used by' relationship with API Component [cmdb_ci_api_component] with a Suggested relationship type, and API Gateway [cmdb_ci_api_gateway] has a 'Provides::Provided By' relationship with Managed API [cmdb_ci_managed_api] with a Dependent relationship type. These are two of the four key API relationships defined in the CMDB CI Class Models store app.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "The relationship between API Frontend and API Backend is 'Use End Point To::Use End Point From' with a Suggested relationship type, not 'Contains::Contained by' with a Dependent type."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The correct relationship involving API Component is between API Backend [cmdb_ci_api_backend] and Kong Load Balancer [cmdb_ci_kong_lb] using 'Uses::Used By'. There is no direct 'Depends on::Used by' relationship between API Component and API Gateway."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "API [cmdb_ci_api] | Uses::Used by | API Component[cmdb_ci_api_component] | Suggested; API Gateway [cmdb_ci_api_gateway] | Provides::Provided By | Managed API[cmdb_ci_managed_api] | Dependent",
+        "url": "https://www.servicenow.com/docs/r/xanadu/servicenow-platform/configuration-management-database-cmdb/cmdb-ci-class-models-api.html"
+      },
+      "labels": {
+        "domain": "Configuration",
+        "domainSlug": "configuration",
+        "subtopics": [
+          "CI relationships and relationship types",
+          "CMDB schema and class hierarchy"
+        ],
+        "tags": [
+          "CMDB",
+          "API relationships",
+          "API Gateway",
+          "Managed API",
+          "relationship types",
+          "dependent",
+          "suggested"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": false,
+      "references": []
+    },
+    {
+      "id": "cis-df-configuration-022",
+      "certification": "cis-df",
+      "topic": "configuration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which system property controls whether CI Form is used for viewing CI details in CMDB Workspace?",
+      "options": [
+        {
+          "id": "a",
+          "text": "sn_cmdb_ws.ci_form.enabled"
+        },
+        {
+          "id": "b",
+          "text": "sn_cmdb_ws_explore_ci.record.enabled"
+        },
+        {
+          "id": "c",
+          "text": "cmdb.workspace.ci_details.view"
+        },
+        {
+          "id": "d",
+          "text": "sn_cmdb_ws.record.form_view"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The system property sn_cmdb_ws_explore_ci.record.enabled controls whether the CI Form feature is used for viewing CI details in CMDB Workspace. By default it is set to true, enabling the CI Form experience.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "This is not a valid ServiceNow system property. The correct property name is sn_cmdb_ws_explore_ci.record.enabled."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "This is a fabricated property name. CMDB Workspace CI detail viewing is controlled by sn_cmdb_ws_explore_ci.record.enabled."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "This is not a valid system property. The CI Form feature is toggled via sn_cmdb_ws_explore_ci.record.enabled."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "By default, the system property sn_cmdb_ws_explore_ci.record.enabled is set to true, enabling the experience of the CI Form feature for viewing CI details.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/servicenow-platform/configuration-management-database-cmdb/exploring-cmdb-workspace.html"
+      },
+      "labels": {
+        "domain": "Configuration",
+        "domainSlug": "configuration",
+        "subtopics": [
+          "Properties and system settings",
+          "CMDB Workspace setup and configuration"
+        ],
+        "tags": [
+          "cmdb-workspace",
+          "system-property",
+          "ci-form",
+          "ci-details"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": false,
+      "references": []
+    },
+    {
+      "id": "cis-df-configuration-023",
+      "certification": "cis-df",
+      "topic": "configuration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which CSDM domain contains base data that must be populated before you can use ServiceNow products or add data to the CMDB?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Design domain"
+        },
+        {
+          "id": "b",
+          "text": "Build domain"
+        },
+        {
+          "id": "c",
+          "text": "Foundation domain"
+        },
+        {
+          "id": "d",
+          "text": "Manage Technical Services domain"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "The Foundation domain involves tables that contain base data referenced from or to objects in the other CSDM domains. Foundation data is required before you can use ServiceNow products or add data to the CMDB.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The Design domain supports the design and planning of digital products. It does not contain the prerequisite base data needed before using ServiceNow products."
+          },
+          {
+            "choiceId": "b",
+            "explanation": "The Build domain involves tables used in the systems development life cycle (SDLC or Agile Development) of digital products. It is not the prerequisite data domain."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The Manage Technical Services domain involves tables used by ITOM products such as Service Mapping and Discovery. It depends on Foundation data, not the other way around."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "The Foundation domain involves tables that contain base data that is referenced from or to objects in the other CSDM domains. Foundation data is required before you can use ServiceNow products or add data to the CMDB.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/servicenow-platform/common-service-data-model-csdm/csdm-conceptual-model.html"
+      },
+      "labels": {
+        "domain": "Configuration",
+        "domainSlug": "configuration",
+        "subtopics": [
+          "CSDM data model and domains",
+          "CSDM foundation and service delivery"
+        ],
+        "tags": [
+          "csdm",
+          "foundation-domain",
+          "base-data",
+          "cmdb"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": false,
+      "references": []
+    },
+    {
+      "id": "cis-df-configuration-024",
+      "certification": "cis-df",
+      "topic": "configuration",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "A CI timeline in CMDB Workspace fails to load for a particular CI. What is a possible cause of this behavior?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The CI has no associated change requests in the last 30 days"
+        },
+        {
+          "id": "b",
+          "text": "The number of history activities for the CI exceeds 200"
+        },
+        {
+          "id": "c",
+          "text": "The user does not have the cmdb_admin role"
+        },
+        {
+          "id": "d",
+          "text": "CMDB 360 has not been enabled for the instance"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "A CI timeline in CMDB Workspace fails to load when the number of any activity type exceeds its threshold. The threshold for history activities is 200. Other thresholds include incidents (100), requests (50), and total events (200).",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The CI timeline covers the last 14 days, not 30 days, and having no change requests would not cause a load failure. The failure occurs when activity counts exceed defined thresholds."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The CI timeline does not require cmdb_admin role. CI Details are accessible to CMDB Admin, CMDB Editor, and CMDB User roles. The timeline failure is caused by exceeding activity thresholds."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "CMDB 360 is a separate feature from the CI timeline. The timeline failure is caused by the number of activities exceeding defined thresholds, not by CMDB 360 configuration."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "A CI timeline in CMDB Workspace fails to load when the number of any of the following activities exceeds its threshold: History: 200, Incidents: 100, Requests: 50, Total Events: 200",
+        "url": "https://www.servicenow.com/docs/r/xanadu/servicenow-platform/configuration-management-database-cmdb/exploring-cmdb-workspace.html"
+      },
+      "labels": {
+        "domain": "Configuration",
+        "domainSlug": "configuration",
+        "subtopics": [
+          "CMDB Workspace setup and configuration"
+        ],
+        "tags": [
+          "cmdb-workspace",
+          "ci-timeline",
+          "activity-threshold",
+          "troubleshooting"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": false,
+      "references": []
+    },
+    {
+      "id": "cis-df-configuration-025",
+      "certification": "cis-df",
+      "topic": "configuration",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "Why can't CIs in the CSDM Design domain be selected for Incident, Problem, or Change Management?",
+      "options": [
+        {
+          "id": "a",
+          "text": "They are classified as retired CIs with no active lifecycle state"
+        },
+        {
+          "id": "b",
+          "text": "They represent non-operational design and planning artifacts"
+        },
+        {
+          "id": "c",
+          "text": "They require additional ITOM licensing to become operational"
+        },
+        {
+          "id": "d",
+          "text": "They are stored in read-only CMDB tables that prevent association"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "CIs in the Design domain aren't operational because they support the design and planning of digital products. Since they are non-operational, they cannot be selected for Incident Management, Problem Management, or Change Management.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Design domain CIs are not retired CIs. They are intentionally non-operational because they represent design and planning artifacts, not deployed or decommissioned items."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "ITOM licensing does not make Design domain CIs operational. The Design domain is inherently non-operational by definition in the CSDM framework."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The limitation is not about read-only tables. Design domain CIs are non-operational by design in the CSDM framework, which means they are not intended for operational processes like incident or change management."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "The Design domain supports the design and planning of digital products. CIs in the Design domain aren't operational, so you can't select them for Incident Management, Problem Management, or Change Management.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/servicenow-platform/common-service-data-model-csdm/csdm-conceptual-model.html"
+      },
+      "labels": {
+        "domain": "Configuration",
+        "domainSlug": "configuration",
+        "subtopics": [
+          "CSDM data model and domains"
+        ],
+        "tags": [
+          "csdm",
+          "design-domain",
+          "non-operational",
+          "incident-management",
+          "change-management"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": false,
+      "references": []
+    },
+    {
+      "id": "cis-df-configuration-026",
+      "certification": "cis-df",
+      "topic": "configuration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_select",
+      "question": "Which of the following are standard views available in CMDB Workspace? (Select TWO)",
+      "options": [
+        {
+          "id": "a",
+          "text": "CMDB 360"
+        },
+        {
+          "id": "b",
+          "text": "Service Mapping"
+        },
+        {
+          "id": "c",
+          "text": "Discovery Dashboard"
+        },
+        {
+          "id": "d",
+          "text": "My Work"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "d"
+      ],
+      "explanation": {
+        "correct": "CMDB Workspace provides five standard views: Home, My Work, CMDB 360, Insights, and Management. CMDB 360 provides aggregations and analysis of CMDB 360 data, while My Work is used to manage tasks related to data compliance such as attestation and certification tasks.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Service Mapping is a separate ITOM product, not a view within CMDB Workspace. The five standard CMDB Workspace views are Home, My Work, CMDB 360, Insights, and Management."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Discovery Dashboard is not a CMDB Workspace view. Discovery is a separate ITOM product. The five standard CMDB Workspace views are Home, My Work, CMDB 360, Insights, and Management."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Home view is the default view in CMDB Workspace... My Work view in CMDB Workspace... CMDB 360 view in CMDB Workspace... Insights view in CMDB Workspace... Management view in CMDB Workspace",
+        "url": "https://www.servicenow.com/docs/r/xanadu/servicenow-platform/configuration-management-database-cmdb/exploring-cmdb-workspace.html"
+      },
+      "labels": {
+        "domain": "Configuration",
+        "domainSlug": "configuration",
+        "subtopics": [
+          "CMDB Workspace setup and configuration"
+        ],
+        "tags": [
+          "cmdb-workspace",
+          "views",
+          "cmdb-360",
+          "my-work"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": false,
+      "references": []
+    },
+    {
+      "id": "cis-df-configuration-027",
+      "certification": "cis-df",
+      "topic": "configuration",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "An organization needs to represent deployed application stacks that can be used in Incident, Problem, and Change Management, created separately for each region and environment (Development, QA, Production). Which CSDM service type should they use?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Business service"
+        },
+        {
+          "id": "b",
+          "text": "Application service"
+        },
+        {
+          "id": "c",
+          "text": "Technical service"
+        },
+        {
+          "id": "d",
+          "text": "Digital product service"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Application services are logical representations of a deployed application stack. They are operational CIs used in Incident, Problem, and Change Management, and can be created for each region and each environment (Development, QA, and Production).",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Business services are published to business users and focused on the consumer or seller (e.g., procurement, shipping). They are not designed to represent deployed application stacks per region and environment."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Technical services are provider-focused lower-level leaf nodes associated with CIs in the Manage Technical Services domain. They are not the correct type for representing deployed application stacks across regions and environments."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Digital product service is not a base-system service type in the CSDM framework. The base service types are application services, business services, and technical services."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Application services are logical representations of a deployed application stack... An application service is an operational CI and a unique instance of an application. Used in Incident, Problem, and Change. Can be created for each region and each environment (Development, QA, and Production).",
+        "url": "https://www.servicenow.com/docs/r/xanadu/servicenow-platform/common-service-data-model-csdm/csdm-conceptual-model.html"
+      },
+      "labels": {
+        "domain": "Configuration",
+        "domainSlug": "configuration",
+        "subtopics": [
+          "CSDM data model and domains",
+          "CSDM foundation and service delivery"
+        ],
+        "tags": [
+          "csdm",
+          "application-service",
+          "service-types",
+          "operational-ci"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": false,
+      "references": []
+    },
+    {
+      "id": "cis-df-configuration-028",
+      "certification": "cis-df",
+      "topic": "configuration",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "How do business services and technical services differ in the CSDM framework?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Business services are non-operational CIs, while technical services are operational CIs"
+        },
+        {
+          "id": "b",
+          "text": "Business services are consumer/seller-focused, while technical services are provider-focused"
+        },
+        {
+          "id": "c",
+          "text": "Business services support hierarchical structures, while technical services do not"
+        },
+        {
+          "id": "d",
+          "text": "Business services are managed by ITOM products, while technical services are managed by CSM"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "In the CSDM framework, a business service must be focused on the consumer or seller, while technical services must be provider-focused and include the technology provided for the business to consume or sell. Both are operational CIs.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Both business services and technical services are operational CIs. Neither is non-operational. The key difference is their focus: consumer/seller vs. provider."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Both business services and technical services must be one-level services and not hierarchies. Neither supports hierarchical structures of their own type."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "This reverses the associations. Technical services are in the Manage Technical Services domain used by ITOM products, while business services are in the Sell/Consume domain used by Service Portfolio Management and CSM."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "A business service must be focused on the consumer or seller... Technical services must be provider-focused and include the technology provided for the business to consume or sell.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/servicenow-platform/common-service-data-model-csdm/csdm-conceptual-model.html"
+      },
+      "labels": {
+        "domain": "Configuration",
+        "domainSlug": "configuration",
+        "subtopics": [
+          "CSDM data model and domains",
+          "CSDM foundation and service delivery"
+        ],
+        "tags": [
+          "csdm",
+          "business-service",
+          "technical-service",
+          "service-types"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": false,
+      "references": []
+    },
+    {
+      "id": "cis-df-configuration-029",
+      "certification": "cis-df",
+      "topic": "configuration",
+      "cognitiveLevel": "application",
+      "type": "multiple_select",
+      "question": "An administrator needs to both save changes to CI attributes and delete CI records from within CMDB Workspace. Which role requirements must be met? (Select TWO)",
+      "options": [
+        {
+          "id": "a",
+          "text": "CMDB Admin role for saving CI attribute changes"
+        },
+        {
+          "id": "b",
+          "text": "CMDB Editor role for saving CI attribute changes"
+        },
+        {
+          "id": "c",
+          "text": "CMDB Admin role for deleting CI records"
+        },
+        {
+          "id": "d",
+          "text": "itil role for deleting CI records"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "c"
+      ],
+      "explanation": {
+        "correct": "In CMDB Workspace, only the CMDB Admin role can save changes to CI attributes and perform delete operations on CI records via the More Actions menu. CMDB Editor and CMDB User roles can access CI details but cannot save or delete.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "The CMDB Editor role can access CI details but does not have permission to save changes to CI attributes in CMDB Workspace. Only the CMDB Admin role has save access."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The itil role is required to access CI Health information (specifically incidents), but it does not grant permission to delete CI records. Only CMDB Admin can delete CIs via the More Actions menu."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Save - Accessible to: CMDB Admin... More Actions/Delete - Accessible to: CMDB Admin",
+        "url": "https://www.servicenow.com/docs/r/xanadu/servicenow-platform/configuration-management-database-cmdb/exploring-cmdb-workspace.html"
+      },
+      "labels": {
+        "domain": "Configuration",
+        "domainSlug": "configuration",
+        "subtopics": [
+          "CMDB Workspace setup and configuration"
+        ],
+        "tags": [
+          "cmdb-workspace",
+          "roles",
+          "cmdb-admin",
+          "permissions",
+          "ci-management"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": false,
+      "references": []
+    }
+  ]
+}

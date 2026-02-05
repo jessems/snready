@@ -1,5 +1,6 @@
 import certificationsData from "@/data/certifications.json";
 import csaTopics from "@/data/topics/csa-topics.json";
+import cisDfTopics from "@/data/topics/cis-df-topics.json";
 import type { Certification, CertificationWithReadiness, Topic, Question, ExamDomain, CertificationCategory, ServiceNowRelease, DeltaExamInfo } from "@/types";
 
 // Category display names mapping
@@ -73,6 +74,7 @@ export function getCertificationSlugs(): string[] {
 // Topic data access
 const topicsMap: Record<string, typeof csaTopics> = {
   csa: csaTopics,
+  "cis-df": cisDfTopics,
 };
 
 export function getTopicsForCertification(certSlug: string): Topic[] {

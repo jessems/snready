@@ -1,0 +1,129 @@
+{
+  "certification": "cis-df",
+  "topics": [
+    {
+      "slug": "configuration",
+      "name": "Configuration",
+      "domain": "configuration",
+      "description": "Build and manage CMDB schema, CI classes, identifiers, relationships, CSDM data model setup, and CMDB Workspace configuration.",
+      "introduction": {
+        "overview": "The Configuration domain covers the foundational setup of the CMDB — its schema, class hierarchy, CI relationships, and integration with the Common Service Data Model (CSDM). This includes understanding how to use CI Class Manager, configure CMDB Workspace, and set up the data model that underpins all other CMDB operations.",
+        "whyItMatters": "Configuration accounts for 15% of the CIS-DF exam. You need to understand the CMDB class hierarchy, how CIs relate to each other, and how CSDM organizes services across domains. This is the foundation everything else builds on.",
+        "keyConcepts": "Focus on the CMDB schema model (cmdb_ci base class and extensions), CI Class Manager for managing classes, CSDM domains (Foundation, Design, Sell/Consume, Manage Technical Services, Manage Business Services), CMDB Workspace views, and CI relationships.",
+        "examTips": "Know the difference between CSDM domains and what lives in each. Understand the CMDB class hierarchy — which classes extend which. Be familiar with CMDB Workspace views (Home, My Work, CMDB 360, Insights, Management)."
+      },
+      "keyConcepts": [
+        "CMDB schema and class hierarchy",
+        "CI Class Manager",
+        "CI relationships and types",
+        "CSDM Foundation domain",
+        "CSDM Service Delivery domain",
+        "CMDB Workspace views",
+        "CI lifecycle stages",
+        "Dynamic CI Groups"
+      ],
+      "questionCount": 29,
+      "freeQuestionCount": 10
+    },
+    {
+      "slug": "ingest",
+      "name": "Ingest",
+      "domain": "ingest",
+      "description": "Import, normalize, and reconcile CI data using IRE, Service Graph Connectors, import sets, and integration tools.",
+      "introduction": {
+        "overview": "The Ingest domain covers how data gets into the CMDB — from the Identification and Reconciliation Engine (IRE) that prevents duplicates, to Service Graph Connectors that pull data from external sources like AWS, Azure, and Dynatrace. Understanding the full data pipeline is critical.",
+        "whyItMatters": "Ingest accounts for 19% of the CIS-DF exam. The IRE is central to CMDB data integrity — you must understand identification rules, reconciliation rules, and how CI reclassification works. Service Graph Connectors and import sets are the primary methods for populating the CMDB.",
+        "keyConcepts": "Master the IRE identification process (identifier entries, priority, matching), reconciliation rules, CI reclassification types (upgrade/downgrade/switch), Service Graph Connector architecture, and Robust Transform Engine (RTE) operations.",
+        "examTips": "Pay attention to IRE properties and their defaults (e.g., skip_duplicates threshold of 5). Know the difference between Regular and Lookup identifier entry types. Understand how Service Graph Connectors use IRE for data insertion."
+      },
+      "keyConcepts": [
+        "Identification and Reconciliation Engine (IRE)",
+        "Identification rules and entries",
+        "Reconciliation rules",
+        "CI reclassification (upgrade/downgrade/switch)",
+        "Service Graph Connectors",
+        "Robust Transform Engine (RTE)",
+        "Import sets and transform maps",
+        "IRE properties and thresholds"
+      ],
+      "questionCount": 33,
+      "freeQuestionCount": 11
+    },
+    {
+      "slug": "govern",
+      "name": "Govern",
+      "domain": "govern",
+      "description": "Apply health KPIs, governance processes, lifecycle controls, data certification, and remediation for trusted CMDB data.",
+      "introduction": {
+        "overview": "The Govern domain is the largest on the CIS-DF exam at 35%. It covers everything related to maintaining data quality in the CMDB — health monitoring via KPIs (Correctness, Completeness, Compliance), data certification and audit processes, lifecycle management, remediation rules, and the CMDB Data Manager.",
+        "whyItMatters": "This is the single most important domain on the exam. CMDB Health is the core mechanism for monitoring data quality. You need to understand health KPIs, how scores are calculated, certification schedules, lifecycle policies, and remediation workflows.",
+        "keyConcepts": "Master the three health KPIs (Correctness, Completeness, Compliance) and their sub-metrics. Understand health scores at class, group, and service levels. Know data certification workflows (schedules, templates, tasks). Learn lifecycle management (tangible vs intangible, retirement definitions). Understand CMDB Data Manager policies (archive, delete, attestation).",
+        "examTips": "Know the Correctness sub-metrics (Orphan, Staleness, Duplicate). Remember default values like staleness Effective Duration (60 days) and archive retention (120 days). Understand how certification tasks are auto-split when CI count exceeds thresholds (10,000 per task)."
+      },
+      "keyConcepts": [
+        "CMDB Health KPIs (Correctness, Completeness, Compliance)",
+        "Health scores and dashboards",
+        "Data certification schedules and templates",
+        "Lifecycle management (tangible/intangible)",
+        "Retirement definitions",
+        "Remediation rules and de-duplication",
+        "CMDB Data Manager policies",
+        "Attestation and compliance audits",
+        "Domain separation in CMDB Health",
+        "Relationship governance"
+      ],
+      "questionCount": 60,
+      "freeQuestionCount": 20
+    },
+    {
+      "slug": "insight",
+      "name": "Insight",
+      "domain": "insight",
+      "description": "Use Query Builder, dashboards, CMDB 360, Unified Map, and reporting tools for CMDB data analysis and impact assessment.",
+      "introduction": {
+        "overview": "The Insight domain covers how you analyze and visualize CMDB data — from the CMDB Data Foundations dashboard that shows adoption levels, to CMDB 360 for deep CI inspection, Query Builder for complex CI queries, and the Multisource Report Builder for cross-source analysis.",
+        "whyItMatters": "Insight accounts for 20% of the CIS-DF exam. You need to understand the various dashboards and tools available for monitoring CMDB health and data quality. The CMDB Data Foundations dashboard is particularly important as it shows feature adoption across Data Ingestion, Data Governance, and Search & Analytics.",
+        "keyConcepts": "Focus on the CMDB Data Foundations dashboard (tabs, adoption levels, scheduled jobs), CMDB Query Builder (query types, saved queries), CMDB 360 experience (properties, roles, Multisource Data Preview), CMDB Workspace Insights view, and Multisource Report Builder.",
+        "examTips": "Know the three feature adoption categories (Data Ingestion, Data Governance, Search & Analytics). Understand CMDB 360 roles (reader, editor, admin). Know that Query Builder has different query types including Service Mapping queries. Remember the scheduled job that refreshes dashboard data every 24 hours."
+      },
+      "keyConcepts": [
+        "CMDB Data Foundations dashboard",
+        "Feature adoption levels",
+        "CMDB Query Builder",
+        "CMDB 360 experience",
+        "Multisource Data Preview",
+        "Multisource Report Builder",
+        "CMDB Workspace Insights view",
+        "CMDB Health Dashboard",
+        "Impact analysis",
+        "Service Mapping queries"
+      ],
+      "questionCount": 36,
+      "freeQuestionCount": 12
+    },
+    {
+      "slug": "csdm-fundamentals",
+      "name": "CSDM Fundamentals",
+      "domain": "csdm-fundamentals",
+      "description": "Apply the Common Service Data Model (CSDM) to organize services across their full lifecycle.",
+      "introduction": {
+        "overview": "CSDM Fundamentals covers the Common Service Data Model — ServiceNow's standard framework for organizing service-related data in the CMDB. It defines domains (Foundation, Design, Sell/Consume, Manage Technical Services, Manage Business Services) and lifecycle stages for services.",
+        "whyItMatters": "CSDM Fundamentals accounts for 11% of the CIS-DF exam. While it's the smallest domain by weight, understanding CSDM is essential because it provides the conceptual framework that organizes all CMDB data.",
+        "keyConcepts": "Master the CSDM domains and what data lives in each. Understand the service lifecycle (Design → Build → Deliver → Operate). Know key tables like Service Instance (cmdb_ci_service_auto), Business Service, and Technical Service. Understand CSDM version changes (especially the CSDM 5 relabeling).",
+        "examTips": "Remember that Service Instance was previously called Application Service (CSDM 5 change). Know which domain each type of CI belongs to. Understand the difference between Business Services (consumer-facing) and Technical Services (provider-facing)."
+      },
+      "keyConcepts": [
+        "CSDM data domains",
+        "Foundation domain",
+        "Service Delivery domain",
+        "Service lifecycle stages",
+        "Service Instance (cmdb_ci_service_auto)",
+        "Business Service vs Technical Service",
+        "CSDM 5 changes and relabeling",
+        "Service portfolio structure"
+      ],
+      "questionCount": 13,
+      "freeQuestionCount": 5
+    }
+  ]
+}
