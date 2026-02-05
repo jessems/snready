@@ -197,7 +197,7 @@ export default async function FreeQuestionsPage({ params }: Props) {
         </div>
 
         {/* Unlock CTA */}
-        <div className="mt-12 rounded-xl border border-emerald-200 bg-gradient-to-br from-emerald-50 to-green-100 p-8 text-center dark:border-emerald-800 dark:from-emerald-950 dark:to-green-950">
+        <div className="mt-12 rounded-xl border border-emerald-200 bg-gradient-to-br from-emerald-50 to-green-100 p-4 sm:p-8 text-center dark:border-emerald-800 dark:from-emerald-950 dark:to-green-950">
           <h3 className="text-2xl font-bold text-emerald-900 dark:text-emerald-100">
             Unlock Full Access
           </h3>

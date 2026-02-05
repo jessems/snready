@@ -527,7 +527,7 @@ export default async function DeltaExamPage({ params }: PageProps) {
                 ))}
               </div>
             ) : (
-              <div className="mt-8 rounded-xl border-2 border-dashed border-zinc-200 bg-zinc-50/50 p-10 text-center dark:border-zinc-700 dark:bg-zinc-800/50">
+              <div className="mt-8 rounded-xl border-2 border-dashed border-zinc-200 bg-zinc-50/50 p-6 sm:p-10 text-center dark:border-zinc-700 dark:bg-zinc-800/50">
                 <p className="text-lg font-medium text-zinc-600 dark:text-zinc-300">
                   Practice questions coming soon
                 </p>

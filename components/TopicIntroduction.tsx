@@ -10,7 +10,7 @@ export default function TopicIntroduction({ topic }: TopicIntroductionProps) {
   const { overview, whyItMatters, keyConcepts, examTips } = topic.introduction;
 
   return (
-    <section className="mb-12 rounded-xl border border-zinc-200 bg-white p-8 dark:border-zinc-800 dark:bg-zinc-900">
+    <section className="mb-12 rounded-xl border border-zinc-200 bg-white p-4 sm:p-8 dark:border-zinc-800 dark:bg-zinc-900">
       <h2 className="text-xl font-bold text-zinc-900 dark:text-zinc-50">
         About {topic.name}
       </h2>

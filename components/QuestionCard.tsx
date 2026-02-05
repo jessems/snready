@@ -92,7 +92,7 @@ export default function QuestionCard({
   };
 
   return (
-    <div className="rounded-xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900">
+    <div className="rounded-xl border border-zinc-200 bg-white p-4 sm:p-6 dark:border-zinc-800 dark:bg-zinc-900">
       {/* Question Header */}
       <div className="flex items-start justify-between gap-4">
         <div className="flex items-center gap-3">
