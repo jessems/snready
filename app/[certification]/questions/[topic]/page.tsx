@@ -179,7 +179,7 @@ export default async function TopicQuestionsPage({ params }: PageProps) {
                   />
                 ))
               ) : (
-                <div className="rounded-xl border border-zinc-200 bg-white p-12 text-center dark:border-zinc-800 dark:bg-zinc-900">
+                <div className="rounded-xl border border-zinc-200 bg-white p-6 sm:p-12 text-center dark:border-zinc-800 dark:bg-zinc-900">
                   <p className="text-zinc-500">
                     Questions for this topic are coming soon!
                   </p>

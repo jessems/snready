@@ -110,7 +110,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden`}
       >
         <nav className="border-b border-zinc-200 dark:border-zinc-800">
           <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
@@ -155,7 +155,7 @@ export default function RootLayout({
             </div>
           </div>
         </nav>
-        <main>{children}</main>
+        <main className="min-w-0 overflow-x-hidden">{children}</main>
         <footer className="border-t border-zinc-200 py-12 dark:border-zinc-800">
           <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 gap-8 md:grid-cols-4">

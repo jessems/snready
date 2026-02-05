@@ -270,7 +270,7 @@ export default async function PracticeTestPage({ params }: Props) {
 
             {/* Start Practice Test CTA */}
             <div className="mt-12 text-center">
-              <div className="rounded-xl border border-emerald-200 bg-gradient-to-br from-emerald-50 to-green-100 p-8 dark:border-emerald-800 dark:from-emerald-950 dark:to-green-950">
+              <div className="rounded-xl border border-emerald-200 bg-gradient-to-br from-emerald-50 to-green-100 p-4 sm:p-8 dark:border-emerald-800 dark:from-emerald-950 dark:to-green-950">
                 <h2 className="text-2xl font-bold text-emerald-900 dark:text-emerald-100">
                   Ready to Test Your Knowledge?
                 </h2>
@@ -299,7 +299,7 @@ export default async function PracticeTestPage({ params }: Props) {
           <>
             {/* Coming Soon */}
             <div className="mt-12 text-center">
-              <div className="rounded-xl border border-zinc-200 bg-zinc-50 p-8 dark:border-zinc-700 dark:bg-zinc-900">
+              <div className="rounded-xl border border-zinc-200 bg-zinc-50 p-4 sm:p-8 dark:border-zinc-700 dark:bg-zinc-900">
                 <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-100">
                   Coming Soon
                 </h2>
