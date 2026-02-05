@@ -294,6 +294,108 @@ export function getCertificationsGroupedByCategoryWithReadiness(): Record<
 }
 
 // =============================================================================
+// Glossary Helpers
+// =============================================================================
+
+export interface GlossaryTerm {
+  slug: string;
+  name: string;
+  certifications: Array<{
+    certSlug: string;
+    certName: string;
+    topics: Array<{
+      topicSlug: string;
+      topicName: string;
+    }>;
+  }>;
+}
+
+// Extract all unique key concepts from all topics across all certifications
+export function getAllGlossaryTerms(): GlossaryTerm[] {
+  const termMap = new Map<string, GlossaryTerm>();
+  
+  // Iterate through all certifications and their topics
+  for (const certSlug of Object.keys(topicsMap)) {
+    const certification = getCertificationBySlug(certSlug);
+    if (!certification) continue;
+    
+    const topics = getTopicsForCertification(certSlug);
+    
+    for (const topic of topics) {
+      if (topic.keyConcepts && Array.isArray(topic.keyConcepts)) {
+        for (const concept of topic.keyConcepts) {
+          // Create a slug from the concept name
+          const slug = concept
+            .toLowerCase()
+            .replace(/[^a-z0-9\s]/g, '')
+            .replace(/\s+/g, '-')
+            .trim();
+          
+          if (!termMap.has(slug)) {
+            termMap.set(slug, {
+              slug,
+              name: concept,
+              certifications: [],
+            });
+          }
+          
+          const term = termMap.get(slug)!;
+          
+          // Find or create certification entry
+          let certEntry = term.certifications.find(c => c.certSlug === certSlug);
+          if (!certEntry) {
+            certEntry = {
+              certSlug,
+              certName: certification.name,
+              topics: [],
+            };
+            term.certifications.push(certEntry);
+          }
+          
+          // Add topic if not already present
+          if (!certEntry.topics.find(t => t.topicSlug === topic.slug)) {
+            certEntry.topics.push({
+              topicSlug: topic.slug,
+              topicName: topic.name,
+            });
+          }
+        }
+      }
+    }
+  }
+  
+  // Convert to array and sort alphabetically
+  return Array.from(termMap.values()).sort((a, b) => a.name.localeCompare(b.name));
+}
+
+// Get glossary term by slug
+export function getGlossaryTermBySlug(slug: string): GlossaryTerm | undefined {
+  const allTerms = getAllGlossaryTerms();
+  return allTerms.find(term => term.slug === slug);
+}
+
+// Get glossary terms grouped alphabetically
+export function getGlossaryTermsGroupedAlphabetically(): Record<string, GlossaryTerm[]> {
+  const allTerms = getAllGlossaryTerms();
+  const grouped: Record<string, GlossaryTerm[]> = {};
+  
+  for (const term of allTerms) {
+    const firstLetter = term.name.charAt(0).toUpperCase();
+    if (!grouped[firstLetter]) {
+      grouped[firstLetter] = [];
+    }
+    grouped[firstLetter].push(term);
+  }
+  
+  return grouped;
+}
+
+// Generate static params for glossary pages
+export function getAllGlossaryTermSlugs(): string[] {
+  return getAllGlossaryTerms().map(term => term.slug);
+}
+
+// =============================================================================
 // Delta Exam Helpers
 // =============================================================================
 

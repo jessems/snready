@@ -43,10 +43,8 @@ export async function generateMetadata({
     return { title: "Question Not Found" };
   }
 
-  const truncatedQuestion = truncateText(question.question, 60);
-
   return {
-    title: `${truncatedQuestion} - ${cert.name} ${topic.name}`,
+    title: `Q${questionNumber}: ${topic.name} – ${cert.name} Practice | SNReady`,
     description: `${question.cognitiveLevel.charAt(0).toUpperCase() + question.cognitiveLevel.slice(1)} ${cert.name} ${topic.name} practice question. ${truncateText(typeof question.explanation === "string" ? question.explanation : question.explanation.correct, 120)}`,
     keywords: [
       `${cert.name} ${topic.name} question`,
@@ -124,7 +122,7 @@ export default async function QuestionPage({ params }: PageProps) {
       "@type": "Organization",
       name: "SNReady",
     },
-    dateCreated: new Date().toISOString(),
+    dateCreated: "2026-02-05",
     about: {
       "@type": "Thing",
       name: `ServiceNow ${cert.name} ${topic.name}`,

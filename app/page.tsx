@@ -6,6 +6,7 @@ import {
   getCertificationsGroupedByCategoryWithReadiness,
   getCategoryDisplayName,
   getSortedCategories,
+  isCertificationReady,
 } from "@/lib/data";
 import CertificationCard from "@/components/CertificationCard";
 
@@ -13,8 +14,12 @@ export default function Home() {
   const certifications = getAllCertifications();
   const groupedCerts = getCertificationsGroupedByCategoryWithReadiness();
   const sortedCategories = getSortedCategories();
-  const csaQuestionCount = getTotalQuestionCount("csa");
-  const csaFreeCount = getTotalFreeQuestionCount("csa");
+  
+  // Calculate total questions across all ready certifications
+  const readyCerts = ["csa", "cis-df"];
+  const totalQuestions = readyCerts.reduce((sum, cert) => sum + getTotalQuestionCount(cert), 0);
+  const totalFreeQuestions = readyCerts.reduce((sum, cert) => sum + getTotalFreeQuestionCount(cert), 0);
+  const activeCertifications = readyCerts.length;
 
   return (
     <div className="min-h-screen">
@@ -28,7 +33,7 @@ export default function Home() {
               Certification
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-zinc-600 dark:text-zinc-400">
-              Free practice tests, exam questions, and study guides for CSA, CAD,
+              Free practice tests, exam questions, and study guides for CSA, CIS-DF, CAD,
               CIS-ITSM, and more. Join thousands of IT professionals who passed
               their exams with SNReady.
             </p>
@@ -56,7 +61,7 @@ export default function Home() {
           <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
             <div className="text-center">
               <div className="text-3xl font-bold text-emerald-600">
-                {csaQuestionCount}+
+                {totalQuestions}+
               </div>
               <div className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
                 Practice Questions
@@ -64,22 +69,22 @@ export default function Home() {
             </div>
             <div className="text-center">
               <div className="text-3xl font-bold text-emerald-600">
-                {csaFreeCount}+
+                {totalFreeQuestions}+
               </div>
               <div className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
                 Free Questions
               </div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-emerald-600">20+</div>
+              <div className="text-3xl font-bold text-emerald-600">25+</div>
               <div className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
                 Certifications
               </div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-emerald-600">94%</div>
+              <div className="text-3xl font-bold text-emerald-600">{activeCertifications}</div>
               <div className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
-                Pass Rate
+                Active Certifications
               </div>
             </div>
           </div>
