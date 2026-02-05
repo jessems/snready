@@ -48,7 +48,7 @@ export default function QuestionCard({
 
   const getOptionClasses = (optionId: string) => {
     const base =
-      "flex items-start gap-3 rounded-lg border p-4 transition-all cursor-pointer";
+      "flex items-start gap-3 rounded-lg border p-3 sm:p-4 transition-all cursor-pointer";
     const isSelected = selectedAnswers.includes(optionId);
     const isCorrectAnswer = question.correctAnswers.includes(optionId);
 
@@ -94,28 +94,26 @@ export default function QuestionCard({
   return (
     <div className="rounded-xl border border-zinc-200 bg-white p-4 sm:p-6 dark:border-zinc-800 dark:bg-zinc-900">
       {/* Question Header */}
-      <div className="flex items-start justify-between gap-4">
-        <div className="flex items-center gap-3">
-          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-emerald-100 text-sm font-semibold text-emerald-700 dark:bg-emerald-900 dark:text-emerald-300">
-            {questionNumber}
+      <div className="flex items-center gap-3">
+        <span className="flex h-7 w-7 items-center justify-center rounded-full bg-emerald-100 text-xs font-semibold text-emerald-700 dark:bg-emerald-900 dark:text-emerald-300">
+          {questionNumber}
+        </span>
+        <div className="flex items-center gap-2">
+          <span
+            className={`rounded px-2 py-0.5 text-xs font-medium ${getCognitiveLevelStyles(question.cognitiveLevel)}`}
+          >
+            {question.cognitiveLevel}
           </span>
-          <div className="flex items-center gap-2">
-            <span
-              className={`rounded px-2 py-0.5 text-xs font-medium ${getCognitiveLevelStyles(question.cognitiveLevel)}`}
-            >
-              {question.cognitiveLevel}
+          {isMultipleSelect && (
+            <span className="rounded bg-blue-100 px-2 py-0.5 text-xs font-medium text-blue-700 dark:bg-blue-900 dark:text-blue-300">
+              Select all that apply
             </span>
-            {isMultipleSelect && (
-              <span className="rounded bg-blue-100 px-2 py-0.5 text-xs font-medium text-blue-700 dark:bg-blue-900 dark:text-blue-300">
-                Select all that apply
-              </span>
-            )}
-          </div>
+          )}
         </div>
       </div>
 
       {/* Question Text */}
-      <p className="mt-4 text-lg font-medium text-zinc-900 dark:text-zinc-100">
+      <p className="mt-4 text-base sm:text-lg font-medium leading-relaxed text-zinc-900 dark:text-zinc-100">
         {question.question}
       </p>
 
@@ -128,7 +126,7 @@ export default function QuestionCard({
             onClick={() => handleOptionClick(option.id)}
           >
             <span
-              className={`flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full border text-sm font-medium ${
+              className={`mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full border text-xs font-medium ${
                 selectedAnswers.includes(option.id)
                   ? "border-emerald-500 bg-emerald-500 text-white"
                   : "border-zinc-300 text-zinc-500 dark:border-zinc-600"
@@ -136,7 +134,7 @@ export default function QuestionCard({
             >
               {option.id.toUpperCase()}
             </span>
-            <span className="text-zinc-700 dark:text-zinc-300">
+            <span className="text-sm sm:text-base text-zinc-700 dark:text-zinc-300 leading-relaxed">
               {option.text}
             </span>
           </div>

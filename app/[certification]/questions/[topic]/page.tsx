@@ -161,11 +161,11 @@ export default async function TopicQuestionsPage({ params }: PageProps) {
           <div className="grid gap-8 lg:grid-cols-[1fr,300px]">
             {/* Questions */}
             <div className="space-y-6">
-              <div className="flex items-center justify-between">
+              <div className="flex flex-wrap items-baseline justify-between gap-2">
                 <h2 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100">
                   Practice Questions
                 </h2>
-                <span className="text-sm text-zinc-500">
+                <span className="text-sm text-zinc-500 whitespace-nowrap">
                   {questions.length} questions available
                 </span>
               </div>
