@@ -1,0 +1,2593 @@
+{
+  "certification": "cis-df",
+  "topic": "insight",
+  "questions": [
+    {
+      "id": "cis-df-insight-001",
+      "certification": "cis-df",
+      "topic": "insight",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What is the purpose of the Business Service object in the Service Consumption domain?",
+      "options": [
+        {
+          "id": "a",
+          "text": "To store the technical configuration of applications"
+        },
+        {
+          "id": "b",
+          "text": "To identify portions of the business that depend on and are impacted by technology"
+        },
+        {
+          "id": "c",
+          "text": "To manage the service catalog item offerings"
+        },
+        {
+          "id": "d",
+          "text": "To track incident tickets related to business functions"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Business Service represents the business functions that consume and depend on technology (Service Instances). Its primary purpose is enabling impact analysis - if technology has an issue, Business Service identifies what portion of the business is impacted or may not be able to perform its function. See: https://docs.servicenow.com/bundle/zurich-servicenow-platform/page/product/configuration-management/concept/csdm-service-consumption.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Technical configuration is stored in the Service Delivery domain CIs (Service Instances, infrastructure). Business Service is about business functions.",
+            "reference": "CSDM Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Service Catalog management uses catalog items and offerings, which are separate from Business Service. Business Service represents the business function itself.",
+            "reference": "Service Catalog Documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Incident tracking is done in the Incident table. Business Service is used to understand impact when incidents occur.",
+            "reference": "CSDM 5 White Paper"
+          }
+        ]
+      },
+      "references": [
+        "CSDM 5 White Paper",
+        "Business Service Documentation"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "course",
+        "course": {
+          "courseSlug": "common-service-data-model-csdm-fundamentals",
+          "moduleTitle": "CSDM Presentations",
+          "lessonSlug": "08-service-consumption-domain",
+          "lessonTitle": "Service Consumption Domain",
+          "url": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=62ebf27e53f26ed0c2245a01a0490e19&child_id=bd3b49cc4797e2d8c00af235126d439c&spa=1"
+        },
+        "path": "/root/.openclaw/workspace/sn-course-scraper/scraped-courses/common-service-data-model-csdm-fundamentals/08-service-consumption-domain.md",
+        "excerpt": "The intent here is to build out the view of the business... we want to understand what portion of the business exists that then depends on those service instances... From an operational perspective, the whole orange section is our operational piece."
+      },
+      "labels": {
+        "certification": "cis-df",
+        "domain": "Insight",
+        "domainSlug": "insight",
+        "domainPercentage": 20,
+        "subtopics": [
+          "Business Service",
+          "Service Consumption"
+        ],
+        "course": "common-service-data-model-csdm-fundamentals",
+        "module": "CSDM Presentations",
+        "lesson": "08-service-consumption-domain",
+        "tags": [
+          "business service",
+          "impact analysis",
+          "service consumption"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-04T12:00:00Z",
+        "version": "1.0",
+        "release": "Zurich",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-df-insight-002",
+      "certification": "cis-df",
+      "topic": "insight",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What does the service classification attribute indicate on a service record?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The priority level of the service"
+        },
+        {
+          "id": "b",
+          "text": "The type of service table the record belongs to (business service, technical service, etc.)"
+        },
+        {
+          "id": "c",
+          "text": "The security classification for data protection"
+        },
+        {
+          "id": "d",
+          "text": "The department responsible for the service"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Service classification is an attribute that identifies the type of service (business service, technical service, etc.) and is used for filtering, reporting, and metrics. When on a business service table, the classification would be 'business service'. This is a legacy attribute that helps differentiate service types. See: https://docs.servicenow.com/bundle/zurich-servicenow-platform/page/product/configuration-management/concept/csdm-service-classification.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Service priority is tracked separately. Service classification indicates the type/category of the service record.",
+            "reference": "CSDM Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Security classification for data protection is a different concept. Service classification identifies the service type.",
+            "reference": "CSDM 5 White Paper"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Department responsibility is tracked through support groups and ownership fields, not service classification.",
+            "reference": "CSDM Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "CSDM 5 White Paper"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "course",
+        "course": {
+          "courseSlug": "common-service-data-model-csdm-fundamentals",
+          "moduleTitle": "CSDM Presentations",
+          "lessonSlug": "08-service-consumption-domain",
+          "lessonTitle": "Service Consumption Domain",
+          "url": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=62ebf27e53f26ed0c2245a01a0490e19&child_id=bd3b49cc4797e2d8c00af235126d439c&spa=1"
+        },
+        "path": "/root/.openclaw/workspace/sn-course-scraper/scraped-courses/common-service-data-model-csdm-fundamentals/08-service-consumption-domain.md",
+        "excerpt": "It's important to understand service classification and how it works inside of the platform. It's kind of a legacy attribute... we use that in various filtering and reporting mechanisms and metric mechanisms."
+      },
+      "labels": {
+        "certification": "cis-df",
+        "domain": "Insight",
+        "domainSlug": "insight",
+        "domainPercentage": 20,
+        "subtopics": [
+          "Service classification",
+          "Service Consumption"
+        ],
+        "course": "common-service-data-model-csdm-fundamentals",
+        "module": "CSDM Presentations",
+        "lesson": "08-service-consumption-domain",
+        "tags": [
+          "service classification",
+          "filtering",
+          "reporting"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-04T12:00:00Z",
+        "version": "1.0",
+        "release": "Zurich",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-df-insight-003",
+      "certification": "cis-df",
+      "topic": "insight",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "Which ServiceNow product provides visualization of CSDM data across the entire service lifecycle, including Plan, Build, Run, and Info views?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Service Catalog"
+        },
+        {
+          "id": "b",
+          "text": "Digital Portfolio Management (DPM)"
+        },
+        {
+          "id": "c",
+          "text": "Performance Analytics"
+        },
+        {
+          "id": "d",
+          "text": "Discovery"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Digital Portfolio Management (DPM) provides visualization of CSDM data across the entire service lifecycle. It shows tabs like Plan, Build, Run, and Info that correspond to CSDM domains. DPM helps visualize why data is placed in specific CSDM tables and what value it provides. See: https://docs.servicenow.com/bundle/zurich-it-business-management/page/product/it-business-management/concept/digital-portfolio-management.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Service Catalog is for requesting services, not visualizing portfolio and lifecycle data across CSDM domains.",
+            "reference": "Service Catalog Documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Performance Analytics provides KPIs and metrics but doesn't provide the full lifecycle visualization that DPM offers.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Discovery populates CMDB data but doesn't provide portfolio visualization. DPM visualizes the data Discovery helps populate.",
+            "reference": "CSDM Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "CSDM 5 White Paper",
+        "DPM Documentation"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "course",
+        "course": {
+          "courseSlug": "common-service-data-model-csdm-fundamentals",
+          "moduleTitle": "CSDM Presentations",
+          "lessonSlug": "11-transitioning-and-next-steps",
+          "lessonTitle": "Transitioning and Next Steps",
+          "url": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=62ebf27e53f26ed0c2245a01a0490e19&child_id=1c51ab69479baa1cc00af235126d43a1&spa=1"
+        },
+        "path": "/root/.openclaw/workspace/sn-course-scraper/scraped-courses/common-service-data-model-csdm-fundamentals/11-transitioning-and-next-steps.md",
+        "excerpt": "Digital Portfolio Management really is that piece to help visualize our efforts of CSDM. Why have we placed this data where we've said to place it? And what can we do with this data once we have it there?"
+      },
+      "labels": {
+        "certification": "cis-df",
+        "domain": "Insight",
+        "domainSlug": "insight",
+        "domainPercentage": 20,
+        "subtopics": [
+          "Digital Portfolio Management",
+          "Data visualization"
+        ],
+        "course": "common-service-data-model-csdm-fundamentals",
+        "module": "CSDM Presentations",
+        "lesson": "11-transitioning-and-next-steps",
+        "tags": [
+          "DPM",
+          "visualization",
+          "portfolio",
+          "lifecycle"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-04T12:00:00Z",
+        "version": "1.0",
+        "release": "Zurich",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-df-insight-004",
+      "certification": "cis-df",
+      "topic": "insight",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "An organization wants to understand which groups of employees are affected when a specific business service has an outage. Which CSDM feature in the Service Consumption domain provides this capability?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Service classification attribute"
+        },
+        {
+          "id": "b",
+          "text": "Subscriber relationships on Business Service Offering"
+        },
+        {
+          "id": "c",
+          "text": "Dynamic CI Groups"
+        },
+        {
+          "id": "d",
+          "text": "Application Service dependency maps"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The subscriber perspective on Business Service Offering allows declaring who subscribes to a service - whether it's people in a specific group, an entire department, or a location. This provides business context for impact analysis during outages. See: https://docs.servicenow.com/bundle/zurich-servicenow-platform/page/product/configuration-management/concept/csdm-service-offering.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Service classification identifies service types for filtering, not subscriber relationships for impact analysis.",
+            "reference": "CSDM Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Dynamic CI Groups are for grouping CIs programmatically in the Service Delivery domain, not for tracking business subscribers.",
+            "reference": "Dynamic CI Group Documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Application Service dependency maps show technical dependencies, not business subscriber information.",
+            "reference": "CSDM 5 White Paper"
+          }
+        ]
+      },
+      "references": [
+        "CSDM 5 White Paper",
+        "Service Offering Documentation"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "course",
+        "course": {
+          "courseSlug": "common-service-data-model-csdm-fundamentals",
+          "moduleTitle": "CSDM Presentations",
+          "lessonSlug": "08-service-consumption-domain",
+          "lessonTitle": "Service Consumption Domain",
+          "url": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=62ebf27e53f26ed0c2245a01a0490e19&child_id=bd3b49cc4797e2d8c00af235126d439c&spa=1"
+        },
+        "path": "/root/.openclaw/workspace/sn-course-scraper/scraped-courses/common-service-data-model-csdm-fundamentals/08-service-consumption-domain.md",
+        "excerpt": "The subscriber perspective of this is really powerful because you can declare who subscribes to this. Is it people in this group? Is it an entire department? Is it a location that depends on this? So a lot of that business context is established at this point."
+      },
+      "labels": {
+        "certification": "cis-df",
+        "domain": "Insight",
+        "domainSlug": "insight",
+        "domainPercentage": 20,
+        "subtopics": [
+          "Subscribers",
+          "Impact analysis"
+        ],
+        "course": "common-service-data-model-csdm-fundamentals",
+        "module": "CSDM Presentations",
+        "lesson": "08-service-consumption-domain",
+        "tags": [
+          "subscriber",
+          "business service offering",
+          "impact",
+          "outage"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-04T12:00:00Z",
+        "version": "1.0",
+        "release": "Zurich",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-df-insight-005",
+      "certification": "cis-df",
+      "topic": "insight",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which role is the minimum requirement to access the Insights view in CMDB Workspace?",
+      "options": [
+        {
+          "id": "a",
+          "text": "admin"
+        },
+        {
+          "id": "b",
+          "text": "sn_cmdb_user"
+        },
+        {
+          "id": "c",
+          "text": "itil_admin"
+        },
+        {
+          "id": "d",
+          "text": "sn_cmdb_editor"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The sn_cmdb_user (CMDB User) role is the minimum role required to access the Insights view. Higher roles like sn_cmdb_admin and sn_cmdb_editor contain sn_cmdb_user and also grant access. See: https://www.servicenow.com/docs/r/xanadu/servicenow-platform/configuration-management-database-cmdb/cmdb-workspace-insights-view.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The admin role is not required for the Insights view. The minimum role is sn_cmdb_user. The admin role is associated with the CMDB Data Foundations dashboard, not the Insights view."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The itil_admin role is associated with accessing the CMDB Data Foundations dashboard, not the Insights view in CMDB Workspace."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "While sn_cmdb_editor does contain sn_cmdb_user and grants access, it is not the minimum role required \u2014 sn_cmdb_user is the minimum."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Role requirement: sn_cmdb_user (CMDB User), or a user role containing sn_cmdb_user (sn_cmdb_admin, sn_cmdb_editor).",
+        "url": "https://www.servicenow.com/docs/r/xanadu/servicenow-platform/configuration-management-database-cmdb/cmdb-workspace-insights-view.html"
+      },
+      "labels": {
+        "domain": "Insight",
+        "domainSlug": "insight",
+        "subtopics": [
+          "CMDB Workspace Insights view"
+        ],
+        "tags": [
+          "CMDB Workspace",
+          "Insights view",
+          "roles",
+          "access"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": true,
+      "references": []
+    },
+    {
+      "id": "cis-df-insight-006",
+      "certification": "cis-df",
+      "topic": "insight",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What are the three categories of CMDB feature adoption displayed in the Insights view?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Data Ingestion, Data Governance, and Search & Analytics"
+        },
+        {
+          "id": "b",
+          "text": "Best Practices, Customizations, and Data Management Practices"
+        },
+        {
+          "id": "c",
+          "text": "Discovery, Integration, and Reporting"
+        },
+        {
+          "id": "d",
+          "text": "Data Quality, Data Completeness, and Data Compliance"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "The CMDB feature adoption tile in the Insights view shows dial charts for three categories: Data Ingestion, Data Governance, and Search & Analytics. Each category has associated feature cards showing adoption progress. See: https://www.servicenow.com/docs/r/xanadu/servicenow-platform/configuration-management-database-cmdb/cmdb-workspace-insights-view.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Best Practices, Customizations, and Data Management Practices are tabs on the CMDB Data Foundations dashboard, not categories in the Insights view feature adoption tile."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Discovery, Integration, and Reporting are general CMDB concepts but not the three feature adoption categories displayed in the Insights view."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Data Quality, Data Completeness, and Data Compliance are not the categories used in the Insights view feature adoption tile."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Shows dial charts for the overall adoption levels of all three categories of CMDB tools and features: Data ingestion... Data governance... Search and analytics...",
+        "url": "https://www.servicenow.com/docs/r/xanadu/servicenow-platform/configuration-management-database-cmdb/cmdb-workspace-insights-view.html"
+      },
+      "labels": {
+        "domain": "Insight",
+        "domainSlug": "insight",
+        "subtopics": [
+          "CMDB Workspace Insights view"
+        ],
+        "tags": [
+          "CMDB Workspace",
+          "Insights view",
+          "feature adoption",
+          "categories"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": true,
+      "references": []
+    },
+    {
+      "id": "cis-df-insight-007",
+      "certification": "cis-df",
+      "topic": "insight",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "In the CMDB Workspace Insights view, what determines the overall adoption level for the Data Ingestion category?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The number of Service Graph Connectors installed in the instance"
+        },
+        {
+          "id": "b",
+          "text": "The percentage of CIs that are processed by the Identification and Reconciliation Engine (IRE)"
+        },
+        {
+          "id": "c",
+          "text": "The number of IntegrationHub ETL transform maps configured"
+        },
+        {
+          "id": "d",
+          "text": "Whether the CMDB application for APIs and CLI store app is installed"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The overall adoption level for Data Ingestion is based on the percentage of CIs processed by IRE. Low (red) = less than 80%, Moderate (amber) = 80-90%, and High (green) = over 90%. This same percentage also determines the adoption level for the 'CIs processed by IRE' feature card. See: https://www.servicenow.com/docs/r/xanadu/servicenow-platform/configuration-management-database-cmdb/cmdb-workspace-insights-view.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The number of Service Graph Connectors is shown on its own card within Data Ingestion, but it does not determine the overall Data Ingestion adoption level."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "IntegrationHub ETL transform map counts are shown on the ETL card, but the overall Data Ingestion adoption is based on the percentage of CIs processed by IRE."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The CMDB application for APIs and CLI card only appears if the store app is not installed and does not factor into the overall adoption level calculation."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "The percentage of CIs that are being processed by IRE determines both, the level of adoption for this feature card and the overall adoption level for the entire data ingestion category.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/servicenow-platform/configuration-management-database-cmdb/cmdb-workspace-insights-view.html"
+      },
+      "labels": {
+        "domain": "Insight",
+        "domainSlug": "insight",
+        "subtopics": [
+          "CMDB Workspace Insights view"
+        ],
+        "tags": [
+          "Data Ingestion",
+          "IRE",
+          "adoption level",
+          "feature adoption"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": true,
+      "references": []
+    },
+    {
+      "id": "cis-df-insight-008",
+      "certification": "cis-df",
+      "topic": "insight",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_select",
+      "question": "Which two scheduled jobs must be running for the CMDB Data Foundations dashboard to display data? (Select TWO)",
+      "options": [
+        {
+          "id": "a",
+          "text": "CMDB Get Well Metric Collection"
+        },
+        {
+          "id": "b",
+          "text": "CMDB Data Foundations PA Metric Collection"
+        },
+        {
+          "id": "c",
+          "text": "CMDB Workspace - Populate aggregates Monthly"
+        },
+        {
+          "id": "d",
+          "text": "CMDB Health Scan Collection"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b"
+      ],
+      "explanation": {
+        "correct": "The CMDB Data Foundations dashboard requires two key scheduled jobs: (1) CMDB Get Well Metric Collection, which calculates and stores details for compliant CIs and populates the list view of metrics, and (2) CMDB Data Foundations PA Metric Collection, which calculates total non-compliant CIs and populates PA widgets. Both run daily by default. See: https://www.servicenow.com/docs/r/xanadu/servicenow-platform/configuration-management-database-cmdb/cmdb-data-foundations-dashboard.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "c",
+            "explanation": "CMDB Workspace - Populate aggregates Monthly is associated with the Insights view feature adoption cards (specifically the CIs processed by IRE based on source card), not the Data Foundations dashboard."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "CMDB Health Scan Collection is not a scheduled job mentioned in the CMDB Data Foundations dashboard requirements."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "CMDB Get Well Metric Collection: Calculates and stores details for compliant CIs associated with metrics... CMDB Data Foundations PA Metric Collection: Calculates the total non-compliant CIs associated with metrics and populates the PA widgets on the dashboard.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/servicenow-platform/configuration-management-database-cmdb/cmdb-data-foundations-dashboard.html"
+      },
+      "labels": {
+        "domain": "Insight",
+        "domainSlug": "insight",
+        "subtopics": [
+          "CMDB Data Foundations dashboard"
+        ],
+        "tags": [
+          "scheduled jobs",
+          "Data Foundations dashboard",
+          "metrics",
+          "PA widgets"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": true,
+      "references": []
+    },
+    {
+      "id": "cis-df-insight-009",
+      "certification": "cis-df",
+      "topic": "insight",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A CMDB administrator notices that the Insights view shows a red (Low) adoption level for the Data Ingestion category. What does this indicate, and what should they investigate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Fewer than 33% of data governance features are in use; they should enable more CMDB Data Manager policies"
+        },
+        {
+          "id": "b",
+          "text": "Less than 80% of CIs are processed by IRE; they should investigate CIs not going through identification and reconciliation"
+        },
+        {
+          "id": "c",
+          "text": "No Service Graph Connectors are installed; they should install at least one connector from the ServiceNow Store"
+        },
+        {
+          "id": "d",
+          "text": "The IntegrationHub ETL app is not installed; they should install it to improve data ingestion"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "A red (Low) adoption level for Data Ingestion means less than 80% of CIs are processed by IRE. CIs not processed by IRE introduce data integrity risks, so the administrator should investigate which CIs are bypassing IRE and ensure they are ingested through proper channels. See: https://www.servicenow.com/docs/r/xanadu/servicenow-platform/configuration-management-database-cmdb/cmdb-workspace-insights-view.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The 33% threshold applies to the Data Governance category adoption level, not Data Ingestion. Data governance tracks feature usage like CMDB Data Manager policies."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "While Service Graph Connectors are a feature tracked under Data Ingestion, their installation status alone does not determine the overall Data Ingestion adoption level \u2014 the IRE processing percentage does."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "IntegrationHub ETL is one feature card within Data Ingestion, but its installation status does not determine the overall adoption level for the category."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "The overall adoption level for data ingestion maps to the following findings in the instance: Low (red): Less than 80% of CIs are processed by Identification and Reconciliation Engine (IRE). CIs that aren't processed by IRE introduce a data integrity risk.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/servicenow-platform/configuration-management-database-cmdb/cmdb-workspace-insights-view.html"
+      },
+      "labels": {
+        "domain": "Insight",
+        "domainSlug": "insight",
+        "subtopics": [
+          "CMDB Workspace Insights view"
+        ],
+        "tags": [
+          "Data Ingestion",
+          "IRE",
+          "adoption level",
+          "troubleshooting"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": true,
+      "references": []
+    },
+    {
+      "id": "cis-df-insight-010",
+      "certification": "cis-df",
+      "topic": "insight",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What are the four tabs available on the CMDB Data Foundations dashboard?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Data Ingestion, Data Governance, Search & Analytics, and Performance"
+        },
+        {
+          "id": "b",
+          "text": "Best Practices, Customizations, Data Management Practices, and ITSM Processes"
+        },
+        {
+          "id": "c",
+          "text": "Compliance, Health Score, Remediation, and Reporting"
+        },
+        {
+          "id": "d",
+          "text": "Feature Adoption, Performance Insights, Application Services, and Cloud Resources"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The CMDB Data Foundations dashboard provides four tabs: Best Practices (checks CSDM-related standards adherence), Customizations (checks proper use of customizations), Data Management Practices (checks data import integrity), and ITSM Processes (checks ITSM leverage of CMDB data). See: https://www.servicenow.com/docs/r/xanadu/servicenow-platform/configuration-management-database-cmdb/cmdb-data-foundations-dashboard.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Data Ingestion, Data Governance, and Search & Analytics are the three CMDB feature adoption categories in the Insights view, not tabs on the Data Foundations dashboard."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Compliance, Health Score, Remediation, and Reporting are not the tab names on the CMDB Data Foundations dashboard."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Feature Adoption, Performance Insights, Application Services, and Cloud Resources are tiles in the CMDB Workspace Insights view, not tabs on the Data Foundations dashboard."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "The CMDB Data Foundations dashboard provides four tabs, each grouping a distinctive set of CMDB metrics: Best Practices... Customizations... Data Management Practices... ITSM Processes...",
+        "url": "https://www.servicenow.com/docs/r/xanadu/servicenow-platform/configuration-management-database-cmdb/cmdb-data-foundations-dashboard.html"
+      },
+      "labels": {
+        "domain": "Insight",
+        "domainSlug": "insight",
+        "subtopics": [
+          "CMDB Data Foundations dashboard"
+        ],
+        "tags": [
+          "Data Foundations dashboard",
+          "tabs",
+          "metrics"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": true,
+      "references": []
+    },
+    {
+      "id": "cis-df-insight-011",
+      "certification": "cis-df",
+      "topic": "insight",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "Why might a feature adoption card in the CMDB Workspace Insights view not immediately reflect the latest status after a feature is installed and configured?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The card only updates when the CMDB administrator manually triggers a refresh"
+        },
+        {
+          "id": "b",
+          "text": "Card data is collected by scheduled jobs that run every 24 hours, so up to a day may pass before the card reflects the latest status"
+        },
+        {
+          "id": "c",
+          "text": "Performance Analytics indicators must be manually recalculated before data appears on cards"
+        },
+        {
+          "id": "d",
+          "text": "The Insights view requires a browser cache clear before new data is displayed"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Most card scheduled jobs run every 24 hours, so card data is based on recent but not necessarily current data. After getting started with a feature, the card won't reflect the latest status until the card's scheduled job runs (up to 24 hours later). The 'Last updated' timestamp on cards reflects the data collection time. See: https://www.servicenow.com/docs/r/xanadu/servicenow-platform/configuration-management-database-cmdb/cmdb-workspace-insights-view.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Card updates are automated through scheduled jobs, not triggered manually by administrators. The scheduled jobs run every 24 hours by default."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "While many cards use Performance Analytics indicators, these are populated by automated scheduled jobs, not manually recalculated by administrators."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The delay is not browser-related. It is caused by the scheduled job frequency \u2014 cards are updated when their associated scheduled jobs run, typically every 24 hours."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Most of the cards scheduled jobs run every 24 hours, therefore, depending on the type of data, some card data is based on recent but not current data. The Last updated timestamp in the cards reflects the collection time for the data that was used for the card.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/servicenow-platform/configuration-management-database-cmdb/cmdb-workspace-insights-view.html"
+      },
+      "labels": {
+        "domain": "Insight",
+        "domainSlug": "insight",
+        "subtopics": [
+          "CMDB Workspace Insights view"
+        ],
+        "tags": [
+          "scheduled jobs",
+          "feature adoption",
+          "card updates",
+          "data freshness"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": true,
+      "references": []
+    },
+    {
+      "id": "cis-df-insight-012",
+      "certification": "cis-df",
+      "topic": "insight",
+      "cognitiveLevel": "application",
+      "type": "multiple_select",
+      "question": "A ServiceNow administrator wants to review the CMDB Data Foundations dashboard but receives an access error. Which roles could grant the administrator access to this dashboard? (Select TWO)",
+      "options": [
+        {
+          "id": "a",
+          "text": "sn_cmdb_user"
+        },
+        {
+          "id": "b",
+          "text": "itil_admin"
+        },
+        {
+          "id": "c",
+          "text": "asset"
+        },
+        {
+          "id": "d",
+          "text": "sn_cmdb_editor"
+        }
+      ],
+      "correctAnswers": [
+        "b",
+        "c"
+      ],
+      "explanation": {
+        "correct": "Access to the CMDB Data Foundations dashboard requires the admin, itil_admin, or asset role. The itil_admin and asset roles are both valid options that would grant access. Some drill-down metrics to PA data may require additional roles. See: https://www.servicenow.com/docs/r/xanadu/servicenow-platform/configuration-management-database-cmdb/cmdb-data-foundations-dashboard.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The sn_cmdb_user role grants access to the CMDB Workspace Insights view, not the CMDB Data Foundations dashboard. The Data Foundations dashboard requires admin, itil_admin, or asset."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The sn_cmdb_editor role is associated with CMDB Workspace access, not the CMDB Data Foundations dashboard. The dashboard requires admin, itil_admin, or asset roles."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "To access the CMDB Data Foundations dashboard, users must be configured with the admin, itil_admin, or asset roles.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/servicenow-platform/configuration-management-database-cmdb/cmdb-data-foundations-dashboard.html"
+      },
+      "labels": {
+        "domain": "Insight",
+        "domainSlug": "insight",
+        "subtopics": [
+          "CMDB Data Foundations dashboard"
+        ],
+        "tags": [
+          "Data Foundations dashboard",
+          "roles",
+          "access",
+          "troubleshooting"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": true,
+      "references": []
+    },
+    {
+      "id": "cis-df-insight-013",
+      "certification": "cis-df",
+      "topic": "insight",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Starting with the Xanadu release, which feature in the CMDB Workspace replaces the legacy Multisource Report Builder for creating multisource queries?",
+      "options": [
+        {
+          "id": "a",
+          "text": "CMDB Query Builder"
+        },
+        {
+          "id": "b",
+          "text": "CMDB 360 query builder"
+        },
+        {
+          "id": "c",
+          "text": "CMDB Health Dashboard"
+        },
+        {
+          "id": "d",
+          "text": "CMDB Unified Map"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Starting with the Xanadu release, the Multisource CMDB feature is part of the CMDB 360 feature accessible in the CMDB Workspace. The CMDB 360 query builder is used to create, view, modify, schedule, and run CMDB 360 queries.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The CMDB Query Builder is a separate tool for querying CI classes, relationships, and non-CMDB tables. It does not replace the Multisource Report Builder."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The CMDB Health Dashboard is used for monitoring CMDB data health metrics, not for multisource querying and reporting."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Unified Map is used for visualizing CI relationships and dependencies, not for multisource data reporting."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Starting with the Xanadu release, the Multisource CMDB feature is part of the CMDB 360 feature which is accessible in the CMDB Workspace. Create, view, modify, schedule, create reports, and run CMDB 360 queries using the CMDB 360 query builder in the CMDB Workspace store app.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/servicenow-platform/configuration-management-database-cmdb/multisource-data-report-builder.html"
+      },
+      "labels": {
+        "domain": "Insight",
+        "domainSlug": "insight",
+        "subtopics": [
+          "Multisource reporting",
+          "CMDB 360 view"
+        ],
+        "tags": [
+          "CMDB 360",
+          "multisource",
+          "Xanadu",
+          "CMDB Workspace"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": false,
+      "references": []
+    },
+    {
+      "id": "cis-df-insight-014",
+      "certification": "cis-df",
+      "topic": "insight",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_select",
+      "question": "Which THREE query types can be created using the CMDB 360 query builder in the CMDB Workspace? (Select THREE)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Get Records"
+        },
+        {
+          "id": "b",
+          "text": "Find Gap"
+        },
+        {
+          "id": "c",
+          "text": "Compare Attribute Values"
+        },
+        {
+          "id": "d",
+          "text": "Reconciliation Audit"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b",
+        "c"
+      ],
+      "explanation": {
+        "correct": "The CMDB 360 query builder supports three query types: Get Records (queries discovery sources for CIs matching criteria), Find Gap (queries for gaps in discovery sources), and Compare Attribute Values (queries for CIs with attribute values that differ across multiple discovery sources or against the CMDB).",
+        "wrongAnswers": [
+          {
+            "choiceId": "d",
+            "explanation": "Reconciliation Audit is not a CMDB 360 query type. Reconciliation is a separate process that determines how data from multiple sources is merged into the CMDB."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Use the CMDB 360 query builder to create queries of the following types: Get Records: Queries your discovery sources for CIs that match your criteria. Find Gap: Queries for gaps in discovery sources reporting your CMDB 360 data. Compare Attribute Values: Queries for CIs with attribute values that differ across multiple discovery sources or against the CMDB.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/servicenow-platform/configuration-management-database-cmdb/multisource-data-report-builder.html"
+      },
+      "labels": {
+        "domain": "Insight",
+        "domainSlug": "insight",
+        "subtopics": [
+          "Multisource reporting",
+          "CMDB 360 view"
+        ],
+        "tags": [
+          "CMDB 360",
+          "query types",
+          "Get Records",
+          "Find Gap",
+          "Compare Attribute Values"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": false,
+      "references": []
+    },
+    {
+      "id": "cis-df-insight-015",
+      "certification": "cis-df",
+      "topic": "insight",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What are the three result types available when creating a query in the legacy Multisource Report Builder?",
+      "options": [
+        {
+          "id": "a",
+          "text": "CI records, Multisource data records, Discovery sources"
+        },
+        {
+          "id": "b",
+          "text": "CI records, Relationship records, Attribute records"
+        },
+        {
+          "id": "c",
+          "text": "Discovery sources, Reconciliation results, Health scores"
+        },
+        {
+          "id": "d",
+          "text": "CI records, Application services, Technical services"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "The three result types for a Multisource query are: CI records (unique CIs from the Multisource CMDB data store), Multisource data records (all entries of CI/discovery source combinations), and Discovery sources (results grouped by discovery sources matching the query criteria).",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Relationship records and Attribute records are not result types in the Multisource Report Builder. Relationships are handled in CMDB Query Builder."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Reconciliation results and Health scores are not result types. Reconciliation and health are separate CMDB processes."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Application services and Technical services are not result types. They can be used to limit query results, but they are not a result type selection."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "CI records: Results show unique CIs from the Multisource CMDB data store. Multisource data records: Results show all entries of CI/discovery source combinations from Multisource CMDB data. Discovery sources: Results are grouped by discovery sources that match the query criteria.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/servicenow-platform/configuration-management-database-cmdb/multisource-data-report-builder.html"
+      },
+      "labels": {
+        "domain": "Insight",
+        "domainSlug": "insight",
+        "subtopics": [
+          "Multisource reporting"
+        ],
+        "tags": [
+          "Multisource Report Builder",
+          "result types",
+          "CI records",
+          "discovery sources"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": false,
+      "references": []
+    },
+    {
+      "id": "cis-df-insight-016",
+      "certification": "cis-df",
+      "topic": "insight",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "An administrator has just created and saved a new Multisource query in the legacy Multisource Report Builder. They want to create a Multisource report based on this query, but the Create Report button is grayed out. What must the administrator do first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Run the query, then create and run a schedule for the query"
+        },
+        {
+          "id": "b",
+          "text": "Assign the cmdb_ms_admin role to their user account"
+        },
+        {
+          "id": "c",
+          "text": "Export the query results to a CSV file first"
+        },
+        {
+          "id": "d",
+          "text": "Add at least one discovery source to the query conditions"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "After creating a query, both the Create Schedule and Create Report buttons are grayed out. Only after saving the query can you create and run a schedule for the query, and only then can you create a report based on the query. The schedule must run at least once before creating a report.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "The role required for scheduling is cmdb_ms_user, and there is no cmdb_ms_admin role mentioned. The issue is a workflow prerequisite, not a permissions issue."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Exporting to CSV is not a prerequisite for creating a Multisource report. The prerequisite is creating and running a schedule."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "While discovery sources are part of query configuration, adding them does not enable the Create Report button. A schedule must be created and run first."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Initially, after creating a query, both the Create Schedule and the Create Report buttons are grayed out. Only after saving the query, you can create and run a schedule for the query, and only then you can create a report that is based on the query.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/servicenow-platform/configuration-management-database-cmdb/multisource-data-report-builder.html"
+      },
+      "labels": {
+        "domain": "Insight",
+        "domainSlug": "insight",
+        "subtopics": [
+          "Multisource reporting",
+          "CMDB dashboards and reporting"
+        ],
+        "tags": [
+          "Multisource Report Builder",
+          "scheduling",
+          "report creation",
+          "prerequisites"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": false,
+      "references": []
+    },
+    {
+      "id": "cis-df-insight-017",
+      "certification": "cis-df",
+      "topic": "insight",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which role is required to create, save, and modify queries in the CMDB Query Builder?",
+      "options": [
+        {
+          "id": "a",
+          "text": "cmdb_query_builder_read"
+        },
+        {
+          "id": "b",
+          "text": "cmdb_query_builder"
+        },
+        {
+          "id": "c",
+          "text": "cmdb_ms_editor"
+        },
+        {
+          "id": "d",
+          "text": "cmdb_admin"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The cmdb_query_builder role is required to create and save queries, modify saved queries, and run queries in the CMDB Query Builder. This role is contained within the itil, itil_admin, and asset roles.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The cmdb_query_builder_read role only allows viewing and running saved queries, not creating or modifying them."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The cmdb_ms_editor role is required for creating Multisource queries in the legacy Multisource Report Builder, not the CMDB Query Builder."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "While cmdb_admin provides broad CMDB administrative access, the specific role documented for CMDB Query Builder operations is cmdb_query_builder."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Role required: cmdb_query_builder_read to only view and run saved queries, and cmdb_query_builder (contained for itil, itil_admin, and asset) to create and save queries, modify saved queries, and run queries.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/servicenow-platform/configuration-management-database-cmdb/use-cmdb-query-builder.html"
+      },
+      "labels": {
+        "domain": "Insight",
+        "domainSlug": "insight",
+        "subtopics": [
+          "CMDB Query Builder"
+        ],
+        "tags": [
+          "roles",
+          "cmdb_query_builder",
+          "access control",
+          "CMDB Query Builder"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": false,
+      "references": []
+    },
+    {
+      "id": "cis-df-insight-018",
+      "certification": "cis-df",
+      "topic": "insight",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "In the CMDB Query Builder, what does a dashed line between two nodes on the canvas represent?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A direct relationship between two CI classes"
+        },
+        {
+          "id": "b",
+          "text": "An invalid connection with missing relationship type information"
+        },
+        {
+          "id": "c",
+          "text": "A pattern connection between an application service node and another node"
+        },
+        {
+          "id": "d",
+          "text": "A reference connection to a non-CMDB table"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "In the CMDB Query Builder, a dashed line represents a pattern connection between an application service node and another node. This is used when the 'Convert attached nodes to pattern' option is selected on the Application Service node.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "A direct relationship between two CI classes is represented by a full (solid) line, not a dashed line."
+          },
+          {
+            "choiceId": "b",
+            "explanation": "An invalid connection with missing information is indicated by a red asterisk at the center of the connection line, not a dashed line."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "A reference connection to a non-CMDB table uses a full line with a CI reference column configuration, not a dashed line."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Full line: A relationship in a CMDB query. Dashed line: A pattern connection between an application service node and another node.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/servicenow-platform/configuration-management-database-cmdb/use-cmdb-query-builder.html"
+      },
+      "labels": {
+        "domain": "Insight",
+        "domainSlug": "insight",
+        "subtopics": [
+          "CMDB Query Builder"
+        ],
+        "tags": [
+          "Query Builder",
+          "connection notation",
+          "application service",
+          "pattern"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": false,
+      "references": []
+    },
+    {
+      "id": "cis-df-insight-019",
+      "certification": "cis-df",
+      "topic": "insight",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_select",
+      "question": "When building a query in the CMDB Query Builder, which TWO statements are true about non-CMDB tables? (Select TWO)",
+      "options": [
+        {
+          "id": "a",
+          "text": "A non-CMDB table cannot be the starting node in the query"
+        },
+        {
+          "id": "b",
+          "text": "Non-CMDB tables are dragged from the CMDB Classes tab"
+        },
+        {
+          "id": "c",
+          "text": "A CI reference column must be configured for the connection to a non-CMDB table"
+        },
+        {
+          "id": "d",
+          "text": "Non-CMDB tables can only be added to combination queries"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "c"
+      ],
+      "explanation": {
+        "correct": "Non-CMDB tables have two key constraints: they cannot be the starting node in the query, and a CI reference column must be configured in the Connection Properties to establish the connection between the non-CMDB table and a CI class.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Non-CMDB tables are selected from the Non-CMDB Tables list, not from the CMDB Classes tab. The CMDB Classes tab is used for CI classes."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Non-CMDB tables can be added to standard CMDB queries, not only combination queries. They are available as part of the regular CMDB query building process."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Add non-CMDB tables to the query: Select a table from the Non-CMDB Tables list and drag it to the canvas. Note: A non-CMDB table cannot be the starting node in the query. Configure CI reference column for a connection to a non-CMDB table: In the Connection Properties right-side bar, in the CI Reference Column section, select the column with a reference to a CI from the Use CI reference column list.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/servicenow-platform/configuration-management-database-cmdb/use-cmdb-query-builder.html"
+      },
+      "labels": {
+        "domain": "Insight",
+        "domainSlug": "insight",
+        "subtopics": [
+          "CMDB Query Builder"
+        ],
+        "tags": [
+          "Query Builder",
+          "non-CMDB tables",
+          "CI reference column",
+          "query building"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": false,
+      "references": []
+    },
+    {
+      "id": "cis-df-insight-020",
+      "certification": "cis-df",
+      "topic": "insight",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A CMDB administrator needs to use the CMDB Query Builder to find all Tomcat WAR CIs that are NOT connected to any Windows Server. Which option should they select in the Relationship Types and Related Items section of the Connection Properties?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Add Relationship Types and filter for 'not equal to Windows Server'"
+        },
+        {
+          "id": "b",
+          "text": "No Relationships"
+        },
+        {
+          "id": "c",
+          "text": "Add a Related Item and select Windows Server as excluded"
+        },
+        {
+          "id": "d",
+          "text": "Add Relationship Types and set the direction to 'Upstream only'"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The 'No Relationships' option in the Relationship Types and Related Items section is used to query for CIs with no connecting relationships. The documentation specifically gives the example of querying 'All Tomcat WAR CIs which are not connected to a Windows Server' using this option.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Adding relationship types with a 'not equal to' filter is not the correct approach. The 'No Relationships' option is specifically designed for finding CIs without connections to other CIs."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "There is no 'excluded' option when adding a Related Item. The Add a Related Item option is used to query for related CIs between nodes, not to exclude relationships."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "'Upstream only' is not a valid relationship direction setting in the CMDB Query Builder Connection Properties. The relationship direction is configured by selecting the Parent node."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "No Relationships: To query for CIs with no connecting relationships, such as All Tomcat WAR CIs which are not connected to a Windows Server.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/servicenow-platform/configuration-management-database-cmdb/use-cmdb-query-builder.html"
+      },
+      "labels": {
+        "domain": "Insight",
+        "domainSlug": "insight",
+        "subtopics": [
+          "CMDB Query Builder"
+        ],
+        "tags": [
+          "Query Builder",
+          "No Relationships",
+          "connection properties",
+          "relationship types"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": false,
+      "references": []
+    },
+    {
+      "id": "cis-df-insight-021",
+      "certification": "cis-df",
+      "topic": "insight",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What role is required to access the CMDB 360 view in CMDB Workspace?",
+      "options": [
+        {
+          "id": "a",
+          "text": "cmdb_query_builder"
+        },
+        {
+          "id": "b",
+          "text": "sn_cmdb_user"
+        },
+        {
+          "id": "c",
+          "text": "itil"
+        },
+        {
+          "id": "d",
+          "text": "cmdb_admin"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The sn_cmdb_user (CMDB user) role, or any role that contains sn_cmdb_user, is required to access the CMDB 360 view in CMDB Workspace. Additionally, CMDB 360 must be enabled and configured.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The cmdb_query_builder role is required for creating and saving queries in the CMDB Query Builder, not for accessing the CMDB 360 view."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The itil role contains cmdb_query_builder for Query Builder access, but the CMDB 360 view specifically requires the sn_cmdb_user role."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "cmdb_admin is not the specific role referenced in the documentation for CMDB 360 access. The required role is sn_cmdb_user."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Role requirement: sn_cmdb_user (CMDB user) or any role containing sn_cmdb_user. Additional requirement: Enable and configure CMDB 360.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/servicenow-platform/configuration-management-database-cmdb/cmdb360-exp-cmdb-workspace.html"
+      },
+      "labels": {
+        "domain": "Insight",
+        "domainSlug": "insight",
+        "subtopics": [
+          "CMDB 360 view"
+        ],
+        "tags": [
+          "cmdb-360",
+          "roles",
+          "access",
+          "cmdb-workspace"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": false,
+      "references": []
+    },
+    {
+      "id": "cis-df-insight-022",
+      "certification": "cis-df",
+      "topic": "insight",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which role is required to create and save queries in the CMDB Query Builder?",
+      "options": [
+        {
+          "id": "a",
+          "text": "cmdb_query_builder_read"
+        },
+        {
+          "id": "b",
+          "text": "sn_cmdb_user"
+        },
+        {
+          "id": "c",
+          "text": "cmdb_query_builder"
+        },
+        {
+          "id": "d",
+          "text": "cmdb_editor"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "The cmdb_query_builder role is required to create and save queries, modify saved queries, and run queries in the CMDB Query Builder. This role is contained within the itil, itil_admin, and asset roles.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The cmdb_query_builder_read role only allows viewing and running saved queries. It does not grant permission to create or save new queries."
+          },
+          {
+            "choiceId": "b",
+            "explanation": "The sn_cmdb_user role is required for accessing the CMDB 360 view in CMDB Workspace, not specifically for creating queries in the CMDB Query Builder."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "cmdb_editor is not the role documented for CMDB Query Builder access. The correct role is cmdb_query_builder."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Role required: cmdb_query_builder_read to only view and run saved queries, and cmdb_query_builder (contained for itil, itil_admin, and asset) to create and save queries, modify saved queries, and run queries.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/servicenow-platform/configuration-management-database-cmdb/build-service-mapping-query.html"
+      },
+      "labels": {
+        "domain": "Insight",
+        "domainSlug": "insight",
+        "subtopics": [
+          "CMDB Query Builder"
+        ],
+        "tags": [
+          "query-builder",
+          "roles",
+          "service-mapping",
+          "access"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": false,
+      "references": []
+    },
+    {
+      "id": "cis-df-insight-023",
+      "certification": "cis-df",
+      "topic": "insight",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "How many saved queries can the CMDB 360 Saved queries card display?",
+      "options": [
+        {
+          "id": "a",
+          "text": "10"
+        },
+        {
+          "id": "b",
+          "text": "15"
+        },
+        {
+          "id": "c",
+          "text": "20"
+        },
+        {
+          "id": "d",
+          "text": "50"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "The Saved queries card in the CMDB 360 view displays up to 20 queries. Saved queries are sorted on both the card and list view by the most recently created or updated queries.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The limit is 20 saved queries, not 10. You can click View All Queries to see all saved queries beyond the card."
+          },
+          {
+            "choiceId": "b",
+            "explanation": "The Saved queries card shows up to 20 queries, not 15."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The card is limited to showing 20 saved queries, not 50."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "The Saved queries card shows up to 20 of your CMDB 360 queries. You can use the card to edit and run those queries, or create new queries.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/servicenow-platform/configuration-management-database-cmdb/cmdb360-exp-cmdb-workspace.html"
+      },
+      "labels": {
+        "domain": "Insight",
+        "domainSlug": "insight",
+        "subtopics": [
+          "CMDB 360 view"
+        ],
+        "tags": [
+          "cmdb-360",
+          "saved-queries",
+          "limits"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": false,
+      "references": []
+    },
+    {
+      "id": "cis-df-insight-024",
+      "certification": "cis-df",
+      "topic": "insight",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "On the CMDB 360 Multisource Data Preview page, what does a discovery source value highlighted in green indicate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The value was reported by the most recent discovery scan"
+        },
+        {
+          "id": "b",
+          "text": "The value was used for the current CMDB attribute value"
+        },
+        {
+          "id": "c",
+          "text": "The value has been flagged for reconciliation review"
+        },
+        {
+          "id": "d",
+          "text": "The value comes from the designated primary discovery source"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "On the Multisource Data Preview page, a discovery source value highlighted in green indicates that the value was used for the current CMDB value. These green-highlighted values are identical to the current CMDB value of the attribute.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The green highlighting is not based on recency of the discovery scan. It indicates the value matches the current CMDB value, which was determined through reconciliation rules."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Green highlighting does not indicate a flag for review. It indicates the value is already reconciled and matches the current CMDB value."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The green highlighting is not about primary source designation. It simply shows which discovery source value was used for (and is identical to) the current CMDB attribute value."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Regardless of the option that you choose on the Multisource Data Preview page, a discovery source value that was used for the current CMDB value \u2013 is highlighted in green. These values are identical to the CMDB value of the attribute.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/servicenow-platform/configuration-management-database-cmdb/cmdb360-exp-cmdb-workspace.html"
+      },
+      "labels": {
+        "domain": "Insight",
+        "domainSlug": "insight",
+        "subtopics": [
+          "CMDB 360 view",
+          "Multisource reporting"
+        ],
+        "tags": [
+          "cmdb-360",
+          "multisource",
+          "data-mismatch",
+          "reconciliation"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": false,
+      "references": []
+    },
+    {
+      "id": "cis-df-insight-025",
+      "certification": "cis-df",
+      "topic": "insight",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What does a Service Mapping query type return when run in the CMDB Query Builder?",
+      "options": [
+        {
+          "id": "a",
+          "text": "All CIs matching the specified attribute filters regardless of service membership"
+        },
+        {
+          "id": "b",
+          "text": "All Service Mapping services that contain the specified pattern of classes and relationships"
+        },
+        {
+          "id": "c",
+          "text": "All discovery sources that have mapped services in the environment"
+        },
+        {
+          "id": "d",
+          "text": "All CI relationships across the entire CMDB filtered by class type"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "A Service Mapping query type is built as a pattern consisting of classes and relationships between those classes. When the query runs, it returns all Service Mapping services that contain that specified pattern.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "This describes a general CI query, not a Service Mapping query. Service Mapping queries specifically return services matching a pattern of classes and relationships."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Service Mapping queries do not search for discovery sources. They search for services that match a defined pattern of CI classes and their relationships."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Service Mapping queries return services matching a pattern, not all CI relationships across the CMDB. The pattern defines the specific classes and relationships to look for within services."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "The Service Mapping query type is a pattern consisting of classes and relationships between those classes. After you build the pattern and run the query, the query returns all the Service Mapping services that contain that pattern.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/servicenow-platform/configuration-management-database-cmdb/build-service-mapping-query.html"
+      },
+      "labels": {
+        "domain": "Insight",
+        "domainSlug": "insight",
+        "subtopics": [
+          "CMDB Query Builder"
+        ],
+        "tags": [
+          "query-builder",
+          "service-mapping",
+          "query-types"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": false,
+      "references": []
+    },
+    {
+      "id": "cis-df-insight-026",
+      "certification": "cis-df",
+      "topic": "insight",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_select",
+      "question": "When viewing the Multisource Data Preview page from a CMDB 360 Data mismatch record, which THREE filtering options are available for viewing attributes? (Select all that apply)",
+      "options": [
+        {
+          "id": "a",
+          "text": "All attributes"
+        },
+        {
+          "id": "b",
+          "text": "Attributes with CMDB values"
+        },
+        {
+          "id": "c",
+          "text": "Attributes with reconciliation conflicts"
+        },
+        {
+          "id": "d",
+          "text": "Attributes with multisource data"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b",
+        "d"
+      ],
+      "explanation": {
+        "correct": "The Multisource Data Preview page offers three filtering options: 'All attributes' (shows all attributes of the selected class), 'Attributes with CMDB values' (shows only attributes with a value in the CMDB), and 'Attributes with multisource data' (shows attributes with the current CMDB value and values from other discovery sources).",
+        "wrongAnswers": [
+          {
+            "choiceId": "c",
+            "explanation": "There is no 'Attributes with reconciliation conflicts' option on the Multisource Data Preview page. The three available options are All attributes, Attributes with CMDB values, and Attributes with multisource data."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "All attributes: Shows all attributes of the selected class, regardless of whether they have a value in the CMDB. Attributes with CMDB values: Shows only attributes of the selected class, with a value in the CMDB. Attributes with multisource data: Shows all attributes of the selected class, and for each attribute shows current CMDB value and any other discovery sources with a value for the attribute.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/servicenow-platform/configuration-management-database-cmdb/cmdb360-exp-cmdb-workspace.html"
+      },
+      "labels": {
+        "domain": "Insight",
+        "domainSlug": "insight",
+        "subtopics": [
+          "CMDB 360 view",
+          "Multisource reporting"
+        ],
+        "tags": [
+          "cmdb-360",
+          "multisource-data-preview",
+          "data-mismatch",
+          "filtering"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": false,
+      "references": []
+    },
+    {
+      "id": "cis-df-insight-027",
+      "certification": "cis-df",
+      "topic": "insight",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A CMDB administrator configures the 'Number of days since CIs were last discovered by a discovery source' setting to 5 days. A Windows server CI is reported by ServiceNow (today), SCCM (3 days ago), and ServiceWatch (6 days ago). How will this CI appear on the CMDB 360 dashboard?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It will not appear on any Potential issues card because the majority of discovery sources are reporting within the threshold"
+        },
+        {
+          "id": "b",
+          "text": "It will appear on the Data mismatch card due to timing differences between discovery sources"
+        },
+        {
+          "id": "c",
+          "text": "It will appear on the CIs not reported by discovery sources card because ServiceWatch has not reported within 5 days"
+        },
+        {
+          "id": "d",
+          "text": "It will appear on the Coverage: CIs with a single discovery source card since only one source is current"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "The CI will appear on the 'CIs not reported by discovery sources' card because ServiceWatch last reported 6 days ago, which exceeds the configured 5-day threshold. This card lists CIs discovered by multiple discovery sources where one or more sources have stopped reporting within the specified number of days.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The card triggers when any single discovery source exceeds the threshold, not based on a majority. Since ServiceWatch exceeds the 5-day threshold, the CI will be flagged."
+          },
+          {
+            "choiceId": "b",
+            "explanation": "The Data mismatch card is for CIs where different discovery sources report different attribute values, not for timing differences in reporting."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The coverage cards show CIs based on how many discovery sources report them. This CI has three sources, so it would not appear as a single-source CI. The reporting gap issue is tracked on the Potential issues tile."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "CIs not reported by discovery sources: Lists CIs that are discovered by multiple discovery sources, but one or more of the discovery sources has stopped reporting within a specified number of days. The Number of days since CIs were last discovered by a discovery source dashboard setting is used in the card's aggregation.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/servicenow-platform/configuration-management-database-cmdb/cmdb360-exp-cmdb-workspace.html"
+      },
+      "labels": {
+        "domain": "Insight",
+        "domainSlug": "insight",
+        "subtopics": [
+          "CMDB 360 view"
+        ],
+        "tags": [
+          "cmdb-360",
+          "potential-issues",
+          "discovery-sources",
+          "reporting-gaps"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": false,
+      "references": []
+    },
+    {
+      "id": "cis-df-insight-028",
+      "certification": "cis-df",
+      "topic": "insight",
+      "cognitiveLevel": "application",
+      "type": "multiple_select",
+      "question": "A ServiceNow administrator wants to use the CMDB Query Builder to find all Tomcat WAR CIs that are connected to either a Linux Server or a Windows Server. Which TWO actions must the administrator perform when building this Service Mapping query? (Select TWO)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Toggle the And/Or operator on the connection lines to Or"
+        },
+        {
+          "id": "b",
+          "text": "Select Find Unrelated CIs in the Service Query Properties for both connections"
+        },
+        {
+          "id": "c",
+          "text": "Connect the Tomcat WAR node to both the Linux Server and Windows Server nodes"
+        },
+        {
+          "id": "d",
+          "text": "Apply a filter on the Tomcat WAR node to restrict results to Linux and Windows platforms"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "c"
+      ],
+      "explanation": {
+        "correct": "To build a query for Tomcat WAR CIs connected to either Linux Server or Windows Server, the administrator must: (1) connect the Tomcat WAR node to both the Linux Server and Windows Server nodes on the canvas, and (2) toggle the And/Or operator that appears on the connection line to Or. The documentation provides this exact example: 'C1 is Tomcat WAR, C2 is Linux Server, and C3 is Windows Server. Query for all Tomcat WAR CIs which are connected either to Linux Server Or to a Windows Server.'",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Find Unrelated CIs is used to query for patterns where two classes do NOT have relationships with each other (e.g., all Tomcat WAR CIs not connected to a Windows Server). Since the requirement is to find CIs that ARE connected, Find Related CIs should be used instead."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Applying platform filters on the Tomcat WAR node would filter Tomcat WAR CI attributes, not define the relationship pattern to Linux and Windows servers. The correct approach is to create separate connections to each server class and use the Or operator."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Add And/Or operators to the query: Connect one node to two other nodes. Select the And box that appears on the connection line, to toggle between the And and the Or operators. For example C1 is Tomcat WAR, C2 is Linux Server, and C3 is Windows Server. Query for all Tomcat WAR CIs which are connected either to Linux Server Or to a Windows Server.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/servicenow-platform/configuration-management-database-cmdb/build-service-mapping-query.html"
+      },
+      "labels": {
+        "domain": "Insight",
+        "domainSlug": "insight",
+        "subtopics": [
+          "CMDB Query Builder"
+        ],
+        "tags": [
+          "query-builder",
+          "service-mapping",
+          "operators",
+          "relationships",
+          "canvas"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": false,
+      "references": []
+    },
+    {
+      "id": "cis-df-insight-029",
+      "certification": "cis-df",
+      "topic": "insight",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What are the three KPI tiles displayed on the CMDB Health Dashboard?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Accuracy, Completeness, Compliance"
+        },
+        {
+          "id": "b",
+          "text": "Completeness, Correctness, Compliance"
+        },
+        {
+          "id": "c",
+          "text": "Availability, Completeness, Correctness"
+        },
+        {
+          "id": "d",
+          "text": "Compliance, Coverage, Correctness"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The CMDB Health Dashboard displays three KPI tiles \u2014 Completeness, Correctness, and Compliance \u2014 each shown as donut charts representing compliant (green) and non-compliant (red) CIs. See: https://www.servicenow.com/docs/r/xanadu/servicenow-platform/configuration-management-database-cmdb/c_MonitorCMDBHealth.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Accuracy is not one of the KPI tiles on the CMDB Health Dashboard. The correct term is Correctness, not Accuracy."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Availability is not a KPI measured by the CMDB Health Dashboard. The three KPIs are Completeness, Correctness, and Compliance."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Coverage is not one of the CMDB Health Dashboard KPIs. Coverage is a concept associated with CMDB 360, not the Health Dashboard KPIs."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "The Completeness, Correctness, and Compliance KPI tiles on the dashboard, show the aggregated health for CIs of the specified class (and its descendants), health group, or service.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/servicenow-platform/configuration-management-database-cmdb/c_MonitorCMDBHealth.html"
+      },
+      "labels": {
+        "domain": "Insight",
+        "domainSlug": "insight",
+        "subtopics": [
+          "CMDB dashboards and reporting",
+          "CMDB Data Foundations dashboard"
+        ],
+        "tags": [
+          "cmdb-health",
+          "kpi",
+          "dashboard",
+          "completeness",
+          "correctness",
+          "compliance"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": false,
+      "references": []
+    },
+    {
+      "id": "cis-df-insight-030",
+      "certification": "cis-df",
+      "topic": "insight",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which system property is used to enable CMDB 360?",
+      "options": [
+        {
+          "id": "a",
+          "text": "glide.identification_engine.multisource_cmdb_ci_enabled"
+        },
+        {
+          "id": "b",
+          "text": "sn_cmdb_ws.ms.calculate_cmdb_only"
+        },
+        {
+          "id": "c",
+          "text": "glide.identification_engine.multisource_enabled"
+        },
+        {
+          "id": "d",
+          "text": "glide.cmdb.logger.source.cmdb_multisource"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "The glide.identification_engine.multisource_enabled property enables CMDB 360 and is set to false by default. It is configured on the CMDB 360 Properties page. See: https://www.servicenow.com/docs/r/xanadu/servicenow-platform/configuration-management-database-cmdb/components-multisource-cmdb.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "This property enables capturing CMDB 360 data specifically for CIs from CMDB classes (derived from cmdb_ci). It does not enable CMDB 360 itself."
+          },
+          {
+            "choiceId": "b",
+            "explanation": "This property limits the scope of data in the Discovery sources tile in the CMDB 360 dashboard to CMDB classes only. It does not enable CMDB 360."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "This property enables logging for CMDB 360, not the CMDB 360 functionality itself. CMDB 360 logs are stored in the Log [syslog] table."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "glide.identification_engine.multisource_enabled - Enables CMDB 360. Type: true | false. Default value: false. Location: CMDB 360 Properties page",
+        "url": "https://www.servicenow.com/docs/r/xanadu/servicenow-platform/configuration-management-database-cmdb/components-multisource-cmdb.html"
+      },
+      "labels": {
+        "domain": "Insight",
+        "domainSlug": "insight",
+        "subtopics": [
+          "Multisource reporting",
+          "CMDB 360 view"
+        ],
+        "tags": [
+          "cmdb-360",
+          "multisource",
+          "properties",
+          "configuration"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": false,
+      "references": []
+    },
+    {
+      "id": "cis-df-insight-031",
+      "certification": "cis-df",
+      "topic": "insight",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which of the following roles grants access to the CMDB Health Dashboard?",
+      "options": [
+        {
+          "id": "a",
+          "text": "cmdb_admin"
+        },
+        {
+          "id": "b",
+          "text": "cmdb_ms_read"
+        },
+        {
+          "id": "c",
+          "text": "asset"
+        },
+        {
+          "id": "d",
+          "text": "sn_cmdb_admin"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "Using the CMDB Health Dashboard requires the asset, itil, or cmdb_user role. The asset role is one of the three roles that grants access. See: https://www.servicenow.com/docs/r/xanadu/servicenow-platform/configuration-management-database-cmdb/c_MonitorCMDBHealth.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The cmdb_admin role is not listed as a required role for the CMDB Health Dashboard. The valid roles are asset, itil, or cmdb_user."
+          },
+          {
+            "choiceId": "b",
+            "explanation": "The cmdb_ms_read role is associated with CMDB 360 queries, not with CMDB Health Dashboard access."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The sn_cmdb_admin role is used for CMDB Health configuration tasks such as toggling legacy calculation methods, but the dashboard access requires asset, itil, or cmdb_user."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Role requirement: Using the CMDB Health Dashboard requires the asset, itil, or cmdb_user role.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/servicenow-platform/configuration-management-database-cmdb/c_MonitorCMDBHealth.html"
+      },
+      "labels": {
+        "domain": "Insight",
+        "domainSlug": "insight",
+        "subtopics": [
+          "CMDB dashboards and reporting",
+          "CMDB Data Foundations dashboard"
+        ],
+        "tags": [
+          "cmdb-health",
+          "roles",
+          "access",
+          "dashboard"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": false,
+      "references": []
+    },
+    {
+      "id": "cis-df-insight-032",
+      "certification": "cis-df",
+      "topic": "insight",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "How is the overall health score on the CMDB Health Dashboard calculated by default?",
+      "options": [
+        {
+          "id": "a",
+          "text": "As a weighted average based on administrator-configured KPI weights"
+        },
+        {
+          "id": "b",
+          "text": "As the lowest score among the three KPIs"
+        },
+        {
+          "id": "c",
+          "text": "As a simple average of the Completeness, Correctness, and Compliance KPI scores"
+        },
+        {
+          "id": "d",
+          "text": "As the sum of all compliant CIs divided by the total CI count"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "By default, the overall score is calculated as a simple average of the three KPI scores (Completeness, Correctness, and Compliance). Weighted calculation is only used when legacy calculation methods are enabled. See: https://www.servicenow.com/docs/r/xanadu/servicenow-platform/configuration-management-database-cmdb/c_MonitorCMDBHealth.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Weighted averages based on KPI weights are only used when the legacy calculation methods are enabled. The default calculation uses a simple average."
+          },
+          {
+            "choiceId": "b",
+            "explanation": "The overall score is not the lowest score among KPIs. It is a simple average of all three KPI scores by default."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The overall score is an aggregation of the three KPI scores, not a direct ratio of compliant to total CIs."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "The overall score is calculated as an aggregation of the three KPIs (correctness, completeness and compliance). By default, the overall score is a simple average of the KPI scores. However, if using the legacy calculation methods is in effect, then the overall score is based on any weight settings of any of the KPIs.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/servicenow-platform/configuration-management-database-cmdb/c_MonitorCMDBHealth.html"
+      },
+      "labels": {
+        "domain": "Insight",
+        "domainSlug": "insight",
+        "subtopics": [
+          "CMDB dashboards and reporting",
+          "CMDB Data Foundations dashboard"
+        ],
+        "tags": [
+          "cmdb-health",
+          "overall-score",
+          "kpi",
+          "calculation"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": false,
+      "references": []
+    },
+    {
+      "id": "cis-df-insight-033",
+      "certification": "cis-df",
+      "topic": "insight",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What must be activated for the Service view in the CMDB Health Dashboard to display meaningful data?",
+      "options": [
+        {
+          "id": "a",
+          "text": "CMDB 360 (com.snc.cmdb) plugin"
+        },
+        {
+          "id": "b",
+          "text": "Event Management and Service Mapping Core plugin"
+        },
+        {
+          "id": "c",
+          "text": "Discovery and Service Mapping Patterns plugin"
+        },
+        {
+          "id": "d",
+          "text": "CMDB CI Class Manager plugin"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The Event Management and Service Mapping Core plugin must be activated to enable meaningful data in the CMDB Health Dashboard's Service view. Without it, the service view will not display useful health data. See: https://www.servicenow.com/docs/r/xanadu/servicenow-platform/configuration-management-database-cmdb/c_MonitorCMDBHealth.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The com.snc.cmdb plugin relates to CMDB 360 functionality, not to the Service view in the CMDB Health Dashboard."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Discovery and Service Mapping Patterns is not the specific plugin required for the Service view. The Event Management and Service Mapping Core plugin is required."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The CMDB CI Class Manager is used for managing CI class definitions, not for enabling the Service view in the CMDB Health Dashboard."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "The Event Management and Service Mapping Core plugin must be activated to enable meaningful data in the service view.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/servicenow-platform/configuration-management-database-cmdb/c_MonitorCMDBHealth.html"
+      },
+      "labels": {
+        "domain": "Insight",
+        "domainSlug": "insight",
+        "subtopics": [
+          "CMDB dashboards and reporting"
+        ],
+        "tags": [
+          "cmdb-health",
+          "service-view",
+          "plugin",
+          "service-mapping"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": false,
+      "references": []
+    },
+    {
+      "id": "cis-df-insight-034",
+      "certification": "cis-df",
+      "topic": "insight",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_select",
+      "question": "Which of the following statements about CMDB 360 roles are correct? (Select TWO)",
+      "options": [
+        {
+          "id": "a",
+          "text": "The cmdb_ms_read role allows users to create and run CMDB 360 queries"
+        },
+        {
+          "id": "b",
+          "text": "The cmdb_ms_editor role contains the cmdb_ms_read role"
+        },
+        {
+          "id": "c",
+          "text": "The cmdb_ms_admin role can modify CMDB 360 properties"
+        },
+        {
+          "id": "d",
+          "text": "The cmdb_ms_editor role can perform Recompute operations"
+        }
+      ],
+      "correctAnswers": [
+        "b",
+        "c"
+      ],
+      "explanation": {
+        "correct": "The cmdb_ms_editor role contains the cmdb_ms_read role and provides full read/write access plus query creation. The cmdb_ms_admin role can create and run queries and modify CMDB 360 properties. See: https://www.servicenow.com/docs/r/xanadu/servicenow-platform/configuration-management-database-cmdb/components-multisource-cmdb.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The cmdb_ms_read role can only access and run existing CMDB 360 queries. It cannot create new queries. Query creation requires the cmdb_ms_editor or cmdb_ms_admin role."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The cmdb_ms_editor role explicitly cannot perform Recompute operations. The documentation states the editor has full read and write access but 'can't do Recompute.'"
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "cmdb_ms_read: Can access and run a CMDB 360 query but can't create a query. cmdb_ms_editor: Can create and run a query, has full read and write access, but can't do Recompute. Contains cmdb_ms_read role. cmdb_ms_admin: Can create and run a query, and can modify CMDB 360 properties.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/servicenow-platform/configuration-management-database-cmdb/components-multisource-cmdb.html"
+      },
+      "labels": {
+        "domain": "Insight",
+        "domainSlug": "insight",
+        "subtopics": [
+          "Multisource reporting",
+          "CMDB 360 view"
+        ],
+        "tags": [
+          "cmdb-360",
+          "roles",
+          "access-control",
+          "cmdb-ms-editor",
+          "cmdb-ms-admin"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": false,
+      "references": []
+    },
+    {
+      "id": "cis-df-insight-035",
+      "certification": "cis-df",
+      "topic": "insight",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A CMDB administrator notices that CMDB 360 Coverage charts in CMDB Workspace have stopped populating data for a specific CI class. What is the most likely cause?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The CMDB 360 property glide.identification_engine.multisource_enabled has been set to false"
+        },
+        {
+          "id": "b",
+          "text": "The class has been added to the CMDB 360 denied classes [cmdb_multisource_deny_class] table"
+        },
+        {
+          "id": "c",
+          "text": "The number of multisource records for the class exceeded the threshold in the sn_cmdb_ws.ms.report_class_ci_count_max_threshold property"
+        },
+        {
+          "id": "d",
+          "text": "The cmdb_ms_admin role has been revoked from the administrator's account"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "When the number of multisource records for a class exceeds the threshold set in sn_cmdb_ws.ms.report_class_ci_count_max_threshold (default 10 million), a record is created in the CMDB 360 Analytics Skipped Class table causing that class to be skipped in future Coverage chart computations. See: https://www.servicenow.com/docs/r/xanadu/servicenow-platform/configuration-management-database-cmdb/components-multisource-cmdb.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "If CMDB 360 were fully disabled, all classes would be affected, not just a specific class. The scenario describes only one class being impacted."
+          },
+          {
+            "choiceId": "b",
+            "explanation": "The denied classes table prevents data collection in the CMDB 360 Data table entirely. While it could affect Coverage charts, the threshold-based skipping mechanism is the specific feature designed to stop Coverage chart population for individual classes."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Role revocation would affect the administrator's ability to view or modify settings, but would not cause Coverage charts to stop populating data for a specific class."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "sn_cmdb_ws.ms.report_class_ci_count_max_threshold - Threshold number of multisource records that when exceeded for a class, CMDB 360 Coverage charts in CMDB Workspace stop populating data for that class. When the specified threshold number is reached for a class, the system creates a record in the CMDB 360 Analytics Skipped Class [sn_cmdb_ws_ms_skip_class] table causing that class to be skipped in future job runs.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/servicenow-platform/configuration-management-database-cmdb/components-multisource-cmdb.html"
+      },
+      "labels": {
+        "domain": "Insight",
+        "domainSlug": "insight",
+        "subtopics": [
+          "Multisource reporting",
+          "CMDB 360 view",
+          "CMDB Workspace Insights view"
+        ],
+        "tags": [
+          "cmdb-360",
+          "coverage-charts",
+          "threshold",
+          "troubleshooting",
+          "skipped-class"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": false,
+      "references": []
+    },
+    {
+      "id": "cis-df-insight-036",
+      "certification": "cis-df",
+      "topic": "insight",
+      "cognitiveLevel": "application",
+      "type": "multiple_select",
+      "question": "An administrator needs to capture CMDB 360 data for non-CMDB classes such as Serial Number [cmdb_serial_number]. Which properties must be set to true to accomplish this? (Select TWO)",
+      "options": [
+        {
+          "id": "a",
+          "text": "glide.identification_engine.multisource_enabled"
+        },
+        {
+          "id": "b",
+          "text": "glide.identification_engine.multisource_cmdb_ci_enabled"
+        },
+        {
+          "id": "c",
+          "text": "glide.identification_engine.multisource_non_cmdb_ci_enabled"
+        },
+        {
+          "id": "d",
+          "text": "sn_cmdb_ws.ms.calculate_cmdb_only"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "c"
+      ],
+      "explanation": {
+        "correct": "Two properties must be set to true: glide.identification_engine.multisource_enabled to enable CMDB 360 overall (default: false), and glide.identification_engine.multisource_non_cmdb_ci_enabled to capture data from non-CMDB classes (default: false). See: https://www.servicenow.com/docs/r/xanadu/servicenow-platform/configuration-management-database-cmdb/components-multisource-cmdb.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "This property enables capturing CMDB 360 data for CMDB classes derived from cmdb_ci. It is already true by default and does not control non-CMDB class data capture."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "This property limits the scope of data in the Discovery sources tile to CMDB classes only. Setting it to true would actually restrict data to CMDB classes, which is the opposite of the goal."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "glide.identification_engine.multisource_enabled - Enables CMDB 360. Default value: false. glide.identification_engine.multisource_non_cmdb_ci_enabled - Enables capturing CMDB 360 data for CIs from non-CMDB classes (not derived from the cmdb_ci class). For example, the Serial Number [cmdb_serial_number] class. Default value: false.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/servicenow-platform/configuration-management-database-cmdb/components-multisource-cmdb.html"
+      },
+      "labels": {
+        "domain": "Insight",
+        "domainSlug": "insight",
+        "subtopics": [
+          "Multisource reporting",
+          "CMDB 360 view"
+        ],
+        "tags": [
+          "cmdb-360",
+          "properties",
+          "non-cmdb-classes",
+          "configuration"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": false,
+      "references": []
+    }
+  ]
+}
