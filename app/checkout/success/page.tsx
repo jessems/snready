@@ -4,7 +4,7 @@ import SuccessContent from "./SuccessContent";
 
 export const metadata: Metadata = {
   title: "Payment Successful | SNReady",
-  description: "Thank you for your purchase! Your 30-day access is now active.",
+  description: "Thank you for your purchase! Your access is now active.",
 };
 
 function LoadingState() {
