@@ -104,7 +104,7 @@ export default async function FreeQuestionsPage({ params }: Props) {
         name: "How can I access the full question bank?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: `Full access to all ${certification.name} practice questions costs $9 for 30-day access. This includes detailed explanations, source references, and comprehensive coverage of all exam topics.`,
+          text: `Full access to all ${certification.name} practice questions starts at $9 for 30-day access or $49 for lifetime access. This includes detailed explanations, source references, and comprehensive coverage of all exam topics.`,
         },
       },
     ],
@@ -198,30 +198,45 @@ export default async function FreeQuestionsPage({ params }: Props) {
         </div>
 
         {/* Unlock CTA */}
-        <div className="mt-12 rounded-xl border border-emerald-200 bg-gradient-to-br from-emerald-50 to-green-100 p-4 sm:p-8 text-center dark:border-emerald-800 dark:from-emerald-950 dark:to-green-950">
-          <h3 className="text-2xl font-bold text-emerald-900 dark:text-emerald-100">
+        <div className="mt-12 rounded-xl border border-emerald-200 bg-gradient-to-br from-emerald-50 to-green-100 p-4 sm:p-8 dark:border-emerald-800 dark:from-emerald-950 dark:to-green-950">
+          <h3 className="text-2xl font-bold text-emerald-900 dark:text-emerald-100 text-center">
             Unlock Full {certification.name} Access
           </h3>
-          <div className="mt-4">
-            <span className="text-4xl font-bold text-emerald-900 dark:text-emerald-100">$9</span>
-            <span className="text-emerald-700 dark:text-emerald-300"> for 30-day access</span>
-          </div>
-          <p className="mt-3 text-emerald-700 dark:text-emerald-300">
-            Full access to all {certification.name} practice questions with detailed explanations and source references
-          </p>
           
-          <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:justify-center">
-            <CheckoutButton
-              certification={certification.name}
-              className="inline-flex items-center justify-center rounded-lg bg-emerald-600 px-6 py-3 font-semibold text-white transition-colors hover:bg-emerald-700"
-            >
-              Get Full Access — $9
-            </CheckoutButton>
+          <div className="mt-6 grid gap-4 sm:grid-cols-2 max-w-lg mx-auto">
+            <div className="rounded-lg bg-white dark:bg-zinc-800 p-4 text-center shadow-sm">
+              <div className="text-2xl font-bold text-emerald-800 dark:text-emerald-200">$9</div>
+              <div className="text-sm text-emerald-600 dark:text-emerald-400">30-day access</div>
+              <CheckoutButton
+                certification={certification.name}
+                plan="30day"
+                className="mt-3 w-full rounded-lg bg-emerald-600 py-2 text-sm font-semibold text-white transition-colors hover:bg-emerald-700"
+              >
+                Get 30 Days
+              </CheckoutButton>
+            </div>
+            <div className="rounded-lg bg-emerald-600 dark:bg-emerald-700 p-4 text-center shadow-sm relative">
+              <div className="absolute -top-2 left-1/2 -translate-x-1/2 bg-amber-500 text-white text-xs font-bold px-2 py-0.5 rounded">
+                BEST VALUE
+              </div>
+              <div className="text-2xl font-bold text-white">$49</div>
+              <div className="text-sm text-emerald-100">Lifetime access</div>
+              <CheckoutButton
+                certification={certification.name}
+                plan="lifetime"
+                className="mt-3 w-full rounded-lg bg-white py-2 text-sm font-semibold text-emerald-700 transition-colors hover:bg-emerald-50"
+              >
+                Get Lifetime
+              </CheckoutButton>
+            </div>
+          </div>
+
+          <div className="mt-4 text-center">
             <Link
               href={`/certifications/${cert}`}
-              className="inline-flex items-center justify-center rounded-lg border border-emerald-600 px-6 py-3 font-semibold text-emerald-600 transition-colors hover:bg-emerald-50 dark:hover:bg-emerald-950"
+              className="text-sm text-emerald-600 hover:text-emerald-700 dark:text-emerald-400"
             >
-              View All Topics
+              View all {certification.name} topics →
             </Link>
           </div>
         </div>
