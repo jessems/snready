@@ -446,53 +446,66 @@ export default async function CertificationPage({ params }: PageProps) {
         {/* Pricing CTA */}
         {isReady && (
           <section className="py-16 bg-gradient-to-br from-emerald-600 to-green-700 dark:from-emerald-800 dark:to-green-900">
-            <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
-              <h2 className="text-3xl font-bold text-white">
-                Get Full {cert.name} Access
-              </h2>
-              <p className="mt-4 text-lg text-emerald-100">
-                Unlock all {totalQuestions}+ practice questions with detailed explanations and source references
-              </p>
-              <div className="mt-8 inline-flex items-baseline gap-1">
-                <span className="text-5xl font-bold text-white">$9</span>
-                <span className="text-xl text-emerald-200"> for 30-day access</span>
+            <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+              <div className="text-center">
+                <h2 className="text-3xl font-bold text-white">
+                  Get Full {cert.name} Access
+                </h2>
+                <p className="mt-4 text-lg text-emerald-100">
+                  Unlock all {totalQuestions}+ practice questions with detailed explanations
+                </p>
               </div>
-              <ul className="mt-8 flex flex-col items-center gap-3 text-emerald-100">
-                <li className="flex items-center gap-2">
-                  <svg className="h-5 w-5 text-emerald-300" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                  </svg>
-                  All {cert.name} practice questions
-                </li>
-                <li className="flex items-center gap-2">
-                  <svg className="h-5 w-5 text-emerald-300" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                  </svg>
-                  Detailed explanations with source references
-                </li>
-                <li className="flex items-center gap-2">
-                  <svg className="h-5 w-5 text-emerald-300" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                  </svg>
-                  Full-length practice tests
-                </li>
-                <li className="flex items-center gap-2">
-                  <svg className="h-5 w-5 text-emerald-300" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                  </svg>
-                  One-time payment, no auto-renewal
-                </li>
-              </ul>
-              <div className="mt-10">
-                <CheckoutButton
-                  certification={cert.name}
-                  className="inline-flex h-14 items-center justify-center rounded-lg bg-white px-8 text-lg font-semibold text-emerald-700 transition-colors hover:bg-emerald-50"
-                >
-                  Get Full Access — $9
-                </CheckoutButton>
+
+              <div className="mt-10 grid gap-6 md:grid-cols-2 max-w-3xl mx-auto">
+                {/* 30-Day Plan */}
+                <div className="rounded-xl bg-white/10 backdrop-blur p-6 text-center">
+                  <h3 className="text-lg font-semibold text-white">30-Day Access</h3>
+                  <div className="mt-4">
+                    <span className="text-4xl font-bold text-white">$9</span>
+                  </div>
+                  <ul className="mt-6 space-y-2 text-sm text-emerald-100">
+                    <li>✓ All {cert.name} questions</li>
+                    <li>✓ Detailed explanations</li>
+                    <li>✓ Practice tests</li>
+                    <li>✓ 30 days access</li>
+                  </ul>
+                  <CheckoutButton
+                    certification={cert.name}
+                    plan="30day"
+                    className="mt-6 w-full rounded-lg bg-white py-3 font-semibold text-emerald-700 transition-colors hover:bg-emerald-50"
+                  >
+                    Get 30-Day Access
+                  </CheckoutButton>
+                </div>
+
+                {/* Lifetime Plan */}
+                <div className="rounded-xl bg-white p-6 text-center relative overflow-hidden">
+                  <div className="absolute top-0 right-0 bg-amber-500 text-white text-xs font-bold px-3 py-1 rounded-bl-lg">
+                    LIMITED TIME
+                  </div>
+                  <h3 className="text-lg font-semibold text-emerald-800">Lifetime Access</h3>
+                  <div className="mt-4">
+                    <span className="text-4xl font-bold text-emerald-700">$49</span>
+                  </div>
+                  <ul className="mt-6 space-y-2 text-sm text-emerald-700">
+                    <li>✓ All {cert.name} questions</li>
+                    <li>✓ Detailed explanations</li>
+                    <li>✓ Practice tests</li>
+                    <li className="font-semibold">✓ Lifetime access — never expires</li>
+                    <li className="font-semibold">✓ Future updates included</li>
+                  </ul>
+                  <CheckoutButton
+                    certification={cert.name}
+                    plan="lifetime"
+                    className="mt-6 w-full rounded-lg bg-emerald-600 py-3 font-semibold text-white transition-colors hover:bg-emerald-700"
+                  >
+                    Get Lifetime Access
+                  </CheckoutButton>
+                </div>
               </div>
-              <p className="mt-4 text-sm text-emerald-200">
-                {freeQuestions} free questions available to try first
+
+              <p className="mt-6 text-center text-sm text-emerald-200">
+                {freeQuestions} free questions available to try first • One-time payment, no subscription
               </p>
             </div>
           </section>

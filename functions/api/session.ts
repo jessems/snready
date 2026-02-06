@@ -30,6 +30,8 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
     }
 
     const email = session.customer_details?.email;
+    const plan = session.metadata?.plan || "30day";
+    const certification = session.metadata?.certification || "all";
 
     if (!email) {
       return new Response(
@@ -39,24 +41,36 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
     }
 
     // Grant access (in case webhook was slow)
-    const expiresAt = Date.now() + 30 * 24 * 60 * 60 * 1000;
+    const durationMs = plan === "lifetime" 
+      ? 100 * 365 * 24 * 60 * 60 * 1000 
+      : 30 * 24 * 60 * 60 * 1000;
+    
+    const expiresAt = Date.now() + durationMs;
+    
+    const kvOptions = plan === "lifetime" 
+      ? {} 
+      : { expirationTtl: 30 * 24 * 60 * 60 };
+
     await env.SNREADY_ACCESS.put(
       email.toLowerCase(),
       JSON.stringify({
         paid: true,
+        plan,
         expiresAt,
         sessionId: session.id,
-        certification: session.metadata?.certification || "all",
+        certification,
         createdAt: Date.now(),
       }),
-      { expirationTtl: 30 * 24 * 60 * 60 }
+      kvOptions
     );
 
     return new Response(
       JSON.stringify({
         success: true,
         email,
+        plan,
         expiresAt,
+        certification,
       }),
       { headers: { "Content-Type": "application/json" } }
     );

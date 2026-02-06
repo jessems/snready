@@ -27,22 +27,35 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     if (event.type === "checkout.session.completed") {
       const session = event.data.object as Stripe.Checkout.Session;
       const email = session.customer_details?.email;
+      const plan = session.metadata?.plan || "30day";
+      const certification = session.metadata?.certification || "all";
 
       if (email) {
-        // Store access for 30 days
-        const expiresAt = Date.now() + 30 * 24 * 60 * 60 * 1000;
+        // Lifetime = 100 years, 30day = 30 days
+        const durationMs = plan === "lifetime" 
+          ? 100 * 365 * 24 * 60 * 60 * 1000 
+          : 30 * 24 * 60 * 60 * 1000;
+        
+        const expiresAt = Date.now() + durationMs;
+        
+        // For lifetime, don't set TTL (keep forever)
+        const kvOptions = plan === "lifetime" 
+          ? {} 
+          : { expirationTtl: 30 * 24 * 60 * 60 };
+
         await env.SNREADY_ACCESS.put(
           email.toLowerCase(),
           JSON.stringify({
             paid: true,
+            plan,
             expiresAt,
             sessionId: session.id,
-            certification: session.metadata?.certification || "all",
+            certification,
             createdAt: Date.now(),
           }),
-          { expirationTtl: 30 * 24 * 60 * 60 } // 30 days TTL
+          kvOptions
         );
-        console.log(`Access granted to ${email} until ${new Date(expiresAt).toISOString()}`);
+        console.log(`Access granted to ${email} (${plan}) until ${new Date(expiresAt).toISOString()}`);
       }
     }
 

@@ -5,12 +5,31 @@ interface Env {
   SITE_URL: string;
 }
 
+type PlanType = "30day" | "lifetime";
+
+const PLANS = {
+  "30day": {
+    price: 900, // $9.00 in cents
+    name: "30-Day Access",
+    description: "30-day access to all practice questions with detailed explanations",
+  },
+  "lifetime": {
+    price: 4900, // $49.00 in cents
+    name: "Lifetime Access (Limited Time)",
+    description: "Lifetime access to all practice questions — never expires",
+  },
+};
+
 export const onRequestPost: PagesFunction<Env> = async (context) => {
   const { request, env } = context;
 
   try {
-    const { certification } = await request.json() as { certification?: string };
+    const { certification, plan = "30day" } = await request.json() as { 
+      certification?: string;
+      plan?: PlanType;
+    };
 
+    const selectedPlan = PLANS[plan] || PLANS["30day"];
     const stripe = new Stripe(env.STRIPE_SECRET_KEY);
 
     const session = await stripe.checkout.sessions.create({
@@ -20,10 +39,10 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
           price_data: {
             currency: "usd",
             product_data: {
-              name: `SNReady ${certification || "Full"} Access`,
-              description: "30-day access to all practice questions with detailed explanations",
+              name: `SNReady ${certification || "Full"} ${selectedPlan.name}`,
+              description: selectedPlan.description,
             },
-            unit_amount: 900, // $9.00 in cents
+            unit_amount: selectedPlan.price,
           },
           quantity: 1,
         },
@@ -33,6 +52,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       cancel_url: `${env.SITE_URL}/checkout/cancel`,
       metadata: {
         certification: certification || "all",
+        plan: plan,
       },
     });
 

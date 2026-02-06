@@ -127,12 +127,15 @@ export async function getQuestionsForTopic(
   }
 }
 
+// Free questions: first 10 questions per topic
+const FREE_QUESTIONS_PER_TOPIC = 10;
+
 export async function getFreeQuestionsForTopic(
   certSlug: string,
   topicSlug: string
 ): Promise<Question[]> {
   const questions = await getQuestionsForTopic(certSlug, topicSlug);
-  return questions.filter((q) => q.isFree);
+  return questions.slice(0, FREE_QUESTIONS_PER_TOPIC);
 }
 
 // Domain helpers
@@ -149,7 +152,8 @@ export function getTotalQuestionCount(certSlug: string): number {
 
 export function getTotalFreeQuestionCount(certSlug: string): number {
   const topics = getTopicsForCertification(certSlug);
-  return topics.reduce((sum, topic) => sum + topic.freeQuestionCount, 0);
+  // Free questions: min of FREE_QUESTIONS_PER_TOPIC or topic.questionCount
+  return topics.reduce((sum, topic) => sum + Math.min(FREE_QUESTIONS_PER_TOPIC, topic.questionCount), 0);
 }
 
 // Category helpers

@@ -2,21 +2,23 @@
 
 import { useState } from "react";
 import { useAccess } from "./AccessProvider";
-import { LoginModal } from "./LoginModal";
+
+type PlanType = "30day" | "lifetime";
 
 interface CheckoutButtonProps {
   certification?: string;
+  plan?: PlanType;
   className?: string;
   children: React.ReactNode;
 }
 
 export function CheckoutButton({
   certification,
+  plan = "30day",
   className = "",
   children,
 }: CheckoutButtonProps) {
   const [loading, setLoading] = useState(false);
-  const [showLogin, setShowLogin] = useState(false);
   const { hasAccess } = useAccess();
 
   const handleCheckout = async () => {
@@ -27,7 +29,7 @@ export function CheckoutButton({
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ certification }),
+        body: JSON.stringify({ certification, plan }),
       });
 
       const data = await response.json();
@@ -54,23 +56,12 @@ export function CheckoutButton({
   }
 
   return (
-    <>
-      <button
-        onClick={handleCheckout}
-        disabled={loading}
-        className={`${className} ${loading ? "opacity-75 cursor-wait" : ""}`}
-      >
-        {loading ? "Loading..." : children}
-      </button>
-
-      <LoginModal
-        isOpen={showLogin}
-        onClose={() => setShowLogin(false)}
-        onPurchase={() => {
-          setShowLogin(false);
-          handleCheckout();
-        }}
-      />
-    </>
+    <button
+      onClick={handleCheckout}
+      disabled={loading}
+      className={`${className} ${loading ? "opacity-75 cursor-wait" : ""}`}
+    >
+      {loading ? "Loading..." : children}
+    </button>
   );
 }
