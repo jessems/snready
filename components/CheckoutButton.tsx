@@ -24,6 +24,9 @@ export function CheckoutButton({
   const handleCheckout = async () => {
     setLoading(true);
     try {
+      // Store current page so we can return after checkout
+      localStorage.setItem("snready_checkout_return", window.location.pathname);
+      
       const response = await fetch("/api/checkout", {
         method: "POST",
         headers: {
@@ -38,10 +41,12 @@ export function CheckoutButton({
         window.location.href = data.url;
       } else {
         console.error("No checkout URL returned");
+        localStorage.removeItem("snready_checkout_return");
         setLoading(false);
       }
     } catch (error) {
       console.error("Checkout error:", error);
+      localStorage.removeItem("snready_checkout_return");
       setLoading(false);
     }
   };

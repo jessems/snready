@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { verifySession, storeAccess } from "@/lib/access";
+import { useAccess } from "@/components/AccessProvider";
 
 type PlanType = "30day" | "lifetime";
 
@@ -21,6 +22,17 @@ export default function SuccessContent() {
   const sessionId = searchParams.get("session_id");
   const [status, setStatus] = useState<"loading" | "success" | "error" | "missing">("loading");
   const [result, setResult] = useState<SessionResult | null>(null);
+  const [returnUrl, setReturnUrl] = useState<string | null>(null);
+  const { refresh } = useAccess();
+
+  useEffect(() => {
+    // Get the return URL from localStorage
+    const storedReturnUrl = localStorage.getItem("snready_checkout_return");
+    if (storedReturnUrl) {
+      setReturnUrl(storedReturnUrl);
+      localStorage.removeItem("snready_checkout_return");
+    }
+  }, []);
 
   useEffect(() => {
     if (!sessionId) {
@@ -28,9 +40,11 @@ export default function SuccessContent() {
       return;
     }
 
-    verifySession(sessionId).then((data) => {
+    verifySession(sessionId).then(async (data) => {
       if (data.success && data.email && data.expiresAt) {
         storeAccess(data.email, data.expiresAt);
+        // Refresh the AccessProvider so header updates
+        await refresh();
         setResult(data as SessionResult);
         setStatus("success");
       } else {
@@ -38,7 +52,7 @@ export default function SuccessContent() {
         setStatus("error");
       }
     });
-  }, [sessionId]);
+  }, [sessionId, refresh]);
 
   // Missing session ID - user navigated here directly
   if (status === "missing") {
@@ -178,10 +192,10 @@ export default function SuccessContent() {
 
         <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:justify-center">
           <Link
-            href="/certifications"
+            href={returnUrl || "/certifications"}
             className="inline-flex items-center justify-center rounded-lg bg-emerald-600 px-6 py-3 font-semibold text-white transition-colors hover:bg-emerald-700"
           >
-            Start Practicing
+            {returnUrl ? "Continue Practicing" : "Start Practicing"}
           </Link>
           <Link
             href="/"
