@@ -4,6 +4,7 @@ import Script from "next/script";
 import Link from "next/link";
 import { BASE_URL } from "@/lib/seo";
 import { Providers } from "@/components/Providers";
+import Header from "@/components/Header";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -113,52 +114,12 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden`}
       >
-        <nav className="border-b border-zinc-200 dark:border-zinc-800">
-          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-            <div className="flex h-16 items-center justify-between">
-              <Link href="/" className="flex items-center gap-2">
-                <span className="text-xl font-bold text-emerald-600">
-                  SNReady
-                </span>
-              </Link>
-              <div className="hidden sm:flex sm:items-center sm:gap-6">
-                <Link
-                  href="/certifications/csa"
-                  className="text-sm font-medium text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
-                >
-                  CSA
-                </Link>
-                <Link
-                  href="/certifications/cad"
-                  className="text-sm font-medium text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
-                >
-                  CAD
-                </Link>
-                <Link
-                  href="/certifications/cis-df"
-                  className="text-sm font-medium text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
-                >
-                  CIS-DF
-                </Link>
-                <Link
-                  href="/certifications/cis-itsm"
-                  className="text-sm font-medium text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
-                >
-                  CIS-ITSM
-                </Link>
-                <Link
-                  href="/#certifications"
-                  className="text-sm font-medium text-emerald-600 hover:text-emerald-700 dark:text-emerald-400 dark:hover:text-emerald-300"
-                >
-                  All 25+ Exams
-                </Link>
-              </div>
-            </div>
-          </div>
-        </nav>
-        <main className="min-w-0 overflow-x-hidden">
-          <Providers>{children}</Providers>
-        </main>
+        <Providers>
+          <Header />
+          <main className="min-w-0 overflow-x-hidden">
+            {children}
+          </main>
+        </Providers>
         <footer className="border-t border-zinc-200 py-12 dark:border-zinc-800">
           <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
@@ -220,7 +181,7 @@ export default function RootLayout({
                     Practice Tests
                   </Link>
                   <Link
-                    href="/free-questions/csa/ui-navigation"
+                    href="/free-questions"
                     className="block text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
                   >
                     Free Questions
