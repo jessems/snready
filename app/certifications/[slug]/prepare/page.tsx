@@ -18,9 +18,8 @@ interface Props {
 type ExamPrepCert = keyof typeof examPrepData;
 
 export async function generateStaticParams() {
-  return getCertificationSlugs()
-    .filter((slug) => slug in examPrepData)
-    .map((slug) => ({ slug }));
+  // Generate for ALL certifications, not just ones with prep data
+  return getCertificationSlugs().map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -54,15 +53,42 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
+// Generate fallback prep data from certification domains
+function generateFallbackPrepData(certification: NonNullable<ReturnType<typeof getCertificationBySlug>>) {
+  const baseUrl = "https://nowlearning.servicenow.com/lxp/en/credentials";
+  return {
+    officialResources: {
+      examPage: `${baseUrl}/${certification.slug}`,
+      blueprintUrl: `${baseUrl}/${certification.slug}`,
+      studyGuideUrl: certification.deltaExam?.studyGuideUrl || null,
+    },
+    requiredCourses: [] as Array<{ name: string; url: string; duration: string; description: string; domains: string[] }>,
+    recommendedCourses: [] as Array<{ name: string; url: string; duration: string; description: string; domains: string[] }>,
+    documentationSections: [] as Array<{ name: string; url: string; domains: string[] }>,
+    examBlueprint: {
+      source: "ServiceNow Official Exam Blueprint",
+      lastUpdated: certification.lastUpdated || "2025-01",
+      domains: certification.domains.map((d) => ({
+        name: d.name,
+        percentage: d.percentage,
+        objectives: [d.description],
+      })),
+    },
+  };
+}
+
 export default async function ExamPrepPage({ params }: Props) {
   const { slug } = await params;
   const certification = getCertificationBySlug(slug);
 
-  if (!certification || !(slug in examPrepData)) {
+  if (!certification) {
     notFound();
   }
 
-  const prepData = examPrepData[slug as ExamPrepCert];
+  // Use existing prep data or generate fallback from certification domains
+  const prepData = slug in examPrepData 
+    ? examPrepData[slug as ExamPrepCert]
+    : generateFallbackPrepData(certification);
   const totalQuestions = getTotalQuestionCount(slug);
   const isReady = isCertificationReady(slug);
 
@@ -198,6 +224,22 @@ export default async function ExamPrepPage({ params }: Props) {
             </span>
           </div>
 
+          {prepData.examBlueprint.domains.length === 0 ? (
+            <div className="mt-6 rounded-lg border border-dashed border-zinc-300 bg-zinc-50 p-6 text-center dark:border-zinc-600 dark:bg-zinc-900">
+              <p className="text-zinc-600 dark:text-zinc-400">
+                Detailed blueprint coming soon. Visit the{" "}
+                <a
+                  href={prepData.officialResources.blueprintUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-emerald-600 hover:underline"
+                >
+                  official exam page
+                </a>{" "}
+                for domain details.
+              </p>
+            </div>
+          ) : (
           <div className="mt-6 overflow-hidden rounded-lg border border-zinc-200 dark:border-zinc-700">
             <table className="w-full">
               <thead className="bg-zinc-100 dark:bg-zinc-800">
@@ -231,6 +273,7 @@ export default async function ExamPrepPage({ params }: Props) {
               </tbody>
             </table>
           </div>
+          )}
         </section>
 
         {/* Required Courses */}
@@ -242,6 +285,22 @@ export default async function ExamPrepPage({ params }: Props) {
             Official Now Learning courses that cover the exam content.
           </p>
 
+          {prepData.requiredCourses.length === 0 ? (
+            <div className="mt-6 rounded-lg border border-dashed border-zinc-300 bg-zinc-50 p-6 text-center dark:border-zinc-600 dark:bg-zinc-900">
+              <p className="text-zinc-600 dark:text-zinc-400">
+                Course information coming soon. Visit the{" "}
+                <a
+                  href={prepData.officialResources.examPage}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-emerald-600 hover:underline"
+                >
+                  official exam page
+                </a>{" "}
+                for the latest requirements.
+              </p>
+            </div>
+          ) : (
           <div className="mt-6 space-y-4">
             {prepData.requiredCourses.map((course) => (
               <a
@@ -280,6 +339,7 @@ export default async function ExamPrepPage({ params }: Props) {
               </a>
             ))}
           </div>
+          )}
 
           {prepData.recommendedCourses.length > 0 && (
             <>
@@ -328,6 +388,22 @@ export default async function ExamPrepPage({ params }: Props) {
             ServiceNow docs pages that map to the exam domains.
           </p>
 
+          {prepData.documentationSections.length === 0 ? (
+            <div className="mt-6 rounded-lg border border-dashed border-zinc-300 bg-zinc-50 p-6 text-center dark:border-zinc-600 dark:bg-zinc-900">
+              <p className="text-zinc-600 dark:text-zinc-400">
+                Documentation links coming soon. Visit{" "}
+                <a
+                  href="https://docs.servicenow.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-emerald-600 hover:underline"
+                >
+                  docs.servicenow.com
+                </a>{" "}
+                for the official documentation.
+              </p>
+            </div>
+          ) : (
           <div className="mt-6 grid gap-3 sm:grid-cols-2">
             {prepData.documentationSections.map((doc) => (
               <a
@@ -350,6 +426,7 @@ export default async function ExamPrepPage({ params }: Props) {
               </a>
             ))}
           </div>
+          )}
         </section>
 
         {/* Prerequisites */}
