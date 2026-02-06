@@ -246,13 +246,16 @@ export default async function TopicQuestionsPage({ params }: PageProps) {
 
               {/* CTA */}
               <div className="rounded-xl bg-emerald-600 p-5 text-white dark:bg-emerald-700">
-                <h3 className="font-semibold">Need more practice?</h3>
+                <h3 className="font-semibold">Unlock Full {cert.name} Access</h3>
+                <div className="mt-2">
+                  <span className="text-2xl font-bold">$9</span>
+                  <span className="text-emerald-100"> for 30 days</span>
+                </div>
                 <p className="mt-2 text-sm text-emerald-100">
-                  Unlock all {topic.questionCount} questions for {topic.name}{" "}
-                  with detailed explanations.
+                  All {cert.name} questions with detailed explanations and source references.
                 </p>
                 <button className="mt-4 w-full rounded-lg bg-white py-2 text-sm font-medium text-emerald-600 transition-colors hover:bg-emerald-50">
-                  Unlock Full Access
+                  Get Full Access
                 </button>
               </div>
             </aside>
