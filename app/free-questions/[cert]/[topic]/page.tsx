@@ -8,6 +8,7 @@ import {
   getAllTopicSlugs,
 } from "@/lib/data";
 import { generateBreadcrumbJsonLd, breadcrumbs } from "@/lib/breadcrumbs";
+import { CheckoutButton } from "@/components/CheckoutButton";
 import { getCanonicalUrl } from "@/lib/seo";
 import QuestionCard from "@/components/QuestionCard";
 
@@ -210,12 +211,12 @@ export default async function FreeQuestionsPage({ params }: Props) {
           </p>
           
           <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:justify-center">
-            <Link
-              href={`/${cert}/questions/${topic}`}
+            <CheckoutButton
+              certification={certification.name}
               className="inline-flex items-center justify-center rounded-lg bg-emerald-600 px-6 py-3 font-semibold text-white transition-colors hover:bg-emerald-700"
             >
               Get Full Access — $9
-            </Link>
+            </CheckoutButton>
             <Link
               href={`/certifications/${cert}`}
               className="inline-flex items-center justify-center rounded-lg border border-emerald-600 px-6 py-3 font-semibold text-emerald-600 transition-colors hover:bg-emerald-50 dark:hover:bg-emerald-950"
