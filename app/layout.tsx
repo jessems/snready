@@ -160,7 +160,7 @@ export default function RootLayout({
                     CTA
                   </Link>
                   <Link
-                    href="/#certifications"
+                    href="/certifications"
                     className="block text-sm text-emerald-600 hover:text-emerald-700 dark:text-emerald-400 dark:hover:text-emerald-300"
                   >
                     All Certifications
