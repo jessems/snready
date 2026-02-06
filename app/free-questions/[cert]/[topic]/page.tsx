@@ -103,7 +103,7 @@ export default async function FreeQuestionsPage({ params }: Props) {
         name: "How can I access the full question bank?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: `To unlock the complete question bank with detailed explanations, comprehensive coverage, and additional practice materials, upgrade to our full access plan.`,
+          text: `Full access to all ${certification.name} practice questions costs $9/month. This includes detailed explanations, source references, and comprehensive coverage of all exam topics.`,
         },
       },
     ],
@@ -199,10 +199,14 @@ export default async function FreeQuestionsPage({ params }: Props) {
         {/* Unlock CTA */}
         <div className="mt-12 rounded-xl border border-emerald-200 bg-gradient-to-br from-emerald-50 to-green-100 p-4 sm:p-8 text-center dark:border-emerald-800 dark:from-emerald-950 dark:to-green-950">
           <h3 className="text-2xl font-bold text-emerald-900 dark:text-emerald-100">
-            Unlock Full Access
+            Unlock Full {certification.name} Access
           </h3>
-          <p className="mt-2 text-emerald-700 dark:text-emerald-300">
-            Get access to {topicData.questionCount} total questions for {topicData.name} with detailed explanations and exam insights
+          <div className="mt-4">
+            <span className="text-4xl font-bold text-emerald-900 dark:text-emerald-100">$9</span>
+            <span className="text-emerald-700 dark:text-emerald-300">/month</span>
+          </div>
+          <p className="mt-3 text-emerald-700 dark:text-emerald-300">
+            Full access to all {certification.name} practice questions with detailed explanations and source references
           </p>
           
           <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:justify-center">
@@ -210,7 +214,7 @@ export default async function FreeQuestionsPage({ params }: Props) {
               href={`/${cert}/questions/${topic}`}
               className="inline-flex items-center justify-center rounded-lg bg-emerald-600 px-6 py-3 font-semibold text-white transition-colors hover:bg-emerald-700"
             >
-              Practice All Questions
+              Get Full Access — $9/month
             </Link>
             <Link
               href={`/certifications/${cert}`}
