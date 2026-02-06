@@ -241,10 +241,10 @@ export default async function CertificationPage({ params }: PageProps) {
                       Start Practicing
                     </Link>
                     <Link
-                      href={`/${slug}/questions/${topics[0].slug}`}
+                      href={`/certifications/${slug}/prepare`}
                       className="inline-flex h-12 items-center justify-center rounded-lg border border-zinc-300 bg-white px-6 text-base font-medium text-zinc-900 transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-100"
                     >
-                      Try Free Questions
+                      📚 Exam Prep Guide
                     </Link>
                   </>
                 ) : (
