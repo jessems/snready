@@ -11,6 +11,7 @@ import {
 import { breadcrumbs, generateBreadcrumbJsonLd } from "@/lib/breadcrumbs";
 import QuestionCard from "@/components/QuestionCard";
 import TopicIntroduction from "@/components/TopicIntroduction";
+import { CheckoutButton } from "@/components/CheckoutButton";
 
 interface PageProps {
   params: Promise<{ certification: string; topic: string }>;
@@ -254,9 +255,12 @@ export default async function TopicQuestionsPage({ params }: PageProps) {
                 <p className="mt-2 text-sm text-emerald-100">
                   All {cert.name} questions with detailed explanations and source references.
                 </p>
-                <button className="mt-4 w-full rounded-lg bg-white py-2 text-sm font-medium text-emerald-600 transition-colors hover:bg-emerald-50">
+                <CheckoutButton
+                  certification={cert.name}
+                  className="mt-4 w-full rounded-lg bg-white py-2 text-sm font-medium text-emerald-600 transition-colors hover:bg-emerald-50"
+                >
                   Get Full Access
-                </button>
+                </CheckoutButton>
               </div>
             </aside>
           </div>

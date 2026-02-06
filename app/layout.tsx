@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import Link from "next/link";
 import { BASE_URL } from "@/lib/seo";
+import { Providers } from "@/components/Providers";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -155,7 +156,9 @@ export default function RootLayout({
             </div>
           </div>
         </nav>
-        <main className="min-w-0 overflow-x-hidden">{children}</main>
+        <main className="min-w-0 overflow-x-hidden">
+          <Providers>{children}</Providers>
+        </main>
         <footer className="border-t border-zinc-200 py-12 dark:border-zinc-800">
           <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 gap-8 md:grid-cols-4">

@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { CheckoutButton } from "@/components/CheckoutButton";
 import {
   getCertificationBySlug,
   getCertificationSlugs,
@@ -483,12 +484,12 @@ export default async function CertificationPage({ params }: PageProps) {
                 </li>
               </ul>
               <div className="mt-10">
-                <Link
-                  href={`/${slug}/questions/${topics[0]?.slug || ''}`}
+                <CheckoutButton
+                  certification={cert.name}
                   className="inline-flex h-14 items-center justify-center rounded-lg bg-white px-8 text-lg font-semibold text-emerald-700 transition-colors hover:bg-emerald-50"
                 >
                   Get Full Access — $9
-                </Link>
+                </CheckoutButton>
               </div>
               <p className="mt-4 text-sm text-emerald-200">
                 {freeQuestions} free questions available to try first
