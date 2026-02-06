@@ -55,8 +55,71 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Why SNReady Section */}
+      <section className="py-16 bg-white dark:bg-zinc-950">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-zinc-900 dark:text-zinc-50">
+              Stop Wasting Money on Stale Udemy Courses
+            </h2>
+            <p className="mt-4 text-lg text-zinc-600 dark:text-zinc-400 max-w-3xl mx-auto">
+              Generic exam dumps become outdated the moment ServiceNow releases a new version. 
+              SNReady questions are generated from official Now Learning content — always current, always accurate.
+            </p>
+          </div>
+          
+          <div className="grid gap-8 md:grid-cols-3">
+            {/* Benefit 1 */}
+            <div className="rounded-xl border border-zinc-200 bg-zinc-50 p-6 dark:border-zinc-800 dark:bg-zinc-900">
+              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-emerald-100 text-2xl dark:bg-emerald-900">
+                🎯
+              </div>
+              <h3 className="mt-4 text-xl font-semibold text-zinc-900 dark:text-zinc-100">
+                Questions From Real Course Content
+              </h3>
+              <p className="mt-2 text-zinc-600 dark:text-zinc-400">
+                Every question is derived from official ServiceNow training materials — the same content tested on the actual exam. No guessing, no outdated braindumps.
+              </p>
+            </div>
+
+            {/* Benefit 2 */}
+            <div className="rounded-xl border border-zinc-200 bg-zinc-50 p-6 dark:border-zinc-800 dark:bg-zinc-900">
+              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-emerald-100 text-2xl dark:bg-emerald-900">
+                📚
+              </div>
+              <h3 className="mt-4 text-xl font-semibold text-zinc-900 dark:text-zinc-100">
+                Learn Why You're Wrong
+              </h3>
+              <p className="mt-2 text-zinc-600 dark:text-zinc-400">
+                Detailed explanations for every answer — correct and incorrect. Each explanation links back to the source material so you actually learn, not just memorize.
+              </p>
+            </div>
+
+            {/* Benefit 3 */}
+            <div className="rounded-xl border border-zinc-200 bg-zinc-50 p-6 dark:border-zinc-800 dark:bg-zinc-900">
+              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-emerald-100 text-2xl dark:bg-emerald-900">
+                ⏱️
+              </div>
+              <h3 className="mt-4 text-xl font-semibold text-zinc-900 dark:text-zinc-100">
+                Realistic Practice Tests
+              </h3>
+              <p className="mt-2 text-zinc-600 dark:text-zinc-400">
+                Full-length mock exams that mirror the real test format. Time yourself, review your results, and identify weak areas before exam day.
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-12 text-center">
+            <div className="inline-flex items-center gap-2 rounded-full bg-amber-100 px-4 py-2 text-sm font-medium text-amber-800 dark:bg-amber-900/50 dark:text-amber-200">
+              <span>💡</span>
+              <span>Questions updated for Xanadu & Yokohama releases</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Stats Section */}
-      <section className="border-y border-zinc-200 bg-white py-12 dark:border-zinc-800 dark:bg-zinc-950">
+      <section className="border-y border-zinc-200 bg-zinc-50 py-12 dark:border-zinc-800 dark:bg-zinc-900">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
             <div className="text-center">
