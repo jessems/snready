@@ -249,7 +249,7 @@ export default async function TopicQuestionsPage({ params }: PageProps) {
                 <h3 className="font-semibold">Unlock Full {cert.name} Access</h3>
                 <div className="mt-2">
                   <span className="text-2xl font-bold">$9</span>
-                  <span className="text-emerald-100">/month</span>
+                  <span className="text-emerald-100"> for 30 days</span>
                 </div>
                 <p className="mt-2 text-sm text-emerald-100">
                   All {cert.name} questions with detailed explanations and source references.

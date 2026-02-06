@@ -103,7 +103,7 @@ export default async function FreeQuestionsPage({ params }: Props) {
         name: "How can I access the full question bank?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: `Full access to all ${certification.name} practice questions costs $9/month. This includes detailed explanations, source references, and comprehensive coverage of all exam topics.`,
+          text: `Full access to all ${certification.name} practice questions costs $9 for 30-day access. This includes detailed explanations, source references, and comprehensive coverage of all exam topics.`,
         },
       },
     ],
@@ -203,7 +203,7 @@ export default async function FreeQuestionsPage({ params }: Props) {
           </h3>
           <div className="mt-4">
             <span className="text-4xl font-bold text-emerald-900 dark:text-emerald-100">$9</span>
-            <span className="text-emerald-700 dark:text-emerald-300">/month</span>
+            <span className="text-emerald-700 dark:text-emerald-300"> for 30-day access</span>
           </div>
           <p className="mt-3 text-emerald-700 dark:text-emerald-300">
             Full access to all {certification.name} practice questions with detailed explanations and source references
@@ -214,7 +214,7 @@ export default async function FreeQuestionsPage({ params }: Props) {
               href={`/${cert}/questions/${topic}`}
               className="inline-flex items-center justify-center rounded-lg bg-emerald-600 px-6 py-3 font-semibold text-white transition-colors hover:bg-emerald-700"
             >
-              Get Full Access — $9/month
+              Get Full Access — $9
             </Link>
             <Link
               href={`/certifications/${cert}`}
