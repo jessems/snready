@@ -156,7 +156,7 @@ export function QuestionsWithPaywall({
                   plan="lifetime"
                   className="w-full rounded-lg bg-emerald-600 py-3 font-semibold text-white transition-colors hover:bg-emerald-700"
                 >
-                  Lifetime — $49 ⭐
+                  Lifetime All Certs — $49 ⭐
                 </CheckoutButton>
               </div>
 

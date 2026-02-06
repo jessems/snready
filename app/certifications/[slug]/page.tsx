@@ -481,14 +481,15 @@ export default async function CertificationPage({ params }: PageProps) {
                 {/* Lifetime Plan */}
                 <div className="rounded-xl bg-white p-6 text-center relative overflow-hidden">
                   <div className="absolute top-0 right-0 bg-amber-500 text-white text-xs font-bold px-3 py-1 rounded-bl-lg">
-                    LIMITED TIME
+                    BEST VALUE
                   </div>
                   <h3 className="text-lg font-semibold text-emerald-800">Lifetime Access</h3>
                   <div className="mt-4">
                     <span className="text-4xl font-bold text-emerald-700">$49</span>
                   </div>
                   <ul className="mt-6 space-y-2 text-sm text-emerald-700">
-                    <li>✓ All {cert.name} questions</li>
+                    <li className="font-semibold text-emerald-800">✓ ALL certifications included</li>
+                    <li>✓ All practice questions</li>
                     <li>✓ Detailed explanations</li>
                     <li>✓ Practice tests</li>
                     <li className="font-semibold">✓ Lifetime access — never expires</li>

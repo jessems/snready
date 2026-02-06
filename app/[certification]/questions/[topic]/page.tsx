@@ -250,7 +250,7 @@ export default async function TopicQuestionsPage({ params }: PageProps) {
 
               {/* CTA */}
               <div className="rounded-xl bg-emerald-600 p-5 text-white dark:bg-emerald-700">
-                <h3 className="font-semibold">Unlock Full {cert.name} Access</h3>
+                <h3 className="font-semibold">Unlock Full Access</h3>
                 <p className="mt-2 text-sm text-emerald-100">
                   All questions with detailed explanations.
                 </p>
@@ -260,14 +260,14 @@ export default async function TopicQuestionsPage({ params }: PageProps) {
                     plan="30day"
                     className="w-full rounded-lg bg-white/20 py-2 text-sm font-medium text-white transition-colors hover:bg-white/30"
                   >
-                    30 Days — $9
+                    {cert.name} 30 Days — $9
                   </CheckoutButton>
                   <CheckoutButton
                     certification={cert.name}
                     plan="lifetime"
                     className="w-full rounded-lg bg-white py-2 text-sm font-medium text-emerald-600 transition-colors hover:bg-emerald-50"
                   >
-                    Lifetime — $49 ⭐
+                    All Certs Lifetime — $49 ⭐
                   </CheckoutButton>
                 </div>
               </div>

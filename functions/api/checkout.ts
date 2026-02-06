@@ -15,8 +15,8 @@ const PLANS = {
   },
   "lifetime": {
     price: 4900, // $49.00 in cents
-    name: "Lifetime Access (Limited Time)",
-    description: "Lifetime access to all practice questions — never expires",
+    name: "Lifetime Access — All Certifications",
+    description: "Lifetime access to ALL certifications and practice questions — never expires",
   },
 };
 
