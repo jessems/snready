@@ -1,0 +1,530 @@
+{
+  "questions": [
+    {
+      "id": "cis-itsm-incident-management-001",
+      "certification": "cis-itsm",
+      "topic": "incident-management",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What is the primary objective of Incident Management in ServiceNow?",
+      "options": [
+        { "id": "a", "text": "To identify the root cause of all service disruptions" },
+        { "id": "b", "text": "To restore normal service operation as quickly as possible" },
+        { "id": "c", "text": "To implement permanent fixes for all reported issues" },
+        { "id": "d", "text": "To prevent all future incidents from occurring" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "The primary goal of Incident Management is to restore normal service operation as quickly as possible, minimizing the adverse impact on business operations. This may involve applying temporary workarounds rather than permanent fixes. Root cause analysis is the responsibility of Problem Management.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "Identifying root causes is the responsibility of Problem Management, not Incident Management", "reference": "ITSM Fundamentals course" },
+          { "choiceId": "c", "explanation": "Incident Management focuses on service restoration, often using temporary workarounds. Permanent fixes are handled through Problem and Change Management", "reference": "ITSM Fundamentals course" },
+          { "choiceId": "d", "explanation": "While reducing incidents is desirable, the primary focus of Incident Management is restoration, not prevention", "reference": "ITSM Fundamentals course" }
+        ]
+      },
+      "references": ["ITSM Fundamentals", "ITIL Foundation"],
+      "isFree": true,
+      "source": {
+        "type": "course",
+        "path": "it-service-management-itsm-fundamentals/02-incident-management-creation-and-classification.md",
+        "excerpt": "The main goal of incident management is to swiftly restore services without necessarily identifying the root cause. In other words, the focus is restoring services as soon as possible."
+      },
+      "labels": {
+        "certification": "cis-itsm",
+        "domain": "Incident Management",
+        "domainSlug": "incident-management",
+        "domainPercentage": 20,
+        "subtopics": ["Incident Management objectives", "Service restoration"],
+        "tags": ["incident", "restoration", "objectives"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-06T05:56:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-itsm-incident-management-002",
+      "certification": "cis-itsm",
+      "topic": "incident-management",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which incident state indicates that the service issue has been fixed but is waiting for user confirmation?",
+      "options": [
+        { "id": "a", "text": "Closed" },
+        { "id": "b", "text": "On Hold" },
+        { "id": "c", "text": "Resolved" },
+        { "id": "d", "text": "In Progress" }
+      ],
+      "correctAnswers": ["c"],
+      "explanation": {
+        "correct": "The Resolved state indicates that the service issue has been fixed, but the system is waiting for the user to confirm that the service has been restored. After confirmation or a timeout period (default 7 days), the incident moves to Closed.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "Closed means the incident is no longer active and has been fully completed", "reference": "ITSM Fundamentals course" },
+          { "choiceId": "b", "explanation": "On Hold means the investigation is temporarily paused to gather additional information", "reference": "ITSM Fundamentals course" },
+          { "choiceId": "d", "explanation": "In Progress indicates the incident has been assigned and is under active investigation", "reference": "ITSM Fundamentals course" }
+        ]
+      },
+      "references": ["ITSM Fundamentals"],
+      "isFree": true,
+      "source": {
+        "type": "course",
+        "path": "it-service-management-itsm-fundamentals/02-incident-management-creation-and-classification.md",
+        "excerpt": "Resolved means that the service issue has been fixed. But we're waiting for the user to confirm that the service has been restored."
+      },
+      "labels": {
+        "certification": "cis-itsm",
+        "domain": "Incident Management",
+        "domainSlug": "incident-management",
+        "domainPercentage": 20,
+        "subtopics": ["Incident states", "Incident lifecycle"],
+        "tags": ["incident", "state", "resolved"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-06T05:56:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-itsm-incident-management-003",
+      "certification": "cis-itsm",
+      "topic": "incident-management",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "When does the SLA clock for incident resolution end?",
+      "options": [
+        { "id": "a", "text": "When the incident is assigned to a group" },
+        { "id": "b", "text": "When the incident state is set to Closed" },
+        { "id": "c", "text": "When the incident state is set to Resolved" },
+        { "id": "d", "text": "When the Assigned To field is populated" }
+      ],
+      "correctAnswers": ["c"],
+      "explanation": {
+        "correct": "The SLA clock for resolution ends when the state is set to Resolved. The response SLA ends when the Assigned To field is completed and state is In Progress, but the resolution SLA continues until Resolved.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "Assignment to a group does not stop the resolution SLA clock", "reference": "ITSM Fundamentals course" },
+          { "choiceId": "b", "explanation": "The resolution SLA ends at Resolved, not Closed. Closed is a final state after user confirmation", "reference": "ITSM Fundamentals course" },
+          { "choiceId": "d", "explanation": "Populating the Assigned To field ends the response SLA, not the resolution SLA", "reference": "ITSM Fundamentals course" }
+        ]
+      },
+      "references": ["ITSM Fundamentals"],
+      "isFree": true,
+      "source": {
+        "type": "course",
+        "path": "it-service-management-itsm-fundamentals/02-incident-management-creation-and-classification.md",
+        "excerpt": "Once the Assigned To field is completed and the state is set to In Progress, the response SLA ends while the resolve SLA continues to run... The SLA clock for resolution ends only when the state is set to Resolved."
+      },
+      "labels": {
+        "certification": "cis-itsm",
+        "domain": "Incident Management",
+        "domainSlug": "incident-management",
+        "domainPercentage": 20,
+        "subtopics": ["SLA Management", "Incident SLAs"],
+        "tags": ["incident", "sla", "resolution"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-06T05:56:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-itsm-incident-management-004",
+      "certification": "cis-itsm",
+      "topic": "incident-management",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_select",
+      "question": "Which roles provide the ability to create, update, and resolve incidents? (Select two)",
+      "options": [
+        { "id": "a", "text": "itil" },
+        { "id": "b", "text": "sn_incident_read" },
+        { "id": "c", "text": "itil_admin" },
+        { "id": "d", "text": "incident_viewer" }
+      ],
+      "correctAnswers": ["a", "c"],
+      "explanation": {
+        "correct": "The ITIL role enables an individual to create, update, and resolve incidents while providing read-write access to the CMDB. The ITIL_admin role can perform additional tasks including closing and deleting incidents. The sn_incident_read role only provides read access.",
+        "wrongAnswers": [
+          { "choiceId": "b", "explanation": "sn_incident_read provides read-only access to incidents, not write capabilities", "reference": "ITSM Fundamentals course" },
+          { "choiceId": "d", "explanation": "incident_viewer is not a standard ServiceNow incident role", "reference": "ITSM Fundamentals course" }
+        ]
+      },
+      "references": ["ITSM Fundamentals"],
+      "isFree": true,
+      "source": {
+        "type": "course",
+        "path": "it-service-management-itsm-fundamentals/02-incident-management-creation-and-classification.md",
+        "excerpt": "The ITIL role enables an individual to create, update, and resolve incidents while also providing read-write access to the CMDB... anyone with the ITIL admin role can perform tasks such as creating, updating, closing, and deleting incidents and related records."
+      },
+      "labels": {
+        "certification": "cis-itsm",
+        "domain": "Incident Management",
+        "domainSlug": "incident-management",
+        "domainPercentage": 20,
+        "subtopics": ["Incident roles", "Security model"],
+        "tags": ["incident", "roles", "security"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-06T05:56:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-itsm-incident-management-005",
+      "certification": "cis-itsm",
+      "topic": "incident-management",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What happens to child incidents when a parent incident is marked as Resolved?",
+      "options": [
+        { "id": "a", "text": "Child incidents remain in their current state" },
+        { "id": "b", "text": "Child incidents are automatically deleted" },
+        { "id": "c", "text": "Child incidents are also set to Resolved" },
+        { "id": "d", "text": "Child incidents are moved to On Hold" }
+      ],
+      "correctAnswers": ["c"],
+      "explanation": {
+        "correct": "When a parent incident is marked as Resolved, the same status is applied to all child incidents. Additionally, any notes, codes, comments, or work notes associated with the parent incident are automatically duplicated in the child incidents.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "Child incidents follow the parent's state changes, they don't remain independent", "reference": "ITSM Fundamentals course" },
+          { "choiceId": "b", "explanation": "Child incidents are not deleted; they follow the parent's state", "reference": "ITSM Fundamentals course" },
+          { "choiceId": "d", "explanation": "Child incidents are set to Resolved, not On Hold, when the parent is resolved", "reference": "ITSM Fundamentals course" }
+        ]
+      },
+      "references": ["ITSM Fundamentals"],
+      "isFree": true,
+      "source": {
+        "type": "course",
+        "path": "it-service-management-itsm-fundamentals/05-incident-management-investigation-and-resolution.md",
+        "excerpt": "Whenever a parent incident is marked as resolved, the same status is applied to all child incidents. Additionally, any notes, codes, comments, or work notes associated with the parent incident are automatically duplicated in the child incidents."
+      },
+      "labels": {
+        "certification": "cis-itsm",
+        "domain": "Incident Management",
+        "domainSlug": "incident-management",
+        "domainPercentage": 20,
+        "subtopics": ["Parent-child incidents", "Incident relationships"],
+        "tags": ["incident", "parent", "child", "relationships"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-06T05:56:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-itsm-incident-management-006",
+      "certification": "cis-itsm",
+      "topic": "incident-management",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What is the default time period for an incident to remain in the Resolved state before automatically closing?",
+      "options": [
+        { "id": "a", "text": "24 hours" },
+        { "id": "b", "text": "3 days" },
+        { "id": "c", "text": "7 days" },
+        { "id": "d", "text": "14 days" }
+      ],
+      "correctAnswers": ["c"],
+      "explanation": {
+        "correct": "The standard default time for an incident to remain in a Resolved state is 7 days. If the user takes no action within this time frame, the incident will automatically be closed. This can be configured to meet specific organizational needs.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "24 hours is too short; the default is 7 days", "reference": "ITSM Fundamentals course" },
+          { "choiceId": "b", "explanation": "3 days is not the default; the default is 7 days", "reference": "ITSM Fundamentals course" },
+          { "choiceId": "d", "explanation": "14 days is longer than the default 7-day period", "reference": "ITSM Fundamentals course" }
+        ]
+      },
+      "references": ["ITSM Fundamentals"],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "it-service-management-itsm-fundamentals/05-incident-management-investigation-and-resolution.md",
+        "excerpt": "Within the platform, the standard time for an incident to remain in a resolved state is seven days. If the user takes no action within this time frame, the incident will automatically be closed."
+      },
+      "labels": {
+        "certification": "cis-itsm",
+        "domain": "Incident Management",
+        "domainSlug": "incident-management",
+        "domainPercentage": 20,
+        "subtopics": ["Incident closure", "Auto-close"],
+        "tags": ["incident", "resolved", "closure", "auto-close"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-06T05:56:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-itsm-incident-management-007",
+      "certification": "cis-itsm",
+      "topic": "incident-management",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A user reports they cannot access an application. Investigation reveals all users are affected because an application job is hung. What should Incident Management focus on?",
+      "options": [
+        { "id": "a", "text": "Determine why the job hung and prevent recurrence" },
+        { "id": "b", "text": "Remove the hung job so users can access the application" },
+        { "id": "c", "text": "Create a Problem record and wait for root cause analysis" },
+        { "id": "d", "text": "Escalate to Change Management for a permanent fix" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "Incident Management focuses on restoring service quickly. In this case, removing the hung job will restore access. Determining why the job hung and preventing recurrence is the focus of Problem Management, not Incident Management.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "Determining root cause and prevention is Problem Management's responsibility, not Incident Management", "reference": "ITSM Fundamentals course" },
+          { "choiceId": "c", "explanation": "While a Problem may be created, Incident Management shouldn't wait for root cause analysis before restoring service", "reference": "ITSM Fundamentals course" },
+          { "choiceId": "d", "explanation": "Immediate service restoration is the priority; Change Management may be involved later for permanent fixes", "reference": "ITSM Fundamentals course" }
+        ]
+      },
+      "references": ["ITSM Fundamentals"],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "it-service-management-itsm-fundamentals/05-incident-management-investigation-and-resolution.md",
+        "excerpt": "Incident management focuses on removing the hung job so that users can access the application again. Its focus is not to determine why the job hung and what to do to ensure it doesn't happen again, as that is the focus of problem management."
+      },
+      "labels": {
+        "certification": "cis-itsm",
+        "domain": "Incident Management",
+        "domainSlug": "incident-management",
+        "domainPercentage": 20,
+        "subtopics": ["Service restoration", "Incident vs Problem"],
+        "tags": ["incident", "restoration", "scenario"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-06T05:56:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-itsm-incident-management-008",
+      "certification": "cis-itsm",
+      "topic": "incident-management",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What does the SLA Timeline indicator color RED signify?",
+      "options": [
+        { "id": "a", "text": "The task SLA is below 50% of defined duration" },
+        { "id": "b", "text": "The task SLA is between 75% and 100%" },
+        { "id": "c", "text": "The task has exceeded the defined SLA duration" },
+        { "id": "d", "text": "The task SLA is paused" }
+      ],
+      "correctAnswers": ["c"],
+      "explanation": {
+        "correct": "A task will be indicated in red if it exceeds the defined SLA duration (breached). Green is below 50%, yellow is 50-75%, orange is 75-100%, and gray indicates the task is paused.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "Below 50% is indicated by green, not red", "reference": "ITSM Fundamentals course" },
+          { "choiceId": "b", "explanation": "75-100% is indicated by orange, not red", "reference": "ITSM Fundamentals course" },
+          { "choiceId": "d", "explanation": "Paused tasks are indicated in gray, not red", "reference": "ITSM Fundamentals course" }
+        ]
+      },
+      "references": ["ITSM Fundamentals"],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "it-service-management-itsm-fundamentals/02-incident-management-creation-and-classification.md",
+        "excerpt": "Green indicates a task SLA stage that is below 50% of the defined SLA duration. Yellow represents a stage between 50% and 75%. And orange represents a stage between 75% and 100% A task will be indicated in red if it exceeds the defined SLA duration."
+      },
+      "labels": {
+        "certification": "cis-itsm",
+        "domain": "Incident Management",
+        "domainSlug": "incident-management",
+        "domainPercentage": 20,
+        "subtopics": ["SLA Timeline", "SLA indicators"],
+        "tags": ["incident", "sla", "timeline", "breach"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-06T05:56:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-itsm-incident-management-009",
+      "certification": "cis-itsm",
+      "topic": "incident-management",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_select",
+      "question": "Which of the following are characteristics of Major Incidents? (Select two)",
+      "options": [
+        { "id": "a", "text": "They exceed the standard priority matrix" },
+        { "id": "b", "text": "They always require Change Management approval" },
+        { "id": "c", "text": "They impact a significant number of users" },
+        { "id": "d", "text": "They can only be created manually" }
+      ],
+      "correctAnswers": ["a", "c"],
+      "explanation": {
+        "correct": "Major incidents exceed the standard priority matrix and have the greatest impact and urgency. They impact a significant number of users and deprive the business of vital services. They can be created by automated trigger rules or manually.",
+        "wrongAnswers": [
+          { "choiceId": "b", "explanation": "Major incidents don't require Change approval to be created, though changes may be needed for resolution", "reference": "ITSM Fundamentals course" },
+          { "choiceId": "d", "explanation": "Major incidents can be generated by automated trigger rules or manual creation", "reference": "ITSM Fundamentals course" }
+        ]
+      },
+      "references": ["ITSM Fundamentals"],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "it-service-management-itsm-fundamentals/02-incident-management-creation-and-classification.md",
+        "excerpt": "Major incidents are those that exceed the standard priority matrix and have the greatest impact and urgency. They impact a significant number of users and deprive the business of one or more vital services... Automated trigger rules or manual creation can generate major incidents."
+      },
+      "labels": {
+        "certification": "cis-itsm",
+        "domain": "Incident Management",
+        "domainSlug": "incident-management",
+        "domainPercentage": 20,
+        "subtopics": ["Major incidents", "Incident classification"],
+        "tags": ["incident", "major-incident", "priority"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-06T05:56:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-itsm-incident-management-010",
+      "certification": "cis-itsm",
+      "topic": "incident-management",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What happens to the SLA clock when an incident is placed On Hold?",
+      "options": [
+        { "id": "a", "text": "The SLA clock continues running" },
+        { "id": "b", "text": "The SLA clock is permanently stopped" },
+        { "id": "c", "text": "The SLA clock may be paused" },
+        { "id": "d", "text": "The SLA is canceled and a new one begins" }
+      ],
+      "correctAnswers": ["c"],
+      "explanation": {
+        "correct": "The SLA clock may be paused when the state is set to On Hold. The agent must reset the state to In Progress to restart the SLA clock. Whether it pauses depends on the SLA configuration.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "The SLA clock may pause on On Hold, depending on configuration", "reference": "ITSM Fundamentals course" },
+          { "choiceId": "b", "explanation": "The clock is paused, not permanently stopped; it resumes when state changes to In Progress", "reference": "ITSM Fundamentals course" },
+          { "choiceId": "d", "explanation": "The SLA is not canceled on On Hold; it may be paused but continues from where it left off", "reference": "ITSM Fundamentals course" }
+        ]
+      },
+      "references": ["ITSM Fundamentals"],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "it-service-management-itsm-fundamentals/02-incident-management-creation-and-classification.md",
+        "excerpt": "The SLA clock may be paused when the state is set to On Hold. In such cases, the agent must reset the state to In Progress to restart the SLA clock."
+      },
+      "labels": {
+        "certification": "cis-itsm",
+        "domain": "Incident Management",
+        "domainSlug": "incident-management",
+        "domainPercentage": 20,
+        "subtopics": ["SLA Management", "On Hold state"],
+        "tags": ["incident", "sla", "on-hold", "pause"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-06T05:56:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-itsm-incident-management-011",
+      "certification": "cis-itsm",
+      "topic": "incident-management",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A parent incident is reopened by the end user after it was closed. What happens to the child incidents?",
+      "options": [
+        { "id": "a", "text": "Child incidents are also reopened and set to In Progress" },
+        { "id": "b", "text": "Child incidents remain closed" },
+        { "id": "c", "text": "Child incidents are automatically deleted" },
+        { "id": "d", "text": "Child incidents are set to On Hold" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "When a parent incident is reopened by the end user, the parent state is set to In Progress, but the child incidents remain closed. This is an exception to the normal parent-child behavior where changes to the parent typically affect children.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "Unlike most parent-child behaviors, when reopened by the end user, only the parent changes to In Progress", "reference": "ITSM Fundamentals course" },
+          { "choiceId": "c", "explanation": "Child incidents are not deleted; they simply remain closed", "reference": "ITSM Fundamentals course" },
+          { "choiceId": "d", "explanation": "Child incidents remain closed, not moved to On Hold", "reference": "ITSM Fundamentals course" }
+        ]
+      },
+      "references": ["ITSM Fundamentals"],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "it-service-management-itsm-fundamentals/05-incident-management-investigation-and-resolution.md",
+        "excerpt": "In case the parent incident is reopened by the end user, its state is set to in-progress, but the child incidents remain closed."
+      },
+      "labels": {
+        "certification": "cis-itsm",
+        "domain": "Incident Management",
+        "domainSlug": "incident-management",
+        "domainPercentage": 20,
+        "subtopics": ["Parent-child incidents", "Reopen behavior"],
+        "tags": ["incident", "parent", "child", "reopen"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-06T05:56:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-itsm-incident-management-012",
+      "certification": "cis-itsm",
+      "topic": "incident-management",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "Which field should be used to communicate with affected users about incident status updates?",
+      "options": [
+        { "id": "a", "text": "Work notes" },
+        { "id": "b", "text": "Additional comments" },
+        { "id": "c", "text": "Short description" },
+        { "id": "d", "text": "Resolution notes" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "The Additional Comments field is used for customer-facing communication. Support teams can communicate with users through this field, and it triggers email notifications. Work notes are only visible to internal users.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "Work notes can only be viewed by internal users, not customers", "reference": "ITSM Fundamentals course" },
+          { "choiceId": "c", "explanation": "Short description is for describing the incident, not for ongoing communication", "reference": "ITSM Fundamentals course" },
+          { "choiceId": "d", "explanation": "Resolution notes are for documenting the final resolution, not ongoing updates", "reference": "ITSM Fundamentals course" }
+        ]
+      },
+      "references": ["ITSM Fundamentals"],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "it-service-management-itsm-fundamentals/05-incident-management-investigation-and-resolution.md",
+        "excerpt": "This field can only be viewed by internal users. However, support teams may occasionally contact affected users for additional information or to provide updates. Support teams can communicate with users through the Additional Comments field."
+      },
+      "labels": {
+        "certification": "cis-itsm",
+        "domain": "Incident Management",
+        "domainSlug": "incident-management",
+        "domainPercentage": 20,
+        "subtopics": ["Communication", "Work notes vs comments"],
+        "tags": ["incident", "communication", "comments", "work-notes"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-06T05:56:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    }
+  ]
+}

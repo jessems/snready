@@ -16,7 +16,7 @@ export default function Home() {
   const sortedCategories = getSortedCategories();
   
   // Calculate total questions across all ready certifications
-  const readyCerts = ["csa", "cis-df", "cad"];
+  const readyCerts = ["csa", "cis-df", "cad", "cis-itsm"];
   const totalQuestions = readyCerts.reduce((sum, cert) => sum + getTotalQuestionCount(cert), 0);
   const totalFreeQuestions = readyCerts.reduce((sum, cert) => sum + getTotalFreeQuestionCount(cert), 0);
   const activeCertifications = readyCerts.length;
