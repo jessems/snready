@@ -56,15 +56,15 @@ export default function CertificationCard({ certification }: CertificationCardPr
           )}
         </div>
 
-        {/* Cost */}
+        {/* SNReady Access Price (or exam cost for coming soon) */}
         <span
           className={`text-sm font-medium tabular-nums ${
             isReady
-              ? "text-zinc-600 dark:text-zinc-400"
+              ? "text-emerald-600 dark:text-emerald-400"
               : "text-zinc-400 dark:text-zinc-600"
           }`}
         >
-          ${certification.examDetails.cost}
+          {isReady ? "$9" : `$${certification.examDetails.cost}`}
         </span>
       </div>
 
