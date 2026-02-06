@@ -5,31 +5,88 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { verifySession, storeAccess } from "@/lib/access";
 
+type PlanType = "30day" | "lifetime";
+
+interface SessionResult {
+  success: boolean;
+  email?: string;
+  plan?: PlanType;
+  expiresAt?: number;
+  certification?: string;
+  error?: string;
+}
+
 export default function SuccessContent() {
   const searchParams = useSearchParams();
   const sessionId = searchParams.get("session_id");
-  const [status, setStatus] = useState<"loading" | "success" | "error">("loading");
-  const [email, setEmail] = useState<string | null>(null);
-  const [error, setError] = useState<string | null>(null);
+  const [status, setStatus] = useState<"loading" | "success" | "error" | "missing">("loading");
+  const [result, setResult] = useState<SessionResult | null>(null);
 
   useEffect(() => {
     if (!sessionId) {
-      setStatus("error");
-      setError("No session ID found");
+      setStatus("missing");
       return;
     }
 
-    verifySession(sessionId).then((result) => {
-      if (result.success && result.email && result.expiresAt) {
-        storeAccess(result.email, result.expiresAt);
-        setEmail(result.email);
+    verifySession(sessionId).then((data) => {
+      if (data.success && data.email && data.expiresAt) {
+        storeAccess(data.email, data.expiresAt);
+        setResult(data as SessionResult);
         setStatus("success");
       } else {
+        setResult(data as SessionResult);
         setStatus("error");
-        setError(result.error || "Verification failed");
       }
     });
   }, [sessionId]);
+
+  // Missing session ID - user navigated here directly
+  if (status === "missing") {
+    return (
+      <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 lg:px-8">
+        <div className="text-center">
+          <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-amber-100 dark:bg-amber-900">
+            <svg
+              className="h-8 w-8 text-amber-600 dark:text-amber-400"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+              />
+            </svg>
+          </div>
+          <h1 className="mt-6 text-3xl font-bold text-zinc-900 dark:text-zinc-100">
+            No Payment Session Found
+          </h1>
+          <p className="mt-4 text-lg text-zinc-600 dark:text-zinc-400">
+            It looks like you navigated here directly without completing a purchase.
+          </p>
+          <p className="mt-2 text-zinc-500">
+            If you recently completed a purchase, check your email for confirmation.
+          </p>
+          <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:justify-center">
+            <Link
+              href="/certifications"
+              className="inline-flex items-center justify-center rounded-lg bg-emerald-600 px-6 py-3 font-semibold text-white transition-colors hover:bg-emerald-700"
+            >
+              View Certifications
+            </Link>
+            <Link
+              href="/"
+              className="inline-flex items-center justify-center rounded-lg border border-zinc-300 px-6 py-3 font-semibold text-zinc-700 transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-800"
+            >
+              Back to Home
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   if (status === "loading") {
     return (
@@ -67,7 +124,7 @@ export default function SuccessContent() {
             Verification Failed
           </h1>
           <p className="mt-4 text-lg text-zinc-600 dark:text-zinc-400">
-            {error}
+            {result?.error || "We couldn't verify your payment."}
           </p>
           <p className="mt-2 text-zinc-500">
             If you completed payment, please contact support.
@@ -82,6 +139,9 @@ export default function SuccessContent() {
       </div>
     );
   }
+
+  const isLifetime = result?.plan === "lifetime";
+  const planName = isLifetime ? "Lifetime" : "30-Day";
 
   return (
     <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 lg:px-8">
@@ -107,12 +167,12 @@ export default function SuccessContent() {
         </h1>
 
         <p className="mt-4 text-lg text-zinc-600 dark:text-zinc-400">
-          Thank you for your purchase. Your 30-day access is now active.
+          Thank you for your purchase. Your {planName} access is now active.
         </p>
 
-        {email && (
+        {result?.email && (
           <p className="mt-2 text-zinc-500 dark:text-zinc-500">
-            Access granted to <span className="font-medium">{email}</span>
+            Access granted to <span className="font-medium">{result.email}</span>
           </p>
         )}
 
@@ -158,8 +218,20 @@ export default function SuccessContent() {
               <svg className="mt-1 h-4 w-4 flex-shrink-0 text-emerald-500" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
               </svg>
-              30-day access from today
+              {isLifetime ? (
+                <span><strong>Lifetime access</strong> — never expires</span>
+              ) : (
+                <span>30-day access from today</span>
+              )}
             </li>
+            {isLifetime && (
+              <li className="flex items-start gap-2">
+                <svg className="mt-1 h-4 w-4 flex-shrink-0 text-emerald-500" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                </svg>
+                <span><strong>Future updates included</strong></span>
+              </li>
+            )}
           </ul>
         </div>
       </div>

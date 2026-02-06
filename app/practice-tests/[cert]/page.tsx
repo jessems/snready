@@ -346,10 +346,10 @@ export default async function PracticeTestPage({ params }: Props) {
                   className="rounded-lg border border-zinc-200 p-6 transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:hover:bg-zinc-800"
                 >
                   <h3 className="font-semibold text-zinc-900 dark:text-zinc-100">
-                    CIS-Discovery - Discovery Implementation
+                    CIS-DF - Certified Data Foundations
                   </h3>
                   <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-                    Comprehensive discovery practice questions
+                    CMDB, CSDM, and data management practice questions
                   </p>
                   <span className="mt-2 inline-block text-sm font-medium text-emerald-600">
                     Available Now →

@@ -7,11 +7,13 @@ import {
   getTopicsForCertification,
   getQuestionsForTopic,
   getAllTopicSlugs,
+  getFreeQuestionsForTopic,
 } from "@/lib/data";
 import { breadcrumbs, generateBreadcrumbJsonLd } from "@/lib/breadcrumbs";
 import QuestionCard from "@/components/QuestionCard";
 import TopicIntroduction from "@/components/TopicIntroduction";
 import { CheckoutButton } from "@/components/CheckoutButton";
+import { QuestionsWithPaywall } from "@/components/QuestionsWithPaywall";
 
 interface PageProps {
   params: Promise<{ certification: string; topic: string }>;
@@ -62,14 +64,16 @@ export default async function TopicQuestionsPage({ params }: PageProps) {
     notFound();
   }
 
-  const questions = await getQuestionsForTopic(certification, topicSlug);
+  const allQuestions = await getQuestionsForTopic(certification, topicSlug);
+  const freeQuestions = await getFreeQuestionsForTopic(certification, topicSlug);
+  const premiumQuestions = allQuestions.slice(freeQuestions.length);
   const allTopics = getTopicsForCertification(certification);
 
-  // JSON-LD structured data for FAQ
+  // JSON-LD structured data for FAQ (only use free questions for SEO)
   const faqJsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: questions.slice(0, 5).map((q) => ({
+    mainEntity: freeQuestions.slice(0, 5).map((q) => ({
       "@type": "Question",
       name: q.question,
       acceptedAnswer: {
@@ -167,18 +171,17 @@ export default async function TopicQuestionsPage({ params }: PageProps) {
                   Practice Questions
                 </h2>
                 <span className="text-sm text-zinc-500 whitespace-nowrap">
-                  {questions.length} questions available
+                  {allQuestions.length} questions available
                 </span>
               </div>
 
-              {questions.length > 0 ? (
-                questions.map((question, index) => (
-                  <QuestionCard
-                    key={question.id}
-                    question={question}
-                    questionNumber={index + 1}
-                  />
-                ))
+              {allQuestions.length > 0 ? (
+                <QuestionsWithPaywall
+                  freeQuestions={freeQuestions}
+                  premiumQuestions={premiumQuestions}
+                  certification={cert.name}
+                  certSlug={certification}
+                />
               ) : (
                 <div className="rounded-xl border border-zinc-200 bg-white p-6 sm:p-12 text-center dark:border-zinc-800 dark:bg-zinc-900">
                   <p className="text-zinc-500">
