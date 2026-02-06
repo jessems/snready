@@ -62,6 +62,7 @@ export function CheckoutButton({
 
   return (
     <button
+      type="button"
       onClick={handleCheckout}
       disabled={loading}
       className={`${className} ${loading ? "opacity-75 cursor-wait" : ""}`}
