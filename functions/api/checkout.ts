@@ -41,8 +41,14 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     });
   } catch (error) {
     console.error("Stripe checkout error:", error);
+    const errorMessage = error instanceof Error ? error.message : "Unknown error";
     return new Response(
-      JSON.stringify({ error: "Failed to create checkout session" }),
+      JSON.stringify({ 
+        error: "Failed to create checkout session",
+        details: errorMessage,
+        hasStripeKey: !!env.STRIPE_SECRET_KEY,
+        hasSiteUrl: !!env.SITE_URL,
+      }),
       { status: 500, headers: { "Content-Type": "application/json" } }
     );
   }
