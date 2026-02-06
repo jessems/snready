@@ -104,7 +104,7 @@ export default async function FreeQuestionsPage({ params }: Props) {
         name: "How can I access the full question bank?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: `Full access to all ${certification.name} practice questions starts at $9 for 30-day access or $49 for lifetime access. This includes detailed explanations, source references, and comprehensive coverage of all exam topics.`,
+          text: `Full access starts at $9 for 30-day access to ${certification.name}, or $49 for lifetime access to ALL certifications. This includes detailed explanations, source references, and comprehensive coverage of all exam topics.`,
         },
       },
     ],
@@ -217,10 +217,10 @@ export default async function FreeQuestionsPage({ params }: Props) {
             </div>
             <div className="rounded-lg bg-emerald-600 dark:bg-emerald-700 p-4 text-center shadow-sm relative">
               <div className="absolute -top-2 left-1/2 -translate-x-1/2 bg-amber-500 text-white text-xs font-bold px-2 py-0.5 rounded">
-                BEST VALUE
+                ALL CERTS
               </div>
               <div className="text-2xl font-bold text-white">$49</div>
-              <div className="text-sm text-emerald-100">Lifetime access</div>
+              <div className="text-sm text-emerald-100">Lifetime — all certifications</div>
               <CheckoutButton
                 certification={certification.name}
                 plan="lifetime"
