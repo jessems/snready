@@ -1,0 +1,267 @@
+{
+  "questions": [
+    {
+      "id": "cis-itsm-sla-management-001",
+      "certification": "cis-itsm",
+      "topic": "sla-management",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What does SLA stand for in ServiceNow ITSM?",
+      "options": [
+        { "id": "a", "text": "System Level Agreement" },
+        { "id": "b", "text": "Service Level Agreement" },
+        { "id": "c", "text": "Service License Authorization" },
+        { "id": "d", "text": "Standard Level Acknowledgment" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "SLA stands for Service Level Agreement. It defines the commitment between a service provider and customer regarding service quality, availability, and response times. In ServiceNow ITSM, SLAs are used to track and manage response and resolution timeframes for incidents, requests, and other task records.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "SLA stands for Service Level Agreement, not System Level Agreement", "reference": "ITSM Fundamentals" },
+          { "choiceId": "c", "explanation": "SLA is Service Level Agreement, relating to service commitments, not licensing", "reference": "ITSM Fundamentals" },
+          { "choiceId": "d", "explanation": "The correct term is Service Level Agreement, which defines service quality commitments", "reference": "ITSM Fundamentals" }
+        ]
+      },
+      "references": ["ITSM Fundamentals", "ServiceNow Documentation"],
+      "isFree": true,
+      "source": {
+        "type": "course",
+        "path": "it-service-management-itsm-fundamentals/02-incident-management-creation-and-classification.md",
+        "excerpt": "The SLA clock for resolution ends only when the state is set to Resolved."
+      },
+      "labels": {
+        "certification": "cis-itsm",
+        "domain": "SLA Management",
+        "domainSlug": "sla-management",
+        "domainPercentage": 10,
+        "subtopics": ["SLA Definition", "SLA Basics"],
+        "tags": ["sla", "definition", "terminology"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-07T02:30:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-itsm-sla-management-002",
+      "certification": "cis-itsm",
+      "topic": "sla-management",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What color indicates a breached SLA in the ServiceNow SLA timeline?",
+      "options": [
+        { "id": "a", "text": "Yellow" },
+        { "id": "b", "text": "Orange" },
+        { "id": "c", "text": "Gray" },
+        { "id": "d", "text": "Red" }
+      ],
+      "correctAnswers": ["d"],
+      "explanation": {
+        "correct": "Red indicates a breached SLA in the ServiceNow SLA timeline. The color progression is: Green (< 50% elapsed), Yellow (50-75% elapsed), Orange (75-100% elapsed), Red (breached), and Gray (paused). These visual indicators help agents quickly identify SLA status.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "Yellow indicates 50-75% of SLA time has elapsed, not a breach", "reference": "CIS-ITSM Topics" },
+          { "choiceId": "b", "explanation": "Orange indicates 75-100% of SLA time has elapsed, meaning breach is imminent but not yet occurred", "reference": "CIS-ITSM Topics" },
+          { "choiceId": "c", "explanation": "Gray indicates the SLA is paused, not breached", "reference": "CIS-ITSM Topics" }
+        ]
+      },
+      "references": ["ITSM Fundamentals", "CIS-ITSM Study Guide"],
+      "isFree": true,
+      "source": {
+        "type": "documentation",
+        "path": "cis-itsm-topics.json",
+        "excerpt": "Understand SLA vs OLA vs UC, SLA timeline colors (green < 50%, yellow 50-75%, orange 75-100%, red = breached, gray = paused)."
+      },
+      "labels": {
+        "certification": "cis-itsm",
+        "domain": "SLA Management",
+        "domainSlug": "sla-management",
+        "domainPercentage": 10,
+        "subtopics": ["SLA Timeline", "SLA Indicators"],
+        "tags": ["sla", "timeline", "breach"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-07T02:30:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-itsm-sla-management-003",
+      "certification": "cis-itsm",
+      "topic": "sla-management",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What is the difference between a Response SLA and a Resolution SLA for incidents?",
+      "options": [
+        { "id": "a", "text": "Response SLA tracks time to close, Resolution SLA tracks time to assign" },
+        { "id": "b", "text": "Response SLA tracks time to assign, Resolution SLA tracks time to resolve" },
+        { "id": "c", "text": "Response SLA only applies to P1 incidents, Resolution SLA applies to all" },
+        { "id": "d", "text": "Response SLA is for internal teams, Resolution SLA is for customers" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "Response SLA tracks the time from incident creation until it is assigned to an individual (when the Assigned To field is populated and state is In Progress). Resolution SLA tracks the time from creation until the incident is resolved. Both SLAs can apply to all priority levels with different time targets.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "This is backwards. Response tracks assignment time, Resolution tracks resolution time", "reference": "ITSM Fundamentals" },
+          { "choiceId": "c", "explanation": "Both Response and Resolution SLAs can be configured for any priority level, not just P1", "reference": "ITSM Fundamentals" },
+          { "choiceId": "d", "explanation": "Both SLA types are used for all stakeholders. The difference is what action stops the clock", "reference": "ITSM Fundamentals" }
+        ]
+      },
+      "references": ["ITSM Fundamentals", "ITSM Implementation Simulator"],
+      "isFree": true,
+      "source": {
+        "type": "course",
+        "path": "it-service-management-itsm-implementation-simulator/12-configure-response-sla.md",
+        "excerpt": "Priority 1 incidents should be responded to (assigned to an individual) within 20 minutes from the time the incident is created. Priority 1 incident response time should be tracked through a response SLA."
+      },
+      "labels": {
+        "certification": "cis-itsm",
+        "domain": "SLA Management",
+        "domainSlug": "sla-management",
+        "domainPercentage": 10,
+        "subtopics": ["Response SLA", "Resolution SLA"],
+        "tags": ["sla", "response", "resolution"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-07T02:30:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-itsm-sla-management-004",
+      "certification": "cis-itsm",
+      "topic": "sla-management",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What happens to an SLA clock when an incident is placed On Hold?",
+      "options": [
+        { "id": "a", "text": "The SLA clock continues running normally" },
+        { "id": "b", "text": "The SLA clock resets to zero" },
+        { "id": "c", "text": "The SLA clock pauses and resumes when taken off hold" },
+        { "id": "d", "text": "The SLA is automatically marked as breached" }
+      ],
+      "correctAnswers": ["c"],
+      "explanation": {
+        "correct": "When an incident is placed On Hold, the SLA clock pauses (indicated by a gray timeline). The pause condition allows time to be excluded when waiting for external factors like customer response or vendor input. When the incident is taken off hold, the SLA clock resumes from where it left off.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "The SLA clock pauses when an incident is On Hold. Continuing would unfairly count time when the agent cannot progress", "reference": "ITSM Fundamentals" },
+          { "choiceId": "b", "explanation": "The SLA clock does not reset. It pauses and resumes, maintaining the already-elapsed time", "reference": "ITSM Fundamentals" },
+          { "choiceId": "d", "explanation": "On Hold pauses the SLA, it does not cause a breach. Breach only occurs when total elapsed time exceeds the target", "reference": "ITSM Fundamentals" }
+        ]
+      },
+      "references": ["ITSM Fundamentals", "CIS-ITSM Study Guide"],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "cis-itsm-topics.json",
+        "excerpt": "SLA timeline colors... gray = paused... Know when SLA clocks start, pause, and stop."
+      },
+      "labels": {
+        "certification": "cis-itsm",
+        "domain": "SLA Management",
+        "domainSlug": "sla-management",
+        "domainPercentage": 10,
+        "subtopics": ["SLA Pause", "On Hold Behavior"],
+        "tags": ["sla", "pause", "on-hold"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-07T02:30:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-itsm-sla-management-005",
+      "certification": "cis-itsm",
+      "topic": "sla-management",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_select",
+      "question": "Which types of agreements can be configured in ServiceNow to track service commitments? (Select two)",
+      "options": [
+        { "id": "a", "text": "Service Level Agreement (SLA)" },
+        { "id": "b", "text": "Master Service Contract (MSC)" },
+        { "id": "c", "text": "Operational Level Agreement (OLA)" },
+        { "id": "d", "text": "Technical Requirement Document (TRD)" }
+      ],
+      "correctAnswers": ["a", "c"],
+      "explanation": {
+        "correct": "ServiceNow supports three types of service agreements: SLAs (Service Level Agreements) define commitments between the IT organization and customers. OLAs (Operational Level Agreements) define commitments between internal IT teams. UCs (Underpinning Contracts) define commitments with external vendors. MSC and TRD are not agreement types in ServiceNow.",
+        "wrongAnswers": [
+          { "choiceId": "b", "explanation": "Master Service Contract is not a standard ServiceNow agreement type. The three types are SLA, OLA, and UC", "reference": "ITSM Fundamentals" },
+          { "choiceId": "d", "explanation": "Technical Requirement Document is not a ServiceNow agreement type. Use SLA, OLA, or UC for service commitments", "reference": "ITSM Fundamentals" }
+        ]
+      },
+      "references": ["ITSM Fundamentals", "ServiceNow Documentation"],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "cis-itsm-topics.json",
+        "excerpt": "Understand SLA vs OLA vs UC, SLA timeline indicators, pause conditions, and breach handling."
+      },
+      "labels": {
+        "certification": "cis-itsm",
+        "domain": "SLA Management",
+        "domainSlug": "sla-management",
+        "domainPercentage": 10,
+        "subtopics": ["Agreement Types", "OLA", "UC"],
+        "tags": ["sla", "ola", "agreement-types"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-07T02:30:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-itsm-sla-management-006",
+      "certification": "cis-itsm",
+      "topic": "sla-management",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A company requires that Priority 1 incidents be responded to within 20 minutes during business hours only (8AM-5PM weekdays). Which SLA component needs to be configured?",
+      "options": [
+        { "id": "a", "text": "The SLA workflow to exclude weekends" },
+        { "id": "b", "text": "The SLA schedule to define 8-5 weekdays" },
+        { "id": "c", "text": "The SLA notification to pause on weekends" },
+        { "id": "d", "text": "The SLA condition to filter by time of day" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "SLA definitions use schedules to determine when the SLA clock runs. By configuring a schedule of 8-5 weekdays and attaching it to the SLA definition, the SLA clock will only count time during those hours. Time outside the schedule is automatically excluded from the elapsed time calculation.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "Workflows are for process automation, not for defining when SLA time is counted. Schedules control SLA timing", "reference": "ITSM Implementation Simulator" },
+          { "choiceId": "c", "explanation": "Notifications alert users about SLA status but don't control when the clock runs. Schedules define operational hours", "reference": "ITSM Implementation Simulator" },
+          { "choiceId": "d", "explanation": "Conditions determine when an SLA applies to a record, but schedules determine when time is counted", "reference": "ITSM Implementation Simulator" }
+        ]
+      },
+      "references": ["ITSM Implementation Simulator"],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "it-service-management-itsm-implementation-simulator/12-configure-response-sla.md",
+        "excerpt": "Update the existing Priority 1 Response SLA for incidents so that it only runs during the schedule of 8-5 weekdays and the duration is set to 20 minutes."
+      },
+      "labels": {
+        "certification": "cis-itsm",
+        "domain": "SLA Management",
+        "domainSlug": "sla-management",
+        "domainPercentage": 10,
+        "subtopics": ["SLA Configuration", "SLA Schedules"],
+        "tags": ["sla", "schedule", "configuration"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-07T02:30:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    }
+  ]
+}
