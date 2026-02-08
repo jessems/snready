@@ -1,0 +1,101 @@
+{
+  "certification": "cis-discovery",
+  "topics": [
+    {
+      "slug": "pattern-design",
+      "name": "Discovery Pattern Design",
+      "domain": "pattern-design",
+      "description": "Pattern Designer operations, syntax, variables, regex, and application identification sections for horizontal and top-down discovery.",
+      "introduction": {
+        "overview": "Discovery patterns are reusable templates that define how Discovery collects data from devices. The Pattern Designer allows you to create, debug, and manage patterns for both horizontal (infrastructure) and application discovery.",
+        "whyItMatters": "Pattern Design is 35% of the CIS-Discovery exam. Expect questions on Pattern Designer operations, parsing strategies, variable syntax, regex, and the difference between horizontal and application patterns.",
+        "keyConcepts": "Master Pattern Designer debugging, step types (Match, Parse variable, Parse file), variable and attribute syntax, regular expressions, and how application identification sections work with process classification.",
+        "examTips": "Remember that horizontal patterns use PIDs while top-down (Service Mapping) patterns use entry points. Know how to use Debug Mode and understand the HorizontalDiscoveryProbe. Application patterns require a corresponding CI type and classification."
+      },
+      "keyConcepts": [
+        "Pattern Designer interface and debugging",
+        "Horizontal vs Application patterns",
+        "Pattern operations (Match, Parse variable, Parse file)",
+        "Variable and attribute syntax",
+        "Regular expressions in patterns",
+        "Application identification sections",
+        "Process identifiers (PIDs)",
+        "Pattern troubleshooting with Discovery Log"
+      ],
+      "questionCount": 21,
+      "freeQuestionCount": 7
+    },
+    {
+      "slug": "discovery-configuration",
+      "name": "Discovery Configuration",
+      "domain": "discovery-configuration",
+      "description": "Discovery setup including behaviors, credentials, clusters, IP services, schedules, PCIE phases, and troubleshooting.",
+      "introduction": {
+        "overview": "Discovery configuration involves setting up credentials, behaviors, schedules, and understanding the four-phase PCIE process (Scanning, Classification, Identification, Exploration) that Discovery uses to populate the CMDB.",
+        "whyItMatters": "Discovery Configuration is 35% of the CIS-Discovery exam. Questions cover credential types (Windows, SSH, SNMP, PowerShell), behaviors, discovery schedules, the PCIE phases, ECC Queue, and troubleshooting common errors.",
+        "keyConcepts": "Understand credential types and their authentication phases, credential aliases and affinities, behaviors for specific device types, discovery schedules, and how to interpret discovery status and errors.",
+        "examTips": "Know that Windows/SSH authentication happens during Classification. Understand credential-less discovery using Nmap. Remember the four PCIE phases and what happens in each. Be familiar with common discovery errors and their resolution."
+      },
+      "keyConcepts": [
+        "Credential types (Windows, SSH, SNMP, PowerShell)",
+        "Credential aliases and affinity",
+        "Credential-less discovery with Nmap",
+        "Behaviors for device-specific discovery",
+        "Discovery schedules and clusters",
+        "PCIE phases (Scanning, Classification, Identification, Exploration)",
+        "ECC Queue and discovery status",
+        "Discovery error troubleshooting"
+      ],
+      "questionCount": 21,
+      "freeQuestionCount": 7
+    },
+    {
+      "slug": "cmdb-integration",
+      "name": "Configuration Management Database",
+      "domain": "cmdb-integration",
+      "description": "CI Class Manager, CMDB Health Dashboard, tables, reclassification, and identification and reconciliation rules.",
+      "introduction": {
+        "overview": "Discovery populates the CMDB with configuration items (CIs) and their relationships. Understanding CI class hierarchy, identification rules, reconciliation, and CMDB health monitoring is essential for successful Discovery implementation.",
+        "whyItMatters": "CMDB Integration is 15% of the CIS-Discovery exam. Questions focus on CI Class Manager, CMDB Health Dashboard KPIs, identification and reconciliation rules, data source precedence, and de-duplication.",
+        "keyConcepts": "Master the CMDB table structure (cmdb_ci and extensions), CI Class Manager for class management, CMDB Health Dashboard metrics (Completeness, Compliance, Correctness), and how identification rules prevent duplicates.",
+        "examTips": "Know the CMDB Health KPIs: Completeness (mandatory fields), Compliance (audits), Correctness (orphan, staleness, duplicates). Understand how CI identifiers use criterion attributes. Remember that Discovery doesn't populate Assets directly—it creates CIs which trigger asset creation via model categories."
+      },
+      "keyConcepts": [
+        "CI Class Manager interface",
+        "CMDB table hierarchy (cmdb_ci, cmdb_ci_hardware, cmdb_ci_computer)",
+        "CMDB Health Dashboard and KPIs",
+        "CI identification rules and criterion attributes",
+        "Reconciliation and data source precedence",
+        "De-duplication strategies",
+        "Asset creation from discovered CIs",
+        "Model categories and classes"
+      ],
+      "questionCount": 9,
+      "freeQuestionCount": 3
+    },
+    {
+      "slug": "engagement-readiness",
+      "name": "Discovery Engagement Readiness",
+      "domain": "engagement-readiness",
+      "description": "MID Server requirements, specifications, dashboards, operationalizing IT, and Discovery solution positioning.",
+      "introduction": {
+        "overview": "Discovery Engagement Readiness covers the planning and operational aspects of Discovery implementation, including MID Server architecture, capacity planning, monitoring dashboards, and understanding the business value of Discovery.",
+        "whyItMatters": "Engagement Readiness is 15% of the CIS-Discovery exam. Questions cover MID Server requirements and specifications, Discovery and MID Server dashboards, operational benefits, and positioning Discovery as a solution.",
+        "keyConcepts": "Understand MID Server installation requirements, sizing guidelines, the relationship between MID Servers and agents (ACC), monitoring dashboards for operational health, and how to communicate Discovery's business value.",
+        "examTips": "Know the default MID Server capacity (4,000 agents, scalable to 8,000 with 8GB RAM). Understand the Agent Client Collector (ACC) framework. Be familiar with Discovery dashboards for monitoring schedule status and errors."
+      },
+      "keyConcepts": [
+        "MID Server installation and configuration",
+        "MID Server sizing and capacity planning",
+        "Agent Client Collector (ACC) framework",
+        "Discovery and MID Server dashboards",
+        "Operational benefits of Discovery",
+        "Business value and positioning",
+        "Planning for Discovery implementations",
+        "Support preparation and troubleshooting"
+      ],
+      "questionCount": 9,
+      "freeQuestionCount": 3
+    }
+  ]
+}

@@ -1,0 +1,398 @@
+{
+  "questions": [
+    {
+      "id": "cis-discovery-cmdb-001",
+      "certification": "cis-discovery",
+      "topic": "cmdb-integration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What are the two core CMDB tables that Discovery populates?",
+      "options": [
+        { "id": "a", "text": "Asset [alm_asset] and Hardware [cmdb_hardware]" },
+        { "id": "b", "text": "Configuration Item [cmdb_ci] and CI Relationship [cmdb_rel_ci]" },
+        { "id": "c", "text": "Discovery Status [discovery_status] and ECC Queue [ecc_queue]" },
+        { "id": "d", "text": "Server [cmdb_ci_server] and Application [cmdb_ci_appl]" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "The CMDB employs the core Configuration Item [cmdb_ci] table which stores basic attributes of all CIs, and the CI Relationship [cmdb_rel_ci] table which defines all relationships between CIs. Extended tables like Hardware and Server inherit from cmdb_ci.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "Asset is a separate table; Hardware extends from cmdb_ci. These are not the two core tables", "reference": "Discovery Fundamentals course" },
+          { "choiceId": "c", "explanation": "These are Discovery process tables, not core CMDB tables", "reference": "Discovery Fundamentals course" },
+          { "choiceId": "d", "explanation": "These are extended CI tables that inherit from cmdb_ci, not the core tables", "reference": "Discovery Fundamentals course" }
+        ]
+      },
+      "references": ["Discovery Fundamentals - Configuration Management"],
+      "isFree": true,
+      "source": {
+        "type": "course",
+        "path": "discovery-fundamentals-on-demand/01-configuration-management.md",
+        "excerpt": "The CMDB employs the core Configuration Item [cmdb_ci] table, which stores the basic attributes of all the CIs. The CI Relationship [cmdb_rel_ci] table defines all relationships between CIs."
+      },
+      "labels": {
+        "certification": "cis-discovery",
+        "domain": "Configuration Management Database",
+        "domainSlug": "cmdb-integration",
+        "domainPercentage": 15,
+        "subtopics": ["CMDB tables", "CI structure"],
+        "tags": ["CMDB", "tables", "CI"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-08T02:00:00Z",
+        "version": "1.0",
+        "release": "Zurich",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-discovery-cmdb-002",
+      "certification": "cis-discovery",
+      "topic": "cmdb-integration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What is the default Effective Duration time for CI staleness in the base system?",
+      "options": [
+        { "id": "a", "text": "30 days" },
+        { "id": "b", "text": "60 days" },
+        { "id": "c", "text": "90 days" },
+        { "id": "d", "text": "180 days" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "The base system includes a default staleness rule for the Configuration Item [cmdb_ci] class which sets the Effective Duration time to 60 days. This rule applies to all extended CMDB classes and can be overridden by class-specific staleness rules.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "The default is 60 days, not 30 days", "reference": "Discovery Fundamentals course" },
+          { "choiceId": "c", "explanation": "The default is 60 days, not 90 days", "reference": "Discovery Fundamentals course" },
+          { "choiceId": "d", "explanation": "The default is 60 days, not 180 days", "reference": "Discovery Fundamentals course" }
+        ]
+      },
+      "references": ["Discovery Fundamentals - Configuration Management"],
+      "isFree": true,
+      "source": {
+        "type": "course",
+        "path": "discovery-fundamentals-on-demand/01-configuration-management.md",
+        "excerpt": "The base system includes a default staleness rule for the Configuration Item [cmdb_ci] class, which sets the Effective Duration time to 60 days."
+      },
+      "labels": {
+        "certification": "cis-discovery",
+        "domain": "Configuration Management Database",
+        "domainSlug": "cmdb-integration",
+        "domainPercentage": 15,
+        "subtopics": ["CMDB Health", "Staleness"],
+        "tags": ["staleness", "CMDB Health", "duration"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-08T02:00:00Z",
+        "version": "1.0",
+        "release": "Zurich",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-discovery-cmdb-003",
+      "certification": "cis-discovery",
+      "topic": "cmdb-integration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What is the main root cause of duplicate devices in the CMDB?",
+      "options": [
+        { "id": "a", "text": "Running Discovery too frequently" },
+        { "id": "b", "text": "Multiple sources populating the CMDB without proper reconciliation" },
+        { "id": "c", "text": "Using too many MID Servers" },
+        { "id": "d", "text": "Having overlapping IP ranges in Discovery schedules" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "The main root cause of duplicate devices in the CMDB comes from multiple sources populating it. For example, if Discovery creates a device and then devices are imported via an Excel spreadsheet, the reconciliation and required fields to properly avoid duplications may not be in place.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "Frequent discovery with proper identification rules should not create duplicates", "reference": "Discovery Fundamentals course" },
+          { "choiceId": "c", "explanation": "Multiple MID Servers do not cause duplicates if identification rules are correct", "reference": "Discovery Fundamentals course" },
+          { "choiceId": "d", "explanation": "Overlapping ranges don't cause duplicates if CIs are properly identified", "reference": "Discovery Fundamentals course" }
+        ]
+      },
+      "references": ["Discovery Fundamentals - Phases, Probes, and Classifications"],
+      "isFree": true,
+      "source": {
+        "type": "course",
+        "path": "discovery-fundamentals-on-demand/01-phases-probes-and-classifications.md",
+        "excerpt": "The main root cause of duplicate devices in the CMDB comes from multiple sources populating it."
+      },
+      "labels": {
+        "certification": "cis-discovery",
+        "domain": "Configuration Management Database",
+        "domainSlug": "cmdb-integration",
+        "domainPercentage": 15,
+        "subtopics": ["Duplicates", "Reconciliation"],
+        "tags": ["duplicates", "reconciliation", "CMDB"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-08T02:00:00Z",
+        "version": "1.0",
+        "release": "Zurich",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-discovery-cmdb-004",
+      "certification": "cis-discovery",
+      "topic": "cmdb-integration",
+      "cognitiveLevel": "application",
+      "type": "multiple_select",
+      "question": "Which metrics are included in the CMDB Health Dashboard's Correctness KPI? (Choose 3)",
+      "options": [
+        { "id": "a", "text": "Orphan" },
+        { "id": "b", "text": "Staleness" },
+        { "id": "c", "text": "Duplicate" },
+        { "id": "d", "text": "Performance" }
+      ],
+      "correctAnswers": ["a", "b", "c"],
+      "explanation": {
+        "correct": "The Correctness KPI in CMDB Health Dashboard includes three metrics: Orphan (CIs no longer needed), Staleness (CIs not updated within the effective duration), and Duplicate (CIs matching the same identification criteria). These measure data quality issues.",
+        "wrongAnswers": [
+          { "choiceId": "d", "explanation": "Performance is not a CMDB Health metric; the KPIs are Completeness, Compliance, and Correctness (with sub-metrics)", "reference": "Discovery Fundamentals course" }
+        ]
+      },
+      "references": ["Discovery Fundamentals - Configuration Management"],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "discovery-fundamentals-on-demand/01-configuration-management.md",
+        "excerpt": "Orphan - Measures the percentage of orphan CIs. Staleness - Measures the percentage of stale CIs. Duplicate - Measures the percentage of duplicate CIs."
+      },
+      "labels": {
+        "certification": "cis-discovery",
+        "domain": "Configuration Management Database",
+        "domainSlug": "cmdb-integration",
+        "domainPercentage": 15,
+        "subtopics": ["CMDB Health", "Correctness KPI"],
+        "tags": ["CMDB Health", "correctness", "KPIs"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-08T02:00:00Z",
+        "version": "1.0",
+        "release": "Zurich",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-discovery-cmdb-005",
+      "certification": "cis-discovery",
+      "topic": "cmdb-integration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What must be activated for the Compliance KPI to show results in CMDB Health Dashboard?",
+      "options": [
+        { "id": "a", "text": "Discovery" },
+        { "id": "b", "text": "Audit" },
+        { "id": "c", "text": "Event Management" },
+        { "id": "d", "text": "Service Mapping" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "Audit must be activated for the compliance KPI to show results. Audit compares actual values of specified fields against expected values defined in template and scripted audits. CMDB Health uses the most recent complete audit run results.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "Discovery populates CIs but is not required for Compliance KPI calculations", "reference": "Discovery Fundamentals course" },
+          { "choiceId": "c", "explanation": "Event Management is for alert processing, not CMDB compliance auditing", "reference": "Discovery Fundamentals course" },
+          { "choiceId": "d", "explanation": "Service Mapping is for application dependency mapping, not compliance auditing", "reference": "Discovery Fundamentals course" }
+        ]
+      },
+      "references": ["Discovery Fundamentals - Configuration Management"],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "discovery-fundamentals-on-demand/01-configuration-management.md",
+        "excerpt": "Note: Audit must be activated for the compliance KPI to show results."
+      },
+      "labels": {
+        "certification": "cis-discovery",
+        "domain": "Configuration Management Database",
+        "domainSlug": "cmdb-integration",
+        "domainPercentage": 15,
+        "subtopics": ["CMDB Health", "Compliance"],
+        "tags": ["audit", "compliance", "CMDB Health"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-08T02:00:00Z",
+        "version": "1.0",
+        "release": "Zurich",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-discovery-cmdb-006",
+      "certification": "cis-discovery",
+      "topic": "cmdb-integration",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "What determines if Discovery creates a new CI or updates an existing one?",
+      "options": [
+        { "id": "a", "text": "The Discovery schedule configuration" },
+        { "id": "b", "text": "CI Identifiers with criterion attributes that match" },
+        { "id": "c", "text": "The CMDB Health Dashboard score" },
+        { "id": "d", "text": "The MID Server assignment" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "During the Identification phase, Discovery attempts to find a matching device in the CMDB using CI Identifiers. The Identifier Entries with criterion attributes are tried in order. If a match is found, the CI is updated; if not and Allow fallback is not enabled, a new CI is created.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "The schedule controls what is discovered, not how CIs are identified", "reference": "Discovery Fundamentals course" },
+          { "choiceId": "c", "explanation": "CMDB Health measures CI quality after they exist, it doesn't control identification", "reference": "Discovery Fundamentals course" },
+          { "choiceId": "d", "explanation": "MID Server processes discovery but doesn't determine CI matching", "reference": "Discovery Fundamentals course" }
+        ]
+      },
+      "references": ["Discovery Fundamentals - Phases, Probes, and Classifications"],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "discovery-fundamentals-on-demand/01-phases-probes-and-classifications.md",
+        "excerpt": "The Identifier Entries can search through the main CMDB table. Criterion attributes define what fields will be tried for matching to update or create a CI."
+      },
+      "labels": {
+        "certification": "cis-discovery",
+        "domain": "Configuration Management Database",
+        "domainSlug": "cmdb-integration",
+        "domainPercentage": 15,
+        "subtopics": ["CI Identification", "Reconciliation"],
+        "tags": ["identification", "CI identifiers", "reconciliation"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-08T02:00:00Z",
+        "version": "1.0",
+        "release": "Zurich",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-discovery-cmdb-007",
+      "certification": "cis-discovery",
+      "topic": "cmdb-integration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What table stores the data from all discovery sources including those rejected due to reconciliation rules?",
+      "options": [
+        { "id": "a", "text": "Data Source Histories [cmdb_datasource_last_update]" },
+        { "id": "b", "text": "CMDB MultiSource Data [cmdb_multisource_data]" },
+        { "id": "c", "text": "Discovery Status [discovery_status]" },
+        { "id": "d", "text": "ECC Queue [ecc_queue]" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "With Multisource CMDB (Paris and later), raw details for every discovery source are retained in the CMDB MultiSource Data [cmdb_multisource_data] table. This includes both sources that were selected for updates and those that were rejected due to reconciliation rules.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "This older table only tracks the last data source, not all sources including rejected ones", "reference": "Discovery Fundamentals course" },
+          { "choiceId": "c", "explanation": "Discovery Status tracks discovery process status, not multisource data", "reference": "Discovery Fundamentals course" },
+          { "choiceId": "d", "explanation": "ECC Queue is for MID Server communication, not storing multisource data", "reference": "Discovery Fundamentals course" }
+        ]
+      },
+      "references": ["Discovery Fundamentals - Phases, Probes, and Classifications"],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "discovery-fundamentals-on-demand/01-phases-probes-and-classifications.md",
+        "excerpt": "With Multisource CMDB, the raw details for every discovery source are retained in the CMDB MultiSource Data [cmdb_multisource_data] table."
+      },
+      "labels": {
+        "certification": "cis-discovery",
+        "domain": "Configuration Management Database",
+        "domainSlug": "cmdb-integration",
+        "domainPercentage": 15,
+        "subtopics": ["Multisource CMDB", "Reconciliation"],
+        "tags": ["multisource", "reconciliation", "data sources"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-08T02:00:00Z",
+        "version": "1.0",
+        "release": "Zurich",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-discovery-cmdb-008",
+      "certification": "cis-discovery",
+      "topic": "cmdb-integration",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "How does Discovery create Asset records from discovered CIs?",
+      "options": [
+        { "id": "a", "text": "Discovery populates the Assets table directly during exploration" },
+        { "id": "b", "text": "Assets are created manually by administrators after discovery" },
+        { "id": "c", "text": "Discovery creates CIs, and Model Categories trigger automatic Asset creation" },
+        { "id": "d", "text": "Asset creation requires a separate scheduled job after discovery" }
+      ],
+      "correctAnswers": ["c"],
+      "explanation": {
+        "correct": "Discovery does not populate the Assets table directly. Instead, Discovery creates or updates a CI record which has a Model and Model Category associated. The Model Category determines if an Asset record will be created and associated to the CI automatically.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "Discovery creates CIs, not Assets directly. Model Categories trigger Asset creation", "reference": "Discovery Fundamentals course" },
+          { "choiceId": "b", "explanation": "Asset creation is automatic based on Model Categories, not manual", "reference": "Discovery Fundamentals course" },
+          { "choiceId": "d", "explanation": "Assets are created automatically via business rules when CIs with proper Model Categories are created", "reference": "Discovery Fundamentals course" }
+        ]
+      },
+      "references": ["Discovery Fundamentals - Asset Discovery"],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "discovery-fundamentals-on-demand/01-asset-discovery-and-agent-client-collector-for-visibility.md",
+        "excerpt": "Discovery does not populate the Assets table directly, instead Discovery will create or update a CI record, which has a Model and a Model category associated, which then creates the Asset record."
+      },
+      "labels": {
+        "certification": "cis-discovery",
+        "domain": "Configuration Management Database",
+        "domainSlug": "cmdb-integration",
+        "domainPercentage": 15,
+        "subtopics": ["Asset creation", "Model Categories"],
+        "tags": ["assets", "model categories", "CI"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-08T02:00:00Z",
+        "version": "1.0",
+        "release": "Zurich",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-discovery-cmdb-009",
+      "certification": "cis-discovery",
+      "topic": "cmdb-integration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What does the 'Allow fallback to parent's rules' checkbox control on a child CI Identifier?",
+      "options": [
+        { "id": "a", "text": "Whether the child CI is marked as dependent on the parent" },
+        { "id": "b", "text": "Whether the parent table's Identifier is tried if the child table Identifier has no match" },
+        { "id": "c", "text": "Whether the CI inherits attributes from the parent class" },
+        { "id": "d", "text": "Whether relationship records are created automatically" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "If a CI Identifier is created on a child table and the 'Allow fallback to parent's rules' checkbox is checked, the parent table's Identifier is tried if there's no match from the child table Identifier. Without this checkbox, a new CI is created if there's no match from the child table Identifier.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "This setting controls identification behavior, not CI dependencies", "reference": "Discovery Fundamentals course" },
+          { "choiceId": "c", "explanation": "Attribute inheritance is handled by table extension, not this checkbox", "reference": "Discovery Fundamentals course" },
+          { "choiceId": "d", "explanation": "Relationship creation is separate from identifier fallback behavior", "reference": "Discovery Fundamentals course" }
+        ]
+      },
+      "references": ["Discovery Fundamentals - Phases, Probes, and Classifications"],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "discovery-fundamentals-on-demand/01-phases-probes-and-classifications.md",
+        "excerpt": "If the Allow fallback to parent's rules checkbox is checked, and there is no match from the child table CI Identifier, then the parent table's Identifier is tried."
+      },
+      "labels": {
+        "certification": "cis-discovery",
+        "domain": "Configuration Management Database",
+        "domainSlug": "cmdb-integration",
+        "domainPercentage": 15,
+        "subtopics": ["CI Identification", "Fallback rules"],
+        "tags": ["identification", "fallback", "parent rules"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-08T02:00:00Z",
+        "version": "1.0",
+        "release": "Zurich",
+        "reviewed": false
+      }
+    }
+  ]
+}
