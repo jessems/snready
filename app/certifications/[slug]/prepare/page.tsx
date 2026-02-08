@@ -764,10 +764,10 @@ export default async function ExamPrepPage({ params }: Props) {
               </p>
               <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:justify-center">
                 <Link
-                  href={`/certifications/${slug}`}
+                  href={`/certifications/${slug}/prepare`}
                   className="inline-flex items-center justify-center rounded-lg bg-white px-8 py-3 font-semibold text-emerald-700 hover:bg-emerald-50"
                 >
-                  Start Practicing — $9
+                  Start Practicing
                 </Link>
               </div>
             </div>
