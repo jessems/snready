@@ -89,28 +89,56 @@ function MetricCard({
 
 function ExperienceCard({ experience }: { experience: UserExperience }) {
   const isPassed = experience.outcome === "passed";
-  
+
   return (
-    <div className={`rounded-lg border p-4 ${
-      isPassed 
-        ? "border-green-200 bg-green-50 dark:border-green-900 dark:bg-green-950/30" 
-        : "border-red-200 bg-red-50 dark:border-red-900 dark:bg-red-950/30"
-    }`}>
-      <div className="flex items-center gap-2">
-        <span className={`rounded-full px-2 py-0.5 text-xs font-medium ${
-          isPassed 
-            ? "bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300"
-            : "bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300"
-        }`}>
-          {isPassed ? "✓ Passed" : "✗ Failed"}
-        </span>
-        <span className="text-xs text-zinc-500 dark:text-zinc-400">
-          {experience.source} • {experience.date}
-        </span>
-      </div>
-      <blockquote className="mt-3 text-sm text-zinc-700 dark:text-zinc-300">
-        &ldquo;{experience.text}&rdquo;
+    <div className="group relative rounded-2xl bg-white p-6 shadow-sm ring-1 ring-zinc-900/5 transition-all hover:shadow-md dark:bg-zinc-800/50 dark:ring-white/10">
+      {/* Large quote mark */}
+      <svg
+        className="absolute right-4 top-4 h-8 w-8 text-zinc-100 dark:text-zinc-700"
+        fill="currentColor"
+        viewBox="0 0 32 32"
+        aria-hidden="true"
+      >
+        <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
+      </svg>
+
+      {/* Quote text */}
+      <blockquote className="relative text-[15px] leading-relaxed text-zinc-700 dark:text-zinc-300">
+        {experience.text}
       </blockquote>
+
+      {/* Footer with avatar and info */}
+      <div className="mt-5 flex items-center gap-3 border-t border-zinc-100 pt-4 dark:border-zinc-700">
+        {/* Avatar placeholder */}
+        <div className={`flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full ${
+          isPassed
+            ? "bg-gradient-to-br from-green-400 to-emerald-500"
+            : "bg-gradient-to-br from-amber-400 to-orange-500"
+        }`}>
+          <span className="text-sm font-semibold text-white">
+            {isPassed ? "✓" : "!"}
+          </span>
+        </div>
+
+        <div className="flex-1 min-w-0">
+          <div className="flex items-center gap-2">
+            <span className={`inline-flex items-center gap-1 text-sm font-medium ${
+              isPassed
+                ? "text-green-600 dark:text-green-400"
+                : "text-amber-600 dark:text-amber-400"
+            }`}>
+              {isPassed ? "Passed" : "Did not pass"}
+            </span>
+            <span className="h-1 w-1 rounded-full bg-zinc-300 dark:bg-zinc-600" />
+            <span className="text-sm text-zinc-500 dark:text-zinc-400">
+              {experience.date}
+            </span>
+          </div>
+          <p className="mt-0.5 text-xs text-zinc-400 dark:text-zinc-500">
+            via {experience.source}
+          </p>
+        </div>
+      </div>
     </div>
   );
 }
@@ -380,15 +408,24 @@ export default async function ExamTipsPage({ params }: PageProps) {
         )}
 
         {/* User Experiences */}
-        <section className="bg-zinc-50 py-12 dark:bg-zinc-900">
+        <section className="bg-gradient-to-b from-zinc-50 to-zinc-100 py-16 dark:from-zinc-900 dark:to-zinc-950">
           <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-            <h2 className="text-xl font-bold text-zinc-900 dark:text-zinc-50">
-              🗣️ Real Experiences
-            </h2>
-            <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-              What actual test-takers said about this exam.
-            </p>
-            <div className="mt-6 grid gap-4 sm:grid-cols-2">
+            <div className="text-center">
+              <span className="inline-flex items-center gap-2 rounded-full bg-emerald-100 px-4 py-1.5 text-sm font-medium text-emerald-700 dark:bg-emerald-900/50 dark:text-emerald-300">
+                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                </svg>
+                Real Exam Insights
+              </span>
+              <h2 className="mt-4 text-2xl font-bold tracking-tight text-zinc-900 sm:text-3xl dark:text-zinc-50">
+                What Test-Takers Are Saying
+              </h2>
+              <p className="mx-auto mt-3 max-w-2xl text-zinc-600 dark:text-zinc-400">
+                Honest feedback from {tips.userExperiences.length} people who took the exam.
+                Learn from their experiences.
+              </p>
+            </div>
+            <div className="mt-10 grid gap-6 sm:grid-cols-2">
               {tips.userExperiences.map((experience, index) => (
                 <ExperienceCard key={index} experience={experience} />
               ))}
