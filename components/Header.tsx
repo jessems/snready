@@ -49,6 +49,12 @@ export default function Header() {
                   CIS-ITSM
                 </Link>
                 <Link
+                  href="/study-guide"
+                  className="text-sm font-medium text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
+                >
+                  Study Guide
+                </Link>
+                <Link
                   href="/certifications"
                   className="text-sm font-medium text-emerald-600 hover:text-emerald-700 dark:text-emerald-400 dark:hover:text-emerald-300"
                 >
