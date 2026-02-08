@@ -459,7 +459,7 @@ export default async function CertificationPage({ params }: PageProps) {
               <div className="mt-10 grid gap-6 md:grid-cols-2 max-w-3xl mx-auto">
                 {/* 30-Day Plan */}
                 <div className="rounded-xl bg-white/10 backdrop-blur p-6 text-center">
-                  <h3 className="text-lg font-semibold text-white">30-Day Access</h3>
+                  <h3 className="text-lg font-semibold text-white">{cert.name} Only — 30 Days</h3>
                   <div className="mt-4">
                     <span className="text-4xl font-bold text-white">$9</span>
                   </div>
@@ -467,7 +467,7 @@ export default async function CertificationPage({ params }: PageProps) {
                     <li>✓ All {cert.name} questions</li>
                     <li>✓ Detailed explanations</li>
                     <li>✓ Practice tests</li>
-                    <li>✓ 30 days access</li>
+                    <li>✓ {cert.name} only — 30 days</li>
                   </ul>
                   <CheckoutButton
                     certification={cert.name}
