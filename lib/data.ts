@@ -1,9 +1,10 @@
 import certificationsData from "@/data/certifications.json";
+import examTipsData from "@/data/exam-tips.json";
 import csaTopics from "@/data/topics/csa-topics.json";
 import cisDfTopics from "@/data/topics/cis-df-topics.json";
 import cadTopics from "@/data/topics/cad-topics.json";
 import cisItsmTopics from "@/data/topics/cis-itsm-topics.json";
-import type { Certification, CertificationWithReadiness, Topic, Question, ExamDomain, CertificationCategory, ServiceNowRelease, DeltaExamInfo } from "@/types";
+import type { Certification, CertificationWithReadiness, Topic, Question, ExamDomain, CertificationCategory, ServiceNowRelease, DeltaExamInfo, ExamTips } from "@/types";
 
 // Category display names mapping
 const categoryDisplayNames: Record<CertificationCategory, string> = {
@@ -652,4 +653,38 @@ export function getCertificationsByDeltaStatus(): {
   }
 
   return result;
+}
+
+// Exam Tips data access
+const examTipsMap = examTipsData as Record<string, ExamTips>;
+
+export function getExamTips(certSlug: string): ExamTips | undefined {
+  return examTipsMap[certSlug];
+}
+
+export function hasExamTips(certSlug: string): boolean {
+  return certSlug in examTipsMap;
+}
+
+export function getAllExamTipsSlugs(): string[] {
+  return Object.keys(examTipsMap);
+}
+
+export function getExamTipsSummary(certSlug: string): {
+  difficultyRating: number;
+  difficultyLabel: string;
+  timePressure: string;
+  topInsight: string;
+  experienceCount: number;
+} | null {
+  const tips = getExamTips(certSlug);
+  if (!tips) return null;
+  
+  return {
+    difficultyRating: tips.difficulty.rating,
+    difficultyLabel: tips.difficulty.label,
+    timePressure: tips.timePressure.label,
+    topInsight: tips.keyInsights[0] || "",
+    experienceCount: tips.userExperiences.length,
+  };
 }
