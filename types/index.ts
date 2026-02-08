@@ -221,13 +221,6 @@ export interface TimePressureRating {
   description: string;
 }
 
-export interface QuestionBreakdown {
-  scenarioBased: number;   // percentage
-  straightTheory: number;  // percentage
-  dragAndDrop: number;     // percentage
-  navigation: number;      // percentage
-}
-
 export interface RecommendedResource {
   name: string;
   type: "course" | "practice" | "hands-on" | "documentation";
@@ -260,7 +253,6 @@ export interface ExamTips {
   lastUpdated: string;     // ISO date
   difficulty: DifficultyRating;
   timePressure: TimePressureRating;
-  questionBreakdown: QuestionBreakdown;
   keyInsights: string[];
   commonGotchas: string[];
   recommendedResources: RecommendedResource[];

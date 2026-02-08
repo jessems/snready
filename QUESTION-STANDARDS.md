@@ -36,14 +36,44 @@ Structured format with per-wrong-answer feedback:
 
 ```json
 {
-  "correct": "Why the correct answer is right",
+  "correct": "Why the correct answer is right. See https://docs.servicenow.com/...",
   "wrongAnswers": [
-    { "choiceId": "a", "explanation": "Why A is wrong", "reference": "optional source" }
+    {
+      "choiceId": "a",
+      "explanation": "Why A is wrong",
+      "reference": "https://docs.servicenow.com/bundle/[release]/page/..."
+    }
   ]
 }
 ```
 
 **Decision:** Richer than a single string to support learning, not just drilling.
+
+### Reference Requirements
+
+**All explanations MUST include official ServiceNow documentation links.**
+
+| Field | Requirement | Example |
+|-------|-------------|---------|
+| `explanation.correct` | Must end with or contain a docs.servicenow.com URL | `"...See https://docs.servicenow.com/bundle/xanadu-..."` |
+| `wrongAnswers[].reference` | Required URL to official docs (not optional text) | `"https://docs.servicenow.com/bundle/xanadu-servicenow-platform/page/..."` |
+
+**Acceptable URL patterns:**
+- `https://docs.servicenow.com/bundle/[release]-[product]/page/...` (primary)
+- `https://developer.servicenow.com/dev.do#!/...` (developer resources)
+- `https://nowlearning.servicenow.com/...` (Now Learning courses)
+
+**NOT acceptable:**
+- Generic text references like "ITIL Problem Management"
+- Missing references entirely
+- Internal/proprietary URLs
+
+**Fallback:** If an official reference absolutely cannot be found (extremely rare), use:
+```json
+"reference": "No official documentation available - based on platform behavior"
+```
+
+This ensures every explanation is verifiable against official ServiceNow sources.
 
 ### `source` - Content Origin
 

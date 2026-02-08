@@ -87,34 +87,6 @@ function MetricCard({
   );
 }
 
-function QuestionBreakdownChart({ breakdown }: { breakdown: ExamTips["questionBreakdown"] }) {
-  const items = [
-    { label: "Scenario-Based", value: breakdown.scenarioBased, color: "bg-blue-500" },
-    { label: "Theory/Recall", value: breakdown.straightTheory, color: "bg-emerald-500" },
-    { label: "Drag & Drop", value: breakdown.dragAndDrop, color: "bg-purple-500" },
-    { label: "Navigation", value: breakdown.navigation, color: "bg-amber-500" },
-  ];
-
-  return (
-    <div className="space-y-3">
-      {items.map((item) => (
-        <div key={item.label}>
-          <div className="flex items-center justify-between text-sm">
-            <span className="text-zinc-700 dark:text-zinc-300">{item.label}</span>
-            <span className="font-medium text-zinc-900 dark:text-zinc-100">{item.value}%</span>
-          </div>
-          <div className="mt-1 h-2 w-full overflow-hidden rounded-full bg-zinc-100 dark:bg-zinc-800">
-            <div
-              className={`h-full ${item.color} transition-all duration-500`}
-              style={{ width: `${item.value}%` }}
-            />
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-}
-
 function ExperienceCard({ experience }: { experience: UserExperience }) {
   const isPassed = experience.outcome === "passed";
   
@@ -250,7 +222,7 @@ export default async function ExamTipsPage({ params }: PageProps) {
         {/* Quick Stats */}
         <section className="border-b border-zinc-200 bg-white py-8 dark:border-zinc-800 dark:bg-zinc-950">
           <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-4 sm:grid-cols-2">
               <MetricCard
                 icon="📊"
                 label="Difficulty"
@@ -274,52 +246,29 @@ export default async function ExamTipsPage({ params }: PageProps) {
                 }
                 description={tips.timePressure.description}
               />
-              <MetricCard
-                icon="❓"
-                label="Question Style"
-                value={
-                  <span className="text-2xl font-bold text-zinc-900 dark:text-zinc-100">
-                    {tips.questionBreakdown.scenarioBased}% Scenario
-                  </span>
-                }
-                description="Majority of questions are scenario-based, not straight recall."
-              />
             </div>
           </div>
         </section>
 
-        {/* Question Breakdown */}
+        {/* Key Insights */}
         <section className="py-12">
           <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-            <div className="grid gap-8 lg:grid-cols-2">
-              <div>
-                <h2 className="text-xl font-bold text-zinc-900 dark:text-zinc-50">
-                  Question Type Breakdown
-                </h2>
-                <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-                  Based on user-reported experiences. Percentages may overlap.
-                </p>
-                <div className="mt-6">
-                  <QuestionBreakdownChart breakdown={tips.questionBreakdown} />
-                </div>
-              </div>
-              
-              <div>
-                <h2 className="text-xl font-bold text-zinc-900 dark:text-zinc-50">
-                  ⚠️ Key Insights
-                </h2>
-                <ul className="mt-4 space-y-3">
-                  {tips.keyInsights.map((insight, index) => (
-                    <li key={index} className="flex items-start gap-2">
-                      <span className="mt-1 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-amber-100 text-xs font-medium text-amber-700 dark:bg-amber-900 dark:text-amber-300">
-                        {index + 1}
-                      </span>
-                      <span className="text-zinc-700 dark:text-zinc-300">{insight}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
+            <h2 className="text-xl font-bold text-zinc-900 dark:text-zinc-50">
+              ⚠️ Key Insights
+            </h2>
+            <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+              What test-takers wish they knew before the exam.
+            </p>
+            <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+              {tips.keyInsights.map((insight, index) => (
+                <li key={index} className="flex items-start gap-2 rounded-lg bg-amber-50 p-4 dark:bg-amber-950/30">
+                  <span className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-amber-100 text-xs font-medium text-amber-700 dark:bg-amber-900 dark:text-amber-300">
+                    {index + 1}
+                  </span>
+                  <span className="text-zinc-700 dark:text-zinc-300">{insight}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
 
