@@ -78,7 +78,7 @@ export default function Header() {
                               onClick={() => setShowPracticeDropdown(false)}
                               className="flex items-center gap-3 px-2 py-2.5 rounded-lg hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-colors group"
                             >
-                              <span className="inline-flex items-center justify-center min-w-[4.5rem] px-2 py-1 text-sm font-bold text-emerald-700 bg-emerald-50 rounded-md group-hover:bg-emerald-100 dark:text-emerald-300 dark:bg-emerald-900/40 dark:group-hover:bg-emerald-900/60">
+                              <span className="inline-flex items-center justify-center min-w-[4.5rem] px-2 py-1 text-sm font-bold text-emerald-700 bg-emerald-50 rounded-md whitespace-nowrap group-hover:bg-emerald-100 dark:text-emerald-300 dark:bg-emerald-900/40 dark:group-hover:bg-emerald-900/60">
                                 {cert.name}
                               </span>
                               <span className="text-sm text-zinc-600 dark:text-zinc-400 leading-tight">
@@ -189,7 +189,7 @@ export default function Header() {
                     onClick={() => setShowMobileMenu(false)}
                     className="flex items-center gap-3 py-2"
                   >
-                    <span className="inline-flex items-center justify-center min-w-[4.5rem] px-2 py-1 text-sm font-bold text-emerald-700 bg-emerald-50 rounded-md dark:text-emerald-300 dark:bg-emerald-900/40">
+                    <span className="inline-flex items-center justify-center min-w-[4.5rem] px-2 py-1 text-sm font-bold text-emerald-700 bg-emerald-50 rounded-md whitespace-nowrap dark:text-emerald-300 dark:bg-emerald-900/40">
                       {cert.name}
                     </span>
                     <span className="text-sm text-zinc-600 dark:text-zinc-400 leading-tight">
