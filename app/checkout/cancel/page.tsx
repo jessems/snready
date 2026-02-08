@@ -58,13 +58,13 @@ export default function CheckoutCancel() {
             Still have questions?
           </h2>
           <p className="mt-2 text-emerald-700 dark:text-emerald-300">
-            Try our free practice questions first — no payment required.
+            Browse our practice questions to see what&apos;s included.
           </p>
           <Link
-            href="/free-questions"
+            href="/practice-questions"
             className="mt-4 inline-flex items-center text-emerald-600 hover:text-emerald-700 dark:text-emerald-400 dark:hover:text-emerald-300"
           >
-            Browse free questions →
+            Browse practice questions →
           </Link>
         </div>
       </div>

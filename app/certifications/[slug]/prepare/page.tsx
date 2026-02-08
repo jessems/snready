@@ -461,12 +461,6 @@ export default async function ExamPrepPage({ params }: Props) {
                 >
                   Start Practicing — $9
                 </Link>
-                <Link
-                  href={`/free-questions/${slug}`}
-                  className="inline-flex items-center justify-center rounded-lg border border-white px-8 py-3 font-semibold text-white hover:bg-white/10"
-                >
-                  Try Free Questions
-                </Link>
               </div>
             </div>
           </section>

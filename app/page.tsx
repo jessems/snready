@@ -39,10 +39,10 @@ export default function Home() {
             </p>
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
-                href="/free-questions/csa"
+                href="/practice-questions/csa"
                 className="inline-flex h-12 items-center justify-center rounded-lg bg-emerald-600 px-8 text-base font-medium text-white transition-colors hover:bg-emerald-700"
               >
-                Start Free CSA Practice
+                Start CSA Practice
               </Link>
             </div>
           </div>
@@ -289,10 +289,10 @@ export default function Home() {
           </p>
           <div className="mt-8">
             <Link
-              href="/free-questions/csa/incident-management"
+              href="/practice-questions/csa"
               className="inline-flex h-12 items-center justify-center rounded-lg bg-emerald-600 px-8 text-base font-medium text-white transition-colors hover:bg-emerald-700"
             >
-              Try 5 Free Questions Now
+              Start Practicing Now
             </Link>
           </div>
         </div>

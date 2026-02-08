@@ -148,7 +148,7 @@ export default async function TopicQuestionsPage({ params }: PageProps) {
               </div>
               <div className="flex flex-col gap-2">
                 <Link
-                  href={`/free-questions/${certification}`}
+                  href={`/practice-questions/${certification}`}
                   className="inline-flex h-10 items-center justify-center rounded-lg bg-emerald-600 px-6 text-sm font-medium text-white transition-colors hover:bg-emerald-700"
                 >
                   All {cert.name} Questions

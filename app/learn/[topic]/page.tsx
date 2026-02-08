@@ -5,7 +5,6 @@ import {
   getAllTopicSlugs,
   getCertificationBySlug,
   getTopicsForCertification,
-  getFreeQuestionCountForTopic,
 } from "@/lib/data";
 import { generateBreadcrumbJsonLd } from "@/lib/breadcrumbs";
 import { getCanonicalUrl } from "@/lib/seo";
@@ -235,12 +234,6 @@ export default async function LearnTopicPage({ params }: Props) {
           </div>
           <div className="text-center rounded-lg border border-zinc-200 p-4 dark:border-zinc-700">
             <div className="text-2xl font-bold text-emerald-600">
-              {getFreeQuestionCountForTopic(certification.slug, topicData.slug)}
-            </div>
-            <div className="text-sm text-zinc-600 dark:text-zinc-400">Free Questions</div>
-          </div>
-          <div className="text-center rounded-lg border border-zinc-200 p-4 dark:border-zinc-700">
-            <div className="text-2xl font-bold text-emerald-600">
               {certification.domains?.find((d: { slug: string }) => d.slug === topicData.domain)?.percentage || "—"}%
             </div>
             <div className="text-sm text-zinc-600 dark:text-zinc-400">Exam Weight</div>
@@ -271,20 +264,6 @@ export default async function LearnTopicPage({ params }: Props) {
               </p>
               <span className="mt-2 inline-block text-sm font-medium text-emerald-600">
                 Start Practicing →
-              </span>
-            </Link>
-            <Link
-              href={`/free-questions/${certification.slug}/${topicData.slug}`}
-              className="rounded-lg border border-zinc-200 bg-white p-6 transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900 dark:hover:bg-zinc-800"
-            >
-              <h3 className="font-semibold text-zinc-900 dark:text-zinc-100">
-                Free Sample Questions
-              </h3>
-              <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-                {getFreeQuestionCountForTopic(certification.slug, topicData.slug)} free questions to try
-              </p>
-              <span className="mt-2 inline-block text-sm font-medium text-emerald-600">
-                Try for Free →
               </span>
             </Link>
             <Link

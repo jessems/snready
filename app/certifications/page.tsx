@@ -150,16 +150,10 @@ export default function CertificationsPage() {
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
-                href="/certifications/csa"
+                href="/practice-questions/csa"
                 className="inline-flex h-12 items-center justify-center rounded-lg bg-white px-8 text-base font-medium text-emerald-600 transition-colors hover:bg-emerald-50"
               >
                 Start CSA Practice
-              </Link>
-              <Link
-                href="/free-questions/csa/ui-navigation"
-                className="inline-flex h-12 items-center justify-center rounded-lg border border-white px-8 text-base font-medium text-white transition-colors hover:bg-emerald-500"
-              >
-                Try Free Questions
               </Link>
             </div>
           </div>

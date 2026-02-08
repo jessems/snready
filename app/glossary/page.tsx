@@ -172,15 +172,6 @@ export default function GlossaryIndexPage() {
               </p>
             </Link>
             <Link
-              href="/free-questions/csa/ui-navigation"
-              className="rounded-lg border border-zinc-200 p-4 transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:hover:bg-zinc-800"
-            >
-              <h3 className="font-semibold text-zinc-900 dark:text-zinc-100">Free Questions</h3>
-              <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
-                Sample practice questions
-              </p>
-            </Link>
-            <Link
               href="/#certifications"
               className="rounded-lg border border-zinc-200 p-4 transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:hover:bg-zinc-800"
             >

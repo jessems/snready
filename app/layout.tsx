@@ -181,12 +181,6 @@ export default function RootLayout({
                     Practice Questions
                   </Link>
                   <Link
-                    href="/free-questions"
-                    className="block text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
-                  >
-                    Free Questions
-                  </Link>
-                  <Link
                     href="/study-guides"
                     className="block text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
                   >

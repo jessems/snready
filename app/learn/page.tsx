@@ -43,12 +43,6 @@ export default function LearnIndexPage() {
       icon: "📖",
     },
     {
-      title: "Free Questions",
-      description: "Practice with free exam-style questions",
-      href: "/free-questions",
-      icon: "❓",
-    },
-    {
       title: "Practice Questions",
       description: "Practice questions covering all exam domains",
       href: "/practice-questions",
@@ -138,10 +132,10 @@ export default function LearnIndexPage() {
                     Glossary
                   </Link>
                   <Link
-                    href={`/free-questions/${cert.slug}`}
+                    href={`/practice-questions/${cert.slug}`}
                     className="rounded-lg bg-zinc-100 px-3 py-1.5 text-sm font-medium text-zinc-700 transition-colors hover:bg-emerald-100 hover:text-emerald-700 dark:bg-zinc-700 dark:text-zinc-300 dark:hover:bg-emerald-900 dark:hover:text-emerald-300"
                   >
-                    Free Questions
+                    Practice Questions
                   </Link>
                 </div>
               </div>
@@ -194,14 +188,14 @@ export default function LearnIndexPage() {
         <div className="mt-16 rounded-xl bg-gradient-to-br from-emerald-600 to-green-700 p-8 text-center text-white">
           <h2 className="text-2xl font-bold">Ready to Start Practicing?</h2>
           <p className="mt-2 text-emerald-100">
-            Test your knowledge with our free practice questions
+            Test your knowledge with our practice questions
           </p>
           <div className="mt-6">
             <Link
-              href="/free-questions"
+              href="/practice-questions"
               className="inline-flex items-center justify-center rounded-lg bg-white px-8 py-3 font-semibold text-emerald-700 transition-colors hover:bg-emerald-50"
             >
-              Try Free Questions
+              Start Practicing
             </Link>
           </div>
         </div>

@@ -7,7 +7,6 @@ import {
   getCertificationSlugs,
   getTotalQuestionCount,
   getTotalFreeQuestionCount,
-  getFreeQuestionCountForTopic,
 } from "@/lib/data";
 import { generateBreadcrumbJsonLd } from "@/lib/breadcrumbs";
 import { getCanonicalUrl } from "@/lib/seo";
@@ -261,12 +260,6 @@ export default async function StudyGuidePage({ params }: Props) {
                         className="text-sm text-emerald-600 hover:text-emerald-700"
                       >
                         Practice ({topic.questionCount} questions)
-                      </Link>
-                      <Link
-                        href={`/free-questions/${cert}/${topic.slug}`}
-                        className="text-sm text-emerald-600 hover:text-emerald-700"
-                      >
-                        Free Questions ({getFreeQuestionCountForTopic(cert, topic.slug)})
                       </Link>
                       <Link
                         href={`/learn/${topic.slug}`}

@@ -89,16 +89,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })
   );
 
-  // Free question pages
-  const freeQuestionPages: MetadataRoute.Sitemap = topicSlugs.map(
-    ({ certification, topic }) => ({
-      url: `${BASE_URL}/free-questions/${certification}/${topic}`,
-      lastModified: new Date(),
-      changeFrequency: "weekly" as const,
-      priority: 0.7,
-    })
-  );
-
   // Learn pages (concept explainers)
   const learnPages: MetadataRoute.Sitemap = [];
   for (const certSlug of certSlugs) {
@@ -165,7 +155,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...practiceTestPages,
     ...topicPages,
     ...individualQuestionPages,
-    ...freeQuestionPages,
     ...learnPages,
     ...studyGuidePages,
     ...glossaryPages,
