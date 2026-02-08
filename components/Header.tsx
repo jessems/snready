@@ -66,24 +66,37 @@ export default function Header() {
                         className="fixed inset-0 z-10"
                         onClick={() => setShowPracticeDropdown(false)}
                       />
-                      <div className="absolute left-0 mt-2 w-72 max-h-96 overflow-y-auto rounded-lg border border-zinc-200 bg-white py-1 shadow-lg z-20 dark:border-zinc-700 dark:bg-zinc-900">
-                        {sortedCertifications.map((cert) => (
-                          <Link
-                            key={cert.slug}
-                            href={`/certifications/${cert.slug}`}
-                            onClick={() => setShowPracticeDropdown(false)}
-                            className="block px-4 py-2 text-sm text-zinc-700 hover:bg-zinc-50 dark:text-zinc-300 dark:hover:bg-zinc-800"
-                          >
-                            {cert.fullName} ({cert.name})
-                          </Link>
-                        ))}
-                        <div className="border-t border-zinc-100 mt-1 pt-1 dark:border-zinc-800">
+                      <div className="absolute left-0 mt-2 w-80 max-h-[28rem] overflow-y-auto rounded-xl border border-zinc-200 bg-white py-2 shadow-xl z-20 dark:border-zinc-700 dark:bg-zinc-900">
+                        <div className="px-3 pb-2 mb-2 border-b border-zinc-100 dark:border-zinc-800">
+                          <p className="text-xs font-medium text-zinc-400 uppercase tracking-wider">Select certification</p>
+                        </div>
+                        <div className="space-y-0.5 px-2">
+                          {sortedCertifications.map((cert) => (
+                            <Link
+                              key={cert.slug}
+                              href={`/certifications/${cert.slug}`}
+                              onClick={() => setShowPracticeDropdown(false)}
+                              className="flex items-center gap-3 px-2 py-2.5 rounded-lg hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-colors group"
+                            >
+                              <span className="inline-flex items-center justify-center min-w-[4.5rem] px-2 py-1 text-sm font-bold text-emerald-700 bg-emerald-50 rounded-md group-hover:bg-emerald-100 dark:text-emerald-300 dark:bg-emerald-900/40 dark:group-hover:bg-emerald-900/60">
+                                {cert.name}
+                              </span>
+                              <span className="text-sm text-zinc-600 dark:text-zinc-400 leading-tight">
+                                {cert.fullName}
+                              </span>
+                            </Link>
+                          ))}
+                        </div>
+                        <div className="border-t border-zinc-100 mt-2 pt-2 px-2 dark:border-zinc-800">
                           <Link
                             href="/certifications"
                             onClick={() => setShowPracticeDropdown(false)}
-                            className="block px-4 py-2 text-sm font-medium text-emerald-600 hover:bg-emerald-50 dark:text-emerald-400 dark:hover:bg-emerald-900/20"
+                            className="flex items-center justify-center gap-1 px-3 py-2 text-sm font-medium text-emerald-600 hover:bg-emerald-50 rounded-lg transition-colors dark:text-emerald-400 dark:hover:bg-emerald-900/20"
                           >
-                            View all certifications →
+                            View all certifications
+                            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                            </svg>
                           </Link>
                         </div>
                       </div>
@@ -166,17 +179,22 @@ export default function Header() {
       {showMobileMenu && (
         <div className="sm:hidden border-b border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950">
           <div className="px-4 py-3 space-y-1">
-            <div className="pb-2 mb-2 border-b border-zinc-100 dark:border-zinc-800">
-              <p className="text-xs font-semibold text-zinc-400 uppercase tracking-wide mb-2">Practice Questions</p>
-              <div className="max-h-64 overflow-y-auto">
+            <div className="pb-3 mb-3 border-b border-zinc-100 dark:border-zinc-800">
+              <p className="text-xs font-medium text-zinc-400 uppercase tracking-wider mb-3">Practice Questions</p>
+              <div className="max-h-72 overflow-y-auto space-y-1">
                 {sortedCertifications.map((cert) => (
                   <Link
                     key={cert.slug}
                     href={`/certifications/${cert.slug}`}
                     onClick={() => setShowMobileMenu(false)}
-                    className="block py-2 text-sm font-medium text-zinc-900 dark:text-zinc-100"
+                    className="flex items-center gap-3 py-2"
                   >
-                    {cert.fullName} ({cert.name})
+                    <span className="inline-flex items-center justify-center min-w-[4.5rem] px-2 py-1 text-sm font-bold text-emerald-700 bg-emerald-50 rounded-md dark:text-emerald-300 dark:bg-emerald-900/40">
+                      {cert.name}
+                    </span>
+                    <span className="text-sm text-zinc-600 dark:text-zinc-400 leading-tight">
+                      {cert.fullName}
+                    </span>
                   </Link>
                 ))}
               </div>
