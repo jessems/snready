@@ -200,7 +200,7 @@ export default async function CertificationGlossaryPage({ params }: Props) {
           >
             <h3 className="font-semibold text-zinc-900 dark:text-zinc-100">Practice Test</h3>
             <p className="text-sm text-zinc-600 dark:text-zinc-400">
-              Full {certification.name} mock exam
+              Full {certification.name} practice test
             </p>
           </Link>
         </div>

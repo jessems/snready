@@ -32,7 +32,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   return {
     title: `${cert.name} Certification Exam Prep - Practice Tests & Questions`,
-    description: `Prepare for the ServiceNow ${cert.fullName} (${cert.name}) exam with ${getTotalQuestionCount(slug)}+ practice questions. Free sample questions, study guides, and mock exams.`,
+    description: `Prepare for the ServiceNow ${cert.fullName} (${cert.name}) exam with ${getTotalQuestionCount(slug)}+ practice questions. Free sample questions and study guides.`,
     keywords: [
       `${cert.name} practice test`,
       `${cert.name} exam questions`,
