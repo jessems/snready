@@ -149,7 +149,7 @@ export function QuestionsWithPaywall({
                   plan="30day"
                   className="w-full rounded-lg border-2 border-emerald-600 bg-white py-3 font-semibold text-emerald-600 transition-colors hover:bg-emerald-50 dark:bg-zinc-800 dark:hover:bg-zinc-700"
                 >
-                  30 Days — $9
+                  {certification} 30 Days — $9
                 </CheckoutButton>
                 <CheckoutButton
                   certification={certification}
