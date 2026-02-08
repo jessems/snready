@@ -9,6 +9,7 @@ export default function Header() {
   const { hasAccess, email, logout, loading } = useAccess();
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
+  const [showMobileMenu, setShowMobileMenu] = useState(false);
 
   return (
     <>
@@ -22,6 +23,23 @@ export default function Header() {
             </Link>
             
             <div className="flex items-center gap-4 sm:gap-6">
+              {/* Mobile Menu Button */}
+              <button
+                onClick={() => setShowMobileMenu(!showMobileMenu)}
+                className="sm:hidden p-2 text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
+                aria-label="Menu"
+              >
+                {showMobileMenu ? (
+                  <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                ) : (
+                  <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                  </svg>
+                )}
+              </button>
+
               {/* Certification Links - Hidden on mobile */}
               <div className="hidden sm:flex sm:items-center sm:gap-6">
                 <Link
@@ -125,6 +143,66 @@ export default function Header() {
           </div>
         </div>
       </nav>
+
+      {/* Mobile Menu */}
+      {showMobileMenu && (
+        <div className="sm:hidden border-b border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950">
+          <div className="px-4 py-3 space-y-1">
+            <div className="pb-2 mb-2 border-b border-zinc-100 dark:border-zinc-800">
+              <p className="text-xs font-semibold text-zinc-400 uppercase tracking-wide mb-2">Certifications</p>
+              <Link
+                href="/certifications/csa"
+                onClick={() => setShowMobileMenu(false)}
+                className="block py-2 text-sm font-medium text-zinc-900 dark:text-zinc-100"
+              >
+                CSA — System Administrator
+              </Link>
+              <Link
+                href="/certifications/cad"
+                onClick={() => setShowMobileMenu(false)}
+                className="block py-2 text-sm font-medium text-zinc-900 dark:text-zinc-100"
+              >
+                CAD — Application Developer
+              </Link>
+              <Link
+                href="/certifications/cis-df"
+                onClick={() => setShowMobileMenu(false)}
+                className="block py-2 text-sm font-medium text-zinc-900 dark:text-zinc-100"
+              >
+                CIS-DF — Data Foundations
+              </Link>
+              <Link
+                href="/certifications/cis-itsm"
+                onClick={() => setShowMobileMenu(false)}
+                className="block py-2 text-sm font-medium text-zinc-900 dark:text-zinc-100"
+              >
+                CIS-ITSM — IT Service Management
+              </Link>
+            </div>
+            <Link
+              href="/certifications"
+              onClick={() => setShowMobileMenu(false)}
+              className="block py-2 text-sm font-medium text-emerald-600 dark:text-emerald-400"
+            >
+              All 25+ Certifications →
+            </Link>
+            <Link
+              href="/study-guide"
+              onClick={() => setShowMobileMenu(false)}
+              className="block py-2 text-sm font-medium text-zinc-600 dark:text-zinc-400"
+            >
+              Study Guides
+            </Link>
+            <Link
+              href="/free-questions"
+              onClick={() => setShowMobileMenu(false)}
+              className="block py-2 text-sm font-medium text-zinc-600 dark:text-zinc-400"
+            >
+              Free Questions
+            </Link>
+          </div>
+        </div>
+      )}
 
       <LoginModal
         isOpen={showLoginModal}
