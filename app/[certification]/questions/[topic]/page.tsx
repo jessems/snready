@@ -148,10 +148,10 @@ export default async function TopicQuestionsPage({ params }: PageProps) {
               </div>
               <div className="flex flex-col gap-2">
                 <Link
-                  href={`/practice-tests/${certification}`}
+                  href={`/free-questions/${certification}`}
                   className="inline-flex h-10 items-center justify-center rounded-lg bg-emerald-600 px-6 text-sm font-medium text-white transition-colors hover:bg-emerald-700"
                 >
-                  Full {cert.name} Practice Test
+                  All {cert.name} Questions
                 </Link>
               </div>
             </div>

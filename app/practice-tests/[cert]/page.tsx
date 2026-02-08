@@ -335,7 +335,7 @@ export default async function PracticeTestPage({ params }: Props) {
                     CSA - Certified System Administrator
                   </h3>
                   <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-                    Full practice test with 200+ questions
+                    100+ practice questions across all domains
                   </p>
                   <span className="mt-2 inline-block text-sm font-medium text-emerald-600">
                     Available Now →
