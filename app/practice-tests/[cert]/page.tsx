@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
-  const title = `${certification.name} Practice Test - Free Mock Exam | SNReady`;
+  const title = `${certification.name} Practice Test | SNReady`;
   const description = `Take a free ${certification.name} practice test. Realistic ${certification.name} exam simulation with detailed explanations to help you pass your ServiceNow certification.`;
   
   return {
@@ -160,7 +160,7 @@ export default async function PracticeTestPage({ params }: Props) {
             {certification.name} Practice Test
           </h1>
           <p className="mt-2 text-xl text-emerald-600">
-            Free Mock Exam - {certification.name}
+            {certification.fullName}
           </p>
           
           <p className="mt-4 text-lg text-zinc-600 dark:text-zinc-400">
