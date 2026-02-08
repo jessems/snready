@@ -313,13 +313,13 @@ export default async function QuestionPage({ params }: PageProps) {
               <div className="rounded-xl bg-emerald-600 p-5 text-white dark:bg-emerald-700">
                 <h3 className="font-semibold">Practice More?</h3>
                 <p className="mt-2 text-sm text-emerald-100">
-                  Take a full {cert.name} mock exam to test your readiness.
+                  Take a full {cert.name} practice test to check your readiness.
                 </p>
                 <Link
                   href={`/practice-tests/${certification}`}
                   className="mt-4 block w-full rounded-lg bg-white py-2 text-center text-sm font-medium text-emerald-600 transition-colors hover:bg-emerald-50"
                 >
-                  Start Mock Exam
+                  Start Practice Test
                 </Link>
               </div>
             </aside>

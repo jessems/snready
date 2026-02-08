@@ -50,7 +50,7 @@ export default function LearnIndexPage() {
     },
     {
       title: "Practice Tests",
-      description: "Full-length mock exams simulating the real test",
+      description: "Practice tests with questions covering all exam domains",
       href: "/practice-tests",
       icon: "📝",
     },

@@ -98,7 +98,7 @@ export default function Home() {
                 Realistic Practice Tests
               </h3>
               <p className="mt-2 text-zinc-600 dark:text-zinc-400">
-                Full-length mock exams that mirror the real test format. Time yourself, review your results, and identify weak areas before exam day.
+                Practice tests that mirror the real exam format. Review your results and identify weak areas before exam day.
               </p>
             </div>
           </div>

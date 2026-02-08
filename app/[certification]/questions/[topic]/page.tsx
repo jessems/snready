@@ -151,7 +151,7 @@ export default async function TopicQuestionsPage({ params }: PageProps) {
                   href={`/practice-tests/${certification}`}
                   className="inline-flex h-10 items-center justify-center rounded-lg bg-emerald-600 px-6 text-sm font-medium text-white transition-colors hover:bg-emerald-700"
                 >
-                  Full {cert.name} Mock Exam
+                  Full {cert.name} Practice Test
                 </Link>
               </div>
             </div>

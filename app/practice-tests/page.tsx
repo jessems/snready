@@ -8,16 +8,16 @@ import { generateBreadcrumbJsonLd } from "@/lib/breadcrumbs";
 import { getCanonicalUrl } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "ServiceNow Practice Tests - Free Mock Exams | SNReady",
+  title: "ServiceNow Practice Tests | SNReady",
   description:
-    "Take free ServiceNow certification practice tests. Realistic exam simulations for CSA, CIS-DF, CAD, CIS-ITSM with detailed explanations.",
+    "ServiceNow certification practice tests for CSA, CIS-DF, CAD, CIS-ITSM with detailed explanations and free questions.",
   alternates: {
     canonical: getCanonicalUrl("/practice-tests"),
   },
   openGraph: {
-    title: "ServiceNow Practice Tests - Free Mock Exams | SNReady",
+    title: "ServiceNow Practice Tests | SNReady",
     description:
-      "Take free ServiceNow certification practice tests with realistic exam simulations.",
+      "ServiceNow certification practice tests with detailed explanations.",
     url: getCanonicalUrl("/practice-tests"),
     images: ["/og-default.png"],
   },

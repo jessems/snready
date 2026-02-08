@@ -168,7 +168,7 @@ export default function GlossaryIndexPage() {
             >
               <h3 className="font-semibold text-zinc-900 dark:text-zinc-100">Practice Tests</h3>
               <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
-                Full mock exams
+                Practice tests
               </p>
             </Link>
             <Link
