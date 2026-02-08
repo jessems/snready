@@ -44,12 +44,6 @@ export default function Home() {
               >
                 Start Free CSA Practice
               </Link>
-              <Link
-                href="/practice-tests/csa"
-                className="inline-flex h-12 items-center justify-center rounded-lg border border-zinc-300 bg-white px-8 text-base font-medium text-zinc-900 transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-100 dark:hover:bg-zinc-700"
-              >
-                Take Full Mock Exam
-              </Link>
             </div>
           </div>
         </div>
