@@ -141,17 +141,22 @@ export default function QuestionCard({
         ))}
       </div>
 
-      {/* Check Answer Button */}
-      {selectedAnswers.length > 0 && !revealed && (
-        <div className="mt-6">
+      {/* Interaction hint or Check Answer Button */}
+      <div className="mt-6">
+        {selectedAnswers.length === 0 && !revealed && (
+          <p className="text-sm text-zinc-500 dark:text-zinc-400 italic">
+            👆 Click an option above to select your answer
+          </p>
+        )}
+        {selectedAnswers.length > 0 && !revealed && (
           <button
             onClick={handleReveal}
-            className="inline-flex h-10 items-center justify-center rounded-lg bg-emerald-600 px-6 text-sm font-medium text-white transition-colors hover:bg-emerald-700"
+            className="inline-flex h-10 items-center justify-center rounded-lg bg-emerald-600 px-6 text-sm font-medium text-white transition-colors hover:bg-emerald-700 animate-pulse hover:animate-none"
           >
-            Check Answer
+            ✓ Check Answer
           </button>
-        </div>
-      )}
+        )}
+      </div>
 
       {/* Explanation */}
       {revealed && (
