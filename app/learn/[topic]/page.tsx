@@ -267,11 +267,11 @@ export default async function LearnTopicPage({ params }: Props) {
               </span>
             </Link>
             <Link
-              href={`/study-guide/${certification.slug}`}
+              href={`/certifications/${certification.slug}/prepare`}
               className="rounded-lg border border-zinc-200 bg-white p-6 transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900 dark:hover:bg-zinc-800"
             >
               <h3 className="font-semibold text-zinc-900 dark:text-zinc-100">
-                Full Study Guide
+                Full Exam Prep
               </h3>
               <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
                 Complete {certification.name} preparation plan

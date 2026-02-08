@@ -121,14 +121,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.8,
   }));
 
-  // Study guide pages (NEW)
-  const studyGuidePages: MetadataRoute.Sitemap = certSlugs.map((slug) => ({
-    url: `${BASE_URL}/study-guide/${slug}`,
-    lastModified: new Date(),
-    changeFrequency: "monthly" as const,
-    priority: 0.8,
-  }));
-
   // Glossary pages (NEW)
   const glossaryPages: MetadataRoute.Sitemap = [
     {
@@ -156,7 +148,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...topicPages,
     ...individualQuestionPages,
     ...learnPages,
-    ...studyGuidePages,
     ...glossaryPages,
   ];
 }

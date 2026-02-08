@@ -31,9 +31,9 @@ export default function LearnIndexPage() {
 
   const resources = [
     {
-      title: "Study Guides",
-      description: "Comprehensive study materials organized by exam domain",
-      href: "/study-guide",
+      title: "Exam Prep",
+      description: "Complete exam preparation with blueprints, study plans, and real experiences",
+      href: "/certifications",
       icon: "📚",
     },
     {
@@ -120,10 +120,10 @@ export default function LearnIndexPage() {
 
                 <div className="mt-4 flex flex-wrap gap-2">
                   <Link
-                    href={`/study-guide/${cert.slug}`}
+                    href={`/certifications/${cert.slug}/prepare`}
                     className="rounded-lg bg-zinc-100 px-3 py-1.5 text-sm font-medium text-zinc-700 transition-colors hover:bg-emerald-100 hover:text-emerald-700 dark:bg-zinc-700 dark:text-zinc-300 dark:hover:bg-emerald-900 dark:hover:text-emerald-300"
                   >
-                    Study Guide
+                    Exam Prep
                   </Link>
                   <Link
                     href={`/glossary/${cert.slug}`}

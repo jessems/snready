@@ -181,10 +181,10 @@ export default function RootLayout({
                     Practice Questions
                   </Link>
                   <Link
-                    href="/study-guides"
+                    href="/certifications"
                     className="block text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
                   >
-                    Study Guides
+                    Exam Prep
                   </Link>
                   <Link
                     href="/compare/csa-vs-cad"

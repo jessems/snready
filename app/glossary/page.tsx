@@ -139,10 +139,10 @@ export default function GlossaryIndexPage() {
               CSA Practice Questions
             </Link>
             <Link
-              href="/study-guide/csa"
+              href="/certifications/csa/prepare"
               className="inline-flex items-center justify-center rounded-lg border border-emerald-600 px-8 py-3 font-semibold text-emerald-600 transition-colors hover:bg-emerald-50 dark:hover:bg-emerald-950"
             >
-              Study Guides
+              Exam Prep
             </Link>
           </div>
         </div>

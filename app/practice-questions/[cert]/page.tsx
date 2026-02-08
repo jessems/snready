@@ -324,10 +324,10 @@ export default async function PracticeTestPage({ params }: Props) {
                     Certification Details
                   </Link>
                   <Link
-                    href={`/study-guide/${cert}`}
+                    href={`/certifications/${cert}/prepare`}
                     className="inline-flex items-center justify-center rounded-lg border border-emerald-600 px-8 py-3 font-semibold text-emerald-600 transition-colors hover:bg-emerald-50 dark:hover:bg-emerald-950"
                   >
-                    View Study Guide
+                    View Exam Prep
                   </Link>
                 </div>
               </div>

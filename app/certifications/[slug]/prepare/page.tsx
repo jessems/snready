@@ -6,10 +6,14 @@ import {
   getCertificationSlugs,
   getTotalQuestionCount,
   isCertificationReady,
+  getTopicsForCertification,
+  getExamTips,
+  hasExamTips,
 } from "@/lib/data";
 import { generateBreadcrumbJsonLd } from "@/lib/breadcrumbs";
 import { getCanonicalUrl } from "@/lib/seo";
 import examPrepData from "@/data/exam-prep.json";
+import type { UserExperience } from "@/types";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -53,6 +57,105 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
+// Helper components for Real Experiences section
+function DifficultyStars({ rating }: { rating: number }) {
+  return (
+    <div className="flex gap-0.5">
+      {[1, 2, 3, 4, 5].map((star) => (
+        <svg
+          key={star}
+          className={`h-5 w-5 ${star <= rating ? "text-amber-400" : "text-zinc-200 dark:text-zinc-700"}`}
+          fill="currentColor"
+          viewBox="0 0 20 20"
+        >
+          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+        </svg>
+      ))}
+    </div>
+  );
+}
+
+function MetricCard({
+  label,
+  value,
+  description,
+  icon
+}: {
+  label: string;
+  value: React.ReactNode;
+  description: string;
+  icon: string;
+}) {
+  return (
+    <div className="rounded-xl border border-zinc-200 bg-white p-5 dark:border-zinc-700 dark:bg-zinc-900">
+      <div className="flex items-center gap-2">
+        <span className="text-2xl">{icon}</span>
+        <span className="text-xs font-medium uppercase tracking-wide text-zinc-500 dark:text-zinc-400">
+          {label}
+        </span>
+      </div>
+      <div className="mt-2">{value}</div>
+      <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">{description}</p>
+    </div>
+  );
+}
+
+function ExperienceCard({ experience }: { experience: UserExperience }) {
+  const isPassed = experience.outcome === "passed";
+
+  return (
+    <div className="group relative rounded-2xl bg-white p-6 shadow-sm ring-1 ring-zinc-900/5 transition-all hover:shadow-md dark:bg-zinc-800/50 dark:ring-white/10">
+      {/* Large quote mark */}
+      <svg
+        className="absolute right-4 top-4 h-8 w-8 text-zinc-100 dark:text-zinc-700"
+        fill="currentColor"
+        viewBox="0 0 32 32"
+        aria-hidden="true"
+      >
+        <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
+      </svg>
+
+      {/* Quote text */}
+      <blockquote className="relative text-[15px] leading-relaxed text-zinc-700 dark:text-zinc-300">
+        {experience.text}
+      </blockquote>
+
+      {/* Footer with avatar and info */}
+      <div className="mt-5 flex items-center gap-3 border-t border-zinc-100 pt-4 dark:border-zinc-700">
+        {/* Avatar placeholder */}
+        <div className={`flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full ${
+          isPassed
+            ? "bg-gradient-to-br from-green-400 to-emerald-500"
+            : "bg-gradient-to-br from-amber-400 to-orange-500"
+        }`}>
+          <span className="text-sm font-semibold text-white">
+            {isPassed ? "✓" : "!"}
+          </span>
+        </div>
+
+        <div className="flex-1 min-w-0">
+          <div className="flex items-center gap-2">
+            <span className={`inline-flex items-center gap-1 text-sm font-medium ${
+              isPassed
+                ? "text-green-600 dark:text-green-400"
+                : "text-amber-600 dark:text-amber-400"
+            }`}>
+              {isPassed ? "Passed" : "Did not pass"}
+            </span>
+            <span className="h-1 w-1 rounded-full bg-zinc-300 dark:bg-zinc-600" />
+            <span className="text-sm text-zinc-500 dark:text-zinc-400">
+              {experience.date}
+            </span>
+          </div>
+          <p className="mt-0.5 text-xs text-zinc-400 dark:text-zinc-500">
+            via {experience.source}
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // Generate fallback prep data from certification domains
 function generateFallbackPrepData(certification: NonNullable<ReturnType<typeof getCertificationBySlug>>) {
   const baseUrl = "https://nowlearning.servicenow.com/lxp/en/credentials";
@@ -86,11 +189,22 @@ export default async function ExamPrepPage({ params }: Props) {
   }
 
   // Use existing prep data or generate fallback from certification domains
-  const prepData = slug in examPrepData 
+  const prepData = slug in examPrepData
     ? examPrepData[slug as ExamPrepCert]
     : generateFallbackPrepData(certification);
   const totalQuestions = getTotalQuestionCount(slug);
   const isReady = isCertificationReady(slug);
+
+  // Get topics for Study Plan section
+  const topics = getTopicsForCertification(slug);
+  const getDomainWeight = (topic: typeof topics[0]) => {
+    const domain = certification.domains.find(d => d.slug === topic.domain);
+    return domain?.percentage || 0;
+  };
+  const sortedTopics = [...topics].sort((a, b) => getDomainWeight(b) - getDomainWeight(a));
+
+  // Get exam tips for Real Experiences section
+  const examTips = hasExamTips(slug) ? getExamTips(slug) : null;
 
   const breadcrumbItems = [
     { name: "Home", url: "/" },
@@ -276,6 +390,87 @@ export default async function ExamPrepPage({ params }: Props) {
           )}
         </section>
 
+        {/* Study Plan - Topics ordered by weight */}
+        {sortedTopics.length > 0 && (
+          <section className="mt-10">
+            <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-100">
+              Study Plan
+            </h2>
+            <p className="mt-2 text-zinc-600 dark:text-zinc-400">
+              Focus on high-weight topics first for maximum impact. Topics are ordered by exam weight.
+            </p>
+
+            <div className="mt-6 space-y-4">
+              {sortedTopics.map((topic, index) => (
+                <div
+                  key={topic.slug}
+                  className="rounded-lg border border-zinc-200 p-6 dark:border-zinc-700"
+                >
+                  <div className="flex items-start justify-between">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-3">
+                        <span className="flex h-8 w-8 items-center justify-center rounded-full bg-emerald-100 text-sm font-semibold text-emerald-700 dark:bg-emerald-900 dark:text-emerald-300">
+                          {index + 1}
+                        </span>
+                        <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+                          {topic.name}
+                        </h3>
+                        <span className="rounded bg-emerald-100 px-2 py-1 text-sm font-medium text-emerald-700 dark:bg-emerald-900 dark:text-emerald-300">
+                          {getDomainWeight(topic)}% weight
+                        </span>
+                      </div>
+
+                      <p className="mt-2 text-zinc-600 dark:text-zinc-400">
+                        {topic.description}
+                      </p>
+
+                      {/* Key Concepts */}
+                      {topic.keyConcepts && topic.keyConcepts.length > 0 && (
+                        <div className="mt-4">
+                          <h4 className="text-sm font-medium text-zinc-900 dark:text-zinc-100">
+                            Key Concepts to Master:
+                          </h4>
+                          <div className="mt-2 flex flex-wrap gap-2">
+                            {topic.keyConcepts.slice(0, 5).map((concept: string, conceptIndex: number) => (
+                              <span
+                                key={conceptIndex}
+                                className="rounded bg-zinc-100 px-2 py-1 text-xs text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300"
+                              >
+                                {concept}
+                              </span>
+                            ))}
+                            {topic.keyConcepts.length > 5 && (
+                              <span className="text-xs text-zinc-500">
+                                +{topic.keyConcepts.length - 5} more
+                              </span>
+                            )}
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Action Links */}
+                      <div className="mt-4 flex flex-wrap gap-3">
+                        <Link
+                          href={`/${slug}/questions/${topic.slug}`}
+                          className="text-sm text-emerald-600 hover:text-emerald-700"
+                        >
+                          Practice ({topic.questionCount} questions)
+                        </Link>
+                        <Link
+                          href={`/learn/${topic.slug}`}
+                          className="text-sm text-emerald-600 hover:text-emerald-700"
+                        >
+                          Learn Concepts
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
         {/* Required Courses */}
         <section className="mt-10">
           <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-100">
@@ -443,6 +638,119 @@ export default async function ExamPrepPage({ params }: Props) {
                 </li>
               ))}
             </ul>
+          </section>
+        )}
+
+        {/* Real Experiences Section - Only shown if exam tips exist */}
+        {examTips && (
+          <section id="real-experiences" className="mt-10 scroll-mt-24">
+            <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-100">
+              Real Experiences
+            </h2>
+            <p className="mt-2 text-zinc-600 dark:text-zinc-400">
+              Insights from {examTips.userExperiences.length} real test-takers who took this exam.
+            </p>
+
+            {/* Quick Stats */}
+            <div className="mt-6 grid gap-4 sm:grid-cols-2">
+              <MetricCard
+                icon="📊"
+                label="Difficulty"
+                value={
+                  <div className="flex items-center gap-3">
+                    <span className="text-2xl font-bold text-zinc-900 dark:text-zinc-100">
+                      {examTips.difficulty.label}
+                    </span>
+                    <DifficultyStars rating={examTips.difficulty.rating} />
+                  </div>
+                }
+                description={examTips.difficulty.description}
+              />
+              <MetricCard
+                icon="⏱️"
+                label="Time Pressure"
+                value={
+                  <span className="text-2xl font-bold text-zinc-900 dark:text-zinc-100">
+                    {examTips.timePressure.label}
+                  </span>
+                }
+                description={examTips.timePressure.description}
+              />
+            </div>
+
+            {/* Key Insights */}
+            <div className="mt-8">
+              <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+                Key Insights
+              </h3>
+              <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
+                What test-takers wish they knew before the exam.
+              </p>
+              <ul className="mt-4 grid gap-3 sm:grid-cols-2">
+                {examTips.keyInsights.map((insight, index) => (
+                  <li key={index} className="flex items-start gap-2 rounded-lg bg-amber-50 p-4 dark:bg-amber-950/30">
+                    <span className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-amber-100 text-xs font-medium text-amber-700 dark:bg-amber-900 dark:text-amber-300">
+                      {index + 1}
+                    </span>
+                    <span className="text-zinc-700 dark:text-zinc-300">{insight}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Common Gotchas */}
+            <div className="mt-8">
+              <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+                Common Gotchas
+              </h3>
+              <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
+                Watch out for these tricky areas.
+              </p>
+              <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                {examTips.commonGotchas.map((gotcha, index) => (
+                  <div
+                    key={index}
+                    className="flex items-start gap-2 rounded-lg bg-red-50 p-4 dark:bg-red-950/30"
+                  >
+                    <span className="text-red-500">⚡</span>
+                    <span className="text-sm text-zinc-700 dark:text-zinc-300">{gotcha}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Pro Tips */}
+            <div className="mt-8">
+              <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+                Pro Tips from Those Who Passed
+              </h3>
+              <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                {examTips.tips.map((tip, index) => (
+                  <div
+                    key={index}
+                    className="flex items-start gap-2 rounded-lg border border-emerald-200 bg-emerald-50 p-4 dark:border-emerald-900 dark:bg-emerald-950/30"
+                  >
+                    <span className="text-emerald-600 dark:text-emerald-400">✓</span>
+                    <span className="text-sm text-zinc-700 dark:text-zinc-300">{tip}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* User Testimonials */}
+            <div className="mt-8">
+              <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+                What Test-Takers Are Saying
+              </h3>
+              <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
+                Honest feedback from people who took the exam.
+              </p>
+              <div className="mt-4 grid gap-6 sm:grid-cols-2">
+                {examTips.userExperiences.map((experience, index) => (
+                  <ExperienceCard key={index} experience={experience} />
+                ))}
+              </div>
+            </div>
           </section>
         )}
 

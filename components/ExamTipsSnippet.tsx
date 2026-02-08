@@ -71,7 +71,7 @@ export function ExamTipsSnippet({ tips, certSlug, certName }: ExamTipsSnippetPro
           💡 Real Exam Insights
         </h2>
         <Link
-          href={`/certifications/${certSlug}/exam-tips`}
+          href={`/certifications/${certSlug}/prepare#real-experiences`}
           className="text-sm font-medium text-emerald-600 hover:text-emerald-700 dark:text-emerald-400"
         >
           See all tips →
@@ -140,7 +140,7 @@ export function ExamTipsSnippet({ tips, certSlug, certName }: ExamTipsSnippetPro
       )}
       
       <Link
-        href={`/certifications/${certSlug}/exam-tips`}
+        href={`/certifications/${certSlug}/prepare#real-experiences`}
         className="mt-4 inline-flex items-center gap-2 rounded-lg border border-zinc-200 bg-zinc-50 px-4 py-2 text-sm font-medium text-zinc-700 transition-colors hover:bg-zinc-100 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-300"
       >
         View all exam tips & experiences

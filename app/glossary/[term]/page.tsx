@@ -173,10 +173,10 @@ export default async function GlossaryTermPage({ params }: Props) {
                 </div>
                 <div className="mt-3 flex gap-4">
                   <Link
-                    href={`/study-guide/${cert.certSlug}`}
+                    href={`/certifications/${cert.certSlug}/prepare`}
                     className="text-sm text-emerald-600 hover:text-emerald-700"
                   >
-                    Study Guide
+                    Exam Prep
                   </Link>
                   <Link
                     href={`/practice-questions/${cert.certSlug}`}

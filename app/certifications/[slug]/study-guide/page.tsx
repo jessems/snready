@@ -13,5 +13,5 @@ export async function generateStaticParams() {
 
 export default async function CertificationStudyGuideRedirect({ params }: Props) {
   const { slug } = await params;
-  redirect(`/study-guide/${slug}`);
+  redirect(`/certifications/${slug}/prepare`);
 }
