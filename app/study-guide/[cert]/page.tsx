@@ -296,7 +296,7 @@ export default async function StudyGuidePage({ params }: Props) {
                 href={`/practice-tests/${cert}`}
                 className="inline-flex items-center justify-center rounded-lg bg-emerald-600 px-8 py-3 font-semibold text-white transition-colors hover:bg-emerald-700"
               >
-                Take Practice Test
+                Practice Questions
               </Link>
               <Link
                 href={`/certifications/${cert}`}
