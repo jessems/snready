@@ -14,7 +14,9 @@ import {
   isDeltaWindowOpen,
   getFreeQuestionsForCertification,
   getFreeQuestionCountForTopic,
+  getExamTips,
 } from "@/lib/data";
+import { ExamTipsSnippet } from "@/components/ExamTipsSnippet";
 import { breadcrumbs, generateBreadcrumbJsonLd } from "@/lib/breadcrumbs";
 
 interface PageProps {
@@ -75,6 +77,9 @@ export default async function CertificationPage({ params }: PageProps) {
   const daysLeft = getDaysUntilDeltaDeadline(cert);
   const isWindowOpen = isDeltaWindowOpen(cert);
   const deltaUrgency = daysLeft !== null && daysLeft <= 14 ? "urgent" : daysLeft !== null && daysLeft <= 30 ? "warning" : "normal";
+
+  // Exam tips
+  const examTips = getExamTips(slug);
 
   // JSON-LD structured data - Course schema
   const courseJsonLd = {
@@ -390,6 +395,15 @@ export default async function CertificationPage({ params }: PageProps) {
             </div>
           </div>
         </section>
+
+        {/* Exam Tips Snippet */}
+        {examTips && (
+          <section className="py-8">
+            <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+              <ExamTipsSnippet tips={examTips} certSlug={slug} certName={cert.name} />
+            </div>
+          </section>
+        )}
 
         {/* Topics with Questions */}
         <section className="bg-zinc-50 py-16 dark:bg-zinc-900">

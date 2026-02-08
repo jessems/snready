@@ -110,11 +110,11 @@ export interface QuestionOption {
 export interface WrongAnswerExplanation {
   choiceId: string;
   explanation: string;
-  reference?: string;  // optional source reference
+  reference: string;  // Required: official docs URL (docs.servicenow.com, developer.servicenow.com, or nowlearning.servicenow.com)
 }
 
 export interface QuestionExplanation {
-  correct: string;
+  correct: string;  // Must include official docs URL (e.g., "...See https://docs.servicenow.com/...")
   wrongAnswers: WrongAnswerExplanation[];
 }
 
@@ -202,4 +202,62 @@ export interface PageMetadata {
   keywords: string[];
   canonical?: string;
   ogImage?: string;
+}
+
+// Exam Tips types
+export type TimePressureLevel = "Low" | "Moderate" | "High" | "Very High";
+export type ResourcePriority = "essential" | "recommended" | "optional";
+export type ExamOutcome = "passed" | "failed";
+
+export interface DifficultyRating {
+  rating: number;          // 1-5 scale
+  label: string;           // "Easy" | "Moderate" | "Hard" | "Very Hard"
+  description: string;
+}
+
+export interface TimePressureRating {
+  rating: number;          // 1-5 scale
+  label: TimePressureLevel;
+  description: string;
+}
+
+export interface RecommendedResource {
+  name: string;
+  type: "course" | "practice" | "hands-on" | "documentation";
+  priority: ResourcePriority;
+  url?: string;
+  note?: string;
+}
+
+export interface UserExperience {
+  text: string;
+  source: string;          // "Reddit" | "ServiceNow Community" | etc.
+  outcome: ExamOutcome;
+  date: string;            // "YYYY-MM" format
+}
+
+export interface ExamPlatformInfo {
+  provider: string;
+  note?: string;
+  recommendation?: string;
+  onlineIssues?: string[];
+}
+
+export interface PrerequisiteInfo {
+  note?: string;
+  deadline?: string;       // ISO date if there's a deadline
+}
+
+export interface ExamTips {
+  certSlug: string;
+  lastUpdated: string;     // ISO date
+  difficulty: DifficultyRating;
+  timePressure: TimePressureRating;
+  keyInsights: string[];
+  commonGotchas: string[];
+  recommendedResources: RecommendedResource[];
+  examPlatform?: ExamPlatformInfo;
+  userExperiences: UserExperience[];
+  prerequisites?: PrerequisiteInfo;
+  tips: string[];
 }
