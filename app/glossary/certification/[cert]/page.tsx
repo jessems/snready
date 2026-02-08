@@ -195,12 +195,12 @@ export default async function CertificationGlossaryPage({ params }: Props) {
             </p>
           </Link>
           <Link
-            href={`/practice-tests/${cert}`}
+            href={`/free-questions/${cert}`}
             className="rounded-lg border border-zinc-200 p-4 transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:hover:bg-zinc-800"
           >
-            <h3 className="font-semibold text-zinc-900 dark:text-zinc-100">Practice Test</h3>
+            <h3 className="font-semibold text-zinc-900 dark:text-zinc-100">Practice Questions</h3>
             <p className="text-sm text-zinc-600 dark:text-zinc-400">
-              Full {certification.name} practice test
+              {certification.name} practice questions
             </p>
           </Link>
         </div>

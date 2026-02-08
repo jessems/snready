@@ -244,12 +244,12 @@ export default async function FreeQuestionsPage({ params }: Props) {
         {/* Related Links */}
         <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
           <Link
-            href={`/practice-tests/${cert}`}
+            href={`/certifications/${cert}`}
             className="rounded-lg border border-zinc-200 p-4 transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:hover:bg-zinc-800"
           >
-            <h4 className="font-semibold text-zinc-900 dark:text-zinc-100">Practice Test</h4>
+            <h4 className="font-semibold text-zinc-900 dark:text-zinc-100">All Questions</h4>
             <p className="text-sm text-zinc-600 dark:text-zinc-400">
-              Full {certification.name} practice test
+              View all {certification.name} topics
             </p>
           </Link>
           <Link
