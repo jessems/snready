@@ -1,49 +1,47 @@
-# Certification short URLs
-/csa /certifications/csa 301
-/cad /certifications/cad 301
-/cis-df /certifications/cis-df 301
-/cis-itsm /certifications/cis-itsm 301
-/cis-discovery /certifications/cis-discovery 301
+# URL Re-architecture redirects (old -> new)
+/certifications/:slug /:slug 301
+/certifications/:slug/prepare /:slug/prepare 301
+/practice-questions/:cert /:cert/practice-questions 301
+/:cert/questions/:topic /:cert/practice-questions/:topic 301
+/:cert/questions/:topic/:id /:cert/practice-questions/:topic/:id 301
 
-# Quiz/practice shortcuts
-/csa/quiz /practice-questions/csa 301
-/cad/quiz /practice-questions/cad 301
-/cis-df/quiz /practice-questions/cis-df 301
-/cis-itsm/quiz /practice-questions/cis-itsm 301
-/cis-discovery/quiz /practice-questions/cis-discovery 301
+# Quiz/practice shortcuts - now point to new structure
+/csa/quiz /csa/practice-questions 301
+/cad/quiz /cad/practice-questions 301
+/cis-df/quiz /cis-df/practice-questions 301
+/cis-itsm/quiz /cis-itsm/practice-questions 301
+/cis-discovery/quiz /cis-discovery/practice-questions 301
 
-# Legacy practice test URLs
-/quiz/csa /practice-questions/csa 301
-/quiz/cad /practice-questions/cad 301
-/quiz/cis-df /practice-questions/cis-df 301
-/quiz/cis-itsm /practice-questions/cis-itsm 301
-/quiz/cis-discovery /practice-questions/cis-discovery 301
+# Legacy practice test URLs - now point to new structure
+/quiz/csa /csa/practice-questions 301
+/quiz/cad /cad/practice-questions 301
+/quiz/cis-df /cis-df/practice-questions 301
+/quiz/cis-itsm /cis-itsm/practice-questions 301
+/quiz/cis-discovery /cis-discovery/practice-questions 301
 
-# Redirect old practice-tests URLs to practice-questions
+# Redirect old practice-tests URLs to new practice-questions structure
 /practice-tests /practice-questions 301
-/practice-tests/:cert /practice-questions/:cert 301
+/practice-tests/:cert /:cert/practice-questions 301
 
-# Glossary shortcuts
-/csa/glossary /certifications/csa/glossary 301
-/cad/glossary /certifications/cad/glossary 301
-/cis-df/glossary /certifications/cis-df/glossary 301
-/cis-itsm/glossary /certifications/cis-itsm/glossary 301
+# Glossary shortcuts - now point to new structure
+/csa/glossary /glossary/csa 301
+/cad/glossary /glossary/cad 301
+/cis-df/glossary /glossary/cis-df 301
+/cis-itsm/glossary /glossary/cis-itsm 301
 
-# Study guide shortcuts - now redirect to prepare pages
-/csa/study-guide /certifications/csa/prepare 301
-/cad/study-guide /certifications/cad/prepare 301
-/cis-df/study-guide /certifications/cis-df/prepare 301
-/cis-itsm/study-guide /certifications/cis-itsm/prepare 301
+# Legacy study-guide URLs - now point to new structure
+/study-guide/:cert /:cert/prepare 301
+/csa/study-guide /csa/prepare 301
+/cad/study-guide /cad/prepare 301
+/cis-df/study-guide /cis-df/prepare 301
+/cis-itsm/study-guide /cis-itsm/prepare 301
 
-# Legacy study-guide URLs redirect to prepare pages
-/study-guide/:cert /certifications/:cert/prepare 301
+# Exam tips redirect to prepare pages (new structure)
+/certifications/:slug/exam-tips /:slug/prepare 301
 
-# Exam tips redirect to prepare pages
-/certifications/:slug/exam-tips /certifications/:slug/prepare 301
-
-# Free questions shortcuts (redirect to practice questions)
-/csa/free /practice-questions/csa 301
-/cad/free /practice-questions/cad 301
-/cis-df/free /practice-questions/cis-df 301
-/cis-itsm/free /practice-questions/cis-itsm 301
-/free-questions/* /practice-questions/:splat 301
+# Free questions shortcuts - now point to new structure
+/csa/free /csa/practice-questions 301
+/cad/free /cad/practice-questions 301
+/cis-df/free /cis-df/practice-questions 301
+/cis-itsm/free /cis-itsm/practice-questions 301
+/free-questions/:cert /:cert/practice-questions 301

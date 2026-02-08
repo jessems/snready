@@ -71,7 +71,7 @@ export function ExamTipsSnippet({ tips, certSlug, certName }: ExamTipsSnippetPro
           💡 Real Exam Insights
         </h2>
         <Link
-          href={`/certifications/${certSlug}/prepare#real-experiences`}
+          href={`/${certSlug}/prepare#real-experiences`}
           className="text-sm font-medium text-emerald-600 hover:text-emerald-700 dark:text-emerald-400"
         >
           See all tips →

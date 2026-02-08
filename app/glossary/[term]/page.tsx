@@ -173,13 +173,13 @@ export default async function GlossaryTermPage({ params }: Props) {
                 </div>
                 <div className="mt-3 flex gap-4">
                   <Link
-                    href={`/certifications/${cert.certSlug}/prepare`}
+                    href={`/${cert.certSlug}/prepare`}
                     className="text-sm text-emerald-600 hover:text-emerald-700"
                   >
                     Exam Prep
                   </Link>
                   <Link
-                    href={`/practice-questions/${cert.certSlug}`}
+                    href={`/${cert.certSlug}/practice-questions`}
                     className="text-sm text-emerald-600 hover:text-emerald-700"
                   >
                     Practice Questions
@@ -204,7 +204,7 @@ export default async function GlossaryTermPage({ params }: Props) {
               cert.topics.slice(0, 2).map((topic) => (
                 <Link
                   key={`${cert.certSlug}-${topic.topicSlug}`}
-                  href={`/${cert.certSlug}/questions/${topic.topicSlug}`}
+                  href={`/${cert.certSlug}/practice-questions/${topic.topicSlug}`}
                   className="rounded-lg border border-zinc-200 bg-white p-4 transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900 dark:hover:bg-zinc-800"
                 >
                   <h3 className="font-semibold text-zinc-900 dark:text-zinc-100">

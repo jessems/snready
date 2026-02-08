@@ -74,7 +74,7 @@ export default function Header() {
                           {sortedCertifications.map((cert) => (
                             <Link
                               key={cert.slug}
-                              href={`/certifications/${cert.slug}`}
+                              href={`/${cert.slug}`}
                               onClick={() => setShowPracticeDropdown(false)}
                               className="flex items-center gap-3 px-2 py-2.5 rounded-lg hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-colors group"
                             >
@@ -185,7 +185,7 @@ export default function Header() {
                 {sortedCertifications.map((cert) => (
                   <Link
                     key={cert.slug}
-                    href={`/certifications/${cert.slug}`}
+                    href={`/${cert.slug}`}
                     onClick={() => setShowMobileMenu(false)}
                     className="flex items-center gap-3 py-2"
                   >
@@ -222,7 +222,7 @@ export default function Header() {
         onClose={() => setShowLoginModal(false)}
         onPurchase={() => {
           setShowLoginModal(false);
-          window.location.href = "/certifications/csa";
+          window.location.href = "/csa";
         }}
       />
     </>

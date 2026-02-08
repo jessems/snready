@@ -177,7 +177,7 @@ export default async function CertificationGlossaryPage({ params }: Props) {
         {/* Related Links */}
         <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-3">
           <Link
-            href={`/certifications/${cert}/prepare`}
+            href={`/${cert}/prepare`}
             className="rounded-lg border border-zinc-200 p-4 transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:hover:bg-zinc-800"
           >
             <h3 className="font-semibold text-zinc-900 dark:text-zinc-100">Exam Prep</h3>
@@ -186,7 +186,7 @@ export default async function CertificationGlossaryPage({ params }: Props) {
             </p>
           </Link>
           <Link
-            href={`/practice-questions/${cert}`}
+            href={`/${cert}/practice-questions`}
             className="rounded-lg border border-zinc-200 p-4 transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:hover:bg-zinc-800"
           >
             <h3 className="font-semibold text-zinc-900 dark:text-zinc-100">Practice Questions</h3>

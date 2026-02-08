@@ -133,13 +133,13 @@ export default function GlossaryIndexPage() {
           
           <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:justify-center">
             <Link
-              href="/practice-questions/csa"
+              href="/csa/practice-questions"
               className="inline-flex items-center justify-center rounded-lg bg-emerald-600 px-8 py-3 font-semibold text-white transition-colors hover:bg-emerald-700"
             >
               CSA Practice Questions
             </Link>
             <Link
-              href="/certifications/csa/prepare"
+              href="/csa/prepare"
               className="inline-flex items-center justify-center rounded-lg border border-emerald-600 px-8 py-3 font-semibold text-emerald-600 transition-colors hover:bg-emerald-50 dark:hover:bg-emerald-950"
             >
               Exam Prep
@@ -163,7 +163,7 @@ export default function GlossaryIndexPage() {
               </p>
             </Link>
             <Link
-              href="/practice-questions/csa"
+              href="/csa/practice-questions"
               className="rounded-lg border border-zinc-200 p-4 transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:hover:bg-zinc-800"
             >
               <h3 className="font-semibold text-zinc-900 dark:text-zinc-100">Practice Questions</h3>

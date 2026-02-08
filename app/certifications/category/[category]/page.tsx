@@ -147,7 +147,7 @@ export default async function CategoryPage({ params }: PageProps) {
               </div>
               <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
                 <Link
-                  href={`/certifications/${certs[0].slug}`}
+                  href={`/${certs[0].slug}`}
                   className="inline-flex h-12 items-center justify-center rounded-lg bg-emerald-600 px-6 text-base font-medium text-white transition-colors hover:bg-emerald-700"
                 >
                   Start with {certs[0].name}
@@ -207,7 +207,7 @@ export default async function CategoryPage({ params }: PageProps) {
               {certs.map((cert) => (
                 <Link
                   key={cert.slug}
-                  href={`/certifications/${cert.slug}`}
+                  href={`/${cert.slug}`}
                   className="group rounded-xl border border-zinc-200 bg-white p-6 transition-all hover:border-emerald-300 hover:shadow-lg dark:border-zinc-800 dark:bg-zinc-900"
                 >
                   <div className="flex items-center justify-between">

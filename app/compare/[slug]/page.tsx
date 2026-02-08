@@ -198,7 +198,7 @@ export default async function ComparisonPage({ params }: PageProps) {
                   <span>{getCategoryDisplayName(cert1.category)}</span>
                 </div>
                 <Link
-                  href={`/certifications/${cert1.slug}`}
+                  href={`/${cert1.slug}`}
                   className="mt-4 inline-flex text-sm font-medium text-emerald-600 hover:text-emerald-700"
                 >
                   View {cert1.name} details →
@@ -231,7 +231,7 @@ export default async function ComparisonPage({ params }: PageProps) {
                   <span>{getCategoryDisplayName(cert2.category)}</span>
                 </div>
                 <Link
-                  href={`/certifications/${cert2.slug}`}
+                  href={`/${cert2.slug}`}
                   className="mt-4 inline-flex text-sm font-medium text-blue-600 hover:text-blue-700"
                 >
                   View {cert2.name} details →

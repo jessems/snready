@@ -16,25 +16,30 @@ import QuestionCard from "@/components/QuestionCard";
 
 interface PageProps {
   params: Promise<{
-    certification: string;
+    slug: string;
     topic: string;
     questionId: string;
   }>;
 }
 
 export async function generateStaticParams() {
-  return getAllQuestionIds();
+  const questionIds = await getAllQuestionIds();
+  return questionIds.map((item) => ({
+    slug: item.certification,
+    topic: item.topic,
+    questionId: item.questionId,
+  }));
 }
 
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
-  const { certification, topic: topicSlug, questionId } = await params;
-  const cert = getCertificationBySlug(certification);
-  const topic = getTopicBySlug(certification, topicSlug);
-  const question = await getQuestionById(certification, topicSlug, questionId);
+  const { slug, topic: topicSlug, questionId } = await params;
+  const cert = getCertificationBySlug(slug);
+  const topic = getTopicBySlug(slug, topicSlug);
+  const question = await getQuestionById(slug, topicSlug, questionId);
   const questionNumber = await getQuestionIndex(
-    certification,
+    slug,
     topicSlug,
     questionId
   );
@@ -53,7 +58,7 @@ export async function generateMetadata({
       `${question.cognitiveLevel} ${cert.name} question`,
     ],
     alternates: {
-      canonical: `/${certification}/questions/${topicSlug}/${questionId}`,
+      canonical: `/${slug}/practice-questions/${topicSlug}/${questionId}`,
     },
     openGraph: {
       title: `${cert.name} Practice Question #${questionNumber} | SNReady`,
@@ -63,21 +68,21 @@ export async function generateMetadata({
 }
 
 export default async function QuestionPage({ params }: PageProps) {
-  const { certification, topic: topicSlug, questionId } = await params;
-  const cert = getCertificationBySlug(certification);
-  const topic = getTopicBySlug(certification, topicSlug);
-  const question = await getQuestionById(certification, topicSlug, questionId);
+  const { slug, topic: topicSlug, questionId } = await params;
+  const cert = getCertificationBySlug(slug);
+  const topic = getTopicBySlug(slug, topicSlug);
+  const question = await getQuestionById(slug, topicSlug, questionId);
   const questionNumber = await getQuestionIndex(
-    certification,
+    slug,
     topicSlug,
     questionId
   );
   const { prev, next } = await getAdjacentQuestions(
-    certification,
+    slug,
     topicSlug,
     questionId
   );
-  const allQuestions = await getQuestionsForTopic(certification, topicSlug);
+  const allQuestions = await getQuestionsForTopic(slug, topicSlug);
 
   if (!cert || !topic || !question) {
     notFound();
@@ -92,7 +97,7 @@ export default async function QuestionPage({ params }: PageProps) {
   const breadcrumbJsonLd = generateBreadcrumbJsonLd(
     breadcrumbs.question(
       cert.name,
-      certification,
+      slug,
       topic.name,
       topicSlug,
       questionNumber,
@@ -153,14 +158,14 @@ export default async function QuestionPage({ params }: PageProps) {
               </Link>
               <span>/</span>
               <Link
-                href={`/certifications/${certification}`}
+                href={`/${slug}`}
                 className="hover:text-zinc-700 dark:hover:text-zinc-300"
               >
                 {cert.name}
               </Link>
               <span>/</span>
               <Link
-                href={`/${certification}/questions/${topicSlug}`}
+                href={`/${slug}/practice-questions/${topicSlug}`}
                 className="hover:text-zinc-700 dark:hover:text-zinc-300"
               >
                 {topic.name}
@@ -178,14 +183,14 @@ export default async function QuestionPage({ params }: PageProps) {
           <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
             <div className="flex items-center gap-2">
               <Link
-                href={`/certifications/${certification}`}
+                href={`/${slug}`}
                 className="text-sm font-medium text-emerald-600 hover:text-emerald-700"
               >
                 {cert.name} Certification
               </Link>
               <span className="text-zinc-400">/</span>
               <Link
-                href={`/${certification}/questions/${topicSlug}`}
+                href={`/${slug}/practice-questions/${topicSlug}`}
                 className="text-sm font-medium text-emerald-600 hover:text-emerald-700"
               >
                 {topic.name}
@@ -226,7 +231,7 @@ export default async function QuestionPage({ params }: PageProps) {
               <div className="flex items-center justify-between rounded-xl border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-900">
                 {prev ? (
                   <Link
-                    href={`/${certification}/questions/${topicSlug}/${prev.id}`}
+                    href={`/${slug}/practice-questions/${topicSlug}/${prev.id}`}
                     className="flex items-center gap-2 text-sm font-medium text-zinc-600 hover:text-emerald-600 dark:text-zinc-400"
                   >
                     <span>←</span>
@@ -237,7 +242,7 @@ export default async function QuestionPage({ params }: PageProps) {
                 )}
 
                 <Link
-                  href={`/${certification}/questions/${topicSlug}`}
+                  href={`/${slug}/practice-questions/${topicSlug}`}
                   className="text-sm font-medium text-emerald-600 hover:text-emerald-700"
                 >
                   All {topic.name} Questions
@@ -245,7 +250,7 @@ export default async function QuestionPage({ params }: PageProps) {
 
                 {next ? (
                   <Link
-                    href={`/${certification}/questions/${topicSlug}/${next.id}`}
+                    href={`/${slug}/practice-questions/${topicSlug}/${next.id}`}
                     className="flex items-center gap-2 text-sm font-medium text-zinc-600 hover:text-emerald-600 dark:text-zinc-400"
                   >
                     <span>Next Question</span>
@@ -279,14 +284,14 @@ export default async function QuestionPage({ params }: PageProps) {
                     More {topic.name} Questions
                   </h3>
                   <ul className="mt-4 space-y-3">
-                    {relatedQuestions.map((q, index) => {
+                    {relatedQuestions.map((q) => {
                       const qIndex = allQuestions.findIndex(
                         (aq) => aq.id === q.id
                       );
                       return (
                         <li key={q.id}>
                           <Link
-                            href={`/${certification}/questions/${topicSlug}/${q.id}`}
+                            href={`/${slug}/practice-questions/${topicSlug}/${q.id}`}
                             className="flex items-start gap-2 text-sm text-zinc-600 hover:text-emerald-600 dark:text-zinc-400"
                           >
                             <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded bg-zinc-100 text-xs font-medium text-zinc-600 dark:bg-zinc-800 dark:text-zinc-400">
@@ -301,7 +306,7 @@ export default async function QuestionPage({ params }: PageProps) {
                     })}
                   </ul>
                   <Link
-                    href={`/${certification}/questions/${topicSlug}`}
+                    href={`/${slug}/practice-questions/${topicSlug}`}
                     className="mt-4 inline-flex text-sm text-emerald-600 hover:text-emerald-700"
                   >
                     View all questions →
@@ -316,7 +321,7 @@ export default async function QuestionPage({ params }: PageProps) {
                   Take a full {cert.name} practice test to check your readiness.
                 </p>
                 <Link
-                  href={`/practice-questions/${certification}`}
+                  href={`/${slug}/practice-questions`}
                   className="mt-4 block w-full rounded-lg bg-white py-2 text-center text-sm font-medium text-emerald-600 transition-colors hover:bg-emerald-50"
                 >
                   Start Practice Questions

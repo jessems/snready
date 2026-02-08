@@ -37,10 +37,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // Certification hub pages
   const certPages: MetadataRoute.Sitemap = certSlugs.map((slug) => ({
-    url: `${BASE_URL}/certifications/${slug}`,
+    url: `${BASE_URL}/${slug}`,
     lastModified: new Date(),
     changeFrequency: "weekly" as const,
     priority: 0.9,
+  }));
+
+  // Prepare pages for each certification
+  const preparePages: MetadataRoute.Sitemap = certSlugs.map((slug) => ({
+    url: `${BASE_URL}/${slug}/prepare`,
+    lastModified: new Date(),
+    changeFrequency: "weekly" as const,
+    priority: 0.8,
   }));
 
   // Category landing pages (NEW)
@@ -63,7 +71,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // Practice question pages
   const practiceTestPages: MetadataRoute.Sitemap = certSlugs.map((slug) => ({
-    url: `${BASE_URL}/practice-questions/${slug}`,
+    url: `${BASE_URL}/${slug}/practice-questions`,
     lastModified: new Date(),
     changeFrequency: "weekly" as const,
     priority: 0.8,
@@ -72,7 +80,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Topic question pages
   const topicPages: MetadataRoute.Sitemap = topicSlugs.map(
     ({ certification, topic }) => ({
-      url: `${BASE_URL}/${certification}/questions/${topic}`,
+      url: `${BASE_URL}/${certification}/practice-questions/${topic}`,
       lastModified: new Date(),
       changeFrequency: "weekly" as const,
       priority: 0.8,
@@ -82,7 +90,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Individual question pages (NEW)
   const individualQuestionPages: MetadataRoute.Sitemap = questionIds.map(
     ({ certification, topic, questionId }) => ({
-      url: `${BASE_URL}/${certification}/questions/${topic}/${questionId}`,
+      url: `${BASE_URL}/${certification}/practice-questions/${topic}/${questionId}`,
       lastModified: new Date(),
       changeFrequency: "monthly" as const,
       priority: 0.5,
@@ -140,6 +148,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   return [
     ...staticPages,
     ...certPages,
+    ...preparePages,
     ...categoryPages,
     ...comparisonPages,
     ...deltaPages,

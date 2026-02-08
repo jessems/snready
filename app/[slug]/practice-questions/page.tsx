@@ -19,20 +19,20 @@ import { QuestionsWithPaywall } from "@/components/QuestionsWithPaywall";
 
 interface Props {
   params: Promise<{
-    cert: string;
+    slug: string;
   }>;
 }
 
 export async function generateStaticParams() {
   return getCertificationSlugs().map((slug) => ({
-    cert: slug,
+    slug,
   }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { cert } = await params;
+  const { slug } = await params;
 
-  const certification = getCertificationBySlug(cert);
+  const certification = getCertificationBySlug(slug);
 
   if (!certification) {
     return {
@@ -41,18 +41,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   const title = `${certification.name} Practice Questions - Free ${certification.name} Exam Prep | SNReady`;
-  const description = `Practice ${getTotalQuestionCount(cert)}+ ${certification.name} exam questions. ${FREE_QUESTIONS_PER_CERT} free questions with detailed explanations to help you pass your ServiceNow ${certification.fullName} certification.`;
+  const description = `Practice ${getTotalQuestionCount(slug)}+ ${certification.name} exam questions. ${FREE_QUESTIONS_PER_CERT} free questions with detailed explanations to help you pass your ServiceNow ${certification.fullName} certification.`;
 
   return {
     title,
     description,
     alternates: {
-      canonical: getCanonicalUrl(`/practice-questions/${cert}`),
+      canonical: getCanonicalUrl(`/${slug}/practice-questions`),
     },
     openGraph: {
       title,
       description,
-      url: getCanonicalUrl(`/practice-questions/${cert}`),
+      url: getCanonicalUrl(`/${slug}/practice-questions`),
       images: ['/og-default.png'],
     },
     twitter: {
@@ -64,22 +64,22 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function PracticeTestPage({ params }: Props) {
-  const { cert } = await params;
+  const { slug } = await params;
 
-  const certification = getCertificationBySlug(cert);
-  const topics = getTopicsForCertification(cert);
-  const domains = getDomainsForCertification(cert);
-  const totalQuestions = getTotalQuestionCount(cert);
-  const freeQuestionCount = getTotalFreeQuestionCount(cert);
-  const isReady = isCertificationReady(cert);
+  const certification = getCertificationBySlug(slug);
+  const topics = getTopicsForCertification(slug);
+  const domains = getDomainsForCertification(slug);
+  const totalQuestions = getTotalQuestionCount(slug);
+  const freeQuestionCount = getTotalFreeQuestionCount(slug);
+  const isReady = isCertificationReady(slug);
 
   if (!certification) {
     notFound();
   }
 
   // Load questions if certification is ready
-  const allQuestions = isReady ? await getAllQuestionsForCertification(cert) : [];
-  const freeQuestions = isReady ? await getFreeQuestionsForCertification(cert) : [];
+  const allQuestions = isReady ? await getAllQuestionsForCertification(slug) : [];
+  const freeQuestions = isReady ? await getFreeQuestionsForCertification(slug) : [];
 
   // Get premium questions (all questions minus the free ones, by ID)
   const freeQuestionIds = new Set(freeQuestions.map(q => q.id));
@@ -88,7 +88,7 @@ export default async function PracticeTestPage({ params }: Props) {
   const breadcrumbItems = [
     { name: "Home", url: "/" },
     { name: "Practice Questions", url: "/practice-questions" },
-    { name: certification.name, url: `/practice-questions/${cert}` },
+    { name: certification.name, url: `/${slug}/practice-questions` },
   ];
 
   const courseSchema = {
@@ -247,7 +247,7 @@ export default async function PracticeTestPage({ params }: Props) {
                 freeQuestions={freeQuestions}
                 premiumQuestions={premiumQuestions}
                 certification={certification.name}
-                certSlug={cert}
+                certSlug={slug}
               />
             </div>
 
@@ -263,7 +263,7 @@ export default async function PracticeTestPage({ params }: Props) {
                 {topics.map((topic) => (
                   <Link
                     key={topic.slug}
-                    href={`/${cert}/questions/${topic.slug}`}
+                    href={`/${slug}/practice-questions/${topic.slug}`}
                     className="flex items-center justify-between rounded-lg border border-zinc-200 p-3 transition-colors hover:border-emerald-300 hover:bg-emerald-50 dark:border-zinc-700 dark:hover:border-emerald-700 dark:hover:bg-emerald-950"
                   >
                     <span className="font-medium text-zinc-900 dark:text-zinc-100">
@@ -318,13 +318,13 @@ export default async function PracticeTestPage({ params }: Props) {
 
                 <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:justify-center">
                   <Link
-                    href={`/certifications/${cert}`}
+                    href={`/${slug}`}
                     className="inline-flex items-center justify-center rounded-lg bg-emerald-600 px-8 py-3 font-semibold text-white transition-colors hover:bg-emerald-700"
                   >
                     Certification Details
                   </Link>
                   <Link
-                    href={`/certifications/${cert}/prepare`}
+                    href={`/${slug}/prepare`}
                     className="inline-flex items-center justify-center rounded-lg border border-emerald-600 px-8 py-3 font-semibold text-emerald-600 transition-colors hover:bg-emerald-50 dark:hover:bg-emerald-950"
                   >
                     View Exam Prep
@@ -350,7 +350,7 @@ export default async function PracticeTestPage({ params }: Props) {
 
                 <div className="mt-6">
                   <Link
-                    href="/practice-questions/csa"
+                    href="/csa/practice-questions"
                     className="inline-flex items-center justify-center rounded-lg bg-emerald-600 px-8 py-3 font-semibold text-white transition-colors hover:bg-emerald-700"
                   >
                     Try CSA Practice Questions
@@ -366,7 +366,7 @@ export default async function PracticeTestPage({ params }: Props) {
               </h2>
               <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
                 <Link
-                  href="/practice-questions/csa"
+                  href="/csa/practice-questions"
                   className="rounded-lg border border-zinc-200 p-6 transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:hover:bg-zinc-800"
                 >
                   <h3 className="font-semibold text-zinc-900 dark:text-zinc-100">
@@ -380,7 +380,7 @@ export default async function PracticeTestPage({ params }: Props) {
                   </span>
                 </Link>
                 <Link
-                  href="/practice-questions/cis-df"
+                  href="/cis-df/practice-questions"
                   className="rounded-lg border border-zinc-200 p-6 transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:hover:bg-zinc-800"
                 >
                   <h3 className="font-semibold text-zinc-900 dark:text-zinc-100">

@@ -85,7 +85,7 @@ export default function PracticeTestsIndexPage() {
               return (
                 <Link
                   key={cert.slug}
-                  href={`/practice-questions/${cert.slug}`}
+                  href={`/${cert.slug}/practice-questions`}
                   className="group rounded-xl border border-zinc-200 bg-white p-6 transition-all hover:border-emerald-300 hover:shadow-lg dark:border-zinc-700 dark:bg-zinc-800 dark:hover:border-emerald-600"
                 >
                   <div className="flex items-start justify-between">

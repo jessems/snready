@@ -102,7 +102,7 @@ export default async function DeltaExamPage({ params }: PageProps) {
   const breadcrumbJsonLd = generateBreadcrumbJsonLd([
     { name: "Home", url: "/" },
     { name: "Certifications", url: "/#certifications" },
-    { name: cert.name, url: `/certifications/${cert.slug}` },
+    { name: cert.name, url: `/${cert.slug}` },
     { name: `${deltaInfo.currentRelease} Delta`, url: `/delta/${slug}` },
   ]);
 
@@ -257,7 +257,7 @@ export default async function DeltaExamPage({ params }: PageProps) {
                   </a>
                 )}
                 <Link
-                  href={`/certifications/${cert.slug}`}
+                  href={`/${cert.slug}`}
                   className="inline-flex h-12 items-center justify-center rounded-lg border border-zinc-300 bg-white px-6 text-base font-medium text-zinc-900 transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-100"
                 >
                   Full {cert.name} Prep
@@ -509,7 +509,7 @@ export default async function DeltaExamPage({ params }: PageProps) {
                 {topics.slice(0, 6).map((topic) => (
                   <Link
                     key={topic.slug}
-                    href={`/${cert.slug}/questions/${topic.slug}`}
+                    href={`/${cert.slug}/practice-questions/${topic.slug}`}
                     className="group rounded-lg border border-zinc-200 bg-white p-5 transition-all hover:border-emerald-300 hover:shadow dark:border-zinc-800 dark:bg-zinc-800"
                   >
                     <h3 className="font-semibold text-zinc-900 group-hover:text-emerald-600 dark:text-zinc-100">
@@ -536,7 +536,7 @@ export default async function DeltaExamPage({ params }: PageProps) {
                   In the meantime, try our CSA practice questions:
                 </p>
                 <Link
-                  href="/certifications/csa"
+                  href="/csa"
                   className="mt-4 inline-flex items-center gap-2 rounded-lg border-2 border-emerald-200 bg-emerald-50 px-5 py-2.5 text-sm font-medium text-emerald-700 transition-colors hover:border-emerald-300 hover:bg-emerald-100 dark:border-emerald-800 dark:bg-emerald-950/50 dark:text-emerald-300"
                 >
                   Try CSA Practice
@@ -559,7 +559,7 @@ export default async function DeltaExamPage({ params }: PageProps) {
             {isReady && (
               <div className="mt-6 text-center">
                 <Link
-                  href={`/certifications/${cert.slug}`}
+                  href={`/${cert.slug}`}
                   className="inline-flex items-center gap-2 text-sm font-medium text-emerald-600 hover:text-emerald-700"
                 >
                   View all {cert.name} topics

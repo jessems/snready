@@ -41,12 +41,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title,
     description,
     alternates: {
-      canonical: getCanonicalUrl(`/certifications/${slug}/prepare`),
+      canonical: getCanonicalUrl(`/${slug}/prepare`),
     },
     openGraph: {
       title,
       description,
-      url: getCanonicalUrl(`/certifications/${slug}/prepare`),
+      url: getCanonicalUrl(`/${slug}/prepare`),
       images: ["/og-default.png"],
     },
     twitter: {
@@ -209,8 +209,8 @@ export default async function ExamPrepPage({ params }: Props) {
   const breadcrumbItems = [
     { name: "Home", url: "/" },
     { name: "Certifications", url: "/#certifications" },
-    { name: certification.name, url: `/certifications/${slug}` },
-    { name: "Exam Prep", url: `/certifications/${slug}/prepare` },
+    { name: certification.name, url: `/${slug}` },
+    { name: "Exam Prep", url: `/${slug}/prepare` },
   ];
 
   // FAQ Schema for SEO
@@ -255,7 +255,7 @@ export default async function ExamPrepPage({ params }: Props) {
         <nav className="flex items-center gap-2 text-sm text-zinc-500">
           <Link href="/" className="hover:text-zinc-700 dark:hover:text-zinc-300">Home</Link>
           <span>→</span>
-          <Link href={`/certifications/${slug}`} className="hover:text-zinc-700 dark:hover:text-zinc-300">
+          <Link href={`/${slug}`} className="hover:text-zinc-700 dark:hover:text-zinc-300">
             {certification.name}
           </Link>
           <span>→</span>
@@ -293,7 +293,7 @@ export default async function ExamPrepPage({ params }: Props) {
             )}
             {isReady && (
               <Link
-                href={`/certifications/${slug}`}
+                href={`/${slug}/practice-questions`}
                 className="inline-flex items-center gap-2 rounded-lg border border-emerald-600 px-4 py-2 text-sm font-medium text-emerald-600 hover:bg-emerald-50 dark:hover:bg-emerald-950"
               >
                 Practice Questions ({totalQuestions}+)
@@ -451,7 +451,7 @@ export default async function ExamPrepPage({ params }: Props) {
                       {/* Action Links */}
                       <div className="mt-4 flex flex-wrap gap-3">
                         <Link
-                          href={`/${slug}/questions/${topic.slug}`}
+                          href={`/${slug}/practice-questions/${topic.slug}`}
                           className="text-sm text-emerald-600 hover:text-emerald-700"
                         >
                           Practice ({topic.questionCount} questions)
@@ -764,7 +764,7 @@ export default async function ExamPrepPage({ params }: Props) {
               </p>
               <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:justify-center">
                 <Link
-                  href={`/certifications/${slug}/prepare`}
+                  href={`/${slug}/practice-questions`}
                   className="inline-flex items-center justify-center rounded-lg bg-white px-8 py-3 font-semibold text-emerald-700 hover:bg-emerald-50"
                 >
                   Start Practicing

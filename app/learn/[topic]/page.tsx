@@ -253,7 +253,7 @@ export default async function LearnTopicPage({ params }: Props) {
           </h2>
           <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-3">
             <Link
-              href={`/${certification.slug}/questions/${topicData.slug}`}
+              href={`/${certification.slug}/practice-questions/${topicData.slug}`}
               className="rounded-lg border border-zinc-200 bg-white p-6 transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900 dark:hover:bg-zinc-800"
             >
               <h3 className="font-semibold text-zinc-900 dark:text-zinc-100">
@@ -267,7 +267,7 @@ export default async function LearnTopicPage({ params }: Props) {
               </span>
             </Link>
             <Link
-              href={`/certifications/${certification.slug}/prepare`}
+              href={`/${certification.slug}/prepare`}
               className="rounded-lg border border-zinc-200 bg-white p-6 transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900 dark:hover:bg-zinc-800"
             >
               <h3 className="font-semibold text-zinc-900 dark:text-zinc-100">

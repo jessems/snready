@@ -145,7 +145,7 @@ export default function CertificationCard({ certification }: CertificationCardPr
   if (isReady) {
     return (
       <Link
-        href={`/certifications/${certification.slug}`}
+        href={`/${certification.slug}`}
         className="group relative flex flex-col rounded-xl border-2 border-emerald-200/80 bg-gradient-to-br from-white via-white to-emerald-50/40 p-5 shadow-sm shadow-emerald-100/50 transition-all duration-300 hover:-translate-y-0.5 hover:border-emerald-300 hover:shadow-lg hover:shadow-emerald-100/60 dark:border-emerald-800/60 dark:from-zinc-900 dark:via-zinc-900 dark:to-emerald-950/30 dark:shadow-none dark:hover:border-emerald-700 dark:hover:shadow-emerald-900/20"
       >
         {cardContent}
