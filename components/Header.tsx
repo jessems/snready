@@ -103,12 +103,6 @@ export default function Header() {
                     </>
                   )}
                 </div>
-                <Link
-                  href="/study-guide"
-                  className="text-sm font-medium text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
-                >
-                  Study Guides
-                </Link>
               </div>
 
               {/* Auth Section */}
@@ -205,13 +199,6 @@ export default function Header() {
               className="block py-2 text-sm font-medium text-emerald-600 dark:text-emerald-400"
             >
               View all certifications →
-            </Link>
-            <Link
-              href="/study-guide"
-              onClick={() => setShowMobileMenu(false)}
-              className="block py-2 text-sm font-medium text-zinc-600 dark:text-zinc-400"
-            >
-              Study Guides
             </Link>
           </div>
         </div>
