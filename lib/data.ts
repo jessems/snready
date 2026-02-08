@@ -403,6 +403,33 @@ export function getAllGlossaryTermSlugs(): string[] {
   return getAllGlossaryTerms().map(term => term.slug);
 }
 
+// Get glossary terms for a specific certification
+export function getGlossaryForCertification(certSlug: string): Array<{ term: string; definition: string }> {
+  const termMap = new Map<string, { term: string; definition: string }>();
+  
+  const certification = getCertificationBySlug(certSlug);
+  if (!certification) return [];
+  
+  const topics = getTopicsForCertification(certSlug);
+  
+  for (const topic of topics) {
+    if (topic.keyConcepts && Array.isArray(topic.keyConcepts)) {
+      for (const concept of topic.keyConcepts) {
+        const key = concept.toLowerCase();
+        if (!termMap.has(key)) {
+          // Generate a simple definition based on the concept and topic
+          termMap.set(key, {
+            term: concept,
+            definition: `A key concept in ${topic.name} for the ${certification.name} certification. Understanding ${concept} is essential for the exam.`,
+          });
+        }
+      }
+    }
+  }
+  
+  return Array.from(termMap.values()).sort((a, b) => a.term.localeCompare(b.term));
+}
+
 // =============================================================================
 // Delta Exam Helpers
 // =============================================================================
