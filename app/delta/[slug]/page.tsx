@@ -8,6 +8,7 @@ import {
   isDeltaWindowOpen,
   getTopicsForCertification,
   isCertificationReady,
+  getFreeQuestionCountForTopic,
 } from "@/lib/data";
 import { generateBreadcrumbJsonLd } from "@/lib/breadcrumbs";
 
@@ -520,7 +521,7 @@ export default async function DeltaExamPage({ params }: PageProps) {
                     <div className="mt-4 flex items-center justify-between text-xs text-zinc-500">
                       <span>{topic.questionCount} questions</span>
                       <span className="text-emerald-600">
-                        {topic.freeQuestionCount} free
+                        {getFreeQuestionCountForTopic(cert.slug, topic.slug)} free
                       </span>
                     </div>
                   </Link>

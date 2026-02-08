@@ -127,15 +127,71 @@ export async function getQuestionsForTopic(
   }
 }
 
-// Free questions: first 10 questions per topic
-const FREE_QUESTIONS_PER_TOPIC = 10;
+// Free questions: 15 total per certification, distributed across topics
+export const FREE_QUESTIONS_PER_CERT = 15;
 
+// Calculate how many free questions each topic gets based on total distribution
+function calculateFreeQuestionsDistribution(certSlug: string): Map<string, number> {
+  const topics = getTopicsForCertification(certSlug);
+  const distribution = new Map<string, number>();
+
+  if (topics.length === 0) return distribution;
+
+  const perTopic = Math.floor(FREE_QUESTIONS_PER_CERT / topics.length);
+  let remainder = FREE_QUESTIONS_PER_CERT % topics.length;
+
+  for (const topic of topics) {
+    // Give each topic the base amount, plus 1 extra for first 'remainder' topics
+    const count = perTopic + (remainder > 0 ? 1 : 0);
+    distribution.set(topic.slug, Math.min(count, topic.questionCount));
+    if (remainder > 0) remainder--;
+  }
+
+  return distribution;
+}
+
+// Get number of free questions for a specific topic
+export function getFreeQuestionCountForTopic(certSlug: string, topicSlug: string): number {
+  const distribution = calculateFreeQuestionsDistribution(certSlug);
+  return distribution.get(topicSlug) || 0;
+}
+
+// Get free questions for a specific topic (respects the 15-total distribution)
 export async function getFreeQuestionsForTopic(
   certSlug: string,
   topicSlug: string
 ): Promise<Question[]> {
   const questions = await getQuestionsForTopic(certSlug, topicSlug);
-  return questions.slice(0, FREE_QUESTIONS_PER_TOPIC);
+  const freeCount = getFreeQuestionCountForTopic(certSlug, topicSlug);
+  return questions.slice(0, freeCount);
+}
+
+// Get ALL questions for a certification (from all topics)
+export async function getAllQuestionsForCertification(certSlug: string): Promise<Question[]> {
+  const topics = getTopicsForCertification(certSlug);
+  const allQuestions: Question[] = [];
+
+  for (const topic of topics) {
+    const questions = await getQuestionsForTopic(certSlug, topic.slug);
+    allQuestions.push(...questions);
+  }
+
+  return allQuestions;
+}
+
+// Get free questions for a certification (15 total, distributed across topics)
+export async function getFreeQuestionsForCertification(certSlug: string): Promise<Question[]> {
+  const topics = getTopicsForCertification(certSlug);
+  const freeQuestions: Question[] = [];
+  const distribution = calculateFreeQuestionsDistribution(certSlug);
+
+  for (const topic of topics) {
+    const questions = await getQuestionsForTopic(certSlug, topic.slug);
+    const freeCount = distribution.get(topic.slug) || 0;
+    freeQuestions.push(...questions.slice(0, freeCount));
+  }
+
+  return freeQuestions;
 }
 
 // Domain helpers
@@ -152,8 +208,10 @@ export function getTotalQuestionCount(certSlug: string): number {
 
 export function getTotalFreeQuestionCount(certSlug: string): number {
   const topics = getTopicsForCertification(certSlug);
-  // Free questions: min of FREE_QUESTIONS_PER_TOPIC or topic.questionCount
-  return topics.reduce((sum, topic) => sum + Math.min(FREE_QUESTIONS_PER_TOPIC, topic.questionCount), 0);
+  if (topics.length === 0) return 0;
+  // Return 15 total or total questions if less than 15
+  const totalQuestions = getTotalQuestionCount(certSlug);
+  return Math.min(FREE_QUESTIONS_PER_CERT, totalQuestions);
 }
 
 // Category helpers

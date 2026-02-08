@@ -142,7 +142,7 @@ export default async function TopicQuestionsPage({ params }: PageProps) {
                 <div className="mt-4 flex items-center gap-4 text-sm text-zinc-500">
                   <span>{topic.questionCount} total questions</span>
                   <span className="text-emerald-600">
-                    {topic.freeQuestionCount} free questions
+                    {freeQuestions.length} free questions
                   </span>
                 </div>
               </div>

@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CheckoutButton } from "@/components/CheckoutButton";
+import { SampleQuestions } from "@/components/SampleQuestions";
 import {
   getCertificationBySlug,
   getCertificationSlugs,
@@ -11,6 +12,8 @@ import {
   isCertificationReady,
   getDaysUntilDeltaDeadline,
   isDeltaWindowOpen,
+  getFreeQuestionsForCertification,
+  getFreeQuestionCountForTopic,
 } from "@/lib/data";
 import { breadcrumbs, generateBreadcrumbJsonLd } from "@/lib/breadcrumbs";
 
@@ -60,8 +63,12 @@ export default async function CertificationPage({ params }: PageProps) {
 
   const topics = getTopicsForCertification(slug);
   const totalQuestions = getTotalQuestionCount(slug);
-  const freeQuestions = getTotalFreeQuestionCount(slug);
+  const freeQuestionCount = getTotalFreeQuestionCount(slug);
   const isReady = isCertificationReady(slug);
+
+  // Load sample questions for the teaser section (5 questions from the free pool)
+  const allFreeQuestions = isReady ? await getFreeQuestionsForCertification(slug) : [];
+  const sampleQuestions = allFreeQuestions.slice(0, 5);
 
   // Delta exam info
   const hasDeltaExam = cert.deltaExam?.isMainline === true;
@@ -302,7 +309,7 @@ export default async function CertificationPage({ params }: PageProps) {
               </div>
               <div>
                 <div className={`text-2xl font-bold ${isReady ? "text-emerald-600" : "text-zinc-400 dark:text-zinc-500"}`}>
-                  {isReady ? freeQuestions : "—"}
+                  {isReady ? freeQuestionCount : "—"}
                 </div>
                 <div className="text-sm text-zinc-500">Free Questions</div>
               </div>
@@ -410,7 +417,7 @@ export default async function CertificationPage({ params }: PageProps) {
                     <div className="mt-4 flex items-center justify-between text-xs text-zinc-500">
                       <span>{topic.questionCount} questions</span>
                       <span className="text-emerald-600">
-                        {topic.freeQuestionCount} free
+                        {getFreeQuestionCountForTopic(slug, topic.slug)} free
                       </span>
                     </div>
                   </Link>
@@ -442,6 +449,15 @@ export default async function CertificationPage({ params }: PageProps) {
             )}
           </div>
         </section>
+
+        {/* Sample Questions */}
+        {isReady && sampleQuestions.length > 0 && (
+          <SampleQuestions
+            questions={sampleQuestions}
+            certSlug={slug}
+            certName={cert.name}
+          />
+        )}
 
         {/* Pricing CTA */}
         {isReady && (
@@ -506,7 +522,7 @@ export default async function CertificationPage({ params }: PageProps) {
               </div>
 
               <p className="mt-6 text-center text-sm text-emerald-200">
-                {freeQuestions} free questions available to try first • One-time payment, no subscription
+                {freeQuestionCount} free questions available to try first • One-time payment, no subscription
               </p>
             </div>
           </section>
