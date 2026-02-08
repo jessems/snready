@@ -47,12 +47,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title,
     description,
     alternates: {
-      canonical: getCanonicalUrl(`/practice-tests/${cert}`),
+      canonical: getCanonicalUrl(`/practice-questions/${cert}`),
     },
     openGraph: {
       title,
       description,
-      url: getCanonicalUrl(`/practice-tests/${cert}`),
+      url: getCanonicalUrl(`/practice-questions/${cert}`),
       images: ['/og-default.png'],
     },
     twitter: {
@@ -87,8 +87,8 @@ export default async function PracticeTestPage({ params }: Props) {
 
   const breadcrumbItems = [
     { name: "Home", url: "/" },
-    { name: "Practice Tests", url: "/practice-tests" },
-    { name: certification.name, url: `/practice-tests/${cert}` },
+    { name: "Practice Questions", url: "/practice-questions" },
+    { name: certification.name, url: `/practice-questions/${cert}` },
   ];
 
   const courseSchema = {
@@ -165,7 +165,7 @@ export default async function PracticeTestPage({ params }: Props) {
           <div className="flex items-center justify-center gap-2 text-sm text-zinc-500">
             <Link href="/" className="hover:text-zinc-700 dark:hover:text-zinc-300">Home</Link>
             <span>→</span>
-            <Link href="/practice-tests" className="hover:text-zinc-700 dark:hover:text-zinc-300">Practice Tests</Link>
+            <Link href="/practice-questions" className="hover:text-zinc-700 dark:hover:text-zinc-300">Practice Questions</Link>
             <span>→</span>
             <span>{certification.name}</span>
           </div>
@@ -350,7 +350,7 @@ export default async function PracticeTestPage({ params }: Props) {
 
                 <div className="mt-6">
                   <Link
-                    href="/practice-tests/csa"
+                    href="/practice-questions/csa"
                     className="inline-flex items-center justify-center rounded-lg bg-emerald-600 px-8 py-3 font-semibold text-white transition-colors hover:bg-emerald-700"
                   >
                     Try CSA Practice Questions
@@ -366,7 +366,7 @@ export default async function PracticeTestPage({ params }: Props) {
               </h2>
               <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
                 <Link
-                  href="/practice-tests/csa"
+                  href="/practice-questions/csa"
                   className="rounded-lg border border-zinc-200 p-6 transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:hover:bg-zinc-800"
                 >
                   <h3 className="font-semibold text-zinc-900 dark:text-zinc-100">
@@ -380,7 +380,7 @@ export default async function PracticeTestPage({ params }: Props) {
                   </span>
                 </Link>
                 <Link
-                  href="/practice-tests/cis-df"
+                  href="/practice-questions/cis-df"
                   className="rounded-lg border border-zinc-200 p-6 transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:hover:bg-zinc-800"
                 >
                   <h3 className="font-semibold text-zinc-900 dark:text-zinc-100">

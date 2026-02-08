@@ -61,9 +61,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })
   );
 
-  // Practice test pages
+  // Practice question pages
   const practiceTestPages: MetadataRoute.Sitemap = certSlugs.map((slug) => ({
-    url: `${BASE_URL}/practice-tests/${slug}`,
+    url: `${BASE_URL}/practice-questions/${slug}`,
     lastModified: new Date(),
     changeFrequency: "weekly" as const,
     priority: 0.8,

@@ -294,7 +294,7 @@ export default async function StudyGuidePage({ params }: Props) {
             
             <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:justify-center">
               <Link
-                href={`/practice-tests/${cert}`}
+                href={`/practice-questions/${cert}`}
                 className="inline-flex items-center justify-center rounded-lg bg-emerald-600 px-8 py-3 font-semibold text-white transition-colors hover:bg-emerald-700"
               >
                 Practice Questions

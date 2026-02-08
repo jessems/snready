@@ -11,7 +11,7 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function CertificationPracticeTestsRedirect({ params }: Props) {
+export default async function CertificationPracticeQuestionsRedirect({ params }: Props) {
   const { slug } = await params;
-  redirect(`/practice-tests/${slug}`);
+  redirect(`/practice-questions/${slug}`);
 }

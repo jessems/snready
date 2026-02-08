@@ -8,17 +8,17 @@ import { generateBreadcrumbJsonLd } from "@/lib/breadcrumbs";
 import { getCanonicalUrl } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "ServiceNow Practice Tests | SNReady",
+  title: "ServiceNow Practice Questions | SNReady",
   description:
-    "ServiceNow certification practice tests for CSA, CIS-DF, CAD, CIS-ITSM with detailed explanations and free questions.",
+    "ServiceNow certification practice questions for CSA, CIS-DF, CAD, CIS-ITSM with detailed explanations and free questions.",
   alternates: {
-    canonical: getCanonicalUrl("/practice-tests"),
+    canonical: getCanonicalUrl("/practice-questions"),
   },
   openGraph: {
-    title: "ServiceNow Practice Tests | SNReady",
+    title: "ServiceNow Practice Questions | SNReady",
     description:
-      "ServiceNow certification practice tests with detailed explanations.",
-    url: getCanonicalUrl("/practice-tests"),
+      "ServiceNow certification practice questions with detailed explanations.",
+    url: getCanonicalUrl("/practice-questions"),
     images: ["/og-default.png"],
   },
 };
@@ -30,7 +30,7 @@ export default function PracticeTestsIndexPage() {
 
   const breadcrumbItems = [
     { name: "Home", url: "/" },
-    { name: "Practice Tests", url: "/practice-tests" },
+    { name: "Practice Questions", url: "/practice-questions" },
   ];
 
   const totalQuestions = readyCerts.reduce(
@@ -51,10 +51,10 @@ export default function PracticeTestsIndexPage() {
         {/* Header */}
         <div className="text-center">
           <h1 className="text-4xl font-bold text-zinc-900 dark:text-zinc-100">
-            ServiceNow Practice Tests
+            ServiceNow Practice Questions
           </h1>
           <p className="mt-4 text-lg text-zinc-600 dark:text-zinc-400">
-            Realistic exam simulations to help you pass your certification
+            Realistic exam questions to help you pass your certification
           </p>
         </div>
 
@@ -74,10 +74,10 @@ export default function PracticeTestsIndexPage() {
           </div>
         </div>
 
-        {/* Available Practice Tests */}
+        {/* Available Practice Questions */}
         <div className="mt-12">
           <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-100">
-            Available Practice Tests
+            Available Practice Questions
           </h2>
           <div className="mt-6 grid gap-6 sm:grid-cols-2">
             {readyCerts.map((cert) => {
@@ -85,7 +85,7 @@ export default function PracticeTestsIndexPage() {
               return (
                 <Link
                   key={cert.slug}
-                  href={`/practice-tests/${cert.slug}`}
+                  href={`/practice-questions/${cert.slug}`}
                   className="group rounded-xl border border-zinc-200 bg-white p-6 transition-all hover:border-emerald-300 hover:shadow-lg dark:border-zinc-700 dark:bg-zinc-800 dark:hover:border-emerald-600"
                 >
                   <div className="flex items-start justify-between">
@@ -118,7 +118,7 @@ export default function PracticeTestsIndexPage() {
 
                   <div className="mt-4 flex items-center justify-between">
                     <span className="text-sm font-medium text-emerald-600 group-hover:text-emerald-700">
-                      Start Practice Test →
+                      Start Practice Questions →
                     </span>
                     <span className="text-xs text-zinc-400">
                       Free questions available
@@ -158,7 +158,7 @@ export default function PracticeTestsIndexPage() {
         <div className="mt-16 rounded-xl bg-gradient-to-br from-emerald-600 to-green-700 p-8 text-center text-white">
           <h2 className="text-2xl font-bold">Ready to Pass Your Exam?</h2>
           <p className="mt-2 text-emerald-100">
-            Get unlimited access to all practice tests with detailed explanations
+            Get unlimited access to all practice questions with detailed explanations
           </p>
           <div className="mt-6">
             <Link

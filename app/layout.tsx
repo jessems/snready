@@ -175,10 +175,10 @@ export default function RootLayout({
                 </h3>
                 <div className="mt-4 space-y-3">
                   <Link
-                    href="/practice-tests/csa"
+                    href="/practice-questions/csa"
                     className="block text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
                   >
-                    Practice Tests
+                    Practice Questions
                   </Link>
                   <Link
                     href="/free-questions"

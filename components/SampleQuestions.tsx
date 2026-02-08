@@ -191,7 +191,7 @@ export function SampleQuestions({ questions, certSlug, certName }: SampleQuestio
         {/* CTA */}
         <div className="mt-8 text-center">
           <Link
-            href={`/practice-tests/${certSlug}`}
+            href={`/practice-questions/${certSlug}`}
             className="inline-flex items-center justify-center rounded-lg bg-emerald-600 px-8 py-3 font-semibold text-white transition-colors hover:bg-emerald-700"
           >
             View All Practice Questions

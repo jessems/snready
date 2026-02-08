@@ -316,10 +316,10 @@ export default async function QuestionPage({ params }: PageProps) {
                   Take a full {cert.name} practice test to check your readiness.
                 </p>
                 <Link
-                  href={`/practice-tests/${certification}`}
+                  href={`/practice-questions/${certification}`}
                   className="mt-4 block w-full rounded-lg bg-white py-2 text-center text-sm font-medium text-emerald-600 transition-colors hover:bg-emerald-50"
                 >
-                  Start Practice Test
+                  Start Practice Questions
                 </Link>
               </div>
             </aside>

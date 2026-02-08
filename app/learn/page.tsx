@@ -49,9 +49,9 @@ export default function LearnIndexPage() {
       icon: "❓",
     },
     {
-      title: "Practice Tests",
-      description: "Practice tests with questions covering all exam domains",
-      href: "/practice-tests",
+      title: "Practice Questions",
+      description: "Practice questions covering all exam domains",
+      href: "/practice-questions",
       icon: "📝",
     },
   ];

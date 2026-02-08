@@ -179,10 +179,10 @@ export default async function GlossaryTermPage({ params }: Props) {
                     Study Guide
                   </Link>
                   <Link
-                    href={`/practice-tests/${cert.certSlug}`}
+                    href={`/practice-questions/${cert.certSlug}`}
                     className="text-sm text-emerald-600 hover:text-emerald-700"
                   >
-                    Practice Test
+                    Practice Questions
                   </Link>
                 </div>
               </div>
