@@ -33,6 +33,24 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "weekly",
       priority: 1,
     },
+    {
+      url: `${BASE_URL}/certifications`,
+      lastModified: new Date(),
+      changeFrequency: "weekly" as const,
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/practice-questions`,
+      lastModified: new Date(),
+      changeFrequency: "weekly" as const,
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/learn`,
+      lastModified: new Date(),
+      changeFrequency: "weekly" as const,
+      priority: 0.8,
+    },
   ];
 
   // Certification hub pages
@@ -97,19 +115,22 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })
   );
 
-  // Learn pages (concept explainers)
-  const learnPages: MetadataRoute.Sitemap = [];
+  // Learn pages (concept explainers) - deduplicated since topics can appear in multiple certs
+  const uniqueLearnSlugs = new Set<string>();
   for (const certSlug of certSlugs) {
     const topics = getTopicsForCertification(certSlug);
     for (const topic of topics) {
-      learnPages.push({
-        url: `${BASE_URL}/learn/${topic.slug}`,
-        lastModified: new Date(),
-        changeFrequency: "monthly" as const,
-        priority: 0.6,
-      });
+      uniqueLearnSlugs.add(topic.slug);
     }
   }
+  const learnPages: MetadataRoute.Sitemap = Array.from(uniqueLearnSlugs).map(
+    (slug) => ({
+      url: `${BASE_URL}/learn/${slug}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.6,
+    })
+  );
 
   // Delta exam pages (HIGH PRIORITY for SEO during delta season)
   const deltaPages: MetadataRoute.Sitemap = deltaSlugs.map(
@@ -129,7 +150,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.8,
   }));
 
-  // Glossary pages (NEW)
+  // Glossary pages
   const glossaryPages: MetadataRoute.Sitemap = [
     {
       url: `${BASE_URL}/glossary`,
@@ -137,6 +158,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "monthly" as const,
       priority: 0.7,
     },
+    // Glossary by certification
+    ...certSlugs.map((slug) => ({
+      url: `${BASE_URL}/glossary/certification/${slug}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    })),
+    // Individual glossary terms
     ...glossaryTermSlugs.map((slug) => ({
       url: `${BASE_URL}/glossary/${slug}`,
       lastModified: new Date(),

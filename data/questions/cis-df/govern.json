@@ -4289,6 +4289,2945 @@
       },
       "isFree": false,
       "references": []
+    },
+    {
+      "id": "cis-df-govern-061",
+      "certification": "cis-df",
+      "topic": "govern",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which business rule is responsible for synchronizing group attributes from a technical service offering to the underlying CIs within a dynamic CI group?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Sync Ops Status for CMDB CI"
+        },
+        {
+          "id": "b",
+          "text": "CSDM Data Sync on TSO deletion"
+        },
+        {
+          "id": "c",
+          "text": "CSDM - Sync Group Attributes"
+        },
+        {
+          "id": "d",
+          "text": "Sync teams to CI assigned groups"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "The 'CSDM - Sync Group Attributes' business rule cascades group attributes (Support Group, Managed By Group, Assignment Group) from a Technical Service Offering down to the CIs within its associated Dynamic CI Group. This was added in the San Diego release.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Sync Ops Status for CMDB CI deals with operational status synchronization, not group attributes.",
+            "reference": "CMDB Health Deep Dive course"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "CSDM Data Sync on TSO deletion handles cleanup when a Technical Service Offering is deleted.",
+            "reference": "CMDB Health Deep Dive course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "This is not a standard ServiceNow business rule for CSDM group synchronization.",
+            "reference": "CMDB Health Deep Dive course"
+          }
+        ]
+      },
+      "references": [
+        "CMDB Health Deep Dive course",
+        "CSDM documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "course": {
+          "courseSlug": "cmdb-health-deep-dive",
+          "moduleTitle": "Group Synchronization",
+          "lessonTitle": "CSDM Sync Group Attributes",
+          "url": "https://learning.servicenow.com/lxp"
+        },
+        "excerpt": "Going into Configure Business Rules, it should be the page to CSDM Sync Group Attributes. You'll see the business rule that makes this cascade."
+      },
+      "labels": {
+        "certification": "cis-df",
+        "domain": "Govern",
+        "domainSlug": "govern",
+        "domainPercentage": 35,
+        "subtopics": [
+          "CSDM",
+          "Dynamic CI Groups",
+          "Group Synchronization"
+        ],
+        "tags": [
+          "business rule",
+          "CSDM",
+          "technical service offering",
+          "dynamic CI group"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-09T07:20:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-df-govern-062",
+      "certification": "cis-df",
+      "topic": "govern",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which components are displayed on the CMDB and CSDM Data Foundations Dashboards?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Incident Management, Change Management, and Problem Management"
+        },
+        {
+          "id": "b",
+          "text": "Configuration Items, Relationships, and Business Services"
+        },
+        {
+          "id": "c",
+          "text": "Foundational Metric Results, Priorities, and Remediation Playbook URLs"
+        },
+        {
+          "id": "d",
+          "text": "Knowledge Articles, Service Catalog Items, and Catalog Categories"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "The CMDB and CSDM Data Foundations Dashboards display foundational metric results (0-100% scores), priorities (Critical to Low), and remediation playbook URLs (KB articles with fix instructions). These dashboards are free from the ServiceNow Store.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "These are ITSM processes, not components of the Data Foundations Dashboards.",
+            "reference": "CMDB Health Deep Dive course"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "While these are CMDB concepts, they are not what's displayed on the Data Foundations Dashboards.",
+            "reference": "CMDB Health Deep Dive course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "These are Service Catalog components, not Data Foundations Dashboard components.",
+            "reference": "CMDB Health Deep Dive course"
+          }
+        ]
+      },
+      "references": [
+        "CMDB Health Deep Dive course"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "course",
+        "course": {
+          "courseSlug": "cmdb-health-deep-dive",
+          "moduleTitle": "Data Foundations Dashboards",
+          "lessonTitle": "Dashboard Overview",
+          "url": "https://learning.servicenow.com/lxp"
+        },
+        "excerpt": "There's a result column between 0 and hundreds. 0 is bad, 100 is good. They all have a priority on them... on the right, there's a remediation playbook URL."
+      },
+      "labels": {
+        "certification": "cis-df",
+        "domain": "Govern",
+        "domainSlug": "govern",
+        "domainPercentage": 35,
+        "subtopics": [
+          "Data Foundations Dashboard",
+          "CMDB Health"
+        ],
+        "tags": [
+          "dashboard",
+          "metrics",
+          "remediation playbook"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-09T07:20:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-df-govern-063",
+      "certification": "cis-df",
+      "topic": "govern",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "From the CMDB Data Foundations Dashboard, if the 'Unique Locations' metric displays less than 100%, what is the most efficient way to obtain a list of duplicate location records?",
+      "options": [
+        {
+          "id": "a",
+          "text": "From the Locations table, configure an encoded query to search for duplicate records"
+        },
+        {
+          "id": "b",
+          "text": "From the CMDB Data Foundations Dashboard, select and open the Duplicate Locations tile and then select Show Records"
+        },
+        {
+          "id": "c",
+          "text": "From Query Builder, create a query to search for duplicate records"
+        },
+        {
+          "id": "d",
+          "text": "From CMDB Workspace, configure a certification policy"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The most efficient method is to use the built-in functionality: from the Data Foundations Dashboard, click on the Duplicate Locations tile and select 'Show Records' to immediately see all duplicate location records that need remediation.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "While possible, this is more complex and time-consuming than using the built-in dashboard functionality.",
+            "reference": "CMDB Health Deep Dive course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Query Builder can find duplicates but requires manual query construction, making it less efficient than the dashboard.",
+            "reference": "CMDB Health Deep Dive course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Certification policies are for CI attestation, not for finding duplicate locations.",
+            "reference": "CMDB Health Deep Dive course"
+          }
+        ]
+      },
+      "references": [
+        "CMDB Health Deep Dive course",
+        "KB0832200"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "course": {
+          "courseSlug": "cmdb-health-deep-dive",
+          "moduleTitle": "Duplicate Locations",
+          "lessonTitle": "Finding Duplicates",
+          "url": "https://learning.servicenow.com/lxp"
+        },
+        "excerpt": "Clicking Show Records will show us the actual records that make up this form-- notice this Denver, Colorado, duplicate and this Arizona record duplicate."
+      },
+      "labels": {
+        "certification": "cis-df",
+        "domain": "Govern",
+        "domainSlug": "govern",
+        "domainPercentage": 35,
+        "subtopics": [
+          "Data Foundations Dashboard",
+          "Duplicate Locations"
+        ],
+        "tags": [
+          "locations",
+          "duplicates",
+          "dashboard",
+          "remediation"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-09T07:20:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-df-govern-064",
+      "certification": "cis-df",
+      "topic": "govern",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_select",
+      "question": "Which tabs are part of the CMDB Data Foundations Dashboard? (Choose 4)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Data Management Practices"
+        },
+        {
+          "id": "b",
+          "text": "ITSM Processes"
+        },
+        {
+          "id": "c",
+          "text": "Best Practices"
+        },
+        {
+          "id": "d",
+          "text": "Foundation"
+        },
+        {
+          "id": "e",
+          "text": "Customization"
+        },
+        {
+          "id": "f",
+          "text": "Run"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "selectCount": 4,
+      "explanation": {
+        "correct": "The CMDB Data Foundations Dashboard has four tabs: Data Management Practices, ITSM Processes, Best Practices, and Foundation. These tabs organize different categories of health metrics.",
+        "wrongAnswers": [
+          {
+            "choiceId": "e",
+            "explanation": "Customization is not a tab on the Data Foundations Dashboard.",
+            "reference": "CMDB Health Deep Dive course"
+          },
+          {
+            "choiceId": "f",
+            "explanation": "Run is not a tab on the Data Foundations Dashboard. Run is part of Crawl-Walk-Run-Fly adoption levels.",
+            "reference": "CMDB Health Deep Dive course"
+          }
+        ]
+      },
+      "references": [
+        "CMDB Health Deep Dive course"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "course": {
+          "courseSlug": "cmdb-health-deep-dive",
+          "moduleTitle": "Data Foundations Dashboard",
+          "lessonTitle": "Dashboard Tabs",
+          "url": "https://learning.servicenow.com/lxp"
+        },
+        "excerpt": "There's two dashboards, there seem to be. And CSDM, they seem to be one. We're going to screenshot here, has got four tabs on it."
+      },
+      "labels": {
+        "certification": "cis-df",
+        "domain": "Govern",
+        "domainSlug": "govern",
+        "domainPercentage": 35,
+        "subtopics": [
+          "Data Foundations Dashboard"
+        ],
+        "tags": [
+          "dashboard",
+          "tabs",
+          "CMDB health"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-09T07:20:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-df-govern-065",
+      "certification": "cis-df",
+      "topic": "govern",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_select",
+      "question": "Duplicate locations in the location table can be caused by which configurations? (Choose 2)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Naming standard for Locations has not been defined and/or published"
+        },
+        {
+          "id": "b",
+          "text": "A well thought out naming convention for location names has been defined and adopted"
+        },
+        {
+          "id": "c",
+          "text": "Source of location data is not maintained and has duplicates"
+        },
+        {
+          "id": "d",
+          "text": "Well tested import process for location names"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "c"
+      ],
+      "selectCount": 2,
+      "explanation": {
+        "correct": "Duplicate locations are caused by: (1) lack of defined naming standards allowing inconsistent entries like 'NYC' vs 'New York City', and (2) source data that already contains duplicates being imported without deduplication.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "A well-defined naming convention prevents duplicates, it doesn't cause them.",
+            "reference": "KB0832200"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "A well-tested import process would catch and prevent duplicates, not cause them.",
+            "reference": "KB0832200"
+          }
+        ]
+      },
+      "references": [
+        "KB0832200 - Unique Locations"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "kb_article",
+        "articleId": "KB0832200",
+        "title": "Percent of unique locations",
+        "url": "https://support.servicenow.com/kb?id=kb_article_view&sysparm_article=KB0832200"
+      },
+      "labels": {
+        "certification": "cis-df",
+        "domain": "Govern",
+        "domainSlug": "govern",
+        "domainPercentage": 35,
+        "subtopics": [
+          "Locations",
+          "Data Quality"
+        ],
+        "tags": [
+          "locations",
+          "duplicates",
+          "naming standards",
+          "data import"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-09T07:20:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-df-govern-066",
+      "certification": "cis-df",
+      "topic": "govern",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_select",
+      "question": "What are the three pillars for successful foundational data in a ServiceNow CMDB? (Choose 3)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Ingest"
+        },
+        {
+          "id": "b",
+          "text": "Govern"
+        },
+        {
+          "id": "c",
+          "text": "Insight"
+        },
+        {
+          "id": "d",
+          "text": "Completeness"
+        },
+        {
+          "id": "e",
+          "text": "Correctness"
+        },
+        {
+          "id": "f",
+          "text": "Compliance"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b",
+        "c"
+      ],
+      "selectCount": 3,
+      "explanation": {
+        "correct": "The three pillars for successful CMDB foundational data are: Ingest (connecting data sources), Govern (maintaining data health), and Insight (using data in reporting and processes). These are distinct from the CMDB Health Dashboard's 3 C's (Completeness, Correctness, Compliance).",
+        "wrongAnswers": [
+          {
+            "choiceId": "d",
+            "explanation": "Completeness is one of the 3 C's from the CMDB Health Dashboard, not a foundational data pillar.",
+            "reference": "CMDB Health Deep Dive course"
+          },
+          {
+            "choiceId": "e",
+            "explanation": "Correctness is one of the 3 C's from the CMDB Health Dashboard, not a foundational data pillar.",
+            "reference": "CMDB Health Deep Dive course"
+          },
+          {
+            "choiceId": "f",
+            "explanation": "Compliance is one of the 3 C's from the CMDB Health Dashboard, not a foundational data pillar.",
+            "reference": "CMDB Health Deep Dive course"
+          }
+        ]
+      },
+      "references": [
+        "CMDB Health Deep Dive course"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "course",
+        "course": {
+          "courseSlug": "cmdb-health-deep-dive",
+          "moduleTitle": "Three Pillars",
+          "lessonTitle": "Successful Data Foundation",
+          "url": "https://learning.servicenow.com/lxp"
+        },
+        "excerpt": "The first pillar is ingesting information... The middle pillar is all about governance of that data... the last key pillar, I'd like to highlight the data that we have and we store. We want to use it."
+      },
+      "labels": {
+        "certification": "cis-df",
+        "domain": "Govern",
+        "domainSlug": "govern",
+        "domainPercentage": 35,
+        "subtopics": [
+          "Data Foundation Pillars",
+          "CMDB Strategy"
+        ],
+        "tags": [
+          "ingest",
+          "govern",
+          "insight",
+          "pillars"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-09T07:20:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-df-govern-067",
+      "certification": "cis-df",
+      "topic": "govern",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_select",
+      "question": "When configuring technical services, technical service offerings, and dynamic CI groups, which statements correctly describe the relationships between them? (Choose 2)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Technical service offering is the parent to a technical service"
+        },
+        {
+          "id": "b",
+          "text": "Technical service is the parent to a technical service offering"
+        },
+        {
+          "id": "c",
+          "text": "Technical service offering contains a Dynamic CI group"
+        },
+        {
+          "id": "d",
+          "text": "Dynamic CI group contains a technical service offering"
+        }
+      ],
+      "correctAnswers": [
+        "b",
+        "c"
+      ],
+      "selectCount": 2,
+      "explanation": {
+        "correct": "In CSDM hierarchy: Technical Service is the parent of Technical Service Offering (TSO), and the TSO contains/references the Dynamic CI Group. The TSO is where you configure tiers of service with different SLAs and groups.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "This is backwards. Technical Service is the parent, not the child, of a Technical Service Offering.",
+            "reference": "CMDB Health Deep Dive course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "This is backwards. The TSO contains/references the Dynamic CI Group, not the other way around.",
+            "reference": "CMDB Health Deep Dive course"
+          }
+        ]
+      },
+      "references": [
+        "CMDB Health Deep Dive course"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "course": {
+          "courseSlug": "cmdb-health-deep-dive",
+          "moduleTitle": "Dynamic CI Groups",
+          "lessonTitle": "CSDM Relationships",
+          "url": "https://learning.servicenow.com/lxp"
+        },
+        "excerpt": "Parent is going to be the hosting service that we just created... we can add a relationship with the CIs here. OK, we are going to say contains parent, classes as dynamic CI group."
+      },
+      "labels": {
+        "certification": "cis-df",
+        "domain": "Govern",
+        "domainSlug": "govern",
+        "domainPercentage": 35,
+        "subtopics": [
+          "CSDM",
+          "Technical Services",
+          "Dynamic CI Groups"
+        ],
+        "tags": [
+          "technical service",
+          "TSO",
+          "dynamic CI group",
+          "relationships"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-09T07:20:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-df-govern-068",
+      "certification": "cis-df",
+      "topic": "govern",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_select",
+      "question": "The Remediation playbook URL provided by the CMDB and CSDM Data Foundations Dashboards provides what information for each health metric? (Choose 3)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Upstream Causes"
+        },
+        {
+          "id": "b",
+          "text": "Downstream Consequences"
+        },
+        {
+          "id": "c",
+          "text": "Remediation Plays"
+        },
+        {
+          "id": "d",
+          "text": "Client Scripts"
+        },
+        {
+          "id": "e",
+          "text": "Transform Maps"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b",
+        "c"
+      ],
+      "selectCount": 3,
+      "explanation": {
+        "correct": "Each remediation playbook (KB article) contains: Upstream Causes (what leads to the problem), Downstream Consequences (business impact), and Remediation Plays (step-by-step fixes). They do not contain scripts or transform maps.",
+        "wrongAnswers": [
+          {
+            "choiceId": "d",
+            "explanation": "Remediation playbooks are documentation, not code. They don't contain client scripts.",
+            "reference": "CMDB Health Deep Dive course"
+          },
+          {
+            "choiceId": "e",
+            "explanation": "Transform Maps are for data imports. Remediation playbooks provide guidance, not import configurations.",
+            "reference": "CMDB Health Deep Dive course"
+          }
+        ]
+      },
+      "references": [
+        "CMDB Health Deep Dive course",
+        "KB articles"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "course": {
+          "courseSlug": "cmdb-health-deep-dive",
+          "moduleTitle": "Remediation Playbooks",
+          "lessonTitle": "Playbook Structure",
+          "url": "https://learning.servicenow.com/lxp"
+        },
+        "excerpt": "That's a KB article that gives all kinds of great info about the metric, why it's important, what it will impact if it's not at 100%, and how to fix it."
+      },
+      "labels": {
+        "certification": "cis-df",
+        "domain": "Govern",
+        "domainSlug": "govern",
+        "domainPercentage": 35,
+        "subtopics": [
+          "Remediation Playbooks",
+          "Data Foundations Dashboard"
+        ],
+        "tags": [
+          "playbook",
+          "KB article",
+          "remediation"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-09T07:20:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-df-govern-069",
+      "certification": "cis-df",
+      "topic": "govern",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "From the Get Well Playbook 'Percentage of Dynamic CI Groups with CMDB Group', which is a potential benefit to the business if this metric is properly governed?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Complicates the auto-population of affected CIs during changes"
+        },
+        {
+          "id": "b",
+          "text": "Reduces IT asset management tracking capabilities"
+        },
+        {
+          "id": "c",
+          "text": "Improves successful changes, such as patch management for all servers"
+        },
+        {
+          "id": "d",
+          "text": "Decreases efficiency in impact analysis"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "When Dynamic CI Groups are properly configured with CMDB Groups, it enables better change management by allowing targeted changes like patch management to be applied to specific groups of servers efficiently.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Proper governance simplifies, not complicates, the auto-population of affected CIs.",
+            "reference": "KB0952944"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "Dynamic CI Groups enhance, not reduce, asset management capabilities.",
+            "reference": "KB0952944"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Dynamic CI Groups improve impact analysis efficiency by grouping related CIs.",
+            "reference": "KB0952944"
+          }
+        ]
+      },
+      "references": [
+        "KB0952944"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "kb_article",
+        "articleId": "KB0952944",
+        "title": "Percentage of Dynamic CI Groups with CMDB Group",
+        "url": "https://support.servicenow.com/kb?id=kb_article_view&sysparm_article=KB0952944"
+      },
+      "labels": {
+        "certification": "cis-df",
+        "domain": "Govern",
+        "domainSlug": "govern",
+        "domainPercentage": 35,
+        "subtopics": [
+          "Dynamic CI Groups",
+          "Change Management"
+        ],
+        "tags": [
+          "dynamic CI group",
+          "CMDB group",
+          "change management",
+          "patch management"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-09T07:20:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-df-govern-070",
+      "certification": "cis-df",
+      "topic": "govern",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_select",
+      "question": "From the Get Well Playbook 'Handle Duplicate CIs in your CMDB', what are potential benefits to the business if this metric is properly governed? (Choose 2)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Enhances binding and CI selection for Incident Management"
+        },
+        {
+          "id": "b",
+          "text": "Decreases the speed of incident resolution and increases MTTR"
+        },
+        {
+          "id": "c",
+          "text": "Worsens accuracy in CI matching for Vulnerability Response"
+        },
+        {
+          "id": "d",
+          "text": "Reduces confusion from duplicate records appearing in the list view"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "d"
+      ],
+      "selectCount": 2,
+      "explanation": {
+        "correct": "Removing duplicate CIs: (1) enhances CI selection in Incident Management by eliminating confusion about which CI to select, and (2) reduces confusion in list views by showing only unique records.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Eliminating duplicates increases resolution speed and decreases MTTR, not the opposite.",
+            "reference": "KB0829103"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Eliminating duplicates improves CI matching accuracy for Vulnerability Response.",
+            "reference": "KB0829103"
+          }
+        ]
+      },
+      "references": [
+        "KB0829103"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "kb_article",
+        "articleId": "KB0829103",
+        "title": "Handle Duplicate CIs in your CMDB",
+        "url": "https://support.servicenow.com/kb?id=kb_article_view&sysparm_article=KB0829103"
+      },
+      "labels": {
+        "certification": "cis-df",
+        "domain": "Govern",
+        "domainSlug": "govern",
+        "domainPercentage": 35,
+        "subtopics": [
+          "Duplicate CIs",
+          "Data Quality"
+        ],
+        "tags": [
+          "duplicates",
+          "incident management",
+          "data quality"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-09T07:20:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-df-govern-071",
+      "certification": "cis-df",
+      "topic": "govern",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Where can a CMDB administrator obtain the CMDB and CSDM Data Foundations Dashboards?",
+      "options": [
+        {
+          "id": "a",
+          "text": "ServiceNow Sales"
+        },
+        {
+          "id": "b",
+          "text": "ServiceNow Store"
+        },
+        {
+          "id": "c",
+          "text": "ServiceNow Impact"
+        },
+        {
+          "id": "d",
+          "text": "ServiceNow Support"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The CMDB and CSDM Data Foundations Dashboards are free plugins available from the ServiceNow Store (store.servicenow.com). Search for 'data foundation dashboards' to find and install them.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The dashboards are free from the Store, not a paid offering through Sales.",
+            "reference": "CMDB Health Deep Dive course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "While Impact customers get additional support, the dashboards themselves are from the Store.",
+            "reference": "CMDB Health Deep Dive course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Support handles issues, not plugin distribution. Plugins are in the Store.",
+            "reference": "CMDB Health Deep Dive course"
+          }
+        ]
+      },
+      "references": [
+        "CMDB Health Deep Dive course"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "course",
+        "course": {
+          "courseSlug": "cmdb-health-deep-dive",
+          "moduleTitle": "Data Foundations Dashboard",
+          "lessonTitle": "Getting Started",
+          "url": "https://learning.servicenow.com/lxp"
+        },
+        "excerpt": "Those dashboards are free. They're in the ServiceNow store. You just go to store.servicenow.com, search for data foundation dashboards."
+      },
+      "labels": {
+        "certification": "cis-df",
+        "domain": "Govern",
+        "domainSlug": "govern",
+        "domainPercentage": 35,
+        "subtopics": [
+          "Data Foundations Dashboard"
+        ],
+        "tags": [
+          "dashboard",
+          "ServiceNow Store",
+          "installation"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-09T07:20:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-df-govern-072",
+      "certification": "cis-df",
+      "topic": "govern",
+      "cognitiveLevel": "application",
+      "type": "multiple_select",
+      "question": "From the Get Well Playbook 'Percent of Incidents referencing a CI', what are suggested solutions to ensure the configuration item field is populated on an incident form? (Choose 2)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Configure field with reference qualifier to make it easier to find affected CI"
+        },
+        {
+          "id": "b",
+          "text": "Configure scheduled job to run nightly to populate the field"
+        },
+        {
+          "id": "c",
+          "text": "Make the Configuration item field mandatory on the incident form once an incident state moves from In progress to Resolved"
+        },
+        {
+          "id": "d",
+          "text": "Configure business rule to auto-populate the field"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "c"
+      ],
+      "selectCount": 2,
+      "explanation": {
+        "correct": "Two effective solutions: (1) Use reference qualifiers to filter the CI list, making it easier for users to find the correct CI, and (2) Make the CI field mandatory at resolution time, ensuring incidents are linked to CIs before closing.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "A scheduled job cannot determine which CI should be associated with an incident - this requires user knowledge.",
+            "reference": "KB0864671"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "While business rules can help, auto-populating without context risks associating wrong CIs. User selection is preferred.",
+            "reference": "KB0864671"
+          }
+        ]
+      },
+      "references": [
+        "KB0864671"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "kb_article",
+        "articleId": "KB0864671",
+        "title": "Percent of Incidents referencing a CI",
+        "url": "https://support.servicenow.com/kb?id=kb_article_view&sysparm_article=KB0864671"
+      },
+      "labels": {
+        "certification": "cis-df",
+        "domain": "Govern",
+        "domainSlug": "govern",
+        "domainPercentage": 35,
+        "subtopics": [
+          "Incident Management",
+          "CI Binding"
+        ],
+        "tags": [
+          "incident",
+          "configuration item",
+          "reference qualifier",
+          "mandatory field"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-09T07:20:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-df-govern-073",
+      "certification": "cis-df",
+      "topic": "govern",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_select",
+      "question": "From the Get Well Playbook 'Handle CMDB tables begin with u_cmdb_ci', what are upstream causes of having custom tables in the CMDB? (Choose 2)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Requests from stakeholders"
+        },
+        {
+          "id": "b",
+          "text": "Highly skilled ServiceNow developers"
+        },
+        {
+          "id": "c",
+          "text": "No review process in creation of CI classes"
+        },
+        {
+          "id": "d",
+          "text": "No governance process for CMDB customization"
+        }
+      ],
+      "correctAnswers": [
+        "c",
+        "d"
+      ],
+      "selectCount": 2,
+      "explanation": {
+        "correct": "Custom u_cmdb_ci tables proliferate due to: (1) lack of review process when creating new CI classes (no one checking if an OOB class exists), and (2) lack of governance process for CMDB customization (no approval workflow for changes).",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Stakeholder requests are normal - the issue is lack of governance to evaluate those requests properly.",
+            "reference": "CMDB Health Deep Dive course"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "Skilled developers are an asset. The issue is lack of process, not skill level.",
+            "reference": "CMDB Health Deep Dive course"
+          }
+        ]
+      },
+      "references": [
+        "CMDB Health Deep Dive course"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "course": {
+          "courseSlug": "cmdb-health-deep-dive",
+          "moduleTitle": "Best Practices",
+          "lessonTitle": "Custom Tables",
+          "url": "https://learning.servicenow.com/lxp"
+        },
+        "excerpt": "No review process in creation of CI classes... No governance process for CMDB customization"
+      },
+      "labels": {
+        "certification": "cis-df",
+        "domain": "Govern",
+        "domainSlug": "govern",
+        "domainPercentage": 35,
+        "subtopics": [
+          "Custom Tables",
+          "Governance"
+        ],
+        "tags": [
+          "u_cmdb_ci",
+          "custom tables",
+          "governance",
+          "review process"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-09T07:20:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-df-govern-074",
+      "certification": "cis-df",
+      "topic": "govern",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "From the Get Well Playbook 'Technical Service Offerings with Support Group or Change Group Populated', which is a potential benefit to the business if this metric is properly governed?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Decreased efficiency in managing manual metadata on configuration items"
+        },
+        {
+          "id": "b",
+          "text": "Simplicity in identifying owners and support groups for configuration items"
+        },
+        {
+          "id": "c",
+          "text": "Reduced accuracy in business decision-making"
+        },
+        {
+          "id": "d",
+          "text": "Complex reporting process for security incidents"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "When TSOs have Support Group and Change Group populated, it becomes simple to identify who owns and supports the underlying CIs. The CSDM Sync Group Attributes business rule cascades this information automatically.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Proper TSO configuration increases efficiency, not decreases it, by automating group assignment.",
+            "reference": "KB0952941"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Having group data improves decision-making accuracy by knowing who to contact.",
+            "reference": "KB0952941"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Clear ownership simplifies, not complicates, security incident reporting.",
+            "reference": "KB0952941"
+          }
+        ]
+      },
+      "references": [
+        "KB0952941"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "kb_article",
+        "articleId": "KB0952941",
+        "title": "Technical Service Offerings with Support Group or Change Group Populated",
+        "url": "https://support.servicenow.com/kb?id=kb_article_view&sysparm_article=KB0952941"
+      },
+      "labels": {
+        "certification": "cis-df",
+        "domain": "Govern",
+        "domainSlug": "govern",
+        "domainPercentage": 35,
+        "subtopics": [
+          "Technical Service Offerings",
+          "Group Management"
+        ],
+        "tags": [
+          "TSO",
+          "support group",
+          "change group",
+          "ownership"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-09T07:20:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-df-govern-075",
+      "certification": "cis-df",
+      "topic": "govern",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_select",
+      "question": "The business rule responsible for synchronizing group attributes from a technical service offering to the underlying CIs within a dynamic CI group synchronizes which attributes? (Choose 3)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Support Group"
+        },
+        {
+          "id": "b",
+          "text": "Used by Group"
+        },
+        {
+          "id": "c",
+          "text": "Managed by Group"
+        },
+        {
+          "id": "d",
+          "text": "Service Desk Group"
+        },
+        {
+          "id": "e",
+          "text": "Assignment Group"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "c",
+        "e"
+      ],
+      "selectCount": 3,
+      "explanation": {
+        "correct": "The CSDM - Sync Group Attributes business rule synchronizes three group attributes from TSO to CIs: Support Group, Managed by Group, and Assignment Group (formerly called Assignment Group before a rename).",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Used by Group is not one of the synchronized attributes in this business rule.",
+            "reference": "CMDB Health Deep Dive course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Service Desk Group is not a synchronized attribute. Service Desk may be a value assigned to Support Group.",
+            "reference": "CMDB Health Deep Dive course"
+          }
+        ]
+      },
+      "references": [
+        "CMDB Health Deep Dive course"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "course": {
+          "courseSlug": "cmdb-health-deep-dive",
+          "moduleTitle": "Group Synchronization",
+          "lessonTitle": "CSDM Sync Group Attributes",
+          "url": "https://learning.servicenow.com/lxp"
+        },
+        "excerpt": "We can see the support group. Simon group and Managed By group will be synced after some time, depending on the size of your query and your CMDB."
+      },
+      "labels": {
+        "certification": "cis-df",
+        "domain": "Govern",
+        "domainSlug": "govern",
+        "domainPercentage": 35,
+        "subtopics": [
+          "CSDM",
+          "Group Synchronization"
+        ],
+        "tags": [
+          "support group",
+          "managed by",
+          "assignment group",
+          "business rule"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-09T07:20:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-df-govern-076",
+      "certification": "cis-df",
+      "topic": "govern",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "Assuming business drivers are equal, from the CMDB Data Foundations Dashboard, the 'Hardware CIs with Serial Numbers' Result displays 55% with a Priority of '3 - Medium-High', and the 'CIs with Relationships to Parent and Child' Result displays 20% with a Priority of '4 - Medium'. Which metric should action be taken on first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Hardware CIs with Serial Numbers because serial numbers are key to asset health"
+        },
+        {
+          "id": "b",
+          "text": "Hardware CIs with Serial Numbers because Priority is more important than Result in determining which metric to take action on first"
+        },
+        {
+          "id": "c",
+          "text": "Both Result and Priority are equally important"
+        },
+        {
+          "id": "d",
+          "text": "CIs with Relationships to Parent and Child because Result is more important than Priority in determining which metric to take action on first"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Priority takes precedence over Result percentage. A higher priority metric (3 - Medium-High) should be addressed before a lower priority metric (4 - Medium) even if the lower priority metric has a worse percentage score.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "While serial numbers are important, the reasoning should focus on Priority ranking, not just asset health.",
+            "reference": "CMDB Health Deep Dive course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "They are not equally important - Priority is weighted more heavily in determining remediation order.",
+            "reference": "CMDB Health Deep Dive course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Result percentage is secondary to Priority when determining remediation order.",
+            "reference": "CMDB Health Deep Dive course"
+          }
+        ]
+      },
+      "references": [
+        "CMDB Health Deep Dive course"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "course": {
+          "courseSlug": "cmdb-health-deep-dive",
+          "moduleTitle": "Data Foundations Dashboard",
+          "lessonTitle": "Metric Prioritization",
+          "url": "https://learning.servicenow.com/lxp"
+        },
+        "excerpt": "Some metrics, you may have some that both have a 0%, but one is critical and one is maybe medium to prioritize getting it better. And that's because not all metrics are equal."
+      },
+      "labels": {
+        "certification": "cis-df",
+        "domain": "Govern",
+        "domainSlug": "govern",
+        "domainPercentage": 35,
+        "subtopics": [
+          "Data Foundations Dashboard",
+          "Metric Prioritization"
+        ],
+        "tags": [
+          "priority",
+          "result",
+          "remediation",
+          "metrics"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-09T07:20:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-df-govern-077",
+      "certification": "cis-df",
+      "topic": "govern",
+      "cognitiveLevel": "application",
+      "type": "multiple_select",
+      "question": "If executing a remediation playbook fix script from Scripts - Background, which processes are recommended? (Choose 2)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Run the fix script from Scripts – Background and ensure the Record for rollback checkbox is selected"
+        },
+        {
+          "id": "b",
+          "text": "Run the fix script in a development or test environment"
+        },
+        {
+          "id": "c",
+          "text": "Run the fix script using a UI action"
+        },
+        {
+          "id": "d",
+          "text": "Run the fix script using a business rule"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b"
+      ],
+      "selectCount": 2,
+      "explanation": {
+        "correct": "Best practices: (1) Always select 'Record for rollback' when running fix scripts to enable recovery if something goes wrong, and (2) Test fix scripts in development/test environments before running in production.",
+        "wrongAnswers": [
+          {
+            "choiceId": "c",
+            "explanation": "Fix scripts are run from Scripts - Background, not as UI actions. UI actions are for user-triggered functionality.",
+            "reference": "CMDB Health Deep Dive course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Fix scripts are one-time executions from Scripts - Background, not ongoing business rules.",
+            "reference": "CMDB Health Deep Dive course"
+          }
+        ]
+      },
+      "references": [
+        "CMDB Health Deep Dive course"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "course": {
+          "courseSlug": "cmdb-health-deep-dive",
+          "moduleTitle": "Remediation",
+          "lessonTitle": "Running Fix Scripts",
+          "url": "https://learning.servicenow.com/lxp"
+        },
+        "excerpt": "Run the fix script from Scripts – Background and ensure the Record for rollback checkbox is selected... Run the fix script in a development or test environment"
+      },
+      "labels": {
+        "certification": "cis-df",
+        "domain": "Govern",
+        "domainSlug": "govern",
+        "domainPercentage": 35,
+        "subtopics": [
+          "Fix Scripts",
+          "Remediation"
+        ],
+        "tags": [
+          "fix script",
+          "scripts background",
+          "rollback",
+          "testing"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-09T07:20:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-df-govern-078",
+      "certification": "cis-df",
+      "topic": "govern",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "On the CMDB and CSDM Data Foundations Dashboards, which are the correct ranges for the color-coded bar percentages for CIs in compliance for a key foundational metric?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Red: Less than 50%, Yellow: 50–90%, Green: More than 90%"
+        },
+        {
+          "id": "b",
+          "text": "Red: Less than 60%, Yellow: 60–95%, Green: More than 95%"
+        },
+        {
+          "id": "c",
+          "text": "Red: Less than 40%, Yellow: 40–80%, Green: More than 80%"
+        },
+        {
+          "id": "d",
+          "text": "Red: Less than 30%, Yellow: 30–75%, Green: More than 75%"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The Data Foundations Dashboard uses: Red for less than 60%, Yellow for 60-95%, and Green for more than 95%. This reflects that healthy CMDBs should target near-100% compliance on key metrics.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "These thresholds are too lenient. The actual green threshold is 95%, not 90%.",
+            "reference": "CMDB Health Deep Dive course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "These thresholds are incorrect. Red starts at 60%, not 40%.",
+            "reference": "CMDB Health Deep Dive course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "These thresholds are too lenient and don't match the dashboard configuration.",
+            "reference": "CMDB Health Deep Dive course"
+          }
+        ]
+      },
+      "references": [
+        "CMDB Health Deep Dive course"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "course": {
+          "courseSlug": "cmdb-health-deep-dive",
+          "moduleTitle": "Data Foundations Dashboard",
+          "lessonTitle": "Metric Visualization",
+          "url": "https://learning.servicenow.com/lxp"
+        },
+        "excerpt": "Red: Less than 60%, Yellow: 60–95%, Green: More than 95%"
+      },
+      "labels": {
+        "certification": "cis-df",
+        "domain": "Govern",
+        "domainSlug": "govern",
+        "domainPercentage": 35,
+        "subtopics": [
+          "Data Foundations Dashboard",
+          "Metrics"
+        ],
+        "tags": [
+          "dashboard",
+          "color coding",
+          "thresholds",
+          "compliance"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-09T07:20:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-df-govern-079",
+      "certification": "cis-df",
+      "topic": "govern",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which offering is provided by ServiceNow CMDB experts to gain insight on the health of a CMDB, obtain actionable recommendations, receive coaching, and provide hands-on assistance to remediate chosen areas of focus?",
+      "options": [
+        {
+          "id": "a",
+          "text": "CSDM and CMDB Data Foundations Dashboard"
+        },
+        {
+          "id": "b",
+          "text": "CMDB Amplified"
+        },
+        {
+          "id": "c",
+          "text": "TuneUp Your Configuration Management Database (CMDB) Accelerator"
+        },
+        {
+          "id": "d",
+          "text": "Now Create"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "The TuneUp Your CMDB Accelerator is a ServiceNow professional services offering that provides expert consultation, health assessment, recommendations, and hands-on remediation assistance.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The Data Foundations Dashboard is a self-service tool, not a consulting service with hands-on assistance.",
+            "reference": "CMDB Health Deep Dive course"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "CMDB Amplified is available only to Impact customers and provides guidance but differs from the TuneUp Accelerator.",
+            "reference": "CMDB Health Deep Dive course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Now Create is a development tool, not a CMDB health consulting service.",
+            "reference": "CMDB Health Deep Dive course"
+          }
+        ]
+      },
+      "references": [
+        "CMDB Health Deep Dive course"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "course": {
+          "courseSlug": "cmdb-health-deep-dive",
+          "moduleTitle": "ServiceNow Offerings",
+          "lessonTitle": "CMDB Services",
+          "url": "https://learning.servicenow.com/lxp"
+        },
+        "excerpt": "TuneUp Your Configuration Management Database (CMDB) Accelerator... gain insight on the health of a CMDB, obtain actionable recommendations, receive coaching, and provide hands-on assistance"
+      },
+      "labels": {
+        "certification": "cis-df",
+        "domain": "Govern",
+        "domainSlug": "govern",
+        "domainPercentage": 35,
+        "subtopics": [
+          "ServiceNow Services",
+          "CMDB Health"
+        ],
+        "tags": [
+          "TuneUp",
+          "accelerator",
+          "professional services",
+          "CMDB health"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-09T07:20:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-df-govern-080",
+      "certification": "cis-df",
+      "topic": "govern",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which field on the location table is useful in assisting with the remediation of duplicate locations?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Parent"
+        },
+        {
+          "id": "b",
+          "text": "Name"
+        },
+        {
+          "id": "c",
+          "text": "Full name"
+        },
+        {
+          "id": "d",
+          "text": "Contact"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "The Full name field shows the complete hierarchical path of a location (e.g., 'USA/Arizona/Phoenix') which helps identify true duplicates versus locations with the same name but different hierarchies.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Parent shows the immediate parent location but doesn't provide the full hierarchical context.",
+            "reference": "KB0832200"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "Name alone can appear duplicate when locations with the same name exist in different hierarchies.",
+            "reference": "KB0832200"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Contact is informational for the location but doesn't help identify duplicates.",
+            "reference": "KB0832200"
+          }
+        ]
+      },
+      "references": [
+        "KB0832200",
+        "CMDB Health Deep Dive course"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "kb_article",
+        "articleId": "KB0832200",
+        "title": "Percent of unique locations",
+        "url": "https://support.servicenow.com/kb?id=kb_article_view&sysparm_article=KB0832200"
+      },
+      "labels": {
+        "certification": "cis-df",
+        "domain": "Govern",
+        "domainSlug": "govern",
+        "domainPercentage": 35,
+        "subtopics": [
+          "Locations",
+          "Duplicate Remediation"
+        ],
+        "tags": [
+          "location",
+          "full name",
+          "duplicates",
+          "remediation"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-09T07:20:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-df-govern-081",
+      "certification": "cis-df",
+      "topic": "govern",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which service offering is available only to Impact customers to provide insight and guidance to improve CMDB Health?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Now Create"
+        },
+        {
+          "id": "b",
+          "text": "CMDB Amplified"
+        },
+        {
+          "id": "c",
+          "text": "TuneUp Your CMDB Accelerator"
+        },
+        {
+          "id": "d",
+          "text": "CSDM and CMDB Data Foundations Dashboard"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "CMDB Amplified is exclusively available to ServiceNow Impact customers. It provides specialized insight and guidance from ServiceNow experts to improve CMDB health.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Now Create is a development platform, not a CMDB health service.",
+            "reference": "CMDB Health Deep Dive course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The TuneUp Accelerator is a paid professional service available to all customers, not just Impact.",
+            "reference": "CMDB Health Deep Dive course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The Data Foundations Dashboard is free from the ServiceNow Store for all customers.",
+            "reference": "CMDB Health Deep Dive course"
+          }
+        ]
+      },
+      "references": [
+        "CMDB Health Deep Dive course"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "course": {
+          "courseSlug": "cmdb-health-deep-dive",
+          "moduleTitle": "ServiceNow Offerings",
+          "lessonTitle": "Impact Services",
+          "url": "https://learning.servicenow.com/lxp"
+        },
+        "excerpt": "Which service offering is available only to Impact customers to provide insight and guidance to improve CMDB Health... CMDB Amplified"
+      },
+      "labels": {
+        "certification": "cis-df",
+        "domain": "Govern",
+        "domainSlug": "govern",
+        "domainPercentage": 35,
+        "subtopics": [
+          "ServiceNow Services",
+          "Impact"
+        ],
+        "tags": [
+          "CMDB Amplified",
+          "Impact",
+          "CMDB health"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-09T07:20:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-df-govern-082",
+      "certification": "cis-df",
+      "topic": "govern",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which ServiceNow product feature allows for bulk management of CI life cycle operations such as deletion, archival, and attestation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "CMDB Query Builder"
+        },
+        {
+          "id": "b",
+          "text": "Dynamic CI Groups"
+        },
+        {
+          "id": "c",
+          "text": "CMDB Data Manager"
+        },
+        {
+          "id": "d",
+          "text": "CI Class Manager"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "CMDB Data Manager handles bulk CI lifecycle operations including deletion, archival, and attestation. It replaces the need for custom scripts to manage end-of-life policies.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Query Builder is for creating queries to find CIs, not for lifecycle management.",
+            "reference": "CMDB Health Deep Dive course"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "Dynamic CI Groups organize CIs for service management, not lifecycle operations.",
+            "reference": "CMDB Health Deep Dive course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "CI Class Manager manages CI class definitions and attributes, not lifecycle operations.",
+            "reference": "CMDB Health Deep Dive course"
+          }
+        ]
+      },
+      "references": [
+        "CMDB Health Deep Dive course"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "course": {
+          "courseSlug": "cmdb-health-deep-dive",
+          "moduleTitle": "CMDB Features",
+          "lessonTitle": "Data Manager",
+          "url": "https://learning.servicenow.com/lxp"
+        },
+        "excerpt": "CMDB data manager, that's for dealing with end of life policies of the data. We find that a lot of folks were implementing that with their own scripts. Now, there's a place to go."
+      },
+      "labels": {
+        "certification": "cis-df",
+        "domain": "Govern",
+        "domainSlug": "govern",
+        "domainPercentage": 35,
+        "subtopics": [
+          "CMDB Data Manager",
+          "CI Lifecycle"
+        ],
+        "tags": [
+          "data manager",
+          "lifecycle",
+          "deletion",
+          "archival",
+          "attestation"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-09T07:20:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-df-govern-083",
+      "certification": "cis-df",
+      "topic": "govern",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "From the Get Well Playbook 'Technical Service Offerings with Support Group or Change Group Populated', Assignment group was updated in a previous release to what name?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Managed by"
+        },
+        {
+          "id": "b",
+          "text": "Change group"
+        },
+        {
+          "id": "c",
+          "text": "Support group"
+        },
+        {
+          "id": "d",
+          "text": "Owned by"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "The field previously called 'Assignment group' was renamed to 'Support group' in a ServiceNow release to better reflect its purpose in CSDM context.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Managed by is a separate field that identifies the group responsible for managing the CI.",
+            "reference": "KB0952941"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "Change group is a separate field for change management, not a rename of Assignment group.",
+            "reference": "KB0952941"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Owned by is a separate ownership field, not the new name for Assignment group.",
+            "reference": "KB0952941"
+          }
+        ]
+      },
+      "references": [
+        "KB0952941"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "kb_article",
+        "articleId": "KB0952941",
+        "title": "Technical Service Offerings with Support Group or Change Group Populated",
+        "url": "https://support.servicenow.com/kb?id=kb_article_view&sysparm_article=KB0952941"
+      },
+      "labels": {
+        "certification": "cis-df",
+        "domain": "Govern",
+        "domainSlug": "govern",
+        "domainPercentage": 35,
+        "subtopics": [
+          "Technical Service Offerings",
+          "Field Names"
+        ],
+        "tags": [
+          "assignment group",
+          "support group",
+          "field rename"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-09T07:20:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-df-govern-084",
+      "certification": "cis-df",
+      "topic": "govern",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_select",
+      "question": "Which are general usage guidelines for location records? (Choose 3)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Unique"
+        },
+        {
+          "id": "b",
+          "text": "Clear to end users"
+        },
+        {
+          "id": "c",
+          "text": "Hierarchical"
+        },
+        {
+          "id": "d",
+          "text": "Parent field populated occasionally"
+        },
+        {
+          "id": "e",
+          "text": "Come from multiple sources"
+        },
+        {
+          "id": "f",
+          "text": "Non-hierarchical"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b",
+        "c"
+      ],
+      "selectCount": 3,
+      "explanation": {
+        "correct": "Location records should be: (1) Unique - no duplicates, (2) Clear to end users - understandable naming, and (3) Hierarchical - properly structured with parent-child relationships (Country > State > City > Building).",
+        "wrongAnswers": [
+          {
+            "choiceId": "d",
+            "explanation": "Parent field should be consistently populated to maintain hierarchy, not occasionally.",
+            "reference": "KB0832200"
+          },
+          {
+            "choiceId": "e",
+            "explanation": "Locations should ideally come from a single authoritative source to prevent duplicates.",
+            "reference": "KB0832200"
+          },
+          {
+            "choiceId": "f",
+            "explanation": "Locations should be hierarchical, not non-hierarchical, to enable proper reporting and filtering.",
+            "reference": "KB0832200"
+          }
+        ]
+      },
+      "references": [
+        "KB0832200"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "kb_article",
+        "articleId": "KB0832200",
+        "title": "Percent of unique locations",
+        "url": "https://support.servicenow.com/kb?id=kb_article_view&sysparm_article=KB0832200"
+      },
+      "labels": {
+        "certification": "cis-df",
+        "domain": "Govern",
+        "domainSlug": "govern",
+        "domainPercentage": 35,
+        "subtopics": [
+          "Locations",
+          "Best Practices"
+        ],
+        "tags": [
+          "location",
+          "hierarchy",
+          "naming",
+          "unique"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-09T07:20:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-df-govern-085",
+      "certification": "cis-df",
+      "topic": "govern",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "Which is an important reason to manage configuration items within a dynamic CI group and technical service offering?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The configuration item can be referenced by an incident record"
+        },
+        {
+          "id": "b",
+          "text": "The configuration item can be part of a service map"
+        },
+        {
+          "id": "c",
+          "text": "The configuration item group attributes can be managed collectively from the technical service offering"
+        },
+        {
+          "id": "d",
+          "text": "The configuration item group attributes can be managed individually"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "The key benefit of Dynamic CI Groups linked to TSOs is that group attributes (Support Group, Managed by, Assignment Group) can be set once on the TSO and automatically cascaded to all CIs in the group, enabling collective management.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "CIs can be referenced by incidents regardless of Dynamic CI Group membership.",
+            "reference": "CMDB Health Deep Dive course"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "Service mapping is a separate capability not dependent on Dynamic CI Groups.",
+            "reference": "CMDB Health Deep Dive course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The point is to manage attributes collectively, not individually - that's the benefit of this approach.",
+            "reference": "CMDB Health Deep Dive course"
+          }
+        ]
+      },
+      "references": [
+        "CMDB Health Deep Dive course"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "course": {
+          "courseSlug": "cmdb-health-deep-dive",
+          "moduleTitle": "Dynamic CI Groups",
+          "lessonTitle": "TSO Integration",
+          "url": "https://learning.servicenow.com/lxp"
+        },
+        "excerpt": "This is a really nice new feature. We added, I think, in the San Diego release, and a lot of folks aren't really taking advantage of it to automate some of this ownership information."
+      },
+      "labels": {
+        "certification": "cis-df",
+        "domain": "Govern",
+        "domainSlug": "govern",
+        "domainPercentage": 35,
+        "subtopics": [
+          "Dynamic CI Groups",
+          "Technical Service Offerings"
+        ],
+        "tags": [
+          "dynamic CI group",
+          "TSO",
+          "collective management",
+          "group attributes"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-09T07:20:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-df-govern-086",
+      "certification": "cis-df",
+      "topic": "govern",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "From the Get Well Playbook 'Refresh Stale CIs in your CMDB', which is a potential benefit to the business if this metric is properly governed?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Decreases decision-making accuracy"
+        },
+        {
+          "id": "b",
+          "text": "Leads to accurate data and better decision-making"
+        },
+        {
+          "id": "c",
+          "text": "Provides no effect on data accuracy"
+        },
+        {
+          "id": "d",
+          "text": "Increases the need for additional data validations"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Removing or refreshing stale CIs ensures the CMDB contains current, accurate data which leads to better business decisions based on the actual state of the infrastructure.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Governing stale CIs improves accuracy, it doesn't decrease it.",
+            "reference": "KB0829106"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Removing stale data has a significant positive effect on data accuracy.",
+            "reference": "KB0829106"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Proper governance reduces the need for additional validations by ensuring data is current.",
+            "reference": "KB0829106"
+          }
+        ]
+      },
+      "references": [
+        "KB0829106"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "kb_article",
+        "articleId": "KB0829106",
+        "title": "Refresh Stale CIs in your CMDB",
+        "url": "https://support.servicenow.com/kb?id=kb_article_view&sysparm_article=KB0829106"
+      },
+      "labels": {
+        "certification": "cis-df",
+        "domain": "Govern",
+        "domainSlug": "govern",
+        "domainPercentage": 35,
+        "subtopics": [
+          "Stale CIs",
+          "Data Quality"
+        ],
+        "tags": [
+          "stale",
+          "refresh",
+          "data quality",
+          "decision-making"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-09T07:20:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-df-govern-087",
+      "certification": "cis-df",
+      "topic": "govern",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which pillar for successful foundational data focuses on reporting and metrics?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Ingest"
+        },
+        {
+          "id": "b",
+          "text": "Govern"
+        },
+        {
+          "id": "c",
+          "text": "Insight"
+        },
+        {
+          "id": "d",
+          "text": "Completeness"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "The Insight pillar focuses on using the data in reporting and calculating metrics. It's about deriving value from the stored data through analysis and visualization.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Ingest focuses on connecting to data sources and importing data into the CMDB.",
+            "reference": "CMDB Health Deep Dive course"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "Govern focuses on maintaining data health and quality over time.",
+            "reference": "CMDB Health Deep Dive course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Completeness is one of the 3 C's from CMDB Health Dashboard, not a foundational data pillar.",
+            "reference": "CMDB Health Deep Dive course"
+          }
+        ]
+      },
+      "references": [
+        "CMDB Health Deep Dive course"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "course",
+        "course": {
+          "courseSlug": "cmdb-health-deep-dive",
+          "moduleTitle": "Three Pillars",
+          "lessonTitle": "Insight Pillar",
+          "url": "https://learning.servicenow.com/lxp"
+        },
+        "excerpt": "The data that we have and we store. We want to use it. We get value out of it by using it in our processes and the products that we sell. We need to use it in reporting and calculating metrics."
+      },
+      "labels": {
+        "certification": "cis-df",
+        "domain": "Govern",
+        "domainSlug": "govern",
+        "domainPercentage": 35,
+        "subtopics": [
+          "Data Foundation Pillars",
+          "Insight"
+        ],
+        "tags": [
+          "insight",
+          "reporting",
+          "metrics",
+          "pillars"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-09T07:20:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-df-govern-088",
+      "certification": "cis-df",
+      "topic": "govern",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which pillar for successful foundational data focuses on health metric improvement?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Insight"
+        },
+        {
+          "id": "b",
+          "text": "Ingest"
+        },
+        {
+          "id": "c",
+          "text": "Govern"
+        },
+        {
+          "id": "d",
+          "text": "Compliance"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "The Govern pillar focuses on maintaining and improving data health over time. This includes monitoring metrics, remediating issues, and ensuring data quality through governance processes.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Insight focuses on using data for reporting and metrics calculation, not improving health.",
+            "reference": "CMDB Health Deep Dive course"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "Ingest focuses on connecting data sources and importing data, not health improvement.",
+            "reference": "CMDB Health Deep Dive course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Compliance is one of the 3 C's from CMDB Health Dashboard, not a foundational data pillar.",
+            "reference": "CMDB Health Deep Dive course"
+          }
+        ]
+      },
+      "references": [
+        "CMDB Health Deep Dive course"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "course": {
+          "courseSlug": "cmdb-health-deep-dive",
+          "moduleTitle": "Three Pillars",
+          "lessonTitle": "Govern Pillar",
+          "url": "https://learning.servicenow.com/lxp"
+        },
+        "excerpt": "The middle pillar is all about governance of that data. The data needs to be healthy, and you need to improve the health of that data over time."
+      },
+      "labels": {
+        "certification": "cis-df",
+        "domain": "Govern",
+        "domainSlug": "govern",
+        "domainPercentage": 35,
+        "subtopics": [
+          "Data Foundation Pillars",
+          "Governance"
+        ],
+        "tags": [
+          "govern",
+          "health metrics",
+          "data quality",
+          "pillars"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-09T07:20:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-df-govern-089",
+      "certification": "cis-df",
+      "topic": "govern",
+      "cognitiveLevel": "application",
+      "type": "multiple_select",
+      "question": "To update the CMDB Data Foundations Dashboard health metrics and reports immediately, versus waiting for them to update automatically, which scheduled jobs need to be executed? (Choose 2)",
+      "options": [
+        {
+          "id": "a",
+          "text": "CSDM Data Foundations PA metric Collection"
+        },
+        {
+          "id": "b",
+          "text": "CMDB Get Well Metric Collection"
+        },
+        {
+          "id": "c",
+          "text": "CSDM Get Well Metric Collection"
+        },
+        {
+          "id": "d",
+          "text": "CMDB Data Foundations PA metric Collection"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "d"
+      ],
+      "selectCount": 2,
+      "explanation": {
+        "correct": "To immediately refresh dashboard metrics, run both: (1) CSDM Data Foundations PA metric Collection and (2) CMDB Data Foundations PA metric Collection. These scheduled jobs calculate and update the Performance Analytics indicators.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "The job name is 'CMDB Data Foundations PA metric Collection', not 'CMDB Get Well Metric Collection'.",
+            "reference": "CMDB Health Deep Dive course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The job name is 'CSDM Data Foundations PA metric Collection', not 'CSDM Get Well Metric Collection'.",
+            "reference": "CMDB Health Deep Dive course"
+          }
+        ]
+      },
+      "references": [
+        "CMDB Health Deep Dive course"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "course": {
+          "courseSlug": "cmdb-health-deep-dive",
+          "moduleTitle": "Data Foundations Dashboard",
+          "lessonTitle": "Scheduled Jobs",
+          "url": "https://learning.servicenow.com/lxp"
+        },
+        "excerpt": "CSDM Data Foundations PA metric Collection... CMDB Data Foundations PA metric Collection"
+      },
+      "labels": {
+        "certification": "cis-df",
+        "domain": "Govern",
+        "domainSlug": "govern",
+        "domainPercentage": 35,
+        "subtopics": [
+          "Data Foundations Dashboard",
+          "Scheduled Jobs"
+        ],
+        "tags": [
+          "scheduled job",
+          "PA metrics",
+          "dashboard refresh"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-09T07:20:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-df-govern-090",
+      "certification": "cis-df",
+      "topic": "govern",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "From the CMDB Data Foundations Dashboard, if metric X has a higher Priority than metric Y, what is a good reason to take action on remediating metric Y first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Metric Y has a lower Result percentage than metric X"
+        },
+        {
+          "id": "b",
+          "text": "Metric Y is on the Best Practices tab and metric X is not"
+        },
+        {
+          "id": "c",
+          "text": "Metric Y has a remediation playbook"
+        },
+        {
+          "id": "d",
+          "text": "Metric Y has a much higher internal business driver to be remediated than metric X"
+        }
+      ],
+      "correctAnswers": [
+        "d"
+      ],
+      "explanation": {
+        "correct": "Even though Priority is normally the primary factor, internal business drivers can override standard prioritization. If metric Y is critical to a specific business objective or compliance requirement, it may take precedence.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Lower Result percentage alone doesn't justify overriding higher Priority.",
+            "reference": "CMDB Health Deep Dive course"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "Tab location doesn't affect remediation priority.",
+            "reference": "CMDB Health Deep Dive course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Having a playbook makes remediation easier but doesn't change priority.",
+            "reference": "CMDB Health Deep Dive course"
+          }
+        ]
+      },
+      "references": [
+        "CMDB Health Deep Dive course"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "course": {
+          "courseSlug": "cmdb-health-deep-dive",
+          "moduleTitle": "Remediation Strategy",
+          "lessonTitle": "Prioritization",
+          "url": "https://learning.servicenow.com/lxp"
+        },
+        "excerpt": "Assuming business drivers are equal... Metric Y has a much higher internal business driver to be remediated than metric X"
+      },
+      "labels": {
+        "certification": "cis-df",
+        "domain": "Govern",
+        "domainSlug": "govern",
+        "domainPercentage": 35,
+        "subtopics": [
+          "Remediation Strategy",
+          "Prioritization"
+        ],
+        "tags": [
+          "priority",
+          "business drivers",
+          "remediation"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-09T07:20:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-df-govern-091",
+      "certification": "cis-df",
+      "topic": "govern",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_select",
+      "question": "From the Get Well Playbook 'CMDB Health Dashboard Disabled', what are potential benefits to the business if the CMDB Health Dashboards are activated and being utilized? (Choose 2)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Increases the need for customized processes"
+        },
+        {
+          "id": "b",
+          "text": "Decreases efficiency in maintaining the CMDB"
+        },
+        {
+          "id": "c",
+          "text": "Reduces time spent on data validation and maintenance"
+        },
+        {
+          "id": "d",
+          "text": "Increases the trust in quality of CMDB data for other teams"
+        }
+      ],
+      "correctAnswers": [
+        "c",
+        "d"
+      ],
+      "selectCount": 2,
+      "explanation": {
+        "correct": "Activating CMDB Health Dashboards: (1) reduces time spent on manual data validation by providing automated health metrics, and (2) increases trust in CMDB data quality by providing visibility and accountability.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The dashboards reduce the need for customized processes by providing standard metrics and remediation guidance.",
+            "reference": "KB0853039"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "The dashboards increase efficiency by automating health monitoring and providing clear remediation paths.",
+            "reference": "KB0853039"
+          }
+        ]
+      },
+      "references": [
+        "KB0853039"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "kb_article",
+        "articleId": "KB0853039",
+        "title": "CMDB Health Dashboard Disabled",
+        "url": "https://support.servicenow.com/kb?id=kb_article_view&sysparm_article=KB0853039"
+      },
+      "labels": {
+        "certification": "cis-df",
+        "domain": "Govern",
+        "domainSlug": "govern",
+        "domainPercentage": 35,
+        "subtopics": [
+          "CMDB Health Dashboard",
+          "Data Quality"
+        ],
+        "tags": [
+          "health dashboard",
+          "data quality",
+          "trust",
+          "efficiency"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-09T07:20:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-df-govern-092",
+      "certification": "cis-df",
+      "topic": "govern",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "According to ServiceNow's analysis, what is the average improvement in high-priority incident resolution time for instances with a healthy CMDB compared to an unhealthy CMDB?",
+      "options": [
+        {
+          "id": "a",
+          "text": "15% faster"
+        },
+        {
+          "id": "b",
+          "text": "27% faster"
+        },
+        {
+          "id": "c",
+          "text": "40% faster"
+        },
+        {
+          "id": "d",
+          "text": "50% faster"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "ServiceNow's analysis of thousands of instances found that those with healthy CMDBs resolve high-priority incidents on average 27% faster than instances with unhealthy CMDBs.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The actual figure is 27%, not 15%.",
+            "reference": "CMDB Health Deep Dive course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The actual figure is 27%, not 40%.",
+            "reference": "CMDB Health Deep Dive course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The actual figure is 27%, not 50%.",
+            "reference": "CMDB Health Deep Dive course"
+          }
+        ]
+      },
+      "references": [
+        "CMDB Health Deep Dive course"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "course",
+        "course": {
+          "courseSlug": "cmdb-health-deep-dive",
+          "moduleTitle": "CMDB Health Benefits",
+          "lessonTitle": "Business Value",
+          "url": "https://learning.servicenow.com/lxp"
+        },
+        "excerpt": "If you have a healthy CMDB, those instances resolve high-priority incidents, on average 27% faster than an unhealthy CMDB."
+      },
+      "labels": {
+        "certification": "cis-df",
+        "domain": "Govern",
+        "domainSlug": "govern",
+        "domainPercentage": 35,
+        "subtopics": [
+          "CMDB Health",
+          "Business Value"
+        ],
+        "tags": [
+          "incident resolution",
+          "MTTR",
+          "healthy CMDB",
+          "statistics"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-09T07:20:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-df-govern-093",
+      "certification": "cis-df",
+      "topic": "govern",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "In which ServiceNow release was the group synchronization feature for Dynamic CI Groups and Technical Service Offerings added?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Rome"
+        },
+        {
+          "id": "b",
+          "text": "San Diego"
+        },
+        {
+          "id": "c",
+          "text": "Tokyo"
+        },
+        {
+          "id": "d",
+          "text": "Utah"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The group synchronization feature (CSDM - Sync Group Attributes business rule) that cascades group attributes from TSOs to CIs in Dynamic CI Groups was added in the San Diego release.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Rome preceded San Diego and didn't have this feature.",
+            "reference": "CMDB Health Deep Dive course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Tokyo came after San Diego; the feature was already available by then.",
+            "reference": "CMDB Health Deep Dive course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Utah came after San Diego; the feature was already available by then.",
+            "reference": "CMDB Health Deep Dive course"
+          }
+        ]
+      },
+      "references": [
+        "CMDB Health Deep Dive course"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "course": {
+          "courseSlug": "cmdb-health-deep-dive",
+          "moduleTitle": "Group Synchronization",
+          "lessonTitle": "Feature History",
+          "url": "https://learning.servicenow.com/lxp"
+        },
+        "excerpt": "This is a really nice new feature. We added, I think, in the San Diego release, and a lot of folks aren't really taking advantage of it."
+      },
+      "labels": {
+        "certification": "cis-df",
+        "domain": "Govern",
+        "domainSlug": "govern",
+        "domainPercentage": 35,
+        "subtopics": [
+          "CSDM Features",
+          "Release History"
+        ],
+        "tags": [
+          "San Diego",
+          "group sync",
+          "release",
+          "CSDM"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-09T07:20:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-df-govern-094",
+      "certification": "cis-df",
+      "topic": "govern",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "In CSDM Crawl-Walk-Run-Fly adoption levels, at which level are Dynamic CI Groups and location hierarchy addressed?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Crawl"
+        },
+        {
+          "id": "b",
+          "text": "Walk"
+        },
+        {
+          "id": "c",
+          "text": "Run"
+        },
+        {
+          "id": "d",
+          "text": "Fly"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Dynamic CI Groups, their connection to infrastructure, and location hierarchy are addressed at the Walk level of CSDM adoption. This represents intermediate maturity in CSDM implementation.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Crawl is the foundational level focusing on basic CI discovery and initial data population.",
+            "reference": "CMDB Health Deep Dive course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Run represents more advanced capabilities beyond Dynamic CI Groups and locations.",
+            "reference": "CMDB Health Deep Dive course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Fly is the most advanced level with full service automation and AI/ML capabilities.",
+            "reference": "CMDB Health Deep Dive course"
+          }
+        ]
+      },
+      "references": [
+        "CMDB Health Deep Dive course"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "course": {
+          "courseSlug": "cmdb-health-deep-dive",
+          "moduleTitle": "CSDM Adoption",
+          "lessonTitle": "Walk Level",
+          "url": "https://learning.servicenow.com/lxp"
+        },
+        "excerpt": "Mostly, this is, if you're familiar with Crawl, Walk, Run, Fly, the things we're going to be tackling today are in the Walk level of adoption."
+      },
+      "labels": {
+        "certification": "cis-df",
+        "domain": "Govern",
+        "domainSlug": "govern",
+        "domainPercentage": 35,
+        "subtopics": [
+          "CSDM Adoption",
+          "Maturity Levels"
+        ],
+        "tags": [
+          "crawl walk run fly",
+          "adoption",
+          "dynamic CI group",
+          "location"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-09T07:20:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-df-govern-095",
+      "certification": "cis-df",
+      "topic": "govern",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "When creating a Dynamic CI Group linked to a Technical Service Offering, what type must be selected when creating the CMDB Query?",
+      "options": [
+        {
+          "id": "a",
+          "text": "List"
+        },
+        {
+          "id": "b",
+          "text": "Report"
+        },
+        {
+          "id": "c",
+          "text": "Query"
+        },
+        {
+          "id": "d",
+          "text": "Filter"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "When creating a CMDB Query for use with a Dynamic CI Group, you must set the type to 'Query' (also referred to as 'assumed to be queried'). This enables the query to be referenced by CMDB Groups.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "List is not a valid CMDB Query type for Dynamic CI Group integration.",
+            "reference": "CMDB Health Deep Dive course"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "Report is for reporting purposes, not for Dynamic CI Group queries.",
+            "reference": "CMDB Health Deep Dive course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Filter is not a CMDB Query type; it's a component within queries.",
+            "reference": "CMDB Health Deep Dive course"
+          }
+        ]
+      },
+      "references": [
+        "CMDB Health Deep Dive course"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "course": {
+          "courseSlug": "cmdb-health-deep-dive",
+          "moduleTitle": "Dynamic CI Groups",
+          "lessonTitle": "Creating CMDB Queries",
+          "url": "https://learning.servicenow.com/lxp"
+        },
+        "excerpt": "Make sure the type is assumed to be queried. And on the left side, we'll look for the Linux server table."
+      },
+      "labels": {
+        "certification": "cis-df",
+        "domain": "Govern",
+        "domainSlug": "govern",
+        "domainPercentage": 35,
+        "subtopics": [
+          "CMDB Query",
+          "Dynamic CI Groups"
+        ],
+        "tags": [
+          "CMDB query",
+          "query type",
+          "dynamic CI group"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-09T07:20:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     }
   ]
 }
