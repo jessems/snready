@@ -3,17 +3,12 @@ import {
   getAllCertifications,
   getTotalQuestionCount,
   getTotalFreeQuestionCount,
-  getCertificationsGroupedByCategoryWithReadiness,
-  getCategoryDisplayName,
-  getSortedCategories,
-  isCertificationReady,
+  getTopicsForCertification,
 } from "@/lib/data";
 import CertificationCard from "@/components/CertificationCard";
 
 export default function Home() {
   const certifications = getAllCertifications();
-  const groupedCerts = getCertificationsGroupedByCategoryWithReadiness();
-  const sortedCategories = getSortedCategories();
   
   // Calculate total questions across all ready certifications
   const readyCerts = ["csa", "cis-df", "cad", "cis-itsm"];
@@ -34,8 +29,8 @@ export default function Home() {
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-zinc-600 dark:text-zinc-400">
               Free practice tests, exam questions, and study guides for CSA, CIS-DF, CAD,
-              CIS-ITSM, and more. Join thousands of IT professionals who passed
-              their exams with SNReady.
+              CIS-ITSM, and more. Practice with questions generated directly from official
+              Now Learning content.
             </p>
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
@@ -148,6 +143,91 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Pricing Section */}
+      <section className="py-16 bg-white dark:bg-zinc-950">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-zinc-900 dark:text-zinc-50">
+              Simple, Transparent Pricing
+            </h2>
+            <p className="mt-4 text-lg text-zinc-600 dark:text-zinc-400">
+              Try free questions first. Upgrade when you&apos;re ready.
+            </p>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-2">
+            {/* Single Certification */}
+            <div className="rounded-xl border border-zinc-200 bg-zinc-50 p-8 dark:border-zinc-800 dark:bg-zinc-900">
+              <div className="text-center">
+                <h3 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100">
+                  Single Certification
+                </h3>
+                <div className="mt-4">
+                  <span className="text-4xl font-bold text-zinc-900 dark:text-zinc-100">$9</span>
+                  <span className="text-zinc-600 dark:text-zinc-400"> / 30 days</span>
+                </div>
+                <p className="mt-4 text-zinc-600 dark:text-zinc-400">
+                  Full access to one certification of your choice
+                </p>
+                <ul className="mt-6 space-y-3 text-left text-zinc-600 dark:text-zinc-400">
+                  <li className="flex items-center gap-2">
+                    <span className="text-emerald-500">✓</span>
+                    All practice questions for one cert
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-emerald-500">✓</span>
+                    Detailed explanations
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-emerald-500">✓</span>
+                    30-day access
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Lifetime All Access */}
+            <div className="rounded-xl border-2 border-emerald-500 bg-emerald-50 p-8 dark:bg-emerald-950/30 relative">
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                <span className="bg-emerald-500 text-white text-sm font-medium px-3 py-1 rounded-full">
+                  Best Value
+                </span>
+              </div>
+              <div className="text-center">
+                <h3 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100">
+                  Lifetime All Access
+                </h3>
+                <div className="mt-4">
+                  <span className="text-4xl font-bold text-emerald-600">$49</span>
+                  <span className="text-zinc-600 dark:text-zinc-400"> / forever</span>
+                </div>
+                <p className="mt-4 text-zinc-600 dark:text-zinc-400">
+                  Every certification, current and future
+                </p>
+                <ul className="mt-6 space-y-3 text-left text-zinc-600 dark:text-zinc-400">
+                  <li className="flex items-center gap-2">
+                    <span className="text-emerald-500">✓</span>
+                    <strong>All</strong> certifications included
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-emerald-500">✓</span>
+                    CSA, CIS-DF, CAD, CIS-ITSM &amp; more
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-emerald-500">✓</span>
+                    Future certifications included
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-emerald-500">✓</span>
+                    Lifetime access — never expires
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Certifications Grid by Category */}
       <section id="certifications" className="py-20">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
@@ -156,34 +236,64 @@ export default function Home() {
               Choose Your Certification
             </h2>
             <p className="mt-4 text-lg text-zinc-600 dark:text-zinc-400">
-              {certifications.length} ServiceNow certifications across {sortedCategories.length} categories
+              {certifications.length} ServiceNow certifications — 4 available now
             </p>
           </div>
 
-          {/* Category sections */}
-          <div className="mt-12 space-y-12">
-            {sortedCategories.map((category) => {
-              const certs = groupedCerts[category];
-              if (!certs || certs.length === 0) return null;
+          {/* Ready Now Section */}
+          <div className="mt-12">
+            <div className="flex items-center gap-4 mb-6">
+              <h3 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100">
+                Available Now
+              </h3>
+              <span className="text-sm text-emerald-600 bg-emerald-100 dark:bg-emerald-900/50 dark:text-emerald-400 px-2 py-1 rounded">
+                Start practicing today
+              </span>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {["csa", "cis-df", "cad", "cis-itsm"].map((slug) => {
+                const cert = certifications.find(c => c.slug === slug);
+                if (!cert) return null;
+                return (
+                  <CertificationCard 
+                    key={cert.slug} 
+                    certification={{
+                      ...cert,
+                      isReady: true,
+                      topicCount: getTopicsForCertification(cert.slug).length,
+                      totalQuestions: getTotalQuestionCount(cert.slug),
+                    }} 
+                  />
+                );
+              })}
+            </div>
+          </div>
 
-              return (
-                <div key={category}>
-                  <div className="flex items-center gap-4 mb-6">
-                    <h3 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100">
-                      {getCategoryDisplayName(category)}
-                    </h3>
-                    <span className="text-sm text-zinc-500 bg-zinc-100 dark:bg-zinc-800 px-2 py-1 rounded">
-                      {certs.length} {certs.length === 1 ? "exam" : "exams"}
-                    </span>
-                  </div>
-                  <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                    {certs.map((cert) => (
-                      <CertificationCard key={cert.slug} certification={cert} />
-                    ))}
-                  </div>
-                </div>
-              );
-            })}
+          {/* Coming Soon Section */}
+          <div className="mt-16">
+            <div className="flex items-center gap-4 mb-6">
+              <h3 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100">
+                Coming Soon
+              </h3>
+              <span className="text-sm text-zinc-500 bg-zinc-100 dark:bg-zinc-800 px-2 py-1 rounded">
+                More certifications on the way
+              </span>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {certifications
+                .filter(cert => !["csa", "cis-df", "cad", "cis-itsm"].includes(cert.slug))
+                .map((cert) => (
+                  <CertificationCard 
+                    key={cert.slug} 
+                    certification={{
+                      ...cert,
+                      isReady: false,
+                      topicCount: 0,
+                      totalQuestions: 0,
+                    }} 
+                  />
+                ))}
+            </div>
           </div>
         </div>
       </section>
