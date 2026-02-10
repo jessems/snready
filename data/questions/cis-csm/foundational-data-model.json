@@ -1,0 +1,699 @@
+{
+  "questions": [
+    {
+      "id": "cis-csm-fdm-001",
+      "certification": "cis-csm",
+      "topic": "foundational-data-model",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which business model should be used when a company sells products or services directly to individual consumers without involving intermediaries?",
+      "options": [
+        { "id": "a", "text": "B2B" },
+        { "id": "b", "text": "B2C" },
+        { "id": "c", "text": "B2B2C" },
+        { "id": "d", "text": "B2B2E" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "B2C (Business-to-Consumer) is the business model where a company sells products or services directly to individual consumers. In this model, the end customer is a consumer who interacts directly with the service provider.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "B2B (Business-to-Business) is when companies sell to other businesses, not individual consumers", "reference": "CSM Essentials" },
+          { "choiceId": "c", "explanation": "B2B2C involves a business selling through another business to reach consumers, involving intermediaries", "reference": "CSM Essentials" },
+          { "choiceId": "d", "explanation": "B2B2E (Business-to-Business-to-Employee) is when businesses provide services to another company's employees", "reference": "CSM Essentials" }
+        ]
+      },
+      "references": ["CSM Essentials", "ServiceNow CSM Documentation"],
+      "isFree": true,
+      "source": {
+        "type": "documentation",
+        "path": "scraped-docs/csm-xanadu/activate-customer-data-models-b2b2c.md"
+      },
+      "labels": {
+        "certification": "cis-csm",
+        "domain": "CSM Foundational Data Model",
+        "domainSlug": "foundational-data-model",
+        "domainPercentage": 27,
+        "subtopics": ["Business models"],
+        "tags": ["b2c", "business-model", "consumer"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-10T02:15:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-csm-fdm-002",
+      "certification": "cis-csm",
+      "topic": "foundational-data-model",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "In the B2B business model, which table is used to store information about companies that receive services?",
+      "options": [
+        { "id": "a", "text": "Consumer [csm_consumer]" },
+        { "id": "b", "text": "Customer Account [customer_account]" },
+        { "id": "c", "text": "Customer Contact [customer_contact]" },
+        { "id": "d", "text": "User [sys_user]" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "In the B2B model, the Customer Account table [customer_account] stores information about the companies (accounts) that receive services. Customer contacts are the individual people at those accounts.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "The Consumer table is used in B2C models for individual consumers, not business accounts", "reference": "CSM Documentation" },
+          { "choiceId": "c", "explanation": "Customer Contact stores individual people at accounts, not the company information itself", "reference": "CSM Documentation" },
+          { "choiceId": "d", "explanation": "The User table stores internal users of the ServiceNow instance, not external customers", "reference": "CSM Documentation" }
+        ]
+      },
+      "references": ["CSM Essentials", "ServiceNow CSM Documentation"],
+      "isFree": true,
+      "source": {
+        "type": "documentation",
+        "path": "scraped-docs/csm-xanadu/c_CustomerServiceManagement.md"
+      },
+      "labels": {
+        "certification": "cis-csm",
+        "domain": "CSM Foundational Data Model",
+        "domainSlug": "foundational-data-model",
+        "domainPercentage": 27,
+        "subtopics": ["Customer data tables", "B2B model"],
+        "tags": ["b2b", "customer-account", "table"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-10T02:15:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-csm-fdm-003",
+      "certification": "cis-csm",
+      "topic": "foundational-data-model",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "Which plugin must be activated before installing Customer Data Models for B2B2C?",
+      "options": [
+        { "id": "a", "text": "Customer Service Management [com.sn_customerservice]" },
+        { "id": "b", "text": "Customer Service Install Base Management [com.snc.install_base]" },
+        { "id": "c", "text": "Advanced Work Assignment [com.snc.awa]" },
+        { "id": "d", "text": "Case Management [com.snc.case]" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "The Customer Service Install Base Management plugin [com.snc.install_base] must be activated before installing Customer Data Models for B2B2C, as the B2B2C model relies on install base functionality to track products owned by consumers.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "While CSM is required, it's not the specific prerequisite for B2B2C data models", "reference": "CSM Documentation" },
+          { "choiceId": "c", "explanation": "AWA is for routing and assignment, not a prerequisite for B2B2C data models", "reference": "CSM Documentation" },
+          { "choiceId": "d", "explanation": "Case Management is a core feature but not a specific prerequisite for B2B2C", "reference": "CSM Documentation" }
+        ]
+      },
+      "references": ["ServiceNow CSM Documentation"],
+      "isFree": true,
+      "source": {
+        "type": "documentation",
+        "path": "scraped-docs/csm-xanadu/activate-customer-data-models-b2b2c.md",
+        "excerpt": "You must activate the Customer Service Install Base Management (com.snc.install_base) plugin before installing Customer Data Models for B2B2C."
+      },
+      "labels": {
+        "certification": "cis-csm",
+        "domain": "CSM Foundational Data Model",
+        "domainSlug": "foundational-data-model",
+        "domainPercentage": 27,
+        "subtopics": ["B2B2C configuration", "Plugin dependencies"],
+        "tags": ["b2b2c", "plugin", "install-base"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-10T02:15:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-csm-fdm-004",
+      "certification": "cis-csm",
+      "topic": "foundational-data-model",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What is the purpose of install base management in Customer Service Management?",
+      "options": [
+        { "id": "a", "text": "To manage the installation of ServiceNow plugins" },
+        { "id": "b", "text": "To track products and assets that customers own or have installed" },
+        { "id": "c", "text": "To configure the base URL for customer portals" },
+        { "id": "d", "text": "To install software updates on customer systems" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "Install base management tracks the products and assets that customers own or have installed. This enables agents to see what products a customer has, their configurations, service history, and associated contracts or entitlements.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "Plugin management is handled through the ServiceNow platform administration, not install base", "reference": "CSM Documentation" },
+          { "choiceId": "c", "explanation": "Portal configuration is separate from install base management", "reference": "CSM Documentation" },
+          { "choiceId": "d", "explanation": "Install base tracks ownership information, not actual software installation", "reference": "CSM Documentation" }
+        ]
+      },
+      "references": ["CSM Essentials", "ServiceNow CSM Documentation"],
+      "isFree": true,
+      "source": {
+        "type": "documentation",
+        "path": "scraped-docs/csm-xanadu/attributes-and-configuration-of-install-base-management.md"
+      },
+      "labels": {
+        "certification": "cis-csm",
+        "domain": "CSM Foundational Data Model",
+        "domainSlug": "foundational-data-model",
+        "domainPercentage": 27,
+        "subtopics": ["Install base management"],
+        "tags": ["install-base", "products", "assets"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-10T02:15:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-csm-fdm-005",
+      "certification": "cis-csm",
+      "topic": "foundational-data-model",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "Which role is required to create characteristics for install base items in CSM?",
+      "options": [
+        { "id": "a", "text": "admin" },
+        { "id": "b", "text": "sn_customerservice_agent" },
+        { "id": "c", "text": "sn_customerservice_manager" },
+        { "id": "d", "text": "itil" }
+      ],
+      "correctAnswers": ["c"],
+      "explanation": {
+        "correct": "Only users with the sn_customerservice_manager role can create characteristics for install base items. Administrators can activate the Install Base Characteristics plugin to capture and view characteristics, but the manager role is needed to create them.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "Admin can activate the plugin and view characteristics but cannot create them for install base items", "reference": "CSM Documentation" },
+          { "choiceId": "b", "explanation": "Agents can view install base items but cannot create characteristics", "reference": "CSM Documentation" },
+          { "choiceId": "d", "explanation": "The itil role is for ITSM functions, not CSM install base management", "reference": "CSM Documentation" }
+        ]
+      },
+      "references": ["ServiceNow CSM Documentation"],
+      "isFree": true,
+      "source": {
+        "type": "documentation",
+        "path": "scraped-docs/csm-xanadu/attributes-and-configuration-of-install-base-management.md",
+        "excerpt": "Only users with the sn_customerservice_manager role can create the characteristics for the install base items."
+      },
+      "labels": {
+        "certification": "cis-csm",
+        "domain": "CSM Foundational Data Model",
+        "domainSlug": "foundational-data-model",
+        "domainPercentage": 27,
+        "subtopics": ["Install base characteristics", "Roles"],
+        "tags": ["install-base", "roles", "characteristics"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-10T02:15:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-csm-fdm-006",
+      "certification": "cis-csm",
+      "topic": "foundational-data-model",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which table stores install base characteristics in Customer Service Management?",
+      "options": [
+        { "id": "a", "text": "sn_customerservice_case" },
+        { "id": "b", "text": "sn_install_base_item" },
+        { "id": "c", "text": "sn_install_base_item_characteristic" },
+        { "id": "d", "text": "customer_product" }
+      ],
+      "correctAnswers": ["c"],
+      "explanation": {
+        "correct": "Install base characteristics are stored in the Install Base Characteristics table [sn_install_base_item_characteristic]. Both install base and product model characteristics are displayed in related lists on the install base form.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "This is the case table, not where characteristics are stored", "reference": "CSM Documentation" },
+          { "choiceId": "b", "explanation": "This is the main install base item table, characteristics are in a separate table", "reference": "CSM Documentation" },
+          { "choiceId": "d", "explanation": "This is not a standard CSM table for characteristics", "reference": "CSM Documentation" }
+        ]
+      },
+      "references": ["ServiceNow CSM Documentation"],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "scraped-docs/csm-xanadu/attributes-and-configuration-of-install-base-management.md",
+        "excerpt": "The install base characteristics are stored in the Install Base Characteristics table [sn_install_base_item_characteristic]."
+      },
+      "labels": {
+        "certification": "cis-csm",
+        "domain": "CSM Foundational Data Model",
+        "domainSlug": "foundational-data-model",
+        "domainPercentage": 27,
+        "subtopics": ["Install base tables"],
+        "tags": ["install-base", "tables", "characteristics"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-10T02:15:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-csm-fdm-007",
+      "certification": "cis-csm",
+      "topic": "foundational-data-model",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "When the Customer Data Models for B2B2C plugin is activated, which role is automatically inherited by customer service agents?",
+      "options": [
+        { "id": "a", "text": "sn_acct_consumer.consumer" },
+        { "id": "b", "text": "sn_acct_consumer.agent" },
+        { "id": "c", "text": "sn_customerservice_manager" },
+        { "id": "d", "text": "admin" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "When the Customer Data Models for B2B2C plugin is activated, customer service agents inherit the account consumer agent role (sn_acct_consumer.agent). Consumers who are added as account consumers receive the sn_acct_consumer.consumer role.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "This role is given to consumers who are added as account consumers, not agents", "reference": "CSM Documentation" },
+          { "choiceId": "c", "explanation": "The manager role is not automatically inherited from B2B2C activation", "reference": "CSM Documentation" },
+          { "choiceId": "d", "explanation": "The admin role is never automatically inherited from plugin activation", "reference": "CSM Documentation" }
+        ]
+      },
+      "references": ["ServiceNow CSM Documentation"],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "scraped-docs/csm-xanadu/activate-customer-data-models-b2b2c.md",
+        "excerpt": "When the plugin is activated, customer service agents inherit the account consumer agent role."
+      },
+      "labels": {
+        "certification": "cis-csm",
+        "domain": "CSM Foundational Data Model",
+        "domainSlug": "foundational-data-model",
+        "domainPercentage": 27,
+        "subtopics": ["B2B2C roles"],
+        "tags": ["b2b2c", "roles", "agent"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-10T02:15:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-csm-fdm-008",
+      "certification": "cis-csm",
+      "topic": "foundational-data-model",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What is the B2B2E business model in Customer Service Management?",
+      "options": [
+        { "id": "a", "text": "Business-to-Business-to-Everyone" },
+        { "id": "b", "text": "Business-to-Business-to-Employee" },
+        { "id": "c", "text": "Business-to-Business-to-Enterprise" },
+        { "id": "d", "text": "Business-to-Business-to-Environment" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "B2B2E stands for Business-to-Business-to-Employee. This model is used when a company provides services to another business's employees, such as a benefits provider serving employees of client companies.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "The 'E' in B2B2E specifically refers to Employees, not Everyone", "reference": "CSM Essentials" },
+          { "choiceId": "c", "explanation": "Enterprise is not correct; the model focuses on employees as end users", "reference": "CSM Essentials" },
+          { "choiceId": "d", "explanation": "Environment is not a valid expansion for B2B2E", "reference": "CSM Essentials" }
+        ]
+      },
+      "references": ["CSM Essentials"],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "ebooks/csm-essentials-zurich-.md"
+      },
+      "labels": {
+        "certification": "cis-csm",
+        "domain": "CSM Foundational Data Model",
+        "domainSlug": "foundational-data-model",
+        "domainPercentage": 27,
+        "subtopics": ["Business models"],
+        "tags": ["b2b2e", "business-model"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-10T02:15:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-csm-fdm-009",
+      "certification": "cis-csm",
+      "topic": "foundational-data-model",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What is the purpose of the product model in CSM?",
+      "options": [
+        { "id": "a", "text": "To define the organizational hierarchy of customer accounts" },
+        { "id": "b", "text": "To define what products a company sells, including attributes and configurations" },
+        { "id": "c", "text": "To model customer service agent performance metrics" },
+        { "id": "d", "text": "To configure the visual layout of the customer portal" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "Product models define what products a company sells, including their attributes, configurations, and relationships. Product model characteristics are non-configurable and directly taken from the product model associated with an install base item.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "Account hierarchies are defined through account relationships, not product models", "reference": "CSM Documentation" },
+          { "choiceId": "c", "explanation": "Agent performance is tracked through Analytics, not product models", "reference": "CSM Documentation" },
+          { "choiceId": "d", "explanation": "Portal layouts are configured through Service Portal Designer", "reference": "CSM Documentation" }
+        ]
+      },
+      "references": ["CSM Essentials", "ServiceNow CSM Documentation"],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "scraped-docs/csm-xanadu/attributes-and-configuration-of-install-base-management.md"
+      },
+      "labels": {
+        "certification": "cis-csm",
+        "domain": "CSM Foundational Data Model",
+        "domainSlug": "foundational-data-model",
+        "domainPercentage": 27,
+        "subtopics": ["Product models"],
+        "tags": ["product-model", "catalog"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-10T02:15:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-csm-fdm-010",
+      "certification": "cis-csm",
+      "topic": "foundational-data-model",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What determines the services a customer can access in CSM?",
+      "options": [
+        { "id": "a", "text": "User roles assigned to the customer" },
+        { "id": "b", "text": "Contracts and entitlements" },
+        { "id": "c", "text": "The customer's geographic location" },
+        { "id": "d", "text": "The number of cases they have created" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "Contracts and entitlements determine what services a customer can access and under what conditions. Entitlements define service levels, support hours, and specific service features available to customers based on their contracts.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "User roles control system access, not service entitlements for customers", "reference": "CSM Documentation" },
+          { "choiceId": "c", "explanation": "While location may affect service delivery, entitlements are determined by contracts", "reference": "CSM Documentation" },
+          { "choiceId": "d", "explanation": "Case count does not determine service access", "reference": "CSM Documentation" }
+        ]
+      },
+      "references": ["CSM Essentials", "ServiceNow CSM Documentation"],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "ebooks/csm-essentials-zurich-.md"
+      },
+      "labels": {
+        "certification": "cis-csm",
+        "domain": "CSM Foundational Data Model",
+        "domainSlug": "foundational-data-model",
+        "domainPercentage": 27,
+        "subtopics": ["Contracts and entitlements"],
+        "tags": ["entitlements", "contracts", "service-access"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-10T02:15:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-csm-fdm-011",
+      "certification": "cis-csm",
+      "topic": "foundational-data-model",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_select",
+      "question": "Which items are installed with the Customer Data Models for B2B2C plugin? (Choose 2)",
+      "options": [
+        { "id": "a", "text": "Business rules: Mandatory account or consumer" },
+        { "id": "b", "text": "Flow Designer templates for case escalation" },
+        { "id": "c", "text": "UI policies for Case, Interaction, Sold Product, and Install Base Items tables" },
+        { "id": "d", "text": "Custom mobile application for B2B2C users" }
+      ],
+      "correctAnswers": ["a", "c"],
+      "explanation": {
+        "correct": "The Customer Data Models for B2B2C plugin installs business rules including 'Mandatory account or consumer' and UI policies for the Case, Interaction, Sold Product, and Install Base Items tables to support the B2B2C data model.",
+        "wrongAnswers": [
+          { "choiceId": "b", "explanation": "Flow Designer templates are not included with the B2B2C plugin installation", "reference": "CSM Documentation" },
+          { "choiceId": "d", "explanation": "No custom mobile application is included with the B2B2C plugin", "reference": "CSM Documentation" }
+        ]
+      },
+      "references": ["ServiceNow CSM Documentation"],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "scraped-docs/csm-xanadu/activate-customer-data-models-b2b2c.md",
+        "excerpt": "Business rules: Mandatory account or consumer, UI policies for Table: Case, Table: Interaction, Table: Sold Product, Table: Install Base Items"
+      },
+      "labels": {
+        "certification": "cis-csm",
+        "domain": "CSM Foundational Data Model",
+        "domainSlug": "foundational-data-model",
+        "domainPercentage": 27,
+        "subtopics": ["B2B2C plugin components"],
+        "tags": ["b2b2c", "plugin", "installation"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-10T02:15:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-csm-fdm-012",
+      "certification": "cis-csm",
+      "topic": "foundational-data-model",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "On which portals can users view install base characteristics associated with parent install base items?",
+      "options": [
+        { "id": "a", "text": "Only the IT Service Portal" },
+        { "id": "b", "text": "Customer Service, Consumer Service, and Business Location Service Portal" },
+        { "id": "c", "text": "Only the Employee Service Center" },
+        { "id": "d", "text": "All ServiceNow portals by default" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "Install base characteristics can be viewed on the Customer Service Portal, Consumer Service Portal, and Business Location Service Portal (BLSP). Note that characteristics associated with child items are not visible on the portals.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "The IT Service Portal is for ITSM, not CSM install base viewing", "reference": "CSM Documentation" },
+          { "choiceId": "c", "explanation": "The Employee Service Center is for HR Service Delivery", "reference": "CSM Documentation" },
+          { "choiceId": "d", "explanation": "Install base viewing is not available on all portals by default", "reference": "CSM Documentation" }
+        ]
+      },
+      "references": ["ServiceNow CSM Documentation"],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "scraped-docs/csm-xanadu/attributes-and-configuration-of-install-base-management.md",
+        "excerpt": "You can view the install base characteristics on the Customer Service, Consumer Service, and Business Location Service Portal (BLSP)."
+      },
+      "labels": {
+        "certification": "cis-csm",
+        "domain": "CSM Foundational Data Model",
+        "domainSlug": "foundational-data-model",
+        "domainPercentage": 27,
+        "subtopics": ["Install base portals"],
+        "tags": ["install-base", "portal", "visibility"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-10T02:15:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-csm-fdm-013",
+      "certification": "cis-csm",
+      "topic": "foundational-data-model",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What is the relationship between a sold product and a contract in CSM?",
+      "options": [
+        { "id": "a", "text": "Sold products and contracts are unrelated concepts" },
+        { "id": "b", "text": "A sold product can be associated with a service contract to define entitlements" },
+        { "id": "c", "text": "A contract automatically creates sold products" },
+        { "id": "d", "text": "Contracts replace the need for sold products" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "A sold product can be associated with a service contract to define the customer's entitlements for that product. This relationship enables tracking what services and support levels the customer is entitled to for specific products.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "Sold products and contracts work together to define service entitlements", "reference": "CSM Documentation" },
+          { "choiceId": "c", "explanation": "Contracts don't automatically create sold products; they are linked separately", "reference": "CSM Documentation" },
+          { "choiceId": "d", "explanation": "Both sold products and contracts are used together in CSM", "reference": "CSM Documentation" }
+        ]
+      },
+      "references": ["ServiceNow CSM Documentation"],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "scraped-docs/csm-xanadu/add-sold-product-contract.md"
+      },
+      "labels": {
+        "certification": "cis-csm",
+        "domain": "CSM Foundational Data Model",
+        "domainSlug": "foundational-data-model",
+        "domainPercentage": 27,
+        "subtopics": ["Sold products", "Contracts"],
+        "tags": ["sold-product", "contract", "entitlements"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-10T02:15:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-csm-fdm-014",
+      "certification": "cis-csm",
+      "topic": "foundational-data-model",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A telecommunications company sells phones to retail stores, which then sell to individual consumers. What CSM business model should be implemented?",
+      "options": [
+        { "id": "a", "text": "B2C" },
+        { "id": "b", "text": "B2B" },
+        { "id": "c", "text": "B2B2C" },
+        { "id": "d", "text": "B2B2E" }
+      ],
+      "correctAnswers": ["c"],
+      "explanation": {
+        "correct": "B2B2C (Business-to-Business-to-Consumer) is the correct model when a company sells through business partners (retail stores) to reach individual consumers. This model allows tracking of both the business relationship and the end consumer.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "B2C would only work if selling directly to consumers without retail partners", "reference": "CSM Essentials" },
+          { "choiceId": "b", "explanation": "B2B only covers the relationship with the retail stores, not the end consumers", "reference": "CSM Essentials" },
+          { "choiceId": "d", "explanation": "B2B2E is for serving employees of partner businesses, not consumers", "reference": "CSM Essentials" }
+        ]
+      },
+      "references": ["CSM Essentials"],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "ebooks/csm-essentials-zurich-.md"
+      },
+      "labels": {
+        "certification": "cis-csm",
+        "domain": "CSM Foundational Data Model",
+        "domainSlug": "foundational-data-model",
+        "domainPercentage": 27,
+        "subtopics": ["Business model selection"],
+        "tags": ["b2b2c", "business-model", "scenario"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-10T02:15:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-csm-fdm-015",
+      "certification": "cis-csm",
+      "topic": "foundational-data-model",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What script modification is required to enable internal users (sys_user) as Unified Consumer users in CSM?",
+      "options": [
+        { "id": "a", "text": "Modify the sys_user table directly to add consumer flag" },
+        { "id": "b", "text": "Update the Consumer script include to add sys_user to userExtensions" },
+        { "id": "c", "text": "Create a new UI policy on the consumer form" },
+        { "id": "d", "text": "Add the consumer role to sys_user through Access Control" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "To enable internal users as Unified Consumer users, you must update the Consumer script include and add sys_user to the userExtensions array in the initialize method. This allows sys_users to be included in the consumer reference list.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "Direct table modification is not the correct approach", "reference": "CSM Documentation" },
+          { "choiceId": "c", "explanation": "UI policies control form behavior, not user extension configuration", "reference": "CSM Documentation" },
+          { "choiceId": "d", "explanation": "Role assignment doesn't configure the user extension relationship", "reference": "CSM Documentation" }
+        ]
+      },
+      "references": ["ServiceNow CSM Documentation"],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "scraped-docs/csm-xanadu/activate-unified-consumer.md",
+        "excerpt": "Add the initialize method to the Consumer script include and set this.userExtensions value to include sys_user"
+      },
+      "labels": {
+        "certification": "cis-csm",
+        "domain": "CSM Foundational Data Model",
+        "domainSlug": "foundational-data-model",
+        "domainPercentage": 27,
+        "subtopics": ["Unified Consumer configuration"],
+        "tags": ["unified-consumer", "script-include", "configuration"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-10T02:15:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-csm-fdm-016",
+      "certification": "cis-csm",
+      "topic": "foundational-data-model",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which types of install base characteristics exist in CSM?",
+      "options": [
+        { "id": "a", "text": "Only configurable characteristics" },
+        { "id": "b", "text": "Only product model characteristics" },
+        { "id": "c", "text": "Configurable and non-configurable (product model) characteristics" },
+        { "id": "d", "text": "System-defined and user-defined characteristics" }
+      ],
+      "correctAnswers": ["c"],
+      "explanation": {
+        "correct": "Install base items have two types of characteristics: configurable characteristics that vary from product to product, and non-configurable product model characteristics that are directly taken from the associated product model.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "Both configurable and product model characteristics exist", "reference": "CSM Documentation" },
+          { "choiceId": "b", "explanation": "Configurable characteristics also exist alongside product model characteristics", "reference": "CSM Documentation" },
+          { "choiceId": "d", "explanation": "The correct terminology is configurable vs non-configurable (product model)", "reference": "CSM Documentation" }
+        ]
+      },
+      "references": ["ServiceNow CSM Documentation"],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "scraped-docs/csm-xanadu/attributes-and-configuration-of-install-base-management.md",
+        "excerpt": "Some install base characteristics are configurable and vary from product to product. The product model characteristics are non-configurable."
+      },
+      "labels": {
+        "certification": "cis-csm",
+        "domain": "CSM Foundational Data Model",
+        "domainSlug": "foundational-data-model",
+        "domainPercentage": 27,
+        "subtopics": ["Characteristic types"],
+        "tags": ["install-base", "characteristics", "product-model"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-10T02:15:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    }
+  ]
+}
