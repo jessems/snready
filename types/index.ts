@@ -61,6 +61,7 @@ export interface Certification {
   release: ServiceNowRelease;
   lastUpdated: string;
   deltaExam?: DeltaExamInfo;
+  showDumpsSection?: boolean;
 }
 
 export interface ExamDomain {
