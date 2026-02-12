@@ -17,6 +17,7 @@ import {
   getExamTips,
 } from "@/lib/data";
 import { ExamTipsSnippet } from "@/components/ExamTipsSnippet";
+import { DumpsAlternativeSection } from "@/components/DumpsAlternativeSection";
 import { breadcrumbs, generateBreadcrumbJsonLd } from "@/lib/breadcrumbs";
 
 interface PageProps {
@@ -35,16 +36,34 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     return { title: "Certification Not Found" };
   }
 
+  const totalQuestions = getTotalQuestionCount(slug);
+
+  // Base keywords
+  const keywords = [
+    `${cert.name} practice test`,
+    `${cert.name} exam questions`,
+    `ServiceNow ${cert.name} certification`,
+    `${cert.name} study guide`,
+    `${cert.fullName} exam prep`,
+  ];
+
+  // Base description
+  let description = `Prepare for the ServiceNow ${cert.fullName} (${cert.name}) exam with ${totalQuestions}+ practice questions. Free sample questions and study guides.`;
+
+  // Enhanced SEO for certs with dumps section
+  if (cert.showDumpsSection) {
+    description = `Better than ${cert.name} dumps: ${totalQuestions}+ practice questions with detailed explanations. Pass the ServiceNow ${cert.fullName} exam the right way.`;
+    keywords.push(
+      `${cert.name.toLowerCase()} dump`,
+      `${cert.name.toLowerCase()} exam dumps`,
+      `${cert.name.toLowerCase()} dumps`
+    );
+  }
+
   return {
     title: `${cert.name} Certification Exam Prep - Practice Tests & Questions`,
-    description: `Prepare for the ServiceNow ${cert.fullName} (${cert.name}) exam with ${getTotalQuestionCount(slug)}+ practice questions. Free sample questions and study guides.`,
-    keywords: [
-      `${cert.name} practice test`,
-      `${cert.name} exam questions`,
-      `ServiceNow ${cert.name} certification`,
-      `${cert.name} study guide`,
-      `${cert.fullName} exam prep`,
-    ],
+    description,
+    keywords,
     alternates: {
       canonical: `/${slug}`,
     },
@@ -277,6 +296,17 @@ export default async function CertificationPage({ params }: PageProps) {
             </div>
           </div>
         </section>
+
+        {/* Dumps Alternative Section */}
+        {cert.showDumpsSection && isReady && (
+          <DumpsAlternativeSection
+            certName={cert.name}
+            certSlug={slug}
+            examCost={cert.examDetails.cost}
+            questionCount={totalQuestions}
+            release={cert.release}
+          />
+        )}
 
         {/* Exam Details */}
         <section className="border-y border-zinc-200 bg-white py-8 dark:border-zinc-800 dark:bg-zinc-950">
