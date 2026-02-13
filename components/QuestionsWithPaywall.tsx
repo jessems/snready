@@ -11,16 +11,14 @@ interface QuestionsWithPaywallProps {
   freeQuestions: Question[];
   premiumQuestions: Question[];
   certification: string;
-  certSlug: string;
 }
 
 export function QuestionsWithPaywall({
   freeQuestions,
   premiumQuestions,
   certification,
-  certSlug,
 }: QuestionsWithPaywallProps) {
-  const { hasAccess, loading } = useAccess();
+  const { authenticated, hasAccess, loading } = useAccess();
   const [showLoginModal, setShowLoginModal] = useState(false);
 
   const handlePurchase = () => {
@@ -160,12 +158,14 @@ export function QuestionsWithPaywall({
                 </CheckoutButton>
               </div>
 
-              <button
-                onClick={() => setShowLoginModal(true)}
-                className="mt-4 text-sm text-zinc-500 hover:text-zinc-700 dark:hover:text-zinc-300"
-              >
-                Already purchased? <span className="text-emerald-600 font-medium">Log in</span>
-              </button>
+              {!authenticated && (
+                <button
+                  onClick={() => setShowLoginModal(true)}
+                  className="mt-4 text-sm text-zinc-500 hover:text-zinc-700 dark:hover:text-zinc-300"
+                >
+                  Already purchased? <span className="text-emerald-600 font-medium">Log in</span>
+                </button>
+              )}
             </div>
           </div>
         </div>

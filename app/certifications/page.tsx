@@ -10,7 +10,7 @@ import {
   getTotalFreeQuestionCount,
 } from "@/lib/data";
 import CertificationCard from "@/components/CertificationCard";
-import { breadcrumbs, generateBreadcrumbJsonLd } from "@/lib/breadcrumbs";
+import { generateBreadcrumbJsonLd } from "@/lib/breadcrumbs";
 
 export const metadata: Metadata = {
   title: "All ServiceNow Certifications - Practice Tests & Exam Prep | SNReady",

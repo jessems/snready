@@ -5,7 +5,6 @@ import {
   getCertificationsByRelease,
   getActiveReleases,
   getReleaseInfo,
-  getReleaseDisplayName,
   getDaysUntilDeltaDeadline,
   isDeltaWindowOpen,
 } from "@/lib/data";

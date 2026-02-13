@@ -1,3 +1,5 @@
+import { makeSessionCookie, SESSION_TTL_SECONDS, getAccessData } from "../../lib/session";
+
 interface Env {
   MAGIC_LINK_SECRET: string;
   SNREADY_ACCESS: KVNamespace;
@@ -23,7 +25,7 @@ async function verifyToken(token: string, secret: string): Promise<{ valid: bool
     // Verify signature
     const encoder = new TextEncoder();
     const data = `${email}:${expiresAt}`;
-    
+
     const key = await crypto.subtle.importKey(
       "raw",
       encoder.encode(secret),
@@ -67,30 +69,61 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
     );
   }
 
-  // Get access data from KV
-  const accessData = await env.SNREADY_ACCESS.get(result.email);
-  if (!accessData) {
-    return new Response(
-      JSON.stringify({ error: "No active subscription found" }),
-      { status: 404, headers: { "Content-Type": "application/json" } }
+  const email = result.email;
+
+  // Create or update user record
+  const existingUser = await env.SNREADY_ACCESS.get(`user:${email}`);
+  const now = Date.now();
+  if (existingUser) {
+    try {
+      const user = JSON.parse(existingUser);
+      user.lastLoginAt = now;
+      await env.SNREADY_ACCESS.put(`user:${email}`, JSON.stringify(user));
+    } catch {
+      // Corrupted user record — recreate
+      await env.SNREADY_ACCESS.put(
+        `user:${email}`,
+        JSON.stringify({ email, createdAt: now, lastLoginAt: now })
+      );
+    }
+  } else {
+    await env.SNREADY_ACCESS.put(
+      `user:${email}`,
+      JSON.stringify({ email, createdAt: now, lastLoginAt: now })
     );
   }
 
-  try {
-    const access = JSON.parse(accessData);
-    return new Response(
-      JSON.stringify({
-        success: true,
-        email: result.email,
-        expiresAt: access.expiresAt,
-        plan: access.plan,
-      }),
-      { headers: { "Content-Type": "application/json" } }
-    );
-  } catch {
-    return new Response(
-      JSON.stringify({ error: "Invalid access data" }),
-      { status: 500, headers: { "Content-Type": "application/json" } }
-    );
-  }
+  // Create server-side session
+  const sessionToken = crypto.randomUUID();
+  const sessionExpiresAt = now + SESSION_TTL_SECONDS * 1000;
+  await env.SNREADY_ACCESS.put(
+    `session:${sessionToken}`,
+    JSON.stringify({ email, createdAt: now, expiresAt: sessionExpiresAt }),
+    { expirationTtl: SESSION_TTL_SECONDS }
+  );
+
+  // Look up access data (with migration fallback)
+  const accessRecord = await getAccessData(env.SNREADY_ACCESS, email);
+
+  const access = accessRecord
+    ? {
+        hasAccess: accessRecord.paid && accessRecord.expiresAt > Date.now(),
+        plan: accessRecord.plan,
+        expiresAt: accessRecord.expiresAt,
+      }
+    : { hasAccess: false };
+
+  return new Response(
+    JSON.stringify({
+      success: true,
+      email,
+      ...access,
+    }),
+    {
+      headers: {
+        "Content-Type": "application/json",
+        "Set-Cookie": makeSessionCookie(sessionToken),
+      },
+    }
+  );
 };

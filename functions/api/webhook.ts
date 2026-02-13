@@ -44,7 +44,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
           : { expirationTtl: 30 * 24 * 60 * 60 };
 
         await env.SNREADY_ACCESS.put(
-          email.toLowerCase(),
+          `access:${email.toLowerCase()}`,
           JSON.stringify({
             paid: true,
             plan,

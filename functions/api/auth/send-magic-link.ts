@@ -41,15 +41,6 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
 
     const normalizedEmail = email.toLowerCase().trim();
 
-    // Check if this email has access
-    const accessData = await env.SNREADY_ACCESS.get(normalizedEmail);
-    if (!accessData) {
-      return new Response(
-        JSON.stringify({ error: "No active subscription found for this email" }),
-        { status: 404, headers: { "Content-Type": "application/json" } }
-      );
-    }
-
     // Create magic link token (valid for 15 minutes)
     const expiresAt = Date.now() + 15 * 60 * 1000;
     const token = await createToken(normalizedEmail, expiresAt, env.MAGIC_LINK_SECRET);

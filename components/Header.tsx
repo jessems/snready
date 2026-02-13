@@ -7,7 +7,7 @@ import { LoginModal } from "./LoginModal";
 import certificationsData from "@/data/certifications.json";
 
 export default function Header() {
-  const { hasAccess, email, logout, loading } = useAccess();
+  const { authenticated, email, logout, loading } = useAccess();
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
@@ -108,7 +108,7 @@ export default function Header() {
               {/* Auth Section */}
               {loading ? (
                 <div className="w-16 h-8 bg-zinc-100 rounded-lg animate-pulse dark:bg-zinc-800" />
-              ) : hasAccess ? (
+              ) : authenticated ? (
                 <div className="relative">
                   <button
                     onClick={() => setShowDropdown(!showDropdown)}
@@ -136,6 +136,13 @@ export default function Header() {
                           <p className="text-xs text-zinc-500 dark:text-zinc-400">Logged in as</p>
                           <p className="text-sm font-medium text-zinc-900 truncate dark:text-zinc-100">{email}</p>
                         </div>
+                        <Link
+                          href="/account"
+                          className="block px-4 py-2 text-sm text-zinc-700 hover:bg-zinc-50 dark:text-zinc-300 dark:hover:bg-zinc-800"
+                          onClick={() => setShowDropdown(false)}
+                        >
+                          Account
+                        </Link>
                         <Link
                           href="/certifications"
                           className="block px-4 py-2 text-sm text-zinc-700 hover:bg-zinc-50 dark:text-zinc-300 dark:hover:bg-zinc-800"

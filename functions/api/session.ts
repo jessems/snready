@@ -1,4 +1,5 @@
 import Stripe from "stripe";
+import { makeSessionCookie } from "../lib/session";
 
 interface Env {
   STRIPE_SECRET_KEY: string;
@@ -51,8 +52,29 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
       ? {} 
       : { expirationTtl: 30 * 24 * 60 * 60 };
 
+    const normalizedEmail = email.toLowerCase();
+
+    // Also create/update user record on payment
+    const existingUser = await env.SNREADY_ACCESS.get(`user:${normalizedEmail}`);
+    const now = Date.now();
+    if (!existingUser) {
+      await env.SNREADY_ACCESS.put(
+        `user:${normalizedEmail}`,
+        JSON.stringify({ email: normalizedEmail, createdAt: now, lastLoginAt: now })
+      );
+    }
+
+    // Create a session so the user is logged in after payment
+    const sessionToken = crypto.randomUUID();
+    const sessionExpiresAt = now + 30 * 24 * 60 * 60 * 1000;
     await env.SNREADY_ACCESS.put(
-      email.toLowerCase(),
+      `session:${sessionToken}`,
+      JSON.stringify({ email: normalizedEmail, createdAt: now, expiresAt: sessionExpiresAt }),
+      { expirationTtl: 30 * 24 * 60 * 60 }
+    );
+
+    await env.SNREADY_ACCESS.put(
+      `access:${normalizedEmail}`,
       JSON.stringify({
         paid: true,
         plan,
@@ -72,7 +94,12 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
         expiresAt,
         certification,
       }),
-      { headers: { "Content-Type": "application/json" } }
+      {
+        headers: {
+          "Content-Type": "application/json",
+          "Set-Cookie": makeSessionCookie(sessionToken),
+        },
+      }
     );
   } catch (error) {
     console.error("Session verification error:", error);

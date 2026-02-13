@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { readFileSync, writeFileSync, readdirSync, existsSync, mkdirSync } from 'fs';
-import { join, basename } from 'path';
+import { join } from 'path';
 
 const QUESTIONS_DIR = './data/questions';
 const OUTPUT_DIR = '/tmp/updated-questions';

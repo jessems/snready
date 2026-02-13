@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { verifySession, storeAccess } from "@/lib/access";
+import { verifySession } from "@/lib/access";
 import { useAccess } from "@/components/AccessProvider";
 
 type PlanType = "30day" | "lifetime";
@@ -20,30 +20,22 @@ interface SessionResult {
 export default function SuccessContent() {
   const searchParams = useSearchParams();
   const sessionId = searchParams.get("session_id");
-  const [status, setStatus] = useState<"loading" | "success" | "error" | "missing">("loading");
+  const [status, setStatus] = useState<"loading" | "success" | "error" | "missing">(sessionId ? "loading" : "missing");
   const [result, setResult] = useState<SessionResult | null>(null);
-  const [returnUrl, setReturnUrl] = useState<string | null>(null);
+  const [returnUrl] = useState<string | null>(() => {
+    if (typeof window === "undefined") return null;
+    const stored = localStorage.getItem("snready_checkout_return");
+    if (stored) localStorage.removeItem("snready_checkout_return");
+    return stored;
+  });
   const { refresh } = useAccess();
 
   useEffect(() => {
-    // Get the return URL from localStorage
-    const storedReturnUrl = localStorage.getItem("snready_checkout_return");
-    if (storedReturnUrl) {
-      setReturnUrl(storedReturnUrl);
-      localStorage.removeItem("snready_checkout_return");
-    }
-  }, []);
-
-  useEffect(() => {
-    if (!sessionId) {
-      setStatus("missing");
-      return;
-    }
+    if (!sessionId) return;
 
     verifySession(sessionId).then(async (data) => {
       if (data.success && data.email && data.expiresAt) {
-        storeAccess(data.email, data.expiresAt);
-        // Refresh the AccessProvider so header updates
+        // Session cookie is set by the API response — refresh the auth provider
         await refresh();
         setResult(data as SessionResult);
         setStatus("success");

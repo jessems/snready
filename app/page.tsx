@@ -77,7 +77,7 @@ export default function Home() {
                 📚
               </div>
               <h3 className="mt-4 text-xl font-semibold text-zinc-900 dark:text-zinc-100">
-                Learn Why You're Wrong
+                Learn Why You&apos;re Wrong
               </h3>
               <p className="mt-2 text-zinc-600 dark:text-zinc-400">
                 Detailed explanations for every answer — correct and incorrect. Each explanation links back to the source material so you actually learn, not just memorize.

@@ -1,76 +1,76 @@
 "use client";
 
-import { createContext, useContext, useState, useEffect, ReactNode } from "react";
-import { getStoredAccess, storeAccess, clearAccess, verifyAccess } from "@/lib/access";
+import { createContext, useContext, useState, useEffect, useCallback, ReactNode } from "react";
+import { getAuthSession, logoutSession } from "@/lib/access";
 
 interface AccessContextType {
+  authenticated: boolean;
   hasAccess: boolean;
   email: string | null;
+  plan: string | null;
   expiresAt: number | null;
   loading: boolean;
-  login: (email: string) => Promise<boolean>;
-  logout: () => void;
+  logout: () => Promise<void>;
   refresh: () => Promise<void>;
 }
 
 const AccessContext = createContext<AccessContextType | null>(null);
 
 export function AccessProvider({ children }: { children: ReactNode }) {
+  const [authenticated, setAuthenticated] = useState(false);
   const [hasAccess, setHasAccess] = useState(false);
   const [email, setEmail] = useState<string | null>(null);
+  const [plan, setPlan] = useState<string | null>(null);
   const [expiresAt, setExpiresAt] = useState<number | null>(null);
   const [loading, setLoading] = useState(true);
 
-  const refresh = async () => {
-    const stored = getStoredAccess();
-    if (stored) {
-      // Re-verify with server
-      const result = await verifyAccess(stored.email);
-      if (result.hasAccess) {
-        setHasAccess(true);
-        setEmail(stored.email);
-        setExpiresAt(result.expiresAt || stored.expiresAt);
-        if (result.expiresAt) {
-          storeAccess(stored.email, result.expiresAt);
-        }
-      } else {
-        clearAccess();
-        setHasAccess(false);
-        setEmail(null);
-        setExpiresAt(null);
-      }
+  const refresh = useCallback(async () => {
+    try {
+      const session = await getAuthSession();
+      setAuthenticated(session.authenticated);
+      setEmail(session.email || null);
+      setHasAccess(session.access.hasAccess);
+      setPlan(session.access.plan || null);
+      setExpiresAt(session.access.expiresAt || null);
+    } catch {
+      setAuthenticated(false);
+      setEmail(null);
+      setHasAccess(false);
+      setPlan(null);
+      setExpiresAt(null);
     }
     setLoading(false);
-  };
-
-  useEffect(() => {
-    refresh();
   }, []);
 
-  const login = async (userEmail: string): Promise<boolean> => {
-    setLoading(true);
-    const result = await verifyAccess(userEmail);
-    if (result.hasAccess && result.expiresAt) {
-      storeAccess(userEmail, result.expiresAt);
-      setHasAccess(true);
-      setEmail(userEmail);
-      setExpiresAt(result.expiresAt);
+  useEffect(() => {
+    getAuthSession().then(session => {
+      setAuthenticated(session.authenticated);
+      setEmail(session.email || null);
+      setHasAccess(session.access.hasAccess);
+      setPlan(session.access.plan || null);
+      setExpiresAt(session.access.expiresAt || null);
+    }).catch(() => {
+      setAuthenticated(false);
+      setEmail(null);
+      setHasAccess(false);
+      setPlan(null);
+      setExpiresAt(null);
+    }).finally(() => {
       setLoading(false);
-      return true;
-    }
-    setLoading(false);
-    return false;
-  };
+    });
+  }, []);
 
-  const logout = () => {
-    clearAccess();
+  const logout = async () => {
+    await logoutSession();
+    setAuthenticated(false);
     setHasAccess(false);
     setEmail(null);
+    setPlan(null);
     setExpiresAt(null);
   };
 
   return (
-    <AccessContext.Provider value={{ hasAccess, email, expiresAt, loading, login, logout, refresh }}>
+    <AccessContext.Provider value={{ authenticated, hasAccess, email, plan, expiresAt, loading, logout, refresh }}>
       {children}
     </AccessContext.Provider>
   );

@@ -8,7 +8,7 @@ import {
 } from "@/lib/data";
 import { generateBreadcrumbJsonLd } from "@/lib/breadcrumbs";
 import { getCanonicalUrl } from "@/lib/seo";
-import type { Topic } from "@/types";
+import type { Topic, Certification } from "@/types";
 
 interface Props {
   params: Promise<{
@@ -19,11 +19,11 @@ interface Props {
 // Find a topic by slug across all certifications
 function findTopicBySlug(topicSlug: string): {
   topic: Topic;
-  certification: any;
+  certification: Certification;
 } | null {
   const allTopicSlugs = getAllTopicSlugs();
-  
-  for (const { certification, topic } of allTopicSlugs) {
+
+  for (const { certification } of allTopicSlugs) {
     const cert = getCertificationBySlug(certification);
     const topics = getTopicsForCertification(certification);
     const topicData = topics.find(t => t.slug === topicSlug);
