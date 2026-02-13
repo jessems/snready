@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { verifySession, storeAccess } from "@/lib/access";
+import { verifySession } from "@/lib/access";
 import { useAccess } from "@/components/AccessProvider";
 
 type PlanType = "30day" | "lifetime";
@@ -42,8 +42,7 @@ export default function SuccessContent() {
 
     verifySession(sessionId).then(async (data) => {
       if (data.success && data.email && data.expiresAt) {
-        storeAccess(data.email, data.expiresAt);
-        // Refresh the AccessProvider so header updates
+        // Session cookie is set by the API response — refresh the auth provider
         await refresh();
         setResult(data as SessionResult);
         setStatus("success");

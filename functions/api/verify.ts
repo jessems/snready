@@ -23,7 +23,12 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       );
     }
 
-    const record = await env.SNREADY_ACCESS.get(email.toLowerCase());
+    const normalizedEmail = email.toLowerCase();
+    // Try new prefixed key first, fall back to bare email for migration
+    let record = await env.SNREADY_ACCESS.get(`access:${normalizedEmail}`);
+    if (!record) {
+      record = await env.SNREADY_ACCESS.get(normalizedEmail);
+    }
 
     if (!record) {
       return new Response(
