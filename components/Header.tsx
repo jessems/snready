@@ -7,7 +7,7 @@ import { LoginModal } from "./LoginModal";
 import certificationsData from "@/data/certifications.json";
 
 export default function Header() {
-  const { authenticated, hasAccess, email, logout, loading } = useAccess();
+  const { authenticated, email, logout, loading } = useAccess();
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
   const [showMobileMenu, setShowMobileMenu] = useState(false);

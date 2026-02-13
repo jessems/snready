@@ -247,7 +247,6 @@ export default async function PracticeTestPage({ params }: Props) {
                 freeQuestions={freeQuestions}
                 premiumQuestions={premiumQuestions}
                 certification={certification.name}
-                certSlug={slug}
               />
             </div>
 

@@ -11,17 +11,13 @@ export default function VerifyContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const token = searchParams.get("token");
-  const [status, setStatus] = useState<Status>("loading");
-  const [error, setError] = useState<string>("");
+  const [status, setStatus] = useState<Status>(token ? "loading" : "error");
+  const [error, setError] = useState<string>(token ? "" : "No login token provided");
   const [email, setEmail] = useState<string>("");
   const { refresh } = useAccess();
 
   useEffect(() => {
-    if (!token) {
-      setStatus("error");
-      setError("No login token provided");
-      return;
-    }
+    if (!token) return;
 
     // The verify endpoint sets an httpOnly session cookie on the response
     fetch(`/api/auth/verify?token=${encodeURIComponent(token)}`, {

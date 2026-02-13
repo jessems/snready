@@ -179,7 +179,6 @@ export default async function TopicQuestionsPage({ params }: PageProps) {
                   freeQuestions={freeQuestions}
                   premiumQuestions={premiumQuestions}
                   certification={cert.name}
-                  certSlug={slug}
                 />
               ) : (
                 <div className="rounded-xl border border-zinc-200 bg-white p-6 sm:p-12 text-center dark:border-zinc-800 dark:bg-zinc-900">

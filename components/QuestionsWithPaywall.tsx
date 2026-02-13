@@ -11,14 +11,12 @@ interface QuestionsWithPaywallProps {
   freeQuestions: Question[];
   premiumQuestions: Question[];
   certification: string;
-  certSlug: string;
 }
 
 export function QuestionsWithPaywall({
   freeQuestions,
   premiumQuestions,
   certification,
-  certSlug,
 }: QuestionsWithPaywallProps) {
   const { authenticated, hasAccess, loading } = useAccess();
   const [showLoginModal, setShowLoginModal] = useState(false);

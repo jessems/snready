@@ -43,8 +43,22 @@ export function AccessProvider({ children }: { children: ReactNode }) {
   }, []);
 
   useEffect(() => {
-    refresh();
-  }, [refresh]);
+    getAuthSession().then(session => {
+      setAuthenticated(session.authenticated);
+      setEmail(session.email || null);
+      setHasAccess(session.access.hasAccess);
+      setPlan(session.access.plan || null);
+      setExpiresAt(session.access.expiresAt || null);
+    }).catch(() => {
+      setAuthenticated(false);
+      setEmail(null);
+      setHasAccess(false);
+      setPlan(null);
+      setExpiresAt(null);
+    }).finally(() => {
+      setLoading(false);
+    });
+  }, []);
 
   const logout = async () => {
     await logoutSession();
