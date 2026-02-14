@@ -17,6 +17,8 @@ import {
 } from "@/lib/mockExam";
 import MockExam from "@/components/MockExam";
 import MockExamResults from "@/components/MockExamResults";
+import { useAccess } from "@/components/AccessProvider";
+import { CheckoutButton } from "@/components/CheckoutButton";
 
 interface MockExamLandingProps {
   certification: Certification;
@@ -31,6 +33,7 @@ export default function MockExamLanding({
   examConfig,
   totalQuestions,
 }: MockExamLandingProps) {
+  const { hasAccess, loading: accessLoading } = useAccess();
   const [viewMode, setViewMode] = useState<ViewMode>("landing");
   const [currentSession, setCurrentSession] = useState<MockExamSession | null>(null);
   const [currentResult, setCurrentResult] = useState<MockExamResult | null>(null);
@@ -230,35 +233,70 @@ export default function MockExamLanding({
         </div>
 
         <div className="mt-6">
-          <button
-            onClick={handleStartExam}
-            disabled={isStarting}
-            className="w-full rounded-lg bg-emerald-600 px-6 py-4 text-lg font-semibold text-white transition-colors hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto"
-          >
-            {isStarting ? (
-              <span className="flex items-center justify-center gap-2">
-                <svg className="h-5 w-5 animate-spin" viewBox="0 0 24 24">
-                  <circle
-                    className="opacity-25"
-                    cx="12"
-                    cy="12"
-                    r="10"
-                    stroke="currentColor"
-                    strokeWidth="4"
-                    fill="none"
-                  />
-                  <path
-                    className="opacity-75"
-                    fill="currentColor"
-                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                  />
-                </svg>
-                Starting Exam...
-              </span>
-            ) : (
-              "Start Mock Exam"
-            )}
-          </button>
+          {accessLoading ? (
+            <div className="h-14 w-48 animate-pulse rounded-lg bg-zinc-200 dark:bg-zinc-700" />
+          ) : hasAccess ? (
+            <button
+              onClick={handleStartExam}
+              disabled={isStarting}
+              className="w-full rounded-lg bg-emerald-600 px-6 py-4 text-lg font-semibold text-white transition-colors hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto"
+            >
+              {isStarting ? (
+                <span className="flex items-center justify-center gap-2">
+                  <svg className="h-5 w-5 animate-spin" viewBox="0 0 24 24">
+                    <circle
+                      className="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      strokeWidth="4"
+                      fill="none"
+                    />
+                    <path
+                      className="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                    />
+                  </svg>
+                  Starting Exam...
+                </span>
+              ) : (
+                "Start Mock Exam"
+              )}
+            </button>
+          ) : (
+            <div className="rounded-lg border border-emerald-200 bg-emerald-50 p-6 dark:border-emerald-800 dark:bg-emerald-950">
+              <div className="flex items-start gap-4">
+                <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-emerald-100 text-xl dark:bg-emerald-900">
+                  🔒
+                </div>
+                <div className="flex-1">
+                  <h3 className="font-semibold text-emerald-900 dark:text-emerald-100">
+                    Premium Feature
+                  </h3>
+                  <p className="mt-1 text-sm text-emerald-700 dark:text-emerald-300">
+                    Timed mock exams are available to premium members. Get access to realistic exam simulations, all practice questions, and detailed explanations.
+                  </p>
+                  <div className="mt-4 flex flex-col gap-3 sm:flex-row">
+                    <CheckoutButton
+                      certification={examConfig.certSlug}
+                      plan="30day"
+                      className="inline-flex items-center justify-center rounded-lg border border-emerald-600 bg-white px-4 py-2 font-semibold text-emerald-600 transition-colors hover:bg-emerald-50 dark:bg-transparent dark:hover:bg-emerald-900/30"
+                    >
+                      $9 — {certification.name} (30 days)
+                    </CheckoutButton>
+                    <CheckoutButton
+                      plan="lifetime"
+                      className="inline-flex items-center justify-center rounded-lg bg-emerald-600 px-4 py-2 font-semibold text-white transition-colors hover:bg-emerald-700"
+                    >
+                      $49 — All Certifications (Lifetime)
+                    </CheckoutButton>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
 

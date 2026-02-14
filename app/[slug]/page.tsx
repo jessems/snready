@@ -528,8 +528,8 @@ export default async function CertificationPage({ params }: PageProps) {
                   </div>
                   <ul className="mt-6 space-y-2 text-sm text-emerald-100">
                     <li>All {cert.name} questions</li>
+                    <li>Timed mock exams</li>
                     <li>Detailed explanations</li>
-                    <li>Practice tests</li>
                     <li>{cert.name} only — 30 days</li>
                   </ul>
                   <CheckoutButton
@@ -553,8 +553,8 @@ export default async function CertificationPage({ params }: PageProps) {
                   <ul className="mt-6 space-y-2 text-sm text-emerald-700">
                     <li className="font-semibold text-emerald-800">ALL certifications included</li>
                     <li>All practice questions</li>
+                    <li>Timed mock exams</li>
                     <li>Detailed explanations</li>
-                    <li>Practice tests</li>
                     <li className="font-semibold">Lifetime access — never expires</li>
                     <li className="font-semibold">Future updates included</li>
                   </ul>
