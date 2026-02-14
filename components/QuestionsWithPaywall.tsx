@@ -138,7 +138,7 @@ export function QuestionsWithPaywall({
                 Unlock {premiumQuestions.length} More Questions
               </h3>
               <p className="mt-2 text-zinc-600 dark:text-zinc-400">
-                Get full access to all {certification} practice questions with detailed explanations.
+                Get full access to all {certification} practice questions, timed mock exams, and detailed explanations.
               </p>
 
               <div className="mt-6 grid gap-3 sm:grid-cols-2">

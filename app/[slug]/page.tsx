@@ -266,16 +266,19 @@ export default async function CertificationPage({ params }: PageProps) {
                 {isReady ? (
                   <>
                     <Link
-                      href={`/${slug}/practice-questions/${topics[0].slug}`}
-                      className="inline-flex h-12 items-center justify-center rounded-lg bg-emerald-600 px-6 text-base font-medium text-white transition-colors hover:bg-emerald-700"
+                      href={`/${slug}/mock-exam`}
+                      className="inline-flex h-12 items-center justify-center gap-2 rounded-lg bg-emerald-600 px-6 text-base font-medium text-white transition-colors hover:bg-emerald-700"
                     >
-                      Start Practicing
+                      <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      Take Mock Exam
                     </Link>
                     <Link
-                      href={`/${slug}/prepare`}
-                      className="inline-flex h-12 items-center justify-center whitespace-nowrap rounded-lg border border-zinc-300 bg-white px-6 text-base font-medium text-zinc-900 transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-100"
+                      href={`/${slug}/practice-questions`}
+                      className="inline-flex h-12 items-center justify-center rounded-lg border border-zinc-300 bg-white px-6 text-base font-medium text-zinc-900 transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-100"
                     >
-                      Exam Prep Guide
+                      Practice Questions
                     </Link>
                   </>
                 ) : (
@@ -525,8 +528,8 @@ export default async function CertificationPage({ params }: PageProps) {
                   </div>
                   <ul className="mt-6 space-y-2 text-sm text-emerald-100">
                     <li>All {cert.name} questions</li>
+                    <li>Timed mock exams</li>
                     <li>Detailed explanations</li>
-                    <li>Practice tests</li>
                     <li>{cert.name} only — 30 days</li>
                   </ul>
                   <CheckoutButton
@@ -550,8 +553,8 @@ export default async function CertificationPage({ params }: PageProps) {
                   <ul className="mt-6 space-y-2 text-sm text-emerald-700">
                     <li className="font-semibold text-emerald-800">ALL certifications included</li>
                     <li>All practice questions</li>
+                    <li>Timed mock exams</li>
                     <li>Detailed explanations</li>
-                    <li>Practice tests</li>
                     <li className="font-semibold">Lifetime access — never expires</li>
                     <li className="font-semibold">Future updates included</li>
                   </ul>

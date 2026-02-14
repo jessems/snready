@@ -95,6 +95,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.8,
   }));
 
+  // Mock exam pages
+  const mockExamPages: MetadataRoute.Sitemap = certSlugs.map((slug) => ({
+    url: `${BASE_URL}/${slug}/mock-exam`,
+    lastModified: new Date(),
+    changeFrequency: "weekly" as const,
+    priority: 0.85,
+  }));
+
   // Topic question pages
   const topicPages: MetadataRoute.Sitemap = topicSlugs.map(
     ({ certification, topic }) => ({
@@ -183,6 +191,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...deltaPages,
     ...releasePages,
     ...practiceTestPages,
+    ...mockExamPages,
     ...topicPages,
     ...individualQuestionPages,
     ...learnPages,
