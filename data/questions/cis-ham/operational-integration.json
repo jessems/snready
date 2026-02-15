@@ -1,0 +1,507 @@
+[
+  {
+    "id": "cis-ham-operational-integration-001",
+    "certification": "cis-ham",
+    "topic": "operational-integration",
+    "cognitiveLevel": "knowledge",
+    "type": "multiple_choice",
+    "question": "Which Procurement view widget shows the count of purchase orders that aren't received and aren't canceled?",
+    "options": [
+      { "id": "a", "text": "Expenditure by vendor" },
+      { "id": "b", "text": "Purchase order pending delivery" },
+      { "id": "c", "text": "Requests pending approval" },
+      { "id": "d", "text": "Open purchase orders" }
+    ],
+    "correctAnswers": ["b"],
+    "selectCount": 1,
+    "isNegative": false,
+    "explanation": {
+      "correct": "The 'Purchase order pending delivery' widget shows the count of purchase orders that aren't received and aren't canceled. Only purchase orders with status of Requested, Ordered, or Pending Delivery are displayed.",
+      "wrongAnswers": [
+        { "choiceId": "a", "explanation": "Expenditure by vendor shows the cost paid to each vendor for procuring inventory.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/procurement-view.html" },
+        { "choiceId": "c", "explanation": "Requests pending approval shows sourceable and active requests with pending approval status.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/procurement-view.html" },
+        { "choiceId": "d", "explanation": "Open purchase orders shows requested, ordered, or not delivered purchase orders as a list, not just pending delivery count.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/procurement-view.html" }
+      ]
+    },
+    "references": ["Procurement view"],
+    "isFree": true,
+    "source": {
+      "type": "docs",
+      "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/procurement-view.md",
+      "excerpt": "Purchase order pending delivery: Count of purchase orders that aren't received and aren't canceled. Only purchase orders that have a status of Requested, Ordered, or Pending Delivery are displayed."
+    },
+    "labels": {
+      "certification": "cis-ham",
+      "domain": "Operational Integration",
+      "domainSlug": "operational-integration",
+      "domainPercentage": 18,
+      "subtopics": ["Procurement integration"],
+      "tags": ["procurement", "purchase-orders", "widgets"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-13T02:45:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-ham-operational-integration-002",
+    "certification": "cis-ham",
+    "topic": "operational-integration",
+    "cognitiveLevel": "understanding",
+    "type": "multiple_select",
+    "question": "Which filters are available in the Procurement view of the Hardware Asset Workspace? (Choose three.)",
+    "options": [
+      { "id": "a", "text": "Location" },
+      { "id": "b", "text": "Stockroom" },
+      { "id": "c", "text": "Domain" },
+      { "id": "d", "text": "Vendor" },
+      { "id": "e", "text": "Model category" }
+    ],
+    "correctAnswers": ["a", "b", "c"],
+    "selectCount": 3,
+    "isNegative": false,
+    "explanation": {
+      "correct": "You can use Location, Stockroom, and Domain filters in the Procurement view to narrow down your results. Note: The Domain filter is available only when Domain Extensions Installer and Domain Separation plugins are enabled.",
+      "wrongAnswers": [
+        { "choiceId": "d", "explanation": "Vendor is not listed as a filter option in the Procurement view.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/procurement-view.html" },
+        { "choiceId": "e", "explanation": "Model category is a filter in Hardware asset overview, but not mentioned for Procurement view.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/procurement-view.html" }
+      ]
+    },
+    "references": ["Procurement view"],
+    "isFree": true,
+    "source": {
+      "type": "docs",
+      "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/procurement-view.md",
+      "excerpt": "You can also use Location, Stockroom, and Domain filters to narrow down your results."
+    },
+    "labels": {
+      "certification": "cis-ham",
+      "domain": "Operational Integration",
+      "domainSlug": "operational-integration",
+      "domainPercentage": 18,
+      "subtopics": ["Procurement integration"],
+      "tags": ["procurement", "filters", "workspace"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-13T02:45:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-ham-operational-integration-003",
+    "certification": "cis-ham",
+    "topic": "operational-integration",
+    "cognitiveLevel": "knowledge",
+    "type": "multiple_choice",
+    "question": "Which plugins must be enabled for the Domain filter to appear in the Procurement view?",
+    "options": [
+      { "id": "a", "text": "Domain Separation only" },
+      { "id": "b", "text": "Domain Extensions Installer and Domain Separation" },
+      { "id": "c", "text": "Multi-tenancy and Domain Separation" },
+      { "id": "d", "text": "Hardware Asset Management and Domain Separation" }
+    ],
+    "correctAnswers": ["b"],
+    "selectCount": 1,
+    "isNegative": false,
+    "explanation": {
+      "correct": "The Domain filter is available only when you've enabled the Domain Extensions Installer (com.glide.domain.msp_extensions.installer) and Domain Separation (plugin com.snc.pa.domain_support) plugins.",
+      "wrongAnswers": [
+        { "choiceId": "a", "explanation": "Domain Separation alone is not sufficient; Domain Extensions Installer is also required.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/procurement-view.html" },
+        { "choiceId": "c", "explanation": "The correct plugin names are Domain Extensions Installer and Domain Separation.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/procurement-view.html" },
+        { "choiceId": "d", "explanation": "HAM is a prerequisite but the Domain filter specifically requires Domain Extensions Installer and Domain Separation.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/procurement-view.html" }
+      ]
+    },
+    "references": ["Procurement view"],
+    "isFree": true,
+    "source": {
+      "type": "docs",
+      "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/procurement-view.md",
+      "excerpt": "The Domain filter is available only when you've enabled the Domain Extensions Installer (com.glide.domain.msp_extensions.installer) and Domain Separation (plugin com.snc.pa.domain_support) plugins."
+    },
+    "labels": {
+      "certification": "cis-ham",
+      "domain": "Operational Integration",
+      "domainSlug": "operational-integration",
+      "domainPercentage": 18,
+      "subtopics": ["Procurement integration"],
+      "tags": ["domain-separation", "plugins", "filters"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-13T02:45:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-ham-operational-integration-004",
+    "certification": "cis-ham",
+    "topic": "operational-integration",
+    "cognitiveLevel": "understanding",
+    "type": "multiple_choice",
+    "question": "Which Procurement view widget shows requests for which a purchase order, local order, or transfer order hasn't been initiated?",
+    "options": [
+      { "id": "a", "text": "Requests pending approval" },
+      { "id": "b", "text": "Requests by state for last 30 days" },
+      { "id": "c", "text": "Requests that require sourcing" },
+      { "id": "d", "text": "Open purchase orders" }
+    ],
+    "correctAnswers": ["c"],
+    "selectCount": 1,
+    "isNegative": false,
+    "explanation": {
+      "correct": "The 'Requests that require sourcing' widget shows a list of requests for which a purchase order, local order, or transfer order hasn't been initiated.",
+      "wrongAnswers": [
+        { "choiceId": "a", "explanation": "Requests pending approval shows sourceable and active requests with request state of pending approval.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/procurement-view.html" },
+        { "choiceId": "b", "explanation": "Requests by state shows requests created in last 30 days grouped by state.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/procurement-view.html" },
+        { "choiceId": "d", "explanation": "Open purchase orders shows purchase orders that have been requested, ordered, or not delivered.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/procurement-view.html" }
+      ]
+    },
+    "references": ["Procurement view"],
+    "isFree": false,
+    "source": {
+      "type": "docs",
+      "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/procurement-view.md",
+      "excerpt": "Requests that require sourcing: List of requests for which a purchase order, local order, or transfer order hasn't been initiated."
+    },
+    "labels": {
+      "certification": "cis-ham",
+      "domain": "Operational Integration",
+      "domainSlug": "operational-integration",
+      "domainPercentage": 18,
+      "subtopics": ["Procurement integration"],
+      "tags": ["sourcing", "requests", "procurement"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-13T02:45:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-ham-operational-integration-005",
+    "certification": "cis-ham",
+    "topic": "operational-integration",
+    "cognitiveLevel": "knowledge",
+    "type": "multiple_choice",
+    "question": "Which inventory report helps identify suitable replacement options for assets that are in use, in maintenance, pending repair, or defective?",
+    "options": [
+      { "id": "a", "text": "Supply vs Demand report" },
+      { "id": "b", "text": "Inventory availability report" },
+      { "id": "c", "text": "Open demands report" },
+      { "id": "d", "text": "Stockroom inventory report" }
+    ],
+    "correctAnswers": ["b"],
+    "selectCount": 1,
+    "isNegative": false,
+    "explanation": {
+      "correct": "The Inventory availability report is used to determine suitable replacement options for assets and their child components that are in use, in maintenance, pending repair, or defective.",
+      "wrongAnswers": [
+        { "choiceId": "a", "explanation": "Supply vs Demand report evaluates available and incoming quantity of models and requests for them.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/manage-stockroom-inventory-report-ham.html" },
+        { "choiceId": "c", "explanation": "Open demands report determines available stock within local stockrooms and distribution channels to fulfill sourcing requests.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/manage-stockroom-inventory-report-ham.html" },
+        { "choiceId": "d", "explanation": "Stockroom inventory report is not the specific name; the correct report is Inventory availability report.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/manage-stockroom-inventory-report-ham.html" }
+      ]
+    },
+    "references": ["Manage stockrooms with inventory reports in the Hardware Asset Workspace"],
+    "isFree": false,
+    "source": {
+      "type": "docs",
+      "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/manage-stockroom-inventory-report-ham.md",
+      "excerpt": "Use the Inventory availability report to determine suitable replacement options for your assets and their child components that are in use, in maintenance, pending repair, or defective."
+    },
+    "labels": {
+      "certification": "cis-ham",
+      "domain": "Operational Integration",
+      "domainSlug": "operational-integration",
+      "domainPercentage": 18,
+      "subtopics": ["Asset reports"],
+      "tags": ["reports", "inventory", "replacement"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-13T02:45:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-ham-operational-integration-006",
+    "certification": "cis-ham",
+    "topic": "operational-integration",
+    "cognitiveLevel": "understanding",
+    "type": "multiple_select",
+    "question": "What information does the Inventory availability report help determine? (Choose two.)",
+    "options": [
+      { "id": "a", "text": "Quantity of available substitute models locally" },
+      { "id": "b", "text": "Total cost of ownership for assets" },
+      { "id": "c", "text": "Estimated lead time for new purchases" },
+      { "id": "d", "text": "Depreciation amount for assets" }
+    ],
+    "correctAnswers": ["a", "c"],
+    "selectCount": 2,
+    "isNegative": false,
+    "explanation": {
+      "correct": "The Inventory availability report helps determine the quantity of available substitute models that can be used locally, moved through distribution channels, and estimate the lead time for new purchases.",
+      "wrongAnswers": [
+        { "choiceId": "b", "explanation": "Total cost of ownership is calculated separately through the TCO feature, not the Inventory availability report.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/manage-stockroom-inventory-report-ham.html" },
+        { "choiceId": "d", "explanation": "Depreciation is calculated by the Calculate Depreciation scheduled job, not inventory reports.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/manage-stockroom-inventory-report-ham.html" }
+      ]
+    },
+    "references": ["Manage stockrooms with inventory reports in the Hardware Asset Workspace"],
+    "isFree": false,
+    "source": {
+      "type": "docs",
+      "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/manage-stockroom-inventory-report-ham.md",
+      "excerpt": "The report also helps you to determine the quantity of available substitute models that can be used locally, moved through the distribution channels, and estimate the lead time for new purchases."
+    },
+    "labels": {
+      "certification": "cis-ham",
+      "domain": "Operational Integration",
+      "domainSlug": "operational-integration",
+      "domainPercentage": 18,
+      "subtopics": ["Asset reports"],
+      "tags": ["reports", "inventory", "substitutes"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-13T02:45:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-ham-operational-integration-007",
+    "certification": "cis-ham",
+    "topic": "operational-integration",
+    "cognitiveLevel": "knowledge",
+    "type": "multiple_choice",
+    "question": "Which HAM version is required to access the inventory reports feature?",
+    "options": [
+      { "id": "a", "text": "Hardware Asset Management version 10.0.0 or later" },
+      { "id": "b", "text": "Hardware Asset Management version 11.0.0 or later" },
+      { "id": "c", "text": "Hardware Asset Management version 12.0.0 or later" },
+      { "id": "d", "text": "Hardware Asset Management version 13.0.0 or later" }
+    ],
+    "correctAnswers": ["d"],
+    "selectCount": 1,
+    "isNegative": false,
+    "explanation": {
+      "correct": "The inventory reports are available with Hardware Asset Management version 13.0.0 and later.",
+      "wrongAnswers": [
+        { "choiceId": "a", "explanation": "Version 10.0.0 introduced Asset TCO, but inventory reports require version 13.0.0.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/manage-stockroom-inventory-report-ham.html" },
+        { "choiceId": "b", "explanation": "Version 11.0.0 is not the minimum version for inventory reports.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/manage-stockroom-inventory-report-ham.html" },
+        { "choiceId": "c", "explanation": "Version 12.0.0 is not the minimum version for inventory reports.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/manage-stockroom-inventory-report-ham.html" }
+      ]
+    },
+    "references": ["Manage stockrooms with inventory reports in the Hardware Asset Workspace"],
+    "isFree": false,
+    "source": {
+      "type": "docs",
+      "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/manage-stockroom-inventory-report-ham.md",
+      "excerpt": "Important: The inventory reports are available with Hardware Asset Management version 13.0.0 and later."
+    },
+    "labels": {
+      "certification": "cis-ham",
+      "domain": "Operational Integration",
+      "domainSlug": "operational-integration",
+      "domainPercentage": 18,
+      "subtopics": ["Asset reports"],
+      "tags": ["reports", "version", "requirements"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-13T02:45:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-ham-operational-integration-008",
+    "certification": "cis-ham",
+    "topic": "operational-integration",
+    "cognitiveLevel": "understanding",
+    "type": "multiple_choice",
+    "question": "Which report helps you determine if you have enough assets to meet demand by evaluating available and incoming quantity of models in your stockroom?",
+    "options": [
+      { "id": "a", "text": "Inventory availability report" },
+      { "id": "b", "text": "Supply vs Demand report" },
+      { "id": "c", "text": "Open demands report" },
+      { "id": "d", "text": "Asset count by lifecycle state report" }
+    ],
+    "correctAnswers": ["b"],
+    "selectCount": 1,
+    "isNegative": false,
+    "explanation": {
+      "correct": "The Supply vs Demand report evaluates the available and incoming quantity of models in your stockroom and the requests for these models from different service locations. This report helps you determine if you have enough assets to meet the demand.",
+      "wrongAnswers": [
+        { "choiceId": "a", "explanation": "Inventory availability report is for finding replacement options for assets in various states.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/manage-stockroom-inventory-report-ham.html" },
+        { "choiceId": "c", "explanation": "Open demands report determines available stock to fulfill sourcing requests that are open.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/manage-stockroom-inventory-report-ham.html" },
+        { "choiceId": "d", "explanation": "Asset count by lifecycle state is part of the 360 asset view, not a stockroom demand report.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/manage-stockroom-inventory-report-ham.html" }
+      ]
+    },
+    "references": ["Manage stockrooms with inventory reports in the Hardware Asset Workspace"],
+    "isFree": false,
+    "source": {
+      "type": "docs",
+      "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/manage-stockroom-inventory-report-ham.md",
+      "excerpt": "Use the Supply vs Demand report to evaluate the available and incoming quantity of models in your stockroom and the requests for these models from different service locations. This report helps you determine if you have enough assets to meet the demand."
+    },
+    "labels": {
+      "certification": "cis-ham",
+      "domain": "Operational Integration",
+      "domainSlug": "operational-integration",
+      "domainPercentage": 18,
+      "subtopics": ["Asset reports"],
+      "tags": ["reports", "supply", "demand"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-13T02:45:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-ham-operational-integration-009",
+    "certification": "cis-ham",
+    "topic": "operational-integration",
+    "cognitiveLevel": "application",
+    "type": "multiple_choice",
+    "question": "An asset manager needs to find available stock to fulfill open sourcing requests. Which report should they use?",
+    "options": [
+      { "id": "a", "text": "Inventory availability report" },
+      { "id": "b", "text": "Supply vs Demand report" },
+      { "id": "c", "text": "Open demands report" },
+      { "id": "d", "text": "Requests that require sourcing report" }
+    ],
+    "correctAnswers": ["c"],
+    "selectCount": 1,
+    "isNegative": false,
+    "explanation": {
+      "correct": "The Open demands report is used to determine available stock within local stockrooms and distribution channels to fulfill sourcing requests that are open.",
+      "wrongAnswers": [
+        { "choiceId": "a", "explanation": "Inventory availability report is for finding replacement options, not fulfilling open sourcing requests.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/manage-stockroom-inventory-report-ham.html" },
+        { "choiceId": "b", "explanation": "Supply vs Demand evaluates supply levels versus demand, but Open demands specifically addresses open sourcing requests.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/manage-stockroom-inventory-report-ham.html" },
+        { "choiceId": "d", "explanation": "Requests that require sourcing is a Procurement view widget, not an inventory report.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/manage-stockroom-inventory-report-ham.html" }
+      ]
+    },
+    "references": ["Manage stockrooms with inventory reports in the Hardware Asset Workspace"],
+    "isFree": false,
+    "source": {
+      "type": "docs",
+      "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/manage-stockroom-inventory-report-ham.md",
+      "excerpt": "Use the Open demands report to determine available stock within local stockrooms and distribution channels to fulfill sourcing requests that are open."
+    },
+    "labels": {
+      "certification": "cis-ham",
+      "domain": "Operational Integration",
+      "domainSlug": "operational-integration",
+      "domainPercentage": 18,
+      "subtopics": ["Asset reports"],
+      "tags": ["reports", "open-demands", "sourcing"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-13T02:45:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-ham-operational-integration-010",
+    "certification": "cis-ham",
+    "topic": "operational-integration",
+    "cognitiveLevel": "knowledge",
+    "type": "compound_true_false",
+    "question": "Which of the following statements about the Hardware asset overview are true?\na) The 360 asset view shows asset counts by model category and lifecycle state.\nb) The Overall performance section displays discovered and undiscovered asset count.\nc) The Model normalization widget shows the total number of models.\nd) The Hardware asset overview supports lazy loading of reports.",
+    "options": [
+      { "id": "a", "text": "a, b, c, and d" },
+      { "id": "b", "text": "a, b, and d only" },
+      { "id": "c", "text": "a and b only" },
+      { "id": "d", "text": "b, c, and d only" }
+    ],
+    "correctAnswers": ["b"],
+    "selectCount": 1,
+    "isNegative": false,
+    "explanation": {
+      "correct": "Statement c is false - the Model normalization widget shows the PERCENTAGE of hardware and consumable models that are normalized, not the total number. Statements a, b, and d are all true.",
+      "wrongAnswers": [
+        { "choiceId": "a", "explanation": "Statement c is false - Model normalization shows percentage, not total count.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-asset-overview.html" },
+        { "choiceId": "c", "explanation": "Statement d is also true - lazy loading is supported via system property.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-asset-overview.html" },
+        { "choiceId": "d", "explanation": "Statement c is false - it shows percentage, not count.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-asset-overview.html" }
+      ]
+    },
+    "references": ["Hardware asset overview"],
+    "isFree": false,
+    "source": {
+      "type": "docs",
+      "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/hardware-asset-overview.md",
+      "excerpt": "Model normalization: Percentage of hardware and consumable models that are normalized. 360 asset view: Asset counts by model category and lifecycle state. Overall performance: Discovered and undiscovered asset count."
+    },
+    "labels": {
+      "certification": "cis-ham",
+      "domain": "Operational Integration",
+      "domainSlug": "operational-integration",
+      "domainPercentage": 18,
+      "subtopics": ["HAM dashboards", "Asset reports"],
+      "tags": ["overview", "dashboards", "compound-true-false"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-13T02:45:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-ham-operational-integration-011",
+    "certification": "cis-ham",
+    "topic": "operational-integration",
+    "cognitiveLevel": "understanding",
+    "type": "multiple_choice",
+    "question": "Which Hardware asset overview widget shows assets that have already expired or are on the expiry date and are eligible for a refresh?",
+    "options": [
+      { "id": "a", "text": "Model lifecycle overview" },
+      { "id": "b", "text": "Assets eligible for refresh by model category" },
+      { "id": "c", "text": "Asset count by lifecycle state" },
+      { "id": "d", "text": "Refresh requests" }
+    ],
+    "correctAnswers": ["b"],
+    "selectCount": 1,
+    "isNegative": false,
+    "explanation": {
+      "correct": "The 'Assets eligible for refresh by model category' widget shows the number of assets that have already expired or the current day is the expiry date, and are eligible for a refresh.",
+      "wrongAnswers": [
+        { "choiceId": "a", "explanation": "Model lifecycle overview shows the overview of model lifecycle grouped by lifecycle phase like End of support, End of Life, etc.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-asset-overview.html" },
+        { "choiceId": "c", "explanation": "Asset count by lifecycle state shows assets grouped by state like Retired, In use, In stock.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-asset-overview.html" },
+        { "choiceId": "d", "explanation": "Refresh requests shows the number of open hardware assets refresh order requests, not eligibility.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-asset-overview.html" }
+      ]
+    },
+    "references": ["Hardware asset overview"],
+    "isFree": false,
+    "source": {
+      "type": "docs",
+      "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/hardware-asset-overview.md",
+      "excerpt": "Assets eligible for refresh by model category: Number of assets that have already expired or the current day is the expiry date, and are eligible for a refresh."
+    },
+    "labels": {
+      "certification": "cis-ham",
+      "domain": "Operational Integration",
+      "domainSlug": "operational-integration",
+      "domainPercentage": 18,
+      "subtopics": ["HAM dashboards"],
+      "tags": ["refresh", "eligibility", "overview"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-13T02:45:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  }
+]

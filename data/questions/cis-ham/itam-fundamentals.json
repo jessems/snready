@@ -1,0 +1,551 @@
+[
+  {
+    "id": "cis-ham-itam-fundamentals-001",
+    "certification": "cis-ham",
+    "topic": "itam-fundamentals",
+    "cognitiveLevel": "knowledge",
+    "type": "multiple_choice",
+    "question": "Which role provides full access to all Hardware Asset Management features in ServiceNow?",
+    "options": [
+      { "id": "a", "text": "asset" },
+      { "id": "b", "text": "inventory_admin" },
+      { "id": "c", "text": "ham_admin" },
+      { "id": "d", "text": "itil" }
+    ],
+    "correctAnswers": ["c"],
+    "selectCount": 1,
+    "isNegative": false,
+    "explanation": {
+      "correct": "The ham_admin role is available only when Hardware Asset Management (HAM) is installed and provides access to all HAM features. This is the most comprehensive role for HAM functionality.",
+      "wrongAnswers": [
+        { "choiceId": "a", "explanation": "The asset role provides access to create, edit, manage, and delete hardware and consumable asset records, but not full HAM features.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/ham-workspace-roles.html" },
+        { "choiceId": "b", "explanation": "The inventory_admin role provides access to create, edit, manage, and delete stockrooms, but not all HAM features.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/ham-workspace-roles.html" },
+        { "choiceId": "d", "explanation": "The itil role provides access to incidents, problems, changes, and CIs, but not specifically to HAM features.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/ham-workspace-roles.html" }
+      ]
+    },
+    "references": ["Hardware Asset Workspace roles"],
+    "isFree": true,
+    "source": {
+      "type": "docs",
+      "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/ham-workspace-roles.md",
+      "excerpt": "ham_admin: This role is available only when the Hardware Asset Management (HAM) is installed and provides access to all HAM features."
+    },
+    "labels": {
+      "certification": "cis-ham",
+      "domain": "ITAM Overview & Fundamentals",
+      "domainSlug": "itam-fundamentals",
+      "domainPercentage": 20,
+      "subtopics": ["HAM personas and roles"],
+      "tags": ["roles", "ham_admin", "access", "security"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-13T02:30:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-ham-itam-fundamentals-002",
+    "certification": "cis-ham",
+    "topic": "itam-fundamentals",
+    "cognitiveLevel": "understanding",
+    "type": "multiple_select",
+    "question": "Which roles can access the Hardware Asset Workspace? (Choose two.)",
+    "options": [
+      { "id": "a", "text": "procurement_user" },
+      { "id": "b", "text": "knowledge_manager" },
+      { "id": "c", "text": "inventory_admin" },
+      { "id": "d", "text": "hr_admin" }
+    ],
+    "correctAnswers": ["a", "c"],
+    "selectCount": 2,
+    "isNegative": false,
+    "explanation": {
+      "correct": "Both procurement_user and inventory_admin roles can access Hardware Asset Workspace. The procurement_user has access to procurement tasks such as creating purchase orders and viewing transfer orders, while inventory_admin has access to create, edit, manage, and delete stockrooms.",
+      "wrongAnswers": [
+        { "choiceId": "b", "explanation": "The knowledge_manager role is for managing knowledge articles and bases, not HAM functionality.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/ham-workspace-roles.html" },
+        { "choiceId": "d", "explanation": "The hr_admin role is for HR Service Delivery, not Hardware Asset Management.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/ham-workspace-roles.html" }
+      ]
+    },
+    "references": ["Hardware Asset Workspace roles"],
+    "isFree": true,
+    "source": {
+      "type": "docs",
+      "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/ham-workspace-roles.md",
+      "excerpt": "procurement_user: Access to procurement tasks such as creating purchase orders and viewing transfer orders. inventory_admin: Access to create, edit, manage, and delete stockrooms."
+    },
+    "labels": {
+      "certification": "cis-ham",
+      "domain": "ITAM Overview & Fundamentals",
+      "domainSlug": "itam-fundamentals",
+      "domainPercentage": 20,
+      "subtopics": ["HAM personas and roles"],
+      "tags": ["roles", "workspace", "access"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-13T02:30:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-ham-itam-fundamentals-003",
+    "certification": "cis-ham",
+    "topic": "itam-fundamentals",
+    "cognitiveLevel": "knowledge",
+    "type": "multiple_choice",
+    "question": "Which plugin must be activated to enable Hardware Model Normalization?",
+    "options": [
+      { "id": "a", "text": "com.sn_hwnorm plugin is activated separately" },
+      { "id": "b", "text": "com.sn_hwnorm is activated when Hardware Asset Management [sn_hamp] is activated" },
+      { "id": "c", "text": "com.snc.asset_management plugin" },
+      { "id": "d", "text": "Hardware Model Normalization requires no plugin activation" }
+    ],
+    "correctAnswers": ["b"],
+    "selectCount": 1,
+    "isNegative": false,
+    "explanation": {
+      "correct": "The Hardware Model Normalization (com.sn_hwnorm) plugin is automatically activated when you activate the Hardware Asset Management [sn_hamp] plugin. No separate activation is required.",
+      "wrongAnswers": [
+        { "choiceId": "a", "explanation": "The com.sn_hwnorm plugin is NOT activated separately; it comes with HAM activation.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-normalization.html" },
+        { "choiceId": "c", "explanation": "The com.snc.asset_management plugin is the base Asset Management plugin, not the Hardware Model Normalization plugin.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-normalization.html" },
+        { "choiceId": "d", "explanation": "Hardware Model Normalization requires plugin activation; it is included with HAM plugin activation.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-normalization.html" }
+      ]
+    },
+    "references": ["Hardware Model Normalization"],
+    "isFree": true,
+    "source": {
+      "type": "docs",
+      "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/hardware-normalization.md",
+      "excerpt": "The Hardware Model Normalization (com.sn_hwnorm) plugin is activated when you activate the Hardware Asset Management [sn_hamp] plugin."
+    },
+    "labels": {
+      "certification": "cis-ham",
+      "domain": "ITAM Overview & Fundamentals",
+      "domainSlug": "itam-fundamentals",
+      "domainPercentage": 20,
+      "subtopics": ["ITSM Asset Management vs HAM"],
+      "tags": ["plugins", "normalization", "activation"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-13T02:30:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-ham-itam-fundamentals-004",
+    "certification": "cis-ham",
+    "topic": "itam-fundamentals",
+    "cognitiveLevel": "understanding",
+    "type": "multiple_choice",
+    "question": "Which application triggers the retire asset event when a change ticket to retire a server is implemented?",
+    "options": [
+      { "id": "a", "text": "Hardware Asset Management" },
+      { "id": "b", "text": "Change Management" },
+      { "id": "c", "text": "Asset Lifecycle Automation" },
+      { "id": "d", "text": "Configuration Management" }
+    ],
+    "correctAnswers": ["b"],
+    "selectCount": 1,
+    "isNegative": false,
+    "explanation": {
+      "correct": "When a change is implemented to retire a server, the Change Management application triggers the retire asset event. This then creates a retire task that automatically updates the CI, related asset record, software allocations, and maintenance contracts.",
+      "wrongAnswers": [
+        { "choiceId": "a", "explanation": "Hardware Asset Management receives the event but doesn't trigger it; Change Management triggers the retire asset event.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/asset-lifecycle-automation.html" },
+        { "choiceId": "c", "explanation": "Asset Lifecycle Automation is the capability that handles the automation, but Change Management is the application that triggers the event.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/asset-lifecycle-automation.html" },
+        { "choiceId": "d", "explanation": "Configuration Management manages CIs but doesn't trigger asset retirement events from change tickets.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/asset-lifecycle-automation.html" }
+      ]
+    },
+    "references": ["Asset life-cycle automation"],
+    "isFree": false,
+    "source": {
+      "type": "docs",
+      "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/asset-lifecycle-automation.md",
+      "excerpt": "You have a change ticket to retire a server. After the change is implemented, the Change Management application triggers the retire asset event."
+    },
+    "labels": {
+      "certification": "cis-ham",
+      "domain": "ITAM Overview & Fundamentals",
+      "domainSlug": "itam-fundamentals",
+      "domainPercentage": 20,
+      "subtopics": ["Asset Manager responsibilities", "Hardware asset lifecycle stages"],
+      "tags": ["lifecycle", "automation", "change-management", "retire"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-13T02:30:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-ham-itam-fundamentals-005",
+    "certification": "cis-ham",
+    "topic": "itam-fundamentals",
+    "cognitiveLevel": "application",
+    "type": "multiple_select",
+    "question": "When an asset is retired or swapped via an incident, how is the Stockroom field populated? (Choose two.)",
+    "options": [
+      { "id": "a", "text": "Based on the location of the asset" },
+      { "id": "b", "text": "The field remains empty if no stockroom exists at the asset location" },
+      { "id": "c", "text": "The field is always populated with the default system stockroom" },
+      { "id": "d", "text": "A random stockroom from the same region is selected" }
+    ],
+    "correctAnswers": ["a", "b"],
+    "selectCount": 2,
+    "isNegative": false,
+    "explanation": {
+      "correct": "When an asset is retired or swapped via an incident, the Stockroom field is populated based on the location of the asset. If there isn't any stockroom in the location of the asset, then the Stockroom field isn't populated.",
+      "wrongAnswers": [
+        { "choiceId": "c", "explanation": "There is no default system stockroom that gets automatically assigned. The field is based on the asset's location.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/asset-lifecycle-automation.html" },
+        { "choiceId": "d", "explanation": "Stockroom selection is not random; it's based on the asset location and service location priority.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/asset-lifecycle-automation.html" }
+      ]
+    },
+    "references": ["Asset life-cycle automation"],
+    "isFree": false,
+    "source": {
+      "type": "docs",
+      "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/asset-lifecycle-automation.md",
+      "excerpt": "When an asset is retired or swapped via an incident, the Stockroom field is populated based on the location of the asset. If there isn't any stockroom in the location of the asset, then the Stockroom field isn't populated."
+    },
+    "labels": {
+      "certification": "cis-ham",
+      "domain": "ITAM Overview & Fundamentals",
+      "domainSlug": "itam-fundamentals",
+      "domainPercentage": 20,
+      "subtopics": ["Hardware asset lifecycle stages"],
+      "tags": ["lifecycle", "stockroom", "incident", "automation"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-13T02:30:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-ham-itam-fundamentals-006",
+    "certification": "cis-ham",
+    "topic": "itam-fundamentals",
+    "cognitiveLevel": "knowledge",
+    "type": "multiple_choice",
+    "question": "Which system property must be set to false to disable mandatory asset action validation when closing incidents in HAM version 11.0.2 or later?",
+    "options": [
+      { "id": "a", "text": "sn_hamp.disable_asset_action_incident" },
+      { "id": "b", "text": "sn_hamp.enable_asset_action_validation_incident" },
+      { "id": "c", "text": "sn_hamp.require_asset_action" },
+      { "id": "d", "text": "sn_hamp.asset_validation_mode" }
+    ],
+    "correctAnswers": ["b"],
+    "selectCount": 1,
+    "isNegative": false,
+    "explanation": {
+      "correct": "From Hardware Asset Management version 11.0.2 onward, if you don't want to enforce any asset action for the closure of an incident, you can set the value of the system property sn_hamp.enable_asset_action_validation_incident to false.",
+      "wrongAnswers": [
+        { "choiceId": "a", "explanation": "This is not the correct system property name. The correct property is sn_hamp.enable_asset_action_validation_incident.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/asset-lifecycle-automation.html" },
+        { "choiceId": "c", "explanation": "This is not the correct system property name. The correct property is sn_hamp.enable_asset_action_validation_incident.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/asset-lifecycle-automation.html" },
+        { "choiceId": "d", "explanation": "This is not the correct system property name. The correct property is sn_hamp.enable_asset_action_validation_incident.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/asset-lifecycle-automation.html" }
+      ]
+    },
+    "references": ["Asset life-cycle automation"],
+    "isFree": false,
+    "source": {
+      "type": "docs",
+      "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/asset-lifecycle-automation.md",
+      "excerpt": "if you don't want to enforce any asset action for the closure of an incident, you can set the value of the system property sn_hamp.enable_asset_action_validation_incident to false."
+    },
+    "labels": {
+      "certification": "cis-ham",
+      "domain": "ITAM Overview & Fundamentals",
+      "domainSlug": "itam-fundamentals",
+      "domainPercentage": 20,
+      "subtopics": ["Implementation methodology"],
+      "tags": ["system-property", "configuration", "incident"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-13T02:30:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-ham-itam-fundamentals-007",
+    "certification": "cis-ham",
+    "topic": "itam-fundamentals",
+    "cognitiveLevel": "understanding",
+    "type": "compound_true_false",
+    "question": "Which of the following statements about asset tasks in HAM are true?\na) Asset tasks for deploy, replace, and retire operations automatically update the CI/asset record.\nb) The Change Management application provides Deploy and Retire asset tasks.\nc) The Incident Management application provides Deploy asset tasks.\nd) Field Service Management provides the Deploy asset task.",
+    "options": [
+      { "id": "a", "text": "a, b, c, and d" },
+      { "id": "b", "text": "a, b, and c only" },
+      { "id": "c", "text": "a, b, and d only" },
+      { "id": "d", "text": "a and b only" }
+    ],
+    "correctAnswers": ["c"],
+    "selectCount": 1,
+    "isNegative": false,
+    "explanation": {
+      "correct": "Statement c is false - Incident Management provides Update/Repair, Swap, and Retire tasks, NOT Deploy. Change Management provides Deploy and Retire tasks. Field Service Management provides Deploy. All asset tasks automatically update CI/asset records.",
+      "wrongAnswers": [
+        { "choiceId": "a", "explanation": "Statement c is false - Incident Management does not provide Deploy tasks; it provides Update/Repair, Swap, and Retire.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/asset-lifecycle-automation.html" },
+        { "choiceId": "b", "explanation": "Statement c is false - Incident Management does not provide Deploy tasks.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/asset-lifecycle-automation.html" },
+        { "choiceId": "d", "explanation": "Statement d is also true - Field Service Management does provide the Deploy asset task.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/asset-lifecycle-automation.html" }
+      ]
+    },
+    "references": ["Asset life-cycle automation"],
+    "isFree": false,
+    "source": {
+      "type": "docs",
+      "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/asset-lifecycle-automation.md",
+      "excerpt": "Incident Management: Update/Repair, Swap, Retire. Change Management: Deploy, Retire. Field Service Management: Deploy."
+    },
+    "labels": {
+      "certification": "cis-ham",
+      "domain": "ITAM Overview & Fundamentals",
+      "domainSlug": "itam-fundamentals",
+      "domainPercentage": 20,
+      "subtopics": ["Asset Manager responsibilities", "Hardware asset lifecycle stages"],
+      "tags": ["asset-tasks", "incident", "change", "fsm"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-13T02:30:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-ham-itam-fundamentals-008",
+    "certification": "cis-ham",
+    "topic": "itam-fundamentals",
+    "cognitiveLevel": "knowledge",
+    "type": "multiple_choice",
+    "question": "Which role is required to create, modify, and delete records in the base Model [cmdb_model] table?",
+    "options": [
+      { "id": "a", "text": "asset" },
+      { "id": "b", "text": "model_manager" },
+      { "id": "c", "text": "ham_admin" },
+      { "id": "d", "text": "catalog_admin" }
+    ],
+    "correctAnswers": ["b"],
+    "selectCount": 1,
+    "isNegative": false,
+    "explanation": {
+      "correct": "The model_manager role provides access to create, modify, and delete records of the base Model [cmdb_model] table. This role is essential for maintaining model definitions in HAM.",
+      "wrongAnswers": [
+        { "choiceId": "a", "explanation": "The asset role provides access to create, edit, manage, and delete hardware and consumable asset records, not model records.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/ham-workspace-roles.html" },
+        { "choiceId": "c", "explanation": "While ham_admin has access to all HAM features, the model_manager role is specifically designed for Model table access.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/ham-workspace-roles.html" },
+        { "choiceId": "d", "explanation": "The catalog_admin role is for Service Catalog management, not Model table management.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/ham-workspace-roles.html" }
+      ]
+    },
+    "references": ["Hardware Asset Workspace roles"],
+    "isFree": false,
+    "source": {
+      "type": "docs",
+      "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/ham-workspace-roles.md",
+      "excerpt": "model_manager: Access to create, modify, and delete records of the base Model [cmdb_model] table."
+    },
+    "labels": {
+      "certification": "cis-ham",
+      "domain": "ITAM Overview & Fundamentals",
+      "domainSlug": "itam-fundamentals",
+      "domainPercentage": 20,
+      "subtopics": ["HAM personas and roles"],
+      "tags": ["roles", "model_manager", "cmdb_model"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-13T02:30:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-ham-itam-fundamentals-009",
+    "certification": "cis-ham",
+    "topic": "itam-fundamentals",
+    "cognitiveLevel": "understanding",
+    "type": "multiple_choice",
+    "question": "What happens to excluded assets in the automated asset lifecycle workflow?",
+    "options": [
+      { "id": "a", "text": "They are processed with a different workflow" },
+      { "id": "b", "text": "They require manual update of asset records or CIs" },
+      { "id": "c", "text": "They are automatically deleted from the system" },
+      { "id": "d", "text": "They are moved to a quarantine stockroom" }
+    ],
+    "correctAnswers": ["b"],
+    "selectCount": 1,
+    "isNegative": false,
+    "explanation": {
+      "correct": "The automated workflow isn't triggered for excluded assets. You must manually update your asset records or CIs for the excluded assets.",
+      "wrongAnswers": [
+        { "choiceId": "a", "explanation": "Excluded assets do not have a different workflow; they simply skip automation entirely.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/asset-lifecycle-automation.html" },
+        { "choiceId": "c", "explanation": "Excluded assets are not deleted; they just require manual maintenance.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/asset-lifecycle-automation.html" },
+        { "choiceId": "d", "explanation": "Excluded assets are not moved anywhere; they remain where they are but require manual updates.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/asset-lifecycle-automation.html" }
+      ]
+    },
+    "references": ["Asset life-cycle automation"],
+    "isFree": false,
+    "source": {
+      "type": "docs",
+      "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/asset-lifecycle-automation.md",
+      "excerpt": "The automated workflow isn't triggered for excluded assets. You must manually update your asset records or CIs for the excluded assets."
+    },
+    "labels": {
+      "certification": "cis-ham",
+      "domain": "ITAM Overview & Fundamentals",
+      "domainSlug": "itam-fundamentals",
+      "domainPercentage": 20,
+      "subtopics": ["Implementation methodology"],
+      "tags": ["automation", "excluded-assets", "manual"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-13T02:30:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-ham-itam-fundamentals-010",
+    "certification": "cis-ham",
+    "topic": "itam-fundamentals",
+    "cognitiveLevel": "application",
+    "type": "multiple_select",
+    "question": "When a retire task is triggered for a server via a change ticket, which records are automatically updated? (Choose three.)",
+    "options": [
+      { "id": "a", "text": "CI" },
+      { "id": "b", "text": "Related asset record" },
+      { "id": "c", "text": "Software allocations" },
+      { "id": "d", "text": "Purchase orders" },
+      { "id": "e", "text": "Maintenance contracts" }
+    ],
+    "correctAnswers": ["a", "b", "e"],
+    "selectCount": 3,
+    "isNegative": false,
+    "explanation": {
+      "correct": "When a retire task is triggered, it automatically updates the CI, the related asset record, software allocations, and maintenance contracts. However, the question asks for three, and the four items that are updated are: CI, related asset record, software allocations, and maintenance contracts. Purchase orders are NOT automatically updated.",
+      "wrongAnswers": [
+        { "choiceId": "d", "explanation": "Purchase orders are not automatically updated when an asset is retired. The retire task updates CI, asset record, software allocations, and maintenance contracts.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/asset-lifecycle-automation.html" }
+      ]
+    },
+    "references": ["Asset life-cycle automation"],
+    "isFree": false,
+    "source": {
+      "type": "docs",
+      "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/asset-lifecycle-automation.md",
+      "excerpt": "The retire task is triggered and updates the following: CI, related asset record, software allocations, maintenance contracts."
+    },
+    "labels": {
+      "certification": "cis-ham",
+      "domain": "ITAM Overview & Fundamentals",
+      "domainSlug": "itam-fundamentals",
+      "domainPercentage": 20,
+      "subtopics": ["Hardware asset lifecycle stages", "Asset Manager responsibilities"],
+      "tags": ["retire", "automation", "ci", "software-allocations"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-13T02:30:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-ham-itam-fundamentals-011",
+    "certification": "cis-ham",
+    "topic": "itam-fundamentals",
+    "cognitiveLevel": "knowledge",
+    "type": "multiple_choice",
+    "question": "Which view in the Hardware Asset Workspace displays Asset counts by model category, lifecycle state, and asset value by model category?",
+    "options": [
+      { "id": "a", "text": "Overall performance section" },
+      { "id": "b", "text": "360 asset view section" },
+      { "id": "c", "text": "Inventory view" },
+      { "id": "d", "text": "Procurement view" }
+    ],
+    "correctAnswers": ["b"],
+    "selectCount": 1,
+    "isNegative": false,
+    "explanation": {
+      "correct": "The 360 asset view section in the Hardware asset overview displays Asset counts by model category and lifecycle state, and asset value by model category.",
+      "wrongAnswers": [
+        { "choiceId": "a", "explanation": "The Overall performance section displays Model lifecycle overview, Discovered and undiscovered asset count, and Assets eligible for refresh by model category.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-asset-overview.html" },
+        { "choiceId": "c", "explanation": "The Inventory view shows inventory functions like Asset audits, Disposal orders, and Transfer orders.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/inventory-view.html" },
+        { "choiceId": "d", "explanation": "The Procurement view shows procurement-related details like purchase orders, sourcing tasks, and receiving slips.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/procurement-view.html" }
+      ]
+    },
+    "references": ["Hardware asset overview"],
+    "isFree": false,
+    "source": {
+      "type": "docs",
+      "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/hardware-asset-overview.md",
+      "excerpt": "View the 360 asset view section displaying Asset counts by model category and lifecycle state, and asset value by model category."
+    },
+    "labels": {
+      "certification": "cis-ham",
+      "domain": "ITAM Overview & Fundamentals",
+      "domainSlug": "itam-fundamentals",
+      "domainPercentage": 20,
+      "subtopics": ["IT Asset Management concepts"],
+      "tags": ["hardware-asset-overview", "360-view", "workspace"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-13T02:30:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-ham-itam-fundamentals-012",
+    "certification": "cis-ham",
+    "topic": "itam-fundamentals",
+    "cognitiveLevel": "knowledge",
+    "type": "multiple_choice",
+    "question": "Which system property enables lazy loading of reports on the Hardware asset overview page to improve performance?",
+    "options": [
+      { "id": "a", "text": "sn_hamp.enable_lazy_loading" },
+      { "id": "b", "text": "sn_itam_workspace.asset_overview_enable_lazy_loading" },
+      { "id": "c", "text": "sn_ham.report_lazy_load" },
+      { "id": "d", "text": "glide.ui.lazy_load_reports" }
+    ],
+    "correctAnswers": ["b"],
+    "selectCount": 1,
+    "isNegative": false,
+    "explanation": {
+      "correct": "The system property sn_itam_workspace.asset_overview_enable_lazy_loading provides the option to either selectively load reports on demand or load reports concurrently with the page. By default, this property is set to False.",
+      "wrongAnswers": [
+        { "choiceId": "a", "explanation": "This is not the correct system property name. The correct property is sn_itam_workspace.asset_overview_enable_lazy_loading.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-asset-overview.html" },
+        { "choiceId": "c", "explanation": "This is not the correct system property name. The correct property is sn_itam_workspace.asset_overview_enable_lazy_loading.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-asset-overview.html" },
+        { "choiceId": "d", "explanation": "This is a generic platform property name, not the HAM-specific lazy loading property.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-asset-overview.html" }
+      ]
+    },
+    "references": ["Hardware asset overview"],
+    "isFree": false,
+    "source": {
+      "type": "docs",
+      "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/hardware-asset-overview.md",
+      "excerpt": "The system property sn_itam_workspace.asset_overview_enable_lazy_loading provides you with an option to either selectively load reports you want to view or load reports concurrently with the page."
+    },
+    "labels": {
+      "certification": "cis-ham",
+      "domain": "ITAM Overview & Fundamentals",
+      "domainSlug": "itam-fundamentals",
+      "domainPercentage": 20,
+      "subtopics": ["Implementation methodology"],
+      "tags": ["system-property", "performance", "lazy-loading"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-13T02:30:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  }
+]

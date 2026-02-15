@@ -1,0 +1,139 @@
+[
+  {
+    "id": "cis-ham-financial-management-001",
+    "certification": "cis-ham",
+    "topic": "financial-management",
+    "cognitiveLevel": "knowledge",
+    "type": "multiple_choice",
+    "question": "Which HAM version is required to access the Asset Total Cost of Ownership feature?",
+    "options": [
+      { "id": "a", "text": "Hardware Asset Management 9.0.0 or later" },
+      { "id": "b", "text": "Hardware Asset Management 10.0.0 or later" },
+      { "id": "c", "text": "Hardware Asset Management 11.0.0 or later" },
+      { "id": "d", "text": "Hardware Asset Management 12.0.0 or later" }
+    ],
+    "correctAnswers": ["b"],
+    "selectCount": 1,
+    "isNegative": false,
+    "explanation": {
+      "correct": "You must install Hardware Asset Management 10.0.0 version or later to access the Asset Total Cost of Ownership feature.",
+      "wrongAnswers": [
+        { "choiceId": "a", "explanation": "Version 9.0.0 does not include Asset TCO; it requires version 10.0.0 or later.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/asset-mgmt-tco.html" },
+        { "choiceId": "c", "explanation": "While version 11.0.0 has TCO, the minimum requirement is version 10.0.0.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/asset-mgmt-tco.html" },
+        { "choiceId": "d", "explanation": "While version 12.0.0 has TCO, the minimum requirement is version 10.0.0.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/asset-mgmt-tco.html" }
+      ]
+    },
+    "references": ["Asset Total Cost of Ownership for Hardware Asset Management"],
+    "isFree": true,
+    "source": {
+      "type": "docs",
+      "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/asset-mgmt-tco.md",
+      "excerpt": "Important: You must install Hardware Asset Management 10.0.0 version or later to access the Asset Total Cost of Ownership feature."
+    },
+    "labels": {
+      "certification": "cis-ham",
+      "domain": "Financial Management",
+      "domainSlug": "financial-management",
+      "domainPercentage": 5,
+      "subtopics": ["Total cost of ownership"],
+      "tags": ["tco", "version", "requirements"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-13T02:50:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-ham-financial-management-002",
+    "certification": "cis-ham",
+    "topic": "financial-management",
+    "cognitiveLevel": "understanding",
+    "type": "multiple_select",
+    "question": "Which types of rate cards does Hardware Asset Management support for TCO tracking? (Choose two.)",
+    "options": [
+      { "id": "a", "text": "Task rate cards" },
+      { "id": "b", "text": "Labor rate cards" },
+      { "id": "c", "text": "Software rate cards" },
+      { "id": "d", "text": "Depreciation rate cards" }
+    ],
+    "correctAnswers": ["a", "b"],
+    "selectCount": 2,
+    "isNegative": false,
+    "explanation": {
+      "correct": "The Hardware Asset Management application supports Task rate cards and Labor rate cards for TCO tracking. The labor rate card is a part of the created expense line and is valid if you've included the labor rate card information with the task rate card.",
+      "wrongAnswers": [
+        { "choiceId": "c", "explanation": "Software rate cards are not a HAM rate card type; HAM uses Task and Labor rate cards.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/asset-mgmt-tco.html" },
+        { "choiceId": "d", "explanation": "Depreciation is calculated via scheduled job, not through rate cards.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/asset-mgmt-tco.html" }
+      ]
+    },
+    "references": ["Asset Total Cost of Ownership for Hardware Asset Management"],
+    "isFree": true,
+    "source": {
+      "type": "docs",
+      "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/asset-mgmt-tco.md",
+      "excerpt": "The Hardware Asset Management application supports the following rate cards: Task rate cards, Labor rate cards."
+    },
+    "labels": {
+      "certification": "cis-ham",
+      "domain": "Financial Management",
+      "domainSlug": "financial-management",
+      "domainPercentage": 5,
+      "subtopics": ["Rate cards"],
+      "tags": ["tco", "rate-cards", "labor"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-13T02:50:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-ham-financial-management-003",
+    "certification": "cis-ham",
+    "topic": "financial-management",
+    "cognitiveLevel": "knowledge",
+    "type": "multiple_choice",
+    "question": "How frequently does the Calculate Depreciation scheduled job run by default?",
+    "options": [
+      { "id": "a", "text": "Daily" },
+      { "id": "b", "text": "Weekly" },
+      { "id": "c", "text": "Bi-weekly" },
+      { "id": "d", "text": "Monthly" }
+    ],
+    "correctAnswers": ["b"],
+    "selectCount": 1,
+    "isNegative": false,
+    "explanation": {
+      "correct": "By default, the sn_itam_trigger_depreciation_job_after_days system property is set to 7. Therefore, the Calculate Depreciation scheduled job runs weekly to calculate depreciation amount.",
+      "wrongAnswers": [
+        { "choiceId": "a", "explanation": "The job does not run daily; the default frequency is weekly (every 7 days).", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/t_AddingDepreciationToAnAsset.html" },
+        { "choiceId": "c", "explanation": "The job does not run bi-weekly; it runs weekly by default.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/t_AddingDepreciationToAnAsset.html" },
+        { "choiceId": "d", "explanation": "The job does not run monthly; it runs weekly by default.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/t_AddingDepreciationToAnAsset.html" }
+      ]
+    },
+    "references": ["Add depreciation to an asset"],
+    "isFree": true,
+    "source": {
+      "type": "docs",
+      "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/t_AddingDepreciationToAnAsset.md",
+      "excerpt": "By default, this system property is set to 7. Therefore, the Calculate Depreciation scheduled job runs weekly to calculate depreciation amount."
+    },
+    "labels": {
+      "certification": "cis-ham",
+      "domain": "Financial Management",
+      "domainSlug": "financial-management",
+      "domainPercentage": 5,
+      "subtopics": ["Depreciation methods"],
+      "tags": ["depreciation", "scheduled-job", "frequency"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-13T02:50:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  }
+]
