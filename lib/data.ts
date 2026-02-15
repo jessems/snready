@@ -4,6 +4,9 @@ import csaTopics from "@/data/topics/csa-topics.json";
 import cisDfTopics from "@/data/topics/cis-df-topics.json";
 import cadTopics from "@/data/topics/cad-topics.json";
 import cisItsmTopics from "@/data/topics/cis-itsm-topics.json";
+import cisDiscoveryTopics from "@/data/topics/cis-discovery-topics.json";
+import cisCsmTopics from "@/data/topics/cis-csm-topics.json";
+import cisHamTopics from "@/data/topics/cis-ham-topics.json";
 import type { Certification, CertificationWithReadiness, Topic, Question, ExamDomain, CertificationCategory, ServiceNowRelease, DeltaExamInfo, ExamTips } from "@/types";
 
 // Category display names mapping
@@ -80,6 +83,9 @@ const topicsMap: Record<string, typeof csaTopics> = {
   "cis-df": cisDfTopics,
   cad: cadTopics,
   "cis-itsm": cisItsmTopics,
+  "cis-discovery": cisDiscoveryTopics,
+  "cis-csm": cisCsmTopics,
+  "cis-ham": cisHamTopics,
 };
 
 export function getTopicsForCertification(certSlug: string): Topic[] {
