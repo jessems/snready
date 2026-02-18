@@ -1,0 +1,944 @@
+{
+  "questions": [
+    {
+      "id": "cis-hr-hr-security-001",
+      "certification": "cis-hr",
+      "topic": "hr-security",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What role is required to create or upload employee documents in Agent Workspace for HR Case Management?",
+      "options": [
+        {
+          "id": "a",
+          "text": "sn_hr_core.admin"
+        },
+        {
+          "id": "b",
+          "text": "sn_hr_ef.document_writer"
+        },
+        {
+          "id": "c",
+          "text": "sn_hr_core.case_writer"
+        },
+        {
+          "id": "d",
+          "text": "sn_hr_ef.manager"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The sn_hr_ef.document_writer role is required to create or upload employee documents in Agent Workspace for HR Case Management.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "sn_hr_core.admin is for HR Service Delivery administration, not document writing",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/employee-service-management/agent-workspace-for-hr-case-management/hr-agent-ws-create-emp-doc.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "sn_hr_core.case_writer is for case management, not document management",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/employee-service-management/agent-workspace-for-hr-case-management/hr-agent-ws-create-emp-doc.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "sn_hr_ef.manager is for Employee File Management, but document_writer is the required role for creating documents",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/employee-service-management/agent-workspace-for-hr-case-management/hr-agent-ws-create-emp-doc.html"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow HR Service Delivery Documentation"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "docs",
+        "path": "https://www.servicenow.com/docs/r/xanadu/employee-service-management/agent-workspace-for-hr-case-management/hr-agent-ws-create-emp-doc.html",
+        "excerpt": "Role required: sn_hr_ef.document_writer"
+      },
+      "labels": {
+        "certification": "cis-hr",
+        "domain": "Security & Data Protection",
+        "domainSlug": "hr-security",
+        "domainPercentage": 20,
+        "subtopics": [
+          "Document management security",
+          "Role-based access"
+        ],
+        "tags": [
+          "roles",
+          "employee-documents",
+          "agent-workspace"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-16T02:07:56.346Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-hr-hr-security-002",
+      "certification": "cis-hr",
+      "topic": "hr-security",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_select",
+      "question": "Which roles have permission to change purge authorization for employee documents? (Choose two.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "EF admin [sn_hr_ef.admin]"
+        },
+        {
+          "id": "b",
+          "text": "Employee File Management Manager [sn_hr_ef.manager]"
+        },
+        {
+          "id": "c",
+          "text": "HR Core Admin [sn_hr_core.admin]"
+        },
+        {
+          "id": "d",
+          "text": "Document Writer [sn_hr_ef.document_writer]"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b"
+      ],
+      "explanation": {
+        "correct": "The EF admin (sn_hr_ef.admin) and Employee File Management Manager (sn_hr_ef.manager) roles have permission to change purge authorization for employee documents.",
+        "wrongAnswers": [
+          {
+            "choiceId": "c",
+            "explanation": "HR Core Admin does not have specific permission to change purge authorization",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/employee-service-management/agent-workspace-for-hr-case-management/hr-agent-ws-create-emp-doc.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Document Writer can create documents but cannot change purge authorization",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/employee-service-management/agent-workspace-for-hr-case-management/hr-agent-ws-create-emp-doc.html"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow HR Service Delivery Documentation"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "docs",
+        "path": "https://www.servicenow.com/docs/r/xanadu/employee-service-management/agent-workspace-for-hr-case-management/hr-agent-ws-create-emp-doc.html",
+        "excerpt": "Document type's security policy determines purge authorization. The following roles have permission to change purge authorization: EF admin [sn_hr_ef.admin], Employee File Management Manager [sn_hr_ef.manager]"
+      },
+      "labels": {
+        "certification": "cis-hr",
+        "domain": "Security & Data Protection",
+        "domainSlug": "hr-security",
+        "domainPercentage": 20,
+        "subtopics": [
+          "Document management security",
+          "Data protection"
+        ],
+        "tags": [
+          "purge",
+          "authorization",
+          "roles"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-16T02:07:56.346Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-hr-hr-security-003",
+      "certification": "cis-hr",
+      "topic": "hr-security",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What makes Employee Relations (ER) cases different from standard HR cases?",
+      "options": [
+        {
+          "id": "a",
+          "text": "ER cases require manager approval before creation"
+        },
+        {
+          "id": "b",
+          "text": "ER cases have tighter security due to their sensitive nature"
+        },
+        {
+          "id": "c",
+          "text": "ER cases cannot be assigned to groups"
+        },
+        {
+          "id": "d",
+          "text": "ER cases must always have an Opened for person"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Because of the sensitive nature of employee relations (ER) cases, there are expectations for tighter security to protect privacy. This is what makes them different from standard HR cases.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Manager approval is not a documented requirement for ER case creation",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/employee-service-management/hr-service-delivery/hr-case-employee-relations.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "ER cases can be assigned to groups; they use roles, groups, and assignment rules",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/employee-service-management/hr-service-delivery/hr-case-employee-relations.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "ER cases can be created without an Opened for or Subject person, which is actually a feature",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/employee-service-management/hr-service-delivery/hr-case-employee-relations.html"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow HR Service Delivery Documentation"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "docs",
+        "path": "https://www.servicenow.com/docs/r/xanadu/employee-service-management/hr-service-delivery/hr-case-employee-relations.html",
+        "excerpt": "Because of the sensitive nature of employee relations (ER) cases, there are expectations for tighter security to protect privacy. These aspects make employee relations cases different from standard HR cases."
+      },
+      "labels": {
+        "certification": "cis-hr",
+        "domain": "Security & Data Protection",
+        "domainSlug": "hr-security",
+        "domainPercentage": 20,
+        "subtopics": [
+          "Employee relations security",
+          "HR case security"
+        ],
+        "tags": [
+          "employee-relations",
+          "security",
+          "privacy"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-16T02:07:56.346Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-hr-hr-security-004",
+      "certification": "cis-hr",
+      "topic": "hr-security",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_select",
+      "question": "HR Service Delivery employee relations uses which of the following to ensure the correct people have visibility? (Choose three.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Roles"
+        },
+        {
+          "id": "b",
+          "text": "Groups"
+        },
+        {
+          "id": "c",
+          "text": "Assignment rules"
+        },
+        {
+          "id": "d",
+          "text": "Domain separation"
+        },
+        {
+          "id": "e",
+          "text": "Data encryption"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b",
+        "c"
+      ],
+      "explanation": {
+        "correct": "HR Service Delivery employee relations uses Roles, Groups, and Assignment rules to ensure confidentiality and that the correct people have visibility to cases.",
+        "wrongAnswers": [
+          {
+            "choiceId": "d",
+            "explanation": "Domain separation is not mentioned as a method for ER case visibility control",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/employee-service-management/hr-service-delivery/hr-case-employee-relations.html"
+          },
+          {
+            "choiceId": "e",
+            "explanation": "Data encryption is not mentioned as a method for ER case visibility control",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/employee-service-management/hr-service-delivery/hr-case-employee-relations.html"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow HR Service Delivery Documentation"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "docs",
+        "path": "https://www.servicenow.com/docs/r/xanadu/employee-service-management/hr-service-delivery/hr-case-employee-relations.html",
+        "excerpt": "HR Service Delivery employee relations uses the following to ensure that the correct people have visibility: Roles, Groups, Assignment rules"
+      },
+      "labels": {
+        "certification": "cis-hr",
+        "domain": "Security & Data Protection",
+        "domainSlug": "hr-security",
+        "domainPercentage": 20,
+        "subtopics": [
+          "Employee relations security",
+          "Role-based access"
+        ],
+        "tags": [
+          "visibility",
+          "security",
+          "employee-relations"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-16T02:07:56.346Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-hr-hr-security-005",
+      "certification": "cis-hr",
+      "topic": "hr-security",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "An Employee Relations agent is involved as an 'involved party' in a case. What level of access will they have to the case?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Full administrative access to manage the case"
+        },
+        {
+          "id": "b",
+          "text": "Read-only access to all case details and related records"
+        },
+        {
+          "id": "c",
+          "text": "Same access as a normal employee with restricted self-service view"
+        },
+        {
+          "id": "d",
+          "text": "No access to the case at all"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "An Employee Relations agent who is an involved party in a case is treated as a normal employee and does not have special privileges. They can only view the restricted self-service view of the case.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "ER agents lose administrative access when they are involved in a case",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/employee-service-management/hr-service-delivery/hr-case-restriction-er-agent.html"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "They have restricted access, not read-only access to all details",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/employee-service-management/hr-service-delivery/hr-case-restriction-er-agent.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "They still have basic self-service access to the case",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/employee-service-management/hr-service-delivery/hr-case-restriction-er-agent.html"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow HR Service Delivery Documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "https://www.servicenow.com/docs/r/xanadu/employee-service-management/hr-service-delivery/hr-case-restriction-er-agent.html",
+        "excerpt": "An Employee Relations agent is treated as a normal employee and does not have any kind of special privileges if the agent meets one of the following criteria: The person for whom the case was opened. An involved party in a case. A subject person."
+      },
+      "labels": {
+        "certification": "cis-hr",
+        "domain": "Security & Data Protection",
+        "domainSlug": "hr-security",
+        "domainPercentage": 20,
+        "subtopics": [
+          "Case restriction",
+          "Employee relations security"
+        ],
+        "tags": [
+          "involved-party",
+          "restrictions",
+          "security"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-16T02:07:56.346Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-hr-hr-security-006",
+      "certification": "cis-hr",
+      "topic": "hr-security",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "Which UI actions are NOT available to an Employee Relations agent who is restricted on a case?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Update and Cancel"
+        },
+        {
+          "id": "b",
+          "text": "Ready for Work and Update"
+        },
+        {
+          "id": "c",
+          "text": "Delete, Close Complete, and Suspend"
+        },
+        {
+          "id": "d",
+          "text": "View and Update"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "When an ER agent is restricted on a case, actions such as Associate Interaction, Delete, Close Complete, Close Incomplete, and Suspend are not available. Actions like Update, Ready for Work, and Cancel remain available.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Update and Cancel are available to restricted ER agents",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/employee-service-management/hr-service-delivery/hr-case-restriction-er-agent.html"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "Ready for Work and Update are available to restricted ER agents",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/employee-service-management/hr-service-delivery/hr-case-restriction-er-agent.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "View and Update actions are available to restricted ER agents",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/employee-service-management/hr-service-delivery/hr-case-restriction-er-agent.html"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow HR Service Delivery Documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "https://www.servicenow.com/docs/r/xanadu/employee-service-management/hr-service-delivery/hr-case-restriction-er-agent.html",
+        "excerpt": "Actions such as Update, Ready for Work, and Cancel that are available to regular employees are also available to the agent. Actions such as Associate Interaction, Delete, Close Complete, Close Incomplete, and Suspend are not available."
+      },
+      "labels": {
+        "certification": "cis-hr",
+        "domain": "Security & Data Protection",
+        "domainSlug": "hr-security",
+        "domainPercentage": 20,
+        "subtopics": [
+          "Case restriction",
+          "UI actions"
+        ],
+        "tags": [
+          "ui-actions",
+          "restrictions",
+          "employee-relations"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-16T02:07:56.346Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-hr-hr-security-007",
+      "certification": "cis-hr",
+      "topic": "hr-security",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What is the purpose of using the Restrict button on an Employee Relations case?",
+      "options": [
+        {
+          "id": "a",
+          "text": "To prevent any edits to the case"
+        },
+        {
+          "id": "b",
+          "text": "To ensure an involved ER agent cannot access the case even if they are in the HR confidential group"
+        },
+        {
+          "id": "c",
+          "text": "To remove the case from reports"
+        },
+        {
+          "id": "d",
+          "text": "To archive the case for compliance purposes"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Restricting a case means that even if an Employee Relations agent is part of the HR confidential group and is involved in a case, the agent will not have access to that case.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Restriction is about access control, not preventing edits",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/employee-service-management/hr-service-delivery/hr-case-restriction-er-agent.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Case restriction does not affect reporting visibility",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/employee-service-management/hr-service-delivery/hr-case-restriction-er-agent.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Case restriction is not an archival function",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/employee-service-management/hr-service-delivery/hr-case-restriction-er-agent.html"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow HR Service Delivery Documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "https://www.servicenow.com/docs/r/xanadu/employee-service-management/hr-service-delivery/hr-case-restriction-er-agent.html",
+        "excerpt": "Restricting a case means that even if an Employee Relations agent is part of the HR confidential group and is involved in a case, the agent will not have access to that case."
+      },
+      "labels": {
+        "certification": "cis-hr",
+        "domain": "Security & Data Protection",
+        "domainSlug": "hr-security",
+        "domainPercentage": 20,
+        "subtopics": [
+          "Case restriction",
+          "HR confidential group"
+        ],
+        "tags": [
+          "restrict-button",
+          "security",
+          "employee-relations"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-16T02:07:56.346Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-hr-hr-security-008",
+      "certification": "cis-hr",
+      "topic": "hr-security",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What are COE security policies built upon in ServiceNow?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Business Rules"
+        },
+        {
+          "id": "b",
+          "text": "Access Control Rules (ACLs)"
+        },
+        {
+          "id": "c",
+          "text": "Script Includes"
+        },
+        {
+          "id": "d",
+          "text": "UI Policies"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "COE security policies are a way to easily restrict access to different COEs via configuration. The underlying COE security policy implementations are ServiceNow ACLs (Access Control Rules).",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Business Rules are server-side scripts that run on record changes, not security policies",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/employee-service-management/hr-service-delivery/hr-case-restriction-er-agent.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Script Includes are reusable server-side scripts, not the foundation for COE security",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/employee-service-management/hr-service-delivery/hr-case-restriction-er-agent.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "UI Policies control form behavior, not data access security",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/employee-service-management/hr-service-delivery/hr-case-restriction-er-agent.html"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow HR Service Delivery Documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "https://www.servicenow.com/docs/r/xanadu/employee-service-management/hr-service-delivery/hr-case-restriction-er-agent.html",
+        "excerpt": "COE security policies are a way to easily restrict access to different COEs via configuration. The underlying COE security policy implementations are ServiceNow ACLs."
+      },
+      "labels": {
+        "certification": "cis-hr",
+        "domain": "Security & Data Protection",
+        "domainSlug": "hr-security",
+        "domainPercentage": 20,
+        "subtopics": [
+          "COE security",
+          "Platform security"
+        ],
+        "tags": [
+          "coe",
+          "acl",
+          "security-policy"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-16T02:07:56.346Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-hr-hr-security-009",
+      "certification": "cis-hr",
+      "topic": "hr-security",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What is the default maximum file upload size for employee documents?",
+      "options": [
+        {
+          "id": "a",
+          "text": "10 MB"
+        },
+        {
+          "id": "b",
+          "text": "20 MB"
+        },
+        {
+          "id": "c",
+          "text": "30 MB"
+        },
+        {
+          "id": "d",
+          "text": "50 MB"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "By default, the maximum size of a document allowed is 30 MB. This can be changed from the 'Maximum file upload size in megabytes' field in Employee Document Properties.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "10 MB is not the default maximum file size",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/employee-service-management/agent-workspace-for-hr-case-management/hr-agent-ws-create-emp-doc.html"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "20 MB is not the default maximum file size",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/employee-service-management/agent-workspace-for-hr-case-management/hr-agent-ws-create-emp-doc.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "50 MB is not the default maximum file size",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/employee-service-management/agent-workspace-for-hr-case-management/hr-agent-ws-create-emp-doc.html"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow HR Service Delivery Documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "https://www.servicenow.com/docs/r/xanadu/employee-service-management/agent-workspace-for-hr-case-management/hr-agent-ws-create-emp-doc.html",
+        "excerpt": "By default, the maximum size of a document allowed is 30 MB. The default can be changed from the Maximum file upload size in megabytes field in Employee Document Properties."
+      },
+      "labels": {
+        "certification": "cis-hr",
+        "domain": "Security & Data Protection",
+        "domainSlug": "hr-security",
+        "domainPercentage": 20,
+        "subtopics": [
+          "Document management security",
+          "Configuration"
+        ],
+        "tags": [
+          "file-upload",
+          "document-size",
+          "properties"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-16T02:07:56.346Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-hr-hr-security-010",
+      "certification": "cis-hr",
+      "topic": "hr-security",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What role is required to electronically sign a document in Agent Workspace for HR Case Management?",
+      "options": [
+        {
+          "id": "a",
+          "text": "sn_hr_ef.document_writer"
+        },
+        {
+          "id": "b",
+          "text": "sn_hr_core.case_writer"
+        },
+        {
+          "id": "c",
+          "text": "sn_hr_core.admin"
+        },
+        {
+          "id": "d",
+          "text": "sn_hr_ef.esign_user"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The sn_hr_core.case_writer role is required to electronically sign a document in Agent Workspace for HR Case Management.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "sn_hr_ef.document_writer is for creating/uploading documents, not signing",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/employee-service-management/agent-workspace-for-hr-case-management/hr-agent-ws-sign-doc.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "sn_hr_core.admin is for administration, not specifically for e-signature",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/employee-service-management/agent-workspace-for-hr-case-management/hr-agent-ws-sign-doc.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "sn_hr_ef.esign_user is not a valid ServiceNow role",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/employee-service-management/agent-workspace-for-hr-case-management/hr-agent-ws-sign-doc.html"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow HR Service Delivery Documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "https://www.servicenow.com/docs/r/xanadu/employee-service-management/agent-workspace-for-hr-case-management/hr-agent-ws-sign-doc.html",
+        "excerpt": "Role required: sn_hr_core.case_writer"
+      },
+      "labels": {
+        "certification": "cis-hr",
+        "domain": "Security & Data Protection",
+        "domainSlug": "hr-security",
+        "domainPercentage": 20,
+        "subtopics": [
+          "E-signature",
+          "Role-based access"
+        ],
+        "tags": [
+          "esign",
+          "roles",
+          "agent-workspace"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-16T02:07:56.346Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-hr-hr-security-011",
+      "certification": "cis-hr",
+      "topic": "hr-security",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_select",
+      "question": "When electronically signing a document in Agent Workspace, which signature methods are available? (Choose two.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Type signature"
+        },
+        {
+          "id": "b",
+          "text": "Draw signature"
+        },
+        {
+          "id": "c",
+          "text": "Upload image signature"
+        },
+        {
+          "id": "d",
+          "text": "Biometric fingerprint"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b"
+      ],
+      "explanation": {
+        "correct": "When signing a document, users can select 'Type signature' to type their signature or 'Draw signature' to draw their signature using their mouse.",
+        "wrongAnswers": [
+          {
+            "choiceId": "c",
+            "explanation": "Uploading an image signature is not a documented option",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/employee-service-management/agent-workspace-for-hr-case-management/hr-agent-ws-sign-doc.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Biometric fingerprint is not a documented signature method",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/employee-service-management/agent-workspace-for-hr-case-management/hr-agent-ws-sign-doc.html"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow HR Service Delivery Documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "https://www.servicenow.com/docs/r/xanadu/employee-service-management/agent-workspace-for-hr-case-management/hr-agent-ws-sign-doc.html",
+        "excerpt": "Select Type signature to type in your signature, or select Draw signature to draw your signature using your mouse."
+      },
+      "labels": {
+        "certification": "cis-hr",
+        "domain": "Security & Data Protection",
+        "domainSlug": "hr-security",
+        "domainPercentage": 20,
+        "subtopics": [
+          "E-signature"
+        ],
+        "tags": [
+          "esign",
+          "signature-methods",
+          "agent-workspace"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-16T02:07:56.346Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-hr-hr-security-012",
+      "certification": "cis-hr",
+      "topic": "hr-security",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What happens to HR matching rules when an Employee Relations agent is a subject person of a case?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The matching rules are ignored completely"
+        },
+        {
+          "id": "b",
+          "text": "The matching rules skip the ER agent so the case is not assigned to them"
+        },
+        {
+          "id": "c",
+          "text": "The matching rules prioritize the ER agent for faster resolution"
+        },
+        {
+          "id": "d",
+          "text": "The matching rules create a copy of the case for the ER agent"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "For Employee Relations COE, the HR matching rules skip any Employee Relations agent who meets the criteria (is the opened for person, involved party, or subject person) so that the case is not assigned to them.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The matching rules are not ignored, they specifically skip the involved agent",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/employee-service-management/hr-service-delivery/hr-case-restriction-er-agent.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The rules protect privacy by excluding the involved agent, not prioritizing them",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/employee-service-management/hr-service-delivery/hr-case-restriction-er-agent.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Case copying is not a documented behavior of matching rules",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/employee-service-management/hr-service-delivery/hr-case-restriction-er-agent.html"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow HR Service Delivery Documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "https://www.servicenow.com/docs/r/xanadu/employee-service-management/hr-service-delivery/hr-case-restriction-er-agent.html",
+        "excerpt": "For Employee Relations COE (Center of Excellence), the HR matching rules skip any Employee Relations agent who meets the criteria so that the case is not assigned to them."
+      },
+      "labels": {
+        "certification": "cis-hr",
+        "domain": "Security & Data Protection",
+        "domainSlug": "hr-security",
+        "domainPercentage": 20,
+        "subtopics": [
+          "Case restriction",
+          "Assignment rules"
+        ],
+        "tags": [
+          "matching-rules",
+          "assignment",
+          "security"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-16T02:07:56.346Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    }
+  ]
+}
