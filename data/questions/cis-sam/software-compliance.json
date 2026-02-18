@@ -1,0 +1,375 @@
+[
+  {
+    "id": "cis-sam-software-compliance-801",
+    "certification": "cis-sam",
+    "topic": "software-compliance",
+    "cognitiveLevel": "knowledge",
+    "type": "multiple_choice",
+    "question": "What are the three tiers of software reconciliation results in Software Asset Management?",
+    "options": [
+      { "id": "a", "text": "Product Results, License Results, Installation Results" },
+      { "id": "b", "text": "Product Results, Software Model Results, License Metric Results" },
+      { "id": "c", "text": "Publisher Results, Model Results, Entitlement Results" },
+      { "id": "d", "text": "Discovery Results, Normalization Results, Compliance Results" }
+    ],
+    "correctAnswers": ["b"],
+    "selectCount": 1,
+    "isNegative": false,
+    "explanation": {
+      "correct": "Software reconciliation generates three tiers of results: Product Results (for all models and installations associated with a software product), Software Model Results (for each individual software model), and License Metric Results (for each license metric associated with the software model).",
+      "wrongAnswers": [
+        { "choiceId": "a", "explanation": "Installation Results is not a separate tier; installations are tracked within Product Results and Software Model Results.", "reference": "docs.servicenow.com/software-reconciliation-results" },
+        { "choiceId": "c", "explanation": "These are not the official tier names in SAM reconciliation.", "reference": "docs.servicenow.com/software-reconciliation-results" },
+        { "choiceId": "d", "explanation": "Discovery and Normalization are separate processes from reconciliation results.", "reference": "docs.servicenow.com/software-reconciliation-results" }
+      ]
+    },
+    "references": ["docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/software-reconciliation-results"],
+    "isFree": true,
+    "source": {
+      "type": "docs",
+      "path": "software-reconciliation-results.md",
+      "excerpt": "There are three tiers of reconciliation results: Product Results, Software Model Results, License Metric Results"
+    },
+    "labels": {
+      "certification": "cis-sam",
+      "domain": "Software Compliance Management",
+      "domainSlug": "software-compliance",
+      "domainPercentage": 30,
+      "subtopics": ["Software reconciliation"],
+      "tags": ["reconciliation", "results", "product-results", "license-metric"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-18T03:00:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-sam-software-compliance-802",
+    "certification": "cis-sam",
+    "topic": "software-compliance",
+    "cognitiveLevel": "understanding",
+    "type": "multiple_select",
+    "question": "Which related lists appear on Product Results records after software reconciliation? (Choose three.)",
+    "options": [
+      { "id": "a", "text": "Software Model Results" },
+      { "id": "b", "text": "Unlicensed Installs" },
+      { "id": "c", "text": "Discovery Models" },
+      { "id": "d", "text": "Removal Candidates" },
+      { "id": "e", "text": "Transform Maps" }
+    ],
+    "correctAnswers": ["a", "b", "d"],
+    "selectCount": 3,
+    "isNegative": false,
+    "explanation": {
+      "correct": "Product Results records include related lists for: Software Model Results, Licensed Installs, Unlicensed Installs, and Removal Candidates. For SAP, Unlicensed Users appears instead of Unlicensed Installs.",
+      "wrongAnswers": [
+        { "choiceId": "c", "explanation": "Discovery Models are separate entities from reconciliation results; they are created during discovery, not as related lists on Product Results.", "reference": "docs.servicenow.com/software-reconciliation-results" },
+        { "choiceId": "e", "explanation": "Transform Maps are used for data imports, not as related lists on reconciliation results.", "reference": "docs.servicenow.com/software-reconciliation-results" }
+      ]
+    },
+    "references": ["docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/software-reconciliation-results"],
+    "isFree": false,
+    "source": {
+      "type": "docs",
+      "path": "software-reconciliation-results.md",
+      "excerpt": "The following related lists appear when you select a Product Results record: Software Model Results, Licensed Installs, Unlicensed Installs, Removal Candidates"
+    },
+    "labels": {
+      "certification": "cis-sam",
+      "domain": "Software Compliance Management",
+      "domainSlug": "software-compliance",
+      "domainPercentage": 30,
+      "subtopics": ["Software reconciliation", "License position and compliance"],
+      "tags": ["reconciliation", "product-results", "related-lists"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-18T03:00:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-sam-software-compliance-803",
+    "certification": "cis-sam",
+    "topic": "software-compliance",
+    "cognitiveLevel": "knowledge",
+    "type": "multiple_choice",
+    "question": "How often does software reconciliation run by default in Software Asset Management?",
+    "options": [
+      { "id": "a", "text": "Daily" },
+      { "id": "b", "text": "Weekly" },
+      { "id": "c", "text": "Monthly" },
+      { "id": "d", "text": "On every discovery scan" }
+    ],
+    "correctAnswers": ["b"],
+    "selectCount": 1,
+    "isNegative": false,
+    "explanation": {
+      "correct": "Reconciliation runs weekly or on demand for a specific publisher or all publishers. When reconciliation runs, it calculates compliance based on how many rights are in use compared to the number of active rights purchased.",
+      "wrongAnswers": [
+        { "choiceId": "a", "explanation": "The default schedule is weekly, not daily, though reconciliation can be triggered on demand.", "reference": "docs.servicenow.com/software-reconciliation-results" },
+        { "choiceId": "c", "explanation": "Reconciliation runs more frequently than monthly - it runs weekly by default.", "reference": "docs.servicenow.com/software-reconciliation-results" },
+        { "choiceId": "d", "explanation": "Reconciliation is not triggered automatically by discovery scans; it has its own weekly schedule.", "reference": "docs.servicenow.com/software-reconciliation-results" }
+      ]
+    },
+    "references": ["docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/software-reconciliation-results"],
+    "isFree": false,
+    "source": {
+      "type": "docs",
+      "path": "software-reconciliation-results.md",
+      "excerpt": "Reconciliation runs weekly or on demand for a specific publisher or all publishers."
+    },
+    "labels": {
+      "certification": "cis-sam",
+      "domain": "Software Compliance Management",
+      "domainSlug": "software-compliance",
+      "domainPercentage": 30,
+      "subtopics": ["Software reconciliation"],
+      "tags": ["reconciliation", "schedule", "weekly"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-18T03:00:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-sam-software-compliance-804",
+    "certification": "cis-sam",
+    "topic": "software-compliance",
+    "cognitiveLevel": "understanding",
+    "type": "multiple_choice",
+    "question": "Which API version should be used for new IBM License Metric Tool (ILMT) or BigFix Inventory integrations?",
+    "options": [
+      { "id": "a", "text": "v1 APIs (supported but deprecated)" },
+      { "id": "b", "text": "v2 APIs (current recommended version)" },
+      { "id": "c", "text": "v3 APIs (latest release)" },
+      { "id": "d", "text": "REST Table API" }
+    ],
+    "correctAnswers": ["b"],
+    "selectCount": 1,
+    "isNegative": false,
+    "explanation": {
+      "correct": "Version 1 of the ILMT and BigFix Inventory integration APIs have been deprecated by IBM. For new integrations, version 2 of the APIs should be used. The Software Asset Management application continues to support existing v1 integrations.",
+      "wrongAnswers": [
+        { "choiceId": "a", "explanation": "While v1 APIs are still supported for existing integrations, they are deprecated and should not be used for new integrations.", "reference": "docs.servicenow.com/integrating-ilmt-bigfix-v1-apis" },
+        { "choiceId": "c", "explanation": "There is no v3 API mentioned; v2 is the current recommended version.", "reference": "docs.servicenow.com/integrating-ilmt-bigfix-v1-apis" },
+        { "choiceId": "d", "explanation": "The REST Table API is a general ServiceNow API, not specifically for ILMT/BigFix integration.", "reference": "docs.servicenow.com/integrating-ilmt-bigfix-v1-apis" }
+      ]
+    },
+    "references": ["docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/integrating-ilmt-bigfix-v1-apis"],
+    "isFree": true,
+    "source": {
+      "type": "docs",
+      "path": "integrating-ilmt-bigfix-v1-apis.md",
+      "excerpt": "Version 1 of the ILMT and BigFix Inventory integration APIs have been deprecated by IBM. If you are setting up an ILMT or BigFix Inventory integration for the first time, use version 2 of the APIs instead."
+    },
+    "labels": {
+      "certification": "cis-sam",
+      "domain": "Software Compliance Management",
+      "domainSlug": "software-compliance",
+      "domainPercentage": 30,
+      "subtopics": ["Publisher-specific compliance (Microsoft, SAP, Oracle, etc.)"],
+      "tags": ["ibm", "ilmt", "bigfix", "api", "integration"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-18T03:00:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-sam-software-compliance-805",
+    "certification": "cis-sam",
+    "topic": "software-compliance",
+    "cognitiveLevel": "application",
+    "type": "compound_true_false",
+    "question": "Which of the following statements about IBM ILMT integration prerequisites are true?\na) ILMT version 9.2.7 or later must be installed.\nb) IBM ILMT agents must be configured to comply with IBM usage measurement guidelines.\nc) The Software Asset Management Professional for IBM plugin must be activated.\nd) ILMT can only be installed on physical hosts, not virtual machines.",
+    "options": [
+      { "id": "a", "text": "a, b, c, and d" },
+      { "id": "b", "text": "a, b, and c only" },
+      { "id": "c", "text": "b, c, and d only" },
+      { "id": "d", "text": "a and b only" }
+    ],
+    "correctAnswers": ["b"],
+    "selectCount": 1,
+    "isNegative": false,
+    "statements": {
+      "a": true,
+      "b": true,
+      "c": true,
+      "d": false
+    },
+    "explanation": {
+      "correct": "Statements a, b, and c are true. Statement d is false because ILMT can be installed on both physical hosts AND virtual machines (VMs).",
+      "wrongAnswers": [
+        { "choiceId": "a", "explanation": "Statement d is false - ILMT can be installed on a physical host or virtual machine.", "reference": "docs.servicenow.com/integrating-ilmt-bigfix-v1-apis" },
+        { "choiceId": "c", "explanation": "Statement a is true - ILMT version 9.2.7 or later is required.", "reference": "docs.servicenow.com/integrating-ilmt-bigfix-v1-apis" },
+        { "choiceId": "d", "explanation": "Statement c is also true - the IBM plugin must be activated to get the IBM Server connection alias.", "reference": "docs.servicenow.com/integrating-ilmt-bigfix-v1-apis" }
+      ]
+    },
+    "references": ["docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/integrating-ilmt-bigfix-v1-apis"],
+    "isFree": false,
+    "source": {
+      "type": "docs",
+      "path": "integrating-ilmt-bigfix-v1-apis.md",
+      "excerpt": "Install, set up, and run ILMT or BigFix Inventory on a physical host or virtual machine (VM). Install ILMT version 9.2.7 or later. Configure your IBM ILMT agents to scan your physical hosts or VMs in compliance with IBM usage measurement guidelines."
+    },
+    "labels": {
+      "certification": "cis-sam",
+      "domain": "Software Compliance Management",
+      "domainSlug": "software-compliance",
+      "domainPercentage": 30,
+      "subtopics": ["Publisher-specific compliance (Microsoft, SAP, Oracle, etc.)"],
+      "tags": ["ibm", "ilmt", "prerequisites", "configuration"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-18T03:00:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-sam-software-compliance-806",
+    "certification": "cis-sam",
+    "topic": "software-compliance",
+    "cognitiveLevel": "application",
+    "type": "multiple_choice",
+    "question": "An organization uses Visual Studio subscriptions. When reconciliation runs, Microsoft software installed on production environments appears as unlicensed. What should be configured to ensure proper license coverage?",
+    "options": [
+      { "id": "a", "text": "Add product install conditions to Visual Studio software models limiting installations to development or test environments" },
+      { "id": "b", "text": "Increase the inference percent to 100% on Visual Studio software models" },
+      { "id": "c", "text": "Disable environment validation in SAM properties" },
+      { "id": "d", "text": "Create separate entitlements for each environment type" }
+    ],
+    "correctAnswers": ["a"],
+    "selectCount": 1,
+    "isNegative": false,
+    "explanation": {
+      "correct": "Visual Studio subscriptions only cover development or test environments. Product install conditions should be added to Visual Studio software models to define where software can be installed. For example, conditions like 'Installed on contains dev' or 'Installed on contains test'. Production installations require separate Microsoft licenses.",
+      "wrongAnswers": [
+        { "choiceId": "b", "explanation": "Inference percent relates to suite component detection, not environment validation.", "reference": "docs.servicenow.com/manage-visual-studio-licenses" },
+        { "choiceId": "c", "explanation": "There is no such property to disable environment validation; this would violate Microsoft licensing terms.", "reference": "docs.servicenow.com/manage-visual-studio-licenses" },
+        { "choiceId": "d", "explanation": "Visual Studio subscriptions specifically cover only dev/test environments by Microsoft licensing terms; separate entitlements won't change this.", "reference": "docs.servicenow.com/manage-visual-studio-licenses" }
+      ]
+    },
+    "references": ["docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/manage-visual-studio-licenses"],
+    "isFree": true,
+    "source": {
+      "type": "docs",
+      "path": "manage-visual-studio-licenses.md",
+      "excerpt": "Add product install conditions to your Visual Studio software models that apply across all software models including downgrades and editions. Install conditions define where the software can be installed. For Visual Studio, installing the software anywhere that is not a development or test environment is a violation of the Microsoft license agreement."
+    },
+    "labels": {
+      "certification": "cis-sam",
+      "domain": "Software Compliance Management",
+      "domainSlug": "software-compliance",
+      "domainPercentage": 30,
+      "subtopics": ["Publisher-specific compliance (Microsoft, SAP, Oracle, etc.)"],
+      "tags": ["microsoft", "visual-studio", "install-conditions", "compliance"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-18T03:00:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-sam-software-compliance-807",
+    "certification": "cis-sam",
+    "topic": "software-compliance",
+    "cognitiveLevel": "knowledge",
+    "type": "multiple_select",
+    "question": "What data is retrieved by the ILMT and BigFix Inventory integration? (Choose two.)",
+    "options": [
+      { "id": "a", "text": "Products, components, editions, hosts, and virtual machines" },
+      { "id": "b", "text": "License usage based on product use" },
+      { "id": "c", "text": "License usage based on component use" },
+      { "id": "d", "text": "User authentication credentials" }
+    ],
+    "correctAnswers": ["a", "b"],
+    "selectCount": 2,
+    "isNegative": false,
+    "explanation": {
+      "correct": "The ILMT/BigFix integration retrieves historical software installation data including products, components, editions, hosts, virtual machines, and license usage. Note that license usage is based on product use, not component use.",
+      "wrongAnswers": [
+        { "choiceId": "c", "explanation": "License usage is based on product use, NOT component use. This is explicitly stated in the documentation.", "reference": "docs.servicenow.com/integrating-ilmt-bigfix-v1-apis" },
+        { "choiceId": "d", "explanation": "User credentials are not retrieved by this integration; it focuses on software installation and licensing data.", "reference": "docs.servicenow.com/integrating-ilmt-bigfix-v1-apis" }
+      ]
+    },
+    "references": ["docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/integrating-ilmt-bigfix-v1-apis"],
+    "isFree": false,
+    "source": {
+      "type": "docs",
+      "path": "integrating-ilmt-bigfix-v1-apis.md",
+      "excerpt": "The Software Asset Management application retrieves historical software installation data within the aggregated period that you defined in ILMT or BigFix Inventory. This data includes products, components, editions, hosts, virtual machines, and license usage. Note: License usage is based on product use and not component use."
+    },
+    "labels": {
+      "certification": "cis-sam",
+      "domain": "Software Compliance Management",
+      "domainSlug": "software-compliance",
+      "domainPercentage": 30,
+      "subtopics": ["Publisher-specific compliance (Microsoft, SAP, Oracle, etc.)"],
+      "tags": ["ibm", "ilmt", "bigfix", "data-import"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-18T03:00:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-sam-software-compliance-808",
+    "certification": "cis-sam",
+    "topic": "software-compliance",
+    "cognitiveLevel": "understanding",
+    "type": "multiple_choice",
+    "question": "Where can you access the navigation path to view reconciliation results in the Software Asset Workspace?",
+    "options": [
+      { "id": "a", "text": "Software Asset Workspace > Reconciliation > Historical Results" },
+      { "id": "b", "text": "Software Asset Workspace > License usage (then select a publisher card)" },
+      { "id": "c", "text": "Software Asset Workspace > Discovery > Results" },
+      { "id": "d", "text": "Software Asset Workspace > Compliance > Reports" }
+    ],
+    "correctAnswers": ["b"],
+    "selectCount": 1,
+    "isNegative": false,
+    "explanation": {
+      "correct": "In the Software Asset Workspace, navigate to Software Asset Workspace > License usage, then select a publisher card and select a Product Results record to view product result details. In Core UI, the path is All > Software Asset > Reconciliation > Historical Results.",
+      "wrongAnswers": [
+        { "choiceId": "a", "explanation": "This is the Core UI navigation path, not the Software Asset Workspace path.", "reference": "docs.servicenow.com/software-reconciliation-results" },
+        { "choiceId": "c", "explanation": "Discovery results are separate from reconciliation results.", "reference": "docs.servicenow.com/software-reconciliation-results" },
+        { "choiceId": "d", "explanation": "There is no 'Compliance > Reports' path for reconciliation results; use 'License usage'.", "reference": "docs.servicenow.com/software-reconciliation-results" }
+      ]
+    },
+    "references": ["docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/software-reconciliation-results"],
+    "isFree": false,
+    "source": {
+      "type": "docs",
+      "path": "software-reconciliation-results.md",
+      "excerpt": "Software Asset Workspace: Navigate to Software Asset Workspace > License usage. Select a publisher card and then select a Product Results record to view the product result details."
+    },
+    "labels": {
+      "certification": "cis-sam",
+      "domain": "Software Compliance Management",
+      "domainSlug": "software-compliance",
+      "domainPercentage": 30,
+      "subtopics": ["Software reconciliation", "License position and compliance"],
+      "tags": ["reconciliation", "workspace", "navigation", "license-usage"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-18T03:00:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  }
+]

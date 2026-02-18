@@ -1,0 +1,375 @@
+[
+  {
+    "id": "cis-sam-operational-integration-1201",
+    "certification": "cis-sam",
+    "topic": "operational-integration",
+    "cognitiveLevel": "knowledge",
+    "type": "multiple_choice",
+    "question": "What is the navigation path to access removal candidates in the Software Asset Workspace?",
+    "options": [
+      { "id": "a", "text": "Software Asset Workspace > Reconciliation > Removal candidates" },
+      { "id": "b", "text": "Software Asset Workspace > License usage > Removal candidates tab" },
+      { "id": "c", "text": "Software Asset Workspace > Optimization > Candidates" },
+      { "id": "d", "text": "Software Asset Workspace > Reclamation > View candidates" }
+    ],
+    "correctAnswers": ["b"],
+    "selectCount": 1,
+    "isNegative": false,
+    "explanation": {
+      "correct": "To access removal candidates in the Software Asset Workspace, navigate to Software Asset Workspace > License usage, then select the Removal candidates tab.",
+      "wrongAnswers": [
+        { "choiceId": "a", "explanation": "While reconciliation generates removal candidates, they are accessed through License usage, not a separate Reconciliation menu.", "reference": "docs.servicenow.com/reclaiming-software-sam" },
+        { "choiceId": "c", "explanation": "There is no 'Optimization > Candidates' navigation path.", "reference": "docs.servicenow.com/reclaiming-software-sam" },
+        { "choiceId": "d", "explanation": "There is no 'Reclamation > View candidates' menu option.", "reference": "docs.servicenow.com/reclaiming-software-sam" }
+      ]
+    },
+    "references": ["docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/reclaiming-software-sam"],
+    "isFree": true,
+    "source": {
+      "type": "docs",
+      "path": "reclaiming-software-sam.md",
+      "excerpt": "Navigate to All > Software asset > Software Asset Workspace. Select License usage. Select the Removal candidates tab."
+    },
+    "labels": {
+      "certification": "cis-sam",
+      "domain": "Operational Integration",
+      "domainSlug": "operational-integration",
+      "domainPercentage": 13,
+      "subtopics": ["Software reclamation and removal"],
+      "tags": ["removal-candidates", "reclamation", "workspace", "navigation"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-18T03:15:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-sam-operational-integration-1202",
+    "certification": "cis-sam",
+    "topic": "operational-integration",
+    "cognitiveLevel": "understanding",
+    "type": "multiple_select",
+    "question": "What are valid reasons for reclaiming software in Software Asset Management? (Choose three.)",
+    "options": [
+      { "id": "a", "text": "Low usage" },
+      { "id": "b", "text": "Optimization generated due to consolidation" },
+      { "id": "c", "text": "Software version is outdated" },
+      { "id": "d", "text": "Overlapping subscriptions" },
+      { "id": "e", "text": "Discovery scan completed" }
+    ],
+    "correctAnswers": ["a", "b", "d"],
+    "selectCount": 3,
+    "isNegative": false,
+    "explanation": {
+      "correct": "You can reclaim software for multiple reasons including: low usage, optimization generated due to consolidation, and overlapping subscriptions. The reclamation process can be managed manually or automatically using Client Software Distribution (CSD 2.0).",
+      "wrongAnswers": [
+        { "choiceId": "c", "explanation": "Outdated software versions are handled through upgrade or end-of-life processes, not reclamation.", "reference": "docs.servicenow.com/reclaiming-software-sam" },
+        { "choiceId": "e", "explanation": "Discovery scan completion is not a reason for reclamation; it's a data collection process.", "reference": "docs.servicenow.com/reclaiming-software-sam" }
+      ]
+    },
+    "references": ["docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/reclaiming-software-sam"],
+    "isFree": false,
+    "source": {
+      "type": "docs",
+      "path": "reclaiming-software-sam.md",
+      "excerpt": "You can reclaim software for multiple reasons such as low usage, optimization generated due to consolidation, or overlapping subscriptions."
+    },
+    "labels": {
+      "certification": "cis-sam",
+      "domain": "Operational Integration",
+      "domainSlug": "operational-integration",
+      "domainPercentage": 13,
+      "subtopics": ["Software reclamation and removal"],
+      "tags": ["reclamation", "low-usage", "optimization", "consolidation"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-18T03:15:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-sam-operational-integration-1203",
+    "certification": "cis-sam",
+    "topic": "operational-integration",
+    "cognitiveLevel": "understanding",
+    "type": "multiple_choice",
+    "question": "When a user receives a software reclamation email and selects 'Yes' to keep the software, what happens to the removal candidate record?",
+    "options": [
+      { "id": "a", "text": "The record moves to Close Complete state immediately" },
+      { "id": "b", "text": "The record state changes to Awaiting Approval for assignment group review" },
+      { "id": "c", "text": "The software is automatically removed" },
+      { "id": "d", "text": "The record is deleted from the system" }
+    ],
+    "correctAnswers": ["b"],
+    "selectCount": 1,
+    "isNegative": false,
+    "explanation": {
+      "correct": "If the user selects 'Yes' to keep the software, a task is created for the removal candidate record and the state changes to Awaiting Approval. A member of the assignment group must then approve or reject the request to keep the software.",
+      "wrongAnswers": [
+        { "choiceId": "a", "explanation": "The record only moves to Close Skipped state if the assignment group approves the request to keep the software.", "reference": "docs.servicenow.com/reclaiming-software-sam" },
+        { "choiceId": "c", "explanation": "Selecting 'Yes' indicates the user wants to keep the software, so it would not be automatically removed.", "reference": "docs.servicenow.com/reclaiming-software-sam" },
+        { "choiceId": "d", "explanation": "Records are not deleted; they move through workflow states.", "reference": "docs.servicenow.com/reclaiming-software-sam" }
+      ]
+    },
+    "references": ["docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/reclaiming-software-sam"],
+    "isFree": true,
+    "source": {
+      "type": "docs",
+      "path": "reclaiming-software-sam.md",
+      "excerpt": "If the user selects Yes, a task gets created for the removal candidate record. The state of the removal candidate record changes to Awaiting Approval as a member of the assignment group needs to approve the request for keeping the software."
+    },
+    "labels": {
+      "certification": "cis-sam",
+      "domain": "Operational Integration",
+      "domainSlug": "operational-integration",
+      "domainPercentage": 13,
+      "subtopics": ["Software reclamation and removal", "Asset lifecycle workflows"],
+      "tags": ["reclamation", "workflow", "approval", "removal-candidate"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-18T03:15:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-sam-operational-integration-1204",
+    "certification": "cis-sam",
+    "topic": "operational-integration",
+    "cognitiveLevel": "knowledge",
+    "type": "multiple_choice",
+    "question": "Which plugin must be installed to create demands for software application rationalization?",
+    "options": [
+      { "id": "a", "text": "Software Asset Management Professional (com.snc.samp_professional)" },
+      { "id": "b", "text": "PPM Standard (com.snc.financial_planning_pmo)" },
+      { "id": "c", "text": "Demand Management Core (com.snc.demand_core)" },
+      { "id": "d", "text": "IT Business Management (com.snc.itbm)" }
+    ],
+    "correctAnswers": ["b"],
+    "selectCount": 1,
+    "isNegative": false,
+    "explanation": {
+      "correct": "The PPM Standard (com.snc.financial_planning_pmo) plugin must be installed to create demands for rationalizing SaaS and SSO applications.",
+      "wrongAnswers": [
+        { "choiceId": "a", "explanation": "While SAM Professional provides additional capabilities, PPM Standard is specifically required for demand creation.", "reference": "docs.servicenow.com/soft-asset-demand" },
+        { "choiceId": "c", "explanation": "There is no 'Demand Management Core' plugin; PPM Standard provides demand capabilities.", "reference": "docs.servicenow.com/soft-asset-demand" },
+        { "choiceId": "d", "explanation": "IT Business Management is a broader suite; the specific plugin needed is PPM Standard.", "reference": "docs.servicenow.com/soft-asset-demand" }
+      ]
+    },
+    "references": ["docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/soft-asset-demand"],
+    "isFree": false,
+    "source": {
+      "type": "docs",
+      "path": "soft-asset-demand.md",
+      "excerpt": "The PPM Standard (com.snc.financial_planning_pmo) plugin must be installed to create demands."
+    },
+    "labels": {
+      "certification": "cis-sam",
+      "domain": "Operational Integration",
+      "domainSlug": "operational-integration",
+      "domainPercentage": 13,
+      "subtopics": ["Demand management"],
+      "tags": ["demand", "ppm", "plugin", "rationalization"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-18T03:15:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-sam-operational-integration-1205",
+    "certification": "cis-sam",
+    "topic": "operational-integration",
+    "cognitiveLevel": "understanding",
+    "type": "compound_true_false",
+    "question": "Which of the following statements about software demand actions in SAM are true?\na) 'Discontinue after expiration' is an available demand action.\nb) 'Migrate to approved product' is an available demand action.\nc) 'Reclaim licenses' is an available demand action.\nd) 'Upgrade to latest version' is an available demand action.",
+    "options": [
+      { "id": "a", "text": "a, b, c, and d" },
+      { "id": "b", "text": "a, b, and c only" },
+      { "id": "c", "text": "b, c, and d only" },
+      { "id": "d", "text": "a and b only" }
+    ],
+    "correctAnswers": ["b"],
+    "selectCount": 1,
+    "isNegative": false,
+    "statements": {
+      "a": true,
+      "b": true,
+      "c": true,
+      "d": false
+    },
+    "explanation": {
+      "correct": "The available demand actions are: Discontinue after expiration, Migrate to approved product, Discontinue immediately, Reclaim licenses, and No action. 'Upgrade to latest version' is NOT a standard demand action.",
+      "wrongAnswers": [
+        { "choiceId": "a", "explanation": "Statement d is false - 'Upgrade to latest version' is not a standard demand action.", "reference": "docs.servicenow.com/soft-asset-demand" },
+        { "choiceId": "c", "explanation": "Statement a is true - 'Discontinue after expiration' is an available demand action.", "reference": "docs.servicenow.com/soft-asset-demand" },
+        { "choiceId": "d", "explanation": "Statement c is also true - 'Reclaim licenses' is an available demand action.", "reference": "docs.servicenow.com/soft-asset-demand" }
+      ]
+    },
+    "references": ["docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/soft-asset-demand"],
+    "isFree": false,
+    "source": {
+      "type": "docs",
+      "path": "soft-asset-demand.md",
+      "excerpt": "The Software Asset Management application includes the following demand actions: Discontinue after expiration, Migrate to approved product, Discontinue immediately, Reclaim licenses, No action"
+    },
+    "labels": {
+      "certification": "cis-sam",
+      "domain": "Operational Integration",
+      "domainSlug": "operational-integration",
+      "domainPercentage": 13,
+      "subtopics": ["Demand management"],
+      "tags": ["demand", "actions", "rationalization"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-18T03:15:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-sam-operational-integration-1206",
+    "certification": "cis-sam",
+    "topic": "operational-integration",
+    "cognitiveLevel": "application",
+    "type": "multiple_choice",
+    "question": "An organization wants to automate the software removal process instead of manually uninstalling software. Which capability should they implement?",
+    "options": [
+      { "id": "a", "text": "Discovery automation rules" },
+      { "id": "b", "text": "Client Software Distribution (CSD 2.0)" },
+      { "id": "c", "text": "Flow Designer workflows" },
+      { "id": "d", "text": "Orchestration automation packs" }
+    ],
+    "correctAnswers": ["b"],
+    "selectCount": 1,
+    "isNegative": false,
+    "explanation": {
+      "correct": "The reclamation process can be automated using Client Software Distribution (CSD 2.0) capabilities. Without CSD 2.0, the sam admin must assign the request to an individual who can manually uninstall the software. With CSD 2.0, the software is automatically removed.",
+      "wrongAnswers": [
+        { "choiceId": "a", "explanation": "Discovery automation rules are for discovery processes, not software removal automation.", "reference": "docs.servicenow.com/reclaiming-software-sam" },
+        { "choiceId": "c", "explanation": "While Flow Designer can be used for workflows, CSD 2.0 is the specific capability for automated software removal.", "reference": "docs.servicenow.com/reclaiming-software-sam" },
+        { "choiceId": "d", "explanation": "CSD 2.0 requires Orchestration subscription, but it is CSD specifically that automates software removal.", "reference": "docs.servicenow.com/reclaiming-software-sam" }
+      ]
+    },
+    "references": ["docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/reclaiming-software-sam"],
+    "isFree": true,
+    "source": {
+      "type": "docs",
+      "path": "reclaiming-software-sam.md",
+      "excerpt": "The reclamation process can be managed manually through the creation of tasks or automatically using the Client Software Distribution (CSD 2.0) capabilities. If CSD 2.0 is installed then the software is automatically removed."
+    },
+    "labels": {
+      "certification": "cis-sam",
+      "domain": "Operational Integration",
+      "domainSlug": "operational-integration",
+      "domainPercentage": 13,
+      "subtopics": ["Software reclamation and removal"],
+      "tags": ["csd", "automation", "reclamation", "software-removal"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-18T03:15:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-sam-operational-integration-1207",
+    "certification": "cis-sam",
+    "topic": "operational-integration",
+    "cognitiveLevel": "knowledge",
+    "type": "multiple_select",
+    "question": "Which roles are required to create demands for software rationalization? (Choose two.)",
+    "options": [
+      { "id": "a", "text": "sam_admin with it_demand_user" },
+      { "id": "b", "text": "sam_user with it_demand_user" },
+      { "id": "c", "text": "sam_admin alone" },
+      { "id": "d", "text": "itil with demand_manager" }
+    ],
+    "correctAnswers": ["a", "b"],
+    "selectCount": 2,
+    "isNegative": false,
+    "explanation": {
+      "correct": "The sam_admin and sam_user roles must also have the it_demand_user role to create demands. Either sam_admin + it_demand_user OR sam_user + it_demand_user combinations allow demand creation.",
+      "wrongAnswers": [
+        { "choiceId": "c", "explanation": "sam_admin alone is not sufficient; the it_demand_user role is also required.", "reference": "docs.servicenow.com/soft-asset-demand" },
+        { "choiceId": "d", "explanation": "itil with demand_manager is not the correct role combination; SAM roles with it_demand_user are required.", "reference": "docs.servicenow.com/soft-asset-demand" }
+      ]
+    },
+    "references": ["docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/soft-asset-demand"],
+    "isFree": false,
+    "source": {
+      "type": "docs",
+      "path": "soft-asset-demand.md",
+      "excerpt": "Role required: sam_admin or sam_user. The sam_admin and sam_user roles must have the it_demand_user role to create demand."
+    },
+    "labels": {
+      "certification": "cis-sam",
+      "domain": "Operational Integration",
+      "domainSlug": "operational-integration",
+      "domainPercentage": 13,
+      "subtopics": ["Demand management"],
+      "tags": ["roles", "demand", "permissions", "sam_admin", "sam_user"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-18T03:15:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-sam-operational-integration-1208",
+    "certification": "cis-sam",
+    "topic": "operational-integration",
+    "cognitiveLevel": "understanding",
+    "type": "multiple_choice",
+    "question": "When initiating software reclamation, what state does the removal candidate record change to after selecting 'Reclaim'?",
+    "options": [
+      { "id": "a", "text": "Awaiting Revocation" },
+      { "id": "b", "text": "Awaiting User" },
+      { "id": "c", "text": "Pending Approval" },
+      { "id": "d", "text": "In Progress" }
+    ],
+    "correctAnswers": ["b"],
+    "selectCount": 1,
+    "isNegative": false,
+    "explanation": {
+      "correct": "When you select 'Reclaim', the state of the removal candidate record changes from Ready to Awaiting User. An email notification is sent to the user to whom the software license is assigned, giving them options to keep or remove the software.",
+      "wrongAnswers": [
+        { "choiceId": "a", "explanation": "Awaiting Revocation occurs when the user selects 'No' (remove the software) or when approval is rejected.", "reference": "docs.servicenow.com/reclaiming-software-sam" },
+        { "choiceId": "c", "explanation": "Pending Approval is not the correct state name; Awaiting Approval occurs after user selects 'Yes'.", "reference": "docs.servicenow.com/reclaiming-software-sam" },
+        { "choiceId": "d", "explanation": "In Progress is not a standard reclamation workflow state.", "reference": "docs.servicenow.com/reclaiming-software-sam" }
+      ]
+    },
+    "references": ["docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/reclaiming-software-sam"],
+    "isFree": false,
+    "source": {
+      "type": "docs",
+      "path": "reclaiming-software-sam.md",
+      "excerpt": "Select Reclaim. The state of the removal candidate record changes from Ready to Awaiting User. An email notification is sent to the user to whom the software license is assigned."
+    },
+    "labels": {
+      "certification": "cis-sam",
+      "domain": "Operational Integration",
+      "domainSlug": "operational-integration",
+      "domainPercentage": 13,
+      "subtopics": ["Software reclamation and removal", "Asset lifecycle workflows"],
+      "tags": ["reclamation", "workflow", "states", "awaiting-user"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-18T03:15:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  }
+]
