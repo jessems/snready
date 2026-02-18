@@ -5,121 +5,117 @@
       "slug": "sam-fundamentals",
       "name": "SAM Overview & Fundamentals",
       "domain": "sam-fundamentals",
-      "description": "Software asset management basics, process architecture, and recommended practices.",
+      "description": "Software asset management basics, process architecture, application overview, and recommended practices.",
       "introduction": {
-        "overview": "SAM Fundamentals covers the core concepts of Software Asset Management in ServiceNow, including the business drivers for SAM, the SAM process architecture, and implementation best practices for successful deployments.",
-        "whyItMatters": "This domain represents 14% of the CIS-SAM exam. Questions cover SAM business value, license compliance drivers, the SAM solution architecture, implementation methodology, and best practices for SAM rollouts.",
-        "keyConcepts": "Understand why organizations need SAM (compliance, cost optimization, risk reduction). Know the SAM solution architecture including SAM Pro vs SAM. Master the recommended implementation sequence and stakeholder engagement strategies.",
-        "examTips": "SAM helps organizations avoid audit penalties and optimize license spending. Know the difference between SAM (foundation) and SAM Pro (advanced features). Implementation should start with high-risk publishers first."
+        "overview": "SAM Fundamentals covers the core concepts of Software Asset Management in ServiceNow, including the SAM application features, Software Asset Workspace navigation, and publisher-specific capabilities.",
+        "whyItMatters": "This domain represents 14% of the CIS-SAM exam. Questions cover SAM application functionality including Dashboards, Licensing, Discovery and Normalization, Reconciliation, Optimization, and Downgrade Rights.",
+        "keyConcepts": "Understand the six main feature areas of SAM: Dashboards, Licensing, Discovery and Normalization, Reconciliation, Optimization, and Downgrade Rights. Know how to navigate the Software Asset Workspace and access key reports and analytics.",
+        "examTips": "Know the navigation paths within Software Asset Workspace. Understand publisher pack add-ons and what features they enable. Results are updated with each reconciliation, not on a fixed schedule."
       },
       "keyConcepts": [
-        "SAM business drivers",
-        "License compliance",
-        "Cost optimization",
-        "SAM vs SAM Professional",
-        "SAM process architecture",
-        "Implementation methodology",
-        "Stakeholder engagement",
-        "Quick wins approach"
+        "SAM application overview",
+        "Software Asset Workspace navigation",
+        "SAM setup and configuration",
+        "Roles and permissions",
+        "Publisher packs and content services",
+        "SAM subscriptions and licensing"
       ],
-      "questionCount": 0,
-      "freeQuestionCount": 0
+      "questionCount": 8,
+      "freeQuestionCount": 3
     },
     {
       "slug": "data-integrity",
       "name": "Data Integrity & Sources",
       "domain": "data-integrity",
-      "description": "Importing data, software discovery, normalization, and content services.",
+      "description": "Importing data, software discovery, normalization, content services, and publisher packs.",
       "introduction": {
-        "overview": "Data Integrity covers how software data flows into ServiceNow SAM, including discovery methods, data import processes, normalization to create accurate software models, and how Content Services enriches the data.",
-        "whyItMatters": "Data Integrity is 28% of the exam. Expect questions on Discovery integration, software import processes, Normalization Data Services, the Software Asset Model Library, and how to ensure data quality for accurate compliance reporting.",
-        "keyConcepts": "Master the data flow from Discovery to SAM. Understand how normalization matches discovered software to software models. Know how Content Services provides publisher-specific license metrics and entitlement rules.",
-        "examTips": "Discovery provides raw software data; normalization creates clean models. The Software Asset Model Library contains certified software definitions. Content Services adds license metric knowledge for compliance calculations."
+        "overview": "Data Integrity covers how software data flows into ServiceNow, Discovery integration, normalization processes, publisher packs for specific vendors, and third-party data source integration.",
+        "whyItMatters": "This domain is 28% of the exam - the second largest. Expect questions on SCCM integration, publisher packs (Adobe, Citrix, IBM, Microsoft, Oracle, SAP, VMware), discovery models, software installations, and IRE API usage.",
+        "keyConcepts": "Understand the difference between software models and discovery models. Know the primary key fields for matching installations to discovery models (Publisher, Display Name, Version). Master publisher pack capabilities and when to use each.",
+        "examTips": "Discovery models cannot be created manually - they're auto-created during discovery. The IRE API is used for third-party discovery integration. SCCM plugins are being deprecated in favor of Service Graph Connectors. Each publisher pack has specific license metrics."
       },
       "keyConcepts": [
         "Discovery integration",
-        "Software import processes",
-        "Data sources and connectors",
-        "Normalization Data Services",
-        "Software model matching",
-        "Software Asset Model Library",
-        "Content Services",
-        "Data quality management"
+        "Software installation records",
+        "Content Library and ServiceNow Content Service",
+        "Normalization and classification",
+        "Data import and sources",
+        "Publisher packs",
+        "Software fingerprinting"
       ],
-      "questionCount": 0,
-      "freeQuestionCount": 0
+      "questionCount": 8,
+      "freeQuestionCount": 3
     },
     {
       "slug": "software-compliance",
       "name": "Software Compliance Management",
       "domain": "software-compliance",
-      "description": "Products and models, license metrics, entitlements, allocations, and software reconciliation.",
+      "description": "Products and models, license metrics, entitlements, allocations, software reconciliation, and BYOL.",
       "introduction": {
-        "overview": "Software Compliance is the heart of SAM, covering how to define license entitlements, measure software usage, allocate licenses to users or devices, and reconcile entitlements against installations for compliance reporting.",
-        "whyItMatters": "This is the largest domain at 30% of the exam. Questions focus on software products and models, license metric types (per device, per user, per core), entitlement creation, allocation strategies, and the reconciliation process.",
-        "keyConcepts": "Understand the software model hierarchy (publisher > product > version > edition). Master license metric types and when each applies. Know how to create entitlements from contracts and allocate them. Understand reconciliation rules for compliance calculations.",
-        "examTips": "Different publishers use different license metrics. Entitlements define what you own; allocations assign those rights. Reconciliation compares entitlements vs installations. Know how to interpret compliance status (compliant, non-compliant, over-licensed)."
+        "overview": "Software Compliance Management covers the reconciliation process, license metrics, entitlements and allocations, compliance status calculation, and publisher-specific compliance features.",
+        "whyItMatters": "This is the largest domain at 30% of the exam. Questions focus on the three tiers of reconciliation results (Product, Software Model, License Metric), IBM ILMT integration, Visual Studio licensing, and compliance calculations.",
+        "keyConcepts": "Understand the three tiers of reconciliation results. Know how rights available and over-licensed amounts are calculated. Master Visual Studio subscription licensing rules including install conditions for dev/test environments.",
+        "examTips": "Reconciliation runs weekly by default but can be triggered on demand. For Visual Studio, production environments require separate Microsoft licenses. License usage is based on product use, not component use for ILMT integration."
       },
       "keyConcepts": [
-        "Software model hierarchy",
-        "Publisher, product, version, edition",
-        "License metric types",
-        "Per device vs per user licensing",
-        "Entitlement creation",
-        "License allocations",
-        "Reconciliation process",
-        "Compliance status interpretation"
+        "Software models and products",
+        "License metrics and calculations",
+        "Entitlements and allocations",
+        "Software reconciliation",
+        "License position and compliance",
+        "True-up and optimization",
+        "BYOL (Bring Your Own License)",
+        "Publisher-specific compliance"
       ],
-      "questionCount": 0,
-      "freeQuestionCount": 0
+      "questionCount": 8,
+      "freeQuestionCount": 3
     },
     {
       "slug": "operational-integration",
       "name": "Operational Integration",
       "domain": "operational-integration",
-      "description": "Contract and change management, service catalog, procurement, and software remediation.",
+      "description": "Contract and change management, service catalog, procurement, software reclamation, and demand management.",
       "introduction": {
-        "overview": "Operational Integration covers how SAM connects with other ServiceNow modules and business processes, including contract management for license tracking, procurement workflows, service catalog for software requests, and remediation for compliance issues.",
-        "whyItMatters": "This domain is 13% of the exam. Questions cover software contract management, procurement integration, service catalog items for software requests, change management for software deployments, and remediation workflows for non-compliance.",
-        "keyConcepts": "Understand how contracts feed entitlements. Know how procurement workflows automate license purchases. Master service catalog integration for self-service software requests. Understand remediation options (reclaim, uninstall, purchase) for compliance issues.",
-        "examTips": "Contracts are the source of truth for entitlements. Procurement can automatically create entitlements from purchase orders. Service catalog requests should check license availability. Remediation workflows help resolve non-compliance."
+        "overview": "Operational Integration covers how SAM integrates with other ServiceNow processes including software reclamation workflows, demand management for application rationalization, and procurement integration.",
+        "whyItMatters": "This domain represents 13% of the exam. Questions cover the reclamation workflow states, Client Software Distribution (CSD 2.0) for automated removal, demand actions, and role requirements for various operations.",
+        "keyConcepts": "Understand the reclamation workflow states (Ready → Awaiting User → Awaiting Approval → Awaiting Revocation → Close Complete/Skipped). Know the five standard demand actions and the role requirements for demand creation.",
+        "examTips": "CSD 2.0 automates software removal; without it, manual uninstallation is required. Demand creation requires sam_admin or sam_user PLUS it_demand_user role. PPM Standard plugin is required for demand functionality."
       },
       "keyConcepts": [
-        "Software contract management",
-        "Contract to entitlement flow",
-        "Procurement integration",
-        "Purchase order processing",
-        "Service catalog for software",
-        "Request fulfillment workflows",
+        "Software reclamation and removal",
+        "End-of-life workflows",
+        "Procurement and demand management",
+        "Service catalog integration",
         "Change management integration",
-        "Remediation workflows"
+        "Asset lifecycle workflows"
       ],
-      "questionCount": 0,
-      "freeQuestionCount": 0
+      "questionCount": 8,
+      "freeQuestionCount": 3
     },
     {
       "slug": "extending-sam",
       "name": "Extending SAM",
       "domain": "extending-sam",
-      "description": "Software model lifecycle, retirement, installation optimization, reporting, and maintenance.",
+      "description": "Software model lifecycle, reporting, SaaS License Management, optimization, and third-party integrations.",
       "introduction": {
-        "overview": "Extending SAM covers advanced capabilities including managing the software model lifecycle, optimizing installations to reduce costs, retirement workflows for end-of-life software, and reporting strategies for stakeholder communication.",
-        "whyItMatters": "This domain is 15% of the exam. Questions focus on software lifecycle management, end-of-life and end-of-support tracking, license optimization strategies, SAM dashboards and reports, and ongoing maintenance tasks.",
-        "keyConcepts": "Master software lifecycle states and transitions. Understand end-of-life and end-of-support implications. Know license optimization techniques (harvesting, right-sizing). Understand SAM reports and dashboards for different audiences.",
-        "examTips": "End-of-life software poses security risks. License optimization can significantly reduce costs. SAM dashboards should be tailored to the audience (executives vs SAM analysts). Regular maintenance keeps SAM data accurate."
+        "overview": "Extending SAM covers advanced capabilities including Anglepoint integration, SaaS license management, Microsoft 365 optimization, savings opportunity identification, and custom configurations.",
+        "whyItMatters": "This domain represents 15% of the exam. Questions focus on Anglepoint integration (OAuth 2.0, APIs), Microsoft 365 savings identification, commit levels for enterprise subscriptions, and identifying inactive subscriptions.",
+        "keyConcepts": "Understand Anglepoint integration APIs and OAuth 2.0 authentication. Know how to calculate over-licensed amounts and identify savings opportunities. Master the Last activity field for finding reclamation candidates.",
+        "examTips": "Over-licensed amount = Rights available × Software entitlement unit cost. Microsoft commit levels apply to E1, E3, AND E5 subscriptions. For suite products, Last activity is the latest activity from any suite component."
       },
       "keyConcepts": [
-        "Software lifecycle states",
-        "End-of-life management",
-        "End-of-support tracking",
-        "License optimization",
-        "License harvesting",
-        "Right-sizing strategies",
-        "SAM dashboards",
-        "Stakeholder reporting"
+        "Dashboards and reporting",
+        "Analytics and metrics",
+        "SaaS License Management",
+        "Software Spend Detection",
+        "Cloud license optimization",
+        "Custom configurations"
       ],
-      "questionCount": 0,
-      "freeQuestionCount": 0
+      "questionCount": 8,
+      "freeQuestionCount": 3
     }
-  ]
+  ],
+  "totalQuestions": 40,
+  "totalFreeQuestions": 15,
+  "lastUpdated": "2026-02-18"
 }
