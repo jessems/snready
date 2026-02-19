@@ -1,0 +1,468 @@
+{
+  "questions": [
+    {
+      "id": "cis-pa-data-collection-001",
+      "certification": "cis-pa",
+      "topic": "data-collection",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What is the primary function of data collector jobs in Performance Analytics?",
+      "options": [
+        {
+          "id": "a",
+          "text": "To create new indicators automatically"
+        },
+        {
+          "id": "b",
+          "text": "To take periodic snapshots of process tables and store them in Scores and Snapshots tables"
+        },
+        {
+          "id": "c",
+          "text": "To export dashboard data to external systems"
+        },
+        {
+          "id": "d",
+          "text": "To validate indicator configurations"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The Data Collector is the engine that takes periodic snapshots of your process tables and stores them in the Scores and Snapshots tables.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Data collector jobs collect scores; indicators must be created manually or through other means.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Data collection is for internal score collection, not external export.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Validation is done through diagnostics, not data collector jobs.",
+            "reference": "Performance Analytics Documentation"
+          }
+        ]
+      },
+      "references": [
+        "Performance Analytics Documentation"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "docs",
+        "path": "https://www.servicenow.com/docs/r/xanadu/now-intelligence/performance-analytics/c_PerformanceAnalytics.html",
+        "excerpt": "Data collector is the engine that takes periodic snapshots of your process tables and stores them in the Scores and Snapshots tables."
+      },
+      "labels": {
+        "certification": "cis-pa",
+        "domain": "Data Collection",
+        "domainSlug": "data-collection",
+        "domainPercentage": 10,
+        "subtopics": [
+          "Data collection jobs and scheduling"
+        ],
+        "tags": [
+          "data-collector",
+          "scores",
+          "snapshots"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-19T02:14:40.988Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-pa-data-collection-002",
+      "certification": "cis-pa",
+      "topic": "data-collection",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What is the recommended relationship between a data collector job's schedule and an indicator source's frequency?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The job should run more frequently than the indicator frequency"
+        },
+        {
+          "id": "b",
+          "text": "The job schedule should match the indicator source frequency"
+        },
+        {
+          "id": "c",
+          "text": "The job should run less frequently than the indicator frequency"
+        },
+        {
+          "id": "d",
+          "text": "There is no relationship between job schedule and indicator frequency"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Usually set a job schedule to match the frequency in the indicator source.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Running more frequently than needed wastes resources without collecting new data.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Running less frequently would miss collection periods defined in the indicator source.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The job schedule should align with indicator frequency for optimal data collection.",
+            "reference": "Performance Analytics Documentation"
+          }
+        ]
+      },
+      "references": [
+        "Performance Analytics Documentation"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "docs",
+        "path": "https://www.servicenow.com/docs/r/xanadu/now-intelligence/performance-analytics/c_PerformanceAnalytics.html",
+        "excerpt": "Usually set a job schedule to match the frequency in the indicator source."
+      },
+      "labels": {
+        "certification": "cis-pa",
+        "domain": "Data Collection",
+        "domainSlug": "data-collection",
+        "domainPercentage": 10,
+        "subtopics": [
+          "Collection frequency configuration"
+        ],
+        "tags": [
+          "job-schedule",
+          "frequency",
+          "indicator-source"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-19T02:14:40.988Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-pa-data-collection-003",
+      "certification": "cis-pa",
+      "topic": "data-collection",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "Which type of data collection job should be run only once to populate empty indicators?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Daily data collection job"
+        },
+        {
+          "id": "b",
+          "text": "Historical data collection job"
+        },
+        {
+          "id": "c",
+          "text": "Automated data collection job"
+        },
+        {
+          "id": "d",
+          "text": "Scheduled data collection job"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "You can set up jobs that run manually, such as historical jobs, which you run only when collecting data for a new indicator.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Daily jobs run on a schedule, not as one-time historical collection.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Automated jobs are scheduled to run regularly, not for one-time historical population.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Scheduled jobs run repeatedly; historical jobs are run once to backfill data.",
+            "reference": "Performance Analytics Documentation"
+          }
+        ]
+      },
+      "references": [
+        "Performance Analytics Documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "https://www.servicenow.com/docs/r/xanadu/now-intelligence/performance-analytics/c_PerformanceAnalytics.html",
+        "excerpt": "You can also set up jobs that run manually, such as historical jobs, which you run only when collecting data for a new indicator."
+      },
+      "labels": {
+        "certification": "cis-pa",
+        "domain": "Data Collection",
+        "domainSlug": "data-collection",
+        "domainPercentage": 10,
+        "subtopics": [
+          "Historical data collection"
+        ],
+        "tags": [
+          "historical-job",
+          "backfill",
+          "new-indicator"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-19T02:14:40.988Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-pa-data-collection-004",
+      "certification": "cis-pa",
+      "topic": "data-collection",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_select",
+      "question": "Which two actions should be performed in the 'Collect data' phase of PA implementation? (Choose two.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Schedule and activate data collector jobs"
+        },
+        {
+          "id": "b",
+          "text": "Create dashboard visualizations"
+        },
+        {
+          "id": "c",
+          "text": "Run historical data collector jobs as a one-off"
+        },
+        {
+          "id": "d",
+          "text": "Define business goals and measurements"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "c"
+      ],
+      "explanation": {
+        "correct": "In the Collect data phase, collection jobs need to be configured to run with the desired frequency and activated, and historical data collector jobs should be run as a one-off to populate empty indicators.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Dashboard creation is part of the 'Share results' phase, not data collection.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Defining goals is part of the 'Plan and Prepare' phase, not data collection.",
+            "reference": "Performance Analytics Documentation"
+          }
+        ]
+      },
+      "references": [
+        "Performance Analytics Documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "https://www.servicenow.com/docs/r/xanadu/now-intelligence/performance-analytics/implementing-pa.html",
+        "excerpt": "Collect data: Collection jobs need to be configured to run with the desired frequency and activated. Schedule and activate data collector jobs. Run historical data collector jobs as a one-off to populate empty indicators."
+      },
+      "labels": {
+        "certification": "cis-pa",
+        "domain": "Data Collection",
+        "domainSlug": "data-collection",
+        "domainPercentage": 10,
+        "subtopics": [
+          "Data collection jobs and scheduling"
+        ],
+        "tags": [
+          "implementation",
+          "job-activation",
+          "historical-data"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-19T02:14:40.988Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-pa-data-collection-005",
+      "certification": "cis-pa",
+      "topic": "data-collection",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What happens when one data collection job generates scores for multiple indicators?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Each indicator receives a separate job"
+        },
+        {
+          "id": "b",
+          "text": "This is not possible; each job collects for one indicator only"
+        },
+        {
+          "id": "c",
+          "text": "One job usually generates scores for multiple indicators that use the same indicator source"
+        },
+        {
+          "id": "d",
+          "text": "The job fails due to conflicts"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "One job usually generates scores for multiple indicators that use the same indicator source.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Jobs are not automatically separated; one job can handle multiple indicators with the same source.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "A single job can collect for multiple indicators sharing an indicator source.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Multiple indicators per job is normal behavior, not a conflict.",
+            "reference": "Performance Analytics Documentation"
+          }
+        ]
+      },
+      "references": [
+        "Performance Analytics Documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "https://www.servicenow.com/docs/r/xanadu/now-intelligence/performance-analytics/c_PerformanceAnalytics.html",
+        "excerpt": "One job usually generates scores for multiple indicators that use the same indicator source."
+      },
+      "labels": {
+        "certification": "cis-pa",
+        "domain": "Data Collection",
+        "domainSlug": "data-collection",
+        "domainPercentage": 10,
+        "subtopics": [
+          "Data collection jobs and scheduling"
+        ],
+        "tags": [
+          "job-efficiency",
+          "indicator-source",
+          "multiple-indicators"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-19T02:14:40.988Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-pa-data-collection-006",
+      "certification": "cis-pa",
+      "topic": "data-collection",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What is the purpose of Performance Analytics diagnostics?",
+      "options": [
+        {
+          "id": "a",
+          "text": "To schedule data collection jobs"
+        },
+        {
+          "id": "b",
+          "text": "To identify and diagnose configuration issues using predefined scripts"
+        },
+        {
+          "id": "c",
+          "text": "To create new indicator sources"
+        },
+        {
+          "id": "d",
+          "text": "To export collected scores to external systems"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Performance Analytics diagnostics identify and diagnose configuration issues using predefined scripts that examine the database for invalid records and provide suggestions to resolve issues.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Job scheduling is done in the PA Admin Console, not diagnostics.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Indicator sources are created manually, not through diagnostics.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Export functionality is separate from diagnostics.",
+            "reference": "Performance Analytics Documentation"
+          }
+        ]
+      },
+      "references": [
+        "Performance Analytics Documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "https://www.servicenow.com/docs/r/xanadu/now-intelligence/performance-analytics/c_PADataArchitecture.html",
+        "excerpt": "Identify and diagnose configuration issues using predefined scripts that examine the database for invalid records and provide suggestions to resolve issues."
+      },
+      "labels": {
+        "certification": "cis-pa",
+        "domain": "Data Collection",
+        "domainSlug": "data-collection",
+        "domainPercentage": 10,
+        "subtopics": [
+          "Troubleshooting collection issues"
+        ],
+        "tags": [
+          "diagnostics",
+          "configuration",
+          "troubleshooting"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-19T02:14:40.988Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    }
+  ]
+}
