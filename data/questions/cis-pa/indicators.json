@@ -1,0 +1,1168 @@
+{
+  "questions": [
+    {
+      "id": "cis-pa-indicators-001",
+      "certification": "cis-pa",
+      "topic": "indicators",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "When using a formula indicator, what happens by default if one of the contributing indicators has no score for a collection period?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The formula calculates using zero for the null indicator"
+        },
+        {
+          "id": "b",
+          "text": "The formula indicator returns no score"
+        },
+        {
+          "id": "c",
+          "text": "The formula raises an error in the job log"
+        },
+        {
+          "id": "d",
+          "text": "The formula skips that indicator and calculates with remaining values"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "If one of the indicators in a formula has no score, by default the formula is not calculated and the formula indicator returns no score.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Zero is not substituted automatically; the formula simply doesn't calculate unless 'Allow formula component to be null' is enabled.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "No error is raised; the formula indicator simply returns null/no score.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The formula does not automatically skip null indicators; special handling must be configured using 'Allow formula component to be null'.",
+            "reference": "Performance Analytics Documentation"
+          }
+        ]
+      },
+      "references": [
+        "Performance Analytics Documentation"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "docs",
+        "path": "https://www.servicenow.com/docs/r/xanadu/now-intelligence/performance-analytics/detect-indicators-no-scores-formula.html",
+        "excerpt": "If one of those indicators has no score, by default the formula is not calculated and the formula indicator returns no score."
+      },
+      "labels": {
+        "certification": "cis-pa",
+        "domain": "Indicators & Indicator Sources",
+        "domainSlug": "indicators",
+        "domainPercentage": 25,
+        "subtopics": [
+          "Indicator types (manual, automated, formula)"
+        ],
+        "tags": [
+          "formula-indicator",
+          "null-scores",
+          "calculations"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-19T02:14:40.987Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-pa-indicators-002",
+      "certification": "cis-pa",
+      "topic": "indicators",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which checkbox must be selected on a formula indicator to enable handling of null scores from contributing indicators?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Enable null score handling"
+        },
+        {
+          "id": "b",
+          "text": "Allow formula component to be null"
+        },
+        {
+          "id": "c",
+          "text": "Skip null indicators"
+        },
+        {
+          "id": "d",
+          "text": "Calculate on empty values"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Select 'Allow formula component to be null' on the formula indicator to enable calculation even when a contributing indicator has no score.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "This is not a valid PA field name; the correct option is 'Allow formula component to be null'.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "There is no 'Skip null indicators' checkbox; you must use 'Allow formula component to be null'.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "This is not a valid PA field name; the correct option is 'Allow formula component to be null'.",
+            "reference": "Performance Analytics Documentation"
+          }
+        ]
+      },
+      "references": [
+        "Performance Analytics Documentation"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "docs",
+        "path": "https://www.servicenow.com/docs/r/xanadu/now-intelligence/performance-analytics/detect-indicators-no-scores-formula.html",
+        "excerpt": "Select Allow formula component to be null."
+      },
+      "labels": {
+        "certification": "cis-pa",
+        "domain": "Indicators & Indicator Sources",
+        "domainSlug": "indicators",
+        "domainPercentage": 25,
+        "subtopics": [
+          "Indicator properties and settings"
+        ],
+        "tags": [
+          "formula-indicator",
+          "null-handling",
+          "configuration"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-19T02:14:40.987Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-pa-indicators-003",
+      "certification": "cis-pa",
+      "topic": "indicators",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A PA administrator manually enters scores for an automated indicator in the Scoresheet. What happens when the next data collection job runs?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The manually entered scores are preserved and the job skips those periods"
+        },
+        {
+          "id": "b",
+          "text": "The manually entered scores are overwritten by the job"
+        },
+        {
+          "id": "c",
+          "text": "The job fails with a conflict error"
+        },
+        {
+          "id": "d",
+          "text": "The job merges the manual and collected scores"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "You can manually overwrite data that a job collected. However, the next time a job runs that collects this data, the manually entered data is overwritten in turn.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Manual scores are not preserved; they are overwritten by the next collection job.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "No conflict error occurs; the job simply overwrites the manual data.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "There is no merge functionality; the job completely overwrites previously entered data.",
+            "reference": "Performance Analytics Documentation"
+          }
+        ]
+      },
+      "references": [
+        "Performance Analytics Documentation"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "docs",
+        "path": "https://www.servicenow.com/docs/r/xanadu/now-intelligence/performance-analytics/t_ManuallyAddingScoresForIndicators.html",
+        "excerpt": "You can manually overwrite data that a job collected. However, the next time that a job is run that collects this data, the manually entered data is overwritten in turn."
+      },
+      "labels": {
+        "certification": "cis-pa",
+        "domain": "Indicators & Indicator Sources",
+        "domainSlug": "indicators",
+        "domainPercentage": 25,
+        "subtopics": [
+          "Indicator types (manual, automated, formula)"
+        ],
+        "tags": [
+          "scoresheet",
+          "manual-scores",
+          "data-collection"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-19T02:14:40.987Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-pa-indicators-004",
+      "certification": "cis-pa",
+      "topic": "indicators",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_select",
+      "question": "Which two roles can manually add or edit indicator scores in the PA Scoresheet? (Choose two.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "pa_viewer"
+        },
+        {
+          "id": "b",
+          "text": "pa_contributor"
+        },
+        {
+          "id": "c",
+          "text": "pa_admin"
+        },
+        {
+          "id": "d",
+          "text": "itil"
+        }
+      ],
+      "correctAnswers": [
+        "b",
+        "c"
+      ],
+      "explanation": {
+        "correct": "The roles pa_contributor, pa_admin, pa_power_user, or admin can manually add or edit indicator scores in the Scoresheet.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "pa_viewer only provides read access to PA data and cannot modify scores.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The itil role is for IT Service Management and does not grant PA score editing permissions.",
+            "reference": "Performance Analytics Documentation"
+          }
+        ]
+      },
+      "references": [
+        "Performance Analytics Documentation"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "docs",
+        "path": "https://www.servicenow.com/docs/r/xanadu/now-intelligence/performance-analytics/t_ManuallyAddingScoresForIndicators.html",
+        "excerpt": "Role required: pa_contributor, pa_admin, pa_power_user, or admin"
+      },
+      "labels": {
+        "certification": "cis-pa",
+        "domain": "Indicators & Indicator Sources",
+        "domainSlug": "indicators",
+        "domainPercentage": 25,
+        "subtopics": [
+          "Indicator properties and settings"
+        ],
+        "tags": [
+          "roles",
+          "scoresheet",
+          "permissions"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-19T02:14:40.987Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-pa-indicators-005",
+      "certification": "cis-pa",
+      "topic": "indicators",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "Which type of indicator CANNOT have its scores manually edited in the Scoresheet?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Automated indicators"
+        },
+        {
+          "id": "b",
+          "text": "Manual indicators"
+        },
+        {
+          "id": "c",
+          "text": "Formula indicators"
+        },
+        {
+          "id": "d",
+          "text": "External indicators"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "You cannot edit scores manually for formula indicators because their scores are calculated from other indicators.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Automated indicators can have scores manually edited, though they will be overwritten by the next job.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "Manual indicators are specifically designed for manual score entry.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "External indicators can have their scores managed through various methods including manual entry.",
+            "reference": "Performance Analytics Documentation"
+          }
+        ]
+      },
+      "references": [
+        "Performance Analytics Documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "https://www.servicenow.com/docs/r/xanadu/now-intelligence/performance-analytics/t_ManuallyAddingScoresForIndicators.html",
+        "excerpt": "You cannot edit scores manually for formula indicators."
+      },
+      "labels": {
+        "certification": "cis-pa",
+        "domain": "Indicators & Indicator Sources",
+        "domainSlug": "indicators",
+        "domainPercentage": 25,
+        "subtopics": [
+          "Indicator types (manual, automated, formula)"
+        ],
+        "tags": [
+          "formula-indicator",
+          "scoresheet",
+          "manual-edit"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-19T02:14:40.987Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-pa-indicators-006",
+      "certification": "cis-pa",
+      "topic": "indicators",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What is the primary purpose of KPI Composer in Performance Analytics?",
+      "options": [
+        {
+          "id": "a",
+          "text": "To automatically collect indicator scores from tables"
+        },
+        {
+          "id": "b",
+          "text": "To align performance measurement strategy with business goals before implementation"
+        },
+        {
+          "id": "c",
+          "text": "To create dashboard widgets and visualizations"
+        },
+        {
+          "id": "d",
+          "text": "To schedule and run data collection jobs"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "KPI Composer helps elicit performance management requirements and drive stakeholder alignment by ensuring that goals, outcomes, and deliverables are aligned before implementers begin technical work.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Data collection is handled by data collector jobs, not KPI Composer.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "While KPI Composer includes dashboard design capabilities, its primary purpose is strategic alignment, not widget creation.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Job scheduling is managed through PA Admin Console and data collector settings, not KPI Composer.",
+            "reference": "Performance Analytics Documentation"
+          }
+        ]
+      },
+      "references": [
+        "Performance Analytics Documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "https://www.servicenow.com/docs/r/xanadu/now-intelligence/performance-analytics/designing-pa-solution.html",
+        "excerpt": "KPI Composer ensures that your performance management strategy aligns with business goals and has support from executive sponsors."
+      },
+      "labels": {
+        "certification": "cis-pa",
+        "domain": "Indicators & Indicator Sources",
+        "domainSlug": "indicators",
+        "domainPercentage": 25,
+        "subtopics": [
+          "KPI Composer usage"
+        ],
+        "tags": [
+          "kpi-composer",
+          "strategy",
+          "alignment"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-19T02:14:40.987Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-pa-indicators-007",
+      "certification": "cis-pa",
+      "topic": "indicators",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_select",
+      "question": "Which three tabs are included in a KPI Composer project UI? (Choose three.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Analysis"
+        },
+        {
+          "id": "b",
+          "text": "Dashboard Design"
+        },
+        {
+          "id": "c",
+          "text": "Job Scheduling"
+        },
+        {
+          "id": "d",
+          "text": "Data Definition"
+        },
+        {
+          "id": "e",
+          "text": "Score Collection"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b",
+        "d"
+      ],
+      "explanation": {
+        "correct": "KPI Composer project UI has four tabs: Analysis, Dashboard Design, Data Definition, and Review. The first three are all part of the design process.",
+        "wrongAnswers": [
+          {
+            "choiceId": "c",
+            "explanation": "Job Scheduling is not a tab in KPI Composer; job scheduling is done through PA Admin Console.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "e",
+            "explanation": "Score Collection is not a KPI Composer tab; the fourth tab is Review, which validates the design.",
+            "reference": "Performance Analytics Documentation"
+          }
+        ]
+      },
+      "references": [
+        "Performance Analytics Documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "https://www.servicenow.com/docs/r/xanadu/now-intelligence/performance-analytics/kpi-composer-projects.html",
+        "excerpt": "The KPI Composer project UI provides you with a sequence of four tabs, each corresponding to a phase in your project: Analysis, Dashboard Design, Data Definition, Review"
+      },
+      "labels": {
+        "certification": "cis-pa",
+        "domain": "Indicators & Indicator Sources",
+        "domainSlug": "indicators",
+        "domainPercentage": 25,
+        "subtopics": [
+          "KPI Composer usage"
+        ],
+        "tags": [
+          "kpi-composer",
+          "project-tabs",
+          "ui"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-19T02:14:40.987Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-pa-indicators-008",
+      "certification": "cis-pa",
+      "topic": "indicators",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which role is required to create a new KPI Composer project?",
+      "options": [
+        {
+          "id": "a",
+          "text": "pa_viewer"
+        },
+        {
+          "id": "b",
+          "text": "sn_kpi_composer.user"
+        },
+        {
+          "id": "c",
+          "text": "pa_contributor"
+        },
+        {
+          "id": "d",
+          "text": "itil"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The role sn_kpi_composer.user, sn_kpi_composer.admin, or admin is required to create a new KPI Composer project.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "pa_viewer provides read-only access to PA data and does not include KPI Composer permissions.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "pa_contributor allows score entry but does not include KPI Composer project creation permissions.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The itil role is for IT Service Management and does not provide KPI Composer access.",
+            "reference": "Performance Analytics Documentation"
+          }
+        ]
+      },
+      "references": [
+        "Performance Analytics Documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "https://www.servicenow.com/docs/r/xanadu/now-intelligence/performance-analytics/create-kpi-composer-project.html",
+        "excerpt": "Role required: sn_kpi_composer.user, sn_kpi_composer.admin, admin"
+      },
+      "labels": {
+        "certification": "cis-pa",
+        "domain": "Indicators & Indicator Sources",
+        "domainSlug": "indicators",
+        "domainPercentage": 25,
+        "subtopics": [
+          "KPI Composer usage"
+        ],
+        "tags": [
+          "kpi-composer",
+          "roles",
+          "permissions"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-19T02:14:40.987Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-pa-indicators-009",
+      "certification": "cis-pa",
+      "topic": "indicators",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What is the difference between a user with the sn_kpi_composer.admin role and one with sn_kpi_composer.user role regarding PA integration?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Admin can view more projects than user"
+        },
+        {
+          "id": "b",
+          "text": "Admin can associate definitions with actual Performance Analytics indicators and breakdowns"
+        },
+        {
+          "id": "c",
+          "text": "Admin can create more projects than user"
+        },
+        {
+          "id": "d",
+          "text": "Admin has access to different tabs in KPI Composer"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "A KPI Composer admin has full access to all projects AND can associate indicator and breakdown definitions with actual Performance Analytics indicators and breakdowns. A user role cannot perform this association.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The key difference is the ability to link to PA entities, not just project visibility.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Both roles can create projects; the difference is in PA integration capabilities.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Both roles access the same tabs; the difference is in PA entity association capabilities.",
+            "reference": "Performance Analytics Documentation"
+          }
+        ]
+      },
+      "references": [
+        "Performance Analytics Documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "https://www.servicenow.com/docs/r/xanadu/now-intelligence/performance-analytics/access-to-kpi-composer.html",
+        "excerpt": "A KPI Composer user does not automatically have access to all projects and cannot associate indicator or breakdown definitions with actual Performance Analytics entities."
+      },
+      "labels": {
+        "certification": "cis-pa",
+        "domain": "Indicators & Indicator Sources",
+        "domainSlug": "indicators",
+        "domainPercentage": 25,
+        "subtopics": [
+          "KPI Composer usage"
+        ],
+        "tags": [
+          "kpi-composer",
+          "roles",
+          "admin-vs-user"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-19T02:14:40.987Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-pa-indicators-010",
+      "certification": "cis-pa",
+      "topic": "indicators",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "In the Scoresheet, what does the percentage bar above each column of breakdown scores indicate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The percentage of the target achieved"
+        },
+        {
+          "id": "b",
+          "text": "The percentage of breakdown elements that contain scores"
+        },
+        {
+          "id": "c",
+          "text": "The percentage change from the previous period"
+        },
+        {
+          "id": "d",
+          "text": "The percentage of manual vs automated scores"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "A percentage bar above each column of scores indicates the percentage of breakdown elements that contain scores. A value of 0 counts as a score; only the absence of any value counts as empty.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The percentage bar shows score completeness, not target achievement.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Change from previous period would be shown differently, not as a completeness bar.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The bar indicates score presence, not the source type of scores.",
+            "reference": "Performance Analytics Documentation"
+          }
+        ]
+      },
+      "references": [
+        "Performance Analytics Documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "https://www.servicenow.com/docs/r/xanadu/now-intelligence/performance-analytics/t_ManuallyAddingScoresForIndicators.html",
+        "excerpt": "A percentage bar above each column of scores indicates the percentage of breakdown elements that contain scores. A value of 0 counts as a score; only the absence of any value counts as empty."
+      },
+      "labels": {
+        "certification": "cis-pa",
+        "domain": "Indicators & Indicator Sources",
+        "domainSlug": "indicators",
+        "domainPercentage": 25,
+        "subtopics": [
+          "Indicator properties and settings"
+        ],
+        "tags": [
+          "scoresheet",
+          "breakdown-elements",
+          "score-completeness"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-19T02:14:40.987Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-pa-indicators-011",
+      "certification": "cis-pa",
+      "topic": "indicators",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "An administrator wants to calculate the main score for an indicator by totaling all breakdown element scores. Which Scoresheet feature should they use?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Calculate Total"
+        },
+        {
+          "id": "b",
+          "text": "Aggregate scores"
+        },
+        {
+          "id": "c",
+          "text": "Sum Elements"
+        },
+        {
+          "id": "d",
+          "text": "Consolidate Breakdowns"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Click Aggregate scores in the Scoresheet to choose whether to use Sum or Average of a specific breakdown to calculate the main scores for the indicator.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Calculate Total is not a valid Scoresheet option; use Aggregate scores.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Sum Elements is not a valid option; Aggregate scores provides Sum and Average options.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Consolidate Breakdowns is not a valid feature; Aggregate scores handles this.",
+            "reference": "Performance Analytics Documentation"
+          }
+        ]
+      },
+      "references": [
+        "Performance Analytics Documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "https://www.servicenow.com/docs/r/xanadu/now-intelligence/performance-analytics/t_ManuallyAddingScoresForIndicators.html",
+        "excerpt": "Click Aggregate scores. Choose whether you want to use the Sum or the Average of a specific breakdown to calculate the main scores for the indicator."
+      },
+      "labels": {
+        "certification": "cis-pa",
+        "domain": "Indicators & Indicator Sources",
+        "domainSlug": "indicators",
+        "domainPercentage": 25,
+        "subtopics": [
+          "Aggregation and calculation methods"
+        ],
+        "tags": [
+          "scoresheet",
+          "aggregation",
+          "sum",
+          "average"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-19T02:14:40.987Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-pa-indicators-012",
+      "certification": "cis-pa",
+      "topic": "indicators",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which statement is true regarding auditing of manual score changes in Performance Analytics?",
+      "options": [
+        {
+          "id": "a",
+          "text": "All manual changes are automatically audited"
+        },
+        {
+          "id": "b",
+          "text": "Manual changes are audited only when enabled at the table level"
+        },
+        {
+          "id": "c",
+          "text": "Manual scoresheet changes are NOT audited, even when auditing is enabled"
+        },
+        {
+          "id": "d",
+          "text": "Only admin changes to scores are audited"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "Auditing does not track manual changes to the scoresheet. Manual inserts, updates, and deletions are not audited, even when auditing is enabled at the Dictionary level for all pa_scores tables.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Manual scoresheet changes are explicitly excluded from auditing.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "Even with table-level auditing enabled, scoresheet changes are not tracked.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "No manual changes are audited regardless of the user's role.",
+            "reference": "Performance Analytics Documentation"
+          }
+        ]
+      },
+      "references": [
+        "Performance Analytics Documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "https://www.servicenow.com/docs/r/xanadu/now-intelligence/performance-analytics/t_ManuallyAddingScoresForIndicators.html",
+        "excerpt": "Auditing does not track manual changes to the scoresheet. Manual inserts, updates, and deletions are not audited, even when auditing is enabled at the Dictionary level for all pa_scores tables."
+      },
+      "labels": {
+        "certification": "cis-pa",
+        "domain": "Indicators & Indicator Sources",
+        "domainSlug": "indicators",
+        "domainPercentage": 25,
+        "subtopics": [
+          "Indicator properties and settings"
+        ],
+        "tags": [
+          "auditing",
+          "scoresheet",
+          "manual-scores"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-19T02:14:40.987Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-pa-indicators-013",
+      "certification": "cis-pa",
+      "topic": "indicators",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_select",
+      "question": "Which two levels of access can be granted when sharing a KPI Composer project? (Choose two.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Full admin access"
+        },
+        {
+          "id": "b",
+          "text": "Can view (read-only)"
+        },
+        {
+          "id": "c",
+          "text": "Can edit (read-write)"
+        },
+        {
+          "id": "d",
+          "text": "Delete access"
+        }
+      ],
+      "correctAnswers": [
+        "b",
+        "c"
+      ],
+      "explanation": {
+        "correct": "When sharing a KPI Composer project, you can grant either Can view (read-only) or Can edit (read-write) access.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Full admin access requires the sn_kpi_composer.admin role, not project sharing.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Delete access is not a sharing option; deletion is controlled by ownership and admin roles.",
+            "reference": "Performance Analytics Documentation"
+          }
+        ]
+      },
+      "references": [
+        "Performance Analytics Documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "https://www.servicenow.com/docs/r/xanadu/now-intelligence/performance-analytics/share-a-kpi-composer-project.html",
+        "excerpt": "Select either Can view or Can edit access."
+      },
+      "labels": {
+        "certification": "cis-pa",
+        "domain": "Indicators & Indicator Sources",
+        "domainSlug": "indicators",
+        "domainPercentage": 25,
+        "subtopics": [
+          "KPI Composer usage"
+        ],
+        "tags": [
+          "kpi-composer",
+          "sharing",
+          "access-levels"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-19T02:14:40.987Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-pa-indicators-014",
+      "certification": "cis-pa",
+      "topic": "indicators",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Where is KPI Composer available for download?",
+      "options": [
+        {
+          "id": "a",
+          "text": "System Update Sets"
+        },
+        {
+          "id": "b",
+          "text": "ServiceNow Store"
+        },
+        {
+          "id": "c",
+          "text": "Performance Analytics module"
+        },
+        {
+          "id": "d",
+          "text": "ServiceNow Community"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "KPI Composer is available on the ServiceNow Store. Navigate to System Applications > Search ServiceNow Store to find and download it.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "KPI Composer is an application from the Store, not an update set.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The PA module doesn't host KPI Composer for download; it's a Store application.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "ServiceNow Community is for discussions, not application downloads.",
+            "reference": "Performance Analytics Documentation"
+          }
+        ]
+      },
+      "references": [
+        "Performance Analytics Documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "https://www.servicenow.com/docs/r/xanadu/now-intelligence/performance-analytics/designing-pa-solution.html",
+        "excerpt": "KPI Composer is available on the ServiceNow Store. Navigate to System Applications > Search ServiceNow Store"
+      },
+      "labels": {
+        "certification": "cis-pa",
+        "domain": "Indicators & Indicator Sources",
+        "domainSlug": "indicators",
+        "domainPercentage": 25,
+        "subtopics": [
+          "KPI Composer usage"
+        ],
+        "tags": [
+          "kpi-composer",
+          "servicenow-store",
+          "installation"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-19T02:14:40.987Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-pa-indicators-015",
+      "certification": "cis-pa",
+      "topic": "indicators",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What is the purpose of the Review tab in a KPI Composer project?",
+      "options": [
+        {
+          "id": "a",
+          "text": "To create indicator definitions"
+        },
+        {
+          "id": "b",
+          "text": "To design dashboard mock-ups"
+        },
+        {
+          "id": "c",
+          "text": "To verify design components and generate implementation tasks"
+        },
+        {
+          "id": "d",
+          "text": "To configure breakdown sources"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "In the Review phase, you verify the design components in your project, run a system definition health check, and generate a task list for implementing the project in Performance Analytics.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Indicator definitions are created in the Data Definition tab.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "Dashboard mock-ups are created in the Dashboard Design tab.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Breakdown sources are part of the Analysis and Data Definition phases.",
+            "reference": "Performance Analytics Documentation"
+          }
+        ]
+      },
+      "references": [
+        "Performance Analytics Documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "https://www.servicenow.com/docs/r/xanadu/now-intelligence/performance-analytics/kpi-composer-projects.html",
+        "excerpt": "Review: In this phase, verify the design components in your project, run a system definition health check, and generate a task list for implementing the project in Performance Analytics."
+      },
+      "labels": {
+        "certification": "cis-pa",
+        "domain": "Indicators & Indicator Sources",
+        "domainSlug": "indicators",
+        "domainPercentage": 25,
+        "subtopics": [
+          "KPI Composer usage"
+        ],
+        "tags": [
+          "kpi-composer",
+          "review-tab",
+          "tasks"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-19T02:14:40.987Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    }
+  ]
+}

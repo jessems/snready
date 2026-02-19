@@ -7,23 +7,22 @@
       "domain": "architecture-deployment",
       "description": "Platform Analytics solution components, deployment tasks and sequence, common use cases, personas and stakeholders.",
       "introduction": {
-        "overview": "Architecture & Deployment covers the Platform Analytics solution architecture, including its core components (indicators, breakdowns, dashboards), deployment methodology, common use cases, and the key personas involved in PA implementations.",
-        "whyItMatters": "This domain represents 10% of the CIS-PA exam. Questions cover PA solution components, the relationship between indicators and breakdowns, deployment task sequence, common use cases across ITSM/CSM/HR, and stakeholder roles.",
-        "keyConcepts": "Understand the PA architecture: indicators measure what you care about, breakdowns slice the data, and dashboards visualize it. Know the deployment sequence from activation through dashboard creation. Identify common use cases per application area.",
-        "examTips": "Indicators are the foundation - always start there. Breakdowns add dimensions to your analysis. Deploy in phases: activate plugins, configure indicators, add breakdowns, build dashboards. Know which personas need which views."
+        "overview": "Platform Analytics (Performance Analytics) is ServiceNow's solution for visualizing trends, identifying bottlenecks, and measuring KPIs. This domain covers the core architecture—indicators, breakdowns, data collection, and dashboards—as well as deployment considerations like Premium vs Complimentary features.",
+        "whyItMatters": "Architecture & Deployment is 10% of the CIS-PA exam. Questions focus on premium vs complimentary features, plugin activation, data collection components, and typical PA use cases.",
+        "keyConcepts": "Understand the difference between Premium PA (custom indicators, unlimited history) and Complimentary PA (180-day limit, pre-built only). Know the Data Collector's role in taking snapshots, the relationship between Indicator Sources and process tables, and the Subscription Management auto-activation starting in Tokyo.",
+        "examTips": "Remember that Complimentary PA limits you to 180 days of historic scores. Premium PA enables custom indicators, breakdowns, and widgets. Plugin activation happens via System Applications > All Available Applications."
       },
       "keyConcepts": [
-        "Platform Analytics architecture",
-        "Indicators, breakdowns, dashboards",
-        "Solution components",
-        "Deployment task sequence",
-        "Plugin activation",
-        "Common use cases",
-        "PA personas",
-        "Stakeholder engagement"
+        "Premium vs Complimentary Performance Analytics",
+        "Data Collector and snapshot process",
+        "Indicator Sources and process tables",
+        "Plugin activation and dependencies",
+        "Subscription Management (Tokyo+)",
+        "PA deployment sequence",
+        "Common use cases and personas"
       ],
-      "questionCount": 0,
-      "freeQuestionCount": 0
+      "questionCount": 6,
+      "freeQuestionCount": 2
     },
     {
       "slug": "indicators",
@@ -31,23 +30,23 @@
       "domain": "indicators",
       "description": "Source conditions, facts tables, indicator types, configuration properties, and aggregation scripts.",
       "introduction": {
-        "overview": "Indicators are the metrics that Platform Analytics tracks over time. This domain covers indicator types, how indicator sources define what data to measure, configuration properties for customization, and aggregation scripts for complex calculations.",
-        "whyItMatters": "This is a major domain at 25% of the exam. Questions focus on indicator types (automated, manual, formula), indicator sources and facts tables, source conditions, configuration properties, and when to use aggregation scripts.",
-        "keyConcepts": "Master the three indicator types: automated (scheduled data collection), manual (hand-entered values), and formula (calculated from other indicators). Understand indicator sources, facts tables, and how source conditions filter data.",
-        "examTips": "Automated indicators run on schedules via data collector jobs. Formula indicators combine other indicators mathematically. Facts tables store collected data points. Source conditions determine which records are counted. Aggregation scripts handle complex logic."
+        "overview": "Indicators are the heart of Performance Analytics—they define WHAT you measure. An Indicator points to an Indicator Source (the data) and specifies HOW to aggregate it (count, sum, average). This domain covers manual vs automated indicators, formula indicators, and advanced configuration.",
+        "whyItMatters": "Indicators & Indicator Sources represent 25% of the CIS-PA exam—the largest domain. Expect questions on indicator types, source conditions, facts tables, aggregation methods, and scripted indicators.",
+        "keyConcepts": "Master the indicator types: Manual (user-entered), Automated (GlideRecord queries), Formula (derived from other indicators). Know that Indicator Sources filter the source table (like a saved query), and Facts tables store snapshot data for time-series analysis.",
+        "examTips": "Remember that Formula indicators calculate in real-time from collected scores—they don't collect their own data. Automated indicators require an Indicator Source. The 'direction' field indicates whether higher or lower scores are desirable."
       },
       "keyConcepts": [
-        "Indicator types",
-        "Automated indicators",
-        "Manual indicators",
-        "Formula indicators",
-        "Indicator sources",
-        "Facts tables",
-        "Source conditions",
-        "Aggregation scripts"
+        "Indicator types (Manual, Automated, Formula)",
+        "Indicator Sources and source conditions",
+        "Facts tables for time-series data",
+        "Aggregation methods (count, sum, avg)",
+        "Scripted indicator sources",
+        "Indicator direction (Maximize/Minimize)",
+        "Indicator jobs and scheduling",
+        "Indicator groups"
       ],
-      "questionCount": 0,
-      "freeQuestionCount": 0
+      "questionCount": 15,
+      "freeQuestionCount": 4
     },
     {
       "slug": "breakdowns",
@@ -55,23 +54,23 @@
       "domain": "breakdowns",
       "description": "Breakdown sources, mappings, breakdown matrix, exclusions, scripted breakdown mapping, and bucket groups.",
       "introduction": {
-        "overview": "Breakdowns allow you to slice indicator data by dimensions like priority, category, or assignment group. This domain covers breakdown configuration, the breakdown matrix for cross-dimensional analysis, and bucket groups for custom groupings.",
-        "whyItMatters": "This domain is 25% of the exam. Questions cover breakdown types, breakdown sources, breakdown mappings to indicators, the breakdown matrix, exclusions, scripted breakdown mappings, and bucket groups for grouping values.",
-        "keyConcepts": "Understand how breakdowns add dimensions to indicators. Master breakdown sources (which determine available values) and mappings (which connect breakdowns to indicators). Know when to use the breakdown matrix, exclusions, and bucket groups.",
-        "examTips": "Breakdowns answer 'by what dimension' questions. Breakdown sources can be automatic (reference fields) or manual (scripts). The breakdown matrix enables multi-dimensional analysis. Bucket groups combine related values (e.g., P1+P2 = High Priority)."
+        "overview": "Breakdowns slice indicator data into dimensions—by assignment group, priority, category, or any other field. Breakdown Sources define the available values, and Breakdown Mappings connect breakdowns to Indicator Sources.",
+        "whyItMatters": "Breakdowns & Breakdown Sources account for 25% of the CIS-PA exam. Questions cover breakdown source types, breakdown mappings, the breakdown matrix, scripted mappings, and bucket groups for custom ranges.",
+        "keyConcepts": "Understand the three breakdown source types: Manual (static list), Automated (dynamic from table), and Bucket group (numeric ranges). Breakdown Mappings specify which field connects the indicator source to the breakdown. The Breakdown Matrix shows all indicator-breakdown combinations.",
+        "examTips": "Breakdowns don't collect data themselves—they categorize indicator scores. A single indicator can have multiple breakdowns. Bucket groups are essential for numeric fields like 'time to close' where you want ranges (0-1 hour, 1-4 hours, etc.)."
       },
       "keyConcepts": [
-        "Breakdown types",
-        "Breakdown sources",
-        "Breakdown mappings",
-        "Automatic vs manual breakdowns",
-        "Breakdown matrix",
-        "Exclusions",
+        "Breakdown source types (Manual, Automated, Bucket)",
+        "Breakdown mappings and field relationships",
+        "Breakdown matrix visualization",
         "Scripted breakdown mapping",
-        "Bucket groups"
+        "Bucket groups for numeric ranges",
+        "Breakdown exclusions",
+        "Multi-level breakdowns",
+        "Follow relationships in breakdowns"
       ],
-      "questionCount": 0,
-      "freeQuestionCount": 0
+      "questionCount": 15,
+      "freeQuestionCount": 4
     },
     {
       "slug": "data-collection",
@@ -79,23 +78,23 @@
       "domain": "data-collection",
       "description": "Data collection process flow, collection configuration properties, fine-tuning and troubleshooting.",
       "introduction": {
-        "overview": "Data Collection is the engine that populates Platform Analytics with data points. This domain covers the data collection process, scheduled jobs, configuration properties for collection frequency and performance, and troubleshooting collection issues.",
-        "whyItMatters": "This domain is 10% of the exam. Questions cover the data collection process flow, collection jobs and schedules, configuration properties, performance considerations, and troubleshooting when data collection fails or is incomplete.",
-        "keyConcepts": "Understand how the data collector job runs on schedule to populate facts tables. Know the collection configuration properties that control frequency and performance. Master troubleshooting steps for collection issues.",
-        "examTips": "Data collection runs via scheduled jobs. More frequent collection = more data points = better trend visibility but higher system load. Check the PA Admin dashboard for collection status. Common issues include missing indicator sources or failed jobs."
+        "overview": "Data Collection is the engine that powers Performance Analytics. Scheduled jobs query process tables, calculate indicator values, and store results in Scores tables. This domain covers collection frequency, job configuration, and troubleshooting.",
+        "whyItMatters": "Data Collection is 10% of the CIS-PA exam. Questions focus on the collection process, scheduled jobs, collection properties, and troubleshooting failed collections.",
+        "keyConcepts": "The Data Collector runs on a schedule (daily by default), querying Indicator Sources and storing results in pa_scores. Collection jobs are separate for indicators and snapshots. Historical data can be collected for past periods.",
+        "examTips": "Know that collection frequency affects storage and performance. Daily collection is default; more frequent collection increases storage. The pa_collector_trigger scheduled job initiates data collection."
       },
       "keyConcepts": [
-        "Data collector job",
-        "Collection schedules",
-        "Facts table population",
-        "Collection frequency",
-        "Performance tuning",
-        "Collection properties",
-        "Troubleshooting collection",
-        "PA Admin dashboard"
+        "Data collection process flow",
+        "Collection scheduled jobs",
+        "pa_scores and pa_snapshots tables",
+        "Collection frequency and scheduling",
+        "Historical data collection",
+        "Collection troubleshooting",
+        "Collection properties configuration",
+        "Score retention policies"
       ],
-      "questionCount": 0,
-      "freeQuestionCount": 0
+      "questionCount": 6,
+      "freeQuestionCount": 2
     },
     {
       "slug": "visualization-dashboards",
@@ -103,23 +102,23 @@
       "domain": "visualization-dashboards",
       "description": "Platform Analytics visualizations, unified filters, choosing visualizations, dashboard management, performance, and KPI Details.",
       "introduction": {
-        "overview": "Visualization & Dashboards covers how to present Platform Analytics data to users, including visualization types, dashboard creation and management, unified filters for consistent filtering, and KPI Details pages for deep-dive analysis.",
-        "whyItMatters": "This is a major domain at 25% of the exam. Questions cover visualization types (scorecard, time series, leaderboard), choosing appropriate visualizations, dashboard creation and layout, unified filters, access control, performance, and KPI Details.",
-        "keyConcepts": "Know when to use each visualization type: scorecards for current values, time series for trends, leaderboards for rankings. Master dashboard creation, layout, and access control. Understand unified filters and KPI Details pages.",
-        "examTips": "Match visualization to the question: 'What's the current value?' = scorecard, 'How is it trending?' = time series, 'Who's performing best?' = leaderboard. Unified filters apply across dashboard widgets. KPI Details provides drill-down analysis."
+        "overview": "Dashboards bring indicators to life through widgets, charts, and scorecards. This domain covers widget types, dashboard creation, unified filters, and the Analytics Hub for exploring KPI details.",
+        "whyItMatters": "Visualization & Dashboards represent 25% of the CIS-PA exam. Expect questions on widget configuration, dashboard sharing, unified filters, and choosing the right visualization for different data types.",
+        "keyConcepts": "Master the widget types: Scorecard (single value), Time series (trend over time), Column/Bar charts (comparisons), Pivot tables (breakdown matrix). Know how unified filters apply across dashboard widgets and how to configure widget drilldowns.",
+        "examTips": "Scorecards are best for single KPIs with targets. Time series show trends. Column charts compare categories. Pivot tables show multi-dimensional breakdowns. Remember that unified filters reduce dashboard clutter."
       },
       "keyConcepts": [
-        "Visualization types",
-        "Scorecard widgets",
-        "Time series charts",
-        "Leaderboard widgets",
-        "Dashboard creation",
-        "Dashboard layout",
+        "Widget types and use cases",
+        "Dashboard creation and layout",
         "Unified filters",
-        "KPI Details pages"
+        "Analytics Hub and KPI Details",
+        "Widget drilldowns",
+        "Dashboard sharing and roles",
+        "Dashboard performance optimization",
+        "Scorecard vs Time series selection"
       ],
-      "questionCount": 0,
-      "freeQuestionCount": 0
+      "questionCount": 15,
+      "freeQuestionCount": 4
     },
     {
       "slug": "admin-advanced",
@@ -127,23 +126,21 @@
       "domain": "admin-advanced",
       "description": "Content packs, platform features for advanced data collection, and Spotlight configuration.",
       "introduction": {
-        "overview": "Administration & Advanced covers maintaining PA implementations, using content packs to accelerate deployment, leveraging platform features for advanced scenarios, and configuring Spotlight for predictive analytics.",
-        "whyItMatters": "This domain is 5% of the exam. Questions cover content pack usage and deployment, advanced data collection scenarios, Spotlight configuration for anomaly detection, and ongoing PA administration tasks.",
-        "keyConcepts": "Understand how content packs provide pre-built indicators and dashboards for common use cases. Know advanced collection scenarios like collecting from multiple sources. Master Spotlight configuration for predicting future values.",
-        "examTips": "Content packs accelerate time-to-value with pre-built content. Import content packs carefully to avoid conflicts. Spotlight uses machine learning to predict future values and detect anomalies. Regular maintenance keeps PA performing well."
+        "overview": "Advanced PA solutions include Content Packs (pre-built indicator sets), Spotlight (automated anomaly detection), and integration with other ServiceNow features like Predictive Intelligence and dashboards.",
+        "whyItMatters": "Administration & Advanced Solutions is 5% of the CIS-PA exam—the smallest domain. Questions cover content pack installation, Spotlight configuration, and advanced integration scenarios.",
+        "keyConcepts": "Content Packs are pre-built PA configurations for specific applications (ITSM, CSM). Spotlight uses machine learning to detect anomalies in indicator trends. Admin tasks include role management, content migration, and performance tuning.",
+        "examTips": "Content packs include indicators, breakdowns, and dashboards—install them to quickly enable PA for standard applications. Spotlight requires Premium PA and sufficient historical data for anomaly detection."
       },
       "keyConcepts": [
-        "Content packs",
-        "Content pack deployment",
-        "Advanced collection scenarios",
-        "Multi-source collection",
-        "Spotlight configuration",
-        "Anomaly detection",
-        "PA administration",
-        "Maintenance tasks"
+        "Content pack installation and customization",
+        "Spotlight anomaly detection",
+        "PA role management",
+        "Content migration between instances",
+        "Performance tuning",
+        "Integration with Predictive Intelligence"
       ],
-      "questionCount": 0,
-      "freeQuestionCount": 0
+      "questionCount": 3,
+      "freeQuestionCount": 2
     }
   ]
 }
