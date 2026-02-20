@@ -1,0 +1,412 @@
+[
+  {
+    "id": "cis-sm-engagement-readiness-1101",
+    "certification": "cis-sm",
+    "topic": "engagement-readiness",
+    "cognitiveLevel": "understanding",
+    "type": "multiple_select",
+    "question": "What are the two types of credentials that Service Mapping uses for top-down discovery? (Choose two.)",
+    "options": [
+      {
+        "id": "a",
+        "text": "Host credentials for accessing applications on a host"
+      },
+      {
+        "id": "b",
+        "text": "CMDB credentials for database access"
+      },
+      {
+        "id": "c",
+        "text": "Applicative credentials separate from host credentials for specific applications"
+      },
+      {
+        "id": "d",
+        "text": "MID Server admin credentials for agent management"
+      }
+    ],
+    "correctAnswers": [
+      "a",
+      "c"
+    ],
+    "explanation": {
+      "correct": "Service Mapping uses two types of credentials: Host credentials (SSH or Windows credentials to access servers hosting applications) which are typically sufficient for most discoveries, and Applicative credentials which are separate from host credentials needed for specific applications like ABAP SAP Central Services (ASCS).",
+      "wrongAnswers": [
+        {
+          "id": "b",
+          "explanation": "There is no specific 'CMDB credential' type. Service Mapping uses host and applicative credentials for discovery."
+        },
+        {
+          "id": "d",
+          "explanation": "MID Server credentials are separate from discovery credentials. Service Mapping uses host and applicative credentials for top-down discovery."
+        }
+      ]
+    },
+    "source": {
+      "excerpt": "Configure the relevant requirements to enable successful top-down discovery: Host credentials - Service Mapping uses credentials of the hosts to access applications running on this host. Typically, host credentials are enough for top-down discovery... Applicative credentials - To discover some applications, Service Mapping needs separate credentials from credentials of the host on which such applications run.",
+      "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/service-mapping/prerequisites-service-mapping.html"
+    },
+    "labels": {
+      "domain": "Service Mapping Engagement Readiness",
+      "subtopics": [
+        "Credentials",
+        "Prerequisites",
+        "Top-down discovery"
+      ],
+      "tags": [
+        "service-mapping",
+        "credentials",
+        "host-credentials",
+        "applicative-credentials"
+      ]
+    },
+    "meta": {
+      "version": "1.0",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-sm-engagement-readiness-1102",
+    "certification": "cis-sm",
+    "topic": "engagement-readiness",
+    "cognitiveLevel": "knowledge",
+    "type": "multiple_choice",
+    "question": "Which type of application services CANNOT be fine-tuned or edited from the map view?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Discovered application services"
+      },
+      {
+        "id": "b",
+        "text": "Manually created application services"
+      },
+      {
+        "id": "c",
+        "text": "Tag-based and dynamic services"
+      },
+      {
+        "id": "d",
+        "text": "Services with traffic-based connections"
+      }
+    ],
+    "correctAnswers": [
+      "c"
+    ],
+    "explanation": {
+      "correct": "Tag-based and dynamic services cannot be fine-tuned or edited from the map. This is an important limitation to understand when planning Service Mapping implementations. Only discovered and manually created application services can be edited from the map view.",
+      "wrongAnswers": [
+        {
+          "id": "a",
+          "explanation": "Discovered application services can be fine-tuned and edited from the map to implement owner requests."
+        },
+        {
+          "id": "b",
+          "explanation": "Manually created application services can be edited from the map view just like discovered services."
+        },
+        {
+          "id": "d",
+          "explanation": "Services with traffic-based connections can still be edited from the map. The restriction applies specifically to tag-based and dynamic services."
+        }
+      ]
+    },
+    "source": {
+      "excerpt": "You can edit discovered and manually created application services. Important: You cannot fine-tune or edit tag-based and dynamic services from the map.",
+      "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/service-mapping/review-implement-business-service-maps.html"
+    },
+    "labels": {
+      "domain": "Service Mapping Engagement Readiness",
+      "subtopics": [
+        "Service types",
+        "Map editing",
+        "Limitations"
+      ],
+      "tags": [
+        "service-mapping",
+        "tag-based",
+        "dynamic-services",
+        "editing"
+      ]
+    },
+    "meta": {
+      "version": "1.0",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-sm-engagement-readiness-1103",
+    "certification": "cis-sm",
+    "topic": "engagement-readiness",
+    "cognitiveLevel": "application",
+    "type": "multiple_choice",
+    "question": "An application service owner has rejected a service map with comments. As a Service Mapping administrator, where do you find the owner's rejection comments?",
+    "options": [
+      {
+        "id": "a",
+        "text": "In the Discovery Log table"
+      },
+      {
+        "id": "b",
+        "text": "Under Reject Messages on the left, in the Service Discovery Messages tab"
+      },
+      {
+        "id": "c",
+        "text": "In the Service Mapping Properties panel"
+      },
+      {
+        "id": "d",
+        "text": "In the Event Management alert console"
+      }
+    ],
+    "correctAnswers": [
+      "b"
+    ],
+    "explanation": {
+      "correct": "To view rejection comments from application service owners, administrators click 'Reject Messages' on the left side of the service form. The owner comments are displayed under the Service Discovery Messages tab, where they can review what changes the owner requested.",
+      "wrongAnswers": [
+        {
+          "id": "a",
+          "explanation": "The Discovery Log contains technical discovery information, not owner rejection comments. Rejection messages are in the Service Discovery Messages."
+        },
+        {
+          "id": "c",
+          "explanation": "The Properties panel shows CI and connection attributes, not owner rejection comments."
+        },
+        {
+          "id": "d",
+          "explanation": "Event Management shows alerts and events, not service mapping approval workflow comments."
+        }
+      ]
+    },
+    "source": {
+      "excerpt": "Click Reject Messages on the left. The owner comments are displayed under the Service Discovery Messages tab. Review the reject messages to see comments that the application service owner left.",
+      "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/service-mapping/review-implement-business-service-maps.html"
+    },
+    "labels": {
+      "domain": "Service Mapping Engagement Readiness",
+      "subtopics": [
+        "Review workflow",
+        "Owner feedback",
+        "Approval process"
+      ],
+      "tags": [
+        "service-mapping",
+        "approval",
+        "rejection",
+        "owner-feedback"
+      ]
+    },
+    "meta": {
+      "version": "1.0",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-sm-engagement-readiness-1104",
+    "certification": "cis-sm",
+    "topic": "engagement-readiness",
+    "cognitiveLevel": "knowledge",
+    "type": "multiple_choice",
+    "question": "For Unix-based hosts, what type of credentials must be configured on MID Servers for Service Mapping discovery?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Standard user credentials without elevated privileges"
+      },
+      {
+        "id": "b",
+        "text": "Sudo-level credentials on all Unix-based hosts"
+      },
+      {
+        "id": "c",
+        "text": "Root credentials only"
+      },
+      {
+        "id": "d",
+        "text": "SNMP community strings"
+      }
+    ],
+    "correctAnswers": [
+      "b"
+    ],
+    "explanation": {
+      "correct": "For Unix-based hosts, you must provide a user with sudo-level credentials on all Unix-based hosts in your organization. This enables MID Servers to run the necessary discovery commands against Unix-based servers. This is a key prerequisite for Service Mapping implementation.",
+      "wrongAnswers": [
+        {
+          "id": "a",
+          "explanation": "Standard user credentials without elevated privileges are insufficient for Service Mapping discovery on Unix hosts. Sudo-level access is required."
+        },
+        {
+          "id": "c",
+          "explanation": "While root credentials would work, the recommended approach is sudo-level credentials which provide necessary elevation without requiring direct root access."
+        },
+        {
+          "id": "d",
+          "explanation": "SNMP community strings are used for network device discovery, not for Unix host discovery which requires SSH with sudo-level credentials."
+        }
+      ]
+    },
+    "source": {
+      "excerpt": "Elevated rights for Unix-based hosts - For Unix-based hosts, configure on MID Servers, you must provide a user with sudo-level credentials on all Unix-based hosts in your organization. For example, if the server hosting ASCS is Unix-based, provide a user with elevated rights to be able to run discovery commands against this Unix-based server.",
+      "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/service-mapping/prerequisites-service-mapping.html"
+    },
+    "labels": {
+      "domain": "Service Mapping Engagement Readiness",
+      "subtopics": [
+        "Unix credentials",
+        "MID Server configuration",
+        "Prerequisites"
+      ],
+      "tags": [
+        "service-mapping",
+        "unix",
+        "sudo",
+        "credentials",
+        "mid-server"
+      ]
+    },
+    "meta": {
+      "version": "1.0",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-sm-engagement-readiness-1105",
+    "certification": "cis-sm",
+    "topic": "engagement-readiness",
+    "cognitiveLevel": "understanding",
+    "type": "multiple_choice",
+    "question": "Why might an administrator want to transfer a map segment into another application service?",
+    "options": [
+      {
+        "id": "a",
+        "text": "To delete CIs that are no longer needed"
+      },
+      {
+        "id": "b",
+        "text": "To split large services or reorganize services differently from initial mapping"
+      },
+      {
+        "id": "c",
+        "text": "To automatically create backup copies of service maps"
+      },
+      {
+        "id": "d",
+        "text": "To merge all services into a single application service"
+      }
+    ],
+    "correctAnswers": [
+      "b"
+    ],
+    "explanation": {
+      "correct": "You can remove a branch of a service and place it into another application service, either new or existing. Transfer map segments to split large services or when you want to organize services differently from the initial mapping result.",
+      "wrongAnswers": [
+        {
+          "id": "a",
+          "explanation": "Transferring segments does not delete CIs. It moves them to another service. Use the Remove CI action to delete erroneously mapped CIs."
+        },
+        {
+          "id": "c",
+          "explanation": "Segment transfer is not a backup mechanism. It reorganizes service structure by moving branches between services."
+        },
+        {
+          "id": "d",
+          "explanation": "The purpose is to split or reorganize services, not merge them all together. Linking services creates dependencies instead."
+        }
+      ]
+    },
+    "source": {
+      "excerpt": "Transfer a map segment into another application service: You can remove a branch of a service and place it into another application service, either new or existing. Transfer map segments to split large services or when you want to organize services differently from the initial mapping result.",
+      "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/service-mapping/review-implement-business-service-maps.html"
+    },
+    "labels": {
+      "domain": "Service Mapping Engagement Readiness",
+      "subtopics": [
+        "Service organization",
+        "Map segments",
+        "Service restructuring"
+      ],
+      "tags": [
+        "service-mapping",
+        "segment-transfer",
+        "service-organization"
+      ]
+    },
+    "meta": {
+      "version": "1.0",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-sm-engagement-readiness-1106",
+    "certification": "cis-sm",
+    "topic": "engagement-readiness",
+    "cognitiveLevel": "knowledge",
+    "type": "multiple_choice",
+    "question": "What can you create from an application service map when Service Mapping identifies CIs as generic applications?",
+    "options": [
+      {
+        "id": "a",
+        "text": "A CMDB health report"
+      },
+      {
+        "id": "b",
+        "text": "A simplified discovery pattern from the service map"
+      },
+      {
+        "id": "c",
+        "text": "An automated remediation workflow"
+      },
+      {
+        "id": "d",
+        "text": "A performance analytics dashboard"
+      }
+    ],
+    "correctAnswers": [
+      "b"
+    ],
+    "explanation": {
+      "correct": "When Service Mapping identifies CIs as generic applications that it failed to properly discover, you can correctly identify them by creating a simplified discovery pattern from an application service map, rather than creating a fully functional pattern from scratch using the Pattern Designer.",
+      "wrongAnswers": [
+        {
+          "id": "a",
+          "explanation": "CMDB health reports are generated separately. Generic application identification leads to simplified pattern creation."
+        },
+        {
+          "id": "c",
+          "explanation": "Remediation workflows are not created from generic application identification. A simplified pattern is created instead."
+        },
+        {
+          "id": "d",
+          "explanation": "Performance analytics dashboards are separate functionality. Generic applications are addressed by creating simplified patterns."
+        }
+      ]
+    },
+    "source": {
+      "excerpt": "Discover CIs identified as generic applications: Service Mapping identifies application configuration items (CIs) that it failed to properly discover as generic applications. Correctly identify generic applications by creating a simplified discovery pattern from an application service map, rather than creating a fully functional pattern from scratch using the Pattern Designer.",
+      "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/service-mapping/review-implement-business-service-maps.html"
+    },
+    "labels": {
+      "domain": "Service Mapping Engagement Readiness",
+      "subtopics": [
+        "Generic applications",
+        "Pattern creation",
+        "CI identification"
+      ],
+      "tags": [
+        "service-mapping",
+        "generic-applications",
+        "patterns"
+      ]
+    },
+    "meta": {
+      "version": "1.0",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  }
+]
