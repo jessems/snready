@@ -1,0 +1,267 @@
+[
+  {
+    "id": "cis-em-architecture-discovery-001",
+    "certification": "cis-em",
+    "topic": "architecture-discovery",
+    "cognitiveLevel": "understanding",
+    "type": "multiple_choice",
+    "question": "In the Event Management architecture, which component polls external event tracking tools and sends event information to the ServiceNow instance?",
+    "options": [
+      { "id": "a", "text": "Discovery Sensor" },
+      { "id": "b", "text": "MID Server" },
+      { "id": "c", "text": "ACC Agent" },
+      { "id": "d", "text": "Event Processor" }
+    ],
+    "correctAnswers": ["b"],
+    "explanation": {
+      "correct": "The MID Server polls external event tracking tools and maintains a connection to Event Management, sending information to your instance for storage, processing, and remediation. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/em-process-flow.html",
+      "wrongAnswers": [
+        { "choiceId": "a", "explanation": "Discovery Sensors are used for Discovery probes, not event collection", "reference": "Discovery documentation" },
+        { "choiceId": "c", "explanation": "ACC Agent is for Agent Client Collector, different purpose", "reference": "ACC documentation" },
+        { "choiceId": "d", "explanation": "Event Processor is not a ServiceNow component name", "reference": "ITOM architecture" }
+      ]
+    },
+    "references": ["Event Management architecture", "MID Server documentation"],
+    "isFree": true,
+    "source": {
+      "type": "docs",
+      "path": "cis-em-api/em-process-flow.md",
+      "excerpt": "As the computer, software, or service generates events, the MID Server polls the external event tracking tool. The MID Server, maintaining a connection to Event Management, sends the information to your instance."
+    },
+    "labels": {
+      "certification": "cis-em",
+      "domain": "Architecture and Discovery",
+      "domainSlug": "architecture-discovery",
+      "domainPercentage": 10,
+      "subtopics": ["Event Management architecture", "MID Server"],
+      "tags": ["mid-server", "architecture", "event-collection"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-21T02:30:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-em-architecture-discovery-002",
+    "certification": "cis-em",
+    "topic": "architecture-discovery",
+    "cognitiveLevel": "knowledge",
+    "type": "multiple_choice",
+    "question": "In which table does Event Management store incoming events before processing them into alerts?",
+    "options": [
+      { "id": "a", "text": "em_alert" },
+      { "id": "b", "text": "incident" },
+      { "id": "c", "text": "em_event" },
+      { "id": "d", "text": "cmdb_ci" }
+    ],
+    "correctAnswers": ["c"],
+    "explanation": {
+      "correct": "The instance stores events in the Event [em_event] table and attempts to generate alerts based on predefined rules and event mappings. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/em-process-flow.html",
+      "wrongAnswers": [
+        { "choiceId": "a", "explanation": "em_alert stores alerts that are generated from events", "reference": "Alert table documentation" },
+        { "choiceId": "b", "explanation": "incident table stores incidents, not raw events", "reference": "Incident Management" },
+        { "choiceId": "d", "explanation": "cmdb_ci stores configuration items, not events", "reference": "CMDB documentation" }
+      ]
+    },
+    "references": ["Event table", "Event Management process flow"],
+    "isFree": true,
+    "source": {
+      "type": "docs",
+      "path": "cis-em-api/em-process-flow.md",
+      "excerpt": "The instance stores events in the Event [em_event] table and attempts to generate alerts based on predefined rules and event mappings."
+    },
+    "labels": {
+      "certification": "cis-em",
+      "domain": "Architecture and Discovery",
+      "domainSlug": "architecture-discovery",
+      "domainPercentage": 10,
+      "subtopics": ["Event processing"],
+      "tags": ["em_event", "tables", "event-storage"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-21T02:30:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-em-architecture-discovery-003",
+    "certification": "cis-em",
+    "topic": "architecture-discovery",
+    "cognitiveLevel": "understanding",
+    "type": "multiple_select",
+    "question": "Which two methods can be used to send events directly to a ServiceNow instance? (Choose two.)",
+    "options": [
+      { "id": "a", "text": "Email server" },
+      { "id": "b", "text": "Service Catalog request" },
+      { "id": "c", "text": "Web service API" },
+      { "id": "d", "text": "Knowledge article" }
+    ],
+    "correctAnswers": ["a", "c"],
+    "selectCount": 2,
+    "explanation": {
+      "correct": "Events can be sent directly to your instance via email server, script, SNMP trap, or web service API. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/em-process-flow.html",
+      "wrongAnswers": [
+        { "choiceId": "b", "explanation": "Service Catalog is for user requests, not event ingestion", "reference": "Service Catalog documentation" },
+        { "choiceId": "d", "explanation": "Knowledge articles are informational, not event sources", "reference": "Knowledge Management" }
+      ]
+    },
+    "references": ["Event ingestion methods", "Event Management process flow"],
+    "isFree": true,
+    "source": {
+      "type": "docs",
+      "path": "cis-em-api/em-process-flow.md",
+      "excerpt": "Events are sent directly to your instance via email server, script, SNMP trap, or web service API."
+    },
+    "labels": {
+      "certification": "cis-em",
+      "domain": "Architecture and Discovery",
+      "domainSlug": "architecture-discovery",
+      "domainPercentage": 10,
+      "subtopics": ["Event processing", "Event sources"],
+      "tags": ["event-ingestion", "email", "api"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-21T02:30:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-em-architecture-discovery-004",
+    "certification": "cis-em",
+    "topic": "architecture-discovery",
+    "cognitiveLevel": "application",
+    "type": "multiple_choice",
+    "question": "In the Event Management process flow, what happens after Event Management generates alerts from events?",
+    "options": [
+      { "id": "a", "text": "Events are immediately deleted from the system" },
+      { "id": "b", "text": "Alert management rules are applied and alerts are prioritized for remediation" },
+      { "id": "c", "text": "Incidents are automatically created for all alerts" },
+      { "id": "d", "text": "MID Server restarts to process the next batch" }
+    ],
+    "correctAnswers": ["b"],
+    "explanation": {
+      "correct": "After generating alerts, Event Management applies alert management rules and prioritizes alerts for remediation and root cause analysis. This information can be viewed on dashboards, the alert list, or from a service map. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/em-architecture.html",
+      "wrongAnswers": [
+        { "choiceId": "a", "explanation": "Events are retained for review regardless of alert generation", "reference": "Event Management process flow" },
+        { "choiceId": "c", "explanation": "Incident creation depends on alert management rules, not automatic for all", "reference": "Alert management rules" },
+        { "choiceId": "d", "explanation": "MID Server operates continuously, not restarting per batch", "reference": "MID Server documentation" }
+      ]
+    },
+    "references": ["Event Management architecture", "Alert management"],
+    "isFree": false,
+    "source": {
+      "type": "docs",
+      "path": "cis-em-api/em-architecture.md",
+      "excerpt": "Event Management generates alerts, applies alert management rules, and prioritizes alerts for remediation and root cause analysis."
+    },
+    "labels": {
+      "certification": "cis-em",
+      "domain": "Architecture and Discovery",
+      "domainSlug": "architecture-discovery",
+      "domainPercentage": 10,
+      "subtopics": ["Event Management architecture"],
+      "tags": ["architecture", "process-flow", "alert-management"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-21T02:30:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-em-architecture-discovery-005",
+    "certification": "cis-em",
+    "topic": "architecture-discovery",
+    "cognitiveLevel": "knowledge",
+    "type": "multiple_choice",
+    "question": "For root cause analysis purposes, what does Event Management bind an alert to?",
+    "options": [
+      { "id": "a", "text": "A user account" },
+      { "id": "b", "text": "A specific Configuration Item (CI)" },
+      { "id": "c", "text": "A knowledge article" },
+      { "id": "d", "text": "A service catalog item" }
+    ],
+    "correctAnswers": ["b"],
+    "explanation": {
+      "correct": "For root cause analysis purposes, Event Management binds the alert to a specific Configuration Item (CI). This enables correlation with the CMDB for understanding the impact and relationships. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/em-process-flow.html",
+      "wrongAnswers": [
+        { "choiceId": "a", "explanation": "Alerts are bound to CIs, not user accounts", "reference": "CI binding documentation" },
+        { "choiceId": "c", "explanation": "Knowledge articles provide information, not used for alert binding", "reference": "Knowledge Management" },
+        { "choiceId": "d", "explanation": "Service catalog items are for requests, not infrastructure binding", "reference": "Service Catalog" }
+      ]
+    },
+    "references": ["CI binding", "Root cause analysis"],
+    "isFree": false,
+    "source": {
+      "type": "docs",
+      "path": "cis-em-api/em-process-flow.md",
+      "excerpt": "For root cause analysis purposes, bind the alert to a specific Configuration Item (CI)."
+    },
+    "labels": {
+      "certification": "cis-em",
+      "domain": "Architecture and Discovery",
+      "domainSlug": "architecture-discovery",
+      "domainPercentage": 10,
+      "subtopics": ["CMDB integration"],
+      "tags": ["ci-binding", "root-cause", "cmdb"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-21T02:30:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-em-architecture-discovery-006",
+    "certification": "cis-em",
+    "topic": "architecture-discovery",
+    "cognitiveLevel": "understanding",
+    "type": "multiple_choice",
+    "question": "Which is NOT a method for viewing Event Management alerts and information?",
+    "options": [
+      { "id": "a", "text": "Dashboards" },
+      { "id": "b", "text": "Alert list in Alert Intelligence" },
+      { "id": "c", "text": "Service map" },
+      { "id": "d", "text": "CMDB Workspace" }
+    ],
+    "correctAnswers": ["d"],
+    "isNegative": true,
+    "explanation": {
+      "correct": "Event Management information can be viewed on dashboards, the alert list in Alert Intelligence, or from a service map. CMDB Workspace is for configuration item management, not specifically for viewing Event Management alerts. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/em-architecture.html",
+      "wrongAnswers": [
+        { "choiceId": "a", "explanation": "Dashboards display alert information and metrics", "reference": "Event Management dashboards" },
+        { "choiceId": "b", "explanation": "Alert Intelligence shows the alert list for remediation", "reference": "Alert Intelligence documentation" },
+        { "choiceId": "c", "explanation": "Service maps show alerts in context of services", "reference": "Service mapping" }
+      ]
+    },
+    "references": ["Event Management views", "Alert Intelligence"],
+    "isFree": false,
+    "source": {
+      "type": "docs",
+      "path": "cis-em-api/em-architecture.md",
+      "excerpt": "This information can be viewed on dashboards, the alert list in Alert Intelligence, or from a service map."
+    },
+    "labels": {
+      "certification": "cis-em",
+      "domain": "Architecture and Discovery",
+      "domainSlug": "architecture-discovery",
+      "domainPercentage": 10,
+      "subtopics": ["Event Management architecture"],
+      "tags": ["dashboards", "alert-intelligence", "negative-question"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-21T02:30:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  }
+]

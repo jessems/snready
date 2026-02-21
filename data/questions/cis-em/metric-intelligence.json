@@ -1,0 +1,266 @@
+[
+  {
+    "id": "cis-em-metric-intelligence-001",
+    "certification": "cis-em",
+    "topic": "metric-intelligence",
+    "cognitiveLevel": "understanding",
+    "type": "multiple_choice",
+    "question": "What is the purpose of configuring threshold monitoring in Event Management?",
+    "options": [
+      { "id": "a", "text": "To limit the number of alerts generated per day" },
+      { "id": "b", "text": "To generate alerts when metrics exceed defined bounds" },
+      { "id": "c", "text": "To control MID Server memory usage" },
+      { "id": "d", "text": "To schedule event processing jobs" }
+    ],
+    "correctAnswers": ["b"],
+    "explanation": {
+      "correct": "Threshold monitoring allows you to define bounds for metrics. When metrics exceed these thresholds, events are generated that can be converted to alerts for remediation. This enables proactive monitoring based on metric values. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/task/configure-threshold-monitoring.html",
+      "wrongAnswers": [
+        { "choiceId": "a", "explanation": "Thresholds control alert generation based on metric values, not daily limits", "reference": "Threshold documentation" },
+        { "choiceId": "c", "explanation": "MID Server memory is managed separately", "reference": "MID Server documentation" },
+        { "choiceId": "d", "explanation": "Job scheduling is separate from threshold monitoring", "reference": "Scheduled jobs" }
+      ]
+    },
+    "references": ["Threshold monitoring", "Metric alerts"],
+    "isFree": true,
+    "source": {
+      "type": "docs",
+      "path": "cis-em-api/configure-threshold-monitoring.md",
+      "excerpt": "Configure threshold monitoring to generate events when metric values exceed defined bounds."
+    },
+    "labels": {
+      "certification": "cis-em",
+      "domain": "Metric Intelligence",
+      "domainSlug": "metric-intelligence",
+      "domainPercentage": 10,
+      "subtopics": ["Anomaly bounds and thresholds"],
+      "tags": ["threshold", "metrics", "monitoring"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-21T02:30:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-em-metric-intelligence-002",
+    "certification": "cis-em",
+    "topic": "metric-intelligence",
+    "cognitiveLevel": "understanding",
+    "type": "multiple_choice",
+    "question": "Which plugin must be activated for Azure Metrics and AWS CloudWatch Metrics connectors to display in Event Management?",
+    "options": [
+      { "id": "a", "text": "Event Management Core [com.snc.eventmgmt]" },
+      { "id": "b", "text": "Operational Intelligence [com.snc.sa.metric]" },
+      { "id": "c", "text": "Cloud Management [com.snc.cloud]" },
+      { "id": "d", "text": "ITOM Visibility [com.snc.itom.visibility]" }
+    ],
+    "correctAnswers": ["b"],
+    "explanation": {
+      "correct": "The Azure Metrics and AWS CloudWatch Metrics connectors display in the base system only when the Operational Intelligence plugin (com.snc.sa.metric) is activated. This plugin provides metric intelligence capabilities. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/connectors-and-listeners.html",
+      "wrongAnswers": [
+        { "choiceId": "a", "explanation": "Event Management Core is the base, not specifically for metric connectors", "reference": "Plugin documentation" },
+        { "choiceId": "c", "explanation": "Cloud Management is a different plugin", "reference": "Plugin documentation" },
+        { "choiceId": "d", "explanation": "ITOM Visibility is not the required plugin for these connectors", "reference": "Plugin documentation" }
+      ]
+    },
+    "references": ["Operational Intelligence", "Metric connectors"],
+    "isFree": true,
+    "source": {
+      "type": "docs",
+      "path": "cis-em-api/connectors-and-listeners.md",
+      "excerpt": "The Azure Metrics and AWS CloudWatch Metrics connectors display in the base system only when the Operational Intelligence plugin (com.snc.sa.metric) is activated."
+    },
+    "labels": {
+      "certification": "cis-em",
+      "domain": "Metric Intelligence",
+      "domainSlug": "metric-intelligence",
+      "domainPercentage": 10,
+      "subtopics": ["Metric sources"],
+      "tags": ["operational-intelligence", "plugin", "metrics"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-21T02:30:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-em-metric-intelligence-003",
+    "certification": "cis-em",
+    "topic": "metric-intelligence",
+    "cognitiveLevel": "knowledge",
+    "type": "multiple_choice",
+    "question": "What authentication method can be configured for the MID Web Server extension when receiving metric data?",
+    "options": [
+      { "id": "a", "text": "Username and password only" },
+      { "id": "b", "text": "Key-based authentication with HMAC" },
+      { "id": "c", "text": "OAuth 2.0 only" },
+      { "id": "d", "text": "SAML assertion only" }
+    ],
+    "correctAnswers": ["b"],
+    "explanation": {
+      "correct": "The MID Web Server extension supports key-based authentication. You generate an authentication token using HMAC (Hash Message Authentication Code) which is sent in the Authorization header of incoming requests. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/task/configure-mid-web-server-extension-metric-data.html",
+      "wrongAnswers": [
+        { "choiceId": "a", "explanation": "Key-based auth uses HMAC tokens, not username/password", "reference": "MID Web Server authentication" },
+        { "choiceId": "c", "explanation": "OAuth 2.0 is one option but key-based is specifically documented", "reference": "Authentication methods" },
+        { "choiceId": "d", "explanation": "SAML is not the primary method for MID Web Server metric data", "reference": "Authentication methods" }
+      ]
+    },
+    "references": ["MID Web Server", "Key-based authentication"],
+    "isFree": true,
+    "source": {
+      "type": "docs",
+      "path": "cis-em-api/configure-mid-web-server-extension-metric-data.md",
+      "excerpt": "Provide added security to your MID Web Server extension by using key-based authentication. Generate an authentication token to be sent in the Authorization header of incoming client requests."
+    },
+    "labels": {
+      "certification": "cis-em",
+      "domain": "Metric Intelligence",
+      "domainSlug": "metric-intelligence",
+      "domainPercentage": 10,
+      "subtopics": ["Metric sources", "Data pipeline"],
+      "tags": ["mid-server", "authentication", "hmac"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-21T02:30:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-em-metric-intelligence-004",
+    "certification": "cis-em",
+    "topic": "metric-intelligence",
+    "cognitiveLevel": "application",
+    "type": "multiple_choice",
+    "question": "When configuring key-based MID Web Server authentication for metrics, what is the maximum time difference allowed between the timestamp in the request and the MID Server time?",
+    "options": [
+      { "id": "a", "text": "5 minutes" },
+      { "id": "b", "text": "10 minutes" },
+      { "id": "c", "text": "15 minutes" },
+      { "id": "d", "text": "30 minutes" }
+    ],
+    "correctAnswers": ["c"],
+    "explanation": {
+      "correct": "For the timestamp requirement in key-based authentication, a valid timestamp is required for authenticating the request. Ensure that the timestamp is within 15 minutes of the MID Server. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/task/configure-mid-web-server-extension-metric-data.html",
+      "wrongAnswers": [
+        { "choiceId": "a", "explanation": "5 minutes is too restrictive; the limit is 15 minutes", "reference": "MID Web Server authentication" },
+        { "choiceId": "b", "explanation": "10 minutes is below the actual 15-minute limit", "reference": "MID Web Server authentication" },
+        { "choiceId": "d", "explanation": "30 minutes exceeds the 15-minute limit", "reference": "MID Web Server authentication" }
+      ]
+    },
+    "references": ["MID Web Server", "Authentication timing"],
+    "isFree": false,
+    "source": {
+      "type": "docs",
+      "path": "cis-em-api/configure-mid-web-server-extension-metric-data.md",
+      "excerpt": "For the timestamp requirement, a valid timestamp that uses HTTP date header is required for authenticating the request. Ensure that the timestamp is within 15 minutes of the MID Server."
+    },
+    "labels": {
+      "certification": "cis-em",
+      "domain": "Metric Intelligence",
+      "domainSlug": "metric-intelligence",
+      "domainPercentage": 10,
+      "subtopics": ["Data pipeline"],
+      "tags": ["timestamp", "authentication", "mid-server"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-21T02:30:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-em-metric-intelligence-005",
+    "certification": "cis-em",
+    "topic": "metric-intelligence",
+    "cognitiveLevel": "knowledge",
+    "type": "multiple_choice",
+    "question": "What is the API endpoint path for sending raw metric data to the MID Web Server?",
+    "options": [
+      { "id": "a", "text": "/api/mid/metrics/raw" },
+      { "id": "b", "text": "/api/mid/sa/metrics" },
+      { "id": "c", "text": "/api/sa/metric/ingest" },
+      { "id": "d", "text": "/api/now/metrics/push" }
+    ],
+    "correctAnswers": ["b"],
+    "explanation": {
+      "correct": "The path to the web service API for sending raw metric data is /api/mid/sa/metrics. The full URL format is https://<MID Server IP address>:<port number>/api/mid/sa/metrics. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/task/configure-mid-web-server-extension-metric-data.html",
+      "wrongAnswers": [
+        { "choiceId": "a", "explanation": "This is not the correct API path", "reference": "MID Web Server API" },
+        { "choiceId": "c", "explanation": "This is not the correct API path", "reference": "MID Web Server API" },
+        { "choiceId": "d", "explanation": "This is not the correct API path", "reference": "MID Web Server API" }
+      ]
+    },
+    "references": ["MID Web Server API", "Metric ingestion"],
+    "isFree": false,
+    "source": {
+      "type": "docs",
+      "path": "cis-em-api/configure-mid-web-server-extension-metric-data.md",
+      "excerpt": "Path to a web service API for sending raw data: URL format: https://<MID Server IP address>:<port number>/api/mid/sa/metrics"
+    },
+    "labels": {
+      "certification": "cis-em",
+      "domain": "Metric Intelligence",
+      "domainSlug": "metric-intelligence",
+      "domainPercentage": 10,
+      "subtopics": ["Data pipeline"],
+      "tags": ["api", "endpoint", "metrics"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-21T02:30:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-em-metric-intelligence-006",
+    "certification": "cis-em",
+    "topic": "metric-intelligence",
+    "cognitiveLevel": "understanding",
+    "type": "multiple_select",
+    "question": "Which two elements are used when constructing the HMAC signature string for MID Web Server authentication? (Choose two.)",
+    "options": [
+      { "id": "a", "text": "HTTP-Verb" },
+      { "id": "b", "text": "Instance URL" },
+      { "id": "c", "text": "Content-Type" },
+      { "id": "d", "text": "User Agent" }
+    ],
+    "correctAnswers": ["a", "c"],
+    "selectCount": 2,
+    "explanation": {
+      "correct": "The HMAC signature string is constructed using: HTTP-Verb, Content-Type, Date, and Request-Path. These elements are concatenated with newline characters. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/task/configure-mid-web-server-extension-metric-data.html",
+      "wrongAnswers": [
+        { "choiceId": "b", "explanation": "Instance URL is not part of the signature string; Request-Path is used", "reference": "HMAC construction" },
+        { "choiceId": "d", "explanation": "User Agent is not included in the HMAC signature", "reference": "HMAC construction" }
+      ]
+    },
+    "references": ["HMAC authentication", "Signature construction"],
+    "isFree": false,
+    "source": {
+      "type": "docs",
+      "path": "cis-em-api/configure-mid-web-server-extension-metric-data.md",
+      "excerpt": "Use the following request elements to generate the required string: HTTP-Verb, Content-Type, Date, and Request-Path."
+    },
+    "labels": {
+      "certification": "cis-em",
+      "domain": "Metric Intelligence",
+      "domainSlug": "metric-intelligence",
+      "domainPercentage": 10,
+      "subtopics": ["Data pipeline"],
+      "tags": ["hmac", "authentication", "signature"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-21T02:30:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  }
+]
