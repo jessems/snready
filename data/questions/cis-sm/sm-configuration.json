@@ -1,0 +1,754 @@
+[
+  {
+    "id": "cis-sm-sm-configuration-401",
+    "certification": "cis-sm",
+    "topic": "sm-configuration",
+    "cognitiveLevel": "knowledge",
+    "type": "multiple_select",
+    "question": "Which roles are preconfigured by Service Mapping to manage application services? (Choose two.)",
+    "options": [
+      {
+        "id": "a",
+        "text": "service_mapping_admin"
+      },
+      {
+        "id": "b",
+        "text": "discovery_admin"
+      },
+      {
+        "id": "c",
+        "text": "sm_app_owner"
+      },
+      {
+        "id": "d",
+        "text": "cmdb_admin"
+      }
+    ],
+    "correctAnswers": [
+      "a",
+      "c"
+    ],
+    "explanation": {
+      "correct": "Service Mapping provides preconfigured roles including service_mapping_admin (for setting up Service Mapping, mapping/maintaining services, and advanced configuration) and sm_app_owner (for service owners who provide mapping information and review/approve mapping results). The service_mapping_user role is also preconfigured but not listed in these options.",
+      "wrongAnswers": [
+        {
+          "id": "b",
+          "explanation": "discovery_admin is a Discovery role, not a Service Mapping-specific preconfigured role. Service Mapping has its own set of roles."
+        },
+        {
+          "id": "d",
+          "explanation": "cmdb_admin is a CMDB administration role, not a Service Mapping-specific preconfigured role."
+        }
+      ]
+    },
+    "source": {
+      "excerpt": "Service Mapping provides these preconfigured roles: service_mapping_admin - Sets up the Service Mapping application. Maps, fixes, and maintains service instances... sm_app_owner - Provides information necessary for successful mapping of a service instance. Once a service is mapped, this user reviews the results and either approves it or suggests changes.",
+      "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/service-mapping/control-user-access-to-business-services.html"
+    },
+    "labels": {
+      "domain": "Service Mapping Configuration",
+      "subtopics": [
+        "Roles",
+        "Access control",
+        "User management"
+      ],
+      "tags": [
+        "service-mapping",
+        "roles",
+        "security",
+        "access-control"
+      ]
+    },
+    "meta": {
+      "version": "1.0",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-sm-sm-configuration-402",
+    "certification": "cis-sm",
+    "topic": "sm-configuration",
+    "cognitiveLevel": "understanding",
+    "type": "multiple_choice",
+    "question": "What capability does the app_service_user role provide compared to the itil role for viewing application services?",
+    "options": [
+      {
+        "id": "a",
+        "text": "app_service_user can view service instances while itil cannot view any"
+      },
+      {
+        "id": "b",
+        "text": "Both roles can view all service instances, but only app_service_user can use the getContent REST API"
+      },
+      {
+        "id": "c",
+        "text": "itil role has more permissions than app_service_user for service viewing"
+      },
+      {
+        "id": "d",
+        "text": "app_service_user can modify services while itil is view-only"
+      }
+    ],
+    "correctAnswers": [
+      "b"
+    ],
+    "explanation": {
+      "correct": "The app_service_user role allows viewing maps for operational service instances AND retrieving service content using the getContent - GET REST API. The itil role contains the app_service_user role and can view all service instances, but the REST API capability is specifically documented for app_service_user.",
+      "wrongAnswers": [
+        {
+          "id": "a",
+          "explanation": "Both roles can view service instances. The itil role contains the app_service_user role, so both can view."
+        },
+        {
+          "id": "c",
+          "explanation": "The itil role contains app_service_user, so they have equivalent permissions for viewing. The key difference is the REST API capability explicitly documented for app_service_user."
+        },
+        {
+          "id": "d",
+          "explanation": "Neither app_service_user nor itil can modify services. The app_service_admin role is required to create and modify service instances."
+        }
+      ]
+    },
+    "source": {
+      "excerpt": "app_service_user - Views maps for operational service instances and retrieves service content using the getContent - GET REST API. The itil role that serves as the basic helpdesk technician role contains the app_service_user role... Users with the itil role only can view all service instances.",
+      "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/service-mapping/control-user-access-to-business-services.html"
+    },
+    "labels": {
+      "domain": "Service Mapping Configuration",
+      "subtopics": [
+        "Roles",
+        "REST API",
+        "Access control"
+      ],
+      "tags": [
+        "service-mapping",
+        "roles",
+        "itil",
+        "rest-api"
+      ]
+    },
+    "meta": {
+      "version": "1.0",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-sm-sm-configuration-403",
+    "certification": "cis-sm",
+    "topic": "sm-configuration",
+    "cognitiveLevel": "knowledge",
+    "type": "multiple_choice",
+    "question": "In a hierarchy of service groups, what happens when a user is granted access to a parent service group?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Access must be explicitly granted to each child service group"
+      },
+      {
+        "id": "b",
+        "text": "Access to the parent automatically grants access to all child service groups"
+      },
+      {
+        "id": "c",
+        "text": "Only immediate children inherit access, not deeper levels"
+      },
+      {
+        "id": "d",
+        "text": "Child groups must be configured to inherit parent permissions"
+      }
+    ],
+    "correctAnswers": [
+      "b"
+    ],
+    "explanation": {
+      "correct": "In a hierarchy of service groups, access to a parent service group automatically grants access to all the child service groups. This makes managing access to large numbers of services more practical, especially in large organizations.",
+      "wrongAnswers": [
+        {
+          "id": "a",
+          "explanation": "Access does not need to be explicitly granted to each child. Inheritance from parent to child is automatic."
+        },
+        {
+          "id": "c",
+          "explanation": "Inheritance applies to all descendants, not just immediate children. All child service groups at any level inherit access."
+        },
+        {
+          "id": "d",
+          "explanation": "Child groups do not need special configuration to inherit. Inheritance is automatic in the service group hierarchy."
+        }
+      ]
+    },
+    "source": {
+      "excerpt": "Typically, enterprises have hundreds of services which makes it impractical to manage them individually. Service groups can make service lists much shorter and easier to manage, especially in large organizations or service providers. In a hierarchy of service groups, access to a parent service group automatically grants access to all the child service groups.",
+      "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/service-mapping/control-user-access-to-business-services.html"
+    },
+    "labels": {
+      "domain": "Service Mapping Configuration",
+      "subtopics": [
+        "Service groups",
+        "Access control",
+        "Hierarchy"
+      ],
+      "tags": [
+        "service-mapping",
+        "service-groups",
+        "access-control",
+        "inheritance"
+      ]
+    },
+    "meta": {
+      "version": "1.0",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-sm-sm-configuration-404",
+    "certification": "cis-sm",
+    "topic": "sm-configuration",
+    "cognitiveLevel": "understanding",
+    "type": "multiple_choice",
+    "question": "Why does Service Mapping merge connection lines for the same CI by default in an application service map?",
+    "options": [
+      {
+        "id": "a",
+        "text": "To reduce database storage requirements"
+      },
+      {
+        "id": "b",
+        "text": "To declutter the map and make it more readable"
+      },
+      {
+        "id": "c",
+        "text": "To improve discovery performance"
+      },
+      {
+        "id": "d",
+        "text": "To comply with CSDM standards"
+      }
+    ],
+    "correctAnswers": [
+      "b"
+    ],
+    "explanation": {
+      "correct": "By default, Service Mapping merges connection lines for the same CI to declutter an application service map. This helps make the map more readable, especially for complex services with many connections.",
+      "wrongAnswers": [
+        {
+          "id": "a",
+          "explanation": "Merging connection lines in the visualization does not affect database storage. The underlying data remains unchanged."
+        },
+        {
+          "id": "c",
+          "explanation": "Connection line merging is a visualization feature, not a performance optimization for discovery."
+        },
+        {
+          "id": "d",
+          "explanation": "CSDM defines data model standards but does not mandate visual display settings like connection line merging."
+        }
+      ]
+    },
+    "source": {
+      "excerpt": "By default, Service Mapping merges connection lines for the same CI to declutter an application service map. It helps to make the map more readable.",
+      "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/service-mapping/view-connector-properties.html"
+    },
+    "labels": {
+      "domain": "Service Mapping Configuration",
+      "subtopics": [
+        "Map visualization",
+        "Connection lines",
+        "Usability"
+      ],
+      "tags": [
+        "service-mapping",
+        "visualization",
+        "connection-lines",
+        "map-view"
+      ]
+    },
+    "meta": {
+      "version": "1.0",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-sm-sm-configuration-405",
+    "certification": "cis-sm",
+    "topic": "sm-configuration",
+    "cognitiveLevel": "knowledge",
+    "type": "multiple_choice",
+    "question": "Which role is required to navigate to Service Mapping > Administration > Tag-based Service Families and create new tag-based service families?",
+    "options": [
+      {
+        "id": "a",
+        "text": "app_service_user"
+      },
+      {
+        "id": "b",
+        "text": "service_mapping_user"
+      },
+      {
+        "id": "c",
+        "text": "service_mapping_admin"
+      },
+      {
+        "id": "d",
+        "text": "itil"
+      }
+    ],
+    "correctAnswers": [
+      "c"
+    ],
+    "explanation": {
+      "correct": "The service_mapping_admin role is required to access tag-based service families administration and create new service families for tag-based mapping. This is an administrative function that goes beyond basic viewing capabilities.",
+      "wrongAnswers": [
+        {
+          "id": "a",
+          "explanation": "app_service_user only has view permissions for service instances, not administrative capabilities for tag-based configuration."
+        },
+        {
+          "id": "b",
+          "explanation": "service_mapping_user can view maps and use Service Mapping features but cannot perform administrative functions like creating service families."
+        },
+        {
+          "id": "d",
+          "explanation": "The itil role provides basic helpdesk capabilities and contains app_service_user, but lacks Service Mapping administrative permissions."
+        }
+      ]
+    },
+    "source": {
+      "excerpt": "Role required: service_mapping_admin... Navigate to Service Mapping > Administration > Tag-based Service Families. Click New. Define the service family name.",
+      "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/service-mapping/map-service-tag.html"
+    },
+    "labels": {
+      "domain": "Service Mapping Configuration",
+      "subtopics": [
+        "Tag-based mapping",
+        "Roles",
+        "Administration"
+      ],
+      "tags": [
+        "service-mapping",
+        "tag-based",
+        "roles",
+        "administration"
+      ]
+    },
+    "meta": {
+      "version": "1.0",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-sm-sm-configuration-406",
+    "certification": "cis-sm",
+    "topic": "sm-configuration",
+    "cognitiveLevel": "application",
+    "type": "multiple_choice",
+    "question": "An administrator sees a connection line on a service map where the Properties pane shows 'Manual Endpoint' under Endpoint Type. What does this indicate?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The connection was created by traffic-based discovery"
+      },
+      {
+        "id": "b",
+        "text": "The connection was added manually by a user"
+      },
+      {
+        "id": "c",
+        "text": "The connection has authentication errors"
+      },
+      {
+        "id": "d",
+        "text": "The connection requires pattern updates"
+      }
+    ],
+    "correctAnswers": [
+      "b"
+    ],
+    "explanation": {
+      "correct": "When the Properties pane shows 'Manual Endpoint' under Endpoint Type, it indicates that the connection was manually added by a user. Users can manually add connections or CIs, and in both cases the connection shows as a Manual Endpoint.",
+      "wrongAnswers": [
+        {
+          "id": "a",
+          "explanation": "Traffic-based connections would show as traffic-based type, not Manual Endpoint. Manual Endpoint specifically indicates user-added connections."
+        },
+        {
+          "id": "c",
+          "explanation": "Authentication errors would be shown as discovery errors, not as Manual Endpoint in the Endpoint Type field."
+        },
+        {
+          "id": "d",
+          "explanation": "Pattern update requirements would appear as mapping errors or warnings, not as Manual Endpoint type."
+        }
+      ]
+    },
+    "source": {
+      "excerpt": "Manually added connection. You can either add a connection or a CI manually. In both cases, the connection you manually add an entry point to the next tier of the application flow. Click the manually added connection. The Properties pane shows Manual Endpoint under Endpoint Type.",
+      "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/service-mapping/view-connector-properties.html"
+    },
+    "labels": {
+      "domain": "Service Mapping Configuration",
+      "subtopics": [
+        "Connection properties",
+        "Manual endpoints",
+        "Service maps"
+      ],
+      "tags": [
+        "service-mapping",
+        "connections",
+        "manual-endpoint",
+        "properties"
+      ]
+    },
+    "meta": {
+      "version": "1.0",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-sm-sm-configuration-501",
+    "certification": "cis-sm",
+    "topic": "sm-configuration",
+    "cognitiveLevel": "knowledge",
+    "type": "multiple_choice",
+    "question": "When creating a serverless discovery schedule for Microsoft Certificate Authority (CA) discovery, what should be selected in the Certificate Discovery Type field?",
+    "options": [
+      {
+        "id": "a",
+        "text": "SSL Certificate Discovery"
+      },
+      {
+        "id": "b",
+        "text": "CA Trust Discovery"
+      },
+      {
+        "id": "c",
+        "text": "PKI Certificate Scan"
+      },
+      {
+        "id": "d",
+        "text": "X.509 Certificate Discovery"
+      }
+    ],
+    "correctAnswers": [
+      "b"
+    ],
+    "explanation": {
+      "correct": "When creating a discovery schedule for Microsoft CA, the Certificate Discovery Type should be set to 'CA Trust Discovery'. This is the appropriate type for discovering CA certificates from Microsoft Certificate Authority servers.",
+      "wrongAnswers": [
+        {
+          "id": "a",
+          "explanation": "SSL Certificate Discovery is not the correct type for CA Trust discovery. CA Trust Discovery is specifically for Microsoft CA certificates."
+        },
+        {
+          "id": "c",
+          "explanation": "PKI Certificate Scan is not a valid Certificate Discovery Type option. The correct selection is CA Trust Discovery."
+        },
+        {
+          "id": "d",
+          "explanation": "X.509 Certificate Discovery is not a Certificate Discovery Type field option. Use CA Trust Discovery for Microsoft CA."
+        }
+      ]
+    },
+    "source": {
+      "excerpt": "On the form, fill in the fields: Discover - Scan type, which should be Certificates. Certificate Discovery Type - Certificate type, which should be CA Trust Discovery.",
+      "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/discovery-and-service-mapping-patterns/create-serverless-schedule-ms-ca.html"
+    },
+    "labels": {
+      "domain": "Service Mapping Configuration",
+      "subtopics": [
+        "Certificate discovery",
+        "Discovery schedules",
+        "CA Trust"
+      ],
+      "tags": [
+        "service-mapping",
+        "certificates",
+        "ca-trust",
+        "discovery"
+      ]
+    },
+    "meta": {
+      "version": "1.0",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-sm-sm-configuration-502",
+    "certification": "cis-sm",
+    "topic": "sm-configuration",
+    "cognitiveLevel": "understanding",
+    "type": "multiple_choice",
+    "question": "How many certificates can a single serverless execution pattern discover by default for Microsoft CA?",
+    "options": [
+      {
+        "id": "a",
+        "text": "5,000 certificates"
+      },
+      {
+        "id": "b",
+        "text": "10,000 certificates"
+      },
+      {
+        "id": "c",
+        "text": "20,000 certificates"
+      },
+      {
+        "id": "d",
+        "text": "50,000 certificates"
+      }
+    ],
+    "correctAnswers": [
+      "c"
+    ],
+    "explanation": {
+      "correct": "Discovery uses each execution pattern to discover up to 20,000 certificates. For deployments using more than 20,000 certificates, you need to create several execution patterns to handle the larger volume.",
+      "wrongAnswers": [
+        {
+          "id": "a",
+          "explanation": "5,000 is below the actual limit. Each execution pattern can discover up to 20,000 certificates."
+        },
+        {
+          "id": "b",
+          "explanation": "10,000 is below the actual limit. The default limitation is 20,000 certificates per execution pattern."
+        },
+        {
+          "id": "d",
+          "explanation": "50,000 exceeds the default limit. Each execution pattern handles up to 20,000 certificates, requiring multiple patterns for larger deployments."
+        }
+      ]
+    },
+    "source": {
+      "excerpt": "Discovery uses each execution pattern to discover up to 20,000 certificates. For deployments using more than 20,000 certificates, create several execution patterns.",
+      "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/discovery-and-service-mapping-patterns/create-serverless-schedule-ms-ca.html"
+    },
+    "labels": {
+      "domain": "Service Mapping Configuration",
+      "subtopics": [
+        "Execution patterns",
+        "Certificate limits",
+        "Scalability"
+      ],
+      "tags": [
+        "service-mapping",
+        "certificates",
+        "execution-patterns",
+        "limits"
+      ]
+    },
+    "meta": {
+      "version": "1.0",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-sm-sm-configuration-503",
+    "certification": "cis-sm",
+    "topic": "sm-configuration",
+    "cognitiveLevel": "knowledge",
+    "type": "multiple_choice",
+    "question": "Which role is required to create a serverless discovery schedule for Microsoft CA discovery?",
+    "options": [
+      {
+        "id": "a",
+        "text": "service_mapping_admin"
+      },
+      {
+        "id": "b",
+        "text": "discovery_admin"
+      },
+      {
+        "id": "c",
+        "text": "cmdb_admin"
+      },
+      {
+        "id": "d",
+        "text": "itil"
+      }
+    ],
+    "correctAnswers": [
+      "b"
+    ],
+    "explanation": {
+      "correct": "The discovery_admin role is required to create serverless discovery schedules for Microsoft CA certificate discovery. This role provides the necessary permissions to configure Discovery schedules and execution patterns.",
+      "wrongAnswers": [
+        {
+          "id": "a",
+          "explanation": "service_mapping_admin is for Service Mapping administration, not for creating Discovery schedules. The discovery_admin role is required."
+        },
+        {
+          "id": "c",
+          "explanation": "cmdb_admin manages CMDB configuration but doesn't provide Discovery schedule creation permissions. Use discovery_admin."
+        },
+        {
+          "id": "d",
+          "explanation": "The itil role is for basic IT service management tasks and doesn't include Discovery administration capabilities."
+        }
+      ]
+    },
+    "source": {
+      "excerpt": "Role required: discovery_admin",
+      "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/discovery-and-service-mapping-patterns/create-serverless-schedule-ms-ca.html"
+    },
+    "labels": {
+      "domain": "Service Mapping Configuration",
+      "subtopics": [
+        "Roles",
+        "Discovery schedules",
+        "Permissions"
+      ],
+      "tags": [
+        "service-mapping",
+        "roles",
+        "discovery-admin",
+        "schedules"
+      ]
+    },
+    "meta": {
+      "version": "1.0",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-sm-sm-configuration-504",
+    "certification": "cis-sm",
+    "topic": "sm-configuration",
+    "cognitiveLevel": "application",
+    "type": "multiple_select",
+    "question": "Before creating a serverless discovery schedule for Microsoft CA, which prerequisites must be verified? (Choose two.)",
+    "options": [
+      {
+        "id": "a",
+        "text": "The CA process is up and running on the host machine"
+      },
+      {
+        "id": "b",
+        "text": "SNMP credentials are configured for the CA server"
+      },
+      {
+        "id": "c",
+        "text": "A Windows host was discovered during a previous horizontal discovery"
+      },
+      {
+        "id": "d",
+        "text": "The CA server has an agent installed"
+      }
+    ],
+    "correctAnswers": [
+      "a",
+      "c"
+    ],
+    "explanation": {
+      "correct": "Before creating a serverless discovery schedule for Microsoft CA, two prerequisites must be verified: the CA process must be up and running on the host machine, and a Windows host must have been discovered during a previous horizontal discovery. The Windows host becomes the Proxy Host for the serverless execution pattern.",
+      "wrongAnswers": [
+        {
+          "id": "b",
+          "explanation": "SNMP credentials are not required for Microsoft CA discovery. The pattern uses Windows credentials and the previously discovered host."
+        },
+        {
+          "id": "d",
+          "explanation": "Agents are not required for Microsoft CA discovery. It uses agentless discovery through the MID Server."
+        }
+      ]
+    },
+    "source": {
+      "excerpt": "Before you begin: Verify that the CA process is up and running on the host machine. Verify that a Windows host was discovered during a previous horizontal discovery.",
+      "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/discovery-and-service-mapping-patterns/create-serverless-schedule-ms-ca.html"
+    },
+    "labels": {
+      "domain": "Service Mapping Configuration",
+      "subtopics": [
+        "Prerequisites",
+        "CA discovery",
+        "Windows discovery"
+      ],
+      "tags": [
+        "service-mapping",
+        "prerequisites",
+        "microsoft-ca",
+        "windows"
+      ]
+    },
+    "meta": {
+      "version": "1.0",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-sm-sm-configuration-505",
+    "certification": "cis-sm",
+    "topic": "sm-configuration",
+    "cognitiveLevel": "understanding",
+    "type": "multiple_choice",
+    "question": "What is the relationship between a dependent service and a contained service when linking application services?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The contained service references the dependent service"
+      },
+      {
+        "id": "b",
+        "text": "The dependent service contains a reference to the contained service"
+      },
+      {
+        "id": "c",
+        "text": "Both services reference each other equally"
+      },
+      {
+        "id": "d",
+        "text": "The services are merged into a single entity"
+      }
+    ],
+    "correctAnswers": [
+      "b"
+    ],
+    "explanation": {
+      "correct": "When linking application services, the service that contains the reference becomes a dependent service, and the service that you include as a reference is a contained service. This creates a dependency relationship for impact monitoring in Event Management.",
+      "wrongAnswers": [
+        {
+          "id": "a",
+          "explanation": "The relationship is the opposite. The dependent service contains the reference, not the contained service."
+        },
+        {
+          "id": "c",
+          "explanation": "The relationship is directional, not equal. One service (dependent) contains a reference to another (contained)."
+        },
+        {
+          "id": "d",
+          "explanation": "Linking creates a reference relationship, not a merge. The services remain separate but related."
+        }
+      ]
+    },
+    "source": {
+      "excerpt": "Link application services: You can manually link two application services by adding a reference to one application service into another application service. The service that contains the reference, becomes a dependent service. The service that you include as a reference is a contained service.",
+      "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/service-mapping/review-implement-business-service-maps.html"
+    },
+    "labels": {
+      "domain": "Service Mapping Configuration",
+      "subtopics": [
+        "Service linking",
+        "Dependencies",
+        "Event Management"
+      ],
+      "tags": [
+        "service-mapping",
+        "service-linking",
+        "dependencies"
+      ]
+    },
+    "meta": {
+      "version": "1.0",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  }
+]

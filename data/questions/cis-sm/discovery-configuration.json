@@ -1,0 +1,686 @@
+[
+  {
+    "id": "cis-sm-discovery-configuration-601",
+    "certification": "cis-sm",
+    "topic": "discovery-configuration",
+    "cognitiveLevel": "knowledge",
+    "type": "multiple_select",
+    "question": "How does Service Mapping classify discovery errors? (Choose two.)",
+    "options": [
+      {
+        "id": "a",
+        "text": "By their root cause category such as Configuration, Network, and Credentials"
+      },
+      {
+        "id": "b",
+        "text": "By alphabetical order of error messages"
+      },
+      {
+        "id": "c",
+        "text": "By impact level: high, medium, and low impact on services"
+      },
+      {
+        "id": "d",
+        "text": "By the MID Server that encountered the error"
+      }
+    ],
+    "correctAnswers": [
+      "a",
+      "c"
+    ],
+    "explanation": {
+      "correct": "Service Mapping classifies errors by their root cause category (Configuration, Network, Credentials, etc.) and also organizes them by high, medium, and low impact on the services. This dual classification helps administrators prioritize and fix errors efficiently.",
+      "wrongAnswers": [
+        {
+          "id": "b",
+          "explanation": "Errors are not classified alphabetically. They are organized by root cause category and impact level."
+        },
+        {
+          "id": "d",
+          "explanation": "While MID Server information may be included in error details, errors are primarily classified by root cause category and impact level."
+        }
+      ]
+    },
+    "source": {
+      "excerpt": "Service Mapping classifies errors by their root cause, for example, missing credentials or task timeout... You can view errors by category, for example, Configuration, Network, and Credentials... The Errors by Category page organizes errors by high, medium, and low impact on the services.",
+      "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/service-mapping/fix-bus-serv-errors-by-category.html"
+    },
+    "labels": {
+      "domain": "Discovery Configuration",
+      "subtopics": [
+        "Error classification",
+        "Error handling",
+        "Troubleshooting"
+      ],
+      "tags": [
+        "service-mapping",
+        "errors",
+        "troubleshooting",
+        "classification"
+      ]
+    },
+    "meta": {
+      "version": "1.0",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-sm-discovery-configuration-602",
+    "certification": "cis-sm",
+    "topic": "discovery-configuration",
+    "cognitiveLevel": "understanding",
+    "type": "multiple_choice",
+    "question": "Under what conditions are discovery errors not assigned to any category in Service Mapping?",
+    "options": [
+      {
+        "id": "a",
+        "text": "When the MID Server is offline"
+      },
+      {
+        "id": "b",
+        "text": "After upgrading from Jakarta release or earlier, or when CIs with errors are removed and readded to services"
+      },
+      {
+        "id": "c",
+        "text": "When credentials are missing for all targets"
+      },
+      {
+        "id": "d",
+        "text": "When discovery schedules are paused"
+      }
+    ],
+    "correctAnswers": [
+      "b"
+    ],
+    "explanation": {
+      "correct": "Discovery errors may be uncategorized in two scenarios: after upgrading Service Mapping from Jakarta release or earlier, or when CIs that have errors are first removed from application services and then readded. In these cases, administrators can categorize them by clicking 'Rediscover Relevant CIs'.",
+      "wrongAnswers": [
+        {
+          "id": "a",
+          "explanation": "MID Server offline status would create network or connectivity errors which are categorized, not uncategorized errors."
+        },
+        {
+          "id": "c",
+          "explanation": "Missing credentials errors are categorized under the 'Credentials' category, not left uncategorized."
+        },
+        {
+          "id": "d",
+          "explanation": "Paused schedules don't create errors. When discovery runs, errors that occur are categorized appropriately."
+        }
+      ]
+    },
+    "source": {
+      "excerpt": "There may be discovery errors not assigned to any category: After upgrading Service Mapping from Jakarta release or earlier. If there are configuration items (CIs) that have errors associated with them, and that were first removed from application services and then readded to application services.",
+      "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/service-mapping/fix-bus-serv-errors-by-category.html"
+    },
+    "labels": {
+      "domain": "Discovery Configuration",
+      "subtopics": [
+        "Uncategorized errors",
+        "Upgrade scenarios",
+        "Error management"
+      ],
+      "tags": [
+        "service-mapping",
+        "errors",
+        "upgrade",
+        "uncategorized"
+      ]
+    },
+    "meta": {
+      "version": "1.0",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-sm-discovery-configuration-603",
+    "certification": "cis-sm",
+    "topic": "discovery-configuration",
+    "cognitiveLevel": "application",
+    "type": "multiple_choice",
+    "question": "An administrator needs to notify an external team member who doesn't use ServiceNow to fix a discovery error. Which action should they use?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Retry Discovery"
+      },
+      {
+        "id": "b",
+        "text": "Mark as assigned with a comment"
+      },
+      {
+        "id": "c",
+        "text": "View instructions"
+      },
+      {
+        "id": "d",
+        "text": "View affected services"
+      }
+    ],
+    "correctAnswers": [
+      "b"
+    ],
+    "explanation": {
+      "correct": "The 'Mark as assigned' action is used when planning to perform an out-of-band action to notify a person to fix the error, typically someone who does not use the ServiceNow instance. You can enter a comment in the Mark as Assigned popup, which sets the Error Status to Assigned.",
+      "wrongAnswers": [
+        {
+          "id": "a",
+          "explanation": "Retry Discovery performs the full discovery process again and is used after the error has been fixed, not for assigning work to external team members."
+        },
+        {
+          "id": "c",
+          "explanation": "View instructions displays troubleshooting procedures but doesn't assign or track the error for external resolution."
+        },
+        {
+          "id": "d",
+          "explanation": "View affected services shows which services are impacted but doesn't provide a mechanism to assign the error to someone for resolution."
+        }
+      ]
+    },
+    "source": {
+      "excerpt": "Mark as assigned - Apply the Mark as assigned action when you plan to perform an out-of-band action to notify a person to fix the error (typically a person who does not use the ServiceNow instance). You can enter a Comment in the Mark as Assigned popup.",
+      "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/service-mapping/fix-bus-serv-errors-by-category.html"
+    },
+    "labels": {
+      "domain": "Discovery Configuration",
+      "subtopics": [
+        "Error assignment",
+        "Workflow",
+        "Out-of-band notifications"
+      ],
+      "tags": [
+        "service-mapping",
+        "errors",
+        "assignment",
+        "workflow"
+      ]
+    },
+    "meta": {
+      "version": "1.0",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-sm-discovery-configuration-604",
+    "certification": "cis-sm",
+    "topic": "discovery-configuration",
+    "cognitiveLevel": "understanding",
+    "type": "multiple_choice",
+    "question": "Which application services does Service Mapping rediscover regularly based on discovery schedules?",
+    "options": [
+      {
+        "id": "a",
+        "text": "All application services regardless of status"
+      },
+      {
+        "id": "b",
+        "text": "Only application services with Operational status"
+      },
+      {
+        "id": "c",
+        "text": "Only application services in draft status"
+      },
+      {
+        "id": "d",
+        "text": "Only application services with pending errors"
+      }
+    ],
+    "correctAnswers": [
+      "b"
+    ],
+    "explanation": {
+      "correct": "Service Mapping discovers only CIs belonging to application services with Operational status. Discovery schedules define how often Service Mapping runs the discovery process for these CIs, constantly updating the list of errors.",
+      "wrongAnswers": [
+        {
+          "id": "a",
+          "explanation": "Not all services are rediscovered. Only those with Operational status are included in regular discovery runs."
+        },
+        {
+          "id": "c",
+          "explanation": "Draft services are not included in regular discovery. Operational status is required."
+        },
+        {
+          "id": "d",
+          "explanation": "The presence of errors is not the criterion. Operational status determines which services are rediscovered."
+        }
+      ]
+    },
+    "source": {
+      "excerpt": "After performing initial mapping, Service Mapping rediscovers configuration items (CIs) regularly, constantly updating the list of errors. Discovery schedules define how often Service Mapping runs the discovery process for CIs. Service Mapping discovers only CIs belonging to application services with Operational status.",
+      "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/service-mapping/fix-bus-serv-errors-by-category.html"
+    },
+    "labels": {
+      "domain": "Discovery Configuration",
+      "subtopics": [
+        "Discovery schedules",
+        "Service status",
+        "Rediscovery"
+      ],
+      "tags": [
+        "service-mapping",
+        "discovery",
+        "schedules",
+        "operational-status"
+      ]
+    },
+    "meta": {
+      "version": "1.0",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-sm-discovery-configuration-605",
+    "certification": "cis-sm",
+    "topic": "discovery-configuration",
+    "cognitiveLevel": "knowledge",
+    "type": "multiple_choice",
+    "question": "Where do you navigate to fix application service errors in bulk in Service Mapping?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Service Mapping > Administration > Error Log"
+      },
+      {
+        "id": "b",
+        "text": "Service Mapping > Home, then click Fix Your Services in the Fix box"
+      },
+      {
+        "id": "c",
+        "text": "Discovery > Discovery Status > Errors"
+      },
+      {
+        "id": "d",
+        "text": "CMDB > Health Dashboard > Service Errors"
+      }
+    ],
+    "correctAnswers": [
+      "b"
+    ],
+    "explanation": {
+      "correct": "To fix application service errors in bulk, navigate to Service Mapping > Home and then click 'Fix Your Services' in the Fix box. The number in the Fix box indicates the number of affected service maps.",
+      "wrongAnswers": [
+        {
+          "id": "a",
+          "explanation": "There is no 'Error Log' under Service Mapping Administration. The bulk error fixing is accessed from the Home page."
+        },
+        {
+          "id": "c",
+          "explanation": "Discovery > Discovery Status contains general discovery information. Service Mapping errors are managed from Service Mapping > Home."
+        },
+        {
+          "id": "d",
+          "explanation": "CMDB Health Dashboard is for CMDB health metrics, not Service Mapping error management."
+        }
+      ]
+    },
+    "source": {
+      "excerpt": "Navigate to All > Service Mapping > Home and then click Fix Your Services in the Fix box. The number in the Fix box indicates the number of affected service maps.",
+      "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/service-mapping/fix-bus-serv-errors-by-category.html"
+    },
+    "labels": {
+      "domain": "Discovery Configuration",
+      "subtopics": [
+        "Navigation",
+        "Error management",
+        "Bulk operations"
+      ],
+      "tags": [
+        "service-mapping",
+        "errors",
+        "navigation",
+        "bulk-fix"
+      ]
+    },
+    "meta": {
+      "version": "1.0",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-sm-discovery-configuration-606",
+    "certification": "cis-sm",
+    "topic": "discovery-configuration",
+    "cognitiveLevel": "understanding",
+    "type": "multiple_select",
+    "question": "Which actions set the Error Status field to 'Assigned' when managing Service Mapping errors? (Choose two.)",
+    "options": [
+      {
+        "id": "a",
+        "text": "Mark as assigned"
+      },
+      {
+        "id": "b",
+        "text": "Retry Discovery"
+      },
+      {
+        "id": "c",
+        "text": "Create a ServiceNow task"
+      },
+      {
+        "id": "d",
+        "text": "View instructions"
+      }
+    ],
+    "correctAnswers": [
+      "a",
+      "c"
+    ],
+    "explanation": {
+      "correct": "Both 'Mark as assigned' and 'Create a ServiceNow task' actions set the Error Status field in the error record as Assigned. 'Mark as assigned' is for out-of-band notifications to external users, while 'Create a ServiceNow task' creates a trackable task within ServiceNow.",
+      "wrongAnswers": [
+        {
+          "id": "b",
+          "explanation": "Retry Discovery performs a new discovery attempt and does not change the error status to Assigned."
+        },
+        {
+          "id": "d",
+          "explanation": "View instructions only displays troubleshooting procedures and does not modify the error status."
+        }
+      ]
+    },
+    "source": {
+      "excerpt": "Mark as assigned... sets the Error Status field in the error record as Assigned and associate the Comment with the error... Create a ServiceNow task... Sets the Error Status field in the error record as Assigned. Note: The Mark as assigned action also sets the Error Status field in the error record as Assigned.",
+      "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/service-mapping/fix-bus-serv-errors-by-category.html"
+    },
+    "labels": {
+      "domain": "Discovery Configuration",
+      "subtopics": [
+        "Error status",
+        "Task management",
+        "Assignment"
+      ],
+      "tags": [
+        "service-mapping",
+        "errors",
+        "status",
+        "assignment"
+      ]
+    },
+    "meta": {
+      "version": "1.0",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-sm-discovery-configuration-701",
+    "certification": "cis-sm",
+    "topic": "discovery-configuration",
+    "cognitiveLevel": "understanding",
+    "type": "multiple_choice",
+    "question": "In what order are the AWS database discovery patterns triggered during discovery?",
+    "options": [
+      {
+        "id": "a",
+        "text": "AWS DB cluster pattern runs first, then AWS Relational Database Service pattern"
+      },
+      {
+        "id": "b",
+        "text": "AWS Relational Database Service pattern runs first, then AWS DB cluster pattern"
+      },
+      {
+        "id": "c",
+        "text": "Both patterns run simultaneously"
+      },
+      {
+        "id": "d",
+        "text": "Only one pattern runs based on the database type"
+      }
+    ],
+    "correctAnswers": [
+      "b"
+    ],
+    "explanation": {
+      "correct": "The AWS DB cluster pattern is triggered after the AWS Relational Database Service pattern during discovery. This sequence is necessary because the discovered DB clusters form new relationships with the DB Instances discovered by the AWS RDS pattern.",
+      "wrongAnswers": [
+        {
+          "id": "a",
+          "explanation": "The order is reversed. AWS RDS pattern runs first, then the DB cluster pattern to establish relationships with discovered instances."
+        },
+        {
+          "id": "c",
+          "explanation": "The patterns do not run simultaneously. AWS RDS runs first, then DB cluster pattern runs to create relationships."
+        },
+        {
+          "id": "d",
+          "explanation": "Both patterns run in sequence, not selectively. The DB cluster pattern depends on data from the RDS pattern."
+        }
+      ]
+    },
+    "source": {
+      "excerpt": "The discovered DB clusters form new relationships with the DB Instances discovered by the AWS Relational Database Service pattern. Therefore, the AWS DB cluster pattern is triggered after the AWS Relational Database Service pattern during discovery.",
+      "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/discovery-and-service-mapping-patterns/aws-db-cluster-discovery.html"
+    },
+    "labels": {
+      "domain": "Discovery Configuration",
+      "subtopics": [
+        "Pattern execution order",
+        "AWS discovery",
+        "Database clusters"
+      ],
+      "tags": [
+        "service-mapping",
+        "aws",
+        "discovery-patterns",
+        "database"
+      ]
+    },
+    "meta": {
+      "version": "1.0",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-sm-discovery-configuration-702",
+    "certification": "cis-sm",
+    "topic": "discovery-configuration",
+    "cognitiveLevel": "knowledge",
+    "type": "multiple_select",
+    "question": "Which AWS database resources can be discovered by the AWS DB cluster discovery pattern? (Choose three.)",
+    "options": [
+      {
+        "id": "a",
+        "text": "Aurora DB clusters"
+      },
+      {
+        "id": "b",
+        "text": "Amazon DynamoDB tables"
+      },
+      {
+        "id": "c",
+        "text": "Amazon Neptune DB instances"
+      },
+      {
+        "id": "d",
+        "text": "Amazon DocumentDB instances"
+      },
+      {
+        "id": "e",
+        "text": "Amazon ElastiCache clusters"
+      }
+    ],
+    "correctAnswers": [
+      "a",
+      "c",
+      "d"
+    ],
+    "explanation": {
+      "correct": "The AWS DB cluster discovery pattern can find and map Aurora DB clusters, Aurora Serverless resources, Amazon Neptune DB instances, and Amazon DocumentDB instances. These are all AWS database cluster types that the pattern supports.",
+      "wrongAnswers": [
+        {
+          "id": "b",
+          "explanation": "Amazon DynamoDB is a NoSQL database service that requires its own specific discovery pattern, not the AWS DB cluster pattern."
+        },
+        {
+          "id": "e",
+          "explanation": "Amazon ElastiCache is an in-memory caching service with its own discovery pattern, not covered by the DB cluster pattern."
+        }
+      ]
+    },
+    "source": {
+      "excerpt": "ServiceNow Discovery uses the AWS DB cluster discovery pattern to find and map Aurora DB clusters, Aurora Serverless resources, Amazon Neptune DB instances, and Amazon DocumentDB instances.",
+      "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/discovery-and-service-mapping-patterns/aws-db-cluster-discovery.html"
+    },
+    "labels": {
+      "domain": "Discovery Configuration",
+      "subtopics": [
+        "AWS database types",
+        "Pattern coverage",
+        "Cloud discovery"
+      ],
+      "tags": [
+        "service-mapping",
+        "aws",
+        "aurora",
+        "neptune",
+        "documentdb"
+      ]
+    },
+    "meta": {
+      "version": "1.0",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-sm-discovery-configuration-703",
+    "certification": "cis-sm",
+    "topic": "discovery-configuration",
+    "cognitiveLevel": "application",
+    "type": "multiple_select",
+    "question": "When configuring AWS credentials for DB cluster discovery, which REST API permissions must be set to read-only? (Choose two.)",
+    "options": [
+      {
+        "id": "a",
+        "text": "DescribeDBClusters"
+      },
+      {
+        "id": "b",
+        "text": "CreateDBCluster"
+      },
+      {
+        "id": "c",
+        "text": "DescribeDBInstances"
+      },
+      {
+        "id": "d",
+        "text": "DeleteDBInstance"
+      }
+    ],
+    "correctAnswers": [
+      "a",
+      "c"
+    ],
+    "explanation": {
+      "correct": "Read-only permissions are required for DescribeDBClusters and DescribeDBInstances REST APIs. These APIs retrieve information about database clusters and instances without making any modifications. The tagging API is also required for tags discovery.",
+      "wrongAnswers": [
+        {
+          "id": "b",
+          "explanation": "CreateDBCluster is a write operation, not a read operation. Discovery only needs read permissions to describe existing resources."
+        },
+        {
+          "id": "d",
+          "explanation": "DeleteDBInstance is a destructive write operation. Discovery requires only read-only permissions to gather information."
+        }
+      ]
+    },
+    "source": {
+      "excerpt": "Set read-only permissions for these REST APIs: https://rds.<REGION>.amazonaws.com/?Action=DescribeDBInstances, https://rds.<REGION>.amazonaws.com/?Action=DescribeDBClusters, https://rds.<REGION>.amazonaws.com/?Action=DescribeDBInstances&DBInstanceIdentifier=<input_object_id> for events discovery",
+      "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/discovery-and-service-mapping-patterns/aws-db-cluster-discovery.html"
+    },
+    "labels": {
+      "domain": "Discovery Configuration",
+      "subtopics": [
+        "AWS permissions",
+        "REST API",
+        "Security configuration"
+      ],
+      "tags": [
+        "service-mapping",
+        "aws",
+        "permissions",
+        "rest-api"
+      ]
+    },
+    "meta": {
+      "version": "1.0",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-sm-discovery-configuration-704",
+    "certification": "cis-sm",
+    "topic": "discovery-configuration",
+    "cognitiveLevel": "knowledge",
+    "type": "multiple_choice",
+    "question": "Which CMDB table stores discovered AWS database cluster information?",
+    "options": [
+      {
+        "id": "a",
+        "text": "cmdb_ci_aws_database"
+      },
+      {
+        "id": "b",
+        "text": "cmdb_ci_cloud_db_cluster"
+      },
+      {
+        "id": "c",
+        "text": "cmdb_ci_rds_cluster"
+      },
+      {
+        "id": "d",
+        "text": "cmdb_ci_database_cluster"
+      }
+    ],
+    "correctAnswers": [
+      "b"
+    ],
+    "explanation": {
+      "correct": "The Cloud Database Cluster [cmdb_ci_cloud_db_cluster] table stores discovered AWS database cluster information including cluster_id, name, fqdn, tcp_port, vendor, cluster_status, and operational_status.",
+      "wrongAnswers": [
+        {
+          "id": "a",
+          "explanation": "cmdb_ci_aws_database is not a standard CMDB table. The correct table is cmdb_ci_cloud_db_cluster."
+        },
+        {
+          "id": "c",
+          "explanation": "cmdb_ci_rds_cluster is not the documented table. AWS database clusters are stored in cmdb_ci_cloud_db_cluster."
+        },
+        {
+          "id": "d",
+          "explanation": "cmdb_ci_database_cluster is not the correct table name. The pattern uses cmdb_ci_cloud_db_cluster."
+        }
+      ]
+    },
+    "source": {
+      "excerpt": "The discovered data includes the following tables and fields: Cloud Database Cluster [cmdb_ci_cloud_db_cluster] - Cluster ID [cluster_id], Name [name], FQDN [fqdn], TCP Port [tcp_port], Vendor [vendor], Cluster Status [cluster_status], Operational Status [operational_status]",
+      "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/discovery-and-service-mapping-patterns/aws-db-cluster-discovery.html"
+    },
+    "labels": {
+      "domain": "Discovery Configuration",
+      "subtopics": [
+        "CMDB tables",
+        "Cloud databases",
+        "Data model"
+      ],
+      "tags": [
+        "service-mapping",
+        "cmdb",
+        "aws",
+        "cloud-database"
+      ]
+    },
+    "meta": {
+      "version": "1.0",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  }
+]
