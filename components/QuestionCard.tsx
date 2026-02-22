@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import type { Question } from "@/types";
 
 interface QuestionCardProps {
@@ -24,7 +24,8 @@ export default function QuestionCard({
     selectedAnswers.length === question.correctAnswers.length &&
     selectedAnswers.every((a) => question.correctAnswers.includes(a));
 
-  const handleOptionClick = (optionId: string) => {
+  // Define callbacks first
+  const handleOptionClick = useCallback((optionId: string) => {
     if (revealed) return;
 
     let newAnswers: string[];
@@ -40,11 +41,44 @@ export default function QuestionCard({
 
     setSelectedAnswers(newAnswers);
     onAnswer?.(question.id, newAnswers);
-  };
+  }, [revealed, isMultipleSelect, selectedAnswers, question.id, onAnswer]);
 
-  const handleReveal = () => {
+  const handleReveal = useCallback(() => {
     setRevealed(true);
-  };
+  }, []);
+
+  // Keyboard navigation
+  useEffect(() => {
+    if (revealed) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Ignore if user is typing in an input
+      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) {
+        return;
+      }
+
+      const key = e.key.toLowerCase();
+
+      // A-D or 1-4 to select options
+      const optionKeys: Record<string, number> = { a: 0, b: 1, c: 2, d: 3, "1": 0, "2": 1, "3": 2, "4": 3 };
+      if (key in optionKeys) {
+        const optionIndex = optionKeys[key];
+        if (question.options[optionIndex]) {
+          handleOptionClick(question.options[optionIndex].id);
+        }
+        return;
+      }
+
+      // Enter to reveal answer (when answer is selected)
+      if (e.key === "Enter" && selectedAnswers.length > 0) {
+        handleReveal();
+        return;
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [revealed, question.options, selectedAnswers.length, handleReveal, handleOptionClick]);
 
   const getOptionClasses = (optionId: string) => {
     const base =

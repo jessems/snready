@@ -27,6 +27,7 @@ export default function MockExam({ initialSession, onComplete }: MockExamProps) 
   const [showPauseModal, setShowPauseModal] = useState(false);
   const [showSubmitModal, setShowSubmitModal] = useState(false);
   const [showTimeWarning, setShowTimeWarning] = useState(false);
+  const [showKeyboardHint, setShowKeyboardHint] = useState(true);
   const hasShownWarningRef = useRef(false);
 
   const currentQuestion = session.questions[session.currentIndex];
@@ -35,38 +36,11 @@ export default function MockExam({ initialSession, onComplete }: MockExamProps) 
   const answeredCount = Object.keys(session.answers).length;
   const unansweredCount = session.questionCount - answeredCount;
 
-  // Timer effect
-  useEffect(() => {
-    if (session.status !== "in-progress") return;
-
-    const interval = setInterval(() => {
-      const remaining = getRemainingMs(session);
-      setRemainingMs(remaining);
-
-      // Show warning at 5 minutes
-      if (remaining <= 5 * 60 * 1000 && !hasShownWarningRef.current) {
-        hasShownWarningRef.current = true;
-        setShowTimeWarning(true);
-        setTimeout(() => setShowTimeWarning(false), 5000);
-      }
-
-      // Auto-submit when time is up
-      if (remaining <= 0) {
-        handleSubmit();
-      }
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, [session]);
-
-  // Save session on changes
-  useEffect(() => {
-    saveSession(session);
-  }, [session]);
-
+  // Define all callbacks first (before effects that use them)
   const handleAnswerSelect = useCallback(
     (optionId: string) => {
       if (session.status !== "in-progress") return;
+      if (!currentQuestion) return;
 
       setSession((prev) => {
         const currentAnswers = prev.answers[currentQuestion.id] || [];
@@ -91,7 +65,7 @@ export default function MockExam({ initialSession, onComplete }: MockExamProps) 
         };
       });
     },
-    [currentQuestion?.id, isMultiSelect, session.status]
+    [currentQuestion, isMultiSelect, session.status]
   );
 
   const handleNavigate = useCallback((index: number) => {
@@ -121,6 +95,82 @@ export default function MockExam({ initialSession, onComplete }: MockExamProps) 
     saveSession(pauseSession(session));
     router.push(`/${session.certSlug}/mock-exam`);
   }, [session, router]);
+
+  // Timer effect
+  useEffect(() => {
+    if (session.status !== "in-progress") return;
+
+    const interval = setInterval(() => {
+      const remaining = getRemainingMs(session);
+      setRemainingMs(remaining);
+
+      // Show warning at 5 minutes
+      if (remaining <= 5 * 60 * 1000 && !hasShownWarningRef.current) {
+        hasShownWarningRef.current = true;
+        setShowTimeWarning(true);
+        setTimeout(() => setShowTimeWarning(false), 5000);
+      }
+
+      // Auto-submit when time is up
+      if (remaining <= 0) {
+        handleSubmit();
+      }
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [session, handleSubmit]);
+
+  // Save session on changes
+  useEffect(() => {
+    saveSession(session);
+  }, [session]);
+
+  // Keyboard navigation
+  useEffect(() => {
+    if (session.status !== "in-progress") return;
+    if (showPauseModal || showSubmitModal) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Ignore if user is typing in an input
+      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) {
+        return;
+      }
+
+      const key = e.key.toLowerCase();
+      const currentQ = session.questions[session.currentIndex];
+      if (!currentQ) return;
+
+      // A-D or 1-4 to select options
+      const optionKeys: Record<string, number> = { a: 0, b: 1, c: 2, d: 3, "1": 0, "2": 1, "3": 2, "4": 3 };
+      if (key in optionKeys) {
+        const optionIndex = optionKeys[key];
+        if (currentQ.options[optionIndex]) {
+          handleAnswerSelect(currentQ.options[optionIndex].id);
+          setShowKeyboardHint(false);
+        }
+        return;
+      }
+
+      // Arrow keys to navigate
+      if (e.key === "ArrowLeft" && session.currentIndex > 0) {
+        handleNavigate(session.currentIndex - 1);
+        return;
+      }
+      if (e.key === "ArrowRight" && session.currentIndex < session.questionCount - 1) {
+        handleNavigate(session.currentIndex + 1);
+        return;
+      }
+
+      // P to pause
+      if (key === "p") {
+        handlePause();
+        return;
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [session.status, session.currentIndex, session.questions, session.questionCount, showPauseModal, showSubmitModal, handleAnswerSelect, handleNavigate, handlePause]);
 
   // Timer warning color
   const timerColor =
@@ -227,25 +277,27 @@ export default function MockExam({ initialSession, onComplete }: MockExamProps) 
 
             {/* Options */}
             <div className="space-y-3">
-              {currentQuestion.options.map((option) => {
+              {currentQuestion.options.map((option, index) => {
                 const isSelected = selectedAnswers.includes(option.id);
+                const shortcutKey = String.fromCharCode(65 + index); // A, B, C, D
 
                 return (
                   <button
                     key={option.id}
                     onClick={() => handleAnswerSelect(option.id)}
-                    className={`flex w-full items-start gap-3 rounded-lg border p-4 text-left transition-all ${
+                    className={`group flex w-full items-start gap-3 rounded-lg border p-4 text-left transition-all ${
                       isSelected
                         ? "border-emerald-500 bg-emerald-50 dark:border-emerald-600 dark:bg-emerald-950"
                         : "border-zinc-200 bg-zinc-50 hover:border-zinc-300 hover:bg-zinc-100 dark:border-zinc-700 dark:bg-zinc-800 dark:hover:border-zinc-600 dark:hover:bg-zinc-750"
                     }`}
                   >
                     <span
-                      className={`flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full border-2 text-sm font-medium ${
+                      className={`relative flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full border-2 text-sm font-medium transition-all ${
                         isSelected
                           ? "border-emerald-500 bg-emerald-500 text-white"
-                          : "border-zinc-300 text-zinc-500 dark:border-zinc-600"
+                          : "border-zinc-300 text-zinc-500 group-hover:border-zinc-400 dark:border-zinc-600"
                       }`}
+                      title={`Press ${shortcutKey} to select`}
                     >
                       {option.id.toUpperCase()}
                     </span>
@@ -301,6 +353,28 @@ export default function MockExam({ initialSession, onComplete }: MockExamProps) 
             </svg>
           </button>
         </div>
+
+        {/* Keyboard Shortcuts Hint */}
+        {showKeyboardHint && (
+          <div className="mt-6 flex items-center justify-between rounded-lg border border-blue-200 bg-blue-50 px-4 py-2 dark:border-blue-800 dark:bg-blue-950">
+            <div className="flex items-center gap-2 text-sm text-blue-700 dark:text-blue-300">
+              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span>
+                <strong>Tip:</strong> Press <kbd className="mx-1 rounded border border-blue-300 bg-blue-100 px-1.5 py-0.5 text-xs font-mono dark:border-blue-700 dark:bg-blue-900">A</kbd>-<kbd className="mx-1 rounded border border-blue-300 bg-blue-100 px-1.5 py-0.5 text-xs font-mono dark:border-blue-700 dark:bg-blue-900">D</kbd> to select, <kbd className="mx-1 rounded border border-blue-300 bg-blue-100 px-1.5 py-0.5 text-xs font-mono dark:border-blue-700 dark:bg-blue-900">←</kbd><kbd className="mx-1 rounded border border-blue-300 bg-blue-100 px-1.5 py-0.5 text-xs font-mono dark:border-blue-700 dark:bg-blue-900">→</kbd> to navigate
+              </span>
+            </div>
+            <button
+              onClick={() => setShowKeyboardHint(false)}
+              className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-200"
+            >
+              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+        )}
 
         {/* Question Navigator */}
         <div className="mt-8 rounded-xl border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-900">
