@@ -16,664 +16,830 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
-    slug: "free-servicenow-csa-practice-questions-2026",
-    title: "Free ServiceNow CSA Practice Questions 2026 (Updated for Zurich)",
-    description: "Practice with 50+ free CSA exam questions updated for the Zurich release. Detailed explanations for every answer to help you pass the ServiceNow Certified System Administrator exam.",
+    slug: "why-servicenow-brain-dumps-will-fail-you",
+    title: "Why ServiceNow Brain Dumps Will Fail You (And What Actually Works)",
+    description: "Brain dump sites like ExamTopics promise easy CSA certification. Here's why they backfire — and the approach that actually prepares you for real ServiceNow work.",
     publishedAt: "2026-02-22",
     author: "SNReady Team",
-    tags: ["CSA", "practice questions", "free", "Zurich"],
+    tags: ["CSA", "exam prep", "study strategy"],
     featured: true,
-    readingTime: 8,
+    readingTime: 7,
     content: `
-## Why Practice Questions Matter for CSA Success
+## The Dirty Secret of ServiceNow Exam Prep
 
-The ServiceNow Certified System Administrator (CSA) exam tests your practical knowledge of the Now Platform. With 60 questions in 90 minutes, you need to recognize concepts quickly—and that only comes from practice.
+Search for "ServiceNow CSA practice questions" and you'll find dozens of sites offering "actual exam questions" — ExamTopics, ITExams, Marks4Sure, and countless others.
 
-Unlike generic "brain dumps" that become outdated with each release, SNReady questions are generated directly from official Now Learning content. This means you're practicing with material that matches what ServiceNow actually tests.
+They promise the real thing: actual questions from the exam, crowd-verified answers, guaranteed pass rates.
 
-## What's on the CSA Exam?
+Here's what they don't tell you.
 
-The CSA exam covers 8 core domains:
+## The Three Ways Brain Dumps Fail You
 
-| Domain | Weight | Questions |
-|--------|--------|-----------|
-| User Interface & Navigation | 15% | ~9 |
-| User Administration & Security | 15% | ~9 |
-| Database Administration | 20% | ~12 |
-| Self-Service & Automation | 15% | ~9 |
-| Incident Management | 10% | ~6 |
-| Problem Management | 5% | ~3 |
-| Change Management | 10% | ~6 |
-| Reporting & Dashboards | 10% | ~6 |
+### 1. The Answers Are Often Wrong
 
-## Sample CSA Practice Questions
+Go to any brain dump site and read the discussion threads. You'll see endless debates:
 
-Here are 5 free practice questions to test your knowledge:
+> "Answer should be B, not D"
+> "I got this on my exam and C worked"
+> "The official answer is wrong, trust me"
 
-### Question 1: Lists and Filters
+These sites crowdsource their answers. No one actually verifies them against ServiceNow documentation. The "community votes" are from people who haven't passed the exam yet voting on what they *think* is correct.
 
-**A user wants to create a personal filter that only they can see. Where should they save it?**
+I've seen brain dump answers that contradict the official ServiceNow documentation. If you memorize those answers, you'll confidently select the wrong option on exam day.
 
-A) Global filter
-B) Group filter
-C) Personal filter
-D) System filter
+### 2. You Learn Nothing That Helps You Work
 
-<details>
-<summary>Show Answer</summary>
+Let's say you memorize 400 brain dump questions and pass your CSA. Congratulations. Now your employer puts you in front of a ServiceNow instance and asks you to configure a business rule.
 
-**Correct Answer: C) Personal filter**
+What happens?
 
-Personal filters are visible only to the user who created them. Global filters are visible to everyone, and Group filters are visible to members of specific groups. There is no "System filter" option in ServiceNow.
+You memorized that "Business rules run on the server" but you never actually learned:
+- When to use before vs. after rules
+- How to debug a rule that's not firing
+- Why your rule is running twice
+- How current vs. previous object comparison works
 
-</details>
+Brain dumps optimize for passing a test. They don't optimize for doing the job. And when you can't do the job, that certification becomes worthless.
 
-### Question 2: User Administration
+### 3. They're Frequently Outdated
 
-**Which of the following is required to give a user access to a specific application?**
+ServiceNow releases a major version every year. Each release changes features, deprecates old approaches, and introduces new capabilities.
 
-A) Assign the user to a group
-B) Grant the user a role
-C) Add the user to an ACL
-D) Create a user preference
+Brain dump sites don't update their question banks with each release. That "correct" answer from the Tokyo release might be flat-out wrong in Zurich.
 
-<details>
-<summary>Show Answer</summary>
+Worse, ServiceNow actively rotates exam questions. The questions on ExamTopics from 2024 may not even appear on your 2026 exam. You've memorized answers to questions you'll never see.
 
-**Correct Answer: B) Grant the user a role**
+## What Actually Works
 
-Roles control access to applications and modules in ServiceNow. While groups can have roles assigned to them (which then apply to group members), the fundamental mechanism is the role. ACLs control record-level access, not application access.
+Here's the uncomfortable truth: there are no shortcuts to competence.
 
-</details>
+But there are *efficient* paths that teach you real skills while preparing you for the exam.
 
-### Question 3: Database Administration
+### 1. Hands-On Time in a PDI
 
-**What is the purpose of a dictionary override?**
+ServiceNow gives you a free Personal Developer Instance at developer.servicenow.com. This is where real learning happens.
 
-A) To change the dictionary definition of a word
-B) To modify field attributes on an extended table without affecting the parent
-C) To override system properties
-D) To bypass ACL rules
+Don't just read about business rules — create one. Break it. Fix it. Create another one that conflicts with it and debug why.
 
-<details>
-<summary>Show Answer</summary>
+Every hour in a PDI is worth 10 hours of reading.
 
-**Correct Answer: B) To modify field attributes on an extended table without affecting the parent**
+### 2. Official Now Learning Courses
 
-Dictionary overrides allow you to customize field properties (like mandatory, read-only, default value) on extended tables without changing the parent table's definition. This is essential for maintaining clean table inheritance.
+ServiceNow's official courses (Admin Fundamentals, etc.) are free. They're also what the exam is based on.
 
-</details>
+When you study from official content, you're learning the same concepts that exam writers use to create questions. Not leaked questions — the underlying knowledge.
 
-### Question 4: Self-Service & Automation
+### 3. Practice Questions That Explain Why
 
-**Which type of workflow activity sends a notification to a user?**
+This is where most practice tests fail. They give you:
 
-A) Notification activity
-B) Email activity
-C) Alert activity
-D) Notify activity
+> **Q:** What does a UI Policy do?
+> **A:** Dynamically changes form behavior
+> ✓ Correct!
 
-<details>
-<summary>Show Answer</summary>
+But they don't explain:
+- *Why* the other options are wrong
+- *When* you'd use a UI Policy vs. a Client Script
+- *Where* this fits in the bigger picture of form customization
 
-**Correct Answer: A) Notification activity**
+Good practice questions teach. Bad practice questions quiz.
 
-In legacy workflows, the Notification activity sends email notifications. In Flow Designer (the modern approach), you would use the "Send Email" action. Note: This question tests legacy workflow knowledge which may still appear on the exam.
+## How We Built SNReady Differently
 
-</details>
+We built SNReady specifically because we were frustrated with brain dump culture.
 
-### Question 5: Incident Management
+Every question on SNReady is generated from official ServiceNow course content — the same material Now Learning uses. Not leaked exam questions. Not crowd-sourced guesses.
 
-**What happens when an incident is resolved?**
+Every explanation tells you:
+- **Why the correct answer is correct** — with conceptual context
+- **Why each wrong answer is wrong** — so you learn the distinctions
+- **Where to learn more** — links to the source material
 
-A) It is immediately closed
-B) State changes to Resolved; awaiting user confirmation
-C) It is deleted from the system
-D) It moves to the Problem table
+The goal isn't to help you memorize answers. It's to help you understand ServiceNow well enough that the right answer becomes obvious.
 
-<details>
-<summary>Show Answer</summary>
+## The Real Exam Experience
 
-**Correct Answer: B) State changes to Resolved; awaiting user confirmation**
+Here's what the CSA exam is actually like:
 
-When an incident is resolved, it enters a "Resolved" state but isn't immediately closed. This allows the affected user to confirm the resolution. If no response is received within a configurable time period, the incident automatically closes.
+- 60 questions, 90 minutes
+- Multiple choice and multi-select
+- Scenario-based questions (not just definitions)
+- You can flag questions and return to them
+- 70% to pass (42/60)
 
-</details>
+The scenario-based questions are where brain dumps fail hardest. ServiceNow doesn't ask "What is a UI Policy?" They ask:
 
-## Get More Practice Questions
+> "A user reports that a field should be read-only when the State is Closed, but they can still edit it. The admin confirms a UI Policy exists with the correct conditions. What is the most likely cause?"
 
-These 5 questions are just a sample. SNReady offers:
+If you've actually configured UI Policies and hit this problem in your PDI, you know to check if the policy is running on the right table, if conditions are using the right operators, or if another UI Policy is conflicting.
 
-- **50+ free CSA questions** across all 8 domains
-- **100+ premium questions** with detailed explanations
-- **Timed mock exams** that simulate the real test
-- **Domain-specific practice** to target your weak areas
+If you memorized "UI Policy = dynamic form changes," you're stuck.
 
-[Start Free CSA Practice →](/csa/practice-questions)
+## The Bottom Line
 
-## CSA Exam Tips
+Brain dumps are a trap. They promise a shortcut but deliver:
+- Wrong answers
+- Zero real knowledge
+- Outdated information
+- A certification you can't back up with skills
 
-1. **Know the UI cold** — You'll get questions about where to find things in the platform
-2. **Understand table relationships** — Base tables, extended tables, and how data inherits
-3. **Practice with roles and ACLs** — Security questions are heavily weighted
-4. **Don't memorize, understand** — The exam tests application of concepts, not rote memory
+The path that works:
+1. Hands-on time in a PDI
+2. Official Now Learning courses
+3. Practice questions that explain *why*
 
-## Ready to Pass Your CSA Exam?
+You'll spend the same amount of time either way. One path makes you competent. The other makes you a liability with a certificate.
 
-Start with our free practice questions to assess your readiness. When you're ready for the full experience, unlock all questions with detailed explanations for just $9.
-
-[Start Free Practice →](/csa/practice-questions)
+[Start with practice questions that actually teach →](/csa/practice-questions)
 `
   },
   {
-    slug: "csa-vs-cad-which-servicenow-certification-first",
-    title: "CSA vs CAD: Which ServiceNow Certification Should You Get First?",
-    description: "Comparing ServiceNow CSA and CAD certifications. Learn which certification is right for your career path, the prerequisites, exam difficulty, and job opportunities for each.",
+    slug: "csa-vs-cad-real-talk",
+    title: "CSA or CAD First? Real Talk From Someone Who's Done Both",
+    description: "Skip the generic advice. Here's the actual decision framework for choosing between ServiceNow CSA and CAD certifications based on your background and goals.",
     publishedAt: "2026-02-22",
     author: "SNReady Team",
-    tags: ["CSA", "CAD", "career", "comparison"],
+    tags: ["CSA", "CAD", "career"],
     featured: true,
-    readingTime: 6,
+    readingTime: 8,
     content: `
-## The Two Entry Points to ServiceNow
+## The Generic Advice Is Useless
 
-If you're starting your ServiceNow certification journey, you've probably noticed two main entry-level certifications:
+Every "CSA vs CAD" article says the same thing:
+- CSA is for administrators
+- CAD is for developers
+- Get CSA first because it's the prerequisite
 
-- **CSA (Certified System Administrator)** — For platform administrators
-- **CAD (Certified Application Developer)** — For developers and builders
+That's technically true and practically useless. It doesn't help you decide.
 
-Both are foundational certifications, but they lead to very different career paths. Let's break down which one is right for you.
+Here's the actual decision framework.
 
-## Quick Comparison
+## First: What's Your Background?
 
-| Aspect | CSA | CAD |
-|--------|-----|-----|
-| **Focus** | Platform administration | Application development |
-| **Prerequisites** | None | CSA recommended |
-| **Questions** | 60 | 60 |
-| **Time** | 90 minutes | 90 minutes |
-| **Passing Score** | 70% | 70% |
-| **Exam Fee** | $210 | $210 |
-| **Typical Salary** | $80K-120K | $100K-140K |
+### If you're completely new to ServiceNow
 
-## Who Should Get CSA First?
+**Get CSA first. No exceptions.**
 
-Get CSA first if you:
+CAD assumes you understand tables, forms, ACLs, the data model, how records flow through the system. If you don't have this foundation, CAD will be painful.
 
-- ✅ Are new to ServiceNow entirely
-- ✅ Want to understand how the platform works before building on it
-- ✅ Plan to work in IT operations, support, or platform administration
-- ✅ Need a solid foundation before specializing
-- ✅ Want the most versatile entry certification
+More importantly: most entry-level ServiceNow jobs want CSA. Not CAD. Not both. Just CSA.
 
-**CSA is the most common starting point** because it teaches you how ServiceNow works at a fundamental level. Even developers benefit from understanding administration concepts.
+You can always add CAD later. But CSA is the universal entry point.
 
-## Who Should Get CAD First?
+### If you're a developer with strong JavaScript/coding background
 
-Get CAD first if you:
+You might be tempted to skip straight to CAD since it's "the developer cert."
 
-- ✅ Already have strong JavaScript experience
-- ✅ Have used ServiceNow as a developer (even without formal training)
-- ✅ Are focused purely on development roles
-- ✅ Want to fast-track into higher-paying developer positions
+Don't.
 
-**Important:** ServiceNow officially recommends CSA as a prerequisite for CAD. While it's not strictly required, CAD assumes you understand CSA concepts like tables, forms, ACLs, and the data model.
+Here's why: CAD tests ServiceNow-specific concepts, not JavaScript. You'll ace the scripting syntax questions but struggle with:
 
-## What Does Each Certification Cover?
+- What's the difference between a Business Rule and a Script Include?
+- When should you use GlideRecord vs. GlideAggregate?
+- How does the client-server architecture affect your script design?
+- What are the scoped app restrictions?
 
-### CSA Exam Domains
+These require understanding the platform, which CSA teaches.
 
-1. **User Interface & Navigation** (15%)
-2. **User Administration & Security** (15%)
-3. **Database Administration** (20%)
-4. **Self-Service & Automation** (15%)
-5. **Incident Management** (10%)
-6. **Problem Management** (5%)
-7. **Change Management** (10%)
-8. **Reporting & Dashboards** (10%)
+**My recommendation:** Study CSA material for 2 weeks. Take the CSA exam. Then start CAD prep immediately. You can get both within a month if you're focused.
 
-### CAD Exam Domains
+### If you're already working with ServiceNow
 
-1. **Scripting & APIs** (25%)
-2. **Application Development** (20%)
-3. **Business Rules** (15%)
-4. **Client Scripts** (10%)
-5. **UI Policies & Actions** (10%)
-6. **Script Includes** (10%)
-7. **Integration/REST** (10%)
+This is where it gets interesting.
 
-## Career Paths After Each Certification
+**If you're doing admin work** (configuring forms, managing users, running reports):
+Get CSA, obviously. Validate what you already do.
 
-### After CSA
-- ServiceNow Administrator
-- Platform Support Specialist
-- ITSM Analyst
-- → CIS certifications (ITSM, CSM, HR, etc.)
+**If you're writing scripts but have no cert:**
+Here's a secret: you can take CAD without CSA. It's "recommended" as a prereq, not required.
 
-### After CAD
-- ServiceNow Developer
-- Application Developer
-- Integration Specialist
-- → CTA (Technical Architect) path
+If you've been scripting in ServiceNow for 6+ months, you probably know the CSA content already. You just learned it on the job instead of in a course.
+
+Try this: Take a CSA practice test. If you score 80%+, skip CSA and go straight to CAD. You can always get CSA later if you need it for a checkbox.
+
+## Second: What's Your Goal?
+
+### Goal: Get hired in ServiceNow
+
+**CSA is the door-opener.**
+
+Look at any ServiceNow job posting. "CSA required" appears on everything from junior admin to platform owner.
+
+CAD is nice to have. CSA is required.
+
+Get CSA first. Add CAD if you want developer roles specifically.
+
+### Goal: Maximize salary
+
+**Both, but CAD carries a premium.**
+
+CSA: $80K-120K typical range (depending on experience)
+CAD: $100K-140K typical range
+Both: $120K-160K
+
+Developers are harder to find than admins. The premium is real.
+
+But you need experience to command those numbers. A fresh CAD with no project history won't get $140K.
+
+### Goal: Become an architect (CTA)
+
+**Get both, plus implementation experience.**
+
+CTA (Certified Technical Architect) requires:
+- CSA + CAD as prerequisites
+- Deep project experience
+- Ability to design solutions, not just implement them
+
+If CTA is your target, CSA and CAD are just waypoints. Get them efficiently and start accumulating project experience.
+
+### Goal: Just get certified fast
+
+**CSA is easier.**
+
+CSA: 2-4 weeks of study for most people
+CAD: 4-6 weeks (more if you're weak on scripting)
+
+If you need a cert for your resume quickly, CSA is the faster path.
+
+## The Actual Differences
+
+Let me be concrete about what each exam tests:
+
+### CSA Tests
+
+- UI navigation and configuration
+- User management, groups, roles
+- Tables, fields, relationships
+- Lists, filters, views
+- ACLs and security rules
+- Business Rules (basic)
+- UI Policies, UI Actions
+- Service Catalog basics
+- Incident/Problem/Change management
+- Reporting and dashboards
+- Notifications and workflows
+
+It's broad. An inch deep on many topics.
+
+### CAD Tests
+
+- JavaScript in ServiceNow (ES6)
+- GlideRecord, GlideAggregate, GlideAjax
+- Business Rules (advanced)
+- Client Scripts (all types)
+- Script Includes
+- UI Policies vs Client Scripts
+- REST API integration
+- Scoped vs global apps
+- Update sets and deployment
+- Debugging techniques
+
+It's narrower but deeper. You need to actually code.
 
 ## My Recommendation
 
-**For most people: Get CSA first.**
+**For 90% of people:** Get CSA first. Study for 2-4 weeks. Take the exam. Then evaluate if you need CAD.
 
-Here's why:
+**For experienced developers new to ServiceNow:** Study CSA for 2 weeks, take it, then immediately prep for CAD. Get both in 4-6 weeks.
 
-1. **Foundation matters** — CSA concepts appear throughout all other certifications
-2. **Job flexibility** — CSA-only roles are more common at entry level
-3. **Easier exam** — CSA has less technical depth than CAD
-4. **Better preparation** — You'll be better prepared for CAD after CSA
+**For people already scripting in ServiceNow:** Take a CSA practice test. If you score 80%+, consider skipping to CAD. Get CSA later if needed.
 
-**Exception:** If you're an experienced developer joining a ServiceNow team and need to be productive immediately, you could study CSA material without taking the exam, then certify for CAD directly.
+## The Prep That Works
 
-## How Long to Get Both?
+Whichever cert you choose:
 
-A realistic timeline:
+1. **Get a PDI** (developer.servicenow.com) — free instance for hands-on practice
+2. **Complete official courses** — Now Learning is free
+3. **Practice with questions that explain** — learn why, not just what
+4. **Time yourself** — both exams are 90 minutes, 60 questions
 
-- **CSA only:** 2-4 weeks of focused study
-- **CSA + CAD:** 6-10 weeks total
-- **CSA → CAD (sequential):** Get CSA, work with the platform for 1-3 months, then pursue CAD
-
-## Practice for Both Certifications
-
-SNReady offers practice questions for both certifications, generated from official Now Learning content:
-
-- [CSA Practice Questions](/csa/practice-questions) — 100+ questions across 8 domains
-- [CAD Practice Questions](/cad/practice-questions) — 130+ questions across 7 domains
-
-Start with free questions to assess your readiness, then unlock full access when you're ready to get serious.
-
-[Compare CSA vs CAD in Detail →](/compare/csa-vs-cad)
+[CSA Practice Questions →](/csa/practice-questions)
+[CAD Practice Questions →](/cad/practice-questions)
 `
   },
   {
-    slug: "servicenow-csa-exam-guide-2026",
-    title: "ServiceNow CSA Exam Guide 2026: Everything You Need to Pass",
-    description: "Complete guide to passing the ServiceNow CSA exam in 2026. Covers exam format, study resources, domain breakdown, practice strategies, and tips from certified professionals.",
+    slug: "servicenow-csa-exam-what-they-dont-tell-you",
+    title: "The ServiceNow CSA Exam: What They Don't Tell You",
+    description: "Beyond the official exam guide. Real insights on question patterns, time management, and the topics that trip people up on the CSA certification.",
     publishedAt: "2026-02-22",
     author: "SNReady Team",
-    tags: ["CSA", "exam guide", "study guide", "2026"],
+    tags: ["CSA", "exam tips", "strategy"],
     featured: true,
-    readingTime: 12,
-    content: `
-## What is the ServiceNow CSA Certification?
-
-The ServiceNow Certified System Administrator (CSA) is the foundational certification for ServiceNow professionals. It validates your ability to configure, manage, and maintain a ServiceNow instance.
-
-**Why get CSA certified?**
-- Industry-recognized credential
-- Required for most ServiceNow admin positions
-- Foundation for all other ServiceNow certifications
-- Average salary increase of 15-25% after certification
-
-## CSA Exam Overview
-
-| Detail | Information |
-|--------|-------------|
-| **Exam Code** | Mainline exam |
-| **Questions** | 60 multiple choice |
-| **Time Limit** | 90 minutes |
-| **Passing Score** | 70% (42/60 correct) |
-| **Cost** | $210 USD |
-| **Format** | Proctored (in-person or online) |
-| **Validity** | Valid until next major release |
-
-## Exam Domains & Weights
-
-The CSA exam tests 8 domains. Here's what to focus on:
-
-### 1. User Interface & Navigation (15%)
-- Next Experience UI (Polaris)
-- Workspace navigation
-- Lists, filters, and views
-- Form configuration
-- Browser/session management
-
-**Key concepts:** Unified Navigation, Application Navigator, contextual search, favorites, history
-
-### 2. User Administration & Security (15%)
-- User provisioning
-- Groups and roles
-- Access Control Lists (ACLs)
-- Delegated administration
-- Impersonation
-
-**Key concepts:** Role hierarchy, ACL rules, user preferences, group membership
-
-### 3. Database Administration (20%) ⭐ Highest Weight
-- Table creation and management
-- Fields and data types
-- Dictionary entries
-- Table relationships
-- Indexes and performance
-
-**Key concepts:** Base tables vs. extended tables, reference fields, glide system properties
-
-### 4. Self-Service & Automation (15%)
-- Service Catalog
-- Workflows and Flow Designer
-- Notifications
-- Business rules
-- Scheduled jobs
-
-**Key concepts:** Catalog items, record producers, variables, order guides
-
-### 5. Incident Management (10%)
-- Incident lifecycle
-- Assignment rules
-- Inactivity monitors
-- Major incidents
-- Communications
-
-**Key concepts:** State values, SLAs, related lists, parent/child incidents
-
-### 6. Problem Management (5%)
-- Problem workflow
-- Root cause analysis
-- Known errors
-- Problem tasks
-- Linking to incidents
-
-**Key concepts:** Problem vs. incident, known error database (KEDB)
-
-### 7. Change Management (10%)
-- Change types (Normal, Standard, Emergency)
-- Change workflows
-- CAB process
-- Risk assessment
-- Change calendar
-
-**Key concepts:** Change models, approval policies, collision detection
-
-### 8. Reporting & Dashboards (10%)
-- Report types
-- Dashboard creation
-- Performance Analytics basics
-- Scheduled reports
-- Report sharing
-
-**Key concepts:** Bar charts, pie charts, trend reports, gauges, list reports
-
-## Study Resources
-
-### Official (Free)
-1. **Now Learning** — ServiceNow's free learning platform
-   - CSA Fundamentals course
-   - Admin Fundamentals course
-   - Release-specific delta courses
-
-2. **Product Documentation** — docs.servicenow.com
-   - Always reference the current release (Zurich)
-
-3. **Developer Instance** — developer.servicenow.com
-   - Free personal instance for hands-on practice
-
-### Practice Tests
-- **SNReady** — Practice questions from official course content
-- Start with [free CSA questions](/csa/practice-questions)
-
-## Study Plan: 4-Week Schedule
-
-### Week 1: Foundation
-- Complete Admin Fundamentals course
-- Focus: UI Navigation, User Administration
-- Hands-on: Create users, groups, roles in your PDI
-
-### Week 2: Core Technical
-- Focus: Database Administration, Self-Service
-- Hands-on: Create tables, fields, catalog items
-- Take first practice test to identify gaps
-
-### Week 3: ITSM Modules
-- Focus: Incident, Problem, Change Management
-- Hands-on: Configure ITSM workflows
-- Review weak areas from practice test
-
-### Week 4: Review & Polish
-- Focus: Reporting, remaining gaps
-- Take timed mock exams
-- Review explanations for every wrong answer
-
-## Exam Day Tips
-
-### Before the Exam
-- ✅ Get a good night's sleep
-- ✅ Review your notes, not new material
-- ✅ Arrive 15 minutes early
-- ✅ Bring valid ID
-
-### During the Exam
-- ✅ Read questions carefully — watch for "NOT" and "EXCEPT"
-- ✅ Flag uncertain questions and return later
-- ✅ Don't spend more than 2 minutes per question
-- ✅ Trust your first instinct unless you're certain
-
-### Question Types
-- **Scenario-based:** "A user reports that..." — Apply concepts to situations
-- **Direct knowledge:** "Which table stores..." — Know your facts
-- **Best practice:** "What is the recommended..." — Follow ServiceNow standards
-
-## Common Mistakes to Avoid
-
-1. **Only reading, no hands-on** — You must practice in a real instance
-2. **Using outdated materials** — Always study for the current release
-3. **Ignoring low-weight domains** — A 5% domain can still have 3+ questions
-4. **Memorizing without understanding** — The exam tests application, not recall
-5. **Skipping practice tests** — They reveal what you don't know
-
-## After You Pass
-
-### Maintain Your Certification
-- ServiceNow certifications are release-based
-- Complete the Delta exam when a new release launches
-- Delta exams are shorter and focus on new features
-
-### Next Certifications
-Popular paths after CSA:
-- **CAD** (Application Developer) — For technical roles
-- **CIS-ITSM** — For ITSM specialists
-- **CIS-CSM** — For customer service roles
-- **CIS-HR** — For HR service delivery
-
-## Start Practicing Now
-
-Don't wait until you've read every page of documentation. Start practicing early to identify your weak areas.
-
-[Take Free CSA Practice Questions →](/csa/practice-questions)
-
----
-
-*Last updated: February 2026 for Zurich release*
-`
-  },
-  {
-    slug: "how-to-pass-servicenow-cis-itsm-exam",
-    title: "How to Pass the ServiceNow CIS-ITSM Exam: Study Guide & Tips",
-    description: "Complete CIS-ITSM exam preparation guide. Learn what's covered, how to study, and get practice questions for the ServiceNow IT Service Management certification.",
-    publishedAt: "2026-02-22",
-    author: "SNReady Team",
-    tags: ["CIS-ITSM", "exam guide", "ITSM", "study guide"],
     readingTime: 10,
     content: `
-## What is CIS-ITSM?
+## The Official Guide Isn't Enough
 
-The Certified Implementation Specialist - IT Service Management (CIS-ITSM) certification validates your ability to implement and configure ServiceNow ITSM applications. It's one of the most popular CIS certifications because ITSM is the core of ServiceNow deployments.
+ServiceNow's exam guide tells you the domains and weightings:
 
-## Prerequisites
+| Domain | Weight |
+|--------|--------|
+| Database Administration | 20% |
+| User Administration & Security | 15% |
+| UI & Navigation | 15% |
+| Self-Service & Automation | 15% |
+| Reporting & Dashboards | 10% |
+| Change Management | 10% |
+| Incident Management | 10% |
+| Problem Management | 5% |
 
-**Required:** CSA certification
-**Recommended experience:** 6-12 months working with ServiceNow ITSM
+That's helpful but incomplete. Here's what they don't tell you.
 
-## Exam Details
+## Question Patterns You'll Actually See
 
-| Detail | Information |
-|--------|-------------|
-| **Questions** | 60 multiple choice |
-| **Time** | 90 minutes |
-| **Passing Score** | 70% |
-| **Cost** | $315 USD |
+### Pattern 1: The "Which is NOT" Question
 
-## CIS-ITSM Exam Domains
+> "Which of the following is NOT a valid state for an Incident record?"
 
-### 1. ITSM Overview & Architecture (10%)
-- ITSM application suite
-- Module relationships
-- ITIL alignment
-- Virtual Agent basics
+These reverse questions trip people up. You're looking for four correct things and one wrong thing. Your brain is trained to find the right answer, not the wrong one.
 
-### 2. Incident Management (20%) ⭐
-- Incident workflows
-- Assignment rules
-- Major incident management
-- Communications
-- Incident matching
+**Strategy:** Physically cover the "NOT" with your finger, identify what IS correct, then pick what's left.
 
-### 3. Problem Management (15%)
-- Problem workflow
-- Root cause analysis
-- Known errors
-- Problem tasks
-- Linking to incidents/changes
+### Pattern 2: The Multi-Select Ambiguity
 
-### 4. Change Management (20%) ⭐
-- Change types and models
-- Change workflows
-- CAB management
-- Risk assessment
-- Change calendar/collision
+> "Which statements are true about Business Rules? (Choose two.)"
 
-### 5. Request Management (15%)
-- Service Catalog integration
-- Request workflows
-- Requested items
-- Tasks and approvals
+Sometimes it's "Choose two." Sometimes it's "Choose all that apply." The difference matters.
 
-### 6. SLA Management (10%)
-- SLA definitions
-- Task SLAs
-- Breach tracking
-- Reporting
+"Choose two" = exactly 2 answers are correct
+"Choose all that apply" = could be 2, 3, or 4 correct
 
-### 7. Reporting & Analytics (10%)
-- ITSM dashboards
-- Performance Analytics
-- Metrics and KPIs
-- Trend analysis
+**Strategy:** For "Choose all that apply," evaluate each option independently. For "Choose two," find the two MOST correct (some wrong options might seem partially true).
 
-## Study Plan
+### Pattern 3: The Scenario That Buries the Lead
 
-### Week 1-2: Incident & Problem
-- Focus on incident lifecycle
-- Master problem-incident relationships
-- Hands-on: Configure workflows in PDI
+> "An administrator creates a new field on the Incident table called 'Risk Level' with a dropdown of Low, Medium, High. They create a UI Policy to make the field mandatory when Priority is 1 - Critical. A user reports they can submit P1 incidents without filling in Risk Level. The UI Policy is active and the condition is configured correctly. What is most likely causing this issue?"
 
-### Week 3: Change Management
-- Deep dive into change types
-- CAB and approval processes
-- Risk and impact calculations
+The setup is 50 words. The actual question is hidden at the end. Most people start panicking because they're still processing the scenario.
 
-### Week 4: Request, SLA, Reporting
-- Service Catalog integration
-- SLA configuration
-- Practice exams
+**Strategy:** Read the LAST sentence first. Know what you're looking for. THEN read the setup to find the answer.
 
-## Key Differences from CSA
+### Pattern 4: The "Best Practice" Question
 
-CIS-ITSM goes deeper than CSA on ITSM topics:
-- More complex workflow scenarios
-- Implementation and configuration (not just administration)
-- Best practices and ITIL alignment
-- Performance optimization
+> "What is the recommended approach for..."
 
-## Practice Resources
+ServiceNow has official best practices for almost everything. These questions test if you know them.
 
-- [CIS-ITSM Practice Questions](/cis-itsm/practice-questions) — 63+ questions
-- [Free CIS-ITSM Questions](/cis-itsm/practice-questions) — Start here
-- [Timed Mock Exam](/cis-itsm/mock-exam) — Simulate the real test
+Examples:
+- Best practice for Business Rules: avoid GlideRecord queries in display rules
+- Best practice for notifications: use event-based, not record-based
+- Best practice for ACLs: most restrictive at table level
 
-[Start CIS-ITSM Practice →](/cis-itsm/practice-questions)
+**Strategy:** When you see "recommended" or "best practice," think about what ServiceNow officially suggests in their documentation, not what "works."
+
+## The Topics That Trip People Up
+
+### 1. Dictionary Overrides
+
+"What's a dictionary override used for?"
+
+Most people know fields have attributes (mandatory, read-only, default values). Fewer know that on extended tables, you can override these attributes WITHOUT changing the parent.
+
+Real-world example: The Task table has a State field. Incident extends Task. You want State to be mandatory on Incidents but not on all Tasks.
+
+Answer: Dictionary override on the Incident table's State field.
+
+### 2. Coalesce Fields in Import Sets
+
+"If coalesce finds a match, what happens?"
+
+This confuses people because it sounds like merge/upsert logic from databases.
+
+Simple rule:
+- Match found → UPDATE existing record
+- No match → INSERT new record
+
+Coalesce fields define what counts as a "match." It's NOT about merging data. It's about deciding whether to update or insert.
+
+### 3. The Difference Between Similar Things
+
+The exam loves testing distinctions:
+
+- **UI Policy vs. Client Script:** Both run on the client, both can change form behavior. UI Policy is no-code, runs on form load + field change. Client Script is coded, offers more control and event types (onChange, onSubmit, onLoad, onCellEdit).
+
+- **Business Rule vs. Script Include:** Both are server-side scripts. Business Rule runs automatically when records are modified. Script Include is a reusable function you call explicitly.
+
+- **Global vs. Scoped App:** Global runs everywhere, can access everything, harder to control. Scoped runs in isolation, must request cross-scope access, easier to package and share.
+
+### 4. ACL Evaluation Order
+
+"How does ServiceNow evaluate ACLs?"
+
+This is nuanced:
+
+1. Object-level (table + field) → must pass
+2. Row-level → if no ACL exists, row access allowed
+3. Field-level → if no ACL exists, field access follows row
+
+And the matching logic:
+- More specific ACLs override less specific
+- Multiple matching ACLs: ALL must pass
+- No matching ACL: access DENIED (not allowed)
+
+## Time Management
+
+90 minutes. 60 questions. That's 90 seconds per question.
+
+Sounds tight, but it's generous if you manage it right.
+
+**First pass (45 min):** Answer everything you know immediately. Flag anything that requires thought. Don't solve hard problems.
+
+**Second pass (30 min):** Return to flagged questions. Now you have time to think.
+
+**Final pass (15 min):** Review flagged questions one more time. Change answers ONLY if you find an actual error, not just second-guessing.
+
+Most people fail time management because they freeze on early hard questions. Don't. Flag it and move on.
+
+## The Day Before
+
+Don't cram. Seriously.
+
+If you don't know it the day before, you won't know it the day of. Last-minute memorization creates anxiety without creating competence.
+
+**Do this instead:**
+- Review your notes casually
+- Get 8 hours of sleep
+- Lay out everything you need (ID, test confirmation)
+- Accept that you're as prepared as you're going to be
+
+## The Day Of
+
+- Arrive 15 minutes early
+- Use the restroom before you start
+- Read each question fully (including all options)
+- Trust your first instinct unless you find an actual error
+- Use the flag feature — don't fight hard questions early
+- Don't panic if you hit questions you've never seen (some are experimental/unscored)
+
+## Practice Questions That Actually Help
+
+Most practice tests train you to recognize keywords and pattern-match to answers. That works for easy questions but fails on scenario-based ones.
+
+Good practice should make you think like the exam. Every question should have:
+- A clear explanation of why the correct answer is correct
+- An explanation of why each wrong answer is wrong
+- A connection to actual platform behavior
+
+That's how you prepare for scenario questions — by building mental models, not by memorizing answer patterns.
+
+[Take CSA Practice Questions →](/csa/practice-questions)
 `
   },
   {
-    slug: "servicenow-certification-path-2026",
-    title: "ServiceNow Certification Path 2026: Complete Roadmap",
-    description: "Navigate the ServiceNow certification landscape. See all certifications, prerequisites, career paths, and which certifications are most valuable in 2026.",
+    slug: "servicenow-certification-worth-it-2026",
+    title: "Is ServiceNow Certification Worth It in 2026? A Realistic Analysis",
+    description: "Cutting through the hype. When ServiceNow certification pays off, when it doesn't, and how to make the investment worthwhile.",
     publishedAt: "2026-02-22",
     author: "SNReady Team",
-    tags: ["certifications", "career", "roadmap", "2026"],
+    tags: ["career", "certifications", "salary"],
+    readingTime: 9,
+    content: `
+## The Question Nobody Wants to Answer Honestly
+
+Every certification site tells you ServiceNow certs are valuable. Of course they do — they sell cert prep.
+
+Here's a more honest answer: **It depends on where you're starting from.**
+
+## When Certification Pays Off
+
+### Scenario 1: Breaking Into ServiceNow
+
+You're in IT but not ServiceNow. You want in.
+
+**Certification: Worth it.**
+
+Here's the math:
+- CSA exam: $210
+- Study time: 40-80 hours
+- Entry ServiceNow roles: $80K-100K
+- General IT support roles: $50K-70K
+
+That's a $20K-30K salary jump for a $210 exam. Even if you include $500 in study materials and 2 months of evening study, the ROI is exceptional.
+
+**Catch:** You still need to get hired. Certification opens doors but doesn't guarantee entry. You'll also need:
+- A PDI with some configuration work to show
+- Basic understanding of ITSM concepts
+- Soft skills for interviews
+
+### Scenario 2: Already Working in ServiceNow Without Cert
+
+You've been doing ServiceNow admin work for a year. No certification.
+
+**Certification: Probably worth it.**
+
+Your experience matters more than the cert. But:
+- Some employers require certification for promotions
+- Some clients require certified resources
+- Some recruiters filter for "CSA required"
+
+If you're happy in your current role and don't need the cert for advancement, maybe it's optional. But if you ever want to switch jobs, the cert removes friction.
+
+### Scenario 3: Moving from CSA to CIS Specializations
+
+You have CSA. Should you get CIS-ITSM, CIS-CSM, etc.?
+
+**Depends on your specialization.**
+
+If you work exclusively in ITSM implementations, CIS-ITSM validates that specialization. It can command a premium for specialized work.
+
+But if you're a generalist admin who touches multiple modules, additional CIS certs may not add much value. One or two specializations is plenty.
+
+### Scenario 4: Going for CTA
+
+You want to be a Technical Architect.
+
+**Certification: Required, but not sufficient.**
+
+CTA requires CSA + CAD + passing the CTA exam (which is brutal). But having the certs alone doesn't make you an architect.
+
+You need years of complex project experience. The certification validates knowledge; the projects validate judgment.
+
+## When Certification Doesn't Pay Off
+
+### If you're collecting certs without using them
+
+Some people get CSA, CAD, CIS-ITSM, CIS-CSM, CIS-HR... and work in a role that only uses CSA skills.
+
+Those extra certs aren't worthless, but they're also not generating returns. The investment in time and exam fees could have gone toward:
+- Actual project experience
+- Adjacent skills (integration, reporting, automation)
+- Building your own ServiceNow projects/content
+
+**One cert you use > Five certs you don't.**
+
+### If you're using brain dumps to pass
+
+Let's be blunt: if you memorize brain dumps and pass, you have a certification you can't back up with skills.
+
+When you get into a role and can't do the work, either:
+- You struggle and eventually get fired
+- You struggle and eventually learn the real skills (wasting months)
+- Your employer discovers you faked competence
+
+The certification only has value if you can DO what it claims you can do.
+
+### If your employer pays anyway
+
+Some companies pay for everything: training, exams, study time.
+
+**Still worth getting**, but the ROI calculation changes. The cost to you is near-zero, so even a modest career benefit makes it worthwhile.
+
+## The ROI Numbers
+
+Let's be concrete:
+
+**CSA Certification Costs:**
+- Exam: $210
+- Study materials: $0-500 (can be free via Now Learning)
+- Time: 40-80 hours
+
+**CSA Certification Benefits:**
+- Entry salary bump: $15K-30K/year
+- Easier job searching (passes recruiter filters)
+- Access to ServiceNow partner network (some require certified staff)
+
+**Payback period:** 1-3 months if you're getting a new job. Infinite if you're already employed and don't need it.
+
+**CAD Additional Value:**
+- Exam: $210
+- Study time: 60-100 additional hours
+- Developer role premium: $20K-40K over admin roles
+
+**CIS Certifications:**
+- Exam: $315 each
+- Specialization premium: Varies ($10K-20K for in-demand specialties)
+- Diminishing returns after 2-3 CIS certs
+
+## Making the Investment Worthwhile
+
+If you're going to certify, maximize the return:
+
+### 1. Learn for the job, not just the exam
+
+Use your PDI. Build things. Break things. Fix things.
+
+The exam tests knowledge. The job tests competence. If you only study for the exam, you'll pass the exam and fail the job.
+
+### 2. Stack strategically
+
+CSA first (universal requirement)
+CAD if you're technical (significant premium)
+One CIS for your specialty (proves depth)
+
+That's three certifications maximum for most people. Adding more has diminishing returns unless your role specifically requires them.
+
+### 3. Keep current
+
+ServiceNow certs are version-specific. When a new release comes out, you need the delta exam to maintain certification.
+
+This isn't a one-time investment. Factor in ongoing maintenance.
+
+### 4. Document your projects
+
+Certification opens doors. Portfolio wins jobs.
+
+Build things in your PDI that demonstrate actual capability:
+- A custom application
+- An integration with an external system
+- A reporting dashboard
+
+Screenshots and GitHub repos beat certification alone.
+
+## The Bottom Line
+
+ServiceNow certification is worth it when:
+- You're breaking into ServiceNow (CSA = ticket to entry)
+- You need it for advancement/clients (validation requirement)
+- You're pursuing architect path (required for CTA)
+
+It's not worth it when:
+- You're collecting certs you won't use
+- You're cramming brain dumps without learning
+- You're over-certifying for your actual role
+
+The investment is modest ($200-300 per cert). The time is more significant (40-100 hours per cert). Choose certifications that open doors you actually want to walk through.
+
+[Start Your CSA Prep →](/csa)
+`
+  },
+  {
+    slug: "cis-itsm-implementation-exam-reality",
+    title: "CIS-ITSM: The Implementation Exam That Trips Up CSA Holders",
+    description: "You passed CSA. You work with ITSM daily. You should breeze through CIS-ITSM, right? Here's why that assumption gets people.",
+    publishedAt: "2026-02-22",
+    author: "SNReady Team",
+    tags: ["CIS-ITSM", "exam prep", "ITSM"],
     readingTime: 8,
     content: `
-## ServiceNow Certification Landscape
+## The CSA Holder's Trap
 
-ServiceNow offers 30+ certifications across different specializations. Here's how to navigate them.
+You passed CSA. You've been working in ServiceNow for a year. You've resolved hundreds of incidents, processed change requests, linked problems to their causes.
 
-## Certification Levels
+CIS-ITSM should be easy, right?
 
-### Foundational
-- **CSA** — Certified System Administrator
-- **CAD** — Certified Application Developer
+Wrong. The failure rate for experienced ServiceNow admins on CIS-ITSM is higher than you'd expect.
 
-### Professional (CIS = Certified Implementation Specialist)
-- CIS-ITSM, CIS-CSM, CIS-HR, CIS-Discovery, etc.
-- Require CSA as prerequisite
+Here's why.
 
-### Expert
-- **CTA** — Certified Technical Architect
-- **CMA** — Certified Master Architect
+## CSA Breadth vs. CIS-ITSM Depth
 
-## Most Valuable Certifications in 2026
+CSA covers ITSM topics:
+- Incident states and priority
+- Problem linking
+- Change types
+- Basic workflows
 
-Based on job demand and salary data:
+CIS-ITSM goes deeper:
+- Major incident management with communication plans
+- Problem management lifecycle with root cause analysis
+- Change risk calculation with CAB workflows
+- SLA retroactive start behavior
+- Request fulfillment automation patterns
 
-### 1. CSA (Always #1)
-- Required for almost all SN positions
-- Foundation for everything else
-- Get this first
+If CSA is "know what these modules do," CIS-ITSM is "know how to IMPLEMENT these modules correctly."
 
-### 2. CAD (High Demand)
-- Developer shortage means premium salaries
-- $100K-140K typical range
-- Good if you have coding background
+## The Implementation Mindset
 
-### 3. CIS-ITSM (Most Common CIS)
-- ITSM is core of most implementations
-- Broad applicability
-- Natural next step after CSA
+CIS stands for Certified Implementation Specialist. Not Certified User. Not Certified Administrator.
 
-### 4. CIS-Discovery / CIS-SM (Growing Fast)
-- ITOM is expanding rapidly
-- Fewer certified professionals = higher value
-- Good for differentiation
+Implementation means:
+- Configuring from scratch, not just modifying existing setup
+- Understanding why features are designed the way they are
+- Knowing best practices for deployment
+- Troubleshooting configuration issues
 
-### 5. CTA (Premium Tier)
-- Architect-level certification
-- $150K-200K+ salaries
-- Requires extensive experience
+Example question:
 
-## Recommended Paths
+> "A customer wants incidents automatically assigned based on the Configuration Item. What would you configure?"
 
-### Path A: Administrator Track
-CSA → CIS-ITSM → CIS-CSM or CIS-HR → Additional CIS certs
+CSA answer: "Assignment rules."
 
-### Path B: Developer Track
-CSA → CAD → CIS specialization → CTA
+CIS-ITSM answer: "Assignment rules with CI-based conditions, but first verify CI data quality, consider assignment groups vs. individual assignment, evaluate escalation paths for unassigned CIs, and document the rule order since multiple rules might match."
 
-### Path C: ITOM Specialist
-CSA → CIS-Discovery → CIS-SM → CIS-EM
+The implementation specialist thinks through the full solution.
 
-## Practice for Any Certification
+## Topics That Trip People Up
 
-SNReady offers practice questions for:
-- [CSA](/csa) — 100+ questions
-- [CAD](/cad) — 130+ questions  
-- [CIS-ITSM](/cis-itsm) — 63 questions
-- [CIS-Discovery](/cis-discovery) — 60 questions
-- [And more...](/certifications)
+### 1. Major Incident Management
 
-[Browse All Certifications →](/certifications)
+CSA barely touches this. CIS-ITSM expects you to know:
+
+- When to declare a major incident (criteria-based, not just "it's bad")
+- Communication plans (who gets notified, when, through what channel)
+- Major incident workspaces and dashboards
+- Post-major incident reviews
+- The difference between "major" and "high priority"
+
+The last one is critical: **Major incident is a process designation. Priority is a data value.** A P1 incident isn't automatically a major incident. A major incident might not even be P1.
+
+### 2. Change Advisory Board (CAB) Workflows
+
+CSA knows "changes need approval."
+
+CIS-ITSM knows:
+- How to configure CAB date definitions
+- Emergency change authorization paths that bypass CAB
+- Automatic approval rules based on risk
+- How change conflicts are detected and displayed
+- Change model vs. standard change templates
+
+You need to understand not just that CAB exists, but how to implement a CAB process for a customer.
+
+### 3. SLA Edge Cases
+
+CSA: "SLAs measure response and resolution time."
+
+CIS-ITSM:
+- What happens when SLA retroactively starts?
+- How do business hours affect breach calculations?
+- When does stage advancement reset the SLA clock?
+- How are multiple SLAs on the same record prioritized?
+- What's the difference between task SLAs and table SLAs?
+
+The exam loves edge cases because implementation specialists encounter them.
+
+### 4. Request Fulfillment Patterns
+
+Request management seems simple: someone orders something, someone fulfills it.
+
+But implementation requires understanding:
+- Multi-item orders with separate fulfillment tasks
+- Approval routing based on item cost
+- Requested Item vs. Catalog Task workflows
+- Fulfillment groups and assignment logic
+- Order guides for complex bundled requests
+
+You're not just using the Service Catalog — you're designing it.
+
+### 5. Problem Management as a Real Process
+
+CSA knows: Problem linked to Incident, Known Error article, Root Cause field.
+
+CIS-ITSM knows:
+- Problem detection methods (trend analysis, major incident review)
+- Problem investigation workflows
+- Workaround vs. permanent solution
+- Known Error Database (KEDB) management
+- Problem task assignment for investigation
+- When to close a problem vs. keep it open
+
+## The Study Approach That Works
+
+### 1. Think Implementation, Not Usage
+
+When studying a feature, ask:
+- How would I configure this from scratch?
+- What decisions would I make for a new customer?
+- What are the best practices vs. "it works" approaches?
+
+### 2. Cover the Overlooked Topics
+
+Everyone knows Incident Management. Fewer study:
+- ITSM guided setup
+- Agent Intelligence for classification
+- Virtual Agent integration
+- Walk-up Experience
+- SLA definitions at a technical level
+
+### 3. Use Real Implementation Documentation
+
+ServiceNow's product documentation includes implementation guides. These are more useful than the exam guide for understanding implementation context.
+
+### 4. Practice Scenario Questions
+
+CIS-ITSM loves scenarios:
+
+> "A customer's incident response SLA keeps breaching even though agents respond within 5 minutes. The SLA is set to 15 minutes. What would you check first?"
+
+This requires diagnostic thinking, not just knowledge.
+
+## The Exam Itself
+
+- 60 questions, 90 minutes
+- 70% to pass (42/60)
+- Multi-select exists (choose 2, choose all that apply)
+- Scenario-based questions are common
+- Questions assume CSA knowledge (they won't explain what an ACL is)
+
+**Prerequisite:** CSA is required. You can't register for CIS-ITSM without it.
+
+## Preparation Timeline
+
+Assuming you have CSA and work with ITSM:
+
+- **Week 1-2:** Deep dive on major incident and problem management
+- **Week 3:** Change management implementation details
+- **Week 4:** SLA edge cases and request fulfillment
+- **Week 5:** Practice exams and gap identification
+
+If you don't work with ITSM daily, add 2-3 weeks of hands-on practice in a PDI.
+
+## The Bottom Line
+
+CIS-ITSM isn't "CSA part 2." It's an implementation certification that expects consultant-level understanding of ITSM configuration.
+
+If you use ITSM daily but don't configure it, you need to shift your mindset. Think like someone building the system, not using it.
+
+[Practice CIS-ITSM Questions →](/cis-itsm/practice-questions)
 `
   }
 ];
