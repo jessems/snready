@@ -1,0 +1,1761 @@
+[
+  {
+    "id": "cis-fsm-processes-601",
+    "certification": "cis-fsm",
+    "topic": "processes",
+    "cognitiveLevel": "knowledge",
+    "type": "multiple_choice",
+    "question": "An administrator needs to add buffer time between field service tasks to allow agents to complete documentation before traveling to the next location. Which Schedule Optimization property should be configured?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Number of seconds used for task scheduling resolution"
+      },
+      {
+        "id": "b",
+        "text": "Exit buffer time"
+      },
+      {
+        "id": "c",
+        "text": "Maximum number of overlapping qualifiers in a qualifier set"
+      },
+      {
+        "id": "d",
+        "text": "Travel start interval"
+      }
+    ],
+    "correctAnswers": [
+      "b"
+    ],
+    "explanation": {
+      "correct": "Exit buffer time adds a specified amount of time (in minutes) between the end of a task and the travel start of the next task. This property is found at All > Field Service > Administration > Properties.",
+      "wrongAnswers": [
+        {
+          "id": "a",
+          "explanation": "Number of seconds used for task scheduling resolution specifies the acceptable interval for scheduling tasks (e.g., nearest 5-minute intervals), not buffer time between tasks."
+        },
+        {
+          "id": "c",
+          "explanation": "Maximum number of overlapping qualifiers in a qualifier set defines qualifier limits, not time buffers between tasks."
+        },
+        {
+          "id": "d",
+          "explanation": "Travel start interval is not a valid Schedule Optimization property in ServiceNow FSM."
+        }
+      ]
+    },
+    "source": {
+      "excerpt": "Exit buffer time: Amount of time (in minutes) to add between the end of a task and the travel start of the next.",
+      "url": "https://www.servicenow.com/docs/r/xanadu/field-service-management/schedule-optimization-properties.html"
+    },
+    "labels": {
+      "domain": "Implementing Field Service Processes",
+      "subtopics": [
+        "Schedule Optimization"
+      ],
+      "tags": [
+        "field-service",
+        "schedule-optimization",
+        "properties"
+      ]
+    },
+    "meta": {
+      "version": "1.0",
+      "release": "Xanadu",
+      "reviewed": false
+    },
+    "isFree": true
+  },
+  {
+    "id": "cis-fsm-processes-602",
+    "certification": "cis-fsm",
+    "topic": "processes",
+    "cognitiveLevel": "understanding",
+    "type": "multiple_choice",
+    "question": "What happens to the Schedule Optimization qualifier type when the Field Service Territory model is enabled?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The qualifier type remains as Assignment group but can be manually changed to Territory"
+      },
+      {
+        "id": "b",
+        "text": "The qualifier type automatically switches to Territory and remains fixed"
+      },
+      {
+        "id": "c",
+        "text": "Both Assignment group and Territory qualifier types become available for selection"
+      },
+      {
+        "id": "d",
+        "text": "The qualifier type must be manually configured to Territory after enabling the model"
+      }
+    ],
+    "correctAnswers": [
+      "b"
+    ],
+    "explanation": {
+      "correct": "When the Field Service Territory model is enabled, the qualifier type automatically switches to 'Territory' and remains fixed. This means the optimization process focuses on territories instead of assignment groups.",
+      "wrongAnswers": [
+        {
+          "id": "a",
+          "explanation": "The qualifier type does not remain as Assignment group - it automatically switches to Territory when the Territory model is enabled."
+        },
+        {
+          "id": "c",
+          "explanation": "When Territory model is active, the qualifier type is fixed to Territory only; both options are not available simultaneously."
+        },
+        {
+          "id": "d",
+          "explanation": "Manual configuration is not required - the switch to Territory happens automatically when the Territory model is enabled."
+        }
+      ]
+    },
+    "source": {
+      "excerpt": "When the Field Service Territory model is enabled, the qualifier type automatically switches to 'Territory' and remains fixed. This means that when the Territory model is active, the optimization process focuses on territories instead of assignment groups.",
+      "url": "https://www.servicenow.com/docs/r/xanadu/field-service-management/schedule-optimization-properties.html"
+    },
+    "labels": {
+      "domain": "Implementing Field Service Processes",
+      "subtopics": [
+        "Schedule Optimization",
+        "Territory Model"
+      ],
+      "tags": [
+        "field-service",
+        "schedule-optimization",
+        "territory-model"
+      ]
+    },
+    "meta": {
+      "version": "1.0",
+      "release": "Xanadu",
+      "reviewed": false
+    },
+    "isFree": true
+  },
+  {
+    "id": "cis-fsm-processes-603",
+    "certification": "cis-fsm",
+    "topic": "processes",
+    "cognitiveLevel": "knowledge",
+    "type": "multiple_select",
+    "question": "Which two types of user groups are most commonly configured in Field Service Management? (Choose two.)",
+    "options": [
+      {
+        "id": "a",
+        "text": "Agent groups"
+      },
+      {
+        "id": "b",
+        "text": "Inventory groups"
+      },
+      {
+        "id": "c",
+        "text": "Dispatcher groups"
+      },
+      {
+        "id": "d",
+        "text": "Scheduling groups"
+      }
+    ],
+    "correctAnswers": [
+      "a",
+      "c"
+    ],
+    "explanation": {
+      "correct": "The most common types of user groups in Field Service Management include user groups for agents and dispatchers. These are essential for organizing and managing field service tasks and responsibilities.",
+      "wrongAnswers": [
+        {
+          "id": "b",
+          "explanation": "Inventory groups is not a standard FSM user group type. Inventory is managed through stockrooms and part management, not user groups."
+        },
+        {
+          "id": "d",
+          "explanation": "Scheduling groups is not a defined FSM user group type. Scheduling is handled through Schedule Optimization using assignment groups or territories."
+        }
+      ]
+    },
+    "source": {
+      "excerpt": "There are several types of user groups that serve different capabilities. The most common types include user groups for agents and dispatchers. These user groups are essential for organizing and managing the tasks and responsibilities of field service agents.",
+      "url": "https://www.servicenow.com/docs/r/xanadu/field-service-management/workforce-optimization-for-field-service/setting-up-field-service-user-groups.html"
+    },
+    "labels": {
+      "domain": "Implementing Field Service Processes",
+      "subtopics": [
+        "Workforce Management",
+        "User Groups"
+      ],
+      "tags": [
+        "field-service",
+        "user-groups",
+        "workforce-management"
+      ]
+    },
+    "meta": {
+      "version": "1.0",
+      "release": "Xanadu",
+      "reviewed": false
+    },
+    "isFree": true
+  },
+  {
+    "id": "cis-fsm-processes-604",
+    "certification": "cis-fsm",
+    "topic": "processes",
+    "cognitiveLevel": "understanding",
+    "type": "multiple_select",
+    "question": "When setting up a user group for field service agents, which three tabs are available for adding additional configuration? (Choose three.)",
+    "options": [
+      {
+        "id": "a",
+        "text": "Skills"
+      },
+      {
+        "id": "b",
+        "text": "Locations Covered"
+      },
+      {
+        "id": "c",
+        "text": "Schedule Windows"
+      },
+      {
+        "id": "d",
+        "text": "Product Models"
+      },
+      {
+        "id": "e",
+        "text": "Service Level Agreements"
+      }
+    ],
+    "correctAnswers": [
+      "a",
+      "b",
+      "d"
+    ],
+    "explanation": {
+      "correct": "When setting up agent user groups, the available tabs include Skills (to assign required skills), Locations Covered (to assign geographic locations), and Product Models (to assign equipment used by the group). Other tabs include Roles, Group Members, Groups, and Covered by Dispatch Groups.",
+      "wrongAnswers": [
+        {
+          "id": "c",
+          "explanation": "Schedule Windows is not a tab available when configuring agent user groups. Scheduling is configured through separate Schedule Optimization features."
+        },
+        {
+          "id": "e",
+          "explanation": "Service Level Agreements is not a configuration tab for agent user groups. SLAs are managed separately through the SLA module."
+        }
+      ]
+    },
+    "source": {
+      "excerpt": "Use the following tabs to add additional information to the agent user group: Roles, Group Members, Groups, Skills (Assign one or more skills from the list of available skills), Locations Covered (Assign one or more locations from the list), Covered by Dispatch Groups, Product Models (Assign the equipment used by the group).",
+      "url": "https://www.servicenow.com/docs/r/xanadu/field-service-management/workforce-optimization-for-field-service/setting-up-field-service-user-groups.html"
+    },
+    "labels": {
+      "domain": "Implementing Field Service Processes",
+      "subtopics": [
+        "Workforce Management",
+        "Agent Configuration"
+      ],
+      "tags": [
+        "field-service",
+        "user-groups",
+        "agent-setup"
+      ]
+    },
+    "meta": {
+      "version": "1.0",
+      "release": "Xanadu",
+      "reviewed": false
+    },
+    "isFree": true
+  },
+  {
+    "id": "cis-fsm-processes-605",
+    "certification": "cis-fsm",
+    "topic": "processes",
+    "cognitiveLevel": "knowledge",
+    "type": "multiple_choice",
+    "question": "Which table is NOT added by the Advanced Part Sourcing feature in Field Service Management?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Part Request [sn_fsm_part_request]"
+      },
+      {
+        "id": "b",
+        "text": "Part Request Line [sn_fsm_part_req_line]"
+      },
+      {
+        "id": "c",
+        "text": "Part Requirement [sm_part_requirement]"
+      },
+      {
+        "id": "d",
+        "text": "Preferred Stockroom [sn_fsm_pref_stockroom]"
+      }
+    ],
+    "correctAnswers": [
+      "c"
+    ],
+    "explanation": {
+      "correct": "The Part Requirement [sm_part_requirement] table is NOT added by Advanced Part Sourcing - it is an existing table that is updated with new columns (Requested for, Requested quantity, Creation method, Include substitute). The other three tables are newly added by the feature.",
+      "wrongAnswers": [
+        {
+          "id": "a",
+          "explanation": "Part Request [sn_fsm_part_request] is a new table added by Advanced Part Sourcing that stores parts destination and requesting agent details."
+        },
+        {
+          "id": "b",
+          "explanation": "Part Request Line [sn_fsm_part_req_line] is a new table added by Advanced Part Sourcing that stores part source and requirement details."
+        },
+        {
+          "id": "d",
+          "explanation": "Preferred Stockroom [sn_fsm_pref_stockroom] is a new table added by Advanced Part Sourcing that stores details of preferred stockrooms associated with assignment groups."
+        }
+      ]
+    },
+    "source": {
+      "excerpt": "Advanced Part Sourcing changes the following tables: Part requirements [sm_part_requirement] - New columns added: Requested for, Requested quantity, Creation method, Include substitute",
+      "url": "https://www.servicenow.com/docs/r/xanadu/field-service-management/advanced-part-souring-components.html"
+    },
+    "labels": {
+      "domain": "Implementing Field Service Processes",
+      "subtopics": [
+        "Inventory Management",
+        "Advanced Part Sourcing"
+      ],
+      "tags": [
+        "field-service",
+        "part-sourcing",
+        "tables"
+      ]
+    },
+    "meta": {
+      "version": "1.0",
+      "release": "Xanadu",
+      "reviewed": false
+    },
+    "isFree": true
+  },
+  {
+    "id": "cis-fsm-processes-606",
+    "certification": "cis-fsm",
+    "topic": "processes",
+    "cognitiveLevel": "application",
+    "type": "multiple_select",
+    "question": "A company is implementing Field Service Management and needs to configure their organization structure. Their requirements are: (1) Northern California qualifiers should review work orders for both San Jose and San Francisco, and (2) Dispatchers in each city should only assign tasks to agents in their own location. Which statements correctly describe the recommended configuration? (Choose two.)",
+    "options": [
+      {
+        "id": "a",
+        "text": "Create a single NorCal Qualifiers group with both San Jose and San Francisco locations assigned"
+      },
+      {
+        "id": "b",
+        "text": "Create separate qualifier groups for San Jose and San Francisco with the wm_admin role"
+      },
+      {
+        "id": "c",
+        "text": "Create separate dispatcher groups per city (SJ Dispatchers, SF Dispatchers) with their respective locations"
+      },
+      {
+        "id": "d",
+        "text": "Assign all dispatchers to a single regional group to simplify management"
+      },
+      {
+        "id": "e",
+        "text": "Qualifiers should be assigned the wm_agent role to review work orders"
+      }
+    ],
+    "correctAnswers": [
+      "a",
+      "c"
+    ],
+    "explanation": {
+      "correct": "Based on the example user group setup, qualifiers covering multiple locations (like NorCal) should have multiple locations assigned to a single qualifier group with the wm_qualifier role. Dispatchers should be organized by location (e.g., SJ Dispatchers, SF Dispatchers) to assign tasks only to agents in their respective areas.",
+      "wrongAnswers": [
+        {
+          "id": "b",
+          "explanation": "Creating separate qualifier groups defeats the requirement for NorCal qualifiers to cover both cities. Also, qualifiers need the wm_qualifier role, not wm_admin."
+        },
+        {
+          "id": "d",
+          "explanation": "Assigning all dispatchers to a single regional group would allow dispatchers to assign tasks across all locations, which violates the requirement that dispatchers only assign to agents in their own city."
+        },
+        {
+          "id": "e",
+          "explanation": "Qualifiers should be assigned the wm_qualifier role, not wm_agent. The wm_agent role is for field service agents who execute tasks."
+        }
+      ]
+    },
+    "source": {
+      "excerpt": "Qualifier1 | San Jose, San Francisco | NorCal Qualifiers | wm_qualifier | Qualifies work order tasks for SJ and SF Dispatchers... Dispatcher3 | San Jose | SJ Dispatchers | wm_dispatcher | Assigns work order tasks to SJ Agents",
+      "url": "https://www.servicenow.com/docs/r/xanadu/field-service-management/workforce-optimization-for-field-service/setting-up-field-service-user-groups.html"
+    },
+    "labels": {
+      "domain": "Implementing Field Service Processes",
+      "subtopics": [
+        "Workforce Management",
+        "User Groups",
+        "Organization Setup"
+      ],
+      "tags": [
+        "field-service",
+        "user-groups",
+        "scenario-based"
+      ]
+    },
+    "meta": {
+      "version": "1.0",
+      "release": "Xanadu",
+      "reviewed": false
+    },
+    "isFree": false
+  },
+  {
+    "id": "cis-fsm-processes-701",
+    "certification": "cis-fsm",
+    "topic": "processes",
+    "cognitiveLevel": "knowledge",
+    "type": "multiple_choice",
+    "question": "When a field agent records asset removal using the Now Mobile Agent application, what state and substate does the part change to?",
+    "options": [
+      {
+        "id": "a",
+        "text": "State: Out of Stock, Substate: Removed"
+      },
+      {
+        "id": "b",
+        "text": "State: In Stock, Substate: Defective"
+      },
+      {
+        "id": "c",
+        "text": "State: In Use, Substate: Pending Return"
+      },
+      {
+        "id": "d",
+        "text": "State: Retired, Substate: Disposed"
+      }
+    ],
+    "correctAnswers": [
+      "b"
+    ],
+    "explanation": {
+      "correct": "When an asset is removed, it is removed from the Asset Usages related list and the state for the part changes to In Stock and the substate changes to Defective. This allows the part to be tracked for repair or disposal.",
+      "wrongAnswers": [
+        {
+          "id": "a",
+          "explanation": "Out of Stock with Removed substate is not a valid state/substate combination in FSM asset management."
+        },
+        {
+          "id": "c",
+          "explanation": "In Use is the state when a part is actively being used on a task, not when it has been removed."
+        },
+        {
+          "id": "d",
+          "explanation": "Retired/Disposed is used for end-of-life assets, not for parts that are removed during field service work and may be returned to stock."
+        }
+      ]
+    },
+    "source": {
+      "excerpt": "The asset is removed from the Asset Usages related list and the state for the part changes to In Stock and the substate changes to Defective.",
+      "url": "https://www.servicenow.com/docs/r/xanadu/field-service-management/use-create-asset-mobile.html"
+    },
+    "labels": {
+      "domain": "Implementing Field Service Processes",
+      "subtopics": [
+        "Inventory Management",
+        "Mobile Agent"
+      ],
+      "tags": [
+        "field-service",
+        "mobile",
+        "asset-tracking",
+        "inventory"
+      ]
+    },
+    "meta": {
+      "version": "1.0",
+      "release": "Xanadu",
+      "reviewed": false
+    },
+    "isFree": false
+  },
+  {
+    "id": "cis-fsm-processes-702",
+    "certification": "cis-fsm",
+    "topic": "processes",
+    "cognitiveLevel": "application",
+    "type": "multiple_choice",
+    "question": "A company has 20 technicians with appointments spread across a city and wants to reduce driving time between appointments. The administrator needs to configure Schedule Optimization to run overnight and generate an optimized schedule. Which configuration element defines the objective to minimize driving time?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Optimization Scope"
+      },
+      {
+        "id": "b",
+        "text": "Scheduling Attribute"
+      },
+      {
+        "id": "c",
+        "text": "Policy"
+      },
+      {
+        "id": "d",
+        "text": "Optimization Batch"
+      }
+    ],
+    "correctAnswers": [
+      "c"
+    ],
+    "explanation": {
+      "correct": "Policies determine how to optimize agent schedules based on defined objectives or constraints. The documentation specifically uses minimizing driving time as an example of a policy configuration. By running a batch the night before, the system evaluates all tasks and generates an optimized schedule based on the policy objectives.",
+      "wrongAnswers": [
+        {
+          "id": "a",
+          "explanation": "Scopes associate batches with scheduling attribute configurations and define whether to optimize by assignment groups or territories, not the optimization objectives."
+        },
+        {
+          "id": "b",
+          "explanation": "Scheduling Attributes create reusable sets of common optimization settings like travel estimate providers and task conditions, but don't define the optimization objectives themselves."
+        },
+        {
+          "id": "d",
+          "explanation": "Batches define the schedule and settings for when optimization runs, but the objectives are defined in the Policy configuration."
+        }
+      ]
+    },
+    "source": {
+      "excerpt": "Create policies to determine how to optimize agent schedules based on defined objectives or constraints. For instance, if a company has 20 technicians with appointments in a city, you can configure a policy to minimize driving time.",
+      "url": "https://www.servicenow.com/docs/r/xanadu/field-service-management/field-service-scheduling/schedule-optimization-engine.html"
+    },
+    "labels": {
+      "domain": "Implementing Field Service Processes",
+      "subtopics": [
+        "Schedule Optimization",
+        "Scheduling Methods"
+      ],
+      "tags": [
+        "field-service",
+        "scheduling",
+        "optimization",
+        "policy"
+      ]
+    },
+    "meta": {
+      "version": "1.0",
+      "release": "Xanadu",
+      "reviewed": false
+    },
+    "isFree": false
+  },
+  {
+    "id": "cis-fsm-processes-703",
+    "certification": "cis-fsm",
+    "topic": "processes",
+    "cognitiveLevel": "understanding",
+    "type": "multiple_select",
+    "question": "Which two configuration elements are part of the Schedule Optimization workflow that must be created before scheduling batches to run automatically? (Choose two.)",
+    "options": [
+      {
+        "id": "a",
+        "text": "Scheduling Attributes to define reusable optimization settings"
+      },
+      {
+        "id": "b",
+        "text": "Work Order Templates to generate tasks"
+      },
+      {
+        "id": "c",
+        "text": "Optimization Scopes to associate batches with scheduling attributes"
+      },
+      {
+        "id": "d",
+        "text": "Labor Rate Cards to calculate agent costs"
+      },
+      {
+        "id": "e",
+        "text": "Preventive Maintenance schedules to trigger work orders"
+      }
+    ],
+    "correctAnswers": [
+      "a",
+      "c"
+    ],
+    "explanation": {
+      "correct": "The Schedule Optimization configuration workflow includes configuring scheduling attributes (reusable sets of common optimization settings like travel estimate providers) and creating optimization scopes (to associate batches with existing scheduling attribute configurations). These elements work together before scheduling batches to run automatically.",
+      "wrongAnswers": [
+        {
+          "id": "b",
+          "explanation": "Work Order Templates are used to create work orders with predefined configurations, not part of the Schedule Optimization configuration workflow."
+        },
+        {
+          "id": "d",
+          "explanation": "Labor Rate Cards are used for time recording and billing, not for configuring Schedule Optimization."
+        },
+        {
+          "id": "e",
+          "explanation": "Preventive Maintenance schedules trigger work order creation based on maintenance plans, but are not part of the Schedule Optimization configuration."
+        }
+      ]
+    },
+    "source": {
+      "excerpt": "Configure the scheduling attributes to create reusable sets of common optimization settings... Create optimization scopes to associate batches with existing scheduling attribute configurations, optimizing either by assignment groups or territories.",
+      "url": "https://www.servicenow.com/docs/r/xanadu/field-service-management/field-service-scheduling/schedule-optimization-engine.html"
+    },
+    "labels": {
+      "domain": "Implementing Field Service Processes",
+      "subtopics": [
+        "Schedule Optimization",
+        "Scheduling Methods"
+      ],
+      "tags": [
+        "field-service",
+        "scheduling",
+        "optimization",
+        "configuration"
+      ]
+    },
+    "meta": {
+      "version": "1.0",
+      "release": "Xanadu",
+      "reviewed": false
+    },
+    "isFree": false
+  },
+  {
+    "id": "cis-fsm-processes-704",
+    "certification": "cis-fsm",
+    "topic": "processes",
+    "cognitiveLevel": "knowledge",
+    "type": "multiple_select",
+    "question": "Which three plugins extend Field Service Management capabilities with workforce and scheduling features? (Choose three.)",
+    "options": [
+      {
+        "id": "a",
+        "text": "Field Service Crew Operations (com.snc.fsm_crew_scheduling)"
+      },
+      {
+        "id": "b",
+        "text": "Field Service Management Customer Experience (com.snc.fsm_customer_experience)"
+      },
+      {
+        "id": "c",
+        "text": "Field Service Multi-Day Task Scheduling (com.snc.fsm_multiday_tasks)"
+      },
+      {
+        "id": "d",
+        "text": "Field Service Territory Planning (com.snc.fsm_territory_planning)"
+      },
+      {
+        "id": "e",
+        "text": "Customer Service with Field Service Management (com.snc.csm_fsm_integration)"
+      },
+      {
+        "id": "f",
+        "text": "Field Service Management Virtual Conferencing Integration (com.snc.fsm_vci)"
+      }
+    ],
+    "correctAnswers": [
+      "a",
+      "c",
+      "d"
+    ],
+    "explanation": {
+      "correct": "Field Service Crew Operations enables assigning the same set of resources repeatedly to different tasks. Field Service Multi-Day Task Scheduling enables dispatchers to assign work order tasks spanning multiple schedule entries. Field Service Territory Planning filters best matched territories for better scheduling. All three directly enhance workforce management and scheduling capabilities.",
+      "wrongAnswers": [
+        {
+          "id": "b",
+          "explanation": "Customer Experience plugin enables SMS notifications and agent location tracking for customers, which is customer communication rather than workforce/scheduling functionality."
+        },
+        {
+          "id": "e",
+          "explanation": "CSM with FSM Integration provides integration between Customer Service Management and Field Service Management applications, not workforce or scheduling features."
+        },
+        {
+          "id": "f",
+          "explanation": "Virtual Conferencing Integration enables agents to provide support remotely, which is a communication feature rather than workforce management or scheduling."
+        }
+      ]
+    },
+    "source": {
+      "excerpt": "Field Service Crew Operations: Enables organizations to assign the same set of resources repeatedly to different tasks. Field Service Multi-Day Task Scheduling: Enables Field Service Management dispatchers to assign work order tasks spanning across multiple schedule entries. Field Service Territory Planning: Filters the best matched territories for a work order or task for better scheduling.",
+      "url": "https://www.servicenow.com/docs/r/xanadu/field-service-management/field-service-additional-plugins.html"
+    },
+    "labels": {
+      "domain": "Implementing Field Service Processes",
+      "subtopics": [
+        "Workforce Management",
+        "Scheduling Methods"
+      ],
+      "tags": [
+        "field-service",
+        "plugins",
+        "scheduling",
+        "workforce"
+      ]
+    },
+    "meta": {
+      "version": "1.0",
+      "release": "Xanadu",
+      "reviewed": false
+    },
+    "isFree": false
+  },
+  {
+    "id": "cis-fsm-processes-705",
+    "certification": "cis-fsm",
+    "topic": "processes",
+    "cognitiveLevel": "understanding",
+    "type": "multiple_choice",
+    "question": "Which action is NOT available to field agents when tracking assets for a work order task using the Now Mobile Agent application?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Use Part - Record the usage of an asset from inventory"
+      },
+      {
+        "id": "b",
+        "text": "Remove Part - Record the removal of a defective asset"
+      },
+      {
+        "id": "c",
+        "text": "Swap Part - Record the replacement of an asset"
+      },
+      {
+        "id": "d",
+        "text": "Order Part - Request a new part from the warehouse"
+      }
+    ],
+    "correctAnswers": [
+      "d"
+    ],
+    "explanation": {
+      "correct": "The mobile asset tracking feature provides three options: Use Part (record asset usage), Remove Part (record asset removal), and Swap Part (record asset replacement). Ordering parts from a warehouse is handled through a separate parts request workflow, not through the asset tracking feature accessed via the Parts section of a work order task.",
+      "wrongAnswers": [
+        {
+          "id": "a",
+          "explanation": "Use Part is a valid option that allows agents to record the usage of an asset from their inventory, either manually or by scanning the asset tag."
+        },
+        {
+          "id": "b",
+          "explanation": "Remove Part is a valid option that enables agents to record the removal of an asset, setting its state to In Stock with substate Defective."
+        },
+        {
+          "id": "c",
+          "explanation": "Swap Part is a valid option that allows agents to record replacing one asset with another, handling both the removal of the old part and installation of the new one."
+        }
+      ]
+    },
+    "source": {
+      "excerpt": "Record information about the usage of an asset, the removal of an asset, or the replacement of an asset by tapping one of the following options: Use Part - Record the usage of an asset. Remove Part - Record the removal of an asset. Swap Part - Record the replacement of an asset.",
+      "url": "https://www.servicenow.com/docs/r/xanadu/field-service-management/use-create-asset-mobile.html"
+    },
+    "labels": {
+      "domain": "Implementing Field Service Processes",
+      "subtopics": [
+        "Inventory Management",
+        "Mobile Agent"
+      ],
+      "tags": [
+        "field-service",
+        "mobile",
+        "asset-tracking",
+        "parts"
+      ]
+    },
+    "meta": {
+      "version": "1.0",
+      "release": "Xanadu",
+      "reviewed": false
+    },
+    "isFree": false
+  },
+  {
+    "id": "cis-fsm-processes-706",
+    "certification": "cis-fsm",
+    "topic": "processes",
+    "cognitiveLevel": "understanding",
+    "type": "multiple_select",
+    "question": "Which statements about Schedule Optimization based on territories are TRUE? (Choose two.)",
+    "options": [
+      {
+        "id": "a",
+        "text": "If the Territory Planning plugin is not installed, Schedule Optimization cannot run at all"
+      },
+      {
+        "id": "b",
+        "text": "When both Territory Planning and Schedule Optimization plugins are active with Territory Model enabled, tasks are exclusively optimized based on territories"
+      },
+      {
+        "id": "c",
+        "text": "Before activating the Field Service Territory Model, batches optimized by assignment groups must be made inactive"
+      },
+      {
+        "id": "d",
+        "text": "Territory-based optimization does not support overlapping territories between agents"
+      },
+      {
+        "id": "e",
+        "text": "Agents cannot have temporary start locations when using Territory Model"
+      }
+    ],
+    "correctAnswers": [
+      "b",
+      "c"
+    ],
+    "explanation": {
+      "correct": "When both the Territory Planning and Schedule Optimization plugins are installed and the Territory Model is active, tasks are exclusively optimized based on territories. Additionally, before activating the Field Service Territory Model, administrators must ensure batches optimized by assignment groups are inactive and territory-based batches are active.",
+      "wrongAnswers": [
+        {
+          "id": "a",
+          "explanation": "If the Territory Planning plugin isn't installed or Territory Model is inactive, optimization seamlessly continues relying on assignment groups - it doesn't stop running."
+        },
+        {
+          "id": "d",
+          "explanation": "The documentation states that machine learning-driven capabilities consider overlapping territories (either in geography or with shared agents) for effective assignment and management."
+        },
+        {
+          "id": "e",
+          "explanation": "Agents' start locations CAN be temporarily adjusted to a different location with specified start and end dates. This temporary location is used when assigning tasks."
+        }
+      ]
+    },
+    "source": {
+      "excerpt": "With both plugins active and the Field Service Territory Model enabled, tasks are exclusively optimized based on territories. Before activating the Field Service Territory Model, ensure batches optimized by assignment groups are inactive, and batches optimized by territories are active.",
+      "url": "https://www.servicenow.com/docs/r/xanadu/field-service-management/field-service-scheduling/schedule-optimization-engine.html"
+    },
+    "labels": {
+      "domain": "Implementing Field Service Processes",
+      "subtopics": [
+        "Schedule Optimization",
+        "Territory Planning"
+      ],
+      "tags": [
+        "field-service",
+        "scheduling",
+        "territories",
+        "optimization"
+      ]
+    },
+    "meta": {
+      "version": "1.0",
+      "release": "Xanadu",
+      "reviewed": false
+    },
+    "isFree": false
+  },
+  {
+    "id": "cis-fsm-processes-801",
+    "certification": "cis-fsm",
+    "topic": "processes",
+    "cognitiveLevel": "knowledge",
+    "type": "multiple_choice",
+    "question": "What happens when the Field Service Management plugin is activated in relation to the Appointment Booking plugin?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The Appointment Booking plugin must be manually activated from the Plugin Repository"
+      },
+      {
+        "id": "b",
+        "text": "The Appointment Booking plugin (com.snc.appointment_booking) is activated automatically"
+      },
+      {
+        "id": "c",
+        "text": "A service catalog request must be submitted to activate Appointment Booking"
+      },
+      {
+        "id": "d",
+        "text": "The Appointment Booking plugin requires a separate license activation"
+      }
+    ],
+    "correctAnswers": [
+      "b"
+    ],
+    "explanation": {
+      "correct": "According to ServiceNow documentation, the Appointment Booking plugin (com.snc.appointment_booking) is activated automatically when you activate the Field Service Management plugin. This plugin also activates the Appointment Booking Demo Data plugin which provides demo data.",
+      "wrongAnswers": [
+        {
+          "id": "a",
+          "explanation": "Manual activation is not required; the Appointment Booking plugin is automatically activated with FSM."
+        },
+        {
+          "id": "c",
+          "explanation": "No service catalog request is needed; the plugin activates automatically with FSM."
+        },
+        {
+          "id": "d",
+          "explanation": "There is no separate license requirement; the plugin is included with FSM activation."
+        }
+      ]
+    },
+    "source": {
+      "excerpt": "The Appointment Booking plugin (com.snc.appointment_booking) is activated automatically when you activate the Field Service Management plugin.",
+      "url": "https://www.servicenow.com/docs/r/xanadu/field-service-management/appointment-booking-components.html"
+    },
+    "labels": {
+      "domain": "Implementing Field Service Processes",
+      "subtopics": [
+        "Appointment Booking"
+      ],
+      "tags": [
+        "field-service",
+        "appointment-booking",
+        "plugins"
+      ]
+    },
+    "meta": {
+      "version": "1.0",
+      "release": "Xanadu",
+      "reviewed": false
+    },
+    "isFree": false
+  },
+  {
+    "id": "cis-fsm-processes-802",
+    "certification": "cis-fsm",
+    "topic": "processes",
+    "cognitiveLevel": "understanding",
+    "type": "multiple_select",
+    "question": "Which roles are included with the Appointment Booking feature? (Choose two.)",
+    "options": [
+      {
+        "id": "a",
+        "text": "Appointment booking admin [sn_apptmnt_booking.appointment_booking_admin]"
+      },
+      {
+        "id": "b",
+        "text": "Appointment booking dispatcher [sn_apptmnt_booking.appointment_booking_dispatcher]"
+      },
+      {
+        "id": "c",
+        "text": "Appointment booking user [sn_apptmnt_booking.appointment_booking_user]"
+      },
+      {
+        "id": "d",
+        "text": "Appointment booking scheduler [sn_apptmnt_booking.appointment_booking_scheduler]"
+      }
+    ],
+    "correctAnswers": [
+      "a",
+      "c"
+    ],
+    "explanation": {
+      "correct": "The Appointment Booking feature adds three roles: appointment_booking_admin (creates configurations), appointment_booking_manager (creates/updates records), and appointment_booking_user (books appointments from Customer or Consumer Service Portal). The admin and user roles are correct answers from the options provided.",
+      "wrongAnswers": [
+        {
+          "id": "b",
+          "explanation": "There is no appointment_booking_dispatcher role. The roles are admin, manager, and user."
+        },
+        {
+          "id": "d",
+          "explanation": "There is no appointment_booking_scheduler role. Scheduling is handled through other FSM components."
+        }
+      ]
+    },
+    "source": {
+      "excerpt": "Appointment booking adds the following roles: Appointment booking admin[sn_apptmnt_booking.appointment_booking_admin], Appointment booking manager[sn_apptmnt_booking.appointment_booking_manager], Appointment booking user[sn_apptmnt_booking.appointment_booking_user]",
+      "url": "https://www.servicenow.com/docs/r/xanadu/field-service-management/appointment-booking-components.html"
+    },
+    "labels": {
+      "domain": "Implementing Field Service Processes",
+      "subtopics": [
+        "Appointment Booking",
+        "Roles"
+      ],
+      "tags": [
+        "field-service",
+        "appointment-booking",
+        "roles"
+      ]
+    },
+    "meta": {
+      "version": "1.0",
+      "release": "Xanadu",
+      "reviewed": false
+    },
+    "isFree": false
+  },
+  {
+    "id": "cis-fsm-processes-803",
+    "certification": "cis-fsm",
+    "topic": "processes",
+    "cognitiveLevel": "application",
+    "type": "multiple_choice",
+    "question": "A Field Service administrator notices that agents are frequently double-booking appointments. The administrator wants to disable lock validation at the business rule level for specific tables. Which property should be configured?",
+    "options": [
+      {
+        "id": "a",
+        "text": "sn_apptmnt_booking.SingleConcurrentLockAppointmentConfigs"
+      },
+      {
+        "id": "b",
+        "text": "sn_apptmnt_booking.DisableLockingOnBRLevel"
+      },
+      {
+        "id": "c",
+        "text": "sn_apptmnt_booking.return_unavailable_slots"
+      },
+      {
+        "id": "d",
+        "text": "sn_apptmnt_booking.max_appointments_returned"
+      }
+    ],
+    "correctAnswers": [
+      "b"
+    ],
+    "explanation": {
+      "correct": "The sn_apptmnt_booking.DisableLockingOnBRLevel property allows you to specify tables where locking is managed differently to prevent double bookings. Enter a comma-separated list of tables to disable lock validation at the business rule level.",
+      "wrongAnswers": [
+        {
+          "id": "a",
+          "explanation": "SingleConcurrentLockAppointmentConfigs lists tables where only one lock per time slot is allowed, but it doesn't disable lock validation at the BR level."
+        },
+        {
+          "id": "c",
+          "explanation": "return_unavailable_slots controls whether only available slots are displayed in the appointment window, not locking behavior."
+        },
+        {
+          "id": "d",
+          "explanation": "max_appointments_returned sets the maximum number of appointment availability windows displayed, not locking configuration."
+        }
+      ]
+    },
+    "source": {
+      "excerpt": "sn_apptmnt_booking.DisableLockingOnBRLevel: Allows you to specify tables where locking is managed differently to prevent double bookings when booking appointments. Enter a list of these tables, separated by commas, to disable lock validation at the business rule level.",
+      "url": "https://www.servicenow.com/docs/r/xanadu/field-service-management/appointment-booking-components.html"
+    },
+    "labels": {
+      "domain": "Implementing Field Service Processes",
+      "subtopics": [
+        "Appointment Booking",
+        "Properties"
+      ],
+      "tags": [
+        "field-service",
+        "appointment-booking",
+        "properties",
+        "configuration"
+      ]
+    },
+    "meta": {
+      "version": "1.0",
+      "release": "Xanadu",
+      "reviewed": false
+    },
+    "isFree": false
+  },
+  {
+    "id": "cis-fsm-processes-804",
+    "certification": "cis-fsm",
+    "topic": "processes",
+    "cognitiveLevel": "understanding",
+    "type": "multiple_choice",
+    "question": "In Workforce Optimization for Field Service, what is the difference between Adherence and Conformance metrics?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Adherence measures work completed regardless of timing, while Conformance measures schedule accuracy"
+      },
+      {
+        "id": "b",
+        "text": "Adherence analyzes how closely agents follow their schedule, while Conformance measures work completed regardless of when it was done"
+      },
+      {
+        "id": "c",
+        "text": "Adherence tracks overtime hours, while Conformance tracks regular shift hours"
+      },
+      {
+        "id": "d",
+        "text": "Adherence measures agent availability, while Conformance measures task completion rate"
+      }
+    ],
+    "correctAnswers": [
+      "b"
+    ],
+    "explanation": {
+      "correct": "According to ServiceNow documentation, Adherence is a metric to analyze how closely agents follow their schedule in completing work assignments, while Conformance measures the work completed regardless of when it was completed. A high adherence rate indicates agents are sticking to their schedules.",
+      "wrongAnswers": [
+        {
+          "id": "a",
+          "explanation": "This reverses the definitions. Adherence measures schedule accuracy, and Conformance measures work regardless of timing."
+        },
+        {
+          "id": "c",
+          "explanation": "Both metrics include overtime in their calculations, but they don't specifically track overtime vs regular hours."
+        },
+        {
+          "id": "d",
+          "explanation": "Adherence measures schedule compliance, not availability. Conformance measures work completion relative to scheduled time, not task completion rate."
+        }
+      ]
+    },
+    "source": {
+      "excerpt": "Adherence is a metric to analyze how closely agents follow their schedule in completing the work assignments. Conformance measures the work completed regardless of when it was completed.",
+      "url": "https://www.servicenow.com/docs/r/xanadu/field-service-management/scheduling-wfo-fsm.html"
+    },
+    "labels": {
+      "domain": "Implementing Field Service Processes",
+      "subtopics": [
+        "Workforce Management",
+        "Schedule Adherence"
+      ],
+      "tags": [
+        "field-service",
+        "workforce-optimization",
+        "scheduling",
+        "metrics"
+      ]
+    },
+    "meta": {
+      "version": "1.0",
+      "release": "Xanadu",
+      "reviewed": false
+    },
+    "isFree": false
+  },
+  {
+    "id": "cis-fsm-processes-805",
+    "certification": "cis-fsm",
+    "topic": "processes",
+    "cognitiveLevel": "knowledge",
+    "type": "multiple_select",
+    "question": "Which features are available with Scheduling in Workforce Optimization for Field Service? (Choose three.)",
+    "options": [
+      {
+        "id": "a",
+        "text": "Filter agents in the team calendar based on location, region, or assignment groups"
+      },
+      {
+        "id": "b",
+        "text": "Automatically generate work orders from schedule conflicts"
+      },
+      {
+        "id": "c",
+        "text": "Approve or reject agent time off and shift-swap requests"
+      },
+      {
+        "id": "d",
+        "text": "Use historical adherence reports to analyze coaching opportunities"
+      },
+      {
+        "id": "e",
+        "text": "Automatically assign agents to tasks based on GPS location tracking"
+      }
+    ],
+    "correctAnswers": [
+      "a",
+      "c",
+      "d"
+    ],
+    "explanation": {
+      "correct": "Workforce Optimization Scheduling provides these key features: filtering agents in the team calendar based on location/region/assignment groups, approving or rejecting agent time off and shift-swap requests, and using historical adherence reports to analyze and recommend coaching opportunities for agents.",
+      "wrongAnswers": [
+        {
+          "id": "b",
+          "explanation": "Scheduling does not automatically generate work orders from schedule conflicts. Work order creation is a separate process in FSM."
+        },
+        {
+          "id": "e",
+          "explanation": "While FSM supports location-based features, automatic GPS-based task assignment is not a listed feature of Workforce Optimization Scheduling."
+        }
+      ]
+    },
+    "source": {
+      "excerpt": "Filter agents in the team calendar based on their location, region, assignment groups, or any field in the agent's record. Approve or reject agent time off and shift-swap requests. Use historical adherence reports to analyze and recommend coaching opportunities for your agents.",
+      "url": "https://www.servicenow.com/docs/r/xanadu/field-service-management/scheduling-wfo-fsm.html"
+    },
+    "labels": {
+      "domain": "Implementing Field Service Processes",
+      "subtopics": [
+        "Workforce Management",
+        "Scheduling"
+      ],
+      "tags": [
+        "field-service",
+        "workforce-optimization",
+        "scheduling",
+        "team-calendar"
+      ]
+    },
+    "meta": {
+      "version": "1.0",
+      "release": "Xanadu",
+      "reviewed": false
+    },
+    "isFree": false
+  },
+  {
+    "id": "cis-fsm-processes-806",
+    "certification": "cis-fsm",
+    "topic": "processes",
+    "cognitiveLevel": "application",
+    "type": "multiple_choice",
+    "question": "A Field Service Manager is configuring mandatory skills for Field Service Management and wants to use dynamic scheduling. After enabling the work.management.use.mandatory.skills property and configuring the Work Order forms, which matching criteria should replace the existing 'Matching Skills for Dynamic Scheduling' criteria?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Matching All Skills for Dynamic Scheduling"
+      },
+      {
+        "id": "b",
+        "text": "Matching Mandatory Skills for Dynamic Scheduling"
+      },
+      {
+        "id": "c",
+        "text": "Matching Required Skills for Dynamic Scheduling"
+      },
+      {
+        "id": "d",
+        "text": "Matching Task Skills for Dynamic Scheduling"
+      }
+    ],
+    "correctAnswers": [
+      "b"
+    ],
+    "explanation": {
+      "correct": "When using dynamic scheduling with the mandatory skills feature, you must update the task filter for the dynamic scheduling configuration and replace the 'Matching Skills for Dynamic Scheduling' matching criteria with 'Matching Mandatory Skills for Dynamic Scheduling' matching criteria.",
+      "wrongAnswers": [
+        {
+          "id": "a",
+          "explanation": "There is no 'Matching All Skills for Dynamic Scheduling' criteria. The correct criteria is 'Matching Mandatory Skills for Dynamic Scheduling'."
+        },
+        {
+          "id": "c",
+          "explanation": "'Matching Required Skills for Dynamic Scheduling' is not a valid matching criteria name. The correct one is 'Matching Mandatory Skills for Dynamic Scheduling'."
+        },
+        {
+          "id": "d",
+          "explanation": "'Matching Task Skills for Dynamic Scheduling' is not a valid matching criteria. The correct criteria specifically references mandatory skills."
+        }
+      ]
+    },
+    "source": {
+      "excerpt": "If you are using dynamic scheduling, update the task filter for the dynamic scheduling configuration and replace the Matching Skills for Dynamic Scheduling matching criteria with the Matching Mandatory Skills for Dynamic Scheduling matching criteria.",
+      "url": "https://www.servicenow.com/docs/r/xanadu/field-service-management/workforce-optimization-for-field-service/configure-mandatory-skills-feature.html"
+    },
+    "labels": {
+      "domain": "Implementing Field Service Processes",
+      "subtopics": [
+        "Mandatory Skills",
+        "Dynamic Scheduling"
+      ],
+      "tags": [
+        "field-service",
+        "mandatory-skills",
+        "dynamic-scheduling",
+        "configuration"
+      ]
+    },
+    "meta": {
+      "version": "1.0",
+      "release": "Xanadu",
+      "reviewed": false
+    },
+    "isFree": false
+  },
+  {
+    "id": "cis-fsm-processes-901",
+    "certification": "cis-fsm",
+    "topic": "processes",
+    "cognitiveLevel": "knowledge",
+    "type": "multiple_choice",
+    "question": "When creating an event configuration for an agent calendar, what are the two available Setup methods?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Basic and Advanced"
+      },
+      {
+        "id": "b",
+        "text": "Simple and Scripted"
+      },
+      {
+        "id": "c",
+        "text": "Standard and Custom"
+      },
+      {
+        "id": "d",
+        "text": "Manual and Automated"
+      }
+    ],
+    "correctAnswers": [
+      "b"
+    ],
+    "explanation": {
+      "correct": "The Event Configuration form provides two Setup methods: Simple (use condition builder to set up this configuration) and Scripted (use advanced scripts to set up this configuration). The Script field becomes available when the Scripted value is selected.",
+      "wrongAnswers": [
+        {
+          "id": "a",
+          "explanation": "Basic and Advanced are not the correct terminology for agent calendar event configuration setup methods in ServiceNow FSM."
+        },
+        {
+          "id": "c",
+          "explanation": "Standard and Custom are not the setup methods used in agent calendar event configurations."
+        },
+        {
+          "id": "d",
+          "explanation": "Manual and Automated do not represent the setup method options available in the Event Configuration form."
+        }
+      ]
+    },
+    "source": {
+      "excerpt": "Setup method for this configuration. Simple: use condition builder to set up this configuration. Scripted: use advanced scripts to set up this configuration.",
+      "url": "https://www.servicenow.com/docs/r/xanadu/field-service-management/workforce-optimization-for-field-service/create-agent-calendar-event-config.html"
+    },
+    "labels": {
+      "domain": "Implementing Field Service Processes",
+      "subtopics": [
+        "Agent Calendar",
+        "Event Configuration"
+      ],
+      "tags": [
+        "field-service",
+        "agent-schedule",
+        "event-configuration",
+        "workforce-optimization"
+      ]
+    },
+    "meta": {
+      "version": "1.0",
+      "release": "Xanadu",
+      "reviewed": false
+    },
+    "isFree": false
+  },
+  {
+    "id": "cis-fsm-processes-902",
+    "certification": "cis-fsm",
+    "topic": "processes",
+    "cognitiveLevel": "understanding",
+    "type": "multiple_select",
+    "question": "Which plugins are automatically activated when you enable the Field Service Management plugin for appointment booking? (Choose two.)",
+    "options": [
+      {
+        "id": "a",
+        "text": "Appointment Booking plugin (com.snc.appointment_booking)"
+      },
+      {
+        "id": "b",
+        "text": "Dynamic Scheduling plugin (com.snc.dynamic_scheduling)"
+      },
+      {
+        "id": "c",
+        "text": "FSM Agent Workspace plugin (com.snc.agent_workspace.fsm)"
+      },
+      {
+        "id": "d",
+        "text": "Customer Service Install Base Management plugin (com.snc.install_base)"
+      },
+      {
+        "id": "e",
+        "text": "Appointment Booking Demo Data plugin (com.snc.appointment_booking_demo)"
+      }
+    ],
+    "correctAnswers": [
+      "a",
+      "c"
+    ],
+    "explanation": {
+      "correct": "The Appointment Booking plugin (com.snc.appointment_booking) is automatically activated when you enable the Field Service Management plugin. Additionally, the FSM Agent Workspace plugin (com.snc.agent_workspace.fsm) is activated when you enable the Field Service Management plugin.",
+      "wrongAnswers": [
+        {
+          "id": "b",
+          "explanation": "The Dynamic Scheduling plugin is a separate plugin that enables scripted availability method and bulk task recommendations, but it is not automatically activated with FSM."
+        },
+        {
+          "id": "d",
+          "explanation": "The Customer Service Install Base Management plugin is a separate plugin that enables install base plan types in work plans, not automatically activated with FSM."
+        },
+        {
+          "id": "e",
+          "explanation": "The Appointment Booking Demo Data plugin provides demo data to help get started but must be activated separately and is not automatic."
+        }
+      ]
+    },
+    "source": {
+      "excerpt": "The Appointment Booking plugin (com.snc.appointment_booking) is automatically activated when you enable the Field Service Management plugin... FSM Agent Workspace plugin (com.snc.agent_workspace.fsm) is activated when you enable the Field Service Management plugin.",
+      "url": "https://www.servicenow.com/docs/r/xanadu/field-service-management/field-service-scheduling/appointment-booking-administer.html"
+    },
+    "labels": {
+      "domain": "Implementing Field Service Processes",
+      "subtopics": [
+        "Appointment Booking",
+        "Plugin Activation"
+      ],
+      "tags": [
+        "field-service",
+        "appointment-booking",
+        "plugins",
+        "configuration"
+      ]
+    },
+    "meta": {
+      "version": "1.0",
+      "release": "Xanadu",
+      "reviewed": false
+    },
+    "isFree": false
+  },
+  {
+    "id": "cis-fsm-processes-903",
+    "certification": "cis-fsm",
+    "topic": "processes",
+    "cognitiveLevel": "application",
+    "type": "multiple_choice",
+    "question": "A Field Service administrator needs to create a work plan for routine maintenance on all Apple computers in the organization. The plan should automatically include any new Apple computers added to the system. Which configuration combination should the administrator use?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Type: General, enable 'Apply to new matching records', and set filter conditions on the Computer table"
+      },
+      {
+        "id": "b",
+        "text": "Type: Model based, select Apple computer models, and enable 'Apply to new matching records'"
+      },
+      {
+        "id": "c",
+        "text": "Type: Install base, select Apple models, and enable 'Forecast work orders'"
+      },
+      {
+        "id": "d",
+        "text": "Type: Model based, select Apple computer models, and set Task creation policy to 'Add to existing'"
+      }
+    ],
+    "correctAnswers": [
+      "b"
+    ],
+    "explanation": {
+      "correct": "For maintenance on specific computer models (Apple computers), the administrator should use 'Model based' type which allows selecting specific Product catalog items to identify CIs requiring maintenance. Enabling 'Apply to new matching records' ensures schedules are applied to all records added since the last plan execution that meet the conditions.",
+      "wrongAnswers": [
+        {
+          "id": "a",
+          "explanation": "While General type with filters could work, Model based is more appropriate when targeting specific models of CIs, as it automatically associates the correct table and provides better model-specific targeting."
+        },
+        {
+          "id": "c",
+          "explanation": "Install base type is for install base items managed through Customer Service Install Base Management, not for CMDB computer records. Also, 'Forecast work orders' is for estimating upcoming work orders, not for including new records."
+        },
+        {
+          "id": "d",
+          "explanation": "Task creation policy controls behavior when a schedule occurrence is in progress, not whether new computers are automatically included in the plan."
+        }
+      ]
+    },
+    "source": {
+      "excerpt": "Model based: Base the work plan on a specified model of a CI... Apply to new matching records: Option to ensure that the schedules defined for this work plan are applied to all records that have been added to the specified table since the last time the plan was executed.",
+      "url": "https://www.servicenow.com/docs/r/xanadu/field-service-management/work-order-management/create-work-plan.html"
+    },
+    "labels": {
+      "domain": "Implementing Field Service Processes",
+      "subtopics": [
+        "Work Plans",
+        "Planned Work Management"
+      ],
+      "tags": [
+        "field-service",
+        "work-plan",
+        "preventive-maintenance",
+        "configuration"
+      ]
+    },
+    "meta": {
+      "version": "1.0",
+      "release": "Xanadu",
+      "reviewed": false
+    },
+    "isFree": false
+  },
+  {
+    "id": "cis-fsm-processes-904",
+    "certification": "cis-fsm",
+    "topic": "processes",
+    "cognitiveLevel": "knowledge",
+    "type": "multiple_choice",
+    "question": "Which schedule entry event type is NOT available by default for agent calendar event configurations in Field Service Management?",
+    "options": [
+      {
+        "id": "a",
+        "text": "Event \u2014 Appointment"
+      },
+      {
+        "id": "b",
+        "text": "Event \u2014 Time Off"
+      },
+      {
+        "id": "c",
+        "text": "Event \u2014 Travel"
+      },
+      {
+        "id": "d",
+        "text": "Event \u2014 Meeting"
+      }
+    ],
+    "correctAnswers": [
+      "c"
+    ],
+    "explanation": {
+      "correct": "Event \u2014 Travel is not listed among the default event type configurations. The available default types are: Event \u2014 Appointment, Event \u2014 Excluded, Event \u2014 Meeting, Event \u2014 Phone, Event \u2014 Time Off, and Event \u2014 Other.",
+      "wrongAnswers": [
+        {
+          "id": "a",
+          "explanation": "Event \u2014 Appointment is one of the default schedule entry event types available for agent calendar configurations."
+        },
+        {
+          "id": "b",
+          "explanation": "Event \u2014 Time Off is one of the default schedule entry event types available for agent calendar configurations."
+        },
+        {
+          "id": "d",
+          "explanation": "Event \u2014 Meeting is one of the default schedule entry event types available for agent calendar configurations."
+        }
+      ]
+    },
+    "source": {
+      "excerpt": "The following types of schedule entries for event type configurations are available by default: Event \u2014 Appointment, Event \u2014 Excluded, Event \u2014 Meeting, Event \u2014 Phone, Event \u2014 Time Off, Event \u2014 Other.",
+      "url": "https://www.servicenow.com/docs/r/xanadu/field-service-management/workforce-optimization-for-field-service/create-agent-calendar-event-config.html"
+    },
+    "labels": {
+      "domain": "Implementing Field Service Processes",
+      "subtopics": [
+        "Agent Calendar",
+        "Event Types"
+      ],
+      "tags": [
+        "field-service",
+        "agent-schedule",
+        "event-configuration",
+        "schedule-entries"
+      ]
+    },
+    "meta": {
+      "version": "1.0",
+      "release": "Xanadu",
+      "reviewed": false
+    },
+    "isFree": false
+  },
+  {
+    "id": "cis-fsm-processes-905",
+    "certification": "cis-fsm",
+    "topic": "processes",
+    "cognitiveLevel": "understanding",
+    "type": "multiple_select",
+    "question": "Which roles are defined for Appointment Booking functionality in Field Service Management? (Choose three.)",
+    "options": [
+      {
+        "id": "a",
+        "text": "appointment_booking_admin"
+      },
+      {
+        "id": "b",
+        "text": "appointment_booking_dispatcher"
+      },
+      {
+        "id": "c",
+        "text": "appointment_booking_manager"
+      },
+      {
+        "id": "d",
+        "text": "appointment_booking_user"
+      },
+      {
+        "id": "e",
+        "text": "appointment_booking_technician"
+      },
+      {
+        "id": "f",
+        "text": "appointment_booking_scheduler"
+      }
+    ],
+    "correctAnswers": [
+      "a",
+      "c",
+      "d"
+    ],
+    "explanation": {
+      "correct": "ServiceNow defines three specific roles for Appointment Booking: appointment_booking_admin (can create, modify, and enable configurations for individual services), appointment_booking_manager (can create and update appointment booking records on behalf of the customer), and appointment_booking_user (can create and view appointments through the portal).",
+      "wrongAnswers": [
+        {
+          "id": "b",
+          "explanation": "appointment_booking_dispatcher is not a defined Appointment Booking role. Dispatching functionality uses different FSM roles."
+        },
+        {
+          "id": "e",
+          "explanation": "appointment_booking_technician is not a defined Appointment Booking role. Field agents use different roles for field service work."
+        },
+        {
+          "id": "f",
+          "explanation": "appointment_booking_scheduler is not a defined Appointment Booking role. Scheduling is managed through the admin and manager roles."
+        }
+      ]
+    },
+    "source": {
+      "excerpt": "Appointment Booking administrators: Users with the `appointment_booking_admin` role can create, modify, and enable configurations... Appointment Booking manager: Users with the `appointment_booking_manager` role can create and update appointment booking records... Appointment Booking user: Users with the `appointment_booking_user` role can create and view appointments through the portal.",
+      "url": "https://www.servicenow.com/docs/r/xanadu/field-service-management/field-service-scheduling/appointment-booking-administer.html"
+    },
+    "labels": {
+      "domain": "Implementing Field Service Processes",
+      "subtopics": [
+        "Appointment Booking",
+        "Roles and Permissions"
+      ],
+      "tags": [
+        "field-service",
+        "appointment-booking",
+        "roles",
+        "security"
+      ]
+    },
+    "meta": {
+      "version": "1.0",
+      "release": "Xanadu",
+      "reviewed": false
+    },
+    "isFree": false
+  },
+  {
+    "id": "cis-fsm-processes-906",
+    "certification": "cis-fsm",
+    "topic": "processes",
+    "cognitiveLevel": "understanding",
+    "type": "multiple_select",
+    "question": "Which statements about Work Plan types in Field Service Management are TRUE? (Choose two.)",
+    "options": [
+      {
+        "id": "a",
+        "text": "Model-based plans can be applied to any table in ServiceNow"
+      },
+      {
+        "id": "b",
+        "text": "Model-based plans apply only to hardware models that have at least one model category defined"
+      },
+      {
+        "id": "c",
+        "text": "Install base plan type is available only if the Customer Service Install Base Management plugin is activated"
+      },
+      {
+        "id": "d",
+        "text": "General type plans cannot use filter conditions to identify matching records"
+      },
+      {
+        "id": "e",
+        "text": "Install base plans automatically include all assets regardless of model selection"
+      }
+    ],
+    "correctAnswers": [
+      "b",
+      "c"
+    ],
+    "explanation": {
+      "correct": "Model-based plans apply only to hardware models, specifically ones that have at least one model category defined. The Install base plan type is available only if the Customer Service Install Base Management (com.snc.install_base) plugin is activated.",
+      "wrongAnswers": [
+        {
+          "id": "a",
+          "explanation": "Model-based plans are specifically for hardware models with model categories, not any table. General type plans allow table selection."
+        },
+        {
+          "id": "d",
+          "explanation": "General type plans specifically use a table and filter approach - they do use filter conditions to locate specific assets that require work."
+        },
+        {
+          "id": "e",
+          "explanation": "Install base plans require selecting specific models to identify the install base items that need maintenance, not all assets automatically."
+        }
+      ]
+    },
+    "source": {
+      "excerpt": "Model-based plans apply only to hardware models, specifically ones that have at least one model category defined. Install base plan type is available only if the Customer Service Install Base Management (com.snc.install_base) plugin is activated.",
+      "url": "https://www.servicenow.com/docs/r/xanadu/field-service-management/work-order-management/create-work-plan.html"
+    },
+    "labels": {
+      "domain": "Implementing Field Service Processes",
+      "subtopics": [
+        "Work Plans",
+        "Planned Work Management"
+      ],
+      "tags": [
+        "field-service",
+        "work-plan",
+        "model-based",
+        "install-base"
+      ]
+    },
+    "meta": {
+      "version": "1.0",
+      "release": "Xanadu",
+      "reviewed": false
+    },
+    "isFree": false
+  },
+  {
+    "id": "cis-fsm-processes-907",
+    "certification": "cis-fsm",
+    "topic": "processes",
+    "cognitiveLevel": "application",
+    "type": "multiple_choice",
+    "question": "A Customer Service agent needs to create work orders from cases, apply templates, move work orders through state transitions, and book appointments. Which role contains sn_fsm_servicedesk_agent and provides all these capabilities?",
+    "options": [
+      {
+        "id": "a",
+        "text": "sn_customerservice.relationship_agent only"
+      },
+      {
+        "id": "b",
+        "text": "sn_customerservice_agent"
+      },
+      {
+        "id": "c",
+        "text": "sn_fsm_servicedesk_agent only"
+      },
+      {
+        "id": "d",
+        "text": "agent_workspace_user"
+      }
+    ],
+    "correctAnswers": [
+      "b"
+    ],
+    "explanation": {
+      "correct": "The sn_customerservice_agent role provides all the described capabilities: create work orders from cases, view and apply templates, move work orders through state transitions (Draft to Ready for Approval, Ready for Qualification, Ready for Dispatch), and book appointments. This role contains sn_fsm_servicedesk_agent among its included roles.",
+      "wrongAnswers": [
+        {
+          "id": "a",
+          "explanation": "While sn_customerservice.relationship_agent does contain sn_fsm_servicedesk_agent, it restricts agent access to cases only for accounts, contacts, consumers, and households they have a relationship with. The question describes a general CS agent scenario."
+        },
+        {
+          "id": "c",
+          "explanation": "sn_fsm_servicedesk_agent is a contained role that provides FSM integration capabilities, but it alone doesn't provide the full Customer Service agent functionality like creating work orders from cases."
+        },
+        {
+          "id": "d",
+          "explanation": "agent_workspace_user is a basic workspace access role and does not provide the specific FSM integration capabilities described in the scenario."
+        }
+      ]
+    },
+    "source": {
+      "excerpt": "Customer Service Agent [sn_customerservice_agent]: Create work orders from case. View and apply template on a work order. Move a work order from Draft state to Ready for Approval, Ready for Qualification, and Ready for Dispatch... Book an appointment on a work order. Contains Roles: sn_fsm_servicedesk_agent",
+      "url": "https://www.servicenow.com/docs/r/xanadu/field-service-management/setup-fsm-agent-workspace.html"
+    },
+    "labels": {
+      "domain": "Implementing Field Service Processes",
+      "subtopics": [
+        "CSM Integration",
+        "Agent Workspace Roles"
+      ],
+      "tags": [
+        "field-service",
+        "csm-integration",
+        "roles",
+        "agent-workspace"
+      ]
+    },
+    "meta": {
+      "version": "1.0",
+      "release": "Xanadu",
+      "reviewed": false
+    },
+    "isFree": false
+  }
+]
