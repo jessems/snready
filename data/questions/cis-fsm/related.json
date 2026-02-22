@@ -1,0 +1,284 @@
+[
+  {
+    "id": "cis-fsm-related-1001",
+    "certification": "cis-fsm",
+    "topic": "related",
+    "cognitiveLevel": "knowledge",
+    "type": "multiple_choice",
+    "question": "Which system property controls the timing of upcoming task reminder notifications sent to field service agents?",
+    "options": [
+      {
+        "id": "a",
+        "text": "wm_notification.task.reminder.interval.minutes"
+      },
+      {
+        "id": "b",
+        "text": "wm_notification.upcoming.task.reminder.minutes.before"
+      },
+      {
+        "id": "c",
+        "text": "fsm.push.notification.reminder.time"
+      },
+      {
+        "id": "d",
+        "text": "wm_agent.task.notification.advance.warning"
+      }
+    ],
+    "correctAnswers": [
+      "b"
+    ],
+    "explanation": {
+      "correct": "The wm_notification.upcoming.task.reminder.minutes.before system property controls when reminder notifications are sent to agents. The default setting is 45 minutes before the task start time, and reminders can be set at 15-minute intervals up to one hour.",
+      "wrongAnswers": [
+        {
+          "id": "a",
+          "explanation": "This is not a valid ServiceNow system property for task reminders. The correct property is wm_notification.upcoming.task.reminder.minutes.before."
+        },
+        {
+          "id": "c",
+          "explanation": "This property name does not exist. FSM push notification reminder timing is controlled by wm_notification.upcoming.task.reminder.minutes.before."
+        },
+        {
+          "id": "d",
+          "explanation": "This is not a valid system property. The actual property for task reminders follows the wm_notification naming convention."
+        }
+      ]
+    },
+    "source": {
+      "excerpt": "These reminders require the wm_notification.upcoming.task.reminder.minutes.before system property to be set. The default setting is 45 minutes before the task start time.",
+      "url": "https://www.servicenow.com/docs/r/xanadu/field-service-management/mobile-experience-for-field-service-management/push-notifications-tasks-slas.html"
+    },
+    "labels": {
+      "domain": "Implementing Related Processes",
+      "subtopics": [
+        "Push notifications",
+        "Now Agent mobile application"
+      ],
+      "tags": [
+        "field-service",
+        "push-notifications",
+        "system-properties",
+        "mobile"
+      ]
+    },
+    "meta": {
+      "version": "1.0",
+      "release": "Xanadu",
+      "reviewed": false
+    },
+    "isFree": true
+  },
+  {
+    "id": "cis-fsm-related-1002",
+    "certification": "cis-fsm",
+    "topic": "related",
+    "cognitiveLevel": "understanding",
+    "type": "multiple_select",
+    "question": "Which SLA-related push notifications can be sent to assigned agents and agent managers in Field Service Management? (Choose two.)",
+    "options": [
+      {
+        "id": "a",
+        "text": "SLA warning"
+      },
+      {
+        "id": "b",
+        "text": "SLA escalation initiated"
+      },
+      {
+        "id": "c",
+        "text": "SLA breached"
+      },
+      {
+        "id": "d",
+        "text": "SLA threshold approaching"
+      },
+      {
+        "id": "e",
+        "text": "SLA pause activated"
+      }
+    ],
+    "correctAnswers": [
+      "a",
+      "c"
+    ],
+    "explanation": {
+      "correct": "ServiceNow FSM sends push notifications to assigned agents and agent managers for three SLA conditions: SLA warning, SLA breached, and SLA repair complete. These notifications help ensure timely awareness of SLA status.",
+      "wrongAnswers": [
+        {
+          "id": "b",
+          "explanation": "SLA escalation initiated is not one of the documented SLA push notifications. The valid SLA notifications are warning, breached, and repair complete."
+        },
+        {
+          "id": "d",
+          "explanation": "SLA threshold approaching is not a valid SLA push notification type. The SLA warning notification serves a similar purpose to alert about upcoming SLA issues."
+        },
+        {
+          "id": "e",
+          "explanation": "SLA pause activated is not a documented push notification type in FSM. The system sends notifications for warning, breached, and repair complete statuses."
+        }
+      ]
+    },
+    "source": {
+      "excerpt": "Send notifications to the assigned agents and agent managers for the following SLAs: SLA warning, SLA breached, SLA repair complete",
+      "url": "https://www.servicenow.com/docs/r/xanadu/field-service-management/mobile-experience-for-field-service-management/push-notifications-tasks-slas.html"
+    },
+    "labels": {
+      "domain": "Implementing Related Processes",
+      "subtopics": [
+        "Push notifications",
+        "SLA management"
+      ],
+      "tags": [
+        "field-service",
+        "push-notifications",
+        "sla",
+        "agent-notifications"
+      ]
+    },
+    "meta": {
+      "version": "1.0",
+      "release": "Xanadu",
+      "reviewed": false
+    },
+    "isFree": true
+  },
+  {
+    "id": "cis-fsm-related-1003",
+    "certification": "cis-fsm",
+    "topic": "related",
+    "cognitiveLevel": "knowledge",
+    "type": "multiple_choice",
+    "question": "Which of the following is NOT a valid push notification action for work order tasks in Field Service Management?",
+    "options": [
+      {
+        "id": "a",
+        "text": "WO Task-Accept Action"
+      },
+      {
+        "id": "b",
+        "text": "WO Task-Reject Action"
+      },
+      {
+        "id": "c",
+        "text": "WO Task-Running Late Action"
+      },
+      {
+        "id": "d",
+        "text": "WO Task-Escalate Action"
+      }
+    ],
+    "correctAnswers": [
+      "d"
+    ],
+    "explanation": {
+      "correct": "WO Task-Escalate Action is not a valid push notification action. The documented push notification actions under System Notification > Push > Push Action are: WO Task-Accept Action, WO Task-Reject Action, and WO Task-Running Late Action.",
+      "wrongAnswers": [
+        {
+          "id": "a",
+          "explanation": "WO Task-Accept Action is a valid push notification action that allows agents to accept assigned tasks from their mobile devices."
+        },
+        {
+          "id": "b",
+          "explanation": "WO Task-Reject Action is a valid push notification action that enables agents to reject task assignments, returning the task to Pending Dispatch state."
+        },
+        {
+          "id": "c",
+          "explanation": "WO Task-Running Late Action is a valid push notification action that allows agents to indicate they are running late for a scheduled task."
+        }
+      ]
+    },
+    "source": {
+      "excerpt": "Adds the following actions to System Notification > Push > Push Action: WO Task-Accept Action, WO Task-Reject Action, WO Task-Running Late Action",
+      "url": "https://www.servicenow.com/docs/r/xanadu/field-service-management/mobile-experience-for-field-service-management/push-notifications-work-order-tasks.html"
+    },
+    "labels": {
+      "domain": "Implementing Related Processes",
+      "subtopics": [
+        "Push notifications",
+        "Now Agent mobile application"
+      ],
+      "tags": [
+        "field-service",
+        "push-notifications",
+        "push-actions",
+        "work-order-tasks"
+      ]
+    },
+    "meta": {
+      "version": "1.0",
+      "release": "Xanadu",
+      "reviewed": false
+    },
+    "isFree": true
+  },
+  {
+    "id": "cis-fsm-related-1004",
+    "certification": "cis-fsm",
+    "topic": "related",
+    "cognitiveLevel": "application",
+    "type": "multiple_choice",
+    "question": "A dispatcher assigns a work order task to an assignment group containing five field technicians. What happens when one of the technicians clicks 'Assign to me' from the push notification?",
+    "options": [
+      {
+        "id": "a",
+        "text": "The task state changes to Pending Dispatch and awaits manager approval"
+      },
+      {
+        "id": "b",
+        "text": "The task state changes to Assigned and is assigned to that technician"
+      },
+      {
+        "id": "c",
+        "text": "The task remains in the group queue until all technicians acknowledge"
+      },
+      {
+        "id": "d",
+        "text": "The task state changes to Work in Progress and starts the SLA timer"
+      }
+    ],
+    "correctAnswers": [
+      "b"
+    ],
+    "explanation": {
+      "correct": "When a dispatcher assigns a task to an assignment group, all users in the group receive a notification with Approve or Reject actions. When an agent clicks 'Assign to me', the state of the task changes to Assigned and is assigned to that specific technician.",
+      "wrongAnswers": [
+        {
+          "id": "a",
+          "explanation": "Pending Dispatch is the state a task returns to when rejected, not when accepted. Clicking 'Assign to me' changes the state to Assigned, not Pending Dispatch."
+        },
+        {
+          "id": "c",
+          "explanation": "Tasks do not require acknowledgment from all group members. The first technician to click 'Assign to me' receives the assignment and the task state changes to Assigned."
+        },
+        {
+          "id": "d",
+          "explanation": "The task state changes to Assigned, not Work in Progress. Work in Progress is a subsequent state that occurs when the technician begins working on the task."
+        }
+      ]
+    },
+    "source": {
+      "excerpt": "When a dispatcher or manager assigns a task to an assignment group, all users in the group receive a notification with an Approve or Reject action. Agents receive the notification and can accept or reject the task. When an agent clicks Assign to me, the state of the task changes to Assigned.",
+      "url": "https://www.servicenow.com/docs/r/xanadu/field-service-management/mobile-experience-for-field-service-management/push-notifications-tasks-slas.html"
+    },
+    "labels": {
+      "domain": "Implementing Related Processes",
+      "subtopics": [
+        "Push notifications",
+        "Task assignment"
+      ],
+      "tags": [
+        "field-service",
+        "push-notifications",
+        "task-state",
+        "assignment-groups",
+        "scenario"
+      ]
+    },
+    "meta": {
+      "version": "1.0",
+      "release": "Xanadu",
+      "reviewed": false
+    },
+    "isFree": true
+  }
+]
