@@ -62,6 +62,7 @@ export interface Certification {
   lastUpdated: string;
   deltaExam?: DeltaExamInfo;
   showDumpsSection?: boolean;
+  allQuestionsFree?: boolean; // If true, all questions for this cert are free (promotion)
 }
 
 export interface ExamDomain {
