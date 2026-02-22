@@ -186,12 +186,24 @@ export async function getAllQuestionsForCertification(certSlug: string): Promise
   return allQuestions;
 }
 
-// Get free questions for a certification (15 total, distributed across topics)
+// Get free questions for a certification
+// If allQuestionsFree is set, returns all questions; otherwise returns 15 distributed across topics
 export async function getFreeQuestionsForCertification(certSlug: string): Promise<Question[]> {
+  const cert = getCertificationBySlug(certSlug);
   const topics = getTopicsForCertification(certSlug);
   const freeQuestions: Question[] = [];
-  const distribution = calculateFreeQuestionsDistribution(certSlug);
 
+  // If all questions are free for this certification, return all
+  if (cert?.allQuestionsFree) {
+    for (const topic of topics) {
+      const questions = await getQuestionsForTopic(certSlug, topic.slug);
+      freeQuestions.push(...questions);
+    }
+    return freeQuestions;
+  }
+
+  // Otherwise use distribution-based free questions (15 total)
+  const distribution = calculateFreeQuestionsDistribution(certSlug);
   for (const topic of topics) {
     const questions = await getQuestionsForTopic(certSlug, topic.slug);
     const freeCount = distribution.get(topic.slug) || 0;
@@ -214,9 +226,16 @@ export function getTotalQuestionCount(certSlug: string): number {
 }
 
 export function getTotalFreeQuestionCount(certSlug: string): number {
+  const cert = getCertificationBySlug(certSlug);
   const topics = getTopicsForCertification(certSlug);
   if (topics.length === 0) return 0;
-  // Return 15 total or total questions if less than 15
+  
+  // If all questions are free for this cert, return total count
+  if (cert?.allQuestionsFree) {
+    return getTotalQuestionCount(certSlug);
+  }
+  
+  // Otherwise return 15 total or total questions if less than 15
   const totalQuestions = getTotalQuestionCount(certSlug);
   return Math.min(FREE_QUESTIONS_PER_CERT, totalQuestions);
 }
