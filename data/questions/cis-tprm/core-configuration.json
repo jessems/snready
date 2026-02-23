@@ -1,0 +1,356 @@
+{
+  "questions": [
+    {
+      "id": "cis-tprm-core-config-001",
+      "certification": "cis-tprm",
+      "topic": "core-configuration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which role is required to configure TPRM properties?",
+      "options": [
+        { "id": "a", "text": "sn_vdr_risk_asmt.vendor_assessor" },
+        { "id": "b", "text": "sn_vdr_risk_asmt.vendor_risk_admin" },
+        { "id": "c", "text": "sn_vdr_risk_asmt.vendor_risk_manager" },
+        { "id": "d", "text": "sn_vdr_risk_asmt.vendor_contact" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "The sn_vdr_risk_asmt.vendor_risk_admin role is required to configure TPRM properties. This administrative role has the permissions necessary to modify system settings and property values.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "The vendor_assessor role is for users who assess third-party risk, not configure system properties", "reference": "TPRM Documentation" },
+          { "choiceId": "c", "explanation": "The vendor_risk_manager role manages risk assessments but doesn't configure system properties", "reference": "TPRM Documentation" },
+          { "choiceId": "d", "explanation": "The vendor_contact role is for third-party external users, not internal configuration", "reference": "TPRM Documentation" }
+        ]
+      },
+      "references": ["TPRM Documentation - Configure TPRM properties"],
+      "isFree": true,
+      "source": {
+        "type": "documentation",
+        "path": "tprm-properties-configure.md",
+        "excerpt": "Role required: sn_vdr_risk_asmt.vendor_risk_admin"
+      },
+      "labels": {
+        "certification": "cis-tprm",
+        "domain": "Core Configuration",
+        "domainSlug": "core-configuration",
+        "domainPercentage": 14,
+        "subtopics": ["Properties", "Roles"],
+        "tags": ["configuration", "roles", "admin"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-26T00:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-tprm-core-config-002",
+      "certification": "cis-tprm",
+      "topic": "core-configuration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_select",
+      "question": "Which applications must be activated to fully implement TPRM? (Choose THREE)",
+      "options": [
+        { "id": "a", "text": "Third-party Risk Management app [com.sn_vdr_risk_asmt]" },
+        { "id": "b", "text": "Due diligence request workflow application [com.sn_tprm_dd]" },
+        { "id": "c", "text": "Vendor Risk Management Workspace application [sn_vrm_ws]" },
+        { "id": "d", "text": "Customer Service Management [com.sn_csm]" },
+        { "id": "e", "text": "Field Service Management [com.sn_fsm]" }
+      ],
+      "correctAnswers": ["a", "b", "c"],
+      "explanation": {
+        "correct": "To fully implement TPRM, you need to activate: Third-party Risk Management app, Due diligence request workflow application, and Vendor Risk Management Workspace application. These three applications together provide the complete TPRM functionality.",
+        "wrongAnswers": [
+          { "choiceId": "d", "explanation": "Customer Service Management is a separate application for customer service operations", "reference": "TPRM Documentation" },
+          { "choiceId": "e", "explanation": "Field Service Management is for managing field service operations, not third-party risk", "reference": "TPRM Documentation" }
+        ]
+      },
+      "references": ["TPRM Documentation - Configuring Third-party Risk Management"],
+      "isFree": true,
+      "source": {
+        "type": "documentation",
+        "path": "tprm-configuring.md",
+        "excerpt": "Activate the Third-party Risk Management app [com.sn_vdr_risk_asmt], Activate the Due diligence request workflow application [com.sn_tprm_dd], Activate the Vendor Risk Management Workspace application [sn_vrm_ws]."
+      },
+      "labels": {
+        "certification": "cis-tprm",
+        "domain": "Core Configuration",
+        "domainSlug": "core-configuration",
+        "domainPercentage": 14,
+        "subtopics": ["Application Activation", "Installation"],
+        "tags": ["activation", "applications", "multi-select"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-26T00:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-tprm-core-config-003",
+      "certification": "cis-tprm",
+      "topic": "core-configuration",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What is the purpose of the 'Organization name' property [sn_vdr_risk_asmt.company.name] in TPRM?",
+      "options": [
+        { "id": "a", "text": "To set the default currency for assessments" },
+        { "id": "b", "text": "Third-party contacts see this name in all references on the Third-party portal" },
+        { "id": "c", "text": "To configure email notification headers" },
+        { "id": "d", "text": "To set the company logo on reports" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "The Organization name property [sn_vdr_risk_asmt.company.name] defines the name that third-party contacts see in all references on the Third-party portal. This helps maintain consistent branding and identification.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "Currency settings are not controlled by the Organization name property", "reference": "TPRM Documentation" },
+          { "choiceId": "c", "explanation": "Email notification configurations are separate from the Organization name property", "reference": "TPRM Documentation" },
+          { "choiceId": "d", "explanation": "Company logo settings are handled through different configuration options", "reference": "TPRM Documentation" }
+        ]
+      },
+      "references": ["TPRM Documentation - Configure TPRM properties"],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "tprm-properties-configure.md",
+        "excerpt": "Organization name [sn_vdr_risk_asmt.company.name]: Third-party contacts see this name in all references on the Third-party portal."
+      },
+      "labels": {
+        "certification": "cis-tprm",
+        "domain": "Core Configuration",
+        "domainSlug": "core-configuration",
+        "domainPercentage": 14,
+        "subtopics": ["Properties", "Portal Configuration"],
+        "tags": ["properties", "configuration", "portal"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-26T00:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-tprm-core-config-004",
+      "certification": "cis-tprm",
+      "topic": "core-configuration",
+      "cognitiveLevel": "understanding",
+      "type": "true_false_compound",
+      "question": "Evaluate the following statements about TPRM configuration:\n\nStatement 1: After the Smart Assessment Engine enabled property is set to true, this selection cannot be reversed.\n\nStatement 2: Sample questionnaires are automatically included when installing TPRM regardless of installation options.\n\nWhich statements are TRUE?",
+      "options": [
+        { "id": "a", "text": "Both statements are true" },
+        { "id": "b", "text": "Only Statement 1 is true" },
+        { "id": "c", "text": "Only Statement 2 is true" },
+        { "id": "d", "text": "Neither statement is true" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "Statement 1 is true - after the Smart Assessment Engine enabled property is set to true, this selection cannot be reversed. Statement 2 is false - sample questionnaires are only included if you select 'Load demo data' while installing the app.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "Statement 2 is false - demo data must be explicitly selected during installation", "reference": "TPRM Documentation" },
+          { "choiceId": "c", "explanation": "Statement 1 is true, Statement 2 is false", "reference": "TPRM Documentation" },
+          { "choiceId": "d", "explanation": "Statement 1 is correct - SAE enabling cannot be reversed", "reference": "TPRM Documentation" }
+        ]
+      },
+      "references": ["TPRM Documentation - Configure TPRM properties", "TPRM Documentation - Configuring Third-party Risk Management"],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "tprm-properties-configure.md",
+        "excerpt": "Warning: You won't be able to change this setting back once it's set to be 'true.' After this property is enabled, this selection can't be reversed."
+      },
+      "labels": {
+        "certification": "cis-tprm",
+        "domain": "Core Configuration",
+        "domainSlug": "core-configuration",
+        "domainPercentage": 14,
+        "subtopics": ["SAE Configuration", "Installation"],
+        "tags": ["sae", "configuration", "compound-tf"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-26T00:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-tprm-core-config-005",
+      "certification": "cis-tprm",
+      "topic": "core-configuration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice_negative",
+      "question": "Which of the following is NOT a standard setup task when configuring TPRM?",
+      "options": [
+        { "id": "a", "text": "Add an authentication policy for external third parties" },
+        { "id": "b", "text": "Assign TPRM roles to users and user groups" },
+        { "id": "c", "text": "Configure CMDB discovery schedules" },
+        { "id": "d", "text": "Enable email communication with third-party contacts" }
+      ],
+      "correctAnswers": ["c"],
+      "explanation": {
+        "correct": "Configuring CMDB discovery schedules is not a TPRM setup task - it's related to Discovery and CMDB applications. Standard TPRM setup tasks include: authentication policies, role assignments, property configuration, email communication setup, and third-party contact configuration.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "Adding authentication policies for third parties is a required TPRM setup task", "reference": "TPRM Documentation" },
+          { "choiceId": "b", "explanation": "Assigning TPRM roles is a required setup task for proper user management", "reference": "TPRM Documentation" },
+          { "choiceId": "d", "explanation": "Enabling email with third-party contacts is a setup task for communication", "reference": "TPRM Documentation" }
+        ]
+      },
+      "references": ["TPRM Documentation - Configuring Third-party Risk Management"],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "tprm-configuring.md",
+        "excerpt": "Setup tasks include: Activate applications, Add authentication policy, Assign TPRM roles, Add users to groups, Configure TPRM properties, Enable emails with third-party contacts."
+      },
+      "labels": {
+        "certification": "cis-tprm",
+        "domain": "Core Configuration",
+        "domainSlug": "core-configuration",
+        "domainPercentage": 14,
+        "subtopics": ["Setup Tasks", "Configuration"],
+        "tags": ["setup", "configuration", "negative"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-26T00:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-tprm-core-config-006",
+      "certification": "cis-tprm",
+      "topic": "core-configuration",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "An administrator wants to allow TPR assessors to answer questions on behalf of third-party contacts. Which property should be configured?",
+      "options": [
+        { "id": "a", "text": "sn_vdr_risk_asmt.company.name" },
+        { "id": "b", "text": "sn_svdp.allow_assessor_edit" },
+        { "id": "c", "text": "sn_vdr_risk_asmt.excel_file_max_size" },
+        { "id": "d", "text": "sn_tprm_dd.max_age_for_questionnaire_reuse" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "The sn_svdp.allow_assessor_edit property controls whether TPR assessors can answer or edit questionnaires for third-party contacts. Setting it to 'Enter answer' enables assessors to answer questions, 'Enter edit' enables them to modify responses, and 'false' disables both capabilities.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "This property sets the organization name displayed in the portal", "reference": "TPRM Documentation" },
+          { "choiceId": "c", "explanation": "This property controls the maximum Excel file size for imports", "reference": "TPRM Documentation" },
+          { "choiceId": "d", "explanation": "This property controls the maximum age for questionnaire response reuse", "reference": "TPRM Documentation" }
+        ]
+      },
+      "references": ["TPRM Documentation - Configure TPRM properties"],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "tprm-properties-configure.md",
+        "excerpt": "Allow assessors to answer/edit questionnaires for third-party contacts [sn_svdp.allow_assessor_edit]: Enter answer to enable TPR assessors to answer questions or modify responses."
+      },
+      "labels": {
+        "certification": "cis-tprm",
+        "domain": "Core Configuration",
+        "domainSlug": "core-configuration",
+        "domainPercentage": 14,
+        "subtopics": ["Properties", "Assessor Permissions"],
+        "tags": ["properties", "assessor", "permissions"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-26T00:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-tprm-core-config-007",
+      "certification": "cis-tprm",
+      "topic": "core-configuration",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_select",
+      "question": "Which of the following can be imported from other systems into TPRM without being charged? (Choose THREE)",
+      "options": [
+        { "id": "a", "text": "Third parties" },
+        { "id": "b", "text": "Engagements" },
+        { "id": "c", "text": "Assessments and questionnaires" },
+        { "id": "d", "text": "Platform license keys" },
+        { "id": "e", "text": "User authentication tokens" }
+      ],
+      "correctAnswers": ["a", "b", "c"],
+      "explanation": {
+        "correct": "TPRM allows importing existing data including third parties, engagements, assessments, questionnaires, and issues from other systems like Aravo or ProcessUnity without being charged. This facilitates migration from legacy systems.",
+        "wrongAnswers": [
+          { "choiceId": "d", "explanation": "License keys are not part of TPRM data imports", "reference": "TPRM Documentation" },
+          { "choiceId": "e", "explanation": "Authentication tokens are not imported as TPRM data", "reference": "TPRM Documentation" }
+        ]
+      },
+      "references": ["TPRM Documentation - Configuring Third-party Risk Management"],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "tprm-configuring.md",
+        "excerpt": "Import existing data (third parties, engagements, assessments, questionnaires, issues, and so on) from other systems (like the Aravo platform, the ProcessUnity platform, and so on). You aren't charged for importing the data."
+      },
+      "labels": {
+        "certification": "cis-tprm",
+        "domain": "Core Configuration",
+        "domainSlug": "core-configuration",
+        "domainPercentage": 14,
+        "subtopics": ["Data Import", "Migration"],
+        "tags": ["import", "migration", "multi-select"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-26T00:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-tprm-core-config-008",
+      "certification": "cis-tprm",
+      "topic": "core-configuration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Where do administrators navigate to assign TPRM roles to user groups?",
+      "options": [
+        { "id": "a", "text": "All > Third-party Risk Management > Administration > User Groups" },
+        { "id": "b", "text": "All > System Security > Users and Groups > Groups" },
+        { "id": "c", "text": "All > User Administration > Roles" },
+        { "id": "d", "text": "All > Third-party Risk Management > External Risk Assessments > All Assessments" }
+      ],
+      "correctAnswers": ["a"],
+      "explanation": {
+        "correct": "To assign TPRM roles, administrators navigate to All > Third-party Risk Management > Administration > User Groups. From there, they can select the Roles related list and assign appropriate TPRM roles (prefixed with sn_vdr) to groups.",
+        "wrongAnswers": [
+          { "choiceId": "b", "explanation": "While this is a valid system path for groups, the TPRM-specific path provides better context for TPRM role assignment", "reference": "TPRM Documentation" },
+          { "choiceId": "c", "explanation": "This is not the correct navigation path for TPRM role assignment", "reference": "TPRM Documentation" },
+          { "choiceId": "d", "explanation": "This path navigates to assessments, not user group configuration", "reference": "TPRM Documentation" }
+        ]
+      },
+      "references": ["TPRM Documentation - Assign TPRM roles to users and user groups"],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "tprm-roles-assign.md",
+        "excerpt": "Navigate to All > Third-party Risk Management > Administration > User Groups. Select the Roles related list to assign roles to the group."
+      },
+      "labels": {
+        "certification": "cis-tprm",
+        "domain": "Core Configuration",
+        "domainSlug": "core-configuration",
+        "domainPercentage": 14,
+        "subtopics": ["Role Assignment", "User Groups"],
+        "tags": ["roles", "groups", "navigation"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-26T00:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    }
+  ]
+}
