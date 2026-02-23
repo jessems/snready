@@ -13,6 +13,7 @@ export interface BlogPost {
 }
 
 export const blogPosts: BlogPost[] = [
+  {
     slug: "servicenow-certification-worth-it-2026",
     title: "Is ServiceNow Certification Worth It in 2026? A Realistic Analysis",
     description: "Cutting through the hype. When ServiceNow certification pays off, when it doesn't, and how to make the investment worthwhile.",
