@@ -1,0 +1,885 @@
+{
+  "questions": [
+    {
+      "id": "cis-tprm-assessment-config-001",
+      "certification": "cis-tprm",
+      "topic": "assessment-configuration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which role is required to create an external assessment in TPRM?",
+      "options": [
+        { "id": "a", "text": "sn_vdr_risk_asmt.vendor_contact" },
+        { "id": "b", "text": "sn_vdr_risk_asmt.vendor_risk_manager or sn_vdr_risk_asmt.vendor_assessor" },
+        { "id": "c", "text": "sn_vdr_risk_asmt.vendor_risk_admin only" },
+        { "id": "d", "text": "admin only" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "The sn_vdr_risk_asmt.vendor_risk_manager or sn_vdr_risk_asmt.vendor_assessor role is required to create external assessments. These roles have the necessary permissions to initiate the third-party risk assessment life cycle.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "The vendor_contact role is for third-party external users who respond to assessments", "reference": "TPRM Documentation" },
+          { "choiceId": "c", "explanation": "While admin can create assessments, the vendor_risk_manager or vendor_assessor roles are the standard roles for this task", "reference": "TPRM Documentation" },
+          { "choiceId": "d", "explanation": "The admin role can create assessments but is not the only role that can do so", "reference": "TPRM Documentation" }
+        ]
+      },
+      "references": ["TPRM Documentation - Create an external assessment"],
+      "isFree": true,
+      "source": {
+        "type": "documentation",
+        "path": "tprm-create-assessment.md",
+        "excerpt": "Role required: sn_vdr_risk_asmt.vendor_risk_manager or sn_vdr_risk_asmt.vendor_assessor"
+      },
+      "labels": {
+        "certification": "cis-tprm",
+        "domain": "Assessment Configuration",
+        "domainSlug": "assessment-configuration",
+        "domainPercentage": 33,
+        "subtopics": ["External Assessment", "Roles"],
+        "tags": ["assessment", "roles", "external"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-26T00:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-tprm-assessment-config-002",
+      "certification": "cis-tprm",
+      "topic": "assessment-configuration",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What is the purpose of a question bank in TPRM?",
+      "options": [
+        { "id": "a", "text": "To store financial data about third parties" },
+        { "id": "b", "text": "To reuse questions in any assessment by adding them to questionnaires" },
+        { "id": "c", "text": "To manage user authentication credentials" },
+        { "id": "d", "text": "To store third-party contact information" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "A question bank allows you to reuse questions in any assessment by dropping them into questionnaires. You can create custom questions, add existing questions, or add and customize sample questions included with the base system.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "Financial data is managed through assessments and third-party records, not the question bank", "reference": "TPRM Documentation" },
+          { "choiceId": "c", "explanation": "User authentication is managed through system security settings, not the question bank", "reference": "TPRM Documentation" },
+          { "choiceId": "d", "explanation": "Contact information is stored in third-party and engagement records, not the question bank", "reference": "TPRM Documentation" }
+        ]
+      },
+      "references": ["TPRM Documentation - Set up and maintain a question bank"],
+      "isFree": true,
+      "source": {
+        "type": "documentation",
+        "path": "tprm-question-bank-create.md",
+        "excerpt": "After you add a question to a question bank, you can reuse it in any assessment by dropping it into the assessment."
+      },
+      "labels": {
+        "certification": "cis-tprm",
+        "domain": "Assessment Configuration",
+        "domainSlug": "assessment-configuration",
+        "domainPercentage": 33,
+        "subtopics": ["Question Bank", "Questionnaire Templates"],
+        "tags": ["question-bank", "reuse", "templates"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-26T00:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-tprm-assessment-config-003",
+      "certification": "cis-tprm",
+      "topic": "assessment-configuration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_select",
+      "question": "Which of the following can be associated with an external assessment? (Choose THREE)",
+      "options": [
+        { "id": "a", "text": "Questionnaire templates" },
+        { "id": "b", "text": "Document request templates" },
+        { "id": "c", "text": "Assessment templates" },
+        { "id": "d", "text": "Change request records" },
+        { "id": "e", "text": "Incident records" }
+      ],
+      "correctAnswers": ["a", "b", "c"],
+      "explanation": {
+        "correct": "External assessments can be associated with questionnaire templates, document request templates, and assessment templates. These templates define the questions and documents that third parties need to provide.",
+        "wrongAnswers": [
+          { "choiceId": "d", "explanation": "Change request records are part of Change Management, not TPRM assessments", "reference": "TPRM Documentation" },
+          { "choiceId": "e", "explanation": "Incident records are part of Incident Management, not TPRM assessments", "reference": "TPRM Documentation" }
+        ]
+      },
+      "references": ["TPRM Documentation - Create an external assessment"],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "tprm-create-assessment.md",
+        "excerpt": "Associate existing questionnaires or document requests with the assessment. TPR administrators can create questionnaire or document request templates and associate them with the assessment."
+      },
+      "labels": {
+        "certification": "cis-tprm",
+        "domain": "Assessment Configuration",
+        "domainSlug": "assessment-configuration",
+        "domainPercentage": 33,
+        "subtopics": ["External Assessment", "Templates"],
+        "tags": ["assessment", "templates", "multi-select"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-26T00:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-tprm-assessment-config-004",
+      "certification": "cis-tprm",
+      "topic": "assessment-configuration",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice_negative",
+      "question": "Which of the following question types is NOT supported by Smart Assessment Engine (SAE) for TPRM questionnaires?",
+      "options": [
+        { "id": "a", "text": "Radio button" },
+        { "id": "b", "text": "Number" },
+        { "id": "c", "text": "Ranking" },
+        { "id": "d", "text": "Text" }
+      ],
+      "correctAnswers": ["c"],
+      "explanation": {
+        "correct": "Ranking question types are not supported by SAE. The unsupported question types include: percentage, ranking, image scale, and custom metric. These must be converted to supported formats before migration or replaced with new questions.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "Radio button questions are supported by SAE", "reference": "TPRM Documentation" },
+          { "choiceId": "b", "explanation": "Number questions are supported by SAE (percentage questions can be converted to Number type)", "reference": "TPRM Documentation" },
+          { "choiceId": "d", "explanation": "Text questions are supported by SAE", "reference": "TPRM Documentation" }
+        ]
+      },
+      "references": ["TPRM Documentation - Migrate a template to an SAE template"],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "tprm-asmnt-tmplt-migrate-metrics-to.md",
+        "excerpt": "The following question types aren't supported: percentage, ranking, image scale, and custom metric."
+      },
+      "labels": {
+        "certification": "cis-tprm",
+        "domain": "Assessment Configuration",
+        "domainSlug": "assessment-configuration",
+        "domainPercentage": 33,
+        "subtopics": ["SAE", "Question Types"],
+        "tags": ["sae", "questions", "negative"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-26T00:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-tprm-assessment-config-005",
+      "certification": "cis-tprm",
+      "topic": "assessment-configuration",
+      "cognitiveLevel": "understanding",
+      "type": "true_false_compound",
+      "question": "Evaluate the following statements about questionnaire templates in TPRM:\n\nStatement 1: You should not change a questionnaire template after it has been sent out as part of an internal assessment.\n\nStatement 2: If you update a questionnaire after it has been sent out, the changes will automatically appear in the version shown to the IRQ assessor.\n\nWhich statements are TRUE?",
+      "options": [
+        { "id": "a", "text": "Both statements are true" },
+        { "id": "b", "text": "Only Statement 1 is true" },
+        { "id": "c", "text": "Only Statement 2 is true" },
+        { "id": "d", "text": "Neither statement is true" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "Statement 1 is true - you should duplicate the template and make changes in a new copy rather than modifying an active questionnaire. Statement 2 is false - if you update a questionnaire after it has been sent out, the changes won't appear in the version shown to the IRQ assessor.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "Statement 2 is false - changes don't automatically appear to the assessor", "reference": "TPRM Documentation" },
+          { "choiceId": "c", "explanation": "Statement 1 is true, Statement 2 is false", "reference": "TPRM Documentation" },
+          { "choiceId": "d", "explanation": "Statement 1 is correct about not changing sent questionnaires", "reference": "TPRM Documentation" }
+        ]
+      },
+      "references": ["TPRM Documentation - Assessing your third-party risk"],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "tprm-assessing-tpr.md",
+        "excerpt": "Don't change a questionnaire template after it has been sent out as part of an internal assessment. If you update a questionnaire after it has been sent out, the changes won't appear in the version shown to the IRQ assessor."
+      },
+      "labels": {
+        "certification": "cis-tprm",
+        "domain": "Assessment Configuration",
+        "domainSlug": "assessment-configuration",
+        "domainPercentage": 33,
+        "subtopics": ["Questionnaire Templates", "Best Practices"],
+        "tags": ["questionnaire", "templates", "compound-tf"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-26T00:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-tprm-assessment-config-006",
+      "certification": "cis-tprm",
+      "topic": "assessment-configuration",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "What state does an assessment change to after selecting 'Submit to third party'?",
+      "options": [
+        { "id": "a", "text": "In Progress" },
+        { "id": "b", "text": "Submitted to third party" },
+        { "id": "c", "text": "Under Review" },
+        { "id": "d", "text": "Pending Approval" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "When a TPR manager or assessor selects 'Submit to third party', the state of the assessment changes to 'Submitted to third party'. The selected templates generate questionnaires or document requests, and the primary third-party contact receives an email notification.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "In Progress is not the state after submission to third party", "reference": "TPRM Documentation" },
+          { "choiceId": "c", "explanation": "Under Review is not a standard TPRM assessment state after submission", "reference": "TPRM Documentation" },
+          { "choiceId": "d", "explanation": "Pending Approval is not the state after submitting to third party", "reference": "TPRM Documentation" }
+        ]
+      },
+      "references": ["TPRM Documentation - Create an external assessment"],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "tprm-create-assessment.md",
+        "excerpt": "Select Submit to third party. The state of the assessment changes to Submitted to third party."
+      },
+      "labels": {
+        "certification": "cis-tprm",
+        "domain": "Assessment Configuration",
+        "domainSlug": "assessment-configuration",
+        "domainPercentage": 33,
+        "subtopics": ["Assessment States", "Workflow"],
+        "tags": ["assessment", "state", "workflow"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-26T00:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-tprm-assessment-config-007",
+      "certification": "cis-tprm",
+      "topic": "assessment-configuration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What is a control objective in the context of TPRM questionnaires?",
+      "options": [
+        { "id": "a", "text": "A metric for measuring questionnaire completion time" },
+        { "id": "b", "text": "An objective that acts as guidance for company interactions and operations" },
+        { "id": "c", "text": "A score threshold for passing assessments" },
+        { "id": "d", "text": "A deadline for third-party response submission" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "A control objective is an objective, direction, or standard that acts as guidance for company interactions and operations. Control objectives can be categorized, classified, and related to policies. When using TPRM with Policy and Compliance Management, you can associate control objectives and controls with questions.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "Completion time metrics are not control objectives", "reference": "TPRM Documentation" },
+          { "choiceId": "c", "explanation": "Score thresholds are part of scoring configuration, not control objectives", "reference": "TPRM Documentation" },
+          { "choiceId": "d", "explanation": "Response deadlines are separate from control objectives", "reference": "TPRM Documentation" }
+        ]
+      },
+      "references": ["TPRM Documentation - Manually add a control objective to a question"],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "tprm-add-controls-q.md",
+        "excerpt": "A control objective is an objective, direction, or standard that acts as guidance for company interactions and operations. Control objectives can be categorized, classified, and related to policies."
+      },
+      "labels": {
+        "certification": "cis-tprm",
+        "domain": "Assessment Configuration",
+        "domainSlug": "assessment-configuration",
+        "domainPercentage": 33,
+        "subtopics": ["Control Objectives", "Policy Integration"],
+        "tags": ["control", "objective", "policy"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-26T00:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-tprm-assessment-config-008",
+      "certification": "cis-tprm",
+      "topic": "assessment-configuration",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_select",
+      "question": "Which of the following happen when a classic template is migrated to an SAE template? (Choose THREE)",
+      "options": [
+        { "id": "a", "text": "Unsupported question types must be converted or replaced" },
+        { "id": "b", "text": "Empty sections are created for sections with only unsupported questions" },
+        { "id": "c", "text": "Previous assessment responses are migrated automatically" },
+        { "id": "d", "text": "The migration can be reversed after completion" },
+        { "id": "e", "text": "Templates with empty sections cannot be published" }
+      ],
+      "correctAnswers": ["a", "b", "e"],
+      "explanation": {
+        "correct": "During SAE template migration: unsupported question types (percentage, ranking, image scale, custom metric) must be converted; empty sections are created when sections contain only unsupported questions; templates with empty sections cannot be published. Note: responses are NOT migrated and the migration cannot be reversed.",
+        "wrongAnswers": [
+          { "choiceId": "c", "explanation": "Responses from previous assessments are NOT migrated during template migration", "reference": "TPRM Documentation" },
+          { "choiceId": "d", "explanation": "After SAE is enabled, the selection cannot be reversed", "reference": "TPRM Documentation" }
+        ]
+      },
+      "references": ["TPRM Documentation - Migrate a template to an SAE template"],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "tprm-asmnt-tmplt-migrate-metrics-to.md",
+        "excerpt": "If a section in the classic template contains only unsupported questions, an empty section is created. TPRM SAE templates with empty sections can't be published. Responses from previous assessments aren't migrated."
+      },
+      "labels": {
+        "certification": "cis-tprm",
+        "domain": "Assessment Configuration",
+        "domainSlug": "assessment-configuration",
+        "domainPercentage": 33,
+        "subtopics": ["SAE Migration", "Template Migration"],
+        "tags": ["sae", "migration", "multi-select"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-26T00:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-tprm-assessment-config-009",
+      "certification": "cis-tprm",
+      "topic": "assessment-configuration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What determines which engagements are selected for assessment using engagement risk scoring rules?",
+      "options": [
+        { "id": "a", "text": "The third party's geographic location" },
+        { "id": "b", "text": "Component criteria defined in the engagement filter" },
+        { "id": "c", "text": "The user who created the engagement" },
+        { "id": "d", "text": "The number of questionnaires completed" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "Engagement risk scoring rules use component criteria defined in the engagement filter to determine which engagements are selected for assessment. For example, a rule could enable assessments for engagements involving more than $40,000 annual spend or third parties within a particular category.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "Geographic location alone doesn't determine engagement selection - it's based on defined criteria", "reference": "TPRM Documentation" },
+          { "choiceId": "c", "explanation": "The creator of the engagement doesn't determine scoring rule selection", "reference": "TPRM Documentation" },
+          { "choiceId": "d", "explanation": "Questionnaire count is not the primary determinant for engagement selection", "reference": "TPRM Documentation" }
+        ]
+      },
+      "references": ["TPRM Documentation - Define engagement risk scoring rules"],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "tprm-engagement-scoring-rules-df.md",
+        "excerpt": "An engagement risk-scoring rule specifies component criteria that determine which engagements are selected for assessment. For example, a rule could enable assessments for engagements that involve more than $40,000 annual business."
+      },
+      "labels": {
+        "certification": "cis-tprm",
+        "domain": "Assessment Configuration",
+        "domainSlug": "assessment-configuration",
+        "domainPercentage": 33,
+        "subtopics": ["Scoring Rules", "Engagement Selection"],
+        "tags": ["scoring", "rules", "engagement"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-26T00:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-tprm-assessment-config-010",
+      "certification": "cis-tprm",
+      "topic": "assessment-configuration",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "What happens when a user selects the 'Include previous responses' option for a questionnaire?",
+      "options": [
+        { "id": "a", "text": "The questionnaire is deleted and replaced with the previous version" },
+        { "id": "b", "text": "Previous responses are copied to the outgoing questionnaire from the most recent closed assessment" },
+        { "id": "c", "text": "All historical assessments are merged into one" },
+        { "id": "d", "text": "The questionnaire becomes read-only" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "When 'Include previous responses' is selected, previous responses are copied and added to the outgoing questionnaire. The notification in the Third-party portal includes information about the previous assessment that supplied the responses. Note that this is a one-time copy - subsequent changes to the original assessment won't be reflected.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "The questionnaire is not deleted - previous responses are copied to it", "reference": "TPRM Documentation" },
+          { "choiceId": "c", "explanation": "Assessments are not merged - responses are copied to the new questionnaire", "reference": "TPRM Documentation" },
+          { "choiceId": "d", "explanation": "The questionnaire remains editable for the third party to update responses", "reference": "TPRM Documentation" }
+        ]
+      },
+      "references": ["TPRM Documentation - Create an external assessment"],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "tprm-create-assessment.md",
+        "excerpt": "If the Include previous responses option is selected for a questionnaire, then previous responses are copied and added to the outgoing questionnaire."
+      },
+      "labels": {
+        "certification": "cis-tprm",
+        "domain": "Assessment Configuration",
+        "domainSlug": "assessment-configuration",
+        "domainPercentage": 33,
+        "subtopics": ["Questionnaire Options", "Response Management"],
+        "tags": ["questionnaire", "responses", "reuse"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-26T00:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-tprm-assessment-config-011",
+      "certification": "cis-tprm",
+      "topic": "assessment-configuration",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice_negative",
+      "question": "Which of the following is NOT a valid migration status for SAE template migration?",
+      "options": [
+        { "id": "a", "text": "Completed" },
+        { "id": "b", "text": "Partially completed" },
+        { "id": "c", "text": "Pending Review" },
+        { "id": "d", "text": "Errored" }
+      ],
+      "correctAnswers": ["c"],
+      "explanation": {
+        "correct": "The valid migration statuses are: Completed (migration finished successfully), Partially completed (only some elements were migrated), and Errored (an error occurred). 'Pending Review' is not a valid migration status.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "Completed is a valid status indicating successful migration", "reference": "TPRM Documentation" },
+          { "choiceId": "b", "explanation": "Partially completed is a valid status indicating partial success", "reference": "TPRM Documentation" },
+          { "choiceId": "d", "explanation": "Errored is a valid status indicating migration failure", "reference": "TPRM Documentation" }
+        ]
+      },
+      "references": ["TPRM Documentation - Migrate a template to an SAE template"],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "tprm-asmnt-tmplt-migrate-metrics-to.md",
+        "excerpt": "The Migration Status field will update with one of the following: Completed, Partially completed, Errored."
+      },
+      "labels": {
+        "certification": "cis-tprm",
+        "domain": "Assessment Configuration",
+        "domainSlug": "assessment-configuration",
+        "domainPercentage": 33,
+        "subtopics": ["SAE Migration", "Migration Status"],
+        "tags": ["sae", "migration", "negative"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-26T00:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-tprm-assessment-config-012",
+      "certification": "cis-tprm",
+      "topic": "assessment-configuration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Where should Smart assessments be viewed in TPRM?",
+      "options": [
+        { "id": "a", "text": "Classic UI only" },
+        { "id": "b", "text": "Vendor Management Workspace" },
+        { "id": "c", "text": "Service Portal only" },
+        { "id": "d", "text": "Email notifications only" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "Smart assessments must be viewed in the Vendor Management Workspace. The workspace provides the appropriate interface for SAE-based assessments and their management.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "Smart assessments require the Vendor Management Workspace, not just Classic UI", "reference": "TPRM Documentation" },
+          { "choiceId": "c", "explanation": "Service Portal is for external users, internal users should use the Workspace", "reference": "TPRM Documentation" },
+          { "choiceId": "d", "explanation": "Email notifications supplement but don't replace the Workspace view", "reference": "TPRM Documentation" }
+        ]
+      },
+      "references": ["TPRM Documentation - Create an external assessment"],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "tprm-create-assessment.md",
+        "excerpt": "Important: Smart assessments must be viewed in the Vendor Management Workspace."
+      },
+      "labels": {
+        "certification": "cis-tprm",
+        "domain": "Assessment Configuration",
+        "domainSlug": "assessment-configuration",
+        "domainPercentage": 33,
+        "subtopics": ["SAE", "Workspace"],
+        "tags": ["sae", "workspace", "viewing"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-26T00:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-tprm-assessment-config-013",
+      "certification": "cis-tprm",
+      "topic": "assessment-configuration",
+      "cognitiveLevel": "understanding",
+      "type": "true_false_compound",
+      "question": "Evaluate the following statements about engagement risk scoring rules:\n\nStatement 1: Engagement risk scoring rules apply only to engagements and not to parent third parties.\n\nStatement 2: If multiple rules apply to the same engagement, the one with the higher-order value is applied.\n\nWhich statements are TRUE?",
+      "options": [
+        { "id": "a", "text": "Both statements are true" },
+        { "id": "b", "text": "Only Statement 1 is true" },
+        { "id": "c", "text": "Only Statement 2 is true" },
+        { "id": "d", "text": "Neither statement is true" }
+      ],
+      "correctAnswers": ["a"],
+      "explanation": {
+        "correct": "Both statements are true. Engagement risk scoring rules apply only to engagements, not parent third parties, so engagement risk ratings only apply to risk assessments for the engagement. When multiple rules match the same engagement, the rule with the higher-order value takes precedence.",
+        "wrongAnswers": [
+          { "choiceId": "b", "explanation": "Both statements are true, not just Statement 1", "reference": "TPRM Documentation" },
+          { "choiceId": "c", "explanation": "Both statements are true, not just Statement 2", "reference": "TPRM Documentation" },
+          { "choiceId": "d", "explanation": "Both statements are accurate according to documentation", "reference": "TPRM Documentation" }
+        ]
+      },
+      "references": ["TPRM Documentation - Define engagement risk scoring rules"],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "tprm-engagement-scoring-rules-df.md",
+        "excerpt": "Engagement risk scoring rules apply only to engagements and not to parent third parties. If multiple rules apply to the same engagement, the one with the higher-order value is applied."
+      },
+      "labels": {
+        "certification": "cis-tprm",
+        "domain": "Assessment Configuration",
+        "domainSlug": "assessment-configuration",
+        "domainPercentage": 33,
+        "subtopics": ["Scoring Rules", "Rule Precedence"],
+        "tags": ["scoring", "rules", "compound-tf"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-26T00:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-tprm-assessment-config-014",
+      "certification": "cis-tprm",
+      "topic": "assessment-configuration",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A TPR assessor wants to track remediation for problems found during an external assessment. What should they create?",
+      "options": [
+        { "id": "a", "text": "A new internal assessment" },
+        { "id": "b", "text": "An issue to track the remediation process" },
+        { "id": "c", "text": "A change request" },
+        { "id": "d", "text": "A new questionnaire template" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "For problems that arise during assessment review, the TPR assessor creates an issue to track the remediation process. This is done during the 'Finalizing with third party' state when working through responses.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "Internal assessments are for IRQs, not for tracking remediation", "reference": "TPRM Documentation" },
+          { "choiceId": "c", "explanation": "Change requests are for Change Management, not TPRM remediation tracking", "reference": "TPRM Documentation" },
+          { "choiceId": "d", "explanation": "Creating a new template doesn't track remediation for existing problems", "reference": "TPRM Documentation" }
+        ]
+      },
+      "references": ["TPRM Documentation - Create an external assessment"],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "tprm-create-assessment.md",
+        "excerpt": "For any problems that arise, the TPR assessor creates an issue to track the remediation process (Finalizing with third party)."
+      },
+      "labels": {
+        "certification": "cis-tprm",
+        "domain": "Assessment Configuration",
+        "domainSlug": "assessment-configuration",
+        "domainPercentage": 33,
+        "subtopics": ["Issues", "Remediation"],
+        "tags": ["issues", "remediation", "assessment"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-26T00:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-tprm-assessment-config-015",
+      "certification": "cis-tprm",
+      "topic": "assessment-configuration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_select",
+      "question": "Which roles are required to manually add a control objective to a question? (Choose TWO)",
+      "options": [
+        { "id": "a", "text": "sn_vdr_risk_asmt.vendor_risk_manager" },
+        { "id": "b", "text": "sn_compliance.manager" },
+        { "id": "c", "text": "sn_vdr_risk_asmt.vendor_contact" },
+        { "id": "d", "text": "itil" },
+        { "id": "e", "text": "approver_user" }
+      ],
+      "correctAnswers": ["a", "b"],
+      "explanation": {
+        "correct": "To manually add a control objective to a question, you need both the sn_vdr_risk_asmt.vendor_risk_manager AND sn_compliance.manager roles. This requires permissions from both TPRM and Policy and Compliance Management applications.",
+        "wrongAnswers": [
+          { "choiceId": "c", "explanation": "The vendor_contact role is for third-party external users, not internal configuration", "reference": "TPRM Documentation" },
+          { "choiceId": "d", "explanation": "The itil role is for ITSM, not required for TPRM control objectives", "reference": "TPRM Documentation" },
+          { "choiceId": "e", "explanation": "The approver_user role is not required for adding control objectives", "reference": "TPRM Documentation" }
+        ]
+      },
+      "references": ["TPRM Documentation - Manually add a control objective to a question"],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "tprm-add-controls-q.md",
+        "excerpt": "Role required: sn_vdr_risk_asmt.vendor_risk_manager and sn_compliance.manager"
+      },
+      "labels": {
+        "certification": "cis-tprm",
+        "domain": "Assessment Configuration",
+        "domainSlug": "assessment-configuration",
+        "domainPercentage": 33,
+        "subtopics": ["Control Objectives", "Roles"],
+        "tags": ["control", "roles", "multi-select"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-26T00:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-tprm-assessment-config-016",
+      "certification": "cis-tprm",
+      "topic": "assessment-configuration",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What happens to event-driven management rules if an assessment template is not updated to support SAE assessments?",
+      "options": [
+        { "id": "a", "text": "The rules continue to work normally" },
+        { "id": "b", "text": "The rules won't run as expected" },
+        { "id": "c", "text": "The rules are automatically migrated" },
+        { "id": "d", "text": "The rules are permanently deleted" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "If an assessment template isn't updated to support SAE assessments, the related tier-based, provider-based, and event-driven management rules won't run as expected. Templates must be migrated to SAE format for these rules to function properly.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "Rules won't work correctly if templates aren't updated for SAE", "reference": "TPRM Documentation" },
+          { "choiceId": "c", "explanation": "Rules are not automatically migrated - template migration is required", "reference": "TPRM Documentation" },
+          { "choiceId": "d", "explanation": "Rules are not deleted, they just won't run as expected", "reference": "TPRM Documentation" }
+        ]
+      },
+      "references": ["TPRM Documentation - Migrate a template to an SAE template"],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "tprm-asmnt-tmplt-migrate-metrics-to.md",
+        "excerpt": "If an assessment template isn't updated to support SAE assessments, the related tier-based, provider-based, and event-driven management rules won't run as expected."
+      },
+      "labels": {
+        "certification": "cis-tprm",
+        "domain": "Assessment Configuration",
+        "domainSlug": "assessment-configuration",
+        "domainPercentage": 33,
+        "subtopics": ["Event-driven Management", "SAE Migration"],
+        "tags": ["event-driven", "sae", "rules"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-26T00:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-tprm-assessment-config-017",
+      "certification": "cis-tprm",
+      "topic": "assessment-configuration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What role is required to set up and maintain a question bank?",
+      "options": [
+        { "id": "a", "text": "sn_vdr_risk_asmt.vendor_contact" },
+        { "id": "b", "text": "admin or sn_vdr_risk_asmt.vendor_risk_admin" },
+        { "id": "c", "text": "sn_vdr_risk_asmt.vendor_assessor only" },
+        { "id": "d", "text": "itil" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "The admin or sn_vdr_risk_asmt.vendor_risk_admin role is required to set up and maintain a question bank. These administrative roles have the permissions to create and manage question bank categories and questions.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "The vendor_contact role is for external third-party users", "reference": "TPRM Documentation" },
+          { "choiceId": "c", "explanation": "The vendor_assessor role alone cannot manage the question bank", "reference": "TPRM Documentation" },
+          { "choiceId": "d", "explanation": "The itil role is for ITSM, not TPRM administration", "reference": "TPRM Documentation" }
+        ]
+      },
+      "references": ["TPRM Documentation - Set up and maintain a question bank"],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "tprm-question-bank-create.md",
+        "excerpt": "Role required: admin or sn_vdr_risk_asmt.vendor_risk_admin"
+      },
+      "labels": {
+        "certification": "cis-tprm",
+        "domain": "Assessment Configuration",
+        "domainSlug": "assessment-configuration",
+        "domainPercentage": 33,
+        "subtopics": ["Question Bank", "Roles"],
+        "tags": ["question-bank", "roles", "admin"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-26T00:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-tprm-assessment-config-018",
+      "certification": "cis-tprm",
+      "topic": "assessment-configuration",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_select",
+      "question": "Which of the following information is included in the Event-driven management history record? (Choose THREE)",
+      "options": [
+        { "id": "a", "text": "Run start timestamp" },
+        { "id": "b", "text": "Trigger action (Scheduled job or Manual)" },
+        { "id": "c", "text": "Third-party contact email addresses" },
+        { "id": "d", "text": "State (Running, Successful, or Recalled)" },
+        { "id": "e", "text": "Third-party credit scores" }
+      ],
+      "correctAnswers": ["a", "b", "d"],
+      "explanation": {
+        "correct": "Event-driven management history records include: Run start timestamp, Trigger action (whether scheduled or manual), Run complete timestamp, State (Running, Successful, or Recalled), and a unique ID number starting with EMH.",
+        "wrongAnswers": [
+          { "choiceId": "c", "explanation": "Contact email addresses are not stored in the history record", "reference": "TPRM Documentation" },
+          { "choiceId": "e", "explanation": "Credit scores are from risk intelligence providers, not event-driven management history", "reference": "TPRM Documentation" }
+        ]
+      },
+      "references": ["TPRM Documentation - View the assessments generated by event-driven management rules"],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "tprm-event-drvn-mgt-asessments.md",
+        "excerpt": "Each record includes: Number, Trigger action, Run start, Run complete, State."
+      },
+      "labels": {
+        "certification": "cis-tprm",
+        "domain": "Assessment Configuration",
+        "domainSlug": "assessment-configuration",
+        "domainPercentage": 33,
+        "subtopics": ["Event-driven Management", "History"],
+        "tags": ["event-driven", "history", "multi-select"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-26T00:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-tprm-assessment-config-019",
+      "certification": "cis-tprm",
+      "topic": "assessment-configuration",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "How should a percentage question type be converted when migrating to SAE?",
+      "options": [
+        { "id": "a", "text": "Convert to Radio button type" },
+        { "id": "b", "text": "Convert to Number type" },
+        { "id": "c", "text": "Convert to Text type" },
+        { "id": "d", "text": "Percentage questions cannot be converted" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "When migrating to SAE, percentage questions should be converted to Number type. Image scale questions should use Radio button type. Ranking and custom metric question types aren't supported and must be recreated.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "Radio button type is recommended for image scale questions, not percentage", "reference": "TPRM Documentation" },
+          { "choiceId": "c", "explanation": "Text type is not the recommended conversion for percentage questions", "reference": "TPRM Documentation" },
+          { "choiceId": "d", "explanation": "Percentage questions can be converted to Number type", "reference": "TPRM Documentation" }
+        ]
+      },
+      "references": ["TPRM Documentation - Migrate a template to an SAE template"],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "tprm-asmnt-tmplt-migrate-metrics-to.md",
+        "excerpt": "Convert unsupported question types: For percentage questions, use the Number type. For image scale questions, use the Radio button type."
+      },
+      "labels": {
+        "certification": "cis-tprm",
+        "domain": "Assessment Configuration",
+        "domainSlug": "assessment-configuration",
+        "domainPercentage": 33,
+        "subtopics": ["SAE Migration", "Question Conversion"],
+        "tags": ["sae", "migration", "conversion"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-26T00:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-tprm-assessment-config-020",
+      "certification": "cis-tprm",
+      "topic": "assessment-configuration",
+      "cognitiveLevel": "understanding",
+      "type": "true_false_compound",
+      "question": "Evaluate the following statements about assessment state management:\n\nStatement 1: The TPR assessor can change the assessment state to 'Generating Observations' after reviewing responses.\n\nStatement 2: The 'Include previous responses' option can be changed after the questionnaire is sent to the third party.\n\nWhich statements are TRUE?",
+      "options": [
+        { "id": "a", "text": "Both statements are true" },
+        { "id": "b", "text": "Only Statement 1 is true" },
+        { "id": "c", "text": "Only Statement 2 is true" },
+        { "id": "d", "text": "Neither statement is true" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "Statement 1 is true - the TPR assessor moves the assessment to 'Generating Observations' state after reviewing responses. Statement 2 is false - the 'Include previous responses' option cannot be changed after the questionnaire is sent to the third party.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "Statement 2 is false - the option cannot be changed after sending", "reference": "TPRM Documentation" },
+          { "choiceId": "c", "explanation": "Statement 1 is true, Statement 2 is false", "reference": "TPRM Documentation" },
+          { "choiceId": "d", "explanation": "Statement 1 is correct about state transitions", "reference": "TPRM Documentation" }
+        ]
+      },
+      "references": ["TPRM Documentation - Create an external assessment"],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "tprm-create-assessment.md",
+        "excerpt": "The TPR assessor moves the state of the assessment to Generating Observations. The option can't be changed after the questionnaire is sent to the third party."
+      },
+      "labels": {
+        "certification": "cis-tprm",
+        "domain": "Assessment Configuration",
+        "domainSlug": "assessment-configuration",
+        "domainPercentage": 33,
+        "subtopics": ["Assessment States", "Questionnaire Options"],
+        "tags": ["state", "options", "compound-tf"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-26T00:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    }
+  ]
+}
