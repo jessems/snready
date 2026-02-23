@@ -1,0 +1,690 @@
+[
+  {
+    "id": "cis-vr-data-ingestion-001",
+    "certification": "cis-vr",
+    "topic": "data-ingestion",
+    "cognitiveLevel": "knowledge",
+    "type": "multiple_choice",
+    "question": "What is a vulnerable item (VIT) in ServiceNow Vulnerability Response?",
+    "options": [
+      { "id": "a", "text": "A vulnerability definition from the NVD database" },
+      { "id": "b", "text": "An asset (CI) that is determined to have a vulnerability" },
+      { "id": "c", "text": "A scanner integration configuration" },
+      { "id": "d", "text": "A remediation task assigned to a team" }
+    ],
+    "correctAnswers": ["b"],
+    "selectCount": 1,
+    "isNegative": false,
+    "explanation": {
+      "correct": "A vulnerable item (VIT) represents an asset (Configuration Item) that has been determined to have a vulnerability. VITs are the core records that vulnerability teams work with.",
+      "wrongAnswers": [
+        { "choiceId": "a", "explanation": "Vulnerability definitions are separate records that describe the vulnerability itself; VITs link CIs to vulnerabilities", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html" },
+        { "choiceId": "c", "explanation": "Scanner integrations are configurations, not vulnerable items", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html" },
+        { "choiceId": "d", "explanation": "Remediation tasks (VUL) group multiple VITs; they are not the same as VITs", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html" }
+      ]
+    },
+    "references": ["https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"],
+    "isFree": true,
+    "source": {
+      "type": "docs",
+      "path": "scraped-docs/cis-secops-api/c_VulnerabilityResponse.md",
+      "excerpt": "creating remediation tasks composed of multiple vulnerable items, that is, your assets that are determined to have vulnerabilities"
+    },
+    "labels": {
+      "certification": "cis-vr",
+      "domain": "Getting Data into Vulnerability Response",
+      "domainSlug": "data-ingestion",
+      "domainPercentage": 25,
+      "subtopics": ["Definition of vulnerabilities and vulnerable items"],
+      "tags": ["vulnerable-items", "vit", "definitions"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-23T02:00:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-vr-data-ingestion-002",
+    "certification": "cis-vr",
+    "topic": "data-ingestion",
+    "cognitiveLevel": "knowledge",
+    "type": "multiple_select",
+    "question": "Which two data sources does Vulnerability Response use to import vulnerability data? (Choose two.)",
+    "options": [
+      { "id": "a", "text": "National Vulnerability Database (NVD)" },
+      { "id": "b", "text": "Microsoft Active Directory" },
+      { "id": "c", "text": "Third-party scanner integrations" },
+      { "id": "d", "text": "ServiceNow App Store reviews" }
+    ],
+    "correctAnswers": ["a", "c"],
+    "selectCount": 2,
+    "isNegative": false,
+    "explanation": {
+      "correct": "Vulnerability data is pulled from external sources including the National Vulnerability Database (NVD) and third-party integrations (scanners like Qualys, Tenable, Rapid7).",
+      "wrongAnswers": [
+        { "choiceId": "b", "explanation": "Active Directory is used for identity, not vulnerability data", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html" },
+        { "choiceId": "d", "explanation": "App Store reviews are not a source of vulnerability data", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html" }
+      ]
+    },
+    "references": ["https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"],
+    "isFree": true,
+    "source": {
+      "type": "docs",
+      "path": "scraped-docs/cis-secops-api/c_VulnerabilityResponse.md",
+      "excerpt": "Vulnerability data is pulled from external sources, such as the National Vulnerability Database (NVD) and third-party integrations"
+    },
+    "labels": {
+      "certification": "cis-vr",
+      "domain": "Getting Data into Vulnerability Response",
+      "domainSlug": "data-ingestion",
+      "domainPercentage": 25,
+      "subtopics": ["integrating with vulnerability scanners and data sources"],
+      "tags": ["nvd", "scanners", "data-sources", "integrations"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-23T02:00:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-vr-data-ingestion-003",
+    "certification": "cis-vr",
+    "topic": "data-ingestion",
+    "cognitiveLevel": "understanding",
+    "type": "multiple_choice",
+    "question": "What happens when vulnerability detections from third-party scanners are imported into Vulnerability Response?",
+    "options": [
+      { "id": "a", "text": "They are stored without any CI matching" },
+      { "id": "b", "text": "They are reconciled with assets in the CMDB" },
+      { "id": "c", "text": "They automatically create change requests" },
+      { "id": "d", "text": "They are immediately closed as resolved" }
+    ],
+    "correctAnswers": ["b"],
+    "selectCount": 1,
+    "isNegative": false,
+    "explanation": {
+      "correct": "Imported vulnerabilities from the NVD and detection data from third-party products are reconciled with the assets in your CMDB, linking vulnerabilities to specific Configuration Items.",
+      "wrongAnswers": [
+        { "choiceId": "a", "explanation": "VR explicitly matches vulnerabilities to CMDB CIs; they are not stored without matching", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html" },
+        { "choiceId": "c", "explanation": "Change requests are created during remediation, not during import", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html" },
+        { "choiceId": "d", "explanation": "Imported vulnerabilities start in an open state and require remediation", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html" }
+      ]
+    },
+    "references": ["https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"],
+    "isFree": true,
+    "source": {
+      "type": "docs",
+      "path": "scraped-docs/cis-secops-api/c_VulnerabilityResponse.md",
+      "excerpt": "Imported vulnerabilities from the NVD and detection data from third-party products are reconciled with the assets in your CMDB."
+    },
+    "labels": {
+      "certification": "cis-vr",
+      "domain": "Getting Data into Vulnerability Response",
+      "domainSlug": "data-ingestion",
+      "domainPercentage": 25,
+      "subtopics": ["integrating with vulnerability scanners and data sources"],
+      "tags": ["cmdb", "reconciliation", "import"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-23T02:00:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-vr-data-ingestion-004",
+    "certification": "cis-vr",
+    "topic": "data-ingestion",
+    "cognitiveLevel": "understanding",
+    "type": "multiple_select",
+    "question": "What types of data can be used to enhance ingested vulnerability data for better decision-making? (Choose three.)",
+    "options": [
+      { "id": "a", "text": "Exploit intelligence" },
+      { "id": "b", "text": "Threat intelligence" },
+      { "id": "c", "text": "Employee satisfaction scores" },
+      { "id": "d", "text": "Business context" },
+      { "id": "e", "text": "Social media trends" }
+    ],
+    "correctAnswers": ["a", "b", "d"],
+    "selectCount": 3,
+    "isNegative": false,
+    "explanation": {
+      "correct": "VR enhances ingested vulnerability data with exploit, threat intelligence, risk, and business context to help with patching and remediation strategies.",
+      "wrongAnswers": [
+        { "choiceId": "c", "explanation": "Employee satisfaction is HR data, not relevant to vulnerability enrichment", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html" },
+        { "choiceId": "e", "explanation": "Social media trends are not used for vulnerability data enrichment", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html" }
+      ]
+    },
+    "references": ["https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"],
+    "isFree": false,
+    "source": {
+      "type": "docs",
+      "path": "scraped-docs/cis-secops-api/c_VulnerabilityResponse.md",
+      "excerpt": "Enhance your ingested vulnerability data with exploit, threat intelligence, risk, and business context. Use this data to help you with patching and remediation strategies."
+    },
+    "labels": {
+      "certification": "cis-vr",
+      "domain": "Getting Data into Vulnerability Response",
+      "domainSlug": "data-ingestion",
+      "domainPercentage": 25,
+      "subtopics": ["vulnerability solution and enrichment management"],
+      "tags": ["enrichment", "threat-intelligence", "exploit", "business-context"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-23T02:00:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-vr-data-ingestion-005",
+    "certification": "cis-vr",
+    "topic": "data-ingestion",
+    "cognitiveLevel": "knowledge",
+    "type": "multiple_choice",
+    "question": "What are hosts discovered by third-party vulnerability scanners that don't match any existing CIs in the CMDB called?",
+    "options": [
+      { "id": "a", "text": "Orphan vulnerabilities" },
+      { "id": "b", "text": "Unmatched Configuration Items" },
+      { "id": "c", "text": "Rogue assets" },
+      { "id": "d", "text": "Shadow CIs" }
+    ],
+    "correctAnswers": ["b"],
+    "selectCount": 1,
+    "isNegative": false,
+    "explanation": {
+      "correct": "Unmatched Configuration Items are hosts discovered by third-party vulnerability scanners that don't match any existing CI in the CMDB. This is tracked as an indicator in VR.",
+      "wrongAnswers": [
+        { "choiceId": "a", "explanation": "Orphan vulnerabilities is not the correct term; Unmatched CIs is the official terminology", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vulnerability-mgmnt-pa-dashboard.html" },
+        { "choiceId": "c", "explanation": "Rogue assets is not the ServiceNow term for unmatched scanner discoveries", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vulnerability-mgmnt-pa-dashboard.html" },
+        { "choiceId": "d", "explanation": "Shadow CIs is not the correct terminology in VR", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vulnerability-mgmnt-pa-dashboard.html" }
+      ]
+    },
+    "references": ["https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vulnerability-mgmnt-pa-dashboard.html"],
+    "isFree": false,
+    "source": {
+      "type": "docs",
+      "path": "scraped-docs/cis-secops-api/vulnerability-mgmnt-pa-dashboard.md",
+      "excerpt": "Unmatched Configuration Items: Lists the hosts discovered by 3rd party vulnerability scanners that don't match any existing CIs in the CMDB."
+    },
+    "labels": {
+      "certification": "cis-vr",
+      "domain": "Getting Data into Vulnerability Response",
+      "domainSlug": "data-ingestion",
+      "domainPercentage": 25,
+      "subtopics": ["integrating with vulnerability scanners and data sources"],
+      "tags": ["unmatched-ci", "cmdb", "scanners"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-23T02:00:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-vr-data-ingestion-006",
+    "certification": "cis-vr",
+    "topic": "data-ingestion",
+    "cognitiveLevel": "knowledge",
+    "type": "multiple_choice",
+    "question": "Which integration must run first before other Rapid7 InsightVM integrations to make asset tags available for Assignment Rules?",
+    "options": [
+      { "id": "a", "text": "Rapid7 InsightVM Vulnerability List integration" },
+      { "id": "b", "text": "Rapid7 InsightVM Asset List integration" },
+      { "id": "c", "text": "Rapid7 InsightVM Scan integration" },
+      { "id": "d", "text": "Rapid7 InsightVM Report integration" }
+    ],
+    "correctAnswers": ["b"],
+    "selectCount": 1,
+    "isNegative": false,
+    "explanation": {
+      "correct": "To make Rapid7 InsightVM asset tags available for use in the Condition filter for Assignment Rules, you must run the Rapid7 InsightVM Asset List integration before the other Rapid7 InsightVM integrations.",
+      "wrongAnswers": [
+        { "choiceId": "a", "explanation": "The Asset List integration must run first, not the Vulnerability List integration", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-assignment-rules.html" },
+        { "choiceId": "c", "explanation": "Scan integration is not the prerequisite for asset tag availability", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-assignment-rules.html" },
+        { "choiceId": "d", "explanation": "Report integration is not required before other integrations for asset tags", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-assignment-rules.html" }
+      ]
+    },
+    "references": ["https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-assignment-rules.html"],
+    "isFree": false,
+    "source": {
+      "type": "docs",
+      "path": "scraped-docs/cis-secops-api/vr-assignment-rules.md",
+      "excerpt": "To make Rapid7 InsightVM asset tags available for use in the Condition filter for Assignment Rules, you must run the Rapid7 InsightVM Asset List integration before the other Rapid7 InsightVM integrations."
+    },
+    "labels": {
+      "certification": "cis-vr",
+      "domain": "Getting Data into Vulnerability Response",
+      "domainSlug": "data-ingestion",
+      "domainPercentage": 25,
+      "subtopics": ["integrating with vulnerability scanners and data sources"],
+      "tags": ["rapid7", "integration", "asset-tags"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-23T02:00:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-vr-data-ingestion-007",
+    "certification": "cis-vr",
+    "topic": "data-ingestion",
+    "cognitiveLevel": "understanding",
+    "type": "multiple_choice",
+    "question": "What is the purpose of classification groups in Vulnerability Response?",
+    "options": [
+      { "id": "a", "text": "To assign users to security roles" },
+      { "id": "b", "text": "To automate classification of table values based on rules" },
+      { "id": "c", "text": "To organize scanner integrations" },
+      { "id": "d", "text": "To generate vulnerability reports" }
+    ],
+    "correctAnswers": ["b"],
+    "selectCount": 1,
+    "isNegative": false,
+    "explanation": {
+      "correct": "Classification groups automate classification of values of a table based on the classification rules defined in the group. The condition for each rule is evaluated in order, and the first matching rule is used.",
+      "wrongAnswers": [
+        { "choiceId": "a", "explanation": "User role assignment is done through access control, not classification groups", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vulnerability-classification-rules.html" },
+        { "choiceId": "c", "explanation": "Classification groups classify vulnerabilities, not organize integrations", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vulnerability-classification-rules.html" },
+        { "choiceId": "d", "explanation": "Reports are generated by Performance Analytics, not classification groups", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vulnerability-classification-rules.html" }
+      ]
+    },
+    "references": ["https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vulnerability-classification-rules.html"],
+    "isFree": false,
+    "source": {
+      "type": "docs",
+      "path": "scraped-docs/cis-secops-api/vulnerability-classification-rules.md",
+      "excerpt": "Classification groups automate classification of values of a table based on the classification rules defined in the group. The condition for each rule is evaluated in order, and the first matching rule is used."
+    },
+    "labels": {
+      "certification": "cis-vr",
+      "domain": "Getting Data into Vulnerability Response",
+      "domainSlug": "data-ingestion",
+      "domainPercentage": 25,
+      "subtopics": ["Definition of vulnerabilities and vulnerable items"],
+      "tags": ["classification", "rules", "automation"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-23T02:00:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-vr-data-ingestion-008",
+    "certification": "cis-vr",
+    "topic": "data-ingestion",
+    "cognitiveLevel": "knowledge",
+    "type": "multiple_select",
+    "question": "Which two classification groups are included in the Vulnerability Response base system? (Choose two.)",
+    "options": [
+      { "id": "a", "text": "Discovered Items Classification" },
+      { "id": "b", "text": "Scanner Results Classification" },
+      { "id": "c", "text": "Vulnerability Entry Classification" },
+      { "id": "d", "text": "Remediation Task Classification" }
+    ],
+    "correctAnswers": ["a", "c"],
+    "selectCount": 2,
+    "isNegative": false,
+    "explanation": {
+      "correct": "The Vulnerability Response base system includes two classification groups: Discovered Items Classification and Vulnerability Entry Classification, which classify discovered items and vulnerabilities respectively.",
+      "wrongAnswers": [
+        { "choiceId": "b", "explanation": "Scanner Results Classification is not a base system classification group", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vulnerability-classification-rules.html" },
+        { "choiceId": "d", "explanation": "Remediation Task Classification is not a base system classification group", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vulnerability-classification-rules.html" }
+      ]
+    },
+    "references": ["https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vulnerability-classification-rules.html"],
+    "isFree": false,
+    "source": {
+      "type": "docs",
+      "path": "scraped-docs/cis-secops-api/vulnerability-classification-rules.md",
+      "excerpt": "The Vulnerability Response base system includes the following two classification groups, which classify discovered items and vulnerabilities respectively: Discovered Items Classification, Vulnerability Entry Classification"
+    },
+    "labels": {
+      "certification": "cis-vr",
+      "domain": "Getting Data into Vulnerability Response",
+      "domainSlug": "data-ingestion",
+      "domainPercentage": 25,
+      "subtopics": ["Definition of vulnerabilities and vulnerable items"],
+      "tags": ["classification-groups", "base-system"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-23T02:00:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-vr-data-ingestion-009",
+    "certification": "cis-vr",
+    "topic": "data-ingestion",
+    "cognitiveLevel": "understanding",
+    "type": "multiple_choice",
+    "question": "When are vulnerability classification rules executed in Vulnerability Response?",
+    "options": [
+      { "id": "a", "text": "Only when manually triggered by an administrator" },
+      { "id": "b", "text": "Whenever vulnerabilities and discovered items are imported" },
+      { "id": "c", "text": "Only during the daily scheduled job" },
+      { "id": "d", "text": "Only when remediation tasks are created" }
+    ],
+    "correctAnswers": ["b"],
+    "selectCount": 1,
+    "isNegative": false,
+    "explanation": {
+      "correct": "Whenever vulnerabilities and discovered items are imported, the vulnerability classification rules in the respective groups get executed. Based on the conditions set in the rule, the records get classified to the relevant classification group.",
+      "wrongAnswers": [
+        { "choiceId": "a", "explanation": "Classification rules run automatically during import, not only when manually triggered", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vulnerability-classification-rules.html" },
+        { "choiceId": "c", "explanation": "Rules execute during import, not just during scheduled jobs", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vulnerability-classification-rules.html" },
+        { "choiceId": "d", "explanation": "Classification happens during import, before remediation tasks are created", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vulnerability-classification-rules.html" }
+      ]
+    },
+    "references": ["https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vulnerability-classification-rules.html"],
+    "isFree": false,
+    "source": {
+      "type": "docs",
+      "path": "scraped-docs/cis-secops-api/vulnerability-classification-rules.md",
+      "excerpt": "Whenever vulnerabilities and discovered items are imported, the vulnerability classification rules in the respective groups get executed."
+    },
+    "labels": {
+      "certification": "cis-vr",
+      "domain": "Getting Data into Vulnerability Response",
+      "domainSlug": "data-ingestion",
+      "domainPercentage": 25,
+      "subtopics": ["Definition of vulnerabilities and vulnerable items"],
+      "tags": ["classification-rules", "import", "automation"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-23T02:00:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-vr-data-ingestion-010",
+    "certification": "cis-vr",
+    "topic": "data-ingestion",
+    "cognitiveLevel": "knowledge",
+    "type": "multiple_choice",
+    "question": "Which is NOT true about classification groups in Vulnerability Response?",
+    "options": [
+      { "id": "a", "text": "For a selected table, there can only be one active classification group" },
+      { "id": "b", "text": "Once you create a group, you cannot delete it" },
+      { "id": "c", "text": "Classification rules within a group are evaluated in order" },
+      { "id": "d", "text": "You can have multiple active classification groups per table" }
+    ],
+    "correctAnswers": ["d"],
+    "selectCount": 1,
+    "isNegative": true,
+    "explanation": {
+      "correct": "For a selected table, there can only be ONE active classification group. This means you cannot have multiple active classification groups per table.",
+      "wrongAnswers": [
+        { "choiceId": "a", "explanation": "This is true - only one active classification group per table is allowed", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vulnerability-classification-rules.html" },
+        { "choiceId": "b", "explanation": "This is true - once created, classification groups cannot be deleted", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vulnerability-classification-rules.html" },
+        { "choiceId": "c", "explanation": "This is true - rules are evaluated in order, and the first matching rule is used", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vulnerability-classification-rules.html" }
+      ]
+    },
+    "references": ["https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vulnerability-classification-rules.html"],
+    "isFree": false,
+    "source": {
+      "type": "docs",
+      "path": "scraped-docs/cis-secops-api/vulnerability-classification-rules.md",
+      "excerpt": "For a selected table, there can only be one active classification group. Once you create a group, you cannot delete it."
+    },
+    "labels": {
+      "certification": "cis-vr",
+      "domain": "Getting Data into Vulnerability Response",
+      "domainSlug": "data-ingestion",
+      "domainPercentage": 25,
+      "subtopics": ["Definition of vulnerabilities and vulnerable items"],
+      "tags": ["classification-groups", "constraints", "negative-question"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-23T02:00:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-vr-data-ingestion-011",
+    "certification": "cis-vr",
+    "topic": "data-ingestion",
+    "cognitiveLevel": "application",
+    "type": "multiple_choice",
+    "question": "An organization imports vulnerability scan results and notices some hosts don't appear in their CMDB. What VR metric tracks this issue?",
+    "options": [
+      { "id": "a", "text": "Unmatched CIs indicator" },
+      { "id": "b", "text": "Missing Hosts Report" },
+      { "id": "c", "text": "CMDB Gap Analysis" },
+      { "id": "d", "text": "Scanner Discovery Status" }
+    ],
+    "correctAnswers": ["a"],
+    "selectCount": 1,
+    "isNegative": false,
+    "explanation": {
+      "correct": "The Unmatched CIs indicator tracks the number of imported configuration items that do not match any existing CI in the CMDB, helping identify gaps between scanner discoveries and CMDB inventory.",
+      "wrongAnswers": [
+        { "choiceId": "b", "explanation": "Missing Hosts Report is not an official VR metric; Unmatched CIs is the correct term", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vulnerability-mgmnt-pa-dashboard.html" },
+        { "choiceId": "c", "explanation": "CMDB Gap Analysis is not a VR-specific metric", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vulnerability-mgmnt-pa-dashboard.html" },
+        { "choiceId": "d", "explanation": "Scanner Discovery Status is not the correct metric for tracking CMDB mismatches", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vulnerability-mgmnt-pa-dashboard.html" }
+      ]
+    },
+    "references": ["https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vulnerability-mgmnt-pa-dashboard.html"],
+    "isFree": false,
+    "source": {
+      "type": "docs",
+      "path": "scraped-docs/cis-secops-api/vulnerability-mgmnt-pa-dashboard.md",
+      "excerpt": "Unmatched CIs: Number of imported configuration items that do not match any existing CI in the CMDB."
+    },
+    "labels": {
+      "certification": "cis-vr",
+      "domain": "Getting Data into Vulnerability Response",
+      "domainSlug": "data-ingestion",
+      "domainPercentage": 25,
+      "subtopics": ["integrating with vulnerability scanners and data sources"],
+      "tags": ["unmatched-ci", "cmdb", "metrics"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-23T02:00:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-vr-data-ingestion-012",
+    "certification": "cis-vr",
+    "topic": "data-ingestion",
+    "cognitiveLevel": "knowledge",
+    "type": "multiple_choice",
+    "question": "What does AVR stand for in the context of Vulnerability Response?",
+    "options": [
+      { "id": "a", "text": "Automated Vulnerability Remediation" },
+      { "id": "b", "text": "Application Vulnerability Response" },
+      { "id": "c", "text": "Advanced Vulnerability Reporting" },
+      { "id": "d", "text": "Asset Vulnerability Registry" }
+    ],
+    "correctAnswers": ["b"],
+    "selectCount": 1,
+    "isNegative": false,
+    "explanation": {
+      "correct": "AVR stands for Application Vulnerability Response, a feature of the Vulnerability Response application that specifically handles application vulnerabilities and imports application vulnerable items (AVITs).",
+      "wrongAnswers": [
+        { "choiceId": "a", "explanation": "AVR means Application Vulnerability Response, not Automated Vulnerability Remediation", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html" },
+        { "choiceId": "c", "explanation": "AVR is not Advanced Vulnerability Reporting", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html" },
+        { "choiceId": "d", "explanation": "AVR is not Asset Vulnerability Registry", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html" }
+      ]
+    },
+    "references": ["https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"],
+    "isFree": false,
+    "source": {
+      "type": "docs",
+      "path": "scraped-docs/cis-secops-api/c_VulnerabilityResponse.md",
+      "excerpt": "The Application Vulnerability Response (AVR) feature of the ServiceNow Vulnerability Response application imports application vulnerable items (AVITs)"
+    },
+    "labels": {
+      "certification": "cis-vr",
+      "domain": "Getting Data into Vulnerability Response",
+      "domainSlug": "data-ingestion",
+      "domainPercentage": 25,
+      "subtopics": ["Application Vulnerability Response integrations"],
+      "tags": ["avr", "application-vulnerability-response", "acronym"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-23T02:00:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-vr-data-ingestion-013",
+    "certification": "cis-vr",
+    "topic": "data-ingestion",
+    "cognitiveLevel": "understanding",
+    "type": "compound_true_false",
+    "question": "Which statements about importing vulnerabilities into Vulnerability Response are true?\na) Vulnerabilities from NVD are imported as vulnerability entries\nb) Scanner detections create vulnerable items linked to CIs\nc) All imported vulnerabilities are automatically closed after 30 days\nd) Third-party integrations can enrich vulnerability data with threat intelligence",
+    "options": [
+      { "id": "a", "text": "a, b, c, and d" },
+      { "id": "b", "text": "a, b, and d only" },
+      { "id": "c", "text": "b and d only" },
+      { "id": "d", "text": "a and c only" }
+    ],
+    "correctAnswers": ["b"],
+    "selectCount": 1,
+    "isNegative": false,
+    "explanation": {
+      "correct": "Statements a, b, and d are true. NVD vulnerabilities become vulnerability entries, scanner detections create VITs linked to CIs, and third-party integrations can enrich data. Statement c is false - vulnerabilities are not automatically closed after 30 days; they require remediation or manual closure.",
+      "wrongAnswers": [
+        { "choiceId": "a", "explanation": "Statement c is false - vulnerabilities don't auto-close after 30 days", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html" },
+        { "choiceId": "c", "explanation": "Statement a is also true - NVD vulnerabilities are imported as entries", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html" },
+        { "choiceId": "d", "explanation": "Statements b and d are also true, not just a and c", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html" }
+      ]
+    },
+    "references": ["https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"],
+    "isFree": false,
+    "source": {
+      "type": "docs",
+      "path": "scraped-docs/cis-secops-api/c_VulnerabilityResponse.md",
+      "excerpt": "Vulnerability data is pulled from external sources, such as the National Vulnerability Database (NVD) and third-party integrations. Enhance your ingested vulnerability data with exploit, threat intelligence, risk, and business context."
+    },
+    "labels": {
+      "certification": "cis-vr",
+      "domain": "Getting Data into Vulnerability Response",
+      "domainSlug": "data-ingestion",
+      "domainPercentage": 25,
+      "subtopics": ["integrating with vulnerability scanners and data sources", "vulnerability solution and enrichment management"],
+      "tags": ["import", "nvd", "compound-true-false"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-23T02:00:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-vr-data-ingestion-014",
+    "certification": "cis-vr",
+    "topic": "data-ingestion",
+    "cognitiveLevel": "understanding",
+    "type": "multiple_choice",
+    "question": "What type of vulnerable items does Container Vulnerability Response (CVR) handle?",
+    "options": [
+      { "id": "a", "text": "Network device vulnerabilities" },
+      { "id": "b", "text": "Container vulnerable items (CVITs)" },
+      { "id": "c", "text": "Web application vulnerabilities" },
+      { "id": "d", "text": "Endpoint vulnerabilities" }
+    ],
+    "correctAnswers": ["b"],
+    "selectCount": 1,
+    "isNegative": false,
+    "explanation": {
+      "correct": "Container Vulnerability Response (CVR) specifically handles container vulnerable items (CVITs). It works with container-based infrastructure like Docker images.",
+      "wrongAnswers": [
+        { "choiceId": "a", "explanation": "Network device vulnerabilities are handled by standard VR, not specifically CVR", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/container-vulnerability-response/cvr-remediation-task-overview.html" },
+        { "choiceId": "c", "explanation": "Web application vulnerabilities are handled by AVR, not CVR", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/container-vulnerability-response/cvr-remediation-task-overview.html" },
+        { "choiceId": "d", "explanation": "Endpoint vulnerabilities are handled by standard VR, not specifically CVR", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/container-vulnerability-response/cvr-remediation-task-overview.html" }
+      ]
+    },
+    "references": ["https://www.servicenow.com/docs/r/xanadu/security-management/container-vulnerability-response/cvr-remediation-task-overview.html"],
+    "isFree": false,
+    "source": {
+      "type": "docs",
+      "path": "scraped-docs/cis-secops-api/cvr-remediation-task-overview.md",
+      "excerpt": "Configure remediation tasks (CVULs) to help analysts and remediation specialists organize container vulnerable items (CVIT)"
+    },
+    "labels": {
+      "certification": "cis-vr",
+      "domain": "Getting Data into Vulnerability Response",
+      "domainSlug": "data-ingestion",
+      "domainPercentage": 25,
+      "subtopics": ["Container Vulnerability Response"],
+      "tags": ["cvr", "container", "cvit"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-23T02:00:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-vr-data-ingestion-015",
+    "certification": "cis-vr",
+    "topic": "data-ingestion",
+    "cognitiveLevel": "application",
+    "type": "multiple_choice",
+    "question": "A vulnerability manager needs to verify that scanning integration data is correctly populating the CMDB. Which indicator should they check first?",
+    "options": [
+      { "id": "a", "text": "Vulnerable Configuration Items (CIs)" },
+      { "id": "b", "text": "Unmatched CIs" },
+      { "id": "c", "text": "Remediation Tasks" },
+      { "id": "d", "text": "Deferred Vulnerable Items" }
+    ],
+    "correctAnswers": ["b"],
+    "selectCount": 1,
+    "isNegative": false,
+    "explanation": {
+      "correct": "The Unmatched CIs indicator shows hosts discovered by scanners that don't match CMDB entries. A high number suggests integration or CMDB data quality issues that need resolution.",
+      "wrongAnswers": [
+        { "choiceId": "a", "explanation": "Vulnerable CIs shows matched items; to check data quality, check Unmatched CIs first", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vulnerability-mgmnt-pa-dashboard.html" },
+        { "choiceId": "c", "explanation": "Remediation Tasks track work, not data integration quality", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vulnerability-mgmnt-pa-dashboard.html" },
+        { "choiceId": "d", "explanation": "Deferred items track exceptions, not integration data quality", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vulnerability-mgmnt-pa-dashboard.html" }
+      ]
+    },
+    "references": ["https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vulnerability-mgmnt-pa-dashboard.html"],
+    "isFree": false,
+    "source": {
+      "type": "docs",
+      "path": "scraped-docs/cis-secops-api/vulnerability-mgmnt-pa-dashboard.md",
+      "excerpt": "Unmatched Configuration Items: Lists the hosts discovered by 3rd party vulnerability scanners that don't match any existing CIs in the CMDB."
+    },
+    "labels": {
+      "certification": "cis-vr",
+      "domain": "Getting Data into Vulnerability Response",
+      "domainSlug": "data-ingestion",
+      "domainPercentage": 25,
+      "subtopics": ["integrating with vulnerability scanners and data sources"],
+      "tags": ["unmatched-ci", "cmdb", "data-quality"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-23T02:00:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  }
+]

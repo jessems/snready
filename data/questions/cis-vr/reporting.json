@@ -1,0 +1,185 @@
+[
+  {
+    "id": "cis-vr-reporting-001",
+    "certification": "cis-vr",
+    "topic": "reporting",
+    "cognitiveLevel": "knowledge",
+    "type": "multiple_select",
+    "question": "Which roles are required to view the Vulnerability Management (PA) dashboard? (Choose two.)",
+    "options": [
+      { "id": "a", "text": "sn_vul.vulnerability_admin or sn_vul.vulnerability_analyst" },
+      { "id": "b", "text": "sn_vul.remediation_owner" },
+      { "id": "c", "text": "pa_viewer" },
+      { "id": "d", "text": "itil" }
+    ],
+    "correctAnswers": ["a", "c"],
+    "selectCount": 2,
+    "isNegative": false,
+    "explanation": {
+      "correct": "The required roles to view the Vulnerability Management (PA) dashboard are: sn_vul.vulnerability_admin, sn_vul.vulnerability_analyst (or those who inherit sn_vul.vulnerability_read), AND pa_viewer.",
+      "wrongAnswers": [
+        { "choiceId": "b", "explanation": "remediation_owner is for working on tasks, not viewing PA dashboards", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vulnerability-mgmnt-pa-dashboard.html" },
+        { "choiceId": "d", "explanation": "itil is a general ITSM role, not specific to VR PA dashboards", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vulnerability-mgmnt-pa-dashboard.html" }
+      ]
+    },
+    "references": ["https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vulnerability-mgmnt-pa-dashboard.html"],
+    "isFree": true,
+    "source": {
+      "type": "docs",
+      "path": "scraped-docs/cis-secops-api/vulnerability-mgmnt-pa-dashboard.md",
+      "excerpt": "Role required: sn_vul.vulnerability_admin, sn_vul.vulnerability_analyst, and users with sn_vul.vulnerability_read, and pa_viewer."
+    },
+    "labels": {
+      "certification": "cis-vr",
+      "domain": "Vulnerability Response Dashboards and Reports",
+      "domainSlug": "reporting",
+      "domainPercentage": 7,
+      "subtopics": ["dashboards and reporting", "Performance Analytics"],
+      "tags": ["dashboard", "roles", "pa-viewer"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-23T02:00:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-vr-reporting-002",
+    "certification": "cis-vr",
+    "topic": "reporting",
+    "cognitiveLevel": "knowledge",
+    "type": "multiple_select",
+    "question": "Which tabs are included in the Vulnerability Management (PA) dashboard? (Choose three.)",
+    "options": [
+      { "id": "a", "text": "Overview" },
+      { "id": "b", "text": "Business Services" },
+      { "id": "c", "text": "Scanner Configurations" },
+      { "id": "d", "text": "Exceptions" },
+      { "id": "e", "text": "Integration Status" }
+    ],
+    "correctAnswers": ["a", "b", "d"],
+    "selectCount": 3,
+    "isNegative": false,
+    "explanation": {
+      "correct": "The Vulnerability Management (PA) dashboard includes these tabs: Overview, Business Services, Service Owners, Vulnerable CIs, Exceptions, and Remediation.",
+      "wrongAnswers": [
+        { "choiceId": "c", "explanation": "Scanner Configurations is not a dashboard tab; it's in Administration", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vulnerability-mgmnt-pa-dashboard.html" },
+        { "choiceId": "e", "explanation": "Integration Status is not a PA dashboard tab", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vulnerability-mgmnt-pa-dashboard.html" }
+      ]
+    },
+    "references": ["https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vulnerability-mgmnt-pa-dashboard.html"],
+    "isFree": false,
+    "source": {
+      "type": "docs",
+      "path": "scraped-docs/cis-secops-api/vulnerability-mgmnt-pa-dashboard.md",
+      "excerpt": "The Vulnerability Management [PA] dashboard tabs: Overview tab, Business Services tab, Service Owners tab, Vulnerable CIs tab, Exceptions tab, Remediation tab"
+    },
+    "labels": {
+      "certification": "cis-vr",
+      "domain": "Vulnerability Response Dashboards and Reports",
+      "domainSlug": "reporting",
+      "domainPercentage": 7,
+      "subtopics": ["dashboards and reporting"],
+      "tags": ["dashboard", "tabs", "pa"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-23T02:00:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-vr-reporting-003",
+    "certification": "cis-vr",
+    "topic": "reporting",
+    "cognitiveLevel": "understanding",
+    "type": "multiple_choice",
+    "question": "What does the 'VIs Mean Time to Remediation (MTTR)' indicator show?",
+    "options": [
+      { "id": "a", "text": "The total number of VIs remediated" },
+      { "id": "b", "text": "The mean time to remediate (close) a vulnerable item, as a 30-day running average" },
+      { "id": "c", "text": "The number of VIs past their remediation target" },
+      { "id": "d", "text": "The percentage of VIs meeting SLA targets" }
+    ],
+    "correctAnswers": ["b"],
+    "selectCount": 1,
+    "isNegative": false,
+    "explanation": {
+      "correct": "The VIs Mean Time to Remediation (MTTR) indicator shows the mean time to remediate (close) a vulnerable item, displayed as a 30-day running average.",
+      "wrongAnswers": [
+        { "choiceId": "a", "explanation": "Total VIs remediated is tracked by 'Closed Vulnerable Items', not MTTR", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vulnerability-mgmnt-pa-dashboard.html" },
+        { "choiceId": "c", "explanation": "Overdue VIs are tracked by specific overdue indicators, not MTTR", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vulnerability-mgmnt-pa-dashboard.html" },
+        { "choiceId": "d", "explanation": "SLA percentages are tracked by '% VIs Met Remediation Target', not MTTR", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vulnerability-mgmnt-pa-dashboard.html" }
+      ]
+    },
+    "references": ["https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vulnerability-mgmnt-pa-dashboard.html"],
+    "isFree": false,
+    "source": {
+      "type": "docs",
+      "path": "scraped-docs/cis-secops-api/vulnerability-mgmnt-pa-dashboard.md",
+      "excerpt": "VIs Mean Time to Remediation (MTTR): The mean time to remediate (close) a vulnerable item, displayed as a 30-day running average."
+    },
+    "labels": {
+      "certification": "cis-vr",
+      "domain": "Vulnerability Response Dashboards and Reports",
+      "domainSlug": "reporting",
+      "domainPercentage": 7,
+      "subtopics": ["dashboards and reporting", "Performance Analytics"],
+      "tags": ["mttr", "indicators", "metrics"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-23T02:00:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cis-vr-reporting-004",
+    "certification": "cis-vr",
+    "topic": "reporting",
+    "cognitiveLevel": "understanding",
+    "type": "compound_true_false",
+    "question": "Which statements about the Vulnerability Management dashboard indicators are true?\na) The goal for Vulnerable Items indicator is to minimize\nb) The goal for Closed Vulnerable Items indicator is to maximize\nc) Unassigned Vulnerable Items has a goal to minimize\nd) The goal for Distinct Vulnerabilities is to maximize",
+    "options": [
+      { "id": "a", "text": "a, b, c, and d" },
+      { "id": "b", "text": "a, b, and c only" },
+      { "id": "c", "text": "a and b only" },
+      { "id": "d", "text": "b and d only" }
+    ],
+    "correctAnswers": ["b"],
+    "selectCount": 1,
+    "isNegative": false,
+    "explanation": {
+      "correct": "Statements a, b, and c are true: Vulnerable Items (minimize), Closed Vulnerable Items (maximize), Unassigned Vulnerable Items (minimize). Statement d is false - Distinct Vulnerabilities has a goal to MINIMIZE, not maximize.",
+      "wrongAnswers": [
+        { "choiceId": "a", "explanation": "Statement d is false - Distinct Vulnerabilities goal is to minimize", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vulnerability-mgmnt-pa-dashboard.html" },
+        { "choiceId": "c", "explanation": "Statement c is also true - Unassigned VIs should be minimized", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vulnerability-mgmnt-pa-dashboard.html" },
+        { "choiceId": "d", "explanation": "Statement a is also true - Vulnerable Items goal is to minimize", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vulnerability-mgmnt-pa-dashboard.html" }
+      ]
+    },
+    "references": ["https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vulnerability-mgmnt-pa-dashboard.html"],
+    "isFree": false,
+    "source": {
+      "type": "docs",
+      "path": "scraped-docs/cis-secops-api/vulnerability-mgmnt-pa-dashboard.md",
+      "excerpt": "Distinct Vulnerabilities with count_active_vi > 0. Goal is to minimize. Closed Vulnerable Items is measured daily as unit #. The goal is to maximize. Unassigned Vulnerable Items: All active Vulnerable Items where both the Assignment Group and Assigned To fields are empty. Goal is to minimize."
+    },
+    "labels": {
+      "certification": "cis-vr",
+      "domain": "Vulnerability Response Dashboards and Reports",
+      "domainSlug": "reporting",
+      "domainPercentage": 7,
+      "subtopics": ["dashboards and reporting", "Performance Analytics"],
+      "tags": ["indicators", "goals", "compound-true-false"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-23T02:00:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  }
+]
