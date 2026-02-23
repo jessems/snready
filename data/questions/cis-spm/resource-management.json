@@ -1,0 +1,621 @@
+{
+  "questions": [
+    {
+      "id": "cis-spm-resource-management-001",
+      "certification": "cis-spm",
+      "topic": "resource-management",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What is the key element in understanding how resource management works in ServiceNow?",
+      "options": [
+        { "id": "a", "text": "The project task" },
+        { "id": "b", "text": "The resource plan" },
+        { "id": "c", "text": "The time card" },
+        { "id": "d", "text": "The allocation board" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "The resource plan is the key element in understanding how resource management works. Resource plans specify group or user resources required by tasks. Resource requesters create resource plans, and resource managers allocate resources based on these plans.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "Project tasks are work items, but resource plans are the key to resource management", "reference": "Resource Management documentation" },
+          { "choiceId": "c", "explanation": "Time cards track time worked, but resource plans are central to resource management", "reference": "Resource Management documentation" },
+          { "choiceId": "d", "explanation": "Allocation boards are tools for viewing resources, but resource plans are the key element", "reference": "Resource Management documentation" }
+        ]
+      },
+      "references": ["Resource Management documentation"],
+      "isFree": true,
+      "source": {
+        "type": "documentation",
+        "path": "cis-spm-api/c_ResourceManagement.md",
+        "excerpt": "The resource plan is the key to understanding how resource management works."
+      },
+      "labels": {
+        "certification": "cis-spm",
+        "domain": "Resource Management",
+        "domainSlug": "resource-management",
+        "domainPercentage": 23,
+        "subtopics": ["Resource plans", "Resource management basics"],
+        "tags": ["resource-management", "resource-plan"]
+      },
+      "meta": {
+        "generatedAt": "2025-01-20T00:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-spm-resource-management-002",
+      "certification": "cis-spm",
+      "topic": "resource-management",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_select",
+      "question": "Which roles can use the Resource Finder to analyze resource availability? (Choose THREE)",
+      "options": [
+        { "id": "a", "text": "it_project_manager" },
+        { "id": "b", "text": "it_demand_manager" },
+        { "id": "c", "text": "resource_manager" },
+        { "id": "d", "text": "timecard_user" },
+        { "id": "e", "text": "admin" }
+      ],
+      "correctAnswers": ["a", "b", "c"],
+      "explanation": {
+        "correct": "The Resource Finder requires the it_project_manager, it_demand_manager, or resource_manager role to search and analyze resource availability and create resource plans for projects or demands.",
+        "wrongAnswers": [
+          { "choiceId": "d", "explanation": "The timecard_user role is for time card creation, not resource finder access", "reference": "Resource Management documentation" },
+          { "choiceId": "e", "explanation": "While admin has broad permissions, the specific roles for Resource Finder are the three listed", "reference": "Resource Management documentation" }
+        ]
+      },
+      "references": ["Resource Management documentation"],
+      "isFree": true,
+      "source": {
+        "type": "documentation",
+        "path": "cis-spm-api/create-resource-plan-with-finder.md",
+        "excerpt": "Role required: it_project_manager, it_demand_manager, or resource_manager"
+      },
+      "labels": {
+        "certification": "cis-spm",
+        "domain": "Resource Management",
+        "domainSlug": "resource-management",
+        "domainPercentage": 23,
+        "subtopics": ["Resource Finder", "Roles"],
+        "tags": ["resource-management", "roles", "resource-finder"]
+      },
+      "meta": {
+        "generatedAt": "2025-01-20T00:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-spm-resource-management-003",
+      "certification": "cis-spm",
+      "topic": "resource-management",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What prefix indicates a resource plan created for a group in the Resource Finder?",
+      "options": [
+        { "id": "a", "text": "[U]" },
+        { "id": "b", "text": "[R]" },
+        { "id": "c", "text": "[G]" },
+        { "id": "d", "text": "[P]" }
+      ],
+      "correctAnswers": ["c"],
+      "explanation": {
+        "correct": "When a resource plan is created from the Resource Finder, it has a prefix indicating the type: [G] for a group resource plan, [R] for a role resource plan, and [U] for a user resource plan.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "[U] indicates a user resource plan, not a group resource plan", "reference": "Resource Management documentation" },
+          { "choiceId": "b", "explanation": "[R] indicates a role resource plan, not a group resource plan", "reference": "Resource Management documentation" },
+          { "choiceId": "d", "explanation": "[P] is not a valid prefix for resource plans in Resource Finder", "reference": "Resource Management documentation" }
+        ]
+      },
+      "references": ["Resource Management documentation"],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "cis-spm-api/create-resource-plan-with-finder.md",
+        "excerpt": "[G] for a resource plan created for a group. [R] for a role resource plan. [U] for a user resource plan."
+      },
+      "labels": {
+        "certification": "cis-spm",
+        "domain": "Resource Management",
+        "domainSlug": "resource-management",
+        "domainPercentage": 23,
+        "subtopics": ["Resource Finder", "Resource plans"],
+        "tags": ["resource-management", "resource-finder", "prefix"]
+      },
+      "meta": {
+        "generatedAt": "2025-01-20T00:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-spm-resource-management-004",
+      "certification": "cis-spm",
+      "topic": "resource-management",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "Which of the following is NOT a state that a resource plan can have?",
+      "options": [
+        { "id": "a", "text": "Planning" },
+        { "id": "b", "text": "Requested" },
+        { "id": "c", "text": "Approved" },
+        { "id": "d", "text": "Allocated" }
+      ],
+      "correctAnswers": ["c"],
+      "explanation": {
+        "correct": "Resource plans do not have an 'Approved' state. The valid states are Planning, Requested, Confirmed, Allocated, and Extension Requested. After resources are confirmed, they are allocated, not approved.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "Planning is a valid resource plan state when a plan is first created", "reference": "Resource Management documentation" },
+          { "choiceId": "b", "explanation": "Requested is a valid state when resources have been requested", "reference": "Resource Management documentation" },
+          { "choiceId": "d", "explanation": "Allocated is a valid state when resources have been allocated to the plan", "reference": "Resource Management documentation" }
+        ]
+      },
+      "references": ["Resource Management documentation"],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "cis-spm-api/allocation-workbench.md",
+        "excerpt": "Filters resource plans using the (P) Planning, (R) Requested, (C) Confirmed, (A) Allocated, and (E) Extension Requested options."
+      },
+      "labels": {
+        "certification": "cis-spm",
+        "domain": "Resource Management",
+        "domainSlug": "resource-management",
+        "domainPercentage": 23,
+        "subtopics": ["Resource plan states"],
+        "tags": ["resource-management", "states", "negative-question"]
+      },
+      "meta": {
+        "generatedAt": "2025-01-20T00:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-spm-resource-management-005",
+      "certification": "cis-spm",
+      "topic": "resource-management",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_select",
+      "question": "What capabilities does the Resource Management application provide for resource requesters? (Choose THREE)",
+      "options": [
+        { "id": "a", "text": "Create resource plans that specify group or user resources required by tasks" },
+        { "id": "b", "text": "Verify resource availability before requesting resources" },
+        { "id": "c", "text": "Approve time cards submitted by resources" },
+        { "id": "d", "text": "Change resource plans prior to requesting resources" },
+        { "id": "e", "text": "Define fiscal periods for the organization" }
+      ],
+      "correctAnswers": ["a", "b", "d"],
+      "explanation": {
+        "correct": "Resource requesters can create resource plans that specify required resources, verify resource availability, and change their resource plans prior to requesting resources. Time card approval is done by approvers, and fiscal periods are configured by administrators.",
+        "wrongAnswers": [
+          { "choiceId": "c", "explanation": "Time card approval is done by time card approvers, not resource requesters", "reference": "Resource Management documentation" },
+          { "choiceId": "e", "explanation": "Fiscal periods are configured by financial administrators, not resource requesters", "reference": "Resource Management documentation" }
+        ]
+      },
+      "references": ["Resource Management documentation"],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "cis-spm-api/c_ResourceManagement.md",
+        "excerpt": "Resource requesters can create resource plans that specify group or user resources required by tasks. They can verify resource availability and change their resource plans prior to requesting resources."
+      },
+      "labels": {
+        "certification": "cis-spm",
+        "domain": "Resource Management",
+        "domainSlug": "resource-management",
+        "domainPercentage": 23,
+        "subtopics": ["Resource requesters", "Resource plans"],
+        "tags": ["resource-management", "capabilities"]
+      },
+      "meta": {
+        "generatedAt": "2025-01-20T00:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-spm-resource-management-006",
+      "certification": "cis-spm",
+      "topic": "resource-management",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What is the purpose of an Allocation Board in Resource Management?",
+      "options": [
+        { "id": "a", "text": "To track actual time worked by resources" },
+        { "id": "b", "text": "To group resources based on filters so you can view and manage specific resources for investments" },
+        { "id": "c", "text": "To approve resource requests from project managers" },
+        { "id": "d", "text": "To create new resource plans automatically" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "Allocation boards group resources based on filters so that you can view and manage specific resources for investments. For example, you can create an allocation board by filtering on a specific program to group resources requested or allocated to projects and demands of that program.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "Time tracking is done through time cards, not allocation boards", "reference": "Resource Management documentation" },
+          { "choiceId": "c", "explanation": "Approval is done by resource managers through the workbench, not specifically through allocation boards", "reference": "Resource Management documentation" },
+          { "choiceId": "d", "explanation": "Allocation boards are for viewing and managing resources, not automatically creating plans", "reference": "Resource Management documentation" }
+        ]
+      },
+      "references": ["Resource Management documentation"],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "cis-spm-api/allocation-workbench.md",
+        "excerpt": "Allocation boards group resources based on filters so that you can view and manage specific resources for investments."
+      },
+      "labels": {
+        "certification": "cis-spm",
+        "domain": "Resource Management",
+        "domainSlug": "resource-management",
+        "domainPercentage": 23,
+        "subtopics": ["Allocation boards", "Resource management"],
+        "tags": ["resource-management", "allocation-board"]
+      },
+      "meta": {
+        "generatedAt": "2025-01-20T00:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-spm-resource-management-007",
+      "certification": "cis-spm",
+      "topic": "resource-management",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "When a resource plan is created from the Resource Finder, what is the initial state and planned hours?",
+      "options": [
+        { "id": "a", "text": "Planning state with the requested hours pre-filled" },
+        { "id": "b", "text": "Planning state with zero planned hours" },
+        { "id": "c", "text": "Requested state with zero planned hours" },
+        { "id": "d", "text": "Confirmed state with estimated hours" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "When a resource plan is created from the Resource Finder, it is created in the Planning state with zero planned hours. The user must then update the planned hours using the resource grid.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "The resource plan starts with zero planned hours, not pre-filled hours", "reference": "Resource Management documentation" },
+          { "choiceId": "c", "explanation": "New resource plans start in Planning state, not Requested state", "reference": "Resource Management documentation" },
+          { "choiceId": "d", "explanation": "Resource plans must go through Planning and Requested states before being Confirmed", "reference": "Resource Management documentation" }
+        ]
+      },
+      "references": ["Resource Management documentation"],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "cis-spm-api/create-resource-plan-with-finder.md",
+        "excerpt": "The resource plan is created in the Planning state with zero planned hours."
+      },
+      "labels": {
+        "certification": "cis-spm",
+        "domain": "Resource Management",
+        "domainSlug": "resource-management",
+        "domainPercentage": 23,
+        "subtopics": ["Resource Finder", "Resource plan creation"],
+        "tags": ["resource-management", "resource-finder", "states"]
+      },
+      "meta": {
+        "generatedAt": "2025-01-20T00:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-spm-resource-management-008",
+      "certification": "cis-spm",
+      "topic": "resource-management",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "Which of the following statements about the Allocation Workbench is TRUE?\n\nI. It is being deprecated starting with the Xanadu release.\nII. Resource Managers are encouraged to use Resource Management Workspace instead.\nIII. It will be removed immediately and is no longer supported.\nIV. It provides a heatmap view of resource bandwidth.",
+      "options": [
+        { "id": "a", "text": "I and II only" },
+        { "id": "b", "text": "I, II, and IV only" },
+        { "id": "c", "text": "III and IV only" },
+        { "id": "d", "text": "All of the above" }
+      ],
+      "correctAnswers": ["a"],
+      "explanation": {
+        "correct": "The Allocation Workbench is being deprecated starting with Xanadu release. It will be hidden and no longer available for installation but will continue to be supported. Resource Managers are encouraged to use the Resource Management Workspace. The heatmap view is a feature of Resource Management Workspace, not the Allocation Workbench.",
+        "wrongAnswers": [
+          { "choiceId": "b", "explanation": "Statement IV is about Resource Management Workspace features, not Allocation Workbench", "reference": "Resource Management documentation" },
+          { "choiceId": "c", "explanation": "Statement III is false; the workbench will continue to be supported even though deprecated", "reference": "Resource Management documentation" },
+          { "choiceId": "d", "explanation": "Statements III and IV are false as described", "reference": "Resource Management documentation" }
+        ]
+      },
+      "references": ["Resource Management documentation"],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "cis-spm-api/allocation-workbench.md",
+        "excerpt": "Allocation workbench is being deprecated starting Xanadu release. It will be hidden and no longer available for installation but will continue to be supported."
+      },
+      "labels": {
+        "certification": "cis-spm",
+        "domain": "Resource Management",
+        "domainSlug": "resource-management",
+        "domainPercentage": 23,
+        "subtopics": ["Allocation Workbench", "Deprecation"],
+        "tags": ["resource-management", "allocation-workbench", "compound-tf"]
+      },
+      "meta": {
+        "generatedAt": "2025-01-20T00:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-spm-resource-management-009",
+      "certification": "cis-spm",
+      "topic": "resource-management",
+      "cognitiveLevel": "application",
+      "type": "multiple_select",
+      "question": "What actions can you perform from the resource grid in the Allocation Workbench? (Choose FOUR)",
+      "options": [
+        { "id": "a", "text": "Edit planned, confirmed, and allocated hours inline" },
+        { "id": "b", "text": "Request changes to submitted resource plans" },
+        { "id": "c", "text": "Create new projects" },
+        { "id": "d", "text": "Confirm or allocate resource plans" },
+        { "id": "e", "text": "Replace one user's allocation with another user" },
+        { "id": "f", "text": "Define new cost models" }
+      ],
+      "correctAnswers": ["a", "b", "d", "e"],
+      "explanation": {
+        "correct": "From the resource grid, you can edit hours inline, request changes to submitted plans, confirm or allocate resource plans, replace user allocations, shift allocations, move resource plans, and complete/delete/cancel plans. Creating projects and defining cost models are done in other applications.",
+        "wrongAnswers": [
+          { "choiceId": "c", "explanation": "Creating new projects is done in Project Management, not the Allocation Workbench", "reference": "Resource Management documentation" },
+          { "choiceId": "f", "explanation": "Cost models are defined in Financial Management, not the Allocation Workbench", "reference": "Resource Management documentation" }
+        ]
+      },
+      "references": ["Resource Management documentation"],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "cis-spm-api/allocation-workbench.md",
+        "excerpt": "In the grid view, you can perform the following tasks: Edit the planned, confirmed, and allocated hours inline. Request changes to submitted resource plans. Confirm or allocate resource plans. Replace one user's allocation with another user."
+      },
+      "labels": {
+        "certification": "cis-spm",
+        "domain": "Resource Management",
+        "domainSlug": "resource-management",
+        "domainPercentage": 23,
+        "subtopics": ["Resource grid", "Allocation Workbench"],
+        "tags": ["resource-management", "allocation-workbench", "actions"]
+      },
+      "meta": {
+        "generatedAt": "2025-01-20T00:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-spm-resource-management-010",
+      "certification": "cis-spm",
+      "topic": "resource-management",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which workspace is the recommended dedicated view for Resource Managers to manage resource assignments?",
+      "options": [
+        { "id": "a", "text": "Project Workspace" },
+        { "id": "b", "text": "Allocation Workbench" },
+        { "id": "c", "text": "Resource Management Workspace" },
+        { "id": "d", "text": "Portfolio Workbench" }
+      ],
+      "correctAnswers": ["c"],
+      "explanation": {
+        "correct": "Resource Management Workspace is a dedicated workspace view for Resource Managers where they get insights about unassigned tasks, heatmap view of resource bandwidth, and custom views to handle priority resource assignment requests.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "Project Workspace is for project managers to manage projects, not specifically for resource management", "reference": "Resource Management documentation" },
+          { "choiceId": "b", "explanation": "Allocation Workbench is being deprecated; Resource Management Workspace is the recommended alternative", "reference": "Resource Management documentation" },
+          { "choiceId": "d", "explanation": "Portfolio Workbench is for portfolio management, not resource management", "reference": "Resource Management documentation" }
+        ]
+      },
+      "references": ["Resource Management documentation"],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "cis-spm-api/c_ResourceManagement.md",
+        "excerpt": "Resource Management Workspace is a dedicated workspace view for Resource Managers where you get insights about unassigned tasks, heatmap view of resource bandwidth."
+      },
+      "labels": {
+        "certification": "cis-spm",
+        "domain": "Resource Management",
+        "domainSlug": "resource-management",
+        "domainPercentage": 23,
+        "subtopics": ["Resource Management Workspace", "Resource managers"],
+        "tags": ["resource-management", "workspace"]
+      },
+      "meta": {
+        "generatedAt": "2025-01-20T00:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-spm-resource-management-011",
+      "certification": "cis-spm",
+      "topic": "resource-management",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "Which of the following is NOT an action that can be performed for an operational resource plan from the Allocation Workbench?",
+      "options": [
+        { "id": "a", "text": "Allocate resources" },
+        { "id": "b", "text": "Confirm the resource plan" },
+        { "id": "c", "text": "View operational work types" },
+        { "id": "d", "text": "Filter by operational work type" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "The confirm, replace, shift, and move actions cannot be performed for an operational resource plan. Operational resource plans have a different workflow than project resource plans. You can allocate resources and filter by operational work type for operational resource plans.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "You can allocate resources for an operational resource plan", "reference": "Resource Management documentation" },
+          { "choiceId": "c", "explanation": "You can view operational work types in the resource grid", "reference": "Resource Management documentation" },
+          { "choiceId": "d", "explanation": "You can filter operational resource plans by operational work type", "reference": "Resource Management documentation" }
+        ]
+      },
+      "references": ["Resource Management documentation"],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "cis-spm-api/allocation-workbench.md",
+        "excerpt": "The confirm, replace, shift, and move actions can't be performed for an operational resource plan."
+      },
+      "labels": {
+        "certification": "cis-spm",
+        "domain": "Resource Management",
+        "domainSlug": "resource-management",
+        "domainPercentage": 23,
+        "subtopics": ["Operational resource plans", "Allocation Workbench"],
+        "tags": ["resource-management", "operational", "negative-question"]
+      },
+      "meta": {
+        "generatedAt": "2025-01-20T00:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-spm-resource-management-012",
+      "certification": "cis-spm",
+      "topic": "resource-management",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_select",
+      "question": "What information can you analyze using the Resource Finder section of the Allocation Workbench? (Choose THREE)",
+      "options": [
+        { "id": "a", "text": "Resource availability" },
+        { "id": "b", "text": "Resource utilization" },
+        { "id": "c", "text": "Project financials" },
+        { "id": "d", "text": "Capacity constraints" },
+        { "id": "e", "text": "Incident trends" }
+      ],
+      "correctAnswers": ["a", "b", "d"],
+      "explanation": {
+        "correct": "In the Resource Finder, you can search for resources and view their availability, utilization, and capacity. You can also analyze different constraints such as capacity, availability, actual hours, and others for different time periods.",
+        "wrongAnswers": [
+          { "choiceId": "c", "explanation": "Project financials are managed in Financial Management, not Resource Finder", "reference": "Resource Management documentation" },
+          { "choiceId": "e", "explanation": "Incident trends are part of Incident Management, not Resource Management", "reference": "Resource Management documentation" }
+        ]
+      },
+      "references": ["Resource Management documentation"],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "cis-spm-api/create-resource-plan-with-finder.md",
+        "excerpt": "Use the Configuration menu to analyze different constraints such as the capacity, availability, actual hours, and others for different time periods."
+      },
+      "labels": {
+        "certification": "cis-spm",
+        "domain": "Resource Management",
+        "domainSlug": "resource-management",
+        "domainPercentage": 23,
+        "subtopics": ["Resource Finder", "Resource analysis"],
+        "tags": ["resource-management", "resource-finder", "analysis"]
+      },
+      "meta": {
+        "generatedAt": "2025-01-20T00:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-spm-resource-management-013",
+      "certification": "cis-spm",
+      "topic": "resource-management",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "In the Resource Finder, what happens when you filter resources using a Show Available option?",
+      "options": [
+        { "id": "a", "text": "Only resources with 100% availability are displayed" },
+        { "id": "b", "text": "Resources are filtered to show only those that are available, and the Requested column is disabled automatically" },
+        { "id": "c", "text": "All resources are shown with their availability percentage" },
+        { "id": "d", "text": "A new resource plan is created automatically for available resources" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "When using the show available or show over allocated options from the Show/Hide menu, the Requested column is automatically disabled. This is one of the conditions that prevents the Requested column from being available.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "The filter shows available resources, but doesn't require 100% availability", "reference": "Resource Management documentation" },
+          { "choiceId": "c", "explanation": "The filter specifically shows available or over-allocated resources, not all resources", "reference": "Resource Management documentation" },
+          { "choiceId": "d", "explanation": "Filtering does not automatically create resource plans", "reference": "Resource Management documentation" }
+        ]
+      },
+      "references": ["Resource Management documentation"],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "cis-spm-api/create-resource-plan-with-finder.md",
+        "excerpt": "Using the show available or show over allocated options from the Show/Hide menu... the Requested column is disabled automatically."
+      },
+      "labels": {
+        "certification": "cis-spm",
+        "domain": "Resource Management",
+        "domainSlug": "resource-management",
+        "domainPercentage": 23,
+        "subtopics": ["Resource Finder", "Filtering"],
+        "tags": ["resource-management", "resource-finder", "filtering"]
+      },
+      "meta": {
+        "generatedAt": "2025-01-20T00:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-spm-resource-management-014",
+      "certification": "cis-spm",
+      "topic": "resource-management",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What format options are available for viewing allocations in the Allocation Workbench?",
+      "options": [
+        { "id": "a", "text": "Hours only" },
+        { "id": "b", "text": "Hours or Percentage" },
+        { "id": "c", "text": "Hours, FTE, or Person days" },
+        { "id": "d", "text": "FTE only" }
+      ],
+      "correctAnswers": ["c"],
+      "explanation": {
+        "correct": "The Allocation Workbench provides three format options for viewing allocations: Hours, FTE (Full-Time Equivalent), or Person days. These formats apply in both the resource grid and resource finder sections.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "Hours is one option, but FTE and Person days are also available", "reference": "Resource Management documentation" },
+          { "choiceId": "b", "explanation": "Percentage is not one of the format options; FTE and Person days are used instead", "reference": "Resource Management documentation" },
+          { "choiceId": "d", "explanation": "FTE is one option, but Hours and Person days are also available", "reference": "Resource Management documentation" }
+        ]
+      },
+      "references": ["Resource Management documentation"],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "cis-spm-api/allocation-workbench.md",
+        "excerpt": "Hours, FTE, or Person days view - Shows allocations in hours, FTE, or person days format in both the resource grid and resource finder sections."
+      },
+      "labels": {
+        "certification": "cis-spm",
+        "domain": "Resource Management",
+        "domainSlug": "resource-management",
+        "domainPercentage": 23,
+        "subtopics": ["Allocation Workbench", "View formats"],
+        "tags": ["resource-management", "allocation-workbench", "formats"]
+      },
+      "meta": {
+        "generatedAt": "2025-01-20T00:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    }
+  ]
+}

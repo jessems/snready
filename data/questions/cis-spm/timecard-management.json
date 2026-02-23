@@ -1,0 +1,137 @@
+{
+  "questions": [
+    {
+      "id": "cis-spm-timecard-001",
+      "certification": "cis-spm",
+      "topic": "timecard-management",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What are the possible states of a time card in ServiceNow Time Card Management?",
+      "options": [
+        { "id": "a", "text": "Draft, Submitted, Closed" },
+        { "id": "b", "text": "Pending, Submitted, Approved, Processed, Rejected, Recalled" },
+        { "id": "c", "text": "New, In Progress, Complete" },
+        { "id": "d", "text": "Open, Approved, Denied" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "Time cards can have six states: Pending (not submitted), Submitted (submitted for approval), Approved, Processed (approved with expense line created), Rejected, and Recalled (approved card returned for adjustments).",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "These are not the correct time card states", "reference": "Time Card Management documentation" },
+          { "choiceId": "c", "explanation": "These are generic task states, not time card specific states", "reference": "Time Card Management documentation" },
+          { "choiceId": "d", "explanation": "These are not the correct time card states", "reference": "Time Card Management documentation" }
+        ]
+      },
+      "references": ["Time Card Management documentation"],
+      "isFree": true,
+      "source": {
+        "type": "documentation",
+        "path": "cis-spm-api/c_TimeCards.md",
+        "excerpt": "A time card can have any of the following states: Pending, Submitted, Approved, Processed, Rejected, Recalled."
+      },
+      "labels": {
+        "certification": "cis-spm",
+        "domain": "Timecard Management",
+        "domainSlug": "timecard-management",
+        "domainPercentage": 5,
+        "subtopics": ["Time card states"],
+        "tags": ["timecard", "states"]
+      },
+      "meta": {
+        "generatedAt": "2025-01-20T00:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-spm-timecard-002",
+      "certification": "cis-spm",
+      "topic": "timecard-management",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_select",
+      "question": "What task types does the time card management feature work with? (Choose FOUR)",
+      "options": [
+        { "id": "a", "text": "Projects" },
+        { "id": "b", "text": "Incidents" },
+        { "id": "c", "text": "Problems" },
+        { "id": "d", "text": "Change Requests" },
+        { "id": "e", "text": "Knowledge Articles" },
+        { "id": "f", "text": "Service Catalog Items" }
+      ],
+      "correctAnswers": ["a", "b", "c", "d"],
+      "explanation": {
+        "correct": "The time card management feature works with the Task table to record time worked on Projects, Incidents, Problems, and Change Requests. Knowledge Articles and Service Catalog Items are not task types that support time card entry.",
+        "wrongAnswers": [
+          { "choiceId": "e", "explanation": "Knowledge Articles are documentation, not tasks that support time card entry", "reference": "Time Card Management documentation" },
+          { "choiceId": "f", "explanation": "Service Catalog Items are request types, not tasks that support time card entry directly", "reference": "Time Card Management documentation" }
+        ]
+      },
+      "references": ["Time Card Management documentation"],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "cis-spm-api/c_TimeCards.md",
+        "excerpt": "The time card management feature works with the Task table to record time worked on Projects, Incidents, Problems, and Change Requests."
+      },
+      "labels": {
+        "certification": "cis-spm",
+        "domain": "Timecard Management",
+        "domainSlug": "timecard-management",
+        "domainPercentage": 5,
+        "subtopics": ["Task types", "Time tracking"],
+        "tags": ["timecard", "tasks"]
+      },
+      "meta": {
+        "generatedAt": "2025-01-20T00:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-spm-timecard-003",
+      "certification": "cis-spm",
+      "topic": "timecard-management",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What happens when you approve a time card in ServiceNow?",
+      "options": [
+        { "id": "a", "text": "The time card is deleted and hours are transferred to the task" },
+        { "id": "b", "text": "The time logged is saved day-wise in the Time Card Daily table" },
+        { "id": "c", "text": "A notification is sent to the submitter only" },
+        { "id": "d", "text": "The time card is automatically closed" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "When you approve a time card, the time logged in the time card is saved day-wise in the Time Card Daily [time_card_daily] table. This enables generating time card reports by days for any period irrespective of the time sheet period.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "Time cards are not deleted upon approval; they are retained with the Approved state", "reference": "Time Card Management documentation" },
+          { "choiceId": "c", "explanation": "While notifications may be sent, the key action is saving daily time data", "reference": "Time Card Management documentation" },
+          { "choiceId": "d", "explanation": "Approved time cards move to Approved state, not automatically closed", "reference": "Time Card Management documentation" }
+        ]
+      },
+      "references": ["Time Card Management documentation"],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "cis-spm-api/c_TimeCards.md",
+        "excerpt": "When you approve a time card, the time logged in the time card is saved day-wise in the Time Card Daily [time_card_daily] table."
+      },
+      "labels": {
+        "certification": "cis-spm",
+        "domain": "Timecard Management",
+        "domainSlug": "timecard-management",
+        "domainPercentage": 5,
+        "subtopics": ["Time card approval", "Time tracking"],
+        "tags": ["timecard", "approval"]
+      },
+      "meta": {
+        "generatedAt": "2025-01-20T00:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    }
+  ]
+}
