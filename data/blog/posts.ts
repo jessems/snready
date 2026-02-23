@@ -13,6 +13,7 @@ export interface BlogPost {
 }
 
 export const blogPosts: BlogPost[] = [
+  {
     slug: "cis-itsm-implementation-exam-reality",
     title: "CIS-ITSM: The Implementation Exam That Trips Up CSA Holders",
     description: "You passed CSA. You work with ITSM daily. You should breeze through CIS-ITSM, right? Here's why that assumption gets people.",
