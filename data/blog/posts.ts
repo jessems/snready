@@ -13,6 +13,7 @@ export interface BlogPost {
 }
 
 export const blogPosts: BlogPost[] = [
+  {
     slug: "servicenow-csa-exam-what-they-dont-tell-you",
     title: "The ServiceNow CSA Exam: What They Don't Tell You",
     description: "Beyond the official exam guide. Real insights on question patterns, time management, and the topics that trip people up on the CSA certification.",
