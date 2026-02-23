@@ -15,7 +15,16 @@ export interface BlogPost {
 }
 
 export const blogPosts: BlogPost[] = [
-  // Posts are added via separate PRs
+  // Placeholder - required for static build. Real posts added via separate PRs.
+  {
+    slug: "_placeholder",
+    title: "Blog Coming Soon",
+    description: "Stay tuned for ServiceNow certification tips and guides.",
+    publishedAt: "2026-01-01",
+    author: "SNReady Team",
+    tags: [],
+    content: "Blog posts coming soon."
+  }
 ];
 
 // Helper to get all posts sorted by date
