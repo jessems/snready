@@ -1,0 +1,180 @@
+{
+  "questions": [
+    {
+      "id": "cis-sp-initial-setup-001",
+      "certification": "cis-sp",
+      "topic": "initial-domain-setup",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What is the primary purpose of domain separation in ServiceNow?",
+      "options": [
+        { "id": "a", "text": "To improve database query performance" },
+        { "id": "b", "text": "To separate data, processes, and administrative tasks into logical groupings" },
+        { "id": "c", "text": "To enable multiple users to log in simultaneously" },
+        { "id": "d", "text": "To provide backup and disaster recovery capabilities" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "Domain separation enables you to separate data, processes, and administrative tasks into logical groupings called domains. You can control several aspects of this separation, including which users can see and access data.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "Performance optimization is not the primary purpose of domain separation; it's about data and process segregation for multi-tenancy", "reference": "ServiceNow Domain Separation documentation" },
+          { "choiceId": "c", "explanation": "Multiple simultaneous logins are handled by standard platform capabilities, not domain separation", "reference": "ServiceNow Domain Separation documentation" },
+          { "choiceId": "d", "explanation": "Backup and disaster recovery are separate platform features unrelated to domain separation", "reference": "ServiceNow Domain Separation documentation" }
+        ]
+      },
+      "references": ["ServiceNow Domain Separation documentation", "Service Provider fundamentals"],
+      "isFree": true,
+      "source": {
+        "type": "documentation",
+        "path": "scraped-docs/cis-tprm-api/domain-separation-pol-comp.md",
+        "excerpt": "Domain separation enables you to separate data, processes, and administrative tasks into logical groupings called domains."
+      },
+      "labels": {
+        "certification": "cis-sp",
+        "domain": "Initial Domain Setup and Architecture",
+        "domainSlug": "initial-domain-setup",
+        "domainPercentage": 9,
+        "subtopics": ["Domain separation concepts", "Multi-tenancy basics"],
+        "tags": ["domain separation", "fundamentals", "architecture"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-23T20:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sp-initial-setup-002",
+      "certification": "cis-sp",
+      "topic": "initial-domain-setup",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "Which plugin must be activated to enable domain separation functionality in ServiceNow?",
+      "options": [
+        { "id": "a", "text": "Domain Support — Domain Extension Installer" },
+        { "id": "b", "text": "Service Provider Portal" },
+        { "id": "c", "text": "Multi-Instance Management" },
+        { "id": "d", "text": "Data Archive" }
+      ],
+      "correctAnswers": ["a"],
+      "explanation": {
+        "correct": "The Domain Support — Domain Extension Installer plugin must be activated to enable domain separation capabilities. This plugin adds the necessary infrastructure for creating and managing domains.",
+        "wrongAnswers": [
+          { "choiceId": "b", "explanation": "Service Provider Portal is a different feature for customer-facing portals, not domain separation infrastructure", "reference": "ServiceNow plugin documentation" },
+          { "choiceId": "c", "explanation": "Multi-Instance Management is for managing multiple ServiceNow instances, not domains within a single instance", "reference": "ServiceNow plugin documentation" },
+          { "choiceId": "d", "explanation": "Data Archive is for archiving old records, unrelated to domain separation", "reference": "ServiceNow plugin documentation" }
+        ]
+      },
+      "references": ["ServiceNow Domain Separation documentation"],
+      "isFree": true,
+      "source": {
+        "type": "documentation",
+        "path": "scraped-docs/cis-em-api/t_EMConfigureDomainSeparation.md",
+        "excerpt": "If it is not already active, activate the Domain Support – Domain Extension Installer plugin."
+      },
+      "labels": {
+        "certification": "cis-sp",
+        "domain": "Initial Domain Setup and Architecture",
+        "domainSlug": "initial-domain-setup",
+        "domainPercentage": 9,
+        "subtopics": ["Domain separation plugins", "Setup requirements"],
+        "tags": ["plugin", "domain separation", "setup"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-23T20:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sp-initial-setup-003",
+      "certification": "cis-sp",
+      "topic": "initial-domain-setup",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_select",
+      "question": "Which of the following are valid benefits of implementing domain separation for customers? (Choose three)",
+      "options": [
+        { "id": "a", "text": "Enforce absolute data segregation between business entities" },
+        { "id": "b", "text": "Customize business process definitions and user interfaces for each domain" },
+        { "id": "c", "text": "Automatic database replication across data centers" },
+        { "id": "d", "text": "Maintain some global processes and global reporting in a single instance" },
+        { "id": "e", "text": "Eliminate the need for user authentication" }
+      ],
+      "correctAnswers": ["a", "b", "d"],
+      "explanation": {
+        "correct": "Domain separation is best for customers who need to: (1) enforce absolute data segregation between business entities (data separation), (2) customize business process definitions and user interfaces for each domain (delegated administration), and (3) maintain some global processes and global reporting in a single instance.",
+        "wrongAnswers": [
+          { "choiceId": "c", "explanation": "Database replication is handled by infrastructure and high availability features, not domain separation", "reference": "ServiceNow Domain Separation documentation" },
+          { "choiceId": "e", "explanation": "Domain separation does not affect authentication requirements; users still must authenticate to access the platform", "reference": "ServiceNow Domain Separation documentation" }
+        ]
+      },
+      "references": ["ServiceNow Domain Separation documentation"],
+      "isFree": true,
+      "source": {
+        "type": "documentation",
+        "path": "scraped-docs/cis-tprm-api/domain-separation-pol-comp.md",
+        "excerpt": "Domain separation is best for those customers who: Need to enforce absolute data segregation between business entities, Customize business process definitions and user interfaces for each domain, Maintain some global processes and global reporting in a single instance."
+      },
+      "labels": {
+        "certification": "cis-sp",
+        "domain": "Initial Domain Setup and Architecture",
+        "domainSlug": "initial-domain-setup",
+        "domainPercentage": 9,
+        "subtopics": ["Domain separation benefits", "Use cases"],
+        "tags": ["benefits", "domain separation", "multi-tenancy"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-23T20:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sp-initial-setup-004",
+      "certification": "cis-sp",
+      "topic": "initial-domain-setup",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "When is using separate ServiceNow instances recommended instead of domain separation?",
+      "options": [
+        { "id": "a", "text": "When you need to share reports across departments" },
+        { "id": "b", "text": "When you need complete and total separation of all system properties and do not require global reporting" },
+        { "id": "c", "text": "When you want to use a single login page for all users" },
+        { "id": "d", "text": "When you want to reduce licensing costs" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "If you need complete and total separation of all system properties and do not require global reporting or global processes, separate instances are the best option. Domain separation within a single instance still shares some global properties and processes.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "Sharing reports across departments is actually easier with domain separation in a single instance", "reference": "ServiceNow Domain Separation documentation" },
+          { "choiceId": "c", "explanation": "A single login page can be configured in both domain-separated and multi-instance scenarios", "reference": "ServiceNow Domain Separation documentation" },
+          { "choiceId": "d", "explanation": "Licensing costs are not typically reduced by using separate instances; this is not a valid reason for choosing between approaches", "reference": "ServiceNow Domain Separation documentation" }
+        ]
+      },
+      "references": ["ServiceNow Domain Separation documentation"],
+      "isFree": true,
+      "source": {
+        "type": "documentation",
+        "path": "scraped-docs/cis-tprm-api/domain-separation-prm.md",
+        "excerpt": "If you need complete and total separation of all system properties and do not require global reporting or global processes, separate instances are the best option."
+      },
+      "labels": {
+        "certification": "cis-sp",
+        "domain": "Initial Domain Setup and Architecture",
+        "domainSlug": "initial-domain-setup",
+        "domainPercentage": 9,
+        "subtopics": ["Architecture decisions", "Instance vs domain separation"],
+        "tags": ["architecture", "multi-instance", "decision criteria"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-23T20:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    }
+  ]
+}
