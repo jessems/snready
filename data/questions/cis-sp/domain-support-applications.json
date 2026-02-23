@@ -1,0 +1,224 @@
+{
+  "questions": [
+    {
+      "id": "cis-sp-domain-support-001",
+      "certification": "cis-sp",
+      "topic": "domain-support-applications",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "At which domain separation support level are application properties domain-aware as needed?",
+      "options": [
+        { "id": "a", "text": "Basic" },
+        { "id": "b", "text": "Standard" },
+        { "id": "c", "text": "Enhanced" },
+        { "id": "d", "text": "None - properties are never domain-aware" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "At the Standard support level, application properties are domain-aware as needed. This level includes all aspects of Basic level support plus the ability for service providers to create or modify processes per customer, with the instance owner configuring MVP business logic per tenant.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "Basic level focuses on data going into proper domains, not property domain-awareness", "reference": "ServiceNow Domain Separation documentation" },
+          { "choiceId": "c", "explanation": "Enhanced level builds on Standard; property domain-awareness starts at Standard", "reference": "ServiceNow Domain Separation documentation" },
+          { "choiceId": "d", "explanation": "Properties can be domain-aware starting at the Standard support level", "reference": "ServiceNow Domain Separation documentation" }
+        ]
+      },
+      "references": ["ServiceNow Domain Separation documentation"],
+      "isFree": true,
+      "source": {
+        "type": "documentation",
+        "path": "scraped-docs/cis-secops-api/domain-separation-security-incident-response.md",
+        "excerpt": "Standard - Includes all aspects of Basic level support. Application properties are domain-aware as needed."
+      },
+      "labels": {
+        "certification": "cis-sp",
+        "domain": "Domain Support in Applications",
+        "domainSlug": "domain-support-applications",
+        "domainPercentage": 11,
+        "subtopics": ["Support levels", "Application properties"],
+        "tags": ["Standard", "properties", "support levels"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-23T20:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sp-domain-support-002",
+      "certification": "cis-sp",
+      "topic": "domain-support-applications",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_select",
+      "question": "Which features are available in the extended domain separation functionality for Performance Analytics with the Domain Separation Support plugin? (Choose three)",
+      "options": [
+        { "id": "a", "text": "Hierarchical multi-domain configurations" },
+        { "id": "b", "text": "Automatic data backup per domain" },
+        { "id": "c", "text": "Collect aggregate scores across domains" },
+        { "id": "d", "text": "Dashboard filtering by domain" },
+        { "id": "e", "text": "Cross-instance domain replication" }
+      ],
+      "correctAnswers": ["a", "c", "d"],
+      "explanation": {
+        "correct": "The extended functionality available in the Performance Analytics — Domain Separation Support plugin includes: (1) Hierarchical multi-domain configurations to group domains and control score collection, (2) Collect aggregate scores by combining scores from multiple domains in a domain configuration, and (3) Dashboard filtering by domain to show scores by domain or domain aggregate.",
+        "wrongAnswers": [
+          { "choiceId": "b", "explanation": "Automatic data backup is not a PA domain separation feature", "reference": "ServiceNow Performance Analytics documentation" },
+          { "choiceId": "e", "explanation": "Cross-instance domain replication is not a feature of the PA Domain Separation Support plugin", "reference": "ServiceNow Performance Analytics documentation" }
+        ]
+      },
+      "references": ["ServiceNow Performance Analytics documentation"],
+      "isFree": true,
+      "source": {
+        "type": "documentation",
+        "path": "scraped-docs/cis-pa-api/c_PAWithDomainSeparation.md",
+        "excerpt": "Hierarchical multi-domain configurations, Collect aggregate scores, Dashboard filtering by domain. The extended functionality is available in the Performance Analytics — Domain Separation Support plugin."
+      },
+      "labels": {
+        "certification": "cis-sp",
+        "domain": "Domain Support in Applications",
+        "domainSlug": "domain-support-applications",
+        "domainPercentage": 11,
+        "subtopics": ["Performance Analytics", "Extended functionality"],
+        "tags": ["PA", "domain configurations", "aggregate scores"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-23T20:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sp-domain-support-003",
+      "certification": "cis-sp",
+      "topic": "domain-support-applications",
+      "cognitiveLevel": "understanding",
+      "type": "true_false_compound",
+      "question": "Evaluate the following statements about domain separation in Event Management:\n\nStatement 1: Impact calculation in Event Management is supported with segregation based on how CIs are segregated.\n\nStatement 2: The discovery process automatically segregates CIs by domain in Event Management.\n\nWhich statements are TRUE?",
+      "options": [
+        { "id": "a", "text": "Statement 1 only" },
+        { "id": "b", "text": "Statement 2 only" },
+        { "id": "c", "text": "Both statements" },
+        { "id": "d", "text": "Neither statement" }
+      ],
+      "correctAnswers": ["a"],
+      "explanation": {
+        "correct": "Statement 1 is TRUE: Impact calculation is supported in Event Management domain separation, with segregation based on the manner in which CIs are segregated. Statement 2 is FALSE: The discovery process does NOT segregate CIs by domain - this is explicitly noted as a limitation in the documentation.",
+        "wrongAnswers": [
+          { "choiceId": "b", "explanation": "Statement 2 is false; discovery does NOT segregate CIs by domain. Statement 1 is true about impact calculation.", "reference": "ServiceNow Event Management documentation" },
+          { "choiceId": "c", "explanation": "Statement 2 is false; the discovery process does not automatically segregate CIs by domain", "reference": "ServiceNow Event Management documentation" },
+          { "choiceId": "d", "explanation": "Statement 1 is true; impact calculation IS supported with CI-based segregation", "reference": "ServiceNow Event Management documentation" }
+        ]
+      },
+      "references": ["ServiceNow Event Management documentation"],
+      "isFree": true,
+      "source": {
+        "type": "documentation",
+        "path": "scraped-docs/cis-em-api/t_EMConfigureDomainSeparation.md",
+        "excerpt": "Impact calculation - Supported. Segregation is based on the manner in which CIs are segregated. Dynamic CI groups - Partially supported. Note: The discovery process does not segregate CIs by domain."
+      },
+      "labels": {
+        "certification": "cis-sp",
+        "domain": "Domain Support in Applications",
+        "domainSlug": "domain-support-applications",
+        "domainPercentage": 11,
+        "subtopics": ["Event Management", "Impact calculation"],
+        "tags": ["compound true/false", "Event Management", "discovery"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-23T20:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sp-domain-support-004",
+      "certification": "cis-sp",
+      "topic": "domain-support-applications",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "Which API enables copying Performance Analytics records between different domains on the same instance?",
+      "options": [
+        { "id": "a", "text": "GlideDomain" },
+        { "id": "b", "text": "PADomainUtils" },
+        { "id": "c", "text": "DomainCopy" },
+        { "id": "d", "text": "GlideRecord" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "The PADomainUtils API enables you to copy Performance Analytics records between different domains on the same instance. This is useful for propagating PA configurations across domains.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "GlideDomain is not the specific API for copying PA records between domains", "reference": "ServiceNow Performance Analytics documentation" },
+          { "choiceId": "c", "explanation": "DomainCopy is not a standard ServiceNow API for this purpose", "reference": "ServiceNow Performance Analytics documentation" },
+          { "choiceId": "d", "explanation": "GlideRecord is a general data access API, not specifically designed for PA domain copying", "reference": "ServiceNow Performance Analytics documentation" }
+        ]
+      },
+      "references": ["ServiceNow Performance Analytics documentation"],
+      "isFree": true,
+      "source": {
+        "type": "documentation",
+        "path": "scraped-docs/cis-pa-api/c_PAWithDomainSeparation.md",
+        "excerpt": "PADomainUtils - Global: The PADomainUtils API enables you to copy Performance Analytics records between different domains on the same instance."
+      },
+      "labels": {
+        "certification": "cis-sp",
+        "domain": "Domain Support in Applications",
+        "domainSlug": "domain-support-applications",
+        "domainPercentage": 11,
+        "subtopics": ["PADomainUtils", "API usage"],
+        "tags": ["PA", "API", "PADomainUtils"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-23T20:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sp-domain-support-005",
+      "certification": "cis-sp",
+      "topic": "domain-support-applications",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A sample use case for Enhanced domain separation support level states: 'Tenant-customers of a shared environment must be able to modify the impact, urgency, or priority matrix to set priority within their domain.' This demonstrates which capability?",
+      "options": [
+        { "id": "a", "text": "Basic data separation" },
+        { "id": "b", "text": "Service provider process customization" },
+        { "id": "c", "text": "Tenant self-service configuration of business logic" },
+        { "id": "d", "text": "Global administrator delegation" }
+      ],
+      "correctAnswers": ["c"],
+      "explanation": {
+        "correct": "This sample use case demonstrates the Enhanced support level capability where tenants of the instance can configure minimum viable product (MVP) business logic and data parameters for themselves. The ability to modify the priority matrix within their domain is tenant self-service configuration.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "Basic data separation doesn't allow tenants to modify business logic like priority matrices", "reference": "ServiceNow Domain Separation documentation" },
+          { "choiceId": "b", "explanation": "This is tenant self-configuration, not service provider creating processes for customers (which is Standard level)", "reference": "ServiceNow Domain Separation documentation" },
+          { "choiceId": "d", "explanation": "This is not about delegating global admin functions, but about tenants configuring their own domain business logic", "reference": "ServiceNow Domain Separation documentation" }
+        ]
+      },
+      "references": ["ServiceNow Domain Separation documentation"],
+      "isFree": true,
+      "source": {
+        "type": "documentation",
+        "path": "scraped-docs/cis-pa-api/c_PAWithDomainSeparation.md",
+        "excerpt": "Enhanced - Sample use case: Tenant-customers of a shared environment must be able to modify the impact, urgency, or priority matrix to set priority within their domain."
+      },
+      "labels": {
+        "certification": "cis-sp",
+        "domain": "Domain Support in Applications",
+        "domainSlug": "domain-support-applications",
+        "domainPercentage": 11,
+        "subtopics": ["Enhanced support", "Tenant configuration"],
+        "tags": ["Enhanced", "tenant", "priority matrix"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-23T20:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,709 @@
+{
+  "questions": [
+    {
+      "id": "cis-sp-process-separation-001",
+      "certification": "cis-sp",
+      "topic": "process-separation",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which domain separation support level includes the ability for service providers to create or modify processes per customer?",
+      "options": [
+        { "id": "a", "text": "Basic" },
+        { "id": "b", "text": "Standard" },
+        { "id": "c", "text": "Enhanced" },
+        { "id": "d", "text": "Advanced" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "At the Standard support level, business logic allows the service provider (SP) to create or modify processes per customer. The use cases reflect proper use of the application by multiple SP customers in a single instance.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "Basic level ensures data goes into the proper domain but does not specifically enable per-customer process customization", "reference": "ServiceNow Domain Separation documentation" },
+          { "choiceId": "c", "explanation": "Enhanced level adds tenant-configurable business logic, but Standard is where SP process customization begins", "reference": "ServiceNow Domain Separation documentation" },
+          { "choiceId": "d", "explanation": "Advanced is not a defined domain separation support level", "reference": "ServiceNow Domain Separation documentation" }
+        ]
+      },
+      "references": ["ServiceNow Domain Separation documentation"],
+      "isFree": true,
+      "source": {
+        "type": "documentation",
+        "path": "scraped-docs/cis-secops-api/domain-separation-security-incident-response.md",
+        "excerpt": "Standard - Business logic: The service provider (SP) creates or modifies processes per customer. The use cases reflect proper use of the application by multiple SP customers in a single instance."
+      },
+      "labels": {
+        "certification": "cis-sp",
+        "domain": "Process Separation",
+        "domainSlug": "process-separation",
+        "domainPercentage": 36,
+        "subtopics": ["Support levels", "Standard support"],
+        "tags": ["support levels", "process separation", "standard"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-23T20:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sp-process-separation-002",
+      "certification": "cis-sp",
+      "topic": "process-separation",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_select",
+      "question": "Which business logic and processes can be domain separated by the instance owner in Security Incident Response? (Choose three)",
+      "options": [
+        { "id": "a", "text": "Email parsing rules for incident creation" },
+        { "id": "b", "text": "Security incident SLAs" },
+        { "id": "c", "text": "Platform user authentication methods" },
+        { "id": "d", "text": "Workflows for incident response orchestration" },
+        { "id": "e", "text": "Database connection strings" }
+      ],
+      "correctAnswers": ["a", "b", "d"],
+      "explanation": {
+        "correct": "Business logic and processes that can be domain separated by instance owner include: Email parsing rules for incident creation, Security incident SLAs, Workflows for incident response orchestration, as well as user groups, integrations, business rules, risk score calculators, escalation paths, and process definitions.",
+        "wrongAnswers": [
+          { "choiceId": "c", "explanation": "Platform user authentication methods are not domain-separated; they are global platform configurations", "reference": "ServiceNow Security Incident Response documentation" },
+          { "choiceId": "e", "explanation": "Database connection strings are infrastructure-level configurations, not domain-separated business logic", "reference": "ServiceNow Security Incident Response documentation" }
+        ]
+      },
+      "references": ["ServiceNow Security Incident Response documentation"],
+      "isFree": true,
+      "source": {
+        "type": "documentation",
+        "path": "scraped-docs/cis-secops-api/domain-separation-security-incident-response.md",
+        "excerpt": "Business logic and processes that can be domain separated by instance owner: Email parsing rules for incident creation, Workflows for incident response orchestration, Security incident SLAs"
+      },
+      "labels": {
+        "certification": "cis-sp",
+        "domain": "Process Separation",
+        "domainSlug": "process-separation",
+        "domainPercentage": 36,
+        "subtopics": ["SIR process separation", "Domain-separable processes"],
+        "tags": ["SIR", "email parsing", "SLAs", "workflows"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-23T20:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sp-process-separation-003",
+      "certification": "cis-sp",
+      "topic": "process-separation",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "In a domain-separated Event Management environment, which statement is true about MID Server configuration?",
+      "options": [
+        { "id": "a", "text": "A single MID Server can serve all domains simultaneously" },
+        { "id": "b", "text": "Each MID Server can serve only one domain according to the integration user it uses" },
+        { "id": "c", "text": "MID Servers are not affected by domain separation" },
+        { "id": "d", "text": "Multiple MID Servers must share the same service account" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "In a multi-domain environment, each MID Server can serve only one domain according to the integration user that it uses. In the configuration of the connector instance, you must make sure that the MID Server uses the same domain as the Connector instance.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "MID Servers are domain-specific based on their integration user; they cannot serve all domains", "reference": "ServiceNow Event Management documentation" },
+          { "choiceId": "c", "explanation": "MID Servers are affected by domain separation through their integration user configuration", "reference": "ServiceNow Event Management documentation" },
+          { "choiceId": "d", "explanation": "Different domains require different service accounts/integration users for their MID Servers", "reference": "ServiceNow Event Management documentation" }
+        ]
+      },
+      "references": ["ServiceNow Event Management documentation"],
+      "isFree": true,
+      "source": {
+        "type": "documentation",
+        "path": "scraped-docs/cis-em-api/t_EMConfigureDomainSeparation.md",
+        "excerpt": "In a multi-domain environment, each MID Server can serve only one domain according to the integration user that it uses. In the configuration of the connector instance, make sure that the MID Server uses the same domain as the Connector instance."
+      },
+      "labels": {
+        "certification": "cis-sp",
+        "domain": "Process Separation",
+        "domainSlug": "process-separation",
+        "domainPercentage": 36,
+        "subtopics": ["MID Server configuration", "Event Management"],
+        "tags": ["MID Server", "Event Management", "integration user"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-23T20:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sp-process-separation-004",
+      "certification": "cis-sp",
+      "topic": "process-separation",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What is NOT fully supported when implementing domain separation in GRC applications?",
+      "options": [
+        { "id": "a", "text": "Data separation" },
+        { "id": "b", "text": "UI separation" },
+        { "id": "c", "text": "Separation of logic and process" },
+        { "id": "d", "text": "Reporting separation" }
+      ],
+      "correctAnswers": ["c"],
+      "explanation": {
+        "correct": "While GRC supports separation of data, separation of logic and process is not fully supported. Many types of records in GRC are automatically generated through user processes, and the domain of automatically generated records is the same as the domain of the user creating them.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "Data separation is fully supported in GRC domain separation", "reference": "ServiceNow GRC documentation" },
+          { "choiceId": "b", "explanation": "UI separation is part of the runtime domain separation support", "reference": "ServiceNow GRC documentation" },
+          { "choiceId": "d", "explanation": "Reporting separation is supported through domain separation at runtime", "reference": "ServiceNow GRC documentation" }
+        ]
+      },
+      "references": ["ServiceNow GRC documentation"],
+      "isFree": true,
+      "source": {
+        "type": "documentation",
+        "path": "scraped-docs/cis-tprm-api/domain-separation-pol-comp.md",
+        "excerpt": "While GRC supports separation of data, separation of logic and process is not fully supported."
+      },
+      "labels": {
+        "certification": "cis-sp",
+        "domain": "Process Separation",
+        "domainSlug": "process-separation",
+        "domainPercentage": 36,
+        "subtopics": ["GRC limitations", "Process separation"],
+        "tags": ["GRC", "negative", "limitations"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-23T20:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sp-process-separation-005",
+      "certification": "cis-sp",
+      "topic": "process-separation",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A tenant domain owner wants to manage their own Security Incident Response operations. Which capability can they configure independently within their domain?",
+      "options": [
+        { "id": "a", "text": "Platform system properties" },
+        { "id": "b", "text": "Global authentication settings" },
+        { "id": "c", "text": "Incident response workflows and runbooks" },
+        { "id": "d", "text": "Database schema modifications" }
+      ],
+      "correctAnswers": ["c"],
+      "explanation": {
+        "correct": "Tenant domain owners can create their own incident response workflows, incident categories, incident response knowledge base articles, and runbooks to be associated with incident response workflows. This enables domain-specific process customization.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "Platform system properties are typically global and not domain-separable", "reference": "ServiceNow Security Incident Response documentation" },
+          { "choiceId": "b", "explanation": "Global authentication settings are platform-wide, not domain-specific", "reference": "ServiceNow Security Incident Response documentation" },
+          { "choiceId": "d", "explanation": "Database schema modifications are platform-level changes, not tenant-configurable", "reference": "ServiceNow Security Incident Response documentation" }
+        ]
+      },
+      "references": ["ServiceNow Security Incident Response documentation"],
+      "isFree": true,
+      "source": {
+        "type": "documentation",
+        "path": "scraped-docs/cis-secops-api/domain-separation-security-incident-response.md",
+        "excerpt": "Tenant domain owners can create their own incident response workflows. Tenant domain owners can create their own incident categories, incident response knowledge base articles, and runbooks to be associated with incident response workflows."
+      },
+      "labels": {
+        "certification": "cis-sp",
+        "domain": "Process Separation",
+        "domainSlug": "process-separation",
+        "domainPercentage": 36,
+        "subtopics": ["Tenant configuration", "SIR workflows"],
+        "tags": ["tenant", "workflows", "runbooks"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-23T20:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sp-process-separation-006",
+      "certification": "cis-sp",
+      "topic": "process-separation",
+      "cognitiveLevel": "understanding",
+      "type": "true_false_compound",
+      "question": "Evaluate the following statements about domain separation and CMDB reconciliation rules:\n\nStatement 1: Identification rules used during the identification process are always defined at the global level.\n\nStatement 2: Reconciliation definition rules can be defined for different domains.\n\nWhich statements are TRUE?",
+      "options": [
+        { "id": "a", "text": "Statement 1 only" },
+        { "id": "b", "text": "Statement 2 only" },
+        { "id": "c", "text": "Both statements" },
+        { "id": "d", "text": "Neither statement" }
+      ],
+      "correctAnswers": ["c"],
+      "explanation": {
+        "correct": "Both statements are TRUE. The identification rules and identification inclusion rules used during the identification process are always defined at the global level - tables like Identifier (cmdb_identifier) do not have a sys_domain field. The reconciliation definition rules that are used during the reconciliation process can be defined for different domains - tables like Reconciliation Definition (cmdb_reconciliation_definition) do have sys_domain field.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "Both statements are true; reconciliation rules can be domain-specific", "reference": "ServiceNow CMDB IRE documentation" },
+          { "choiceId": "b", "explanation": "Both statements are true; identification rules are indeed global", "reference": "ServiceNow CMDB IRE documentation" },
+          { "choiceId": "d", "explanation": "Both statements are true as documented in the IRE domain separation guide", "reference": "ServiceNow CMDB IRE documentation" }
+        ]
+      },
+      "references": ["ServiceNow CMDB IRE documentation"],
+      "isFree": true,
+      "source": {
+        "type": "documentation",
+        "path": "scraped-docs/cis-df-api/domain-separation-identification-reconciliation.md",
+        "excerpt": "The identification rules and identification inclusion rules used during the identification process are always defined at the global level. The reconciliation definition rules that are used during the reconciliation process can be defined for different domains."
+      },
+      "labels": {
+        "certification": "cis-sp",
+        "domain": "Process Separation",
+        "domainSlug": "process-separation",
+        "domainPercentage": 36,
+        "subtopics": ["IRE rules", "Reconciliation rules"],
+        "tags": ["IRE", "compound true/false", "reconciliation"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-23T20:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sp-process-separation-007",
+      "certification": "cis-sp",
+      "topic": "process-separation",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_select",
+      "question": "Which elements can be domain-separated in a service provider use case? (Choose four)",
+      "options": [
+        { "id": "a", "text": "Client scripts" },
+        { "id": "b", "text": "Business rules" },
+        { "id": "c", "text": "Workflows" },
+        { "id": "d", "text": "System dictionary entries" },
+        { "id": "e", "text": "Processes" },
+        { "id": "f", "text": "Platform update sets" }
+      ],
+      "correctAnswers": ["a", "b", "c", "e"],
+      "explanation": {
+        "correct": "In a service provider use case, client scripts, business rules, workflows, and processes can be domain-separated. This allows different tenants to have customized business logic while sharing the same instance.",
+        "wrongAnswers": [
+          { "choiceId": "d", "explanation": "System dictionary entries (sys_dictionary) are platform tables that should NOT be domain separated as it can produce unexpected results", "reference": "ServiceNow Domain Separation documentation" },
+          { "choiceId": "f", "explanation": "Platform update sets are deployment mechanisms, not domain-separated business logic", "reference": "ServiceNow Domain Separation documentation" }
+        ]
+      },
+      "references": ["ServiceNow Domain Separation documentation"],
+      "isFree": true,
+      "source": {
+        "type": "documentation",
+        "path": "scraped-docs/cis-tprm-api/domain-separation-pol-comp.md",
+        "excerpt": "In this use case, client scripts, business rules, workflows, processes, and so on can be domain-separated."
+      },
+      "labels": {
+        "certification": "cis-sp",
+        "domain": "Process Separation",
+        "domainSlug": "process-separation",
+        "domainPercentage": 36,
+        "subtopics": ["Separable elements", "Business logic"],
+        "tags": ["client scripts", "business rules", "workflows"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-23T20:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sp-process-separation-008",
+      "certification": "cis-sp",
+      "topic": "process-separation",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "Starting with which ServiceNow release can third-party integrations in Security Incident Response be configured and activated on a per-domain basis?",
+      "options": [
+        { "id": "a", "text": "Kingston" },
+        { "id": "b", "text": "London" },
+        { "id": "c", "text": "Madrid" },
+        { "id": "d", "text": "New York" }
+      ],
+      "correctAnswers": ["c"],
+      "explanation": {
+        "correct": "In the Madrid release, third-party integrations can be configured and activated on a per-domain basis. This means that the integration activated and configured in one domain cannot be leveraged in another domain, allowing for domain-specific integration configurations.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "Kingston had integrations under single domain, not per-domain configuration", "reference": "ServiceNow Security Incident Response documentation" },
+          { "choiceId": "b", "explanation": "London allowed integrations across multiple domains but not per-domain configuration", "reference": "ServiceNow Security Incident Response documentation" },
+          { "choiceId": "d", "explanation": "New York continued the Madrid functionality; Madrid was the release that introduced per-domain integration configuration", "reference": "ServiceNow Security Incident Response documentation" }
+        ]
+      },
+      "references": ["ServiceNow Security Incident Response documentation"],
+      "isFree": true,
+      "source": {
+        "type": "documentation",
+        "path": "scraped-docs/cis-secops-api/domain-separation-security-incident-response.md",
+        "excerpt": "Madrid - All integrations can now reside across multiple domains. In the Madrid release, third-party integrations can be configured and activated on a per-domain basis."
+      },
+      "labels": {
+        "certification": "cis-sp",
+        "domain": "Process Separation",
+        "domainSlug": "process-separation",
+        "domainPercentage": 36,
+        "subtopics": ["Integration configuration", "Release history"],
+        "tags": ["Madrid", "integrations", "per-domain"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-23T20:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sp-process-separation-009",
+      "certification": "cis-sp",
+      "topic": "process-separation",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "In a domain-separated Event Management environment, alert groups are created based on which criteria?",
+      "options": [
+        { "id": "a", "text": "Alerts from all domains are grouped together" },
+        { "id": "b", "text": "Alert groups are created only for alerts in the same domain" },
+        { "id": "c", "text": "Alert groups are based on CI type, ignoring domains" },
+        { "id": "d", "text": "Alert groups are manually assigned by administrators" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "Alert Aggregation is supported in domain-separated environments, and alert groups are created only for alerts in the same domain. This ensures that alerts from different tenants are not incorrectly aggregated together.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "Alerts from different domains are NOT grouped together; domain separation is enforced", "reference": "ServiceNow Event Management documentation" },
+          { "choiceId": "c", "explanation": "Domain is a critical criterion for alert grouping; CI type alone does not override domain separation", "reference": "ServiceNow Event Management documentation" },
+          { "choiceId": "d", "explanation": "Alert groups are created automatically based on domain and aggregation rules, not manually assigned", "reference": "ServiceNow Event Management documentation" }
+        ]
+      },
+      "references": ["ServiceNow Event Management documentation"],
+      "isFree": true,
+      "source": {
+        "type": "documentation",
+        "path": "scraped-docs/cis-em-api/t_EMConfigureDomainSeparation.md",
+        "excerpt": "Alert Aggregation - Supported. In domain-separated environments, alert groups are created only for alerts in the same domain."
+      },
+      "labels": {
+        "certification": "cis-sp",
+        "domain": "Process Separation",
+        "domainSlug": "process-separation",
+        "domainPercentage": 36,
+        "subtopics": ["Alert aggregation", "Event Management"],
+        "tags": ["alerts", "aggregation", "Event Management"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-23T20:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sp-process-separation-010",
+      "certification": "cis-sp",
+      "topic": "process-separation",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "At the Enhanced support level for domain separation, what additional capability is provided compared to Standard support?",
+      "options": [
+        { "id": "a", "text": "Basic data separation" },
+        { "id": "b", "text": "Service provider can create processes per customer" },
+        { "id": "c", "text": "Tenants can modify business logic for themselves based on defined use cases" },
+        { "id": "d", "text": "Runtime UI separation" }
+      ],
+      "correctAnswers": ["c"],
+      "explanation": {
+        "correct": "At the Enhanced support level, data-driven process enables service provider customers (tenants) to modify business logic that is based on defined use cases. These configurations are UI-based and fail-safe so that configurations by one customer cannot affect another.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "Basic data separation is provided at the Basic support level, not Enhanced", "reference": "ServiceNow Domain Separation documentation" },
+          { "choiceId": "b", "explanation": "Service provider creating processes per customer is the Standard support level capability", "reference": "ServiceNow Domain Separation documentation" },
+          { "choiceId": "d", "explanation": "Runtime UI separation is part of Basic support level", "reference": "ServiceNow Domain Separation documentation" }
+        ]
+      },
+      "references": ["ServiceNow Domain Separation documentation"],
+      "isFree": true,
+      "source": {
+        "type": "documentation",
+        "path": "scraped-docs/cis-pa-api/c_PAWithDomainSeparation.md",
+        "excerpt": "Enhanced - Data-driven process enables service provider customers to modify business logic that is based on defined use cases. These configurations are UI-based and fail-safe so that configurations by one customer cannot affect another."
+      },
+      "labels": {
+        "certification": "cis-sp",
+        "domain": "Process Separation",
+        "domainSlug": "process-separation",
+        "domainPercentage": 36,
+        "subtopics": ["Support levels", "Enhanced support"],
+        "tags": ["support levels", "enhanced", "tenant configuration"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-23T20:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sp-process-separation-011",
+      "certification": "cis-sp",
+      "topic": "process-separation",
+      "cognitiveLevel": "understanding",
+      "type": "true_false_compound",
+      "question": "Evaluate the following statements about domain separation in Performance Analytics:\n\nStatement 1: In the Global approach, Performance Analytics records like indicators and breakdowns are all in the global domain.\n\nStatement 2: In the Domain-specific approach, each domain must have users with pa_admin role for managing Performance Analytics.\n\nWhich statements are TRUE?",
+      "options": [
+        { "id": "a", "text": "Statement 1 only" },
+        { "id": "b", "text": "Statement 2 only" },
+        { "id": "c", "text": "Both statements" },
+        { "id": "d", "text": "Neither statement" }
+      ],
+      "correctAnswers": ["c"],
+      "explanation": {
+        "correct": "Both statements are TRUE. In the Global approach, Performance Analytics records such as indicators and breakdowns are all in the global domain, and data collection jobs respect the domains of facts table records. In the Domain-specific approach, the Performance Analytics records themselves are domain-separated, and each domain has users with pa_admin and other roles for managing Performance Analytics.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "Both statements are true; Domain-specific approach does require pa_admin users per domain", "reference": "ServiceNow Performance Analytics documentation" },
+          { "choiceId": "b", "explanation": "Both statements are true; Global approach does keep PA records in global domain", "reference": "ServiceNow Performance Analytics documentation" },
+          { "choiceId": "d", "explanation": "Both statements are true as documented in PA domain separation approaches", "reference": "ServiceNow Performance Analytics documentation" }
+        ]
+      },
+      "references": ["ServiceNow Performance Analytics documentation"],
+      "isFree": true,
+      "source": {
+        "type": "documentation",
+        "path": "scraped-docs/cis-pa-api/c_PAWithDomainSeparation.md",
+        "excerpt": "Global: The Performance Analytics records, such as indicators and breakdowns, are all in the global domain. Domain-specific: The Performance Analytics records themselves are domain-separated. Each domain has users with pa_admin and other roles for managing Performance Analytics."
+      },
+      "labels": {
+        "certification": "cis-sp",
+        "domain": "Process Separation",
+        "domainSlug": "process-separation",
+        "domainPercentage": 36,
+        "subtopics": ["Performance Analytics", "PA approaches"],
+        "tags": ["PA", "compound true/false", "global approach"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-23T20:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sp-process-separation-012",
+      "certification": "cis-sp",
+      "topic": "process-separation",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A Security Incident Response capability like Sighting Search is invoked in a domain-separated environment. How are domain-specific implementations handled?",
+      "options": [
+        { "id": "a", "text": "Only global integrations are used regardless of domain" },
+        { "id": "b", "text": "The capability invokes a domain-specific implementation based on the security incident's domain" },
+        { "id": "c", "text": "Users must manually select which integration to use" },
+        { "id": "d", "text": "Capabilities are disabled in domain-separated environments" }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "Capabilities that are invoked stay generic across domains with domain-specific implementation of the capability being called. For example, a Sighting Search on an IP can invoke a Splunk implementation in one domain and a QRadar implementation in another.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "Starting with Madrid, integrations can be domain-specific, not just global", "reference": "ServiceNow Security Incident Response documentation" },
+          { "choiceId": "c", "explanation": "The capability automatically uses the domain-specific implementation without manual selection", "reference": "ServiceNow Security Incident Response documentation" },
+          { "choiceId": "d", "explanation": "Capabilities are fully supported in domain-separated environments with domain-specific implementations", "reference": "ServiceNow Security Incident Response documentation" }
+        ]
+      },
+      "references": ["ServiceNow Security Incident Response documentation"],
+      "isFree": true,
+      "source": {
+        "type": "documentation",
+        "path": "scraped-docs/cis-secops-api/domain-separation-security-incident-response.md",
+        "excerpt": "Capabilities that are invoked stay generic across domains with domain-specific implementation of the capability being called. For example, a Sighting Search on an IP can invoke a Splunk implementation in one domain and a QRadar implementation in another."
+      },
+      "labels": {
+        "certification": "cis-sp",
+        "domain": "Process Separation",
+        "domainSlug": "process-separation",
+        "domainPercentage": 36,
+        "subtopics": ["SIR capabilities", "Domain-specific integrations"],
+        "tags": ["SIR", "Sighting Search", "capabilities"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-23T20:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sp-process-separation-013",
+      "certification": "cis-sp",
+      "topic": "process-separation",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_select",
+      "question": "Which three approaches to domain separation are available in Performance Analytics? (Choose three)",
+      "options": [
+        { "id": "a", "text": "Global" },
+        { "id": "b", "text": "Domain-specific" },
+        { "id": "c", "text": "Hybrid" },
+        { "id": "d", "text": "Federated" },
+        { "id": "e", "text": "Distributed" }
+      ],
+      "correctAnswers": ["a", "b", "c"],
+      "explanation": {
+        "correct": "There are three approaches to domain separation in Performance Analytics: Global (PA records in global domain, respects fact table domains), Domain-specific (PA records themselves are domain-separated with pa_admin per domain), and Hybrid (low-level records global, high-level records domain-separated).",
+        "wrongAnswers": [
+          { "choiceId": "d", "explanation": "Federated is not a defined PA domain separation approach", "reference": "ServiceNow Performance Analytics documentation" },
+          { "choiceId": "e", "explanation": "Distributed is not a defined PA domain separation approach", "reference": "ServiceNow Performance Analytics documentation" }
+        ]
+      },
+      "references": ["ServiceNow Performance Analytics documentation"],
+      "isFree": true,
+      "source": {
+        "type": "documentation",
+        "path": "scraped-docs/cis-pa-api/c_PAWithDomainSeparation.md",
+        "excerpt": "There are three approaches to domain separation in Performance Analytics: Global, Domain-specific, Hybrid."
+      },
+      "labels": {
+        "certification": "cis-sp",
+        "domain": "Process Separation",
+        "domainSlug": "process-separation",
+        "domainPercentage": 36,
+        "subtopics": ["Performance Analytics approaches", "PA configuration"],
+        "tags": ["PA", "approaches", "global", "hybrid"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-23T20:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sp-process-separation-014",
+      "certification": "cis-sp",
+      "topic": "process-separation",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "Which statement is NOT true about orchestration workflows in a domain-separated Security Incident Response environment?",
+      "options": [
+        { "id": "a", "text": "Workflows created in one domain aren't visible in another domain" },
+        { "id": "b", "text": "Workflows for incident response can be customized per domain" },
+        { "id": "c", "text": "Workflows automatically sync across all domains" },
+        { "id": "d", "text": "Tenant domain owners can create their own incident response workflows" }
+      ],
+      "correctAnswers": ["c"],
+      "explanation": {
+        "correct": "Orchestration workflows created in one domain aren't visible in another domain - they do NOT automatically sync across all domains. Each domain maintains its own set of workflows, and tenant domain owners can create their own incident response workflows independently.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "This statement is TRUE; workflows are domain-isolated", "reference": "ServiceNow Security Incident Response documentation" },
+          { "choiceId": "b", "explanation": "This statement is TRUE; workflows can be customized per domain", "reference": "ServiceNow Security Incident Response documentation" },
+          { "choiceId": "d", "explanation": "This statement is TRUE; tenants can create their own workflows", "reference": "ServiceNow Security Incident Response documentation" }
+        ]
+      },
+      "references": ["ServiceNow Security Incident Response documentation"],
+      "isFree": true,
+      "source": {
+        "type": "documentation",
+        "path": "scraped-docs/cis-secops-api/domain-separation-security-incident-response.md",
+        "excerpt": "Orchestration workflows created in one domain aren't visible in another domain. Tenant domain owners can create their own incident response workflows."
+      },
+      "labels": {
+        "certification": "cis-sp",
+        "domain": "Process Separation",
+        "domainSlug": "process-separation",
+        "domainPercentage": 36,
+        "subtopics": ["Workflow separation", "SIR workflows"],
+        "tags": ["negative", "workflows", "SIR"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-23T20:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sp-process-separation-015",
+      "certification": "cis-sp",
+      "topic": "process-separation",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "When editing alert management rules in a domain-separated Event Management environment, what restriction applies to workflow selection?",
+      "options": [
+        { "id": "a", "text": "Any workflow from the instance can be selected" },
+        { "id": "b", "text": "Only global workflows can be selected" },
+        { "id": "c", "text": "Users can only apply relevant workflows visible in their domain" },
+        { "id": "d", "text": "Workflows must be approved by a global administrator" }
+      ],
+      "correctAnswers": ["c"],
+      "explanation": {
+        "correct": "Remediation is supported in domain-separated Event Management. While editing alert management rules, users can only apply relevant workflows that are visible in their domain. This follows the principle of domain separation in Flow Designer.",
+        "wrongAnswers": [
+          { "choiceId": "a", "explanation": "Users cannot select workflows from domains they don't have visibility into", "reference": "ServiceNow Event Management documentation" },
+          { "choiceId": "b", "explanation": "Both global and domain-specific workflows can be selected if visible to the user", "reference": "ServiceNow Event Management documentation" },
+          { "choiceId": "d", "explanation": "There is no global administrator approval requirement for workflow selection; it's based on domain visibility", "reference": "ServiceNow Event Management documentation" }
+        ]
+      },
+      "references": ["ServiceNow Event Management documentation"],
+      "isFree": true,
+      "source": {
+        "type": "documentation",
+        "path": "scraped-docs/cis-em-api/t_EMConfigureDomainSeparation.md",
+        "excerpt": "Remediation - Supported. While editing alert management rules, users can only apply relevant workflows."
+      },
+      "labels": {
+        "certification": "cis-sp",
+        "domain": "Process Separation",
+        "domainSlug": "process-separation",
+        "domainPercentage": 36,
+        "subtopics": ["Alert management rules", "Workflow selection"],
+        "tags": ["Event Management", "workflows", "remediation"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-23T20:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sp-process-separation-016",
+      "certification": "cis-sp",
+      "topic": "process-separation",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_select",
+      "question": "Which SIR automation capabilities are configured in the domain of the security incident for response automation? (Choose three)",
+      "options": [
+        { "id": "a", "text": "Threat Lookup" },
+        { "id": "b", "text": "Sighting Search" },
+        { "id": "c", "text": "Platform authentication" },
+        { "id": "d", "text": "Email Search and Delete" },
+        { "id": "e", "text": "Instance upgrade scheduling" }
+      ],
+      "correctAnswers": ["a", "b", "d"],
+      "explanation": {
+        "correct": "Capabilities configured in the domain of the security incident for response automation include: Threat Lookup, Enrich Observable, Enrich Configuration item, Get Running Process, Get Network Statistics, Block Request, Isolate Host, Sighting Search, Email Search and Delete, and Publish to Watchlist.",
+        "wrongAnswers": [
+          { "choiceId": "c", "explanation": "Platform authentication is a global platform capability, not a domain-specific SIR automation capability", "reference": "ServiceNow Security Incident Response documentation" },
+          { "choiceId": "e", "explanation": "Instance upgrade scheduling is platform administration, not an SIR automation capability", "reference": "ServiceNow Security Incident Response documentation" }
+        ]
+      },
+      "references": ["ServiceNow Security Incident Response documentation"],
+      "isFree": true,
+      "source": {
+        "type": "documentation",
+        "path": "scraped-docs/cis-secops-api/domain-separation-security-incident-response.md",
+        "excerpt": "Capabilities are configured in the domain of the security incident for response automation. These capabilities include: Threat Lookup, Sighting Search, Email Search and Delete..."
+      },
+      "labels": {
+        "certification": "cis-sp",
+        "domain": "Process Separation",
+        "domainSlug": "process-separation",
+        "domainPercentage": 36,
+        "subtopics": ["SIR capabilities", "Response automation"],
+        "tags": ["SIR", "automation", "Threat Lookup"]
+      },
+      "meta": {
+        "generatedAt": "2026-02-23T20:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    }
+  ]
+}
