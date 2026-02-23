@@ -13,6 +13,7 @@ export interface BlogPost {
 }
 
 export const blogPosts: BlogPost[] = [
+  {
     slug: "csa-exam-reddit-tips-that-actually-work",
     title: "I Analyzed 50+ Reddit CSA Posts: Here's What Actually Works",
     description: "Consolidated wisdom from r/servicenow: what worked for people who passed, what failed for those who didn't, and the patterns that predict success.",
