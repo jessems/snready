@@ -13,6 +13,7 @@ export interface BlogPost {
 }
 
 export const blogPosts: BlogPost[] = [
+  {
     slug: "csa-vs-cad-real-talk",
     title: "CSA or CAD First? Real Talk From Someone Who's Done Both",
     description: "Skip the generic advice. Here's the actual decision framework for choosing between ServiceNow CSA and CAD certifications based on your background and goals.",
