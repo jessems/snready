@@ -107,6 +107,17 @@ function parseMarkdown(markdown: string): string {
     '<li class="ml-4 flex items-start gap-2"><span class="text-red-500">✗</span><span>$1</span></li>'
   );
 
+  // Blockquotes
+  html = html.replace(
+    /^&gt; (.+)$/gm,
+    '<blockquote class="border-l-4 border-emerald-500 pl-4 py-1 my-4 text-zinc-600 dark:text-zinc-400 italic">$1</blockquote>'
+  );
+  // Merge consecutive blockquotes
+  html = html.replace(
+    /<\/blockquote>\n<blockquote class="border-l-4 border-emerald-500 pl-4 py-1 my-4 text-zinc-600 dark:text-zinc-400 italic">/g,
+    '<br/>'
+  );
+
   // Horizontal rule
   html = html.replace(/^---$/gm, '<hr class="my-8 border-zinc-200 dark:border-zinc-700" />');
 
