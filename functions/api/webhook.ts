@@ -31,17 +31,13 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       const certification = session.metadata?.certification || "all";
 
       if (email) {
-        // Lifetime = 100 years, 30day = 30 days
-        const durationMs = plan === "lifetime" 
-          ? 100 * 365 * 24 * 60 * 60 * 1000 
-          : 30 * 24 * 60 * 60 * 1000;
+        // Both plans are now lifetime (100 years)
+        const durationMs = 100 * 365 * 24 * 60 * 60 * 1000;
         
         const expiresAt = Date.now() + durationMs;
         
-        // For lifetime, don't set TTL (keep forever)
-        const kvOptions = plan === "lifetime" 
-          ? {} 
-          : { expirationTtl: 30 * 24 * 60 * 60 };
+        // No TTL - keep forever for both plans
+        const kvOptions = {};
 
         await env.SNREADY_ACCESS.put(
           `access:${email.toLowerCase()}`,

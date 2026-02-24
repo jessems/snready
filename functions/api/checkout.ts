@@ -10,7 +10,7 @@ type PlanType = "30day" | "lifetime";
 const PLANS = {
   "30day": {
     price: 900, // $9.00 in cents
-    name: "30-Day Access",
+    name: "Lifetime Access — Single Certification",
     // Description is generated dynamically to include cert name
   },
   "lifetime": {
@@ -35,11 +35,11 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     // Generate description based on plan and certification
     const productDescription = plan === "lifetime"
       ? PLANS.lifetime.description
-      : `30-day access to ${certification?.toUpperCase() || "all"} practice questions with detailed explanations`;
+      : `Lifetime access to ${certification?.toUpperCase() || "all"} practice questions with detailed explanations — never expires`;
 
     const productName = plan === "lifetime"
       ? `SNReady ${PLANS.lifetime.name}`
-      : `SNReady ${certification?.toUpperCase() || "Full Access"} — 30 Days`;
+      : `SNReady ${certification?.toUpperCase() || "Full Access"} — Lifetime`;
 
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],

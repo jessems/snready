@@ -252,13 +252,16 @@ export default async function TopicQuestionsPage({ params }: PageProps) {
                 <p className="mt-2 text-sm text-emerald-100">
                   All questions with detailed explanations.
                 </p>
+                <p className="mt-1 text-xs text-emerald-200">
+                  Because we want you to succeed ✨
+                </p>
                 <div className="mt-4 space-y-2">
                   <CheckoutButton
                     certification={cert.name}
                     plan="30day"
                     className="w-full rounded-lg bg-white/20 py-2 text-sm font-medium text-white transition-colors hover:bg-white/30"
                   >
-                    {cert.name} 30 Days — $9
+                    {cert.name} Lifetime — $9
                   </CheckoutButton>
                   <CheckoutButton
                     certification={cert.name}
