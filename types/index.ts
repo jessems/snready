@@ -63,6 +63,7 @@ export interface Certification {
   deltaExam?: DeltaExamInfo;
   showDumpsSection?: boolean;
   allQuestionsFree?: boolean; // If true, all questions for this cert are free (promotion)
+  isReady?: boolean; // Whether questions are available for this certification
 }
 
 export interface ExamDomain {
