@@ -570,24 +570,25 @@ export default async function CertificationPage({ params }: PageProps) {
                   </div>
 
                   <div className="mt-10 grid gap-6 md:grid-cols-2 max-w-3xl mx-auto">
-                    {/* 30-Day Plan */}
+                    {/* Single Cert Lifetime Plan */}
                     <div className="rounded-xl bg-white/10 backdrop-blur p-6 text-center">
-                      <h3 className="text-lg font-semibold text-white">{cert.name} Only — 30 Days</h3>
+                      <h3 className="text-lg font-semibold text-white">{cert.name} Only — Lifetime</h3>
                       <div className="mt-4">
                         <span className="text-4xl font-bold text-white">$9</span>
                       </div>
-                      <ul className="mt-6 space-y-2 text-sm text-emerald-100">
+                      <p className="mt-2 text-sm text-emerald-200">Because we want you to succeed ✨</p>
+                      <ul className="mt-4 space-y-2 text-sm text-emerald-100">
                         <li>All {cert.name} questions</li>
                         <li>Timed mock exams</li>
                         <li>Detailed explanations</li>
-                        <li>{cert.name} only — 30 days</li>
+                        <li>Lifetime access — never expires</li>
                       </ul>
                       <CheckoutButton
                         certification={cert.name}
                         plan="30day"
                         className="mt-6 w-full rounded-lg bg-white py-3 font-semibold text-emerald-700 transition-colors hover:bg-emerald-50"
                       >
-                        Get 30-Day Access
+                        Get Lifetime Access
                       </CheckoutButton>
                     </div>
 

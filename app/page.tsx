@@ -176,10 +176,13 @@ export default function Home() {
                 </h3>
                 <div className="mt-4">
                   <span className="text-4xl font-bold text-zinc-900 dark:text-zinc-100">$9</span>
-                  <span className="text-zinc-600 dark:text-zinc-400"> / 30 days</span>
+                  <span className="text-zinc-600 dark:text-zinc-400"> / lifetime</span>
                 </div>
                 <p className="mt-4 text-zinc-600 dark:text-zinc-400">
                   Full access to one certification of your choice
+                </p>
+                <p className="mt-2 text-sm font-medium text-emerald-600 dark:text-emerald-400">
+                  Because we want you to succeed ✨
                 </p>
                 <ul className="mt-6 space-y-3 text-left text-zinc-600 dark:text-zinc-400">
                   <li className="flex items-center gap-2">
@@ -196,7 +199,7 @@ export default function Home() {
                   </li>
                   <li className="flex items-center gap-2">
                     <span className="text-emerald-500">✓</span>
-                    30-day access
+                    Lifetime access — never expires
                   </li>
                 </ul>
               </div>

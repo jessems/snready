@@ -141,13 +141,17 @@ export function QuestionsWithPaywall({
                 Get full access to all {certification} practice questions, timed mock exams, and detailed explanations.
               </p>
 
+              <p className="mt-4 text-sm font-medium text-emerald-600 dark:text-emerald-400">
+                Because we want you to succeed ✨
+              </p>
+
               <div className="mt-6 grid gap-3 sm:grid-cols-2">
                 <CheckoutButton
                   certification={certification}
                   plan="30day"
                   className="w-full rounded-lg border-2 border-emerald-600 bg-white py-3 font-semibold text-emerald-600 transition-colors hover:bg-emerald-50 dark:bg-zinc-800 dark:hover:bg-zinc-700"
                 >
-                  {certification} 30 Days — $9
+                  {certification} Lifetime — $9
                 </CheckoutButton>
                 <CheckoutButton
                   certification={certification}
