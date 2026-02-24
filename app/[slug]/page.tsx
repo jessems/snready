@@ -510,67 +510,119 @@ export default async function CertificationPage({ params }: PageProps) {
         {isReady && (
           <section className="py-16 bg-gradient-to-br from-emerald-600 to-green-700 dark:from-emerald-800 dark:to-green-900">
             <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-              <div className="text-center">
-                <h2 className="text-3xl font-bold text-white">
-                  Get Full {cert.name} Access
-                </h2>
-                <p className="mt-4 text-lg text-emerald-100">
-                  Unlock all {totalQuestions}+ practice questions with detailed explanations
-                </p>
-              </div>
-
-              <div className="mt-10 grid gap-6 md:grid-cols-2 max-w-3xl mx-auto">
-                {/* 30-Day Plan */}
-                <div className="rounded-xl bg-white/10 backdrop-blur p-6 text-center">
-                  <h3 className="text-lg font-semibold text-white">{cert.name} Only — 30 Days</h3>
-                  <div className="mt-4">
-                    <span className="text-4xl font-bold text-white">$9</span>
+              {/* If all questions are free for this cert */}
+              {cert.allQuestionsFree ? (
+                <>
+                  <div className="text-center">
+                    <div className="inline-flex items-center gap-2 rounded-full bg-amber-400 px-4 py-2 text-sm font-bold text-amber-900 mb-4">
+                      🎉 LIMITED TIME: ALL QUESTIONS FREE
+                    </div>
+                    <h2 className="text-3xl font-bold text-white">
+                      {cert.name} Questions Are Free!
+                    </h2>
+                    <p className="mt-4 text-lg text-emerald-100">
+                      All {totalQuestions}+ practice questions are currently free — no payment required.
+                    </p>
                   </div>
-                  <ul className="mt-6 space-y-2 text-sm text-emerald-100">
-                    <li>All {cert.name} questions</li>
-                    <li>Timed mock exams</li>
-                    <li>Detailed explanations</li>
-                    <li>{cert.name} only — 30 days</li>
-                  </ul>
-                  <CheckoutButton
-                    certification={cert.name}
-                    plan="30day"
-                    className="mt-6 w-full rounded-lg bg-white py-3 font-semibold text-emerald-700 transition-colors hover:bg-emerald-50"
-                  >
-                    Get 30-Day Access
-                  </CheckoutButton>
-                </div>
 
-                {/* Lifetime Plan */}
-                <div className="rounded-xl bg-white p-6 text-center relative overflow-hidden">
-                  <div className="absolute top-0 right-0 bg-amber-500 text-white text-xs font-bold px-3 py-1 rounded-bl-lg">
-                    BEST VALUE
+                  <div className="mt-10 max-w-md mx-auto">
+                    <Link
+                      href={`/${slug}/practice-questions`}
+                      className="block w-full rounded-xl bg-white py-4 text-center text-lg font-semibold text-emerald-700 transition-colors hover:bg-emerald-50"
+                    >
+                      Start Practicing — Free
+                    </Link>
                   </div>
-                  <h3 className="text-lg font-semibold text-emerald-800">Lifetime Access</h3>
-                  <div className="mt-4">
-                    <span className="text-4xl font-bold text-emerald-700">$49</span>
-                  </div>
-                  <ul className="mt-6 space-y-2 text-sm text-emerald-700">
-                    <li className="font-semibold text-emerald-800">ALL certifications included</li>
-                    <li>All practice questions</li>
-                    <li>Timed mock exams</li>
-                    <li>Detailed explanations</li>
-                    <li className="font-semibold">Lifetime access — never expires</li>
-                    <li className="font-semibold">Future updates included</li>
-                  </ul>
-                  <CheckoutButton
-                    certification={cert.name}
-                    plan="lifetime"
-                    className="mt-6 w-full rounded-lg bg-emerald-600 py-3 font-semibold text-white transition-colors hover:bg-emerald-700"
-                  >
-                    Get Lifetime Access
-                  </CheckoutButton>
-                </div>
-              </div>
 
-              <p className="mt-6 text-center text-sm text-emerald-200">
-                {freeQuestionCount} free questions available to try first • One-time payment, no subscription
-              </p>
+                  {/* Still show lifetime option for other certs */}
+                  <div className="mt-10 pt-8 border-t border-white/20">
+                    <p className="text-center text-emerald-200 mb-6">
+                      Want access to ALL 19 certifications?
+                    </p>
+                    <div className="max-w-sm mx-auto rounded-xl bg-white p-6 text-center">
+                      <h3 className="text-lg font-semibold text-emerald-800">Lifetime All-Access</h3>
+                      <div className="mt-2">
+                        <span className="text-3xl font-bold text-emerald-700">$49</span>
+                      </div>
+                      <ul className="mt-4 space-y-1 text-sm text-emerald-700">
+                        <li className="font-semibold">ALL certifications included</li>
+                        <li>Lifetime access — never expires</li>
+                      </ul>
+                      <CheckoutButton
+                        certification={cert.name}
+                        plan="lifetime"
+                        className="mt-4 w-full rounded-lg bg-emerald-600 py-2 font-semibold text-white transition-colors hover:bg-emerald-700"
+                      >
+                        Get Lifetime Access
+                      </CheckoutButton>
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div className="text-center">
+                    <h2 className="text-3xl font-bold text-white">
+                      Get Full {cert.name} Access
+                    </h2>
+                    <p className="mt-4 text-lg text-emerald-100">
+                      Unlock all {totalQuestions}+ practice questions with detailed explanations
+                    </p>
+                  </div>
+
+                  <div className="mt-10 grid gap-6 md:grid-cols-2 max-w-3xl mx-auto">
+                    {/* 30-Day Plan */}
+                    <div className="rounded-xl bg-white/10 backdrop-blur p-6 text-center">
+                      <h3 className="text-lg font-semibold text-white">{cert.name} Only — 30 Days</h3>
+                      <div className="mt-4">
+                        <span className="text-4xl font-bold text-white">$9</span>
+                      </div>
+                      <ul className="mt-6 space-y-2 text-sm text-emerald-100">
+                        <li>All {cert.name} questions</li>
+                        <li>Timed mock exams</li>
+                        <li>Detailed explanations</li>
+                        <li>{cert.name} only — 30 days</li>
+                      </ul>
+                      <CheckoutButton
+                        certification={cert.name}
+                        plan="30day"
+                        className="mt-6 w-full rounded-lg bg-white py-3 font-semibold text-emerald-700 transition-colors hover:bg-emerald-50"
+                      >
+                        Get 30-Day Access
+                      </CheckoutButton>
+                    </div>
+
+                    {/* Lifetime Plan */}
+                    <div className="rounded-xl bg-white p-6 text-center relative overflow-hidden">
+                      <div className="absolute top-0 right-0 bg-amber-500 text-white text-xs font-bold px-3 py-1 rounded-bl-lg">
+                        BEST VALUE
+                      </div>
+                      <h3 className="text-lg font-semibold text-emerald-800">Lifetime Access</h3>
+                      <div className="mt-4">
+                        <span className="text-4xl font-bold text-emerald-700">$49</span>
+                      </div>
+                      <ul className="mt-6 space-y-2 text-sm text-emerald-700">
+                        <li className="font-semibold text-emerald-800">ALL certifications included</li>
+                        <li>All practice questions</li>
+                        <li>Timed mock exams</li>
+                        <li>Detailed explanations</li>
+                        <li className="font-semibold">Lifetime access — never expires</li>
+                        <li className="font-semibold">Future updates included</li>
+                      </ul>
+                      <CheckoutButton
+                        certification={cert.name}
+                        plan="lifetime"
+                        className="mt-6 w-full rounded-lg bg-emerald-600 py-3 font-semibold text-white transition-colors hover:bg-emerald-700"
+                      >
+                        Get Lifetime Access
+                      </CheckoutButton>
+                    </div>
+                  </div>
+
+                  <p className="mt-6 text-center text-sm text-emerald-200">
+                    {freeQuestionCount} free questions available to try first • One-time payment, no subscription
+                  </p>
+                </>
+              )}
             </div>
           </section>
         )}
