@@ -10,11 +10,17 @@ import CertificationCard from "@/components/CertificationCard";
 export default function Home() {
   const certifications = getAllCertifications();
   
+  // Get all ready certifications dynamically from data
+  const readyCerts = certifications.filter(c => c.isReady);
+  const comingSoonCerts = certifications.filter(c => !c.isReady);
+  
   // Calculate total questions across all ready certifications
-  const readyCerts = ["csa", "cis-df", "cad", "cis-itsm"];
-  const totalQuestions = readyCerts.reduce((sum, cert) => sum + getTotalQuestionCount(cert), 0);
-  const totalFreeQuestions = readyCerts.reduce((sum, cert) => sum + getTotalFreeQuestionCount(cert), 0);
+  const totalQuestions = readyCerts.reduce((sum, cert) => sum + getTotalQuestionCount(cert.slug), 0);
+  const totalFreeQuestions = readyCerts.reduce((sum, cert) => sum + getTotalFreeQuestionCount(cert.slug), 0);
   const activeCertifications = readyCerts.length;
+
+  // Featured certifications for hero section (most popular)
+  const featuredSlugs = ["csa", "cad", "cis-itsm", "cis-df"];
 
   return (
     <div className="min-h-screen">
@@ -28,8 +34,8 @@ export default function Home() {
               Certification
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-zinc-600 dark:text-zinc-400">
-              Free practice tests, exam questions, and study guides for CSA, CIS-DF, CAD,
-              CIS-ITSM, and more. Practice with questions generated directly from official
+              {totalQuestions}+ practice questions across {activeCertifications} certifications. 
+              CSA, CAD, CIS-ITSM, CIS-DF, CIS-Discovery, CIS-CSM, and more — generated from official
               Now Learning content.
             </p>
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -38,6 +44,12 @@ export default function Home() {
                 className="inline-flex h-12 items-center justify-center rounded-lg bg-emerald-600 px-8 text-base font-medium text-white transition-colors hover:bg-emerald-700"
               >
                 Start CSA Practice
+              </Link>
+              <Link
+                href="#certifications"
+                className="inline-flex h-12 items-center justify-center rounded-lg border border-zinc-300 bg-white px-8 text-base font-medium text-zinc-700 transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-300 dark:hover:bg-zinc-700"
+              >
+                Browse All {activeCertifications} Certifications
               </Link>
             </div>
           </div>
@@ -90,10 +102,10 @@ export default function Home() {
                 ⏱️
               </div>
               <h3 className="mt-4 text-xl font-semibold text-zinc-900 dark:text-zinc-100">
-                Realistic Practice Tests
+                Realistic Mock Exams
               </h3>
               <p className="mt-2 text-zinc-600 dark:text-zinc-400">
-                Practice tests that mirror the real exam format. Review your results and identify weak areas before exam day.
+                Timed mock exams that mirror the real ServiceNow certification format. Track your progress and identify weak areas before exam day.
               </p>
             </div>
           </div>
@@ -101,7 +113,7 @@ export default function Home() {
           <div className="mt-12 text-center">
             <div className="inline-flex items-center gap-2 rounded-full bg-amber-100 px-4 py-2 text-sm font-medium text-amber-800 dark:bg-amber-900/50 dark:text-amber-200">
               <span>💡</span>
-              <span>Questions updated for Zurich release</span>
+              <span>Questions updated for Xanadu release</span>
             </div>
           </div>
         </div>
@@ -113,7 +125,7 @@ export default function Home() {
           <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
             <div className="text-center">
               <div className="text-3xl font-bold text-emerald-600">
-                {totalQuestions}+
+                {totalQuestions.toLocaleString()}+
               </div>
               <div className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
                 Practice Questions
@@ -128,15 +140,15 @@ export default function Home() {
               </div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-emerald-600">25+</div>
+              <div className="text-3xl font-bold text-emerald-600">{activeCertifications}</div>
               <div className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
-                Certifications
+                Certifications Ready
               </div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-emerald-600">{activeCertifications}</div>
+              <div className="text-3xl font-bold text-emerald-600">100%</div>
               <div className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
-                Active Certifications
+                CIS Coverage
               </div>
             </div>
           </div>
@@ -211,7 +223,7 @@ export default function Home() {
                 <ul className="mt-6 space-y-3 text-left text-zinc-600 dark:text-zinc-400">
                   <li className="flex items-center gap-2">
                     <span className="text-emerald-500">✓</span>
-                    <strong>All</strong> certifications included
+                    <strong>All {activeCertifications}</strong> certifications included
                   </li>
                   <li className="flex items-center gap-2">
                     <span className="text-emerald-500">✓</span>
@@ -219,7 +231,7 @@ export default function Home() {
                   </li>
                   <li className="flex items-center gap-2">
                     <span className="text-emerald-500">✓</span>
-                    CSA, CIS-DF, CAD, CIS-ITSM &amp; more
+                    {totalQuestions.toLocaleString()}+ practice questions
                   </li>
                   <li className="flex items-center gap-2">
                     <span className="text-emerald-500">✓</span>
@@ -236,7 +248,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Certifications Grid by Category */}
+      {/* Certifications Grid */}
       <section id="certifications" className="py-20">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <div className="text-center">
@@ -244,7 +256,7 @@ export default function Home() {
               Choose Your Certification
             </h2>
             <p className="mt-4 text-lg text-zinc-600 dark:text-zinc-400">
-              {certifications.length} ServiceNow certifications — 4 available now
+              {activeCertifications} certifications ready with {totalQuestions.toLocaleString()}+ practice questions
             </p>
           </div>
 
@@ -255,42 +267,37 @@ export default function Home() {
                 Available Now
               </h3>
               <span className="text-sm text-emerald-600 bg-emerald-100 dark:bg-emerald-900/50 dark:text-emerald-400 px-2 py-1 rounded">
-                Start practicing today
+                {activeCertifications} certifications ready
               </span>
             </div>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              {["csa", "cis-df", "cad", "cis-itsm"].map((slug) => {
-                const cert = certifications.find(c => c.slug === slug);
-                if (!cert) return null;
-                return (
-                  <CertificationCard 
-                    key={cert.slug} 
-                    certification={{
-                      ...cert,
-                      isReady: true,
-                      topicCount: getTopicsForCertification(cert.slug).length,
-                      totalQuestions: getTotalQuestionCount(cert.slug),
-                    }} 
-                  />
-                );
-              })}
+              {readyCerts.map((cert) => (
+                <CertificationCard 
+                  key={cert.slug} 
+                  certification={{
+                    ...cert,
+                    isReady: true,
+                    topicCount: getTopicsForCertification(cert.slug).length,
+                    totalQuestions: getTotalQuestionCount(cert.slug),
+                  }} 
+                />
+              ))}
             </div>
           </div>
 
-          {/* Coming Soon Section */}
-          <div className="mt-16">
-            <div className="flex items-center gap-4 mb-6">
-              <h3 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100">
-                Coming Soon
-              </h3>
-              <span className="text-sm text-zinc-500 bg-zinc-100 dark:bg-zinc-800 px-2 py-1 rounded">
-                More certifications on the way
-              </span>
-            </div>
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              {certifications
-                .filter(cert => !["csa", "cis-df", "cad", "cis-itsm"].includes(cert.slug))
-                .map((cert) => (
+          {/* Coming Soon Section - only show if there are any */}
+          {comingSoonCerts.length > 0 && (
+            <div className="mt-16">
+              <div className="flex items-center gap-4 mb-6">
+                <h3 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100">
+                  Coming Soon
+                </h3>
+                <span className="text-sm text-zinc-500 bg-zinc-100 dark:bg-zinc-800 px-2 py-1 rounded">
+                  More on the way
+                </span>
+              </div>
+              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                {comingSoonCerts.map((cert) => (
                   <CertificationCard 
                     key={cert.slug} 
                     certification={{
@@ -301,8 +308,9 @@ export default function Home() {
                     }} 
                   />
                 ))}
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </section>
 
@@ -407,7 +415,7 @@ export default function Home() {
           </p>
           <div className="mt-8">
             <Link
-              href="/practice-questions/csa"
+              href="/csa/practice-questions"
               className="inline-flex h-12 items-center justify-center rounded-lg bg-emerald-600 px-8 text-base font-medium text-white transition-colors hover:bg-emerald-700"
             >
               Start Practicing Now
