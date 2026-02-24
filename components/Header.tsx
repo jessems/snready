@@ -6,12 +6,17 @@ import { useAccess } from "./AccessProvider";
 import { LoginModal } from "./LoginModal";
 import certificationsData from "@/data/certifications.json";
 
+// Admin emails that can access /admin routes
+const ADMIN_EMAILS = ["jessems@gmail.com"];
+
 export default function Header() {
   const { authenticated, email, logout, loading } = useAccess();
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [showPracticeDropdown, setShowPracticeDropdown] = useState(false);
+  
+  const isAdmin = email && ADMIN_EMAILS.includes(email.toLowerCase());
 
   // Sort certifications alphabetically by fullName
   const sortedCertifications = [...certificationsData.certifications].sort((a, b) =>
@@ -158,6 +163,15 @@ export default function Header() {
                         >
                           My Certifications
                         </Link>
+                        {isAdmin && (
+                          <Link
+                            href="/admin/coverage"
+                            className="block px-4 py-2 text-sm text-zinc-700 hover:bg-zinc-50 dark:text-zinc-300 dark:hover:bg-zinc-800"
+                            onClick={() => setShowDropdown(false)}
+                          >
+                            📊 Admin Dashboard
+                          </Link>
+                        )}
                         <button
                           onClick={() => {
                             logout();
