@@ -1,106 +1,86 @@
+#!/usr/bin/env npx tsx
 /**
  * Migration script: Upgrade all 30-day users to lifetime access
  * 
- * Run with: npx wrangler kv:key list --binding SNREADY_ACCESS | npx tsx scripts/migrate-30day-to-lifetime.ts
+ * Prerequisites:
+ *   npx wrangler login
  * 
- * Or run directly with wrangler (preferred):
- *   npx wrangler pages dev --local -- npx tsx scripts/migrate-30day-to-lifetime.ts
- * 
- * This script:
- * 1. Lists all access:* keys
- * 2. Updates expiresAt to 100 years from now
- * 3. Re-writes without TTL (making it permanent)
+ * Run:
+ *   npx tsx scripts/migrate-30day-to-lifetime.ts
  */
 
-// For running via wrangler CLI directly
+import { execSync } from 'child_process';
+
+const KV_NAMESPACE_ID = 'bcb7c1925c84424cb90713533b286c63';
+const LIFETIME_MS = 100 * 365 * 24 * 60 * 60 * 1000; // 100 years
+
+function wrangler(cmd: string): string {
+  return execSync(`npx wrangler ${cmd}`, { encoding: 'utf-8' });
+}
+
 async function migrate() {
-  const ACCOUNT_ID = process.env.CF_ACCOUNT_ID;
-  const API_TOKEN = process.env.CF_API_TOKEN;
-  const KV_NAMESPACE_ID = process.env.SNREADY_ACCESS_ID;
-
-  if (!ACCOUNT_ID || !API_TOKEN || !KV_NAMESPACE_ID) {
-    console.error(`
-Missing environment variables. Set:
-  CF_ACCOUNT_ID     - Your Cloudflare account ID
-  CF_API_TOKEN      - API token with KV write access
-  SNREADY_ACCESS_ID - The KV namespace ID for SNREADY_ACCESS
-
-Find these in Cloudflare dashboard > Workers & Pages > KV
-`);
-    process.exit(1);
-  }
-
-  const baseUrl = `https://api.cloudflare.com/client/v4/accounts/${ACCOUNT_ID}/storage/kv/namespaces/${KV_NAMESPACE_ID}`;
-  const headers = {
-    'Authorization': `Bearer ${API_TOKEN}`,
-    'Content-Type': 'application/json',
-  };
-
-  // 1. List all keys with prefix "access:"
-  console.log('Fetching access keys...');
-  const listRes = await fetch(`${baseUrl}/keys?prefix=access:`, { headers });
-  const listData = await listRes.json() as { result: { name: string }[]; success: boolean };
+  console.log('🔍 Fetching access keys from KV...\n');
   
-  if (!listData.success) {
-    console.error('Failed to list keys:', listData);
-    process.exit(1);
+  // List all keys with prefix "access:"
+  const listOutput = wrangler(`kv:key list --namespace-id ${KV_NAMESPACE_ID} --prefix "access:"`);
+  const keys: { name: string }[] = JSON.parse(listOutput);
+  
+  console.log(`Found ${keys.length} access records\n`);
+  
+  if (keys.length === 0) {
+    console.log('No records to migrate.');
+    return;
   }
 
-  const keys = listData.result.map(k => k.name);
-  console.log(`Found ${keys.length} access records`);
-
-  const LIFETIME_MS = 100 * 365 * 24 * 60 * 60 * 1000; // 100 years
   const newExpiresAt = Date.now() + LIFETIME_MS;
-
   let migrated = 0;
   let skipped = 0;
   let errors = 0;
 
-  for (const key of keys) {
+  for (const { name: key } of keys) {
     try {
-      // 2. Get current value
-      const getRes = await fetch(`${baseUrl}/values/${encodeURIComponent(key)}`, { headers });
-      const raw = await getRes.text();
+      // Get current value
+      const raw = wrangler(`kv:key get --namespace-id ${KV_NAMESPACE_ID} "${key}"`);
       const record = JSON.parse(raw);
 
       // Skip if already lifetime (expiresAt > 50 years from now)
-      if (record.expiresAt > Date.now() + (50 * 365 * 24 * 60 * 60 * 1000)) {
+      const fiftyYearsMs = 50 * 365 * 24 * 60 * 60 * 1000;
+      if (record.expiresAt > Date.now() + fiftyYearsMs) {
         console.log(`⏭️  ${key} - already lifetime, skipping`);
         skipped++;
         continue;
       }
 
-      // 3. Update expiresAt and re-write without TTL
+      const oldExpiry = new Date(record.expiresAt).toISOString().split('T')[0];
+      
+      // Update expiresAt
       record.expiresAt = newExpiresAt;
       
-      const putRes = await fetch(`${baseUrl}/values/${encodeURIComponent(key)}`, {
-        method: 'PUT',
-        headers,
-        body: JSON.stringify(record),
-      });
+      // Write back without TTL (wrangler kv:key put without --ttl = no expiration)
+      const tempFile = `/tmp/kv-migrate-${Date.now()}.json`;
+      require('fs').writeFileSync(tempFile, JSON.stringify(record));
+      wrangler(`kv:key put --namespace-id ${KV_NAMESPACE_ID} "${key}" --path "${tempFile}"`);
+      require('fs').unlinkSync(tempFile);
+      
+      console.log(`✅ ${key} - migrated (was expiring ${oldExpiry})`);
+      migrated++;
 
-      if (putRes.ok) {
-        console.log(`✅ ${key} - migrated to lifetime (was expiring ${new Date(record.expiresAt).toISOString()})`);
-        migrated++;
-      } else {
-        console.error(`❌ ${key} - failed to update:`, await putRes.text());
-        errors++;
-      }
-
-      // Rate limit: 4 requests per second max
-      await new Promise(r => setTimeout(r, 300));
+      // Small delay to avoid rate limits
+      await new Promise(r => setTimeout(r, 200));
 
     } catch (err) {
-      console.error(`❌ ${key} - error:`, err);
+      console.error(`❌ ${key} - error:`, (err as Error).message);
       errors++;
     }
   }
 
   console.log(`
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Migration complete:
   ✅ Migrated: ${migrated}
-  ⏭️  Skipped:  ${skipped}
+  ⏭️  Skipped:  ${skipped} (already lifetime)
   ❌ Errors:   ${errors}
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 `);
 }
 
