@@ -11,7 +11,7 @@ const PLANS = {
   "30day": {
     price: 900, // $9.00 in cents
     name: "30-Day Access",
-    description: "30-day access to all practice questions with detailed explanations",
+    // Description is generated dynamically to include cert name
   },
   "lifetime": {
     price: 4900, // $49.00 in cents
@@ -32,6 +32,15 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     const selectedPlan = PLANS[plan] || PLANS["30day"];
     const stripe = new Stripe(env.STRIPE_SECRET_KEY);
 
+    // Generate description based on plan and certification
+    const productDescription = plan === "lifetime"
+      ? PLANS.lifetime.description
+      : `30-day access to ${certification?.toUpperCase() || "all"} practice questions with detailed explanations`;
+
+    const productName = plan === "lifetime"
+      ? `SNReady ${PLANS.lifetime.name}`
+      : `SNReady ${certification?.toUpperCase() || "Full Access"} — 30 Days`;
+
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
       line_items: [
@@ -39,8 +48,8 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
           price_data: {
             currency: "usd",
             product_data: {
-              name: `SNReady ${certification || "Full"} ${selectedPlan.name}`,
-              description: selectedPlan.description,
+              name: productName,
+              description: productDescription,
             },
             unit_amount: selectedPlan.price,
           },
