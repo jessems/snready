@@ -169,16 +169,28 @@ export default function RootLayout({
                 </h3>
                 <div className="mt-4 space-y-3">
                   <Link
-                    href="/practice-questions/csa"
+                    href="/pricing"
                     className="block text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
                   >
-                    Practice Questions
+                    Pricing
                   </Link>
                   <Link
-                    href="/certifications"
+                    href="/resources"
                     className="block text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
                   >
-                    Exam Prep
+                    Free SN Resources
+                  </Link>
+                  <Link
+                    href="/glossary"
+                    className="block text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
+                  >
+                    Glossary
+                  </Link>
+                  <Link
+                    href="/blog"
+                    className="block text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
+                  >
+                    Blog
                   </Link>
                   <Link
                     href="/compare/csa-vs-cad"
@@ -222,8 +234,17 @@ export default function RootLayout({
                   SNReady
                 </h3>
                 <p className="mt-4 text-sm text-zinc-600 dark:text-zinc-400">
-                  Your path to ServiceNow certification success
+                  Practice questions derived from official Now Learning content.
+                  19 certifications, 1300+ questions, $9 lifetime access.
                 </p>
+                <div className="mt-4 space-y-2">
+                  <a
+                    href="mailto:hello@snready.com"
+                    className="block text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
+                  >
+                    Contact
+                  </a>
+                </div>
               </div>
             </div>
             
