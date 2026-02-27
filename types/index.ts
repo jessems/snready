@@ -64,6 +64,7 @@ export interface Certification {
   showDumpsSection?: boolean;
   allQuestionsFree?: boolean; // If true, all questions for this cert are free (promotion)
   isReady?: boolean; // Whether questions are available for this certification
+  blueprintUrl?: string; // Link to official ServiceNow exam blueprint on Now Learning
 }
 
 export interface ExamDomain {
