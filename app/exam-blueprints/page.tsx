@@ -46,14 +46,39 @@ const blueprintUrls: Record<string, string> = {
 
 // Category labels for grouping
 const categoryLabels: Record<string, string> = {
-  foundation: "Foundation Certifications",
-  developer: "Developer Certifications",
-  architect: "Architect Certifications",
-  implementation: "Implementation Specialist (CIS)",
+  foundation: "Foundation & CMDB",
+  developer: "Developer",
+  architect: "Architect",
+  "platform-owner": "Platform Owner",
+  itsm: "IT Service Management",
+  "customer-service": "Customer & Field Service",
+  hr: "Human Resources",
+  itom: "IT Operations Management",
+  secops: "Security Operations",
+  grc: "Governance, Risk & Compliance",
+  itam: "IT Asset Management",
+  spm: "Strategic Portfolio Management",
+  "service-provider": "Service Provider",
+  analytics: "Analytics",
 };
 
 // Category order
-const categoryOrder = ["foundation", "developer", "architect", "implementation"];
+const categoryOrder = [
+  "foundation",
+  "developer", 
+  "architect",
+  "platform-owner",
+  "itsm",
+  "customer-service",
+  "hr",
+  "itom",
+  "secops",
+  "grc",
+  "itam",
+  "spm",
+  "service-provider",
+  "analytics",
+];
 
 export default function ExamBlueprintsPage() {
   const certifications = getAllCertifications();
