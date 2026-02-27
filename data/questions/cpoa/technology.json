@@ -1,0 +1,444 @@
+[
+  {
+    "id": "cpoa-technology-001",
+    "certification": "cpoa",
+    "topic": "technology",
+    "cognitiveLevel": "knowledge",
+    "type": "multiple_choice",
+    "question": "Which ServiceNow capability allows you to replicate data between production and non-production instances for testing purposes?",
+    "options": [
+      { "id": "a", "text": "Update Sets" },
+      { "id": "b", "text": "Instance Data Replication (IDR)" },
+      { "id": "c", "text": "Data Export" },
+      { "id": "d", "text": "Record Cloning" }
+    ],
+    "correctAnswers": ["b"],
+    "explanation": {
+      "correct": "Instance Data Replication (IDR) allows ServiceNow customers to replicate data between instances. It supports producer-consumer models where data changes in one instance can be replicated to others. Reference: https://docs.servicenow.com/bundle/xanadu-platform-administration/page/administer/instance-data-replication/concept/instance-data-replication.html",
+      "wrongAnswers": [
+        { "choiceId": "a", "explanation": "Update Sets transfer customizations and configurations, not operational data", "reference": "Update Set documentation" },
+        { "choiceId": "c", "explanation": "Data Export is a manual export process, not continuous replication", "reference": "Data Export documentation" },
+        { "choiceId": "d", "explanation": "Record Cloning copies individual records, not entire data sets between instances", "reference": "Record operations" }
+      ]
+    },
+    "references": ["Instance Data Replication documentation"],
+    "isFree": true,
+    "source": {
+      "type": "docs",
+      "path": "cpoa-platadm-api/administering-instance-data-replication.md",
+      "excerpt": "Perform administrative duties in Instance Data Replication (IDR) including comparing replicated data, deploying configurations, and cloning with IDR."
+    },
+    "labels": {
+      "certification": "cpoa",
+      "domain": "Technology",
+      "domainSlug": "technology",
+      "domainPercentage": 22.9,
+      "subtopics": ["Instance management", "Data replication"],
+      "tags": ["idr", "instance-data-replication", "data-management"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-27T02:30:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cpoa-technology-002",
+    "certification": "cpoa",
+    "topic": "technology",
+    "cognitiveLevel": "understanding",
+    "type": "multiple_choice",
+    "question": "During an Advanced High Availability (AHA) transfer in ServiceNow, what happens to the Hermes messaging cluster?",
+    "options": [
+      { "id": "a", "text": "Messages are lost during the transfer" },
+      { "id": "b", "text": "The instance switches to using the Hermes cluster in the newly-active data center" },
+      { "id": "c", "text": "All messaging is paused until manual intervention" },
+      { "id": "d", "text": "Both clusters remain active with duplicate messages" }
+    ],
+    "correctAnswers": ["b"],
+    "explanation": {
+      "correct": "When an instance undergoes an AHA transfer, the standby instance becomes active and the instance switches to using the Hermes cluster in the newly-active data center. For example, if running in DC1 (active) and DC2 (standby), after AHA transfer the instance uses the Hermes cluster in DC2. Reference: https://docs.servicenow.com/bundle/xanadu-platform-administration/page/administer/multi-instance-framework-hermes/concept/advanced-high-availability-setup-hermes.html",
+      "wrongAnswers": [
+        { "choiceId": "a", "explanation": "Hermes is designed for high availability; messages are not lost during AHA transfer", "reference": "AHA documentation" },
+        { "choiceId": "c", "explanation": "The failover is automatic, not requiring manual intervention", "reference": "Failover process documentation" },
+        { "choiceId": "d", "explanation": "Only one cluster is actively producing at a time to prevent duplicates", "reference": "Near/far cluster architecture" }
+      ]
+    },
+    "references": ["Advanced High Availability documentation"],
+    "isFree": true,
+    "source": {
+      "type": "docs",
+      "path": "cpoa-platadm-api/advanced-high-availability-setup-hermes.md",
+      "excerpt": "When an instance undergoes an AHA transfer, the standby instance becomes active, and the previously active instance becomes standby. The instance switches to using the Hermes cluster on the newly-active side."
+    },
+    "labels": {
+      "certification": "cpoa",
+      "domain": "Technology",
+      "domainSlug": "technology",
+      "domainPercentage": 22.9,
+      "subtopics": ["High availability", "Instance failover"],
+      "tags": ["aha", "hermes", "failover", "messaging"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-27T02:30:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cpoa-technology-003",
+    "certification": "cpoa",
+    "topic": "technology",
+    "cognitiveLevel": "knowledge",
+    "type": "multiple_select",
+    "question": "Which of the following are valid adapter types in Instance Data Replication for transforming producer data? (Choose two.)",
+    "options": [
+      { "id": "a", "text": "Calculation Adapter" },
+      { "id": "b", "text": "Database Adapter" },
+      { "id": "c", "text": "Time Zone Conversion Adapter" },
+      { "id": "d", "text": "Schema Adapter" }
+    ],
+    "correctAnswers": ["a", "c"],
+    "selectCount": 2,
+    "explanation": {
+      "correct": "IDR includes several adapters for transforming data: Calculation Adapter (performs arithmetic operations), Time Zone Conversion Adapter (converts time zones), plus Concatenate String, Map, Pattern, Replace, Split, and Task Number adapters. Reference: https://docs.servicenow.com/bundle/xanadu-platform-administration/page/administer/instance-data-replication/reference/adapter-descriptions.html",
+      "wrongAnswers": [
+        { "choiceId": "b", "explanation": "Database Adapter is not a valid IDR adapter type", "reference": "IDR adapter list" },
+        { "choiceId": "d", "explanation": "Schema Adapter does not exist in IDR; the Map Adapter handles value translations", "reference": "IDR adapter descriptions" }
+      ]
+    },
+    "references": ["Instance Data Replication adapters"],
+    "isFree": true,
+    "source": {
+      "type": "docs",
+      "path": "cpoa-platadm-api/adapter-descriptions.md",
+      "excerpt": "Adapters modify the producer data before inserting the data on consumer instances. Available adapters include Calculation adapter, Concatenate String adapter, Time Zone Conversion adapter."
+    },
+    "labels": {
+      "certification": "cpoa",
+      "domain": "Technology",
+      "domainSlug": "technology",
+      "domainPercentage": 22.9,
+      "subtopics": ["Data transformation", "Instance Data Replication"],
+      "tags": ["idr", "adapters", "data-transformation"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-27T02:30:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cpoa-technology-004",
+    "certification": "cpoa",
+    "topic": "technology",
+    "cognitiveLevel": "understanding",
+    "type": "multiple_choice",
+    "question": "In Hermes messaging architecture, what is the difference between the 'near cluster' and 'far cluster'?",
+    "options": [
+      { "id": "a", "text": "Near cluster is for production; far cluster is for development" },
+      { "id": "b", "text": "Near cluster is in the same data center as the instance; far cluster is in the standby data center" },
+      { "id": "c", "text": "Near cluster handles inbound messages; far cluster handles outbound" },
+      { "id": "d", "text": "Near cluster is primary; far cluster is deprecated" }
+    ],
+    "correctAnswers": ["b"],
+    "explanation": {
+      "correct": "The Hermes Kafka cluster located in the same data center as the instance is the near cluster. The cluster running in the other data center is the far cluster. Both clusters operate in active/active mode for high availability. Reference: https://docs.servicenow.com/bundle/xanadu-platform-administration/page/administer/multi-instance-framework-hermes/concept/advanced-high-availability-setup-hermes.html",
+      "wrongAnswers": [
+        { "choiceId": "a", "explanation": "Both clusters support production; they are for geographic redundancy, not environment separation", "reference": "Hermes architecture" },
+        { "choiceId": "c", "explanation": "Both clusters can handle both inbound and outbound; the distinction is geographic", "reference": "Message flow documentation" },
+        { "choiceId": "d", "explanation": "The far cluster is not deprecated; it provides failover support", "reference": "High availability documentation" }
+      ]
+    },
+    "references": ["Hermes Kafka cluster architecture"],
+    "isFree": false,
+    "source": {
+      "type": "docs",
+      "path": "cpoa-platadm-api/advanced-high-availability-setup-hermes.md",
+      "excerpt": "The Hermes Kafka cluster located in the same data center as the instance is the near cluster. The cluster running in the other data center is the far cluster."
+    },
+    "labels": {
+      "certification": "cpoa",
+      "domain": "Technology",
+      "domainSlug": "technology",
+      "domainPercentage": 22.9,
+      "subtopics": ["Hermes messaging", "High availability architecture"],
+      "tags": ["hermes", "kafka", "near-cluster", "far-cluster"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-27T02:30:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cpoa-technology-005",
+    "certification": "cpoa",
+    "topic": "technology",
+    "cognitiveLevel": "application",
+    "type": "multiple_choice",
+    "question": "A Platform Owner needs to ensure that certain tables are preserved during a clone operation with Instance Data Replication. What should they configure?",
+    "options": [
+      { "id": "a", "text": "Clone exclusions and data preservers" },
+      { "id": "b", "text": "Replication filters" },
+      { "id": "c", "text": "Table permissions" },
+      { "id": "d", "text": "Update set dependencies" }
+    ],
+    "correctAnswers": ["a"],
+    "explanation": {
+      "correct": "When cloning with Instance Data Replication, administrators must configure exclusions and data preservers to ensure certain tables are preserved or excluded. This ensures successful cloning while maintaining data integrity. Reference: https://docs.servicenow.com/bundle/xanadu-platform-administration/page/administer/instance-data-replication/task/cloning-with-instance-data-replication.html",
+      "wrongAnswers": [
+        { "choiceId": "b", "explanation": "Replication filters control ongoing replication, not clone operations specifically", "reference": "Replication set configuration" },
+        { "choiceId": "c", "explanation": "Table permissions control access, not clone preservation", "reference": "Access control documentation" },
+        { "choiceId": "d", "explanation": "Update set dependencies are for configuration promotion, not cloning", "reference": "Update set documentation" }
+      ]
+    },
+    "references": ["Cloning with Instance Data Replication"],
+    "isFree": false,
+    "source": {
+      "type": "docs",
+      "path": "cpoa-platadm-api/cloning-with-instance-data-replicaton.md",
+      "excerpt": "Ensure that certain tables are preserved or excluded to clone your database from one instance to another successfully with Instance Data Replication (IDR)."
+    },
+    "labels": {
+      "certification": "cpoa",
+      "domain": "Technology",
+      "domainSlug": "technology",
+      "domainPercentage": 22.9,
+      "subtopics": ["Cloning", "Instance management"],
+      "tags": ["cloning", "data-preservers", "exclusions"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-27T02:30:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cpoa-technology-006",
+    "certification": "cpoa",
+    "topic": "technology",
+    "cognitiveLevel": "knowledge",
+    "type": "multiple_choice",
+    "question": "Which ServiceNow dashboard allows Platform Owners to monitor the status of active producer and consumer replication sets, scheduled jobs, and seeding requests?",
+    "options": [
+      { "id": "a", "text": "Performance Analytics Dashboard" },
+      { "id": "b", "text": "Instance Data Replication Monitoring Dashboard" },
+      { "id": "c", "text": "System Diagnostics Dashboard" },
+      { "id": "d", "text": "Platform Health Dashboard" }
+    ],
+    "correctAnswers": ["b"],
+    "explanation": {
+      "correct": "The Instance Data Replication (IDR) Monitoring Dashboard allows you to monitor the status of active producer and consumer replication sets, scheduled jobs, seeding requests, and license or usage details. Reference: https://docs.servicenow.com/bundle/xanadu-platform-administration/page/administer/instance-data-replication/concept/monitoring-idr.html",
+      "wrongAnswers": [
+        { "choiceId": "a", "explanation": "Performance Analytics Dashboard is for KPIs and metrics, not replication monitoring", "reference": "Performance Analytics documentation" },
+        { "choiceId": "c", "explanation": "System Diagnostics is for troubleshooting, not replication status", "reference": "System Diagnostics documentation" },
+        { "choiceId": "d", "explanation": "Platform Health Dashboard is not a standard ServiceNow dashboard name", "reference": "Dashboard documentation" }
+      ]
+    },
+    "references": ["Monitoring Instance Data Replication"],
+    "isFree": false,
+    "source": {
+      "type": "docs",
+      "path": "cpoa-platadm-api/administering-instance-data-replication.md",
+      "excerpt": "You can monitor the status of active producer and consumer replication sets, scheduled jobs, seeding requests, and license or usage details through the Instance Data Replication (IDR) Monitoring Dashboard."
+    },
+    "labels": {
+      "certification": "cpoa",
+      "domain": "Technology",
+      "domainSlug": "technology",
+      "domainPercentage": 22.9,
+      "subtopics": ["Monitoring", "Instance Data Replication"],
+      "tags": ["monitoring", "idr", "dashboard"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-27T02:30:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cpoa-technology-007",
+    "certification": "cpoa",
+    "topic": "technology",
+    "cognitiveLevel": "understanding",
+    "type": "multiple_choice",
+    "question": "Which of the following is NOT a critical component that a Platform Owner should consider during an upgrade cycle?",
+    "options": [
+      { "id": "a", "text": "Testing customizations in a sub-production instance" },
+      { "id": "b", "text": "Reviewing release notes for deprecated features" },
+      { "id": "c", "text": "Immediately applying upgrades to production" },
+      { "id": "d", "text": "Validating integrations with external systems" }
+    ],
+    "correctAnswers": ["c"],
+    "isNegative": true,
+    "explanation": {
+      "correct": "A Platform Owner should NEVER immediately apply upgrades to production without testing. Best practices require testing in sub-production environments first, reviewing release notes, and validating integrations before production deployment. Reference: ServiceNow Upgrade Best Practices documentation",
+      "wrongAnswers": [
+        { "choiceId": "a", "explanation": "Testing in sub-production is a critical step before production upgrades", "reference": "Upgrade testing documentation" },
+        { "choiceId": "b", "explanation": "Reviewing release notes helps identify breaking changes and deprecated features", "reference": "Release notes documentation" },
+        { "choiceId": "d", "explanation": "Validating integrations ensures external systems continue to work post-upgrade", "reference": "Integration testing best practices" }
+      ]
+    },
+    "references": ["Upgrade best practices"],
+    "isFree": false,
+    "source": {
+      "type": "docs",
+      "path": "cpoa-platadm-api",
+      "excerpt": "Testing customizations, reviewing release notes, and validating integrations are critical components of the upgrade cycle."
+    },
+    "labels": {
+      "certification": "cpoa",
+      "domain": "Technology",
+      "domainSlug": "technology",
+      "domainPercentage": 22.9,
+      "subtopics": ["Upgrades", "Testing"],
+      "tags": ["upgrades", "testing", "best-practices"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-27T02:30:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cpoa-technology-008",
+    "certification": "cpoa",
+    "topic": "technology",
+    "cognitiveLevel": "application",
+    "type": "multiple_select",
+    "question": "A Platform Owner wants to monitor queues in Instance Data Replication. Which queues can be monitored through the IDR Queue Dashboard? (Choose three.)",
+    "options": [
+      { "id": "a", "text": "Replication record queue" },
+      { "id": "b", "text": "Message produced queue" },
+      { "id": "c", "text": "Message consumed queue" },
+      { "id": "d", "text": "Update set queue" },
+      { "id": "e", "text": "Event log queue" }
+    ],
+    "correctAnswers": ["a", "b", "c"],
+    "selectCount": 3,
+    "explanation": {
+      "correct": "The IDR Queue Dashboard allows monitoring of the replication record queue, message produced queue, message consumed queue, and messages processed for all replication sets. Update set queue and Event log queue are not part of the IDR monitoring. Reference: https://docs.servicenow.com/bundle/xanadu-platform-administration/page/administer/instance-data-replication/concept/monitoring-queues-idr.html",
+      "wrongAnswers": [
+        { "choiceId": "d", "explanation": "Update set queue is not part of IDR monitoring; it's separate functionality", "reference": "Update set documentation" },
+        { "choiceId": "e", "explanation": "Event log queue is not monitored through the IDR Queue Dashboard", "reference": "Event management documentation" }
+      ]
+    },
+    "references": ["Monitoring queues in Instance Data Replication"],
+    "isFree": false,
+    "source": {
+      "type": "docs",
+      "path": "cpoa-platadm-api/administering-instance-data-replication.md",
+      "excerpt": "Monitor the replication record queue, message produced queue, message consumed queue, and the messages processed for all replication sets through the Instance Data Replication (IDR) Queue Dashboard."
+    },
+    "labels": {
+      "certification": "cpoa",
+      "domain": "Technology",
+      "domainSlug": "technology",
+      "domainPercentage": 22.9,
+      "subtopics": ["Queue monitoring", "Instance Data Replication"],
+      "tags": ["queues", "monitoring", "idr"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-27T02:30:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cpoa-technology-009",
+    "certification": "cpoa",
+    "topic": "technology",
+    "cognitiveLevel": "knowledge",
+    "type": "multiple_choice",
+    "question": "What is the primary purpose of the Map adapter in Instance Data Replication?",
+    "options": [
+      { "id": "a", "text": "To perform arithmetic operations on numeric data" },
+      { "id": "b", "text": "To translate source-to-target values using exact matches" },
+      { "id": "c", "text": "To convert time zones between instances" },
+      { "id": "d", "text": "To split strings into multiple components" }
+    ],
+    "correctAnswers": ["b"],
+    "explanation": {
+      "correct": "The Map adapter is used for comma-separated pairs of literals to map source-to-target conversions. Matches must be exact. For example, PRB=TASK would convert 'PRB' to 'TASK' but not 'PRB1000' to 'TASK1000'. Reference: https://docs.servicenow.com/bundle/xanadu-platform-administration/page/administer/instance-data-replication/reference/adapter-descriptions.html",
+      "wrongAnswers": [
+        { "choiceId": "a", "explanation": "Arithmetic operations are handled by the Calculation adapter", "reference": "Calculation adapter documentation" },
+        { "choiceId": "c", "explanation": "Time zone conversion is handled by the Time Zone Conversion adapter", "reference": "Time Zone Conversion adapter" },
+        { "choiceId": "d", "explanation": "Splitting strings is handled by the Split adapter", "reference": "Split adapter documentation" }
+      ]
+    },
+    "references": ["Instance Data Replication adapter descriptions"],
+    "isFree": false,
+    "source": {
+      "type": "docs",
+      "path": "cpoa-platadm-api/adapter-descriptions.md",
+      "excerpt": "Use the map adapter for comma-separated pairs of literals to map source-to-target conversions. Matches must be exact."
+    },
+    "labels": {
+      "certification": "cpoa",
+      "domain": "Technology",
+      "domainSlug": "technology",
+      "domainPercentage": 22.9,
+      "subtopics": ["Data transformation", "Adapters"],
+      "tags": ["map-adapter", "idr", "data-mapping"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-27T02:30:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  },
+  {
+    "id": "cpoa-technology-010",
+    "certification": "cpoa",
+    "topic": "technology",
+    "cognitiveLevel": "understanding",
+    "type": "multiple_choice",
+    "question": "Under normal operating conditions in Hermes, where are messages produced?",
+    "options": [
+      { "id": "a", "text": "To both the near and far clusters simultaneously" },
+      { "id": "b", "text": "To the near Hermes cluster only" },
+      { "id": "c", "text": "To the far Hermes cluster only" },
+      { "id": "d", "text": "To an external message queue first" }
+    ],
+    "correctAnswers": ["b"],
+    "explanation": {
+      "correct": "Under normal operating conditions, messages are produced by the instance or an external client to the near Hermes cluster. For example, if your instance is running in the DC1 datacenter, messages are produced to the near Hermes cluster in DC1. Reference: https://docs.servicenow.com/bundle/xanadu-platform-administration/page/administer/multi-instance-framework-hermes/concept/advanced-high-availability-setup-hermes.html",
+      "wrongAnswers": [
+        { "choiceId": "a", "explanation": "During normal operation, only the near cluster receives produced messages to avoid duplication", "reference": "Normal operation documentation" },
+        { "choiceId": "c", "explanation": "The far cluster is standby; messages go to the near cluster under normal conditions", "reference": "Cluster architecture" },
+        { "choiceId": "d", "explanation": "Messages go directly to the Hermes Kafka cluster, not an external queue", "reference": "Hermes architecture" }
+      ]
+    },
+    "references": ["Hermes normal operation"],
+    "isFree": false,
+    "source": {
+      "type": "docs",
+      "path": "cpoa-platadm-api/advanced-high-availability-setup-hermes.md",
+      "excerpt": "Under normal operating conditions, messages are produced by the instance or an external client to the near Hermes cluster."
+    },
+    "labels": {
+      "certification": "cpoa",
+      "domain": "Technology",
+      "domainSlug": "technology",
+      "domainPercentage": 22.9,
+      "subtopics": ["Hermes messaging", "Normal operations"],
+      "tags": ["hermes", "messaging", "kafka", "normal-operation"]
+    },
+    "meta": {
+      "generatedAt": "2026-02-27T02:30:00Z",
+      "version": "1.1",
+      "release": "Xanadu",
+      "reviewed": false
+    }
+  }
+]
