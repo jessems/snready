@@ -116,6 +116,22 @@ export default function Header() {
                 >
                   Blog
                 </Link>
+
+                {/* Pricing Link */}
+                <Link
+                  href="/pricing"
+                  className="text-sm font-medium text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
+                >
+                  Pricing
+                </Link>
+
+                {/* Resources Link */}
+                <Link
+                  href="/resources"
+                  className="text-sm font-medium text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
+                >
+                  Resources
+                </Link>
               </div>
 
               {/* Auth Section */}
@@ -235,6 +251,20 @@ export default function Header() {
               className="block py-2 text-sm font-medium text-zinc-600 dark:text-zinc-400"
             >
               Blog
+            </Link>
+            <Link
+              href="/pricing"
+              onClick={() => setShowMobileMenu(false)}
+              className="block py-2 text-sm font-medium text-zinc-600 dark:text-zinc-400"
+            >
+              Pricing
+            </Link>
+            <Link
+              href="/resources"
+              onClick={() => setShowMobileMenu(false)}
+              className="block py-2 text-sm font-medium text-zinc-600 dark:text-zinc-400"
+            >
+              Resources
             </Link>
           </div>
         </div>
