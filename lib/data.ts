@@ -12,6 +12,7 @@ import cisSirTopics from "@/data/topics/cis-sir-topics.json";
 import cisSpTopics from "@/data/topics/cis-sp-topics.json";
 import cisSpmTopics from "@/data/topics/cis-spm-topics.json";
 import cisTprmTopics from "@/data/topics/cis-tprm-topics.json";
+import cpoaTopics from "@/data/topics/cpoa-topics.json";
 import type { Certification, CertificationWithReadiness, Topic, Question, ExamDomain, CertificationCategory, ServiceNowRelease, DeltaExamInfo, ExamTips } from "@/types";
 
 // Category display names mapping
@@ -96,6 +97,7 @@ const topicsMap: Record<string, typeof csaTopics> = {
   "cis-sp": cisSpTopics,
   "cis-spm": cisSpmTopics,
   "cis-tprm": cisTprmTopics,
+  cpoa: cpoaTopics,
 };
 
 export function getTopicsForCertification(certSlug: string): Topic[] {
