@@ -132,6 +132,14 @@ export default function Header() {
                 >
                   Resources
                 </Link>
+
+                {/* Certification Paths Link */}
+                <Link
+                  href="/certification-paths"
+                  className="text-sm font-medium text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
+                >
+                  Paths
+                </Link>
               </div>
 
               {/* Auth Section */}

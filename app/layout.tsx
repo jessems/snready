@@ -181,6 +181,12 @@ export default function RootLayout({
                     Free SN Resources
                   </Link>
                   <Link
+                    href="/certification-paths"
+                    className="block text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
+                  >
+                    Certification Paths
+                  </Link>
+                  <Link
                     href="/glossary"
                     className="block text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
                   >
