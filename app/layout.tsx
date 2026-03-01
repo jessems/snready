@@ -199,7 +199,7 @@ export default function RootLayout({
                     Blog
                   </Link>
                   <Link
-                    href="/compare/csa-vs-cad"
+                    href="/compare"
                     className="block text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
                   >
                     Compare Certifications
