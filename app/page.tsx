@@ -40,7 +40,7 @@ export default function Home() {
             </p>
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
-                href="/csa/practice-questions"
+                href="/csa/free-questions"
                 className="inline-flex h-12 items-center justify-center rounded-lg bg-emerald-600 px-8 text-base font-medium text-white transition-colors hover:bg-emerald-700"
               >
                 Start CSA Practice
@@ -341,7 +341,7 @@ export default function Home() {
             ].map((topic) => (
               <Link
                 key={topic.slug}
-                href={`/csa/practice-questions/${topic.slug}`}
+                href={`/csa/free-questions/${topic.slug}`}
                 className="flex items-center gap-3 rounded-lg border border-zinc-200 bg-white p-4 transition-all hover:border-emerald-300 hover:shadow dark:border-zinc-800 dark:bg-zinc-800 dark:hover:border-emerald-700"
               >
                 <span className="text-2xl">{topic.icon}</span>
@@ -385,7 +385,7 @@ export default function Home() {
             ].map((topic) => (
               <Link
                 key={topic.slug}
-                href={`/cad/practice-questions/${topic.slug}`}
+                href={`/cad/free-questions/${topic.slug}`}
                 className="flex items-center gap-3 rounded-lg border border-zinc-200 bg-white p-4 transition-all hover:border-emerald-300 hover:shadow dark:border-zinc-800 dark:bg-zinc-800 dark:hover:border-emerald-700"
               >
                 <span className="text-2xl">{topic.icon}</span>
@@ -418,7 +418,7 @@ export default function Home() {
           </p>
           <div className="mt-8">
             <Link
-              href="/csa/practice-questions"
+              href="/csa/free-questions"
               className="inline-flex h-12 items-center justify-center rounded-lg bg-emerald-600 px-8 text-base font-medium text-white transition-colors hover:bg-emerald-700"
             >
               Start Practicing Now

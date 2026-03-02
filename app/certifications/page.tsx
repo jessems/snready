@@ -150,7 +150,7 @@ export default function CertificationsPage() {
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
-                href="/csa/practice-questions"
+                href="/csa/free-questions"
                 className="inline-flex h-12 items-center justify-center rounded-lg bg-white px-8 text-base font-medium text-emerald-600 transition-colors hover:bg-emerald-50"
               >
                 Start CSA Practice

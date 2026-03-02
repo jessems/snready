@@ -61,7 +61,7 @@ export default function CheckoutCancel() {
             Browse our practice questions to see what&apos;s included.
           </p>
           <Link
-            href="/practice-questions"
+            href="/free-questions"
             className="mt-4 inline-flex items-center text-emerald-600 hover:text-emerald-700 dark:text-emerald-400 dark:hover:text-emerald-300"
           >
             Browse practice questions →

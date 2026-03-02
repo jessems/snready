@@ -405,7 +405,7 @@ export default function ResourcesPage() {
           </p>
           <div className="mt-6 flex flex-col sm:flex-row justify-center gap-4">
             <Link
-              href="/csa/practice-questions"
+              href="/csa/free-questions"
               className="inline-flex items-center justify-center rounded-lg bg-emerald-600 px-6 py-3 font-semibold text-white transition-colors hover:bg-emerald-700"
             >
               Try CSA Questions Free

@@ -541,7 +541,7 @@ export default function CertificationPathsPage() {
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-4">
             <Link
-              href="/csa/practice-questions"
+              href="/csa/free-questions"
               className="rounded-lg bg-emerald-600 px-6 py-3 text-white hover:bg-emerald-700"
             >
               CSA Practice Questions

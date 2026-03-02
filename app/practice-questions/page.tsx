@@ -12,13 +12,13 @@ export const metadata: Metadata = {
   description:
     "ServiceNow certification practice questions for CSA, CIS-DF, CAD, CIS-ITSM with detailed explanations and free questions.",
   alternates: {
-    canonical: getCanonicalUrl("/practice-questions"),
+    canonical: getCanonicalUrl("/free-questions"),
   },
   openGraph: {
     title: "ServiceNow Practice Questions | SNReady",
     description:
       "ServiceNow certification practice questions with detailed explanations.",
-    url: getCanonicalUrl("/practice-questions"),
+    url: getCanonicalUrl("/free-questions"),
     images: ["/og-default.png"],
   },
 };
@@ -30,7 +30,7 @@ export default function PracticeTestsIndexPage() {
 
   const breadcrumbItems = [
     { name: "Home", url: "/" },
-    { name: "Practice Questions", url: "/practice-questions" },
+    { name: "Practice Questions", url: "/free-questions" },
   ];
 
   const totalQuestions = readyCerts.reduce(
@@ -85,7 +85,7 @@ export default function PracticeTestsIndexPage() {
               return (
                 <Link
                   key={cert.slug}
-                  href={`/${cert.slug}/practice-questions`}
+                  href={`/${cert.slug}/free-questions`}
                   className="group rounded-xl border border-zinc-200 bg-white p-6 transition-all hover:border-emerald-300 hover:shadow-lg dark:border-zinc-700 dark:bg-zinc-800 dark:hover:border-emerald-600"
                 >
                   <div className="flex items-start justify-between">

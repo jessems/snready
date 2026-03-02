@@ -275,7 +275,7 @@ export default async function CertificationPage({ params }: PageProps) {
                       Take Mock Exam
                     </Link>
                     <Link
-                      href={`/${slug}/practice-questions`}
+                      href={`/${slug}/free-questions`}
                       className="inline-flex h-12 items-center justify-center rounded-lg border border-zinc-300 bg-white px-6 text-base font-medium text-zinc-900 transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-100"
                     >
                       Practice Questions
@@ -447,7 +447,7 @@ export default async function CertificationPage({ params }: PageProps) {
                   return (
                     <Link
                       key={domain.slug}
-                      href={`/${slug}/practice-questions/${domain.slug}`}
+                      href={`/${slug}/free-questions/${domain.slug}`}
                       className="group rounded-lg border border-zinc-200 bg-white p-5 transition-all hover:border-emerald-300 hover:shadow cursor-pointer dark:border-zinc-800 dark:bg-zinc-900"
                     >
                       {domainContent}
@@ -491,7 +491,7 @@ export default async function CertificationPage({ params }: PageProps) {
                 {topics.map((topic) => (
                   <Link
                     key={topic.slug}
-                    href={`/${slug}/practice-questions/${topic.slug}`}
+                    href={`/${slug}/free-questions/${topic.slug}`}
                     className="group rounded-lg border border-zinc-200 bg-white p-5 transition-all hover:border-emerald-300 hover:shadow dark:border-zinc-800 dark:bg-zinc-800"
                   >
                     <h3 className="font-semibold text-zinc-900 group-hover:text-emerald-600 dark:text-zinc-100">
@@ -566,7 +566,7 @@ export default async function CertificationPage({ params }: PageProps) {
 
                   <div className="mt-10 max-w-md mx-auto">
                     <Link
-                      href={`/${slug}/practice-questions`}
+                      href={`/${slug}/free-questions`}
                       className="block w-full rounded-xl bg-white py-4 text-center text-lg font-semibold text-emerald-700 transition-colors hover:bg-emerald-50"
                     >
                       Start Practicing — Free
@@ -735,13 +735,13 @@ export default async function CertificationPage({ params }: PageProps) {
               {isReady ? (
                 <>
                   <Link
-                    href={`/${slug}/practice-questions/${topics[0].slug}`}
+                    href={`/${slug}/free-questions/${topics[0].slug}`}
                     className="inline-flex h-12 items-center justify-center rounded-lg bg-white px-8 text-base font-medium text-emerald-600 transition-colors hover:bg-emerald-50"
                   >
                     Start Free Practice
                   </Link>
                   <Link
-                    href={`/${slug}/practice-questions`}
+                    href={`/${slug}/free-questions`}
                     className="inline-flex h-12 items-center justify-center rounded-lg border border-white px-8 text-base font-medium text-white transition-colors hover:bg-emerald-500"
                   >
                     View All Topics

@@ -447,7 +447,7 @@ export default function MockExamLanding({
       {/* Related Links */}
       <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
         <Link
-          href={`/${examConfig.certSlug}/practice-questions`}
+          href={`/${examConfig.certSlug}/free-questions`}
           className="inline-flex items-center justify-center rounded-lg border border-zinc-300 px-6 py-3 font-semibold text-zinc-700 transition-colors hover:bg-zinc-100 dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-800"
         >
           Practice Questions
