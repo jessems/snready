@@ -60,8 +60,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     );
   }
 
+  const year = new Date().getFullYear();
+  
   return {
-    title: `${cert.name} Certification Exam Prep - Practice Tests & Questions`,
+    title: `ServiceNow ${cert.name} Practice Test [${year}] — Free Exam Questions`,
     description,
     keywords,
     alternates: {

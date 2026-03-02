@@ -34,22 +34,25 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     return { title: "Topic Not Found" };
   }
 
+  // CTR-optimized title: includes "Free", action-oriented, year for freshness
+  const year = new Date().getFullYear();
+  
   return {
-    title: `${certification.name} ${topic.name} Exam Questions - Practice Test`,
-    description: `Practice ${topic.questionCount}+ ${topic.name} questions for the ServiceNow ${certification.name} exam. Free sample questions with detailed explanations.`,
+    title: `Free ${certification.name} ${topic.name} Practice Questions [${year}]`,
+    description: `${topic.questionCount}+ free ${topic.name} practice questions for ServiceNow ${certification.name} certification. Detailed explanations, exam-style format. Pass your exam with confidence.`,
     keywords: [
       `${certification.name} ${topic.name} questions`,
       `ServiceNow ${topic.name} exam`,
       `${certification.name} practice test`,
-      `${topic.name} quiz`,
+      `free ${certification.name} questions`,
       `ServiceNow ${certification.name} ${topic.name}`,
     ],
     alternates: {
       canonical: `/practice-questions/${cert}/${topicSlug}`,
     },
     openGraph: {
-      title: `${certification.name} ${topic.name} Questions | SNReady`,
-      description: `Master ${topic.name} for the ServiceNow ${certification.name} exam with ${topic.questionCount}+ practice questions.`,
+      title: `Free ${certification.name} ${topic.name} Questions — Pass Your Exam`,
+      description: `${topic.questionCount}+ practice questions with detailed explanations. Prepare for your ServiceNow ${certification.name} certification exam.`,
     },
   };
 }
