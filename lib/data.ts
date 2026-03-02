@@ -13,6 +13,13 @@ import cisSpTopics from "@/data/topics/cis-sp-topics.json";
 import cisSpmTopics from "@/data/topics/cis-spm-topics.json";
 import cisTprmTopics from "@/data/topics/cis-tprm-topics.json";
 import cpoaTopics from "@/data/topics/cpoa-topics.json";
+import cisHrTopics from "@/data/topics/cis-hr-topics.json";
+import cisRcTopics from "@/data/topics/cis-rc-topics.json";
+import cisSamTopics from "@/data/topics/cis-sam-topics.json";
+import cisEmTopics from "@/data/topics/cis-em-topics.json";
+import cisFsmTopics from "@/data/topics/cis-fsm-topics.json";
+import cisPaTopics from "@/data/topics/cis-pa-topics.json";
+import cisSmTopics from "@/data/topics/cis-sm-topics.json";
 import type { Certification, CertificationWithReadiness, Topic, Question, ExamDomain, CertificationCategory, ServiceNowRelease, DeltaExamInfo, ExamTips } from "@/types";
 
 // Category display names mapping
@@ -84,7 +91,8 @@ export function getCertificationSlugs(): string[] {
 }
 
 // Topic data access
-const topicsMap: Record<string, typeof csaTopics> = {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const topicsMap: Record<string, any> = {
   csa: csaTopics,
   "cis-df": cisDfTopics,
   cad: cadTopics,
@@ -98,15 +106,23 @@ const topicsMap: Record<string, typeof csaTopics> = {
   "cis-spm": cisSpmTopics,
   "cis-tprm": cisTprmTopics,
   cpoa: cpoaTopics,
+  "cis-hr": cisHrTopics,
+  "cis-rc": cisRcTopics,
+  "cis-sam": cisSamTopics,
+  "cis-em": cisEmTopics,
+  "cis-fsm": cisFsmTopics,
+  "cis-pa": cisPaTopics,
+  "cis-sm": cisSmTopics,
 };
 
 export function getTopicsForCertification(certSlug: string): Topic[] {
   const topics = topicsMap[certSlug];
   if (!topics) return [];
-  return topics.topics.map((topic) => ({
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  return topics.topics.map((topic: any) => ({
     ...topic,
     certification: certSlug,
-    keyConcepts: topic.keyConcepts,
+    keyConcepts: topic.keyConcepts || [],
   })) as unknown as Topic[];
 }
 

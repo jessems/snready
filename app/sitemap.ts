@@ -1,5 +1,5 @@
 import { MetadataRoute } from "next";
-import { getCertificationSlugs, getAllTopicSlugs } from "@/lib/data";
+import { getCertificationSlugs, getAllTopicSlugs, getAllQuestionIds } from "@/lib/data";
 import { getAllPosts } from "@/data/blog/posts";
 import { getAllComparisonSlugs } from "@/lib/comparisons";
 import { getAllCompetitorSlugs } from "@/data/competitor-comparisons";
@@ -9,10 +9,10 @@ export const dynamic = "force-static";
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://snready.com";
 
 /**
- * SITEMAP STRATEGY - Expanded
+ * SITEMAP STRATEGY - Full Coverage
  *
- * Including all valuable pages to help Google discover content faster.
- * Individual question pages are still excluded (Phase 3).
+ * Including ALL valuable pages including individual question pages.
+ * Each question page is unique content that can rank for long-tail keywords.
  */
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -156,9 +156,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })),
   ];
 
-  // === Future: Individual question pages (Phase 3) ===
-  // const questionIds = await getAllQuestionIds();
-  // const individualQuestionPages = questionIds.map(...)
+  // === Individual question pages ===
+  const questionIds = await getAllQuestionIds();
+  const individualQuestionPages: MetadataRoute.Sitemap = questionIds.map(
+    ({ certification, topic, questionId }) => ({
+      url: `${BASE_URL}/practice-questions/${certification}/${topic}/${questionId}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.6,
+    })
+  );
 
   return [
     ...staticPages,
@@ -169,5 +176,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...comparePages,
     ...blogPages,
     ...competitorPages,
+    ...individualQuestionPages,
   ];
 }
