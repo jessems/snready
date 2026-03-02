@@ -1,50 +1,11 @@
-# LLM discovery
-/.well-known/llms.txt /llms.txt 200
+# Redirect old practice-questions URLs to free-questions
+/:cert/practice-questions/:topic /:cert/free-questions/:topic 301
+/:cert/practice-questions /:cert/free-questions 301
 
-# URL Re-architecture redirects (old -> new)
-/certifications/:slug /:slug 301
-/certifications/:slug/prepare /:slug/prepare 301
-/practice-questions/:cert /:cert/practice-questions 301
-/:cert/questions/:topic /:cert/practice-questions/:topic 301
-/:cert/questions/:topic/:id /:cert/practice-questions/:topic/:id 301
-
-# Quiz/practice shortcuts - now point to new structure
-/csa/quiz /csa/practice-questions 301
-/cad/quiz /cad/practice-questions 301
-/cis-df/quiz /cis-df/practice-questions 301
-/cis-itsm/quiz /cis-itsm/practice-questions 301
-/cis-discovery/quiz /cis-discovery/practice-questions 301
-
-# Legacy practice test URLs - now point to new structure
-/quiz/csa /csa/practice-questions 301
-/quiz/cad /cad/practice-questions 301
-/quiz/cis-df /cis-df/practice-questions 301
-/quiz/cis-itsm /cis-itsm/practice-questions 301
-/quiz/cis-discovery /cis-discovery/practice-questions 301
-
-# Redirect old practice-tests URLs to new practice-questions structure
-/practice-tests /practice-questions 301
-/practice-tests/:cert /:cert/practice-questions 301
-
-# Glossary shortcuts - now point to new structure
-/csa/glossary /glossary/csa 301
-/cad/glossary /glossary/cad 301
-/cis-df/glossary /glossary/cis-df 301
-/cis-itsm/glossary /glossary/cis-itsm 301
-
-# Legacy study-guide URLs - now point to new structure
-/study-guide/:cert /:cert/prepare 301
-/csa/study-guide /csa/prepare 301
-/cad/study-guide /cad/prepare 301
-/cis-df/study-guide /cis-df/prepare 301
-/cis-itsm/study-guide /cis-itsm/prepare 301
-
-# Exam tips redirect to prepare pages (new structure)
-/certifications/:slug/exam-tips /:slug/prepare 301
-
-# Free questions shortcuts - now point to new structure
-/csa/free /csa/practice-questions 301
-/cad/free /cad/practice-questions 301
-/cis-df/free /cis-df/practice-questions 301
-/cis-itsm/free /cis-itsm/practice-questions 301
-/free-questions/:cert /:cert/practice-questions 301
+# Redirect removed pages to relevant alternatives
+/glossary/* /certifications 301
+/glossary /certifications 301
+/learn/* /certifications 301
+/learn /certifications 301
+/delta/* /certifications 301
+/delta /certifications 301
