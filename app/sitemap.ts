@@ -2,6 +2,7 @@ import { MetadataRoute } from "next";
 import { getCertificationSlugs, getAllTopicSlugs } from "@/lib/data";
 import { getAllPosts } from "@/data/blog/posts";
 import { getAllComparisonSlugs } from "@/lib/comparisons";
+import { getAllCompetitorSlugs } from "@/data/competitor-comparisons";
 
 export const dynamic = "force-static";
 
@@ -138,6 +139,23 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })),
   ];
 
+  // === Competitor comparison pages (vs) ===
+  const competitorSlugs = getAllCompetitorSlugs();
+  const competitorPages: MetadataRoute.Sitemap = [
+    {
+      url: `${BASE_URL}/vs`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.85,
+    },
+    ...competitorSlugs.map((slug) => ({
+      url: `${BASE_URL}/vs/${slug}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    })),
+  ];
+
   // === Future: Individual question pages (Phase 3) ===
   // const questionIds = await getAllQuestionIds();
   // const individualQuestionPages = questionIds.map(...)
@@ -150,5 +168,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...mockExamPages,
     ...comparePages,
     ...blogPages,
+    ...competitorPages,
   ];
 }
