@@ -1,801 +1,1427 @@
-[
-  {
-    "id": "cis-em-alerts-tasks-001",
-    "certification": "cis-em",
-    "topic": "alerts-tasks",
-    "cognitiveLevel": "knowledge",
-    "type": "multiple_choice",
-    "question": "How often are alert management rules checked by default in Event Management?",
-    "options": [
-      { "id": "a", "text": "Every 5 seconds" },
-      { "id": "b", "text": "Every 11 seconds" },
-      { "id": "c", "text": "Every 30 seconds" },
-      { "id": "d", "text": "Every 60 seconds" }
-    ],
-    "correctAnswers": ["b"],
-    "explanation": {
-      "correct": "Alert management rules are checked every 11 seconds by the default 'Event Management - Evaluate Scoped Alert Rules Management0' scheduled job. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/alert-management-rule.html",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "5 seconds is not the default interval", "reference": "Alert management scheduled jobs" },
-        { "choiceId": "c", "explanation": "30 seconds is not the default interval", "reference": "Alert management scheduled jobs" },
-        { "choiceId": "d", "explanation": "60 seconds is not the default interval", "reference": "Alert management scheduled jobs" }
-      ]
-    },
-    "references": ["Alert management rules", "Scheduled jobs"],
-    "isFree": true,
-    "source": {
-      "type": "docs",
-      "path": "cis-em-api/alert-management-rule.md",
-      "excerpt": "Alert management rules are checked every 11 seconds by the default Event Management - Evaluate Scoped Alert Rules Management0 scheduled job."
-    },
-    "labels": {
+{
+  "certification": "cis-em",
+  "topic": "alerts-tasks",
+  "questions": [
+    {
+      "id": "cis-em-alerts-tasks-001",
       "certification": "cis-em",
-      "domain": "Alerts and Tasks",
-      "domainSlug": "alerts-tasks",
-      "domainPercentage": 30,
-      "subtopics": ["Alert management rules", "Scheduled jobs"],
-      "tags": ["scheduled-job", "alert-rules"]
+      "topic": "alerts-tasks",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "How often are alert management rules checked by default in Event Management?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Every 5 seconds"
+        },
+        {
+          "id": "b",
+          "text": "Every 11 seconds"
+        },
+        {
+          "id": "c",
+          "text": "Every 30 seconds"
+        },
+        {
+          "id": "d",
+          "text": "Every 60 seconds"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Alert management rules are checked every 11 seconds by the default 'Event Management - Evaluate Scoped Alert Rules Management0' scheduled job. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/alert-management-rule.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "5 seconds is not the default interval",
+            "reference": "Alert management scheduled jobs"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "30 seconds is not the default interval",
+            "reference": "Alert management scheduled jobs"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "60 seconds is not the default interval",
+            "reference": "Alert management scheduled jobs"
+          }
+        ]
+      },
+      "references": [
+        "Alert management rules",
+        "Scheduled jobs"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "docs",
+        "path": "cis-em-api/alert-management-rule.md",
+        "excerpt": "Alert management rules are checked every 11 seconds by the default Event Management - Evaluate Scoped Alert Rules Management0 scheduled job."
+      },
+      "labels": {
+        "certification": "cis-em",
+        "domain": "Alerts and Tasks",
+        "domainSlug": "alerts-tasks",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Alert management rules",
+          "Scheduled jobs"
+        ],
+        "tags": [
+          "scheduled-job",
+          "alert-rules"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-21T02:30:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-21T02:30:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-em-alerts-tasks-002",
-    "certification": "cis-em",
-    "topic": "alerts-tasks",
-    "cognitiveLevel": "understanding",
-    "type": "multiple_select",
-    "question": "Which two roles can interact with Alert Management Rules? (Choose two.)",
-    "options": [
-      { "id": "a", "text": "evt_mgmt_admin - can create and customize rules" },
-      { "id": "b", "text": "evt_mgmt_operator - can manually run rules" },
-      { "id": "c", "text": "itil - can approve rule changes" },
-      { "id": "d", "text": "evt_mgmt_user - can delete rules" }
-    ],
-    "correctAnswers": ["a", "b"],
-    "selectCount": 2,
-    "explanation": {
-      "correct": "Users with the evt_mgmt_admin role can create and customize alert management rules. Users with the evt_mgmt_operator role can manually run alert management rules. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/alert-management-rule.html",
-      "wrongAnswers": [
-        { "choiceId": "c", "explanation": "itil role is not specifically mentioned for Alert Management Rules", "reference": "Event Management roles" },
-        { "choiceId": "d", "explanation": "evt_mgmt_user role capabilities don't include rule deletion", "reference": "Event Management roles" }
-      ]
-    },
-    "references": ["Event Management roles", "Alert Management Rules"],
-    "isFree": true,
-    "source": {
-      "type": "docs",
-      "path": "cis-em-api/alert-management-rule.md",
-      "excerpt": "Users with the evt_mgmt_admin role can use the alert management rule designer to create and customize alert management rules. Users with the evt_mgmt_operator role can manually run alert management rules."
-    },
-    "labels": {
+    {
+      "id": "cis-em-alerts-tasks-002",
       "certification": "cis-em",
-      "domain": "Alerts and Tasks",
-      "domainSlug": "alerts-tasks",
-      "domainPercentage": 30,
-      "subtopics": ["Alert management rules"],
-      "tags": ["roles", "evt_mgmt_admin", "evt_mgmt_operator"]
+      "topic": "alerts-tasks",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_select",
+      "question": "Which two roles can interact with Alert Management Rules? (Choose two.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "evt_mgmt_admin - can create and customize rules"
+        },
+        {
+          "id": "b",
+          "text": "evt_mgmt_operator - can manually run rules"
+        },
+        {
+          "id": "c",
+          "text": "itil - can approve rule changes"
+        },
+        {
+          "id": "d",
+          "text": "evt_mgmt_user - can delete rules"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b"
+      ],
+      "selectCount": 2,
+      "explanation": {
+        "correct": "Users with the evt_mgmt_admin role can create and customize alert management rules. Users with the evt_mgmt_operator role can manually run alert management rules. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/alert-management-rule.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "c",
+            "explanation": "itil role is not specifically mentioned for Alert Management Rules",
+            "reference": "Event Management roles"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "evt_mgmt_user role capabilities don't include rule deletion",
+            "reference": "Event Management roles"
+          }
+        ]
+      },
+      "references": [
+        "Event Management roles",
+        "Alert Management Rules"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "docs",
+        "path": "cis-em-api/alert-management-rule.md",
+        "excerpt": "Users with the evt_mgmt_admin role can use the alert management rule designer to create and customize alert management rules. Users with the evt_mgmt_operator role can manually run alert management rules."
+      },
+      "labels": {
+        "certification": "cis-em",
+        "domain": "Alerts and Tasks",
+        "domainSlug": "alerts-tasks",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Alert management rules"
+        ],
+        "tags": [
+          "roles",
+          "evt_mgmt_admin",
+          "evt_mgmt_operator"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-21T02:30:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-21T02:30:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-em-alerts-tasks-003",
-    "certification": "cis-em",
-    "topic": "alerts-tasks",
-    "cognitiveLevel": "understanding",
-    "type": "multiple_choice",
-    "question": "In which scenario will an alert management rule NOT execute?",
-    "options": [
-      { "id": "a", "text": "When an open alert is updated" },
-      { "id": "b", "text": "When a closed alert is updated" },
-      { "id": "c", "text": "When alert severity changes from Warning to Major" },
-      { "id": "d", "text": "When a new alert is created" }
-    ],
-    "correctAnswers": ["b"],
-    "explanation": {
-      "correct": "Alert management rules run on all updated open alerts. Rules don't run on closed alerts, even if they've been updated. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/alert-management-rule.html",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "Rules run on updated open alerts", "reference": "Alert Management Rules execution" },
-        { "choiceId": "c", "explanation": "Severity changes trigger rule evaluation if alert is open", "reference": "Alert Management Rules" },
-        { "choiceId": "d", "explanation": "New alerts trigger rule evaluation", "reference": "Alert Management Rules" }
-      ]
-    },
-    "references": ["Alert Management Rules", "Alert states"],
-    "isFree": true,
-    "source": {
-      "type": "docs",
-      "path": "cis-em-api/alert-management-rule.md",
-      "excerpt": "Alert management rules run on all updated open alerts. Rules don't run on closed alerts, even if they've been updated."
-    },
-    "labels": {
+    {
+      "id": "cis-em-alerts-tasks-003",
       "certification": "cis-em",
-      "domain": "Alerts and Tasks",
-      "domainSlug": "alerts-tasks",
-      "domainPercentage": 30,
-      "subtopics": ["Alert management rules"],
-      "tags": ["alert-states", "rule-execution"]
+      "topic": "alerts-tasks",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "In which scenario will an alert management rule NOT execute?",
+      "options": [
+        {
+          "id": "a",
+          "text": "When an open alert is updated"
+        },
+        {
+          "id": "b",
+          "text": "When a closed alert is updated"
+        },
+        {
+          "id": "c",
+          "text": "When alert severity changes from Warning to Major"
+        },
+        {
+          "id": "d",
+          "text": "When a new alert is created"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Alert management rules run on all updated open alerts. Rules don't run on closed alerts, even if they've been updated. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/alert-management-rule.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Rules run on updated open alerts",
+            "reference": "Alert Management Rules execution"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Severity changes trigger rule evaluation if alert is open",
+            "reference": "Alert Management Rules"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "New alerts trigger rule evaluation",
+            "reference": "Alert Management Rules"
+          }
+        ]
+      },
+      "references": [
+        "Alert Management Rules",
+        "Alert states"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "docs",
+        "path": "cis-em-api/alert-management-rule.md",
+        "excerpt": "Alert management rules run on all updated open alerts. Rules don't run on closed alerts, even if they've been updated."
+      },
+      "labels": {
+        "certification": "cis-em",
+        "domain": "Alerts and Tasks",
+        "domainSlug": "alerts-tasks",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Alert management rules"
+        ],
+        "tags": [
+          "alert-states",
+          "rule-execution"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-21T02:30:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-21T02:30:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-em-alerts-tasks-004",
-    "certification": "cis-em",
-    "topic": "alerts-tasks",
-    "cognitiveLevel": "understanding",
-    "type": "multiple_select",
-    "question": "Which three actions can be performed by Alert Management Rules? (Choose three.)",
-    "options": [
-      { "id": "a", "text": "Run a subflow" },
-      { "id": "b", "text": "Open an incident" },
-      { "id": "c", "text": "Delete the source event" },
-      { "id": "d", "text": "Launch a URL in a browser" },
-      { "id": "e", "text": "Modify CMDB relationships" }
-    ],
-    "correctAnswers": ["a", "b", "d"],
-    "selectCount": 3,
-    "explanation": {
-      "correct": "Alert Management Rules can specify responses including: run a subflow, open an incident, launch an application, or launch a URL in a browser. Events cannot be deleted by rules, and CMDB modifications are handled separately. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/alert-management-rule.html",
-      "wrongAnswers": [
-        { "choiceId": "c", "explanation": "Events cannot be deleted by Alert Management Rules", "reference": "Alert Management Rules actions" },
-        { "choiceId": "e", "explanation": "CMDB relationships are managed separately, not by alert rules", "reference": "CMDB documentation" }
-      ]
-    },
-    "references": ["Alert Management Rules", "Rule actions"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "cis-em-api/alert-management-rule.md",
-      "excerpt": "Actions: Specify the response to the alert, such as to run a subflow, perform remediation action, launch an application, or launch a URL in a browser."
-    },
-    "labels": {
+    {
+      "id": "cis-em-alerts-tasks-004",
       "certification": "cis-em",
-      "domain": "Alerts and Tasks",
-      "domainSlug": "alerts-tasks",
-      "domainPercentage": 30,
-      "subtopics": ["Alert management rules"],
-      "tags": ["rule-actions", "subflow", "incident"]
+      "topic": "alerts-tasks",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_select",
+      "question": "Which three actions can be performed by Alert Management Rules? (Choose three.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Run a subflow"
+        },
+        {
+          "id": "b",
+          "text": "Open an incident"
+        },
+        {
+          "id": "c",
+          "text": "Delete the source event"
+        },
+        {
+          "id": "d",
+          "text": "Launch a URL in a browser"
+        },
+        {
+          "id": "e",
+          "text": "Modify CMDB relationships"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b",
+        "d"
+      ],
+      "selectCount": 3,
+      "explanation": {
+        "correct": "Alert Management Rules can specify responses including: run a subflow, open an incident, launch an application, or launch a URL in a browser. Events cannot be deleted by rules, and CMDB modifications are handled separately. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/alert-management-rule.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "c",
+            "explanation": "Events cannot be deleted by Alert Management Rules",
+            "reference": "Alert Management Rules actions"
+          },
+          {
+            "choiceId": "e",
+            "explanation": "CMDB relationships are managed separately, not by alert rules",
+            "reference": "CMDB documentation"
+          }
+        ]
+      },
+      "references": [
+        "Alert Management Rules",
+        "Rule actions"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "cis-em-api/alert-management-rule.md",
+        "excerpt": "Actions: Specify the response to the alert, such as to run a subflow, perform remediation action, launch an application, or launch a URL in a browser."
+      },
+      "labels": {
+        "certification": "cis-em",
+        "domain": "Alerts and Tasks",
+        "domainSlug": "alerts-tasks",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Alert management rules"
+        ],
+        "tags": [
+          "rule-actions",
+          "subflow",
+          "incident"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-21T02:30:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-21T02:30:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-em-alerts-tasks-005",
-    "certification": "cis-em",
-    "topic": "alerts-tasks",
-    "cognitiveLevel": "application",
-    "type": "multiple_choice",
-    "question": "What is the recommended approach for enhanced performance of Event Management scheduled jobs when performing alert remediation?",
-    "options": [
-      { "id": "a", "text": "Use workflows instead of subflows" },
-      { "id": "b", "text": "Use subflows instead of workflows" },
-      { "id": "c", "text": "Disable all scheduled jobs and run manually" },
-      { "id": "d", "text": "Increase the job interval to 60 seconds" }
-    ],
-    "correctAnswers": ["b"],
-    "explanation": {
-      "correct": "For enhanced performance of Event Management - Evaluate Scoped Alert Rules Management scheduled jobs, use subflows instead of workflows. Subflows provide better performance characteristics. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/alert-management-rule.html",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "Workflows are older technology; subflows are recommended for performance", "reference": "Alert Management Rules" },
-        { "choiceId": "c", "explanation": "Disabling jobs would prevent automatic processing", "reference": "Scheduled jobs" },
-        { "choiceId": "d", "explanation": "Increasing interval doesn't improve performance, just delays processing", "reference": "Scheduled jobs" }
-      ]
-    },
-    "references": ["Alert Management Rules", "Subflows"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "cis-em-api/alert-management-rule.md",
-      "excerpt": "For enhanced performance of Event Management - Evaluate Scoped Alert Rules Management scheduled jobs, use subflows instead of workflows."
-    },
-    "labels": {
+    {
+      "id": "cis-em-alerts-tasks-005",
       "certification": "cis-em",
-      "domain": "Alerts and Tasks",
-      "domainSlug": "alerts-tasks",
-      "domainPercentage": 30,
-      "subtopics": ["Alert management rules", "Performance"],
-      "tags": ["subflows", "performance", "best-practices"]
+      "topic": "alerts-tasks",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "What is the recommended approach for enhanced performance of Event Management scheduled jobs when performing alert remediation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Use workflows instead of subflows"
+        },
+        {
+          "id": "b",
+          "text": "Use subflows instead of workflows"
+        },
+        {
+          "id": "c",
+          "text": "Disable all scheduled jobs and run manually"
+        },
+        {
+          "id": "d",
+          "text": "Increase the job interval to 60 seconds"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "For enhanced performance of Event Management - Evaluate Scoped Alert Rules Management scheduled jobs, use subflows instead of workflows. Subflows provide better performance characteristics. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/alert-management-rule.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Workflows are older technology; subflows are recommended for performance",
+            "reference": "Alert Management Rules"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Disabling jobs would prevent automatic processing",
+            "reference": "Scheduled jobs"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Increasing interval doesn't improve performance, just delays processing",
+            "reference": "Scheduled jobs"
+          }
+        ]
+      },
+      "references": [
+        "Alert Management Rules",
+        "Subflows"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "cis-em-api/alert-management-rule.md",
+        "excerpt": "For enhanced performance of Event Management - Evaluate Scoped Alert Rules Management scheduled jobs, use subflows instead of workflows."
+      },
+      "labels": {
+        "certification": "cis-em",
+        "domain": "Alerts and Tasks",
+        "domainSlug": "alerts-tasks",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Alert management rules",
+          "Performance"
+        ],
+        "tags": [
+          "subflows",
+          "performance",
+          "best-practices"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-21T02:30:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-21T02:30:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-em-alerts-tasks-006",
-    "certification": "cis-em",
-    "topic": "alerts-tasks",
-    "cognitiveLevel": "knowledge",
-    "type": "multiple_choice",
-    "question": "Which application package contains the Alert Management Rules functionality?",
-    "options": [
-      { "id": "a", "text": "Event Management [com.snc.eventmgmt]" },
-      { "id": "b", "text": "Alert Rules Management [sn_em_arm]" },
-      { "id": "c", "text": "ITOM Core [com.snc.itom]" },
-      { "id": "d", "text": "Service Analytics [com.snc.sa]" }
-    ],
-    "correctAnswers": ["b"],
-    "explanation": {
-      "correct": "Alert management rules are provided with the base system as a store application called Alert Rules Management [sn_em_arm]. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/alert-management-rule.html",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "Event Management is the parent application, but rules are in sn_em_arm", "reference": "Event Management applications" },
-        { "choiceId": "c", "explanation": "ITOM Core is the foundation, not the specific rules application", "reference": "ITOM applications" },
-        { "choiceId": "d", "explanation": "Service Analytics is for metrics, not alert rules", "reference": "Service Analytics" }
-      ]
-    },
-    "references": ["Alert Rules Management", "sn_em_arm"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "cis-em-api/alert-management-rule.md",
-      "excerpt": "Alert management rules provided with the base system as a store application (Alert Rules Management [sn_em_arm]) to help you respond to alerts."
-    },
-    "labels": {
+    {
+      "id": "cis-em-alerts-tasks-006",
       "certification": "cis-em",
-      "domain": "Alerts and Tasks",
-      "domainSlug": "alerts-tasks",
-      "domainPercentage": 30,
-      "subtopics": ["Alert management rules"],
-      "tags": ["sn_em_arm", "store-application"]
+      "topic": "alerts-tasks",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which application package contains the Alert Management Rules functionality?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Event Management [com.snc.eventmgmt]"
+        },
+        {
+          "id": "b",
+          "text": "Alert Rules Management [sn_em_arm]"
+        },
+        {
+          "id": "c",
+          "text": "ITOM Core [com.snc.itom]"
+        },
+        {
+          "id": "d",
+          "text": "Service Analytics [com.snc.sa]"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Alert management rules are provided with the base system as a store application called Alert Rules Management [sn_em_arm]. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/alert-management-rule.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Event Management is the parent application, but rules are in sn_em_arm",
+            "reference": "Event Management applications"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "ITOM Core is the foundation, not the specific rules application",
+            "reference": "ITOM applications"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Service Analytics is for metrics, not alert rules",
+            "reference": "Service Analytics"
+          }
+        ]
+      },
+      "references": [
+        "Alert Rules Management",
+        "sn_em_arm"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "cis-em-api/alert-management-rule.md",
+        "excerpt": "Alert management rules provided with the base system as a store application (Alert Rules Management [sn_em_arm]) to help you respond to alerts."
+      },
+      "labels": {
+        "certification": "cis-em",
+        "domain": "Alerts and Tasks",
+        "domainSlug": "alerts-tasks",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Alert management rules"
+        ],
+        "tags": [
+          "sn_em_arm",
+          "store-application"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-21T02:30:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-21T02:30:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-em-alerts-tasks-007",
-    "certification": "cis-em",
-    "topic": "alerts-tasks",
-    "cognitiveLevel": "understanding",
-    "type": "multiple_choice",
-    "question": "What is the purpose of creating Key Values for alert clustering?",
-    "options": [
-      { "id": "a", "text": "To encrypt sensitive alert data" },
-      { "id": "b", "text": "To determine commonality between alerts and group them together" },
-      { "id": "c", "text": "To create unique identifiers for each alert" },
-      { "id": "d", "text": "To assign priority scores to alerts" }
-    ],
-    "correctAnswers": ["b"],
-    "explanation": {
-      "correct": "Key values create an additional way to determine commonality between alerts and to combine them into groups. For example, you may want to group alerts on CIs that share the same supplier or location. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/task/alert-clustering-cis.html",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "Key values are for grouping, not encryption", "reference": "Alert clustering documentation" },
-        { "choiceId": "c", "explanation": "Alert IDs are separate from clustering key values", "reference": "Alert identification" },
-        { "choiceId": "d", "explanation": "Priority scoring is handled separately", "reference": "Alert priority" }
-      ]
-    },
-    "references": ["Alert clustering", "Key values"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "cis-em-api/alert-clustering-cis.md",
-      "excerpt": "Key values create an additional way to determine commonality between alerts and to combine them into groups. For example, you may want to group alerts on CIs that share the same supplier or location."
-    },
-    "labels": {
+    {
+      "id": "cis-em-alerts-tasks-007",
       "certification": "cis-em",
-      "domain": "Alerts and Tasks",
-      "domainSlug": "alerts-tasks",
-      "domainPercentage": 30,
-      "subtopics": ["Alert clustering", "Alert aggregation"],
-      "tags": ["key-values", "alert-grouping"]
+      "topic": "alerts-tasks",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What is the purpose of creating Key Values for alert clustering?",
+      "options": [
+        {
+          "id": "a",
+          "text": "To encrypt sensitive alert data"
+        },
+        {
+          "id": "b",
+          "text": "To determine commonality between alerts and group them together"
+        },
+        {
+          "id": "c",
+          "text": "To create unique identifiers for each alert"
+        },
+        {
+          "id": "d",
+          "text": "To assign priority scores to alerts"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Key values create an additional way to determine commonality between alerts and to combine them into groups. For example, you may want to group alerts on CIs that share the same supplier or location. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/task/alert-clustering-cis.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Key values are for grouping, not encryption",
+            "reference": "Alert clustering documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Alert IDs are separate from clustering key values",
+            "reference": "Alert identification"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Priority scoring is handled separately",
+            "reference": "Alert priority"
+          }
+        ]
+      },
+      "references": [
+        "Alert clustering",
+        "Key values"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "cis-em-api/alert-clustering-cis.md",
+        "excerpt": "Key values create an additional way to determine commonality between alerts and to combine them into groups. For example, you may want to group alerts on CIs that share the same supplier or location."
+      },
+      "labels": {
+        "certification": "cis-em",
+        "domain": "Alerts and Tasks",
+        "domainSlug": "alerts-tasks",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Alert clustering",
+          "Alert aggregation"
+        ],
+        "tags": [
+          "key-values",
+          "alert-grouping"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-21T02:30:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-21T02:30:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-em-alerts-tasks-008",
-    "certification": "cis-em",
-    "topic": "alerts-tasks",
-    "cognitiveLevel": "application",
-    "type": "multiple_choice",
-    "question": "How can you prevent duplicate incident creation when both alert management and alert grouping jobs are running?",
-    "options": [
-      { "id": "a", "text": "Disable alert grouping entirely" },
-      { "id": "b", "text": "Synchronize alert response with automated alert grouping so management jobs run after grouping jobs" },
-      { "id": "c", "text": "Run alert management jobs more frequently" },
-      { "id": "d", "text": "Create incidents only manually" }
-    ],
-    "correctAnswers": ["b"],
-    "explanation": {
-      "correct": "To avoid duplicate actions like incident creation on secondary alerts, synchronize alert response with grouping by ensuring alert management jobs run after alert grouping jobs complete. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/alert-management-rule.html",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "Disabling grouping removes valuable functionality", "reference": "Alert grouping" },
-        { "choiceId": "c", "explanation": "Frequency increase doesn't prevent duplicates", "reference": "Alert management" },
-        { "choiceId": "d", "explanation": "Manual creation defeats automation purpose", "reference": "Alert automation" }
-      ]
-    },
-    "references": ["Alert synchronization", "Automated alert grouping"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "cis-em-api/alert-management-rule.md",
-      "excerpt": "Synchronize alert response with grouping by ensuring alert management jobs runs after alert grouping jobs—this prevents duplicate actions like incident creation on secondary alerts."
-    },
-    "labels": {
+    {
+      "id": "cis-em-alerts-tasks-008",
       "certification": "cis-em",
-      "domain": "Alerts and Tasks",
-      "domainSlug": "alerts-tasks",
-      "domainPercentage": 30,
-      "subtopics": ["Alert management rules", "Alert grouping"],
-      "tags": ["synchronization", "duplicate-prevention"]
+      "topic": "alerts-tasks",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "How can you prevent duplicate incident creation when both alert management and alert grouping jobs are running?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Disable alert grouping entirely"
+        },
+        {
+          "id": "b",
+          "text": "Synchronize alert response with automated alert grouping so management jobs run after grouping jobs"
+        },
+        {
+          "id": "c",
+          "text": "Run alert management jobs more frequently"
+        },
+        {
+          "id": "d",
+          "text": "Create incidents only manually"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "To avoid duplicate actions like incident creation on secondary alerts, synchronize alert response with grouping by ensuring alert management jobs run after alert grouping jobs complete. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/alert-management-rule.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Disabling grouping removes valuable functionality",
+            "reference": "Alert grouping"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Frequency increase doesn't prevent duplicates",
+            "reference": "Alert management"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Manual creation defeats automation purpose",
+            "reference": "Alert automation"
+          }
+        ]
+      },
+      "references": [
+        "Alert synchronization",
+        "Automated alert grouping"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "cis-em-api/alert-management-rule.md",
+        "excerpt": "Synchronize alert response with grouping by ensuring alert management jobs runs after alert grouping jobs—this prevents duplicate actions like incident creation on secondary alerts."
+      },
+      "labels": {
+        "certification": "cis-em",
+        "domain": "Alerts and Tasks",
+        "domainSlug": "alerts-tasks",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Alert management rules",
+          "Alert grouping"
+        ],
+        "tags": [
+          "synchronization",
+          "duplicate-prevention"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-21T02:30:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-21T02:30:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-em-alerts-tasks-009",
-    "certification": "cis-em",
-    "topic": "alerts-tasks",
-    "cognitiveLevel": "knowledge",
-    "type": "multiple_choice",
-    "question": "What is the name of the default scheduled job that evaluates Alert Management Rules?",
-    "options": [
-      { "id": "a", "text": "Event Management - Process Alerts" },
-      { "id": "b", "text": "Event Management - Evaluate Scoped Alert Rules Management0" },
-      { "id": "c", "text": "Alert Rules - Scheduled Evaluation" },
-      { "id": "d", "text": "ITOM - Alert Rule Processor" }
-    ],
-    "correctAnswers": ["b"],
-    "explanation": {
-      "correct": "The default scheduled job that evaluates alert management rules is named 'Event Management - Evaluate Scoped Alert Rules Management0'. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/alert-management-rule.html",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "This is not the correct job name", "reference": "Scheduled jobs" },
-        { "choiceId": "c", "explanation": "This is not the correct job name", "reference": "Scheduled jobs" },
-        { "choiceId": "d", "explanation": "This is not the correct job name", "reference": "Scheduled jobs" }
-      ]
-    },
-    "references": ["Scheduled jobs", "Alert Management Rules"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "cis-em-api/alert-management-rule.md",
-      "excerpt": "Alert management rules are checked every 11 seconds by the default Event Management - Evaluate Scoped Alert Rules Management0 scheduled job."
-    },
-    "labels": {
+    {
+      "id": "cis-em-alerts-tasks-009",
       "certification": "cis-em",
-      "domain": "Alerts and Tasks",
-      "domainSlug": "alerts-tasks",
-      "domainPercentage": 30,
-      "subtopics": ["Scheduled jobs"],
-      "tags": ["scheduled-job", "job-name"]
+      "topic": "alerts-tasks",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What is the name of the default scheduled job that evaluates Alert Management Rules?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Event Management - Process Alerts"
+        },
+        {
+          "id": "b",
+          "text": "Event Management - Evaluate Scoped Alert Rules Management0"
+        },
+        {
+          "id": "c",
+          "text": "Alert Rules - Scheduled Evaluation"
+        },
+        {
+          "id": "d",
+          "text": "ITOM - Alert Rule Processor"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The default scheduled job that evaluates alert management rules is named 'Event Management - Evaluate Scoped Alert Rules Management0'. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/alert-management-rule.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "This is not the correct job name",
+            "reference": "Scheduled jobs"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "This is not the correct job name",
+            "reference": "Scheduled jobs"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "This is not the correct job name",
+            "reference": "Scheduled jobs"
+          }
+        ]
+      },
+      "references": [
+        "Scheduled jobs",
+        "Alert Management Rules"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "cis-em-api/alert-management-rule.md",
+        "excerpt": "Alert management rules are checked every 11 seconds by the default Event Management - Evaluate Scoped Alert Rules Management0 scheduled job."
+      },
+      "labels": {
+        "certification": "cis-em",
+        "domain": "Alerts and Tasks",
+        "domainSlug": "alerts-tasks",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Scheduled jobs"
+        ],
+        "tags": [
+          "scheduled-job",
+          "job-name"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-21T02:30:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-21T02:30:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-em-alerts-tasks-010",
-    "certification": "cis-em",
-    "topic": "alerts-tasks",
-    "cognitiveLevel": "understanding",
-    "type": "multiple_choice",
-    "question": "Starting from which ServiceNow release do new users get two scheduled jobs for Alert Rules Management instead of one?",
-    "options": [
-      { "id": "a", "text": "Tokyo" },
-      { "id": "b", "text": "Utah" },
-      { "id": "c", "text": "Vancouver" },
-      { "id": "d", "text": "Washington DC" }
-    ],
-    "correctAnswers": ["c"],
-    "explanation": {
-      "correct": "Only new users from Vancouver and up get two scheduled jobs: Event Management - Evaluate Scoped Alert Rules Management0 and Event Management - Evaluate Scoped Alert Rules Management1. Users upgrading from previous releases remain with a single job. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/alert-management-rule.html",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "Tokyo predates the two-job configuration", "reference": "Release notes" },
-        { "choiceId": "b", "explanation": "Utah predates the two-job configuration", "reference": "Release notes" },
-        { "choiceId": "d", "explanation": "Washington DC is after Vancouver but the feature was introduced in Vancouver", "reference": "Release notes" }
-      ]
-    },
-    "references": ["Scheduled jobs", "Release notes"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "cis-em-api/alert-management-rule.md",
-      "excerpt": "Only new users from Vancouver and up get two scheduled jobs: Event Management - Evaluate Scoped Alert Rules Management0 and Event Management - Evaluate Scoped Alert Rules Management1."
-    },
-    "labels": {
+    {
+      "id": "cis-em-alerts-tasks-010",
       "certification": "cis-em",
-      "domain": "Alerts and Tasks",
-      "domainSlug": "alerts-tasks",
-      "domainPercentage": 30,
-      "subtopics": ["Scheduled jobs"],
-      "tags": ["vancouver", "release", "scheduled-jobs"]
+      "topic": "alerts-tasks",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "Starting from which ServiceNow release do new users get two scheduled jobs for Alert Rules Management instead of one?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Tokyo"
+        },
+        {
+          "id": "b",
+          "text": "Utah"
+        },
+        {
+          "id": "c",
+          "text": "Vancouver"
+        },
+        {
+          "id": "d",
+          "text": "Washington DC"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "Only new users from Vancouver and up get two scheduled jobs: Event Management - Evaluate Scoped Alert Rules Management0 and Event Management - Evaluate Scoped Alert Rules Management1. Users upgrading from previous releases remain with a single job. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/alert-management-rule.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Tokyo predates the two-job configuration",
+            "reference": "Release notes"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "Utah predates the two-job configuration",
+            "reference": "Release notes"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Washington DC is after Vancouver but the feature was introduced in Vancouver",
+            "reference": "Release notes"
+          }
+        ]
+      },
+      "references": [
+        "Scheduled jobs",
+        "Release notes"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "cis-em-api/alert-management-rule.md",
+        "excerpt": "Only new users from Vancouver and up get two scheduled jobs: Event Management - Evaluate Scoped Alert Rules Management0 and Event Management - Evaluate Scoped Alert Rules Management1."
+      },
+      "labels": {
+        "certification": "cis-em",
+        "domain": "Alerts and Tasks",
+        "domainSlug": "alerts-tasks",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Scheduled jobs"
+        ],
+        "tags": [
+          "vancouver",
+          "release",
+          "scheduled-jobs"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-21T02:30:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-21T02:30:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-em-alerts-tasks-011",
-    "certification": "cis-em",
-    "topic": "alerts-tasks",
-    "cognitiveLevel": "application",
-    "type": "multiple_choice",
-    "question": "An organization has many alerts from CIs in the same datacenter. How can they configure Event Management to group these alerts together?",
-    "options": [
-      { "id": "a", "text": "Create key values based on the CI's location attribute" },
-      { "id": "b", "text": "Set all alerts to the same severity" },
-      { "id": "c", "text": "Use the same event source for all CIs" },
-      { "id": "d", "text": "Configure identical message keys" }
-    ],
-    "correctAnswers": ["a"],
-    "explanation": {
-      "correct": "Key values can be created using CI attributes like location to determine commonality between alerts. For example, you may want to group alerts on CIs that share the same supplier or location. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/task/alert-clustering-cis.html",
-      "wrongAnswers": [
-        { "choiceId": "b", "explanation": "Same severity doesn't create logical grouping", "reference": "Alert clustering" },
-        { "choiceId": "c", "explanation": "Event source alone doesn't enable location-based grouping", "reference": "Alert clustering" },
-        { "choiceId": "d", "explanation": "Identical message keys would merge alerts, not group them", "reference": "Message keys" }
-      ]
-    },
-    "references": ["Alert clustering", "Key values", "CI attributes"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "cis-em-api/alert-clustering-cis.md",
-      "excerpt": "Key values create an additional way to determine commonality between alerts and to combine them into groups. For example, you may want to group alerts on CIs that share the same supplier or location."
-    },
-    "labels": {
+    {
+      "id": "cis-em-alerts-tasks-011",
       "certification": "cis-em",
-      "domain": "Alerts and Tasks",
-      "domainSlug": "alerts-tasks",
-      "domainPercentage": 30,
-      "subtopics": ["Alert clustering"],
-      "tags": ["key-values", "location", "scenario"]
+      "topic": "alerts-tasks",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "An organization has many alerts from CIs in the same datacenter. How can they configure Event Management to group these alerts together?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Create key values based on the CI's location attribute"
+        },
+        {
+          "id": "b",
+          "text": "Set all alerts to the same severity"
+        },
+        {
+          "id": "c",
+          "text": "Use the same event source for all CIs"
+        },
+        {
+          "id": "d",
+          "text": "Configure identical message keys"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "Key values can be created using CI attributes like location to determine commonality between alerts. For example, you may want to group alerts on CIs that share the same supplier or location. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/task/alert-clustering-cis.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Same severity doesn't create logical grouping",
+            "reference": "Alert clustering"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Event source alone doesn't enable location-based grouping",
+            "reference": "Alert clustering"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Identical message keys would merge alerts, not group them",
+            "reference": "Message keys"
+          }
+        ]
+      },
+      "references": [
+        "Alert clustering",
+        "Key values",
+        "CI attributes"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "cis-em-api/alert-clustering-cis.md",
+        "excerpt": "Key values create an additional way to determine commonality between alerts and to combine them into groups. For example, you may want to group alerts on CIs that share the same supplier or location."
+      },
+      "labels": {
+        "certification": "cis-em",
+        "domain": "Alerts and Tasks",
+        "domainSlug": "alerts-tasks",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Alert clustering"
+        ],
+        "tags": [
+          "key-values",
+          "location",
+          "scenario"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-21T02:30:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-21T02:30:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-em-alerts-tasks-012",
-    "certification": "cis-em",
-    "topic": "alerts-tasks",
-    "cognitiveLevel": "knowledge",
-    "type": "multiple_choice",
-    "question": "Which role is required to create key values for alert clustering?",
-    "options": [
-      { "id": "a", "text": "itil" },
-      { "id": "b", "text": "evt_mgmt_user" },
-      { "id": "c", "text": "evt_mgmt_admin" },
-      { "id": "d", "text": "cluster_admin" }
-    ],
-    "correctAnswers": ["c"],
-    "explanation": {
-      "correct": "The evt_mgmt_admin role is required to create key values for alert clustering. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/task/alert-clustering-cis.html",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "itil is for ITSM tasks, not Event Management admin functions", "reference": "Role documentation" },
-        { "choiceId": "b", "explanation": "evt_mgmt_user has limited permissions", "reference": "Event Management roles" },
-        { "choiceId": "d", "explanation": "cluster_admin is not a standard ServiceNow role", "reference": "Role documentation" }
-      ]
-    },
-    "references": ["Alert clustering", "evt_mgmt_admin"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "cis-em-api/alert-clustering-cis.md",
-      "excerpt": "Role required: evt_mgmt_admin"
-    },
-    "labels": {
+    {
+      "id": "cis-em-alerts-tasks-012",
       "certification": "cis-em",
-      "domain": "Alerts and Tasks",
-      "domainSlug": "alerts-tasks",
-      "domainPercentage": 30,
-      "subtopics": ["Alert clustering"],
-      "tags": ["roles", "evt_mgmt_admin"]
+      "topic": "alerts-tasks",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which role is required to create key values for alert clustering?",
+      "options": [
+        {
+          "id": "a",
+          "text": "itil"
+        },
+        {
+          "id": "b",
+          "text": "evt_mgmt_user"
+        },
+        {
+          "id": "c",
+          "text": "evt_mgmt_admin"
+        },
+        {
+          "id": "d",
+          "text": "cluster_admin"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "The evt_mgmt_admin role is required to create key values for alert clustering. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/task/alert-clustering-cis.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "itil is for ITSM tasks, not Event Management admin functions",
+            "reference": "Role documentation"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "evt_mgmt_user has limited permissions",
+            "reference": "Event Management roles"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "cluster_admin is not a standard ServiceNow role",
+            "reference": "Role documentation"
+          }
+        ]
+      },
+      "references": [
+        "Alert clustering",
+        "evt_mgmt_admin"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "cis-em-api/alert-clustering-cis.md",
+        "excerpt": "Role required: evt_mgmt_admin"
+      },
+      "labels": {
+        "certification": "cis-em",
+        "domain": "Alerts and Tasks",
+        "domainSlug": "alerts-tasks",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Alert clustering"
+        ],
+        "tags": [
+          "roles",
+          "evt_mgmt_admin"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-21T02:30:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-21T02:30:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-em-alerts-tasks-013",
-    "certification": "cis-em",
-    "topic": "alerts-tasks",
-    "cognitiveLevel": "understanding",
-    "type": "compound_true_false",
-    "question": "Which of the following statements about Alert Management Rules are true?\na) Alert management rules can open incidents based on alert conditions\nb) Rules run on closed alerts when they are updated\nc) The alert execution history is automatically updated when actions are invoked\nd) Rules can launch remediation actions on affected CIs",
-    "options": [
-      { "id": "a", "text": "a, c, and d only" },
-      { "id": "b", "text": "a, b, c, and d" },
-      { "id": "c", "text": "a and c only" },
-      { "id": "d", "text": "b and d only" }
-    ],
-    "correctAnswers": ["a"],
-    "statements": {
-      "a": true,
-      "b": false,
-      "c": true,
-      "d": true
-    },
-    "explanation": {
-      "correct": "Statements a, c, and d are true. Statement b is false - rules don't run on closed alerts, even if they've been updated. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/alert-management-rule.html",
-      "wrongAnswers": [
-        { "choiceId": "b", "explanation": "Statement b is false - rules don't run on closed alerts", "reference": "Alert Management Rules" },
-        { "choiceId": "c", "explanation": "Statement d is also true about remediation actions", "reference": "Alert Management Rules" },
-        { "choiceId": "d", "explanation": "Statement b is false, not true", "reference": "Alert Management Rules" }
-      ]
-    },
-    "references": ["Alert Management Rules", "Rule execution"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "cis-em-api/alert-management-rule.md",
-      "excerpt": "Alert management rules run on all updated open alerts. Rules don't run on closed alerts. The alert's execution history is automatically updated to indicate the actions that were invoked."
-    },
-    "labels": {
+    {
+      "id": "cis-em-alerts-tasks-013",
       "certification": "cis-em",
-      "domain": "Alerts and Tasks",
-      "domainSlug": "alerts-tasks",
-      "domainPercentage": 30,
-      "subtopics": ["Alert management rules"],
-      "tags": ["compound-question", "rule-execution"]
+      "topic": "alerts-tasks",
+      "cognitiveLevel": "understanding",
+      "type": "compound_true_false",
+      "question": "Which of the following statements about Alert Management Rules are true?\na) Alert management rules can open incidents based on alert conditions\nb) Rules run on closed alerts when they are updated\nc) The alert execution history is automatically updated when actions are invoked\nd) Rules can launch remediation actions on affected CIs",
+      "options": [
+        {
+          "id": "a",
+          "text": "a, c, and d only"
+        },
+        {
+          "id": "b",
+          "text": "a, b, c, and d"
+        },
+        {
+          "id": "c",
+          "text": "a and c only"
+        },
+        {
+          "id": "d",
+          "text": "b and d only"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "statements": {
+        "a": true,
+        "b": false,
+        "c": true,
+        "d": true
+      },
+      "explanation": {
+        "correct": "Statements a, c, and d are true. Statement b is false - rules don't run on closed alerts, even if they've been updated. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/alert-management-rule.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Statement b is false - rules don't run on closed alerts",
+            "reference": "Alert Management Rules"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Statement d is also true about remediation actions",
+            "reference": "Alert Management Rules"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Statement b is false, not true",
+            "reference": "Alert Management Rules"
+          }
+        ]
+      },
+      "references": [
+        "Alert Management Rules",
+        "Rule execution"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "cis-em-api/alert-management-rule.md",
+        "excerpt": "Alert management rules run on all updated open alerts. Rules don't run on closed alerts. The alert's execution history is automatically updated to indicate the actions that were invoked."
+      },
+      "labels": {
+        "certification": "cis-em",
+        "domain": "Alerts and Tasks",
+        "domainSlug": "alerts-tasks",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Alert management rules"
+        ],
+        "tags": [
+          "compound-question",
+          "rule-execution"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-21T02:30:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-21T02:30:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-em-alerts-tasks-014",
-    "certification": "cis-em",
-    "topic": "alerts-tasks",
-    "cognitiveLevel": "understanding",
-    "type": "multiple_choice",
-    "question": "What happens to existing alert action rules from earlier releases when upgrading to a newer ServiceNow version?",
-    "options": [
-      { "id": "a", "text": "They are automatically deleted" },
-      { "id": "b", "text": "They can be executed but cannot be modified until migrated" },
-      { "id": "c", "text": "They continue to work without any changes needed" },
-      { "id": "d", "text": "They are automatically converted to subflows" }
-    ],
-    "correctAnswers": ["b"],
-    "explanation": {
-      "correct": "Existing alert action rules from an earlier release can be executed, but cannot be modified. Alert action rules that have been migrated become alert management rules and all definitions are migrated to the new format. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/alert-management-rule.html",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "Old rules are retained, not deleted", "reference": "Alert action rule migration" },
-        { "choiceId": "c", "explanation": "Modification requires migration to the new format", "reference": "Alert action rule migration" },
-        { "choiceId": "d", "explanation": "Rules migrate to alert management rules, not subflows", "reference": "Alert action rule migration" }
-      ]
-    },
-    "references": ["Alert action rules", "Migration"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "cis-em-api/alert-management-rule.md",
-      "excerpt": "Existing alert action rules from an earlier release can be executed, but cannot be modified. Alert action rules that have been migrated become alert management rules."
-    },
-    "labels": {
+    {
+      "id": "cis-em-alerts-tasks-014",
       "certification": "cis-em",
-      "domain": "Alerts and Tasks",
-      "domainSlug": "alerts-tasks",
-      "domainPercentage": 30,
-      "subtopics": ["Alert management rules"],
-      "tags": ["migration", "upgrade"]
+      "topic": "alerts-tasks",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What happens to existing alert action rules from earlier releases when upgrading to a newer ServiceNow version?",
+      "options": [
+        {
+          "id": "a",
+          "text": "They are automatically deleted"
+        },
+        {
+          "id": "b",
+          "text": "They can be executed but cannot be modified until migrated"
+        },
+        {
+          "id": "c",
+          "text": "They continue to work without any changes needed"
+        },
+        {
+          "id": "d",
+          "text": "They are automatically converted to subflows"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Existing alert action rules from an earlier release can be executed, but cannot be modified. Alert action rules that have been migrated become alert management rules and all definitions are migrated to the new format. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/alert-management-rule.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Old rules are retained, not deleted",
+            "reference": "Alert action rule migration"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Modification requires migration to the new format",
+            "reference": "Alert action rule migration"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Rules migrate to alert management rules, not subflows",
+            "reference": "Alert action rule migration"
+          }
+        ]
+      },
+      "references": [
+        "Alert action rules",
+        "Migration"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "cis-em-api/alert-management-rule.md",
+        "excerpt": "Existing alert action rules from an earlier release can be executed, but cannot be modified. Alert action rules that have been migrated become alert management rules."
+      },
+      "labels": {
+        "certification": "cis-em",
+        "domain": "Alerts and Tasks",
+        "domainSlug": "alerts-tasks",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Alert management rules"
+        ],
+        "tags": [
+          "migration",
+          "upgrade"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-21T02:30:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-21T02:30:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-em-alerts-tasks-015",
-    "certification": "cis-em",
-    "topic": "alerts-tasks",
-    "cognitiveLevel": "application",
-    "type": "multiple_choice",
-    "question": "An administrator wants to configure a rule that sends an email when alert severity changes to Major. How should the filter be configured?",
-    "options": [
-      { "id": "a", "text": "No filter needed - rules apply to all alerts" },
-      { "id": "b", "text": "Filter condition specifying severity equals Major" },
-      { "id": "c", "text": "Use Related List Conditions with severity history" },
-      { "id": "d", "text": "Create a separate rule for each severity level" }
-    ],
-    "correctAnswers": ["b"],
-    "explanation": {
-      "correct": "Filters ensure that the rule is invoked only when the configured condition occurs. A filter condition can specify that the alert management rule runs only when the alert severity is critical (or Major in this case). Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/alert-management-rule.html",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "Without filters, the rule would run on every update", "reference": "Alert Management Rules filters" },
-        { "choiceId": "c", "explanation": "Related List Conditions are for related record filtering, not severity", "reference": "Alert Management Rules" },
-        { "choiceId": "d", "explanation": "Multiple rules are not needed; one filtered rule is sufficient", "reference": "Alert Management Rules" }
-      ]
-    },
-    "references": ["Alert Management Rules", "Filter conditions"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "cis-em-api/alert-management-rule.md",
-      "excerpt": "Filters ensure that the rule is invoked only when the configured condition occurs. A filter condition can specify that the alert management rule runs only when the alert severity is critical."
-    },
-    "labels": {
+    {
+      "id": "cis-em-alerts-tasks-015",
       "certification": "cis-em",
-      "domain": "Alerts and Tasks",
-      "domainSlug": "alerts-tasks",
-      "domainPercentage": 30,
-      "subtopics": ["Alert management rules"],
-      "tags": ["filter", "severity", "scenario"]
+      "topic": "alerts-tasks",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "An administrator wants to configure a rule that sends an email when alert severity changes to Major. How should the filter be configured?",
+      "options": [
+        {
+          "id": "a",
+          "text": "No filter needed - rules apply to all alerts"
+        },
+        {
+          "id": "b",
+          "text": "Filter condition specifying severity equals Major"
+        },
+        {
+          "id": "c",
+          "text": "Use Related List Conditions with severity history"
+        },
+        {
+          "id": "d",
+          "text": "Create a separate rule for each severity level"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Filters ensure that the rule is invoked only when the configured condition occurs. A filter condition can specify that the alert management rule runs only when the alert severity is critical (or Major in this case). Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/alert-management-rule.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Without filters, the rule would run on every update",
+            "reference": "Alert Management Rules filters"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Related List Conditions are for related record filtering, not severity",
+            "reference": "Alert Management Rules"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Multiple rules are not needed; one filtered rule is sufficient",
+            "reference": "Alert Management Rules"
+          }
+        ]
+      },
+      "references": [
+        "Alert Management Rules",
+        "Filter conditions"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "cis-em-api/alert-management-rule.md",
+        "excerpt": "Filters ensure that the rule is invoked only when the configured condition occurs. A filter condition can specify that the alert management rule runs only when the alert severity is critical."
+      },
+      "labels": {
+        "certification": "cis-em",
+        "domain": "Alerts and Tasks",
+        "domainSlug": "alerts-tasks",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Alert management rules"
+        ],
+        "tags": [
+          "filter",
+          "severity",
+          "scenario"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-21T02:30:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-21T02:30:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-em-alerts-tasks-016",
-    "certification": "cis-em",
-    "topic": "alerts-tasks",
-    "cognitiveLevel": "understanding",
-    "type": "multiple_choice",
-    "question": "What type of information can be configured in the Related List Conditions section of an Alert Management Rule?",
-    "options": [
-      { "id": "a", "text": "Conditions based on related records, such as alerts received today with a Parent relationship" },
-      { "id": "b", "text": "LDAP group membership for assignment routing" },
-      { "id": "c", "text": "Email notification templates" },
-      { "id": "d", "text": "Scheduled job timing parameters" }
-    ],
-    "correctAnswers": ["a"],
-    "explanation": {
-      "correct": "In the Related List Conditions section, you can configure additional conditions with relationships. For example, with an Alert > Parent relationship, you can filter for any alerts that were received today. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/alert-management-rule.html",
-      "wrongAnswers": [
-        { "choiceId": "b", "explanation": "LDAP integration is separate from Alert Management Rules", "reference": "Alert Management Rules" },
-        { "choiceId": "c", "explanation": "Email templates are configured in notifications, not rule conditions", "reference": "Notifications" },
-        { "choiceId": "d", "explanation": "Scheduled job timing is configured in the job, not rule conditions", "reference": "Scheduled jobs" }
-      ]
-    },
-    "references": ["Alert Management Rules", "Related List Conditions"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "cis-em-api/alert-management-rule.md",
-      "excerpt": "In the Related List Conditions section of the form, configure additional conditions, for example, with an Alert > Parent relationship, to filter for any alerts that were received today."
-    },
-    "labels": {
+    {
+      "id": "cis-em-alerts-tasks-016",
       "certification": "cis-em",
-      "domain": "Alerts and Tasks",
-      "domainSlug": "alerts-tasks",
-      "domainPercentage": 30,
-      "subtopics": ["Alert management rules"],
-      "tags": ["related-list", "conditions"]
+      "topic": "alerts-tasks",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What type of information can be configured in the Related List Conditions section of an Alert Management Rule?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Conditions based on related records, such as alerts received today with a Parent relationship"
+        },
+        {
+          "id": "b",
+          "text": "LDAP group membership for assignment routing"
+        },
+        {
+          "id": "c",
+          "text": "Email notification templates"
+        },
+        {
+          "id": "d",
+          "text": "Scheduled job timing parameters"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "In the Related List Conditions section, you can configure additional conditions with relationships. For example, with an Alert > Parent relationship, you can filter for any alerts that were received today. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/alert-management-rule.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "LDAP integration is separate from Alert Management Rules",
+            "reference": "Alert Management Rules"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Email templates are configured in notifications, not rule conditions",
+            "reference": "Notifications"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Scheduled job timing is configured in the job, not rule conditions",
+            "reference": "Scheduled jobs"
+          }
+        ]
+      },
+      "references": [
+        "Alert Management Rules",
+        "Related List Conditions"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "cis-em-api/alert-management-rule.md",
+        "excerpt": "In the Related List Conditions section of the form, configure additional conditions, for example, with an Alert > Parent relationship, to filter for any alerts that were received today."
+      },
+      "labels": {
+        "certification": "cis-em",
+        "domain": "Alerts and Tasks",
+        "domainSlug": "alerts-tasks",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Alert management rules"
+        ],
+        "tags": [
+          "related-list",
+          "conditions"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-21T02:30:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-21T02:30:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-em-alerts-tasks-017",
-    "certification": "cis-em",
-    "topic": "alerts-tasks",
-    "cognitiveLevel": "knowledge",
-    "type": "multiple_choice",
-    "question": "What is the recommended approach for large-scale environments that need to process alert management rules faster?",
-    "options": [
-      { "id": "a", "text": "Decrease the job interval to 5 seconds" },
-      { "id": "b", "text": "Add more scheduled jobs by contacting Customer Service and Support" },
-      { "id": "c", "text": "Upgrade to a higher ServiceNow instance tier" },
-      { "id": "d", "text": "Disable half of the alert management rules" }
-    ],
-    "correctAnswers": ["b"],
-    "explanation": {
-      "correct": "For large-scale environments, you can add more than one scheduled job to process alert management rules. This requires contacting Customer Service and Support. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/alert-management-rule.html",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "Modifying the interval is not recommended without guidance", "reference": "Alert Management Rules" },
-        { "choiceId": "c", "explanation": "Instance tier doesn't directly address job processing", "reference": "Instance configuration" },
-        { "choiceId": "d", "explanation": "Disabling rules removes functionality", "reference": "Alert Management Rules" }
-      ]
-    },
-    "references": ["Scheduled jobs", "Large-scale environments"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "cis-em-api/alert-management-rule.md",
-      "excerpt": "For large-scale environments, you can add more than one job. Please contact Customer Service and Support."
-    },
-    "labels": {
+    {
+      "id": "cis-em-alerts-tasks-017",
       "certification": "cis-em",
-      "domain": "Alerts and Tasks",
-      "domainSlug": "alerts-tasks",
-      "domainPercentage": 30,
-      "subtopics": ["Scheduled jobs", "Performance"],
-      "tags": ["large-scale", "support"]
+      "topic": "alerts-tasks",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What is the recommended approach for large-scale environments that need to process alert management rules faster?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Decrease the job interval to 5 seconds"
+        },
+        {
+          "id": "b",
+          "text": "Add more scheduled jobs by contacting Customer Service and Support"
+        },
+        {
+          "id": "c",
+          "text": "Upgrade to a higher ServiceNow instance tier"
+        },
+        {
+          "id": "d",
+          "text": "Disable half of the alert management rules"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "For large-scale environments, you can add more than one scheduled job to process alert management rules. This requires contacting Customer Service and Support. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/alert-management-rule.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Modifying the interval is not recommended without guidance",
+            "reference": "Alert Management Rules"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Instance tier doesn't directly address job processing",
+            "reference": "Instance configuration"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Disabling rules removes functionality",
+            "reference": "Alert Management Rules"
+          }
+        ]
+      },
+      "references": [
+        "Scheduled jobs",
+        "Large-scale environments"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "cis-em-api/alert-management-rule.md",
+        "excerpt": "For large-scale environments, you can add more than one job. Please contact Customer Service and Support."
+      },
+      "labels": {
+        "certification": "cis-em",
+        "domain": "Alerts and Tasks",
+        "domainSlug": "alerts-tasks",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Scheduled jobs",
+          "Performance"
+        ],
+        "tags": [
+          "large-scale",
+          "support"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-21T02:30:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-21T02:30:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-em-alerts-tasks-018",
-    "certification": "cis-em",
-    "topic": "alerts-tasks",
-    "cognitiveLevel": "knowledge",
-    "type": "multiple_choice",
-    "question": "Which property should NOT be modified according to ServiceNow documentation regarding Alert Rules Management scheduled jobs?",
-    "options": [
-      { "id": "a", "text": "sn_em_arm.alert_management.enabled" },
-      { "id": "b", "text": "sn_em_arm.alert_management.num_of_jobs" },
-      { "id": "c", "text": "sn_em_arm.alert_management.interval" },
-      { "id": "d", "text": "sn_em_arm.alert_management.timeout" }
-    ],
-    "correctAnswers": ["b"],
-    "explanation": {
-      "correct": "ServiceNow documentation explicitly warns: Don't modify the sn_em_arm.alert_management.num_of_jobs property. Changes should be made through Customer Service and Support. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/alert-management-rule.html",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "This property is not specifically mentioned as restricted", "reference": "Alert Management Rules" },
-        { "choiceId": "c", "explanation": "This property is not specifically mentioned as restricted", "reference": "Alert Management Rules" },
-        { "choiceId": "d", "explanation": "This property is not specifically mentioned as restricted", "reference": "Alert Management Rules" }
-      ]
-    },
-    "references": ["System properties", "Alert Rules Management"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "cis-em-api/alert-management-rule.md",
-      "excerpt": "Don't modify the sn_em_arm.alert_management.num_of_jobs property."
-    },
-    "labels": {
+    {
+      "id": "cis-em-alerts-tasks-018",
       "certification": "cis-em",
-      "domain": "Alerts and Tasks",
-      "domainSlug": "alerts-tasks",
-      "domainPercentage": 30,
-      "subtopics": ["Scheduled jobs"],
-      "tags": ["properties", "configuration"]
-    },
-    "meta": {
-      "generatedAt": "2026-02-21T02:30:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
+      "topic": "alerts-tasks",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which property should NOT be modified according to ServiceNow documentation regarding Alert Rules Management scheduled jobs?",
+      "options": [
+        {
+          "id": "a",
+          "text": "sn_em_arm.alert_management.enabled"
+        },
+        {
+          "id": "b",
+          "text": "sn_em_arm.alert_management.num_of_jobs"
+        },
+        {
+          "id": "c",
+          "text": "sn_em_arm.alert_management.interval"
+        },
+        {
+          "id": "d",
+          "text": "sn_em_arm.alert_management.timeout"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "ServiceNow documentation explicitly warns: Don't modify the sn_em_arm.alert_management.num_of_jobs property. Changes should be made through Customer Service and Support. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/alert-management-rule.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "This property is not specifically mentioned as restricted",
+            "reference": "Alert Management Rules"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "This property is not specifically mentioned as restricted",
+            "reference": "Alert Management Rules"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "This property is not specifically mentioned as restricted",
+            "reference": "Alert Management Rules"
+          }
+        ]
+      },
+      "references": [
+        "System properties",
+        "Alert Rules Management"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "cis-em-api/alert-management-rule.md",
+        "excerpt": "Don't modify the sn_em_arm.alert_management.num_of_jobs property."
+      },
+      "labels": {
+        "certification": "cis-em",
+        "domain": "Alerts and Tasks",
+        "domainSlug": "alerts-tasks",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Scheduled jobs"
+        ],
+        "tags": [
+          "properties",
+          "configuration"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-21T02:30:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     }
-  }
-]
+  ]
+}

@@ -1,4 +1,6 @@
 {
+  "certification": "cis-sp",
+  "topic": "foundational-data-management",
   "questions": [
     {
       "id": "cis-sp-foundational-data-001",
@@ -8,21 +10,49 @@
       "type": "multiple_choice",
       "question": "In a domain-separated GRC implementation, how is the domain determined for records that are automatically generated based on their parent object?",
       "options": [
-        { "id": "a", "text": "Records are always placed in the global domain" },
-        { "id": "b", "text": "Records inherit the domain of their parent object or creating user's domain" },
-        { "id": "c", "text": "Records are randomly distributed across available domains" },
-        { "id": "d", "text": "Records are placed in the lowest domain in the hierarchy" }
+        {
+          "id": "a",
+          "text": "Records are always placed in the global domain"
+        },
+        {
+          "id": "b",
+          "text": "Records inherit the domain of their parent object or creating user's domain"
+        },
+        {
+          "id": "c",
+          "text": "Records are randomly distributed across available domains"
+        },
+        {
+          "id": "d",
+          "text": "Records are placed in the lowest domain in the hierarchy"
+        }
       ],
-      "correctAnswers": ["b"],
+      "correctAnswers": [
+        "b"
+      ],
       "explanation": {
         "correct": "Records that are automatically generated either through scheduled jobs or background scripts are domain separated based on their parent object or user domain for all Policy and Compliance objects. Controls, risks, or risk assessments that are auto-generated based on the entities must also be domain separated following this rule.",
         "wrongAnswers": [
-          { "choiceId": "a", "explanation": "Auto-generated records do not default to global domain; they follow parent/user domain", "reference": "ServiceNow GRC documentation" },
-          { "choiceId": "c", "explanation": "Domain assignment is deterministic based on parent object or user, not random", "reference": "ServiceNow GRC documentation" },
-          { "choiceId": "d", "explanation": "There is no rule to place records in the lowest domain; it's based on parent/user domain", "reference": "ServiceNow GRC documentation" }
+          {
+            "choiceId": "a",
+            "explanation": "Auto-generated records do not default to global domain; they follow parent/user domain",
+            "reference": "ServiceNow GRC documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Domain assignment is deterministic based on parent object or user, not random",
+            "reference": "ServiceNow GRC documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "There is no rule to place records in the lowest domain; it's based on parent/user domain",
+            "reference": "ServiceNow GRC documentation"
+          }
         ]
       },
-      "references": ["ServiceNow GRC documentation"],
+      "references": [
+        "ServiceNow GRC documentation"
+      ],
       "isFree": true,
       "source": {
         "type": "documentation",
@@ -34,8 +64,15 @@
         "domain": "Foundational Data Management",
         "domainSlug": "foundational-data-management",
         "domainPercentage": 20,
-        "subtopics": ["Auto-generated records", "Domain inheritance"],
-        "tags": ["GRC", "automatic records", "domain assignment"]
+        "subtopics": [
+          "Auto-generated records",
+          "Domain inheritance"
+        ],
+        "tags": [
+          "GRC",
+          "automatic records",
+          "domain assignment"
+        ]
       },
       "meta": {
         "generatedAt": "2026-02-23T20:00:00Z",
@@ -52,21 +89,50 @@
       "type": "multiple_select",
       "question": "Which tables are used for reconciliation rules and DO have sys_domain, sys_overrides, and sys_domain_path fields? (Choose three)",
       "options": [
-        { "id": "a", "text": "Reconciliation Definition (cmdb_reconciliation_definition)" },
-        { "id": "b", "text": "Identifier (cmdb_identifier)" },
-        { "id": "c", "text": "Datasource Precedence (cmdb_datasource_precedence)" },
-        { "id": "d", "text": "Identifier Entries (cmdb_identifier_entry)" },
-        { "id": "e", "text": "Data Source Staleness Definitions (cmdb_datasource_staleness)" }
+        {
+          "id": "a",
+          "text": "Reconciliation Definition (cmdb_reconciliation_definition)"
+        },
+        {
+          "id": "b",
+          "text": "Identifier (cmdb_identifier)"
+        },
+        {
+          "id": "c",
+          "text": "Datasource Precedence (cmdb_datasource_precedence)"
+        },
+        {
+          "id": "d",
+          "text": "Identifier Entries (cmdb_identifier_entry)"
+        },
+        {
+          "id": "e",
+          "text": "Data Source Staleness Definitions (cmdb_datasource_staleness)"
+        }
       ],
-      "correctAnswers": ["a", "c", "e"],
+      "correctAnswers": [
+        "a",
+        "c",
+        "e"
+      ],
       "explanation": {
         "correct": "The reconciliation definition rules that are used during the reconciliation process can be defined for different domains. Tables with sys_domain field include: Reconciliation Definition (cmdb_reconciliation_definition), Datasource Precedence (cmdb_datasource_precedence), and Data Source Staleness Definitions (cmdb_datasource_staleness).",
         "wrongAnswers": [
-          { "choiceId": "b", "explanation": "Identifier (cmdb_identifier) does NOT have a sys_domain field; identification rules are global", "reference": "ServiceNow CMDB IRE documentation" },
-          { "choiceId": "d", "explanation": "Identifier Entries (cmdb_identifier_entry) does NOT have a sys_domain field; these are global", "reference": "ServiceNow CMDB IRE documentation" }
+          {
+            "choiceId": "b",
+            "explanation": "Identifier (cmdb_identifier) does NOT have a sys_domain field; identification rules are global",
+            "reference": "ServiceNow CMDB IRE documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Identifier Entries (cmdb_identifier_entry) does NOT have a sys_domain field; these are global",
+            "reference": "ServiceNow CMDB IRE documentation"
+          }
         ]
       },
-      "references": ["ServiceNow CMDB IRE documentation"],
+      "references": [
+        "ServiceNow CMDB IRE documentation"
+      ],
       "isFree": true,
       "source": {
         "type": "documentation",
@@ -78,8 +144,15 @@
         "domain": "Foundational Data Management",
         "domainSlug": "foundational-data-management",
         "domainPercentage": 20,
-        "subtopics": ["Reconciliation tables", "sys_domain field"],
-        "tags": ["reconciliation", "CMDB", "tables"]
+        "subtopics": [
+          "Reconciliation tables",
+          "sys_domain field"
+        ],
+        "tags": [
+          "reconciliation",
+          "CMDB",
+          "tables"
+        ]
       },
       "meta": {
         "generatedAt": "2026-02-23T20:00:00Z",
@@ -96,21 +169,49 @@
       "type": "multiple_choice",
       "question": "How does the CMDB Health dashboard handle domain separation when displaying health failures and scores?",
       "options": [
-        { "id": "a", "text": "It shows all CI health data regardless of domain" },
-        { "id": "b", "text": "It aggregates and reports based on user's domain visibility of CIs" },
-        { "id": "c", "text": "It only shows global domain CI health data" },
-        { "id": "d", "text": "Health data must be manually filtered by domain" }
+        {
+          "id": "a",
+          "text": "It shows all CI health data regardless of domain"
+        },
+        {
+          "id": "b",
+          "text": "It aggregates and reports based on user's domain visibility of CIs"
+        },
+        {
+          "id": "c",
+          "text": "It only shows global domain CI health data"
+        },
+        {
+          "id": "d",
+          "text": "Health data must be manually filtered by domain"
+        }
       ],
-      "correctAnswers": ["b"],
+      "correctAnswers": [
+        "b"
+      ],
       "explanation": {
         "correct": "If the Domain Support — Domain Extensions Installer plugin is activated, then the CMDB Health dashboard is domain aware. It aggregates and reports health failures and scores based on user's domain visibility of CIs. If domain visibility lets a user see a CI, then the audit rule in that user's domain applies to that CI.",
         "wrongAnswers": [
-          { "choiceId": "a", "explanation": "The dashboard respects domain visibility; it does not show all CI data", "reference": "ServiceNow CMDB Health documentation" },
-          { "choiceId": "c", "explanation": "The dashboard shows data for the user's visible domains, not only global", "reference": "ServiceNow CMDB Health documentation" },
-          { "choiceId": "d", "explanation": "Domain filtering is automatic based on user visibility, not manual", "reference": "ServiceNow CMDB Health documentation" }
+          {
+            "choiceId": "a",
+            "explanation": "The dashboard respects domain visibility; it does not show all CI data",
+            "reference": "ServiceNow CMDB Health documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The dashboard shows data for the user's visible domains, not only global",
+            "reference": "ServiceNow CMDB Health documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Domain filtering is automatic based on user visibility, not manual",
+            "reference": "ServiceNow CMDB Health documentation"
+          }
         ]
       },
-      "references": ["ServiceNow CMDB Health documentation"],
+      "references": [
+        "ServiceNow CMDB Health documentation"
+      ],
       "isFree": true,
       "source": {
         "type": "documentation",
@@ -122,8 +223,15 @@
         "domain": "Foundational Data Management",
         "domainSlug": "foundational-data-management",
         "domainPercentage": 20,
-        "subtopics": ["CMDB Health", "Dashboard domain awareness"],
-        "tags": ["CMDB Health", "dashboard", "visibility"]
+        "subtopics": [
+          "CMDB Health",
+          "Dashboard domain awareness"
+        ],
+        "tags": [
+          "CMDB Health",
+          "dashboard",
+          "visibility"
+        ]
       },
       "meta": {
         "generatedAt": "2026-02-23T20:00:00Z",
@@ -140,21 +248,49 @@
       "type": "true_false_compound",
       "question": "Evaluate the following statements about CMDB Health rules in a domain-separated environment:\n\nStatement 1: Required fields for completeness are based on the class schema defined in System dictionary and are fixed for all domains.\n\nStatement 2: Orphan rules are domain-separated and can be different for different domains.\n\nWhich statements are TRUE?",
       "options": [
-        { "id": "a", "text": "Statement 1 only" },
-        { "id": "b", "text": "Statement 2 only" },
-        { "id": "c", "text": "Both statements" },
-        { "id": "d", "text": "Neither statement" }
+        {
+          "id": "a",
+          "text": "Statement 1 only"
+        },
+        {
+          "id": "b",
+          "text": "Statement 2 only"
+        },
+        {
+          "id": "c",
+          "text": "Both statements"
+        },
+        {
+          "id": "d",
+          "text": "Neither statement"
+        }
       ],
-      "correctAnswers": ["c"],
+      "correctAnswers": [
+        "c"
+      ],
       "explanation": {
         "correct": "Both statements are TRUE. Required fields are based on the class schema defined in the platform's System dictionary and cannot be changed - they are fixed for all domains. Orphan rules are domain-separated; there are different orphan rules for different domains stored in the CMDB Health Orphan Rule [cmdb_health_orphan_rule] table which is domain separated.",
         "wrongAnswers": [
-          { "choiceId": "a", "explanation": "Both statements are true; orphan rules ARE domain-separated", "reference": "ServiceNow CMDB Health documentation" },
-          { "choiceId": "b", "explanation": "Both statements are true; required fields ARE fixed across domains", "reference": "ServiceNow CMDB Health documentation" },
-          { "choiceId": "d", "explanation": "Both statements are true as documented in CMDB Health domain separation", "reference": "ServiceNow CMDB Health documentation" }
+          {
+            "choiceId": "a",
+            "explanation": "Both statements are true; orphan rules ARE domain-separated",
+            "reference": "ServiceNow CMDB Health documentation"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "Both statements are true; required fields ARE fixed across domains",
+            "reference": "ServiceNow CMDB Health documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Both statements are true as documented in CMDB Health domain separation",
+            "reference": "ServiceNow CMDB Health documentation"
+          }
         ]
       },
-      "references": ["ServiceNow CMDB Health documentation"],
+      "references": [
+        "ServiceNow CMDB Health documentation"
+      ],
       "isFree": true,
       "source": {
         "type": "documentation",
@@ -166,8 +302,16 @@
         "domain": "Foundational Data Management",
         "domainSlug": "foundational-data-management",
         "domainPercentage": 20,
-        "subtopics": ["CMDB Health rules", "Required fields", "Orphan rules"],
-        "tags": ["compound true/false", "CMDB Health", "rules"]
+        "subtopics": [
+          "CMDB Health rules",
+          "Required fields",
+          "Orphan rules"
+        ],
+        "tags": [
+          "compound true/false",
+          "CMDB Health",
+          "rules"
+        ]
       },
       "meta": {
         "generatedAt": "2026-02-23T20:00:00Z",
@@ -184,21 +328,49 @@
       "type": "multiple_choice",
       "question": "What happens when a CI is inserted during the identification process and no records are found, regardless of domain separation mode?",
       "options": [
-        { "id": "a", "text": "The CI is placed in the global domain" },
-        { "id": "b", "text": "The CI domain ID is the same as the domain ID of the logged-in user's domain" },
-        { "id": "c", "text": "The CI is queued for manual domain assignment" },
-        { "id": "d", "text": "The CI is rejected until a domain is specified" }
+        {
+          "id": "a",
+          "text": "The CI is placed in the global domain"
+        },
+        {
+          "id": "b",
+          "text": "The CI domain ID is the same as the domain ID of the logged-in user's domain"
+        },
+        {
+          "id": "c",
+          "text": "The CI is queued for manual domain assignment"
+        },
+        {
+          "id": "d",
+          "text": "The CI is rejected until a domain is specified"
+        }
       ],
-      "correctAnswers": ["b"],
+      "correctAnswers": [
+        "b"
+      ],
       "explanation": {
         "correct": "During matching, if no records are found and a CI is inserted, the CI domain ID is the same as the domain ID of the logged-in user's domain. Domain IDs don't need to be explicitly sent in the input payload of the identification engine APIs; internally, the identification engine uses the current domain ID of the user calling the APIs.",
         "wrongAnswers": [
-          { "choiceId": "a", "explanation": "CIs inherit the logged-in user's domain, not automatically the global domain", "reference": "ServiceNow CMDB IRE documentation" },
-          { "choiceId": "c", "explanation": "Domain assignment is automatic based on the logged-in user's domain, not queued for manual assignment", "reference": "ServiceNow CMDB IRE documentation" },
-          { "choiceId": "d", "explanation": "CIs are not rejected; they automatically receive the logged-in user's domain", "reference": "ServiceNow CMDB IRE documentation" }
+          {
+            "choiceId": "a",
+            "explanation": "CIs inherit the logged-in user's domain, not automatically the global domain",
+            "reference": "ServiceNow CMDB IRE documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Domain assignment is automatic based on the logged-in user's domain, not queued for manual assignment",
+            "reference": "ServiceNow CMDB IRE documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "CIs are not rejected; they automatically receive the logged-in user's domain",
+            "reference": "ServiceNow CMDB IRE documentation"
+          }
         ]
       },
-      "references": ["ServiceNow CMDB IRE documentation"],
+      "references": [
+        "ServiceNow CMDB IRE documentation"
+      ],
       "isFree": true,
       "source": {
         "type": "documentation",
@@ -210,8 +382,15 @@
         "domain": "Foundational Data Management",
         "domainSlug": "foundational-data-management",
         "domainPercentage": 20,
-        "subtopics": ["CI insertion", "Identification process"],
-        "tags": ["IRE", "CI creation", "domain assignment"]
+        "subtopics": [
+          "CI insertion",
+          "Identification process"
+        ],
+        "tags": [
+          "IRE",
+          "CI creation",
+          "domain assignment"
+        ]
       },
       "meta": {
         "generatedAt": "2026-02-23T20:00:00Z",
@@ -228,21 +407,49 @@
       "type": "multiple_choice",
       "question": "Starting with the Tokyo release, how are metric tests from the global domain applied to subdomains in CMDB Health?",
       "options": [
-        { "id": "a", "text": "Global domain metric tests are never applied to subdomains" },
-        { "id": "b", "text": "CIs in the global domain are evaluated only against metric tests specified in the global domain" },
-        { "id": "c", "text": "All subdomain tests are applied to global CIs" },
-        { "id": "d", "text": "Metric tests must be manually replicated to each subdomain" }
+        {
+          "id": "a",
+          "text": "Global domain metric tests are never applied to subdomains"
+        },
+        {
+          "id": "b",
+          "text": "CIs in the global domain are evaluated only against metric tests specified in the global domain"
+        },
+        {
+          "id": "c",
+          "text": "All subdomain tests are applied to global CIs"
+        },
+        {
+          "id": "d",
+          "text": "Metric tests must be manually replicated to each subdomain"
+        }
       ],
-      "correctAnswers": ["b"],
+      "correctAnswers": [
+        "b"
+      ],
       "explanation": {
         "correct": "Starting with the Tokyo release, CIs in the global domain are evaluated only against metric tests specified in the global domain. In subdomains, local metric tests are applied only to the CIs in that subdomain and are not applied to the global domain CIs (even though they are visible). This prevents large amounts of duplicated data from subdomain tests on global CIs.",
         "wrongAnswers": [
-          { "choiceId": "a", "explanation": "Global metric tests do propagate to subdomains for local CIs, but global CIs are only evaluated by global tests", "reference": "ServiceNow CMDB Health documentation" },
-          { "choiceId": "c", "explanation": "This was the old behavior before Tokyo; subdomain tests are no longer applied to global CIs", "reference": "ServiceNow CMDB Health documentation" },
-          { "choiceId": "d", "explanation": "Metric tests propagate automatically; manual replication is not required", "reference": "ServiceNow CMDB Health documentation" }
+          {
+            "choiceId": "a",
+            "explanation": "Global metric tests do propagate to subdomains for local CIs, but global CIs are only evaluated by global tests",
+            "reference": "ServiceNow CMDB Health documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "This was the old behavior before Tokyo; subdomain tests are no longer applied to global CIs",
+            "reference": "ServiceNow CMDB Health documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Metric tests propagate automatically; manual replication is not required",
+            "reference": "ServiceNow CMDB Health documentation"
+          }
         ]
       },
-      "references": ["ServiceNow CMDB Health documentation"],
+      "references": [
+        "ServiceNow CMDB Health documentation"
+      ],
       "isFree": true,
       "source": {
         "type": "documentation",
@@ -254,8 +461,15 @@
         "domain": "Foundational Data Management",
         "domainSlug": "foundational-data-management",
         "domainPercentage": 20,
-        "subtopics": ["Metric tests", "Tokyo release"],
-        "tags": ["CMDB Health", "Tokyo", "metric tests"]
+        "subtopics": [
+          "Metric tests",
+          "Tokyo release"
+        ],
+        "tags": [
+          "CMDB Health",
+          "Tokyo",
+          "metric tests"
+        ]
       },
       "meta": {
         "generatedAt": "2026-02-23T20:00:00Z",
@@ -272,21 +486,50 @@
       "type": "multiple_select",
       "question": "Which Health Preferences settings are domain-separated and can be configured differently for each domain? (Choose three)",
       "options": [
-        { "id": "a", "text": "Global system properties" },
-        { "id": "b", "text": "Failure Threshold" },
-        { "id": "c", "text": "Create Task setting" },
-        { "id": "d", "text": "Task Assignee Group" },
-        { "id": "e", "text": "Dashboard job schedule" }
+        {
+          "id": "a",
+          "text": "Global system properties"
+        },
+        {
+          "id": "b",
+          "text": "Failure Threshold"
+        },
+        {
+          "id": "c",
+          "text": "Create Task setting"
+        },
+        {
+          "id": "d",
+          "text": "Task Assignee Group"
+        },
+        {
+          "id": "e",
+          "text": "Dashboard job schedule"
+        }
       ],
-      "correctAnswers": ["b", "c", "d"],
+      "correctAnswers": [
+        "b",
+        "c",
+        "d"
+      ],
       "explanation": {
         "correct": "Failure Threshold, Create Task, and Task Assignee Group can be set differently for different domains depending on what is needed in each domain. These settings are stored in the cmdb_health_metric_pref table, which is domain separated.",
         "wrongAnswers": [
-          { "choiceId": "a", "explanation": "Global system properties that control CMDB Health are NOT domain separated", "reference": "ServiceNow CMDB Health documentation" },
-          { "choiceId": "e", "explanation": "There is one dashboard job for each major KPI that runs for all domains; jobs are not domain-separated", "reference": "ServiceNow CMDB Health documentation" }
+          {
+            "choiceId": "a",
+            "explanation": "Global system properties that control CMDB Health are NOT domain separated",
+            "reference": "ServiceNow CMDB Health documentation"
+          },
+          {
+            "choiceId": "e",
+            "explanation": "There is one dashboard job for each major KPI that runs for all domains; jobs are not domain-separated",
+            "reference": "ServiceNow CMDB Health documentation"
+          }
         ]
       },
-      "references": ["ServiceNow CMDB Health documentation"],
+      "references": [
+        "ServiceNow CMDB Health documentation"
+      ],
       "isFree": true,
       "source": {
         "type": "documentation",
@@ -298,8 +541,15 @@
         "domain": "Foundational Data Management",
         "domainSlug": "foundational-data-management",
         "domainPercentage": 20,
-        "subtopics": ["Health Preferences", "Domain-specific settings"],
-        "tags": ["CMDB Health", "preferences", "configuration"]
+        "subtopics": [
+          "Health Preferences",
+          "Domain-specific settings"
+        ],
+        "tags": [
+          "CMDB Health",
+          "preferences",
+          "configuration"
+        ]
       },
       "meta": {
         "generatedAt": "2026-02-23T20:00:00Z",
@@ -316,21 +566,49 @@
       "type": "multiple_choice",
       "question": "An administrator is concerned about long-running CMDB Health dashboard jobs in an environment with many domains. What is the most effective way to reduce job runtime?",
       "options": [
-        { "id": "a", "text": "Increase the server memory allocation" },
-        { "id": "b", "text": "Set the Active flag to false for domains that don't need to appear in the dashboard" },
-        { "id": "c", "text": "Reduce the number of CIs in the database" },
-        { "id": "d", "text": "Run the jobs during off-peak hours only" }
+        {
+          "id": "a",
+          "text": "Increase the server memory allocation"
+        },
+        {
+          "id": "b",
+          "text": "Set the Active flag to false for domains that don't need to appear in the dashboard"
+        },
+        {
+          "id": "c",
+          "text": "Reduce the number of CIs in the database"
+        },
+        {
+          "id": "d",
+          "text": "Run the jobs during off-peak hours only"
+        }
       ],
-      "correctAnswers": ["b"],
+      "correctAnswers": [
+        "b"
+      ],
       "explanation": {
         "correct": "The Active setting is the most important because it affects how long the jobs run. The more domains with flags set to Active, the longer the jobs take. It's best to select only those domains you wish to be Active and set Active=false for the rest. If there is a large number of domains (>100), the job can take a very long time. Setting Active to false for root domains disables all child domains in the hierarchy.",
         "wrongAnswers": [
-          { "choiceId": "a", "explanation": "Memory allocation doesn't address the fundamental issue of processing too many domains", "reference": "ServiceNow CMDB Health documentation" },
-          { "choiceId": "c", "explanation": "Reducing CIs may not be practical and doesn't address domain-related processing time", "reference": "ServiceNow CMDB Health documentation" },
-          { "choiceId": "d", "explanation": "Timing doesn't reduce the actual job duration; disabling unnecessary domains does", "reference": "ServiceNow CMDB Health documentation" }
+          {
+            "choiceId": "a",
+            "explanation": "Memory allocation doesn't address the fundamental issue of processing too many domains",
+            "reference": "ServiceNow CMDB Health documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Reducing CIs may not be practical and doesn't address domain-related processing time",
+            "reference": "ServiceNow CMDB Health documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Timing doesn't reduce the actual job duration; disabling unnecessary domains does",
+            "reference": "ServiceNow CMDB Health documentation"
+          }
         ]
       },
-      "references": ["ServiceNow CMDB Health documentation"],
+      "references": [
+        "ServiceNow CMDB Health documentation"
+      ],
       "isFree": true,
       "source": {
         "type": "documentation",
@@ -342,8 +620,15 @@
         "domain": "Foundational Data Management",
         "domainSlug": "foundational-data-management",
         "domainPercentage": 20,
-        "subtopics": ["Performance optimization", "Active flag"],
-        "tags": ["CMDB Health", "performance", "Active flag"]
+        "subtopics": [
+          "Performance optimization",
+          "Active flag"
+        ],
+        "tags": [
+          "CMDB Health",
+          "performance",
+          "Active flag"
+        ]
       },
       "meta": {
         "generatedAt": "2026-02-23T20:00:00Z",
@@ -360,21 +645,49 @@
       "type": "multiple_choice",
       "question": "What is NOT a characteristic of Health inclusion rules in a domain-separated CMDB environment?",
       "options": [
-        { "id": "a", "text": "Health inclusion rules are domain separated" },
-        { "id": "b", "text": "Each domain can have its specific health inclusion rules" },
-        { "id": "c", "text": "Rules defined globally are inherited by all sub-domains" },
-        { "id": "d", "text": "Health inclusion rules automatically sync across instances" }
+        {
+          "id": "a",
+          "text": "Health inclusion rules are domain separated"
+        },
+        {
+          "id": "b",
+          "text": "Each domain can have its specific health inclusion rules"
+        },
+        {
+          "id": "c",
+          "text": "Rules defined globally are inherited by all sub-domains"
+        },
+        {
+          "id": "d",
+          "text": "Health inclusion rules automatically sync across instances"
+        }
       ],
-      "correctAnswers": ["d"],
+      "correctAnswers": [
+        "d"
+      ],
       "explanation": {
         "correct": "Health inclusion rules do NOT automatically sync across instances - this is not a feature of health inclusion rules. However, they ARE domain separated, each domain CAN have specific rules, rules defined globally ARE inherited by sub-domains according to domain structure, and rules can be overridden at any domain or class level.",
         "wrongAnswers": [
-          { "choiceId": "a", "explanation": "This statement is TRUE; health inclusion rules are stored in the cmdb_health_config table which is domain separated", "reference": "ServiceNow CMDB Health documentation" },
-          { "choiceId": "b", "explanation": "This statement is TRUE; each domain can have domain-specific rules", "reference": "ServiceNow CMDB Health documentation" },
-          { "choiceId": "c", "explanation": "This statement is TRUE; global rules are inherited by sub-domains and can be overridden", "reference": "ServiceNow CMDB Health documentation" }
+          {
+            "choiceId": "a",
+            "explanation": "This statement is TRUE; health inclusion rules are stored in the cmdb_health_config table which is domain separated",
+            "reference": "ServiceNow CMDB Health documentation"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "This statement is TRUE; each domain can have domain-specific rules",
+            "reference": "ServiceNow CMDB Health documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "This statement is TRUE; global rules are inherited by sub-domains and can be overridden",
+            "reference": "ServiceNow CMDB Health documentation"
+          }
         ]
       },
-      "references": ["ServiceNow CMDB Health documentation"],
+      "references": [
+        "ServiceNow CMDB Health documentation"
+      ],
       "isFree": true,
       "source": {
         "type": "documentation",
@@ -386,8 +699,15 @@
         "domain": "Foundational Data Management",
         "domainSlug": "foundational-data-management",
         "domainPercentage": 20,
-        "subtopics": ["Health inclusion rules", "Rule inheritance"],
-        "tags": ["negative", "CMDB Health", "inclusion rules"]
+        "subtopics": [
+          "Health inclusion rules",
+          "Rule inheritance"
+        ],
+        "tags": [
+          "negative",
+          "CMDB Health",
+          "inclusion rules"
+        ]
       },
       "meta": {
         "generatedAt": "2026-02-23T20:00:00Z",

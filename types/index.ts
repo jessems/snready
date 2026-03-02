@@ -103,7 +103,12 @@ export interface Topic {
 
 // Question types
 export type CognitiveLevel = "knowledge" | "understanding" | "application";
-export type QuestionType = "multiple_choice" | "multiple_select";
+export type QuestionType = 
+  | "multiple_choice" 
+  | "multiple_select" 
+  | "multiple_choice_negative"  // "Which is NOT..." questions
+  | "compound_true_false"       // "Which statements are true?" questions
+  | "true_false_compound";      // Alias for compound_true_false
 export type SourceType = "course" | "documentation" | "both";
 
 export interface QuestionOption {
@@ -176,6 +181,13 @@ export interface Question {
   source: QuestionSource;
   labels: QuestionLabels;
   meta: QuestionMetadata;
+}
+
+// Question File format (canonical wrapper for JSON files)
+export interface QuestionFile {
+  certification: string;    // e.g., "csa"
+  topic: string;            // e.g., "change-management"
+  questions: Question[];
 }
 
 // Quiz/Test types

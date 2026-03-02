@@ -1,4 +1,6 @@
 {
+  "certification": "cis-discovery",
+  "topic": "pattern-design",
   "questions": [
     {
       "id": "cis-discovery-pattern-design-001",
@@ -8,21 +10,49 @@
       "type": "multiple_choice",
       "question": "What is the key difference between debugging an Infrastructure Pattern versus an Application Pattern in Pattern Designer?",
       "options": [
-        { "id": "a", "text": "Infrastructure patterns require credentials while application patterns do not" },
-        { "id": "b", "text": "Application patterns require a Debug Type selection (Top-down or Horizontal) while infrastructure patterns only need a host IP" },
-        { "id": "c", "text": "Infrastructure patterns use PIDs while application patterns use entry points" },
-        { "id": "d", "text": "Application patterns can only be tested in production environments" }
+        {
+          "id": "a",
+          "text": "Infrastructure patterns require credentials while application patterns do not"
+        },
+        {
+          "id": "b",
+          "text": "Application patterns require a Debug Type selection (Top-down or Horizontal) while infrastructure patterns only need a host IP"
+        },
+        {
+          "id": "c",
+          "text": "Infrastructure patterns use PIDs while application patterns use entry points"
+        },
+        {
+          "id": "d",
+          "text": "Application patterns can only be tested in production environments"
+        }
       ],
-      "correctAnswers": ["b"],
+      "correctAnswers": [
+        "b"
+      ],
       "explanation": {
         "correct": "Unlike Infrastructure Pattern debugging which only requires a viable host IP address, Application Pattern debugging requires you to choose a Debug Type. This is because an Application Pattern can be for Service Mapping (Top-down) which uses entry points, or Discovery (Horizontal) which uses PIDs.",
         "wrongAnswers": [
-          { "choiceId": "a", "explanation": "Both infrastructure and application patterns require active, reachable host IPs with proper credentials for Debug Mode", "reference": "Discovery Fundamentals course" },
-          { "choiceId": "c", "explanation": "This is reversed - Horizontal Discovery uses PIDs while Top-down (Service Mapping) uses entry points. Both can be used with application patterns depending on Debug Type selection", "reference": "Discovery Fundamentals course" },
-          { "choiceId": "d", "explanation": "Application patterns can be tested in debug mode against any valid target with proper credentials", "reference": "Discovery Fundamentals course" }
+          {
+            "choiceId": "a",
+            "explanation": "Both infrastructure and application patterns require active, reachable host IPs with proper credentials for Debug Mode",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "This is reversed - Horizontal Discovery uses PIDs while Top-down (Service Mapping) uses entry points. Both can be used with application patterns depending on Debug Type selection",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Application patterns can be tested in debug mode against any valid target with proper credentials",
+            "reference": "Discovery Fundamentals course"
+          }
         ]
       },
-      "references": ["Discovery Fundamentals - Application Discovery Patterns"],
+      "references": [
+        "Discovery Fundamentals - Application Discovery Patterns"
+      ],
       "isFree": true,
       "source": {
         "type": "course",
@@ -34,8 +64,15 @@
         "domain": "Discovery Pattern Design",
         "domainSlug": "pattern-design",
         "domainPercentage": 35,
-        "subtopics": ["Pattern Designer", "Debug Mode"],
-        "tags": ["patterns", "debugging", "application patterns"]
+        "subtopics": [
+          "Pattern Designer",
+          "Debug Mode"
+        ],
+        "tags": [
+          "patterns",
+          "debugging",
+          "application patterns"
+        ]
       },
       "meta": {
         "generatedAt": "2026-02-08T02:00:00Z",
@@ -52,21 +89,49 @@
       "type": "multiple_choice",
       "question": "Where can a Discovery administrator find the most accurate PID for debugging an Application Pattern when the application may have been restarted?",
       "options": [
-        { "id": "a", "text": "Pattern Designer > Discovery Pattern Log" },
-        { "id": "b", "text": "Configuration > Servers > Windows > Running Processes tab" },
-        { "id": "c", "text": "Directly on the host via Task Manager > Details" },
-        { "id": "d", "text": "Discovery Status > ECC Queue" }
+        {
+          "id": "a",
+          "text": "Pattern Designer > Discovery Pattern Log"
+        },
+        {
+          "id": "b",
+          "text": "Configuration > Servers > Windows > Running Processes tab"
+        },
+        {
+          "id": "c",
+          "text": "Directly on the host via Task Manager > Details"
+        },
+        {
+          "id": "d",
+          "text": "Discovery Status > ECC Queue"
+        }
       ],
-      "correctAnswers": ["c"],
+      "correctAnswers": [
+        "c"
+      ],
       "explanation": {
         "correct": "The most accurate way to find a PID is directly on the host. PID information in ServiceNow becomes stale as soon as discovery completes. Accessing the host directly via RDP to Windows Host > Task Manager > Details gives you the most recent PID, especially if the host/application has been restarted which can cause the PID to reset.",
         "wrongAnswers": [
-          { "choiceId": "a", "explanation": "The Discovery Pattern Log contains the last captured PID from discovery, but this becomes stale after discovery completes or if the application restarts", "reference": "Discovery Fundamentals course" },
-          { "choiceId": "b", "explanation": "The Running Processes tab shows PIDs discovered during the last discovery run, but these become stale if the application restarts", "reference": "Discovery Fundamentals course" },
-          { "choiceId": "d", "explanation": "The ECC Queue contains probe/sensor communication records, not PID information for application debugging", "reference": "Discovery Fundamentals course" }
+          {
+            "choiceId": "a",
+            "explanation": "The Discovery Pattern Log contains the last captured PID from discovery, but this becomes stale after discovery completes or if the application restarts",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "The Running Processes tab shows PIDs discovered during the last discovery run, but these become stale if the application restarts",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The ECC Queue contains probe/sensor communication records, not PID information for application debugging",
+            "reference": "Discovery Fundamentals course"
+          }
         ]
       },
-      "references": ["Discovery Fundamentals - Application Discovery Patterns"],
+      "references": [
+        "Discovery Fundamentals - Application Discovery Patterns"
+      ],
       "isFree": true,
       "source": {
         "type": "course",
@@ -78,8 +143,16 @@
         "domain": "Discovery Pattern Design",
         "domainSlug": "pattern-design",
         "domainPercentage": 35,
-        "subtopics": ["Application patterns", "PID", "Debugging"],
-        "tags": ["PID", "debugging", "application patterns"]
+        "subtopics": [
+          "Application patterns",
+          "PID",
+          "Debugging"
+        ],
+        "tags": [
+          "PID",
+          "debugging",
+          "application patterns"
+        ]
       },
       "meta": {
         "generatedAt": "2026-02-08T02:00:00Z",
@@ -96,21 +169,49 @@
       "type": "multiple_choice",
       "question": "Which probe is used to trigger a Horizontal Pattern for classified devices?",
       "options": [
-        { "id": "a", "text": "Shazzam probe" },
-        { "id": "b", "text": "Classification probe" },
-        { "id": "c", "text": "HorizontalDiscoveryProbe-Horizontal Patt" },
-        { "id": "d", "text": "ApplicationMappingProbe" }
+        {
+          "id": "a",
+          "text": "Shazzam probe"
+        },
+        {
+          "id": "b",
+          "text": "Classification probe"
+        },
+        {
+          "id": "c",
+          "text": "HorizontalDiscoveryProbe-Horizontal Patt"
+        },
+        {
+          "id": "d",
+          "text": "ApplicationMappingProbe"
+        }
       ],
-      "correctAnswers": ["c"],
+      "correctAnswers": [
+        "c"
+      ],
       "explanation": {
         "correct": "The HorizontalDiscoveryProbe-Horizontal Patt is the single probe added to the Trigger probes list of a Classifier to fire a horizontal pattern. After the probe is added, a specific pattern is populated in the Pattern field for firing when the probe is triggered during classification.",
         "wrongAnswers": [
-          { "choiceId": "a", "explanation": "The Shazzam probe is used during the Port Scan phase to detect open ports on devices, not to trigger patterns", "reference": "Discovery Fundamentals course" },
-          { "choiceId": "b", "explanation": "Classification probes gather information to classify devices but don't directly trigger horizontal patterns", "reference": "Discovery Fundamentals course" },
-          { "choiceId": "d", "explanation": "ApplicationMappingProbe is used for application dependency mapping during the Exploration phase, not for triggering horizontal patterns", "reference": "Discovery Fundamentals course" }
+          {
+            "choiceId": "a",
+            "explanation": "The Shazzam probe is used during the Port Scan phase to detect open ports on devices, not to trigger patterns",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "Classification probes gather information to classify devices but don't directly trigger horizontal patterns",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "ApplicationMappingProbe is used for application dependency mapping during the Exploration phase, not for triggering horizontal patterns",
+            "reference": "Discovery Fundamentals course"
+          }
         ]
       },
-      "references": ["Discovery Fundamentals - Horizontal Discovery Patterns"],
+      "references": [
+        "Discovery Fundamentals - Horizontal Discovery Patterns"
+      ],
       "isFree": true,
       "source": {
         "type": "course",
@@ -122,8 +223,15 @@
         "domain": "Discovery Pattern Design",
         "domainSlug": "pattern-design",
         "domainPercentage": 35,
-        "subtopics": ["Horizontal patterns", "Probes"],
-        "tags": ["horizontal discovery", "probes", "patterns"]
+        "subtopics": [
+          "Horizontal patterns",
+          "Probes"
+        ],
+        "tags": [
+          "horizontal discovery",
+          "probes",
+          "patterns"
+        ]
       },
       "meta": {
         "generatedAt": "2026-02-08T02:00:00Z",
@@ -140,21 +248,49 @@
       "type": "multiple_choice",
       "question": "What are the two types of Horizontal Discovery Patterns?",
       "options": [
-        { "id": "a", "text": "Network and Storage patterns" },
-        { "id": "b", "text": "Infrastructure and Application patterns" },
-        { "id": "c", "text": "Windows and Linux patterns" },
-        { "id": "d", "text": "Physical and Virtual patterns" }
+        {
+          "id": "a",
+          "text": "Network and Storage patterns"
+        },
+        {
+          "id": "b",
+          "text": "Infrastructure and Application patterns"
+        },
+        {
+          "id": "c",
+          "text": "Windows and Linux patterns"
+        },
+        {
+          "id": "d",
+          "text": "Physical and Virtual patterns"
+        }
       ],
-      "correctAnswers": ["b"],
+      "correctAnswers": [
+        "b"
+      ],
       "explanation": {
         "correct": "There are two types of Horizontal Discovery Patterns: Infrastructure patterns (used to target hardware or hosts like servers, load balancers, or network devices) and Application patterns (an application running on a host identified by a running process or via a TCP connection to another application).",
         "wrongAnswers": [
-          { "choiceId": "a", "explanation": "Network and storage are targets for discovery, not pattern types. Both would use infrastructure patterns", "reference": "Discovery Fundamentals course" },
-          { "choiceId": "c", "explanation": "Windows and Linux are operating systems that different patterns may target, not pattern type categories", "reference": "Discovery Fundamentals course" },
-          { "choiceId": "d", "explanation": "Physical and virtual describe deployment types, not the categorization of horizontal discovery patterns", "reference": "Discovery Fundamentals course" }
+          {
+            "choiceId": "a",
+            "explanation": "Network and storage are targets for discovery, not pattern types. Both would use infrastructure patterns",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Windows and Linux are operating systems that different patterns may target, not pattern type categories",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Physical and virtual describe deployment types, not the categorization of horizontal discovery patterns",
+            "reference": "Discovery Fundamentals course"
+          }
         ]
       },
-      "references": ["Discovery Fundamentals - Horizontal Discovery Patterns"],
+      "references": [
+        "Discovery Fundamentals - Horizontal Discovery Patterns"
+      ],
       "isFree": true,
       "source": {
         "type": "course",
@@ -166,8 +302,15 @@
         "domain": "Discovery Pattern Design",
         "domainSlug": "pattern-design",
         "domainPercentage": 35,
-        "subtopics": ["Pattern types", "Horizontal patterns"],
-        "tags": ["horizontal discovery", "infrastructure", "application"]
+        "subtopics": [
+          "Pattern types",
+          "Horizontal patterns"
+        ],
+        "tags": [
+          "horizontal discovery",
+          "infrastructure",
+          "application"
+        ]
       },
       "meta": {
         "generatedAt": "2026-02-08T02:00:00Z",
@@ -184,21 +327,49 @@
       "type": "multiple_choice",
       "question": "Which operation in Pattern Designer would you use to populate a variable with a constant string value like 'Firewall'?",
       "options": [
-        { "id": "a", "text": "Parse Variable" },
-        { "id": "b", "text": "Set Parameter Value" },
-        { "id": "c", "text": "Transform Table" },
-        { "id": "d", "text": "WMI Query" }
+        {
+          "id": "a",
+          "text": "Parse Variable"
+        },
+        {
+          "id": "b",
+          "text": "Set Parameter Value"
+        },
+        {
+          "id": "c",
+          "text": "Transform Table"
+        },
+        {
+          "id": "d",
+          "text": "WMI Query"
+        }
       ],
-      "correctAnswers": ["b"],
+      "correctAnswers": [
+        "b"
+      ],
       "explanation": {
         "correct": "The Set Parameter Value operation is one of the simplest operations to use. It allows the pattern to always populate a variable with a constant value, which can be a string or a different variable. However, best practice is to design patterns to use information queried from targets rather than hard-coded values.",
         "wrongAnswers": [
-          { "choiceId": "a", "explanation": "Parse Variable is used to isolate specific data from already-retrieved information, not to set constant values", "reference": "Discovery Fundamentals course" },
-          { "choiceId": "c", "explanation": "Transform Table works on one or two tables to build larger pattern tables, not to set simple constant values", "reference": "Discovery Fundamentals course" },
-          { "choiceId": "d", "explanation": "WMI Query is used to interrogate Windows Servers and retrieve information from WMI namespaces, not to set constant values", "reference": "Discovery Fundamentals course" }
+          {
+            "choiceId": "a",
+            "explanation": "Parse Variable is used to isolate specific data from already-retrieved information, not to set constant values",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Transform Table works on one or two tables to build larger pattern tables, not to set simple constant values",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "WMI Query is used to interrogate Windows Servers and retrieve information from WMI namespaces, not to set constant values",
+            "reference": "Discovery Fundamentals course"
+          }
         ]
       },
-      "references": ["Discovery Fundamentals - Horizontal Discovery Patterns"],
+      "references": [
+        "Discovery Fundamentals - Horizontal Discovery Patterns"
+      ],
       "isFree": true,
       "source": {
         "type": "course",
@@ -210,8 +381,15 @@
         "domain": "Discovery Pattern Design",
         "domainSlug": "pattern-design",
         "domainPercentage": 35,
-        "subtopics": ["Pattern operations", "Variables"],
-        "tags": ["operations", "variables", "set parameter"]
+        "subtopics": [
+          "Pattern operations",
+          "Variables"
+        ],
+        "tags": [
+          "operations",
+          "variables",
+          "set parameter"
+        ]
       },
       "meta": {
         "generatedAt": "2026-02-08T02:00:00Z",
@@ -228,21 +406,49 @@
       "type": "multiple_choice",
       "question": "What syntax is used in Pattern Designer to reference a placeholder for the password when executing a command that requires applicative credentials?",
       "options": [
-        { "id": "a", "text": "$password$" },
-        { "id": "b", "text": "{{password}}" },
-        { "id": "c", "text": "$$password$$" },
-        { "id": "d", "text": "%password%" }
+        {
+          "id": "a",
+          "text": "$password$"
+        },
+        {
+          "id": "b",
+          "text": "{{password}}"
+        },
+        {
+          "id": "c",
+          "text": "$$password$$"
+        },
+        {
+          "id": "d",
+          "text": "%password%"
+        }
       ],
-      "correctAnswers": ["c"],
+      "correctAnswers": [
+        "c"
+      ],
       "explanation": {
         "correct": "To make the Now Platform apply applicative credentials while executing a command, use placeholders with double dollar signs: $$username$$ for the user name and $$password$$ for the password. This syntax ensures credentials are securely resolved at runtime.",
         "wrongAnswers": [
-          { "choiceId": "a", "explanation": "Single dollar sign ($) is used to reference existing or future pattern variables, not credential placeholders", "reference": "Discovery Fundamentals course" },
-          { "choiceId": "b", "explanation": "Double curly braces are not valid syntax for credential placeholders in Pattern Designer", "reference": "Discovery Fundamentals course" },
-          { "choiceId": "d", "explanation": "Percent signs are not used for credential placeholders in Pattern Designer", "reference": "Discovery Fundamentals course" }
+          {
+            "choiceId": "a",
+            "explanation": "Single dollar sign ($) is used to reference existing or future pattern variables, not credential placeholders",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "Double curly braces are not valid syntax for credential placeholders in Pattern Designer",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Percent signs are not used for credential placeholders in Pattern Designer",
+            "reference": "Discovery Fundamentals course"
+          }
         ]
       },
-      "references": ["Discovery Fundamentals - Horizontal Discovery Patterns"],
+      "references": [
+        "Discovery Fundamentals - Horizontal Discovery Patterns"
+      ],
       "isFree": true,
       "source": {
         "type": "course",
@@ -254,8 +460,15 @@
         "domain": "Discovery Pattern Design",
         "domainSlug": "pattern-design",
         "domainPercentage": 35,
-        "subtopics": ["Syntax", "Credentials"],
-        "tags": ["syntax", "credentials", "placeholders"]
+        "subtopics": [
+          "Syntax",
+          "Credentials"
+        ],
+        "tags": [
+          "syntax",
+          "credentials",
+          "placeholders"
+        ]
       },
       "meta": {
         "generatedAt": "2026-02-08T02:00:00Z",
@@ -272,21 +485,49 @@
       "type": "multiple_choice",
       "question": "Which operation would you use to combine data from two pattern tables while keeping only variables that match names from both tables?",
       "options": [
-        { "id": "a", "text": "Set Parameter Value" },
-        { "id": "b", "text": "Parse Variable" },
-        { "id": "c", "text": "Merge Table" },
-        { "id": "d", "text": "SNMP Query" }
+        {
+          "id": "a",
+          "text": "Set Parameter Value"
+        },
+        {
+          "id": "b",
+          "text": "Parse Variable"
+        },
+        {
+          "id": "c",
+          "text": "Merge Table"
+        },
+        {
+          "id": "d",
+          "text": "SNMP Query"
+        }
       ],
-      "correctAnswers": ["c"],
+      "correctAnswers": [
+        "c"
+      ],
       "explanation": {
         "correct": "Merge Table is often used as a final step in a pattern. It merges two or three tables together and keeps any data that matches the variable names in the Target Table. This operation effectively populates the pattern table that exactly matches the CMDB Table (CI Type, CI Class).",
         "wrongAnswers": [
-          { "choiceId": "a", "explanation": "Set Parameter Value is used to populate a variable with a constant value or another variable, not to merge tables", "reference": "Discovery Fundamentals course" },
-          { "choiceId": "b", "explanation": "Parse Variable isolates specific data from retrieved information, it doesn't merge tables", "reference": "Discovery Fundamentals course" },
-          { "choiceId": "d", "explanation": "SNMP Query is used to gather information from network devices on port 161, not to merge tables", "reference": "Discovery Fundamentals course" }
+          {
+            "choiceId": "a",
+            "explanation": "Set Parameter Value is used to populate a variable with a constant value or another variable, not to merge tables",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "Parse Variable isolates specific data from retrieved information, it doesn't merge tables",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "SNMP Query is used to gather information from network devices on port 161, not to merge tables",
+            "reference": "Discovery Fundamentals course"
+          }
         ]
       },
-      "references": ["Discovery Fundamentals - Horizontal Discovery Patterns"],
+      "references": [
+        "Discovery Fundamentals - Horizontal Discovery Patterns"
+      ],
       "isFree": true,
       "source": {
         "type": "course",
@@ -298,8 +539,15 @@
         "domain": "Discovery Pattern Design",
         "domainSlug": "pattern-design",
         "domainPercentage": 35,
-        "subtopics": ["Pattern operations", "Table operations"],
-        "tags": ["merge table", "operations", "tables"]
+        "subtopics": [
+          "Pattern operations",
+          "Table operations"
+        ],
+        "tags": [
+          "merge table",
+          "operations",
+          "tables"
+        ]
       },
       "meta": {
         "generatedAt": "2026-02-08T02:00:00Z",
@@ -316,21 +564,49 @@
       "type": "multiple_choice",
       "question": "What must be done after successfully modifying a discovery pattern for the changes to take effect?",
       "options": [
-        { "id": "a", "text": "Restart the MID Server" },
-        { "id": "b", "text": "Click Save and then Publish" },
-        { "id": "c", "text": "Run a Quick Discovery to validate" },
-        { "id": "d", "text": "Deactivate and reactivate the pattern" }
+        {
+          "id": "a",
+          "text": "Restart the MID Server"
+        },
+        {
+          "id": "b",
+          "text": "Click Save and then Publish"
+        },
+        {
+          "id": "c",
+          "text": "Run a Quick Discovery to validate"
+        },
+        {
+          "id": "d",
+          "text": "Deactivate and reactivate the pattern"
+        }
       ],
-      "correctAnswers": ["b"],
+      "correctAnswers": [
+        "b"
+      ],
       "explanation": {
         "correct": "Always remember to save and publish your patterns when you have successfully modified them. The most current version of the discovery pattern will not run if the Publish button is not clicked. Debug and Test allow you to verify steps before publishing.",
         "wrongAnswers": [
-          { "choiceId": "a", "explanation": "MID Server restart is not required for pattern changes; publishing the pattern is sufficient", "reference": "Discovery Fundamentals course" },
-          { "choiceId": "c", "explanation": "While testing is good practice, the pattern won't be used in discovery until it is published", "reference": "Discovery Fundamentals course" },
-          { "choiceId": "d", "explanation": "Deactivating and reactivating is not required; simply publishing the pattern makes changes effective", "reference": "Discovery Fundamentals course" }
+          {
+            "choiceId": "a",
+            "explanation": "MID Server restart is not required for pattern changes; publishing the pattern is sufficient",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "While testing is good practice, the pattern won't be used in discovery until it is published",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Deactivating and reactivating is not required; simply publishing the pattern makes changes effective",
+            "reference": "Discovery Fundamentals course"
+          }
         ]
       },
-      "references": ["Discovery Fundamentals - Horizontal Discovery Patterns"],
+      "references": [
+        "Discovery Fundamentals - Horizontal Discovery Patterns"
+      ],
       "isFree": false,
       "source": {
         "type": "course",
@@ -342,8 +618,15 @@
         "domain": "Discovery Pattern Design",
         "domainSlug": "pattern-design",
         "domainPercentage": 35,
-        "subtopics": ["Pattern Designer", "Publishing"],
-        "tags": ["patterns", "publishing", "best practices"]
+        "subtopics": [
+          "Pattern Designer",
+          "Publishing"
+        ],
+        "tags": [
+          "patterns",
+          "publishing",
+          "best practices"
+        ]
       },
       "meta": {
         "generatedAt": "2026-02-08T02:00:00Z",
@@ -360,21 +643,49 @@
       "type": "multiple_choice",
       "question": "Which operation should you use to interrogate a Windows Server and retrieve information from the Win32_Process WMI table?",
       "options": [
-        { "id": "a", "text": "Parse Command Output" },
-        { "id": "b", "text": "SNMP Query" },
-        { "id": "c", "text": "WMI Query" },
-        { "id": "d", "text": "Parse Variable" }
+        {
+          "id": "a",
+          "text": "Parse Command Output"
+        },
+        {
+          "id": "b",
+          "text": "SNMP Query"
+        },
+        {
+          "id": "c",
+          "text": "WMI Query"
+        },
+        {
+          "id": "d",
+          "text": "Parse Variable"
+        }
       ],
-      "correctAnswers": ["c"],
+      "correctAnswers": [
+        "c"
+      ],
       "explanation": {
         "correct": "The WMI Query operation interrogates Windows Servers. It has its own UI that allows for a WMI query to be auto-generated based on Namespace with a Condition Clause. All of the Fields selected in the operation become variables in the table created or referenced in Target Table.",
         "wrongAnswers": [
-          { "choiceId": "a", "explanation": "Parse Command Output is used to parse the output of shell commands, not to query WMI", "reference": "Discovery Fundamentals course" },
-          { "choiceId": "b", "explanation": "SNMP Query is used for network devices responding on port 161, not for Windows WMI queries", "reference": "Discovery Fundamentals course" },
-          { "choiceId": "d", "explanation": "Parse Variable is used to isolate data from already-retrieved information, not to query Windows systems", "reference": "Discovery Fundamentals course" }
+          {
+            "choiceId": "a",
+            "explanation": "Parse Command Output is used to parse the output of shell commands, not to query WMI",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "SNMP Query is used for network devices responding on port 161, not for Windows WMI queries",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Parse Variable is used to isolate data from already-retrieved information, not to query Windows systems",
+            "reference": "Discovery Fundamentals course"
+          }
         ]
       },
-      "references": ["Discovery Fundamentals - Horizontal Discovery Patterns"],
+      "references": [
+        "Discovery Fundamentals - Horizontal Discovery Patterns"
+      ],
       "isFree": false,
       "source": {
         "type": "course",
@@ -386,8 +697,15 @@
         "domain": "Discovery Pattern Design",
         "domainSlug": "pattern-design",
         "domainPercentage": 35,
-        "subtopics": ["Pattern operations", "WMI"],
-        "tags": ["WMI", "Windows", "query operations"]
+        "subtopics": [
+          "Pattern operations",
+          "WMI"
+        ],
+        "tags": [
+          "WMI",
+          "Windows",
+          "query operations"
+        ]
       },
       "meta": {
         "generatedAt": "2026-02-08T02:00:00Z",
@@ -404,21 +722,49 @@
       "type": "multiple_choice",
       "question": "Which port does the SNMP Query operation use by default to gather information from network devices?",
       "options": [
-        { "id": "a", "text": "Port 22" },
-        { "id": "b", "text": "Port 135" },
-        { "id": "c", "text": "Port 161" },
-        { "id": "d", "text": "Port 443" }
+        {
+          "id": "a",
+          "text": "Port 22"
+        },
+        {
+          "id": "b",
+          "text": "Port 135"
+        },
+        {
+          "id": "c",
+          "text": "Port 161"
+        },
+        {
+          "id": "d",
+          "text": "Port 443"
+        }
       ],
-      "correctAnswers": ["c"],
+      "correctAnswers": [
+        "c"
+      ],
       "explanation": {
         "correct": "SNMP Query is used to gather information on network, printer, and power devices - any device that responds on port 161 for querying MIB objects. Scalar and Table Variable Types allow you to query single MIB objects (Scalar) or multiple related MIB objects (Table).",
         "wrongAnswers": [
-          { "choiceId": "a", "explanation": "Port 22 is used for SSH communication with Unix/Linux devices, not SNMP", "reference": "Discovery Fundamentals course" },
-          { "choiceId": "b", "explanation": "Port 135 is used for Windows WMI communication, not SNMP", "reference": "Discovery Fundamentals course" },
-          { "choiceId": "d", "explanation": "Port 443 is used for HTTPS communication between MID Server and ServiceNow instance, not SNMP", "reference": "Discovery Fundamentals course" }
+          {
+            "choiceId": "a",
+            "explanation": "Port 22 is used for SSH communication with Unix/Linux devices, not SNMP",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "Port 135 is used for Windows WMI communication, not SNMP",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Port 443 is used for HTTPS communication between MID Server and ServiceNow instance, not SNMP",
+            "reference": "Discovery Fundamentals course"
+          }
         ]
       },
-      "references": ["Discovery Fundamentals - Horizontal Discovery Patterns"],
+      "references": [
+        "Discovery Fundamentals - Horizontal Discovery Patterns"
+      ],
       "isFree": false,
       "source": {
         "type": "course",
@@ -430,8 +776,15 @@
         "domain": "Discovery Pattern Design",
         "domainSlug": "pattern-design",
         "domainPercentage": 35,
-        "subtopics": ["SNMP", "Ports"],
-        "tags": ["SNMP", "ports", "network devices"]
+        "subtopics": [
+          "SNMP",
+          "Ports"
+        ],
+        "tags": [
+          "SNMP",
+          "ports",
+          "network devices"
+        ]
       },
       "meta": {
         "generatedAt": "2026-02-08T02:00:00Z",
@@ -448,21 +801,49 @@
       "type": "multiple_choice",
       "question": "What happens when Pattern Designer Debug runs and a step fails?",
       "options": [
-        { "id": "a", "text": "The entire pattern stops and must be restarted" },
-        { "id": "b", "text": "A red icon appears for the step that fails with an error explanation" },
-        { "id": "c", "text": "The failing step is automatically skipped" },
-        { "id": "d", "text": "An email notification is sent to the admin" }
+        {
+          "id": "a",
+          "text": "The entire pattern stops and must be restarted"
+        },
+        {
+          "id": "b",
+          "text": "A red icon appears for the step that fails with an error explanation"
+        },
+        {
+          "id": "c",
+          "text": "The failing step is automatically skipped"
+        },
+        {
+          "id": "d",
+          "text": "An email notification is sent to the admin"
+        }
       ],
-      "correctAnswers": ["b"],
+      "correctAnswers": [
+        "b"
+      ],
       "explanation": {
         "correct": "The Horizontal Discovery Log is one of the advantages of using Discovery Patterns. For each step, every time a pattern discovery runs, all the data and times to execute are recorded. If there is a failure, the discovery log shows a red icon for the step that fails, allowing administrators to quickly identify and troubleshoot issues.",
         "wrongAnswers": [
-          { "choiceId": "a", "explanation": "Debug mode allows you to continue testing other steps; it doesn't force a complete restart", "reference": "Discovery Fundamentals course" },
-          { "choiceId": "c", "explanation": "Failing steps are not automatically skipped; they are logged with errors for troubleshooting", "reference": "Discovery Fundamentals course" },
-          { "choiceId": "d", "explanation": "Debug mode displays errors in the Pattern Designer UI, not via email notifications", "reference": "Discovery Fundamentals course" }
+          {
+            "choiceId": "a",
+            "explanation": "Debug mode allows you to continue testing other steps; it doesn't force a complete restart",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Failing steps are not automatically skipped; they are logged with errors for troubleshooting",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Debug mode displays errors in the Pattern Designer UI, not via email notifications",
+            "reference": "Discovery Fundamentals course"
+          }
         ]
       },
-      "references": ["Discovery Fundamentals - Application Discovery Patterns"],
+      "references": [
+        "Discovery Fundamentals - Application Discovery Patterns"
+      ],
       "isFree": false,
       "source": {
         "type": "course",
@@ -474,8 +855,15 @@
         "domain": "Discovery Pattern Design",
         "domainSlug": "pattern-design",
         "domainPercentage": 35,
-        "subtopics": ["Pattern Designer", "Debugging"],
-        "tags": ["debugging", "troubleshooting", "errors"]
+        "subtopics": [
+          "Pattern Designer",
+          "Debugging"
+        ],
+        "tags": [
+          "debugging",
+          "troubleshooting",
+          "errors"
+        ]
       },
       "meta": {
         "generatedAt": "2026-02-08T02:00:00Z",
@@ -492,21 +880,49 @@
       "type": "multiple_choice",
       "question": "What character is used in Pattern Designer syntax to represent existing or future variables?",
       "options": [
-        { "id": "a", "text": "Ampersand (&)" },
-        { "id": "b", "text": "Dollar sign ($)" },
-        { "id": "c", "text": "Percent sign (%)" },
-        { "id": "d", "text": "Hash (#)" }
+        {
+          "id": "a",
+          "text": "Ampersand (&)"
+        },
+        {
+          "id": "b",
+          "text": "Dollar sign ($)"
+        },
+        {
+          "id": "c",
+          "text": "Percent sign (%)"
+        },
+        {
+          "id": "d",
+          "text": "Hash (#)"
+        }
       ],
-      "correctAnswers": ["b"],
+      "correctAnswers": [
+        "b"
+      ],
       "explanation": {
         "correct": "The dollar sign ($) is used to represent existing or future variables in a pattern. Typing it into a field will generally give a dropdown menu of possible variables to choose. Variables can be combined with constants using the + sign.",
         "wrongAnswers": [
-          { "choiceId": "a", "explanation": "Ampersand is not used for variable syntax in Pattern Designer", "reference": "Discovery Fundamentals course" },
-          { "choiceId": "c", "explanation": "Percent signs are not used for pattern variables in ServiceNow Pattern Designer", "reference": "Discovery Fundamentals course" },
-          { "choiceId": "d", "explanation": "Hash is not used for variable syntax in Pattern Designer", "reference": "Discovery Fundamentals course" }
+          {
+            "choiceId": "a",
+            "explanation": "Ampersand is not used for variable syntax in Pattern Designer",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Percent signs are not used for pattern variables in ServiceNow Pattern Designer",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Hash is not used for variable syntax in Pattern Designer",
+            "reference": "Discovery Fundamentals course"
+          }
         ]
       },
-      "references": ["Discovery Fundamentals - Horizontal Discovery Patterns"],
+      "references": [
+        "Discovery Fundamentals - Horizontal Discovery Patterns"
+      ],
       "isFree": false,
       "source": {
         "type": "course",
@@ -518,8 +934,15 @@
         "domain": "Discovery Pattern Design",
         "domainSlug": "pattern-design",
         "domainPercentage": 35,
-        "subtopics": ["Syntax", "Variables"],
-        "tags": ["syntax", "variables", "dollar sign"]
+        "subtopics": [
+          "Syntax",
+          "Variables"
+        ],
+        "tags": [
+          "syntax",
+          "variables",
+          "dollar sign"
+        ]
       },
       "meta": {
         "generatedAt": "2026-02-08T02:00:00Z",
@@ -536,21 +959,49 @@
       "type": "multiple_choice",
       "question": "How can you reuse steps from one pattern in another pattern?",
       "options": [
-        { "id": "a", "text": "Copy and paste the steps manually" },
-        { "id": "b", "text": "Create a shared library from the steps and insert via Library Reference" },
-        { "id": "c", "text": "Export the pattern and import into the target pattern" },
-        { "id": "d", "text": "Steps cannot be reused between patterns" }
+        {
+          "id": "a",
+          "text": "Copy and paste the steps manually"
+        },
+        {
+          "id": "b",
+          "text": "Create a shared library from the steps and insert via Library Reference"
+        },
+        {
+          "id": "c",
+          "text": "Export the pattern and import into the target pattern"
+        },
+        {
+          "id": "d",
+          "text": "Steps cannot be reused between patterns"
+        }
       ],
-      "correctAnswers": ["b"],
+      "correctAnswers": [
+        "b"
+      ],
       "explanation": {
         "correct": "To reuse steps, navigate to the pattern containing the steps you want to reuse, select the steps, right-click, and choose Create shared library. Then in the target pattern, select the relevant section and insert the library via Library Reference.",
         "wrongAnswers": [
-          { "choiceId": "a", "explanation": "While manual recreation is possible, Pattern Designer provides the shared library feature specifically for reuse", "reference": "Discovery Fundamentals course" },
-          { "choiceId": "c", "explanation": "Pattern import/export doesn't work at the step level; shared libraries are the proper mechanism", "reference": "Discovery Fundamentals course" },
-          { "choiceId": "d", "explanation": "Steps can definitely be reused through the shared library feature in Pattern Designer", "reference": "Discovery Fundamentals course" }
+          {
+            "choiceId": "a",
+            "explanation": "While manual recreation is possible, Pattern Designer provides the shared library feature specifically for reuse",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Pattern import/export doesn't work at the step level; shared libraries are the proper mechanism",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Steps can definitely be reused through the shared library feature in Pattern Designer",
+            "reference": "Discovery Fundamentals course"
+          }
         ]
       },
-      "references": ["Discovery Fundamentals - Horizontal Discovery Patterns"],
+      "references": [
+        "Discovery Fundamentals - Horizontal Discovery Patterns"
+      ],
       "isFree": false,
       "source": {
         "type": "course",
@@ -562,8 +1013,15 @@
         "domain": "Discovery Pattern Design",
         "domainSlug": "pattern-design",
         "domainPercentage": 35,
-        "subtopics": ["Shared libraries", "Pattern reuse"],
-        "tags": ["shared library", "reuse", "best practices"]
+        "subtopics": [
+          "Shared libraries",
+          "Pattern reuse"
+        ],
+        "tags": [
+          "shared library",
+          "reuse",
+          "best practices"
+        ]
       },
       "meta": {
         "generatedAt": "2026-02-08T02:00:00Z",
@@ -580,21 +1038,49 @@
       "type": "multiple_choice",
       "question": "What role is required to access Pattern Designer for creating discovery patterns?",
       "options": [
-        { "id": "a", "text": "discovery_admin" },
-        { "id": "b", "text": "pd_admin" },
-        { "id": "c", "text": "pattern_developer" },
-        { "id": "d", "text": "mid_server" }
+        {
+          "id": "a",
+          "text": "discovery_admin"
+        },
+        {
+          "id": "b",
+          "text": "pd_admin"
+        },
+        {
+          "id": "c",
+          "text": "pattern_developer"
+        },
+        {
+          "id": "d",
+          "text": "mid_server"
+        }
       ],
-      "correctAnswers": ["b"],
+      "correctAnswers": [
+        "b"
+      ],
       "explanation": {
         "correct": "The pd_admin role is required to access Pattern Designer and create or modify discovery patterns. This role grants access to pattern design capabilities including debugging and publishing patterns.",
         "wrongAnswers": [
-          { "choiceId": "a", "explanation": "discovery_admin grants access to Discovery Admin Workspace and schedules, but pd_admin is specifically needed for Pattern Designer", "reference": "Discovery Fundamentals course" },
-          { "choiceId": "c", "explanation": "pattern_developer is not a standard ServiceNow role; pd_admin is the correct role for pattern design", "reference": "Discovery Fundamentals course" },
-          { "choiceId": "d", "explanation": "mid_server is the role for MID Server users, not for pattern design access", "reference": "Discovery Fundamentals course" }
+          {
+            "choiceId": "a",
+            "explanation": "discovery_admin grants access to Discovery Admin Workspace and schedules, but pd_admin is specifically needed for Pattern Designer",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "pattern_developer is not a standard ServiceNow role; pd_admin is the correct role for pattern design",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "mid_server is the role for MID Server users, not for pattern design access",
+            "reference": "Discovery Fundamentals course"
+          }
         ]
       },
-      "references": ["Discovery Fundamentals - Application Discovery Patterns"],
+      "references": [
+        "Discovery Fundamentals - Application Discovery Patterns"
+      ],
       "isFree": false,
       "source": {
         "type": "course",
@@ -606,8 +1092,15 @@
         "domain": "Discovery Pattern Design",
         "domainSlug": "pattern-design",
         "domainPercentage": 35,
-        "subtopics": ["Roles", "Pattern Designer"],
-        "tags": ["roles", "pd_admin", "permissions"]
+        "subtopics": [
+          "Roles",
+          "Pattern Designer"
+        ],
+        "tags": [
+          "roles",
+          "pd_admin",
+          "permissions"
+        ]
       },
       "meta": {
         "generatedAt": "2026-02-08T02:00:00Z",
@@ -624,20 +1117,45 @@
       "type": "multiple_select",
       "question": "Which operations belong to the 'Queries' category in Pattern Designer? (Choose 2)",
       "options": [
-        { "id": "a", "text": "WMI Query" },
-        { "id": "b", "text": "Merge Table" },
-        { "id": "c", "text": "SNMP Query" },
-        { "id": "d", "text": "Parse Variable" }
+        {
+          "id": "a",
+          "text": "WMI Query"
+        },
+        {
+          "id": "b",
+          "text": "Merge Table"
+        },
+        {
+          "id": "c",
+          "text": "SNMP Query"
+        },
+        {
+          "id": "d",
+          "text": "Parse Variable"
+        }
       ],
-      "correctAnswers": ["a", "c"],
+      "correctAnswers": [
+        "a",
+        "c"
+      ],
       "explanation": {
         "correct": "Operations in the 'Queries' category gather information from the target. WMI Query interrogates Windows Servers, while SNMP Query gathers information from network devices on port 161. These operations can use predefined queries or be customized using query methods like WMI, SNMP, or LDAP.",
         "wrongAnswers": [
-          { "choiceId": "b", "explanation": "Merge Table is in the Table operations category, used to combine pattern tables", "reference": "Discovery Fundamentals course" },
-          { "choiceId": "d", "explanation": "Parse Variable is in the Parsing category, used to search through data to find specific information", "reference": "Discovery Fundamentals course" }
+          {
+            "choiceId": "b",
+            "explanation": "Merge Table is in the Table operations category, used to combine pattern tables",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Parse Variable is in the Parsing category, used to search through data to find specific information",
+            "reference": "Discovery Fundamentals course"
+          }
         ]
       },
-      "references": ["Discovery Fundamentals - Horizontal Discovery Patterns"],
+      "references": [
+        "Discovery Fundamentals - Horizontal Discovery Patterns"
+      ],
       "isFree": false,
       "source": {
         "type": "course",
@@ -649,8 +1167,16 @@
         "domain": "Discovery Pattern Design",
         "domainSlug": "pattern-design",
         "domainPercentage": 35,
-        "subtopics": ["Pattern operations", "Query operations"],
-        "tags": ["queries", "WMI", "SNMP", "operations"]
+        "subtopics": [
+          "Pattern operations",
+          "Query operations"
+        ],
+        "tags": [
+          "queries",
+          "WMI",
+          "SNMP",
+          "operations"
+        ]
       },
       "meta": {
         "generatedAt": "2026-02-08T02:00:00Z",
@@ -667,21 +1193,49 @@
       "type": "multiple_choice",
       "question": "What is the primary difference between the Transform Table and Merge Table operations?",
       "options": [
-        { "id": "a", "text": "Transform Table works only on XML data" },
-        { "id": "b", "text": "Merge Table matches variable names while Transform Table builds tables using concatenation" },
-        { "id": "c", "text": "Transform Table requires more system resources" },
-        { "id": "d", "text": "Merge Table can only combine two tables at a time" }
+        {
+          "id": "a",
+          "text": "Transform Table works only on XML data"
+        },
+        {
+          "id": "b",
+          "text": "Merge Table matches variable names while Transform Table builds tables using concatenation"
+        },
+        {
+          "id": "c",
+          "text": "Transform Table requires more system resources"
+        },
+        {
+          "id": "d",
+          "text": "Merge Table can only combine two tables at a time"
+        }
       ],
-      "correctAnswers": ["b"],
+      "correctAnswers": [
+        "b"
+      ],
       "explanation": {
         "correct": "Transform Table works similarly to Merge Table but works on one or two tables and does not merge matching variables. It allows you to use scalar or tabular variables to build larger pattern tables using concatenation with constants and/or variable values. Merge Table keeps data that matches variable names.",
         "wrongAnswers": [
-          { "choiceId": "a", "explanation": "Neither operation is limited to XML data; both work with pattern variables and tables", "reference": "Discovery Fundamentals course" },
-          { "choiceId": "c", "explanation": "Resource usage is not the distinguishing factor between these operations", "reference": "Discovery Fundamentals course" },
-          { "choiceId": "d", "explanation": "Merge Table can actually merge two or three tables together", "reference": "Discovery Fundamentals course" }
+          {
+            "choiceId": "a",
+            "explanation": "Neither operation is limited to XML data; both work with pattern variables and tables",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Resource usage is not the distinguishing factor between these operations",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Merge Table can actually merge two or three tables together",
+            "reference": "Discovery Fundamentals course"
+          }
         ]
       },
-      "references": ["Discovery Fundamentals - Horizontal Discovery Patterns"],
+      "references": [
+        "Discovery Fundamentals - Horizontal Discovery Patterns"
+      ],
       "isFree": false,
       "source": {
         "type": "course",
@@ -693,8 +1247,15 @@
         "domain": "Discovery Pattern Design",
         "domainSlug": "pattern-design",
         "domainPercentage": 35,
-        "subtopics": ["Table operations", "Transform vs Merge"],
-        "tags": ["transform table", "merge table", "operations"]
+        "subtopics": [
+          "Table operations",
+          "Transform vs Merge"
+        ],
+        "tags": [
+          "transform table",
+          "merge table",
+          "operations"
+        ]
       },
       "meta": {
         "generatedAt": "2026-02-08T02:00:00Z",
@@ -711,21 +1272,49 @@
       "type": "multiple_choice",
       "question": "Why must Application Patterns have a corresponding CI type and CI classification before they can be created?",
       "options": [
-        { "id": "a", "text": "To ensure the pattern can be exported properly" },
-        { "id": "b", "text": "So Discovery can process and store the discovered application correctly in the CMDB" },
-        { "id": "c", "text": "To enable email notifications for discovered applications" },
-        { "id": "d", "text": "Because patterns inherit security settings from CI classes" }
+        {
+          "id": "a",
+          "text": "To ensure the pattern can be exported properly"
+        },
+        {
+          "id": "b",
+          "text": "So Discovery can process and store the discovered application correctly in the CMDB"
+        },
+        {
+          "id": "c",
+          "text": "To enable email notifications for discovered applications"
+        },
+        {
+          "id": "d",
+          "text": "Because patterns inherit security settings from CI classes"
+        }
       ],
-      "correctAnswers": ["b"],
+      "correctAnswers": [
+        "b"
+      ],
       "explanation": {
         "correct": "Every application in your organization must have a corresponding configuration item (CI) type which allows Service Mapping and Discovery to discover and process this application correctly. Without a CI type and classification, Discovery cannot properly store the discovered application in the CMDB.",
         "wrongAnswers": [
-          { "choiceId": "a", "explanation": "CI types are not related to pattern export functionality", "reference": "Discovery Fundamentals course" },
-          { "choiceId": "c", "explanation": "CI types are for CMDB storage and processing, not email notifications", "reference": "Discovery Fundamentals course" },
-          { "choiceId": "d", "explanation": "While CI classes have ACLs, this is not the primary reason for requiring CI types in patterns", "reference": "Discovery Fundamentals course" }
+          {
+            "choiceId": "a",
+            "explanation": "CI types are not related to pattern export functionality",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "CI types are for CMDB storage and processing, not email notifications",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "While CI classes have ACLs, this is not the primary reason for requiring CI types in patterns",
+            "reference": "Discovery Fundamentals course"
+          }
         ]
       },
-      "references": ["Discovery Fundamentals - Application Discovery Patterns"],
+      "references": [
+        "Discovery Fundamentals - Application Discovery Patterns"
+      ],
       "isFree": false,
       "source": {
         "type": "course",
@@ -737,8 +1326,15 @@
         "domain": "Discovery Pattern Design",
         "domainSlug": "pattern-design",
         "domainPercentage": 35,
-        "subtopics": ["Application patterns", "CI types"],
-        "tags": ["CI type", "classification", "prerequisites"]
+        "subtopics": [
+          "Application patterns",
+          "CI types"
+        ],
+        "tags": [
+          "CI type",
+          "classification",
+          "prerequisites"
+        ]
       },
       "meta": {
         "generatedAt": "2026-02-08T02:00:00Z",
@@ -755,20 +1351,45 @@
       "type": "multiple_select",
       "question": "Which parsing strategies can be used with the Parse Variable operation? (Choose 2)",
       "options": [
-        { "id": "a", "text": "Regular expressions (regex)" },
-        { "id": "b", "text": "Delimited text" },
-        { "id": "c", "text": "WMI query" },
-        { "id": "d", "text": "SNMP OID lookup" }
+        {
+          "id": "a",
+          "text": "Regular expressions (regex)"
+        },
+        {
+          "id": "b",
+          "text": "Delimited text"
+        },
+        {
+          "id": "c",
+          "text": "WMI query"
+        },
+        {
+          "id": "d",
+          "text": "SNMP OID lookup"
+        }
       ],
-      "correctAnswers": ["a", "b"],
+      "correctAnswers": [
+        "a",
+        "b"
+      ],
       "explanation": {
         "correct": "The Parse Variable operation is used to isolate data from retrieved information. Common parsing strategies include regex (regular expressions) and delimited text, though there are multiple other options available for searching through data to find specific information.",
         "wrongAnswers": [
-          { "choiceId": "c", "explanation": "WMI query is a separate operation category for querying Windows systems, not a parsing strategy", "reference": "Discovery Fundamentals course" },
-          { "choiceId": "d", "explanation": "SNMP OID lookup is part of the SNMP Query operation, not a parsing strategy for Parse Variable", "reference": "Discovery Fundamentals course" }
+          {
+            "choiceId": "c",
+            "explanation": "WMI query is a separate operation category for querying Windows systems, not a parsing strategy",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "SNMP OID lookup is part of the SNMP Query operation, not a parsing strategy for Parse Variable",
+            "reference": "Discovery Fundamentals course"
+          }
         ]
       },
-      "references": ["Discovery Fundamentals - Horizontal Discovery Patterns"],
+      "references": [
+        "Discovery Fundamentals - Horizontal Discovery Patterns"
+      ],
       "isFree": false,
       "source": {
         "type": "course",
@@ -780,8 +1401,15 @@
         "domain": "Discovery Pattern Design",
         "domainSlug": "pattern-design",
         "domainPercentage": 35,
-        "subtopics": ["Parsing strategies", "Parse Variable"],
-        "tags": ["parsing", "regex", "delimited text"]
+        "subtopics": [
+          "Parsing strategies",
+          "Parse Variable"
+        ],
+        "tags": [
+          "parsing",
+          "regex",
+          "delimited text"
+        ]
       },
       "meta": {
         "generatedAt": "2026-02-08T02:00:00Z",
@@ -798,21 +1426,49 @@
       "type": "multiple_choice",
       "question": "What happens to temporary variables created during pattern execution when the pattern completes?",
       "options": [
-        { "id": "a", "text": "They are deleted and lost permanently" },
-        { "id": "b", "text": "They become actual CI data if the variable name matches a CMDB table field" },
-        { "id": "c", "text": "They are stored in the Discovery Log for review" },
-        { "id": "d", "text": "They are exported to a CSV file automatically" }
+        {
+          "id": "a",
+          "text": "They are deleted and lost permanently"
+        },
+        {
+          "id": "b",
+          "text": "They become actual CI data if the variable name matches a CMDB table field"
+        },
+        {
+          "id": "c",
+          "text": "They are stored in the Discovery Log for review"
+        },
+        {
+          "id": "d",
+          "text": "They are exported to a CSV file automatically"
+        }
       ],
-      "correctAnswers": ["b"],
+      "correctAnswers": [
+        "b"
+      ],
       "explanation": {
         "correct": "The temporary variable table only exists in the pattern until the pattern is completed. Once the pattern completes, any information in a variable in this table will become actual data in a CI, as long as the variable name matches or transforms to the name of the attribute, or field, in the CMDB table in ServiceNow.",
         "wrongAnswers": [
-          { "choiceId": "a", "explanation": "Variables that match CMDB fields become CI data; they are not simply deleted", "reference": "Discovery Fundamentals course" },
-          { "choiceId": "c", "explanation": "While the Discovery Log records pattern execution, temporary variables become CI data, not log entries", "reference": "Discovery Fundamentals course" },
-          { "choiceId": "d", "explanation": "Pattern variables are not exported to CSV; they populate CMDB records", "reference": "Discovery Fundamentals course" }
+          {
+            "choiceId": "a",
+            "explanation": "Variables that match CMDB fields become CI data; they are not simply deleted",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "While the Discovery Log records pattern execution, temporary variables become CI data, not log entries",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Pattern variables are not exported to CSV; they populate CMDB records",
+            "reference": "Discovery Fundamentals course"
+          }
         ]
       },
-      "references": ["Discovery Fundamentals - Horizontal Discovery Patterns"],
+      "references": [
+        "Discovery Fundamentals - Horizontal Discovery Patterns"
+      ],
       "isFree": false,
       "source": {
         "type": "course",
@@ -824,8 +1480,15 @@
         "domain": "Discovery Pattern Design",
         "domainSlug": "pattern-design",
         "domainPercentage": 35,
-        "subtopics": ["Temporary variables", "CMDB population"],
-        "tags": ["variables", "CMDB", "CI data"]
+        "subtopics": [
+          "Temporary variables",
+          "CMDB population"
+        ],
+        "tags": [
+          "variables",
+          "CMDB",
+          "CI data"
+        ]
       },
       "meta": {
         "generatedAt": "2026-02-08T02:00:00Z",
@@ -842,21 +1505,49 @@
       "type": "multiple_choice",
       "question": "Which temporary variable table is available by default on all Infrastructure Discovery Patterns?",
       "options": [
-        { "id": "a", "text": "cmdb_ci_server" },
-        { "id": "b", "text": "process" },
-        { "id": "c", "text": "computer_system" },
-        { "id": "d", "text": "hardware_info" }
+        {
+          "id": "a",
+          "text": "cmdb_ci_server"
+        },
+        {
+          "id": "b",
+          "text": "process"
+        },
+        {
+          "id": "c",
+          "text": "computer_system"
+        },
+        {
+          "id": "d",
+          "text": "hardware_info"
+        }
       ],
-      "correctAnswers": ["c"],
+      "correctAnswers": [
+        "c"
+      ],
       "explanation": {
         "correct": "The computer_system temporary variable table is available by default on all Infrastructure Discovery Patterns. For Application Discovery Patterns, the 'process' temporary variables are available by default instead.",
         "wrongAnswers": [
-          { "choiceId": "a", "explanation": "cmdb_ci_server is a CMDB table, not a default temporary variable table in patterns", "reference": "Discovery Fundamentals course" },
-          { "choiceId": "b", "explanation": "The 'process' temporary variables are available by default for Application Discovery Patterns, not Infrastructure Patterns", "reference": "Discovery Fundamentals course" },
-          { "choiceId": "d", "explanation": "hardware_info is not a default temporary variable table in Pattern Designer", "reference": "Discovery Fundamentals course" }
+          {
+            "choiceId": "a",
+            "explanation": "cmdb_ci_server is a CMDB table, not a default temporary variable table in patterns",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "The 'process' temporary variables are available by default for Application Discovery Patterns, not Infrastructure Patterns",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "hardware_info is not a default temporary variable table in Pattern Designer",
+            "reference": "Discovery Fundamentals course"
+          }
         ]
       },
-      "references": ["Discovery Fundamentals - Horizontal Discovery Patterns"],
+      "references": [
+        "Discovery Fundamentals - Horizontal Discovery Patterns"
+      ],
       "isFree": false,
       "source": {
         "type": "course",
@@ -868,8 +1559,15 @@
         "domain": "Discovery Pattern Design",
         "domainSlug": "pattern-design",
         "domainPercentage": 35,
-        "subtopics": ["Temporary variables", "Pattern defaults"],
-        "tags": ["variables", "computer_system", "infrastructure patterns"]
+        "subtopics": [
+          "Temporary variables",
+          "Pattern defaults"
+        ],
+        "tags": [
+          "variables",
+          "computer_system",
+          "infrastructure patterns"
+        ]
       },
       "meta": {
         "generatedAt": "2026-02-08T02:00:00Z",
@@ -886,21 +1584,49 @@
       "type": "multiple_choice",
       "question": "Why is it considered a best practice to avoid hard-coding values in discovery patterns?",
       "options": [
-        { "id": "a", "text": "Hard-coded values consume more system memory" },
-        { "id": "b", "text": "Hard-coded values may become stale or incorrect when targets change" },
-        { "id": "c", "text": "Hard-coded values are not supported in newer ServiceNow versions" },
-        { "id": "d", "text": "Hard-coded values cannot be used in pattern debugging" }
+        {
+          "id": "a",
+          "text": "Hard-coded values consume more system memory"
+        },
+        {
+          "id": "b",
+          "text": "Hard-coded values may become stale or incorrect when targets change"
+        },
+        {
+          "id": "c",
+          "text": "Hard-coded values are not supported in newer ServiceNow versions"
+        },
+        {
+          "id": "d",
+          "text": "Hard-coded values cannot be used in pattern debugging"
+        }
       ],
-      "correctAnswers": ["b"],
+      "correctAnswers": [
+        "b"
+      ],
       "explanation": {
         "correct": "Design your patterns to use information queried from the targets. As the targets are updated or changed in any way, hard-coded operations may become stale and incorrect. Always design for change by querying actual values from devices rather than assuming static values.",
         "wrongAnswers": [
-          { "choiceId": "a", "explanation": "Memory consumption is not the concern with hard-coded values; data accuracy is the issue", "reference": "Discovery Fundamentals course" },
-          { "choiceId": "c", "explanation": "Hard-coded values are still supported; they are just not best practice due to maintenance concerns", "reference": "Discovery Fundamentals course" },
-          { "choiceId": "d", "explanation": "Hard-coded values can be used in debugging; the concern is about long-term accuracy", "reference": "Discovery Fundamentals course" }
+          {
+            "choiceId": "a",
+            "explanation": "Memory consumption is not the concern with hard-coded values; data accuracy is the issue",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Hard-coded values are still supported; they are just not best practice due to maintenance concerns",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Hard-coded values can be used in debugging; the concern is about long-term accuracy",
+            "reference": "Discovery Fundamentals course"
+          }
         ]
       },
-      "references": ["Discovery Fundamentals - Horizontal Discovery Patterns"],
+      "references": [
+        "Discovery Fundamentals - Horizontal Discovery Patterns"
+      ],
       "isFree": false,
       "source": {
         "type": "course",
@@ -912,8 +1638,15 @@
         "domain": "Discovery Pattern Design",
         "domainSlug": "pattern-design",
         "domainPercentage": 35,
-        "subtopics": ["Best practices", "Pattern design"],
-        "tags": ["best practices", "hard coding", "design patterns"]
+        "subtopics": [
+          "Best practices",
+          "Pattern design"
+        ],
+        "tags": [
+          "best practices",
+          "hard coding",
+          "design patterns"
+        ]
       },
       "meta": {
         "generatedAt": "2026-02-08T02:00:00Z",

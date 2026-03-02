@@ -1,714 +1,1266 @@
-[
-  {
-    "id": "cis-em-event-configuration-001",
-    "certification": "cis-em",
-    "topic": "event-configuration",
-    "cognitiveLevel": "knowledge",
-    "type": "multiple_choice",
-    "question": "What is the navigation path to create a new Event Field Mapping in ServiceNow?",
-    "options": [
-      { "id": "a", "text": "All > Event Management > Configuration > Field Mapping" },
-      { "id": "b", "text": "All > Event Management > Rules > Event Field Mapping" },
-      { "id": "c", "text": "All > System Definition > Event Mapping" },
-      { "id": "d", "text": "All > ITOM > Event Configuration > Mappings" }
-    ],
-    "correctAnswers": ["b"],
-    "explanation": {
-      "correct": "Event Field Mappings are accessed via All > Event Management > Rules > Event Field Mapping. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/task/t_EMCreateEventFieldMapping2.html",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "Incorrect navigation path", "reference": "Event Management navigation" },
-        { "choiceId": "c", "explanation": "System Definition is for platform configuration, not Event Management", "reference": "System Definition" },
-        { "choiceId": "d", "explanation": "This navigation path does not exist", "reference": "Event Management navigation" }
-      ]
-    },
-    "references": ["Event Field Mapping", "Event Management Rules"],
-    "isFree": true,
-    "source": {
-      "type": "docs",
-      "path": "cis-em-api/t_EMCreateEventFieldMapping2.md",
-      "excerpt": "Navigate to All > Event Management > Rules > Event Field Mapping."
-    },
-    "labels": {
+{
+  "certification": "cis-em",
+  "topic": "event-configuration",
+  "questions": [
+    {
+      "id": "cis-em-event-configuration-001",
       "certification": "cis-em",
-      "domain": "Event Configuration and Use",
-      "domainSlug": "event-configuration",
-      "domainPercentage": 27,
-      "subtopics": ["Event rules", "Event field mapping"],
-      "tags": ["navigation", "event-field-mapping"]
+      "topic": "event-configuration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What is the navigation path to create a new Event Field Mapping in ServiceNow?",
+      "options": [
+        {
+          "id": "a",
+          "text": "All > Event Management > Configuration > Field Mapping"
+        },
+        {
+          "id": "b",
+          "text": "All > Event Management > Rules > Event Field Mapping"
+        },
+        {
+          "id": "c",
+          "text": "All > System Definition > Event Mapping"
+        },
+        {
+          "id": "d",
+          "text": "All > ITOM > Event Configuration > Mappings"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Event Field Mappings are accessed via All > Event Management > Rules > Event Field Mapping. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/task/t_EMCreateEventFieldMapping2.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Incorrect navigation path",
+            "reference": "Event Management navigation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "System Definition is for platform configuration, not Event Management",
+            "reference": "System Definition"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "This navigation path does not exist",
+            "reference": "Event Management navigation"
+          }
+        ]
+      },
+      "references": [
+        "Event Field Mapping",
+        "Event Management Rules"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "docs",
+        "path": "cis-em-api/t_EMCreateEventFieldMapping2.md",
+        "excerpt": "Navigate to All > Event Management > Rules > Event Field Mapping."
+      },
+      "labels": {
+        "certification": "cis-em",
+        "domain": "Event Configuration and Use",
+        "domainSlug": "event-configuration",
+        "domainPercentage": 27,
+        "subtopics": [
+          "Event rules",
+          "Event field mapping"
+        ],
+        "tags": [
+          "navigation",
+          "event-field-mapping"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-21T02:30:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-21T02:30:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-em-event-configuration-002",
-    "certification": "cis-em",
-    "topic": "event-configuration",
-    "cognitiveLevel": "understanding",
-    "type": "multiple_select",
-    "question": "Which three mapping types are available when creating an Event Field Mapping? (Choose three.)",
-    "options": [
-      { "id": "a", "text": "Map field and transform value (Single field)" },
-      { "id": "b", "text": "Map field (Copy field)" },
-      { "id": "c", "text": "Map field using database query" },
-      { "id": "d", "text": "Advanced mapping using script" },
-      { "id": "e", "text": "Map field using LDAP lookup" }
-    ],
-    "correctAnswers": ["a", "b", "d"],
-    "selectCount": 3,
-    "explanation": {
-      "correct": "Event Field Mapping supports several mapping types including: Map field and transform value (Single field), Map field (Copy field), and Advanced mapping using script. Other types include Map field and transform value using regex and Map field from reference table. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/task/t_EMCreateEventFieldMapping2.html",
-      "wrongAnswers": [
-        { "choiceId": "c", "explanation": "Database query is not a direct mapping type; use reference table instead", "reference": "Event Field Mapping documentation" },
-        { "choiceId": "e", "explanation": "LDAP lookup is not an Event Field Mapping type", "reference": "Event Field Mapping documentation" }
-      ]
-    },
-    "references": ["Event Field Mapping types", "Mapping configuration"],
-    "isFree": true,
-    "source": {
-      "type": "docs",
-      "path": "cis-em-api/t_EMCreateEventFieldMapping2.md",
-      "excerpt": "Mapping type options include: Map field and transform value (Single field), Map field (Copy field), Advanced mapping using script, Map field and transform value using regex, Map field from reference table."
-    },
-    "labels": {
+    {
+      "id": "cis-em-event-configuration-002",
       "certification": "cis-em",
-      "domain": "Event Configuration and Use",
-      "domainSlug": "event-configuration",
-      "domainPercentage": 27,
-      "subtopics": ["Event rules", "Event field mapping"],
-      "tags": ["mapping-types", "event-configuration"]
+      "topic": "event-configuration",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_select",
+      "question": "Which three mapping types are available when creating an Event Field Mapping? (Choose three.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Map field and transform value (Single field)"
+        },
+        {
+          "id": "b",
+          "text": "Map field (Copy field)"
+        },
+        {
+          "id": "c",
+          "text": "Map field using database query"
+        },
+        {
+          "id": "d",
+          "text": "Advanced mapping using script"
+        },
+        {
+          "id": "e",
+          "text": "Map field using LDAP lookup"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b",
+        "d"
+      ],
+      "selectCount": 3,
+      "explanation": {
+        "correct": "Event Field Mapping supports several mapping types including: Map field and transform value (Single field), Map field (Copy field), and Advanced mapping using script. Other types include Map field and transform value using regex and Map field from reference table. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/task/t_EMCreateEventFieldMapping2.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "c",
+            "explanation": "Database query is not a direct mapping type; use reference table instead",
+            "reference": "Event Field Mapping documentation"
+          },
+          {
+            "choiceId": "e",
+            "explanation": "LDAP lookup is not an Event Field Mapping type",
+            "reference": "Event Field Mapping documentation"
+          }
+        ]
+      },
+      "references": [
+        "Event Field Mapping types",
+        "Mapping configuration"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "docs",
+        "path": "cis-em-api/t_EMCreateEventFieldMapping2.md",
+        "excerpt": "Mapping type options include: Map field and transform value (Single field), Map field (Copy field), Advanced mapping using script, Map field and transform value using regex, Map field from reference table."
+      },
+      "labels": {
+        "certification": "cis-em",
+        "domain": "Event Configuration and Use",
+        "domainSlug": "event-configuration",
+        "domainPercentage": 27,
+        "subtopics": [
+          "Event rules",
+          "Event field mapping"
+        ],
+        "tags": [
+          "mapping-types",
+          "event-configuration"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-21T02:30:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-21T02:30:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-em-event-configuration-003",
-    "certification": "cis-em",
-    "topic": "event-configuration",
-    "cognitiveLevel": "knowledge",
-    "type": "multiple_choice",
-    "question": "Which role is required to create and configure Event Field Mappings?",
-    "options": [
-      { "id": "a", "text": "itil" },
-      { "id": "b", "text": "evt_mgmt_admin" },
-      { "id": "c", "text": "admin" },
-      { "id": "d", "text": "evt_mgmt_user" }
-    ],
-    "correctAnswers": ["b"],
-    "explanation": {
-      "correct": "The evt_mgmt_admin role is required to create and configure Event Field Mappings. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/task/t_EMCreateEventFieldMapping2.html",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "itil role is for ITSM tasks, not Event Management configuration", "reference": "Role documentation" },
-        { "choiceId": "c", "explanation": "Admin has access but evt_mgmt_admin is the specific required role", "reference": "Event Management roles" },
-        { "choiceId": "d", "explanation": "evt_mgmt_user is a different role with fewer permissions", "reference": "Event Management roles" }
-      ]
-    },
-    "references": ["Event Management roles", "evt_mgmt_admin"],
-    "isFree": true,
-    "source": {
-      "type": "docs",
-      "path": "cis-em-api/t_EMCreateEventFieldMapping2.md",
-      "excerpt": "Role required: evt_mgmt_admin"
-    },
-    "labels": {
+    {
+      "id": "cis-em-event-configuration-003",
       "certification": "cis-em",
-      "domain": "Event Configuration and Use",
-      "domainSlug": "event-configuration",
-      "domainPercentage": 27,
-      "subtopics": ["Event rules"],
-      "tags": ["roles", "evt_mgmt_admin"]
+      "topic": "event-configuration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which role is required to create and configure Event Field Mappings?",
+      "options": [
+        {
+          "id": "a",
+          "text": "itil"
+        },
+        {
+          "id": "b",
+          "text": "evt_mgmt_admin"
+        },
+        {
+          "id": "c",
+          "text": "admin"
+        },
+        {
+          "id": "d",
+          "text": "evt_mgmt_user"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The evt_mgmt_admin role is required to create and configure Event Field Mappings. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/task/t_EMCreateEventFieldMapping2.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "itil role is for ITSM tasks, not Event Management configuration",
+            "reference": "Role documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Admin has access but evt_mgmt_admin is the specific required role",
+            "reference": "Event Management roles"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "evt_mgmt_user is a different role with fewer permissions",
+            "reference": "Event Management roles"
+          }
+        ]
+      },
+      "references": [
+        "Event Management roles",
+        "evt_mgmt_admin"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "docs",
+        "path": "cis-em-api/t_EMCreateEventFieldMapping2.md",
+        "excerpt": "Role required: evt_mgmt_admin"
+      },
+      "labels": {
+        "certification": "cis-em",
+        "domain": "Event Configuration and Use",
+        "domainSlug": "event-configuration",
+        "domainPercentage": 27,
+        "subtopics": [
+          "Event rules"
+        ],
+        "tags": [
+          "roles",
+          "evt_mgmt_admin"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-21T02:30:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-21T02:30:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-em-event-configuration-004",
-    "certification": "cis-em",
-    "topic": "event-configuration",
-    "cognitiveLevel": "understanding",
-    "type": "multiple_choice",
-    "question": "In the event processing workflow, what happens when an event rule has the 'Ignore' checkbox selected?",
-    "options": [
-      { "id": "a", "text": "The event is deleted from the system" },
-      { "id": "b", "text": "No alert is generated, but the event is still available for review" },
-      { "id": "c", "text": "The event is forwarded to another instance" },
-      { "id": "d", "text": "An incident is created instead of an alert" }
-    ],
-    "correctAnswers": ["b"],
-    "explanation": {
-      "correct": "If the rule Ignore checkbox is selected, no alert is generated. However, the event is still available for review and remediation. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/em-process-flow.html",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "Events are retained even when ignored", "reference": "Event processing workflow" },
-        { "choiceId": "c", "explanation": "Ignore does not forward events", "reference": "Event rules documentation" },
-        { "choiceId": "d", "explanation": "Ignore prevents alert generation, not incident creation", "reference": "Event processing workflow" }
-      ]
-    },
-    "references": ["Event rules", "Ignore setting"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "cis-em-api/em-process-flow.md",
-      "excerpt": "Ignore Rule: If the rule Ignore check box is selected, no alert is generated. However, the event is still available for review and remediation."
-    },
-    "labels": {
+    {
+      "id": "cis-em-event-configuration-004",
       "certification": "cis-em",
-      "domain": "Event Configuration and Use",
-      "domainSlug": "event-configuration",
-      "domainPercentage": 27,
-      "subtopics": ["Event rules", "Event processing"],
-      "tags": ["ignore-rule", "event-processing"]
+      "topic": "event-configuration",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "In the event processing workflow, what happens when an event rule has the 'Ignore' checkbox selected?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The event is deleted from the system"
+        },
+        {
+          "id": "b",
+          "text": "No alert is generated, but the event is still available for review"
+        },
+        {
+          "id": "c",
+          "text": "The event is forwarded to another instance"
+        },
+        {
+          "id": "d",
+          "text": "An incident is created instead of an alert"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "If the rule Ignore checkbox is selected, no alert is generated. However, the event is still available for review and remediation. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/em-process-flow.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Events are retained even when ignored",
+            "reference": "Event processing workflow"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Ignore does not forward events",
+            "reference": "Event rules documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Ignore prevents alert generation, not incident creation",
+            "reference": "Event processing workflow"
+          }
+        ]
+      },
+      "references": [
+        "Event rules",
+        "Ignore setting"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "cis-em-api/em-process-flow.md",
+        "excerpt": "Ignore Rule: If the rule Ignore check box is selected, no alert is generated. However, the event is still available for review and remediation."
+      },
+      "labels": {
+        "certification": "cis-em",
+        "domain": "Event Configuration and Use",
+        "domainSlug": "event-configuration",
+        "domainPercentage": 27,
+        "subtopics": [
+          "Event rules",
+          "Event processing"
+        ],
+        "tags": [
+          "ignore-rule",
+          "event-processing"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-21T02:30:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-21T02:30:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-em-event-configuration-005",
-    "certification": "cis-em",
-    "topic": "event-configuration",
-    "cognitiveLevel": "application",
-    "type": "multiple_choice",
-    "question": "When multiple event rules are defined for the same type of event, how does Event Management determine which rule to apply first?",
-    "options": [
-      { "id": "a", "text": "Alphabetically by rule name" },
-      { "id": "b", "text": "By the rule order field" },
-      { "id": "c", "text": "By creation date (oldest first)" },
-      { "id": "d", "text": "Randomly selected" }
-    ],
-    "correctAnswers": ["b"],
-    "explanation": {
-      "correct": "If multiple rules are defined for the same type of event, use the rule order to determine the sequence of rule application. Rules with lower order numbers are processed first. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/em-process-flow.html",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "Rule order field determines sequence, not alphabetical name", "reference": "Event rules documentation" },
-        { "choiceId": "c", "explanation": "Creation date does not determine rule execution order", "reference": "Event rules documentation" },
-        { "choiceId": "d", "explanation": "Rule execution follows a defined order, not random", "reference": "Event rules documentation" }
-      ]
-    },
-    "references": ["Event rule order", "Rule processing"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "cis-em-api/em-process-flow.md",
-      "excerpt": "If multiple rules are defined for the same type of event, use the rule order to determine the sequence of rule application."
-    },
-    "labels": {
+    {
+      "id": "cis-em-event-configuration-005",
       "certification": "cis-em",
-      "domain": "Event Configuration and Use",
-      "domainSlug": "event-configuration",
-      "domainPercentage": 27,
-      "subtopics": ["Event rules"],
-      "tags": ["rule-order", "event-processing"]
+      "topic": "event-configuration",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "When multiple event rules are defined for the same type of event, how does Event Management determine which rule to apply first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Alphabetically by rule name"
+        },
+        {
+          "id": "b",
+          "text": "By the rule order field"
+        },
+        {
+          "id": "c",
+          "text": "By creation date (oldest first)"
+        },
+        {
+          "id": "d",
+          "text": "Randomly selected"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "If multiple rules are defined for the same type of event, use the rule order to determine the sequence of rule application. Rules with lower order numbers are processed first. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/em-process-flow.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Rule order field determines sequence, not alphabetical name",
+            "reference": "Event rules documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Creation date does not determine rule execution order",
+            "reference": "Event rules documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Rule execution follows a defined order, not random",
+            "reference": "Event rules documentation"
+          }
+        ]
+      },
+      "references": [
+        "Event rule order",
+        "Rule processing"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "cis-em-api/em-process-flow.md",
+        "excerpt": "If multiple rules are defined for the same type of event, use the rule order to determine the sequence of rule application."
+      },
+      "labels": {
+        "certification": "cis-em",
+        "domain": "Event Configuration and Use",
+        "domainSlug": "event-configuration",
+        "domainPercentage": 27,
+        "subtopics": [
+          "Event rules"
+        ],
+        "tags": [
+          "rule-order",
+          "event-processing"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-21T02:30:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-21T02:30:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-em-event-configuration-006",
-    "certification": "cis-em",
-    "topic": "event-configuration",
-    "cognitiveLevel": "understanding",
-    "type": "multiple_choice",
-    "question": "What is the purpose of the Threshold Accumulation setting in Event Management?",
-    "options": [
-      { "id": "a", "text": "To limit the number of events stored in the database" },
-      { "id": "b", "text": "To accumulate events until a threshold is met, then generate a single alert" },
-      { "id": "c", "text": "To set a maximum severity level for alerts" },
-      { "id": "d", "text": "To control memory usage on the MID Server" }
-    ],
-    "correctAnswers": ["b"],
-    "explanation": {
-      "correct": "If Active in the threshold section is selected, accumulate all events until the threshold is met, then generate a single alert for the events. This prevents alert storms from many similar events. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/em-process-flow.html",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "Threshold accumulation is for alert generation, not database storage limits", "reference": "Threshold documentation" },
-        { "choiceId": "c", "explanation": "Severity is set separately, not by thresholds", "reference": "Alert severity documentation" },
-        { "choiceId": "d", "explanation": "MID Server memory is managed separately", "reference": "MID Server documentation" }
-      ]
-    },
-    "references": ["Threshold accumulation", "Event processing"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "cis-em-api/em-process-flow.md",
-      "excerpt": "Threshold Accumulation: If Active in the threshold section is selected, accumulate all events until the threshold is met, then generate a single alert for the events."
-    },
-    "labels": {
+    {
+      "id": "cis-em-event-configuration-006",
       "certification": "cis-em",
-      "domain": "Event Configuration and Use",
-      "domainSlug": "event-configuration",
-      "domainPercentage": 27,
-      "subtopics": ["Thresholds"],
-      "tags": ["threshold", "event-accumulation"]
+      "topic": "event-configuration",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What is the purpose of the Threshold Accumulation setting in Event Management?",
+      "options": [
+        {
+          "id": "a",
+          "text": "To limit the number of events stored in the database"
+        },
+        {
+          "id": "b",
+          "text": "To accumulate events until a threshold is met, then generate a single alert"
+        },
+        {
+          "id": "c",
+          "text": "To set a maximum severity level for alerts"
+        },
+        {
+          "id": "d",
+          "text": "To control memory usage on the MID Server"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "If Active in the threshold section is selected, accumulate all events until the threshold is met, then generate a single alert for the events. This prevents alert storms from many similar events. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/em-process-flow.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Threshold accumulation is for alert generation, not database storage limits",
+            "reference": "Threshold documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Severity is set separately, not by thresholds",
+            "reference": "Alert severity documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "MID Server memory is managed separately",
+            "reference": "MID Server documentation"
+          }
+        ]
+      },
+      "references": [
+        "Threshold accumulation",
+        "Event processing"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "cis-em-api/em-process-flow.md",
+        "excerpt": "Threshold Accumulation: If Active in the threshold section is selected, accumulate all events until the threshold is met, then generate a single alert for the events."
+      },
+      "labels": {
+        "certification": "cis-em",
+        "domain": "Event Configuration and Use",
+        "domainSlug": "event-configuration",
+        "domainPercentage": 27,
+        "subtopics": [
+          "Thresholds"
+        ],
+        "tags": [
+          "threshold",
+          "event-accumulation"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-21T02:30:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-21T02:30:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-em-event-configuration-007",
-    "certification": "cis-em",
-    "topic": "event-configuration",
-    "cognitiveLevel": "understanding",
-    "type": "multiple_choice",
-    "question": "How does Event Management determine if an alert already exists when processing an event?",
-    "options": [
-      { "id": "a", "text": "By comparing the event description" },
-      { "id": "b", "text": "By searching for a matching message key" },
-      { "id": "c", "text": "By checking the source IP address" },
-      { "id": "d", "text": "By comparing timestamps" }
-    ],
-    "correctAnswers": ["b"],
-    "explanation": {
-      "correct": "Event Management searches the Alert [em_alert] table for a matching message key. If a matching message key exists, it updates the alert; if not, it creates a new alert. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/em-process-flow.html",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "Description is not used for alert matching", "reference": "Message key documentation" },
-        { "choiceId": "c", "explanation": "IP address alone doesn't determine alert matching", "reference": "Alert matching documentation" },
-        { "choiceId": "d", "explanation": "Timestamps are not used for matching existing alerts", "reference": "Message key documentation" }
-      ]
-    },
-    "references": ["Message key", "Alert generation"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "cis-em-api/em-process-flow.md",
-      "excerpt": "Alert Generation: Search the Alert [em_alert] table for a matching message key. If a matching message key exists, update the alert according to the event information."
-    },
-    "labels": {
+    {
+      "id": "cis-em-event-configuration-007",
       "certification": "cis-em",
-      "domain": "Event Configuration and Use",
-      "domainSlug": "event-configuration",
-      "domainPercentage": 27,
-      "subtopics": ["Message keys"],
-      "tags": ["message-key", "alert-matching"]
+      "topic": "event-configuration",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "How does Event Management determine if an alert already exists when processing an event?",
+      "options": [
+        {
+          "id": "a",
+          "text": "By comparing the event description"
+        },
+        {
+          "id": "b",
+          "text": "By searching for a matching message key"
+        },
+        {
+          "id": "c",
+          "text": "By checking the source IP address"
+        },
+        {
+          "id": "d",
+          "text": "By comparing timestamps"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Event Management searches the Alert [em_alert] table for a matching message key. If a matching message key exists, it updates the alert; if not, it creates a new alert. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/em-process-flow.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Description is not used for alert matching",
+            "reference": "Message key documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "IP address alone doesn't determine alert matching",
+            "reference": "Alert matching documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Timestamps are not used for matching existing alerts",
+            "reference": "Message key documentation"
+          }
+        ]
+      },
+      "references": [
+        "Message key",
+        "Alert generation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "cis-em-api/em-process-flow.md",
+        "excerpt": "Alert Generation: Search the Alert [em_alert] table for a matching message key. If a matching message key exists, update the alert according to the event information."
+      },
+      "labels": {
+        "certification": "cis-em",
+        "domain": "Event Configuration and Use",
+        "domainSlug": "event-configuration",
+        "domainPercentage": 27,
+        "subtopics": [
+          "Message keys"
+        ],
+        "tags": [
+          "message-key",
+          "alert-matching"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-21T02:30:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-21T02:30:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-em-event-configuration-008",
-    "certification": "cis-em",
-    "topic": "event-configuration",
-    "cognitiveLevel": "application",
-    "type": "multiple_select",
-    "question": "When configuring an Event Field Mapping with the 'Run after binding' option enabled, which two prefixes can be used to retrieve values from the CI record? (Choose two.)",
-    "options": [
-      { "id": "a", "text": "alert_cmdb_ci." },
-      { "id": "b", "text": "ci_record." },
-      { "id": "c", "text": "alert_cmdb_ci_key." },
-      { "id": "d", "text": "cmdb_binding." }
-    ],
-    "correctAnswers": ["a", "c"],
-    "selectCount": 2,
-    "explanation": {
-      "correct": "When 'Run after binding' is enabled, use alert_cmdb_ci. to retrieve a field from the CI record (e.g., alert_cmdb_ci.assignment_group), and alert_cmdb_ci_key. to retrieve a value from the CMDB Tags table (e.g., alert_cmdb_ci_key.subscription). Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/task/t_EMCreateEventFieldMapping2.html",
-      "wrongAnswers": [
-        { "choiceId": "b", "explanation": "ci_record is not a valid prefix for Event Field Mapping", "reference": "Event Field Mapping documentation" },
-        { "choiceId": "d", "explanation": "cmdb_binding is not a valid prefix", "reference": "Event Field Mapping documentation" }
-      ]
-    },
-    "references": ["Run after binding", "CI field retrieval"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "cis-em-api/t_EMCreateEventFieldMapping2.md",
-      "excerpt": "Use alert_cmdb_ci. to retrieve a field from the CI record. Use alert_cmdb_ci_key. to retrieve a value from the CMDB Tags table."
-    },
-    "labels": {
+    {
+      "id": "cis-em-event-configuration-008",
       "certification": "cis-em",
-      "domain": "Event Configuration and Use",
-      "domainSlug": "event-configuration",
-      "domainPercentage": 27,
-      "subtopics": ["Event field mapping", "CI binding"],
-      "tags": ["run-after-binding", "cmdb-ci", "prefixes"]
+      "topic": "event-configuration",
+      "cognitiveLevel": "application",
+      "type": "multiple_select",
+      "question": "When configuring an Event Field Mapping with the 'Run after binding' option enabled, which two prefixes can be used to retrieve values from the CI record? (Choose two.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "alert_cmdb_ci."
+        },
+        {
+          "id": "b",
+          "text": "ci_record."
+        },
+        {
+          "id": "c",
+          "text": "alert_cmdb_ci_key."
+        },
+        {
+          "id": "d",
+          "text": "cmdb_binding."
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "c"
+      ],
+      "selectCount": 2,
+      "explanation": {
+        "correct": "When 'Run after binding' is enabled, use alert_cmdb_ci. to retrieve a field from the CI record (e.g., alert_cmdb_ci.assignment_group), and alert_cmdb_ci_key. to retrieve a value from the CMDB Tags table (e.g., alert_cmdb_ci_key.subscription). Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/task/t_EMCreateEventFieldMapping2.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "ci_record is not a valid prefix for Event Field Mapping",
+            "reference": "Event Field Mapping documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "cmdb_binding is not a valid prefix",
+            "reference": "Event Field Mapping documentation"
+          }
+        ]
+      },
+      "references": [
+        "Run after binding",
+        "CI field retrieval"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "cis-em-api/t_EMCreateEventFieldMapping2.md",
+        "excerpt": "Use alert_cmdb_ci. to retrieve a field from the CI record. Use alert_cmdb_ci_key. to retrieve a value from the CMDB Tags table."
+      },
+      "labels": {
+        "certification": "cis-em",
+        "domain": "Event Configuration and Use",
+        "domainSlug": "event-configuration",
+        "domainPercentage": 27,
+        "subtopics": [
+          "Event field mapping",
+          "CI binding"
+        ],
+        "tags": [
+          "run-after-binding",
+          "cmdb-ci",
+          "prefixes"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-21T02:30:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-21T02:30:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-em-event-configuration-009",
-    "certification": "cis-em",
-    "topic": "event-configuration",
-    "cognitiveLevel": "understanding",
-    "type": "multiple_choice",
-    "question": "What is a potential impact of using complex scripts in 'Advanced mapping using script' Event Field Mappings?",
-    "options": [
-      { "id": "a", "text": "Increased database storage requirements" },
-      { "id": "b", "text": "Event processing performance degradation" },
-      { "id": "c", "text": "MID Server connection failures" },
-      { "id": "d", "text": "Alert notification delays only" }
-    ],
-    "correctAnswers": ["b"],
-    "explanation": {
-      "correct": "Complex scripts in Event Field Mappings may affect event processing performance. ServiceNow warns that complex scripts should be used carefully. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/task/t_EMCreateEventFieldMapping2.html",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "Storage is not directly affected by script complexity", "reference": "Event Field Mapping documentation" },
-        { "choiceId": "c", "explanation": "Script complexity doesn't cause MID Server connection issues", "reference": "MID Server documentation" },
-        { "choiceId": "d", "explanation": "Performance impact affects all processing, not just notifications", "reference": "Event processing documentation" }
-      ]
-    },
-    "references": ["Advanced mapping", "Script performance"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "cis-em-api/t_EMCreateEventFieldMapping2.md",
-      "excerpt": "Warning: Complex scripts may affect event processing performance."
-    },
-    "labels": {
+    {
+      "id": "cis-em-event-configuration-009",
       "certification": "cis-em",
-      "domain": "Event Configuration and Use",
-      "domainSlug": "event-configuration",
-      "domainPercentage": 27,
-      "subtopics": ["Scripting"],
-      "tags": ["script-performance", "advanced-mapping"]
+      "topic": "event-configuration",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What is a potential impact of using complex scripts in 'Advanced mapping using script' Event Field Mappings?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Increased database storage requirements"
+        },
+        {
+          "id": "b",
+          "text": "Event processing performance degradation"
+        },
+        {
+          "id": "c",
+          "text": "MID Server connection failures"
+        },
+        {
+          "id": "d",
+          "text": "Alert notification delays only"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Complex scripts in Event Field Mappings may affect event processing performance. ServiceNow warns that complex scripts should be used carefully. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/task/t_EMCreateEventFieldMapping2.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Storage is not directly affected by script complexity",
+            "reference": "Event Field Mapping documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Script complexity doesn't cause MID Server connection issues",
+            "reference": "MID Server documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Performance impact affects all processing, not just notifications",
+            "reference": "Event processing documentation"
+          }
+        ]
+      },
+      "references": [
+        "Advanced mapping",
+        "Script performance"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "cis-em-api/t_EMCreateEventFieldMapping2.md",
+        "excerpt": "Warning: Complex scripts may affect event processing performance."
+      },
+      "labels": {
+        "certification": "cis-em",
+        "domain": "Event Configuration and Use",
+        "domainSlug": "event-configuration",
+        "domainPercentage": 27,
+        "subtopics": [
+          "Scripting"
+        ],
+        "tags": [
+          "script-performance",
+          "advanced-mapping"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-21T02:30:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-21T02:30:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-em-event-configuration-010",
-    "certification": "cis-em",
-    "topic": "event-configuration",
-    "cognitiveLevel": "application",
-    "type": "multiple_choice",
-    "question": "In Team-based integrations for Event Field Mapping, what happens when no assignment group is defined in the rule?",
-    "options": [
-      { "id": "a", "text": "The rule is disabled" },
-      { "id": "b", "text": "The rule is considered global and runs before team-specific rules" },
-      { "id": "c", "text": "The rule only runs for admin users" },
-      { "id": "d", "text": "The rule is automatically assigned to the default group" }
-    ],
-    "correctAnswers": ["b"],
-    "explanation": {
-      "correct": "If no assignment group is defined in the event field-mapping rule, the rule is considered global. When rules run, global rules execute first, then rules belonging to the assignment group that the event's source instance belongs to. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/task/t_EMCreateEventFieldMapping2.html",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "Unassigned rules are not disabled, they become global", "reference": "Team-based integrations" },
-        { "choiceId": "c", "explanation": "Global rules run for all events, not just admin users", "reference": "Event rule execution" },
-        { "choiceId": "d", "explanation": "Rules without assignment groups become global, not assigned to default", "reference": "Team-based integrations" }
-      ]
-    },
-    "references": ["Team-based integrations", "Global rules"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "cis-em-api/t_EMCreateEventFieldMapping2.md",
-      "excerpt": "If no assignment group is defined in the event field-mapping rule, then this rule is considered global. When the rules are running – first the global rules run and then the rules that belong to the assignment group."
-    },
-    "labels": {
+    {
+      "id": "cis-em-event-configuration-010",
       "certification": "cis-em",
-      "domain": "Event Configuration and Use",
-      "domainSlug": "event-configuration",
-      "domainPercentage": 27,
-      "subtopics": ["Team-based integrations"],
-      "tags": ["assignment-group", "global-rules"]
+      "topic": "event-configuration",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "In Team-based integrations for Event Field Mapping, what happens when no assignment group is defined in the rule?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The rule is disabled"
+        },
+        {
+          "id": "b",
+          "text": "The rule is considered global and runs before team-specific rules"
+        },
+        {
+          "id": "c",
+          "text": "The rule only runs for admin users"
+        },
+        {
+          "id": "d",
+          "text": "The rule is automatically assigned to the default group"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "If no assignment group is defined in the event field-mapping rule, the rule is considered global. When rules run, global rules execute first, then rules belonging to the assignment group that the event's source instance belongs to. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/task/t_EMCreateEventFieldMapping2.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Unassigned rules are not disabled, they become global",
+            "reference": "Team-based integrations"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Global rules run for all events, not just admin users",
+            "reference": "Event rule execution"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Rules without assignment groups become global, not assigned to default",
+            "reference": "Team-based integrations"
+          }
+        ]
+      },
+      "references": [
+        "Team-based integrations",
+        "Global rules"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "cis-em-api/t_EMCreateEventFieldMapping2.md",
+        "excerpt": "If no assignment group is defined in the event field-mapping rule, then this rule is considered global. When the rules are running – first the global rules run and then the rules that belong to the assignment group."
+      },
+      "labels": {
+        "certification": "cis-em",
+        "domain": "Event Configuration and Use",
+        "domainSlug": "event-configuration",
+        "domainPercentage": 27,
+        "subtopics": [
+          "Team-based integrations"
+        ],
+        "tags": [
+          "assignment-group",
+          "global-rules"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-21T02:30:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-21T02:30:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-em-event-configuration-011",
-    "certification": "cis-em",
-    "topic": "event-configuration",
-    "cognitiveLevel": "knowledge",
-    "type": "multiple_choice",
-    "question": "Which prefix should be used to define alert tags in an Event Field Mapping Target field?",
-    "options": [
-      { "id": "a", "text": "tag_" },
-      { "id": "b", "text": "t_" },
-      { "id": "c", "text": "alert_tag_" },
-      { "id": "d", "text": "@tag:" }
-    ],
-    "correctAnswers": ["b"],
-    "explanation": {
-      "correct": "Alert tags can be defined in the Target field by using the <t_> prefix. For example, t_custom_tag would create or update an alert tag. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/task/t_EMCreateEventFieldMapping2.html",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "tag_ is not the correct prefix for alert tags", "reference": "Event Field Mapping documentation" },
-        { "choiceId": "c", "explanation": "alert_tag_ is not the correct prefix", "reference": "Event Field Mapping documentation" },
-        { "choiceId": "d", "explanation": "@tag: is not a valid ServiceNow prefix", "reference": "Event Field Mapping documentation" }
-      ]
-    },
-    "references": ["Alert tags", "Target field prefixes"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "cis-em-api/t_EMCreateEventFieldMapping2.md",
-      "excerpt": "Alert tags can also be defined by using the <t_> prefix."
-    },
-    "labels": {
+    {
+      "id": "cis-em-event-configuration-011",
       "certification": "cis-em",
-      "domain": "Event Configuration and Use",
-      "domainSlug": "event-configuration",
-      "domainPercentage": 27,
-      "subtopics": ["Event field mapping"],
-      "tags": ["alert-tags", "prefix"]
+      "topic": "event-configuration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which prefix should be used to define alert tags in an Event Field Mapping Target field?",
+      "options": [
+        {
+          "id": "a",
+          "text": "tag_"
+        },
+        {
+          "id": "b",
+          "text": "t_"
+        },
+        {
+          "id": "c",
+          "text": "alert_tag_"
+        },
+        {
+          "id": "d",
+          "text": "@tag:"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Alert tags can be defined in the Target field by using the <t_> prefix. For example, t_custom_tag would create or update an alert tag. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/task/t_EMCreateEventFieldMapping2.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "tag_ is not the correct prefix for alert tags",
+            "reference": "Event Field Mapping documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "alert_tag_ is not the correct prefix",
+            "reference": "Event Field Mapping documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "@tag: is not a valid ServiceNow prefix",
+            "reference": "Event Field Mapping documentation"
+          }
+        ]
+      },
+      "references": [
+        "Alert tags",
+        "Target field prefixes"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "cis-em-api/t_EMCreateEventFieldMapping2.md",
+        "excerpt": "Alert tags can also be defined by using the <t_> prefix."
+      },
+      "labels": {
+        "certification": "cis-em",
+        "domain": "Event Configuration and Use",
+        "domainSlug": "event-configuration",
+        "domainPercentage": 27,
+        "subtopics": [
+          "Event field mapping"
+        ],
+        "tags": [
+          "alert-tags",
+          "prefix"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-21T02:30:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-21T02:30:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-em-event-configuration-012",
-    "certification": "cis-em",
-    "topic": "event-configuration",
-    "cognitiveLevel": "understanding",
-    "type": "multiple_choice",
-    "question": "What happens if an event has no severity after event transformations are applied?",
-    "options": [
-      { "id": "a", "text": "The event is assigned a default severity of 'Info'" },
-      { "id": "b", "text": "An alert is created with severity 'Unknown'" },
-      { "id": "c", "text": "The event is retained for reference but no alert is generated" },
-      { "id": "d", "text": "The event is discarded from the system" }
-    ],
-    "correctAnswers": ["c"],
-    "explanation": {
-      "correct": "If the event has no severity after the event transformations, retain the event for reference purposes and do not generate an alert. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/em-process-flow.html",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "No default severity is assigned; the event simply doesn't generate an alert", "reference": "Event processing workflow" },
-        { "choiceId": "b", "explanation": "No alert is created when severity is missing", "reference": "Alert generation rules" },
-        { "choiceId": "d", "explanation": "Events are retained for reference, never discarded", "reference": "Event storage" }
-      ]
-    },
-    "references": ["Event severity", "Alert generation"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "cis-em-api/em-process-flow.md",
-      "excerpt": "If the event has no severity after the event transformations, retain the event for reference purposes and do not generate an alert."
-    },
-    "labels": {
+    {
+      "id": "cis-em-event-configuration-012",
       "certification": "cis-em",
-      "domain": "Event Configuration and Use",
-      "domainSlug": "event-configuration",
-      "domainPercentage": 27,
-      "subtopics": ["Event processing"],
-      "tags": ["severity", "alert-generation"]
+      "topic": "event-configuration",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What happens if an event has no severity after event transformations are applied?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The event is assigned a default severity of 'Info'"
+        },
+        {
+          "id": "b",
+          "text": "An alert is created with severity 'Unknown'"
+        },
+        {
+          "id": "c",
+          "text": "The event is retained for reference but no alert is generated"
+        },
+        {
+          "id": "d",
+          "text": "The event is discarded from the system"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "If the event has no severity after the event transformations, retain the event for reference purposes and do not generate an alert. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/em-process-flow.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "No default severity is assigned; the event simply doesn't generate an alert",
+            "reference": "Event processing workflow"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "No alert is created when severity is missing",
+            "reference": "Alert generation rules"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Events are retained for reference, never discarded",
+            "reference": "Event storage"
+          }
+        ]
+      },
+      "references": [
+        "Event severity",
+        "Alert generation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "cis-em-api/em-process-flow.md",
+        "excerpt": "If the event has no severity after the event transformations, retain the event for reference purposes and do not generate an alert."
+      },
+      "labels": {
+        "certification": "cis-em",
+        "domain": "Event Configuration and Use",
+        "domainSlug": "event-configuration",
+        "domainPercentage": 27,
+        "subtopics": [
+          "Event processing"
+        ],
+        "tags": [
+          "severity",
+          "alert-generation"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-21T02:30:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-21T02:30:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-em-event-configuration-013",
-    "certification": "cis-em",
-    "topic": "event-configuration",
-    "cognitiveLevel": "understanding",
-    "type": "compound_true_false",
-    "question": "Which of the following statements about Event Field Mapping are true?\na) Source field can include event fields and additional info fields\nb) Target field can be an alert tag using the t_ prefix\nc) Filter conditions can use Add Filter Condition and Add OR Clause\nd) Event Field Mappings run synchronously on every event regardless of the filter",
-    "options": [
-      { "id": "a", "text": "a, b, c, and d" },
-      { "id": "b", "text": "a, b, and c only" },
-      { "id": "c", "text": "a and b only" },
-      { "id": "d", "text": "b and d only" }
-    ],
-    "correctAnswers": ["b"],
-    "statements": {
-      "a": true,
-      "b": true,
-      "c": true,
-      "d": false
-    },
-    "explanation": {
-      "correct": "Statements a, b, and c are true. Statement d is false because Event Field Mappings only run when the filter conditions are met, not on every event regardless of filter. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/task/t_EMCreateEventFieldMapping2.html",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "Statement d is false - mappings only run when filter matches", "reference": "Event Field Mapping filters" },
-        { "choiceId": "c", "explanation": "Statement c is also true - multiple filter conditions are supported", "reference": "Event Field Mapping filters" },
-        { "choiceId": "d", "explanation": "Statement a is also true about source fields", "reference": "Event Field Mapping documentation" }
-      ]
-    },
-    "references": ["Event Field Mapping", "Filter conditions"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "cis-em-api/t_EMCreateEventFieldMapping2.md",
-      "excerpt": "Source field includes all event and additional info fields. Alert tags can be defined by using the t_ prefix. Select Add Filter Condition or Add OR Clause to configure multiple conditions."
-    },
-    "labels": {
+    {
+      "id": "cis-em-event-configuration-013",
       "certification": "cis-em",
-      "domain": "Event Configuration and Use",
-      "domainSlug": "event-configuration",
-      "domainPercentage": 27,
-      "subtopics": ["Event field mapping"],
-      "tags": ["compound-question", "event-configuration"]
+      "topic": "event-configuration",
+      "cognitiveLevel": "understanding",
+      "type": "compound_true_false",
+      "question": "Which of the following statements about Event Field Mapping are true?\na) Source field can include event fields and additional info fields\nb) Target field can be an alert tag using the t_ prefix\nc) Filter conditions can use Add Filter Condition and Add OR Clause\nd) Event Field Mappings run synchronously on every event regardless of the filter",
+      "options": [
+        {
+          "id": "a",
+          "text": "a, b, c, and d"
+        },
+        {
+          "id": "b",
+          "text": "a, b, and c only"
+        },
+        {
+          "id": "c",
+          "text": "a and b only"
+        },
+        {
+          "id": "d",
+          "text": "b and d only"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "statements": {
+        "a": true,
+        "b": true,
+        "c": true,
+        "d": false
+      },
+      "explanation": {
+        "correct": "Statements a, b, and c are true. Statement d is false because Event Field Mappings only run when the filter conditions are met, not on every event regardless of filter. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/task/t_EMCreateEventFieldMapping2.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Statement d is false - mappings only run when filter matches",
+            "reference": "Event Field Mapping filters"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Statement c is also true - multiple filter conditions are supported",
+            "reference": "Event Field Mapping filters"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Statement a is also true about source fields",
+            "reference": "Event Field Mapping documentation"
+          }
+        ]
+      },
+      "references": [
+        "Event Field Mapping",
+        "Filter conditions"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "cis-em-api/t_EMCreateEventFieldMapping2.md",
+        "excerpt": "Source field includes all event and additional info fields. Alert tags can be defined by using the t_ prefix. Select Add Filter Condition or Add OR Clause to configure multiple conditions."
+      },
+      "labels": {
+        "certification": "cis-em",
+        "domain": "Event Configuration and Use",
+        "domainSlug": "event-configuration",
+        "domainPercentage": 27,
+        "subtopics": [
+          "Event field mapping"
+        ],
+        "tags": [
+          "compound-question",
+          "event-configuration"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-21T02:30:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-21T02:30:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-em-event-configuration-014",
-    "certification": "cis-em",
-    "topic": "event-configuration",
-    "cognitiveLevel": "application",
-    "type": "multiple_choice",
-    "question": "An administrator wants to populate the alert assignment_group field with the value from the CI's assignment group. Which mapping configuration should be used?",
-    "options": [
-      { "id": "a", "text": "Source field: ci.assignment_group, Target field: assignment_group" },
-      { "id": "b", "text": "Source field: alert_cmdb_ci.assignment_group, Target field: assignment_group, with Run after binding enabled" },
-      { "id": "c", "text": "Source field: cmdb_ci.assignment_group, Target field: alert.assignment_group" },
-      { "id": "d", "text": "Source field: CI_assignment_group, Target field: alert_assignment_group" }
-    ],
-    "correctAnswers": ["b"],
-    "explanation": {
-      "correct": "To retrieve values from the CI record, use the alert_cmdb_ci. prefix and enable 'Run after binding'. This allows the mapping to access CI fields after the alert has been bound to a CI. Example: alert_cmdb_ci.assignment_group populates the alert assignment_group field. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/task/t_EMCreateEventFieldMapping2.html",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "ci. is not the correct prefix for accessing CI fields in Event Field Mapping", "reference": "Event Field Mapping prefixes" },
-        { "choiceId": "c", "explanation": "cmdb_ci. is not the correct prefix; use alert_cmdb_ci. with Run after binding", "reference": "Event Field Mapping documentation" },
-        { "choiceId": "d", "explanation": "These field names are not valid in Event Field Mapping", "reference": "Event Field Mapping documentation" }
-      ]
-    },
-    "references": ["Run after binding", "CI field mapping"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "cis-em-api/t_EMCreateEventFieldMapping2.md",
-      "excerpt": "Use 'alert_cmdb_ci.assignment_group' to populate (and transform) an alert 'assignment_group' field with the value of the CI's assignment group."
-    },
-    "labels": {
+    {
+      "id": "cis-em-event-configuration-014",
       "certification": "cis-em",
-      "domain": "Event Configuration and Use",
-      "domainSlug": "event-configuration",
-      "domainPercentage": 27,
-      "subtopics": ["Event field mapping", "CI binding"],
-      "tags": ["assignment-group", "scenario"]
+      "topic": "event-configuration",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "An administrator wants to populate the alert assignment_group field with the value from the CI's assignment group. Which mapping configuration should be used?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Source field: ci.assignment_group, Target field: assignment_group"
+        },
+        {
+          "id": "b",
+          "text": "Source field: alert_cmdb_ci.assignment_group, Target field: assignment_group, with Run after binding enabled"
+        },
+        {
+          "id": "c",
+          "text": "Source field: cmdb_ci.assignment_group, Target field: alert.assignment_group"
+        },
+        {
+          "id": "d",
+          "text": "Source field: CI_assignment_group, Target field: alert_assignment_group"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "To retrieve values from the CI record, use the alert_cmdb_ci. prefix and enable 'Run after binding'. This allows the mapping to access CI fields after the alert has been bound to a CI. Example: alert_cmdb_ci.assignment_group populates the alert assignment_group field. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/task/t_EMCreateEventFieldMapping2.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "ci. is not the correct prefix for accessing CI fields in Event Field Mapping",
+            "reference": "Event Field Mapping prefixes"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "cmdb_ci. is not the correct prefix; use alert_cmdb_ci. with Run after binding",
+            "reference": "Event Field Mapping documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "These field names are not valid in Event Field Mapping",
+            "reference": "Event Field Mapping documentation"
+          }
+        ]
+      },
+      "references": [
+        "Run after binding",
+        "CI field mapping"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "cis-em-api/t_EMCreateEventFieldMapping2.md",
+        "excerpt": "Use 'alert_cmdb_ci.assignment_group' to populate (and transform) an alert 'assignment_group' field with the value of the CI's assignment group."
+      },
+      "labels": {
+        "certification": "cis-em",
+        "domain": "Event Configuration and Use",
+        "domainSlug": "event-configuration",
+        "domainPercentage": 27,
+        "subtopics": [
+          "Event field mapping",
+          "CI binding"
+        ],
+        "tags": [
+          "assignment-group",
+          "scenario"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-21T02:30:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-21T02:30:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-em-event-configuration-015",
-    "certification": "cis-em",
-    "topic": "event-configuration",
-    "cognitiveLevel": "knowledge",
-    "type": "multiple_choice",
-    "question": "What is the maximum character length for the Source field in an Event Field Mapping?",
-    "options": [
-      { "id": "a", "text": "50 characters" },
-      { "id": "b", "text": "100 characters" },
-      { "id": "c", "text": "200 characters" },
-      { "id": "d", "text": "255 characters" }
-    ],
-    "correctAnswers": ["b"],
-    "explanation": {
-      "correct": "The Source field in Event Field Mapping has a maximum length of 100 characters. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/task/t_EMCreateEventFieldMapping2.html",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "50 characters is too short; the limit is 100", "reference": "Event Field Mapping documentation" },
-        { "choiceId": "c", "explanation": "200 characters exceeds the actual limit of 100", "reference": "Event Field Mapping documentation" },
-        { "choiceId": "d", "explanation": "255 characters exceeds the actual limit of 100", "reference": "Event Field Mapping documentation" }
-      ]
-    },
-    "references": ["Event Field Mapping", "Field limits"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "cis-em-api/t_EMCreateEventFieldMapping2.md",
-      "excerpt": "Source: Event monitoring software that generated the event. Maximum length: 100 characters."
-    },
-    "labels": {
+    {
+      "id": "cis-em-event-configuration-015",
       "certification": "cis-em",
-      "domain": "Event Configuration and Use",
-      "domainSlug": "event-configuration",
-      "domainPercentage": 27,
-      "subtopics": ["Event field mapping"],
-      "tags": ["field-limits", "source-field"]
+      "topic": "event-configuration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What is the maximum character length for the Source field in an Event Field Mapping?",
+      "options": [
+        {
+          "id": "a",
+          "text": "50 characters"
+        },
+        {
+          "id": "b",
+          "text": "100 characters"
+        },
+        {
+          "id": "c",
+          "text": "200 characters"
+        },
+        {
+          "id": "d",
+          "text": "255 characters"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The Source field in Event Field Mapping has a maximum length of 100 characters. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/task/t_EMCreateEventFieldMapping2.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "50 characters is too short; the limit is 100",
+            "reference": "Event Field Mapping documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "200 characters exceeds the actual limit of 100",
+            "reference": "Event Field Mapping documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "255 characters exceeds the actual limit of 100",
+            "reference": "Event Field Mapping documentation"
+          }
+        ]
+      },
+      "references": [
+        "Event Field Mapping",
+        "Field limits"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "cis-em-api/t_EMCreateEventFieldMapping2.md",
+        "excerpt": "Source: Event monitoring software that generated the event. Maximum length: 100 characters."
+      },
+      "labels": {
+        "certification": "cis-em",
+        "domain": "Event Configuration and Use",
+        "domainSlug": "event-configuration",
+        "domainPercentage": 27,
+        "subtopics": [
+          "Event field mapping"
+        ],
+        "tags": [
+          "field-limits",
+          "source-field"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-21T02:30:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-21T02:30:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-em-event-configuration-016",
-    "certification": "cis-em",
-    "topic": "event-configuration",
-    "cognitiveLevel": "understanding",
-    "type": "multiple_choice",
-    "question": "Which is NOT supported as a filter field for Alert Management Rules?",
-    "options": [
-      { "id": "a", "text": "Severity" },
-      { "id": "b", "text": "Source" },
-      { "id": "c", "text": "Priority Group" },
-      { "id": "d", "text": "Description" }
-    ],
-    "correctAnswers": ["c"],
-    "isNegative": true,
-    "explanation": {
-      "correct": "Priority Group, along with Overall Event Count, Priority, Priority Breakdown, Tags, and Impacted Services are NOT supported for alert filtering in Alert Management Rules. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/alert-management-rule.html",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "Severity can be used for alert filtering", "reference": "Alert Management Rules" },
-        { "choiceId": "b", "explanation": "Source can be used for alert filtering", "reference": "Alert Management Rules" },
-        { "choiceId": "d", "explanation": "Description can be used for alert filtering", "reference": "Alert Management Rules" }
-      ]
-    },
-    "references": ["Alert Management Rules", "Filter fields"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "cis-em-api/alert-management-rule.md",
-      "excerpt": "The fields that are not supported for alert filtering are: Overall Event Count, Priority, Priority Group, Priority Breakdown, Tags, and Impacted Services."
-    },
-    "labels": {
+    {
+      "id": "cis-em-event-configuration-016",
       "certification": "cis-em",
-      "domain": "Event Configuration and Use",
-      "domainSlug": "event-configuration",
-      "domainPercentage": 27,
-      "subtopics": ["Alert management rules"],
-      "tags": ["filter-fields", "negative-question"]
-    },
-    "meta": {
-      "generatedAt": "2026-02-21T02:30:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
+      "topic": "event-configuration",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "Which is NOT supported as a filter field for Alert Management Rules?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Severity"
+        },
+        {
+          "id": "b",
+          "text": "Source"
+        },
+        {
+          "id": "c",
+          "text": "Priority Group"
+        },
+        {
+          "id": "d",
+          "text": "Description"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "isNegative": true,
+      "explanation": {
+        "correct": "Priority Group, along with Overall Event Count, Priority, Priority Breakdown, Tags, and Impacted Services are NOT supported for alert filtering in Alert Management Rules. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/alert-management-rule.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Severity can be used for alert filtering",
+            "reference": "Alert Management Rules"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "Source can be used for alert filtering",
+            "reference": "Alert Management Rules"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Description can be used for alert filtering",
+            "reference": "Alert Management Rules"
+          }
+        ]
+      },
+      "references": [
+        "Alert Management Rules",
+        "Filter fields"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "cis-em-api/alert-management-rule.md",
+        "excerpt": "The fields that are not supported for alert filtering are: Overall Event Count, Priority, Priority Group, Priority Breakdown, Tags, and Impacted Services."
+      },
+      "labels": {
+        "certification": "cis-em",
+        "domain": "Event Configuration and Use",
+        "domainSlug": "event-configuration",
+        "domainPercentage": 27,
+        "subtopics": [
+          "Alert management rules"
+        ],
+        "tags": [
+          "filter-fields",
+          "negative-question"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-21T02:30:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     }
-  }
-]
+  ]
+}

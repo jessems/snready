@@ -1,1245 +1,1249 @@
-[
-  {
-    "id": "cis-sm-pattern-design-101",
-    "certification": "cis-sm",
-    "topic": "pattern-design",
-    "cognitiveLevel": "knowledge",
-    "type": "multiple_choice",
-    "question": "When discovering Citrix Xen Hyper-V resources, which commands does ServiceNow Discovery use to find and map the hypervisor components?",
-    "options": [
-      {
-        "id": "a",
-        "text": "PowerShell commands via WMI"
-      },
-      {
-        "id": "b",
-        "text": "Xen (XE) and (XL) commands via SSH"
-      },
-      {
-        "id": "c",
-        "text": "VMware vSphere API calls"
-      },
-      {
-        "id": "d",
-        "text": "REST API queries to the Citrix controller"
-      }
-    ],
-    "correctAnswers": [
-      "b"
-    ],
-    "explanation": {
-      "correct": "ServiceNow Discovery uses Xen (XE) and (XL) commands to discover Citrix Xen Hyper-V components. These commands allow Discovery to gather information about the Hyper-V Server, Associated Pools, VMs, Network and Storage, and their relationships with new and existing CIs.",
-      "wrongAnswers": [
+{
+  "certification": "cis-sm",
+  "topic": "_free",
+  "questions": [
+    {
+      "id": "cis-sm-pattern-design-101",
+      "certification": "cis-sm",
+      "topic": "_free",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "When discovering Citrix Xen Hyper-V resources, which commands does ServiceNow Discovery use to find and map the hypervisor components?",
+      "options": [
         {
           "id": "a",
-          "explanation": "PowerShell via WMI is used for Windows-based discoveries, not Citrix Xen which runs on Linux and uses XE/XL commands."
-        },
-        {
-          "id": "c",
-          "explanation": "VMware vSphere API is used specifically for VMware environments, not Citrix Xen Hyper-V."
-        },
-        {
-          "id": "d",
-          "explanation": "REST API queries are not the method used for Citrix Xen Hyper-V discovery; SSH-based XE/XL commands are used instead."
-        }
-      ]
-    },
-    "source": {
-      "excerpt": "Use the Xen (XE) and (XL) commands to discover Citrix Xen Hyper-V, its components, and respective attributes. Discover information regarding the Hyper-V Server, Associated Pools, VMs, Network and Storage and their relationships with new and existing CIs.",
-      "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/discovery-and-service-mapping-patterns/citrix-xen-hyper-v-discovery.html"
-    },
-    "labels": {
-      "domain": "Service Mapping Pattern Design",
-      "subtopics": [
-        "Pattern execution",
-        "Hypervisor discovery"
-      ],
-      "tags": [
-        "service-mapping",
-        "citrix-xen",
-        "discovery-patterns",
-        "ssh-commands"
-      ]
-    },
-    "meta": {
-      "version": "1.0",
-      "release": "Xanadu",
-      "reviewed": false
-    },
-    "free": true
-  },
-  {
-    "id": "cis-sm-pattern-design-102",
-    "certification": "cis-sm",
-    "topic": "pattern-design",
-    "cognitiveLevel": "understanding",
-    "type": "multiple_select",
-    "question": "Which prerequisites must be verified before discovering Citrix Xen Hyper-V resources? (Choose two.)",
-    "options": [
-      {
-        "id": "a",
-        "text": "Pool admin RBAC role for SSH access"
-      },
-      {
-        "id": "b",
-        "text": "WMI credentials with domain admin privileges"
-      },
-      {
-        "id": "c",
-        "text": "MID Server reachability to the target device"
-      },
-      {
-        "id": "d",
-        "text": "VMware vCenter connection established"
-      }
-    ],
-    "correctAnswers": [
-      "a",
-      "c"
-    ],
-    "explanation": {
-      "correct": "Before discovering Citrix Xen Hyper-V resources, you must verify that the pool admin RBAC role is configured for SSH access to the Linux server hosting the hypervisor, and that the MID Server has reachability to the target device. These are essential prerequisites documented for the Citrix Xen Hyper-V pattern.",
-      "wrongAnswers": [
-        {
-          "id": "b",
-          "explanation": "WMI credentials are used for Windows-based discoveries. Citrix Xen requires SSH credentials for Linux-based access."
-        },
-        {
-          "id": "d",
-          "explanation": "VMware vCenter is specific to VMware environments and is not relevant to Citrix Xen Hyper-V discovery."
-        }
-      ]
-    },
-    "source": {
-      "excerpt": "Verify pool admin RBAC role: This role is required for SSH access to the Linux server hosting the hypervisor and for executing all the necessary commands to extract information from the hypervisor environment... Verify MID Server reachability: Verify MID Server has reachability to the target device.",
-      "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/discovery-and-service-mapping-patterns/citrix-xen-hyper-v-discovery.html"
-    },
-    "labels": {
-      "domain": "Service Mapping Pattern Design",
-      "subtopics": [
-        "Prerequisites",
-        "RBAC roles",
-        "MID Server"
-      ],
-      "tags": [
-        "service-mapping",
-        "citrix-xen",
-        "prerequisites",
-        "rbac"
-      ]
-    },
-    "meta": {
-      "version": "1.0",
-      "release": "Xanadu",
-      "reviewed": false
-    },
-    "free": true
-  },
-  {
-    "id": "cis-sm-pattern-design-103",
-    "certification": "cis-sm",
-    "topic": "pattern-design",
-    "cognitiveLevel": "knowledge",
-    "type": "multiple_choice",
-    "question": "Which system property must be set to true to enable network router discovery in ServiceNow?",
-    "options": [
-      {
-        "id": "a",
-        "text": "glide.discovery.network_router_enable"
-      },
-      {
-        "id": "b",
-        "text": "glide.discovery.L3_mapping"
-      },
-      {
-        "id": "c",
-        "text": "glide.discovery.router_protocol"
-      },
-      {
-        "id": "d",
-        "text": "glide.discovery.ip_range_scan"
-      }
-    ],
-    "correctAnswers": [
-      "b"
-    ],
-    "explanation": {
-      "correct": "The glide.discovery.L3_mapping system property must be set to true to enable network router discovery. This property is configured by navigating to sys_properties.list and verifying or setting its value.",
-      "wrongAnswers": [
-        {
-          "id": "a",
-          "explanation": "This is not a valid ServiceNow system property for router discovery. The correct property is glide.discovery.L3_mapping."
-        },
-        {
-          "id": "c",
-          "explanation": "This is not the property that enables router discovery. Router discovery is controlled by glide.discovery.L3_mapping."
-        },
-        {
-          "id": "d",
-          "explanation": "While IP range scanning is a discovery feature, this is not the specific property for enabling network router discovery."
-        }
-      ]
-    },
-    "source": {
-      "excerpt": "Navigate to sys_properties.list and verify that the glide.discovery.L3_mapping system property is set to true.",
-      "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/discovery-and-service-mapping-patterns/network-router-patterns.html"
-    },
-    "labels": {
-      "domain": "Service Mapping Pattern Design",
-      "subtopics": [
-        "System properties",
-        "Network router discovery"
-      ],
-      "tags": [
-        "service-mapping",
-        "network-router",
-        "system-properties",
-        "L3-mapping"
-      ]
-    },
-    "meta": {
-      "version": "1.0",
-      "release": "Xanadu",
-      "reviewed": false
-    },
-    "free": true
-  },
-  {
-    "id": "cis-sm-sm-configuration-401",
-    "certification": "cis-sm",
-    "topic": "sm-configuration",
-    "cognitiveLevel": "knowledge",
-    "type": "multiple_select",
-    "question": "Which roles are preconfigured by Service Mapping to manage application services? (Choose two.)",
-    "options": [
-      {
-        "id": "a",
-        "text": "service_mapping_admin"
-      },
-      {
-        "id": "b",
-        "text": "discovery_admin"
-      },
-      {
-        "id": "c",
-        "text": "sm_app_owner"
-      },
-      {
-        "id": "d",
-        "text": "cmdb_admin"
-      }
-    ],
-    "correctAnswers": [
-      "a",
-      "c"
-    ],
-    "explanation": {
-      "correct": "Service Mapping provides preconfigured roles including service_mapping_admin (for setting up Service Mapping, mapping/maintaining services, and advanced configuration) and sm_app_owner (for service owners who provide mapping information and review/approve mapping results). The service_mapping_user role is also preconfigured but not listed in these options.",
-      "wrongAnswers": [
-        {
-          "id": "b",
-          "explanation": "discovery_admin is a Discovery role, not a Service Mapping-specific preconfigured role. Service Mapping has its own set of roles."
-        },
-        {
-          "id": "d",
-          "explanation": "cmdb_admin is a CMDB administration role, not a Service Mapping-specific preconfigured role."
-        }
-      ]
-    },
-    "source": {
-      "excerpt": "Service Mapping provides these preconfigured roles: service_mapping_admin - Sets up the Service Mapping application. Maps, fixes, and maintains service instances... sm_app_owner - Provides information necessary for successful mapping of a service instance. Once a service is mapped, this user reviews the results and either approves it or suggests changes.",
-      "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/service-mapping/control-user-access-to-business-services.html"
-    },
-    "labels": {
-      "domain": "Service Mapping Configuration",
-      "subtopics": [
-        "Roles",
-        "Access control",
-        "User management"
-      ],
-      "tags": [
-        "service-mapping",
-        "roles",
-        "security",
-        "access-control"
-      ]
-    },
-    "meta": {
-      "version": "1.0",
-      "release": "Xanadu",
-      "reviewed": false
-    },
-    "free": true
-  },
-  {
-    "id": "cis-sm-sm-configuration-402",
-    "certification": "cis-sm",
-    "topic": "sm-configuration",
-    "cognitiveLevel": "understanding",
-    "type": "multiple_choice",
-    "question": "What capability does the app_service_user role provide compared to the itil role for viewing application services?",
-    "options": [
-      {
-        "id": "a",
-        "text": "app_service_user can view service instances while itil cannot view any"
-      },
-      {
-        "id": "b",
-        "text": "Both roles can view all service instances, but only app_service_user can use the getContent REST API"
-      },
-      {
-        "id": "c",
-        "text": "itil role has more permissions than app_service_user for service viewing"
-      },
-      {
-        "id": "d",
-        "text": "app_service_user can modify services while itil is view-only"
-      }
-    ],
-    "correctAnswers": [
-      "b"
-    ],
-    "explanation": {
-      "correct": "The app_service_user role allows viewing maps for operational service instances AND retrieving service content using the getContent - GET REST API. The itil role contains the app_service_user role and can view all service instances, but the REST API capability is specifically documented for app_service_user.",
-      "wrongAnswers": [
-        {
-          "id": "a",
-          "explanation": "Both roles can view service instances. The itil role contains the app_service_user role, so both can view."
-        },
-        {
-          "id": "c",
-          "explanation": "The itil role contains app_service_user, so they have equivalent permissions for viewing. The key difference is the REST API capability explicitly documented for app_service_user."
-        },
-        {
-          "id": "d",
-          "explanation": "Neither app_service_user nor itil can modify services. The app_service_admin role is required to create and modify service instances."
-        }
-      ]
-    },
-    "source": {
-      "excerpt": "app_service_user - Views maps for operational service instances and retrieves service content using the getContent - GET REST API. The itil role that serves as the basic helpdesk technician role contains the app_service_user role... Users with the itil role only can view all service instances.",
-      "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/service-mapping/control-user-access-to-business-services.html"
-    },
-    "labels": {
-      "domain": "Service Mapping Configuration",
-      "subtopics": [
-        "Roles",
-        "REST API",
-        "Access control"
-      ],
-      "tags": [
-        "service-mapping",
-        "roles",
-        "itil",
-        "rest-api"
-      ]
-    },
-    "meta": {
-      "version": "1.0",
-      "release": "Xanadu",
-      "reviewed": false
-    },
-    "free": true
-  },
-  {
-    "id": "cis-sm-sm-configuration-403",
-    "certification": "cis-sm",
-    "topic": "sm-configuration",
-    "cognitiveLevel": "knowledge",
-    "type": "multiple_choice",
-    "question": "In a hierarchy of service groups, what happens when a user is granted access to a parent service group?",
-    "options": [
-      {
-        "id": "a",
-        "text": "Access must be explicitly granted to each child service group"
-      },
-      {
-        "id": "b",
-        "text": "Access to the parent automatically grants access to all child service groups"
-      },
-      {
-        "id": "c",
-        "text": "Only immediate children inherit access, not deeper levels"
-      },
-      {
-        "id": "d",
-        "text": "Child groups must be configured to inherit parent permissions"
-      }
-    ],
-    "correctAnswers": [
-      "b"
-    ],
-    "explanation": {
-      "correct": "In a hierarchy of service groups, access to a parent service group automatically grants access to all the child service groups. This makes managing access to large numbers of services more practical, especially in large organizations.",
-      "wrongAnswers": [
-        {
-          "id": "a",
-          "explanation": "Access does not need to be explicitly granted to each child. Inheritance from parent to child is automatic."
-        },
-        {
-          "id": "c",
-          "explanation": "Inheritance applies to all descendants, not just immediate children. All child service groups at any level inherit access."
-        },
-        {
-          "id": "d",
-          "explanation": "Child groups do not need special configuration to inherit. Inheritance is automatic in the service group hierarchy."
-        }
-      ]
-    },
-    "source": {
-      "excerpt": "Typically, enterprises have hundreds of services which makes it impractical to manage them individually. Service groups can make service lists much shorter and easier to manage, especially in large organizations or service providers. In a hierarchy of service groups, access to a parent service group automatically grants access to all the child service groups.",
-      "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/service-mapping/control-user-access-to-business-services.html"
-    },
-    "labels": {
-      "domain": "Service Mapping Configuration",
-      "subtopics": [
-        "Service groups",
-        "Access control",
-        "Hierarchy"
-      ],
-      "tags": [
-        "service-mapping",
-        "service-groups",
-        "access-control",
-        "inheritance"
-      ]
-    },
-    "meta": {
-      "version": "1.0",
-      "release": "Xanadu",
-      "reviewed": false
-    },
-    "free": true
-  },
-  {
-    "id": "cis-sm-discovery-configuration-601",
-    "certification": "cis-sm",
-    "topic": "discovery-configuration",
-    "cognitiveLevel": "knowledge",
-    "type": "multiple_select",
-    "question": "How does Service Mapping classify discovery errors? (Choose two.)",
-    "options": [
-      {
-        "id": "a",
-        "text": "By their root cause category such as Configuration, Network, and Credentials"
-      },
-      {
-        "id": "b",
-        "text": "By alphabetical order of error messages"
-      },
-      {
-        "id": "c",
-        "text": "By impact level: high, medium, and low impact on services"
-      },
-      {
-        "id": "d",
-        "text": "By the MID Server that encountered the error"
-      }
-    ],
-    "correctAnswers": [
-      "a",
-      "c"
-    ],
-    "explanation": {
-      "correct": "Service Mapping classifies errors by their root cause category (Configuration, Network, Credentials, etc.) and also organizes them by high, medium, and low impact on the services. This dual classification helps administrators prioritize and fix errors efficiently.",
-      "wrongAnswers": [
-        {
-          "id": "b",
-          "explanation": "Errors are not classified alphabetically. They are organized by root cause category and impact level."
-        },
-        {
-          "id": "d",
-          "explanation": "While MID Server information may be included in error details, errors are primarily classified by root cause category and impact level."
-        }
-      ]
-    },
-    "source": {
-      "excerpt": "Service Mapping classifies errors by their root cause, for example, missing credentials or task timeout... You can view errors by category, for example, Configuration, Network, and Credentials... The Errors by Category page organizes errors by high, medium, and low impact on the services.",
-      "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/service-mapping/fix-bus-serv-errors-by-category.html"
-    },
-    "labels": {
-      "domain": "Discovery Configuration",
-      "subtopics": [
-        "Error classification",
-        "Error handling",
-        "Troubleshooting"
-      ],
-      "tags": [
-        "service-mapping",
-        "errors",
-        "troubleshooting",
-        "classification"
-      ]
-    },
-    "meta": {
-      "version": "1.0",
-      "release": "Xanadu",
-      "reviewed": false
-    },
-    "free": true
-  },
-  {
-    "id": "cis-sm-discovery-configuration-602",
-    "certification": "cis-sm",
-    "topic": "discovery-configuration",
-    "cognitiveLevel": "understanding",
-    "type": "multiple_choice",
-    "question": "Under what conditions are discovery errors not assigned to any category in Service Mapping?",
-    "options": [
-      {
-        "id": "a",
-        "text": "When the MID Server is offline"
-      },
-      {
-        "id": "b",
-        "text": "After upgrading from Jakarta release or earlier, or when CIs with errors are removed and readded to services"
-      },
-      {
-        "id": "c",
-        "text": "When credentials are missing for all targets"
-      },
-      {
-        "id": "d",
-        "text": "When discovery schedules are paused"
-      }
-    ],
-    "correctAnswers": [
-      "b"
-    ],
-    "explanation": {
-      "correct": "Discovery errors may be uncategorized in two scenarios: after upgrading Service Mapping from Jakarta release or earlier, or when CIs that have errors are first removed from application services and then readded. In these cases, administrators can categorize them by clicking 'Rediscover Relevant CIs'.",
-      "wrongAnswers": [
-        {
-          "id": "a",
-          "explanation": "MID Server offline status would create network or connectivity errors which are categorized, not uncategorized errors."
-        },
-        {
-          "id": "c",
-          "explanation": "Missing credentials errors are categorized under the 'Credentials' category, not left uncategorized."
-        },
-        {
-          "id": "d",
-          "explanation": "Paused schedules don't create errors. When discovery runs, errors that occur are categorized appropriately."
-        }
-      ]
-    },
-    "source": {
-      "excerpt": "There may be discovery errors not assigned to any category: After upgrading Service Mapping from Jakarta release or earlier. If there are configuration items (CIs) that have errors associated with them, and that were first removed from application services and then readded to application services.",
-      "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/service-mapping/fix-bus-serv-errors-by-category.html"
-    },
-    "labels": {
-      "domain": "Discovery Configuration",
-      "subtopics": [
-        "Uncategorized errors",
-        "Upgrade scenarios",
-        "Error management"
-      ],
-      "tags": [
-        "service-mapping",
-        "errors",
-        "upgrade",
-        "uncategorized"
-      ]
-    },
-    "meta": {
-      "version": "1.0",
-      "release": "Xanadu",
-      "reviewed": false
-    },
-    "free": true
-  },
-  {
-    "id": "cis-sm-discovery-configuration-603",
-    "certification": "cis-sm",
-    "topic": "discovery-configuration",
-    "cognitiveLevel": "application",
-    "type": "multiple_choice",
-    "question": "An administrator needs to notify an external team member who doesn't use ServiceNow to fix a discovery error. Which action should they use?",
-    "options": [
-      {
-        "id": "a",
-        "text": "Retry Discovery"
-      },
-      {
-        "id": "b",
-        "text": "Mark as assigned with a comment"
-      },
-      {
-        "id": "c",
-        "text": "View instructions"
-      },
-      {
-        "id": "d",
-        "text": "View affected services"
-      }
-    ],
-    "correctAnswers": [
-      "b"
-    ],
-    "explanation": {
-      "correct": "The 'Mark as assigned' action is used when planning to perform an out-of-band action to notify a person to fix the error, typically someone who does not use the ServiceNow instance. You can enter a comment in the Mark as Assigned popup, which sets the Error Status to Assigned.",
-      "wrongAnswers": [
-        {
-          "id": "a",
-          "explanation": "Retry Discovery performs the full discovery process again and is used after the error has been fixed, not for assigning work to external team members."
-        },
-        {
-          "id": "c",
-          "explanation": "View instructions displays troubleshooting procedures but doesn't assign or track the error for external resolution."
-        },
-        {
-          "id": "d",
-          "explanation": "View affected services shows which services are impacted but doesn't provide a mechanism to assign the error to someone for resolution."
-        }
-      ]
-    },
-    "source": {
-      "excerpt": "Mark as assigned - Apply the Mark as assigned action when you plan to perform an out-of-band action to notify a person to fix the error (typically a person who does not use the ServiceNow instance). You can enter a Comment in the Mark as Assigned popup.",
-      "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/service-mapping/fix-bus-serv-errors-by-category.html"
-    },
-    "labels": {
-      "domain": "Discovery Configuration",
-      "subtopics": [
-        "Error assignment",
-        "Workflow",
-        "Out-of-band notifications"
-      ],
-      "tags": [
-        "service-mapping",
-        "errors",
-        "assignment",
-        "workflow"
-      ]
-    },
-    "meta": {
-      "version": "1.0",
-      "release": "Xanadu",
-      "reviewed": false
-    },
-    "free": true
-  },
-  {
-    "id": "cis-sm-machine-learning-801",
-    "certification": "cis-sm",
-    "topic": "machine-learning",
-    "cognitiveLevel": "understanding",
-    "type": "multiple_choice",
-    "question": "What is the relationship between tag-based mapping results and pattern-based mapping results in Service Mapping?",
-    "options": [
-      {
-        "id": "a",
-        "text": "Tag-based mapping produces identical results to pattern-based mapping"
-      },
-      {
-        "id": "b",
-        "text": "Tag-based mapping produces a hierarchical service map that may be less precise than pattern-based mapping"
-      },
-      {
-        "id": "c",
-        "text": "Pattern-based mapping always requires tag-based mapping to run first"
-      },
-      {
-        "id": "d",
-        "text": "Tag-based mapping provides more detailed CI relationships than pattern-based mapping"
-      }
-    ],
-    "correctAnswers": [
-      "b"
-    ],
-    "explanation": {
-      "correct": "The result of tag-based mapping is a hierarchical service map that may be less precise than the application service created using patterns. Tag-based mapping uses discovered tags to group CIs, while pattern-based mapping uses detailed discovery patterns for precise CI identification.",
-      "wrongAnswers": [
-        {
-          "id": "a",
-          "explanation": "Tag-based and pattern-based mapping produce different results. Tag-based mapping is less precise but easier to configure."
-        },
-        {
-          "id": "c",
-          "explanation": "Tag-based and pattern-based mapping are independent methods. Neither requires the other to run first."
-        },
-        {
-          "id": "d",
-          "explanation": "Pattern-based mapping provides more detailed CI relationships because it uses specific discovery patterns, while tag-based uses categorization."
-        }
-      ]
-    },
-    "source": {
-      "excerpt": "The result of the tag-based mapping is a hierarchical service map that may be less precise than the application service created using the patterns.",
-      "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/service-mapping/map-service-tag.html"
-    },
-    "labels": {
-      "domain": "Machine Learning",
-      "subtopics": [
-        "Tag-based mapping",
-        "Pattern-based mapping",
-        "Mapping comparison"
-      ],
-      "tags": [
-        "service-mapping",
-        "tag-based",
-        "machine-learning",
-        "mapping-methods"
-      ]
-    },
-    "meta": {
-      "version": "1.0",
-      "release": "Xanadu",
-      "reviewed": false
-    },
-    "free": true
-  },
-  {
-    "id": "cis-sm-machine-learning-802",
-    "certification": "cis-sm",
-    "topic": "machine-learning",
-    "cognitiveLevel": "knowledge",
-    "type": "multiple_choice",
-    "question": "When using Predictive Intelligence with traffic-based discovery, what does Service Mapping automatically add to service instances?",
-    "options": [
-      {
-        "id": "a",
-        "text": "New entry points based on predicted traffic patterns"
-      },
-      {
-        "id": "b",
-        "text": "Connections based on connection rules generated from traffic data and application fingerprints"
-      },
-      {
-        "id": "c",
-        "text": "Automated credentials for discovered CIs"
-      },
-      {
-        "id": "d",
-        "text": "Performance metrics for each CI"
-      }
-    ],
-    "correctAnswers": [
-      "b"
-    ],
-    "explanation": {
-      "correct": "When Predictive Intelligence is enabled, Service Mapping automatically adds connections to service instances based on connection rules. These suggestions are generated using traffic-related data from the CMDB and the analysis of application fingerprints, CIs, and processes by Predictive Intelligence.",
-      "wrongAnswers": [
-        {
-          "id": "a",
-          "explanation": "Entry points are manually defined or discovered through patterns, not automatically added by Predictive Intelligence."
-        },
-        {
-          "id": "c",
-          "explanation": "Credentials are configured separately and are not automatically generated by Predictive Intelligence."
-        },
-        {
-          "id": "d",
-          "explanation": "Performance metrics are handled by Performance Analytics, not by Predictive Intelligence in Service Mapping."
-        }
-      ]
-    },
-    "source": {
-      "excerpt": "If Predictive Intelligence is enabled, Service Mapping automatically adds connections to service instances based on connection rules. These suggestions are generated using traffic-related data from the Configuration Management Database (CMDB) and the analysis of application fingerprints, CIs, and processes by Predictive Intelligence.",
-      "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/service-mapping/traffic-based-discovery.html"
-    },
-    "labels": {
-      "domain": "Machine Learning",
-      "subtopics": [
-        "Predictive Intelligence",
-        "Connection suggestions",
-        "Traffic-based discovery"
-      ],
-      "tags": [
-        "service-mapping",
-        "predictive-intelligence",
-        "machine-learning",
-        "connections"
-      ]
-    },
-    "meta": {
-      "version": "1.0",
-      "release": "Xanadu",
-      "reviewed": false
-    },
-    "free": true
-  },
-  {
-    "id": "cis-sm-machine-learning-803",
-    "certification": "cis-sm",
-    "topic": "machine-learning",
-    "cognitiveLevel": "understanding",
-    "type": "multiple_choice",
-    "question": "What is the purpose of the Service Mapping Workspace in ML-powered mapping?",
-    "options": [
-      {
-        "id": "a",
-        "text": "To replace all manual service mapping configuration"
-      },
-      {
-        "id": "b",
-        "text": "To efficiently map application services using tag-based Service Mapping"
-      },
-      {
-        "id": "c",
-        "text": "To automatically generate discovery patterns"
-      },
-      {
-        "id": "d",
-        "text": "To manage MID Server configurations"
-      }
-    ],
-    "correctAnswers": [
-      "b"
-    ],
-    "explanation": {
-      "correct": "Starting with Service Mapping Plus, the Tag-based Service Mapping workspace allows users to efficiently map application services. This workspace provides a streamlined interface for ML-powered mapping using tags discovered from cloud providers and container ecosystems.",
-      "wrongAnswers": [
-        {
-          "id": "a",
-          "explanation": "The workspace enhances but does not replace all manual configuration. Pattern-based mapping and other methods are still available."
-        },
-        {
-          "id": "c",
-          "explanation": "The workspace uses tag-based mapping, not pattern generation. Patterns are created through the Pattern Designer."
-        },
-        {
-          "id": "d",
-          "explanation": "MID Server configuration is handled in Discovery settings, not the Service Mapping Workspace."
-        }
-      ]
-    },
-    "source": {
-      "excerpt": "Starting with Service Mapping Plus version 1.16.3, take advantage of the Tag-based Service Mapping workspace to efficiently map your application services.",
-      "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/service-mapping/map-service-tag.html"
-    },
-    "labels": {
-      "domain": "Machine Learning",
-      "subtopics": [
-        "Service Mapping Workspace",
-        "Tag-based mapping",
-        "ML-powered discovery"
-      ],
-      "tags": [
-        "service-mapping",
-        "workspace",
-        "tag-based",
-        "machine-learning"
-      ]
-    },
-    "meta": {
-      "version": "1.0",
-      "release": "Xanadu",
-      "reviewed": false
-    },
-    "free": true
-  },
-  {
-    "id": "cis-sm-cmdb-integration-901",
-    "certification": "cis-sm",
-    "topic": "cmdb-integration",
-    "cognitiveLevel": "knowledge",
-    "type": "multiple_choice",
-    "question": "When creating a serverless discovery schedule for NetApp SolidFire storage discovery, what type of discovery should be selected in the Discover field?",
-    "options": [
-      {
-        "id": "a",
-        "text": "IP Address"
-      },
-      {
-        "id": "b",
-        "text": "CI Type"
-      },
-      {
-        "id": "c",
-        "text": "Serverless"
-      },
-      {
-        "id": "d",
-        "text": "Scheduled Jobs"
-      }
-    ],
-    "correctAnswers": [
-      "c"
-    ],
-    "explanation": {
-      "correct": "When creating a discovery schedule for targeted discovery of storage systems like NetApp SolidFire clusters and nodes, you select 'Serverless' in the Discover type field. This enables serverless execution patterns to be configured for specific discovery patterns.",
-      "wrongAnswers": [
-        {
-          "id": "a",
-          "explanation": "IP Address-based discovery is used for general network scanning, not for serverless pattern-based discovery of specific storage systems."
+          "text": "PowerShell commands via WMI"
         },
         {
           "id": "b",
-          "explanation": "CI Type is not a valid option in the Discover field. Serverless is the correct selection for pattern-based storage discovery."
-        },
-        {
-          "id": "d",
-          "explanation": "Scheduled Jobs is not a discovery type option. The correct selection is Serverless for this type of targeted discovery."
-        }
-      ]
-    },
-    "source": {
-      "excerpt": "Create a discovery schedule to perform targeted discovery of SolidFire clusters and nodes. Navigate to Discovery > Discovery Schedules. Click New and then fill in the form... Discover: Discover type. Select Serverless.",
-      "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/discovery-and-service-mapping-patterns/solidfire-storage-pattern.html"
-    },
-    "labels": {
-      "domain": "Configuration Management Database",
-      "subtopics": [
-        "Discovery schedules",
-        "Serverless discovery",
-        "Storage discovery"
-      ],
-      "tags": [
-        "service-mapping",
-        "discovery",
-        "serverless",
-        "storage"
-      ]
-    },
-    "meta": {
-      "version": "1.0",
-      "release": "Xanadu",
-      "reviewed": false
-    },
-    "free": true
-  },
-  {
-    "id": "cis-sm-cmdb-integration-902",
-    "certification": "cis-sm",
-    "topic": "cmdb-integration",
-    "cognitiveLevel": "knowledge",
-    "type": "multiple_select",
-    "question": "Which SolidFire Cluster Admin credentials must be configured as Basic Auth credentials for Element API authentication? (Choose two.)",
-    "options": [
-      {
-        "id": "a",
-        "text": "clusterAdmins"
-      },
-      {
-        "id": "b",
-        "text": "superuser"
-      },
-      {
-        "id": "c",
-        "text": "reporting"
-      },
-      {
-        "id": "d",
-        "text": "administrator"
-      }
-    ],
-    "correctAnswers": [
-      "a",
-      "c"
-    ],
-    "explanation": {
-      "correct": "For NetApp SolidFire discovery, Basic Auth credentials must be configured with specific SolidFire Cluster Admin permissions including: read, clusterAdmins, reporting, and drives. The clusterAdmins and reporting permissions are among these required credentials.",
-      "wrongAnswers": [
-        {
-          "id": "b",
-          "explanation": "superuser is not a required SolidFire credential type. The required permissions are read, clusterAdmins, reporting, and drives."
-        },
-        {
-          "id": "d",
-          "explanation": "administrator is not specified in the required credentials list. The documented requirements are read, clusterAdmins, reporting, and drives."
-        }
-      ]
-    },
-    "source": {
-      "excerpt": "Ensure Basic Auth credentials are configured for authenticating the Element API calls. Save the following SolidFire Cluster Admin credentials as Basic Auth credentials to ensure proper access: read, clusterAdmins, reporting, drives",
-      "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/discovery-and-service-mapping-patterns/solidfire-storage-pattern.html"
-    },
-    "labels": {
-      "domain": "Configuration Management Database",
-      "subtopics": [
-        "Credentials",
-        "Storage discovery",
-        "Authentication"
-      ],
-      "tags": [
-        "service-mapping",
-        "credentials",
-        "solidfire",
-        "basic-auth"
-      ]
-    },
-    "meta": {
-      "version": "1.0",
-      "release": "Xanadu",
-      "reviewed": false
-    },
-    "free": true
-  },
-  {
-    "id": "cis-sm-cmdb-integration-903",
-    "certification": "cis-sm",
-    "topic": "cmdb-integration",
-    "cognitiveLevel": "understanding",
-    "type": "multiple_choice",
-    "question": "Which CMDB table is used to store discovered NetApp SolidFire storage server configuration data as the main CI?",
-    "options": [
-      {
-        "id": "a",
-        "text": "cmdb_ci_storage_device"
-      },
-      {
-        "id": "b",
-        "text": "cmdb_ci_storage_server"
-      },
-      {
-        "id": "c",
-        "text": "cmdb_ci_san_device"
-      },
-      {
-        "id": "d",
-        "text": "cmdb_ci_netapp_storage"
-      }
-    ],
-    "correctAnswers": [
-      "b"
-    ],
-    "explanation": {
-      "correct": "The main CI for discovered NetApp SolidFire storage systems is stored in the cmdb_ci_storage_server table. This table contains fields for name, serial_number, firmware_version, ip_address, short_description, and manufacturer.",
-      "wrongAnswers": [
-        {
-          "id": "a",
-          "explanation": "cmdb_ci_storage_device is not the documented table for SolidFire storage. The main CI table is cmdb_ci_storage_server."
+          "text": "Xen (XE) and (XL) commands via SSH"
         },
         {
           "id": "c",
-          "explanation": "cmdb_ci_san_device is for SAN devices specifically, not the general storage server CI for SolidFire."
+          "text": "VMware vSphere API calls"
         },
         {
           "id": "d",
-          "explanation": "cmdb_ci_netapp_storage is not a standard CMDB table. The main CI is stored in cmdb_ci_storage_server."
+          "text": "REST API queries to the Citrix controller"
         }
-      ]
-    },
-    "source": {
-      "excerpt": "The discovered SolidFire configuration data includes the following tables and fields: Main Configuration Item [cmdb_ci_storage_server]... name, serial_number, firmware_version, ip_address, short_description, manufacturer",
-      "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/discovery-and-service-mapping-patterns/solidfire-storage-pattern.html"
-    },
-    "labels": {
-      "domain": "Configuration Management Database",
-      "subtopics": [
-        "CMDB tables",
-        "Storage CIs",
-        "Data model"
       ],
-      "tags": [
-        "service-mapping",
-        "cmdb",
-        "storage",
-        "tables"
-      ]
-    },
-    "meta": {
-      "version": "1.0",
-      "release": "Xanadu",
-      "reviewed": false
-    },
-    "free": true
-  },
-  {
-    "id": "cis-sm-engagement-readiness-1101",
-    "certification": "cis-sm",
-    "topic": "engagement-readiness",
-    "cognitiveLevel": "understanding",
-    "type": "multiple_select",
-    "question": "What are the two types of credentials that Service Mapping uses for top-down discovery? (Choose two.)",
-    "options": [
-      {
-        "id": "a",
-        "text": "Host credentials for accessing applications on a host"
-      },
-      {
-        "id": "b",
-        "text": "CMDB credentials for database access"
-      },
-      {
-        "id": "c",
-        "text": "Applicative credentials separate from host credentials for specific applications"
-      },
-      {
-        "id": "d",
-        "text": "MID Server admin credentials for agent management"
-      }
-    ],
-    "correctAnswers": [
-      "a",
-      "c"
-    ],
-    "explanation": {
-      "correct": "Service Mapping uses two types of credentials: Host credentials (SSH or Windows credentials to access servers hosting applications) which are typically sufficient for most discoveries, and Applicative credentials which are separate from host credentials needed for specific applications like ABAP SAP Central Services (ASCS).",
-      "wrongAnswers": [
-        {
-          "id": "b",
-          "explanation": "There is no specific 'CMDB credential' type. Service Mapping uses host and applicative credentials for discovery."
-        },
-        {
-          "id": "d",
-          "explanation": "MID Server credentials are separate from discovery credentials. Service Mapping uses host and applicative credentials for top-down discovery."
-        }
-      ]
-    },
-    "source": {
-      "excerpt": "Configure the relevant requirements to enable successful top-down discovery: Host credentials - Service Mapping uses credentials of the hosts to access applications running on this host. Typically, host credentials are enough for top-down discovery... Applicative credentials - To discover some applications, Service Mapping needs separate credentials from credentials of the host on which such applications run.",
-      "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/service-mapping/prerequisites-service-mapping.html"
-    },
-    "labels": {
-      "domain": "Service Mapping Engagement Readiness",
-      "subtopics": [
-        "Credentials",
-        "Prerequisites",
-        "Top-down discovery"
+      "correctAnswers": [
+        "b"
       ],
-      "tags": [
-        "service-mapping",
-        "credentials",
-        "host-credentials",
-        "applicative-credentials"
-      ]
+      "explanation": {
+        "correct": "ServiceNow Discovery uses Xen (XE) and (XL) commands to discover Citrix Xen Hyper-V components. These commands allow Discovery to gather information about the Hyper-V Server, Associated Pools, VMs, Network and Storage, and their relationships with new and existing CIs.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "PowerShell via WMI is used for Windows-based discoveries, not Citrix Xen which runs on Linux and uses XE/XL commands."
+          },
+          {
+            "id": "c",
+            "explanation": "VMware vSphere API is used specifically for VMware environments, not Citrix Xen Hyper-V."
+          },
+          {
+            "id": "d",
+            "explanation": "REST API queries are not the method used for Citrix Xen Hyper-V discovery; SSH-based XE/XL commands are used instead."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Use the Xen (XE) and (XL) commands to discover Citrix Xen Hyper-V, its components, and respective attributes. Discover information regarding the Hyper-V Server, Associated Pools, VMs, Network and Storage and their relationships with new and existing CIs.",
+        "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/discovery-and-service-mapping-patterns/citrix-xen-hyper-v-discovery.html"
+      },
+      "labels": {
+        "domain": "Service Mapping Pattern Design",
+        "subtopics": [
+          "Pattern execution",
+          "Hypervisor discovery"
+        ],
+        "tags": [
+          "service-mapping",
+          "citrix-xen",
+          "discovery-patterns",
+          "ssh-commands"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "free": true
     },
-    "meta": {
-      "version": "1.0",
-      "release": "Xanadu",
-      "reviewed": false
-    },
-    "free": true
-  },
-  {
-    "id": "cis-sm-engagement-readiness-1102",
-    "certification": "cis-sm",
-    "topic": "engagement-readiness",
-    "cognitiveLevel": "knowledge",
-    "type": "multiple_choice",
-    "question": "Which type of application services CANNOT be fine-tuned or edited from the map view?",
-    "options": [
-      {
-        "id": "a",
-        "text": "Discovered application services"
-      },
-      {
-        "id": "b",
-        "text": "Manually created application services"
-      },
-      {
-        "id": "c",
-        "text": "Tag-based and dynamic services"
-      },
-      {
-        "id": "d",
-        "text": "Services with traffic-based connections"
-      }
-    ],
-    "correctAnswers": [
-      "c"
-    ],
-    "explanation": {
-      "correct": "Tag-based and dynamic services cannot be fine-tuned or edited from the map. This is an important limitation to understand when planning Service Mapping implementations. Only discovered and manually created application services can be edited from the map view.",
-      "wrongAnswers": [
+    {
+      "id": "cis-sm-pattern-design-102",
+      "certification": "cis-sm",
+      "topic": "_free",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_select",
+      "question": "Which prerequisites must be verified before discovering Citrix Xen Hyper-V resources? (Choose two.)",
+      "options": [
         {
           "id": "a",
-          "explanation": "Discovered application services can be fine-tuned and edited from the map to implement owner requests."
+          "text": "Pool admin RBAC role for SSH access"
         },
         {
           "id": "b",
-          "explanation": "Manually created application services can be edited from the map view just like discovered services."
-        },
-        {
-          "id": "d",
-          "explanation": "Services with traffic-based connections can still be edited from the map. The restriction applies specifically to tag-based and dynamic services."
-        }
-      ]
-    },
-    "source": {
-      "excerpt": "You can edit discovered and manually created application services. Important: You cannot fine-tune or edit tag-based and dynamic services from the map.",
-      "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/service-mapping/review-implement-business-service-maps.html"
-    },
-    "labels": {
-      "domain": "Service Mapping Engagement Readiness",
-      "subtopics": [
-        "Service types",
-        "Map editing",
-        "Limitations"
-      ],
-      "tags": [
-        "service-mapping",
-        "tag-based",
-        "dynamic-services",
-        "editing"
-      ]
-    },
-    "meta": {
-      "version": "1.0",
-      "release": "Xanadu",
-      "reviewed": false
-    },
-    "free": true
-  },
-  {
-    "id": "cis-sm-engagement-readiness-1103",
-    "certification": "cis-sm",
-    "topic": "engagement-readiness",
-    "cognitiveLevel": "application",
-    "type": "multiple_choice",
-    "question": "An application service owner has rejected a service map with comments. As a Service Mapping administrator, where do you find the owner's rejection comments?",
-    "options": [
-      {
-        "id": "a",
-        "text": "In the Discovery Log table"
-      },
-      {
-        "id": "b",
-        "text": "Under Reject Messages on the left, in the Service Discovery Messages tab"
-      },
-      {
-        "id": "c",
-        "text": "In the Service Mapping Properties panel"
-      },
-      {
-        "id": "d",
-        "text": "In the Event Management alert console"
-      }
-    ],
-    "correctAnswers": [
-      "b"
-    ],
-    "explanation": {
-      "correct": "To view rejection comments from application service owners, administrators click 'Reject Messages' on the left side of the service form. The owner comments are displayed under the Service Discovery Messages tab, where they can review what changes the owner requested.",
-      "wrongAnswers": [
-        {
-          "id": "a",
-          "explanation": "The Discovery Log contains technical discovery information, not owner rejection comments. Rejection messages are in the Service Discovery Messages."
+          "text": "WMI credentials with domain admin privileges"
         },
         {
           "id": "c",
-          "explanation": "The Properties panel shows CI and connection attributes, not owner rejection comments."
+          "text": "MID Server reachability to the target device"
         },
         {
           "id": "d",
-          "explanation": "Event Management shows alerts and events, not service mapping approval workflow comments."
+          "text": "VMware vCenter connection established"
         }
-      ]
-    },
-    "source": {
-      "excerpt": "Click Reject Messages on the left. The owner comments are displayed under the Service Discovery Messages tab. Review the reject messages to see comments that the application service owner left.",
-      "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/service-mapping/review-implement-business-service-maps.html"
-    },
-    "labels": {
-      "domain": "Service Mapping Engagement Readiness",
-      "subtopics": [
-        "Review workflow",
-        "Owner feedback",
-        "Approval process"
       ],
-      "tags": [
-        "service-mapping",
-        "approval",
-        "rejection",
-        "owner-feedback"
-      ]
+      "correctAnswers": [
+        "a",
+        "c"
+      ],
+      "explanation": {
+        "correct": "Before discovering Citrix Xen Hyper-V resources, you must verify that the pool admin RBAC role is configured for SSH access to the Linux server hosting the hypervisor, and that the MID Server has reachability to the target device. These are essential prerequisites documented for the Citrix Xen Hyper-V pattern.",
+        "wrongAnswers": [
+          {
+            "id": "b",
+            "explanation": "WMI credentials are used for Windows-based discoveries. Citrix Xen requires SSH credentials for Linux-based access."
+          },
+          {
+            "id": "d",
+            "explanation": "VMware vCenter is specific to VMware environments and is not relevant to Citrix Xen Hyper-V discovery."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Verify pool admin RBAC role: This role is required for SSH access to the Linux server hosting the hypervisor and for executing all the necessary commands to extract information from the hypervisor environment... Verify MID Server reachability: Verify MID Server has reachability to the target device.",
+        "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/discovery-and-service-mapping-patterns/citrix-xen-hyper-v-discovery.html"
+      },
+      "labels": {
+        "domain": "Service Mapping Pattern Design",
+        "subtopics": [
+          "Prerequisites",
+          "RBAC roles",
+          "MID Server"
+        ],
+        "tags": [
+          "service-mapping",
+          "citrix-xen",
+          "prerequisites",
+          "rbac"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "free": true
     },
-    "meta": {
-      "version": "1.0",
-      "release": "Xanadu",
-      "reviewed": false
+    {
+      "id": "cis-sm-pattern-design-103",
+      "certification": "cis-sm",
+      "topic": "_free",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which system property must be set to true to enable network router discovery in ServiceNow?",
+      "options": [
+        {
+          "id": "a",
+          "text": "glide.discovery.network_router_enable"
+        },
+        {
+          "id": "b",
+          "text": "glide.discovery.L3_mapping"
+        },
+        {
+          "id": "c",
+          "text": "glide.discovery.router_protocol"
+        },
+        {
+          "id": "d",
+          "text": "glide.discovery.ip_range_scan"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The glide.discovery.L3_mapping system property must be set to true to enable network router discovery. This property is configured by navigating to sys_properties.list and verifying or setting its value.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "This is not a valid ServiceNow system property for router discovery. The correct property is glide.discovery.L3_mapping."
+          },
+          {
+            "id": "c",
+            "explanation": "This is not the property that enables router discovery. Router discovery is controlled by glide.discovery.L3_mapping."
+          },
+          {
+            "id": "d",
+            "explanation": "While IP range scanning is a discovery feature, this is not the specific property for enabling network router discovery."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Navigate to sys_properties.list and verify that the glide.discovery.L3_mapping system property is set to true.",
+        "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/discovery-and-service-mapping-patterns/network-router-patterns.html"
+      },
+      "labels": {
+        "domain": "Service Mapping Pattern Design",
+        "subtopics": [
+          "System properties",
+          "Network router discovery"
+        ],
+        "tags": [
+          "service-mapping",
+          "network-router",
+          "system-properties",
+          "L3-mapping"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "free": true
     },
-    "free": true
-  }
-]
+    {
+      "id": "cis-sm-sm-configuration-401",
+      "certification": "cis-sm",
+      "topic": "sm-configuration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_select",
+      "question": "Which roles are preconfigured by Service Mapping to manage application services? (Choose two.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "service_mapping_admin"
+        },
+        {
+          "id": "b",
+          "text": "discovery_admin"
+        },
+        {
+          "id": "c",
+          "text": "sm_app_owner"
+        },
+        {
+          "id": "d",
+          "text": "cmdb_admin"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "c"
+      ],
+      "explanation": {
+        "correct": "Service Mapping provides preconfigured roles including service_mapping_admin (for setting up Service Mapping, mapping/maintaining services, and advanced configuration) and sm_app_owner (for service owners who provide mapping information and review/approve mapping results). The service_mapping_user role is also preconfigured but not listed in these options.",
+        "wrongAnswers": [
+          {
+            "id": "b",
+            "explanation": "discovery_admin is a Discovery role, not a Service Mapping-specific preconfigured role. Service Mapping has its own set of roles."
+          },
+          {
+            "id": "d",
+            "explanation": "cmdb_admin is a CMDB administration role, not a Service Mapping-specific preconfigured role."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Service Mapping provides these preconfigured roles: service_mapping_admin - Sets up the Service Mapping application. Maps, fixes, and maintains service instances... sm_app_owner - Provides information necessary for successful mapping of a service instance. Once a service is mapped, this user reviews the results and either approves it or suggests changes.",
+        "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/service-mapping/control-user-access-to-business-services.html"
+      },
+      "labels": {
+        "domain": "Service Mapping Configuration",
+        "subtopics": [
+          "Roles",
+          "Access control",
+          "User management"
+        ],
+        "tags": [
+          "service-mapping",
+          "roles",
+          "security",
+          "access-control"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "free": true
+    },
+    {
+      "id": "cis-sm-sm-configuration-402",
+      "certification": "cis-sm",
+      "topic": "sm-configuration",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What capability does the app_service_user role provide compared to the itil role for viewing application services?",
+      "options": [
+        {
+          "id": "a",
+          "text": "app_service_user can view service instances while itil cannot view any"
+        },
+        {
+          "id": "b",
+          "text": "Both roles can view all service instances, but only app_service_user can use the getContent REST API"
+        },
+        {
+          "id": "c",
+          "text": "itil role has more permissions than app_service_user for service viewing"
+        },
+        {
+          "id": "d",
+          "text": "app_service_user can modify services while itil is view-only"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The app_service_user role allows viewing maps for operational service instances AND retrieving service content using the getContent - GET REST API. The itil role contains the app_service_user role and can view all service instances, but the REST API capability is specifically documented for app_service_user.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "Both roles can view service instances. The itil role contains the app_service_user role, so both can view."
+          },
+          {
+            "id": "c",
+            "explanation": "The itil role contains app_service_user, so they have equivalent permissions for viewing. The key difference is the REST API capability explicitly documented for app_service_user."
+          },
+          {
+            "id": "d",
+            "explanation": "Neither app_service_user nor itil can modify services. The app_service_admin role is required to create and modify service instances."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "app_service_user - Views maps for operational service instances and retrieves service content using the getContent - GET REST API. The itil role that serves as the basic helpdesk technician role contains the app_service_user role... Users with the itil role only can view all service instances.",
+        "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/service-mapping/control-user-access-to-business-services.html"
+      },
+      "labels": {
+        "domain": "Service Mapping Configuration",
+        "subtopics": [
+          "Roles",
+          "REST API",
+          "Access control"
+        ],
+        "tags": [
+          "service-mapping",
+          "roles",
+          "itil",
+          "rest-api"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "free": true
+    },
+    {
+      "id": "cis-sm-sm-configuration-403",
+      "certification": "cis-sm",
+      "topic": "sm-configuration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "In a hierarchy of service groups, what happens when a user is granted access to a parent service group?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Access must be explicitly granted to each child service group"
+        },
+        {
+          "id": "b",
+          "text": "Access to the parent automatically grants access to all child service groups"
+        },
+        {
+          "id": "c",
+          "text": "Only immediate children inherit access, not deeper levels"
+        },
+        {
+          "id": "d",
+          "text": "Child groups must be configured to inherit parent permissions"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "In a hierarchy of service groups, access to a parent service group automatically grants access to all the child service groups. This makes managing access to large numbers of services more practical, especially in large organizations.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "Access does not need to be explicitly granted to each child. Inheritance from parent to child is automatic."
+          },
+          {
+            "id": "c",
+            "explanation": "Inheritance applies to all descendants, not just immediate children. All child service groups at any level inherit access."
+          },
+          {
+            "id": "d",
+            "explanation": "Child groups do not need special configuration to inherit. Inheritance is automatic in the service group hierarchy."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Typically, enterprises have hundreds of services which makes it impractical to manage them individually. Service groups can make service lists much shorter and easier to manage, especially in large organizations or service providers. In a hierarchy of service groups, access to a parent service group automatically grants access to all the child service groups.",
+        "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/service-mapping/control-user-access-to-business-services.html"
+      },
+      "labels": {
+        "domain": "Service Mapping Configuration",
+        "subtopics": [
+          "Service groups",
+          "Access control",
+          "Hierarchy"
+        ],
+        "tags": [
+          "service-mapping",
+          "service-groups",
+          "access-control",
+          "inheritance"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "free": true
+    },
+    {
+      "id": "cis-sm-discovery-configuration-601",
+      "certification": "cis-sm",
+      "topic": "discovery-configuration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_select",
+      "question": "How does Service Mapping classify discovery errors? (Choose two.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "By their root cause category such as Configuration, Network, and Credentials"
+        },
+        {
+          "id": "b",
+          "text": "By alphabetical order of error messages"
+        },
+        {
+          "id": "c",
+          "text": "By impact level: high, medium, and low impact on services"
+        },
+        {
+          "id": "d",
+          "text": "By the MID Server that encountered the error"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "c"
+      ],
+      "explanation": {
+        "correct": "Service Mapping classifies errors by their root cause category (Configuration, Network, Credentials, etc.) and also organizes them by high, medium, and low impact on the services. This dual classification helps administrators prioritize and fix errors efficiently.",
+        "wrongAnswers": [
+          {
+            "id": "b",
+            "explanation": "Errors are not classified alphabetically. They are organized by root cause category and impact level."
+          },
+          {
+            "id": "d",
+            "explanation": "While MID Server information may be included in error details, errors are primarily classified by root cause category and impact level."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Service Mapping classifies errors by their root cause, for example, missing credentials or task timeout... You can view errors by category, for example, Configuration, Network, and Credentials... The Errors by Category page organizes errors by high, medium, and low impact on the services.",
+        "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/service-mapping/fix-bus-serv-errors-by-category.html"
+      },
+      "labels": {
+        "domain": "Discovery Configuration",
+        "subtopics": [
+          "Error classification",
+          "Error handling",
+          "Troubleshooting"
+        ],
+        "tags": [
+          "service-mapping",
+          "errors",
+          "troubleshooting",
+          "classification"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "free": true
+    },
+    {
+      "id": "cis-sm-discovery-configuration-602",
+      "certification": "cis-sm",
+      "topic": "discovery-configuration",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "Under what conditions are discovery errors not assigned to any category in Service Mapping?",
+      "options": [
+        {
+          "id": "a",
+          "text": "When the MID Server is offline"
+        },
+        {
+          "id": "b",
+          "text": "After upgrading from Jakarta release or earlier, or when CIs with errors are removed and readded to services"
+        },
+        {
+          "id": "c",
+          "text": "When credentials are missing for all targets"
+        },
+        {
+          "id": "d",
+          "text": "When discovery schedules are paused"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Discovery errors may be uncategorized in two scenarios: after upgrading Service Mapping from Jakarta release or earlier, or when CIs that have errors are first removed from application services and then readded. In these cases, administrators can categorize them by clicking 'Rediscover Relevant CIs'.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "MID Server offline status would create network or connectivity errors which are categorized, not uncategorized errors."
+          },
+          {
+            "id": "c",
+            "explanation": "Missing credentials errors are categorized under the 'Credentials' category, not left uncategorized."
+          },
+          {
+            "id": "d",
+            "explanation": "Paused schedules don't create errors. When discovery runs, errors that occur are categorized appropriately."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "There may be discovery errors not assigned to any category: After upgrading Service Mapping from Jakarta release or earlier. If there are configuration items (CIs) that have errors associated with them, and that were first removed from application services and then readded to application services.",
+        "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/service-mapping/fix-bus-serv-errors-by-category.html"
+      },
+      "labels": {
+        "domain": "Discovery Configuration",
+        "subtopics": [
+          "Uncategorized errors",
+          "Upgrade scenarios",
+          "Error management"
+        ],
+        "tags": [
+          "service-mapping",
+          "errors",
+          "upgrade",
+          "uncategorized"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "free": true
+    },
+    {
+      "id": "cis-sm-discovery-configuration-603",
+      "certification": "cis-sm",
+      "topic": "discovery-configuration",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "An administrator needs to notify an external team member who doesn't use ServiceNow to fix a discovery error. Which action should they use?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Retry Discovery"
+        },
+        {
+          "id": "b",
+          "text": "Mark as assigned with a comment"
+        },
+        {
+          "id": "c",
+          "text": "View instructions"
+        },
+        {
+          "id": "d",
+          "text": "View affected services"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The 'Mark as assigned' action is used when planning to perform an out-of-band action to notify a person to fix the error, typically someone who does not use the ServiceNow instance. You can enter a comment in the Mark as Assigned popup, which sets the Error Status to Assigned.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "Retry Discovery performs the full discovery process again and is used after the error has been fixed, not for assigning work to external team members."
+          },
+          {
+            "id": "c",
+            "explanation": "View instructions displays troubleshooting procedures but doesn't assign or track the error for external resolution."
+          },
+          {
+            "id": "d",
+            "explanation": "View affected services shows which services are impacted but doesn't provide a mechanism to assign the error to someone for resolution."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Mark as assigned - Apply the Mark as assigned action when you plan to perform an out-of-band action to notify a person to fix the error (typically a person who does not use the ServiceNow instance). You can enter a Comment in the Mark as Assigned popup.",
+        "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/service-mapping/fix-bus-serv-errors-by-category.html"
+      },
+      "labels": {
+        "domain": "Discovery Configuration",
+        "subtopics": [
+          "Error assignment",
+          "Workflow",
+          "Out-of-band notifications"
+        ],
+        "tags": [
+          "service-mapping",
+          "errors",
+          "assignment",
+          "workflow"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "free": true
+    },
+    {
+      "id": "cis-sm-machine-learning-801",
+      "certification": "cis-sm",
+      "topic": "machine-learning",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What is the relationship between tag-based mapping results and pattern-based mapping results in Service Mapping?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Tag-based mapping produces identical results to pattern-based mapping"
+        },
+        {
+          "id": "b",
+          "text": "Tag-based mapping produces a hierarchical service map that may be less precise than pattern-based mapping"
+        },
+        {
+          "id": "c",
+          "text": "Pattern-based mapping always requires tag-based mapping to run first"
+        },
+        {
+          "id": "d",
+          "text": "Tag-based mapping provides more detailed CI relationships than pattern-based mapping"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The result of tag-based mapping is a hierarchical service map that may be less precise than the application service created using patterns. Tag-based mapping uses discovered tags to group CIs, while pattern-based mapping uses detailed discovery patterns for precise CI identification.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "Tag-based and pattern-based mapping produce different results. Tag-based mapping is less precise but easier to configure."
+          },
+          {
+            "id": "c",
+            "explanation": "Tag-based and pattern-based mapping are independent methods. Neither requires the other to run first."
+          },
+          {
+            "id": "d",
+            "explanation": "Pattern-based mapping provides more detailed CI relationships because it uses specific discovery patterns, while tag-based uses categorization."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "The result of the tag-based mapping is a hierarchical service map that may be less precise than the application service created using the patterns.",
+        "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/service-mapping/map-service-tag.html"
+      },
+      "labels": {
+        "domain": "Machine Learning",
+        "subtopics": [
+          "Tag-based mapping",
+          "Pattern-based mapping",
+          "Mapping comparison"
+        ],
+        "tags": [
+          "service-mapping",
+          "tag-based",
+          "machine-learning",
+          "mapping-methods"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "free": true
+    },
+    {
+      "id": "cis-sm-machine-learning-802",
+      "certification": "cis-sm",
+      "topic": "machine-learning",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "When using Predictive Intelligence with traffic-based discovery, what does Service Mapping automatically add to service instances?",
+      "options": [
+        {
+          "id": "a",
+          "text": "New entry points based on predicted traffic patterns"
+        },
+        {
+          "id": "b",
+          "text": "Connections based on connection rules generated from traffic data and application fingerprints"
+        },
+        {
+          "id": "c",
+          "text": "Automated credentials for discovered CIs"
+        },
+        {
+          "id": "d",
+          "text": "Performance metrics for each CI"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "When Predictive Intelligence is enabled, Service Mapping automatically adds connections to service instances based on connection rules. These suggestions are generated using traffic-related data from the CMDB and the analysis of application fingerprints, CIs, and processes by Predictive Intelligence.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "Entry points are manually defined or discovered through patterns, not automatically added by Predictive Intelligence."
+          },
+          {
+            "id": "c",
+            "explanation": "Credentials are configured separately and are not automatically generated by Predictive Intelligence."
+          },
+          {
+            "id": "d",
+            "explanation": "Performance metrics are handled by Performance Analytics, not by Predictive Intelligence in Service Mapping."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "If Predictive Intelligence is enabled, Service Mapping automatically adds connections to service instances based on connection rules. These suggestions are generated using traffic-related data from the Configuration Management Database (CMDB) and the analysis of application fingerprints, CIs, and processes by Predictive Intelligence.",
+        "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/service-mapping/traffic-based-discovery.html"
+      },
+      "labels": {
+        "domain": "Machine Learning",
+        "subtopics": [
+          "Predictive Intelligence",
+          "Connection suggestions",
+          "Traffic-based discovery"
+        ],
+        "tags": [
+          "service-mapping",
+          "predictive-intelligence",
+          "machine-learning",
+          "connections"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "free": true
+    },
+    {
+      "id": "cis-sm-machine-learning-803",
+      "certification": "cis-sm",
+      "topic": "machine-learning",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What is the purpose of the Service Mapping Workspace in ML-powered mapping?",
+      "options": [
+        {
+          "id": "a",
+          "text": "To replace all manual service mapping configuration"
+        },
+        {
+          "id": "b",
+          "text": "To efficiently map application services using tag-based Service Mapping"
+        },
+        {
+          "id": "c",
+          "text": "To automatically generate discovery patterns"
+        },
+        {
+          "id": "d",
+          "text": "To manage MID Server configurations"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Starting with Service Mapping Plus, the Tag-based Service Mapping workspace allows users to efficiently map application services. This workspace provides a streamlined interface for ML-powered mapping using tags discovered from cloud providers and container ecosystems.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "The workspace enhances but does not replace all manual configuration. Pattern-based mapping and other methods are still available."
+          },
+          {
+            "id": "c",
+            "explanation": "The workspace uses tag-based mapping, not pattern generation. Patterns are created through the Pattern Designer."
+          },
+          {
+            "id": "d",
+            "explanation": "MID Server configuration is handled in Discovery settings, not the Service Mapping Workspace."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Starting with Service Mapping Plus version 1.16.3, take advantage of the Tag-based Service Mapping workspace to efficiently map your application services.",
+        "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/service-mapping/map-service-tag.html"
+      },
+      "labels": {
+        "domain": "Machine Learning",
+        "subtopics": [
+          "Service Mapping Workspace",
+          "Tag-based mapping",
+          "ML-powered discovery"
+        ],
+        "tags": [
+          "service-mapping",
+          "workspace",
+          "tag-based",
+          "machine-learning"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "free": true
+    },
+    {
+      "id": "cis-sm-cmdb-integration-901",
+      "certification": "cis-sm",
+      "topic": "cmdb-integration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "When creating a serverless discovery schedule for NetApp SolidFire storage discovery, what type of discovery should be selected in the Discover field?",
+      "options": [
+        {
+          "id": "a",
+          "text": "IP Address"
+        },
+        {
+          "id": "b",
+          "text": "CI Type"
+        },
+        {
+          "id": "c",
+          "text": "Serverless"
+        },
+        {
+          "id": "d",
+          "text": "Scheduled Jobs"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "When creating a discovery schedule for targeted discovery of storage systems like NetApp SolidFire clusters and nodes, you select 'Serverless' in the Discover type field. This enables serverless execution patterns to be configured for specific discovery patterns.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "IP Address-based discovery is used for general network scanning, not for serverless pattern-based discovery of specific storage systems."
+          },
+          {
+            "id": "b",
+            "explanation": "CI Type is not a valid option in the Discover field. Serverless is the correct selection for pattern-based storage discovery."
+          },
+          {
+            "id": "d",
+            "explanation": "Scheduled Jobs is not a discovery type option. The correct selection is Serverless for this type of targeted discovery."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Create a discovery schedule to perform targeted discovery of SolidFire clusters and nodes. Navigate to Discovery > Discovery Schedules. Click New and then fill in the form... Discover: Discover type. Select Serverless.",
+        "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/discovery-and-service-mapping-patterns/solidfire-storage-pattern.html"
+      },
+      "labels": {
+        "domain": "Configuration Management Database",
+        "subtopics": [
+          "Discovery schedules",
+          "Serverless discovery",
+          "Storage discovery"
+        ],
+        "tags": [
+          "service-mapping",
+          "discovery",
+          "serverless",
+          "storage"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "free": true
+    },
+    {
+      "id": "cis-sm-cmdb-integration-902",
+      "certification": "cis-sm",
+      "topic": "cmdb-integration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_select",
+      "question": "Which SolidFire Cluster Admin credentials must be configured as Basic Auth credentials for Element API authentication? (Choose two.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "clusterAdmins"
+        },
+        {
+          "id": "b",
+          "text": "superuser"
+        },
+        {
+          "id": "c",
+          "text": "reporting"
+        },
+        {
+          "id": "d",
+          "text": "administrator"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "c"
+      ],
+      "explanation": {
+        "correct": "For NetApp SolidFire discovery, Basic Auth credentials must be configured with specific SolidFire Cluster Admin permissions including: read, clusterAdmins, reporting, and drives. The clusterAdmins and reporting permissions are among these required credentials.",
+        "wrongAnswers": [
+          {
+            "id": "b",
+            "explanation": "superuser is not a required SolidFire credential type. The required permissions are read, clusterAdmins, reporting, and drives."
+          },
+          {
+            "id": "d",
+            "explanation": "administrator is not specified in the required credentials list. The documented requirements are read, clusterAdmins, reporting, and drives."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Ensure Basic Auth credentials are configured for authenticating the Element API calls. Save the following SolidFire Cluster Admin credentials as Basic Auth credentials to ensure proper access: read, clusterAdmins, reporting, drives",
+        "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/discovery-and-service-mapping-patterns/solidfire-storage-pattern.html"
+      },
+      "labels": {
+        "domain": "Configuration Management Database",
+        "subtopics": [
+          "Credentials",
+          "Storage discovery",
+          "Authentication"
+        ],
+        "tags": [
+          "service-mapping",
+          "credentials",
+          "solidfire",
+          "basic-auth"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "free": true
+    },
+    {
+      "id": "cis-sm-cmdb-integration-903",
+      "certification": "cis-sm",
+      "topic": "cmdb-integration",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "Which CMDB table is used to store discovered NetApp SolidFire storage server configuration data as the main CI?",
+      "options": [
+        {
+          "id": "a",
+          "text": "cmdb_ci_storage_device"
+        },
+        {
+          "id": "b",
+          "text": "cmdb_ci_storage_server"
+        },
+        {
+          "id": "c",
+          "text": "cmdb_ci_san_device"
+        },
+        {
+          "id": "d",
+          "text": "cmdb_ci_netapp_storage"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The main CI for discovered NetApp SolidFire storage systems is stored in the cmdb_ci_storage_server table. This table contains fields for name, serial_number, firmware_version, ip_address, short_description, and manufacturer.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "cmdb_ci_storage_device is not the documented table for SolidFire storage. The main CI table is cmdb_ci_storage_server."
+          },
+          {
+            "id": "c",
+            "explanation": "cmdb_ci_san_device is for SAN devices specifically, not the general storage server CI for SolidFire."
+          },
+          {
+            "id": "d",
+            "explanation": "cmdb_ci_netapp_storage is not a standard CMDB table. The main CI is stored in cmdb_ci_storage_server."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "The discovered SolidFire configuration data includes the following tables and fields: Main Configuration Item [cmdb_ci_storage_server]... name, serial_number, firmware_version, ip_address, short_description, manufacturer",
+        "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/discovery-and-service-mapping-patterns/solidfire-storage-pattern.html"
+      },
+      "labels": {
+        "domain": "Configuration Management Database",
+        "subtopics": [
+          "CMDB tables",
+          "Storage CIs",
+          "Data model"
+        ],
+        "tags": [
+          "service-mapping",
+          "cmdb",
+          "storage",
+          "tables"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "free": true
+    },
+    {
+      "id": "cis-sm-engagement-readiness-1101",
+      "certification": "cis-sm",
+      "topic": "engagement-readiness",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_select",
+      "question": "What are the two types of credentials that Service Mapping uses for top-down discovery? (Choose two.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Host credentials for accessing applications on a host"
+        },
+        {
+          "id": "b",
+          "text": "CMDB credentials for database access"
+        },
+        {
+          "id": "c",
+          "text": "Applicative credentials separate from host credentials for specific applications"
+        },
+        {
+          "id": "d",
+          "text": "MID Server admin credentials for agent management"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "c"
+      ],
+      "explanation": {
+        "correct": "Service Mapping uses two types of credentials: Host credentials (SSH or Windows credentials to access servers hosting applications) which are typically sufficient for most discoveries, and Applicative credentials which are separate from host credentials needed for specific applications like ABAP SAP Central Services (ASCS).",
+        "wrongAnswers": [
+          {
+            "id": "b",
+            "explanation": "There is no specific 'CMDB credential' type. Service Mapping uses host and applicative credentials for discovery."
+          },
+          {
+            "id": "d",
+            "explanation": "MID Server credentials are separate from discovery credentials. Service Mapping uses host and applicative credentials for top-down discovery."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Configure the relevant requirements to enable successful top-down discovery: Host credentials - Service Mapping uses credentials of the hosts to access applications running on this host. Typically, host credentials are enough for top-down discovery... Applicative credentials - To discover some applications, Service Mapping needs separate credentials from credentials of the host on which such applications run.",
+        "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/service-mapping/prerequisites-service-mapping.html"
+      },
+      "labels": {
+        "domain": "Service Mapping Engagement Readiness",
+        "subtopics": [
+          "Credentials",
+          "Prerequisites",
+          "Top-down discovery"
+        ],
+        "tags": [
+          "service-mapping",
+          "credentials",
+          "host-credentials",
+          "applicative-credentials"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "free": true
+    },
+    {
+      "id": "cis-sm-engagement-readiness-1102",
+      "certification": "cis-sm",
+      "topic": "engagement-readiness",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which type of application services CANNOT be fine-tuned or edited from the map view?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Discovered application services"
+        },
+        {
+          "id": "b",
+          "text": "Manually created application services"
+        },
+        {
+          "id": "c",
+          "text": "Tag-based and dynamic services"
+        },
+        {
+          "id": "d",
+          "text": "Services with traffic-based connections"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "Tag-based and dynamic services cannot be fine-tuned or edited from the map. This is an important limitation to understand when planning Service Mapping implementations. Only discovered and manually created application services can be edited from the map view.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "Discovered application services can be fine-tuned and edited from the map to implement owner requests."
+          },
+          {
+            "id": "b",
+            "explanation": "Manually created application services can be edited from the map view just like discovered services."
+          },
+          {
+            "id": "d",
+            "explanation": "Services with traffic-based connections can still be edited from the map. The restriction applies specifically to tag-based and dynamic services."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "You can edit discovered and manually created application services. Important: You cannot fine-tune or edit tag-based and dynamic services from the map.",
+        "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/service-mapping/review-implement-business-service-maps.html"
+      },
+      "labels": {
+        "domain": "Service Mapping Engagement Readiness",
+        "subtopics": [
+          "Service types",
+          "Map editing",
+          "Limitations"
+        ],
+        "tags": [
+          "service-mapping",
+          "tag-based",
+          "dynamic-services",
+          "editing"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "free": true
+    },
+    {
+      "id": "cis-sm-engagement-readiness-1103",
+      "certification": "cis-sm",
+      "topic": "engagement-readiness",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "An application service owner has rejected a service map with comments. As a Service Mapping administrator, where do you find the owner's rejection comments?",
+      "options": [
+        {
+          "id": "a",
+          "text": "In the Discovery Log table"
+        },
+        {
+          "id": "b",
+          "text": "Under Reject Messages on the left, in the Service Discovery Messages tab"
+        },
+        {
+          "id": "c",
+          "text": "In the Service Mapping Properties panel"
+        },
+        {
+          "id": "d",
+          "text": "In the Event Management alert console"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "To view rejection comments from application service owners, administrators click 'Reject Messages' on the left side of the service form. The owner comments are displayed under the Service Discovery Messages tab, where they can review what changes the owner requested.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "The Discovery Log contains technical discovery information, not owner rejection comments. Rejection messages are in the Service Discovery Messages."
+          },
+          {
+            "id": "c",
+            "explanation": "The Properties panel shows CI and connection attributes, not owner rejection comments."
+          },
+          {
+            "id": "d",
+            "explanation": "Event Management shows alerts and events, not service mapping approval workflow comments."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Click Reject Messages on the left. The owner comments are displayed under the Service Discovery Messages tab. Review the reject messages to see comments that the application service owner left.",
+        "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/service-mapping/review-implement-business-service-maps.html"
+      },
+      "labels": {
+        "domain": "Service Mapping Engagement Readiness",
+        "subtopics": [
+          "Review workflow",
+          "Owner feedback",
+          "Approval process"
+        ],
+        "tags": [
+          "service-mapping",
+          "approval",
+          "rejection",
+          "owner-feedback"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "free": true
+    }
+  ]
+}

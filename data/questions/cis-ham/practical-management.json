@@ -1,827 +1,1437 @@
-[
-  {
-    "id": "cis-ham-practical-management-001",
-    "certification": "cis-ham",
-    "topic": "practical-management",
-    "cognitiveLevel": "knowledge",
-    "type": "multiple_choice",
-    "question": "In which table are consumable assets stored in ServiceNow?",
-    "options": [
-      { "id": "a", "text": "Hardware Asset [alm_hardware]" },
-      { "id": "b", "text": "Consumable [alm_consumable]" },
-      { "id": "c", "text": "Asset [alm_asset]" },
-      { "id": "d", "text": "Consumable Model [cmdb_consumable_product_model]" }
-    ],
-    "correctAnswers": ["b"],
-    "selectCount": 1,
-    "isNegative": false,
-    "explanation": {
-      "correct": "Consumable assets are stored in the Consumable [alm_consumable] table. Consumables follow a slightly different life cycle from other assets and are tracked as a group of the same model rather than individually.",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "alm_hardware stores hardware assets, not consumables.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/c_FollowLifeCycleConsumbl.html" },
-        { "choiceId": "c", "explanation": "alm_asset is the parent table for all assets; consumables specifically use alm_consumable.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/c_FollowLifeCycleConsumbl.html" },
-        { "choiceId": "d", "explanation": "cmdb_consumable_product_model stores consumable model definitions, not consumable assets.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/c_FollowLifeCycleConsumbl.html" }
-      ]
-    },
-    "references": ["Consumables life cycle"],
-    "isFree": true,
-    "source": {
-      "type": "docs",
-      "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/c_FollowLifeCycleConsumbl.md",
-      "excerpt": "Consumable assets are stored in the Consumable [alm_consumable] table."
-    },
-    "labels": {
+{
+  "certification": "cis-ham",
+  "topic": "practical-management",
+  "questions": [
+    {
+      "id": "cis-ham-practical-management-001",
       "certification": "cis-ham",
-      "domain": "Practical Asset Management",
-      "domainSlug": "practical-management",
-      "domainPercentage": 30,
-      "subtopics": ["Consumable tracking"],
-      "tags": ["consumables", "table", "alm_consumable"]
+      "topic": "practical-management",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "In which table are consumable assets stored in ServiceNow?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Hardware Asset [alm_hardware]"
+        },
+        {
+          "id": "b",
+          "text": "Consumable [alm_consumable]"
+        },
+        {
+          "id": "c",
+          "text": "Asset [alm_asset]"
+        },
+        {
+          "id": "d",
+          "text": "Consumable Model [cmdb_consumable_product_model]"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "Consumable assets are stored in the Consumable [alm_consumable] table. Consumables follow a slightly different life cycle from other assets and are tracked as a group of the same model rather than individually.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "alm_hardware stores hardware assets, not consumables.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/c_FollowLifeCycleConsumbl.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "alm_asset is the parent table for all assets; consumables specifically use alm_consumable.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/c_FollowLifeCycleConsumbl.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "cmdb_consumable_product_model stores consumable model definitions, not consumable assets.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/c_FollowLifeCycleConsumbl.html"
+          }
+        ]
+      },
+      "references": [
+        "Consumables life cycle"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "docs",
+        "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/c_FollowLifeCycleConsumbl.md",
+        "excerpt": "Consumable assets are stored in the Consumable [alm_consumable] table."
+      },
+      "labels": {
+        "certification": "cis-ham",
+        "domain": "Practical Asset Management",
+        "domainSlug": "practical-management",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Consumable tracking"
+        ],
+        "tags": [
+          "consumables",
+          "table",
+          "alm_consumable"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-13T02:40:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-13T02:40:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-ham-practical-management-002",
-    "certification": "cis-ham",
-    "topic": "practical-management",
-    "cognitiveLevel": "understanding",
-    "type": "multiple_select",
-    "question": "Which characteristics define a group of consumables in ServiceNow? (Choose three.)",
-    "options": [
-      { "id": "a", "text": "Same location" },
-      { "id": "b", "text": "Same state" },
-      { "id": "c", "text": "Same serial number" },
-      { "id": "d", "text": "Consumed by the same asset" },
-      { "id": "e", "text": "Same purchase date" }
-    ],
-    "correctAnswers": ["a", "b", "d"],
-    "selectCount": 3,
-    "isNegative": false,
-    "explanation": {
-      "correct": "Consumables are assets not tracked individually but as a group of the same model. The group has one or more of these traits: Same location, Same state, or Consumed by the same asset (typically as accessories or parts).",
-      "wrongAnswers": [
-        { "choiceId": "c", "explanation": "Consumables do not have individual serial numbers since they are tracked as a group, not individually.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/c_FollowLifeCycleConsumbl.html" },
-        { "choiceId": "e", "explanation": "Purchase date is not one of the defining characteristics for grouping consumables.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/c_FollowLifeCycleConsumbl.html" }
-      ]
-    },
-    "references": ["Consumables life cycle"],
-    "isFree": true,
-    "source": {
-      "type": "docs",
-      "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/c_FollowLifeCycleConsumbl.md",
-      "excerpt": "The group of consumables has one or more of the following traits: Same location, Same state, Consumed by the same asset, typically as accessories or parts."
-    },
-    "labels": {
+    {
+      "id": "cis-ham-practical-management-002",
       "certification": "cis-ham",
-      "domain": "Practical Asset Management",
-      "domainSlug": "practical-management",
-      "domainPercentage": 30,
-      "subtopics": ["Assets vs consumables", "Consumable tracking"],
-      "tags": ["consumables", "grouping", "tracking"]
+      "topic": "practical-management",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_select",
+      "question": "Which characteristics define a group of consumables in ServiceNow? (Choose three.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Same location"
+        },
+        {
+          "id": "b",
+          "text": "Same state"
+        },
+        {
+          "id": "c",
+          "text": "Same serial number"
+        },
+        {
+          "id": "d",
+          "text": "Consumed by the same asset"
+        },
+        {
+          "id": "e",
+          "text": "Same purchase date"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b",
+        "d"
+      ],
+      "selectCount": 3,
+      "isNegative": false,
+      "explanation": {
+        "correct": "Consumables are assets not tracked individually but as a group of the same model. The group has one or more of these traits: Same location, Same state, or Consumed by the same asset (typically as accessories or parts).",
+        "wrongAnswers": [
+          {
+            "choiceId": "c",
+            "explanation": "Consumables do not have individual serial numbers since they are tracked as a group, not individually.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/c_FollowLifeCycleConsumbl.html"
+          },
+          {
+            "choiceId": "e",
+            "explanation": "Purchase date is not one of the defining characteristics for grouping consumables.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/c_FollowLifeCycleConsumbl.html"
+          }
+        ]
+      },
+      "references": [
+        "Consumables life cycle"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "docs",
+        "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/c_FollowLifeCycleConsumbl.md",
+        "excerpt": "The group of consumables has one or more of the following traits: Same location, Same state, Consumed by the same asset, typically as accessories or parts."
+      },
+      "labels": {
+        "certification": "cis-ham",
+        "domain": "Practical Asset Management",
+        "domainSlug": "practical-management",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Assets vs consumables",
+          "Consumable tracking"
+        ],
+        "tags": [
+          "consumables",
+          "grouping",
+          "tracking"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-13T02:40:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-13T02:40:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-ham-practical-management-003",
-    "certification": "cis-ham",
-    "topic": "practical-management",
-    "cognitiveLevel": "knowledge",
-    "type": "multiple_select",
-    "question": "Which are valid lifecycle stages for consumables? (Choose three.)",
-    "options": [
-      { "id": "a", "text": "On order" },
-      { "id": "b", "text": "In stock" },
-      { "id": "c", "text": "Deployed" },
-      { "id": "d", "text": "Consumed" },
-      { "id": "e", "text": "In maintenance" }
-    ],
-    "correctAnswers": ["a", "b", "d"],
-    "selectCount": 3,
-    "isNegative": false,
-    "explanation": {
-      "correct": "The consumable lifecycle stages are: On order, In stock, In transit, Consumed, In maintenance, Retired, and Missing. Note that 'Deployed' is not a valid consumable state - consumables use 'Consumed' instead.",
-      "wrongAnswers": [
-        { "choiceId": "c", "explanation": "'Deployed' is not a consumable lifecycle stage. Consumables use 'Consumed' instead of 'Deployed'.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/c_FollowLifeCycleConsumbl.html" }
-      ]
-    },
-    "references": ["Consumables life cycle"],
-    "isFree": true,
-    "source": {
-      "type": "docs",
-      "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/c_FollowLifeCycleConsumbl.md",
-      "excerpt": "The consumable lifecycle stages are as follows: On order, In stock, In transit, Consumed, In maintenance, Retired, Missing."
-    },
-    "labels": {
+    {
+      "id": "cis-ham-practical-management-003",
       "certification": "cis-ham",
-      "domain": "Practical Asset Management",
-      "domainSlug": "practical-management",
-      "domainPercentage": 30,
-      "subtopics": ["Consumable tracking"],
-      "tags": ["consumables", "lifecycle", "states"]
+      "topic": "practical-management",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_select",
+      "question": "Which are valid lifecycle stages for consumables? (Choose three.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "On order"
+        },
+        {
+          "id": "b",
+          "text": "In stock"
+        },
+        {
+          "id": "c",
+          "text": "Deployed"
+        },
+        {
+          "id": "d",
+          "text": "Consumed"
+        },
+        {
+          "id": "e",
+          "text": "In maintenance"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b",
+        "d"
+      ],
+      "selectCount": 3,
+      "isNegative": false,
+      "explanation": {
+        "correct": "The consumable lifecycle stages are: On order, In stock, In transit, Consumed, In maintenance, Retired, and Missing. Note that 'Deployed' is not a valid consumable state - consumables use 'Consumed' instead.",
+        "wrongAnswers": [
+          {
+            "choiceId": "c",
+            "explanation": "'Deployed' is not a consumable lifecycle stage. Consumables use 'Consumed' instead of 'Deployed'.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/c_FollowLifeCycleConsumbl.html"
+          }
+        ]
+      },
+      "references": [
+        "Consumables life cycle"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "docs",
+        "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/c_FollowLifeCycleConsumbl.md",
+        "excerpt": "The consumable lifecycle stages are as follows: On order, In stock, In transit, Consumed, In maintenance, Retired, Missing."
+      },
+      "labels": {
+        "certification": "cis-ham",
+        "domain": "Practical Asset Management",
+        "domainSlug": "practical-management",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Consumable tracking"
+        ],
+        "tags": [
+          "consumables",
+          "lifecycle",
+          "states"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-13T02:40:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-13T02:40:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-ham-practical-management-004",
-    "certification": "cis-ham",
-    "topic": "practical-management",
-    "cognitiveLevel": "understanding",
-    "type": "multiple_choice",
-    "question": "What state and substate must a consumable asset have before it can be consumed?",
-    "options": [
-      { "id": "a", "text": "In stock with substate Available" },
-      { "id": "b", "text": "In stock with substate Reserved" },
-      { "id": "c", "text": "On order with substate Pending" },
-      { "id": "d", "text": "In transit with substate Shipping" }
-    ],
-    "correctAnswers": ["a"],
-    "selectCount": 1,
-    "isNegative": false,
-    "explanation": {
-      "correct": "To consume consumable assets, they must have a state of In Stock and a substate of Available. This ensures only available inventory can be consumed.",
-      "wrongAnswers": [
-        { "choiceId": "b", "explanation": "Reserved substate means the consumable is already allocated to something and cannot be consumed.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/c_FollowLifeCycleConsumbl.html" },
-        { "choiceId": "c", "explanation": "On order means the consumable has not arrived yet and cannot be consumed.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/c_FollowLifeCycleConsumbl.html" },
-        { "choiceId": "d", "explanation": "In transit means the consumable is being shipped and cannot be consumed until it arrives.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/c_FollowLifeCycleConsumbl.html" }
-      ]
-    },
-    "references": ["Consumables life cycle"],
-    "isFree": true,
-    "source": {
-      "type": "docs",
-      "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/c_FollowLifeCycleConsumbl.md",
-      "excerpt": "To consume consumable assets, they must have a state of In Stock and a substate of Available."
-    },
-    "labels": {
+    {
+      "id": "cis-ham-practical-management-004",
       "certification": "cis-ham",
-      "domain": "Practical Asset Management",
-      "domainSlug": "practical-management",
-      "domainPercentage": 30,
-      "subtopics": ["Consumable tracking"],
-      "tags": ["consumables", "state", "available"]
+      "topic": "practical-management",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What state and substate must a consumable asset have before it can be consumed?",
+      "options": [
+        {
+          "id": "a",
+          "text": "In stock with substate Available"
+        },
+        {
+          "id": "b",
+          "text": "In stock with substate Reserved"
+        },
+        {
+          "id": "c",
+          "text": "On order with substate Pending"
+        },
+        {
+          "id": "d",
+          "text": "In transit with substate Shipping"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "To consume consumable assets, they must have a state of In Stock and a substate of Available. This ensures only available inventory can be consumed.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Reserved substate means the consumable is already allocated to something and cannot be consumed.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/c_FollowLifeCycleConsumbl.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "On order means the consumable has not arrived yet and cannot be consumed.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/c_FollowLifeCycleConsumbl.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "In transit means the consumable is being shipped and cannot be consumed until it arrives.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/c_FollowLifeCycleConsumbl.html"
+          }
+        ]
+      },
+      "references": [
+        "Consumables life cycle"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "docs",
+        "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/c_FollowLifeCycleConsumbl.md",
+        "excerpt": "To consume consumable assets, they must have a state of In Stock and a substate of Available."
+      },
+      "labels": {
+        "certification": "cis-ham",
+        "domain": "Practical Asset Management",
+        "domainSlug": "practical-management",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Consumable tracking"
+        ],
+        "tags": [
+          "consumables",
+          "state",
+          "available"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-13T02:40:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-13T02:40:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-ham-practical-management-005",
-    "certification": "cis-ham",
-    "topic": "practical-management",
-    "cognitiveLevel": "knowledge",
-    "type": "multiple_choice",
-    "question": "Which statement is true about consumables in ServiceNow HAM?",
-    "options": [
-      { "id": "a", "text": "Consumables can be pre-allocated to users" },
-      { "id": "b", "text": "Consumables cannot be pre-allocated" },
-      { "id": "c", "text": "Consumables are tracked with individual serial numbers" },
-      { "id": "d", "text": "Consumables must always be associated with a hardware asset" }
-    ],
-    "correctAnswers": ["b"],
-    "selectCount": 1,
-    "isNegative": false,
-    "explanation": {
-      "correct": "Consumables cannot be pre-allocated. They are tracked by quantity as a group, not individually, which is why pre-allocation is not supported.",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "Consumables CANNOT be pre-allocated according to the documentation.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/c_FollowLifeCycleConsumbl.html" },
-        { "choiceId": "c", "explanation": "Consumables are NOT tracked individually with serial numbers; they are tracked as a group.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/c_FollowLifeCycleConsumbl.html" },
-        { "choiceId": "d", "explanation": "Consumables do not always need to be associated with a hardware asset.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/c_FollowLifeCycleConsumbl.html" }
-      ]
-    },
-    "references": ["Consumables life cycle"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/c_FollowLifeCycleConsumbl.md",
-      "excerpt": "Consumables cannot be pre-allocated."
-    },
-    "labels": {
+    {
+      "id": "cis-ham-practical-management-005",
       "certification": "cis-ham",
-      "domain": "Practical Asset Management",
-      "domainSlug": "practical-management",
-      "domainPercentage": 30,
-      "subtopics": ["Assets vs consumables"],
-      "tags": ["consumables", "pre-allocation"]
+      "topic": "practical-management",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which statement is true about consumables in ServiceNow HAM?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Consumables can be pre-allocated to users"
+        },
+        {
+          "id": "b",
+          "text": "Consumables cannot be pre-allocated"
+        },
+        {
+          "id": "c",
+          "text": "Consumables are tracked with individual serial numbers"
+        },
+        {
+          "id": "d",
+          "text": "Consumables must always be associated with a hardware asset"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "Consumables cannot be pre-allocated. They are tracked by quantity as a group, not individually, which is why pre-allocation is not supported.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Consumables CANNOT be pre-allocated according to the documentation.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/c_FollowLifeCycleConsumbl.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Consumables are NOT tracked individually with serial numbers; they are tracked as a group.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/c_FollowLifeCycleConsumbl.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Consumables do not always need to be associated with a hardware asset.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/c_FollowLifeCycleConsumbl.html"
+          }
+        ]
+      },
+      "references": [
+        "Consumables life cycle"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/c_FollowLifeCycleConsumbl.md",
+        "excerpt": "Consumables cannot be pre-allocated."
+      },
+      "labels": {
+        "certification": "cis-ham",
+        "domain": "Practical Asset Management",
+        "domainSlug": "practical-management",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Assets vs consumables"
+        ],
+        "tags": [
+          "consumables",
+          "pre-allocation"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-13T02:40:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-13T02:40:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-ham-practical-management-006",
-    "certification": "cis-ham",
-    "topic": "practical-management",
-    "cognitiveLevel": "knowledge",
-    "type": "multiple_choice",
-    "question": "What is the first task in the hardware disposal order workflow?",
-    "options": [
-      { "id": "a", "text": "Schedule Pickup" },
-      { "id": "b", "text": "Verify Assets" },
-      { "id": "c", "text": "Asset Departure" },
-      { "id": "d", "text": "Vendor Confirmation" }
-    ],
-    "correctAnswers": ["b"],
-    "selectCount": 1,
-    "isNegative": false,
-    "explanation": {
-      "correct": "The first task in the hardware disposal workflow is Verify Assets, which occurs during the Draft stage when the hardware disposal record is created.",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "Schedule Pickup is the second task, occurring during the Scheduling stage.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-disposal-stages.html" },
-        { "choiceId": "c", "explanation": "Asset Departure is the third task, occurring during the Transit stage.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-disposal-stages.html" },
-        { "choiceId": "d", "explanation": "Vendor Confirmation is the fourth task, occurring during the Confirmation stage.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-disposal-stages.html" }
-      ]
-    },
-    "references": ["Hardware disposal order stages"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/hardware-disposal-stages.md",
-      "excerpt": "Draft stage has the Verify Assets task. Hardware disposal record is created."
-    },
-    "labels": {
+    {
+      "id": "cis-ham-practical-management-006",
       "certification": "cis-ham",
-      "domain": "Practical Asset Management",
-      "domainSlug": "practical-management",
-      "domainPercentage": 30,
-      "subtopics": ["Retirement and disposal"],
-      "tags": ["disposal", "workflow", "verify"]
+      "topic": "practical-management",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What is the first task in the hardware disposal order workflow?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Schedule Pickup"
+        },
+        {
+          "id": "b",
+          "text": "Verify Assets"
+        },
+        {
+          "id": "c",
+          "text": "Asset Departure"
+        },
+        {
+          "id": "d",
+          "text": "Vendor Confirmation"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "The first task in the hardware disposal workflow is Verify Assets, which occurs during the Draft stage when the hardware disposal record is created.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Schedule Pickup is the second task, occurring during the Scheduling stage.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-disposal-stages.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Asset Departure is the third task, occurring during the Transit stage.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-disposal-stages.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Vendor Confirmation is the fourth task, occurring during the Confirmation stage.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-disposal-stages.html"
+          }
+        ]
+      },
+      "references": [
+        "Hardware disposal order stages"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/hardware-disposal-stages.md",
+        "excerpt": "Draft stage has the Verify Assets task. Hardware disposal record is created."
+      },
+      "labels": {
+        "certification": "cis-ham",
+        "domain": "Practical Asset Management",
+        "domainSlug": "practical-management",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Retirement and disposal"
+        ],
+        "tags": [
+          "disposal",
+          "workflow",
+          "verify"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-13T02:40:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-13T02:40:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-ham-practical-management-007",
-    "certification": "cis-ham",
-    "topic": "practical-management",
-    "cognitiveLevel": "understanding",
-    "type": "compound_true_false",
-    "question": "Which of the following statements about hardware disposal order stages are true?\na) Closing a task completes it and automatically creates the next task.\nb) A disposal order can be canceled at any stage.\nc) The Transit stage uses the Asset Departure task.\nd) The final stage is Completed with no associated task.",
-    "options": [
-      { "id": "a", "text": "a, b, c, and d" },
-      { "id": "b", "text": "a, c, and d only" },
-      { "id": "c", "text": "a and d only" },
-      { "id": "d", "text": "b and c only" }
-    ],
-    "correctAnswers": ["b"],
-    "selectCount": 1,
-    "isNegative": false,
-    "explanation": {
-      "correct": "Statement b is false - a disposal order can be canceled ONLY until the transit stage, not at any stage. Statements a, c, and d are all true.",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "Statement b is false - disposal orders can only be canceled until the transit stage.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-disposal-stages.html" },
-        { "choiceId": "c", "explanation": "Statement c is also true - the Transit stage does use the Asset Departure task.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-disposal-stages.html" },
-        { "choiceId": "d", "explanation": "Statements a and d are true but so is c.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-disposal-stages.html" }
-      ]
-    },
-    "references": ["Hardware disposal order stages"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/hardware-disposal-stages.md",
-      "excerpt": "Disposal order can be canceled only until the transit stage. Closing a task completes that task and automatically creates the next task in the process."
-    },
-    "labels": {
+    {
+      "id": "cis-ham-practical-management-007",
       "certification": "cis-ham",
-      "domain": "Practical Asset Management",
-      "domainSlug": "practical-management",
-      "domainPercentage": 30,
-      "subtopics": ["Retirement and disposal"],
-      "tags": ["disposal", "workflow", "compound-true-false"]
+      "topic": "practical-management",
+      "cognitiveLevel": "understanding",
+      "type": "compound_true_false",
+      "question": "Which of the following statements about hardware disposal order stages are true?\na) Closing a task completes it and automatically creates the next task.\nb) A disposal order can be canceled at any stage.\nc) The Transit stage uses the Asset Departure task.\nd) The final stage is Completed with no associated task.",
+      "options": [
+        {
+          "id": "a",
+          "text": "a, b, c, and d"
+        },
+        {
+          "id": "b",
+          "text": "a, c, and d only"
+        },
+        {
+          "id": "c",
+          "text": "a and d only"
+        },
+        {
+          "id": "d",
+          "text": "b and c only"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "Statement b is false - a disposal order can be canceled ONLY until the transit stage, not at any stage. Statements a, c, and d are all true.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Statement b is false - disposal orders can only be canceled until the transit stage.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-disposal-stages.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Statement c is also true - the Transit stage does use the Asset Departure task.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-disposal-stages.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Statements a and d are true but so is c.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-disposal-stages.html"
+          }
+        ]
+      },
+      "references": [
+        "Hardware disposal order stages"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/hardware-disposal-stages.md",
+        "excerpt": "Disposal order can be canceled only until the transit stage. Closing a task completes that task and automatically creates the next task in the process."
+      },
+      "labels": {
+        "certification": "cis-ham",
+        "domain": "Practical Asset Management",
+        "domainSlug": "practical-management",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Retirement and disposal"
+        ],
+        "tags": [
+          "disposal",
+          "workflow",
+          "compound-true-false"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-13T02:40:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-13T02:40:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-ham-practical-management-008",
-    "certification": "cis-ham",
-    "topic": "practical-management",
-    "cognitiveLevel": "application",
-    "type": "multiple_choice",
-    "question": "An administrator closes the Schedule Pickup task in a hardware disposal workflow. What happens automatically?",
-    "options": [
-      { "id": "a", "text": "The disposal order is completed" },
-      { "id": "b", "text": "The Asset Departure task is created" },
-      { "id": "c", "text": "The Vendor Confirmation task is created" },
-      { "id": "d", "text": "The assets are marked as Retired" }
-    ],
-    "correctAnswers": ["b"],
-    "selectCount": 1,
-    "isNegative": false,
-    "explanation": {
-      "correct": "After you close the Schedule Pickup task, the state for that task changes to Closed Complete and the next task, Asset Departure, is automatically created. This continues the disposal workflow sequence.",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "The disposal order is not completed until all tasks are closed.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-disposal-stages.html" },
-        { "choiceId": "c", "explanation": "Vendor Confirmation comes after Asset Departure, not immediately after Schedule Pickup.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-disposal-stages.html" },
-        { "choiceId": "d", "explanation": "Assets are not retired until the entire disposal process is complete.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-disposal-stages.html" }
-      ]
-    },
-    "references": ["Hardware disposal order stages"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/hardware-disposal-stages.md",
-      "excerpt": "After you close the Schedule Pickup task, the state for that task changes to Closed Complete and the next task, Asset Departure, is created."
-    },
-    "labels": {
+    {
+      "id": "cis-ham-practical-management-008",
       "certification": "cis-ham",
-      "domain": "Practical Asset Management",
-      "domainSlug": "practical-management",
-      "domainPercentage": 30,
-      "subtopics": ["Retirement and disposal"],
-      "tags": ["disposal", "workflow", "tasks"]
+      "topic": "practical-management",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "An administrator closes the Schedule Pickup task in a hardware disposal workflow. What happens automatically?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The disposal order is completed"
+        },
+        {
+          "id": "b",
+          "text": "The Asset Departure task is created"
+        },
+        {
+          "id": "c",
+          "text": "The Vendor Confirmation task is created"
+        },
+        {
+          "id": "d",
+          "text": "The assets are marked as Retired"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "After you close the Schedule Pickup task, the state for that task changes to Closed Complete and the next task, Asset Departure, is automatically created. This continues the disposal workflow sequence.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The disposal order is not completed until all tasks are closed.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-disposal-stages.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Vendor Confirmation comes after Asset Departure, not immediately after Schedule Pickup.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-disposal-stages.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Assets are not retired until the entire disposal process is complete.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-disposal-stages.html"
+          }
+        ]
+      },
+      "references": [
+        "Hardware disposal order stages"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/hardware-disposal-stages.md",
+        "excerpt": "After you close the Schedule Pickup task, the state for that task changes to Closed Complete and the next task, Asset Departure, is created."
+      },
+      "labels": {
+        "certification": "cis-ham",
+        "domain": "Practical Asset Management",
+        "domainSlug": "practical-management",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Retirement and disposal"
+        ],
+        "tags": [
+          "disposal",
+          "workflow",
+          "tasks"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-13T02:40:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-13T02:40:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-ham-practical-management-009",
-    "certification": "cis-ham",
-    "topic": "practical-management",
-    "cognitiveLevel": "knowledge",
-    "type": "multiple_choice",
-    "question": "Until which stage can a hardware disposal order be canceled?",
-    "options": [
-      { "id": "a", "text": "Draft stage" },
-      { "id": "b", "text": "Scheduling stage" },
-      { "id": "c", "text": "Transit stage" },
-      { "id": "d", "text": "Confirmation stage" }
-    ],
-    "correctAnswers": ["c"],
-    "selectCount": 1,
-    "isNegative": false,
-    "explanation": {
-      "correct": "A disposal order can be canceled only until the transit stage. After the transit stage begins, the cancellation option is no longer available.",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "While cancellation is possible at Draft, it can be canceled up to and including Transit stage.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-disposal-stages.html" },
-        { "choiceId": "b", "explanation": "While cancellation is possible at Scheduling, it can be canceled up to and including Transit stage.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-disposal-stages.html" },
-        { "choiceId": "d", "explanation": "At the Confirmation stage, the order can no longer be canceled.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-disposal-stages.html" }
-      ]
-    },
-    "references": ["Hardware disposal order stages"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/hardware-disposal-stages.md",
-      "excerpt": "Disposal order can be canceled only until the transit stage."
-    },
-    "labels": {
+    {
+      "id": "cis-ham-practical-management-009",
       "certification": "cis-ham",
-      "domain": "Practical Asset Management",
-      "domainSlug": "practical-management",
-      "domainPercentage": 30,
-      "subtopics": ["Retirement and disposal"],
-      "tags": ["disposal", "cancellation", "stages"]
+      "topic": "practical-management",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Until which stage can a hardware disposal order be canceled?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Draft stage"
+        },
+        {
+          "id": "b",
+          "text": "Scheduling stage"
+        },
+        {
+          "id": "c",
+          "text": "Transit stage"
+        },
+        {
+          "id": "d",
+          "text": "Confirmation stage"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "A disposal order can be canceled only until the transit stage. After the transit stage begins, the cancellation option is no longer available.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "While cancellation is possible at Draft, it can be canceled up to and including Transit stage.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-disposal-stages.html"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "While cancellation is possible at Scheduling, it can be canceled up to and including Transit stage.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-disposal-stages.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "At the Confirmation stage, the order can no longer be canceled.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-disposal-stages.html"
+          }
+        ]
+      },
+      "references": [
+        "Hardware disposal order stages"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/hardware-disposal-stages.md",
+        "excerpt": "Disposal order can be canceled only until the transit stage."
+      },
+      "labels": {
+        "certification": "cis-ham",
+        "domain": "Practical Asset Management",
+        "domainSlug": "practical-management",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Retirement and disposal"
+        ],
+        "tags": [
+          "disposal",
+          "cancellation",
+          "stages"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-13T02:40:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-13T02:40:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-ham-practical-management-010",
-    "certification": "cis-ham",
-    "topic": "practical-management",
-    "cognitiveLevel": "knowledge",
-    "type": "multiple_choice",
-    "question": "Which task is associated with the Documentation stage of the hardware disposal workflow?",
-    "options": [
-      { "id": "a", "text": "Verify Assets" },
-      { "id": "b", "text": "Vendor Confirmation" },
-      { "id": "c", "text": "Disposal Documentation" },
-      { "id": "d", "text": "Asset Departure" }
-    ],
-    "correctAnswers": ["c"],
-    "selectCount": 1,
-    "isNegative": false,
-    "explanation": {
-      "correct": "The Documentation stage uses the Disposal Documentation task, where documentation for the disposal record is attached before completing the workflow.",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "Verify Assets is the task for the Draft stage.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-disposal-stages.html" },
-        { "choiceId": "b", "explanation": "Vendor Confirmation is the task for the Confirmation stage.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-disposal-stages.html" },
-        { "choiceId": "d", "explanation": "Asset Departure is the task for the Transit stage.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-disposal-stages.html" }
-      ]
-    },
-    "references": ["Hardware disposal order stages"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/hardware-disposal-stages.md",
-      "excerpt": "Documentation stage: Disposal Documentation task. Documentation for the disposal record is attached."
-    },
-    "labels": {
+    {
+      "id": "cis-ham-practical-management-010",
       "certification": "cis-ham",
-      "domain": "Practical Asset Management",
-      "domainSlug": "practical-management",
-      "domainPercentage": 30,
-      "subtopics": ["Retirement and disposal"],
-      "tags": ["disposal", "documentation", "task"]
+      "topic": "practical-management",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which task is associated with the Documentation stage of the hardware disposal workflow?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Verify Assets"
+        },
+        {
+          "id": "b",
+          "text": "Vendor Confirmation"
+        },
+        {
+          "id": "c",
+          "text": "Disposal Documentation"
+        },
+        {
+          "id": "d",
+          "text": "Asset Departure"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "The Documentation stage uses the Disposal Documentation task, where documentation for the disposal record is attached before completing the workflow.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Verify Assets is the task for the Draft stage.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-disposal-stages.html"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "Vendor Confirmation is the task for the Confirmation stage.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-disposal-stages.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Asset Departure is the task for the Transit stage.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-disposal-stages.html"
+          }
+        ]
+      },
+      "references": [
+        "Hardware disposal order stages"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/hardware-disposal-stages.md",
+        "excerpt": "Documentation stage: Disposal Documentation task. Documentation for the disposal record is attached."
+      },
+      "labels": {
+        "certification": "cis-ham",
+        "domain": "Practical Asset Management",
+        "domainSlug": "practical-management",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Retirement and disposal"
+        ],
+        "tags": [
+          "disposal",
+          "documentation",
+          "task"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-13T02:40:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-13T02:40:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-ham-practical-management-011",
-    "certification": "cis-ham",
-    "topic": "practical-management",
-    "cognitiveLevel": "understanding",
-    "type": "multiple_choice",
-    "question": "Which feature enables fulfillment of employee hardware refresh requests through an external vendor without maintaining assets locally?",
-    "options": [
-      { "id": "a", "text": "Asset Transfer Order" },
-      { "id": "b", "text": "Zero Touch Refresh" },
-      { "id": "c", "text": "Hardware Procurement" },
-      { "id": "d", "text": "Loaner Asset Management" }
-    ],
-    "correctAnswers": ["b"],
-    "selectCount": 1,
-    "isNegative": false,
-    "explanation": {
-      "correct": "Zero Touch Refresh allows you to fulfill employee hardware refresh requests through an external vendor without having to maintain new assets in the local stockroom.",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "Asset Transfer Order moves assets between stockrooms but doesn't involve external vendor fulfillment.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/zero-touch-asset-refresh.html" },
-        { "choiceId": "c", "explanation": "Hardware Procurement involves purchasing assets but doesn't provide the direct vendor integration that Zero Touch Refresh offers.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/zero-touch-asset-refresh.html" },
-        { "choiceId": "d", "explanation": "Loaner Asset Management is for temporary asset loans, not permanent refresh.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/zero-touch-asset-refresh.html" }
-      ]
-    },
-    "references": ["Zero Touch Refresh"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/zero-touch-asset-refresh.md",
-      "excerpt": "Use the Zero Touch Refresh flow to fulfill employee hardware refresh requests through an external vendor without having to maintain new assets in the local stockroom."
-    },
-    "labels": {
+    {
+      "id": "cis-ham-practical-management-011",
       "certification": "cis-ham",
-      "domain": "Practical Asset Management",
-      "domainSlug": "practical-management",
-      "domainPercentage": 30,
-      "subtopics": ["Asset flows"],
-      "tags": ["zero-touch-refresh", "vendor", "refresh"]
+      "topic": "practical-management",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "Which feature enables fulfillment of employee hardware refresh requests through an external vendor without maintaining assets locally?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Asset Transfer Order"
+        },
+        {
+          "id": "b",
+          "text": "Zero Touch Refresh"
+        },
+        {
+          "id": "c",
+          "text": "Hardware Procurement"
+        },
+        {
+          "id": "d",
+          "text": "Loaner Asset Management"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "Zero Touch Refresh allows you to fulfill employee hardware refresh requests through an external vendor without having to maintain new assets in the local stockroom.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Asset Transfer Order moves assets between stockrooms but doesn't involve external vendor fulfillment.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/zero-touch-asset-refresh.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Hardware Procurement involves purchasing assets but doesn't provide the direct vendor integration that Zero Touch Refresh offers.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/zero-touch-asset-refresh.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Loaner Asset Management is for temporary asset loans, not permanent refresh.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/zero-touch-asset-refresh.html"
+          }
+        ]
+      },
+      "references": [
+        "Zero Touch Refresh"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/zero-touch-asset-refresh.md",
+        "excerpt": "Use the Zero Touch Refresh flow to fulfill employee hardware refresh requests through an external vendor without having to maintain new assets in the local stockroom."
+      },
+      "labels": {
+        "certification": "cis-ham",
+        "domain": "Practical Asset Management",
+        "domainSlug": "practical-management",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Asset flows"
+        ],
+        "tags": [
+          "zero-touch-refresh",
+          "vendor",
+          "refresh"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-13T02:40:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-13T02:40:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-ham-practical-management-012",
-    "certification": "cis-ham",
-    "topic": "practical-management",
-    "cognitiveLevel": "application",
-    "type": "multiple_select",
-    "question": "What are the requirements for the Zero Touch Refresh flow to work? (Choose two.)",
-    "options": [
-      { "id": "a", "text": "The employee's organization and provider must be on the same ServiceNow Cloud" },
-      { "id": "b", "text": "MID Server must be installed at both locations" },
-      { "id": "c", "text": "Service Bridge application must be configured on both instances" },
-      { "id": "d", "text": "Discovery must be enabled for both organizations" }
-    ],
-    "correctAnswers": ["a", "c"],
-    "selectCount": 2,
-    "isNegative": false,
-    "explanation": {
-      "correct": "The Zero Touch Refresh flow requires: 1) The employee's organization and the provider must be on the same ServiceNow Cloud, and 2) The Service Bridge application must be configured on the ServiceNow instance of both the provider and the employee's organization.",
-      "wrongAnswers": [
-        { "choiceId": "b", "explanation": "MID Server is not required for Zero Touch Refresh; it requires Service Bridge configuration.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/zero-touch-asset-refresh.html" },
-        { "choiceId": "d", "explanation": "Discovery is not a requirement for Zero Touch Refresh.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/zero-touch-asset-refresh.html" }
-      ]
-    },
-    "references": ["Zero Touch Refresh"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/zero-touch-asset-refresh.md",
-      "excerpt": "The employee's organization and the provider must be on the same ServiceNow Cloud. The Service Bridge application must be configured on the ServiceNow instance of the provider and the employee's organization."
-    },
-    "labels": {
+    {
+      "id": "cis-ham-practical-management-012",
       "certification": "cis-ham",
-      "domain": "Practical Asset Management",
-      "domainSlug": "practical-management",
-      "domainPercentage": 30,
-      "subtopics": ["Asset flows"],
-      "tags": ["zero-touch-refresh", "service-bridge", "requirements"]
+      "topic": "practical-management",
+      "cognitiveLevel": "application",
+      "type": "multiple_select",
+      "question": "What are the requirements for the Zero Touch Refresh flow to work? (Choose two.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "The employee's organization and provider must be on the same ServiceNow Cloud"
+        },
+        {
+          "id": "b",
+          "text": "MID Server must be installed at both locations"
+        },
+        {
+          "id": "c",
+          "text": "Service Bridge application must be configured on both instances"
+        },
+        {
+          "id": "d",
+          "text": "Discovery must be enabled for both organizations"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "c"
+      ],
+      "selectCount": 2,
+      "isNegative": false,
+      "explanation": {
+        "correct": "The Zero Touch Refresh flow requires: 1) The employee's organization and the provider must be on the same ServiceNow Cloud, and 2) The Service Bridge application must be configured on the ServiceNow instance of both the provider and the employee's organization.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "MID Server is not required for Zero Touch Refresh; it requires Service Bridge configuration.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/zero-touch-asset-refresh.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Discovery is not a requirement for Zero Touch Refresh.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/zero-touch-asset-refresh.html"
+          }
+        ]
+      },
+      "references": [
+        "Zero Touch Refresh"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/zero-touch-asset-refresh.md",
+        "excerpt": "The employee's organization and the provider must be on the same ServiceNow Cloud. The Service Bridge application must be configured on the ServiceNow instance of the provider and the employee's organization."
+      },
+      "labels": {
+        "certification": "cis-ham",
+        "domain": "Practical Asset Management",
+        "domainSlug": "practical-management",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Asset flows"
+        ],
+        "tags": [
+          "zero-touch-refresh",
+          "service-bridge",
+          "requirements"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-13T02:40:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-13T02:40:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-ham-practical-management-013",
-    "certification": "cis-ham",
-    "topic": "practical-management",
-    "cognitiveLevel": "knowledge",
-    "type": "multiple_choice",
-    "question": "When a provider ships a new asset during Zero Touch Refresh, where can the shipment records be viewed?",
-    "options": [
-      { "id": "a", "text": "Procurement view" },
-      { "id": "b", "text": "Assets operations view of the Hardware Asset Workspace" },
-      { "id": "c", "text": "Inventory view" },
-      { "id": "d", "text": "Contract management view" }
-    ],
-    "correctAnswers": ["b"],
-    "selectCount": 1,
-    "isNegative": false,
-    "explanation": {
-      "correct": "You can view the shipment records with the associated assets in the Assets operations view of the Hardware Asset Workspace.",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "Procurement view shows purchase orders and sourcing tasks, not Zero Touch Refresh shipments.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/zero-touch-asset-refresh.html" },
-        { "choiceId": "c", "explanation": "Inventory view shows inventory functions like stockrooms and transfer orders.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/zero-touch-asset-refresh.html" },
-        { "choiceId": "d", "explanation": "Contract management view handles contracts, not shipment tracking.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/zero-touch-asset-refresh.html" }
-      ]
-    },
-    "references": ["Zero Touch Refresh"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/zero-touch-asset-refresh.md",
-      "excerpt": "You can view the shipment records with the associated assets in the Assets operations view of the Hardware Asset Workspace."
-    },
-    "labels": {
+    {
+      "id": "cis-ham-practical-management-013",
       "certification": "cis-ham",
-      "domain": "Practical Asset Management",
-      "domainSlug": "practical-management",
-      "domainPercentage": 30,
-      "subtopics": ["Asset flows"],
-      "tags": ["zero-touch-refresh", "shipments", "workspace"]
+      "topic": "practical-management",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "When a provider ships a new asset during Zero Touch Refresh, where can the shipment records be viewed?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Procurement view"
+        },
+        {
+          "id": "b",
+          "text": "Assets operations view of the Hardware Asset Workspace"
+        },
+        {
+          "id": "c",
+          "text": "Inventory view"
+        },
+        {
+          "id": "d",
+          "text": "Contract management view"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "You can view the shipment records with the associated assets in the Assets operations view of the Hardware Asset Workspace.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Procurement view shows purchase orders and sourcing tasks, not Zero Touch Refresh shipments.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/zero-touch-asset-refresh.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Inventory view shows inventory functions like stockrooms and transfer orders.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/zero-touch-asset-refresh.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Contract management view handles contracts, not shipment tracking.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/zero-touch-asset-refresh.html"
+          }
+        ]
+      },
+      "references": [
+        "Zero Touch Refresh"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/zero-touch-asset-refresh.md",
+        "excerpt": "You can view the shipment records with the associated assets in the Assets operations view of the Hardware Asset Workspace."
+      },
+      "labels": {
+        "certification": "cis-ham",
+        "domain": "Practical Asset Management",
+        "domainSlug": "practical-management",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Asset flows"
+        ],
+        "tags": [
+          "zero-touch-refresh",
+          "shipments",
+          "workspace"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-13T02:40:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-13T02:40:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-ham-practical-management-014",
-    "certification": "cis-ham",
-    "topic": "practical-management",
-    "cognitiveLevel": "understanding",
-    "type": "multiple_choice",
-    "question": "In the Zero Touch Refresh flow, when is the 'Ready for pickup' task created?",
-    "options": [
-      { "id": "a", "text": "For all refresh methods when the provider ships the asset" },
-      { "id": "b", "text": "Only for the Pickup refresh method when the provider ships to the stockroom" },
-      { "id": "c", "text": "Only for the Ship refresh method" },
-      { "id": "d", "text": "When the employee confirms receipt" }
-    ],
-    "correctAnswers": ["b"],
-    "selectCount": 1,
-    "isNegative": false,
-    "explanation": {
-      "correct": "The 'Ready for pickup' task is created only for the Pickup refresh method in which the provider ships the new asset to the stockroom from where the employee picks up the asset.",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "This task is not created for all refresh methods, only for the Pickup method.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/zero-touch-asset-refresh.html" },
-        { "choiceId": "c", "explanation": "The Ship refresh method delivers directly to the employee, so Ready for pickup is not needed.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/zero-touch-asset-refresh.html" },
-        { "choiceId": "d", "explanation": "Ready for pickup is created before the employee picks up, not after receipt confirmation.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/zero-touch-asset-refresh.html" }
-      ]
-    },
-    "references": ["Zero Touch Refresh"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/zero-touch-asset-refresh.md",
-      "excerpt": "Ready for pickup: This task is created only for the Pickup refresh method in which the provider ships the new asset to the stockroom from where the employee picks up the asset."
-    },
-    "labels": {
+    {
+      "id": "cis-ham-practical-management-014",
       "certification": "cis-ham",
-      "domain": "Practical Asset Management",
-      "domainSlug": "practical-management",
-      "domainPercentage": 30,
-      "subtopics": ["Asset flows", "Asset tasks"],
-      "tags": ["zero-touch-refresh", "pickup", "tasks"]
+      "topic": "practical-management",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "In the Zero Touch Refresh flow, when is the 'Ready for pickup' task created?",
+      "options": [
+        {
+          "id": "a",
+          "text": "For all refresh methods when the provider ships the asset"
+        },
+        {
+          "id": "b",
+          "text": "Only for the Pickup refresh method when the provider ships to the stockroom"
+        },
+        {
+          "id": "c",
+          "text": "Only for the Ship refresh method"
+        },
+        {
+          "id": "d",
+          "text": "When the employee confirms receipt"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "The 'Ready for pickup' task is created only for the Pickup refresh method in which the provider ships the new asset to the stockroom from where the employee picks up the asset.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "This task is not created for all refresh methods, only for the Pickup method.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/zero-touch-asset-refresh.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The Ship refresh method delivers directly to the employee, so Ready for pickup is not needed.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/zero-touch-asset-refresh.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Ready for pickup is created before the employee picks up, not after receipt confirmation.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/zero-touch-asset-refresh.html"
+          }
+        ]
+      },
+      "references": [
+        "Zero Touch Refresh"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/zero-touch-asset-refresh.md",
+        "excerpt": "Ready for pickup: This task is created only for the Pickup refresh method in which the provider ships the new asset to the stockroom from where the employee picks up the asset."
+      },
+      "labels": {
+        "certification": "cis-ham",
+        "domain": "Practical Asset Management",
+        "domainSlug": "practical-management",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Asset flows",
+          "Asset tasks"
+        ],
+        "tags": [
+          "zero-touch-refresh",
+          "pickup",
+          "tasks"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-13T02:40:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-13T02:40:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-ham-practical-management-015",
-    "certification": "cis-ham",
-    "topic": "practical-management",
-    "cognitiveLevel": "knowledge",
-    "type": "multiple_select",
-    "question": "Which functions are available in the Inventory view of the Hardware Asset Workspace? (Choose three.)",
-    "options": [
-      { "id": "a", "text": "Asset audits" },
-      { "id": "b", "text": "Disposal orders" },
-      { "id": "c", "text": "Purchase order approvals" },
-      { "id": "d", "text": "Transfer orders" },
-      { "id": "e", "text": "Contract renewals" }
-    ],
-    "correctAnswers": ["a", "b", "d"],
-    "selectCount": 3,
-    "isNegative": false,
-    "explanation": {
-      "correct": "The Inventory view includes tabs for Asset audits, Disposal orders, Transfer orders, as well as All stockrooms, Loaner asset orders, RMA orders, and Donation orders.",
-      "wrongAnswers": [
-        { "choiceId": "c", "explanation": "Purchase order approvals are handled in the Procurement view, not Inventory view.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/inventory-view.html" },
-        { "choiceId": "e", "explanation": "Contract renewals are managed in Contract Management, not the Inventory view.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/inventory-view.html" }
-      ]
-    },
-    "references": ["Inventory view"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/inventory-view.md",
-      "excerpt": "Use the following tabs: Overview, All stockrooms, Asset audits, Disposal orders, Loaner asset orders, RMA orders, RMA line items, Transfer orders, Donation orders, Repair orders."
-    },
-    "labels": {
+    {
+      "id": "cis-ham-practical-management-015",
       "certification": "cis-ham",
-      "domain": "Practical Asset Management",
-      "domainSlug": "practical-management",
-      "domainPercentage": 30,
-      "subtopics": ["Stockrooms and locations"],
-      "tags": ["inventory", "workspace", "views"]
+      "topic": "practical-management",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_select",
+      "question": "Which functions are available in the Inventory view of the Hardware Asset Workspace? (Choose three.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Asset audits"
+        },
+        {
+          "id": "b",
+          "text": "Disposal orders"
+        },
+        {
+          "id": "c",
+          "text": "Purchase order approvals"
+        },
+        {
+          "id": "d",
+          "text": "Transfer orders"
+        },
+        {
+          "id": "e",
+          "text": "Contract renewals"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b",
+        "d"
+      ],
+      "selectCount": 3,
+      "isNegative": false,
+      "explanation": {
+        "correct": "The Inventory view includes tabs for Asset audits, Disposal orders, Transfer orders, as well as All stockrooms, Loaner asset orders, RMA orders, and Donation orders.",
+        "wrongAnswers": [
+          {
+            "choiceId": "c",
+            "explanation": "Purchase order approvals are handled in the Procurement view, not Inventory view.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/inventory-view.html"
+          },
+          {
+            "choiceId": "e",
+            "explanation": "Contract renewals are managed in Contract Management, not the Inventory view.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/inventory-view.html"
+          }
+        ]
+      },
+      "references": [
+        "Inventory view"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/inventory-view.md",
+        "excerpt": "Use the following tabs: Overview, All stockrooms, Asset audits, Disposal orders, Loaner asset orders, RMA orders, RMA line items, Transfer orders, Donation orders, Repair orders."
+      },
+      "labels": {
+        "certification": "cis-ham",
+        "domain": "Practical Asset Management",
+        "domainSlug": "practical-management",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Stockrooms and locations"
+        ],
+        "tags": [
+          "inventory",
+          "workspace",
+          "views"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-13T02:40:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-13T02:40:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-ham-practical-management-016",
-    "certification": "cis-ham",
-    "topic": "practical-management",
-    "cognitiveLevel": "knowledge",
-    "type": "multiple_choice",
-    "question": "Which role is required to access the Inventory view in the Hardware Asset Workspace?",
-    "options": [
-      { "id": "a", "text": "ham_admin only" },
-      { "id": "b", "text": "asset or inventory_admin" },
-      { "id": "c", "text": "procurement_user" },
-      { "id": "d", "text": "itil" }
-    ],
-    "correctAnswers": ["b"],
-    "selectCount": 1,
-    "isNegative": false,
-    "explanation": {
-      "correct": "You need the asset or inventory_admin role to access the Inventory view in the Hardware Asset Workspace.",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "While ham_admin can access it, it's not the only role; asset or inventory_admin also provides access.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/inventory-view.html" },
-        { "choiceId": "c", "explanation": "procurement_user has access to procurement tasks, but the Inventory view requires asset or inventory_admin.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/inventory-view.html" },
-        { "choiceId": "d", "explanation": "The itil role provides ITSM access but not specifically Inventory view access.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/inventory-view.html" }
-      ]
-    },
-    "references": ["Inventory view"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/inventory-view.md",
-      "excerpt": "You need the asset or inventory_admin role to access the Inventory view."
-    },
-    "labels": {
+    {
+      "id": "cis-ham-practical-management-016",
       "certification": "cis-ham",
-      "domain": "Practical Asset Management",
-      "domainSlug": "practical-management",
-      "domainPercentage": 30,
-      "subtopics": ["Stockrooms and locations"],
-      "tags": ["roles", "inventory", "access"]
+      "topic": "practical-management",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which role is required to access the Inventory view in the Hardware Asset Workspace?",
+      "options": [
+        {
+          "id": "a",
+          "text": "ham_admin only"
+        },
+        {
+          "id": "b",
+          "text": "asset or inventory_admin"
+        },
+        {
+          "id": "c",
+          "text": "procurement_user"
+        },
+        {
+          "id": "d",
+          "text": "itil"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "You need the asset or inventory_admin role to access the Inventory view in the Hardware Asset Workspace.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "While ham_admin can access it, it's not the only role; asset or inventory_admin also provides access.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/inventory-view.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "procurement_user has access to procurement tasks, but the Inventory view requires asset or inventory_admin.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/inventory-view.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The itil role provides ITSM access but not specifically Inventory view access.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/inventory-view.html"
+          }
+        ]
+      },
+      "references": [
+        "Inventory view"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/inventory-view.md",
+        "excerpt": "You need the asset or inventory_admin role to access the Inventory view."
+      },
+      "labels": {
+        "certification": "cis-ham",
+        "domain": "Practical Asset Management",
+        "domainSlug": "practical-management",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Stockrooms and locations"
+        ],
+        "tags": [
+          "roles",
+          "inventory",
+          "access"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-13T02:40:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-13T02:40:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-ham-practical-management-017",
-    "certification": "cis-ham",
-    "topic": "practical-management",
-    "cognitiveLevel": "understanding",
-    "type": "multiple_choice",
-    "question": "Which widget in the Inventory view Overview tab shows the number of transfer orders that are canceled or undelivered?",
-    "options": [
-      { "id": "a", "text": "Orders pending delivery by stockroom" },
-      { "id": "b", "text": "Open transfer orders" },
-      { "id": "c", "text": "Open stock orders" },
-      { "id": "d", "text": "Active stock rules by model category" }
-    ],
-    "correctAnswers": ["b"],
-    "selectCount": 1,
-    "isNegative": false,
-    "explanation": {
-      "correct": "The 'Open transfer orders' widget shows the number of canceled or undelivered transfer orders.",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "Orders pending delivery by stockroom shows purchase orders that aren't received or canceled.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/inventory-view.html" },
-        { "choiceId": "c", "explanation": "Open stock orders shows the number of incomplete or canceled stock orders.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/inventory-view.html" },
-        { "choiceId": "d", "explanation": "Active stock rules by model category shows all active stock rules grouped by their model category.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/inventory-view.html" }
-      ]
-    },
-    "references": ["Inventory view"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/inventory-view.md",
-      "excerpt": "Open transfer orders: Number of canceled or undelivered transfer orders."
-    },
-    "labels": {
+    {
+      "id": "cis-ham-practical-management-017",
       "certification": "cis-ham",
-      "domain": "Practical Asset Management",
-      "domainSlug": "practical-management",
-      "domainPercentage": 30,
-      "subtopics": ["Transfer orders"],
-      "tags": ["inventory", "transfer-orders", "widgets"]
+      "topic": "practical-management",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "Which widget in the Inventory view Overview tab shows the number of transfer orders that are canceled or undelivered?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Orders pending delivery by stockroom"
+        },
+        {
+          "id": "b",
+          "text": "Open transfer orders"
+        },
+        {
+          "id": "c",
+          "text": "Open stock orders"
+        },
+        {
+          "id": "d",
+          "text": "Active stock rules by model category"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "The 'Open transfer orders' widget shows the number of canceled or undelivered transfer orders.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Orders pending delivery by stockroom shows purchase orders that aren't received or canceled.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/inventory-view.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Open stock orders shows the number of incomplete or canceled stock orders.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/inventory-view.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Active stock rules by model category shows all active stock rules grouped by their model category.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/inventory-view.html"
+          }
+        ]
+      },
+      "references": [
+        "Inventory view"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/inventory-view.md",
+        "excerpt": "Open transfer orders: Number of canceled or undelivered transfer orders."
+      },
+      "labels": {
+        "certification": "cis-ham",
+        "domain": "Practical Asset Management",
+        "domainSlug": "practical-management",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Transfer orders"
+        ],
+        "tags": [
+          "inventory",
+          "transfer-orders",
+          "widgets"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-13T02:40:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-13T02:40:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-ham-practical-management-018",
-    "certification": "cis-ham",
-    "topic": "practical-management",
-    "cognitiveLevel": "application",
-    "type": "multiple_select",
-    "question": "Which action cards in the Inventory view Overview tab help identify issues with stockrooms? (Choose two.)",
-    "options": [
-      { "id": "a", "text": "Stockrooms missing service locations" },
-      { "id": "b", "text": "Open hardware requests from stock" },
-      { "id": "c", "text": "Stockrooms missing distribution channels" },
-      { "id": "d", "text": "Loaner asset orders by status" }
-    ],
-    "correctAnswers": ["a", "c"],
-    "selectCount": 2,
-    "isNegative": false,
-    "explanation": {
-      "correct": "The action cards 'Stockrooms missing service locations' and 'Stockrooms missing distribution channels' help identify stockrooms that aren't properly associated with service locations or distribution channels.",
-      "wrongAnswers": [
-        { "choiceId": "b", "explanation": "Open hardware requests from stock is a widget showing request counts, not a stockroom configuration action card.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/inventory-view.html" },
-        { "choiceId": "d", "explanation": "Loaner asset orders by status shows loaner order counts, not stockroom configuration issues.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/inventory-view.html" }
-      ]
-    },
-    "references": ["Inventory view"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/inventory-view.md",
-      "excerpt": "Stockrooms missing service locations: List of stockrooms that aren't associated with any service locations. Stockrooms missing distribution channels: List of stockrooms that aren't associated with any distribution channels."
-    },
-    "labels": {
+    {
+      "id": "cis-ham-practical-management-018",
       "certification": "cis-ham",
-      "domain": "Practical Asset Management",
-      "domainSlug": "practical-management",
-      "domainPercentage": 30,
-      "subtopics": ["Stockrooms and locations"],
-      "tags": ["stockrooms", "service-locations", "distribution-channels"]
-    },
-    "meta": {
-      "generatedAt": "2026-02-13T02:40:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
+      "topic": "practical-management",
+      "cognitiveLevel": "application",
+      "type": "multiple_select",
+      "question": "Which action cards in the Inventory view Overview tab help identify issues with stockrooms? (Choose two.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Stockrooms missing service locations"
+        },
+        {
+          "id": "b",
+          "text": "Open hardware requests from stock"
+        },
+        {
+          "id": "c",
+          "text": "Stockrooms missing distribution channels"
+        },
+        {
+          "id": "d",
+          "text": "Loaner asset orders by status"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "c"
+      ],
+      "selectCount": 2,
+      "isNegative": false,
+      "explanation": {
+        "correct": "The action cards 'Stockrooms missing service locations' and 'Stockrooms missing distribution channels' help identify stockrooms that aren't properly associated with service locations or distribution channels.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Open hardware requests from stock is a widget showing request counts, not a stockroom configuration action card.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/inventory-view.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Loaner asset orders by status shows loaner order counts, not stockroom configuration issues.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/inventory-view.html"
+          }
+        ]
+      },
+      "references": [
+        "Inventory view"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/inventory-view.md",
+        "excerpt": "Stockrooms missing service locations: List of stockrooms that aren't associated with any service locations. Stockrooms missing distribution channels: List of stockrooms that aren't associated with any distribution channels."
+      },
+      "labels": {
+        "certification": "cis-ham",
+        "domain": "Practical Asset Management",
+        "domainSlug": "practical-management",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Stockrooms and locations"
+        ],
+        "tags": [
+          "stockrooms",
+          "service-locations",
+          "distribution-channels"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-13T02:40:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     }
-  }
-]
+  ]
+}

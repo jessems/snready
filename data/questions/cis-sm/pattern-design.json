@@ -1,1169 +1,1173 @@
-[
-  {
-    "id": "cis-sm-pattern-design-101",
-    "certification": "cis-sm",
-    "topic": "pattern-design",
-    "cognitiveLevel": "knowledge",
-    "type": "multiple_choice",
-    "question": "When discovering Citrix Xen Hyper-V resources, which commands does ServiceNow Discovery use to find and map the hypervisor components?",
-    "options": [
-      {
-        "id": "a",
-        "text": "PowerShell commands via WMI"
-      },
-      {
-        "id": "b",
-        "text": "Xen (XE) and (XL) commands via SSH"
-      },
-      {
-        "id": "c",
-        "text": "VMware vSphere API calls"
-      },
-      {
-        "id": "d",
-        "text": "REST API queries to the Citrix controller"
-      }
-    ],
-    "correctAnswers": [
-      "b"
-    ],
-    "explanation": {
-      "correct": "ServiceNow Discovery uses Xen (XE) and (XL) commands to discover Citrix Xen Hyper-V components. These commands allow Discovery to gather information about the Hyper-V Server, Associated Pools, VMs, Network and Storage, and their relationships with new and existing CIs.",
-      "wrongAnswers": [
+{
+  "certification": "cis-sm",
+  "topic": "pattern-design",
+  "questions": [
+    {
+      "id": "cis-sm-pattern-design-101",
+      "certification": "cis-sm",
+      "topic": "pattern-design",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "When discovering Citrix Xen Hyper-V resources, which commands does ServiceNow Discovery use to find and map the hypervisor components?",
+      "options": [
         {
           "id": "a",
-          "explanation": "PowerShell via WMI is used for Windows-based discoveries, not Citrix Xen which runs on Linux and uses XE/XL commands."
+          "text": "PowerShell commands via WMI"
         },
-        {
-          "id": "c",
-          "explanation": "VMware vSphere API is used specifically for VMware environments, not Citrix Xen Hyper-V."
-        },
-        {
-          "id": "d",
-          "explanation": "REST API queries are not the method used for Citrix Xen Hyper-V discovery; SSH-based XE/XL commands are used instead."
-        }
-      ]
-    },
-    "source": {
-      "excerpt": "Use the Xen (XE) and (XL) commands to discover Citrix Xen Hyper-V, its components, and respective attributes. Discover information regarding the Hyper-V Server, Associated Pools, VMs, Network and Storage and their relationships with new and existing CIs.",
-      "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/discovery-and-service-mapping-patterns/citrix-xen-hyper-v-discovery.html"
-    },
-    "labels": {
-      "domain": "Service Mapping Pattern Design",
-      "subtopics": [
-        "Pattern execution",
-        "Hypervisor discovery"
-      ],
-      "tags": [
-        "service-mapping",
-        "citrix-xen",
-        "discovery-patterns",
-        "ssh-commands"
-      ]
-    },
-    "meta": {
-      "version": "1.0",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-sm-pattern-design-102",
-    "certification": "cis-sm",
-    "topic": "pattern-design",
-    "cognitiveLevel": "understanding",
-    "type": "multiple_select",
-    "question": "Which prerequisites must be verified before discovering Citrix Xen Hyper-V resources? (Choose two.)",
-    "options": [
-      {
-        "id": "a",
-        "text": "Pool admin RBAC role for SSH access"
-      },
-      {
-        "id": "b",
-        "text": "WMI credentials with domain admin privileges"
-      },
-      {
-        "id": "c",
-        "text": "MID Server reachability to the target device"
-      },
-      {
-        "id": "d",
-        "text": "VMware vCenter connection established"
-      }
-    ],
-    "correctAnswers": [
-      "a",
-      "c"
-    ],
-    "explanation": {
-      "correct": "Before discovering Citrix Xen Hyper-V resources, you must verify that the pool admin RBAC role is configured for SSH access to the Linux server hosting the hypervisor, and that the MID Server has reachability to the target device. These are essential prerequisites documented for the Citrix Xen Hyper-V pattern.",
-      "wrongAnswers": [
         {
           "id": "b",
-          "explanation": "WMI credentials are used for Windows-based discoveries. Citrix Xen requires SSH credentials for Linux-based access."
-        },
-        {
-          "id": "d",
-          "explanation": "VMware vCenter is specific to VMware environments and is not relevant to Citrix Xen Hyper-V discovery."
-        }
-      ]
-    },
-    "source": {
-      "excerpt": "Verify pool admin RBAC role: This role is required for SSH access to the Linux server hosting the hypervisor and for executing all the necessary commands to extract information from the hypervisor environment... Verify MID Server reachability: Verify MID Server has reachability to the target device.",
-      "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/discovery-and-service-mapping-patterns/citrix-xen-hyper-v-discovery.html"
-    },
-    "labels": {
-      "domain": "Service Mapping Pattern Design",
-      "subtopics": [
-        "Prerequisites",
-        "RBAC roles",
-        "MID Server"
-      ],
-      "tags": [
-        "service-mapping",
-        "citrix-xen",
-        "prerequisites",
-        "rbac"
-      ]
-    },
-    "meta": {
-      "version": "1.0",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-sm-pattern-design-103",
-    "certification": "cis-sm",
-    "topic": "pattern-design",
-    "cognitiveLevel": "knowledge",
-    "type": "multiple_choice",
-    "question": "Which system property must be set to true to enable network router discovery in ServiceNow?",
-    "options": [
-      {
-        "id": "a",
-        "text": "glide.discovery.network_router_enable"
-      },
-      {
-        "id": "b",
-        "text": "glide.discovery.L3_mapping"
-      },
-      {
-        "id": "c",
-        "text": "glide.discovery.router_protocol"
-      },
-      {
-        "id": "d",
-        "text": "glide.discovery.ip_range_scan"
-      }
-    ],
-    "correctAnswers": [
-      "b"
-    ],
-    "explanation": {
-      "correct": "The glide.discovery.L3_mapping system property must be set to true to enable network router discovery. This property is configured by navigating to sys_properties.list and verifying or setting its value.",
-      "wrongAnswers": [
-        {
-          "id": "a",
-          "explanation": "This is not a valid ServiceNow system property for router discovery. The correct property is glide.discovery.L3_mapping."
+          "text": "Xen (XE) and (XL) commands via SSH"
         },
         {
           "id": "c",
-          "explanation": "This is not the property that enables router discovery. Router discovery is controlled by glide.discovery.L3_mapping."
+          "text": "VMware vSphere API calls"
         },
         {
           "id": "d",
-          "explanation": "While IP range scanning is a discovery feature, this is not the specific property for enabling network router discovery."
+          "text": "REST API queries to the Citrix controller"
         }
-      ]
-    },
-    "source": {
-      "excerpt": "Navigate to sys_properties.list and verify that the glide.discovery.L3_mapping system property is set to true.",
-      "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/discovery-and-service-mapping-patterns/network-router-patterns.html"
-    },
-    "labels": {
-      "domain": "Service Mapping Pattern Design",
-      "subtopics": [
-        "System properties",
-        "Network router discovery"
       ],
-      "tags": [
-        "service-mapping",
-        "network-router",
-        "system-properties",
-        "L3-mapping"
-      ]
-    },
-    "meta": {
-      "version": "1.0",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-sm-pattern-design-104",
-    "certification": "cis-sm",
-    "topic": "pattern-design",
-    "cognitiveLevel": "understanding",
-    "type": "multiple_choice",
-    "question": "What is the purpose of the glide.discovery.bgp_router_disable property when set to true?",
-    "options": [
-      {
-        "id": "a",
-        "text": "Enables BGP routing protocol discovery for all network devices"
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "ServiceNow Discovery uses Xen (XE) and (XL) commands to discover Citrix Xen Hyper-V components. These commands allow Discovery to gather information about the Hyper-V Server, Associated Pools, VMs, Network and Storage, and their relationships with new and existing CIs.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "PowerShell via WMI is used for Windows-based discoveries, not Citrix Xen which runs on Linux and uses XE/XL commands."
+          },
+          {
+            "id": "c",
+            "explanation": "VMware vSphere API is used specifically for VMware environments, not Citrix Xen Hyper-V."
+          },
+          {
+            "id": "d",
+            "explanation": "REST API queries are not the method used for Citrix Xen Hyper-V discovery; SSH-based XE/XL commands are used instead."
+          }
+        ]
       },
-      {
-        "id": "b",
-        "text": "Disables the SNMP – Routing pattern for routers running BGP protocol"
+      "source": {
+        "excerpt": "Use the Xen (XE) and (XL) commands to discover Citrix Xen Hyper-V, its components, and respective attributes. Discover information regarding the Hyper-V Server, Associated Pools, VMs, Network and Storage and their relationships with new and existing CIs.",
+        "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/discovery-and-service-mapping-patterns/citrix-xen-hyper-v-discovery.html"
       },
-      {
-        "id": "c",
-        "text": "Forces discovery to use CDP instead of LLDP protocol"
+      "labels": {
+        "domain": "Service Mapping Pattern Design",
+        "subtopics": [
+          "Pattern execution",
+          "Hypervisor discovery"
+        ],
+        "tags": [
+          "service-mapping",
+          "citrix-xen",
+          "discovery-patterns",
+          "ssh-commands"
+        ]
       },
-      {
-        "id": "d",
-        "text": "Prevents discovery from populating router serial numbers"
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
       }
-    ],
-    "correctAnswers": [
-      "b"
-    ],
-    "explanation": {
-      "correct": "When glide.discovery.bgp_router_disable is set to true (the default), it disables running the SNMP – Routing pattern when discovering a router running the BGP protocol. This is done because enabling it can cause performance issues including out-of-memory issues on the MID Server.",
-      "wrongAnswers": [
+    },
+    {
+      "id": "cis-sm-pattern-design-102",
+      "certification": "cis-sm",
+      "topic": "pattern-design",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_select",
+      "question": "Which prerequisites must be verified before discovering Citrix Xen Hyper-V resources? (Choose two.)",
+      "options": [
         {
           "id": "a",
-          "explanation": "This property does the opposite - it disables BGP-related routing pattern execution, not enables it."
+          "text": "Pool admin RBAC role for SSH access"
         },
-        {
-          "id": "c",
-          "explanation": "This property does not affect the choice between CDP and LLDP protocols. It specifically controls BGP router exploration."
-        },
-        {
-          "id": "d",
-          "explanation": "Serial number population is not affected by this property. It specifically controls whether the SNMP – Routing pattern runs for BGP routers."
-        }
-      ]
-    },
-    "source": {
-      "excerpt": "glide.discovery.bgp_router_disable: Disables running the SNMP – Routing pattern when discovering a router running the BGP protocol... Notice that enabling this property can cause performance issues including out-of-memory issues on the MID Server.",
-      "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/discovery-and-service-mapping-patterns/network-router-patterns.html"
-    },
-    "labels": {
-      "domain": "Service Mapping Pattern Design",
-      "subtopics": [
-        "Discovery properties",
-        "BGP routing",
-        "Performance tuning"
-      ],
-      "tags": [
-        "service-mapping",
-        "network-router",
-        "bgp",
-        "performance"
-      ]
-    },
-    "meta": {
-      "version": "1.0",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-sm-pattern-design-105",
-    "certification": "cis-sm",
-    "topic": "pattern-design",
-    "cognitiveLevel": "application",
-    "type": "multiple_select",
-    "question": "A customer wants to discover Oracle RAC clusters using the Oracle Listener HD pattern. Which statements about this pattern are true? (Choose three.)",
-    "options": [
-      {
-        "id": "a",
-        "text": "The Oracle Clusterware setup is only supported for UNIX operating systems"
-      },
-      {
-        "id": "b",
-        "text": "Windows Server with Oracle RAC is fully supported"
-      },
-      {
-        "id": "c",
-        "text": "The minimum Oracle Clusterware version required is 12.2.X.X"
-      },
-      {
-        "id": "d",
-        "text": "The pattern requires Discovery and Service Mapping Patterns plugin version 1.0.82 or later"
-      },
-      {
-        "id": "e",
-        "text": "SNMP credentials are required for Oracle RAC discovery"
-      }
-    ],
-    "correctAnswers": [
-      "a",
-      "c",
-      "d"
-    ],
-    "explanation": {
-      "correct": "The Oracle Listener HD pattern has specific limitations and requirements: it only supports Oracle Clusterware setup on UNIX operating systems, requires Oracle Clusterware minimum version 12.2.X.X (Oracle Database 12c Release 2) or higher, and needs the Discovery and Service Mapping Patterns plugin version 1.0.82 or later to function.",
-      "wrongAnswers": [
         {
           "id": "b",
-          "explanation": "Windows is not supported for Oracle Clusterware setup with this pattern. The documentation explicitly states 'The Oracle Clusterware setup is only supported for the UNIX Operating Systems.'"
+          "text": "WMI credentials with domain admin privileges"
+        },
+        {
+          "id": "c",
+          "text": "MID Server reachability to the target device"
+        },
+        {
+          "id": "d",
+          "text": "VMware vCenter connection established"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "c"
+      ],
+      "explanation": {
+        "correct": "Before discovering Citrix Xen Hyper-V resources, you must verify that the pool admin RBAC role is configured for SSH access to the Linux server hosting the hypervisor, and that the MID Server has reachability to the target device. These are essential prerequisites documented for the Citrix Xen Hyper-V pattern.",
+        "wrongAnswers": [
+          {
+            "id": "b",
+            "explanation": "WMI credentials are used for Windows-based discoveries. Citrix Xen requires SSH credentials for Linux-based access."
+          },
+          {
+            "id": "d",
+            "explanation": "VMware vCenter is specific to VMware environments and is not relevant to Citrix Xen Hyper-V discovery."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Verify pool admin RBAC role: This role is required for SSH access to the Linux server hosting the hypervisor and for executing all the necessary commands to extract information from the hypervisor environment... Verify MID Server reachability: Verify MID Server has reachability to the target device.",
+        "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/discovery-and-service-mapping-patterns/citrix-xen-hyper-v-discovery.html"
+      },
+      "labels": {
+        "domain": "Service Mapping Pattern Design",
+        "subtopics": [
+          "Prerequisites",
+          "RBAC roles",
+          "MID Server"
+        ],
+        "tags": [
+          "service-mapping",
+          "citrix-xen",
+          "prerequisites",
+          "rbac"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sm-pattern-design-103",
+      "certification": "cis-sm",
+      "topic": "pattern-design",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which system property must be set to true to enable network router discovery in ServiceNow?",
+      "options": [
+        {
+          "id": "a",
+          "text": "glide.discovery.network_router_enable"
+        },
+        {
+          "id": "b",
+          "text": "glide.discovery.L3_mapping"
+        },
+        {
+          "id": "c",
+          "text": "glide.discovery.router_protocol"
+        },
+        {
+          "id": "d",
+          "text": "glide.discovery.ip_range_scan"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The glide.discovery.L3_mapping system property must be set to true to enable network router discovery. This property is configured by navigating to sys_properties.list and verifying or setting its value.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "This is not a valid ServiceNow system property for router discovery. The correct property is glide.discovery.L3_mapping."
+          },
+          {
+            "id": "c",
+            "explanation": "This is not the property that enables router discovery. Router discovery is controlled by glide.discovery.L3_mapping."
+          },
+          {
+            "id": "d",
+            "explanation": "While IP range scanning is a discovery feature, this is not the specific property for enabling network router discovery."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Navigate to sys_properties.list and verify that the glide.discovery.L3_mapping system property is set to true.",
+        "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/discovery-and-service-mapping-patterns/network-router-patterns.html"
+      },
+      "labels": {
+        "domain": "Service Mapping Pattern Design",
+        "subtopics": [
+          "System properties",
+          "Network router discovery"
+        ],
+        "tags": [
+          "service-mapping",
+          "network-router",
+          "system-properties",
+          "L3-mapping"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sm-pattern-design-104",
+      "certification": "cis-sm",
+      "topic": "pattern-design",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What is the purpose of the glide.discovery.bgp_router_disable property when set to true?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Enables BGP routing protocol discovery for all network devices"
+        },
+        {
+          "id": "b",
+          "text": "Disables the SNMP – Routing pattern for routers running BGP protocol"
+        },
+        {
+          "id": "c",
+          "text": "Forces discovery to use CDP instead of LLDP protocol"
+        },
+        {
+          "id": "d",
+          "text": "Prevents discovery from populating router serial numbers"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "When glide.discovery.bgp_router_disable is set to true (the default), it disables running the SNMP – Routing pattern when discovering a router running the BGP protocol. This is done because enabling it can cause performance issues including out-of-memory issues on the MID Server.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "This property does the opposite - it disables BGP-related routing pattern execution, not enables it."
+          },
+          {
+            "id": "c",
+            "explanation": "This property does not affect the choice between CDP and LLDP protocols. It specifically controls BGP router exploration."
+          },
+          {
+            "id": "d",
+            "explanation": "Serial number population is not affected by this property. It specifically controls whether the SNMP – Routing pattern runs for BGP routers."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "glide.discovery.bgp_router_disable: Disables running the SNMP – Routing pattern when discovering a router running the BGP protocol... Notice that enabling this property can cause performance issues including out-of-memory issues on the MID Server.",
+        "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/discovery-and-service-mapping-patterns/network-router-patterns.html"
+      },
+      "labels": {
+        "domain": "Service Mapping Pattern Design",
+        "subtopics": [
+          "Discovery properties",
+          "BGP routing",
+          "Performance tuning"
+        ],
+        "tags": [
+          "service-mapping",
+          "network-router",
+          "bgp",
+          "performance"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sm-pattern-design-105",
+      "certification": "cis-sm",
+      "topic": "pattern-design",
+      "cognitiveLevel": "application",
+      "type": "multiple_select",
+      "question": "A customer wants to discover Oracle RAC clusters using the Oracle Listener HD pattern. Which statements about this pattern are true? (Choose three.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "The Oracle Clusterware setup is only supported for UNIX operating systems"
+        },
+        {
+          "id": "b",
+          "text": "Windows Server with Oracle RAC is fully supported"
+        },
+        {
+          "id": "c",
+          "text": "The minimum Oracle Clusterware version required is 12.2.X.X"
+        },
+        {
+          "id": "d",
+          "text": "The pattern requires Discovery and Service Mapping Patterns plugin version 1.0.82 or later"
         },
         {
           "id": "e",
-          "explanation": "Oracle Listener HD discovery uses SSH credentials to execute commands on the UNIX host, not SNMP credentials. The pattern runs Oracle-specific commands like lsnrctl and crsctl."
+          "text": "SNMP credentials are required for Oracle RAC discovery"
         }
-      ]
-    },
-    "source": {
-      "excerpt": "The Oracle Clusterware setup is only supported for the UNIX Operating Systems... Use Oracle Clusterware minimum version 12.2.X.X (Oracle Database 12c Release 2) or higher... Discovery and Service Mapping Patterns plugin (Version 1.0.82 or later).",
-      "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/discovery-and-service-mapping-patterns/oracle-listener-hd-discovery.html"
-    },
-    "labels": {
-      "domain": "Service Mapping Pattern Design",
-      "subtopics": [
-        "Oracle RAC discovery",
-        "Pattern requirements",
-        "Operating system support"
       ],
-      "tags": [
-        "service-mapping",
-        "oracle",
-        "rac",
-        "unix",
-        "pattern-requirements"
-      ]
-    },
-    "meta": {
-      "version": "1.0",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-sm-pattern-design-106",
-    "certification": "cis-sm",
-    "topic": "pattern-design",
-    "cognitiveLevel": "knowledge",
-    "type": "multiple_choice",
-    "question": "Which command does the Oracle Listener HD pattern execute to check the Database Listener status?",
-    "options": [
-      {
-        "id": "a",
-        "text": "oracle_status LISTENER_NAME"
+      "correctAnswers": [
+        "a",
+        "c",
+        "d"
+      ],
+      "explanation": {
+        "correct": "The Oracle Listener HD pattern has specific limitations and requirements: it only supports Oracle Clusterware setup on UNIX operating systems, requires Oracle Clusterware minimum version 12.2.X.X (Oracle Database 12c Release 2) or higher, and needs the Discovery and Service Mapping Patterns plugin version 1.0.82 or later to function.",
+        "wrongAnswers": [
+          {
+            "id": "b",
+            "explanation": "Windows is not supported for Oracle Clusterware setup with this pattern. The documentation explicitly states 'The Oracle Clusterware setup is only supported for the UNIX Operating Systems.'"
+          },
+          {
+            "id": "e",
+            "explanation": "Oracle Listener HD discovery uses SSH credentials to execute commands on the UNIX host, not SNMP credentials. The pattern runs Oracle-specific commands like lsnrctl and crsctl."
+          }
+        ]
       },
-      {
-        "id": "b",
-        "text": "lsnrctl status LISTENER_NAME"
+      "source": {
+        "excerpt": "The Oracle Clusterware setup is only supported for the UNIX Operating Systems... Use Oracle Clusterware minimum version 12.2.X.X (Oracle Database 12c Release 2) or higher... Discovery and Service Mapping Patterns plugin (Version 1.0.82 or later).",
+        "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/discovery-and-service-mapping-patterns/oracle-listener-hd-discovery.html"
       },
-      {
-        "id": "c",
-        "text": "crsctl stat listener"
+      "labels": {
+        "domain": "Service Mapping Pattern Design",
+        "subtopics": [
+          "Oracle RAC discovery",
+          "Pattern requirements",
+          "Operating system support"
+        ],
+        "tags": [
+          "service-mapping",
+          "oracle",
+          "rac",
+          "unix",
+          "pattern-requirements"
+        ]
       },
-      {
-        "id": "d",
-        "text": "tnsping LISTENER_NAME"
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
       }
-    ],
-    "correctAnswers": [
-      "b"
-    ],
-    "explanation": {
-      "correct": "The Oracle Listener HD pattern executes 'lsnrctl status LISTENER_NAME' to check the Database Listener status. If no output is obtained from this command, the Oracle Listener HD pattern is terminated.",
-      "wrongAnswers": [
+    },
+    {
+      "id": "cis-sm-pattern-design-106",
+      "certification": "cis-sm",
+      "topic": "pattern-design",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which command does the Oracle Listener HD pattern execute to check the Database Listener status?",
+      "options": [
         {
           "id": "a",
-          "explanation": "oracle_status is not a valid Oracle command. The correct command is lsnrctl status."
+          "text": "oracle_status LISTENER_NAME"
+        },
+        {
+          "id": "b",
+          "text": "lsnrctl status LISTENER_NAME"
         },
         {
           "id": "c",
-          "explanation": "crsctl stat res is used for cluster resource status, but lsnrctl status is specifically used for listener status checking."
+          "text": "crsctl stat listener"
         },
         {
           "id": "d",
-          "explanation": "tnsping is used to test connectivity to a service, not to check the listener status. The pattern uses lsnrctl status."
+          "text": "tnsping LISTENER_NAME"
         }
-      ]
-    },
-    "source": {
-      "excerpt": "lsnrctl status LISTENER_NAME: Checks the Database Listener status... Note: If no output is obtained from the lsnrctl status LISTENER_NAME, then the Oracle Listener HD pattern is terminated.",
-      "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/discovery-and-service-mapping-patterns/oracle-listener-hd-discovery.html"
-    },
-    "labels": {
-      "domain": "Service Mapping Pattern Design",
-      "subtopics": [
-        "Oracle commands",
-        "Pattern execution",
-        "Listener discovery"
       ],
-      "tags": [
-        "service-mapping",
-        "oracle",
-        "lsnrctl",
-        "listener"
-      ]
-    },
-    "meta": {
-      "version": "1.0",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-sm-pattern-design-201",
-    "certification": "cis-sm",
-    "topic": "pattern-design",
-    "cognitiveLevel": "understanding",
-    "type": "multiple_choice",
-    "question": "What happens when Service Mapping runs pattern-based discovery after traffic-based discovery has already created connections?",
-    "options": [
-      {
-        "id": "a",
-        "text": "All traffic-based connections are permanently deleted"
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The Oracle Listener HD pattern executes 'lsnrctl status LISTENER_NAME' to check the Database Listener status. If no output is obtained from this command, the Oracle Listener HD pattern is terminated.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "oracle_status is not a valid Oracle command. The correct command is lsnrctl status."
+          },
+          {
+            "id": "c",
+            "explanation": "crsctl stat res is used for cluster resource status, but lsnrctl status is specifically used for listener status checking."
+          },
+          {
+            "id": "d",
+            "explanation": "tnsping is used to test connectivity to a service, not to check the listener status. The pattern uses lsnrctl status."
+          }
+        ]
       },
-      {
-        "id": "b",
-        "text": "Pattern-based connections replace all traffic-based connections"
+      "source": {
+        "excerpt": "lsnrctl status LISTENER_NAME: Checks the Database Listener status... Note: If no output is obtained from the lsnrctl status LISTENER_NAME, then the Oracle Listener HD pattern is terminated.",
+        "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/discovery-and-service-mapping-patterns/oracle-listener-hd-discovery.html"
       },
-      {
-        "id": "c",
-        "text": "Duplicate traffic-based connections are removed if pattern-based discovery creates the same connections"
+      "labels": {
+        "domain": "Service Mapping Pattern Design",
+        "subtopics": [
+          "Oracle commands",
+          "Pattern execution",
+          "Listener discovery"
+        ],
+        "tags": [
+          "service-mapping",
+          "oracle",
+          "lsnrctl",
+          "listener"
+        ]
       },
-      {
-        "id": "d",
-        "text": "Both pattern-based and traffic-based connections are merged with a new connection type"
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
       }
-    ],
-    "correctAnswers": [
-      "c"
-    ],
-    "explanation": {
-      "correct": "When pattern-based discovery runs after traffic-based discovery, the system removes any connections that were created by traffic-based discovery if they're also created by pattern-based discovery. This prevents duplicate connections in the service map while preserving unique connections from both methods.",
-      "wrongAnswers": [
+    },
+    {
+      "id": "cis-sm-pattern-design-201",
+      "certification": "cis-sm",
+      "topic": "pattern-design",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What happens when Service Mapping runs pattern-based discovery after traffic-based discovery has already created connections?",
+      "options": [
         {
           "id": "a",
-          "explanation": "Traffic-based connections are not permanently deleted. Only duplicates that are recreated by pattern-based discovery are removed."
+          "text": "All traffic-based connections are permanently deleted"
         },
         {
           "id": "b",
-          "explanation": "Pattern-based connections do not replace all traffic-based connections. Only overlapping/duplicate connections are handled."
-        },
-        {
-          "id": "d",
-          "explanation": "There is no merged connection type. The system removes duplicates rather than merging them."
-        }
-      ]
-    },
-    "source": {
-      "excerpt": "Connections created only through traffic-based discovery aren't removed. However, if pattern-based discovery runs after traffic-based discovery has run, it might create duplicate connections between CIs. To avoid duplicates, the system removes any connections that were created by traffic-based discovery if they're also created by pattern-based discovery.",
-      "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/service-mapping/traffic-based-discovery.html"
-    },
-    "labels": {
-      "domain": "Service Mapping Pattern Design",
-      "subtopics": [
-        "Traffic-based discovery",
-        "Pattern-based discovery",
-        "Connection management"
-      ],
-      "tags": [
-        "service-mapping",
-        "traffic-based",
-        "pattern-based",
-        "connections"
-      ]
-    },
-    "meta": {
-      "version": "1.0",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-sm-pattern-design-202",
-    "certification": "cis-sm",
-    "topic": "pattern-design",
-    "cognitiveLevel": "knowledge",
-    "type": "multiple_select",
-    "question": "Which CMDB tables contain data collected using traffic-based methods for Service Mapping? (Choose two.)",
-    "options": [
-      {
-        "id": "a",
-        "text": "Flow Connector [sa_flow_connection]"
-      },
-      {
-        "id": "b",
-        "text": "Service Instance [cmdb_ci_service_auto]"
-      },
-      {
-        "id": "c",
-        "text": "TCP Connection [cmdb_tcp]"
-      },
-      {
-        "id": "d",
-        "text": "Application Service [cmdb_ci_service_discovered]"
-      }
-    ],
-    "correctAnswers": [
-      "a",
-      "c"
-    ],
-    "explanation": {
-      "correct": "Service Mapping uses traffic-related data from the Flow Connector [sa_flow_connection] table (populated from Netflow and VPC logs) and the TCP Connection [cmdb_tcp] table (populated from netstat and lsof commands) to detect CI inbound and outbound connections during traffic-based discovery.",
-      "wrongAnswers": [
-        {
-          "id": "b",
-          "explanation": "Service Instance [cmdb_ci_service_auto] stores service instance records, not traffic-related data used for discovery."
-        },
-        {
-          "id": "d",
-          "explanation": "Application Service [cmdb_ci_service_discovered] stores discovered services, not the traffic data used for discovery decisions."
-        }
-      ]
-    },
-    "source": {
-      "excerpt": "Table 1. Tables containing data collected using traffic-based methods: Flow Connector [sa_flow_connection] - Source: Netflow and VPC logs - Used by Service Mapping to: Discover dependencies, add connections during top-down discovery. TCP Connection [cmdb_tcp] - Source: netstat and lsof commands - Used by Service Mapping to: Discover connections during top-down discovery.",
-      "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/service-mapping/traffic-based-discovery.html"
-    },
-    "labels": {
-      "domain": "Service Mapping Pattern Design",
-      "subtopics": [
-        "CMDB tables",
-        "Traffic-based discovery",
-        "Data sources"
-      ],
-      "tags": [
-        "service-mapping",
-        "cmdb",
-        "traffic-based",
-        "tables"
-      ]
-    },
-    "meta": {
-      "version": "1.0",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-sm-pattern-design-203",
-    "certification": "cis-sm",
-    "topic": "pattern-design",
-    "cognitiveLevel": "application",
-    "type": "multiple_choice",
-    "question": "An administrator wants to use traffic-based discovery for a specific service instance containing Tomcat and MySQL CIs, but traffic-based discovery is turned off at the CI type level for MySQL databases. What will happen?",
-    "options": [
-      {
-        "id": "a",
-        "text": "Service Mapping will use traffic-based discovery for all CIs including MySQL"
-      },
-      {
-        "id": "b",
-        "text": "Service Mapping will not discover any CIs using traffic-based methods"
-      },
-      {
-        "id": "c",
-        "text": "Service Mapping will use traffic-based discovery for Tomcat but not for MySQL"
-      },
-      {
-        "id": "d",
-        "text": "Service Mapping will prompt the user to choose which discovery method to use"
-      }
-    ],
-    "correctAnswers": [
-      "c"
-    ],
-    "explanation": {
-      "correct": "Traffic-based discovery can be enabled at different levels from most global to most specific. More specific rules at the CI type level override service instance settings. Since MySQL has traffic-based discovery turned off at the CI type level, it won't be discovered using this method even though the service instance has it enabled. Tomcat will still use traffic-based discovery.",
-      "wrongAnswers": [
-        {
-          "id": "a",
-          "explanation": "CI type level settings override service instance level settings. MySQL's traffic-based discovery is explicitly disabled at the CI type level."
-        },
-        {
-          "id": "b",
-          "explanation": "Only MySQL is excluded from traffic-based discovery. Other CIs like Tomcat will still use it since they don't have specific exclusions."
-        },
-        {
-          "id": "d",
-          "explanation": "Service Mapping does not prompt users during discovery. It follows the configured hierarchy of settings automatically."
-        }
-      ]
-    },
-    "source": {
-      "excerpt": "You can enable traffic-based discovery for an individual service instance. In this case, Service Mapping uses traffic-based discovery for all CIs that make up this service instance. However, if traffic-based discovery is turned off for some CI types or specific CIs, those CIs aren't discovered using this method, even if the service instance is set to use traffic-based discovery.",
-      "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/service-mapping/traffic-based-discovery.html"
-    },
-    "labels": {
-      "domain": "Service Mapping Pattern Design",
-      "subtopics": [
-        "Traffic-based discovery",
-        "Configuration hierarchy",
-        "CI type settings"
-      ],
-      "tags": [
-        "service-mapping",
-        "traffic-based",
-        "configuration",
-        "hierarchy"
-      ]
-    },
-    "meta": {
-      "version": "1.0",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-sm-pattern-design-204",
-    "certification": "cis-sm",
-    "topic": "pattern-design",
-    "cognitiveLevel": "understanding",
-    "type": "multiple_choice",
-    "question": "Which property controls traffic-based discovery at the product level, and what is its effect when enabled?",
-    "options": [
-      {
-        "id": "a",
-        "text": "sa_ml.connection_suggestions.active - enables AI-based pattern suggestions"
-      },
-      {
-        "id": "b",
-        "text": "sa.traffic_based_discovery.active - facilitates discovery of all CIs in your environment"
-      },
-      {
-        "id": "c",
-        "text": "glide.discovery.traffic.enable - activates network flow log collection"
-      },
-      {
-        "id": "d",
-        "text": "service_mapping.traffic.global - enables traffic monitoring for all services"
-      }
-    ],
-    "correctAnswers": [
-      "b"
-    ],
-    "explanation": {
-      "correct": "The sa.traffic_based_discovery.active property controls traffic-based discovery at the product level. When enabled, it facilitates the discovery of all CIs in your environment. This is the highest level setting, and you cannot enable traffic-based discovery at other levels unless it's enabled at the product level.",
-      "wrongAnswers": [
-        {
-          "id": "a",
-          "explanation": "sa_ml.connection_suggestions.active controls the connection suggestions feature using Predictive Intelligence, not basic traffic-based discovery enablement."
+          "text": "Pattern-based connections replace all traffic-based connections"
         },
         {
           "id": "c",
-          "explanation": "This is not a valid ServiceNow property. The correct property is sa.traffic_based_discovery.active."
+          "text": "Duplicate traffic-based connections are removed if pattern-based discovery creates the same connections"
         },
         {
           "id": "d",
-          "explanation": "This is not a valid ServiceNow property. The correct property is sa.traffic_based_discovery.active."
+          "text": "Both pattern-based and traffic-based connections are merged with a new connection type"
         }
-      ]
-    },
-    "source": {
-      "excerpt": "By default, traffic-based discovery in Service Mapping is turned off. The Traffic based discovery (sa.traffic_based_discovery.active) property controls traffic-based discovery at this level. Enabling traffic-based discovery at the product level facilitates the discovery of all CIs in your environment. Important: You can't enable traffic-based discovery at other levels unless it's enabled at the product level.",
-      "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/service-mapping/traffic-based-discovery.html"
-    },
-    "labels": {
-      "domain": "Service Mapping Pattern Design",
-      "subtopics": [
-        "System properties",
-        "Traffic-based discovery",
-        "Configuration"
       ],
-      "tags": [
-        "service-mapping",
-        "traffic-based",
-        "properties",
-        "configuration"
-      ]
-    },
-    "meta": {
-      "version": "1.0",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-sm-pattern-design-205",
-    "certification": "cis-sm",
-    "topic": "pattern-design",
-    "cognitiveLevel": "knowledge",
-    "type": "multiple_choice",
-    "question": "What is the maximum number of tag categories that can be configured per service family when using tag-based mapping in Service Mapping?",
-    "options": [
-      {
-        "id": "a",
-        "text": "One"
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "When pattern-based discovery runs after traffic-based discovery, the system removes any connections that were created by traffic-based discovery if they're also created by pattern-based discovery. This prevents duplicate connections in the service map while preserving unique connections from both methods.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "Traffic-based connections are not permanently deleted. Only duplicates that are recreated by pattern-based discovery are removed."
+          },
+          {
+            "id": "b",
+            "explanation": "Pattern-based connections do not replace all traffic-based connections. Only overlapping/duplicate connections are handled."
+          },
+          {
+            "id": "d",
+            "explanation": "There is no merged connection type. The system removes duplicates rather than merging them."
+          }
+        ]
       },
-      {
-        "id": "b",
-        "text": "Two"
+      "source": {
+        "excerpt": "Connections created only through traffic-based discovery aren't removed. However, if pattern-based discovery runs after traffic-based discovery has run, it might create duplicate connections between CIs. To avoid duplicates, the system removes any connections that were created by traffic-based discovery if they're also created by pattern-based discovery.",
+        "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/service-mapping/traffic-based-discovery.html"
       },
-      {
-        "id": "c",
-        "text": "Three"
+      "labels": {
+        "domain": "Service Mapping Pattern Design",
+        "subtopics": [
+          "Traffic-based discovery",
+          "Pattern-based discovery",
+          "Connection management"
+        ],
+        "tags": [
+          "service-mapping",
+          "traffic-based",
+          "pattern-based",
+          "connections"
+        ]
       },
-      {
-        "id": "d",
-        "text": "Five"
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
       }
-    ],
-    "correctAnswers": [
-      "c"
-    ],
-    "explanation": {
-      "correct": "The maximum number of tag categories per service family is three. This limitation helps keep the service family configuration manageable while still allowing meaningful categorization using multiple tag dimensions.",
-      "wrongAnswers": [
+    },
+    {
+      "id": "cis-sm-pattern-design-202",
+      "certification": "cis-sm",
+      "topic": "pattern-design",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_select",
+      "question": "Which CMDB tables contain data collected using traffic-based methods for Service Mapping? (Choose two.)",
+      "options": [
         {
           "id": "a",
-          "explanation": "Service Mapping supports more than one tag category per service family. The maximum is three."
+          "text": "Flow Connector [sa_flow_connection]"
         },
         {
           "id": "b",
-          "explanation": "Two categories is less than the maximum allowed. Service Mapping supports up to three tag categories per service family."
+          "text": "Service Instance [cmdb_ci_service_auto]"
         },
-        {
-          "id": "d",
-          "explanation": "Five exceeds the maximum allowed. The documentation states the maximum number of categories per service family is three."
-        }
-      ]
-    },
-    "source": {
-      "excerpt": "Select other tag categories as necessary for this service family. The maximum number of categories per service family is three.",
-      "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/service-mapping/map-service-tag.html"
-    },
-    "labels": {
-      "domain": "Service Mapping Pattern Design",
-      "subtopics": [
-        "Tag-based mapping",
-        "Service family configuration"
-      ],
-      "tags": [
-        "service-mapping",
-        "tag-based",
-        "service-family",
-        "configuration"
-      ]
-    },
-    "meta": {
-      "version": "1.0",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-sm-pattern-design-206",
-    "certification": "cis-sm",
-    "topic": "pattern-design",
-    "cognitiveLevel": "understanding",
-    "type": "multiple_select",
-    "question": "Which statements about the Display in Host View option in service map customization are correct? (Choose two.)",
-    "options": [
-      {
-        "id": "a",
-        "text": "It switches between CI view that hides hosts and host view that hides CIs"
-      },
-      {
-        "id": "b",
-        "text": "It is useful only for service instances discovered using Service Mapping"
-      },
-      {
-        "id": "c",
-        "text": "It permanently removes hosts from the service map"
-      },
-      {
-        "id": "d",
-        "text": "It is available regardless of which plugins are activated"
-      }
-    ],
-    "correctAnswers": [
-      "a",
-      "b"
-    ],
-    "explanation": {
-      "correct": "The Display in Host View option allows switching between CI view (hides hosts) and host view (hides CIs). It is useful only for service instances discovered using Service Mapping because manually created service instances don't contain the necessary host-to-application relationships that make this view meaningful.",
-      "wrongAnswers": [
         {
           "id": "c",
-          "explanation": "The Display in Host View option does not permanently remove anything. It only changes the visualization - hosts and CIs can be shown or hidden at any time."
+          "text": "TCP Connection [cmdb_tcp]"
         },
         {
           "id": "d",
-          "explanation": "This option is only available when the Service Mapping plugin is activated, not regardless of plugin activation."
+          "text": "Application Service [cmdb_ci_service_discovered]"
         }
-      ]
-    },
-    "source": {
-      "excerpt": "Display in Host View - This option is available only when the Service Mapping plugin is activated. Switch between the CI view that hides hosts and the host view that hides CIs... The Host View is useful only for service instances discovered using Service Mapping. This view does not offer additional information for manually created service instances.",
-      "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/service-mapping/modify-map-view.html"
-    },
-    "labels": {
-      "domain": "Service Mapping Pattern Design",
-      "subtopics": [
-        "Map customization",
-        "Host view",
-        "Visualization"
       ],
-      "tags": [
-        "service-mapping",
-        "map-view",
-        "host-view",
-        "visualization"
-      ]
-    },
-    "meta": {
-      "version": "1.0",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-sm-pattern-design-301",
-    "certification": "cis-sm",
-    "topic": "pattern-design",
-    "cognitiveLevel": "understanding",
-    "type": "multiple_choice",
-    "question": "How does the Dell EMC Isilon discovery pattern classify an application as an Isilon cluster before using REST queries?",
-    "options": [
-      {
-        "id": "a",
-        "text": "WMI-based queries to Windows servers"
+      "correctAnswers": [
+        "a",
+        "c"
+      ],
+      "explanation": {
+        "correct": "Service Mapping uses traffic-related data from the Flow Connector [sa_flow_connection] table (populated from Netflow and VPC logs) and the TCP Connection [cmdb_tcp] table (populated from netstat and lsof commands) to detect CI inbound and outbound connections during traffic-based discovery.",
+        "wrongAnswers": [
+          {
+            "id": "b",
+            "explanation": "Service Instance [cmdb_ci_service_auto] stores service instance records, not traffic-related data used for discovery."
+          },
+          {
+            "id": "d",
+            "explanation": "Application Service [cmdb_ci_service_discovered] stores discovered services, not the traffic data used for discovery decisions."
+          }
+        ]
       },
-      {
-        "id": "b",
-        "text": "SNMP-based queries for initial classification"
+      "source": {
+        "excerpt": "Table 1. Tables containing data collected using traffic-based methods: Flow Connector [sa_flow_connection] - Source: Netflow and VPC logs - Used by Service Mapping to: Discover dependencies, add connections during top-down discovery. TCP Connection [cmdb_tcp] - Source: netstat and lsof commands - Used by Service Mapping to: Discover connections during top-down discovery.",
+        "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/service-mapping/traffic-based-discovery.html"
       },
-      {
-        "id": "c",
-        "text": "SSH commands to Linux hosts"
+      "labels": {
+        "domain": "Service Mapping Pattern Design",
+        "subtopics": [
+          "CMDB tables",
+          "Traffic-based discovery",
+          "Data sources"
+        ],
+        "tags": [
+          "service-mapping",
+          "cmdb",
+          "traffic-based",
+          "tables"
+        ]
       },
-      {
-        "id": "d",
-        "text": "Agent-based discovery probes"
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
       }
-    ],
-    "correctAnswers": [
-      "b"
-    ],
-    "explanation": {
-      "correct": "The Dell EMC Isilon discovery process begins with using SNMP-based queries to classify an application as an Isilon cluster. Once classified, the discovery process then uses REST queries to find detailed information about the cluster.",
-      "wrongAnswers": [
+    },
+    {
+      "id": "cis-sm-pattern-design-203",
+      "certification": "cis-sm",
+      "topic": "pattern-design",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "An administrator wants to use traffic-based discovery for a specific service instance containing Tomcat and MySQL CIs, but traffic-based discovery is turned off at the CI type level for MySQL databases. What will happen?",
+      "options": [
         {
           "id": "a",
-          "explanation": "WMI is used for Windows-based discovery. Isilon uses SNMP for classification and REST API for detailed discovery."
+          "text": "Service Mapping will use traffic-based discovery for all CIs including MySQL"
+        },
+        {
+          "id": "b",
+          "text": "Service Mapping will not discover any CIs using traffic-based methods"
         },
         {
           "id": "c",
-          "explanation": "SSH commands are not used for Isilon classification. SNMP is used initially, followed by REST queries."
+          "text": "Service Mapping will use traffic-based discovery for Tomcat but not for MySQL"
         },
         {
           "id": "d",
-          "explanation": "Agent-based discovery is not used for Isilon. The pattern uses SNMP classification and REST API queries."
+          "text": "Service Mapping will prompt the user to choose which discovery method to use"
         }
-      ]
-    },
-    "source": {
-      "excerpt": "Create an SNMP Community credential for the Isilon cluster. The discovery process begins with using SNMP-based queries to classify an application as an Isilon cluster. Once the application is classified as an Isilon cluster, the discovery process uses REST queries to find information about it.",
-      "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/discovery-and-service-mapping-patterns/emc-isilon-discovery.html"
-    },
-    "labels": {
-      "domain": "Service Mapping Pattern Design",
-      "subtopics": [
-        "Classification",
-        "SNMP discovery",
-        "REST API"
       ],
-      "tags": [
-        "service-mapping",
-        "isilon",
-        "snmp",
-        "rest-api"
-      ]
-    },
-    "meta": {
-      "version": "1.0",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-sm-pattern-design-302",
-    "certification": "cis-sm",
-    "topic": "pattern-design",
-    "cognitiveLevel": "knowledge",
-    "type": "multiple_select",
-    "question": "Which Dell EMC Isilon user roles are required for discovery? (Choose three.)",
-    "options": [
-      {
-        "id": "a",
-        "text": "ISI_PRIV_LOGIN_PAPI"
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "Traffic-based discovery can be enabled at different levels from most global to most specific. More specific rules at the CI type level override service instance settings. Since MySQL has traffic-based discovery turned off at the CI type level, it won't be discovered using this method even though the service instance has it enabled. Tomcat will still use traffic-based discovery.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "CI type level settings override service instance level settings. MySQL's traffic-based discovery is explicitly disabled at the CI type level."
+          },
+          {
+            "id": "b",
+            "explanation": "Only MySQL is excluded from traffic-based discovery. Other CIs like Tomcat will still use it since they don't have specific exclusions."
+          },
+          {
+            "id": "d",
+            "explanation": "Service Mapping does not prompt users during discovery. It follows the configured hierarchy of settings automatically."
+          }
+        ]
       },
-      {
-        "id": "b",
-        "text": "ISI_PRIV_ADMIN"
+      "source": {
+        "excerpt": "You can enable traffic-based discovery for an individual service instance. In this case, Service Mapping uses traffic-based discovery for all CIs that make up this service instance. However, if traffic-based discovery is turned off for some CI types or specific CIs, those CIs aren't discovered using this method, even if the service instance is set to use traffic-based discovery.",
+        "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/service-mapping/traffic-based-discovery.html"
       },
-      {
-        "id": "c",
-        "text": "ISI_PRIV_NETWORK"
+      "labels": {
+        "domain": "Service Mapping Pattern Design",
+        "subtopics": [
+          "Traffic-based discovery",
+          "Configuration hierarchy",
+          "CI type settings"
+        ],
+        "tags": [
+          "service-mapping",
+          "traffic-based",
+          "configuration",
+          "hierarchy"
+        ]
       },
-      {
-        "id": "d",
-        "text": "ISI_PRIV_SMB"
-      },
-      {
-        "id": "e",
-        "text": "ISI_PRIV_ROOT"
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
       }
-    ],
-    "correctAnswers": [
-      "a",
-      "c",
-      "d"
-    ],
-    "explanation": {
-      "correct": "The Dell EMC Isilon user must have the following roles for discovery: ISI_PRIV_LOGIN_PAPI (for API login), ISI_PRIV_NETWORK (for network information), and ISI_PRIV_SMB (for SMB share information). Other required roles include ISI_PRIV_AUTH, ISI_PRIV_DEVICES, ISI_PRIV_NFS, and ISI_PRIV_SMARTPOOLS.",
-      "wrongAnswers": [
+    },
+    {
+      "id": "cis-sm-pattern-design-204",
+      "certification": "cis-sm",
+      "topic": "pattern-design",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "Which property controls traffic-based discovery at the product level, and what is its effect when enabled?",
+      "options": [
+        {
+          "id": "a",
+          "text": "sa_ml.connection_suggestions.active - enables AI-based pattern suggestions"
+        },
         {
           "id": "b",
-          "explanation": "ISI_PRIV_ADMIN is not in the list of required roles. The specific roles listed are ISI_PRIV_LOGIN_PAPI, ISI_PRIV_AUTH, ISI_PRIV_DEVICES, ISI_PRIV_NETWORK, ISI_PRIV_NFS, ISI_PRIV_SMARTPOOLS, and ISI_PRIV_SMB."
+          "text": "sa.traffic_based_discovery.active - facilitates discovery of all CIs in your environment"
+        },
+        {
+          "id": "c",
+          "text": "glide.discovery.traffic.enable - activates network flow log collection"
+        },
+        {
+          "id": "d",
+          "text": "service_mapping.traffic.global - enables traffic monitoring for all services"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The sa.traffic_based_discovery.active property controls traffic-based discovery at the product level. When enabled, it facilitates the discovery of all CIs in your environment. This is the highest level setting, and you cannot enable traffic-based discovery at other levels unless it's enabled at the product level.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "sa_ml.connection_suggestions.active controls the connection suggestions feature using Predictive Intelligence, not basic traffic-based discovery enablement."
+          },
+          {
+            "id": "c",
+            "explanation": "This is not a valid ServiceNow property. The correct property is sa.traffic_based_discovery.active."
+          },
+          {
+            "id": "d",
+            "explanation": "This is not a valid ServiceNow property. The correct property is sa.traffic_based_discovery.active."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "By default, traffic-based discovery in Service Mapping is turned off. The Traffic based discovery (sa.traffic_based_discovery.active) property controls traffic-based discovery at this level. Enabling traffic-based discovery at the product level facilitates the discovery of all CIs in your environment. Important: You can't enable traffic-based discovery at other levels unless it's enabled at the product level.",
+        "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/service-mapping/traffic-based-discovery.html"
+      },
+      "labels": {
+        "domain": "Service Mapping Pattern Design",
+        "subtopics": [
+          "System properties",
+          "Traffic-based discovery",
+          "Configuration"
+        ],
+        "tags": [
+          "service-mapping",
+          "traffic-based",
+          "properties",
+          "configuration"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sm-pattern-design-205",
+      "certification": "cis-sm",
+      "topic": "pattern-design",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What is the maximum number of tag categories that can be configured per service family when using tag-based mapping in Service Mapping?",
+      "options": [
+        {
+          "id": "a",
+          "text": "One"
+        },
+        {
+          "id": "b",
+          "text": "Two"
+        },
+        {
+          "id": "c",
+          "text": "Three"
+        },
+        {
+          "id": "d",
+          "text": "Five"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "The maximum number of tag categories per service family is three. This limitation helps keep the service family configuration manageable while still allowing meaningful categorization using multiple tag dimensions.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "Service Mapping supports more than one tag category per service family. The maximum is three."
+          },
+          {
+            "id": "b",
+            "explanation": "Two categories is less than the maximum allowed. Service Mapping supports up to three tag categories per service family."
+          },
+          {
+            "id": "d",
+            "explanation": "Five exceeds the maximum allowed. The documentation states the maximum number of categories per service family is three."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Select other tag categories as necessary for this service family. The maximum number of categories per service family is three.",
+        "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/service-mapping/map-service-tag.html"
+      },
+      "labels": {
+        "domain": "Service Mapping Pattern Design",
+        "subtopics": [
+          "Tag-based mapping",
+          "Service family configuration"
+        ],
+        "tags": [
+          "service-mapping",
+          "tag-based",
+          "service-family",
+          "configuration"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sm-pattern-design-206",
+      "certification": "cis-sm",
+      "topic": "pattern-design",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_select",
+      "question": "Which statements about the Display in Host View option in service map customization are correct? (Choose two.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "It switches between CI view that hides hosts and host view that hides CIs"
+        },
+        {
+          "id": "b",
+          "text": "It is useful only for service instances discovered using Service Mapping"
+        },
+        {
+          "id": "c",
+          "text": "It permanently removes hosts from the service map"
+        },
+        {
+          "id": "d",
+          "text": "It is available regardless of which plugins are activated"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b"
+      ],
+      "explanation": {
+        "correct": "The Display in Host View option allows switching between CI view (hides hosts) and host view (hides CIs). It is useful only for service instances discovered using Service Mapping because manually created service instances don't contain the necessary host-to-application relationships that make this view meaningful.",
+        "wrongAnswers": [
+          {
+            "id": "c",
+            "explanation": "The Display in Host View option does not permanently remove anything. It only changes the visualization - hosts and CIs can be shown or hidden at any time."
+          },
+          {
+            "id": "d",
+            "explanation": "This option is only available when the Service Mapping plugin is activated, not regardless of plugin activation."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Display in Host View - This option is available only when the Service Mapping plugin is activated. Switch between the CI view that hides hosts and the host view that hides CIs... The Host View is useful only for service instances discovered using Service Mapping. This view does not offer additional information for manually created service instances.",
+        "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/service-mapping/modify-map-view.html"
+      },
+      "labels": {
+        "domain": "Service Mapping Pattern Design",
+        "subtopics": [
+          "Map customization",
+          "Host view",
+          "Visualization"
+        ],
+        "tags": [
+          "service-mapping",
+          "map-view",
+          "host-view",
+          "visualization"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sm-pattern-design-301",
+      "certification": "cis-sm",
+      "topic": "pattern-design",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "How does the Dell EMC Isilon discovery pattern classify an application as an Isilon cluster before using REST queries?",
+      "options": [
+        {
+          "id": "a",
+          "text": "WMI-based queries to Windows servers"
+        },
+        {
+          "id": "b",
+          "text": "SNMP-based queries for initial classification"
+        },
+        {
+          "id": "c",
+          "text": "SSH commands to Linux hosts"
+        },
+        {
+          "id": "d",
+          "text": "Agent-based discovery probes"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The Dell EMC Isilon discovery process begins with using SNMP-based queries to classify an application as an Isilon cluster. Once classified, the discovery process then uses REST queries to find detailed information about the cluster.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "WMI is used for Windows-based discovery. Isilon uses SNMP for classification and REST API for detailed discovery."
+          },
+          {
+            "id": "c",
+            "explanation": "SSH commands are not used for Isilon classification. SNMP is used initially, followed by REST queries."
+          },
+          {
+            "id": "d",
+            "explanation": "Agent-based discovery is not used for Isilon. The pattern uses SNMP classification and REST API queries."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Create an SNMP Community credential for the Isilon cluster. The discovery process begins with using SNMP-based queries to classify an application as an Isilon cluster. Once the application is classified as an Isilon cluster, the discovery process uses REST queries to find information about it.",
+        "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/discovery-and-service-mapping-patterns/emc-isilon-discovery.html"
+      },
+      "labels": {
+        "domain": "Service Mapping Pattern Design",
+        "subtopics": [
+          "Classification",
+          "SNMP discovery",
+          "REST API"
+        ],
+        "tags": [
+          "service-mapping",
+          "isilon",
+          "snmp",
+          "rest-api"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sm-pattern-design-302",
+      "certification": "cis-sm",
+      "topic": "pattern-design",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_select",
+      "question": "Which Dell EMC Isilon user roles are required for discovery? (Choose three.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "ISI_PRIV_LOGIN_PAPI"
+        },
+        {
+          "id": "b",
+          "text": "ISI_PRIV_ADMIN"
+        },
+        {
+          "id": "c",
+          "text": "ISI_PRIV_NETWORK"
+        },
+        {
+          "id": "d",
+          "text": "ISI_PRIV_SMB"
         },
         {
           "id": "e",
-          "explanation": "ISI_PRIV_ROOT is not required. Discovery uses specific privilege roles rather than root-level access."
+          "text": "ISI_PRIV_ROOT"
         }
-      ]
-    },
-    "source": {
-      "excerpt": "The Dell EMC Isilon user must also have the following roles: ISI_PRIV_LOGIN_PAPI, ISI_PRIV_AUTH, ISI_PRIV_DEVICES, ISI_PRIV_NETWORK, ISI_PRIV_NFS, ISI_PRIV_SMARTPOOLS, ISI_PRIV_SMB",
-      "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/discovery-and-service-mapping-patterns/emc-isilon-discovery.html"
-    },
-    "labels": {
-      "domain": "Service Mapping Pattern Design",
-      "subtopics": [
-        "User permissions",
-        "Isilon roles",
-        "Prerequisites"
       ],
-      "tags": [
-        "service-mapping",
-        "isilon",
-        "roles",
-        "permissions"
-      ]
-    },
-    "meta": {
-      "version": "1.0",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-sm-pattern-design-303",
-    "certification": "cis-sm",
-    "topic": "pattern-design",
-    "cognitiveLevel": "knowledge",
-    "type": "multiple_choice",
-    "question": "Which CMDB table stores information about the storage cluster that Isilon servers form?",
-    "options": [
-      {
-        "id": "a",
-        "text": "cmdb_ci_storage_server"
+      "correctAnswers": [
+        "a",
+        "c",
+        "d"
+      ],
+      "explanation": {
+        "correct": "The Dell EMC Isilon user must have the following roles for discovery: ISI_PRIV_LOGIN_PAPI (for API login), ISI_PRIV_NETWORK (for network information), and ISI_PRIV_SMB (for SMB share information). Other required roles include ISI_PRIV_AUTH, ISI_PRIV_DEVICES, ISI_PRIV_NFS, and ISI_PRIV_SMARTPOOLS.",
+        "wrongAnswers": [
+          {
+            "id": "b",
+            "explanation": "ISI_PRIV_ADMIN is not in the list of required roles. The specific roles listed are ISI_PRIV_LOGIN_PAPI, ISI_PRIV_AUTH, ISI_PRIV_DEVICES, ISI_PRIV_NETWORK, ISI_PRIV_NFS, ISI_PRIV_SMARTPOOLS, and ISI_PRIV_SMB."
+          },
+          {
+            "id": "e",
+            "explanation": "ISI_PRIV_ROOT is not required. Discovery uses specific privilege roles rather than root-level access."
+          }
+        ]
       },
-      {
-        "id": "b",
-        "text": "cmdb_ci_storage_cluster"
+      "source": {
+        "excerpt": "The Dell EMC Isilon user must also have the following roles: ISI_PRIV_LOGIN_PAPI, ISI_PRIV_AUTH, ISI_PRIV_DEVICES, ISI_PRIV_NETWORK, ISI_PRIV_NFS, ISI_PRIV_SMARTPOOLS, ISI_PRIV_SMB",
+        "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/discovery-and-service-mapping-patterns/emc-isilon-discovery.html"
       },
-      {
-        "id": "c",
-        "text": "cmdb_ci_cluster"
+      "labels": {
+        "domain": "Service Mapping Pattern Design",
+        "subtopics": [
+          "User permissions",
+          "Isilon roles",
+          "Prerequisites"
+        ],
+        "tags": [
+          "service-mapping",
+          "isilon",
+          "roles",
+          "permissions"
+        ]
       },
-      {
-        "id": "d",
-        "text": "cmdb_ci_storage_pool"
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
       }
-    ],
-    "correctAnswers": [
-      "b"
-    ],
-    "explanation": {
-      "correct": "The Storage Cluster [cmdb_ci_storage_cluster] table stores the name and IP address of the cluster that Isilon servers form. This is separate from the Storage Server table which stores information about individual servers.",
-      "wrongAnswers": [
+    },
+    {
+      "id": "cis-sm-pattern-design-303",
+      "certification": "cis-sm",
+      "topic": "pattern-design",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which CMDB table stores information about the storage cluster that Isilon servers form?",
+      "options": [
         {
           "id": "a",
-          "explanation": "cmdb_ci_storage_server stores information about the individual server hosting the Isilon cluster, not the cluster itself."
+          "text": "cmdb_ci_storage_server"
+        },
+        {
+          "id": "b",
+          "text": "cmdb_ci_storage_cluster"
         },
         {
           "id": "c",
-          "explanation": "cmdb_ci_cluster is not the correct table for storage clusters. The specific table is cmdb_ci_storage_cluster."
+          "text": "cmdb_ci_cluster"
         },
         {
           "id": "d",
-          "explanation": "cmdb_ci_storage_pool is for storage pools, not the cluster entity. Storage clusters use cmdb_ci_storage_cluster."
+          "text": "cmdb_ci_storage_pool"
         }
-      ]
-    },
-    "source": {
-      "excerpt": "Storage Cluster [cmdb_ci_storage_cluster]: The name of the IP address of the cluster that Isilon servers form. Fields: name, ip_address",
-      "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/discovery-and-service-mapping-patterns/emc-isilon-discovery.html"
-    },
-    "labels": {
-      "domain": "Service Mapping Pattern Design",
-      "subtopics": [
-        "CMDB tables",
-        "Storage clusters",
-        "Data model"
       ],
-      "tags": [
-        "service-mapping",
-        "cmdb",
-        "storage-cluster",
-        "isilon"
-      ]
-    },
-    "meta": {
-      "version": "1.0",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-sm-pattern-design-304",
-    "certification": "cis-sm",
-    "topic": "pattern-design",
-    "cognitiveLevel": "application",
-    "type": "multiple_choice",
-    "question": "An administrator needs to configure credentials for Dell EMC Isilon discovery. Which TWO types of credentials must be created?",
-    "options": [
-      {
-        "id": "a",
-        "text": "SSH credentials and SNMP credentials"
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The Storage Cluster [cmdb_ci_storage_cluster] table stores the name and IP address of the cluster that Isilon servers form. This is separate from the Storage Server table which stores information about individual servers.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "cmdb_ci_storage_server stores information about the individual server hosting the Isilon cluster, not the cluster itself."
+          },
+          {
+            "id": "c",
+            "explanation": "cmdb_ci_cluster is not the correct table for storage clusters. The specific table is cmdb_ci_storage_cluster."
+          },
+          {
+            "id": "d",
+            "explanation": "cmdb_ci_storage_pool is for storage pools, not the cluster entity. Storage clusters use cmdb_ci_storage_cluster."
+          }
+        ]
       },
-      {
-        "id": "b",
-        "text": "SNMP Community credentials and Basic authentication credentials"
+      "source": {
+        "excerpt": "Storage Cluster [cmdb_ci_storage_cluster]: The name of the IP address of the cluster that Isilon servers form. Fields: name, ip_address",
+        "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/discovery-and-service-mapping-patterns/emc-isilon-discovery.html"
       },
-      {
-        "id": "c",
-        "text": "Windows credentials and REST API tokens"
+      "labels": {
+        "domain": "Service Mapping Pattern Design",
+        "subtopics": [
+          "CMDB tables",
+          "Storage clusters",
+          "Data model"
+        ],
+        "tags": [
+          "service-mapping",
+          "cmdb",
+          "storage-cluster",
+          "isilon"
+        ]
       },
-      {
-        "id": "d",
-        "text": "Kerberos credentials and LDAP credentials"
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
       }
-    ],
-    "correctAnswers": [
-      "b"
-    ],
-    "explanation": {
-      "correct": "For Dell EMC Isilon discovery, two types of credentials are required: SNMP Community credentials for the initial SNMP-based classification queries, and Basic authentication credentials for the REST API queries that retrieve detailed information about the cluster.",
-      "wrongAnswers": [
+    },
+    {
+      "id": "cis-sm-pattern-design-304",
+      "certification": "cis-sm",
+      "topic": "pattern-design",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "An administrator needs to configure credentials for Dell EMC Isilon discovery. Which TWO types of credentials must be created?",
+      "options": [
         {
           "id": "a",
-          "explanation": "SSH credentials are not used for Isilon discovery. The pattern uses SNMP for classification and REST API (with Basic Auth) for details."
+          "text": "SSH credentials and SNMP credentials"
+        },
+        {
+          "id": "b",
+          "text": "SNMP Community credentials and Basic authentication credentials"
         },
         {
           "id": "c",
-          "explanation": "Windows credentials are not applicable. Isilon uses SNMP Community and Basic authentication credentials."
+          "text": "Windows credentials and REST API tokens"
         },
         {
           "id": "d",
-          "explanation": "Kerberos and LDAP credentials are not used for Isilon discovery. SNMP Community and Basic authentication are required."
+          "text": "Kerberos credentials and LDAP credentials"
         }
-      ]
-    },
-    "source": {
-      "excerpt": "Create SNMP Community credentials: Create an SNMP Community credential for the Isilon cluster... Create basic authentication credentials: In the Credentials module of the ServiceNow platform, create a basic authentication credential for the same Dell EMC Isilon user.",
-      "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/discovery-and-service-mapping-patterns/emc-isilon-discovery.html"
-    },
-    "labels": {
-      "domain": "Service Mapping Pattern Design",
-      "subtopics": [
-        "Credentials",
-        "SNMP",
-        "Basic authentication"
       ],
-      "tags": [
-        "service-mapping",
-        "credentials",
-        "isilon",
-        "snmp",
-        "basic-auth"
-      ]
-    },
-    "meta": {
-      "version": "1.0",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-sm-pattern-design-305",
-    "certification": "cis-sm",
-    "topic": "pattern-design",
-    "cognitiveLevel": "understanding",
-    "type": "multiple_choice",
-    "question": "What advantage does tag-based mapping offer compared to pattern-based mapping in terms of user privileges?",
-    "options": [
-      {
-        "id": "a",
-        "text": "Tag-based mapping requires more elevated privileges than pattern-based"
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "For Dell EMC Isilon discovery, two types of credentials are required: SNMP Community credentials for the initial SNMP-based classification queries, and Basic authentication credentials for the REST API queries that retrieve detailed information about the cluster.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "SSH credentials are not used for Isilon discovery. The pattern uses SNMP for classification and REST API (with Basic Auth) for details."
+          },
+          {
+            "id": "c",
+            "explanation": "Windows credentials are not applicable. Isilon uses SNMP Community and Basic authentication credentials."
+          },
+          {
+            "id": "d",
+            "explanation": "Kerberos and LDAP credentials are not used for Isilon discovery. SNMP Community and Basic authentication are required."
+          }
+        ]
       },
-      {
-        "id": "b",
-        "text": "Tag-based mapping doesn't require configuring credentials or providing users with elevated rights"
+      "source": {
+        "excerpt": "Create SNMP Community credentials: Create an SNMP Community credential for the Isilon cluster... Create basic authentication credentials: In the Credentials module of the ServiceNow platform, create a basic authentication credential for the same Dell EMC Isilon user.",
+        "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/discovery-and-service-mapping-patterns/emc-isilon-discovery.html"
       },
-      {
-        "id": "c",
-        "text": "Both methods require identical privilege levels"
+      "labels": {
+        "domain": "Service Mapping Pattern Design",
+        "subtopics": [
+          "Credentials",
+          "SNMP",
+          "Basic authentication"
+        ],
+        "tags": [
+          "service-mapping",
+          "credentials",
+          "isilon",
+          "snmp",
+          "basic-auth"
+        ]
       },
-      {
-        "id": "d",
-        "text": "Tag-based mapping requires root access to all systems"
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
       }
-    ],
-    "correctAnswers": [
-      "b"
-    ],
-    "explanation": {
-      "correct": "Tag-based mapping doesn't require configuring credentials or providing users with elevated rights. This is a significant advantage as it uses tags that are already discovered by Discovery and Cloud Provisioning and Governance, making it easier to implement.",
-      "wrongAnswers": [
+    },
+    {
+      "id": "cis-sm-pattern-design-305",
+      "certification": "cis-sm",
+      "topic": "pattern-design",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What advantage does tag-based mapping offer compared to pattern-based mapping in terms of user privileges?",
+      "options": [
         {
           "id": "a",
-          "explanation": "Tag-based mapping actually requires fewer privileges, not more. It leverages existing discovered tags."
+          "text": "Tag-based mapping requires more elevated privileges than pattern-based"
+        },
+        {
+          "id": "b",
+          "text": "Tag-based mapping doesn't require configuring credentials or providing users with elevated rights"
         },
         {
           "id": "c",
-          "explanation": "The methods have different privilege requirements. Tag-based mapping requires less credential configuration."
+          "text": "Both methods require identical privilege levels"
         },
         {
           "id": "d",
-          "explanation": "Tag-based mapping does not require root access. It uses tags already discovered without needing elevated rights."
+          "text": "Tag-based mapping requires root access to all systems"
         }
-      ]
-    },
-    "source": {
-      "excerpt": "Use tags that help categorize and organize configuration items (CIs) in your organization to map application services. Tag-based mapping doesn't require configuring credentials or providing users with elevated rights.",
-      "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/service-mapping/map-service-tag.html"
-    },
-    "labels": {
-      "domain": "Service Mapping Pattern Design",
-      "subtopics": [
-        "Tag-based mapping",
-        "Credentials",
-        "Privileges"
       ],
-      "tags": [
-        "service-mapping",
-        "tag-based",
-        "credentials",
-        "security"
-      ]
-    },
-    "meta": {
-      "version": "1.0",
-      "release": "Xanadu",
-      "reviewed": false
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Tag-based mapping doesn't require configuring credentials or providing users with elevated rights. This is a significant advantage as it uses tags that are already discovered by Discovery and Cloud Provisioning and Governance, making it easier to implement.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "Tag-based mapping actually requires fewer privileges, not more. It leverages existing discovered tags."
+          },
+          {
+            "id": "c",
+            "explanation": "The methods have different privilege requirements. Tag-based mapping requires less credential configuration."
+          },
+          {
+            "id": "d",
+            "explanation": "Tag-based mapping does not require root access. It uses tags already discovered without needing elevated rights."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Use tags that help categorize and organize configuration items (CIs) in your organization to map application services. Tag-based mapping doesn't require configuring credentials or providing users with elevated rights.",
+        "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/service-mapping/map-service-tag.html"
+      },
+      "labels": {
+        "domain": "Service Mapping Pattern Design",
+        "subtopics": [
+          "Tag-based mapping",
+          "Credentials",
+          "Privileges"
+        ],
+        "tags": [
+          "service-mapping",
+          "tag-based",
+          "credentials",
+          "security"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     }
-  }
-]
+  ]
+}

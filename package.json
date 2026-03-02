@@ -4,6 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "validate": "npx tsx scripts/validate-questions.ts",
+    "prebuild": "npx tsx scripts/validate-questions.ts && npx tsx scripts/generate-udemy-exports.ts",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
@@ -11,6 +13,7 @@
   },
   "dependencies": {
     "geist": "^1.7.0",
+    "lucide-react": "^0.575.0",
     "next": "16.1.1",
     "react": "19.2.3",
     "react-dom": "19.2.3",

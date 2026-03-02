@@ -1,4 +1,5 @@
 // Mock Exam Types
+import type { QuestionType } from "./index";
 
 export interface MockExamConfig {
   certSlug: string;
@@ -13,7 +14,7 @@ export interface MockExamQuestion {
   question: string;
   options: { id: string; text: string }[];
   correctAnswers: string[];
-  type: "multiple_choice" | "multiple_select";
+  type: QuestionType;
   explanation?: {
     correct: string;
     wrongAnswers?: { choiceId: string; explanation: string }[];

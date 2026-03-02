@@ -1,4 +1,6 @@
 {
+  "certification": "cis-sp",
+  "topic": "data-separation",
   "questions": [
     {
       "id": "cis-sp-data-separation-001",
@@ -8,21 +10,49 @@
       "type": "multiple_choice",
       "question": "Which field is added to tables to enable domain separation?",
       "options": [
-        { "id": "a", "text": "sys_tenant" },
-        { "id": "b", "text": "sys_domain" },
-        { "id": "c", "text": "domain_id" },
-        { "id": "d", "text": "sys_scope" }
+        {
+          "id": "a",
+          "text": "sys_tenant"
+        },
+        {
+          "id": "b",
+          "text": "sys_domain"
+        },
+        {
+          "id": "c",
+          "text": "domain_id"
+        },
+        {
+          "id": "d",
+          "text": "sys_scope"
+        }
       ],
-      "correctAnswers": ["b"],
+      "correctAnswers": [
+        "b"
+      ],
       "explanation": {
         "correct": "By default, domain separation adds a sys_domain field to the Task [task] and Configuration Items [cmdb_ci] tables and their extensions. This field stores the domain to which each record belongs.",
         "wrongAnswers": [
-          { "choiceId": "a", "explanation": "sys_tenant is not a standard domain separation field", "reference": "ServiceNow Domain Separation documentation" },
-          { "choiceId": "c", "explanation": "The correct field name is sys_domain, not domain_id", "reference": "ServiceNow Domain Separation documentation" },
-          { "choiceId": "d", "explanation": "sys_scope is used for application scoping, not domain separation", "reference": "ServiceNow Domain Separation documentation" }
+          {
+            "choiceId": "a",
+            "explanation": "sys_tenant is not a standard domain separation field",
+            "reference": "ServiceNow Domain Separation documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The correct field name is sys_domain, not domain_id",
+            "reference": "ServiceNow Domain Separation documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "sys_scope is used for application scoping, not domain separation",
+            "reference": "ServiceNow Domain Separation documentation"
+          }
         ]
       },
-      "references": ["ServiceNow Domain Separation documentation"],
+      "references": [
+        "ServiceNow Domain Separation documentation"
+      ],
       "isFree": true,
       "source": {
         "type": "documentation",
@@ -34,8 +64,15 @@
         "domain": "Data Separation/Visibility",
         "domainSlug": "data-separation",
         "domainPercentage": 24,
-        "subtopics": ["sys_domain field", "Table configuration"],
-        "tags": ["sys_domain", "data separation", "tables"]
+        "subtopics": [
+          "sys_domain field",
+          "Table configuration"
+        ],
+        "tags": [
+          "sys_domain",
+          "data separation",
+          "tables"
+        ]
       },
       "meta": {
         "generatedAt": "2026-02-23T20:00:00Z",
@@ -52,21 +89,49 @@
       "type": "multiple_choice",
       "question": "In a domain hierarchy, a user in a parent domain can view records from which domains by default?",
       "options": [
-        { "id": "a", "text": "Only their own domain" },
-        { "id": "b", "text": "Their domain, child domains, and domains they have visibility into" },
-        { "id": "c", "text": "All domains in the instance" },
-        { "id": "d", "text": "Only the global domain" }
+        {
+          "id": "a",
+          "text": "Only their own domain"
+        },
+        {
+          "id": "b",
+          "text": "Their domain, child domains, and domains they have visibility into"
+        },
+        {
+          "id": "c",
+          "text": "All domains in the instance"
+        },
+        {
+          "id": "d",
+          "text": "Only the global domain"
+        }
       ],
-      "correctAnswers": ["b"],
+      "correctAnswers": [
+        "b"
+      ],
       "explanation": {
         "correct": "From a domain, users can see records in the global domain, their specific domain, any child domain of that domain, or any domain that gets directly or indirectly contained by that domain. This follows the platform's visibility domains and contains domains rules.",
         "wrongAnswers": [
-          { "choiceId": "a", "explanation": "Users in parent domains can see child domain records by default, not just their own domain", "reference": "ServiceNow Domain Separation documentation" },
-          { "choiceId": "c", "explanation": "Users cannot see all domains by default; visibility is limited by domain hierarchy and explicit visibility grants", "reference": "ServiceNow Domain Separation documentation" },
-          { "choiceId": "d", "explanation": "While global domain records are visible, users also see their own domain and child domains", "reference": "ServiceNow Domain Separation documentation" }
+          {
+            "choiceId": "a",
+            "explanation": "Users in parent domains can see child domain records by default, not just their own domain",
+            "reference": "ServiceNow Domain Separation documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Users cannot see all domains by default; visibility is limited by domain hierarchy and explicit visibility grants",
+            "reference": "ServiceNow Domain Separation documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "While global domain records are visible, users also see their own domain and child domains",
+            "reference": "ServiceNow Domain Separation documentation"
+          }
         ]
       },
-      "references": ["ServiceNow Domain Separation documentation"],
+      "references": [
+        "ServiceNow Domain Separation documentation"
+      ],
       "isFree": true,
       "source": {
         "type": "documentation",
@@ -78,8 +143,15 @@
         "domain": "Data Separation/Visibility",
         "domainSlug": "data-separation",
         "domainPercentage": 24,
-        "subtopics": ["Domain visibility", "Domain hierarchy"],
-        "tags": ["visibility", "domain hierarchy", "parent domain"]
+        "subtopics": [
+          "Domain visibility",
+          "Domain hierarchy"
+        ],
+        "tags": [
+          "visibility",
+          "domain hierarchy",
+          "parent domain"
+        ]
       },
       "meta": {
         "generatedAt": "2026-02-23T20:00:00Z",
@@ -96,21 +168,49 @@
       "type": "multiple_choice",
       "question": "Which statement accurately describes what happens when records are automatically generated in a domain-separated environment?",
       "options": [
-        { "id": "a", "text": "Records are always created in the global domain" },
-        { "id": "b", "text": "The domain of the record is the same as the domain of the user creating or generating the records" },
-        { "id": "c", "text": "Records are randomly assigned to available domains" },
-        { "id": "d", "text": "Records inherit the domain of the parent table" }
+        {
+          "id": "a",
+          "text": "Records are always created in the global domain"
+        },
+        {
+          "id": "b",
+          "text": "The domain of the record is the same as the domain of the user creating or generating the records"
+        },
+        {
+          "id": "c",
+          "text": "Records are randomly assigned to available domains"
+        },
+        {
+          "id": "d",
+          "text": "Records inherit the domain of the parent table"
+        }
       ],
-      "correctAnswers": ["b"],
+      "correctAnswers": [
+        "b"
+      ],
       "explanation": {
         "correct": "For records that are automatically generated (and for any record that is manually generated), the domain of the record is the same as the domain of the user responsible for creating or generating the records. This is critical for ensuring records are visible to the right set of users.",
         "wrongAnswers": [
-          { "choiceId": "a", "explanation": "Records are not always created in the global domain; they inherit the creating user's domain", "reference": "ServiceNow Domain Separation documentation" },
-          { "choiceId": "c", "explanation": "Domain assignment is deterministic based on the user's domain, not random", "reference": "ServiceNow Domain Separation documentation" },
-          { "choiceId": "d", "explanation": "Records inherit the user's domain, not the parent table's domain configuration", "reference": "ServiceNow Domain Separation documentation" }
+          {
+            "choiceId": "a",
+            "explanation": "Records are not always created in the global domain; they inherit the creating user's domain",
+            "reference": "ServiceNow Domain Separation documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Domain assignment is deterministic based on the user's domain, not random",
+            "reference": "ServiceNow Domain Separation documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Records inherit the user's domain, not the parent table's domain configuration",
+            "reference": "ServiceNow Domain Separation documentation"
+          }
         ]
       },
-      "references": ["ServiceNow Domain Separation documentation"],
+      "references": [
+        "ServiceNow Domain Separation documentation"
+      ],
       "isFree": true,
       "source": {
         "type": "documentation",
@@ -122,8 +222,15 @@
         "domain": "Data Separation/Visibility",
         "domainSlug": "data-separation",
         "domainPercentage": 24,
-        "subtopics": ["Record creation", "Domain assignment"],
-        "tags": ["record generation", "domain assignment", "user domain"]
+        "subtopics": [
+          "Record creation",
+          "Domain assignment"
+        ],
+        "tags": [
+          "record generation",
+          "domain assignment",
+          "user domain"
+        ]
       },
       "meta": {
         "generatedAt": "2026-02-23T20:00:00Z",
@@ -140,21 +247,49 @@
       "type": "multiple_choice",
       "question": "Which is NOT a recommended practice when domain separating tables?",
       "options": [
-        { "id": "a", "text": "Adding sys_domain field to custom tables" },
-        { "id": "b", "text": "Domain separating platform tables with sys_ prefix" },
-        { "id": "c", "text": "Creating domain-specific business rules" },
-        { "id": "d", "text": "Using the CI Class Manager for CMDB domain configuration" }
+        {
+          "id": "a",
+          "text": "Adding sys_domain field to custom tables"
+        },
+        {
+          "id": "b",
+          "text": "Domain separating platform tables with sys_ prefix"
+        },
+        {
+          "id": "c",
+          "text": "Creating domain-specific business rules"
+        },
+        {
+          "id": "d",
+          "text": "Using the CI Class Manager for CMDB domain configuration"
+        }
       ],
-      "correctAnswers": ["b"],
+      "correctAnswers": [
+        "b"
+      ],
       "explanation": {
         "correct": "ServiceNow does not recommend domain separating platform tables (any table with the sys_ prefix such as the Dictionary Entry [sys_dictionary] and Dictionary Entry Override [sys_dictionary_override] tables) because it can produce unexpected results.",
         "wrongAnswers": [
-          { "choiceId": "a", "explanation": "Adding sys_domain field to custom tables is the recommended way to enable domain separation for those tables", "reference": "ServiceNow Domain Separation documentation" },
-          { "choiceId": "c", "explanation": "Creating domain-specific business rules is a valid approach for process separation", "reference": "ServiceNow Domain Separation documentation" },
-          { "choiceId": "d", "explanation": "CI Class Manager is the recommended tool for managing CMDB domain configurations", "reference": "ServiceNow Domain Separation documentation" }
+          {
+            "choiceId": "a",
+            "explanation": "Adding sys_domain field to custom tables is the recommended way to enable domain separation for those tables",
+            "reference": "ServiceNow Domain Separation documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Creating domain-specific business rules is a valid approach for process separation",
+            "reference": "ServiceNow Domain Separation documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "CI Class Manager is the recommended tool for managing CMDB domain configurations",
+            "reference": "ServiceNow Domain Separation documentation"
+          }
         ]
       },
-      "references": ["ServiceNow Domain Separation documentation"],
+      "references": [
+        "ServiceNow Domain Separation documentation"
+      ],
       "isFree": true,
       "source": {
         "type": "documentation",
@@ -166,8 +301,15 @@
         "domain": "Data Separation/Visibility",
         "domainSlug": "data-separation",
         "domainPercentage": 24,
-        "subtopics": ["Platform tables", "Best practices"],
-        "tags": ["best practices", "platform tables", "negative"]
+        "subtopics": [
+          "Platform tables",
+          "Best practices"
+        ],
+        "tags": [
+          "best practices",
+          "platform tables",
+          "negative"
+        ]
       },
       "meta": {
         "generatedAt": "2026-02-23T20:00:00Z",
@@ -184,22 +326,54 @@
       "type": "multiple_select",
       "question": "Which tables have the sys_domain field added by default when domain separation is enabled? (Choose two)",
       "options": [
-        { "id": "a", "text": "Task [task]" },
-        { "id": "b", "text": "Dictionary Entry [sys_dictionary]" },
-        { "id": "c", "text": "Configuration Items [cmdb_ci]" },
-        { "id": "d", "text": "System Properties [sys_properties]" },
-        { "id": "e", "text": "Script Include [sys_script_include]" }
+        {
+          "id": "a",
+          "text": "Task [task]"
+        },
+        {
+          "id": "b",
+          "text": "Dictionary Entry [sys_dictionary]"
+        },
+        {
+          "id": "c",
+          "text": "Configuration Items [cmdb_ci]"
+        },
+        {
+          "id": "d",
+          "text": "System Properties [sys_properties]"
+        },
+        {
+          "id": "e",
+          "text": "Script Include [sys_script_include]"
+        }
       ],
-      "correctAnswers": ["a", "c"],
+      "correctAnswers": [
+        "a",
+        "c"
+      ],
       "explanation": {
         "correct": "By default, domain separation adds a domain field to the Task [task] and Configuration Items [cmdb_ci] tables and their extensions. These are the primary data tables that typically need domain separation for multi-tenant implementations.",
         "wrongAnswers": [
-          { "choiceId": "b", "explanation": "Dictionary Entry is a system table (sys_ prefix) that should not be domain separated", "reference": "ServiceNow Domain Separation documentation" },
-          { "choiceId": "d", "explanation": "System Properties is a platform configuration table, not domain separated by default", "reference": "ServiceNow Domain Separation documentation" },
-          { "choiceId": "e", "explanation": "Script Include is a development artifact table, handled differently than data tables", "reference": "ServiceNow Domain Separation documentation" }
+          {
+            "choiceId": "b",
+            "explanation": "Dictionary Entry is a system table (sys_ prefix) that should not be domain separated",
+            "reference": "ServiceNow Domain Separation documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "System Properties is a platform configuration table, not domain separated by default",
+            "reference": "ServiceNow Domain Separation documentation"
+          },
+          {
+            "choiceId": "e",
+            "explanation": "Script Include is a development artifact table, handled differently than data tables",
+            "reference": "ServiceNow Domain Separation documentation"
+          }
         ]
       },
-      "references": ["ServiceNow Domain Separation documentation"],
+      "references": [
+        "ServiceNow Domain Separation documentation"
+      ],
       "isFree": true,
       "source": {
         "type": "documentation",
@@ -211,8 +385,15 @@
         "domain": "Data Separation/Visibility",
         "domainSlug": "data-separation",
         "domainPercentage": 24,
-        "subtopics": ["Default tables", "sys_domain field"],
-        "tags": ["task table", "cmdb_ci", "default separation"]
+        "subtopics": [
+          "Default tables",
+          "sys_domain field"
+        ],
+        "tags": [
+          "task table",
+          "cmdb_ci",
+          "default separation"
+        ]
       },
       "meta": {
         "generatedAt": "2026-02-23T20:00:00Z",
@@ -229,21 +410,49 @@
       "type": "true_false_compound",
       "question": "Evaluate the following statements about domain visibility:\n\nStatement 1: Users always have access to data from domains that have been explicitly granted to them by domain visibility.\n\nStatement 2: A user in a child domain can always view records in the parent domain.\n\nWhich statements are TRUE?",
       "options": [
-        { "id": "a", "text": "Statement 1 only" },
-        { "id": "b", "text": "Statement 2 only" },
-        { "id": "c", "text": "Both statements" },
-        { "id": "d", "text": "Neither statement" }
+        {
+          "id": "a",
+          "text": "Statement 1 only"
+        },
+        {
+          "id": "b",
+          "text": "Statement 2 only"
+        },
+        {
+          "id": "c",
+          "text": "Both statements"
+        },
+        {
+          "id": "d",
+          "text": "Neither statement"
+        }
       ],
-      "correctAnswers": ["a"],
+      "correctAnswers": [
+        "a"
+      ],
       "explanation": {
         "correct": "Statement 1 is TRUE: Users always have access to data from domains that have been explicitly granted to them by domain visibility. Statement 2 is FALSE: An incident in the parent domain can reference artifacts in the child domain, but not the other way around. Child domains cannot automatically access parent domain records.",
         "wrongAnswers": [
-          { "choiceId": "b", "explanation": "Statement 1 is true about explicit domain visibility grants; Statement 2 is false because child domains don't automatically see parent records", "reference": "ServiceNow Domain Separation documentation" },
-          { "choiceId": "c", "explanation": "Statement 2 is false; child domains cannot view parent domain records by default", "reference": "ServiceNow Domain Separation documentation" },
-          { "choiceId": "d", "explanation": "Statement 1 is true regarding explicit domain visibility grants", "reference": "ServiceNow Domain Separation documentation" }
+          {
+            "choiceId": "b",
+            "explanation": "Statement 1 is true about explicit domain visibility grants; Statement 2 is false because child domains don't automatically see parent records",
+            "reference": "ServiceNow Domain Separation documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Statement 2 is false; child domains cannot view parent domain records by default",
+            "reference": "ServiceNow Domain Separation documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Statement 1 is true regarding explicit domain visibility grants",
+            "reference": "ServiceNow Domain Separation documentation"
+          }
         ]
       },
-      "references": ["ServiceNow Domain Separation documentation"],
+      "references": [
+        "ServiceNow Domain Separation documentation"
+      ],
       "isFree": true,
       "source": {
         "type": "documentation",
@@ -255,8 +464,15 @@
         "domain": "Data Separation/Visibility",
         "domainSlug": "data-separation",
         "domainPercentage": 24,
-        "subtopics": ["Domain visibility", "Parent-child relationships"],
-        "tags": ["visibility", "compound true/false", "domain hierarchy"]
+        "subtopics": [
+          "Domain visibility",
+          "Parent-child relationships"
+        ],
+        "tags": [
+          "visibility",
+          "compound true/false",
+          "domain hierarchy"
+        ]
       },
       "meta": {
         "generatedAt": "2026-02-23T20:00:00Z",
@@ -273,21 +489,49 @@
       "type": "multiple_choice",
       "question": "A service provider has domains organized as: Global > TOP > Domain A and Domain B. If a control needs to be assessed by users in both Domain A and Domain B, where should the control be created?",
       "options": [
-        { "id": "a", "text": "Domain A only" },
-        { "id": "b", "text": "Domain B only" },
-        { "id": "c", "text": "TOP domain" },
-        { "id": "d", "text": "Global domain" }
+        {
+          "id": "a",
+          "text": "Domain A only"
+        },
+        {
+          "id": "b",
+          "text": "Domain B only"
+        },
+        {
+          "id": "c",
+          "text": "TOP domain"
+        },
+        {
+          "id": "d",
+          "text": "Global domain"
+        }
       ],
-      "correctAnswers": ["d"],
+      "correctAnswers": [
+        "d"
+      ],
       "explanation": {
         "correct": "If you have a risk or control that you want to be assessed by users in domains A and B, the risk or control should be generated or manually created at the global level. If the control is created in Domain B, you will not be able to recreate it in Domain A due to indexing constraints.",
         "wrongAnswers": [
-          { "choiceId": "a", "explanation": "Creating in Domain A only would make it inaccessible to Domain B users", "reference": "ServiceNow Domain Separation documentation" },
-          { "choiceId": "b", "explanation": "Creating in Domain B only would make it inaccessible to Domain A users", "reference": "ServiceNow Domain Separation documentation" },
-          { "choiceId": "c", "explanation": "Creating at TOP would work for users in TOP and child domains, but global is more appropriate when both sibling domains need access", "reference": "ServiceNow Domain Separation documentation" }
+          {
+            "choiceId": "a",
+            "explanation": "Creating in Domain A only would make it inaccessible to Domain B users",
+            "reference": "ServiceNow Domain Separation documentation"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "Creating in Domain B only would make it inaccessible to Domain A users",
+            "reference": "ServiceNow Domain Separation documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Creating at TOP would work for users in TOP and child domains, but global is more appropriate when both sibling domains need access",
+            "reference": "ServiceNow Domain Separation documentation"
+          }
         ]
       },
-      "references": ["ServiceNow Domain Separation documentation"],
+      "references": [
+        "ServiceNow Domain Separation documentation"
+      ],
       "isFree": true,
       "source": {
         "type": "documentation",
@@ -299,8 +543,15 @@
         "domain": "Data Separation/Visibility",
         "domainSlug": "data-separation",
         "domainPercentage": 24,
-        "subtopics": ["Record placement", "Domain hierarchy planning"],
-        "tags": ["domain hierarchy", "record creation", "scenario"]
+        "subtopics": [
+          "Record placement",
+          "Domain hierarchy planning"
+        ],
+        "tags": [
+          "domain hierarchy",
+          "record creation",
+          "scenario"
+        ]
       },
       "meta": {
         "generatedAt": "2026-02-23T20:00:00Z",
@@ -317,21 +568,49 @@
       "type": "multiple_choice",
       "question": "What happens to security incidents in a domain-separated Security Incident Response implementation?",
       "options": [
-        { "id": "a", "text": "All security incidents are visible across all domains" },
-        { "id": "b", "text": "Security incidents in one domain cannot be viewed from other domains" },
-        { "id": "c", "text": "Security incidents are automatically shared with parent domains" },
-        { "id": "d", "text": "Security incidents must be manually assigned to each domain" }
+        {
+          "id": "a",
+          "text": "All security incidents are visible across all domains"
+        },
+        {
+          "id": "b",
+          "text": "Security incidents in one domain cannot be viewed from other domains"
+        },
+        {
+          "id": "c",
+          "text": "Security incidents are automatically shared with parent domains"
+        },
+        {
+          "id": "d",
+          "text": "Security incidents must be manually assigned to each domain"
+        }
       ],
-      "correctAnswers": ["b"],
+      "correctAnswers": [
+        "b"
+      ],
       "explanation": {
         "correct": "Data can be domain-separated, which means security incidents in one domain can't be viewed from other domains. Observables extracted from the security incident are placed in the same domain and can't be viewed from other domains.",
         "wrongAnswers": [
-          { "choiceId": "a", "explanation": "Domain separation specifically prevents cross-domain visibility of security incidents", "reference": "ServiceNow Security Incident Response documentation" },
-          { "choiceId": "c", "explanation": "Child domain incidents are not automatically shared with parent domains in the way described", "reference": "ServiceNow Security Incident Response documentation" },
-          { "choiceId": "d", "explanation": "Domain assignment is automatic based on the creating user's domain, not manual", "reference": "ServiceNow Security Incident Response documentation" }
+          {
+            "choiceId": "a",
+            "explanation": "Domain separation specifically prevents cross-domain visibility of security incidents",
+            "reference": "ServiceNow Security Incident Response documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Child domain incidents are not automatically shared with parent domains in the way described",
+            "reference": "ServiceNow Security Incident Response documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Domain assignment is automatic based on the creating user's domain, not manual",
+            "reference": "ServiceNow Security Incident Response documentation"
+          }
         ]
       },
-      "references": ["ServiceNow Security Incident Response documentation"],
+      "references": [
+        "ServiceNow Security Incident Response documentation"
+      ],
       "isFree": true,
       "source": {
         "type": "documentation",
@@ -343,8 +622,15 @@
         "domain": "Data Separation/Visibility",
         "domainSlug": "data-separation",
         "domainPercentage": 24,
-        "subtopics": ["Security Incident Response", "Data isolation"],
-        "tags": ["SIR", "data separation", "security"]
+        "subtopics": [
+          "Security Incident Response",
+          "Data isolation"
+        ],
+        "tags": [
+          "SIR",
+          "data separation",
+          "security"
+        ]
       },
       "meta": {
         "generatedAt": "2026-02-23T20:00:00Z",
@@ -361,21 +647,50 @@
       "type": "multiple_select",
       "question": "Which aspects of domain separation are included when the application supports domain separation at runtime? (Choose three)",
       "options": [
-        { "id": "a", "text": "Separation from the user interface" },
-        { "id": "b", "text": "Automatic data backup" },
-        { "id": "c", "text": "Cache keys separation" },
-        { "id": "d", "text": "Reporting and rollups separation" },
-        { "id": "e", "text": "Database table partitioning" }
+        {
+          "id": "a",
+          "text": "Separation from the user interface"
+        },
+        {
+          "id": "b",
+          "text": "Automatic data backup"
+        },
+        {
+          "id": "c",
+          "text": "Cache keys separation"
+        },
+        {
+          "id": "d",
+          "text": "Reporting and rollups separation"
+        },
+        {
+          "id": "e",
+          "text": "Database table partitioning"
+        }
       ],
-      "correctAnswers": ["a", "c", "d"],
+      "correctAnswers": [
+        "a",
+        "c",
+        "d"
+      ],
       "explanation": {
         "correct": "At the Basic support level, the application supports domain separation at run time including: separation from the user interface, cache keys, reporting, rollups, and aggregations. These are the fundamental runtime aspects of domain separation.",
         "wrongAnswers": [
-          { "choiceId": "b", "explanation": "Automatic data backup is not part of domain separation functionality", "reference": "ServiceNow Domain Separation documentation" },
-          { "choiceId": "e", "explanation": "Database table partitioning is a database administration feature, not a domain separation feature", "reference": "ServiceNow Domain Separation documentation" }
+          {
+            "choiceId": "b",
+            "explanation": "Automatic data backup is not part of domain separation functionality",
+            "reference": "ServiceNow Domain Separation documentation"
+          },
+          {
+            "choiceId": "e",
+            "explanation": "Database table partitioning is a database administration feature, not a domain separation feature",
+            "reference": "ServiceNow Domain Separation documentation"
+          }
         ]
       },
-      "references": ["ServiceNow Domain Separation documentation"],
+      "references": [
+        "ServiceNow Domain Separation documentation"
+      ],
       "isFree": true,
       "source": {
         "type": "documentation",
@@ -387,8 +702,15 @@
         "domain": "Data Separation/Visibility",
         "domainSlug": "data-separation",
         "domainPercentage": 24,
-        "subtopics": ["Runtime separation", "Support levels"],
-        "tags": ["runtime", "UI separation", "cache"]
+        "subtopics": [
+          "Runtime separation",
+          "Support levels"
+        ],
+        "tags": [
+          "runtime",
+          "UI separation",
+          "cache"
+        ]
       },
       "meta": {
         "generatedAt": "2026-02-23T20:00:00Z",
@@ -405,21 +727,49 @@
       "type": "true_false_compound",
       "question": "Evaluate the following statements about IRE (Identification and Reconciliation Engine) domain separation modes:\n\nStatement 1: In Strict mode, identification processes only those CIs where the domain ID is identical to the domain of the currently logged-in user.\n\nStatement 2: In Platform domain separation mode, duplicate CIs across different domains are NOT considered duplicates by IRE.\n\nWhich statements are TRUE?",
       "options": [
-        { "id": "a", "text": "Statement 1 only" },
-        { "id": "b", "text": "Statement 2 only" },
-        { "id": "c", "text": "Both statements" },
-        { "id": "d", "text": "Neither statement" }
+        {
+          "id": "a",
+          "text": "Statement 1 only"
+        },
+        {
+          "id": "b",
+          "text": "Statement 2 only"
+        },
+        {
+          "id": "c",
+          "text": "Both statements"
+        },
+        {
+          "id": "d",
+          "text": "Neither statement"
+        }
       ],
-      "correctAnswers": ["a"],
+      "correctAnswers": [
+        "a"
+      ],
       "explanation": {
         "correct": "Statement 1 is TRUE: In Strict mode (enabled by default), identification processes only those CIs in which the domain ID is identical to the domain of the currently logged-in user. Statement 2 is FALSE: When Platform domain separation mode is enabled, duplicate CIs that exist across domains (such as parent and child domains) ARE considered as duplicate CIs by IRE.",
         "wrongAnswers": [
-          { "choiceId": "b", "explanation": "Statement 2 is false; Platform mode considers cross-domain duplicates as duplicates. Statement 1 is true about Strict mode.", "reference": "ServiceNow CMDB IRE documentation" },
-          { "choiceId": "c", "explanation": "Statement 2 is false; Platform mode considers cross-domain CIs as potential duplicates", "reference": "ServiceNow CMDB IRE documentation" },
-          { "choiceId": "d", "explanation": "Statement 1 is true about Strict mode behavior", "reference": "ServiceNow CMDB IRE documentation" }
+          {
+            "choiceId": "b",
+            "explanation": "Statement 2 is false; Platform mode considers cross-domain duplicates as duplicates. Statement 1 is true about Strict mode.",
+            "reference": "ServiceNow CMDB IRE documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Statement 2 is false; Platform mode considers cross-domain CIs as potential duplicates",
+            "reference": "ServiceNow CMDB IRE documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Statement 1 is true about Strict mode behavior",
+            "reference": "ServiceNow CMDB IRE documentation"
+          }
         ]
       },
-      "references": ["ServiceNow CMDB IRE documentation"],
+      "references": [
+        "ServiceNow CMDB IRE documentation"
+      ],
       "isFree": true,
       "source": {
         "type": "documentation",
@@ -431,8 +781,15 @@
         "domain": "Data Separation/Visibility",
         "domainSlug": "data-separation",
         "domainPercentage": 24,
-        "subtopics": ["IRE", "Identification modes"],
-        "tags": ["IRE", "compound true/false", "CMDB"]
+        "subtopics": [
+          "IRE",
+          "Identification modes"
+        ],
+        "tags": [
+          "IRE",
+          "compound true/false",
+          "CMDB"
+        ]
       },
       "meta": {
         "generatedAt": "2026-02-23T20:00:00Z",
@@ -449,21 +806,49 @@
       "type": "multiple_choice",
       "question": "What should a user do to extend domain separation to a new custom table they have created?",
       "options": [
-        { "id": "a", "text": "Configure ACLs for the table" },
-        { "id": "b", "text": "Add a sys_domain field to the table's dictionary definition" },
-        { "id": "c", "text": "Create a domain visibility record" },
-        { "id": "d", "text": "Enable the table in Domain Support plugin settings" }
+        {
+          "id": "a",
+          "text": "Configure ACLs for the table"
+        },
+        {
+          "id": "b",
+          "text": "Add a sys_domain field to the table's dictionary definition"
+        },
+        {
+          "id": "c",
+          "text": "Create a domain visibility record"
+        },
+        {
+          "id": "d",
+          "text": "Enable the table in Domain Support plugin settings"
+        }
       ],
-      "correctAnswers": ["b"],
+      "correctAnswers": [
+        "b"
+      ],
       "explanation": {
         "correct": "You can extend domain separation to any new tables you create by adding a sys_domain field to the table's dictionary definition. By default, the system only domain-separates platform and baseline application tables where appropriate.",
         "wrongAnswers": [
-          { "choiceId": "a", "explanation": "ACLs control access permissions but do not enable domain separation; the sys_domain field is required", "reference": "ServiceNow Domain Separation documentation" },
-          { "choiceId": "c", "explanation": "Domain visibility records control user access to domains, not table-level domain separation", "reference": "ServiceNow Domain Separation documentation" },
-          { "choiceId": "d", "explanation": "There is no specific plugin setting to enable tables; you must add the sys_domain field to the table", "reference": "ServiceNow Domain Separation documentation" }
+          {
+            "choiceId": "a",
+            "explanation": "ACLs control access permissions but do not enable domain separation; the sys_domain field is required",
+            "reference": "ServiceNow Domain Separation documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Domain visibility records control user access to domains, not table-level domain separation",
+            "reference": "ServiceNow Domain Separation documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "There is no specific plugin setting to enable tables; you must add the sys_domain field to the table",
+            "reference": "ServiceNow Domain Separation documentation"
+          }
         ]
       },
-      "references": ["ServiceNow Domain Separation documentation"],
+      "references": [
+        "ServiceNow Domain Separation documentation"
+      ],
       "isFree": true,
       "source": {
         "type": "documentation",
@@ -475,8 +860,15 @@
         "domain": "Data Separation/Visibility",
         "domainSlug": "data-separation",
         "domainPercentage": 24,
-        "subtopics": ["Custom tables", "Table configuration"],
-        "tags": ["sys_domain", "custom tables", "configuration"]
+        "subtopics": [
+          "Custom tables",
+          "Table configuration"
+        ],
+        "tags": [
+          "sys_domain",
+          "custom tables",
+          "configuration"
+        ]
       },
       "meta": {
         "generatedAt": "2026-02-23T20:00:00Z",

@@ -27,6 +27,12 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Clean build output
+        run: |
+          # Remove Next.js internal RSC files to stay under Cloudflare's 20k file limit
+          find out -name "__next.*.txt" -delete
+          echo "Remaining files: $(find out -type f | wc -l)"
+
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:

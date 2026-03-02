@@ -1,645 +1,1123 @@
-[
-  {
-    "id": "cis-vr-management-tools-001",
-    "certification": "cis-vr",
-    "topic": "management-tools",
-    "cognitiveLevel": "knowledge",
-    "type": "multiple_choice",
-    "question": "What is the default assignment rule included in the Vulnerability Response base system?",
-    "options": [
-      { "id": "a", "text": "Assign to IT Operations" },
-      { "id": "b", "text": "Assign to CI support group" },
-      { "id": "c", "text": "Assign to Security Team" },
-      { "id": "d", "text": "Assign to Remediation Manager" }
-    ],
-    "correctAnswers": ["b"],
-    "selectCount": 1,
-    "isNegative": false,
-    "explanation": {
-      "correct": "A default assignment rule 'Assign to CI support group' is included in the base system, assigning vulnerable items to whatever support group is set for the configuration item (CI) associated with the VIT.",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "The default rule assigns to CI support group, not IT Operations", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-assignment-rules.html" },
-        { "choiceId": "c", "explanation": "The default rule uses the CI's support group, not a generic Security Team", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-assignment-rules.html" },
-        { "choiceId": "d", "explanation": "Remediation Manager is not the default assignment target", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-assignment-rules.html" }
-      ]
-    },
-    "references": ["https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-assignment-rules.html"],
-    "isFree": true,
-    "source": {
-      "type": "docs",
-      "path": "scraped-docs/cis-secops-api/vr-assignment-rules.md",
-      "excerpt": "A default assignment rule, Assign to CI support group, is included in the base system assigning vulnerable items to the CI Support Group."
-    },
-    "labels": {
+{
+  "certification": "cis-vr",
+  "topic": "management-tools",
+  "questions": [
+    {
+      "id": "cis-vr-management-tools-001",
       "certification": "cis-vr",
-      "domain": "Tools to Manage Vulnerability Response",
-      "domainSlug": "management-tools",
-      "domainPercentage": 23,
-      "subtopics": ["assignment rules"],
-      "tags": ["assignment-rules", "default", "ci-support-group"]
+      "topic": "management-tools",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What is the default assignment rule included in the Vulnerability Response base system?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Assign to IT Operations"
+        },
+        {
+          "id": "b",
+          "text": "Assign to CI support group"
+        },
+        {
+          "id": "c",
+          "text": "Assign to Security Team"
+        },
+        {
+          "id": "d",
+          "text": "Assign to Remediation Manager"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "A default assignment rule 'Assign to CI support group' is included in the base system, assigning vulnerable items to whatever support group is set for the configuration item (CI) associated with the VIT.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The default rule assigns to CI support group, not IT Operations",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-assignment-rules.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The default rule uses the CI's support group, not a generic Security Team",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-assignment-rules.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Remediation Manager is not the default assignment target",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-assignment-rules.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-assignment-rules.html"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "docs",
+        "path": "scraped-docs/cis-secops-api/vr-assignment-rules.md",
+        "excerpt": "A default assignment rule, Assign to CI support group, is included in the base system assigning vulnerable items to the CI Support Group."
+      },
+      "labels": {
+        "certification": "cis-vr",
+        "domain": "Tools to Manage Vulnerability Response",
+        "domainSlug": "management-tools",
+        "domainPercentage": 23,
+        "subtopics": [
+          "assignment rules"
+        ],
+        "tags": [
+          "assignment-rules",
+          "default",
+          "ci-support-group"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-23T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-23T02:00:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-vr-management-tools-002",
-    "certification": "cis-vr",
-    "topic": "management-tools",
-    "cognitiveLevel": "knowledge",
-    "type": "multiple_select",
-    "question": "What are the three methods to assign vulnerable items using the 'Assign using' field? (Choose three.)",
-    "options": [
-      { "id": "a", "text": "User group" },
-      { "id": "b", "text": "User group field" },
-      { "id": "c", "text": "Email notification" },
-      { "id": "d", "text": "Script" },
-      { "id": "e", "text": "Calendar schedule" }
-    ],
-    "correctAnswers": ["a", "b", "d"],
-    "selectCount": 3,
-    "isNegative": false,
-    "explanation": {
-      "correct": "There are three ways to assign vulnerable items: (1) User group - select any existing user group, (2) User group field - choose an assignment group field from cmdb_ci table, (3) Script - define conditions using code for advanced cases.",
-      "wrongAnswers": [
-        { "choiceId": "c", "explanation": "Email notification is for alerts, not an assignment method", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-assignment-rules.html" },
-        { "choiceId": "e", "explanation": "Calendar schedule is not an assignment method for VITs", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-assignment-rules.html" }
-      ]
-    },
-    "references": ["https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-assignment-rules.html"],
-    "isFree": true,
-    "source": {
-      "type": "docs",
-      "path": "scraped-docs/cis-secops-api/vr-assignment-rules.md",
-      "excerpt": "There are three different ways to assign vulnerable items using Assign using: User group, User group field, Script."
-    },
-    "labels": {
+    {
+      "id": "cis-vr-management-tools-002",
       "certification": "cis-vr",
-      "domain": "Tools to Manage Vulnerability Response",
-      "domainSlug": "management-tools",
-      "domainPercentage": 23,
-      "subtopics": ["assignment rules"],
-      "tags": ["assignment-rules", "assign-using", "script"]
+      "topic": "management-tools",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_select",
+      "question": "What are the three methods to assign vulnerable items using the 'Assign using' field? (Choose three.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "User group"
+        },
+        {
+          "id": "b",
+          "text": "User group field"
+        },
+        {
+          "id": "c",
+          "text": "Email notification"
+        },
+        {
+          "id": "d",
+          "text": "Script"
+        },
+        {
+          "id": "e",
+          "text": "Calendar schedule"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b",
+        "d"
+      ],
+      "selectCount": 3,
+      "isNegative": false,
+      "explanation": {
+        "correct": "There are three ways to assign vulnerable items: (1) User group - select any existing user group, (2) User group field - choose an assignment group field from cmdb_ci table, (3) Script - define conditions using code for advanced cases.",
+        "wrongAnswers": [
+          {
+            "choiceId": "c",
+            "explanation": "Email notification is for alerts, not an assignment method",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-assignment-rules.html"
+          },
+          {
+            "choiceId": "e",
+            "explanation": "Calendar schedule is not an assignment method for VITs",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-assignment-rules.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-assignment-rules.html"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "docs",
+        "path": "scraped-docs/cis-secops-api/vr-assignment-rules.md",
+        "excerpt": "There are three different ways to assign vulnerable items using Assign using: User group, User group field, Script."
+      },
+      "labels": {
+        "certification": "cis-vr",
+        "domain": "Tools to Manage Vulnerability Response",
+        "domainSlug": "management-tools",
+        "domainPercentage": 23,
+        "subtopics": [
+          "assignment rules"
+        ],
+        "tags": [
+          "assignment-rules",
+          "assign-using",
+          "script"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-23T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-23T02:00:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-vr-management-tools-003",
-    "certification": "cis-vr",
-    "topic": "management-tools",
-    "cognitiveLevel": "understanding",
-    "type": "multiple_choice",
-    "question": "When is a vulnerable item (VIT) evaluated against assignment rules?",
-    "options": [
-      { "id": "a", "text": "Only when manually triggered by an administrator" },
-      { "id": "b", "text": "When a new VIT is opened, imported, or reopened" },
-      { "id": "c", "text": "Every hour via a scheduled job" },
-      { "id": "d", "text": "Only when the VIT is closed" }
-    ],
-    "correctAnswers": ["b"],
-    "selectCount": 1,
-    "isNegative": false,
-    "explanation": {
-      "correct": "Assignment rules are used to evaluate and assign a VIT when a new VIT is opened (imported, created manually, or reopened). Unless manually reapplied after the VIT changes, a VIT is evaluated once.",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "VITs are automatically evaluated during import/create/reopen, not only manually", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-assignment-rules.html" },
-        { "choiceId": "c", "explanation": "Evaluation happens at VIT state changes, not on an hourly schedule", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-assignment-rules.html" },
-        { "choiceId": "d", "explanation": "Assignment happens when VITs are opened/created, not when closed", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-assignment-rules.html" }
-      ]
-    },
-    "references": ["https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-assignment-rules.html"],
-    "isFree": true,
-    "source": {
-      "type": "docs",
-      "path": "scraped-docs/cis-secops-api/vr-assignment-rules.md",
-      "excerpt": "Assignment rules are used to evaluate and assign a VIT when a new VIT is opened, that is, imported, created manually, or reopened."
-    },
-    "labels": {
+    {
+      "id": "cis-vr-management-tools-003",
       "certification": "cis-vr",
-      "domain": "Tools to Manage Vulnerability Response",
-      "domainSlug": "management-tools",
-      "domainPercentage": 23,
-      "subtopics": ["assignment rules"],
-      "tags": ["assignment-rules", "evaluation", "vit-lifecycle"]
+      "topic": "management-tools",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "When is a vulnerable item (VIT) evaluated against assignment rules?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Only when manually triggered by an administrator"
+        },
+        {
+          "id": "b",
+          "text": "When a new VIT is opened, imported, or reopened"
+        },
+        {
+          "id": "c",
+          "text": "Every hour via a scheduled job"
+        },
+        {
+          "id": "d",
+          "text": "Only when the VIT is closed"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "Assignment rules are used to evaluate and assign a VIT when a new VIT is opened (imported, created manually, or reopened). Unless manually reapplied after the VIT changes, a VIT is evaluated once.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "VITs are automatically evaluated during import/create/reopen, not only manually",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-assignment-rules.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Evaluation happens at VIT state changes, not on an hourly schedule",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-assignment-rules.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Assignment happens when VITs are opened/created, not when closed",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-assignment-rules.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-assignment-rules.html"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "docs",
+        "path": "scraped-docs/cis-secops-api/vr-assignment-rules.md",
+        "excerpt": "Assignment rules are used to evaluate and assign a VIT when a new VIT is opened, that is, imported, created manually, or reopened."
+      },
+      "labels": {
+        "certification": "cis-vr",
+        "domain": "Tools to Manage Vulnerability Response",
+        "domainSlug": "management-tools",
+        "domainPercentage": 23,
+        "subtopics": [
+          "assignment rules"
+        ],
+        "tags": [
+          "assignment-rules",
+          "evaluation",
+          "vit-lifecycle"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-23T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-23T02:00:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-vr-management-tools-004",
-    "certification": "cis-vr",
-    "topic": "management-tools",
-    "cognitiveLevel": "understanding",
-    "type": "multiple_choice",
-    "question": "What happens to a VIT when none of the assignment rules match?",
-    "options": [
-      { "id": "a", "text": "The VIT is deleted" },
-      { "id": "b", "text": "The VIT is assigned to the default assignment group, if a default rule exists" },
-      { "id": "c", "text": "The VIT is marked as invalid" },
-      { "id": "d", "text": "The import fails with an error" }
-    ],
-    "correctAnswers": ["b"],
-    "selectCount": 1,
-    "isNegative": false,
-    "explanation": {
-      "correct": "Where the conditions do not find a match among all the other rules, the VIT is assigned to the default assignment group, if a default rule exists. The default rule is the rule with the highest execution order value.",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "VITs are not deleted when rules don't match; they may remain unassigned", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-assignment-rules.html" },
-        { "choiceId": "c", "explanation": "VITs are not marked invalid; they just may not have an assignment", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-assignment-rules.html" },
-        { "choiceId": "d", "explanation": "Import does not fail; VITs simply may remain unassigned", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-assignment-rules.html" }
-      ]
-    },
-    "references": ["https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-assignment-rules.html"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "scraped-docs/cis-secops-api/vr-assignment-rules.md",
-      "excerpt": "Where the conditions do not find a match among all the other rules, the VIT is assigned to the default assignment group, if a default rule exists."
-    },
-    "labels": {
+    {
+      "id": "cis-vr-management-tools-004",
       "certification": "cis-vr",
-      "domain": "Tools to Manage Vulnerability Response",
-      "domainSlug": "management-tools",
-      "domainPercentage": 23,
-      "subtopics": ["assignment rules"],
-      "tags": ["assignment-rules", "default-rule", "fallback"]
+      "topic": "management-tools",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What happens to a VIT when none of the assignment rules match?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The VIT is deleted"
+        },
+        {
+          "id": "b",
+          "text": "The VIT is assigned to the default assignment group, if a default rule exists"
+        },
+        {
+          "id": "c",
+          "text": "The VIT is marked as invalid"
+        },
+        {
+          "id": "d",
+          "text": "The import fails with an error"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "Where the conditions do not find a match among all the other rules, the VIT is assigned to the default assignment group, if a default rule exists. The default rule is the rule with the highest execution order value.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "VITs are not deleted when rules don't match; they may remain unassigned",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-assignment-rules.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "VITs are not marked invalid; they just may not have an assignment",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-assignment-rules.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Import does not fail; VITs simply may remain unassigned",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-assignment-rules.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-assignment-rules.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "scraped-docs/cis-secops-api/vr-assignment-rules.md",
+        "excerpt": "Where the conditions do not find a match among all the other rules, the VIT is assigned to the default assignment group, if a default rule exists."
+      },
+      "labels": {
+        "certification": "cis-vr",
+        "domain": "Tools to Manage Vulnerability Response",
+        "domainSlug": "management-tools",
+        "domainPercentage": 23,
+        "subtopics": [
+          "assignment rules"
+        ],
+        "tags": [
+          "assignment-rules",
+          "default-rule",
+          "fallback"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-23T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-23T02:00:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-vr-management-tools-005",
-    "certification": "cis-vr",
-    "topic": "management-tools",
-    "cognitiveLevel": "knowledge",
-    "type": "multiple_choice",
-    "question": "Which button is used to rerun changed assignment rules on all active Open VIs?",
-    "options": [
-      { "id": "a", "text": "Refresh Rules" },
-      { "id": "b", "text": "Apply Changes" },
-      { "id": "c", "text": "Execute Now" },
-      { "id": "d", "text": "Reprocess All" }
-    ],
-    "correctAnswers": ["b"],
-    "selectCount": 1,
-    "isNegative": false,
-    "explanation": {
-      "correct": "Use the Apply Changes button on the Assignment Rules list page to rerun all the changed rules on all active Open VIs, except those that were manually assigned.",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "Refresh Rules is not the correct button name; it's Apply Changes", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-assignment-rules.html" },
-        { "choiceId": "c", "explanation": "Execute Now is not the correct button for reapplying assignment rules", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-assignment-rules.html" },
-        { "choiceId": "d", "explanation": "Reprocess All is not the correct button name", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-assignment-rules.html" }
-      ]
-    },
-    "references": ["https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-assignment-rules.html"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "scraped-docs/cis-secops-api/vr-assignment-rules.md",
-      "excerpt": "When you change an assignment rule, use the Apply Changes button on the Assignment Rules list page to rerun all the changed rules on all active Open VIs."
-    },
-    "labels": {
+    {
+      "id": "cis-vr-management-tools-005",
       "certification": "cis-vr",
-      "domain": "Tools to Manage Vulnerability Response",
-      "domainSlug": "management-tools",
-      "domainPercentage": 23,
-      "subtopics": ["assignment rules"],
-      "tags": ["assignment-rules", "apply-changes", "reapply"]
+      "topic": "management-tools",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which button is used to rerun changed assignment rules on all active Open VIs?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Refresh Rules"
+        },
+        {
+          "id": "b",
+          "text": "Apply Changes"
+        },
+        {
+          "id": "c",
+          "text": "Execute Now"
+        },
+        {
+          "id": "d",
+          "text": "Reprocess All"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "Use the Apply Changes button on the Assignment Rules list page to rerun all the changed rules on all active Open VIs, except those that were manually assigned.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Refresh Rules is not the correct button name; it's Apply Changes",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-assignment-rules.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Execute Now is not the correct button for reapplying assignment rules",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-assignment-rules.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Reprocess All is not the correct button name",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-assignment-rules.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-assignment-rules.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "scraped-docs/cis-secops-api/vr-assignment-rules.md",
+        "excerpt": "When you change an assignment rule, use the Apply Changes button on the Assignment Rules list page to rerun all the changed rules on all active Open VIs."
+      },
+      "labels": {
+        "certification": "cis-vr",
+        "domain": "Tools to Manage Vulnerability Response",
+        "domainSlug": "management-tools",
+        "domainPercentage": 23,
+        "subtopics": [
+          "assignment rules"
+        ],
+        "tags": [
+          "assignment-rules",
+          "apply-changes",
+          "reapply"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-23T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-23T02:00:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-vr-management-tools-006",
-    "certification": "cis-vr",
-    "topic": "management-tools",
-    "cognitiveLevel": "understanding",
-    "type": "multiple_choice",
-    "question": "Which VITs are excluded when the Apply Changes button is used to rerun assignment rules?",
-    "options": [
-      { "id": "a", "text": "VITs with high severity" },
-      { "id": "b", "text": "VITs that were manually assigned" },
-      { "id": "c", "text": "VITs created more than 30 days ago" },
-      { "id": "d", "text": "VITs linked to critical assets" }
-    ],
-    "correctAnswers": ["b"],
-    "selectCount": 1,
-    "isNegative": false,
-    "explanation": {
-      "correct": "The Apply Changes button reruns all changed rules on all active Open VIs, EXCEPT those that were manually assigned. Assignment rules do not reevaluate manually created assignments.",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "Severity does not determine exclusion from rule reapplication", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-assignment-rules.html" },
-        { "choiceId": "c", "explanation": "Age of VIT does not determine exclusion; manual assignment does", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-assignment-rules.html" },
-        { "choiceId": "d", "explanation": "Asset criticality does not determine exclusion from rule reapplication", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-assignment-rules.html" }
-      ]
-    },
-    "references": ["https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-assignment-rules.html"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "scraped-docs/cis-secops-api/vr-assignment-rules.md",
-      "excerpt": "The assignment rules do not reevaluate manually created assignments."
-    },
-    "labels": {
+    {
+      "id": "cis-vr-management-tools-006",
       "certification": "cis-vr",
-      "domain": "Tools to Manage Vulnerability Response",
-      "domainSlug": "management-tools",
-      "domainPercentage": 23,
-      "subtopics": ["assignment rules"],
-      "tags": ["assignment-rules", "manual-assignment", "exclusions"]
+      "topic": "management-tools",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "Which VITs are excluded when the Apply Changes button is used to rerun assignment rules?",
+      "options": [
+        {
+          "id": "a",
+          "text": "VITs with high severity"
+        },
+        {
+          "id": "b",
+          "text": "VITs that were manually assigned"
+        },
+        {
+          "id": "c",
+          "text": "VITs created more than 30 days ago"
+        },
+        {
+          "id": "d",
+          "text": "VITs linked to critical assets"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "The Apply Changes button reruns all changed rules on all active Open VIs, EXCEPT those that were manually assigned. Assignment rules do not reevaluate manually created assignments.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Severity does not determine exclusion from rule reapplication",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-assignment-rules.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Age of VIT does not determine exclusion; manual assignment does",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-assignment-rules.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Asset criticality does not determine exclusion from rule reapplication",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-assignment-rules.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-assignment-rules.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "scraped-docs/cis-secops-api/vr-assignment-rules.md",
+        "excerpt": "The assignment rules do not reevaluate manually created assignments."
+      },
+      "labels": {
+        "certification": "cis-vr",
+        "domain": "Tools to Manage Vulnerability Response",
+        "domainSlug": "management-tools",
+        "domainPercentage": 23,
+        "subtopics": [
+          "assignment rules"
+        ],
+        "tags": [
+          "assignment-rules",
+          "manual-assignment",
+          "exclusions"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-23T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-23T02:00:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-vr-management-tools-007",
-    "certification": "cis-vr",
-    "topic": "management-tools",
-    "cognitiveLevel": "application",
-    "type": "multiple_choice",
-    "question": "A vulnerability admin wants to run high-priority rules first for critical vulnerabilities. What is the recommended approach?",
-    "options": [
-      { "id": "a", "text": "Create rules with alphabetical names" },
-      { "id": "b", "text": "Set lower execution order values for high-priority rules" },
-      { "id": "c", "text": "Mark high-priority rules as 'urgent'" },
-      { "id": "d", "text": "Create all rules in a single group" }
-    ],
-    "correctAnswers": ["b"],
-    "selectCount": 1,
-    "isNegative": false,
-    "explanation": {
-      "correct": "Run high priority rules (items that need special handling, where risk is critical) first by setting lower execution order values. Rules are evaluated in order, lowest execution order first.",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "Alphabetical names do not affect rule execution order", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-assignment-rules.html" },
-        { "choiceId": "c", "explanation": "There is no 'urgent' flag for rules; execution order controls priority", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-assignment-rules.html" },
-        { "choiceId": "d", "explanation": "Grouping rules doesn't control their execution priority", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-assignment-rules.html" }
-      ]
-    },
-    "references": ["https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-assignment-rules.html"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "scraped-docs/cis-secops-api/vr-assignment-rules.md",
-      "excerpt": "Run high priority rules (items that need special handling, where risk is critical, or a VIT should be handled by regulatory compliance) first."
-    },
-    "labels": {
+    {
+      "id": "cis-vr-management-tools-007",
       "certification": "cis-vr",
-      "domain": "Tools to Manage Vulnerability Response",
-      "domainSlug": "management-tools",
-      "domainPercentage": 23,
-      "subtopics": ["assignment rules"],
-      "tags": ["assignment-rules", "execution-order", "priority"]
+      "topic": "management-tools",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A vulnerability admin wants to run high-priority rules first for critical vulnerabilities. What is the recommended approach?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Create rules with alphabetical names"
+        },
+        {
+          "id": "b",
+          "text": "Set lower execution order values for high-priority rules"
+        },
+        {
+          "id": "c",
+          "text": "Mark high-priority rules as 'urgent'"
+        },
+        {
+          "id": "d",
+          "text": "Create all rules in a single group"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "Run high priority rules (items that need special handling, where risk is critical) first by setting lower execution order values. Rules are evaluated in order, lowest execution order first.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Alphabetical names do not affect rule execution order",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-assignment-rules.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "There is no 'urgent' flag for rules; execution order controls priority",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-assignment-rules.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Grouping rules doesn't control their execution priority",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-assignment-rules.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-assignment-rules.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "scraped-docs/cis-secops-api/vr-assignment-rules.md",
+        "excerpt": "Run high priority rules (items that need special handling, where risk is critical, or a VIT should be handled by regulatory compliance) first."
+      },
+      "labels": {
+        "certification": "cis-vr",
+        "domain": "Tools to Manage Vulnerability Response",
+        "domainSlug": "management-tools",
+        "domainPercentage": 23,
+        "subtopics": [
+          "assignment rules"
+        ],
+        "tags": [
+          "assignment-rules",
+          "execution-order",
+          "priority"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-23T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-23T02:00:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-vr-management-tools-008",
-    "certification": "cis-vr",
-    "topic": "management-tools",
-    "cognitiveLevel": "knowledge",
-    "type": "multiple_choice",
-    "question": "What is a vulnerability calculator in Vulnerability Response?",
-    "options": [
-      { "id": "a", "text": "A tool to count the number of vulnerabilities" },
-      { "id": "b", "text": "A pre-defined formula to calculate a target field when criteria are met" },
-      { "id": "c", "text": "A report generator for vulnerability statistics" },
-      { "id": "d", "text": "A scanner integration configuration" }
-    ],
-    "correctAnswers": ["b"],
-    "selectCount": 1,
-    "isNegative": false,
-    "explanation": {
-      "correct": "A vulnerability calculator is a pre-defined formula to calculate a target field when certain criteria are met. Calculators that calculate the vulnerable item Risk Score can contain Risk Rules.",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "Calculators compute field values like Risk Score, not vulnerability counts", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/create-vul-calculator.html" },
-        { "choiceId": "c", "explanation": "Reports are generated by Performance Analytics, not calculators", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/create-vul-calculator.html" },
-        { "choiceId": "d", "explanation": "Scanner integrations are separate from calculators", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/create-vul-calculator.html" }
-      ]
-    },
-    "references": ["https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/create-vul-calculator.html"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "scraped-docs/cis-secops-api/create-vul-calculator.md",
-      "excerpt": "A vulnerability calculator is a pre-defined formula to calculate a target field when certain criteria are met. Calculators, which calculate the vulnerable item Risk Score, can contain Risk Rules."
-    },
-    "labels": {
+    {
+      "id": "cis-vr-management-tools-008",
       "certification": "cis-vr",
-      "domain": "Tools to Manage Vulnerability Response",
-      "domainSlug": "management-tools",
-      "domainPercentage": 23,
-      "subtopics": ["vulnerability calculators"],
-      "tags": ["calculator", "risk-score", "formula"]
+      "topic": "management-tools",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What is a vulnerability calculator in Vulnerability Response?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A tool to count the number of vulnerabilities"
+        },
+        {
+          "id": "b",
+          "text": "A pre-defined formula to calculate a target field when criteria are met"
+        },
+        {
+          "id": "c",
+          "text": "A report generator for vulnerability statistics"
+        },
+        {
+          "id": "d",
+          "text": "A scanner integration configuration"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "A vulnerability calculator is a pre-defined formula to calculate a target field when certain criteria are met. Calculators that calculate the vulnerable item Risk Score can contain Risk Rules.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Calculators compute field values like Risk Score, not vulnerability counts",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/create-vul-calculator.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Reports are generated by Performance Analytics, not calculators",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/create-vul-calculator.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Scanner integrations are separate from calculators",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/create-vul-calculator.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/create-vul-calculator.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "scraped-docs/cis-secops-api/create-vul-calculator.md",
+        "excerpt": "A vulnerability calculator is a pre-defined formula to calculate a target field when certain criteria are met. Calculators, which calculate the vulnerable item Risk Score, can contain Risk Rules."
+      },
+      "labels": {
+        "certification": "cis-vr",
+        "domain": "Tools to Manage Vulnerability Response",
+        "domainSlug": "management-tools",
+        "domainPercentage": 23,
+        "subtopics": [
+          "vulnerability calculators"
+        ],
+        "tags": [
+          "calculator",
+          "risk-score",
+          "formula"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-23T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-23T02:00:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-vr-management-tools-009",
-    "certification": "cis-vr",
-    "topic": "management-tools",
-    "cognitiveLevel": "understanding",
-    "type": "multiple_select",
-    "question": "Which two calculators are included in the Application Vulnerability Response base system? (Choose two.)",
-    "options": [
-      { "id": "a", "text": "Basic Risk Calculator" },
-      { "id": "b", "text": "CVSS Calculator" },
-      { "id": "c", "text": "Advanced Risk Calculator" },
-      { "id": "d", "text": "Compliance Calculator" }
-    ],
-    "correctAnswers": ["a", "c"],
-    "selectCount": 2,
-    "isNegative": false,
-    "explanation": {
-      "correct": "The Application Vulnerability Response base system includes two vulnerability calculators: Basic Risk Calculator (enabled by default) and Advanced Risk Calculator (inactive by default).",
-      "wrongAnswers": [
-        { "choiceId": "b", "explanation": "CVSS Calculator is not a named base system calculator; Basic and Advanced Risk Calculators are", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/application-vulnerability-response/avm-calculators-rules.html" },
-        { "choiceId": "d", "explanation": "Compliance Calculator is not a VR base system calculator", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/application-vulnerability-response/avm-calculators-rules.html" }
-      ]
-    },
-    "references": ["https://www.servicenow.com/docs/r/xanadu/security-management/application-vulnerability-response/avm-calculators-rules.html"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "scraped-docs/cis-secops-api/avm-calculators-rules.md",
-      "excerpt": "The Application Vulnerability Response base system includes two vulnerability calculators that set the base Risk Score: Basic Risk Calculator, Advanced Risk Calculator"
-    },
-    "labels": {
+    {
+      "id": "cis-vr-management-tools-009",
       "certification": "cis-vr",
-      "domain": "Tools to Manage Vulnerability Response",
-      "domainSlug": "management-tools",
-      "domainPercentage": 23,
-      "subtopics": ["vulnerability calculators"],
-      "tags": ["calculator", "avr", "risk-score"]
+      "topic": "management-tools",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_select",
+      "question": "Which two calculators are included in the Application Vulnerability Response base system? (Choose two.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Basic Risk Calculator"
+        },
+        {
+          "id": "b",
+          "text": "CVSS Calculator"
+        },
+        {
+          "id": "c",
+          "text": "Advanced Risk Calculator"
+        },
+        {
+          "id": "d",
+          "text": "Compliance Calculator"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "c"
+      ],
+      "selectCount": 2,
+      "isNegative": false,
+      "explanation": {
+        "correct": "The Application Vulnerability Response base system includes two vulnerability calculators: Basic Risk Calculator (enabled by default) and Advanced Risk Calculator (inactive by default).",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "CVSS Calculator is not a named base system calculator; Basic and Advanced Risk Calculators are",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/application-vulnerability-response/avm-calculators-rules.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Compliance Calculator is not a VR base system calculator",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/application-vulnerability-response/avm-calculators-rules.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/xanadu/security-management/application-vulnerability-response/avm-calculators-rules.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "scraped-docs/cis-secops-api/avm-calculators-rules.md",
+        "excerpt": "The Application Vulnerability Response base system includes two vulnerability calculators that set the base Risk Score: Basic Risk Calculator, Advanced Risk Calculator"
+      },
+      "labels": {
+        "certification": "cis-vr",
+        "domain": "Tools to Manage Vulnerability Response",
+        "domainSlug": "management-tools",
+        "domainPercentage": 23,
+        "subtopics": [
+          "vulnerability calculators"
+        ],
+        "tags": [
+          "calculator",
+          "avr",
+          "risk-score"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-23T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-23T02:00:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-vr-management-tools-010",
-    "certification": "cis-vr",
-    "topic": "management-tools",
-    "cognitiveLevel": "knowledge",
-    "type": "multiple_choice",
-    "question": "What role is required to create a Vulnerability Response calculator?",
-    "options": [
-      { "id": "a", "text": "sn_vul.vulnerability_read" },
-      { "id": "b", "text": "sn_vul.vulnerability_analyst" },
-      { "id": "c", "text": "sn_vul.vulnerability_admin" },
-      { "id": "d", "text": "sn_vul.remediation_owner" }
-    ],
-    "correctAnswers": ["c"],
-    "selectCount": 1,
-    "isNegative": false,
-    "explanation": {
-      "correct": "The role required to create a Vulnerability Response calculator is sn_vul.vulnerability_admin (or the deprecated sn_vul.admin role).",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "vulnerability_read provides read access only, not calculator creation", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/create-vul-calculator.html" },
-        { "choiceId": "b", "explanation": "vulnerability_analyst can view and work with VITs but not create calculators", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/create-vul-calculator.html" },
-        { "choiceId": "d", "explanation": "remediation_owner works on remediation tasks, not calculator configuration", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/create-vul-calculator.html" }
-      ]
-    },
-    "references": ["https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/create-vul-calculator.html"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "scraped-docs/cis-secops-api/create-vul-calculator.md",
-      "excerpt": "Role required: sn_vul.vulnerability_admin or sn_vul.admin (deprecated)"
-    },
-    "labels": {
+    {
+      "id": "cis-vr-management-tools-010",
       "certification": "cis-vr",
-      "domain": "Tools to Manage Vulnerability Response",
-      "domainSlug": "management-tools",
-      "domainPercentage": 23,
-      "subtopics": ["vulnerability calculators"],
-      "tags": ["calculator", "roles", "admin"]
+      "topic": "management-tools",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What role is required to create a Vulnerability Response calculator?",
+      "options": [
+        {
+          "id": "a",
+          "text": "sn_vul.vulnerability_read"
+        },
+        {
+          "id": "b",
+          "text": "sn_vul.vulnerability_analyst"
+        },
+        {
+          "id": "c",
+          "text": "sn_vul.vulnerability_admin"
+        },
+        {
+          "id": "d",
+          "text": "sn_vul.remediation_owner"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "The role required to create a Vulnerability Response calculator is sn_vul.vulnerability_admin (or the deprecated sn_vul.admin role).",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "vulnerability_read provides read access only, not calculator creation",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/create-vul-calculator.html"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "vulnerability_analyst can view and work with VITs but not create calculators",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/create-vul-calculator.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "remediation_owner works on remediation tasks, not calculator configuration",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/create-vul-calculator.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/create-vul-calculator.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "scraped-docs/cis-secops-api/create-vul-calculator.md",
+        "excerpt": "Role required: sn_vul.vulnerability_admin or sn_vul.admin (deprecated)"
+      },
+      "labels": {
+        "certification": "cis-vr",
+        "domain": "Tools to Manage Vulnerability Response",
+        "domainSlug": "management-tools",
+        "domainPercentage": 23,
+        "subtopics": [
+          "vulnerability calculators"
+        ],
+        "tags": [
+          "calculator",
+          "roles",
+          "admin"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-23T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-23T02:00:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-vr-management-tools-011",
-    "certification": "cis-vr",
-    "topic": "management-tools",
-    "cognitiveLevel": "understanding",
-    "type": "multiple_choice",
-    "question": "What is the recommended approach when running vulnerability calculators that contain scripts?",
-    "options": [
-      { "id": "a", "text": "Run script-based rules first for best performance" },
-      { "id": "b", "text": "Order rules to run simplest rules first, scripts only for complex cases" },
-      { "id": "c", "text": "Disable all non-script rules" },
-      { "id": "d", "text": "Run all rules in parallel" }
-    ],
-    "correctAnswers": ["b"],
-    "selectCount": 1,
-    "isNegative": false,
-    "explanation": {
-      "correct": "You may notice performance degradation when running calculators with scripts. Order your rules to run the simplest rules first and only run scripts on items that cannot be handled with a condition and template value or a risk rule.",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "Scripts should run last, not first, to minimize performance impact", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/create-vul-calculator.html" },
-        { "choiceId": "c", "explanation": "Non-script rules should be preferred over scripts for performance", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/create-vul-calculator.html" },
-        { "choiceId": "d", "explanation": "Rules are evaluated in order, not in parallel", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/create-vul-calculator.html" }
-      ]
-    },
-    "references": ["https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/create-vul-calculator.html"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "scraped-docs/cis-secops-api/create-vul-calculator.md",
-      "excerpt": "You may notice performance degradation when running vulnerability calculators that contain scripts. Order your rules to run the simplest rules first and only run scripts on the items that cannot be handled with a condition and template value or a risk rule."
-    },
-    "labels": {
+    {
+      "id": "cis-vr-management-tools-011",
       "certification": "cis-vr",
-      "domain": "Tools to Manage Vulnerability Response",
-      "domainSlug": "management-tools",
-      "domainPercentage": 23,
-      "subtopics": ["vulnerability calculators"],
-      "tags": ["calculator", "performance", "scripts"]
+      "topic": "management-tools",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What is the recommended approach when running vulnerability calculators that contain scripts?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Run script-based rules first for best performance"
+        },
+        {
+          "id": "b",
+          "text": "Order rules to run simplest rules first, scripts only for complex cases"
+        },
+        {
+          "id": "c",
+          "text": "Disable all non-script rules"
+        },
+        {
+          "id": "d",
+          "text": "Run all rules in parallel"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "You may notice performance degradation when running calculators with scripts. Order your rules to run the simplest rules first and only run scripts on items that cannot be handled with a condition and template value or a risk rule.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Scripts should run last, not first, to minimize performance impact",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/create-vul-calculator.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Non-script rules should be preferred over scripts for performance",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/create-vul-calculator.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Rules are evaluated in order, not in parallel",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/create-vul-calculator.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/create-vul-calculator.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "scraped-docs/cis-secops-api/create-vul-calculator.md",
+        "excerpt": "You may notice performance degradation when running vulnerability calculators that contain scripts. Order your rules to run the simplest rules first and only run scripts on the items that cannot be handled with a condition and template value or a risk rule."
+      },
+      "labels": {
+        "certification": "cis-vr",
+        "domain": "Tools to Manage Vulnerability Response",
+        "domainSlug": "management-tools",
+        "domainPercentage": 23,
+        "subtopics": [
+          "vulnerability calculators"
+        ],
+        "tags": [
+          "calculator",
+          "performance",
+          "scripts"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-23T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-23T02:00:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-vr-management-tools-012",
-    "certification": "cis-vr",
-    "topic": "management-tools",
-    "cognitiveLevel": "knowledge",
-    "type": "multiple_choice",
-    "question": "Which field on the VIT form indicates whether the assignment was made by a rule or manually?",
-    "options": [
-      { "id": "a", "text": "Assignment source" },
-      { "id": "b", "text": "Assignment type" },
-      { "id": "c", "text": "Assignment method" },
-      { "id": "d", "text": "Assignment origin" }
-    ],
-    "correctAnswers": ["b"],
-    "selectCount": 1,
-    "isNegative": false,
-    "explanation": {
-      "correct": "Assignment type, whether Manual or Rule, is available from the VIT form and the list view. This helps identify how VITs were assigned.",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "The field is called Assignment type, not Assignment source", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-assignment-rules.html" },
-        { "choiceId": "c", "explanation": "The field is Assignment type, not Assignment method", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-assignment-rules.html" },
-        { "choiceId": "d", "explanation": "The field is Assignment type, not Assignment origin", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-assignment-rules.html" }
-      ]
-    },
-    "references": ["https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-assignment-rules.html"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "scraped-docs/cis-secops-api/vr-assignment-rules.md",
-      "excerpt": "Assignment type, whether Manual or Rule is available from the VIT form and the list view."
-    },
-    "labels": {
+    {
+      "id": "cis-vr-management-tools-012",
       "certification": "cis-vr",
-      "domain": "Tools to Manage Vulnerability Response",
-      "domainSlug": "management-tools",
-      "domainPercentage": 23,
-      "subtopics": ["assignment rules"],
-      "tags": ["assignment-type", "vit-form", "tracking"]
+      "topic": "management-tools",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which field on the VIT form indicates whether the assignment was made by a rule or manually?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Assignment source"
+        },
+        {
+          "id": "b",
+          "text": "Assignment type"
+        },
+        {
+          "id": "c",
+          "text": "Assignment method"
+        },
+        {
+          "id": "d",
+          "text": "Assignment origin"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "Assignment type, whether Manual or Rule, is available from the VIT form and the list view. This helps identify how VITs were assigned.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The field is called Assignment type, not Assignment source",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-assignment-rules.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The field is Assignment type, not Assignment method",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-assignment-rules.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The field is Assignment type, not Assignment origin",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-assignment-rules.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-assignment-rules.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "scraped-docs/cis-secops-api/vr-assignment-rules.md",
+        "excerpt": "Assignment type, whether Manual or Rule is available from the VIT form and the list view."
+      },
+      "labels": {
+        "certification": "cis-vr",
+        "domain": "Tools to Manage Vulnerability Response",
+        "domainSlug": "management-tools",
+        "domainPercentage": 23,
+        "subtopics": [
+          "assignment rules"
+        ],
+        "tags": [
+          "assignment-type",
+          "vit-form",
+          "tracking"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-23T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-23T02:00:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-vr-management-tools-013",
-    "certification": "cis-vr",
-    "topic": "management-tools",
-    "cognitiveLevel": "knowledge",
-    "type": "multiple_choice",
-    "question": "What is NOT true about assignment rules and VITs in the Deferred state?",
-    "options": [
-      { "id": "a", "text": "Assignment rules do not apply to VITs in the Deferred state" },
-      { "id": "b", "text": "Deferred VITs must be manually assigned if needed" },
-      { "id": "c", "text": "Deferred VITs are automatically assigned by default rules" },
-      { "id": "d", "text": "Deferred VITs are excluded from rule reapplication" }
-    ],
-    "correctAnswers": ["c"],
-    "selectCount": 1,
-    "isNegative": true,
-    "explanation": {
-      "correct": "Deferred VITs are NOT automatically assigned by default rules. Assignment rules do not apply to VITs in the Deferred state. If a VIT is deferred, you must manually assign it if needed.",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "This is true - assignment rules don't apply to Deferred VITs", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-assignment-rules.html" },
-        { "choiceId": "b", "explanation": "This is true - Deferred VITs require manual assignment", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-assignment-rules.html" },
-        { "choiceId": "d", "explanation": "This is true - Deferred VITs are excluded from reapplication", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-assignment-rules.html" }
-      ]
-    },
-    "references": ["https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-assignment-rules.html"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "scraped-docs/cis-secops-api/vr-assignment-rules.md",
-      "excerpt": "Assignment rules do not apply to VITs in the Deferred state. If a VIT is deferred, you must manually assign it if needed."
-    },
-    "labels": {
+    {
+      "id": "cis-vr-management-tools-013",
       "certification": "cis-vr",
-      "domain": "Tools to Manage Vulnerability Response",
-      "domainSlug": "management-tools",
-      "domainPercentage": 23,
-      "subtopics": ["assignment rules"],
-      "tags": ["assignment-rules", "deferred", "negative-question"]
+      "topic": "management-tools",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What is NOT true about assignment rules and VITs in the Deferred state?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Assignment rules do not apply to VITs in the Deferred state"
+        },
+        {
+          "id": "b",
+          "text": "Deferred VITs must be manually assigned if needed"
+        },
+        {
+          "id": "c",
+          "text": "Deferred VITs are automatically assigned by default rules"
+        },
+        {
+          "id": "d",
+          "text": "Deferred VITs are excluded from rule reapplication"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "selectCount": 1,
+      "isNegative": true,
+      "explanation": {
+        "correct": "Deferred VITs are NOT automatically assigned by default rules. Assignment rules do not apply to VITs in the Deferred state. If a VIT is deferred, you must manually assign it if needed.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "This is true - assignment rules don't apply to Deferred VITs",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-assignment-rules.html"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "This is true - Deferred VITs require manual assignment",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-assignment-rules.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "This is true - Deferred VITs are excluded from reapplication",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-assignment-rules.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-assignment-rules.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "scraped-docs/cis-secops-api/vr-assignment-rules.md",
+        "excerpt": "Assignment rules do not apply to VITs in the Deferred state. If a VIT is deferred, you must manually assign it if needed."
+      },
+      "labels": {
+        "certification": "cis-vr",
+        "domain": "Tools to Manage Vulnerability Response",
+        "domainSlug": "management-tools",
+        "domainPercentage": 23,
+        "subtopics": [
+          "assignment rules"
+        ],
+        "tags": [
+          "assignment-rules",
+          "deferred",
+          "negative-question"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-23T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-23T02:00:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-vr-management-tools-014",
-    "certification": "cis-vr",
-    "topic": "management-tools",
-    "cognitiveLevel": "understanding",
-    "type": "compound_true_false",
-    "question": "Which statements about the Vulnerability Manager Workspace are true?\na) It enables monitoring of VITs, AVITs, and CVITs using watch topics\nb) It allows creating remediation efforts to manage remediation progress\nc) It is only available to Remediation Owners\nd) It supports filtering records to visualize summaries on the Home page",
-    "options": [
-      { "id": "a", "text": "a, b, c, and d" },
-      { "id": "b", "text": "a, b, and d only" },
-      { "id": "c", "text": "a and c only" },
-      { "id": "d", "text": "b and d only" }
-    ],
-    "correctAnswers": ["b"],
-    "selectCount": 1,
-    "isNegative": false,
-    "explanation": {
-      "correct": "Statements a, b, and d are true. The Vulnerability Manager Workspace enables monitoring VITs, AVITs, CVITs with watch topics, creating remediation efforts, and filtering records for summaries. Statement c is false - it's primarily for Vulnerability Analysts, not Remediation Owners.",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "Statement c is false - Vulnerability Manager Workspace is for Vulnerability Analysts, not Remediation Owners", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-manager-workspace/using-vulnerability-manager-workspace.html" },
-        { "choiceId": "c", "explanation": "Statements b and d are also true", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-manager-workspace/using-vulnerability-manager-workspace.html" },
-        { "choiceId": "d", "explanation": "Statement a is also true - watch topics are supported", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-manager-workspace/using-vulnerability-manager-workspace.html" }
-      ]
-    },
-    "references": ["https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-manager-workspace/using-vulnerability-manager-workspace.html"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "scraped-docs/cis-secops-api/using-vulnerability-manager-workspace.md",
-      "excerpt": "The Vulnerability Manager Workspace enables you to monitor vulnerable items (VITs, AVITs, and CVITs) and Test Results (TRs) using watch topics, and track and manage their remediation progress by creating remediation efforts."
-    },
-    "labels": {
+    {
+      "id": "cis-vr-management-tools-014",
       "certification": "cis-vr",
-      "domain": "Tools to Manage Vulnerability Response",
-      "domainSlug": "management-tools",
-      "domainPercentage": 23,
-      "subtopics": ["Vulnerability Workspaces"],
-      "tags": ["workspace", "watch-topics", "compound-true-false"]
-    },
-    "meta": {
-      "generatedAt": "2026-02-23T02:00:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
+      "topic": "management-tools",
+      "cognitiveLevel": "understanding",
+      "type": "compound_true_false",
+      "question": "Which statements about the Vulnerability Manager Workspace are true?\na) It enables monitoring of VITs, AVITs, and CVITs using watch topics\nb) It allows creating remediation efforts to manage remediation progress\nc) It is only available to Remediation Owners\nd) It supports filtering records to visualize summaries on the Home page",
+      "options": [
+        {
+          "id": "a",
+          "text": "a, b, c, and d"
+        },
+        {
+          "id": "b",
+          "text": "a, b, and d only"
+        },
+        {
+          "id": "c",
+          "text": "a and c only"
+        },
+        {
+          "id": "d",
+          "text": "b and d only"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "Statements a, b, and d are true. The Vulnerability Manager Workspace enables monitoring VITs, AVITs, CVITs with watch topics, creating remediation efforts, and filtering records for summaries. Statement c is false - it's primarily for Vulnerability Analysts, not Remediation Owners.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Statement c is false - Vulnerability Manager Workspace is for Vulnerability Analysts, not Remediation Owners",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-manager-workspace/using-vulnerability-manager-workspace.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Statements b and d are also true",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-manager-workspace/using-vulnerability-manager-workspace.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Statement a is also true - watch topics are supported",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-manager-workspace/using-vulnerability-manager-workspace.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-manager-workspace/using-vulnerability-manager-workspace.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "scraped-docs/cis-secops-api/using-vulnerability-manager-workspace.md",
+        "excerpt": "The Vulnerability Manager Workspace enables you to monitor vulnerable items (VITs, AVITs, and CVITs) and Test Results (TRs) using watch topics, and track and manage their remediation progress by creating remediation efforts."
+      },
+      "labels": {
+        "certification": "cis-vr",
+        "domain": "Tools to Manage Vulnerability Response",
+        "domainSlug": "management-tools",
+        "domainPercentage": 23,
+        "subtopics": [
+          "Vulnerability Workspaces"
+        ],
+        "tags": [
+          "workspace",
+          "watch-topics",
+          "compound-true-false"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-23T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     }
-  }
-]
+  ]
+}

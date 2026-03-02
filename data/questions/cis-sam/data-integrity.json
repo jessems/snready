@@ -1,374 +1,653 @@
-[
-  {
-    "id": "cis-sam-data-integrity-401",
-    "certification": "cis-sam",
-    "topic": "data-integrity",
-    "cognitiveLevel": "knowledge",
-    "type": "multiple_choice",
-    "question": "Which table is populated when setting up Microsoft SCCM for Software Asset Management?",
-    "options": [
-      { "id": "a", "text": "Software Model [cmdb_sw_model]" },
-      { "id": "b", "text": "Software Installation [cmdb_sam_sw_install]" },
-      { "id": "c", "text": "Discovery Model [cmdb_sam_sw_discovery_model]" },
-      { "id": "d", "text": "Software Entitlement [alm_entitlement]" }
-    ],
-    "correctAnswers": ["b"],
-    "selectCount": 1,
-    "isNegative": false,
-    "explanation": {
-      "correct": "Setting up Microsoft SCCM for Software Asset Management populates the Software Installation [cmdb_sam_sw_install] table with client software found in your environment.",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "Software Models are created separately to tie installations with entitlements, not directly populated by SCCM.", "reference": "docs.servicenow.com/configure-sccm-sam" },
-        { "choiceId": "c", "explanation": "Discovery Models are automatically created from software installations, not directly by SCCM.", "reference": "docs.servicenow.com/configure-sccm-sam" },
-        { "choiceId": "d", "explanation": "Entitlements define license details and are manually created or imported, not populated by SCCM.", "reference": "docs.servicenow.com/configure-sccm-sam" }
-      ]
-    },
-    "references": ["docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/configure-sccm-sam"],
-    "isFree": true,
-    "source": {
-      "type": "docs",
-      "path": "configure-sccm-sam.md",
-      "excerpt": "Set up Microsoft SCCM for Software Asset Management to populate the Software Installation [cmdb_sam_sw_install] table with client software found in your environment."
-    },
-    "labels": {
+{
+  "certification": "cis-sam",
+  "topic": "data-integrity",
+  "questions": [
+    {
+      "id": "cis-sam-data-integrity-401",
       "certification": "cis-sam",
-      "domain": "Data Integrity & Sources",
-      "domainSlug": "data-integrity",
-      "domainPercentage": 28,
-      "subtopics": ["Data import and sources"],
-      "tags": ["sccm", "integration", "software-installation", "discovery"]
+      "topic": "data-integrity",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which table is populated when setting up Microsoft SCCM for Software Asset Management?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Software Model [cmdb_sw_model]"
+        },
+        {
+          "id": "b",
+          "text": "Software Installation [cmdb_sam_sw_install]"
+        },
+        {
+          "id": "c",
+          "text": "Discovery Model [cmdb_sam_sw_discovery_model]"
+        },
+        {
+          "id": "d",
+          "text": "Software Entitlement [alm_entitlement]"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "Setting up Microsoft SCCM for Software Asset Management populates the Software Installation [cmdb_sam_sw_install] table with client software found in your environment.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Software Models are created separately to tie installations with entitlements, not directly populated by SCCM.",
+            "reference": "docs.servicenow.com/configure-sccm-sam"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Discovery Models are automatically created from software installations, not directly by SCCM.",
+            "reference": "docs.servicenow.com/configure-sccm-sam"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Entitlements define license details and are manually created or imported, not populated by SCCM.",
+            "reference": "docs.servicenow.com/configure-sccm-sam"
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/configure-sccm-sam"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "docs",
+        "path": "configure-sccm-sam.md",
+        "excerpt": "Set up Microsoft SCCM for Software Asset Management to populate the Software Installation [cmdb_sam_sw_install] table with client software found in your environment."
+      },
+      "labels": {
+        "certification": "cis-sam",
+        "domain": "Data Integrity & Sources",
+        "domainSlug": "data-integrity",
+        "domainPercentage": 28,
+        "subtopics": [
+          "Data import and sources"
+        ],
+        "tags": [
+          "sccm",
+          "integration",
+          "software-installation",
+          "discovery"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-18T02:45:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-18T02:45:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-sam-data-integrity-402",
-    "certification": "cis-sam",
-    "topic": "data-integrity",
-    "cognitiveLevel": "knowledge",
-    "type": "multiple_select",
-    "question": "Which plugins must be activated to pull software usage data from Microsoft SCCM? (Choose two.)",
-    "options": [
-      { "id": "a", "text": "Integration — Microsoft SCCM 2016 (com.snc.integration.sccm2016)" },
-      { "id": "b", "text": "Integration — Microsoft SCCM 2016 Software Usage (com.snc.samp.usage_sccm_2016)" },
-      { "id": "c", "text": "Software Asset Management Core (com.snc.samp)" },
-      { "id": "d", "text": "Service Graph Connector Analytics (com.snc.sg.analytics)" }
-    ],
-    "correctAnswers": ["a", "b"],
-    "selectCount": 2,
-    "isNegative": false,
-    "explanation": {
-      "correct": "To pull software usage data from SCCM, you need both the SCCM integration plugin (e.g., Integration — Microsoft SCCM 2016) AND the corresponding software usage plugin (e.g., Integration — Microsoft SCCM 2016 Software Usage).",
-      "wrongAnswers": [
-        { "choiceId": "c", "explanation": "SAM Core is a base plugin but not specifically required for SCCM software usage data.", "reference": "docs.servicenow.com/configure-sccm-sam" },
-        { "choiceId": "d", "explanation": "Service Graph Connector Analytics is not a plugin used for SCCM software usage integration.", "reference": "docs.servicenow.com/configure-sccm-sam" }
-      ]
-    },
-    "references": ["docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/configure-sccm-sam"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "configure-sccm-sam.md",
-      "excerpt": "If you want to pull software usage data from SCCM, activate the software usage plugin for your version of SCCM: Integration — Microsoft SCCM 2016 Software Usage (com.snc.samp.usage_sccm_2016) plugin"
-    },
-    "labels": {
+    {
+      "id": "cis-sam-data-integrity-402",
       "certification": "cis-sam",
-      "domain": "Data Integrity & Sources",
-      "domainSlug": "data-integrity",
-      "domainPercentage": 28,
-      "subtopics": ["Discovery integration"],
-      "tags": ["sccm", "plugin", "software-usage", "integration"]
+      "topic": "data-integrity",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_select",
+      "question": "Which plugins must be activated to pull software usage data from Microsoft SCCM? (Choose two.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Integration — Microsoft SCCM 2016 (com.snc.integration.sccm2016)"
+        },
+        {
+          "id": "b",
+          "text": "Integration — Microsoft SCCM 2016 Software Usage (com.snc.samp.usage_sccm_2016)"
+        },
+        {
+          "id": "c",
+          "text": "Software Asset Management Core (com.snc.samp)"
+        },
+        {
+          "id": "d",
+          "text": "Service Graph Connector Analytics (com.snc.sg.analytics)"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b"
+      ],
+      "selectCount": 2,
+      "isNegative": false,
+      "explanation": {
+        "correct": "To pull software usage data from SCCM, you need both the SCCM integration plugin (e.g., Integration — Microsoft SCCM 2016) AND the corresponding software usage plugin (e.g., Integration — Microsoft SCCM 2016 Software Usage).",
+        "wrongAnswers": [
+          {
+            "choiceId": "c",
+            "explanation": "SAM Core is a base plugin but not specifically required for SCCM software usage data.",
+            "reference": "docs.servicenow.com/configure-sccm-sam"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Service Graph Connector Analytics is not a plugin used for SCCM software usage integration.",
+            "reference": "docs.servicenow.com/configure-sccm-sam"
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/configure-sccm-sam"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "configure-sccm-sam.md",
+        "excerpt": "If you want to pull software usage data from SCCM, activate the software usage plugin for your version of SCCM: Integration — Microsoft SCCM 2016 Software Usage (com.snc.samp.usage_sccm_2016) plugin"
+      },
+      "labels": {
+        "certification": "cis-sam",
+        "domain": "Data Integrity & Sources",
+        "domainSlug": "data-integrity",
+        "domainPercentage": 28,
+        "subtopics": [
+          "Discovery integration"
+        ],
+        "tags": [
+          "sccm",
+          "plugin",
+          "software-usage",
+          "integration"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-18T02:45:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-18T02:45:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-sam-data-integrity-403",
-    "certification": "cis-sam",
-    "topic": "data-integrity",
-    "cognitiveLevel": "understanding",
-    "type": "multiple_choice",
-    "question": "Which is NOT a supported publisher pack for Software Asset Management?",
-    "options": [
-      { "id": "a", "text": "Adobe (com.sn_samp_adobe)" },
-      { "id": "b", "text": "Salesforce (com.sn_samp_salesforce)" },
-      { "id": "c", "text": "Oracle (com.snc.samp.oracle)" },
-      { "id": "d", "text": "VMware (com.sn_samp_vmware)" }
-    ],
-    "correctAnswers": ["b"],
-    "selectCount": 1,
-    "isNegative": true,
-    "explanation": {
-      "correct": "Salesforce is NOT a supported publisher pack. The supported publisher packs are: Adobe, Citrix, IBM (includes Red Hat Enterprise Linux), Microsoft, Oracle, SAP, and VMware.",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "Adobe (com.sn_samp_adobe) provides capabilities to reconcile Adobe subscription software.", "reference": "docs.servicenow.com/sam-publisher-packs" },
-        { "choiceId": "c", "explanation": "Oracle (com.snc.samp.oracle) provides capabilities to reconcile Oracle software like Oracle DB Server.", "reference": "docs.servicenow.com/sam-publisher-packs" },
-        { "choiceId": "d", "explanation": "VMware (com.sn_samp_vmware) provides capabilities to reconcile VMware software like vCenter and vSphere.", "reference": "docs.servicenow.com/sam-publisher-packs" }
-      ]
-    },
-    "references": ["docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/sam-publisher-packs"],
-    "isFree": true,
-    "source": {
-      "type": "docs",
-      "path": "sam-publisher-packs.md",
-      "excerpt": "The following Software Asset Management publisher pack plugins can be requested: Adobe, Citrix, IBM (includes both IBM and Red Hat Enterprise Linux), Microsoft, Oracle, SAP, VMware"
-    },
-    "labels": {
+    {
+      "id": "cis-sam-data-integrity-403",
       "certification": "cis-sam",
-      "domain": "Data Integrity & Sources",
-      "domainSlug": "data-integrity",
-      "domainPercentage": 28,
-      "subtopics": ["Publisher packs"],
-      "tags": ["publisher-pack", "adobe", "oracle", "vmware", "supported"]
+      "topic": "data-integrity",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "Which is NOT a supported publisher pack for Software Asset Management?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Adobe (com.sn_samp_adobe)"
+        },
+        {
+          "id": "b",
+          "text": "Salesforce (com.sn_samp_salesforce)"
+        },
+        {
+          "id": "c",
+          "text": "Oracle (com.snc.samp.oracle)"
+        },
+        {
+          "id": "d",
+          "text": "VMware (com.sn_samp_vmware)"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": true,
+      "explanation": {
+        "correct": "Salesforce is NOT a supported publisher pack. The supported publisher packs are: Adobe, Citrix, IBM (includes Red Hat Enterprise Linux), Microsoft, Oracle, SAP, and VMware.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Adobe (com.sn_samp_adobe) provides capabilities to reconcile Adobe subscription software.",
+            "reference": "docs.servicenow.com/sam-publisher-packs"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Oracle (com.snc.samp.oracle) provides capabilities to reconcile Oracle software like Oracle DB Server.",
+            "reference": "docs.servicenow.com/sam-publisher-packs"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "VMware (com.sn_samp_vmware) provides capabilities to reconcile VMware software like vCenter and vSphere.",
+            "reference": "docs.servicenow.com/sam-publisher-packs"
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/sam-publisher-packs"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "docs",
+        "path": "sam-publisher-packs.md",
+        "excerpt": "The following Software Asset Management publisher pack plugins can be requested: Adobe, Citrix, IBM (includes both IBM and Red Hat Enterprise Linux), Microsoft, Oracle, SAP, VMware"
+      },
+      "labels": {
+        "certification": "cis-sam",
+        "domain": "Data Integrity & Sources",
+        "domainSlug": "data-integrity",
+        "domainPercentage": 28,
+        "subtopics": [
+          "Publisher packs"
+        ],
+        "tags": [
+          "publisher-pack",
+          "adobe",
+          "oracle",
+          "vmware",
+          "supported"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-18T02:45:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-18T02:45:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-sam-data-integrity-404",
-    "certification": "cis-sam",
-    "topic": "data-integrity",
-    "cognitiveLevel": "knowledge",
-    "type": "multiple_choice",
-    "question": "What combination of fields forms the primary key for matching software installations to discovery models?",
-    "options": [
-      { "id": "a", "text": "Publisher, Product Name, License Type" },
-      { "id": "b", "text": "Publisher, Display Name, Version" },
-      { "id": "c", "text": "Vendor, Software Name, Build Number" },
-      { "id": "d", "text": "Publisher, Model Number, Install Date" }
-    ],
-    "correctAnswers": ["b"],
-    "selectCount": 1,
-    "isNegative": false,
-    "explanation": {
-      "correct": "The primary key used to match new software installations to a new or existing software discovery model consists of Publisher, Display Name, and Version.",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "License Type is not part of the discovery model primary key.", "reference": "docs.servicenow.com/c_DiscoveryModels" },
-        { "choiceId": "c", "explanation": "Build Number is not used; the correct field is Version, and it's 'Display Name' not 'Software Name'.", "reference": "docs.servicenow.com/c_DiscoveryModels" },
-        { "choiceId": "d", "explanation": "Model Number and Install Date are not part of the primary key for discovery model matching.", "reference": "docs.servicenow.com/c_DiscoveryModels" }
-      ]
-    },
-    "references": ["docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/c_DiscoveryModels"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "c_DiscoveryModels.md",
-      "excerpt": "The following field combination, called the primary key, is used to match new software installations to a new or existing software discovery model. Primary key: Publisher, Display Name, and Version"
-    },
-    "labels": {
+    {
+      "id": "cis-sam-data-integrity-404",
       "certification": "cis-sam",
-      "domain": "Data Integrity & Sources",
-      "domainSlug": "data-integrity",
-      "domainPercentage": 28,
-      "subtopics": ["Software installation records"],
-      "tags": ["discovery-model", "primary-key", "matching", "software-installation"]
+      "topic": "data-integrity",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What combination of fields forms the primary key for matching software installations to discovery models?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Publisher, Product Name, License Type"
+        },
+        {
+          "id": "b",
+          "text": "Publisher, Display Name, Version"
+        },
+        {
+          "id": "c",
+          "text": "Vendor, Software Name, Build Number"
+        },
+        {
+          "id": "d",
+          "text": "Publisher, Model Number, Install Date"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "The primary key used to match new software installations to a new or existing software discovery model consists of Publisher, Display Name, and Version.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "License Type is not part of the discovery model primary key.",
+            "reference": "docs.servicenow.com/c_DiscoveryModels"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Build Number is not used; the correct field is Version, and it's 'Display Name' not 'Software Name'.",
+            "reference": "docs.servicenow.com/c_DiscoveryModels"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Model Number and Install Date are not part of the primary key for discovery model matching.",
+            "reference": "docs.servicenow.com/c_DiscoveryModels"
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/c_DiscoveryModels"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "c_DiscoveryModels.md",
+        "excerpt": "The following field combination, called the primary key, is used to match new software installations to a new or existing software discovery model. Primary key: Publisher, Display Name, and Version"
+      },
+      "labels": {
+        "certification": "cis-sam",
+        "domain": "Data Integrity & Sources",
+        "domainSlug": "data-integrity",
+        "domainPercentage": 28,
+        "subtopics": [
+          "Software installation records"
+        ],
+        "tags": [
+          "discovery-model",
+          "primary-key",
+          "matching",
+          "software-installation"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-18T02:45:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-18T02:45:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-sam-data-integrity-405",
-    "certification": "cis-sam",
-    "topic": "data-integrity",
-    "cognitiveLevel": "understanding",
-    "type": "compound_true_false",
-    "question": "Which of the following statements about software discovery models are true?\na) Discovery models are automatically created during discovery and cannot be created manually.\nb) Multiple discovery models can be associated to one software model.\nc) Discovery models are created for all software installations including Security Updates.\nd) When an exact version match is not found, the system rounds down to a major version number.",
-    "options": [
-      { "id": "a", "text": "a, b, c, and d" },
-      { "id": "b", "text": "a, b, and d only" },
-      { "id": "c", "text": "b, c, and d only" },
-      { "id": "d", "text": "a and b only" }
-    ],
-    "correctAnswers": ["b"],
-    "selectCount": 1,
-    "isNegative": false,
-    "statements": {
-      "a": true,
-      "b": true,
-      "c": false,
-      "d": true
-    },
-    "explanation": {
-      "correct": "Statements a, b, and d are true. Statement c is false because discovery models are NOT created for software installations that have a name containing 'Security Update'.",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "Statement c is false - Security Updates are excluded from discovery model creation.", "reference": "docs.servicenow.com/c_DiscoveryModels" },
-        { "choiceId": "c", "explanation": "Statement a is true - discovery models cannot be created manually.", "reference": "docs.servicenow.com/c_DiscoveryModels" },
-        { "choiceId": "d", "explanation": "Statement d is also true - version matching rounds down to major version when exact match not found.", "reference": "docs.servicenow.com/c_DiscoveryModels" }
-      ]
-    },
-    "references": ["docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/c_DiscoveryModels"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "c_DiscoveryModels.md",
-      "excerpt": "Software discovery models cannot be created manually. Discovery models are not created for software installations that have a name containing Security Update. When analyzing version numbers, an exact match is always searched for first, but rounds down to a major version number when an exact match is not found."
-    },
-    "labels": {
+    {
+      "id": "cis-sam-data-integrity-405",
       "certification": "cis-sam",
-      "domain": "Data Integrity & Sources",
-      "domainSlug": "data-integrity",
-      "domainPercentage": 28,
-      "subtopics": ["Software installation records", "Normalization and classification"],
-      "tags": ["discovery-model", "normalization", "version-matching"]
+      "topic": "data-integrity",
+      "cognitiveLevel": "understanding",
+      "type": "compound_true_false",
+      "question": "Which of the following statements about software discovery models are true?\na) Discovery models are automatically created during discovery and cannot be created manually.\nb) Multiple discovery models can be associated to one software model.\nc) Discovery models are created for all software installations including Security Updates.\nd) When an exact version match is not found, the system rounds down to a major version number.",
+      "options": [
+        {
+          "id": "a",
+          "text": "a, b, c, and d"
+        },
+        {
+          "id": "b",
+          "text": "a, b, and d only"
+        },
+        {
+          "id": "c",
+          "text": "b, c, and d only"
+        },
+        {
+          "id": "d",
+          "text": "a and b only"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "statements": {
+        "a": true,
+        "b": true,
+        "c": false,
+        "d": true
+      },
+      "explanation": {
+        "correct": "Statements a, b, and d are true. Statement c is false because discovery models are NOT created for software installations that have a name containing 'Security Update'.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Statement c is false - Security Updates are excluded from discovery model creation.",
+            "reference": "docs.servicenow.com/c_DiscoveryModels"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Statement a is true - discovery models cannot be created manually.",
+            "reference": "docs.servicenow.com/c_DiscoveryModels"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Statement d is also true - version matching rounds down to major version when exact match not found.",
+            "reference": "docs.servicenow.com/c_DiscoveryModels"
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/c_DiscoveryModels"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "c_DiscoveryModels.md",
+        "excerpt": "Software discovery models cannot be created manually. Discovery models are not created for software installations that have a name containing Security Update. When analyzing version numbers, an exact match is always searched for first, but rounds down to a major version number when an exact match is not found."
+      },
+      "labels": {
+        "certification": "cis-sam",
+        "domain": "Data Integrity & Sources",
+        "domainSlug": "data-integrity",
+        "domainPercentage": 28,
+        "subtopics": [
+          "Software installation records",
+          "Normalization and classification"
+        ],
+        "tags": [
+          "discovery-model",
+          "normalization",
+          "version-matching"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-18T02:45:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-18T02:45:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-sam-data-integrity-406",
-    "certification": "cis-sam",
-    "topic": "data-integrity",
-    "cognitiveLevel": "understanding",
-    "type": "multiple_choice",
-    "question": "What is the difference between a software model and a software discovery model?",
-    "options": [
-      { "id": "a", "text": "A software model is discovered automatically; a discovery model is created manually" },
-      { "id": "b", "text": "A software model is a purchased/available version; a discovery model is created when software is discovered in the network" },
-      { "id": "c", "text": "A software model tracks licenses; a discovery model tracks hardware" },
-      { "id": "d", "text": "There is no difference; the terms are interchangeable" }
-    ],
-    "correctAnswers": ["b"],
-    "selectCount": 1,
-    "isNegative": false,
-    "explanation": {
-      "correct": "A software model is a specific version or configuration of software that is purchased and/or available to users. A software discovery model is created when a version of software is discovered in a network environment. Multiple discovery models can be associated to one software model.",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "This is backwards. Discovery models are created automatically during discovery; software models are defined separately.", "reference": "docs.servicenow.com/c_DiscoveryModels" },
-        { "choiceId": "c", "explanation": "Both types of models relate to software, not hardware. Software models tie to entitlements; discovery models are from discovered installations.", "reference": "docs.servicenow.com/c_DiscoveryModels" },
-        { "choiceId": "d", "explanation": "The terms are not interchangeable; they represent different concepts in SAM.", "reference": "docs.servicenow.com/c_DiscoveryModels" }
-      ]
-    },
-    "references": ["docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/c_DiscoveryModels"],
-    "isFree": true,
-    "source": {
-      "type": "docs",
-      "path": "c_DiscoveryModels.md",
-      "excerpt": "A software model is a specific version or configuration of software that is purchased and/or available to users. A software discovery model is a model created when a version of software is discovered in a network environment."
-    },
-    "labels": {
+    {
+      "id": "cis-sam-data-integrity-406",
       "certification": "cis-sam",
-      "domain": "Data Integrity & Sources",
-      "domainSlug": "data-integrity",
-      "domainPercentage": 28,
-      "subtopics": ["Software installation records"],
-      "tags": ["software-model", "discovery-model", "terminology"]
+      "topic": "data-integrity",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What is the difference between a software model and a software discovery model?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A software model is discovered automatically; a discovery model is created manually"
+        },
+        {
+          "id": "b",
+          "text": "A software model is a purchased/available version; a discovery model is created when software is discovered in the network"
+        },
+        {
+          "id": "c",
+          "text": "A software model tracks licenses; a discovery model tracks hardware"
+        },
+        {
+          "id": "d",
+          "text": "There is no difference; the terms are interchangeable"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "A software model is a specific version or configuration of software that is purchased and/or available to users. A software discovery model is created when a version of software is discovered in a network environment. Multiple discovery models can be associated to one software model.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "This is backwards. Discovery models are created automatically during discovery; software models are defined separately.",
+            "reference": "docs.servicenow.com/c_DiscoveryModels"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Both types of models relate to software, not hardware. Software models tie to entitlements; discovery models are from discovered installations.",
+            "reference": "docs.servicenow.com/c_DiscoveryModels"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The terms are not interchangeable; they represent different concepts in SAM.",
+            "reference": "docs.servicenow.com/c_DiscoveryModels"
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/c_DiscoveryModels"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "docs",
+        "path": "c_DiscoveryModels.md",
+        "excerpt": "A software model is a specific version or configuration of software that is purchased and/or available to users. A software discovery model is a model created when a version of software is discovered in a network environment."
+      },
+      "labels": {
+        "certification": "cis-sam",
+        "domain": "Data Integrity & Sources",
+        "domainSlug": "data-integrity",
+        "domainPercentage": 28,
+        "subtopics": [
+          "Software installation records"
+        ],
+        "tags": [
+          "software-model",
+          "discovery-model",
+          "terminology"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-18T02:45:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-18T02:45:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-sam-data-integrity-407",
-    "certification": "cis-sam",
-    "topic": "data-integrity",
-    "cognitiveLevel": "application",
-    "type": "multiple_choice",
-    "question": "An organization wants to use a third-party discovery tool to populate software data in ServiceNow SAM. Which API must they use to send the discovery payload?",
-    "options": [
-      { "id": "a", "text": "CMDB Table API" },
-      { "id": "b", "text": "IRE REST API" },
-      { "id": "c", "text": "Import Set API" },
-      { "id": "d", "text": "Discovery REST API" }
-    ],
-    "correctAnswers": ["b"],
-    "selectCount": 1,
-    "isNegative": false,
-    "explanation": {
-      "correct": "Third-party discovery sources must send the payload to the ServiceNow instance using the IRE REST API. The SAM application uses the IRE API to populate Software Asset Management tables. As the IRE API relies on CI identifiers, the SAM tables require a relationship to the CI for IRE support.",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "While the Table API can update CMDB records, the recommended method for SAM integration is the IRE REST API which handles identification and reconciliation.", "reference": "docs.servicenow.com/configure-third-party-discovery" },
-        { "choiceId": "c", "explanation": "Import Set API is for data imports but the IRE API is specifically designed for CI identification and reconciliation needed by SAM.", "reference": "docs.servicenow.com/configure-third-party-discovery" },
-        { "choiceId": "d", "explanation": "There is no 'Discovery REST API' for this purpose; the correct API is the IRE REST API.", "reference": "docs.servicenow.com/configure-third-party-discovery" }
-      ]
-    },
-    "references": ["docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/configure-third-party-discovery"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "configure-third-party-discovery.md",
-      "excerpt": "The Software Asset Management application uses the IRE API to help you populate the Software asset management tables. Send the payload to the ServiceNow instance using the IRE REST API."
-    },
-    "labels": {
+    {
+      "id": "cis-sam-data-integrity-407",
       "certification": "cis-sam",
-      "domain": "Data Integrity & Sources",
-      "domainSlug": "data-integrity",
-      "domainPercentage": 28,
-      "subtopics": ["Data import and sources"],
-      "tags": ["ire-api", "third-party", "integration", "discovery"]
+      "topic": "data-integrity",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "An organization wants to use a third-party discovery tool to populate software data in ServiceNow SAM. Which API must they use to send the discovery payload?",
+      "options": [
+        {
+          "id": "a",
+          "text": "CMDB Table API"
+        },
+        {
+          "id": "b",
+          "text": "IRE REST API"
+        },
+        {
+          "id": "c",
+          "text": "Import Set API"
+        },
+        {
+          "id": "d",
+          "text": "Discovery REST API"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "Third-party discovery sources must send the payload to the ServiceNow instance using the IRE REST API. The SAM application uses the IRE API to populate Software Asset Management tables. As the IRE API relies on CI identifiers, the SAM tables require a relationship to the CI for IRE support.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "While the Table API can update CMDB records, the recommended method for SAM integration is the IRE REST API which handles identification and reconciliation.",
+            "reference": "docs.servicenow.com/configure-third-party-discovery"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Import Set API is for data imports but the IRE API is specifically designed for CI identification and reconciliation needed by SAM.",
+            "reference": "docs.servicenow.com/configure-third-party-discovery"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "There is no 'Discovery REST API' for this purpose; the correct API is the IRE REST API.",
+            "reference": "docs.servicenow.com/configure-third-party-discovery"
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/configure-third-party-discovery"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "configure-third-party-discovery.md",
+        "excerpt": "The Software Asset Management application uses the IRE API to help you populate the Software asset management tables. Send the payload to the ServiceNow instance using the IRE REST API."
+      },
+      "labels": {
+        "certification": "cis-sam",
+        "domain": "Data Integrity & Sources",
+        "domainSlug": "data-integrity",
+        "domainPercentage": 28,
+        "subtopics": [
+          "Data import and sources"
+        ],
+        "tags": [
+          "ire-api",
+          "third-party",
+          "integration",
+          "discovery"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-18T02:45:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-18T02:45:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-sam-data-integrity-408",
-    "certification": "cis-sam",
-    "topic": "data-integrity",
-    "cognitiveLevel": "knowledge",
-    "type": "multiple_select",
-    "question": "Which capabilities does the Software Asset Management Professional for IBM publisher pack provide? (Choose two.)",
-    "options": [
-      { "id": "a", "text": "Reconcile IBM products using PVU and RVU license metrics" },
-      { "id": "b", "text": "Reconcile Red Hat Enterprise Linux software" },
-      { "id": "c", "text": "Reconcile Microsoft SQL Server products" },
-      { "id": "d", "text": "Reconcile Adobe subscription software" }
-    ],
-    "correctAnswers": ["a", "b"],
-    "selectCount": 2,
-    "isNegative": false,
-    "explanation": {
-      "correct": "The IBM publisher pack (com.sn_samp_ibm) provides capabilities to reconcile IBM products using PVU and RVU license metrics. It also provides capabilities to reconcile Red Hat Enterprise Linux software, including Red Hat Enterprise Linux Server and Red Hat Enterprise Linux for Virtual Datacenters.",
-      "wrongAnswers": [
-        { "choiceId": "c", "explanation": "Microsoft SQL Server is reconciled using the Microsoft publisher pack (com.snc.samp.microsoft), not the IBM pack.", "reference": "docs.servicenow.com/sam-publisher-packs" },
-        { "choiceId": "d", "explanation": "Adobe subscription software is reconciled using the Adobe publisher pack (com.sn_samp_adobe), not the IBM pack.", "reference": "docs.servicenow.com/sam-publisher-packs" }
-      ]
-    },
-    "references": ["docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/sam-publisher-packs"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "sam-publisher-packs.md",
-      "excerpt": "Software Asset Management Professional for IBM (com.sn_samp_ibm): Provides additional capabilities to reconcile IBM products using PVU and RVU license metrics. This plugin also provides additional capabilities to reconcile Red Hat Enterprise Linux software."
-    },
-    "labels": {
+    {
+      "id": "cis-sam-data-integrity-408",
       "certification": "cis-sam",
-      "domain": "Data Integrity & Sources",
-      "domainSlug": "data-integrity",
-      "domainPercentage": 28,
-      "subtopics": ["Publisher packs"],
-      "tags": ["ibm", "publisher-pack", "pvu", "rvu", "red-hat"]
-    },
-    "meta": {
-      "generatedAt": "2026-02-18T02:45:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
+      "topic": "data-integrity",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_select",
+      "question": "Which capabilities does the Software Asset Management Professional for IBM publisher pack provide? (Choose two.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Reconcile IBM products using PVU and RVU license metrics"
+        },
+        {
+          "id": "b",
+          "text": "Reconcile Red Hat Enterprise Linux software"
+        },
+        {
+          "id": "c",
+          "text": "Reconcile Microsoft SQL Server products"
+        },
+        {
+          "id": "d",
+          "text": "Reconcile Adobe subscription software"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b"
+      ],
+      "selectCount": 2,
+      "isNegative": false,
+      "explanation": {
+        "correct": "The IBM publisher pack (com.sn_samp_ibm) provides capabilities to reconcile IBM products using PVU and RVU license metrics. It also provides capabilities to reconcile Red Hat Enterprise Linux software, including Red Hat Enterprise Linux Server and Red Hat Enterprise Linux for Virtual Datacenters.",
+        "wrongAnswers": [
+          {
+            "choiceId": "c",
+            "explanation": "Microsoft SQL Server is reconciled using the Microsoft publisher pack (com.snc.samp.microsoft), not the IBM pack.",
+            "reference": "docs.servicenow.com/sam-publisher-packs"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Adobe subscription software is reconciled using the Adobe publisher pack (com.sn_samp_adobe), not the IBM pack.",
+            "reference": "docs.servicenow.com/sam-publisher-packs"
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/sam-publisher-packs"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "sam-publisher-packs.md",
+        "excerpt": "Software Asset Management Professional for IBM (com.sn_samp_ibm): Provides additional capabilities to reconcile IBM products using PVU and RVU license metrics. This plugin also provides additional capabilities to reconcile Red Hat Enterprise Linux software."
+      },
+      "labels": {
+        "certification": "cis-sam",
+        "domain": "Data Integrity & Sources",
+        "domainSlug": "data-integrity",
+        "domainPercentage": 28,
+        "subtopics": [
+          "Publisher packs"
+        ],
+        "tags": [
+          "ibm",
+          "publisher-pack",
+          "pvu",
+          "rvu",
+          "red-hat"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-18T02:45:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     }
-  }
-]
+  ]
+}
