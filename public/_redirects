@@ -1,10 +1,24 @@
 # SEO: Consolidate all question URLs to /practice-questions
 /free-questions/* /practice-questions/:splat 301
 /free-questions /practice-questions 301
-/:cert/practice-questions/* /practice-questions/:cert/:splat 301
-/:cert/practice-questions /practice-questions/:cert 301
-/:cert/free-questions/* /practice-questions/:cert/:splat 301
-/:cert/free-questions /practice-questions/:cert 301
+
+# Legacy /:cert/practice-questions URLs (be explicit to avoid matching /practice-questions itself)
+/csa/practice-questions/* /practice-questions/csa/:splat 301
+/csa/practice-questions /practice-questions/csa 301
+/cad/practice-questions/* /practice-questions/cad/:splat 301
+/cad/practice-questions /practice-questions/cad 301
+/cis-df/practice-questions/* /practice-questions/cis-df/:splat 301
+/cis-df/practice-questions /practice-questions/cis-df 301
+/cis-itsm/practice-questions/* /practice-questions/cis-itsm/:splat 301
+/cis-itsm/practice-questions /practice-questions/cis-itsm 301
+
+# Legacy /:cert/free-questions URLs
+/csa/free-questions/* /practice-questions/csa/:splat 301
+/csa/free-questions /practice-questions/csa 301
+/cad/free-questions/* /practice-questions/cad/:splat 301
+/cad/free-questions /practice-questions/cad 301
+/cis-df/free-questions/* /practice-questions/cis-df/:splat 301
+/cis-df/free-questions /practice-questions/cis-df 301
 
 # Redirect removed pages
 /glossary/* /certifications 301
