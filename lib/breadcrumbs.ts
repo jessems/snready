@@ -55,7 +55,7 @@ export const breadcrumbs = {
     return [
       { name: "Home", url: "/" },
       { name: certName, url: `/${certSlug}` },
-      { name: topicName, url: `/${certSlug}/practice-questions/${topicSlug}` },
+      { name: topicName, url: `/practice-questions/${certSlug}/${topicSlug}` },
     ];
   },
 
@@ -70,10 +70,10 @@ export const breadcrumbs = {
     return [
       { name: "Home", url: "/" },
       { name: certName, url: `/${certSlug}` },
-      { name: topicName, url: `/${certSlug}/practice-questions/${topicSlug}` },
+      { name: topicName, url: `/practice-questions/${certSlug}/${topicSlug}` },
       {
         name: `Question ${questionNumber}`,
-        url: `/${certSlug}/practice-questions/${topicSlug}/${questionId}`,
+        url: `/practice-questions/${certSlug}/${topicSlug}/${questionId}`,
       },
     ];
   },
