@@ -1,737 +1,1289 @@
-[
-  {
-    "id": "cis-ham-data-integrity-001",
-    "certification": "cis-ham",
-    "topic": "data-integrity",
-    "cognitiveLevel": "knowledge",
-    "type": "multiple_choice",
-    "question": "Which scheduled job normalizes hardware and consumable models by comparing data against the Hardware Asset Management Content Service?",
-    "options": [
-      { "id": "a", "text": "HAM- Model Reconciliation" },
-      { "id": "b", "text": "HAM- Hardware Normalization" },
-      { "id": "c", "text": "Asset Model Sync" },
-      { "id": "d", "text": "CMDB- Model Normalization" }
-    ],
-    "correctAnswers": ["b"],
-    "selectCount": 1,
-    "isNegative": false,
-    "explanation": {
-      "correct": "The HAM- Hardware Normalization scheduled job runs daily. This job updates normalization-related fields for existing models such as Normalized Product, Normalized Manufacturer, and Normalized Model.",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "HAM- Model Reconciliation is not the correct job name. The correct job is HAM- Hardware Normalization.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-normalization.html" },
-        { "choiceId": "c", "explanation": "Asset Model Sync is not a standard HAM scheduled job name.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-normalization.html" },
-        { "choiceId": "d", "explanation": "CMDB- Model Normalization is not the correct job; it's HAM- Hardware Normalization.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-normalization.html" }
-      ]
-    },
-    "references": ["Hardware Model Normalization"],
-    "isFree": true,
-    "source": {
-      "type": "docs",
-      "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/hardware-normalization.md",
-      "excerpt": "The HAM- Hardware Normalization scheduled job runs daily. This job doesn't add, remove, or merge models, nor does it modify the original fields like Model Name, Manufacturer, or Model Number."
-    },
-    "labels": {
+{
+  "certification": "cis-ham",
+  "topic": "data-integrity",
+  "questions": [
+    {
+      "id": "cis-ham-data-integrity-001",
       "certification": "cis-ham",
-      "domain": "Data Integrity & Sources",
-      "domainSlug": "data-integrity",
-      "domainPercentage": 27,
-      "subtopics": ["Hardware Model Normalization"],
-      "tags": ["normalization", "scheduled-job", "content-service"]
+      "topic": "data-integrity",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which scheduled job normalizes hardware and consumable models by comparing data against the Hardware Asset Management Content Service?",
+      "options": [
+        {
+          "id": "a",
+          "text": "HAM- Model Reconciliation"
+        },
+        {
+          "id": "b",
+          "text": "HAM- Hardware Normalization"
+        },
+        {
+          "id": "c",
+          "text": "Asset Model Sync"
+        },
+        {
+          "id": "d",
+          "text": "CMDB- Model Normalization"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "The HAM- Hardware Normalization scheduled job runs daily. This job updates normalization-related fields for existing models such as Normalized Product, Normalized Manufacturer, and Normalized Model.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "HAM- Model Reconciliation is not the correct job name. The correct job is HAM- Hardware Normalization.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-normalization.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Asset Model Sync is not a standard HAM scheduled job name.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-normalization.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "CMDB- Model Normalization is not the correct job; it's HAM- Hardware Normalization.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-normalization.html"
+          }
+        ]
+      },
+      "references": [
+        "Hardware Model Normalization"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "docs",
+        "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/hardware-normalization.md",
+        "excerpt": "The HAM- Hardware Normalization scheduled job runs daily. This job doesn't add, remove, or merge models, nor does it modify the original fields like Model Name, Manufacturer, or Model Number."
+      },
+      "labels": {
+        "certification": "cis-ham",
+        "domain": "Data Integrity & Sources",
+        "domainSlug": "data-integrity",
+        "domainPercentage": 27,
+        "subtopics": [
+          "Hardware Model Normalization"
+        ],
+        "tags": [
+          "normalization",
+          "scheduled-job",
+          "content-service"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-13T02:35:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-13T02:35:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-ham-data-integrity-002",
-    "certification": "cis-ham",
-    "topic": "data-integrity",
-    "cognitiveLevel": "understanding",
-    "type": "multiple_choice",
-    "question": "What does the HAM- Hardware Normalization scheduled job NOT do?",
-    "options": [
-      { "id": "a", "text": "Update normalization-related fields like Normalized Product" },
-      { "id": "b", "text": "Add, remove, or merge models" },
-      { "id": "c", "text": "Compare data against the Hardware Model Normalization Content Service" },
-      { "id": "d", "text": "Update the Normalized Manufacturer field" }
-    ],
-    "correctAnswers": ["b"],
-    "selectCount": 1,
-    "isNegative": true,
-    "explanation": {
-      "correct": "The HAM- Hardware Normalization scheduled job does NOT add, remove, or merge models, nor does it modify the original fields like Model Name, Manufacturer, or Model Number. It only updates normalization-related fields for existing models.",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "The job DOES update normalization-related fields like Normalized Product.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-normalization.html" },
-        { "choiceId": "c", "explanation": "The job DOES compare data against the Hardware Model Normalization Content Service.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-normalization.html" },
-        { "choiceId": "d", "explanation": "The job DOES update the Normalized Manufacturer field.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-normalization.html" }
-      ]
-    },
-    "references": ["Hardware Model Normalization"],
-    "isFree": true,
-    "source": {
-      "type": "docs",
-      "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/hardware-normalization.md",
-      "excerpt": "This job doesn't add, remove, or merge models, nor does it modify the original fields like Model Name, Manufacturer, or Model Number. It only updates the normalization-related fields for existing models."
-    },
-    "labels": {
+    {
+      "id": "cis-ham-data-integrity-002",
       "certification": "cis-ham",
-      "domain": "Data Integrity & Sources",
-      "domainSlug": "data-integrity",
-      "domainPercentage": 27,
-      "subtopics": ["Hardware Model Normalization"],
-      "tags": ["normalization", "scheduled-job", "negative-question"]
+      "topic": "data-integrity",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What does the HAM- Hardware Normalization scheduled job NOT do?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Update normalization-related fields like Normalized Product"
+        },
+        {
+          "id": "b",
+          "text": "Add, remove, or merge models"
+        },
+        {
+          "id": "c",
+          "text": "Compare data against the Hardware Model Normalization Content Service"
+        },
+        {
+          "id": "d",
+          "text": "Update the Normalized Manufacturer field"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": true,
+      "explanation": {
+        "correct": "The HAM- Hardware Normalization scheduled job does NOT add, remove, or merge models, nor does it modify the original fields like Model Name, Manufacturer, or Model Number. It only updates normalization-related fields for existing models.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The job DOES update normalization-related fields like Normalized Product.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-normalization.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The job DOES compare data against the Hardware Model Normalization Content Service.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-normalization.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The job DOES update the Normalized Manufacturer field.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-normalization.html"
+          }
+        ]
+      },
+      "references": [
+        "Hardware Model Normalization"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "docs",
+        "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/hardware-normalization.md",
+        "excerpt": "This job doesn't add, remove, or merge models, nor does it modify the original fields like Model Name, Manufacturer, or Model Number. It only updates the normalization-related fields for existing models."
+      },
+      "labels": {
+        "certification": "cis-ham",
+        "domain": "Data Integrity & Sources",
+        "domainSlug": "data-integrity",
+        "domainPercentage": 27,
+        "subtopics": [
+          "Hardware Model Normalization"
+        ],
+        "tags": [
+          "normalization",
+          "scheduled-job",
+          "negative-question"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-13T02:35:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-13T02:35:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-ham-data-integrity-003",
-    "certification": "cis-ham",
-    "topic": "data-integrity",
-    "cognitiveLevel": "application",
-    "type": "multiple_choice",
-    "question": "An administrator needs to enable hardware model normalization for a non-default domain. Which table must be configured to enable normalization for a specific domain?",
-    "options": [
-      { "id": "a", "text": "Domain Settings [sys_domain_settings]" },
-      { "id": "b", "text": "Domain Asset Process Settings [alm_domain_asset_process_setting]" },
-      { "id": "c", "text": "Asset Normalization Config [sn_hwnorm_config]" },
-      { "id": "d", "text": "Hardware Model Domain [cmdb_model_domain]" }
-    ],
-    "correctAnswers": ["b"],
-    "selectCount": 1,
-    "isNegative": false,
-    "explanation": {
-      "correct": "The Domain Asset Process Settings table (alm_domain_asset_process_setting) stores configurations for asset processes, including the normalization of hardware models. To enable normalization for a specific domain, locate the domain and set the 'Run asset process' field to true.",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "Domain Settings [sys_domain_settings] is not the correct table for HAM normalization configuration.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-normalization.html" },
-        { "choiceId": "c", "explanation": "This table name is not correct; use alm_domain_asset_process_setting.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-normalization.html" },
-        { "choiceId": "d", "explanation": "This table name is not correct; use alm_domain_asset_process_setting.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-normalization.html" }
-      ]
-    },
-    "references": ["Hardware Model Normalization"],
-    "isFree": true,
-    "source": {
-      "type": "docs",
-      "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/hardware-normalization.md",
-      "excerpt": "The Domain Asset Process Settings table (alm_domain_asset_process_setting) stores configurations for asset processes, including the normalization of hardware models."
-    },
-    "labels": {
+    {
+      "id": "cis-ham-data-integrity-003",
       "certification": "cis-ham",
-      "domain": "Data Integrity & Sources",
-      "domainSlug": "data-integrity",
-      "domainPercentage": 27,
-      "subtopics": ["Hardware Model Normalization"],
-      "tags": ["normalization", "domain-separation", "configuration"]
+      "topic": "data-integrity",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "An administrator needs to enable hardware model normalization for a non-default domain. Which table must be configured to enable normalization for a specific domain?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Domain Settings [sys_domain_settings]"
+        },
+        {
+          "id": "b",
+          "text": "Domain Asset Process Settings [alm_domain_asset_process_setting]"
+        },
+        {
+          "id": "c",
+          "text": "Asset Normalization Config [sn_hwnorm_config]"
+        },
+        {
+          "id": "d",
+          "text": "Hardware Model Domain [cmdb_model_domain]"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "The Domain Asset Process Settings table (alm_domain_asset_process_setting) stores configurations for asset processes, including the normalization of hardware models. To enable normalization for a specific domain, locate the domain and set the 'Run asset process' field to true.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Domain Settings [sys_domain_settings] is not the correct table for HAM normalization configuration.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-normalization.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "This table name is not correct; use alm_domain_asset_process_setting.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-normalization.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "This table name is not correct; use alm_domain_asset_process_setting.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-normalization.html"
+          }
+        ]
+      },
+      "references": [
+        "Hardware Model Normalization"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "docs",
+        "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/hardware-normalization.md",
+        "excerpt": "The Domain Asset Process Settings table (alm_domain_asset_process_setting) stores configurations for asset processes, including the normalization of hardware models."
+      },
+      "labels": {
+        "certification": "cis-ham",
+        "domain": "Data Integrity & Sources",
+        "domainSlug": "data-integrity",
+        "domainPercentage": 27,
+        "subtopics": [
+          "Hardware Model Normalization"
+        ],
+        "tags": [
+          "normalization",
+          "domain-separation",
+          "configuration"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-13T02:35:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-13T02:35:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-ham-data-integrity-004",
-    "certification": "cis-ham",
-    "topic": "data-integrity",
-    "cognitiveLevel": "knowledge",
-    "type": "multiple_select",
-    "question": "Which reports are generated by the Hardware Normalization scheduled job? (Choose two.)",
-    "options": [
-      { "id": "a", "text": "Hardware Product Overall Normalization Status" },
-      { "id": "b", "text": "Asset Discovery Compliance Report" },
-      { "id": "c", "text": "Consumable Model Normalization Status" },
-      { "id": "d", "text": "CI Reconciliation Summary" }
-    ],
-    "correctAnswers": ["a", "c"],
-    "selectCount": 2,
-    "isNegative": false,
-    "explanation": {
-      "correct": "The Hardware Normalization scheduled job generates several reports including: Hardware Product Overall Normalization Status, Consumable Product Overall Normalization Status, Hardware Model Normalization Status, and Consumable Model Normalization Status.",
-      "wrongAnswers": [
-        { "choiceId": "b", "explanation": "Asset Discovery Compliance Report is not generated by the Hardware Normalization job.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-normalization.html" },
-        { "choiceId": "d", "explanation": "CI Reconciliation Summary is not generated by the Hardware Normalization job.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-normalization.html" }
-      ]
-    },
-    "references": ["Hardware Model Normalization"],
-    "isFree": true,
-    "source": {
-      "type": "docs",
-      "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/hardware-normalization.md",
-      "excerpt": "The following reports are included: Hardware Product Overall Normalization Status, Consumable Product Overall Normalization Status, Hardware Model Normalization Status, Consumable Model Normalization Status."
-    },
-    "labels": {
+    {
+      "id": "cis-ham-data-integrity-004",
       "certification": "cis-ham",
-      "domain": "Data Integrity & Sources",
-      "domainSlug": "data-integrity",
-      "domainPercentage": 27,
-      "subtopics": ["Hardware Model Normalization", "Normalization Data Services"],
-      "tags": ["normalization", "reports", "scheduled-job"]
+      "topic": "data-integrity",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_select",
+      "question": "Which reports are generated by the Hardware Normalization scheduled job? (Choose two.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Hardware Product Overall Normalization Status"
+        },
+        {
+          "id": "b",
+          "text": "Asset Discovery Compliance Report"
+        },
+        {
+          "id": "c",
+          "text": "Consumable Model Normalization Status"
+        },
+        {
+          "id": "d",
+          "text": "CI Reconciliation Summary"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "c"
+      ],
+      "selectCount": 2,
+      "isNegative": false,
+      "explanation": {
+        "correct": "The Hardware Normalization scheduled job generates several reports including: Hardware Product Overall Normalization Status, Consumable Product Overall Normalization Status, Hardware Model Normalization Status, and Consumable Model Normalization Status.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Asset Discovery Compliance Report is not generated by the Hardware Normalization job.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-normalization.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "CI Reconciliation Summary is not generated by the Hardware Normalization job.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-normalization.html"
+          }
+        ]
+      },
+      "references": [
+        "Hardware Model Normalization"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "docs",
+        "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/hardware-normalization.md",
+        "excerpt": "The following reports are included: Hardware Product Overall Normalization Status, Consumable Product Overall Normalization Status, Hardware Model Normalization Status, Consumable Model Normalization Status."
+      },
+      "labels": {
+        "certification": "cis-ham",
+        "domain": "Data Integrity & Sources",
+        "domainSlug": "data-integrity",
+        "domainPercentage": 27,
+        "subtopics": [
+          "Hardware Model Normalization",
+          "Normalization Data Services"
+        ],
+        "tags": [
+          "normalization",
+          "reports",
+          "scheduled-job"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-13T02:35:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-13T02:35:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-ham-data-integrity-005",
-    "certification": "cis-ham",
-    "topic": "data-integrity",
-    "cognitiveLevel": "understanding",
-    "type": "multiple_choice",
-    "question": "How can an administrator undo the normalization that occurred on a hardware model?",
-    "options": [
-      { "id": "a", "text": "Delete the model and recreate it" },
-      { "id": "b", "text": "Run the Reverse Normalization scheduled job" },
-      { "id": "c", "text": "Select Revert Normalization on the model" },
-      { "id": "d", "text": "Clear all normalization fields manually" }
-    ],
-    "correctAnswers": ["c"],
-    "selectCount": 1,
-    "isNegative": false,
-    "explanation": {
-      "correct": "The normalization status of models can be reverted by selecting 'Revert Normalization' on the model. Any normalization that occurred on the model gets reverted and the rule gets deactivated.",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "You don't need to delete the model; use the Revert Normalization option.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-normalization.html" },
-        { "choiceId": "b", "explanation": "There is no 'Reverse Normalization' scheduled job; use the Revert Normalization option on the model form.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-normalization.html" },
-        { "choiceId": "d", "explanation": "Manual clearing is not necessary; use the Revert Normalization action on the model.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-normalization.html" }
-      ]
-    },
-    "references": ["Hardware Model Normalization"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/hardware-normalization.md",
-      "excerpt": "The normalization status of models can be reverted by selecting Revert Normalization on the model. Any normalization that occurred on the model gets reverted and the rule gets deactivated."
-    },
-    "labels": {
+    {
+      "id": "cis-ham-data-integrity-005",
       "certification": "cis-ham",
-      "domain": "Data Integrity & Sources",
-      "domainSlug": "data-integrity",
-      "domainPercentage": 27,
-      "subtopics": ["Hardware Model Normalization"],
-      "tags": ["normalization", "revert", "model"]
+      "topic": "data-integrity",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "How can an administrator undo the normalization that occurred on a hardware model?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Delete the model and recreate it"
+        },
+        {
+          "id": "b",
+          "text": "Run the Reverse Normalization scheduled job"
+        },
+        {
+          "id": "c",
+          "text": "Select Revert Normalization on the model"
+        },
+        {
+          "id": "d",
+          "text": "Clear all normalization fields manually"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "The normalization status of models can be reverted by selecting 'Revert Normalization' on the model. Any normalization that occurred on the model gets reverted and the rule gets deactivated.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "You don't need to delete the model; use the Revert Normalization option.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-normalization.html"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "There is no 'Reverse Normalization' scheduled job; use the Revert Normalization option on the model form.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-normalization.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Manual clearing is not necessary; use the Revert Normalization action on the model.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-normalization.html"
+          }
+        ]
+      },
+      "references": [
+        "Hardware Model Normalization"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/hardware-normalization.md",
+        "excerpt": "The normalization status of models can be reverted by selecting Revert Normalization on the model. Any normalization that occurred on the model gets reverted and the rule gets deactivated."
+      },
+      "labels": {
+        "certification": "cis-ham",
+        "domain": "Data Integrity & Sources",
+        "domainSlug": "data-integrity",
+        "domainPercentage": 27,
+        "subtopics": [
+          "Hardware Model Normalization"
+        ],
+        "tags": [
+          "normalization",
+          "revert",
+          "model"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-13T02:35:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-13T02:35:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-ham-data-integrity-006",
-    "certification": "cis-ham",
-    "topic": "data-integrity",
-    "cognitiveLevel": "knowledge",
-    "type": "multiple_choice",
-    "question": "Which table stores the status of the Hardware Normalization scheduled job?",
-    "options": [
-      { "id": "a", "text": "Scheduled Job Log [sys_trigger_log]" },
-      { "id": "b", "text": "Asset Job Log [asset_job_log]" },
-      { "id": "c", "text": "System Log [syslog]" },
-      { "id": "d", "text": "Normalization Log [sn_hwnorm_log]" }
-    ],
-    "correctAnswers": ["b"],
-    "selectCount": 1,
-    "isNegative": false,
-    "explanation": {
-      "correct": "Use the Asset Job Log (asset_job_log) table to review the status of the Hardware Normalization scheduled job.",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "sys_trigger_log is the general scheduled job log, but HAM uses asset_job_log specifically.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-normalization.html" },
-        { "choiceId": "c", "explanation": "syslog is the general system log, not the HAM-specific job log.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-normalization.html" },
-        { "choiceId": "d", "explanation": "This table name is not correct; use asset_job_log.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-normalization.html" }
-      ]
-    },
-    "references": ["Hardware Model Normalization"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/hardware-normalization.md",
-      "excerpt": "Use the Asset Job Log (asset_job_log) table to review the status of the scheduled job."
-    },
-    "labels": {
+    {
+      "id": "cis-ham-data-integrity-006",
       "certification": "cis-ham",
-      "domain": "Data Integrity & Sources",
-      "domainSlug": "data-integrity",
-      "domainPercentage": 27,
-      "subtopics": ["Hardware Model Normalization"],
-      "tags": ["normalization", "logging", "troubleshooting"]
+      "topic": "data-integrity",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which table stores the status of the Hardware Normalization scheduled job?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Scheduled Job Log [sys_trigger_log]"
+        },
+        {
+          "id": "b",
+          "text": "Asset Job Log [asset_job_log]"
+        },
+        {
+          "id": "c",
+          "text": "System Log [syslog]"
+        },
+        {
+          "id": "d",
+          "text": "Normalization Log [sn_hwnorm_log]"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "Use the Asset Job Log (asset_job_log) table to review the status of the Hardware Normalization scheduled job.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "sys_trigger_log is the general scheduled job log, but HAM uses asset_job_log specifically.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-normalization.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "syslog is the general system log, not the HAM-specific job log.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-normalization.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "This table name is not correct; use asset_job_log.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-normalization.html"
+          }
+        ]
+      },
+      "references": [
+        "Hardware Model Normalization"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/hardware-normalization.md",
+        "excerpt": "Use the Asset Job Log (asset_job_log) table to review the status of the scheduled job."
+      },
+      "labels": {
+        "certification": "cis-ham",
+        "domain": "Data Integrity & Sources",
+        "domainSlug": "data-integrity",
+        "domainPercentage": 27,
+        "subtopics": [
+          "Hardware Model Normalization"
+        ],
+        "tags": [
+          "normalization",
+          "logging",
+          "troubleshooting"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-13T02:35:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-13T02:35:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-ham-data-integrity-007",
-    "certification": "cis-ham",
-    "topic": "data-integrity",
-    "cognitiveLevel": "understanding",
-    "type": "compound_true_false",
-    "question": "Which of the following statements about assets and CIs in HAM are true?\na) Assets track financial data such as cost and depreciation.\nb) CIs track technical data about configuration items.\nc) All CIs are also assets.\nd) Asset and CI fields can be mapped to synchronize data bidirectionally.",
-    "options": [
-      { "id": "a", "text": "a, b, c, and d" },
-      { "id": "b", "text": "a, b, and d only" },
-      { "id": "c", "text": "a and b only" },
-      { "id": "d", "text": "b, c, and d only" }
-    ],
-    "correctAnswers": ["b"],
-    "selectCount": 1,
-    "isNegative": false,
-    "explanation": {
-      "correct": "Statements a, b, and d are true. Statement c is false - NOT all CIs are assets, and not all assets are CIs. Assets track financial information while CIs track technical configuration. Field mappings enable bidirectional synchronization.",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "Statement c is false - not all CIs are assets.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/work-with-asset-ci.html" },
-        { "choiceId": "c", "explanation": "Statement d is also true - field mappings enable synchronization.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/work-with-asset-ci.html" },
-        { "choiceId": "d", "explanation": "Statement c is false - not all CIs are assets.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/work-with-asset-ci.html" }
-      ]
-    },
-    "references": ["Work with Asset and CI"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/work-with-asset-ci.md",
-      "excerpt": "Asset and configuration item (CI) management refers to creating assets, setting appropriate states and substates, synchronizing assets and CIs, managing consumables, and retiring assets."
-    },
-    "labels": {
+    {
+      "id": "cis-ham-data-integrity-007",
       "certification": "cis-ham",
-      "domain": "Data Integrity & Sources",
-      "domainSlug": "data-integrity",
-      "domainPercentage": 27,
-      "subtopics": ["Assets vs Configuration Items", "Asset-CI relationships"],
-      "tags": ["assets", "ci", "synchronization", "compound-true-false"]
+      "topic": "data-integrity",
+      "cognitiveLevel": "understanding",
+      "type": "compound_true_false",
+      "question": "Which of the following statements about assets and CIs in HAM are true?\na) Assets track financial data such as cost and depreciation.\nb) CIs track technical data about configuration items.\nc) All CIs are also assets.\nd) Asset and CI fields can be mapped to synchronize data bidirectionally.",
+      "options": [
+        {
+          "id": "a",
+          "text": "a, b, c, and d"
+        },
+        {
+          "id": "b",
+          "text": "a, b, and d only"
+        },
+        {
+          "id": "c",
+          "text": "a and b only"
+        },
+        {
+          "id": "d",
+          "text": "b, c, and d only"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "Statements a, b, and d are true. Statement c is false - NOT all CIs are assets, and not all assets are CIs. Assets track financial information while CIs track technical configuration. Field mappings enable bidirectional synchronization.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Statement c is false - not all CIs are assets.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/work-with-asset-ci.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Statement d is also true - field mappings enable synchronization.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/work-with-asset-ci.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Statement c is false - not all CIs are assets.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/work-with-asset-ci.html"
+          }
+        ]
+      },
+      "references": [
+        "Work with Asset and CI"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/work-with-asset-ci.md",
+        "excerpt": "Asset and configuration item (CI) management refers to creating assets, setting appropriate states and substates, synchronizing assets and CIs, managing consumables, and retiring assets."
+      },
+      "labels": {
+        "certification": "cis-ham",
+        "domain": "Data Integrity & Sources",
+        "domainSlug": "data-integrity",
+        "domainPercentage": 27,
+        "subtopics": [
+          "Assets vs Configuration Items",
+          "Asset-CI relationships"
+        ],
+        "tags": [
+          "assets",
+          "ci",
+          "synchronization",
+          "compound-true-false"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-13T02:35:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-13T02:35:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-ham-data-integrity-008",
-    "certification": "cis-ham",
-    "topic": "data-integrity",
-    "cognitiveLevel": "application",
-    "type": "multiple_select",
-    "question": "When mapping asset fields to CI fields, which synchronization directions can be configured? (Choose three.)",
-    "options": [
-      { "id": "a", "text": "From asset to CI" },
-      { "id": "b", "text": "From CI to asset" },
-      { "id": "c", "text": "Bidirectional (both)" },
-      { "id": "d", "text": "No synchronization" },
-      { "id": "e", "text": "Scheduled batch sync only" }
-    ],
-    "correctAnswers": ["a", "b", "c"],
-    "selectCount": 3,
-    "isNegative": false,
-    "explanation": {
-      "correct": "When you create field mappings between assets and CIs, you can set the synchronization direction from the asset, CI, or both (bidirectional). Changes to either record are updated to the logically mapped record.",
-      "wrongAnswers": [
-        { "choiceId": "d", "explanation": "If no synchronization is needed, you wouldn't create a mapping. The mapping is specifically for synchronization.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/work-with-asset-ci.html" },
-        { "choiceId": "e", "explanation": "Synchronization happens in real-time when records are updated, not just via scheduled batch processing.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/work-with-asset-ci.html" }
-      ]
-    },
-    "references": ["Work with Asset and CI"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/work-with-asset-ci.md",
-      "excerpt": "When you create the mapping, you can set the synchronization direction from the asset, CI, or both."
-    },
-    "labels": {
+    {
+      "id": "cis-ham-data-integrity-008",
       "certification": "cis-ham",
-      "domain": "Data Integrity & Sources",
-      "domainSlug": "data-integrity",
-      "domainPercentage": 27,
-      "subtopics": ["Asset-CI relationships"],
-      "tags": ["synchronization", "mapping", "ci"]
+      "topic": "data-integrity",
+      "cognitiveLevel": "application",
+      "type": "multiple_select",
+      "question": "When mapping asset fields to CI fields, which synchronization directions can be configured? (Choose three.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "From asset to CI"
+        },
+        {
+          "id": "b",
+          "text": "From CI to asset"
+        },
+        {
+          "id": "c",
+          "text": "Bidirectional (both)"
+        },
+        {
+          "id": "d",
+          "text": "No synchronization"
+        },
+        {
+          "id": "e",
+          "text": "Scheduled batch sync only"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b",
+        "c"
+      ],
+      "selectCount": 3,
+      "isNegative": false,
+      "explanation": {
+        "correct": "When you create field mappings between assets and CIs, you can set the synchronization direction from the asset, CI, or both (bidirectional). Changes to either record are updated to the logically mapped record.",
+        "wrongAnswers": [
+          {
+            "choiceId": "d",
+            "explanation": "If no synchronization is needed, you wouldn't create a mapping. The mapping is specifically for synchronization.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/work-with-asset-ci.html"
+          },
+          {
+            "choiceId": "e",
+            "explanation": "Synchronization happens in real-time when records are updated, not just via scheduled batch processing.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/work-with-asset-ci.html"
+          }
+        ]
+      },
+      "references": [
+        "Work with Asset and CI"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/work-with-asset-ci.md",
+        "excerpt": "When you create the mapping, you can set the synchronization direction from the asset, CI, or both."
+      },
+      "labels": {
+        "certification": "cis-ham",
+        "domain": "Data Integrity & Sources",
+        "domainSlug": "data-integrity",
+        "domainPercentage": 27,
+        "subtopics": [
+          "Asset-CI relationships"
+        ],
+        "tags": [
+          "synchronization",
+          "mapping",
+          "ci"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-13T02:35:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-13T02:35:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-ham-data-integrity-009",
-    "certification": "cis-ham",
-    "topic": "data-integrity",
-    "cognitiveLevel": "knowledge",
-    "type": "multiple_choice",
-    "question": "Which CI field should NOT be used for hardware CIs because CI synchronization does not update it?",
-    "options": [
-      { "id": "a", "text": "Install Status" },
-      { "id": "b", "text": "Hardware Status" },
-      { "id": "c", "text": "Substatus" },
-      { "id": "d", "text": "Operational Status" }
-    ],
-    "correctAnswers": ["c"],
-    "selectCount": 1,
-    "isNegative": false,
-    "explanation": {
-      "correct": "The Substatus field of the CI Install Status field should not be used for hardware CIs because the CI synchronization does not update this field when assets are updated.",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "Install Status can be mapped to asset State and is updated by synchronization.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/work-with-asset-ci.html" },
-        { "choiceId": "b", "explanation": "Hardware Status can be mapped to asset State and Substate fields.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/work-with-asset-ci.html" },
-        { "choiceId": "d", "explanation": "Operational Status is a separate field that can be used for CIs.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/work-with-asset-ci.html" }
-      ]
-    },
-    "references": ["Work with Asset and CI"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/work-with-asset-ci.md",
-      "excerpt": "The Substatus field of the CI Install Status field should not be used for hardware CIs."
-    },
-    "labels": {
+    {
+      "id": "cis-ham-data-integrity-009",
       "certification": "cis-ham",
-      "domain": "Data Integrity & Sources",
-      "domainSlug": "data-integrity",
-      "domainPercentage": 27,
-      "subtopics": ["Asset-CI relationships"],
-      "tags": ["ci", "substatus", "synchronization"]
+      "topic": "data-integrity",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which CI field should NOT be used for hardware CIs because CI synchronization does not update it?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Install Status"
+        },
+        {
+          "id": "b",
+          "text": "Hardware Status"
+        },
+        {
+          "id": "c",
+          "text": "Substatus"
+        },
+        {
+          "id": "d",
+          "text": "Operational Status"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "The Substatus field of the CI Install Status field should not be used for hardware CIs because the CI synchronization does not update this field when assets are updated.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Install Status can be mapped to asset State and is updated by synchronization.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/work-with-asset-ci.html"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "Hardware Status can be mapped to asset State and Substate fields.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/work-with-asset-ci.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Operational Status is a separate field that can be used for CIs.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/work-with-asset-ci.html"
+          }
+        ]
+      },
+      "references": [
+        "Work with Asset and CI"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/work-with-asset-ci.md",
+        "excerpt": "The Substatus field of the CI Install Status field should not be used for hardware CIs."
+      },
+      "labels": {
+        "certification": "cis-ham",
+        "domain": "Data Integrity & Sources",
+        "domainSlug": "data-integrity",
+        "domainPercentage": 27,
+        "subtopics": [
+          "Asset-CI relationships"
+        ],
+        "tags": [
+          "ci",
+          "substatus",
+          "synchronization"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-13T02:35:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-13T02:35:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-ham-data-integrity-010",
-    "certification": "cis-ham",
-    "topic": "data-integrity",
-    "cognitiveLevel": "knowledge",
-    "type": "multiple_choice",
-    "question": "By default, hardware model normalization is performed only for models within which domain?",
-    "options": [
-      { "id": "a", "text": "Global domain" },
-      { "id": "b", "text": "TOP/Default domain" },
-      { "id": "c", "text": "All domains" },
-      { "id": "d", "text": "Admin domain" }
-    ],
-    "correctAnswers": ["b"],
-    "selectCount": 1,
-    "isNegative": false,
-    "explanation": {
-      "correct": "By default, normalization is performed only for models within the TOP/Default domain. However, if you have the asset or domain_admin role, you can enable normalization for hardware models in any domain.",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "The correct terminology is TOP/Default domain, not Global domain.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-normalization.html" },
-        { "choiceId": "c", "explanation": "By default, normalization is NOT performed for all domains; it's only for TOP/Default.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-normalization.html" },
-        { "choiceId": "d", "explanation": "Admin domain is not the correct terminology; it's TOP/Default domain.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-normalization.html" }
-      ]
-    },
-    "references": ["Hardware Model Normalization"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/hardware-normalization.md",
-      "excerpt": "By default, normalization is performed only for models within the TOP/Default domain."
-    },
-    "labels": {
+    {
+      "id": "cis-ham-data-integrity-010",
       "certification": "cis-ham",
-      "domain": "Data Integrity & Sources",
-      "domainSlug": "data-integrity",
-      "domainPercentage": 27,
-      "subtopics": ["Hardware Model Normalization"],
-      "tags": ["normalization", "domain", "default"]
+      "topic": "data-integrity",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "By default, hardware model normalization is performed only for models within which domain?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Global domain"
+        },
+        {
+          "id": "b",
+          "text": "TOP/Default domain"
+        },
+        {
+          "id": "c",
+          "text": "All domains"
+        },
+        {
+          "id": "d",
+          "text": "Admin domain"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "By default, normalization is performed only for models within the TOP/Default domain. However, if you have the asset or domain_admin role, you can enable normalization for hardware models in any domain.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The correct terminology is TOP/Default domain, not Global domain.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-normalization.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "By default, normalization is NOT performed for all domains; it's only for TOP/Default.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-normalization.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Admin domain is not the correct terminology; it's TOP/Default domain.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-normalization.html"
+          }
+        ]
+      },
+      "references": [
+        "Hardware Model Normalization"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/hardware-normalization.md",
+        "excerpt": "By default, normalization is performed only for models within the TOP/Default domain."
+      },
+      "labels": {
+        "certification": "cis-ham",
+        "domain": "Data Integrity & Sources",
+        "domainSlug": "data-integrity",
+        "domainPercentage": 27,
+        "subtopics": [
+          "Hardware Model Normalization"
+        ],
+        "tags": [
+          "normalization",
+          "domain",
+          "default"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-13T02:35:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-13T02:35:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-ham-data-integrity-011",
-    "certification": "cis-ham",
-    "topic": "data-integrity",
-    "cognitiveLevel": "understanding",
-    "type": "multiple_choice",
-    "question": "What is the primary difference between assets and CIs in ServiceNow?",
-    "options": [
-      { "id": "a", "text": "Assets track financial data; CIs track technical configuration data" },
-      { "id": "b", "text": "Assets are stored in CMDB; CIs are stored in Asset Management" },
-      { "id": "c", "text": "Assets are only for hardware; CIs are only for software" },
-      { "id": "d", "text": "Assets cannot be synchronized with CIs" }
-    ],
-    "correctAnswers": ["a"],
-    "selectCount": 1,
-    "isNegative": false,
-    "explanation": {
-      "correct": "Assets track financial data (cost, depreciation, purchase info) while CIs track technical configuration data. This is the fundamental distinction between the two record types in ServiceNow.",
-      "wrongAnswers": [
-        { "choiceId": "b", "explanation": "This is reversed - CIs are stored in CMDB and assets in Asset Management tables.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/work-with-asset-ci.html" },
-        { "choiceId": "c", "explanation": "Both assets and CIs can represent hardware or software items.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/work-with-asset-ci.html" },
-        { "choiceId": "d", "explanation": "Assets CAN be synchronized with CIs through field mappings.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/work-with-asset-ci.html" }
-      ]
-    },
-    "references": ["Work with Asset and CI"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/work-with-asset-ci.md",
-      "excerpt": "Asset and configuration item (CI) management refers to creating assets, setting appropriate states and substates, synchronizing assets and CIs."
-    },
-    "labels": {
+    {
+      "id": "cis-ham-data-integrity-011",
       "certification": "cis-ham",
-      "domain": "Data Integrity & Sources",
-      "domainSlug": "data-integrity",
-      "domainPercentage": 27,
-      "subtopics": ["Assets vs Configuration Items"],
-      "tags": ["assets", "ci", "financial", "technical"]
+      "topic": "data-integrity",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What is the primary difference between assets and CIs in ServiceNow?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Assets track financial data; CIs track technical configuration data"
+        },
+        {
+          "id": "b",
+          "text": "Assets are stored in CMDB; CIs are stored in Asset Management"
+        },
+        {
+          "id": "c",
+          "text": "Assets are only for hardware; CIs are only for software"
+        },
+        {
+          "id": "d",
+          "text": "Assets cannot be synchronized with CIs"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "Assets track financial data (cost, depreciation, purchase info) while CIs track technical configuration data. This is the fundamental distinction between the two record types in ServiceNow.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "This is reversed - CIs are stored in CMDB and assets in Asset Management tables.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/work-with-asset-ci.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Both assets and CIs can represent hardware or software items.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/work-with-asset-ci.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Assets CAN be synchronized with CIs through field mappings.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/work-with-asset-ci.html"
+          }
+        ]
+      },
+      "references": [
+        "Work with Asset and CI"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/work-with-asset-ci.md",
+        "excerpt": "Asset and configuration item (CI) management refers to creating assets, setting appropriate states and substates, synchronizing assets and CIs."
+      },
+      "labels": {
+        "certification": "cis-ham",
+        "domain": "Data Integrity & Sources",
+        "domainSlug": "data-integrity",
+        "domainPercentage": 27,
+        "subtopics": [
+          "Assets vs Configuration Items"
+        ],
+        "tags": [
+          "assets",
+          "ci",
+          "financial",
+          "technical"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-13T02:35:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-13T02:35:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-ham-data-integrity-012",
-    "certification": "cis-ham",
-    "topic": "data-integrity",
-    "cognitiveLevel": "knowledge",
-    "type": "multiple_choice",
-    "question": "How frequently does the HAM- Hardware Normalization scheduled job run by default?",
-    "options": [
-      { "id": "a", "text": "Hourly" },
-      { "id": "b", "text": "Daily" },
-      { "id": "c", "text": "Weekly" },
-      { "id": "d", "text": "Monthly" }
-    ],
-    "correctAnswers": ["b"],
-    "selectCount": 1,
-    "isNegative": false,
-    "explanation": {
-      "correct": "The HAM- Hardware Normalization scheduled job runs daily by default. This job updates normalization-related fields for existing models.",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "The job does not run hourly; it runs daily.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-normalization.html" },
-        { "choiceId": "c", "explanation": "The job does not run weekly; it runs daily.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-normalization.html" },
-        { "choiceId": "d", "explanation": "The job does not run monthly; it runs daily.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-normalization.html" }
-      ]
-    },
-    "references": ["Hardware Model Normalization"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/hardware-normalization.md",
-      "excerpt": "The HAM- Hardware Normalization scheduled job runs daily."
-    },
-    "labels": {
+    {
+      "id": "cis-ham-data-integrity-012",
       "certification": "cis-ham",
-      "domain": "Data Integrity & Sources",
-      "domainSlug": "data-integrity",
-      "domainPercentage": 27,
-      "subtopics": ["Hardware Model Normalization"],
-      "tags": ["normalization", "scheduled-job", "frequency"]
+      "topic": "data-integrity",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "How frequently does the HAM- Hardware Normalization scheduled job run by default?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Hourly"
+        },
+        {
+          "id": "b",
+          "text": "Daily"
+        },
+        {
+          "id": "c",
+          "text": "Weekly"
+        },
+        {
+          "id": "d",
+          "text": "Monthly"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "The HAM- Hardware Normalization scheduled job runs daily by default. This job updates normalization-related fields for existing models.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The job does not run hourly; it runs daily.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-normalization.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The job does not run weekly; it runs daily.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-normalization.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The job does not run monthly; it runs daily.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-normalization.html"
+          }
+        ]
+      },
+      "references": [
+        "Hardware Model Normalization"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/hardware-normalization.md",
+        "excerpt": "The HAM- Hardware Normalization scheduled job runs daily."
+      },
+      "labels": {
+        "certification": "cis-ham",
+        "domain": "Data Integrity & Sources",
+        "domainSlug": "data-integrity",
+        "domainPercentage": 27,
+        "subtopics": [
+          "Hardware Model Normalization"
+        ],
+        "tags": [
+          "normalization",
+          "scheduled-job",
+          "frequency"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-13T02:35:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-13T02:35:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-ham-data-integrity-013",
-    "certification": "cis-ham",
-    "topic": "data-integrity",
-    "cognitiveLevel": "understanding",
-    "type": "multiple_select",
-    "question": "Which fields are updated by the HAM- Hardware Normalization scheduled job? (Choose three.)",
-    "options": [
-      { "id": "a", "text": "Normalized Product" },
-      { "id": "b", "text": "Model Name" },
-      { "id": "c", "text": "Normalized Manufacturer" },
-      { "id": "d", "text": "Model Number" },
-      { "id": "e", "text": "Normalized Model" }
-    ],
-    "correctAnswers": ["a", "c", "e"],
-    "selectCount": 3,
-    "isNegative": false,
-    "explanation": {
-      "correct": "The HAM- Hardware Normalization job updates normalization-related fields like Normalized Product, Normalized Manufacturer, and Normalized Model. It does NOT modify the original fields like Model Name or Model Number.",
-      "wrongAnswers": [
-        { "choiceId": "b", "explanation": "Model Name is an original field that is NOT modified by the normalization job.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-normalization.html" },
-        { "choiceId": "d", "explanation": "Model Number is an original field that is NOT modified by the normalization job.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-normalization.html" }
-      ]
-    },
-    "references": ["Hardware Model Normalization"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/hardware-normalization.md",
-      "excerpt": "It only updates the normalization-related fields for existing models, such as Normalized Product, Normalized Manufacturer, Normalized Model."
-    },
-    "labels": {
+    {
+      "id": "cis-ham-data-integrity-013",
       "certification": "cis-ham",
-      "domain": "Data Integrity & Sources",
-      "domainSlug": "data-integrity",
-      "domainPercentage": 27,
-      "subtopics": ["Hardware Model Normalization"],
-      "tags": ["normalization", "fields", "scheduled-job"]
+      "topic": "data-integrity",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_select",
+      "question": "Which fields are updated by the HAM- Hardware Normalization scheduled job? (Choose three.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Normalized Product"
+        },
+        {
+          "id": "b",
+          "text": "Model Name"
+        },
+        {
+          "id": "c",
+          "text": "Normalized Manufacturer"
+        },
+        {
+          "id": "d",
+          "text": "Model Number"
+        },
+        {
+          "id": "e",
+          "text": "Normalized Model"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "c",
+        "e"
+      ],
+      "selectCount": 3,
+      "isNegative": false,
+      "explanation": {
+        "correct": "The HAM- Hardware Normalization job updates normalization-related fields like Normalized Product, Normalized Manufacturer, and Normalized Model. It does NOT modify the original fields like Model Name or Model Number.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Model Name is an original field that is NOT modified by the normalization job.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-normalization.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Model Number is an original field that is NOT modified by the normalization job.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-normalization.html"
+          }
+        ]
+      },
+      "references": [
+        "Hardware Model Normalization"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/hardware-normalization.md",
+        "excerpt": "It only updates the normalization-related fields for existing models, such as Normalized Product, Normalized Manufacturer, Normalized Model."
+      },
+      "labels": {
+        "certification": "cis-ham",
+        "domain": "Data Integrity & Sources",
+        "domainSlug": "data-integrity",
+        "domainPercentage": 27,
+        "subtopics": [
+          "Hardware Model Normalization"
+        ],
+        "tags": [
+          "normalization",
+          "fields",
+          "scheduled-job"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-13T02:35:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-13T02:35:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-ham-data-integrity-014",
-    "certification": "cis-ham",
-    "topic": "data-integrity",
-    "cognitiveLevel": "application",
-    "type": "multiple_choice",
-    "question": "An administrator wants to enable hardware normalization for a specific domain. Which field must be set to true in the Domain Asset Process Settings table?",
-    "options": [
-      { "id": "a", "text": "Enable normalization" },
-      { "id": "b", "text": "Run asset process" },
-      { "id": "c", "text": "Active" },
-      { "id": "d", "text": "Process hardware models" }
-    ],
-    "correctAnswers": ["b"],
-    "selectCount": 1,
-    "isNegative": false,
-    "explanation": {
-      "correct": "To enable normalization for a specific domain in the Domain Asset Process Settings table, locate the domain and set the 'Run asset process' field to true. When the scheduled job runs next, the hardware models of that domain will be normalized.",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "The correct field name is 'Run asset process', not 'Enable normalization'.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-normalization.html" },
-        { "choiceId": "c", "explanation": "The 'Active' field is a common field but not the specific one for enabling normalization.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-normalization.html" },
-        { "choiceId": "d", "explanation": "The correct field name is 'Run asset process', not 'Process hardware models'.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-normalization.html" }
-      ]
-    },
-    "references": ["Hardware Model Normalization"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/hardware-normalization.md",
-      "excerpt": "To enable normalization for a specific domain, follow these steps: Set the Run asset process field to true."
-    },
-    "labels": {
+    {
+      "id": "cis-ham-data-integrity-014",
       "certification": "cis-ham",
-      "domain": "Data Integrity & Sources",
-      "domainSlug": "data-integrity",
-      "domainPercentage": 27,
-      "subtopics": ["Hardware Model Normalization"],
-      "tags": ["normalization", "domain", "configuration"]
+      "topic": "data-integrity",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "An administrator wants to enable hardware normalization for a specific domain. Which field must be set to true in the Domain Asset Process Settings table?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Enable normalization"
+        },
+        {
+          "id": "b",
+          "text": "Run asset process"
+        },
+        {
+          "id": "c",
+          "text": "Active"
+        },
+        {
+          "id": "d",
+          "text": "Process hardware models"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "To enable normalization for a specific domain in the Domain Asset Process Settings table, locate the domain and set the 'Run asset process' field to true. When the scheduled job runs next, the hardware models of that domain will be normalized.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The correct field name is 'Run asset process', not 'Enable normalization'.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-normalization.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The 'Active' field is a common field but not the specific one for enabling normalization.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-normalization.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The correct field name is 'Run asset process', not 'Process hardware models'.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-normalization.html"
+          }
+        ]
+      },
+      "references": [
+        "Hardware Model Normalization"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/hardware-normalization.md",
+        "excerpt": "To enable normalization for a specific domain, follow these steps: Set the Run asset process field to true."
+      },
+      "labels": {
+        "certification": "cis-ham",
+        "domain": "Data Integrity & Sources",
+        "domainSlug": "data-integrity",
+        "domainPercentage": 27,
+        "subtopics": [
+          "Hardware Model Normalization"
+        ],
+        "tags": [
+          "normalization",
+          "domain",
+          "configuration"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-13T02:35:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-13T02:35:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-ham-data-integrity-015",
-    "certification": "cis-ham",
-    "topic": "data-integrity",
-    "cognitiveLevel": "understanding",
-    "type": "multiple_choice",
-    "question": "Which Hardware asset overview widget displays the percentage of hardware and consumable models that are normalized?",
-    "options": [
-      { "id": "a", "text": "Asset requests" },
-      { "id": "b", "text": "Model normalization" },
-      { "id": "c", "text": "Model lifecycle overview" },
-      { "id": "d", "text": "Discovered and undiscovered asset count" }
-    ],
-    "correctAnswers": ["b"],
-    "selectCount": 1,
-    "isNegative": false,
-    "explanation": {
-      "correct": "The Model normalization widget in the Hardware asset overview displays the percentage of hardware and consumable models that are normalized.",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "Asset requests shows the number of requested items where the item's model is hardware, consumable, or bundle.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-asset-overview.html" },
-        { "choiceId": "c", "explanation": "Model lifecycle overview shows the overview of model lifecycle grouped by lifecycle phase.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-asset-overview.html" },
-        { "choiceId": "d", "explanation": "Discovered and undiscovered asset count compares discovered and undiscovered assets by model category.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-asset-overview.html" }
-      ]
-    },
-    "references": ["Hardware asset overview"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/hardware-asset-overview.md",
-      "excerpt": "Model normalization: Percentage of hardware and consumable models that are normalized."
-    },
-    "labels": {
+    {
+      "id": "cis-ham-data-integrity-015",
       "certification": "cis-ham",
-      "domain": "Data Integrity & Sources",
-      "domainSlug": "data-integrity",
-      "domainPercentage": 27,
-      "subtopics": ["Hardware Model Normalization"],
-      "tags": ["normalization", "overview", "widget"]
+      "topic": "data-integrity",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "Which Hardware asset overview widget displays the percentage of hardware and consumable models that are normalized?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Asset requests"
+        },
+        {
+          "id": "b",
+          "text": "Model normalization"
+        },
+        {
+          "id": "c",
+          "text": "Model lifecycle overview"
+        },
+        {
+          "id": "d",
+          "text": "Discovered and undiscovered asset count"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "The Model normalization widget in the Hardware asset overview displays the percentage of hardware and consumable models that are normalized.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Asset requests shows the number of requested items where the item's model is hardware, consumable, or bundle.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-asset-overview.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Model lifecycle overview shows the overview of model lifecycle grouped by lifecycle phase.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-asset-overview.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Discovered and undiscovered asset count compares discovered and undiscovered assets by model category.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-asset-overview.html"
+          }
+        ]
+      },
+      "references": [
+        "Hardware asset overview"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/hardware-asset-overview.md",
+        "excerpt": "Model normalization: Percentage of hardware and consumable models that are normalized."
+      },
+      "labels": {
+        "certification": "cis-ham",
+        "domain": "Data Integrity & Sources",
+        "domainSlug": "data-integrity",
+        "domainPercentage": 27,
+        "subtopics": [
+          "Hardware Model Normalization"
+        ],
+        "tags": [
+          "normalization",
+          "overview",
+          "widget"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-13T02:35:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-13T02:35:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-ham-data-integrity-016",
-    "certification": "cis-ham",
-    "topic": "data-integrity",
-    "cognitiveLevel": "knowledge",
-    "type": "multiple_choice",
-    "question": "Where is content from the Hardware Model Normalization Content Service pulled into?",
-    "options": [
-      { "id": "a", "text": "CMDB" },
-      { "id": "b", "text": "Asset Management tables" },
-      { "id": "c", "text": "ServiceNow AI Platform" },
-      { "id": "d", "text": "MID Server" }
-    ],
-    "correctAnswers": ["c"],
-    "selectCount": 1,
-    "isNegative": false,
-    "explanation": {
-      "correct": "Content from the Hardware Model Normalization Content Service is pulled into the ServiceNow AI Platform.",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "The content is pulled into ServiceNow AI Platform, not directly into CMDB.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-normalization.html" },
-        { "choiceId": "b", "explanation": "The content is pulled into ServiceNow AI Platform, not Asset Management tables.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-normalization.html" },
-        { "choiceId": "d", "explanation": "MID Server is for Discovery, not for normalization content.", "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-normalization.html" }
-      ]
-    },
-    "references": ["Hardware Model Normalization"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/hardware-normalization.md",
-      "excerpt": "Content from the Hardware Model Normalization Content Service is pulled into the ServiceNow AI Platform."
-    },
-    "labels": {
+    {
+      "id": "cis-ham-data-integrity-016",
       "certification": "cis-ham",
-      "domain": "Data Integrity & Sources",
-      "domainSlug": "data-integrity",
-      "domainPercentage": 27,
-      "subtopics": ["Content Service for hardware", "Normalization Data Services"],
-      "tags": ["normalization", "content-service", "ai-platform"]
-    },
-    "meta": {
-      "generatedAt": "2026-02-13T02:35:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
+      "topic": "data-integrity",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Where is content from the Hardware Model Normalization Content Service pulled into?",
+      "options": [
+        {
+          "id": "a",
+          "text": "CMDB"
+        },
+        {
+          "id": "b",
+          "text": "Asset Management tables"
+        },
+        {
+          "id": "c",
+          "text": "ServiceNow AI Platform"
+        },
+        {
+          "id": "d",
+          "text": "MID Server"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "Content from the Hardware Model Normalization Content Service is pulled into the ServiceNow AI Platform.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The content is pulled into ServiceNow AI Platform, not directly into CMDB.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-normalization.html"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "The content is pulled into ServiceNow AI Platform, not Asset Management tables.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-normalization.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "MID Server is for Discovery, not for normalization content.",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/it-asset-management/hardware-asset-management/hardware-normalization.html"
+          }
+        ]
+      },
+      "references": [
+        "Hardware Model Normalization"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "sn-course-scraper/scraped-docs/cis-ham-api-en/hardware-normalization.md",
+        "excerpt": "Content from the Hardware Model Normalization Content Service is pulled into the ServiceNow AI Platform."
+      },
+      "labels": {
+        "certification": "cis-ham",
+        "domain": "Data Integrity & Sources",
+        "domainSlug": "data-integrity",
+        "domainPercentage": 27,
+        "subtopics": [
+          "Content Service for hardware",
+          "Normalization Data Services"
+        ],
+        "tags": [
+          "normalization",
+          "content-service",
+          "ai-platform"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-13T02:35:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     }
-  }
-]
+  ]
+}

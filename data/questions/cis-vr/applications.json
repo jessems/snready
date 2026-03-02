@@ -1,690 +1,1205 @@
-[
-  {
-    "id": "cis-vr-applications-001",
-    "certification": "cis-vr",
-    "topic": "applications",
-    "cognitiveLevel": "knowledge",
-    "type": "multiple_choice",
-    "question": "What are the two primary goals of the ServiceNow Vulnerability Response application?",
-    "options": [
-      { "id": "a", "text": "Replace third-party scanners and automate patch deployment" },
-      { "id": "b", "text": "Help security teams handle vulnerability data and help operations teams resolve vulnerabilities" },
-      { "id": "c", "text": "Generate vulnerability reports and manage firewall rules" },
-      { "id": "d", "text": "Monitor network traffic and block malicious IPs" }
-    ],
-    "correctAnswers": ["b"],
-    "selectCount": 1,
-    "isNegative": false,
-    "explanation": {
-      "correct": "According to ServiceNow documentation, the Vulnerability Response application has two primary goals: (1) Help security teams challenged with handling huge amounts of vulnerability data, and (2) Help operations teams tasked with resolving vulnerabilities.",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "VR integrates with third-party scanners but doesn't replace them; patch deployment is handled separately", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html" },
-        { "choiceId": "c", "explanation": "While VR includes reporting, managing firewall rules is not a primary goal", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html" },
-        { "choiceId": "d", "explanation": "Network monitoring and IP blocking are Security Incident Response functions, not VR", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html" }
-      ]
-    },
-    "references": ["https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"],
-    "isFree": true,
-    "source": {
-      "type": "docs",
-      "path": "scraped-docs/cis-secops-api/c_VulnerabilityResponse.md",
-      "excerpt": "The ServiceNow Vulnerability Response application has two primary goals: Help the security teams challenged with handling huge amounts of vulnerability data. Help the operations teams tasked with resolving vulnerabilities."
-    },
-    "labels": {
+{
+  "certification": "cis-vr",
+  "topic": "applications",
+  "questions": [
+    {
+      "id": "cis-vr-applications-001",
       "certification": "cis-vr",
-      "domain": "Vulnerability Response Applications and Modules",
-      "domainSlug": "applications",
-      "domainPercentage": 25,
-      "subtopics": ["ServiceNow Security Operations overview", "Introduction to Vulnerability Response"],
-      "tags": ["vulnerability-response", "security-operations", "overview"]
+      "topic": "applications",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What are the two primary goals of the ServiceNow Vulnerability Response application?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Replace third-party scanners and automate patch deployment"
+        },
+        {
+          "id": "b",
+          "text": "Help security teams handle vulnerability data and help operations teams resolve vulnerabilities"
+        },
+        {
+          "id": "c",
+          "text": "Generate vulnerability reports and manage firewall rules"
+        },
+        {
+          "id": "d",
+          "text": "Monitor network traffic and block malicious IPs"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "According to ServiceNow documentation, the Vulnerability Response application has two primary goals: (1) Help security teams challenged with handling huge amounts of vulnerability data, and (2) Help operations teams tasked with resolving vulnerabilities.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "VR integrates with third-party scanners but doesn't replace them; patch deployment is handled separately",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "While VR includes reporting, managing firewall rules is not a primary goal",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Network monitoring and IP blocking are Security Incident Response functions, not VR",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "docs",
+        "path": "scraped-docs/cis-secops-api/c_VulnerabilityResponse.md",
+        "excerpt": "The ServiceNow Vulnerability Response application has two primary goals: Help the security teams challenged with handling huge amounts of vulnerability data. Help the operations teams tasked with resolving vulnerabilities."
+      },
+      "labels": {
+        "certification": "cis-vr",
+        "domain": "Vulnerability Response Applications and Modules",
+        "domainSlug": "applications",
+        "domainPercentage": 25,
+        "subtopics": [
+          "ServiceNow Security Operations overview",
+          "Introduction to Vulnerability Response"
+        ],
+        "tags": [
+          "vulnerability-response",
+          "security-operations",
+          "overview"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-23T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-23T02:00:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-vr-applications-002",
-    "certification": "cis-vr",
-    "topic": "applications",
-    "cognitiveLevel": "knowledge",
-    "type": "multiple_select",
-    "question": "Which two personas typically use the Vulnerability Response application? (Choose two.)",
-    "options": [
-      { "id": "a", "text": "Vulnerability Analyst" },
-      { "id": "b", "text": "Network Administrator" },
-      { "id": "c", "text": "Remediation Owner" },
-      { "id": "d", "text": "Database Administrator" }
-    ],
-    "correctAnswers": ["a", "c"],
-    "selectCount": 2,
-    "isNegative": false,
-    "explanation": {
-      "correct": "ServiceNow defines two primary personas for VR: (1) Vulnerability Analyst - usually in Security, Risk and Compliance, or Management, who monitors vulnerabilities and determines when to initiate remediation; (2) Remediation Owner - usually part of IT Operations, DevOps/Engineering, or Service Owner, who completes remediation tasks.",
-      "wrongAnswers": [
-        { "choiceId": "b", "explanation": "Network Administrator is not a defined persona in VR; vulnerability management is handled by Vulnerability Analysts and Remediation Owners", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html" },
-        { "choiceId": "d", "explanation": "Database Administrator is not a VR persona; the Remediation Owner role covers various IT operations staff", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html" }
-      ]
-    },
-    "references": ["https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"],
-    "isFree": true,
-    "source": {
-      "type": "docs",
-      "path": "scraped-docs/cis-secops-api/c_VulnerabilityResponse.md",
-      "excerpt": "Vulnerability Response users generally fall into two personae. Vulnerability Analyst: usually in Security, Risk and Compliance, or Management. Remediation Owner: usually a part of IT Operations, DevOps/Engineering, or a Service Owner."
-    },
-    "labels": {
+    {
+      "id": "cis-vr-applications-002",
       "certification": "cis-vr",
-      "domain": "Vulnerability Response Applications and Modules",
-      "domainSlug": "applications",
-      "domainPercentage": 25,
-      "subtopics": ["Introduction to Vulnerability Response", "VR with the ServiceNow Platform"],
-      "tags": ["personas", "vulnerability-analyst", "remediation-owner", "roles"]
+      "topic": "applications",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_select",
+      "question": "Which two personas typically use the Vulnerability Response application? (Choose two.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Vulnerability Analyst"
+        },
+        {
+          "id": "b",
+          "text": "Network Administrator"
+        },
+        {
+          "id": "c",
+          "text": "Remediation Owner"
+        },
+        {
+          "id": "d",
+          "text": "Database Administrator"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "c"
+      ],
+      "selectCount": 2,
+      "isNegative": false,
+      "explanation": {
+        "correct": "ServiceNow defines two primary personas for VR: (1) Vulnerability Analyst - usually in Security, Risk and Compliance, or Management, who monitors vulnerabilities and determines when to initiate remediation; (2) Remediation Owner - usually part of IT Operations, DevOps/Engineering, or Service Owner, who completes remediation tasks.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Network Administrator is not a defined persona in VR; vulnerability management is handled by Vulnerability Analysts and Remediation Owners",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Database Administrator is not a VR persona; the Remediation Owner role covers various IT operations staff",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "docs",
+        "path": "scraped-docs/cis-secops-api/c_VulnerabilityResponse.md",
+        "excerpt": "Vulnerability Response users generally fall into two personae. Vulnerability Analyst: usually in Security, Risk and Compliance, or Management. Remediation Owner: usually a part of IT Operations, DevOps/Engineering, or a Service Owner."
+      },
+      "labels": {
+        "certification": "cis-vr",
+        "domain": "Vulnerability Response Applications and Modules",
+        "domainSlug": "applications",
+        "domainPercentage": 25,
+        "subtopics": [
+          "Introduction to Vulnerability Response",
+          "VR with the ServiceNow Platform"
+        ],
+        "tags": [
+          "personas",
+          "vulnerability-analyst",
+          "remediation-owner",
+          "roles"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-23T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-23T02:00:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-vr-applications-003",
-    "certification": "cis-vr",
-    "topic": "applications",
-    "cognitiveLevel": "understanding",
-    "type": "multiple_choice",
-    "question": "Which workspace does the Vulnerability Analyst persona primarily use to monitor and create remediation tasks?",
-    "options": [
-      { "id": "a", "text": "IT Remediation Workspace" },
-      { "id": "b", "text": "Security Incident Response Workspace" },
-      { "id": "c", "text": "Vulnerability Manager Workspace" },
-      { "id": "d", "text": "Configuration Compliance Workspace" }
-    ],
-    "correctAnswers": ["c"],
-    "selectCount": 1,
-    "isNegative": false,
-    "explanation": {
-      "correct": "The Vulnerability Analyst primarily uses the Vulnerability Manager Workspace to monitor vulnerabilities and create remediation tasks. The IT Remediation Workspace is used by Remediation Owners.",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "IT Remediation Workspace is primarily used by Remediation Owners, not Vulnerability Analysts", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html" },
-        { "choiceId": "b", "explanation": "Security Incident Response Workspace is for SIR, not Vulnerability Response", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html" },
-        { "choiceId": "d", "explanation": "Configuration Compliance Workspace is for configuration compliance, not vulnerability management", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html" }
-      ]
-    },
-    "references": ["https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"],
-    "isFree": true,
-    "source": {
-      "type": "docs",
-      "path": "scraped-docs/cis-secops-api/c_VulnerabilityResponse.md",
-      "excerpt": "The vulnerability analyst primarily uses the Vulnerability Manager Workspace to monitor and create remediation tasks."
-    },
-    "labels": {
+    {
+      "id": "cis-vr-applications-003",
       "certification": "cis-vr",
-      "domain": "Vulnerability Response Applications and Modules",
-      "domainSlug": "applications",
-      "domainPercentage": 25,
-      "subtopics": ["VR with the ServiceNow Platform", "Vulnerability Response Applications and Modules"],
-      "tags": ["workspace", "vulnerability-manager-workspace", "vulnerability-analyst"]
+      "topic": "applications",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "Which workspace does the Vulnerability Analyst persona primarily use to monitor and create remediation tasks?",
+      "options": [
+        {
+          "id": "a",
+          "text": "IT Remediation Workspace"
+        },
+        {
+          "id": "b",
+          "text": "Security Incident Response Workspace"
+        },
+        {
+          "id": "c",
+          "text": "Vulnerability Manager Workspace"
+        },
+        {
+          "id": "d",
+          "text": "Configuration Compliance Workspace"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "The Vulnerability Analyst primarily uses the Vulnerability Manager Workspace to monitor vulnerabilities and create remediation tasks. The IT Remediation Workspace is used by Remediation Owners.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "IT Remediation Workspace is primarily used by Remediation Owners, not Vulnerability Analysts",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "Security Incident Response Workspace is for SIR, not Vulnerability Response",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Configuration Compliance Workspace is for configuration compliance, not vulnerability management",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "docs",
+        "path": "scraped-docs/cis-secops-api/c_VulnerabilityResponse.md",
+        "excerpt": "The vulnerability analyst primarily uses the Vulnerability Manager Workspace to monitor and create remediation tasks."
+      },
+      "labels": {
+        "certification": "cis-vr",
+        "domain": "Vulnerability Response Applications and Modules",
+        "domainSlug": "applications",
+        "domainPercentage": 25,
+        "subtopics": [
+          "VR with the ServiceNow Platform",
+          "Vulnerability Response Applications and Modules"
+        ],
+        "tags": [
+          "workspace",
+          "vulnerability-manager-workspace",
+          "vulnerability-analyst"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-23T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-23T02:00:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-vr-applications-004",
-    "certification": "cis-vr",
-    "topic": "applications",
-    "cognitiveLevel": "knowledge",
-    "type": "multiple_choice",
-    "question": "Which feature of Vulnerability Response is available by separate subscription and specifically addresses application vulnerabilities?",
-    "options": [
-      { "id": "a", "text": "Container Vulnerability Response (CVR)" },
-      { "id": "b", "text": "Application Vulnerability Response (AVR)" },
-      { "id": "c", "text": "Configuration Compliance (CC)" },
-      { "id": "d", "text": "Software Bill of Materials (SBOM)" }
-    ],
-    "correctAnswers": ["b"],
-    "selectCount": 1,
-    "isNegative": false,
-    "explanation": {
-      "correct": "Application Vulnerability Response (AVR) is a feature of the ServiceNow Vulnerability Response application that imports application vulnerable items (AVITs) and allows remediation of application vulnerabilities. It is available by separate subscription.",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "Container Vulnerability Response handles container vulnerabilities, not specifically application vulnerabilities", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html" },
-        { "choiceId": "c", "explanation": "Configuration Compliance is a separate product for compliance management, not application vulnerability management", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html" },
-        { "choiceId": "d", "explanation": "SBOM is a component inventory feature, not an application vulnerability management feature", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html" }
-      ]
-    },
-    "references": ["https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "scraped-docs/cis-secops-api/c_VulnerabilityResponse.md",
-      "excerpt": "The Application Vulnerability Response (AVR) feature of the ServiceNow Vulnerability Response application imports application vulnerable items (AVITs) and according to rules allows you to remediate application vulnerabilities. It is available by separate subscription."
-    },
-    "labels": {
+    {
+      "id": "cis-vr-applications-004",
       "certification": "cis-vr",
-      "domain": "Vulnerability Response Applications and Modules",
-      "domainSlug": "applications",
-      "domainPercentage": 25,
-      "subtopics": ["Application Vulnerability Response"],
-      "tags": ["avr", "application-vulnerability-response", "subscription"]
+      "topic": "applications",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which feature of Vulnerability Response is available by separate subscription and specifically addresses application vulnerabilities?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Container Vulnerability Response (CVR)"
+        },
+        {
+          "id": "b",
+          "text": "Application Vulnerability Response (AVR)"
+        },
+        {
+          "id": "c",
+          "text": "Configuration Compliance (CC)"
+        },
+        {
+          "id": "d",
+          "text": "Software Bill of Materials (SBOM)"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "Application Vulnerability Response (AVR) is a feature of the ServiceNow Vulnerability Response application that imports application vulnerable items (AVITs) and allows remediation of application vulnerabilities. It is available by separate subscription.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Container Vulnerability Response handles container vulnerabilities, not specifically application vulnerabilities",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Configuration Compliance is a separate product for compliance management, not application vulnerability management",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "SBOM is a component inventory feature, not an application vulnerability management feature",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "scraped-docs/cis-secops-api/c_VulnerabilityResponse.md",
+        "excerpt": "The Application Vulnerability Response (AVR) feature of the ServiceNow Vulnerability Response application imports application vulnerable items (AVITs) and according to rules allows you to remediate application vulnerabilities. It is available by separate subscription."
+      },
+      "labels": {
+        "certification": "cis-vr",
+        "domain": "Vulnerability Response Applications and Modules",
+        "domainSlug": "applications",
+        "domainPercentage": 25,
+        "subtopics": [
+          "Application Vulnerability Response"
+        ],
+        "tags": [
+          "avr",
+          "application-vulnerability-response",
+          "subscription"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-23T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-23T02:00:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-vr-applications-005",
-    "certification": "cis-vr",
-    "topic": "applications",
-    "cognitiveLevel": "understanding",
-    "type": "multiple_select",
-    "question": "Which of the following are typical risks that vulnerability scanners identify? (Choose three.)",
-    "options": [
-      { "id": "a", "text": "Reliance on outdated software or misconfigured systems" },
-      { "id": "b", "text": "Unsecured network protocols" },
-      { "id": "c", "text": "Employee vacation schedules" },
-      { "id": "d", "text": "Dependency on flawed third-party software libraries" },
-      { "id": "e", "text": "Office furniture inventory" }
-    ],
-    "correctAnswers": ["a", "b", "d"],
-    "selectCount": 3,
-    "isNegative": false,
-    "explanation": {
-      "correct": "ServiceNow documentation lists common risks identified by vulnerability scanners: reliance on outdated software or misconfigured systems, unsecured network protocols, dependency on flawed third-party software libraries, poor or inconsistent system administration hygiene, and baseline system images that are not hardened.",
-      "wrongAnswers": [
-        { "choiceId": "c", "explanation": "Employee vacation schedules are HR data, not security vulnerabilities", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html" },
-        { "choiceId": "e", "explanation": "Office furniture inventory is asset management data, not a security vulnerability", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html" }
-      ]
-    },
-    "references": ["https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "scraped-docs/cis-secops-api/c_VulnerabilityResponse.md",
-      "excerpt": "Some risks might include but aren't limited to: Reliance on outdated software or misconfigured systems, Unsecured network protocols, Dependency on flawed third-party software libraries, Poor or inconsistent system administration hygiene, Baseline system images that are not hardened."
-    },
-    "labels": {
+    {
+      "id": "cis-vr-applications-005",
       "certification": "cis-vr",
-      "domain": "Vulnerability Response Applications and Modules",
-      "domainSlug": "applications",
-      "domainPercentage": 25,
-      "subtopics": ["ServiceNow Security Operations overview", "Introduction to Vulnerability Response"],
-      "tags": ["vulnerabilities", "risks", "scanners"]
+      "topic": "applications",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_select",
+      "question": "Which of the following are typical risks that vulnerability scanners identify? (Choose three.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Reliance on outdated software or misconfigured systems"
+        },
+        {
+          "id": "b",
+          "text": "Unsecured network protocols"
+        },
+        {
+          "id": "c",
+          "text": "Employee vacation schedules"
+        },
+        {
+          "id": "d",
+          "text": "Dependency on flawed third-party software libraries"
+        },
+        {
+          "id": "e",
+          "text": "Office furniture inventory"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b",
+        "d"
+      ],
+      "selectCount": 3,
+      "isNegative": false,
+      "explanation": {
+        "correct": "ServiceNow documentation lists common risks identified by vulnerability scanners: reliance on outdated software or misconfigured systems, unsecured network protocols, dependency on flawed third-party software libraries, poor or inconsistent system administration hygiene, and baseline system images that are not hardened.",
+        "wrongAnswers": [
+          {
+            "choiceId": "c",
+            "explanation": "Employee vacation schedules are HR data, not security vulnerabilities",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"
+          },
+          {
+            "choiceId": "e",
+            "explanation": "Office furniture inventory is asset management data, not a security vulnerability",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "scraped-docs/cis-secops-api/c_VulnerabilityResponse.md",
+        "excerpt": "Some risks might include but aren't limited to: Reliance on outdated software or misconfigured systems, Unsecured network protocols, Dependency on flawed third-party software libraries, Poor or inconsistent system administration hygiene, Baseline system images that are not hardened."
+      },
+      "labels": {
+        "certification": "cis-vr",
+        "domain": "Vulnerability Response Applications and Modules",
+        "domainSlug": "applications",
+        "domainPercentage": 25,
+        "subtopics": [
+          "ServiceNow Security Operations overview",
+          "Introduction to Vulnerability Response"
+        ],
+        "tags": [
+          "vulnerabilities",
+          "risks",
+          "scanners"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-23T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-23T02:00:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-vr-applications-006",
-    "certification": "cis-vr",
-    "topic": "applications",
-    "cognitiveLevel": "application",
-    "type": "multiple_choice",
-    "question": "A security team is overwhelmed managing vulnerabilities and asks: 'Who should be accountable for and own identified risks?' Which ServiceNow capability helps address this challenge?",
-    "options": [
-      { "id": "a", "text": "Vulnerability Response with Assignment Rules" },
-      { "id": "b", "text": "Change Management with approval workflows" },
-      { "id": "c", "text": "Incident Management with auto-routing" },
-      { "id": "d", "text": "Service Catalog with request items" }
-    ],
-    "correctAnswers": ["a"],
-    "selectCount": 1,
-    "isNegative": false,
-    "explanation": {
-      "correct": "Vulnerability Response with Assignment Rules addresses the question 'Who should be accountable for and own identified risks?' by automatically assigning vulnerable items to appropriate assignment groups based on defined criteria.",
-      "wrongAnswers": [
-        { "choiceId": "b", "explanation": "Change Management handles changes to systems, not vulnerability ownership", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html" },
-        { "choiceId": "c", "explanation": "Incident Management handles service disruptions, not vulnerability ownership", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html" },
-        { "choiceId": "d", "explanation": "Service Catalog handles service requests, not vulnerability ownership", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html" }
-      ]
-    },
-    "references": ["https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "scraped-docs/cis-secops-api/c_VulnerabilityResponse.md",
-      "excerpt": "You might identify these challenges to your own security posture by asking: Who should be accountable for and own identified risks?"
-    },
-    "labels": {
+    {
+      "id": "cis-vr-applications-006",
       "certification": "cis-vr",
-      "domain": "Vulnerability Response Applications and Modules",
-      "domainSlug": "applications",
-      "domainPercentage": 25,
-      "subtopics": ["Introduction to Vulnerability Response", "VR with the ServiceNow Platform"],
-      "tags": ["assignment-rules", "ownership", "accountability"]
+      "topic": "applications",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A security team is overwhelmed managing vulnerabilities and asks: 'Who should be accountable for and own identified risks?' Which ServiceNow capability helps address this challenge?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Vulnerability Response with Assignment Rules"
+        },
+        {
+          "id": "b",
+          "text": "Change Management with approval workflows"
+        },
+        {
+          "id": "c",
+          "text": "Incident Management with auto-routing"
+        },
+        {
+          "id": "d",
+          "text": "Service Catalog with request items"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "Vulnerability Response with Assignment Rules addresses the question 'Who should be accountable for and own identified risks?' by automatically assigning vulnerable items to appropriate assignment groups based on defined criteria.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Change Management handles changes to systems, not vulnerability ownership",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Incident Management handles service disruptions, not vulnerability ownership",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Service Catalog handles service requests, not vulnerability ownership",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "scraped-docs/cis-secops-api/c_VulnerabilityResponse.md",
+        "excerpt": "You might identify these challenges to your own security posture by asking: Who should be accountable for and own identified risks?"
+      },
+      "labels": {
+        "certification": "cis-vr",
+        "domain": "Vulnerability Response Applications and Modules",
+        "domainSlug": "applications",
+        "domainPercentage": 25,
+        "subtopics": [
+          "Introduction to Vulnerability Response",
+          "VR with the ServiceNow Platform"
+        ],
+        "tags": [
+          "assignment-rules",
+          "ownership",
+          "accountability"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-23T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-23T02:00:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-vr-applications-007",
-    "certification": "cis-vr",
-    "topic": "applications",
-    "cognitiveLevel": "knowledge",
-    "type": "multiple_choice",
-    "question": "Which external source does Vulnerability Response use to import vulnerability data that describes known vulnerabilities?",
-    "options": [
-      { "id": "a", "text": "Microsoft Security Response Center (MSRC)" },
-      { "id": "b", "text": "National Vulnerability Database (NVD)" },
-      { "id": "c", "text": "OWASP Top 10 Database" },
-      { "id": "d", "text": "ServiceNow Knowledge Base" }
-    ],
-    "correctAnswers": ["b"],
-    "selectCount": 1,
-    "isNegative": false,
-    "explanation": {
-      "correct": "Vulnerability Response imports vulnerability data from external sources including the National Vulnerability Database (NVD) and third-party integrations.",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "MSRC is Microsoft-specific; NVD is the primary source for VR vulnerability definitions", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html" },
-        { "choiceId": "c", "explanation": "OWASP Top 10 is a security awareness list, not a vulnerability import source", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html" },
-        { "choiceId": "d", "explanation": "ServiceNow Knowledge Base contains articles, not vulnerability definitions", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html" }
-      ]
-    },
-    "references": ["https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "scraped-docs/cis-secops-api/c_VulnerabilityResponse.md",
-      "excerpt": "Vulnerability data is pulled from external sources, such as the National Vulnerability Database (NVD) and third-party integrations, and processed with applications developed by ServiceNow."
-    },
-    "labels": {
+    {
+      "id": "cis-vr-applications-007",
       "certification": "cis-vr",
-      "domain": "Vulnerability Response Applications and Modules",
-      "domainSlug": "applications",
-      "domainPercentage": 25,
-      "subtopics": ["ServiceNow Security Operations overview", "Introduction to Vulnerability Response"],
-      "tags": ["nvd", "national-vulnerability-database", "data-sources"]
+      "topic": "applications",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which external source does Vulnerability Response use to import vulnerability data that describes known vulnerabilities?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Microsoft Security Response Center (MSRC)"
+        },
+        {
+          "id": "b",
+          "text": "National Vulnerability Database (NVD)"
+        },
+        {
+          "id": "c",
+          "text": "OWASP Top 10 Database"
+        },
+        {
+          "id": "d",
+          "text": "ServiceNow Knowledge Base"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "Vulnerability Response imports vulnerability data from external sources including the National Vulnerability Database (NVD) and third-party integrations.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "MSRC is Microsoft-specific; NVD is the primary source for VR vulnerability definitions",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "OWASP Top 10 is a security awareness list, not a vulnerability import source",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "ServiceNow Knowledge Base contains articles, not vulnerability definitions",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "scraped-docs/cis-secops-api/c_VulnerabilityResponse.md",
+        "excerpt": "Vulnerability data is pulled from external sources, such as the National Vulnerability Database (NVD) and third-party integrations, and processed with applications developed by ServiceNow."
+      },
+      "labels": {
+        "certification": "cis-vr",
+        "domain": "Vulnerability Response Applications and Modules",
+        "domainSlug": "applications",
+        "domainPercentage": 25,
+        "subtopics": [
+          "ServiceNow Security Operations overview",
+          "Introduction to Vulnerability Response"
+        ],
+        "tags": [
+          "nvd",
+          "national-vulnerability-database",
+          "data-sources"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-23T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-23T02:00:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-vr-applications-008",
-    "certification": "cis-vr",
-    "topic": "applications",
-    "cognitiveLevel": "understanding",
-    "type": "compound_true_false",
-    "question": "Which of the following statements about Vulnerability Response and CMDB integration are true?\na) Imported vulnerabilities from the NVD are reconciled with assets in the CMDB\nb) Detection data from third-party products is matched with CMDB CIs\nc) Triage may include creating remediation tasks composed of multiple vulnerable items\nd) CMDB integration requires a separate subscription",
-    "options": [
-      { "id": "a", "text": "a, b, c, and d" },
-      { "id": "b", "text": "a, b, and c only" },
-      { "id": "c", "text": "b, c, and d only" },
-      { "id": "d", "text": "a and c only" }
-    ],
-    "correctAnswers": ["b"],
-    "selectCount": 1,
-    "isNegative": false,
-    "explanation": {
-      "correct": "Statements a, b, and c are true. Imported vulnerabilities from NVD and detection data from third-party products are reconciled with CMDB assets. Triage includes creating remediation tasks with multiple vulnerable items. However, CMDB integration is part of the base VR functionality, not a separate subscription.",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "Statement d is false - CMDB integration is included with VR, not a separate subscription", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html" },
-        { "choiceId": "c", "explanation": "Statement a is also true - NVD vulnerabilities are reconciled with CMDB", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html" },
-        { "choiceId": "d", "explanation": "Statement b is also true - third-party detection data is matched with CMDB CIs", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html" }
-      ]
-    },
-    "references": ["https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "scraped-docs/cis-secops-api/c_VulnerabilityResponse.md",
-      "excerpt": "Imported vulnerabilities from the NVD and detection data from third-party products are reconciled with the assets in your CMDB. Triage might include: creating remediation tasks composed of multiple vulnerable items."
-    },
-    "labels": {
+    {
+      "id": "cis-vr-applications-008",
       "certification": "cis-vr",
-      "domain": "Vulnerability Response Applications and Modules",
-      "domainSlug": "applications",
-      "domainPercentage": 25,
-      "subtopics": ["VR with the ServiceNow Platform"],
-      "tags": ["cmdb", "integration", "triage"]
+      "topic": "applications",
+      "cognitiveLevel": "understanding",
+      "type": "compound_true_false",
+      "question": "Which of the following statements about Vulnerability Response and CMDB integration are true?\na) Imported vulnerabilities from the NVD are reconciled with assets in the CMDB\nb) Detection data from third-party products is matched with CMDB CIs\nc) Triage may include creating remediation tasks composed of multiple vulnerable items\nd) CMDB integration requires a separate subscription",
+      "options": [
+        {
+          "id": "a",
+          "text": "a, b, c, and d"
+        },
+        {
+          "id": "b",
+          "text": "a, b, and c only"
+        },
+        {
+          "id": "c",
+          "text": "b, c, and d only"
+        },
+        {
+          "id": "d",
+          "text": "a and c only"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "Statements a, b, and c are true. Imported vulnerabilities from NVD and detection data from third-party products are reconciled with CMDB assets. Triage includes creating remediation tasks with multiple vulnerable items. However, CMDB integration is part of the base VR functionality, not a separate subscription.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Statement d is false - CMDB integration is included with VR, not a separate subscription",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Statement a is also true - NVD vulnerabilities are reconciled with CMDB",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Statement b is also true - third-party detection data is matched with CMDB CIs",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "scraped-docs/cis-secops-api/c_VulnerabilityResponse.md",
+        "excerpt": "Imported vulnerabilities from the NVD and detection data from third-party products are reconciled with the assets in your CMDB. Triage might include: creating remediation tasks composed of multiple vulnerable items."
+      },
+      "labels": {
+        "certification": "cis-vr",
+        "domain": "Vulnerability Response Applications and Modules",
+        "domainSlug": "applications",
+        "domainPercentage": 25,
+        "subtopics": [
+          "VR with the ServiceNow Platform"
+        ],
+        "tags": [
+          "cmdb",
+          "integration",
+          "triage"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-23T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-23T02:00:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-vr-applications-009",
-    "certification": "cis-vr",
-    "topic": "applications",
-    "cognitiveLevel": "knowledge",
-    "type": "multiple_choice",
-    "question": "Which Vulnerability Response feature helps manage vulnerabilities that require additional manual intervention, more time to resolve, or extensive research?",
-    "options": [
-      { "id": "a", "text": "Automated patch deployment" },
-      { "id": "b", "text": "Coordinated change and exception management" },
-      { "id": "c", "text": "Real-time scanner integration" },
-      { "id": "d", "text": "Vulnerability discovery engine" }
-    ],
-    "correctAnswers": ["b"],
-    "selectCount": 1,
-    "isNegative": false,
-    "explanation": {
-      "correct": "Coordinated change and exception management helps resolve vulnerabilities that might require additional manual intervention, more time to resolve, or extensive research.",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "VR doesn't automate patch deployment; it coordinates remediation activities", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html" },
-        { "choiceId": "c", "explanation": "Scanner integration imports vulnerabilities but doesn't handle exceptions requiring manual intervention", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html" },
-        { "choiceId": "d", "explanation": "VR uses third-party scanners for discovery; exception management handles complex cases", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html" }
-      ]
-    },
-    "references": ["https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "scraped-docs/cis-secops-api/c_VulnerabilityResponse.md",
-      "excerpt": "Employ coordinated change and exception management to help you resolve vulnerabilities that might require additional manual intervention, more time to resolve, or extensive research."
-    },
-    "labels": {
+    {
+      "id": "cis-vr-applications-009",
       "certification": "cis-vr",
-      "domain": "Vulnerability Response Applications and Modules",
-      "domainSlug": "applications",
-      "domainPercentage": 25,
-      "subtopics": ["Vulnerability Response Applications and Modules"],
-      "tags": ["exception-management", "change-management"]
+      "topic": "applications",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which Vulnerability Response feature helps manage vulnerabilities that require additional manual intervention, more time to resolve, or extensive research?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Automated patch deployment"
+        },
+        {
+          "id": "b",
+          "text": "Coordinated change and exception management"
+        },
+        {
+          "id": "c",
+          "text": "Real-time scanner integration"
+        },
+        {
+          "id": "d",
+          "text": "Vulnerability discovery engine"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "Coordinated change and exception management helps resolve vulnerabilities that might require additional manual intervention, more time to resolve, or extensive research.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "VR doesn't automate patch deployment; it coordinates remediation activities",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Scanner integration imports vulnerabilities but doesn't handle exceptions requiring manual intervention",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "VR uses third-party scanners for discovery; exception management handles complex cases",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "scraped-docs/cis-secops-api/c_VulnerabilityResponse.md",
+        "excerpt": "Employ coordinated change and exception management to help you resolve vulnerabilities that might require additional manual intervention, more time to resolve, or extensive research."
+      },
+      "labels": {
+        "certification": "cis-vr",
+        "domain": "Vulnerability Response Applications and Modules",
+        "domainSlug": "applications",
+        "domainPercentage": 25,
+        "subtopics": [
+          "Vulnerability Response Applications and Modules"
+        ],
+        "tags": [
+          "exception-management",
+          "change-management"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-23T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-23T02:00:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-vr-applications-010",
-    "certification": "cis-vr",
-    "topic": "applications",
-    "cognitiveLevel": "knowledge",
-    "type": "multiple_choice",
-    "question": "Which workspace do Remediation Owners primarily use to work on remediation tasks?",
-    "options": [
-      { "id": "a", "text": "Vulnerability Manager Workspace" },
-      { "id": "b", "text": "IT Remediation Workspace" },
-      { "id": "c", "text": "Security Operations Workspace" },
-      { "id": "d", "text": "DevOps Workspace" }
-    ],
-    "correctAnswers": ["b"],
-    "selectCount": 1,
-    "isNegative": false,
-    "explanation": {
-      "correct": "The Remediation Owner persona primarily works on remediation tasks from within the IT Remediation Workspace. Vulnerability Analysts use the Vulnerability Manager Workspace.",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "Vulnerability Manager Workspace is primarily used by Vulnerability Analysts, not Remediation Owners", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html" },
-        { "choiceId": "c", "explanation": "Security Operations Workspace is a general term, not the specific workspace for remediation tasks", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html" },
-        { "choiceId": "d", "explanation": "DevOps Workspace is not a Vulnerability Response workspace", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html" }
-      ]
-    },
-    "references": ["https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "scraped-docs/cis-secops-api/c_VulnerabilityResponse.md",
-      "excerpt": "The remediation owner primarily works on remediation tasks from within the IT Remediation Workspace."
-    },
-    "labels": {
+    {
+      "id": "cis-vr-applications-010",
       "certification": "cis-vr",
-      "domain": "Vulnerability Response Applications and Modules",
-      "domainSlug": "applications",
-      "domainPercentage": 25,
-      "subtopics": ["VR with the ServiceNow Platform"],
-      "tags": ["workspace", "it-remediation-workspace", "remediation-owner"]
+      "topic": "applications",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which workspace do Remediation Owners primarily use to work on remediation tasks?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Vulnerability Manager Workspace"
+        },
+        {
+          "id": "b",
+          "text": "IT Remediation Workspace"
+        },
+        {
+          "id": "c",
+          "text": "Security Operations Workspace"
+        },
+        {
+          "id": "d",
+          "text": "DevOps Workspace"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "The Remediation Owner persona primarily works on remediation tasks from within the IT Remediation Workspace. Vulnerability Analysts use the Vulnerability Manager Workspace.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Vulnerability Manager Workspace is primarily used by Vulnerability Analysts, not Remediation Owners",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Security Operations Workspace is a general term, not the specific workspace for remediation tasks",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "DevOps Workspace is not a Vulnerability Response workspace",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "scraped-docs/cis-secops-api/c_VulnerabilityResponse.md",
+        "excerpt": "The remediation owner primarily works on remediation tasks from within the IT Remediation Workspace."
+      },
+      "labels": {
+        "certification": "cis-vr",
+        "domain": "Vulnerability Response Applications and Modules",
+        "domainSlug": "applications",
+        "domainPercentage": 25,
+        "subtopics": [
+          "VR with the ServiceNow Platform"
+        ],
+        "tags": [
+          "workspace",
+          "it-remediation-workspace",
+          "remediation-owner"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-23T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-23T02:00:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-vr-applications-011",
-    "certification": "cis-vr",
-    "topic": "applications",
-    "cognitiveLevel": "understanding",
-    "type": "multiple_choice",
-    "question": "Which is NOT a typical action Remediation Owners might take when working on vulnerability remediation?",
-    "options": [
-      { "id": "a", "text": "Complete remediation tasks to fix vulnerabilities" },
-      { "id": "b", "text": "Submit exception requests for vulnerabilities requiring more time" },
-      { "id": "c", "text": "Create new scanner integrations" },
-      { "id": "d", "text": "Submit change requests for controlled asset maintenance" }
-    ],
-    "correctAnswers": ["c"],
-    "selectCount": 1,
-    "isNegative": true,
-    "explanation": {
-      "correct": "Creating scanner integrations is an administrative task, not a Remediation Owner activity. Remediation Owners complete remediation tasks, submit exception or change requests if controlled processes are required for asset maintenance or removal.",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "Completing remediation tasks is the primary responsibility of Remediation Owners", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html" },
-        { "choiceId": "b", "explanation": "Submitting exception requests is a valid Remediation Owner action", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html" },
-        { "choiceId": "d", "explanation": "Submitting change requests for controlled processes is a valid Remediation Owner action", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html" }
-      ]
-    },
-    "references": ["https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "scraped-docs/cis-secops-api/c_VulnerabilityResponse.md",
-      "excerpt": "Remediation Owner: These users complete the remediation tasks necessary to fix vulnerabilities. They might submit exception or change requests if controlled processes are required for asset maintenance or removal."
-    },
-    "labels": {
+    {
+      "id": "cis-vr-applications-011",
       "certification": "cis-vr",
-      "domain": "Vulnerability Response Applications and Modules",
-      "domainSlug": "applications",
-      "domainPercentage": 25,
-      "subtopics": ["Introduction to Vulnerability Response"],
-      "tags": ["remediation-owner", "responsibilities", "negative-question"]
+      "topic": "applications",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "Which is NOT a typical action Remediation Owners might take when working on vulnerability remediation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Complete remediation tasks to fix vulnerabilities"
+        },
+        {
+          "id": "b",
+          "text": "Submit exception requests for vulnerabilities requiring more time"
+        },
+        {
+          "id": "c",
+          "text": "Create new scanner integrations"
+        },
+        {
+          "id": "d",
+          "text": "Submit change requests for controlled asset maintenance"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "selectCount": 1,
+      "isNegative": true,
+      "explanation": {
+        "correct": "Creating scanner integrations is an administrative task, not a Remediation Owner activity. Remediation Owners complete remediation tasks, submit exception or change requests if controlled processes are required for asset maintenance or removal.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Completing remediation tasks is the primary responsibility of Remediation Owners",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "Submitting exception requests is a valid Remediation Owner action",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Submitting change requests for controlled processes is a valid Remediation Owner action",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "scraped-docs/cis-secops-api/c_VulnerabilityResponse.md",
+        "excerpt": "Remediation Owner: These users complete the remediation tasks necessary to fix vulnerabilities. They might submit exception or change requests if controlled processes are required for asset maintenance or removal."
+      },
+      "labels": {
+        "certification": "cis-vr",
+        "domain": "Vulnerability Response Applications and Modules",
+        "domainSlug": "applications",
+        "domainPercentage": 25,
+        "subtopics": [
+          "Introduction to Vulnerability Response"
+        ],
+        "tags": [
+          "remediation-owner",
+          "responsibilities",
+          "negative-question"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-23T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-23T02:00:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-vr-applications-012",
-    "certification": "cis-vr",
-    "topic": "applications",
-    "cognitiveLevel": "knowledge",
-    "type": "multiple_select",
-    "question": "Which applications manage or contribute data to CSDM tables according to ServiceNow documentation? (Choose two.)",
-    "options": [
-      { "id": "a", "text": "Vulnerability Response" },
-      { "id": "b", "text": "Password Reset" },
-      { "id": "c", "text": "Software Bill of Materials" },
-      { "id": "d", "text": "Survey Administration" }
-    ],
-    "correctAnswers": ["a", "c"],
-    "selectCount": 2,
-    "isNegative": false,
-    "explanation": {
-      "correct": "Vulnerability Response, Application Vulnerability Response, third-party vulnerability integrations, and Software Bill of Materials applications manage (contribute data to) CSDM tables.",
-      "wrongAnswers": [
-        { "choiceId": "b", "explanation": "Password Reset is not related to CSDM or vulnerability management", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html" },
-        { "choiceId": "d", "explanation": "Survey Administration is not related to CSDM or vulnerability management", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html" }
-      ]
-    },
-    "references": ["https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "scraped-docs/cis-secops-api/c_VulnerabilityResponse.md",
-      "excerpt": "The Vulnerability Response, Application Vulnerability Response, third-party vulnerability integrations and Software Bill of Materials applications manage (contribute data to) CSDM tables."
-    },
-    "labels": {
+    {
+      "id": "cis-vr-applications-012",
       "certification": "cis-vr",
-      "domain": "Vulnerability Response Applications and Modules",
-      "domainSlug": "applications",
-      "domainPercentage": 25,
-      "subtopics": ["VR with the ServiceNow Platform"],
-      "tags": ["csdm", "sbom", "integration"]
+      "topic": "applications",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_select",
+      "question": "Which applications manage or contribute data to CSDM tables according to ServiceNow documentation? (Choose two.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Vulnerability Response"
+        },
+        {
+          "id": "b",
+          "text": "Password Reset"
+        },
+        {
+          "id": "c",
+          "text": "Software Bill of Materials"
+        },
+        {
+          "id": "d",
+          "text": "Survey Administration"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "c"
+      ],
+      "selectCount": 2,
+      "isNegative": false,
+      "explanation": {
+        "correct": "Vulnerability Response, Application Vulnerability Response, third-party vulnerability integrations, and Software Bill of Materials applications manage (contribute data to) CSDM tables.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Password Reset is not related to CSDM or vulnerability management",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Survey Administration is not related to CSDM or vulnerability management",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "scraped-docs/cis-secops-api/c_VulnerabilityResponse.md",
+        "excerpt": "The Vulnerability Response, Application Vulnerability Response, third-party vulnerability integrations and Software Bill of Materials applications manage (contribute data to) CSDM tables."
+      },
+      "labels": {
+        "certification": "cis-vr",
+        "domain": "Vulnerability Response Applications and Modules",
+        "domainSlug": "applications",
+        "domainPercentage": 25,
+        "subtopics": [
+          "VR with the ServiceNow Platform"
+        ],
+        "tags": [
+          "csdm",
+          "sbom",
+          "integration"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-23T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-23T02:00:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-vr-applications-013",
-    "certification": "cis-vr",
-    "topic": "applications",
-    "cognitiveLevel": "application",
-    "type": "multiple_choice",
-    "question": "An organization wants to track progress and follow up to ensure vulnerability remediation actions worked. Which Vulnerability Response capability addresses this need?",
-    "options": [
-      { "id": "a", "text": "Automatic scanner rescan verification" },
-      { "id": "b", "text": "Manual vulnerability re-import" },
-      { "id": "c", "text": "Vulnerability state tracking with scanner confirmation" },
-      { "id": "d", "text": "Email notifications only" }
-    ],
-    "correctAnswers": ["c"],
-    "selectCount": 1,
-    "isNegative": false,
-    "explanation": {
-      "correct": "VR confirms vulnerabilities are resolved and updated automatically by detections from scanner products. This addresses the question 'How do we know if we are making progress reducing our overall risk posture?'",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "VR uses scanner detections to confirm resolution; 'automatic rescan verification' is not a specific feature name", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html" },
-        { "choiceId": "b", "explanation": "Manual re-import is not how VR tracks remediation success; scanner integration automates this", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html" },
-        { "choiceId": "d", "explanation": "Email notifications inform users but don't verify remediation success", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html" }
-      ]
-    },
-    "references": ["https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "scraped-docs/cis-secops-api/c_VulnerabilityResponse.md",
-      "excerpt": "Confirm vulnerabilities are resolved and updated automatically by detections from your scanner products."
-    },
-    "labels": {
+    {
+      "id": "cis-vr-applications-013",
       "certification": "cis-vr",
-      "domain": "Vulnerability Response Applications and Modules",
-      "domainSlug": "applications",
-      "domainPercentage": 25,
-      "subtopics": ["Vulnerability Response Applications and Modules"],
-      "tags": ["verification", "scanner", "remediation-tracking"]
+      "topic": "applications",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "An organization wants to track progress and follow up to ensure vulnerability remediation actions worked. Which Vulnerability Response capability addresses this need?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Automatic scanner rescan verification"
+        },
+        {
+          "id": "b",
+          "text": "Manual vulnerability re-import"
+        },
+        {
+          "id": "c",
+          "text": "Vulnerability state tracking with scanner confirmation"
+        },
+        {
+          "id": "d",
+          "text": "Email notifications only"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "VR confirms vulnerabilities are resolved and updated automatically by detections from scanner products. This addresses the question 'How do we know if we are making progress reducing our overall risk posture?'",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "VR uses scanner detections to confirm resolution; 'automatic rescan verification' is not a specific feature name",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "Manual re-import is not how VR tracks remediation success; scanner integration automates this",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Email notifications inform users but don't verify remediation success",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "scraped-docs/cis-secops-api/c_VulnerabilityResponse.md",
+        "excerpt": "Confirm vulnerabilities are resolved and updated automatically by detections from your scanner products."
+      },
+      "labels": {
+        "certification": "cis-vr",
+        "domain": "Vulnerability Response Applications and Modules",
+        "domainSlug": "applications",
+        "domainPercentage": 25,
+        "subtopics": [
+          "Vulnerability Response Applications and Modules"
+        ],
+        "tags": [
+          "verification",
+          "scanner",
+          "remediation-tracking"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-23T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-23T02:00:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-vr-applications-014",
-    "certification": "cis-vr",
-    "topic": "applications",
-    "cognitiveLevel": "understanding",
-    "type": "multiple_choice",
-    "question": "What is the relationship between Vulnerability Response and the Security Operations suite?",
-    "options": [
-      { "id": "a", "text": "Vulnerability Response is a standalone product unrelated to Security Operations" },
-      { "id": "b", "text": "Vulnerability Response is part of Security Operations and helps improve overall security posture" },
-      { "id": "c", "text": "Security Operations is a feature within Vulnerability Response" },
-      { "id": "d", "text": "They are competing products that cannot be used together" }
-    ],
-    "correctAnswers": ["b"],
-    "selectCount": 1,
-    "isNegative": false,
-    "explanation": {
-      "correct": "The Vulnerability Response application is part of the Security Operations suite. Together these applications help protect assets by improving overall security posture.",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "VR is explicitly part of the Security Operations suite, not standalone", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html" },
-        { "choiceId": "c", "explanation": "Security Operations is the suite containing VR, not a feature within it", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html" },
-        { "choiceId": "d", "explanation": "They work together as part of the same suite", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html" }
-      ]
-    },
-    "references": ["https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "scraped-docs/cis-secops-api/c_VulnerabilityResponse.md",
-      "excerpt": "The Vulnerability Response application is part of the Security Operations suite. Together these applications help you protect your assets by improving your overall security posture."
-    },
-    "labels": {
+    {
+      "id": "cis-vr-applications-014",
       "certification": "cis-vr",
-      "domain": "Vulnerability Response Applications and Modules",
-      "domainSlug": "applications",
-      "domainPercentage": 25,
-      "subtopics": ["ServiceNow Security Operations overview"],
-      "tags": ["security-operations", "suite", "architecture"]
+      "topic": "applications",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What is the relationship between Vulnerability Response and the Security Operations suite?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Vulnerability Response is a standalone product unrelated to Security Operations"
+        },
+        {
+          "id": "b",
+          "text": "Vulnerability Response is part of Security Operations and helps improve overall security posture"
+        },
+        {
+          "id": "c",
+          "text": "Security Operations is a feature within Vulnerability Response"
+        },
+        {
+          "id": "d",
+          "text": "They are competing products that cannot be used together"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "The Vulnerability Response application is part of the Security Operations suite. Together these applications help protect assets by improving overall security posture.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "VR is explicitly part of the Security Operations suite, not standalone",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Security Operations is the suite containing VR, not a feature within it",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "They work together as part of the same suite",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "scraped-docs/cis-secops-api/c_VulnerabilityResponse.md",
+        "excerpt": "The Vulnerability Response application is part of the Security Operations suite. Together these applications help you protect your assets by improving your overall security posture."
+      },
+      "labels": {
+        "certification": "cis-vr",
+        "domain": "Vulnerability Response Applications and Modules",
+        "domainSlug": "applications",
+        "domainPercentage": 25,
+        "subtopics": [
+          "ServiceNow Security Operations overview"
+        ],
+        "tags": [
+          "security-operations",
+          "suite",
+          "architecture"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-23T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-23T02:00:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-vr-applications-015",
-    "certification": "cis-vr",
-    "topic": "applications",
-    "cognitiveLevel": "knowledge",
-    "type": "multiple_choice",
-    "question": "What does 'triage' in Vulnerability Response include?",
-    "options": [
-      { "id": "a", "text": "Only prioritizing vulnerabilities by severity" },
-      { "id": "b", "text": "Creating remediation tasks, prioritizing, and assigning them to teams" },
-      { "id": "c", "text": "Only creating vulnerability reports" },
-      { "id": "d", "text": "Only scanning for new vulnerabilities" }
-    ],
-    "correctAnswers": ["b"],
-    "selectCount": 1,
-    "isNegative": false,
-    "explanation": {
-      "correct": "Triage in VR includes creating remediation tasks composed of multiple vulnerable items, grouping these tasks by category, prioritizing them, and assigning them to teams.",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "Triage includes much more than just prioritizing by severity", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html" },
-        { "choiceId": "c", "explanation": "Reporting is part of VR but triage specifically involves task creation and assignment", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html" },
-        { "choiceId": "d", "explanation": "Scanning is done by third-party tools; triage is about organizing and assigning work", "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html" }
-      ]
-    },
-    "references": ["https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "scraped-docs/cis-secops-api/c_VulnerabilityResponse.md",
-      "excerpt": "Triage might include: creating remediation tasks composed of multiple vulnerable items, that is, your assets that are determined to have vulnerabilities, grouping these tasks by category, prioritizing them, and assigning them to teams."
-    },
-    "labels": {
+    {
+      "id": "cis-vr-applications-015",
       "certification": "cis-vr",
-      "domain": "Vulnerability Response Applications and Modules",
-      "domainSlug": "applications",
-      "domainPercentage": 25,
-      "subtopics": ["Introduction to Vulnerability Response"],
-      "tags": ["triage", "remediation-tasks", "prioritization"]
-    },
-    "meta": {
-      "generatedAt": "2026-02-23T02:00:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
+      "topic": "applications",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What does 'triage' in Vulnerability Response include?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Only prioritizing vulnerabilities by severity"
+        },
+        {
+          "id": "b",
+          "text": "Creating remediation tasks, prioritizing, and assigning them to teams"
+        },
+        {
+          "id": "c",
+          "text": "Only creating vulnerability reports"
+        },
+        {
+          "id": "d",
+          "text": "Only scanning for new vulnerabilities"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "Triage in VR includes creating remediation tasks composed of multiple vulnerable items, grouping these tasks by category, prioritizing them, and assigning them to teams.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Triage includes much more than just prioritizing by severity",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Reporting is part of VR but triage specifically involves task creation and assignment",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Scanning is done by third-party tools; triage is about organizing and assigning work",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/c_VulnerabilityResponse.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "scraped-docs/cis-secops-api/c_VulnerabilityResponse.md",
+        "excerpt": "Triage might include: creating remediation tasks composed of multiple vulnerable items, that is, your assets that are determined to have vulnerabilities, grouping these tasks by category, prioritizing them, and assigning them to teams."
+      },
+      "labels": {
+        "certification": "cis-vr",
+        "domain": "Vulnerability Response Applications and Modules",
+        "domainSlug": "applications",
+        "domainPercentage": 25,
+        "subtopics": [
+          "Introduction to Vulnerability Response"
+        ],
+        "tags": [
+          "triage",
+          "remediation-tasks",
+          "prioritization"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-23T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     }
-  }
-]
+  ]
+}

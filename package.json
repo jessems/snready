@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "prebuild": "npx tsx scripts/generate-udemy-exports.ts",
+    "validate": "npx tsx scripts/validate-questions.ts",
+    "prebuild": "npx tsx scripts/validate-questions.ts && npx tsx scripts/generate-udemy-exports.ts",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",

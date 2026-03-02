@@ -1,374 +1,653 @@
-[
-  {
-    "id": "cis-sam-extending-sam-1401",
-    "certification": "cis-sam",
-    "topic": "extending-sam",
-    "cognitiveLevel": "knowledge",
-    "type": "multiple_choice",
-    "question": "What authentication method is used by the Anglepoint integration to access ServiceNow APIs?",
-    "options": [
-      { "id": "a", "text": "Basic authentication with username/password" },
-      { "id": "b", "text": "OAuth 2.0 tokens" },
-      { "id": "c", "text": "API key authentication" },
-      { "id": "d", "text": "SAML assertion" }
-    ],
-    "correctAnswers": ["b"],
-    "selectCount": 1,
-    "isNegative": false,
-    "explanation": {
-      "correct": "The Anglepoint integration uses OAuth 2.0 authentication. The Anglepoint Elevate platform sends credentials to the ServiceNow OAuth token endpoint, which generates OAuth tokens for API access to Anglepoint integration resources.",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "While basic authentication can be used for some APIs, Anglepoint specifically uses OAuth 2.0 for secure token-based access.", "reference": "docs.servicenow.com/configure-oauth-authentication-anglepoint-integration" },
-        { "choiceId": "c", "explanation": "API key authentication is not the method used by Anglepoint integration.", "reference": "docs.servicenow.com/configure-oauth-authentication-anglepoint-integration" },
-        { "choiceId": "d", "explanation": "SAML is for user authentication/SSO, not for API integration authentication.", "reference": "docs.servicenow.com/configure-oauth-authentication-anglepoint-integration" }
-      ]
-    },
-    "references": ["docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/configure-oauth-authentication-anglepoint-integration"],
-    "isFree": true,
-    "source": {
-      "type": "docs",
-      "path": "configure-oauth-authentication-anglepoint-integration.md",
-      "excerpt": "Configure OAuth 2.0 authentication to enable users to access Anglepoint integration resources through APIs using OAuth tokens."
-    },
-    "labels": {
+{
+  "certification": "cis-sam",
+  "topic": "extending-sam",
+  "questions": [
+    {
+      "id": "cis-sam-extending-sam-1401",
       "certification": "cis-sam",
-      "domain": "Extending SAM",
-      "domainSlug": "extending-sam",
-      "domainPercentage": 15,
-      "subtopics": ["Custom configurations"],
-      "tags": ["anglepoint", "oauth", "integration", "authentication"]
+      "topic": "extending-sam",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What authentication method is used by the Anglepoint integration to access ServiceNow APIs?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Basic authentication with username/password"
+        },
+        {
+          "id": "b",
+          "text": "OAuth 2.0 tokens"
+        },
+        {
+          "id": "c",
+          "text": "API key authentication"
+        },
+        {
+          "id": "d",
+          "text": "SAML assertion"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "The Anglepoint integration uses OAuth 2.0 authentication. The Anglepoint Elevate platform sends credentials to the ServiceNow OAuth token endpoint, which generates OAuth tokens for API access to Anglepoint integration resources.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "While basic authentication can be used for some APIs, Anglepoint specifically uses OAuth 2.0 for secure token-based access.",
+            "reference": "docs.servicenow.com/configure-oauth-authentication-anglepoint-integration"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "API key authentication is not the method used by Anglepoint integration.",
+            "reference": "docs.servicenow.com/configure-oauth-authentication-anglepoint-integration"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "SAML is for user authentication/SSO, not for API integration authentication.",
+            "reference": "docs.servicenow.com/configure-oauth-authentication-anglepoint-integration"
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/configure-oauth-authentication-anglepoint-integration"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "docs",
+        "path": "configure-oauth-authentication-anglepoint-integration.md",
+        "excerpt": "Configure OAuth 2.0 authentication to enable users to access Anglepoint integration resources through APIs using OAuth tokens."
+      },
+      "labels": {
+        "certification": "cis-sam",
+        "domain": "Extending SAM",
+        "domainSlug": "extending-sam",
+        "domainPercentage": 15,
+        "subtopics": [
+          "Custom configurations"
+        ],
+        "tags": [
+          "anglepoint",
+          "oauth",
+          "integration",
+          "authentication"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-18T03:30:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-18T03:30:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-sam-extending-sam-1402",
-    "certification": "cis-sam",
-    "topic": "extending-sam",
-    "cognitiveLevel": "understanding",
-    "type": "multiple_select",
-    "question": "Which APIs are used by the Anglepoint integration? (Choose two.)",
-    "options": [
-      { "id": "a", "text": "Transform API for processing installed IBM software information" },
-      { "id": "b", "text": "Get Entitlements API for retrieving IBM software entitlement information" },
-      { "id": "c", "text": "Discovery API for scanning network devices" },
-      { "id": "d", "text": "CMDB Sync API for configuration item updates" }
-    ],
-    "correctAnswers": ["a", "b"],
-    "selectCount": 2,
-    "isNegative": false,
-    "explanation": {
-      "correct": "The Anglepoint integration uses multiple APIs including: Transform (POST) for processing installed IBM software, Get Entitlements for retrieving entitlement information, Get Computer for VM/host information, and Get/Post Classification for classification information.",
-      "wrongAnswers": [
-        { "choiceId": "c", "explanation": "Discovery API is not part of the Anglepoint integration; it's a separate ServiceNow Discovery capability.", "reference": "docs.servicenow.com/create-anglepoint-integration-user" },
-        { "choiceId": "d", "explanation": "CMDB Sync API is not mentioned as part of the Anglepoint integration APIs.", "reference": "docs.servicenow.com/create-anglepoint-integration-user" }
-      ]
-    },
-    "references": ["docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/create-anglepoint-integration-user"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "create-anglepoint-integration-user.md",
-      "excerpt": "Transform (POST): Processes information for your installed IBM software. Get Entitlements: Retrieves entitlement information for your installed IBM software."
-    },
-    "labels": {
+    {
+      "id": "cis-sam-extending-sam-1402",
       "certification": "cis-sam",
-      "domain": "Extending SAM",
-      "domainSlug": "extending-sam",
-      "domainPercentage": 15,
-      "subtopics": ["Custom configurations"],
-      "tags": ["anglepoint", "api", "ibm", "integration"]
+      "topic": "extending-sam",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_select",
+      "question": "Which APIs are used by the Anglepoint integration? (Choose two.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Transform API for processing installed IBM software information"
+        },
+        {
+          "id": "b",
+          "text": "Get Entitlements API for retrieving IBM software entitlement information"
+        },
+        {
+          "id": "c",
+          "text": "Discovery API for scanning network devices"
+        },
+        {
+          "id": "d",
+          "text": "CMDB Sync API for configuration item updates"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b"
+      ],
+      "selectCount": 2,
+      "isNegative": false,
+      "explanation": {
+        "correct": "The Anglepoint integration uses multiple APIs including: Transform (POST) for processing installed IBM software, Get Entitlements for retrieving entitlement information, Get Computer for VM/host information, and Get/Post Classification for classification information.",
+        "wrongAnswers": [
+          {
+            "choiceId": "c",
+            "explanation": "Discovery API is not part of the Anglepoint integration; it's a separate ServiceNow Discovery capability.",
+            "reference": "docs.servicenow.com/create-anglepoint-integration-user"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "CMDB Sync API is not mentioned as part of the Anglepoint integration APIs.",
+            "reference": "docs.servicenow.com/create-anglepoint-integration-user"
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/create-anglepoint-integration-user"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "create-anglepoint-integration-user.md",
+        "excerpt": "Transform (POST): Processes information for your installed IBM software. Get Entitlements: Retrieves entitlement information for your installed IBM software."
+      },
+      "labels": {
+        "certification": "cis-sam",
+        "domain": "Extending SAM",
+        "domainSlug": "extending-sam",
+        "domainPercentage": 15,
+        "subtopics": [
+          "Custom configurations"
+        ],
+        "tags": [
+          "anglepoint",
+          "api",
+          "ibm",
+          "integration"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-18T03:30:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-18T03:30:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-sam-extending-sam-1403",
-    "certification": "cis-sam",
-    "topic": "extending-sam",
-    "cognitiveLevel": "understanding",
-    "type": "multiple_choice",
-    "question": "How is the Over-licensed amount calculated for Microsoft 365 subscriptions?",
-    "options": [
-      { "id": "a", "text": "Rights owned - Rights used" },
-      { "id": "b", "text": "Rights available × Software entitlement unit cost" },
-      { "id": "c", "text": "Total subscriptions - Active users" },
-      { "id": "d", "text": "License count × Per-user cost" }
-    ],
-    "correctAnswers": ["b"],
-    "selectCount": 1,
-    "isNegative": false,
-    "explanation": {
-      "correct": "The Over-licensed amount is calculated by 'Rights available × Software entitlement unit cost'. Rights available is calculated as 'Rights used - Rights owned'. This amount presents potential savings opportunities.",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "This formula calculates Rights available, not the Over-licensed amount.", "reference": "docs.servicenow.com/identify-sav-opp-sg" },
-        { "choiceId": "c", "explanation": "This is not the correct formula; Over-licensed amount uses Rights available and unit cost.", "reference": "docs.servicenow.com/identify-sav-opp-sg" },
-        { "choiceId": "d", "explanation": "This is not the correct formula for calculating Over-licensed amount.", "reference": "docs.servicenow.com/identify-sav-opp-sg" }
-      ]
-    },
-    "references": ["docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/identify-sav-opp-sg"],
-    "isFree": true,
-    "source": {
-      "type": "docs",
-      "path": "identify-sav-opp-sg.md",
-      "excerpt": "Locate the Over-licensed amount, which is calculated by Rights available * Software entitlement unit cost."
-    },
-    "labels": {
+    {
+      "id": "cis-sam-extending-sam-1403",
       "certification": "cis-sam",
-      "domain": "Extending SAM",
-      "domainSlug": "extending-sam",
-      "domainPercentage": 15,
-      "subtopics": ["Analytics and metrics", "Cloud license optimization"],
-      "tags": ["microsoft-365", "savings", "over-licensed", "calculation"]
+      "topic": "extending-sam",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "How is the Over-licensed amount calculated for Microsoft 365 subscriptions?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Rights owned - Rights used"
+        },
+        {
+          "id": "b",
+          "text": "Rights available × Software entitlement unit cost"
+        },
+        {
+          "id": "c",
+          "text": "Total subscriptions - Active users"
+        },
+        {
+          "id": "d",
+          "text": "License count × Per-user cost"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "The Over-licensed amount is calculated by 'Rights available × Software entitlement unit cost'. Rights available is calculated as 'Rights used - Rights owned'. This amount presents potential savings opportunities.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "This formula calculates Rights available, not the Over-licensed amount.",
+            "reference": "docs.servicenow.com/identify-sav-opp-sg"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "This is not the correct formula; Over-licensed amount uses Rights available and unit cost.",
+            "reference": "docs.servicenow.com/identify-sav-opp-sg"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "This is not the correct formula for calculating Over-licensed amount.",
+            "reference": "docs.servicenow.com/identify-sav-opp-sg"
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/identify-sav-opp-sg"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "docs",
+        "path": "identify-sav-opp-sg.md",
+        "excerpt": "Locate the Over-licensed amount, which is calculated by Rights available * Software entitlement unit cost."
+      },
+      "labels": {
+        "certification": "cis-sam",
+        "domain": "Extending SAM",
+        "domainSlug": "extending-sam",
+        "domainPercentage": 15,
+        "subtopics": [
+          "Analytics and metrics",
+          "Cloud license optimization"
+        ],
+        "tags": [
+          "microsoft-365",
+          "savings",
+          "over-licensed",
+          "calculation"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-18T03:30:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-18T03:30:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-sam-extending-sam-1404",
-    "certification": "cis-sam",
-    "topic": "extending-sam",
-    "cognitiveLevel": "application",
-    "type": "multiple_choice",
-    "question": "An organization wants to identify Microsoft 365 subscriptions that are candidates for reclamation. Which field should they analyze to find inactive subscriptions?",
-    "options": [
-      { "id": "a", "text": "Created date" },
-      { "id": "b", "text": "Last activity" },
-      { "id": "c", "text": "Subscription start date" },
-      { "id": "d", "text": "License assignment date" }
-    ],
-    "correctAnswers": ["b"],
-    "selectCount": 1,
-    "isNegative": false,
-    "explanation": {
-      "correct": "The Last activity field shows when a subscription was last used. Subscriptions that haven't registered user activity in several months are potential reclamation candidates. For suite products, the Last activity date is the latest activity from any of its suite components.",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "Created date shows when the record was created, not when the subscription was last used.", "reference": "docs.servicenow.com/identify-sav-opp-sg" },
-        { "choiceId": "c", "explanation": "Subscription start date indicates when the subscription began, not recent usage activity.", "reference": "docs.servicenow.com/identify-sav-opp-sg" },
-        { "choiceId": "d", "explanation": "License assignment date shows when a license was assigned, not whether it's being actively used.", "reference": "docs.servicenow.com/identify-sav-opp-sg" }
-      ]
-    },
-    "references": ["docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/identify-sav-opp-sg"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "identify-sav-opp-sg.md",
-      "excerpt": "Microsoft 365 subscriptions that haven't registered user activity in over a few months are the potential reclamation candidates."
-    },
-    "labels": {
+    {
+      "id": "cis-sam-extending-sam-1404",
       "certification": "cis-sam",
-      "domain": "Extending SAM",
-      "domainSlug": "extending-sam",
-      "domainPercentage": 15,
-      "subtopics": ["SaaS License Management", "Cloud license optimization"],
-      "tags": ["microsoft-365", "reclamation", "last-activity", "usage"]
+      "topic": "extending-sam",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "An organization wants to identify Microsoft 365 subscriptions that are candidates for reclamation. Which field should they analyze to find inactive subscriptions?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Created date"
+        },
+        {
+          "id": "b",
+          "text": "Last activity"
+        },
+        {
+          "id": "c",
+          "text": "Subscription start date"
+        },
+        {
+          "id": "d",
+          "text": "License assignment date"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "The Last activity field shows when a subscription was last used. Subscriptions that haven't registered user activity in several months are potential reclamation candidates. For suite products, the Last activity date is the latest activity from any of its suite components.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Created date shows when the record was created, not when the subscription was last used.",
+            "reference": "docs.servicenow.com/identify-sav-opp-sg"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Subscription start date indicates when the subscription began, not recent usage activity.",
+            "reference": "docs.servicenow.com/identify-sav-opp-sg"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "License assignment date shows when a license was assigned, not whether it's being actively used.",
+            "reference": "docs.servicenow.com/identify-sav-opp-sg"
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/identify-sav-opp-sg"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "identify-sav-opp-sg.md",
+        "excerpt": "Microsoft 365 subscriptions that haven't registered user activity in over a few months are the potential reclamation candidates."
+      },
+      "labels": {
+        "certification": "cis-sam",
+        "domain": "Extending SAM",
+        "domainSlug": "extending-sam",
+        "domainPercentage": 15,
+        "subtopics": [
+          "SaaS License Management",
+          "Cloud license optimization"
+        ],
+        "tags": [
+          "microsoft-365",
+          "reclamation",
+          "last-activity",
+          "usage"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-18T03:30:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-18T03:30:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-sam-extending-sam-1405",
-    "certification": "cis-sam",
-    "topic": "extending-sam",
-    "cognitiveLevel": "knowledge",
-    "type": "compound_true_false",
-    "question": "Which of the following statements about Microsoft 365 commit levels are true?\na) A commit level serves as a minimum or floor to your license count.\nb) You cannot reduce enterprise subscription quantities below the commit level during the contract term.\nc) Potential savings from over-licensing can be realized at the end of the contract term.\nd) Commit levels only apply to E5 subscriptions.",
-    "options": [
-      { "id": "a", "text": "a, b, c, and d" },
-      { "id": "b", "text": "a, b, and c only" },
-      { "id": "c", "text": "b, c, and d only" },
-      { "id": "d", "text": "a and b only" }
-    ],
-    "correctAnswers": ["b"],
-    "selectCount": 1,
-    "isNegative": false,
-    "statements": {
-      "a": true,
-      "b": true,
-      "c": true,
-      "d": false
-    },
-    "explanation": {
-      "correct": "Statements a, b, and c are true. Statement d is false because commit levels apply to enterprise subscriptions such as E1, E3, AND E5 - not only E5.",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "Statement d is false - commit levels apply to E1, E3, and E5 subscriptions, not just E5.", "reference": "docs.servicenow.com/identify-sav-opp-sg" },
-        { "choiceId": "c", "explanation": "Statement a is true - commit level serves as a minimum/floor.", "reference": "docs.servicenow.com/identify-sav-opp-sg" },
-        { "choiceId": "d", "explanation": "Statement c is also true - savings can be realized at contract end.", "reference": "docs.servicenow.com/identify-sav-opp-sg" }
-      ]
-    },
-    "references": ["docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/identify-sav-opp-sg"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "identify-sav-opp-sg.md",
-      "excerpt": "For enterprise subscriptions such as E1, E3, and E5, Microsoft may specify a commit level, which serves as a minimum or a floor to your license count, which means you can't reduce the enterprise subscription quantities below the commit level during the contract term."
-    },
-    "labels": {
+    {
+      "id": "cis-sam-extending-sam-1405",
       "certification": "cis-sam",
-      "domain": "Extending SAM",
-      "domainSlug": "extending-sam",
-      "domainPercentage": 15,
-      "subtopics": ["SaaS License Management"],
-      "tags": ["microsoft-365", "commit-level", "enterprise-subscriptions"]
+      "topic": "extending-sam",
+      "cognitiveLevel": "knowledge",
+      "type": "compound_true_false",
+      "question": "Which of the following statements about Microsoft 365 commit levels are true?\na) A commit level serves as a minimum or floor to your license count.\nb) You cannot reduce enterprise subscription quantities below the commit level during the contract term.\nc) Potential savings from over-licensing can be realized at the end of the contract term.\nd) Commit levels only apply to E5 subscriptions.",
+      "options": [
+        {
+          "id": "a",
+          "text": "a, b, c, and d"
+        },
+        {
+          "id": "b",
+          "text": "a, b, and c only"
+        },
+        {
+          "id": "c",
+          "text": "b, c, and d only"
+        },
+        {
+          "id": "d",
+          "text": "a and b only"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "statements": {
+        "a": true,
+        "b": true,
+        "c": true,
+        "d": false
+      },
+      "explanation": {
+        "correct": "Statements a, b, and c are true. Statement d is false because commit levels apply to enterprise subscriptions such as E1, E3, AND E5 - not only E5.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Statement d is false - commit levels apply to E1, E3, and E5 subscriptions, not just E5.",
+            "reference": "docs.servicenow.com/identify-sav-opp-sg"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Statement a is true - commit level serves as a minimum/floor.",
+            "reference": "docs.servicenow.com/identify-sav-opp-sg"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Statement c is also true - savings can be realized at contract end.",
+            "reference": "docs.servicenow.com/identify-sav-opp-sg"
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/identify-sav-opp-sg"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "identify-sav-opp-sg.md",
+        "excerpt": "For enterprise subscriptions such as E1, E3, and E5, Microsoft may specify a commit level, which serves as a minimum or a floor to your license count, which means you can't reduce the enterprise subscription quantities below the commit level during the contract term."
+      },
+      "labels": {
+        "certification": "cis-sam",
+        "domain": "Extending SAM",
+        "domainSlug": "extending-sam",
+        "domainPercentage": 15,
+        "subtopics": [
+          "SaaS License Management"
+        ],
+        "tags": [
+          "microsoft-365",
+          "commit-level",
+          "enterprise-subscriptions"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-18T03:30:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-18T03:30:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-sam-extending-sam-1406",
-    "certification": "cis-sam",
-    "topic": "extending-sam",
-    "cognitiveLevel": "knowledge",
-    "type": "multiple_choice",
-    "question": "What is the API path for the Anglepoint Transform API that processes installed IBM software information?",
-    "options": [
-      { "id": "a", "text": "/api/sn_samp_ibm/transform" },
-      { "id": "b", "text": "/api/sn_samp_ibm_lic/ibm_data/transform" },
-      { "id": "c", "text": "/api/anglepoint/ibm/process" },
-      { "id": "d", "text": "/api/sam/ibm/data/transform" }
-    ],
-    "correctAnswers": ["b"],
-    "selectCount": 1,
-    "isNegative": false,
-    "explanation": {
-      "correct": "The Transform API uses the path /api/sn_samp_ibm_lic/ibm_data/transform. This POST API processes information for your installed IBM software.",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "The correct path includes 'sn_samp_ibm_lic' and 'ibm_data' in the path.", "reference": "docs.servicenow.com/create-anglepoint-integration-user" },
-        { "choiceId": "c", "explanation": "This is not a valid ServiceNow API path for Anglepoint integration.", "reference": "docs.servicenow.com/create-anglepoint-integration-user" },
-        { "choiceId": "d", "explanation": "The correct API namespace is 'sn_samp_ibm_lic', not 'sam'.", "reference": "docs.servicenow.com/create-anglepoint-integration-user" }
-      ]
-    },
-    "references": ["docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/create-anglepoint-integration-user"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "create-anglepoint-integration-user.md",
-      "excerpt": "Transform (POST): /api/sn_samp_ibm_lic/ibm_data/transform - Processes information for your installed IBM software."
-    },
-    "labels": {
+    {
+      "id": "cis-sam-extending-sam-1406",
       "certification": "cis-sam",
-      "domain": "Extending SAM",
-      "domainSlug": "extending-sam",
-      "domainPercentage": 15,
-      "subtopics": ["Custom configurations"],
-      "tags": ["anglepoint", "api", "transform", "ibm"]
+      "topic": "extending-sam",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What is the API path for the Anglepoint Transform API that processes installed IBM software information?",
+      "options": [
+        {
+          "id": "a",
+          "text": "/api/sn_samp_ibm/transform"
+        },
+        {
+          "id": "b",
+          "text": "/api/sn_samp_ibm_lic/ibm_data/transform"
+        },
+        {
+          "id": "c",
+          "text": "/api/anglepoint/ibm/process"
+        },
+        {
+          "id": "d",
+          "text": "/api/sam/ibm/data/transform"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "The Transform API uses the path /api/sn_samp_ibm_lic/ibm_data/transform. This POST API processes information for your installed IBM software.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The correct path includes 'sn_samp_ibm_lic' and 'ibm_data' in the path.",
+            "reference": "docs.servicenow.com/create-anglepoint-integration-user"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "This is not a valid ServiceNow API path for Anglepoint integration.",
+            "reference": "docs.servicenow.com/create-anglepoint-integration-user"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The correct API namespace is 'sn_samp_ibm_lic', not 'sam'.",
+            "reference": "docs.servicenow.com/create-anglepoint-integration-user"
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/create-anglepoint-integration-user"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "create-anglepoint-integration-user.md",
+        "excerpt": "Transform (POST): /api/sn_samp_ibm_lic/ibm_data/transform - Processes information for your installed IBM software."
+      },
+      "labels": {
+        "certification": "cis-sam",
+        "domain": "Extending SAM",
+        "domainSlug": "extending-sam",
+        "domainPercentage": 15,
+        "subtopics": [
+          "Custom configurations"
+        ],
+        "tags": [
+          "anglepoint",
+          "api",
+          "transform",
+          "ibm"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-18T03:30:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-18T03:30:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-sam-extending-sam-1407",
-    "certification": "cis-sam",
-    "topic": "extending-sam",
-    "cognitiveLevel": "application",
-    "type": "multiple_select",
-    "question": "An organization has over-licensed Microsoft 365 subscriptions. What are valid approaches to realize savings? (Choose two.)",
-    "options": [
-      { "id": "a", "text": "Remove over-licensed amount during next in-contract true-up without breaching commit level" },
-      { "id": "b", "text": "Use over-licensed amount to inform new contract negotiations" },
-      { "id": "c", "text": "Immediately cancel all subscriptions" },
-      { "id": "d", "text": "Convert enterprise licenses to individual licenses" }
-    ],
-    "correctAnswers": ["a", "b"],
-    "selectCount": 2,
-    "isNegative": false,
-    "explanation": {
-      "correct": "If new subscriptions aren't needed, you can remove the over-licensed amount during the next in-contract true-up without breaching the commit level. If the commit level prevents in-contract true-up, you can use the over-licensed amount to inform new contract negotiations as a proactive cost saving approach.",
-      "wrongAnswers": [
-        { "choiceId": "c", "explanation": "Immediately canceling all subscriptions is not a valid approach and would breach contractual obligations.", "reference": "docs.servicenow.com/identify-sav-opp-sg" },
-        { "choiceId": "d", "explanation": "Converting license types is not mentioned as a savings strategy for over-licensing.", "reference": "docs.servicenow.com/identify-sav-opp-sg" }
-      ]
-    },
-    "references": ["docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/identify-sav-opp-sg"],
-    "isFree": true,
-    "source": {
-      "type": "docs",
-      "path": "identify-sav-opp-sg.md",
-      "excerpt": "If new Microsoft 365 subscriptions aren't needed, you can remove the over-licensed amount during the next in-contract true-up without breaching the commit level. If the commit level prevents in-contract true-up, you can use the over-licensed amount to inform new contract negotiations."
-    },
-    "labels": {
+    {
+      "id": "cis-sam-extending-sam-1407",
       "certification": "cis-sam",
-      "domain": "Extending SAM",
-      "domainSlug": "extending-sam",
-      "domainPercentage": 15,
-      "subtopics": ["Cloud license optimization"],
-      "tags": ["microsoft-365", "savings", "true-up", "contract-negotiation"]
+      "topic": "extending-sam",
+      "cognitiveLevel": "application",
+      "type": "multiple_select",
+      "question": "An organization has over-licensed Microsoft 365 subscriptions. What are valid approaches to realize savings? (Choose two.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Remove over-licensed amount during next in-contract true-up without breaching commit level"
+        },
+        {
+          "id": "b",
+          "text": "Use over-licensed amount to inform new contract negotiations"
+        },
+        {
+          "id": "c",
+          "text": "Immediately cancel all subscriptions"
+        },
+        {
+          "id": "d",
+          "text": "Convert enterprise licenses to individual licenses"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b"
+      ],
+      "selectCount": 2,
+      "isNegative": false,
+      "explanation": {
+        "correct": "If new subscriptions aren't needed, you can remove the over-licensed amount during the next in-contract true-up without breaching the commit level. If the commit level prevents in-contract true-up, you can use the over-licensed amount to inform new contract negotiations as a proactive cost saving approach.",
+        "wrongAnswers": [
+          {
+            "choiceId": "c",
+            "explanation": "Immediately canceling all subscriptions is not a valid approach and would breach contractual obligations.",
+            "reference": "docs.servicenow.com/identify-sav-opp-sg"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Converting license types is not mentioned as a savings strategy for over-licensing.",
+            "reference": "docs.servicenow.com/identify-sav-opp-sg"
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/identify-sav-opp-sg"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "docs",
+        "path": "identify-sav-opp-sg.md",
+        "excerpt": "If new Microsoft 365 subscriptions aren't needed, you can remove the over-licensed amount during the next in-contract true-up without breaching the commit level. If the commit level prevents in-contract true-up, you can use the over-licensed amount to inform new contract negotiations."
+      },
+      "labels": {
+        "certification": "cis-sam",
+        "domain": "Extending SAM",
+        "domainSlug": "extending-sam",
+        "domainPercentage": 15,
+        "subtopics": [
+          "Cloud license optimization"
+        ],
+        "tags": [
+          "microsoft-365",
+          "savings",
+          "true-up",
+          "contract-negotiation"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-18T03:30:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-18T03:30:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-sam-extending-sam-1408",
-    "certification": "cis-sam",
-    "topic": "extending-sam",
-    "cognitiveLevel": "understanding",
-    "type": "multiple_choice",
-    "question": "Where does the Last activity date for a Microsoft 365 suite product come from?",
-    "options": [
-      { "id": "a", "text": "The subscription creation date" },
-      { "id": "b", "text": "The latest activity information from any of its suite components" },
-      { "id": "c", "text": "The first login date" },
-      { "id": "d", "text": "The license assignment date" }
-    ],
-    "correctAnswers": ["b"],
-    "selectCount": 1,
-    "isNegative": false,
-    "explanation": {
-      "correct": "If a subscription is a suite product, the Last activity date is the latest activity information from any of its suite components. The Last activity date is pulled from the published Microsoft 365 integration profile and inventory tools.",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "Subscription creation date is when the record was created, not the last usage activity.", "reference": "docs.servicenow.com/identify-sav-opp-sg" },
-        { "choiceId": "c", "explanation": "First login date shows initial access, not recent activity.", "reference": "docs.servicenow.com/identify-sav-opp-sg" },
-        { "choiceId": "d", "explanation": "License assignment date shows when a license was assigned, not usage activity.", "reference": "docs.servicenow.com/identify-sav-opp-sg" }
-      ]
-    },
-    "references": ["docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/identify-sav-opp-sg"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "identify-sav-opp-sg.md",
-      "excerpt": "If a subscription is a suite product, the Last activity date is the latest activity information from any of its suite components."
-    },
-    "labels": {
+    {
+      "id": "cis-sam-extending-sam-1408",
       "certification": "cis-sam",
-      "domain": "Extending SAM",
-      "domainSlug": "extending-sam",
-      "domainPercentage": 15,
-      "subtopics": ["SaaS License Management"],
-      "tags": ["microsoft-365", "last-activity", "suite", "components"]
-    },
-    "meta": {
-      "generatedAt": "2026-02-18T03:30:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
+      "topic": "extending-sam",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "Where does the Last activity date for a Microsoft 365 suite product come from?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The subscription creation date"
+        },
+        {
+          "id": "b",
+          "text": "The latest activity information from any of its suite components"
+        },
+        {
+          "id": "c",
+          "text": "The first login date"
+        },
+        {
+          "id": "d",
+          "text": "The license assignment date"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "If a subscription is a suite product, the Last activity date is the latest activity information from any of its suite components. The Last activity date is pulled from the published Microsoft 365 integration profile and inventory tools.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Subscription creation date is when the record was created, not the last usage activity.",
+            "reference": "docs.servicenow.com/identify-sav-opp-sg"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "First login date shows initial access, not recent activity.",
+            "reference": "docs.servicenow.com/identify-sav-opp-sg"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "License assignment date shows when a license was assigned, not usage activity.",
+            "reference": "docs.servicenow.com/identify-sav-opp-sg"
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/identify-sav-opp-sg"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "identify-sav-opp-sg.md",
+        "excerpt": "If a subscription is a suite product, the Last activity date is the latest activity information from any of its suite components."
+      },
+      "labels": {
+        "certification": "cis-sam",
+        "domain": "Extending SAM",
+        "domainSlug": "extending-sam",
+        "domainPercentage": 15,
+        "subtopics": [
+          "SaaS License Management"
+        ],
+        "tags": [
+          "microsoft-365",
+          "last-activity",
+          "suite",
+          "components"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-18T03:30:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     }
-  }
-]
+  ]
+}

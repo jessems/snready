@@ -104,22 +104,15 @@ async function generateExports() {
       const filePath = path.join(certPath, file);
       try {
         const content = await fs.readFile(filePath, "utf-8");
-        const data = JSON.parse(content);
+        const data: QuestionFile = JSON.parse(content);
         
-        // Handle both formats:
-        // 1. { questions: [...] } - object with questions array
-        // 2. [...] - top-level array of questions
-        let questions: Question[];
-        if (Array.isArray(data)) {
-          questions = data;
-        } else if (data.questions && Array.isArray(data.questions)) {
-          questions = data.questions;
-        } else {
-          console.warn(`⚠️  Skipping ${filePath}: no questions array found`);
+        // All files now use canonical QuestionFile format
+        if (!data.questions || !Array.isArray(data.questions)) {
+          console.warn(`⚠️  Skipping ${filePath}: invalid QuestionFile format`);
           continue;
         }
         
-        allQuestions.push(...questions);
+        allQuestions.push(...data.questions);
       } catch (err) {
         console.warn(`⚠️  Error reading ${filePath}:`, err);
       }

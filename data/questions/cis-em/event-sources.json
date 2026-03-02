@@ -1,443 +1,788 @@
-[
-  {
-    "id": "cis-em-event-sources-001",
-    "certification": "cis-em",
-    "topic": "event-sources",
-    "cognitiveLevel": "understanding",
-    "type": "multiple_choice",
-    "question": "What is the primary difference between pull and push connectors in Event Management?",
-    "options": [
-      { "id": "a", "text": "Pull connectors require more bandwidth" },
-      { "id": "b", "text": "Pull connectors poll external tools while push connectors receive events sent to the instance" },
-      { "id": "c", "text": "Push connectors are only available for cloud sources" },
-      { "id": "d", "text": "Pull connectors are faster than push connectors" }
-    ],
-    "correctAnswers": ["b"],
-    "explanation": {
-      "correct": "Pull connectors actively poll external monitoring tools to retrieve events, while push connectors receive events that are sent directly to the ServiceNow instance via listeners or web service APIs. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/connectors-and-listeners.html",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "Bandwidth usage depends on event volume, not connector type", "reference": "Connectors documentation" },
-        { "choiceId": "c", "explanation": "Push connectors work with various sources, not just cloud", "reference": "Push connectors" },
-        { "choiceId": "d", "explanation": "Speed depends on configuration and network, not connector type", "reference": "Connectors documentation" }
-      ]
-    },
-    "references": ["Connectors", "Push vs Pull"],
-    "isFree": true,
-    "source": {
-      "type": "docs",
-      "path": "cis-em-api/connectors-and-listeners.md",
-      "excerpt": "Event Management provides many connectors to pull or push events from external devices."
-    },
-    "labels": {
+{
+  "certification": "cis-em",
+  "topic": "event-sources",
+  "questions": [
+    {
+      "id": "cis-em-event-sources-001",
       "certification": "cis-em",
-      "domain": "Event Sources",
-      "domainSlug": "event-sources",
-      "domainPercentage": 16,
-      "subtopics": ["Push vs pull methods", "Connectors"],
-      "tags": ["connectors", "push", "pull"]
+      "topic": "event-sources",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What is the primary difference between pull and push connectors in Event Management?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Pull connectors require more bandwidth"
+        },
+        {
+          "id": "b",
+          "text": "Pull connectors poll external tools while push connectors receive events sent to the instance"
+        },
+        {
+          "id": "c",
+          "text": "Push connectors are only available for cloud sources"
+        },
+        {
+          "id": "d",
+          "text": "Pull connectors are faster than push connectors"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Pull connectors actively poll external monitoring tools to retrieve events, while push connectors receive events that are sent directly to the ServiceNow instance via listeners or web service APIs. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/connectors-and-listeners.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Bandwidth usage depends on event volume, not connector type",
+            "reference": "Connectors documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Push connectors work with various sources, not just cloud",
+            "reference": "Push connectors"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Speed depends on configuration and network, not connector type",
+            "reference": "Connectors documentation"
+          }
+        ]
+      },
+      "references": [
+        "Connectors",
+        "Push vs Pull"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "docs",
+        "path": "cis-em-api/connectors-and-listeners.md",
+        "excerpt": "Event Management provides many connectors to pull or push events from external devices."
+      },
+      "labels": {
+        "certification": "cis-em",
+        "domain": "Event Sources",
+        "domainSlug": "event-sources",
+        "domainPercentage": 16,
+        "subtopics": [
+          "Push vs pull methods",
+          "Connectors"
+        ],
+        "tags": [
+          "connectors",
+          "push",
+          "pull"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-21T02:30:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-21T02:30:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-em-event-sources-002",
-    "certification": "cis-em",
-    "topic": "event-sources",
-    "cognitiveLevel": "knowledge",
-    "type": "multiple_select",
-    "question": "Which two pull connectors are provided with Event Management for Microsoft environments? (Choose two.)",
-    "options": [
-      { "id": "a", "text": "SCOM (System Center Operations Manager)" },
-      { "id": "b", "text": "Microsoft Teams" },
-      { "id": "c", "text": "Azure Monitor" },
-      { "id": "d", "text": "Microsoft 365" }
-    ],
-    "correctAnswers": ["a", "c"],
-    "selectCount": 2,
-    "explanation": {
-      "correct": "Event Management provides SCOM connector for System Center Operations Manager (versions 2007, 2012, 2016) and Azure Monitor connector for sending alert state changes to the Azure Portal. Both are pull connectors. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/connectors-and-listeners.html",
-      "wrongAnswers": [
-        { "choiceId": "b", "explanation": "Microsoft Teams is not an Event Management connector", "reference": "Connectors list" },
-        { "choiceId": "d", "explanation": "Microsoft 365 is not an Event Management connector", "reference": "Connectors list" }
-      ]
-    },
-    "references": ["SCOM connector", "Azure Monitor"],
-    "isFree": true,
-    "source": {
-      "type": "docs",
-      "path": "cis-em-api/connectors-and-listeners.md",
-      "excerpt": "SCOM: Alert and metric collection from the Microsoft System Center Operations Manager. Azure Monitor: Send alert state changes to the Azure Portal."
-    },
-    "labels": {
+    {
+      "id": "cis-em-event-sources-002",
       "certification": "cis-em",
-      "domain": "Event Sources",
-      "domainSlug": "event-sources",
-      "domainPercentage": 16,
-      "subtopics": ["Monitoring connectors"],
-      "tags": ["scom", "azure", "microsoft"]
+      "topic": "event-sources",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_select",
+      "question": "Which two pull connectors are provided with Event Management for Microsoft environments? (Choose two.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "SCOM (System Center Operations Manager)"
+        },
+        {
+          "id": "b",
+          "text": "Microsoft Teams"
+        },
+        {
+          "id": "c",
+          "text": "Azure Monitor"
+        },
+        {
+          "id": "d",
+          "text": "Microsoft 365"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "c"
+      ],
+      "selectCount": 2,
+      "explanation": {
+        "correct": "Event Management provides SCOM connector for System Center Operations Manager (versions 2007, 2012, 2016) and Azure Monitor connector for sending alert state changes to the Azure Portal. Both are pull connectors. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/connectors-and-listeners.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Microsoft Teams is not an Event Management connector",
+            "reference": "Connectors list"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Microsoft 365 is not an Event Management connector",
+            "reference": "Connectors list"
+          }
+        ]
+      },
+      "references": [
+        "SCOM connector",
+        "Azure Monitor"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "docs",
+        "path": "cis-em-api/connectors-and-listeners.md",
+        "excerpt": "SCOM: Alert and metric collection from the Microsoft System Center Operations Manager. Azure Monitor: Send alert state changes to the Azure Portal."
+      },
+      "labels": {
+        "certification": "cis-em",
+        "domain": "Event Sources",
+        "domainSlug": "event-sources",
+        "domainPercentage": 16,
+        "subtopics": [
+          "Monitoring connectors"
+        ],
+        "tags": [
+          "scom",
+          "azure",
+          "microsoft"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-21T02:30:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-21T02:30:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-em-event-sources-003",
-    "certification": "cis-em",
-    "topic": "event-sources",
-    "cognitiveLevel": "knowledge",
-    "type": "multiple_choice",
-    "question": "Which connector is used to receive events from VMware vSphere environments?",
-    "options": [
-      { "id": "a", "text": "vRealize connector" },
-      { "id": "b", "text": "vCenter connector" },
-      { "id": "c", "text": "VMware ESXi connector" },
-      { "id": "d", "text": "vSphere Direct connector" }
-    ],
-    "correctAnswers": ["b"],
-    "explanation": {
-      "correct": "The vCenter connector (supported version 6.5) is used to receive events from VMware vSphere environments. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/connectors-and-listeners.html",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "vRealize connector is for vRealize Operations Log and Event Management", "reference": "Connectors list" },
-        { "choiceId": "c", "explanation": "VMware ESXi connector is not a standard Event Management connector", "reference": "Connectors list" },
-        { "choiceId": "d", "explanation": "vSphere Direct is not a standard connector name", "reference": "Connectors list" }
-      ]
-    },
-    "references": ["vCenter connector", "VMware integration"],
-    "isFree": true,
-    "source": {
-      "type": "docs",
-      "path": "cis-em-api/connectors-and-listeners.md",
-      "excerpt": "vCenter: 6.5. Receive events from your VMware vSphere environment."
-    },
-    "labels": {
+    {
+      "id": "cis-em-event-sources-003",
       "certification": "cis-em",
-      "domain": "Event Sources",
-      "domainSlug": "event-sources",
-      "domainPercentage": 16,
-      "subtopics": ["Monitoring connectors"],
-      "tags": ["vcenter", "vmware", "vsphere"]
+      "topic": "event-sources",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which connector is used to receive events from VMware vSphere environments?",
+      "options": [
+        {
+          "id": "a",
+          "text": "vRealize connector"
+        },
+        {
+          "id": "b",
+          "text": "vCenter connector"
+        },
+        {
+          "id": "c",
+          "text": "VMware ESXi connector"
+        },
+        {
+          "id": "d",
+          "text": "vSphere Direct connector"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The vCenter connector (supported version 6.5) is used to receive events from VMware vSphere environments. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/connectors-and-listeners.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "vRealize connector is for vRealize Operations Log and Event Management",
+            "reference": "Connectors list"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "VMware ESXi connector is not a standard Event Management connector",
+            "reference": "Connectors list"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "vSphere Direct is not a standard connector name",
+            "reference": "Connectors list"
+          }
+        ]
+      },
+      "references": [
+        "vCenter connector",
+        "VMware integration"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "docs",
+        "path": "cis-em-api/connectors-and-listeners.md",
+        "excerpt": "vCenter: 6.5. Receive events from your VMware vSphere environment."
+      },
+      "labels": {
+        "certification": "cis-em",
+        "domain": "Event Sources",
+        "domainSlug": "event-sources",
+        "domainPercentage": 16,
+        "subtopics": [
+          "Monitoring connectors"
+        ],
+        "tags": [
+          "vcenter",
+          "vmware",
+          "vsphere"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-21T02:30:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-21T02:30:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-em-event-sources-004",
-    "certification": "cis-em",
-    "topic": "event-sources",
-    "cognitiveLevel": "understanding",
-    "type": "multiple_choice",
-    "question": "Where can Event Management connectors be obtained from?",
-    "options": [
-      { "id": "a", "text": "Only from the base system installation" },
-      { "id": "b", "text": "From the ServiceNow Store and third parties, or created as custom connectors" },
-      { "id": "c", "text": "Only by purchasing from third-party vendors" },
-      { "id": "d", "text": "Only from ServiceNow Professional Services" }
-    ],
-    "correctAnswers": ["b"],
-    "explanation": {
-      "correct": "Connectors are available from the ServiceNow Store as well as from third parties. You can also create custom connectors to meet specific integration needs. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/connectors-and-listeners.html",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "Connectors come from multiple sources, not just base system", "reference": "Connector availability" },
-        { "choiceId": "c", "explanation": "ServiceNow Store provides many connectors, not just third parties", "reference": "ServiceNow Store" },
-        { "choiceId": "d", "explanation": "Connectors don't require Professional Services", "reference": "Connector availability" }
-      ]
-    },
-    "references": ["ServiceNow Store", "Custom connectors"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "cis-em-api/connectors-and-listeners.md",
-      "excerpt": "Connectors are available from the ServiceNow store as well as from third parties. You can also create custom connectors."
-    },
-    "labels": {
+    {
+      "id": "cis-em-event-sources-004",
       "certification": "cis-em",
-      "domain": "Event Sources",
-      "domainSlug": "event-sources",
-      "domainPercentage": 16,
-      "subtopics": ["Monitoring connectors"],
-      "tags": ["store", "custom-connectors"]
+      "topic": "event-sources",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "Where can Event Management connectors be obtained from?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Only from the base system installation"
+        },
+        {
+          "id": "b",
+          "text": "From the ServiceNow Store and third parties, or created as custom connectors"
+        },
+        {
+          "id": "c",
+          "text": "Only by purchasing from third-party vendors"
+        },
+        {
+          "id": "d",
+          "text": "Only from ServiceNow Professional Services"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Connectors are available from the ServiceNow Store as well as from third parties. You can also create custom connectors to meet specific integration needs. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/connectors-and-listeners.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Connectors come from multiple sources, not just base system",
+            "reference": "Connector availability"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "ServiceNow Store provides many connectors, not just third parties",
+            "reference": "ServiceNow Store"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Connectors don't require Professional Services",
+            "reference": "Connector availability"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow Store",
+        "Custom connectors"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "cis-em-api/connectors-and-listeners.md",
+        "excerpt": "Connectors are available from the ServiceNow store as well as from third parties. You can also create custom connectors."
+      },
+      "labels": {
+        "certification": "cis-em",
+        "domain": "Event Sources",
+        "domainSlug": "event-sources",
+        "domainPercentage": 16,
+        "subtopics": [
+          "Monitoring connectors"
+        ],
+        "tags": [
+          "store",
+          "custom-connectors"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-21T02:30:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-21T02:30:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-em-event-sources-005",
-    "certification": "cis-em",
-    "topic": "event-sources",
-    "cognitiveLevel": "understanding",
-    "type": "multiple_select",
-    "question": "Which two connectors require Operational Intelligence plugin (com.snc.sa.metric) to be activated before they display? (Choose two.)",
-    "options": [
-      { "id": "a", "text": "Azure Metrics connector" },
-      { "id": "b", "text": "AWS CloudWatch Metrics connector" },
-      { "id": "c", "text": "SolarWinds connector" },
-      { "id": "d", "text": "Nagios connector" }
-    ],
-    "correctAnswers": ["a", "b"],
-    "selectCount": 2,
-    "explanation": {
-      "correct": "The Azure Metrics and AWS CloudWatch Metrics connectors display in the base system only when the Operational Intelligence plugin (com.snc.sa.metric) is activated. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/connectors-and-listeners.html",
-      "wrongAnswers": [
-        { "choiceId": "c", "explanation": "SolarWinds connector is available without Operational Intelligence plugin", "reference": "Connectors list" },
-        { "choiceId": "d", "explanation": "Nagios connector is available without Operational Intelligence plugin", "reference": "Connectors list" }
-      ]
-    },
-    "references": ["Operational Intelligence", "Metrics connectors"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "cis-em-api/connectors-and-listeners.md",
-      "excerpt": "The Azure Metrics and AWS CloudWatch Metrics connectors display in the base system only when the Operational Intelligence plugin (com.snc.sa.metric) is activated."
-    },
-    "labels": {
+    {
+      "id": "cis-em-event-sources-005",
       "certification": "cis-em",
-      "domain": "Event Sources",
-      "domainSlug": "event-sources",
-      "domainPercentage": 16,
-      "subtopics": ["Monitoring connectors"],
-      "tags": ["operational-intelligence", "metrics", "azure", "aws"]
+      "topic": "event-sources",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_select",
+      "question": "Which two connectors require Operational Intelligence plugin (com.snc.sa.metric) to be activated before they display? (Choose two.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Azure Metrics connector"
+        },
+        {
+          "id": "b",
+          "text": "AWS CloudWatch Metrics connector"
+        },
+        {
+          "id": "c",
+          "text": "SolarWinds connector"
+        },
+        {
+          "id": "d",
+          "text": "Nagios connector"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b"
+      ],
+      "selectCount": 2,
+      "explanation": {
+        "correct": "The Azure Metrics and AWS CloudWatch Metrics connectors display in the base system only when the Operational Intelligence plugin (com.snc.sa.metric) is activated. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/connectors-and-listeners.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "c",
+            "explanation": "SolarWinds connector is available without Operational Intelligence plugin",
+            "reference": "Connectors list"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Nagios connector is available without Operational Intelligence plugin",
+            "reference": "Connectors list"
+          }
+        ]
+      },
+      "references": [
+        "Operational Intelligence",
+        "Metrics connectors"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "cis-em-api/connectors-and-listeners.md",
+        "excerpt": "The Azure Metrics and AWS CloudWatch Metrics connectors display in the base system only when the Operational Intelligence plugin (com.snc.sa.metric) is activated."
+      },
+      "labels": {
+        "certification": "cis-em",
+        "domain": "Event Sources",
+        "domainSlug": "event-sources",
+        "domainPercentage": 16,
+        "subtopics": [
+          "Monitoring connectors"
+        ],
+        "tags": [
+          "operational-intelligence",
+          "metrics",
+          "azure",
+          "aws"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-21T02:30:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-21T02:30:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-em-event-sources-006",
-    "certification": "cis-em",
-    "topic": "event-sources",
-    "cognitiveLevel": "knowledge",
-    "type": "multiple_choice",
-    "question": "Which feature is supported by all Event Management connectors for storing credentials?",
-    "options": [
-      { "id": "a", "text": "OAuth 2.0 only" },
-      { "id": "b", "text": "External credential storage solutions" },
-      { "id": "c", "text": "LDAP integration only" },
-      { "id": "d", "text": "Certificate-based authentication only" }
-    ],
-    "correctAnswers": ["b"],
-    "explanation": {
-      "correct": "All connectors support external credential storage solutions. This allows secure management of credentials outside the ServiceNow instance. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/connectors-and-listeners.html",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "Not all connectors use OAuth; external credential storage is universal", "reference": "Connector authentication" },
-        { "choiceId": "c", "explanation": "LDAP is one option, not the universal feature", "reference": "Connector authentication" },
-        { "choiceId": "d", "explanation": "Certificate auth is one option, not the universal feature", "reference": "Connector authentication" }
-      ]
-    },
-    "references": ["External credential storage", "Connector configuration"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "cis-em-api/connectors-and-listeners.md",
-      "excerpt": "All connectors support external credential storage solutions."
-    },
-    "labels": {
+    {
+      "id": "cis-em-event-sources-006",
       "certification": "cis-em",
-      "domain": "Event Sources",
-      "domainSlug": "event-sources",
-      "domainPercentage": 16,
-      "subtopics": ["Monitoring connectors"],
-      "tags": ["credentials", "security"]
+      "topic": "event-sources",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which feature is supported by all Event Management connectors for storing credentials?",
+      "options": [
+        {
+          "id": "a",
+          "text": "OAuth 2.0 only"
+        },
+        {
+          "id": "b",
+          "text": "External credential storage solutions"
+        },
+        {
+          "id": "c",
+          "text": "LDAP integration only"
+        },
+        {
+          "id": "d",
+          "text": "Certificate-based authentication only"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "All connectors support external credential storage solutions. This allows secure management of credentials outside the ServiceNow instance. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/connectors-and-listeners.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Not all connectors use OAuth; external credential storage is universal",
+            "reference": "Connector authentication"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "LDAP is one option, not the universal feature",
+            "reference": "Connector authentication"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Certificate auth is one option, not the universal feature",
+            "reference": "Connector authentication"
+          }
+        ]
+      },
+      "references": [
+        "External credential storage",
+        "Connector configuration"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "cis-em-api/connectors-and-listeners.md",
+        "excerpt": "All connectors support external credential storage solutions."
+      },
+      "labels": {
+        "certification": "cis-em",
+        "domain": "Event Sources",
+        "domainSlug": "event-sources",
+        "domainPercentage": 16,
+        "subtopics": [
+          "Monitoring connectors"
+        ],
+        "tags": [
+          "credentials",
+          "security"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-21T02:30:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-21T02:30:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-em-event-sources-007",
-    "certification": "cis-em",
-    "topic": "event-sources",
-    "cognitiveLevel": "knowledge",
-    "type": "multiple_choice",
-    "question": "Which connector is used to receive events from Apache Kafka?",
-    "options": [
-      { "id": "a", "text": "Kafka Message Connector" },
-      { "id": "b", "text": "Apache Streaming Connector" },
-      { "id": "c", "text": "Apache Kafka Consumer Connector" },
-      { "id": "d", "text": "Kafka Event Bridge" }
-    ],
-    "correctAnswers": ["c"],
-    "explanation": {
-      "correct": "The Apache Kafka Consumer Connector (supported versions 3.0.0 and 3.2.0) is used to receive events from the Apache Kafka server. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/connectors-and-listeners.html",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "Kafka Message Connector is not the correct name", "reference": "Connectors list" },
-        { "choiceId": "b", "explanation": "Apache Streaming Connector is not a standard connector", "reference": "Connectors list" },
-        { "choiceId": "d", "explanation": "Kafka Event Bridge is not a standard connector name", "reference": "Connectors list" }
-      ]
-    },
-    "references": ["Apache Kafka connector", "Message queuing"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "cis-em-api/connectors-and-listeners.md",
-      "excerpt": "Apache Kafka Consumer Connector: 3.0.0, 3.2.0. Receive events from the Apache Kafka server."
-    },
-    "labels": {
+    {
+      "id": "cis-em-event-sources-007",
       "certification": "cis-em",
-      "domain": "Event Sources",
-      "domainSlug": "event-sources",
-      "domainPercentage": 16,
-      "subtopics": ["Monitoring connectors"],
-      "tags": ["kafka", "apache", "streaming"]
+      "topic": "event-sources",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which connector is used to receive events from Apache Kafka?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Kafka Message Connector"
+        },
+        {
+          "id": "b",
+          "text": "Apache Streaming Connector"
+        },
+        {
+          "id": "c",
+          "text": "Apache Kafka Consumer Connector"
+        },
+        {
+          "id": "d",
+          "text": "Kafka Event Bridge"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "The Apache Kafka Consumer Connector (supported versions 3.0.0 and 3.2.0) is used to receive events from the Apache Kafka server. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/connectors-and-listeners.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Kafka Message Connector is not the correct name",
+            "reference": "Connectors list"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "Apache Streaming Connector is not a standard connector",
+            "reference": "Connectors list"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Kafka Event Bridge is not a standard connector name",
+            "reference": "Connectors list"
+          }
+        ]
+      },
+      "references": [
+        "Apache Kafka connector",
+        "Message queuing"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "cis-em-api/connectors-and-listeners.md",
+        "excerpt": "Apache Kafka Consumer Connector: 3.0.0, 3.2.0. Receive events from the Apache Kafka server."
+      },
+      "labels": {
+        "certification": "cis-em",
+        "domain": "Event Sources",
+        "domainSlug": "event-sources",
+        "domainPercentage": 16,
+        "subtopics": [
+          "Monitoring connectors"
+        ],
+        "tags": [
+          "kafka",
+          "apache",
+          "streaming"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-21T02:30:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-21T02:30:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-em-event-sources-008",
-    "certification": "cis-em",
-    "topic": "event-sources",
-    "cognitiveLevel": "application",
-    "type": "multiple_choice",
-    "question": "An organization uses IBM for their monitoring solution. Which connector should they configure?",
-    "options": [
-      { "id": "a", "text": "IBM Tivoli connector" },
-      { "id": "b", "text": "IBM Netcool connector" },
-      { "id": "c", "text": "IBM Monitoring connector" },
-      { "id": "d", "text": "IBM Watson connector" }
-    ],
-    "correctAnswers": ["b"],
-    "explanation": {
-      "correct": "The IBM Netcool connector (version 8.1.0) is used to receive events from IBM Netcool/OMNIbus Object Servers and Impact Servers. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/connectors-and-listeners.html",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "IBM Tivoli connector is not listed in standard connectors", "reference": "Connectors list" },
-        { "choiceId": "c", "explanation": "IBM Monitoring is not a specific connector name", "reference": "Connectors list" },
-        { "choiceId": "d", "explanation": "IBM Watson is not an Event Management connector", "reference": "Connectors list" }
-      ]
-    },
-    "references": ["IBM Netcool", "Event connectors"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "cis-em-api/connectors-and-listeners.md",
-      "excerpt": "IBM Netcool: 8.1.0. Receive events from IBM Netcool/OMNIbus Object Servers and Impact Servers."
-    },
-    "labels": {
+    {
+      "id": "cis-em-event-sources-008",
       "certification": "cis-em",
-      "domain": "Event Sources",
-      "domainSlug": "event-sources",
-      "domainPercentage": 16,
-      "subtopics": ["Monitoring connectors"],
-      "tags": ["ibm", "netcool", "scenario"]
+      "topic": "event-sources",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "An organization uses IBM for their monitoring solution. Which connector should they configure?",
+      "options": [
+        {
+          "id": "a",
+          "text": "IBM Tivoli connector"
+        },
+        {
+          "id": "b",
+          "text": "IBM Netcool connector"
+        },
+        {
+          "id": "c",
+          "text": "IBM Monitoring connector"
+        },
+        {
+          "id": "d",
+          "text": "IBM Watson connector"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The IBM Netcool connector (version 8.1.0) is used to receive events from IBM Netcool/OMNIbus Object Servers and Impact Servers. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/connectors-and-listeners.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "IBM Tivoli connector is not listed in standard connectors",
+            "reference": "Connectors list"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "IBM Monitoring is not a specific connector name",
+            "reference": "Connectors list"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "IBM Watson is not an Event Management connector",
+            "reference": "Connectors list"
+          }
+        ]
+      },
+      "references": [
+        "IBM Netcool",
+        "Event connectors"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "cis-em-api/connectors-and-listeners.md",
+        "excerpt": "IBM Netcool: 8.1.0. Receive events from IBM Netcool/OMNIbus Object Servers and Impact Servers."
+      },
+      "labels": {
+        "certification": "cis-em",
+        "domain": "Event Sources",
+        "domainSlug": "event-sources",
+        "domainPercentage": 16,
+        "subtopics": [
+          "Monitoring connectors"
+        ],
+        "tags": [
+          "ibm",
+          "netcool",
+          "scenario"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-21T02:30:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-21T02:30:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-em-event-sources-009",
-    "certification": "cis-em",
-    "topic": "event-sources",
-    "cognitiveLevel": "understanding",
-    "type": "multiple_choice",
-    "question": "Which is NOT a method of sending events directly to a ServiceNow instance?",
-    "options": [
-      { "id": "a", "text": "Email server" },
-      { "id": "b", "text": "SNMP trap" },
-      { "id": "c", "text": "FTP file transfer" },
-      { "id": "d", "text": "Web service API" }
-    ],
-    "correctAnswers": ["c"],
-    "isNegative": true,
-    "explanation": {
-      "correct": "Events can be sent directly to your instance via email server, script, SNMP trap, or web service API. FTP file transfer is not a standard method for sending events to Event Management. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/em-process-flow.html",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "Email server is a valid event ingestion method", "reference": "Event ingestion" },
-        { "choiceId": "b", "explanation": "SNMP trap is a valid event ingestion method", "reference": "SNMP listener" },
-        { "choiceId": "d", "explanation": "Web service API is a valid event ingestion method", "reference": "REST API" }
-      ]
-    },
-    "references": ["Event ingestion methods"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "cis-em-api/em-process-flow.md",
-      "excerpt": "Events are sent directly to your instance via email server, script, SNMP trap, or web service API."
-    },
-    "labels": {
+    {
+      "id": "cis-em-event-sources-009",
       "certification": "cis-em",
-      "domain": "Event Sources",
-      "domainSlug": "event-sources",
-      "domainPercentage": 16,
-      "subtopics": ["Push vs pull methods"],
-      "tags": ["event-ingestion", "negative-question"]
+      "topic": "event-sources",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "Which is NOT a method of sending events directly to a ServiceNow instance?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Email server"
+        },
+        {
+          "id": "b",
+          "text": "SNMP trap"
+        },
+        {
+          "id": "c",
+          "text": "FTP file transfer"
+        },
+        {
+          "id": "d",
+          "text": "Web service API"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "isNegative": true,
+      "explanation": {
+        "correct": "Events can be sent directly to your instance via email server, script, SNMP trap, or web service API. FTP file transfer is not a standard method for sending events to Event Management. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/em-process-flow.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Email server is a valid event ingestion method",
+            "reference": "Event ingestion"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "SNMP trap is a valid event ingestion method",
+            "reference": "SNMP listener"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Web service API is a valid event ingestion method",
+            "reference": "REST API"
+          }
+        ]
+      },
+      "references": [
+        "Event ingestion methods"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "cis-em-api/em-process-flow.md",
+        "excerpt": "Events are sent directly to your instance via email server, script, SNMP trap, or web service API."
+      },
+      "labels": {
+        "certification": "cis-em",
+        "domain": "Event Sources",
+        "domainSlug": "event-sources",
+        "domainPercentage": 16,
+        "subtopics": [
+          "Push vs pull methods"
+        ],
+        "tags": [
+          "event-ingestion",
+          "negative-question"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-21T02:30:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     },
-    "meta": {
-      "generatedAt": "2026-02-21T02:30:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
-    }
-  },
-  {
-    "id": "cis-em-event-sources-010",
-    "certification": "cis-em",
-    "topic": "event-sources",
-    "cognitiveLevel": "knowledge",
-    "type": "multiple_choice",
-    "question": "Which ServiceNow Cloud product has a dedicated connector for Event Management?",
-    "options": [
-      { "id": "a", "text": "ServiceNow Cloud Discovery" },
-      { "id": "b", "text": "ServiceNow Cloud Insights" },
-      { "id": "c", "text": "ServiceNow Cloud Observability" },
-      { "id": "d", "text": "ServiceNow Cloud Analytics" }
-    ],
-    "correctAnswers": ["c"],
-    "explanation": {
-      "correct": "ServiceNow Cloud Observability (version 2.1.1 or higher) has a dedicated connector to receive events from the ServiceNow Cloud Observability platform. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/connectors-and-listeners.html",
-      "wrongAnswers": [
-        { "choiceId": "a", "explanation": "Cloud Discovery is not a specific connector in Event Management", "reference": "Connectors list" },
-        { "choiceId": "b", "explanation": "Cloud Insights is not listed as a standard connector", "reference": "Connectors list" },
-        { "choiceId": "d", "explanation": "Cloud Analytics is not a specific Event Management connector", "reference": "Connectors list" }
-      ]
-    },
-    "references": ["ServiceNow Cloud Observability", "Cloud connectors"],
-    "isFree": false,
-    "source": {
-      "type": "docs",
-      "path": "cis-em-api/connectors-and-listeners.md",
-      "excerpt": "ServiceNow Cloud Observability: 2.1.1 or higher. Receive events from the ServiceNow Cloud Observability platform."
-    },
-    "labels": {
+    {
+      "id": "cis-em-event-sources-010",
       "certification": "cis-em",
-      "domain": "Event Sources",
-      "domainSlug": "event-sources",
-      "domainPercentage": 16,
-      "subtopics": ["Monitoring connectors"],
-      "tags": ["cloud-observability", "servicenow"]
-    },
-    "meta": {
-      "generatedAt": "2026-02-21T02:30:00Z",
-      "version": "1.1",
-      "release": "Xanadu",
-      "reviewed": false
+      "topic": "event-sources",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which ServiceNow Cloud product has a dedicated connector for Event Management?",
+      "options": [
+        {
+          "id": "a",
+          "text": "ServiceNow Cloud Discovery"
+        },
+        {
+          "id": "b",
+          "text": "ServiceNow Cloud Insights"
+        },
+        {
+          "id": "c",
+          "text": "ServiceNow Cloud Observability"
+        },
+        {
+          "id": "d",
+          "text": "ServiceNow Cloud Analytics"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "ServiceNow Cloud Observability (version 2.1.1 or higher) has a dedicated connector to receive events from the ServiceNow Cloud Observability platform. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/connectors-and-listeners.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Cloud Discovery is not a specific connector in Event Management",
+            "reference": "Connectors list"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "Cloud Insights is not listed as a standard connector",
+            "reference": "Connectors list"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Cloud Analytics is not a specific Event Management connector",
+            "reference": "Connectors list"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow Cloud Observability",
+        "Cloud connectors"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "cis-em-api/connectors-and-listeners.md",
+        "excerpt": "ServiceNow Cloud Observability: 2.1.1 or higher. Receive events from the ServiceNow Cloud Observability platform."
+      },
+      "labels": {
+        "certification": "cis-em",
+        "domain": "Event Sources",
+        "domainSlug": "event-sources",
+        "domainPercentage": 16,
+        "subtopics": [
+          "Monitoring connectors"
+        ],
+        "tags": [
+          "cloud-observability",
+          "servicenow"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-02-21T02:30:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     }
-  }
-]
+  ]
+}
