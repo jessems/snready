@@ -1,19 +1,281 @@
-import { redirect } from "next/navigation";
-import { getAllTopicSlugs } from "@/lib/data";
+import { Metadata } from "next";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import {
+  getCertificationBySlug,
+  getTopicBySlug,
+  getTopicsForCertification,
+  getQuestionsForTopic,
+  getAllTopicSlugs,
+  getFreeQuestionsForTopic,
+} from "@/lib/data";
+import { breadcrumbs, generateBreadcrumbJsonLd } from "@/lib/breadcrumbs";
+import TopicIntroduction from "@/components/TopicIntroduction";
+import { CheckoutButton } from "@/components/CheckoutButton";
+import { QuestionsWithPaywall } from "@/components/QuestionsWithPaywall";
 
 interface PageProps {
   params: Promise<{ cert: string; topic: string }>;
 }
 
-export function generateStaticParams() {
+export async function generateStaticParams() {
   return getAllTopicSlugs().map(({ certification, topic }) => ({
     cert: certification,
     topic,
   }));
 }
 
-// Redirect old /practice-questions/[cert]/[topic] to /[cert]/practice-questions/[topic]
-export default async function FreeQuestionsTopicRedirect({ params }: PageProps) {
-  const { cert, topic } = await params;
-  redirect(`/${cert}/practice-questions/${topic}`);
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { cert, topic: topicSlug } = await params;
+  const certification = getCertificationBySlug(cert);
+  const topic = getTopicBySlug(cert, topicSlug);
+
+  if (!certification || !topic) {
+    return { title: "Topic Not Found" };
+  }
+
+  return {
+    title: `${certification.name} ${topic.name} Exam Questions - Practice Test`,
+    description: `Practice ${topic.questionCount}+ ${topic.name} questions for the ServiceNow ${certification.name} exam. Free sample questions with detailed explanations.`,
+    keywords: [
+      `${certification.name} ${topic.name} questions`,
+      `ServiceNow ${topic.name} exam`,
+      `${certification.name} practice test`,
+      `${topic.name} quiz`,
+      `ServiceNow ${certification.name} ${topic.name}`,
+    ],
+    alternates: {
+      canonical: `/practice-questions/${cert}/${topicSlug}`,
+    },
+    openGraph: {
+      title: `${certification.name} ${topic.name} Questions | SNReady`,
+      description: `Master ${topic.name} for the ServiceNow ${certification.name} exam with ${topic.questionCount}+ practice questions.`,
+    },
+  };
+}
+
+export default async function TopicQuestionsPage({ params }: PageProps) {
+  const { cert, topic: topicSlug } = await params;
+  const certification = getCertificationBySlug(cert);
+  const topic = getTopicBySlug(cert, topicSlug);
+
+  if (!certification || !topic) {
+    notFound();
+  }
+
+  const allQuestions = await getQuestionsForTopic(cert, topicSlug);
+  const freeQuestions = await getFreeQuestionsForTopic(cert, topicSlug);
+  const premiumQuestions = allQuestions.slice(freeQuestions.length);
+  const allTopics = getTopicsForCertification(cert);
+
+  // JSON-LD structured data for FAQ (only use free questions for SEO)
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: freeQuestions.slice(0, 5).map((q) => ({
+      "@type": "Question",
+      name: q.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: q.explanation,
+      },
+    })),
+  };
+
+  // JSON-LD structured data - Breadcrumb schema
+  const breadcrumbJsonLd = generateBreadcrumbJsonLd(
+    breadcrumbs.topic(certification.name, cert, topic.name, topicSlug)
+  );
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+
+      <div className="min-h-screen">
+        {/* Breadcrumb */}
+        <div className="border-b border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-950">
+          <div className="mx-auto max-w-6xl px-4 py-3 sm:px-6 lg:px-8">
+            <nav className="flex items-center gap-2 text-sm text-zinc-500">
+              <Link href="/" className="hover:text-zinc-700 dark:hover:text-zinc-300">
+                Home
+              </Link>
+              <span>/</span>
+              <Link
+                href={`/${cert}`}
+                className="hover:text-zinc-700 dark:hover:text-zinc-300"
+              >
+                {certification.name}
+              </Link>
+              <span>/</span>
+              <span className="text-zinc-900 dark:text-zinc-100">{topic.name}</span>
+            </nav>
+          </div>
+        </div>
+
+        {/* Header */}
+        <section className="bg-gradient-to-b from-emerald-50 to-white py-12 dark:from-zinc-900 dark:to-zinc-950">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+            <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
+              <div>
+                <div className="flex items-center gap-2">
+                  <Link
+                    href={`/${cert}`}
+                    className="text-sm font-medium text-emerald-600 hover:text-emerald-700"
+                  >
+                    {certification.name} Certification
+                  </Link>
+                </div>
+                <h1 className="mt-2 text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
+                  {topic.name} Questions
+                </h1>
+                <p className="mt-4 max-w-2xl text-zinc-600 dark:text-zinc-400">
+                  {topic.description}
+                </p>
+                <div className="mt-4 flex items-center gap-4 text-sm text-zinc-500">
+                  <span>{topic.questionCount} total questions</span>
+                  <span className="text-emerald-600">
+                    {freeQuestions.length} free questions
+                  </span>
+                </div>
+              </div>
+              <div className="flex flex-col gap-2">
+                <Link
+                  href={`/practice-questions/${cert}`}
+                  className="inline-flex h-10 items-center justify-center rounded-lg bg-emerald-600 px-6 text-sm font-medium text-white transition-colors hover:bg-emerald-700"
+                >
+                  All {certification.name} Questions
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Main Content */}
+        <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
+          {/* Topic Introduction */}
+          <TopicIntroduction topic={topic} />
+
+          <div className="grid gap-8 lg:grid-cols-[1fr,300px]">
+            {/* Questions */}
+            <div className="space-y-6">
+              <div className="flex flex-wrap items-baseline justify-between gap-2">
+                <h2 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100">
+                  Practice Questions
+                </h2>
+                <span className="text-sm text-zinc-500 whitespace-nowrap">
+                  {allQuestions.length} questions available
+                </span>
+              </div>
+
+              {allQuestions.length > 0 ? (
+                <QuestionsWithPaywall
+                  freeQuestions={freeQuestions}
+                  premiumQuestions={premiumQuestions}
+                  certification={certification.name}
+                />
+              ) : (
+                <div className="rounded-xl border border-zinc-200 bg-white p-6 sm:p-12 text-center dark:border-zinc-800 dark:bg-zinc-900">
+                  <p className="text-zinc-500">
+                    Questions for this topic are coming soon!
+                  </p>
+                  <Link
+                    href={`/${cert}`}
+                    className="mt-4 inline-flex text-emerald-600 hover:text-emerald-700"
+                  >
+                    Explore other {certification.name} topics →
+                  </Link>
+                </div>
+              )}
+            </div>
+
+            {/* Sidebar */}
+            <aside className="space-y-6">
+              {/* Key Concepts */}
+              <div className="rounded-xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-900">
+                <h3 className="font-semibold text-zinc-900 dark:text-zinc-100">
+                  Key Concepts
+                </h3>
+                <ul className="mt-4 space-y-2">
+                  {topic.keyConcepts.map((concept, index) => (
+                    <li
+                      key={index}
+                      className="flex items-center gap-2 text-sm text-zinc-600 dark:text-zinc-400"
+                    >
+                      <span className="text-emerald-500">•</span>
+                      {concept}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Other Topics */}
+              <div className="rounded-xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-900">
+                <h3 className="font-semibold text-zinc-900 dark:text-zinc-100">
+                  Other {certification.name} Topics
+                </h3>
+                <ul className="mt-4 space-y-2">
+                  {allTopics
+                    .filter((t) => t.slug !== topicSlug)
+                    .slice(0, 6)
+                    .map((t) => (
+                      <li key={t.slug}>
+                        <Link
+                          href={`/practice-questions/${cert}/${t.slug}`}
+                          className="flex items-center justify-between text-sm text-zinc-600 hover:text-emerald-600 dark:text-zinc-400"
+                        >
+                          <span>{t.name}</span>
+                          <span className="text-zinc-400">
+                            {t.questionCount}
+                          </span>
+                        </Link>
+                      </li>
+                    ))}
+                </ul>
+                <Link
+                  href={`/${cert}`}
+                  className="mt-4 inline-flex text-sm text-emerald-600 hover:text-emerald-700"
+                >
+                  View all topics →
+                </Link>
+              </div>
+
+              {/* CTA */}
+              <div className="rounded-xl bg-emerald-600 p-5 text-white dark:bg-emerald-700">
+                <h3 className="font-semibold">Unlock Full Access</h3>
+                <p className="mt-2 text-sm text-emerald-100">
+                  All questions with detailed explanations.
+                </p>
+                <p className="mt-1 text-xs text-emerald-200">
+                  Because we want you to succeed ✨
+                </p>
+                <div className="mt-4 space-y-2">
+                  <CheckoutButton
+                    certification={certification.name}
+                    plan="30day"
+                    className="w-full rounded-lg bg-white/20 py-2 text-sm font-medium text-white transition-colors hover:bg-white/30"
+                  >
+                    {certification.name} Lifetime — $9
+                  </CheckoutButton>
+                  <CheckoutButton
+                    certification={certification.name}
+                    plan="lifetime"
+                    className="w-full rounded-lg bg-white py-2 text-sm font-medium text-emerald-600 transition-colors hover:bg-emerald-50"
+                  >
+                    All Certs Lifetime — $49
+                  </CheckoutButton>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </>
+  );
 }
