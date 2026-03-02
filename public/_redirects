@@ -1,8 +1,12 @@
-# Redirect old practice-questions URLs to free-questions
-/:cert/practice-questions/:topic /:cert/free-questions/:topic 301
-/:cert/practice-questions /:cert/free-questions 301
+# SEO: Consolidate all question URLs to /practice-questions
+/free-questions/* /practice-questions/:splat 301
+/free-questions /practice-questions 301
+/:cert/practice-questions/* /practice-questions/:cert/:splat 301
+/:cert/practice-questions /practice-questions/:cert 301
+/:cert/free-questions/* /practice-questions/:cert/:splat 301
+/:cert/free-questions /practice-questions/:cert 301
 
-# Redirect removed pages to relevant alternatives
+# Redirect removed pages
 /glossary/* /certifications 301
 /glossary /certifications 301
 /learn/* /certifications 301

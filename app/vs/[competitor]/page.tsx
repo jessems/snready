@@ -297,7 +297,7 @@ export default async function CompetitorComparisonPage({ params }: PageProps) {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/free-questions"
+              href="/practice-questions"
               className="bg-white text-indigo-900 px-8 py-4 rounded-lg font-semibold hover:bg-indigo-100 transition-colors"
             >
               Start Free Practice

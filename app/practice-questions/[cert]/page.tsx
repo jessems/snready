@@ -9,8 +9,8 @@ export function generateStaticParams() {
   return getCertificationSlugs().map((slug) => ({ cert: slug }));
 }
 
-// Redirect old /free-questions/[cert] to /[cert]/free-questions
+// Redirect old /practice-questions/[cert] to /[cert]/practice-questions
 export default async function FreeQuestionsCertRedirect({ params }: PageProps) {
   const { cert } = await params;
-  redirect(`/${cert}/free-questions`);
+  redirect(`/${cert}/practice-questions`);
 }

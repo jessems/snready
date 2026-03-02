@@ -12,8 +12,8 @@ export function generateStaticParams() {
   }));
 }
 
-// Redirect old /free-questions/[cert]/[topic] to /[cert]/free-questions/[topic]
+// Redirect old /practice-questions/[cert]/[topic] to /[cert]/practice-questions/[topic]
 export default async function FreeQuestionsTopicRedirect({ params }: PageProps) {
   const { cert, topic } = await params;
-  redirect(`/${cert}/free-questions/${topic}`);
+  redirect(`/${cert}/practice-questions/${topic}`);
 }

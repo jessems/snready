@@ -293,7 +293,7 @@ export default async function ExamPrepPage({ params }: Props) {
             )}
             {isReady && (
               <Link
-                href={`/${slug}/free-questions`}
+                href={`/${slug}/practice-questions`}
                 className="inline-flex items-center gap-2 rounded-lg border border-emerald-600 px-4 py-2 text-sm font-medium text-emerald-600 hover:bg-emerald-50 dark:hover:bg-emerald-950"
               >
                 Practice Questions ({totalQuestions}+)
@@ -451,7 +451,7 @@ export default async function ExamPrepPage({ params }: Props) {
                       {/* Action Links */}
                       <div className="mt-4 flex flex-wrap gap-3">
                         <Link
-                          href={`/${slug}/free-questions/${topic.slug}`}
+                          href={`/${slug}/practice-questions/${topic.slug}`}
                           className="text-sm text-emerald-600 hover:text-emerald-700"
                         >
                           Practice ({topic.questionCount} questions)
@@ -764,7 +764,7 @@ export default async function ExamPrepPage({ params }: Props) {
               </p>
               <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:justify-center">
                 <Link
-                  href={`/${slug}/free-questions`}
+                  href={`/${slug}/practice-questions`}
                   className="inline-flex items-center justify-center rounded-lg bg-white px-8 py-3 font-semibold text-emerald-700 hover:bg-emerald-50"
                 >
                   Start Practicing
