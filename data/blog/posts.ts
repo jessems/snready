@@ -1082,6 +1082,707 @@ If you use ITSM daily but don't configure it, you need to shift your mindset. Th
 [Practice CIS-ITSM Questions →](/cis-itsm/practice-questions)
 `
   },
+  {
+    slug: "best-servicenow-practice-tests-2026",
+    title: "Best ServiceNow Practice Tests in 2026: A Brutally Honest Comparison",
+    description: "Comparing SNReady, ExamTopics, SkillCertPro, Udemy, and Now Learning for ServiceNow certification prep. Which one is actually worth your money?",
+    publishedAt: "2026-03-02",
+    author: "SNReady Team",
+    tags: ["practice tests", "exam prep", "comparison", "certification"],
+    featured: true,
+    readingTime: 10,
+    content: `
+Searching for ServiceNow practice tests is a minefield. Brain dump sites mixed with legitimate resources, unclear pricing, and a lot of "trust me bro" advice on Reddit.
+
+I've used or researched every major option. Here's what actually works in 2026.
+
+## TL;DR: The Quick Comparison
+
+| Platform | Ethics | Questions | Mock Exams | Price | Verdict |
+|----------|--------|-----------|------------|-------|---------|
+| **SNReady** | ✅ | 1,350+ | ✅ | $9/cert | Best overall |
+| ExamTopics | ❌ Brain dumps | 1,000+ | ❌ | $40/mo | Risky |
+| SkillCertPro | ⚠️ Unclear | 500-600 | ✅ | $15-25 | Budget option |
+| Udemy | ✅ | Varies | ❌ | $13-100 | Learning, not practice |
+| Now Learning | ✅ | 10-20/course | ❌ | Free | Essential but insufficient |
+
+## 1. SNReady (That's Us — Yes, We're Biased)
+
+**What it is:** Practice test platform built specifically for ServiceNow certifications.
+
+**The honest pitch:**
+
+We built SNReady because the alternatives are either:
+- Brain dump sites that risk your certification
+- Video courses with minimal practice questions
+- Scattered free resources of varying quality
+
+**What you get:**
+- 1,350+ questions across 20 certifications
+- Timed mock exams matching real conditions
+- Domain-based progress tracking
+- 35+ free questions per cert (no account required)
+- $9 per certification (one-time)
+
+**The weaknesses:**
+- No video content (we assume you've done Now Learning)
+- Newer platform (fewer reviews than established players)
+- Some certifications have fewer questions than others
+
+**Best for:** People who've finished Now Learning courses and need serious exam practice.
+
+[Try Free Questions →](/free-questions)
+
+---
+
+## 2. ExamTopics — The Elephant in the Room
+
+**What it is:** Crowd-sourced "practice tests" where users post questions they remember from real exams.
+
+**Let's be clear:** ExamTopics is a brain dump site. The questions are memorized from actual certification exams and shared. This is:
+
+1. **Against the ServiceNow Certification Agreement** — You agreed not to do this when you registered
+2. **Detectable** — ServiceNow monitors for brain dump patterns
+3. **Punishable** — Certifications can be revoked
+
+From Reddit:
+> "My friend got his CSA revoked 6 months later. They do check."
+
+**The appeal:** Free tier lets you see questions (with ads). Large database. Community voting on answers.
+
+**The problems:**
+- Many answers are wrong despite voting
+- You're memorizing, not learning
+- You're risking your certification and career reputation
+
+**The verdict:** If you use ExamTopics and get caught, you lose your cert AND have to explain the gap in your credentials. The risk isn't worth it.
+
+[Compare: SNReady vs ExamTopics →](/vs/examtopics)
+
+---
+
+## 3. SkillCertPro — The Reddit Favorite
+
+**What it is:** Practice test provider with ServiceNow question banks.
+
+**Why Reddit likes it:**
+> "SkillCertPro for $20 and I passed CSA 10 days later"
+
+> "Around half the questions were similar to what I saw on the exam"
+
+**The concerns:**
+- Question sourcing isn't transparent
+- Some reported incorrect answers
+- Interface feels dated
+- No domain-based tracking
+
+**Pricing:** $15-25 per certification (lifetime access)
+
+**The verdict:** Budget-friendly and probably fine, but the unclear question sourcing is a yellow flag. It's possible they're using dumps or scraped content.
+
+[Compare: SNReady vs SkillCertPro →](/vs/skillcertpro)
+
+---
+
+## 4. Udemy ServiceNow Courses
+
+**What it is:** Video courses for ServiceNow certifications.
+
+**Best for:** Learning concepts, not practicing for exams.
+
+**Top courses:**
+- "ServiceNow CSA Training" (various instructors)
+- "ServiceNow Developer Training"
+
+**The reality:**
+- Practice questions are an afterthought (maybe 50-100)
+- Quality varies wildly by instructor
+- No exam simulation
+- Content can be outdated
+
+**Pricing:** $13-100 per course (frequent sales)
+
+**The verdict:** Use Udemy to learn concepts. Use dedicated practice test platforms for exam prep. They complement each other.
+
+From Reddit:
+> "Udemy resources suck. I get Udemy for free through my company and while I love it for a lot of other things, for ServiceNow it's useless."
+
+[Compare: SNReady vs Udemy →](/vs/udemy)
+
+---
+
+## 5. ServiceNow Now Learning (Official)
+
+**What it is:** ServiceNow's official training platform with required certification courses.
+
+**The mandatory baseline:** You MUST complete Now Learning courses before taking certification exams. This isn't optional.
+
+**What's included:**
+- Official course content
+- Hands-on labs
+- Simulators
+- 10-20 knowledge check questions per course
+
+**The limitation:** The practice questions don't simulate exam conditions. There's no timed mock exam. You can't focus on weak areas.
+
+**Pricing:** Free (certification exams cost $210-315)
+
+**The verdict:** Essential for learning, insufficient for practice. Use Now Learning first, then add dedicated practice tests.
+
+[Compare: SNReady vs Now Learning →](/vs/servicenow-nowlearning)
+
+---
+
+## The Winning Strategy for 2026
+
+Based on what actually works:
+
+### Step 1: Now Learning (Required)
+Complete the official courses. Do the labs. Read the ebook thoroughly.
+
+### Step 2: Hands-on Practice
+Get a PDI (Personal Developer Instance). Practice what you learned.
+
+### Step 3: Dedicated Practice Tests
+Use SNReady or similar to:
+- Take timed mock exams
+- Identify weak domains
+- Build exam stamina
+
+### Step 4: Gap Analysis
+Review wrong answers. Go back to the ebook for weak areas. Repeat until you're consistently scoring 80%+.
+
+---
+
+## What About Free Options?
+
+**GitHub repositories:** Some exist, but quality varies wildly. Many are outdated or have incorrect answers.
+
+**Quizlet flashcards:** Useful for terminology, not for scenario-based questions.
+
+**Reddit question threads:** Scattered and often quickly deleted (ServiceNow monitors).
+
+**The truth:** Free resources can supplement paid options, but they shouldn't be your primary study method.
+
+---
+
+## My Recommendation (Yes, It's SNReady)
+
+I built SNReady because I went through this process myself and was frustrated by the options:
+
+- Brain dumps felt wrong and risky
+- Video courses didn't have enough practice questions
+- Now Learning's knowledge checks didn't simulate the real exam
+- Free resources were scattered and unreliable
+
+SNReady isn't perfect — we don't have video content, and some certifications have more questions than others. But we offer:
+
+1. **Ethical questions** based on official content (no brain dumps)
+2. **Real exam simulation** with timed mock exams
+3. **Domain tracking** so you know where to focus
+4. **Transparent pricing** at $9 per certification
+
+Try the free questions first. If they help, the paid version has more.
+
+[Try SNReady Free →](/free-questions)
+
+---
+
+## FAQ
+
+**Q: Is ExamTopics safe to use?**
+
+No. It's a brain dump site. ServiceNow can detect patterns and revoke certifications. The risk isn't worth it.
+
+**Q: How many practice questions do I need?**
+
+Quality over quantity. 60-100 well-written questions with good explanations beat 500 questionable dumps.
+
+**Q: Can I pass with just Now Learning?**
+
+The courses give you knowledge. Practice tests give you exam skills. Most successful candidates use both.
+
+**Q: What if I'm on a tight budget?**
+
+Use Now Learning thoroughly (free), do all the labs, and try SNReady's free questions. If you need more, $9 is less than a retake fee.
+
+**Q: When should I take a practice test?**
+
+After completing the official course and doing hands-on practice. Don't use practice tests as your learning tool — use them to test your learning.
+`
+  },
+  {
+    slug: "servicenow-certification-requirements-complete-guide",
+    title: "ServiceNow Certification Requirements 2026: Complete Guide (Costs, Prerequisites, Steps)",
+    description: "Everything you need to know about ServiceNow certification requirements in 2026. Exam costs, prerequisites, formats, and step-by-step registration process.",
+    publishedAt: "2026-03-01",
+    author: "SNReady Team",
+    tags: ["certification", "requirements", "guide", "exam costs"],
+    readingTime: 8,
+    content: `
+Want a ServiceNow certification but confused by the requirements? This guide covers everything: costs, prerequisites, exam formats, and exactly how to register.
+
+## ServiceNow Certification Costs (2026)
+
+| Certification Type | Exam Cost | Retake Cost |
+|-------------------|-----------|-------------|
+| CSA (System Administrator) | $210 | $210 |
+| CAD (Application Developer) | $210 | $210 |
+| CIS (Implementation Specialist) | $315 | $315 |
+| CTA (Technical Architect) | Varies | Varies |
+
+**Important:** Delta exams (for recertification after new releases) are typically $100-150.
+
+### What's Included
+
+Your exam fee covers:
+- One exam attempt
+- Online proctoring (Webassessor)
+- Digital badge upon passing
+- Verification on ServiceNow's website
+
+### What's NOT Included
+
+- Study materials (free via Now Learning)
+- Retakes (pay full price again)
+- Physical certificate (digital only)
+
+---
+
+## Prerequisites by Certification Type
+
+### CSA (Entry-Level)
+
+**Official prerequisites:** None required.
+
+**Recommended:**
+- 6-12 months hands-on ServiceNow experience
+- Completion of ServiceNow Fundamentals course
+- Access to a PDI (Personal Developer Instance)
+
+**Reality check:** You CAN register without experience, but passing without hands-on time is very difficult.
+
+### CAD (Developer)
+
+**Official prerequisites:** CSA certification required.
+
+**Recommended:**
+- 1-2 years development experience
+- Strong JavaScript fundamentals
+- GlideRecord API familiarity
+- Application development experience
+
+### CIS Certifications (Implementation Specialist)
+
+**Official prerequisites:** CSA certification required for most CIS exams.
+
+**Recommended:**
+- 1-2 years implementing the specific module
+- Real project experience
+- Understanding of best practices
+
+### CTA (Technical Architect)
+
+**Official prerequisites:**
+- CSA certification
+- Two CIS certifications (any)
+- Significant project experience
+
+**Format:** Multi-stage assessment including documentation review and presentation.
+
+---
+
+## Exam Formats
+
+### Standard Proctored Exam
+
+Most certifications use this format:
+
+- **Questions:** 60 multiple choice
+- **Time:** 90 minutes
+- **Passing score:** 70% (42/60)
+- **Proctoring:** Online via Webassessor
+- **Results:** Immediate (pass/fail)
+
+### Question Types
+
+1. **Single select** — Choose the best answer
+2. **Multi-select** — "Choose 2" or "Choose all that apply"
+3. **Scenario-based** — Given a situation, what would you do?
+
+---
+
+## Step-by-Step Registration Process
+
+### Step 1: Create a Now Learning Account
+
+Go to [nowlearning.servicenow.com](https://nowlearning.servicenow.com) and create an account.
+
+- Use your business email if available
+- Complete your profile
+
+### Step 2: Complete Required Courses
+
+Navigate to the certification you want and check the "Learning Path."
+
+- Complete all required courses
+- Watch all videos
+- Do all hands-on labs
+- Pass knowledge checks
+
+### Step 3: Verify Prerequisites
+
+For CAD/CIS: Ensure your CSA certification is active and linked to your account.
+
+### Step 4: Register for the Exam
+
+1. Go to the Credentials section on Now Learning
+2. Find your certification
+3. Click "Register for Exam"
+4. You'll be redirected to Webassessor
+5. Schedule your exam date/time
+6. Pay the exam fee
+
+### Step 5: Prepare Your Testing Environment
+
+Online proctoring requirements:
+- Quiet, private room
+- Webcam and microphone
+- Stable internet connection
+- Government-issued ID
+- Clear desk (no notes, phones, etc.)
+
+---
+
+## Study Timeline Recommendations
+
+### CSA (First Certification)
+
+| Experience Level | Study Time |
+|-----------------|------------|
+| No SN experience | 8-12 weeks |
+| Some platform use | 4-6 weeks |
+| Daily SN user | 2-4 weeks |
+
+### CAD (Developer)
+
+| Experience Level | Study Time |
+|-----------------|------------|
+| No development background | 8-10 weeks |
+| JavaScript experience | 4-6 weeks |
+| SN development experience | 2-3 weeks |
+
+### CIS (Implementation Specialist)
+
+| Experience Level | Study Time |
+|-----------------|------------|
+| No module experience | 6-8 weeks |
+| Uses module daily | 3-4 weeks |
+| Implements the module | 2-3 weeks |
+
+---
+
+## Common Mistakes to Avoid
+
+### 1. Rushing the Registration
+
+Don't register until you've completed the courses AND done hands-on practice. The $210-315 fee isn't refundable.
+
+### 2. Underestimating Hands-On Requirements
+
+Reading the ebook isn't enough. You need to practice in a PDI or sandbox environment.
+
+### 3. Skipping the Labs
+
+Labs teach you WHERE things are in the platform. Many exam questions test navigation, not just concepts.
+
+### 4. Relying on Brain Dumps
+
+ServiceNow monitors for brain dump patterns. Certifications can be revoked. It's not worth the risk.
+
+### 5. Ignoring Delta Exams
+
+Certifications expire with new releases. Budget time and money for delta exams or you'll lose your credentials.
+
+---
+
+## Maintaining Your Certification
+
+### Release Cycle
+
+ServiceNow releases two major versions per year:
+- First letter alphabetically (e.g., Xanadu, Yokohama)
+- Your cert is tied to a release
+
+### Delta Window
+
+When a new release drops, you have ~3 months to take the delta exam:
+- Typically 10-20 questions
+- $100-150 cost
+- Covers what's new in the release
+
+### What Happens If You Don't Delta
+
+Your certification becomes "inactive." You can still list it on your resume with the release version (e.g., "CSA - Yokohama"), but it won't be current.
+
+---
+
+## Next Steps
+
+1. **Create your Now Learning account** — [nowlearning.servicenow.com](https://nowlearning.servicenow.com)
+2. **Complete the required courses** — Don't skip the labs
+3. **Practice with a PDI** — [developer.servicenow.com](https://developer.servicenow.com)
+4. **Take practice tests** — [SNReady Free Questions →](/free-questions)
+5. **Register when ready** — Schedule with buffer time
+
+Good luck!
+`
+  },
+  {
+    slug: "how-to-pass-cad-in-30-days",
+    title: "How to Pass the ServiceNow CAD Exam in 30 Days: A Realistic Study Plan",
+    description: "A week-by-week study plan to pass the ServiceNow Certified Application Developer (CAD) exam in 30 days. Includes daily focus areas and practice strategies.",
+    publishedAt: "2026-03-01",
+    author: "SNReady Team",
+    tags: ["CAD", "study plan", "developer", "certification"],
+    readingTime: 9,
+    content: `
+30 days to CAD certification. Is it realistic? Yes — if you have the right background and follow a structured plan.
+
+## Before You Start: Prerequisites Check
+
+**You need:**
+- ✅ Active CSA certification
+- ✅ Basic JavaScript knowledge (functions, objects, arrays)
+- ✅ ServiceNow platform familiarity
+- ✅ 2-3 hours daily study time
+- ✅ Access to a PDI (developer.servicenow.com)
+
+**If you're missing JavaScript:** Add 1-2 weeks of JavaScript fundamentals first.
+
+---
+
+## The 30-Day Plan
+
+### Week 1: Scripting Fundamentals (Days 1-7)
+
+**Focus:** GlideRecord API and server-side scripting
+
+**Daily breakdown:**
+
+**Day 1-2:** GlideRecord Basics
+- addQuery, get, next, hasNext
+- Creating, updating, deleting records
+- Building queries with conditions
+
+**Day 3-4:** GlideRecord Advanced
+- Encoded queries
+- GlideAggregate for counts/sums
+- Join queries
+
+**Day 5-6:** Business Rules
+- When they fire (before, after, async)
+- Current vs previous object
+- Script structure and best practices
+
+**Day 7:** Practice + Review
+- Build 3 business rules in your PDI
+- Take a scripting practice quiz
+
+**Key resources:**
+- Now Learning: Scripting in ServiceNow Fundamentals
+- PDI hands-on practice
+
+---
+
+### Week 2: Client-Side Scripting (Days 8-14)
+
+**Focus:** Client scripts, UI policies, UI actions
+
+**Daily breakdown:**
+
+**Day 8-9:** Client Scripts
+- Types: onLoad, onChange, onSubmit, onCellEdit
+- GlideForm (g_form) API
+- When to use client vs server scripting
+
+**Day 10-11:** UI Policies
+- When UI policies beat client scripts
+- Reverse if false
+- Script-based conditions
+
+**Day 12-13:** UI Actions
+- Client-side vs server-side
+- Condition fields
+- Confirmation dialogs
+
+**Day 14:** Practice + Review
+- Build 5 client scripts for common scenarios
+- Take a client-side practice quiz
+
+**Common exam scenarios:**
+- "Make a field mandatory when another field equals X"
+- "Hide a section based on user role"
+- "Show confirmation before closing a task"
+
+---
+
+### Week 3: Application Development (Days 15-21)
+
+**Focus:** Building custom applications
+
+**Daily breakdown:**
+
+**Day 15-16:** Application Scopes
+- Global vs scoped applications
+- Why scopes matter
+- Cross-scope access
+
+**Day 17-18:** Tables and Forms
+- Table creation best practices
+- Form design patterns
+- Related lists
+
+**Day 19-20:** Service Portal Basics
+- Widgets and pages
+- Angular in Service Portal
+- Server/client script communication
+
+**Day 21:** Practice + Review
+- Build a simple scoped app in your PDI
+- Take an application development practice quiz
+
+---
+
+### Week 4: Integration and Final Prep (Days 22-30)
+
+**Focus:** REST APIs, Script Includes, exam readiness
+
+**Daily breakdown:**
+
+**Day 22-23:** Script Includes
+- Creating reusable code
+- Calling Script Includes from different contexts
+- Scoped Script Includes
+
+**Day 24-25:** REST APIs
+- Inbound vs outbound
+- REST API Explorer
+- Scripted REST APIs
+
+**Day 26:** Flow Designer
+- When to use Flow Designer vs scripts
+- Actions and triggers
+- Debugging flows
+
+**Day 27-28:** Full Practice Exams
+- Take timed mock exams
+- Review every wrong answer
+- Identify weak areas
+
+**Day 29:** Gap Review
+- Revisit weak topics
+- Re-read ebook sections
+- Light practice questions
+
+**Day 30:** Exam Day
+- Light review only
+- Get good sleep
+- Trust your preparation
+
+---
+
+## Key Topics by Exam Weight
+
+Based on the CAD exam blueprint:
+
+| Domain | Weight | Your Priority |
+|--------|--------|---------------|
+| Scripting | ~25% | High |
+| Application Development | ~20% | High |
+| Business Rules | ~15% | High |
+| REST APIs | ~15% | Medium |
+| Client Scripts | ~10% | Medium |
+| UI Policies/Actions | ~10% | Medium |
+| Script Includes | ~5% | Lower |
+
+---
+
+## Common Pitfalls
+
+### 1. Memorizing Without Understanding
+
+The exam tests whether you know WHEN to use something, not just WHAT it is.
+
+❌ "A Business Rule runs on the server"
+✅ "Use a before Business Rule to set field values before the database insert"
+
+### 2. Skipping Hands-On Practice
+
+You'll see questions like:
+
+> "A developer needs to prevent a record from being saved if a field is empty. The requirement must work even if JavaScript is disabled. What should they use?"
+
+If you've never built this in a PDI, you'll struggle to answer quickly.
+
+### 3. Ignoring GlideRecord Syntax
+
+GlideRecord questions are nearly guaranteed. Know the syntax cold:
+
+\`\`\`javascript
+var gr = new GlideRecord('incident');
+gr.addQuery('state', 1);
+gr.query();
+while (gr.next()) {
+    gs.info(gr.number);
+}
+\`\`\`
+
+### 4. Confusing Client vs Server Context
+
+Know what's available where:
+
+| Server-Side | Client-Side |
+|-------------|-------------|
+| GlideRecord | GlideForm (g_form) |
+| current | g_user |
+| GlideSystem (gs) | GlideAjax |
+
+---
+
+## Exam Day Tips
+
+1. **Time management:** 60 questions in 90 minutes = 1.5 min/question. Flag and move on if stuck.
+
+2. **Read carefully:** "Choose 2" means exactly 2. "All that apply" could be 1-4.
+
+3. **Watch for absolutes:** Answers with "always" or "never" are often wrong.
+
+4. **Trust your first instinct:** If you've prepared, your gut is usually right.
+
+5. **Use elimination:** Remove obviously wrong answers first.
+
+---
+
+## What If I Don't Pass?
+
+It happens. The CAD pass rate isn't published, but anecdotally it's 60-70% on first attempt.
+
+**If you fail:**
+1. Review your score report (it shows weak domains)
+2. Focus study on those areas
+3. Do more hands-on practice
+4. Retake in 2-4 weeks
+
+---
+
+## Ready to Start?
+
+[Practice CAD Questions →](/cad/practice-questions)
+
+[Full CAD Study Guide →](/cad)
+`
+  },
 ];
 
 export function getAllPosts(): BlogPost[] {
