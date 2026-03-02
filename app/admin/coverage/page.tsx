@@ -133,6 +133,15 @@ function CertificationSection({ code, data }: { code: string; data: Certificatio
             <span>📚 {data.summary.questionCount} questions</span>
             <span>📄 {formatChars(data.summary.totalChars)} content</span>
             <span>📦 {data.summary.docBundlesScraped}/{data.summary.docBundlesTotal} doc bundles</span>
+            {data.summary.questionCount > 0 && (
+              <a
+                href={`/exports/${code.toLowerCase()}-questions-udemy.csv`}
+                className="inline-flex items-center gap-1 text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
+                download
+              >
+                📥 Export CSV (Udemy)
+              </a>
+            )}
           </div>
         </div>
         <CoverageBar percentage={data.summary.requiredCoverage} />
