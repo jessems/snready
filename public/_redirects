@@ -1,29 +1,49 @@
-# SEO: Consolidate all question URLs to /practice-questions
-/free-questions/* /practice-questions/:splat 301
-/free-questions /practice-questions 301
+# Redirect old practice-questions URLs to new structure
+/practice-questions/:cert /csa/practice-questions 301
+/practice-questions/:cert/:topic /:cert/practice-questions/:topic 301
 
-# Legacy /:cert/practice-questions URLs (be explicit to avoid matching /practice-questions itself)
-/csa/practice-questions/* /practice-questions/csa/:splat 301
-/csa/practice-questions /practice-questions/csa 301
-/cad/practice-questions/* /practice-questions/cad/:splat 301
-/cad/practice-questions /practice-questions/cad 301
-/cis-df/practice-questions/* /practice-questions/cis-df/:splat 301
-/cis-df/practice-questions /practice-questions/cis-df 301
-/cis-itsm/practice-questions/* /practice-questions/cis-itsm/:splat 301
-/cis-itsm/practice-questions /practice-questions/cis-itsm 301
+# Specific cert redirects (Cloudflare needs explicit rules)
+/practice-questions/csa/* /csa/practice-questions/:splat 301
+/practice-questions/cad/* /cad/practice-questions/:splat 301
+/practice-questions/cis-df/* /cis-df/practice-questions/:splat 301
+/practice-questions/cis-itsm/* /cis-itsm/practice-questions/:splat 301
+/practice-questions/cis-discovery/* /cis-discovery/practice-questions/:splat 301
+/practice-questions/cis-csm/* /cis-csm/practice-questions/:splat 301
+/practice-questions/cis-ham/* /cis-ham/practice-questions/:splat 301
+/practice-questions/cis-hr/* /cis-hr/practice-questions/:splat 301
+/practice-questions/cis-rc/* /cis-rc/practice-questions/:splat 301
+/practice-questions/cis-sam/* /cis-sam/practice-questions/:splat 301
+/practice-questions/cis-sir/* /cis-sir/practice-questions/:splat 301
+/practice-questions/cis-sm/* /cis-sm/practice-questions/:splat 301
+/practice-questions/cis-spm/* /cis-spm/practice-questions/:splat 301
+/practice-questions/cis-sp/* /cis-sp/practice-questions/:splat 301
+/practice-questions/cis-tprm/* /cis-tprm/practice-questions/:splat 301
+/practice-questions/cis-vr/* /cis-vr/practice-questions/:splat 301
+/practice-questions/cis-em/* /cis-em/practice-questions/:splat 301
+/practice-questions/cis-fsm/* /cis-fsm/practice-questions/:splat 301
+/practice-questions/cis-pa/* /cis-pa/practice-questions/:splat 301
+/practice-questions/cpoa/* /cpoa/practice-questions/:splat 301
+/practice-questions/cta/* /cta/practice-questions/:splat 301
 
-# Legacy /:cert/free-questions URLs
-/csa/free-questions/* /practice-questions/csa/:splat 301
-/csa/free-questions /practice-questions/csa 301
-/cad/free-questions/* /practice-questions/cad/:splat 301
-/cad/free-questions /practice-questions/cad 301
-/cis-df/free-questions/* /practice-questions/cis-df/:splat 301
-/cis-df/free-questions /practice-questions/cis-df 301
-
-# Redirect removed pages
-/glossary/* /certifications 301
-/glossary /certifications 301
-/learn/* /certifications 301
-/learn /certifications 301
-/delta/* /certifications 301
-/delta /certifications 301
+# Base practice-questions page redirect
+/practice-questions/csa /csa/practice-questions 301
+/practice-questions/cad /cad/practice-questions 301
+/practice-questions/cis-df /cis-df/practice-questions 301
+/practice-questions/cis-itsm /cis-itsm/practice-questions 301
+/practice-questions/cis-discovery /cis-discovery/practice-questions 301
+/practice-questions/cis-csm /cis-csm/practice-questions 301
+/practice-questions/cis-ham /cis-ham/practice-questions 301
+/practice-questions/cis-hr /cis-hr/practice-questions 301
+/practice-questions/cis-rc /cis-rc/practice-questions 301
+/practice-questions/cis-sam /cis-sam/practice-questions 301
+/practice-questions/cis-sir /cis-sir/practice-questions 301
+/practice-questions/cis-sm /cis-sm/practice-questions 301
+/practice-questions/cis-spm /cis-spm/practice-questions 301
+/practice-questions/cis-sp /cis-sp/practice-questions 301
+/practice-questions/cis-tprm /cis-tprm/practice-questions 301
+/practice-questions/cis-vr /cis-vr/practice-questions 301
+/practice-questions/cis-em /cis-em/practice-questions 301
+/practice-questions/cis-fsm /cis-fsm/practice-questions 301
+/practice-questions/cis-pa /cis-pa/practice-questions 301
+/practice-questions/cpoa /cpoa/practice-questions 301
+/practice-questions/cta /cta/practice-questions 301

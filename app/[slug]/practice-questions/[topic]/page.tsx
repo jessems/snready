@@ -15,20 +15,20 @@ import { CheckoutButton } from "@/components/CheckoutButton";
 import { QuestionsWithPaywall } from "@/components/QuestionsWithPaywall";
 
 interface PageProps {
-  params: Promise<{ cert: string; topic: string }>;
+  params: Promise<{ slug: string; topic: string }>;
 }
 
 export async function generateStaticParams() {
   return getAllTopicSlugs().map(({ certification, topic }) => ({
-    cert: certification,
+    slug: certification,
     topic,
   }));
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { cert, topic: topicSlug } = await params;
-  const certification = getCertificationBySlug(cert);
-  const topic = getTopicBySlug(cert, topicSlug);
+  const { slug, topic: topicSlug } = await params;
+  const certification = getCertificationBySlug(slug);
+  const topic = getTopicBySlug(slug, topicSlug);
 
   if (!certification || !topic) {
     return { title: "Topic Not Found" };
@@ -48,7 +48,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       `ServiceNow ${certification.name} ${topic.name}`,
     ],
     alternates: {
-      canonical: `/practice-questions/${cert}/${topicSlug}`,
+      canonical: `/${slug}/practice-questions/${topicSlug}`,
     },
     openGraph: {
       title: `Free ${certification.name} ${topic.name} Questions — Pass Your Exam`,
@@ -58,18 +58,18 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export default async function TopicQuestionsPage({ params }: PageProps) {
-  const { cert, topic: topicSlug } = await params;
-  const certification = getCertificationBySlug(cert);
-  const topic = getTopicBySlug(cert, topicSlug);
+  const { slug, topic: topicSlug } = await params;
+  const certification = getCertificationBySlug(slug);
+  const topic = getTopicBySlug(slug, topicSlug);
 
   if (!certification || !topic) {
     notFound();
   }
 
-  const allQuestions = await getQuestionsForTopic(cert, topicSlug);
-  const freeQuestions = await getFreeQuestionsForTopic(cert, topicSlug);
+  const allQuestions = await getQuestionsForTopic(slug, topicSlug);
+  const freeQuestions = await getFreeQuestionsForTopic(slug, topicSlug);
   const premiumQuestions = allQuestions.slice(freeQuestions.length);
-  const allTopics = getTopicsForCertification(cert);
+  const allTopics = getTopicsForCertification(slug);
 
   // JSON-LD structured data for FAQ (only use free questions for SEO)
   const faqJsonLd = {
@@ -87,7 +87,7 @@ export default async function TopicQuestionsPage({ params }: PageProps) {
 
   // JSON-LD structured data - Breadcrumb schema
   const breadcrumbJsonLd = generateBreadcrumbJsonLd(
-    breadcrumbs.topic(certification.name, cert, topic.name, topicSlug)
+    breadcrumbs.topic(certification.name, slug, topic.name, topicSlug)
   );
 
   return (
@@ -111,7 +111,7 @@ export default async function TopicQuestionsPage({ params }: PageProps) {
               </Link>
               <span>/</span>
               <Link
-                href={`/${cert}`}
+                href={`/${slug}`}
                 className="hover:text-zinc-700 dark:hover:text-zinc-300"
               >
                 {certification.name}
@@ -129,7 +129,7 @@ export default async function TopicQuestionsPage({ params }: PageProps) {
               <div>
                 <div className="flex items-center gap-2">
                   <Link
-                    href={`/${cert}`}
+                    href={`/${slug}`}
                     className="text-sm font-medium text-emerald-600 hover:text-emerald-700"
                   >
                     {certification.name} Certification
@@ -150,7 +150,7 @@ export default async function TopicQuestionsPage({ params }: PageProps) {
               </div>
               <div className="flex flex-col gap-2">
                 <Link
-                  href={`/practice-questions/${cert}`}
+                  href={`/${slug}/practice-questions`}
                   className="inline-flex h-10 items-center justify-center rounded-lg bg-emerald-600 px-6 text-sm font-medium text-white transition-colors hover:bg-emerald-700"
                 >
                   All {certification.name} Questions
@@ -189,7 +189,7 @@ export default async function TopicQuestionsPage({ params }: PageProps) {
                     Questions for this topic are coming soon!
                   </p>
                   <Link
-                    href={`/${cert}`}
+                    href={`/${slug}`}
                     className="mt-4 inline-flex text-emerald-600 hover:text-emerald-700"
                   >
                     Explore other {certification.name} topics →
@@ -230,7 +230,7 @@ export default async function TopicQuestionsPage({ params }: PageProps) {
                     .map((t) => (
                       <li key={t.slug}>
                         <Link
-                          href={`/practice-questions/${cert}/${t.slug}`}
+                          href={`/${slug}/practice-questions/${t.slug}`}
                           className="flex items-center justify-between text-sm text-zinc-600 hover:text-emerald-600 dark:text-zinc-400"
                         >
                           <span>{t.name}</span>
@@ -242,7 +242,7 @@ export default async function TopicQuestionsPage({ params }: PageProps) {
                     ))}
                 </ul>
                 <Link
-                  href={`/${cert}`}
+                  href={`/${slug}`}
                   className="mt-4 inline-flex text-sm text-emerald-600 hover:text-emerald-700"
                 >
                   View all topics →
