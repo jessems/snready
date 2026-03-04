@@ -653,6 +653,491 @@
         "release": "Xanadu",
         "reviewed": false
       }
+    },
+    {
+      "id": "cis-sam-software-compliance-809",
+      "certification": "cis-sam",
+      "topic": "software-compliance",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What is the default frequency for the software reconciliation scheduled job?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Daily"
+        },
+        {
+          "id": "b",
+          "text": "Weekly"
+        },
+        {
+          "id": "c",
+          "text": "Monthly"
+        },
+        {
+          "id": "d",
+          "text": "On-demand only"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "Reconciliation is a scheduled job that runs at a specified frequency, with the default being weekly. It can also be run on demand for specific or all publishers, groups, and subgroups.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Daily is not the default; weekly is the default frequency.",
+            "reference": "docs.servicenow.com/c_SAMReconciliation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Monthly would be too infrequent for accurate compliance tracking.",
+            "reference": "docs.servicenow.com/c_SAMReconciliation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Reconciliation has a scheduled job by default (weekly), though it can also be run on demand.",
+            "reference": "docs.servicenow.com/c_SAMReconciliation"
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/c_SAMReconciliation"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "docs",
+        "path": "c_SAMReconciliation.md",
+        "excerpt": "Reconciliation is a scheduled job that is run at a specified frequency (default is weekly). It can also be run on demand for specific or all publishers, groups, and subgroups."
+      },
+      "labels": {
+        "certification": "cis-sam",
+        "domain": "Software Compliance Management",
+        "domainSlug": "software-compliance",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Reconciliation"
+        ],
+        "tags": [
+          "reconciliation",
+          "scheduled-job",
+          "frequency"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-04T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sam-software-compliance-810",
+      "certification": "cis-sam",
+      "topic": "software-compliance",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_select",
+      "question": "Which grouping values can be used for software reconciliation? (Choose three.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Country"
+        },
+        {
+          "id": "b",
+          "text": "Department"
+        },
+        {
+          "id": "c",
+          "text": "Hardware model"
+        },
+        {
+          "id": "d",
+          "text": "Cost center"
+        },
+        {
+          "id": "e",
+          "text": "Network segment"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b",
+        "d"
+      ],
+      "selectCount": 3,
+      "isNegative": false,
+      "explanation": {
+        "correct": "Group and subgroup values for reconciliation include country, department, company, region, or cost center. These properties can be set in Software Asset > Administration > Properties.",
+        "wrongAnswers": [
+          {
+            "choiceId": "c",
+            "explanation": "Hardware model is not a valid reconciliation grouping value.",
+            "reference": "docs.servicenow.com/c_SAMReconciliation"
+          },
+          {
+            "choiceId": "e",
+            "explanation": "Network segment is not used for software reconciliation grouping.",
+            "reference": "docs.servicenow.com/c_SAMReconciliation"
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/c_SAMReconciliation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "c_SAMReconciliation.md",
+        "excerpt": "Group and subgroup values include country, department, company, region, or cost center. Default group and subgroup properties can be set in Software Asset > Administration > Properties."
+      },
+      "labels": {
+        "certification": "cis-sam",
+        "domain": "Software Compliance Management",
+        "domainSlug": "software-compliance",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Reconciliation"
+        ],
+        "tags": [
+          "reconciliation",
+          "grouping",
+          "properties"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-04T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sam-software-compliance-811",
+      "certification": "cis-sam",
+      "topic": "software-compliance",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which license type requires linkage to a base perpetual license for SAM to reconcile it properly?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Subscription license"
+        },
+        {
+          "id": "b",
+          "text": "Perpetual license"
+        },
+        {
+          "id": "c",
+          "text": "Software Assurance or Maintenance entitlement"
+        },
+        {
+          "id": "d",
+          "text": "Upgrade license"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "Software Assurance (Microsoft) and Maintenance (non-Microsoft) entitlements must be linked to a base perpetual license to activate the entitlements. SAM does not reconcile these entitlements unless they are related to base perpetual licenses.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Subscription licenses work independently based on subscription portal data.",
+            "reference": "docs.servicenow.com/license-types-impact-reconciliation"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "Perpetual licenses are standalone and do not require linking to other licenses.",
+            "reference": "docs.servicenow.com/license-types-impact-reconciliation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Upgrade licenses allow edition upgrades but do not specifically require perpetual license linkage for reconciliation.",
+            "reference": "docs.servicenow.com/license-types-impact-reconciliation"
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/license-types-impact-reconciliation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "license-types-impact-reconciliation.md",
+        "excerpt": "Software Assurance: Must be linked to a base perpetual license to activate the entitlements. Software Asset Management does not reconcile software assurance entitlements unless they are linked to base perpetual licenses."
+      },
+      "labels": {
+        "certification": "cis-sam",
+        "domain": "Software Compliance Management",
+        "domainSlug": "software-compliance",
+        "domainPercentage": 30,
+        "subtopics": [
+          "License types"
+        ],
+        "tags": [
+          "license",
+          "software-assurance",
+          "perpetual",
+          "reconciliation"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-04T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sam-software-compliance-812",
+      "certification": "cis-sam",
+      "topic": "software-compliance",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "An organization has a Perpetual + Software Assurance license for Microsoft SQL Server. What benefit is automatically applied by SAM during reconciliation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Automatic license key generation"
+        },
+        {
+          "id": "b",
+          "text": "Software Assurance benefits including unlimited virtualization for Datacenter editions"
+        },
+        {
+          "id": "c",
+          "text": "Free technical support from ServiceNow"
+        },
+        {
+          "id": "d",
+          "text": "Automatic software uninstallation on non-compliant devices"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "Software Asset Management automatically applies Software Assurance benefits for Perpetual + Software Assurance licenses. Benefits include new version rights, license mobility, and unlimited virtualization for products like Windows Server Datacenter Edition.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "SAM does not generate license keys; keys come from the software publisher.",
+            "reference": "docs.servicenow.com/license-types-impact-reconciliation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Technical support comes from Microsoft, not ServiceNow.",
+            "reference": "docs.servicenow.com/license-types-impact-reconciliation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Automatic uninstallation requires configuring reclamation rules and Client Software Distribution.",
+            "reference": "docs.servicenow.com/license-types-impact-reconciliation"
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/license-types-impact-reconciliation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "license-types-impact-reconciliation.md",
+        "excerpt": "Perpetual + Software Assurance: Software Asset Management automatically applies the Software Assurance benefits. Benefits include unlimited virtualization: License the physical host for products such as Windows Server Datacenter Edition."
+      },
+      "labels": {
+        "certification": "cis-sam",
+        "domain": "Software Compliance Management",
+        "domainSlug": "software-compliance",
+        "domainPercentage": 30,
+        "subtopics": [
+          "License types"
+        ],
+        "tags": [
+          "software-assurance",
+          "microsoft",
+          "virtualization",
+          "benefits"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-04T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sam-software-compliance-813",
+      "certification": "cis-sam",
+      "topic": "software-compliance",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What role is required to view software reconciliation results in SAM?",
+      "options": [
+        {
+          "id": "a",
+          "text": "sam_admin"
+        },
+        {
+          "id": "b",
+          "text": "sam_user"
+        },
+        {
+          "id": "c",
+          "text": "sam_developer"
+        },
+        {
+          "id": "d",
+          "text": "itil"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "Users with the sam_user role can view reconciliation results. This role provides read access to SAM data including compliance status and license positions.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "sam_admin has additional administrative capabilities but sam_user is sufficient for viewing results.",
+            "reference": "docs.servicenow.com/c_SAMReconciliation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "sam_developer is for creating custom metrics and scripts, not required for viewing results.",
+            "reference": "docs.servicenow.com/c_SAMReconciliation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The ITIL role is for IT Service Management, not specifically for SAM reconciliation access.",
+            "reference": "docs.servicenow.com/c_SAMReconciliation"
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/c_SAMReconciliation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "c_SAMReconciliation.md",
+        "excerpt": "Users with the sam_user role can view reconciliation results."
+      },
+      "labels": {
+        "certification": "cis-sam",
+        "domain": "Software Compliance Management",
+        "domainSlug": "software-compliance",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Roles"
+        ],
+        "tags": [
+          "roles",
+          "sam_user",
+          "access",
+          "reconciliation"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-04T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sam-software-compliance-814",
+      "certification": "cis-sam",
+      "topic": "software-compliance",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which navigation path accesses software reconciliation results in the Core UI?",
+      "options": [
+        {
+          "id": "a",
+          "text": "All > Software Asset > Reports > Reconciliation"
+        },
+        {
+          "id": "b",
+          "text": "All > Software Asset > Reconciliation > Historical Results"
+        },
+        {
+          "id": "c",
+          "text": "All > CMDB > Software > Compliance"
+        },
+        {
+          "id": "d",
+          "text": "All > License Management > Results"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "In Core UI, navigate to All > Software Asset > Reconciliation > Historical Results to view reconciliation results. Select a reconciliation result, then select a Product Results record to view details.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Reports is a different module; reconciliation results are under the Reconciliation menu.",
+            "reference": "docs.servicenow.com/software-reconciliation-results"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "CMDB does not contain the reconciliation results; they are in Software Asset.",
+            "reference": "docs.servicenow.com/software-reconciliation-results"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "There is no License Management top-level module; use Software Asset.",
+            "reference": "docs.servicenow.com/software-reconciliation-results"
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/software-reconciliation-results"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "software-reconciliation-results.md",
+        "excerpt": "Core UI: Navigate to All > Software Asset > Reconciliation > Historical Results. Select a reconciliation result. On the Reconciliation Result form, select a Product Results record."
+      },
+      "labels": {
+        "certification": "cis-sam",
+        "domain": "Software Compliance Management",
+        "domainSlug": "software-compliance",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Navigation"
+        ],
+        "tags": [
+          "navigation",
+          "core-ui",
+          "reconciliation",
+          "results"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-04T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     }
   ]
 }
