@@ -192,6 +192,11 @@ async function main() {
     const jsonFiles = files.filter((f) => f.endsWith(".json"));
 
     for (const file of jsonFiles) {
+      // Skip delta exam files - they use a simplified schema
+      if (file.startsWith("delta-")) {
+        console.log(`⏭️  ${cert}/${file} (delta exam - skipped)`);
+        continue;
+      }
       const filePath = path.join(certPath, file);
       totalFiles++;
 
