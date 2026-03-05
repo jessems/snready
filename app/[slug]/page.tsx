@@ -194,7 +194,7 @@ export default async function CertificationPage({ params }: PageProps) {
         {/* Delta Exam Banner */}
         {hasDeltaExam && isWindowOpen && daysLeft !== null && (
           <Link
-            href={`/delta/${slug}-${cert.deltaExam?.currentRelease?.toLowerCase()}`}
+            href={`/${slug}/delta/${cert.deltaExam?.currentRelease?.toLowerCase()}`}
             className={`block py-3 text-center text-sm font-medium transition-colors ${
               deltaUrgency === "urgent"
                 ? "bg-red-600 text-white hover:bg-red-700"

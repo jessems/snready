@@ -8,46 +8,31 @@ import {
   getAllDeltaSlugs,
   getTopicsForCertification,
   getTotalQuestionCount,
+  getTotalFreeQuestionCount,
 } from "@/lib/data";
 import { generateBreadcrumbJsonLd } from "@/lib/breadcrumbs";
 import deltaTipsData from "@/data/delta-tips.json";
 
 interface PageProps {
-  params: Promise<{ slug: string }>;
-}
-
-// Parse slug like "csa-zurich" into { certSlug: "csa", release: "zurich" }
-function parseSlug(slug: string): { certSlug: string; release: string } | null {
-  const parts = slug.split("-");
-  if (parts.length < 2) return null;
-
-  // Handle multi-part cert slugs like "cis-itsm-zurich"
-  const release = parts[parts.length - 1];
-  const certSlug = parts.slice(0, -1).join("-");
-
-  return { certSlug, release };
+  params: Promise<{ slug: string; release: string }>;
 }
 
 export async function generateStaticParams() {
   return getAllDeltaSlugs().map(({ certification, release }) => ({
-    slug: `${certification}-${release}`,
+    slug: certification,
+    release: release,
   }));
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { slug } = await params;
-  const parsed = parseSlug(slug);
+  const { slug, release: releaseParam } = await params;
+  const cert = getCertificationBySlug(slug);
 
-  if (!parsed) {
-    return { title: "Delta Exam Not Found" };
-  }
-
-  const cert = getCertificationBySlug(parsed.certSlug);
   if (!cert) {
     return { title: "Delta Exam Not Found" };
   }
 
-  const release = parsed.release.charAt(0).toUpperCase() + parsed.release.slice(1);
+  const release = releaseParam.charAt(0).toUpperCase() + releaseParam.slice(1);
 
   return {
     title: `${cert.name} ${release} Delta Exam - Tips, Study Guide & Practice Questions`,
@@ -62,7 +47,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       "delta exam study guide",
     ],
     alternates: {
-      canonical: `/delta/${slug}`,
+      canonical: `/${slug}/delta/${releaseParam}`,
     },
     openGraph: {
       title: `${cert.name} ${release} Delta Exam | SNReady`,
@@ -72,33 +57,29 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export default async function DeltaExamPage({ params }: PageProps) {
-  const { slug } = await params;
-  const parsed = parseSlug(slug);
+  const { slug, release: releaseParam } = await params;
+  const cert = getCertificationBySlug(slug);
 
-  if (!parsed) {
-    notFound();
-  }
-
-  const cert = getCertificationBySlug(parsed.certSlug);
   if (!cert || !cert.deltaExam) {
     notFound();
   }
 
-  const release = parsed.release.charAt(0).toUpperCase() + parsed.release.slice(1);
+  const release = releaseParam.charAt(0).toUpperCase() + releaseParam.slice(1);
   const daysLeft = getDaysUntilDeltaDeadline(cert);
   const isOpen = isDeltaWindowOpen(cert);
-  const topics = getTopicsForCertification(parsed.certSlug);
-  const totalQuestions = getTotalQuestionCount(parsed.certSlug);
+  const topics = getTopicsForCertification(slug);
+  const totalQuestions = getTotalQuestionCount(slug);
+  const freeQuestions = getTotalFreeQuestionCount(slug);
 
   // Get delta tips for this certification
   const generalTips = deltaTipsData.general;
-  const certTips = deltaTipsData.certifications[parsed.certSlug as keyof typeof deltaTipsData.certifications];
+  const certTips = deltaTipsData.certifications[slug as keyof typeof deltaTipsData.certifications];
 
   // Breadcrumb JSON-LD
   const breadcrumbJsonLd = generateBreadcrumbJsonLd([
     { name: "Home", url: "/" },
-    { name: cert.name, url: `/${parsed.certSlug}` },
-    { name: `${release} Delta Exam`, url: `/delta/${slug}` },
+    { name: cert.name, url: `/${slug}` },
+    { name: `${release} Delta Exam`, url: `/${slug}/delta/${releaseParam}` },
   ]);
 
   // FAQ Schema
@@ -160,7 +141,7 @@ export default async function DeltaExamPage({ params }: PageProps) {
             <nav className="mb-6 text-sm text-zinc-500">
               <Link href="/" className="hover:text-violet-600">Home</Link>
               <span className="mx-2">/</span>
-              <Link href={`/${parsed.certSlug}`} className="hover:text-violet-600">{cert.name}</Link>
+              <Link href={`/${slug}`} className="hover:text-violet-600">{cert.name}</Link>
               <span className="mx-2">/</span>
               <span className="text-zinc-900 dark:text-zinc-100">Delta Exam</span>
             </nav>
@@ -211,6 +192,28 @@ export default async function DeltaExamPage({ params }: PageProps) {
                 <div className="text-2xl font-bold text-emerald-600">Open</div>
                 <div className="text-sm text-zinc-500">Book Exam</div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* What We Offer Banner */}
+        <section className="border-b border-zinc-200 bg-violet-50 py-6 dark:border-zinc-800 dark:bg-violet-950/30">
+          <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+            <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
+              <div className="text-center sm:text-left">
+                <p className="font-semibold text-violet-900 dark:text-violet-100">
+                  📚 While you&apos;re here: We have {totalQuestions} {cert.name} practice questions
+                </p>
+                <p className="text-sm text-violet-700 dark:text-violet-300">
+                  {freeQuestions} free questions • Timed mock exams • Detailed explanations
+                </p>
+              </div>
+              <Link
+                href={`/${slug}/practice-questions`}
+                className="inline-flex items-center rounded-lg bg-violet-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-violet-700"
+              >
+                Try Free Questions →
+              </Link>
             </div>
           </div>
         </section>
@@ -368,18 +371,18 @@ export default async function DeltaExamPage({ params }: PageProps) {
           <section className="py-12">
             <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
               <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-50">
-                Practice Questions
+                Brush Up Before Your Delta
               </h2>
               <p className="mt-2 text-zinc-600 dark:text-zinc-400">
-                While delta exams focus on new features, knowing the fundamentals helps.
-                Practice with our {totalQuestions} {cert.name} questions.
+                Delta exams focus on new features, but knowing the fundamentals helps.
+                We have {totalQuestions} {cert.name} practice questions ready for you.
               </p>
 
               <div className="mt-6 grid gap-4 sm:grid-cols-2">
                 {topics.slice(0, 4).map((topic) => (
                   <Link
                     key={topic.slug}
-                    href={`/${parsed.certSlug}/practice-questions/${topic.slug}`}
+                    href={`/${slug}/practice-questions/${topic.slug}`}
                     className="rounded-lg border border-zinc-200 bg-white p-4 transition-colors hover:border-violet-300 hover:bg-violet-50 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-violet-700 dark:hover:bg-violet-950"
                   >
                     <h3 className="font-semibold text-zinc-900 dark:text-zinc-100">
@@ -394,21 +397,86 @@ export default async function DeltaExamPage({ params }: PageProps) {
 
               <div className="mt-6 flex flex-col gap-3 sm:flex-row">
                 <Link
-                  href={`/${parsed.certSlug}/practice-questions`}
+                  href={`/${slug}/practice-questions`}
                   className="inline-flex items-center justify-center rounded-lg bg-violet-600 px-6 py-3 font-medium text-white transition-colors hover:bg-violet-700"
                 >
                   All {cert.name} Practice Questions
                 </Link>
                 <Link
-                  href={`/${parsed.certSlug}/mock-exam`}
+                  href={`/${slug}/mock-exam`}
                   className="inline-flex items-center justify-center rounded-lg border border-zinc-300 bg-white px-6 py-3 font-medium text-zinc-700 transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-300"
                 >
-                  Take Mock Exam
+                  Take Timed Mock Exam
                 </Link>
               </div>
             </div>
           </section>
         )}
+
+        {/* What SNReady Offers */}
+        <section className="border-t border-zinc-200 bg-gradient-to-b from-violet-50 to-white py-12 dark:border-zinc-800 dark:from-violet-950/30 dark:to-zinc-950">
+          <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+            <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-50">
+              More Than Just Delta Prep
+            </h2>
+            <p className="mt-2 text-zinc-600 dark:text-zinc-400">
+              SNReady is your complete ServiceNow certification companion.
+            </p>
+
+            <div className="mt-8 grid gap-6 sm:grid-cols-3">
+              <div className="rounded-lg bg-white p-6 shadow-sm ring-1 ring-zinc-200 dark:bg-zinc-900 dark:ring-zinc-800">
+                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-violet-100 dark:bg-violet-950">
+                  <svg className="h-6 w-6 text-violet-600 dark:text-violet-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                  </svg>
+                </div>
+                <h3 className="mt-4 font-semibold text-zinc-900 dark:text-zinc-100">
+                  {totalQuestions}+ Practice Questions
+                </h3>
+                <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+                  Realistic questions with detailed explanations. {freeQuestions} free to try.
+                </p>
+              </div>
+
+              <div className="rounded-lg bg-white p-6 shadow-sm ring-1 ring-zinc-200 dark:bg-zinc-900 dark:ring-zinc-800">
+                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-emerald-100 dark:bg-emerald-950">
+                  <svg className="h-6 w-6 text-emerald-600 dark:text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <h3 className="mt-4 font-semibold text-zinc-900 dark:text-zinc-100">
+                  Timed Mock Exams
+                </h3>
+                <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+                  Simulate real exam conditions with our full-length practice tests.
+                </p>
+              </div>
+
+              <div className="rounded-lg bg-white p-6 shadow-sm ring-1 ring-zinc-200 dark:bg-zinc-900 dark:ring-zinc-800">
+                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-blue-100 dark:bg-blue-950">
+                  <svg className="h-6 w-6 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                  </svg>
+                </div>
+                <h3 className="mt-4 font-semibold text-zinc-900 dark:text-zinc-100">
+                  20+ Certifications
+                </h3>
+                <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+                  CSA, CAD, CIS-ITSM, CIS-DF, and more. All in one place.
+                </p>
+              </div>
+            </div>
+
+            <div className="mt-8 text-center">
+              <Link
+                href="/pricing"
+                className="text-violet-600 hover:text-violet-700 dark:text-violet-400"
+              >
+                View pricing →
+              </Link>
+            </div>
+          </div>
+        </section>
 
         {/* Resources Section */}
         <section className="border-t border-zinc-200 bg-zinc-50 py-12 dark:border-zinc-800 dark:bg-zinc-900">
@@ -419,7 +487,7 @@ export default async function DeltaExamPage({ params }: PageProps) {
 
             <div className="mt-6 grid gap-4 sm:grid-cols-2">
               <a
-                href={cert.deltaExam.studyGuideUrl || `https://nowlearning.servicenow.com/lxp/en/credentials/${parsed.certSlug}-delta-exam-study-guide`}
+                href={cert.deltaExam.studyGuideUrl || `https://nowlearning.servicenow.com/lxp/en/credentials/${slug}-delta-exam-study-guide`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-4 rounded-lg border border-zinc-200 bg-white p-4 transition-colors hover:border-blue-300 dark:border-zinc-800 dark:bg-zinc-950"
@@ -478,7 +546,7 @@ export default async function DeltaExamPage({ params }: PageProps) {
               )}
 
               <Link
-                href={`/${parsed.certSlug}`}
+                href={`/${slug}`}
                 className="flex items-center gap-4 rounded-lg border border-zinc-200 bg-white p-4 transition-colors hover:border-violet-300 dark:border-zinc-800 dark:bg-zinc-950"
               >
                 <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-zinc-100 dark:bg-zinc-800">
@@ -521,7 +589,7 @@ export default async function DeltaExamPage({ params }: PageProps) {
                 Take Delta Exam →
               </a>
               <Link
-                href={`/${parsed.certSlug}/practice-questions`}
+                href={`/${slug}/practice-questions`}
                 className="inline-flex h-12 items-center justify-center rounded-lg border border-white/30 px-8 text-base font-medium text-white transition-colors hover:bg-white/10"
               >
                 Practice First

@@ -159,7 +159,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // === Delta exam pages ===
   const deltaSlugs = getAllDeltaSlugs();
   const deltaPages: MetadataRoute.Sitemap = deltaSlugs.map(({ certification, release }) => ({
-    url: `${BASE_URL}/delta/${certification}-${release}`,
+    url: `${BASE_URL}/${certification}/delta/${release}`,
     lastModified: new Date(),
     changeFrequency: "monthly" as const,
     priority: 0.85,
