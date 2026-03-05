@@ -1276,6 +1276,354 @@
         "release": "Xanadu",
         "reviewed": false
       }
+    },
+    {
+      "id": "cis-sp-process-separation-017",
+      "certification": "cis-sp",
+      "topic": "process-separation",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "How can business rules be made domain-specific in a domain-separated instance?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Business rules cannot be domain-specific"
+        },
+        {
+          "id": "b",
+          "text": "By setting the domain field on the business rule record to the target domain"
+        },
+        {
+          "id": "c",
+          "text": "By prefixing the business rule name with the domain name"
+        },
+        {
+          "id": "d",
+          "text": "By creating separate tables for each domain"
+        }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "Business rules can be made domain-specific by setting the domain (sys_domain) field on the business rule record. When a business rule is associated with a specific domain, it only executes when the record operation occurs within that domain.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Business rules CAN be made domain-specific through the domain field"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Naming conventions don't affect domain separation behavior"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Domain separation works on records within tables, not by creating separate tables"
+          }
+        ]
+      },
+      "source": {
+        "type": "exam-blueprint",
+        "excerpt": "Business rules can be made domain-specific by setting the sys_domain field"
+      },
+      "labels": {
+        "domain": "Process Separation",
+        "subtopics": ["Business Rules", "Domain-specific configuration"],
+        "tags": ["business-rules", "domain-specific", "process-separation"]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": false
+    },
+    {
+      "id": "cis-sp-process-separation-018",
+      "certification": "cis-sp",
+      "topic": "process-separation",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_select",
+      "question": "Which ServiceNow elements can be made domain-specific? (Choose two.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Workflows"
+        },
+        {
+          "id": "b",
+          "text": "Instance URL"
+        },
+        {
+          "id": "c",
+          "text": "Catalog items"
+        },
+        {
+          "id": "d",
+          "text": "ServiceNow release version"
+        }
+      ],
+      "correctAnswers": ["a", "c"],
+      "selectCount": 2,
+      "explanation": {
+        "correct": "Workflows and catalog items can both be made domain-specific. Workflows can have domain assignments to control which domains they execute in. Catalog items can be assigned to specific domains to limit visibility and access.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Instance URL is a global setting, not domain-separable"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "ServiceNow release version applies to the entire instance"
+          }
+        ]
+      },
+      "source": {
+        "type": "exam-blueprint",
+        "excerpt": "Workflows and catalog items support domain separation"
+      },
+      "labels": {
+        "domain": "Process Separation",
+        "subtopics": ["Workflows", "Service Catalog"],
+        "tags": ["workflows", "catalog", "domain-specific"]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": false
+    },
+    {
+      "id": "cis-sp-process-separation-019",
+      "certification": "cis-sp",
+      "topic": "process-separation",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A managed service provider needs different approval processes for incidents based on customer domain. What is the best approach?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Create one global approval workflow for all domains"
+        },
+        {
+          "id": "b",
+          "text": "Create domain-specific approval workflows for each customer"
+        },
+        {
+          "id": "c",
+          "text": "Disable approvals for all customers"
+        },
+        {
+          "id": "d",
+          "text": "Use email-based approvals only"
+        }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "Creating domain-specific approval workflows allows each customer domain to have customized approval processes that meet their unique requirements, while maintaining separation between customers.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "A single global workflow cannot accommodate different customer requirements"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Disabling approvals doesn't meet business requirements"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Email-based approvals alone don't address domain separation needs"
+          }
+        ]
+      },
+      "source": {
+        "type": "exam-blueprint",
+        "excerpt": "Domain-specific workflows allow customized processes per tenant"
+      },
+      "labels": {
+        "domain": "Process Separation",
+        "subtopics": ["Approval Workflows", "Multi-tenancy"],
+        "tags": ["approvals", "workflows", "msp"]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": false
+    },
+    {
+      "id": "cis-sp-process-separation-020",
+      "certification": "cis-sp",
+      "topic": "process-separation",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "When both a global business rule and a domain-specific business rule exist with the same conditions, what happens?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Only the global business rule executes"
+        },
+        {
+          "id": "b",
+          "text": "Only the domain-specific business rule executes"
+        },
+        {
+          "id": "c",
+          "text": "Both execute, with domain-specific running after global"
+        },
+        {
+          "id": "d",
+          "text": "The system throws an error"
+        }
+      ],
+      "correctAnswers": ["c"],
+      "explanation": {
+        "correct": "When both global and domain-specific business rules exist, both execute. Global rules execute first, followed by domain-specific rules. This allows for base functionality with domain customizations on top.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Global rules don't prevent domain-specific rules from executing"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "Domain-specific rules don't override global rules entirely"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Multiple matching rules don't cause errors"
+          }
+        ]
+      },
+      "source": {
+        "type": "exam-blueprint",
+        "excerpt": "Global and domain-specific rules both execute in order"
+      },
+      "labels": {
+        "domain": "Process Separation",
+        "subtopics": ["Business Rules", "Execution Order"],
+        "tags": ["business-rules", "execution", "global"]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": false
+    },
+    {
+      "id": "cis-sp-process-separation-021",
+      "certification": "cis-sp",
+      "topic": "process-separation",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which field on a workflow record controls its domain assignment?",
+      "options": [
+        {
+          "id": "a",
+          "text": "sys_domain"
+        },
+        {
+          "id": "b",
+          "text": "workflow_domain"
+        },
+        {
+          "id": "c",
+          "text": "domain_id"
+        },
+        {
+          "id": "d",
+          "text": "domain_name"
+        }
+      ],
+      "correctAnswers": ["a"],
+      "explanation": {
+        "correct": "The sys_domain field controls domain assignment for workflows and most other domain-separated records. This standard field is used throughout ServiceNow for domain separation.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "workflow_domain is not a standard ServiceNow field"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "domain_id is not the correct field name"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "domain_name is not the field that controls assignment"
+          }
+        ]
+      },
+      "source": {
+        "type": "exam-blueprint",
+        "excerpt": "sys_domain field controls domain assignment"
+      },
+      "labels": {
+        "domain": "Process Separation",
+        "subtopics": ["Domain Fields", "Workflows"],
+        "tags": ["sys_domain", "workflows", "fields"]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": false
+    },
+    {
+      "id": "cis-sp-process-separation-022",
+      "certification": "cis-sp",
+      "topic": "process-separation",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_select",
+      "question": "Which SLA-related elements can be domain-separated? (Choose two.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "SLA Definitions"
+        },
+        {
+          "id": "b",
+          "text": "SLA Workflow execution"
+        },
+        {
+          "id": "c",
+          "text": "Global SLA engine"
+        },
+        {
+          "id": "d",
+          "text": "SLA calculations for task records"
+        }
+      ],
+      "correctAnswers": ["a", "d"],
+      "selectCount": 2,
+      "explanation": {
+        "correct": "SLA Definitions can be made domain-specific to define different service levels per customer. SLA calculations apply to task records based on the record's domain, ensuring correct SLA tracking per tenant.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "SLA Workflow is a global engine component"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The SLA engine itself is global, though its definitions and calculations can be domain-aware"
+          }
+        ]
+      },
+      "source": {
+        "type": "exam-blueprint",
+        "excerpt": "SLA definitions and calculations support domain separation"
+      },
+      "labels": {
+        "domain": "Process Separation",
+        "subtopics": ["SLA", "Domain Separation"],
+        "tags": ["sla", "domain-specific", "service-levels"]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": false
     }
   ]
 }
