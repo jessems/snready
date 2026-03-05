@@ -249,7 +249,7 @@ export default async function ReleasePage({ params }: PageProps) {
                           </div>
                           <div className="mt-4 flex gap-2">
                             <Link
-                              href={`/delta/${cert.slug}-${release.toLowerCase()}`}
+                              href={`/${cert.slug}/delta/${release.toLowerCase()}`}
                               className="inline-flex items-center rounded-md bg-blue-50 px-3 py-1.5 text-xs font-medium text-blue-700 transition-colors hover:bg-blue-100 dark:bg-blue-950 dark:text-blue-300"
                             >
                               Delta Exam
