@@ -162,6 +162,35 @@ export async function getQuestionsForTopic(
   }
 }
 
+// Delta exam questions (simplified format)
+interface DeltaQuestion {
+  id: string;
+  question: string;
+  type: "single" | "multiple";
+  options: string[];
+  correctAnswers: string[];
+  explanation: {
+    correct: string;
+    wrongAnswers?: Record<string, string>;
+  };
+  topic?: string;
+  source?: string;
+}
+
+export async function getDeltaQuestions(
+  certSlug: string,
+  release: string
+): Promise<DeltaQuestion[]> {
+  try {
+    const questionsModule = await import(
+      `@/data/questions/${certSlug}/delta-${release.toLowerCase()}.json`
+    );
+    return questionsModule.questions || [];
+  } catch {
+    return [];
+  }
+}
+
 // Free questions: 15 total per certification, distributed across topics
 export const FREE_QUESTIONS_PER_CERT = 15;
 
