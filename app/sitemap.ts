@@ -1,5 +1,5 @@
 import { MetadataRoute } from "next";
-import { getCertificationSlugs, getAllTopicSlugs } from "@/lib/data";
+import { getCertificationSlugs, getAllTopicSlugs, getAllDeltaSlugs } from "@/lib/data";
 import { getAllPosts } from "@/data/blog/posts";
 import { getAllComparisonSlugs } from "@/lib/comparisons";
 import { getAllCompetitorSlugs } from "@/data/competitor-comparisons";
@@ -156,6 +156,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })),
   ];
 
+  // === Delta exam pages ===
+  const deltaSlugs = getAllDeltaSlugs();
+  const deltaPages: MetadataRoute.Sitemap = deltaSlugs.map(({ certification, release }) => ({
+    url: `${BASE_URL}/delta/${certification}-${release}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.85,
+  }));
+
   // === Future: Individual question pages (Phase 3) ===
   // const questionIds = await getAllQuestionIds();
   // const individualQuestionPages = questionIds.map(...)
@@ -169,5 +178,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...comparePages,
     ...blogPages,
     ...competitorPages,
+    ...deltaPages,
   ];
 }
