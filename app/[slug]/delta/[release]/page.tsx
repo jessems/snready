@@ -13,7 +13,7 @@ import {
 } from "@/lib/data";
 import { generateBreadcrumbJsonLd } from "@/lib/breadcrumbs";
 import deltaTipsData from "@/data/delta-tips.json";
-import { DeltaQuestionCard, type DeltaQuestion } from "@/components/DeltaQuestionCard";
+import QuestionCard from "@/components/QuestionCard";
 
 interface PageProps {
   params: Promise<{ slug: string; release: string }>;
@@ -333,10 +333,10 @@ export default async function DeltaExamPage({ params }: PageProps) {
 
               <div className="mt-8 space-y-6">
                 {deltaQuestions.map((question, index) => (
-                  <DeltaQuestionCard
+                  <QuestionCard
                     key={question.id}
                     question={question}
-                    index={index}
+                    questionNumber={index + 1}
                   />
                 ))}
               </div>

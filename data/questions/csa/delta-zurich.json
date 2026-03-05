@@ -1,183 +1,372 @@
 {
   "certification": "csa",
-  "release": "zurich",
-  "type": "delta",
+  "topic": "delta-zurich",
   "questions": [
     {
       "id": "csa-delta-zurich-001",
-      "question": "In the Zurich release, what new capability allows developers to work in isolated environments and merge changes using Git?",
-      "type": "single",
+      "certification": "csa",
+      "topic": "delta-zurich",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What new Zurich application enables developers to work in isolated environments and merge code changes using Git without the risk of overwrites?",
       "options": [
-        "A. Update Set Batching",
-        "B. Developer Sandboxes",
-        "C. Instance Cloning",
-        "D. Application Scoping"
+        { "id": "a", "text": "Update Set Manager" },
+        { "id": "b", "text": "Developer Sandboxes" },
+        { "id": "c", "text": "Application Repository" },
+        { "id": "d", "text": "Instance Clone" }
       ],
-      "correctAnswers": ["B"],
+      "correctAnswers": ["b"],
       "explanation": {
-        "correct": "Developer Sandboxes are now generally available in Zurich, allowing each developer to spin up an isolated sandbox environment tied to the same base development instance. Sandboxes are integrated with Git for branching, commits, and merges.",
-        "wrongAnswers": {
-          "A": "Update Set Batching is not a new Zurich feature for isolated development.",
-          "C": "Instance Cloning creates full copies of instances, not isolated developer environments with Git integration.",
-          "D": "Application Scoping existed before Zurich and doesn't provide isolated development environments."
-        }
+        "correct": "Developer Sandboxes is a new application in the Zurich release that enables administrators and delegated developers to request, access, and manage individual sandboxes on top of the same underlying development instance. Developers can write and merge code and configuration changes without the risk of getting their changes overwritten. See: https://www.servicenow.com/docs/bundle/zurich-release-notes/page/release-notes/now-platform-app-engine/developer-sandboxes-rn.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Update Set Manager is used to manage update sets, not for isolated developer environments with Git integration.",
+            "reference": "https://www.servicenow.com/docs/bundle/zurich-release-notes/page/release-notes/now-platform-app-engine/developer-sandboxes-rn.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Application Repository stores applications but does not provide isolated development environments.",
+            "reference": "https://www.servicenow.com/docs/bundle/zurich-release-notes/page/release-notes/now-platform-app-engine/developer-sandboxes-rn.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Instance Clone creates full copies of instances, not isolated developer sandboxes with Git workflows.",
+            "reference": "https://www.servicenow.com/docs/bundle/zurich-release-notes/page/release-notes/now-platform-app-engine/developer-sandboxes-rn.html"
+          }
+        ]
       },
-      "topic": "developer-sandboxes",
-      "source": "Zurich Release Notes"
+      "references": ["Zurich Release Notes - Developer Sandboxes"],
+      "isFree": true,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "zurich-release-notes",
+          "section": "Developer Sandboxes",
+          "url": "https://www.servicenow.com/docs/bundle/zurich-release-notes/page/release-notes/now-platform-app-engine/developer-sandboxes-rn.html"
+        },
+        "path": "docs.servicenow.com/zurich-release-notes",
+        "excerpt": "Developer Sandboxes application enables your administrators and delegated developers to request, access, and manage the individual sandboxes on top of the same underlying development instance."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Platform Administration",
+        "domainSlug": "delta-zurich",
+        "domainPercentage": 100,
+        "subtopics": ["Developer Sandboxes", "Git Integration"],
+        "tags": ["zurich", "delta", "developer-sandboxes", "git"]
+      },
+      "meta": {
+        "generatedAt": "2026-03-05T05:30:00.000Z",
+        "version": "1.0",
+        "release": "Zurich",
+        "reviewed": false
+      }
     },
     {
       "id": "csa-delta-zurich-002",
-      "question": "Which Zurich feature enables ServiceNow to integrate with CI/CD systems like Jenkins or GitHub Actions for automated builds and deployments?",
-      "type": "single",
+      "certification": "csa",
+      "topic": "delta-zurich",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which new Zurich application provides access to external data from Snowflake, BigQuery, and Databricks without copying it to your ServiceNow instance?",
       "options": [
-        "A. Flow Designer Triggers",
-        "B. ReleaseOps",
-        "C. Build Agents",
-        "D. Update Set Pipelines"
+        { "id": "a", "text": "Data Import Manager" },
+        { "id": "b", "text": "External Data Connector" },
+        { "id": "c", "text": "Workflow Data Fabric Hub" },
+        { "id": "d", "text": "Integration Hub" }
       ],
-      "correctAnswers": ["C"],
+      "correctAnswers": ["c"],
       "explanation": {
-        "correct": "Build Agents in Zurich integrate ServiceNow apps and flows with CI/CD systems. They manage builds, tests, and deployments automatically, replacing manual update set promotion.",
-        "wrongAnswers": {
-          "A": "Flow Designer Triggers handle workflow automation, not CI/CD integration.",
-          "B": "ReleaseOps provides governance and release pipelines but Build Agents handle the actual CI/CD integration.",
-          "D": "Update Set Pipelines is not a Zurich feature name."
-        }
+        "correct": "Workflow Data Fabric Hub is a new application in the Zurich release that unifies data from across the enterprise, providing access to external data in real time without needing to copy it to your instance. It supports Snowflake, Google BigQuery, Amazon Redshift, Databricks, and Oracle. See: https://www.servicenow.com/docs/bundle/zurich-release-notes/page/release-notes/now-platform-app-engine/workflow-data-fabric-rn.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Data Import Manager is used for importing data into ServiceNow, not for accessing external data in real time without copying.",
+            "reference": "https://www.servicenow.com/docs/bundle/zurich-release-notes/page/release-notes/now-platform-app-engine/workflow-data-fabric-rn.html"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "External Data Connector is not the name of this Zurich feature. The correct name is Workflow Data Fabric Hub.",
+            "reference": "https://www.servicenow.com/docs/bundle/zurich-release-notes/page/release-notes/now-platform-app-engine/workflow-data-fabric-rn.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Integration Hub provides integration capabilities but is not the new Zurich application for federated external data access.",
+            "reference": "https://www.servicenow.com/docs/bundle/zurich-release-notes/page/release-notes/now-platform-app-engine/workflow-data-fabric-rn.html"
+          }
+        ]
       },
-      "topic": "build-agents",
-      "source": "Zurich Release Notes"
+      "references": ["Zurich Release Notes - Workflow Data Fabric"],
+      "isFree": true,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "zurich-release-notes",
+          "section": "Workflow Data Fabric",
+          "url": "https://www.servicenow.com/docs/bundle/zurich-release-notes/page/release-notes/now-platform-app-engine/workflow-data-fabric-rn.html"
+        },
+        "path": "docs.servicenow.com/zurich-release-notes",
+        "excerpt": "Workflow Data Fabric Hub application unifies data from across the enterprise, providing access to external data in real time without needing to copy it to your instance."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Platform Administration",
+        "domainSlug": "delta-zurich",
+        "domainPercentage": 100,
+        "subtopics": ["Workflow Data Fabric", "External Data"],
+        "tags": ["zurich", "delta", "workflow-data-fabric", "snowflake", "bigquery"]
+      },
+      "meta": {
+        "generatedAt": "2026-03-05T05:30:00.000Z",
+        "version": "1.0",
+        "release": "Zurich",
+        "reviewed": false
+      }
     },
     {
       "id": "csa-delta-zurich-003",
-      "question": "What new trigger type was added to Flow Designer in the Zurich release that allows external systems to initiate flows?",
-      "type": "single",
+      "certification": "csa",
+      "topic": "delta-zurich",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "In Zurich, which new Flow Designer capability allows you to define a schedule once and use it across multiple flows?",
       "options": [
-        "A. Scheduled Triggers",
-        "B. Record-based Triggers",
-        "C. External REST/Webhook Triggers",
-        "D. Email Triggers"
+        { "id": "a", "text": "Shared Flow Templates" },
+        { "id": "b", "text": "Reusable Scheduled Trigger" },
+        { "id": "c", "text": "Flow Schedule Library" },
+        { "id": "d", "text": "Trigger Inheritance" }
       ],
-      "correctAnswers": ["C"],
+      "correctAnswers": ["b"],
       "explanation": {
-        "correct": "Zurich adds external REST/webhook triggers to Flow Designer. Previously, flows were limited to internal events (record changes, schedules). Now external systems can fire flows via webhooks.",
-        "wrongAnswers": {
-          "A": "Scheduled Triggers existed before Zurich, though reusable schedules are new.",
-          "B": "Record-based Triggers existed in previous releases.",
-          "D": "Email Triggers are not a new Zurich feature."
-        }
+        "correct": "The Zurich release adds the ability to create a reusable scheduled trigger in Flow Designer. This allows you to define a schedule once and reuse it across multiple flows, reducing duplication and ensuring consistency. See: https://www.servicenow.com/docs/bundle/zurich-release-notes/page/release-notes/now-platform-app-engine/flow-designer-rn.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Shared Flow Templates is not the Zurich feature for reusable schedules.",
+            "reference": "https://www.servicenow.com/docs/bundle/zurich-release-notes/page/release-notes/now-platform-app-engine/flow-designer-rn.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Flow Schedule Library is not the correct terminology for this Zurich feature.",
+            "reference": "https://www.servicenow.com/docs/bundle/zurich-release-notes/page/release-notes/now-platform-app-engine/flow-designer-rn.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Trigger Inheritance is not a Zurich Flow Designer feature.",
+            "reference": "https://www.servicenow.com/docs/bundle/zurich-release-notes/page/release-notes/now-platform-app-engine/flow-designer-rn.html"
+          }
+        ]
       },
-      "topic": "flow-designer",
-      "source": "Zurich Release Notes"
+      "references": ["Zurich Release Notes - Flow Designer"],
+      "isFree": true,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "zurich-release-notes",
+          "section": "Flow Designer",
+          "url": "https://www.servicenow.com/docs/bundle/zurich-release-notes/page/release-notes/now-platform-app-engine/flow-designer-rn.html"
+        },
+        "path": "docs.servicenow.com/zurich-release-notes",
+        "excerpt": "Create a reusable scheduled trigger - allows you to define a schedule once and reuse it across multiple flows."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Self-Service & Automation",
+        "domainSlug": "delta-zurich",
+        "domainPercentage": 100,
+        "subtopics": ["Flow Designer", "Scheduled Triggers"],
+        "tags": ["zurich", "delta", "flow-designer", "scheduled-trigger"]
+      },
+      "meta": {
+        "generatedAt": "2026-03-05T05:30:00.000Z",
+        "version": "1.0",
+        "release": "Zurich",
+        "reviewed": false
+      }
     },
     {
       "id": "csa-delta-zurich-004",
-      "question": "In Zurich, which new Flow Designer capability allows you to define a schedule once and reuse it across multiple flows?",
-      "type": "single",
+      "certification": "csa",
+      "topic": "delta-zurich",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What JavaScript standard is now supported in Zurich that enables Promises and async/await in server-side scripting?",
       "options": [
-        "A. Shared Actions",
-        "B. Reusable Scheduled Triggers",
-        "C. Flow Templates",
-        "D. Subflow Libraries"
+        { "id": "a", "text": "ECMAScript 2015 (ES6)" },
+        { "id": "b", "text": "ECMAScript 2018 (ES9)" },
+        { "id": "c", "text": "ECMAScript 2021 (ES12)" },
+        { "id": "d", "text": "ECMAScript 2023 (ES14)" }
       ],
-      "correctAnswers": ["B"],
+      "correctAnswers": ["c"],
       "explanation": {
-        "correct": "Zurich introduces Reusable Scheduled Triggers. Instead of creating a 'run nightly at 2 AM' trigger multiple times, you can define a schedule once and reuse it everywhere.",
-        "wrongAnswers": {
-          "A": "Shared Actions are for reusable flow actions, not schedules.",
-          "C": "Flow Templates are not the specific Zurich feature for schedule reuse.",
-          "D": "Subflow Libraries existed before; this question is about schedule reuse."
-        }
+        "correct": "The Zurich release supports ECMAScript 2021 (ES12) JavaScript mode, which enables additional scripting features including Promises and async/await for server-side scripting. See: https://www.servicenow.com/docs/bundle/zurich-release-notes/page/release-notes/now-platform-administration/core-platform-rn.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "ES6 was supported in earlier releases. Zurich adds ES12 support.",
+            "reference": "https://www.servicenow.com/docs/bundle/zurich-release-notes/page/release-notes/now-platform-administration/core-platform-rn.html"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "ES9 is not the JavaScript version added in Zurich. ES12 is the new supported standard.",
+            "reference": "https://www.servicenow.com/docs/bundle/zurich-release-notes/page/release-notes/now-platform-administration/core-platform-rn.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "ES14 support is not mentioned in the Zurich release notes.",
+            "reference": "https://www.servicenow.com/docs/bundle/zurich-release-notes/page/release-notes/now-platform-administration/core-platform-rn.html"
+          }
+        ]
       },
-      "topic": "flow-designer",
-      "source": "Zurich Release Notes"
+      "references": ["Zurich Release Notes - Core Platform"],
+      "isFree": true,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "zurich-release-notes",
+          "section": "Core Now Platform",
+          "url": "https://www.servicenow.com/docs/bundle/zurich-release-notes/page/release-notes/now-platform-administration/core-platform-rn.html"
+        },
+        "path": "docs.servicenow.com/zurich-release-notes",
+        "excerpt": "Use additional scripting features, including Promises and Async await, with the ECMAScript 2021 (ES12) JavaScript mode."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Database Administration",
+        "domainSlug": "delta-zurich",
+        "domainPercentage": 100,
+        "subtopics": ["Scripting", "ECMAScript"],
+        "tags": ["zurich", "delta", "ecmascript", "async-await", "scripting"]
+      },
+      "meta": {
+        "generatedAt": "2026-03-05T05:30:00.000Z",
+        "version": "1.0",
+        "release": "Zurich",
+        "reviewed": false
+      }
     },
     {
       "id": "csa-delta-zurich-005",
-      "question": "What debugging improvement in Zurich allows administrators to trace data transformations step-by-step in failed flows?",
-      "type": "single",
+      "certification": "csa",
+      "topic": "delta-zurich",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which new ATF (Automated Testing Framework) feature in Zurich helps identify why tests failed more quickly?",
       "options": [
-        "A. Script Debugger",
-        "B. Flow Run History",
-        "C. System Logs",
-        "D. Application Logs"
+        { "id": "a", "text": "Test Replay" },
+        { "id": "b", "text": "ATF Failure Insights" },
+        { "id": "c", "text": "Debug Mode" },
+        { "id": "d", "text": "Error Analyzer" }
       ],
-      "correctAnswers": ["B"],
+      "correctAnswers": ["b"],
       "explanation": {
-        "correct": "Zurich introduces detailed Flow Run History and debugging tools. You can view each execution, see which conditions passed or failed, and trace data transformations step by step.",
-        "wrongAnswers": {
-          "A": "Script Debugger is for server-side scripts, not Flow Designer debugging.",
-          "C": "System Logs provide general logging but not the step-by-step flow tracing.",
-          "D": "Application Logs don't provide the Flow Designer-specific debugging view."
-        }
+        "correct": "The Zurich release added ATF Failure Insights, a new feature that helps with faster test failure resolution by providing detailed information about why tests failed. See: https://www.servicenow.com/docs/bundle/zurich-release-notes/page/release-notes/now-platform-capabilities/automated-test-framework-rn.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Test Replay is not the new ATF feature in Zurich for failure analysis.",
+            "reference": "https://www.servicenow.com/docs/bundle/zurich-release-notes/page/release-notes/now-platform-capabilities/automated-test-framework-rn.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Debug Mode is not the specific Zurich ATF enhancement for failure insights.",
+            "reference": "https://www.servicenow.com/docs/bundle/zurich-release-notes/page/release-notes/now-platform-capabilities/automated-test-framework-rn.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Error Analyzer is not the name of this Zurich ATF feature.",
+            "reference": "https://www.servicenow.com/docs/bundle/zurich-release-notes/page/release-notes/now-platform-capabilities/automated-test-framework-rn.html"
+          }
+        ]
       },
-      "topic": "debugging",
-      "source": "Zurich Release Notes"
+      "references": ["Zurich Release Notes - Automated Testing Framework"],
+      "isFree": true,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "zurich-release-notes",
+          "section": "Automated Testing Framework",
+          "url": "https://www.servicenow.com/docs/bundle/zurich-release-notes/page/release-notes/now-platform-capabilities/automated-test-framework-rn.html"
+        },
+        "path": "docs.servicenow.com/zurich-release-notes",
+        "excerpt": "The Zurich release added new features like ATF Failure Insights for faster test failure resolution."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Platform Administration",
+        "domainSlug": "delta-zurich",
+        "domainPercentage": 100,
+        "subtopics": ["Automated Testing Framework", "Test Debugging"],
+        "tags": ["zurich", "delta", "atf", "testing", "failure-insights"]
+      },
+      "meta": {
+        "generatedAt": "2026-03-05T05:30:00.000Z",
+        "version": "1.0",
+        "release": "Zurich",
+        "reviewed": false
+      }
     },
     {
       "id": "csa-delta-zurich-006",
-      "question": "Which visual enhancement was added to Studio and Builder tools in the Zurich release based on developer feedback?",
-      "type": "single",
+      "certification": "csa",
+      "topic": "delta-zurich",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which AI model providers are now supported by Now Assist in the Zurich release? (Choose the best answer)",
       "options": [
-        "A. High Contrast Mode",
-        "B. Dark Mode",
-        "C. Compact View",
-        "D. Full Screen Mode"
+        { "id": "a", "text": "Only OpenAI GPT models" },
+        { "id": "b", "text": "Gemini, Claude, and Azure OpenAI" },
+        { "id": "c", "text": "Only ServiceNow proprietary models" },
+        { "id": "d", "text": "IBM Watson and Google BERT" }
       ],
-      "correctAnswers": ["B"],
+      "correctAnswers": ["b"],
       "explanation": {
-        "correct": "Dark Mode across dev tools was one of the most requested features. Zurich implements Dark Mode in Studio, Flow Designer, and other development tools to reduce eye strain during long sessions.",
-        "wrongAnswers": {
-          "A": "High Contrast Mode is an accessibility feature, not the specific Zurich addition.",
-          "C": "Compact View is not the highlighted Zurich visual enhancement.",
-          "D": "Full Screen Mode is not the new Zurich feature."
-        }
+        "correct": "The Zurich release enhances Now Assist with support for top AI model providers including Gemini, Claude, and Azure OpenAI, providing organizations with flexibility in their AI implementations. See: https://www.servicenow.com/docs/bundle/zurich-release-notes/page/release-notes/analytics-intelligence-reporting/now-assist-rn.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Zurich supports multiple AI providers, not only OpenAI. It includes Gemini, Claude, and Azure OpenAI.",
+            "reference": "https://www.servicenow.com/docs/bundle/zurich-release-notes/page/release-notes/analytics-intelligence-reporting/now-assist-rn.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Now Assist in Zurich supports external AI providers, not only ServiceNow proprietary models.",
+            "reference": "https://www.servicenow.com/docs/bundle/zurich-release-notes/page/release-notes/analytics-intelligence-reporting/now-assist-rn.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "IBM Watson and Google BERT are not the AI providers highlighted in the Zurich Now Assist release notes.",
+            "reference": "https://www.servicenow.com/docs/bundle/zurich-release-notes/page/release-notes/analytics-intelligence-reporting/now-assist-rn.html"
+          }
+        ]
       },
-      "topic": "developer-tools",
-      "source": "Zurich Release Notes"
-    },
-    {
-      "id": "csa-delta-zurich-007",
-      "question": "What new capability in Zurich allows Now Assist to support multiple large language models including OpenAI and Anthropic?",
-      "type": "single",
-      "options": [
-        "A. LLM Connector",
-        "B. AI Model Selection",
-        "C. Multi-LLM Support",
-        "D. Generative AI Hub"
-      ],
-      "correctAnswers": ["C"],
-      "explanation": {
-        "correct": "Zurich expands Now Assist with Multi-LLM Support, allowing organizations to use multiple large language models including Azure OpenAI, Claude, and Gemini.",
-        "wrongAnswers": {
-          "A": "LLM Connector is not the official Zurich feature name.",
-          "B": "AI Model Selection is not the correct term for this capability.",
-          "D": "Generative AI Hub is not the specific Zurich feature name."
-        }
+      "references": ["Zurich Release Notes - Now Assist"],
+      "isFree": true,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "zurich-release-notes",
+          "section": "Now Assist",
+          "url": "https://www.servicenow.com/docs/bundle/zurich-release-notes/page/release-notes/analytics-intelligence-reporting/now-assist-rn.html"
+        },
+        "path": "docs.servicenow.com/zurich-release-notes",
+        "excerpt": "The Zurich release enhances the Now Assist experience with support for top AI model providers (like Gemini, Claude, Azure OpenAI)."
       },
-      "topic": "now-assist",
-      "source": "Zurich Release Notes"
-    },
-    {
-      "id": "csa-delta-zurich-008",
-      "question": "Which Zurich feature provides structured release pipelines with automated quality checks and policy enforcement?",
-      "type": "single",
-      "options": [
-        "A. Update Set Validator",
-        "B. ReleaseOps",
-        "C. Deployment Manager",
-        "D. Change Advisory Board"
-      ],
-      "correctAnswers": ["B"],
-      "explanation": {
-        "correct": "ReleaseOps in Zurich provides structured release pipelines with automated quality checks, real-time dashboards, and policy enforcement to meet compliance standards.",
-        "wrongAnswers": {
-          "A": "Update Set Validator checks update sets but doesn't provide full release pipeline governance.",
-          "C": "Deployment Manager is not the Zurich feature name.",
-          "D": "Change Advisory Board (CAB) is a process, not a Zurich automation feature."
-        }
+      "labels": {
+        "certification": "csa",
+        "domain": "Self-Service & Automation",
+        "domainSlug": "delta-zurich",
+        "domainPercentage": 100,
+        "subtopics": ["Now Assist", "AI Integration"],
+        "tags": ["zurich", "delta", "now-assist", "ai", "llm"]
       },
-      "topic": "releaseops",
-      "source": "Zurich Release Notes"
+      "meta": {
+        "generatedAt": "2026-03-05T05:30:00.000Z",
+        "version": "1.0",
+        "release": "Zurich",
+        "reviewed": false
+      }
     }
   ]
 }

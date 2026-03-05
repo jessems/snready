@@ -162,25 +162,11 @@ export async function getQuestionsForTopic(
   }
 }
 
-// Delta exam questions (simplified format)
-interface DeltaQuestion {
-  id: string;
-  question: string;
-  type: "single" | "multiple";
-  options: string[];
-  correctAnswers: string[];
-  explanation: {
-    correct: string;
-    wrongAnswers?: Record<string, string>;
-  };
-  topic?: string;
-  source?: string;
-}
-
+// Delta exam questions (uses full Question schema)
 export async function getDeltaQuestions(
   certSlug: string,
   release: string
-): Promise<DeltaQuestion[]> {
+): Promise<Question[]> {
   try {
     const questionsModule = await import(
       `@/data/questions/${certSlug}/delta-${release.toLowerCase()}.json`
