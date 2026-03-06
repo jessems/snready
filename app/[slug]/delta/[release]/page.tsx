@@ -9,9 +9,11 @@ import {
   getTopicsForCertification,
   getTotalQuestionCount,
   getTotalFreeQuestionCount,
+  getDeltaQuestions,
 } from "@/lib/data";
 import { generateBreadcrumbJsonLd } from "@/lib/breadcrumbs";
 import deltaTipsData from "@/data/delta-tips.json";
+import QuestionCard from "@/components/QuestionCard";
 
 interface PageProps {
   params: Promise<{ slug: string; release: string }>;
@@ -74,6 +76,9 @@ export default async function DeltaExamPage({ params }: PageProps) {
   // Get delta tips for this certification
   const generalTips = deltaTipsData.general;
   const certTips = deltaTipsData.certifications[slug as keyof typeof deltaTipsData.certifications];
+
+  // Get delta-specific practice questions
+  const deltaQuestions = await getDeltaQuestions(slug, releaseParam);
 
   // Breadcrumb JSON-LD
   const breadcrumbJsonLd = generateBreadcrumbJsonLd([
@@ -307,6 +312,37 @@ export default async function DeltaExamPage({ params }: PageProps) {
             )}
           </div>
         </section>
+
+        {/* Free Delta Practice Questions */}
+        {deltaQuestions.length > 0 && (
+          <section className="border-b border-zinc-200 bg-gradient-to-b from-blue-50 to-white py-12 dark:border-zinc-800 dark:from-blue-950/20 dark:to-zinc-950">
+            <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+              <div className="flex items-center justify-between">
+                <div>
+                  <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-50">
+                    Free {release} Delta Practice Questions
+                  </h2>
+                  <p className="mt-2 text-zinc-600 dark:text-zinc-400">
+                    Test your knowledge of {release} features before taking the delta exam.
+                  </p>
+                </div>
+                <span className="hidden rounded-full bg-emerald-100 px-3 py-1 text-sm font-semibold text-emerald-700 sm:inline-flex dark:bg-emerald-950 dark:text-emerald-300">
+                  {deltaQuestions.length} Free Questions
+                </span>
+              </div>
+
+              <div className="mt-8 space-y-6">
+                {deltaQuestions.map((question, index) => (
+                  <QuestionCard
+                    key={question.id}
+                    question={question}
+                    questionNumber={index + 1}
+                  />
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* Strategy Section */}
         <section className="border-y border-zinc-200 bg-zinc-50 py-12 dark:border-zinc-800 dark:bg-zinc-900">

@@ -162,6 +162,21 @@ export async function getQuestionsForTopic(
   }
 }
 
+// Delta exam questions (uses full Question schema)
+export async function getDeltaQuestions(
+  certSlug: string,
+  release: string
+): Promise<Question[]> {
+  try {
+    const questionsModule = await import(
+      `@/data/questions/${certSlug}/delta-${release.toLowerCase()}.json`
+    );
+    return questionsModule.questions || [];
+  } catch {
+    return [];
+  }
+}
+
 // Free questions: 15 total per certification, distributed across topics
 export const FREE_QUESTIONS_PER_CERT = 15;
 
