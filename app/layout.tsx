@@ -169,6 +169,12 @@ export default function RootLayout({
                 </h3>
                 <div className="mt-4 space-y-3">
                   <Link
+                    href="/quiz"
+                    className="block text-sm text-emerald-600 hover:text-emerald-700 dark:text-emerald-400 dark:hover:text-emerald-300"
+                  >
+                    🎯 Find My Certification
+                  </Link>
+                  <Link
                     href="/pricing"
                     className="block text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
                   >
@@ -241,7 +247,7 @@ export default function RootLayout({
                 </h3>
                 <p className="mt-4 text-sm text-zinc-600 dark:text-zinc-400">
                   Practice questions derived from official Now Learning content.
-                  19 certifications, 1300+ questions, $9 lifetime access.
+                  20 certifications, 1380+ questions, $9 lifetime access.
                 </p>
                 <div className="mt-4 space-y-2">
                   <a
