@@ -621,6 +621,7 @@ export default async function CertificationPage({ params }: PageProps) {
                       <ul className="mt-4 space-y-2 text-sm text-emerald-100">
                         <li>All {cert.name} questions</li>
                         <li>Timed mock exams</li>
+                        <li>Personalized study plan generator</li>
                         <li>Detailed explanations</li>
                         <li>Lifetime access — never expires</li>
                       </ul>
@@ -646,6 +647,7 @@ export default async function CertificationPage({ params }: PageProps) {
                         <li className="font-semibold text-emerald-800">ALL certifications included</li>
                         <li>All practice questions</li>
                         <li>Timed mock exams</li>
+                        <li>Personalized study plan generator</li>
                         <li>Detailed explanations</li>
                         <li className="font-semibold">Lifetime access — never expires</li>
                         <li className="font-semibold">Future updates included</li>

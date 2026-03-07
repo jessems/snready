@@ -195,6 +195,10 @@ export default function Home() {
                   </li>
                   <li className="flex items-center gap-2">
                     <span className="text-emerald-500">✓</span>
+                    Personalized study plan generator
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-emerald-500">✓</span>
                     Detailed explanations
                   </li>
                   <li className="flex items-center gap-2">
@@ -231,6 +235,10 @@ export default function Home() {
                   <li className="flex items-center gap-2">
                     <span className="text-emerald-500">✓</span>
                     Timed mock exams for every cert
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-emerald-500">✓</span>
+                    Personalized study plan generator
                   </li>
                   <li className="flex items-center gap-2">
                     <span className="text-emerald-500">✓</span>

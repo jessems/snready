@@ -212,6 +212,7 @@ export default function PricingPage() {
                   "60-200+ practice questions per certification",
                   "Detailed explanations for every answer",
                   "Full mock exams with timer",
+                  "Personalized study plan generator",
                   "Domain-based study mode",
                   "Covers latest ServiceNow release (Xanadu)",
                   "Free updates when new versions release",
@@ -353,6 +354,20 @@ export default function PricingPage() {
                   </td>
                   <td className="py-4 px-4">
                     <span className="text-zinc-500">Varies</span>
+                  </td>
+                  <td className="py-4 px-4">
+                    <XIcon className="h-5 w-5 text-red-400" />
+                  </td>
+                </tr>
+                <tr>
+                  <td className="py-4 pr-4 text-zinc-700 dark:text-zinc-300">
+                    Study Plan Generator
+                  </td>
+                  <td className="py-4 px-4">
+                    <CheckIcon className="h-5 w-5 text-emerald-500" />
+                  </td>
+                  <td className="py-4 px-4">
+                    <XIcon className="h-5 w-5 text-red-400" />
                   </td>
                   <td className="py-4 px-4">
                     <XIcon className="h-5 w-5 text-red-400" />
