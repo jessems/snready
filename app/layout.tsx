@@ -204,6 +204,12 @@ export default function RootLayout({
                   >
                     Compare Certifications
                   </Link>
+                  <Link
+                    href="/study-plan"
+                    className="block text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
+                  >
+                    Study Plan Generator
+                  </Link>
                 </div>
               </div>
 

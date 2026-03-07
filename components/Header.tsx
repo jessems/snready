@@ -141,12 +141,12 @@ export default function Header() {
                   Resources
                 </Link>
 
-                {/* Certification Paths Link */}
+                {/* Study Plan Generator Link */}
                 <Link
-                  href="/certification-paths"
-                  className="text-sm font-medium text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
+                  href="/study-plan"
+                  className="text-sm font-medium text-emerald-600 hover:text-emerald-700 dark:text-emerald-400 dark:hover:text-emerald-300 flex items-center gap-1"
                 >
-                  Paths
+                  📅 Study Plan
                 </Link>
               </div>
 
@@ -281,6 +281,13 @@ export default function Header() {
               className="block py-2 text-sm font-medium text-zinc-600 dark:text-zinc-400"
             >
               Resources
+            </Link>
+            <Link
+              href="/study-plan"
+              onClick={() => setShowMobileMenu(false)}
+              className="block py-2 text-sm font-medium text-emerald-600 dark:text-emerald-400"
+            >
+              📅 Study Plan Generator
             </Link>
           </div>
         </div>
