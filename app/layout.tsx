@@ -114,150 +114,144 @@ export default function RootLayout({
             {children}
           </main>
         </Providers>
-        <footer className="border-t border-zinc-200 py-12 dark:border-zinc-800">
-          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
+        
+        {/* Stripe-style Footer */}
+        <footer className="border-t border-[var(--border)] bg-[var(--surface)]">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-16">
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
+              {/* Brand Column */}
+              <div className="col-span-2 md:col-span-1">
+                <Link href="/" className="flex items-center gap-2 mb-4">
+                  <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[var(--primary)] to-[var(--gradient-end)] flex items-center justify-center">
+                    <span className="text-white font-bold text-sm">SN</span>
+                  </div>
+                  <span className="text-lg font-bold text-[var(--text-primary)]">
+                    SNReady
+                  </span>
+                </Link>
+                <p className="text-sm text-[var(--text-muted)] leading-relaxed">
+                  Practice questions derived from official Now Learning content. Pass your certification with confidence.
+                </p>
+              </div>
+
               {/* Certifications */}
               <div>
-                <h3 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+                <h3 className="text-sm font-semibold text-[var(--text-primary)] mb-4">
                   Certifications
                 </h3>
-                <div className="mt-4 space-y-3">
-                  <Link
-                    href="/certifications/csa"
-                    className="block text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
-                  >
-                    CSA
-                  </Link>
-                  <Link
-                    href="/certifications/cis-df"
-                    className="block text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
-                  >
-                    CIS-DF
-                  </Link>
-                  <Link
-                    href="/certifications/cad"
-                    className="block text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
-                  >
-                    CAD
-                  </Link>
-                  <Link
-                    href="/certifications/cis-itsm"
-                    className="block text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
-                  >
-                    CIS-ITSM
-                  </Link>
-                  <Link
-                    href="/certifications/cta"
-                    className="block text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
-                  >
-                    CTA
-                  </Link>
+                <div className="space-y-3">
+                  {[
+                    { name: "CSA", href: "/csa" },
+                    { name: "CAD", href: "/cad" },
+                    { name: "CIS-ITSM", href: "/cis-itsm" },
+                    { name: "CIS-DF", href: "/cis-df" },
+                    { name: "CIS-Discovery", href: "/cis-discovery" },
+                  ].map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className="block text-sm text-[var(--text-secondary)] hover:text-[var(--primary)] transition-colors"
+                    >
+                      {link.name}
+                    </Link>
+                  ))}
                   <Link
                     href="/certifications"
-                    className="block text-sm text-emerald-600 hover:text-emerald-700 dark:text-emerald-400 dark:hover:text-emerald-300"
+                    className="block text-sm text-[var(--primary)] font-medium"
                   >
-                    All Certifications
+                    All Certifications →
                   </Link>
                 </div>
               </div>
 
               {/* Resources */}
               <div>
-                <h3 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+                <h3 className="text-sm font-semibold text-[var(--text-primary)] mb-4">
                   Resources
                 </h3>
-                <div className="mt-4 space-y-3">
-                  <Link
-                    href="/pricing"
-                    className="block text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
-                  >
-                    Pricing
-                  </Link>
-                  <Link
-                    href="/resources"
-                    className="block text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
-                  >
-                    Free SN Resources
-                  </Link>
-                  <Link
-                    href="/certification-paths"
-                    className="block text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
-                  >
-                    Certification Paths
-                  </Link>
-                  <Link
-                    href="/glossary"
-                    className="block text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
-                  >
-                    Glossary
-                  </Link>
-                  <Link
-                    href="/blog"
-                    className="block text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
-                  >
-                    Blog
-                  </Link>
+                <div className="space-y-3">
+                  {[
+                    { name: "Study Plan Generator", href: "/study-plan" },
+                    { name: "Certification Quiz", href: "/quiz" },
+                    { name: "Certification Paths", href: "/certification-paths" },
+                    { name: "Glossary", href: "/glossary" },
+                    { name: "Blog", href: "/blog" },
+                  ].map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className="block text-sm text-[var(--text-secondary)] hover:text-[var(--primary)] transition-colors"
+                    >
+                      {link.name}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
+              {/* Compare */}
+              <div>
+                <h3 className="text-sm font-semibold text-[var(--text-primary)] mb-4">
+                  Compare
+                </h3>
+                <div className="space-y-3">
+                  {[
+                    { name: "CSA vs CAD", href: "/compare/csa-vs-cad" },
+                    { name: "CSA vs CIS-ITSM", href: "/compare/csa-vs-cis-itsm" },
+                    { name: "CIS-Discovery vs CIS-SM", href: "/compare/cis-discovery-vs-cis-sm" },
+                  ].map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className="block text-sm text-[var(--text-secondary)] hover:text-[var(--primary)] transition-colors"
+                    >
+                      {link.name}
+                    </Link>
+                  ))}
                   <Link
                     href="/compare"
-                    className="block text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
+                    className="block text-sm text-[var(--primary)] font-medium"
                   >
-                    Compare Certifications
+                    All Comparisons →
                   </Link>
                 </div>
               </div>
 
-              {/* Popular Comparisons */}
+              {/* Company */}
               <div>
-                <h3 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
-                  Popular Comparisons
+                <h3 className="text-sm font-semibold text-[var(--text-primary)] mb-4">
+                  Company
                 </h3>
-                <div className="mt-4 space-y-3">
-                  <Link
-                    href="/compare/csa-vs-cad"
-                    className="block text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
-                  >
-                    CSA vs CAD
-                  </Link>
-                  <Link
-                    href="/compare/csa-vs-cis-itsm"
-                    className="block text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
-                  >
-                    CSA vs CIS-ITSM
-                  </Link>
-                  <Link
-                    href="/compare/cis-discovery-vs-cis-sm"
-                    className="block text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
-                  >
-                    CIS-Discovery vs CIS-SM
-                  </Link>
-                </div>
-              </div>
-
-              {/* About */}
-              <div>
-                <h3 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
-                  SNReady
-                </h3>
-                <p className="mt-4 text-sm text-zinc-600 dark:text-zinc-400">
-                  Practice questions derived from official Now Learning content.
-                  19 certifications, 1300+ questions, $9 lifetime access.
-                </p>
-                <div className="mt-4 space-y-2">
-                  <a
-                    href="mailto:hello@snready.com"
-                    className="block text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
-                  >
-                    Contact
-                  </a>
+                <div className="space-y-3">
+                  {[
+                    { name: "Pricing", href: "/pricing" },
+                    { name: "Contact", href: "mailto:hello@snready.com" },
+                  ].map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className="block text-sm text-[var(--text-secondary)] hover:text-[var(--primary)] transition-colors"
+                    >
+                      {link.name}
+                    </Link>
+                  ))}
                 </div>
               </div>
             </div>
-            
-            <div className="mt-8 border-t border-zinc-200 pt-8 text-center dark:border-zinc-700">
-              <p className="text-sm text-zinc-500">
-                SNReady - Your path to ServiceNow certification success
-              </p>
+
+            {/* Bottom bar */}
+            <div className="mt-12 pt-8 border-t border-[var(--border)]">
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+                <p className="text-sm text-[var(--text-muted)]">
+                  © {new Date().getFullYear()} SNReady. All rights reserved.
+                </p>
+                <div className="flex items-center gap-6 text-sm text-[var(--text-muted)]">
+                  <span>20 certifications</span>
+                  <span className="opacity-30">•</span>
+                  <span>1,400+ questions</span>
+                  <span className="opacity-30">•</span>
+                  <span>$9 lifetime access</span>
+                </div>
+              </div>
             </div>
           </div>
         </footer>

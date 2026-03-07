@@ -10,296 +10,184 @@ import CertificationCard from "@/components/CertificationCard";
 export default function Home() {
   const certifications = getAllCertifications();
   
-  // Get all ready certifications dynamically from data
   const readyCerts = certifications.filter(c => c.isReady);
   const comingSoonCerts = certifications.filter(c => !c.isReady);
   
-  // Calculate total questions across all ready certifications
   const totalQuestions = readyCerts.reduce((sum, cert) => sum + getTotalQuestionCount(cert.slug), 0);
   const totalFreeQuestions = readyCerts.reduce((sum, cert) => sum + getTotalFreeQuestionCount(cert.slug), 0);
   const activeCertifications = readyCerts.length;
 
-  // Featured certifications for hero section (most popular)
-  const featuredSlugs = ["csa", "cad", "cis-itsm", "cis-df"];
-
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="bg-gradient-to-b from-emerald-50 to-white py-20 dark:from-zinc-900 dark:to-zinc-950">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-4xl font-bold tracking-tight text-zinc-900 sm:text-5xl md:text-6xl dark:text-zinc-50">
-              Pass Your{" "}
-              <span className="text-emerald-600">ServiceNow</span>{" "}
-              Certification
+      {/* Hero Section - Stripe style gradient mesh */}
+      <section className="relative overflow-hidden gradient-mesh dark:gradient-mesh-dark">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
+          <div className="text-center max-w-4xl mx-auto">
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2 badge badge-primary mb-8">
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[var(--primary)] opacity-75" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-[var(--primary)]" />
+              </span>
+              <span>{activeCertifications} certifications ready</span>
+            </div>
+
+            {/* Headline */}
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-[var(--text-primary)]">
+              Pass your{" "}
+              <span className="bg-gradient-to-r from-[var(--primary)] via-[var(--gradient-mid)] to-[var(--gradient-end)] bg-clip-text text-transparent">
+                ServiceNow
+              </span>{" "}
+              exam
             </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-lg text-zinc-600 dark:text-zinc-400">
-              {totalQuestions}+ practice questions across {activeCertifications} certifications. 
-              CSA, CAD, CIS-ITSM, CIS-DF, CIS-Discovery, CIS-CSM, and more — generated from official
-              Now Learning content.
+            
+            <p className="mt-8 text-xl sm:text-2xl text-[var(--text-secondary)] max-w-2xl mx-auto leading-relaxed">
+              {totalQuestions.toLocaleString()}+ practice questions derived from official Now Learning content. No brain dumps. No guessing.
             </p>
-            <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Link
-                href="/csa/practice-questions"
-                className="inline-flex h-12 items-center justify-center rounded-lg bg-emerald-600 px-8 text-base font-medium text-white transition-colors hover:bg-emerald-700"
-              >
-                Start CSA Practice
+
+            {/* CTA Buttons */}
+            <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Link href="/csa/practice-questions" className="btn-primary text-lg px-8 py-4">
+                Start Free Practice
               </Link>
-              <Link
-                href="#certifications"
-                className="inline-flex h-12 items-center justify-center rounded-lg border border-zinc-300 bg-white px-8 text-base font-medium text-zinc-700 transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-300 dark:hover:bg-zinc-700"
-              >
-                Browse All {activeCertifications} Certifications
+              <Link href="#certifications" className="btn-secondary text-lg px-8 py-4">
+                View All Certifications
               </Link>
             </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Why SNReady Section */}
-      <section className="py-16 bg-white dark:bg-zinc-950">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-zinc-900 dark:text-zinc-50">
-              Stop Wasting Money on Stale Udemy Courses
-            </h2>
-            <p className="mt-4 text-lg text-zinc-600 dark:text-zinc-400 max-w-3xl mx-auto">
-              Generic exam dumps become outdated the moment ServiceNow releases a new version. 
-              SNReady questions are generated from official Now Learning content — always current, always accurate.
-            </p>
-          </div>
-          
-          <div className="grid gap-8 md:grid-cols-3">
-            {/* Benefit 1 */}
-            <div className="rounded-xl border border-zinc-200 bg-zinc-50 p-6 dark:border-zinc-800 dark:bg-zinc-900">
-              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-emerald-100 text-2xl dark:bg-emerald-900">
-                🎯
+            {/* Trust indicators */}
+            <div className="mt-16 flex flex-wrap items-center justify-center gap-8 text-sm text-[var(--text-muted)]">
+              <div className="flex items-center gap-2">
+                <svg className="w-5 h-5 text-[var(--success)]" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                </svg>
+                <span>Updated for Xanadu</span>
               </div>
-              <h3 className="mt-4 text-xl font-semibold text-zinc-900 dark:text-zinc-100">
-                Questions From Real Course Content
-              </h3>
-              <p className="mt-2 text-zinc-600 dark:text-zinc-400">
-                Every question is derived from official ServiceNow training materials — the same content tested on the actual exam. No guessing, no outdated braindumps.
-              </p>
-            </div>
-
-            {/* Benefit 2 */}
-            <div className="rounded-xl border border-zinc-200 bg-zinc-50 p-6 dark:border-zinc-800 dark:bg-zinc-900">
-              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-emerald-100 text-2xl dark:bg-emerald-900">
-                📚
+              <div className="flex items-center gap-2">
+                <svg className="w-5 h-5 text-[var(--success)]" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                </svg>
+                <span>{totalFreeQuestions}+ free questions</span>
               </div>
-              <h3 className="mt-4 text-xl font-semibold text-zinc-900 dark:text-zinc-100">
-                Learn Why You&apos;re Wrong
-              </h3>
-              <p className="mt-2 text-zinc-600 dark:text-zinc-400">
-                Detailed explanations for every answer — correct and incorrect. Each explanation links back to the source material so you actually learn, not just memorize.
-              </p>
-            </div>
-
-            {/* Benefit 3 */}
-            <div className="rounded-xl border border-zinc-200 bg-zinc-50 p-6 dark:border-zinc-800 dark:bg-zinc-900">
-              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-emerald-100 text-2xl dark:bg-emerald-900">
-                ⏱️
+              <div className="flex items-center gap-2">
+                <svg className="w-5 h-5 text-[var(--success)]" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                </svg>
+                <span>$9 lifetime access</span>
               </div>
-              <h3 className="mt-4 text-xl font-semibold text-zinc-900 dark:text-zinc-100">
-                Realistic Mock Exams
-              </h3>
-              <p className="mt-2 text-zinc-600 dark:text-zinc-400">
-                Timed mock exams that mirror the real ServiceNow certification format. Track your progress and identify weak areas before exam day.
-              </p>
-            </div>
-          </div>
-
-          <div className="mt-12 text-center">
-            <div className="inline-flex items-center gap-2 rounded-full bg-amber-100 px-4 py-2 text-sm font-medium text-amber-800 dark:bg-amber-900/50 dark:text-amber-200">
-              <span>💡</span>
-              <span>Questions updated for Xanadu release</span>
             </div>
           </div>
         </div>
       </section>
 
       {/* Stats Section */}
-      <section className="border-y border-zinc-200 bg-zinc-50 py-12 dark:border-zinc-800 dark:bg-zinc-900">
+      <section className="py-20 bg-[var(--surface)]">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12">
             <div className="text-center">
-              <div className="text-3xl font-bold text-emerald-600">
-                {totalQuestions.toLocaleString()}+
-              </div>
-              <div className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
-                Practice Questions
-              </div>
+              <div className="stat-number">{totalQuestions.toLocaleString()}+</div>
+              <div className="mt-2 text-[var(--text-secondary)] font-medium">Practice Questions</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-emerald-600">
-                {totalFreeQuestions}+
-              </div>
-              <div className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
-                Free Questions
-              </div>
+              <div className="stat-number">{activeCertifications}</div>
+              <div className="mt-2 text-[var(--text-secondary)] font-medium">Certifications</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-emerald-600">{activeCertifications}</div>
-              <div className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
-                Certifications Ready
-              </div>
+              <div className="stat-number">{totalFreeQuestions}+</div>
+              <div className="mt-2 text-[var(--text-secondary)] font-medium">Free Questions</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-emerald-600">100%</div>
-              <div className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
-                CIS Coverage
-              </div>
+              <div className="stat-number">$9</div>
+              <div className="mt-2 text-[var(--text-secondary)] font-medium">Lifetime Access</div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Pricing Section */}
-      <section className="py-16 bg-white dark:bg-zinc-950">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-zinc-900 dark:text-zinc-50">
-              Simple, Transparent Pricing
+      {/* Why SNReady Section */}
+      <section className="py-24">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-3xl sm:text-4xl font-bold text-[var(--text-primary)]">
+              Stop wasting money on stale Udemy courses
             </h2>
-            <p className="mt-4 text-lg text-zinc-600 dark:text-zinc-400">
-              Try free questions first. Upgrade when you&apos;re ready.
+            <p className="mt-6 text-lg text-[var(--text-secondary)]">
+              Generic exam dumps become outdated the moment ServiceNow releases a new version. 
+              SNReady questions are generated from official Now Learning content — always current, always accurate.
             </p>
           </div>
-
-          <div className="grid gap-6 md:grid-cols-2">
-            {/* Single Certification */}
-            <div className="rounded-xl border border-zinc-200 bg-zinc-50 p-8 dark:border-zinc-800 dark:bg-zinc-900">
-              <div className="text-center">
-                <h3 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100">
-                  Single Certification
-                </h3>
-                <div className="mt-4">
-                  <span className="text-4xl font-bold text-zinc-900 dark:text-zinc-100">$9</span>
-                  <span className="text-zinc-600 dark:text-zinc-400"> / lifetime</span>
-                </div>
-                <p className="mt-4 text-zinc-600 dark:text-zinc-400">
-                  Full access to one certification of your choice
-                </p>
-                <p className="mt-2 text-sm font-medium text-emerald-600 dark:text-emerald-400">
-                  Because we want you to succeed ✨
-                </p>
-                <ul className="mt-6 space-y-3 text-left text-zinc-600 dark:text-zinc-400">
-                  <li className="flex items-center gap-2">
-                    <span className="text-emerald-500">✓</span>
-                    All practice questions for one cert
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="text-emerald-500">✓</span>
-                    Timed mock exams
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="text-emerald-500">✓</span>
-                    Detailed explanations
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="text-emerald-500">✓</span>
-                    Lifetime access — never expires
-                  </li>
-                </ul>
-              </div>
+          
+          <div className="grid gap-8 md:grid-cols-3">
+            {/* Feature 1 */}
+            <div className="stripe-card p-8">
+              <div className="feature-icon">🎯</div>
+              <h3 className="mt-6 text-xl font-semibold text-[var(--text-primary)]">
+                From Real Course Content
+              </h3>
+              <p className="mt-4 text-[var(--text-secondary)] leading-relaxed">
+                Every question is derived from official ServiceNow training materials — the same content tested on the actual exam. No guessing, no outdated braindumps.
+              </p>
             </div>
 
-            {/* Lifetime All Access */}
-            <div className="rounded-xl border-2 border-emerald-500 bg-emerald-50 p-8 dark:bg-emerald-950/30 relative">
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                <span className="bg-emerald-500 text-white text-sm font-medium px-3 py-1 rounded-full">
-                  Best Value
-                </span>
-              </div>
-              <div className="text-center">
-                <h3 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100">
-                  Lifetime All Access
-                </h3>
-                <div className="mt-4">
-                  <span className="text-4xl font-bold text-emerald-600">$49</span>
-                  <span className="text-zinc-600 dark:text-zinc-400"> / forever</span>
-                </div>
-                <p className="mt-4 text-zinc-600 dark:text-zinc-400">
-                  Every certification, current and future
-                </p>
-                <ul className="mt-6 space-y-3 text-left text-zinc-600 dark:text-zinc-400">
-                  <li className="flex items-center gap-2">
-                    <span className="text-emerald-500">✓</span>
-                    <strong>All {activeCertifications}</strong> certifications included
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="text-emerald-500">✓</span>
-                    Timed mock exams for every cert
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="text-emerald-500">✓</span>
-                    {totalQuestions.toLocaleString()}+ practice questions
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="text-emerald-500">✓</span>
-                    Future certifications included
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="text-emerald-500">✓</span>
-                    Lifetime access — never expires
-                  </li>
-                </ul>
-              </div>
+            {/* Feature 2 */}
+            <div className="stripe-card p-8">
+              <div className="feature-icon">📚</div>
+              <h3 className="mt-6 text-xl font-semibold text-[var(--text-primary)]">
+                Learn Why You&apos;re Wrong
+              </h3>
+              <p className="mt-4 text-[var(--text-secondary)] leading-relaxed">
+                Detailed explanations for every answer — correct and incorrect. Each explanation links back to the source material so you actually learn, not just memorize.
+              </p>
+            </div>
+
+            {/* Feature 3 */}
+            <div className="stripe-card p-8">
+              <div className="feature-icon">⏱️</div>
+              <h3 className="mt-6 text-xl font-semibold text-[var(--text-primary)]">
+                Realistic Mock Exams
+              </h3>
+              <p className="mt-4 text-[var(--text-secondary)] leading-relaxed">
+                Timed mock exams that mirror the real ServiceNow certification format. Track your progress and identify weak areas before exam day.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Certifications Grid */}
-      <section id="certifications" className="py-20">
+      <section id="certifications" className="py-24 bg-[var(--surface)]">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h2 className="text-3xl font-bold text-zinc-900 dark:text-zinc-50">
-              Choose Your Certification
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-3xl sm:text-4xl font-bold text-[var(--text-primary)]">
+              Choose your certification
             </h2>
-            <p className="mt-4 text-lg text-zinc-600 dark:text-zinc-400">
+            <p className="mt-6 text-lg text-[var(--text-secondary)]">
               {activeCertifications} certifications ready with {totalQuestions.toLocaleString()}+ practice questions
             </p>
           </div>
 
-          {/* Ready Now Section */}
-          <div className="mt-12">
-            <div className="flex items-center gap-4 mb-6">
-              <h3 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100">
-                Available Now
-              </h3>
-              <span className="text-sm text-emerald-600 bg-emerald-100 dark:bg-emerald-900/50 dark:text-emerald-400 px-2 py-1 rounded">
-                {activeCertifications} certifications ready
-              </span>
-            </div>
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              {readyCerts.map((cert) => (
-                <CertificationCard 
-                  key={cert.slug} 
-                  certification={{
-                    ...cert,
-                    isReady: true,
-                    topicCount: getTopicsForCertification(cert.slug).length,
-                    totalQuestions: getTotalQuestionCount(cert.slug),
-                  }} 
-                />
-              ))}
-            </div>
+          {/* Ready Now */}
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {readyCerts.map((cert) => (
+              <CertificationCard 
+                key={cert.slug} 
+                certification={{
+                  ...cert,
+                  isReady: true,
+                  topicCount: getTopicsForCertification(cert.slug).length,
+                  totalQuestions: getTotalQuestionCount(cert.slug),
+                }} 
+              />
+            ))}
           </div>
 
-          {/* Coming Soon Section - only show if there are any */}
+          {/* Coming Soon */}
           {comingSoonCerts.length > 0 && (
             <div className="mt-16">
-              <div className="flex items-center gap-4 mb-6">
-                <h3 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100">
-                  Coming Soon
-                </h3>
-                <span className="text-sm text-zinc-500 bg-zinc-100 dark:bg-zinc-800 px-2 py-1 rounded">
-                  More on the way
-                </span>
-              </div>
-              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              <h3 className="text-xl font-semibold text-[var(--text-primary)] mb-6">
+                Coming Soon
+              </h3>
+              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                 {comingSoonCerts.map((cert) => (
                   <CertificationCard 
                     key={cert.slug} 
@@ -317,110 +205,178 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Topics Preview (CSA) */}
-      <section className="bg-zinc-50 py-20 dark:bg-zinc-900">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h2 className="text-3xl font-bold text-zinc-900 dark:text-zinc-50">
-              CSA Exam Topics
+      {/* Pricing Section */}
+      <section className="py-24">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-3xl sm:text-4xl font-bold text-[var(--text-primary)]">
+              Simple, transparent pricing
             </h2>
-            <p className="mt-4 text-lg text-zinc-600 dark:text-zinc-400">
-              Master every domain with targeted practice questions
+            <p className="mt-6 text-lg text-[var(--text-secondary)]">
+              Try free questions first. Upgrade when you&apos;re ready.
             </p>
           </div>
-          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {[
-              { name: "Incident Management", slug: "incident-management", icon: "🚨" },
-              { name: "Problem Management", slug: "problem-management", icon: "🔍" },
-              { name: "Change Management", slug: "change-management", icon: "🔄" },
-              { name: "User Administration", slug: "user-administration", icon: "👤" },
-              { name: "Reporting", slug: "reporting-dashboards", icon: "📊" },
-              { name: "Service Catalog", slug: "self-service-automation", icon: "🛒" },
-              { name: "Database Admin", slug: "database-administration", icon: "🗄️" },
-              { name: "UI Navigation", slug: "ui-navigation", icon: "🧭" },
-            ].map((topic) => (
-              <Link
-                key={topic.slug}
-                href={`/csa/practice-questions/${topic.slug}`}
-                className="flex items-center gap-3 rounded-lg border border-zinc-200 bg-white p-4 transition-all hover:border-emerald-300 hover:shadow dark:border-zinc-800 dark:bg-zinc-800 dark:hover:border-emerald-700"
-              >
-                <span className="text-2xl">{topic.icon}</span>
-                <span className="font-medium text-zinc-900 dark:text-zinc-100">
-                  {topic.name}
+
+          <div className="grid gap-8 md:grid-cols-2 max-w-4xl mx-auto">
+            {/* Single Certification */}
+            <div className="stripe-card p-8">
+              <h3 className="text-xl font-semibold text-[var(--text-primary)]">
+                Single Certification
+              </h3>
+              <div className="mt-6">
+                <span className="text-5xl font-bold text-[var(--text-primary)]">$9</span>
+                <span className="text-[var(--text-muted)] ml-2">/ lifetime</span>
+              </div>
+              <p className="mt-4 text-[var(--text-secondary)]">
+                Full access to one certification of your choice
+              </p>
+              <ul className="mt-8 space-y-4">
+                {[
+                  "All practice questions for one cert",
+                  "Timed mock exams",
+                  "Detailed explanations",
+                  "Lifetime access — never expires",
+                ].map((feature) => (
+                  <li key={feature} className="flex items-start gap-3 text-[var(--text-secondary)]">
+                    <svg className="w-5 h-5 text-[var(--success)] mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Lifetime All Access */}
+            <div className="stripe-card p-8 relative glow-primary">
+              <div className="absolute -top-3 left-6">
+                <span className="bg-[var(--primary)] text-white text-sm font-semibold px-4 py-1.5 rounded-full">
+                  Best Value
                 </span>
-              </Link>
-            ))}
-          </div>
-          <div className="mt-8 text-center">
-            <Link
-              href="/csa"
-              className="text-emerald-600 hover:text-emerald-700 dark:text-emerald-400"
-            >
-              View all CSA topics →
-            </Link>
+              </div>
+              <h3 className="text-xl font-semibold text-[var(--text-primary)]">
+                Lifetime All Access
+              </h3>
+              <div className="mt-6">
+                <span className="text-5xl font-bold bg-gradient-to-r from-[var(--primary)] to-[var(--gradient-end)] bg-clip-text text-transparent">$49</span>
+                <span className="text-[var(--text-muted)] ml-2">/ forever</span>
+              </div>
+              <p className="mt-4 text-[var(--text-secondary)]">
+                Every certification, current and future
+              </p>
+              <ul className="mt-8 space-y-4">
+                {[
+                  `All ${activeCertifications} certifications included`,
+                  "Timed mock exams for every cert",
+                  `${totalQuestions.toLocaleString()}+ practice questions`,
+                  "Future certifications included",
+                  "Lifetime access — never expires",
+                ].map((feature) => (
+                  <li key={feature} className="flex items-start gap-3 text-[var(--text-secondary)]">
+                    <svg className="w-5 h-5 text-[var(--success)] mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Topics Preview (CAD) */}
-      <section className="py-20">
+      {/* Popular Topics Section */}
+      <section className="py-24 bg-[var(--surface)]">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h2 className="text-3xl font-bold text-zinc-900 dark:text-zinc-50">
-              CAD Exam Topics
-            </h2>
-            <p className="mt-4 text-lg text-zinc-600 dark:text-zinc-400">
-              Master ServiceNow application development with 130+ practice questions
-            </p>
-          </div>
-          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {[
-              { name: "Scripting & APIs", slug: "scripting-apis", icon: "💻" },
-              { name: "Business Rules", slug: "business-rules", icon: "⚙️" },
-              { name: "Client Scripts", slug: "client-scripts", icon: "🖥️" },
-              { name: "UI Policies", slug: "ui-policies-actions", icon: "🎨" },
-              { name: "Script Includes", slug: "script-includes", icon: "📦" },
-              { name: "REST APIs", slug: "integration-rest", icon: "🔗" },
-              { name: "App Development", slug: "application-development", icon: "🏗️" },
-            ].map((topic) => (
-              <Link
-                key={topic.slug}
-                href={`/cad/practice-questions/${topic.slug}`}
-                className="flex items-center gap-3 rounded-lg border border-zinc-200 bg-white p-4 transition-all hover:border-emerald-300 hover:shadow dark:border-zinc-800 dark:bg-zinc-800 dark:hover:border-emerald-700"
-              >
-                <span className="text-2xl">{topic.icon}</span>
-                <span className="font-medium text-zinc-900 dark:text-zinc-100">
-                  {topic.name}
+          <div className="grid gap-16 lg:grid-cols-2">
+            {/* CSA Topics */}
+            <div>
+              <div className="flex items-center gap-3 mb-8">
+                <span className="inline-flex items-center px-3 py-1 text-sm font-semibold text-[var(--primary)] bg-[rgba(99,91,255,0.1)] rounded-lg">
+                  CSA
                 </span>
+                <h3 className="text-2xl font-bold text-[var(--text-primary)]">
+                  System Administrator
+                </h3>
+              </div>
+              <div className="grid gap-3 sm:grid-cols-2">
+                {[
+                  { name: "Incident Management", slug: "incident-management", icon: "🚨" },
+                  { name: "Problem Management", slug: "problem-management", icon: "🔍" },
+                  { name: "Change Management", slug: "change-management", icon: "🔄" },
+                  { name: "User Administration", slug: "user-administration", icon: "👤" },
+                  { name: "Reporting", slug: "reporting-dashboards", icon: "📊" },
+                  { name: "Service Catalog", slug: "self-service-automation", icon: "🛒" },
+                ].map((topic) => (
+                  <Link
+                    key={topic.slug}
+                    href={`/csa/practice-questions/${topic.slug}`}
+                    className="flex items-center gap-3 p-4 rounded-xl bg-[var(--surface-elevated)] border border-[var(--border)] hover:border-[var(--primary)] hover:shadow-md transition-all"
+                  >
+                    <span className="text-xl">{topic.icon}</span>
+                    <span className="font-medium text-[var(--text-primary)]">{topic.name}</span>
+                  </Link>
+                ))}
+              </div>
+              <Link href="/csa" className="inline-flex items-center gap-1 mt-6 text-[var(--primary)] font-medium hover:gap-2 transition-all">
+                View all CSA topics
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
               </Link>
-            ))}
-          </div>
-          <div className="mt-8 text-center">
-            <Link
-              href="/cad"
-              className="text-emerald-600 hover:text-emerald-700 dark:text-emerald-400"
-            >
-              View all CAD topics →
-            </Link>
+            </div>
+
+            {/* CAD Topics */}
+            <div>
+              <div className="flex items-center gap-3 mb-8">
+                <span className="inline-flex items-center px-3 py-1 text-sm font-semibold text-[var(--primary)] bg-[rgba(99,91,255,0.1)] rounded-lg">
+                  CAD
+                </span>
+                <h3 className="text-2xl font-bold text-[var(--text-primary)]">
+                  Application Developer
+                </h3>
+              </div>
+              <div className="grid gap-3 sm:grid-cols-2">
+                {[
+                  { name: "Scripting & APIs", slug: "scripting-apis", icon: "💻" },
+                  { name: "Business Rules", slug: "business-rules", icon: "⚙️" },
+                  { name: "Client Scripts", slug: "client-scripts", icon: "🖥️" },
+                  { name: "UI Policies", slug: "ui-policies-actions", icon: "🎨" },
+                  { name: "Script Includes", slug: "script-includes", icon: "📦" },
+                  { name: "REST APIs", slug: "integration-rest", icon: "🔗" },
+                ].map((topic) => (
+                  <Link
+                    key={topic.slug}
+                    href={`/cad/practice-questions/${topic.slug}`}
+                    className="flex items-center gap-3 p-4 rounded-xl bg-[var(--surface-elevated)] border border-[var(--border)] hover:border-[var(--primary)] hover:shadow-md transition-all"
+                  >
+                    <span className="text-xl">{topic.icon}</span>
+                    <span className="font-medium text-[var(--text-primary)]">{topic.name}</span>
+                  </Link>
+                ))}
+              </div>
+              <Link href="/cad" className="inline-flex items-center gap-1 mt-6 text-[var(--primary)] font-medium hover:gap-2 transition-all">
+                View all CAD topics
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20">
+      {/* Final CTA */}
+      <section className="py-24 gradient-mesh dark:gradient-mesh-dark">
         <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-zinc-900 dark:text-zinc-50">
-            Ready to Get Certified?
+          <h2 className="text-3xl sm:text-4xl font-bold text-[var(--text-primary)]">
+            Ready to get certified?
           </h2>
-          <p className="mt-4 text-lg text-zinc-600 dark:text-zinc-400">
-            Start with our free practice questions and see how prepared you are
-            for the real exam.
+          <p className="mt-6 text-lg text-[var(--text-secondary)] max-w-2xl mx-auto">
+            Start with our free practice questions and see how prepared you are for the real exam.
           </p>
-          <div className="mt-8">
-            <Link
-              href="/csa/practice-questions"
-              className="inline-flex h-12 items-center justify-center rounded-lg bg-emerald-600 px-8 text-base font-medium text-white transition-colors hover:bg-emerald-700"
-            >
+          <div className="mt-10">
+            <Link href="/csa/practice-questions" className="btn-primary text-lg px-10 py-4">
               Start Practicing Now
             </Link>
           </div>
