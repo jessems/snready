@@ -188,49 +188,95 @@ export default function StudyPlanPage() {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const phaseColors = {
-    learn: { bg: "bg-blue-500", light: "bg-blue-50 dark:bg-blue-950", text: "text-blue-600 dark:text-blue-400", border: "border-blue-200 dark:border-blue-800" },
-    practice: { bg: "bg-amber-500", light: "bg-amber-50 dark:bg-amber-950", text: "text-amber-600 dark:text-amber-400", border: "border-amber-200 dark:border-amber-800" },
-    review: { bg: "bg-emerald-500", light: "bg-emerald-50 dark:bg-emerald-950", text: "text-emerald-600 dark:text-emerald-400", border: "border-emerald-200 dark:border-emerald-800" },
+  const phaseConfig = {
+    learn: { 
+      bg: "bg-gradient-to-r from-blue-500 to-indigo-500", 
+      light: "bg-blue-50/50 dark:bg-blue-950/30", 
+      text: "text-blue-600 dark:text-blue-400", 
+      border: "border-blue-200/50 dark:border-blue-800/50",
+      icon: "📖"
+    },
+    practice: { 
+      bg: "bg-gradient-to-r from-amber-500 to-orange-500", 
+      light: "bg-amber-50/50 dark:bg-amber-950/30", 
+      text: "text-amber-600 dark:text-amber-400", 
+      border: "border-amber-200/50 dark:border-amber-800/50",
+      icon: "💪"
+    },
+    review: { 
+      bg: "bg-gradient-to-r from-emerald-500 to-teal-500", 
+      light: "bg-emerald-50/50 dark:bg-emerald-950/30", 
+      text: "text-emerald-600 dark:text-emerald-400", 
+      border: "border-emerald-200/50 dark:border-emerald-800/50",
+      icon: "🎯"
+    },
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-zinc-50 to-white dark:from-zinc-950 dark:to-zinc-900">
-      <div className="max-w-2xl mx-auto px-4 py-12">
+    <div className="min-h-screen bg-white dark:bg-[#0a2540]">
+      {/* Hero gradient */}
+      <div 
+        className="absolute inset-x-0 top-0 h-[500px] pointer-events-none"
+        style={{
+          background: `
+            radial-gradient(ellipse 80% 50% at 50% -20%, rgba(99, 91, 255, 0.15), transparent),
+            radial-gradient(ellipse 60% 50% at 100% 0%, rgba(128, 233, 255, 0.1), transparent),
+            radial-gradient(ellipse 60% 40% at 0% 50%, rgba(228, 120, 255, 0.08), transparent)
+          `
+        }}
+      />
+      
+      <div className="relative max-w-2xl mx-auto px-4 py-16">
         {/* Header */}
-        <div className="text-center mb-10">
-          <h1 className="text-3xl font-bold text-zinc-900 dark:text-white mb-2">
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-50 dark:bg-indigo-950/50 text-indigo-600 dark:text-indigo-400 text-sm font-medium mb-6">
+            <span className="w-2 h-2 rounded-full bg-indigo-500 animate-pulse" />
+            Personalized scheduling
+          </div>
+          <h1 className="text-4xl sm:text-5xl font-bold text-slate-900 dark:text-white tracking-tight">
             Study Plan Generator
           </h1>
-          <p className="text-zinc-600 dark:text-zinc-400">
-            Get a personalized week-by-week schedule for your certification
+          <p className="mt-4 text-lg text-slate-600 dark:text-slate-400 max-w-md mx-auto">
+            Get a week-by-week schedule optimized for your certification exam
           </p>
         </div>
 
-        {/* Progress Steps */}
+        {/* Progress indicator */}
         {step < 4 && (
-          <div className="flex justify-center mb-10">
-            <div className="flex items-center gap-1">
-              {["Certification", "Timeline", "Hours"].map((label, i) => (
-                <div key={label} className="flex items-center">
+          <div className="flex justify-center mb-12">
+            <div className="flex items-center">
+              {[
+                { num: 1, label: "Cert" },
+                { num: 2, label: "Timeline" },
+                { num: 3, label: "Hours" },
+              ].map((s, i) => (
+                <div key={s.num} className="flex items-center">
                   <div className="flex flex-col items-center">
                     <div
-                      className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-semibold transition-all ${
-                        i + 1 < step
-                          ? "bg-emerald-500 text-white"
-                          : i + 1 === step
-                          ? "bg-violet-600 text-white"
-                          : "bg-zinc-200 dark:bg-zinc-800 text-zinc-500"
+                      className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-semibold transition-all duration-300 ${
+                        s.num < step
+                          ? "bg-gradient-to-r from-emerald-400 to-emerald-500 text-white shadow-lg shadow-emerald-500/25"
+                          : s.num === step
+                          ? "bg-gradient-to-r from-indigo-500 to-purple-500 text-white shadow-lg shadow-indigo-500/25"
+                          : "bg-slate-100 dark:bg-slate-800 text-slate-400"
                       }`}
                     >
-                      {i + 1 < step ? "✓" : i + 1}
+                      {s.num < step ? (
+                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
+                      ) : (
+                        s.num
+                      )}
                     </div>
-                    <span className={`text-xs mt-1.5 ${i + 1 === step ? "text-violet-600 dark:text-violet-400 font-medium" : "text-zinc-500"}`}>
-                      {label}
+                    <span className={`text-xs mt-2 font-medium ${s.num === step ? "text-indigo-600 dark:text-indigo-400" : "text-slate-500"}`}>
+                      {s.label}
                     </span>
                   </div>
                   {i < 2 && (
-                    <div className={`w-16 h-0.5 mx-2 mb-5 ${i + 1 < step ? "bg-emerald-500" : "bg-zinc-200 dark:bg-zinc-800"}`} />
+                    <div className={`w-12 sm:w-20 h-0.5 mx-2 mb-6 rounded-full transition-all duration-300 ${
+                      s.num < step ? "bg-gradient-to-r from-emerald-400 to-emerald-500" : "bg-slate-200 dark:bg-slate-800"
+                    }`} />
                   )}
                 </div>
               ))}
@@ -240,11 +286,11 @@ export default function StudyPlanPage() {
 
         {/* Step 1: Select Certification */}
         {step === 1 && (
-          <div className="space-y-3">
-            <h2 className="text-lg font-semibold text-zinc-900 dark:text-white mb-4">
-              Select your certification
+          <div>
+            <h2 className="text-lg font-semibold text-slate-900 dark:text-white mb-4">
+              Which certification are you preparing for?
             </h2>
-            <div className="grid gap-2 max-h-[60vh] overflow-y-auto pr-1">
+            <div className="space-y-2 max-h-[55vh] overflow-y-auto pr-1">
               {readyCerts.map((cert) => (
                 <button
                   key={cert.slug}
@@ -252,19 +298,27 @@ export default function StudyPlanPage() {
                     setSelectedCert(cert);
                     setStep(2);
                   }}
-                  className="w-full p-4 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 hover:border-violet-400 dark:hover:border-violet-600 hover:shadow-md transition-all text-left group"
+                  className="w-full p-4 rounded-xl bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 hover:border-indigo-400 dark:hover:border-indigo-500 hover:shadow-lg hover:shadow-indigo-500/10 transition-all duration-200 text-left group"
                 >
                   <div className="flex items-center justify-between">
-                    <div>
-                      <span className="font-semibold text-zinc-900 dark:text-white group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors">
-                        {cert.name}
-                      </span>
-                      <p className="text-sm text-zinc-500 dark:text-zinc-400 mt-0.5">
-                        {cert.fullName}
-                      </p>
+                    <div className="flex items-center gap-3">
+                      <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center text-white font-bold text-sm shadow-lg shadow-indigo-500/20">
+                        {cert.name.slice(0, 3)}
+                      </div>
+                      <div>
+                        <span className="font-semibold text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                          {cert.name}
+                        </span>
+                        <p className="text-sm text-slate-500 dark:text-slate-400">
+                          {cert.fullName}
+                        </p>
+                      </div>
                     </div>
-                    <div className="text-sm text-zinc-400 dark:text-zinc-500">
-                      {cert.domains.length} domains →
+                    <div className="flex items-center gap-2 text-slate-400">
+                      <span className="text-sm">{cert.domains.length} domains</span>
+                      <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
                     </div>
                   </div>
                 </button>
@@ -278,35 +332,40 @@ export default function StudyPlanPage() {
           <div className="space-y-6">
             <button
               onClick={() => setStep(1)}
-              className="text-sm text-zinc-500 hover:text-zinc-900 dark:hover:text-white flex items-center gap-1"
+              className="inline-flex items-center gap-1.5 text-sm text-slate-500 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
             >
-              ← Change certification
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+              Change certification
             </button>
 
-            <div className="bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-200 dark:border-zinc-800 p-6">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 rounded-xl bg-violet-100 dark:bg-violet-900 flex items-center justify-center">
-                  <span className="text-lg">📅</span>
+            <div className="bg-white dark:bg-slate-900/50 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 shadow-xl shadow-slate-200/50 dark:shadow-none">
+              <div className="flex items-center gap-4 mb-8">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center shadow-lg shadow-indigo-500/20">
+                  <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
                 </div>
                 <div>
-                  <h2 className="font-semibold text-zinc-900 dark:text-white">
+                  <h2 className="font-semibold text-slate-900 dark:text-white text-lg">
                     How long until your exam?
                   </h2>
-                  <p className="text-sm text-zinc-500">
-                    4-8 weeks is recommended for most people
+                  <p className="text-slate-500 text-sm">
+                    4-8 weeks is ideal for most certifications
                   </p>
                 </div>
               </div>
 
-              <div className="grid grid-cols-3 sm:grid-cols-6 gap-2 mb-6">
+              <div className="grid grid-cols-6 gap-2 mb-6">
                 {weekOptions.map((w) => (
                   <button
                     key={w}
                     onClick={() => setWeeks(w)}
-                    className={`py-3 rounded-xl text-sm font-semibold transition-all ${
+                    className={`py-4 rounded-xl text-sm font-semibold transition-all duration-200 ${
                       weeks === w
-                        ? "bg-violet-600 text-white shadow-lg shadow-violet-500/25"
-                        : "bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-200 dark:hover:bg-zinc-700"
+                        ? "bg-gradient-to-r from-indigo-500 to-purple-500 text-white shadow-lg shadow-indigo-500/30 scale-105"
+                        : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700"
                     }`}
                   >
                     {w}w
@@ -314,15 +373,22 @@ export default function StudyPlanPage() {
                 ))}
               </div>
 
-              <div className="flex justify-between text-sm text-zinc-500 mb-6">
+              <div className="h-2 bg-slate-100 dark:bg-slate-800 rounded-full mb-4 overflow-hidden">
+                <div 
+                  className="h-full bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full transition-all duration-300"
+                  style={{ width: `${((weeks - 2) / 10) * 100}%` }}
+                />
+              </div>
+
+              <div className="flex justify-between text-sm text-slate-500 mb-8">
                 <span>⚡ Intensive</span>
-                <span className="font-medium text-violet-600 dark:text-violet-400">{weeks} weeks</span>
+                <span className="font-semibold text-indigo-600 dark:text-indigo-400">{weeks} weeks selected</span>
                 <span>🐢 Relaxed</span>
               </div>
 
               <button
                 onClick={() => setStep(3)}
-                className="w-full py-3.5 bg-violet-600 hover:bg-violet-700 text-white rounded-xl font-semibold transition-all"
+                className="w-full py-4 bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600 text-white rounded-xl font-semibold transition-all shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/40 hover:-translate-y-0.5"
               >
                 Continue
               </button>
@@ -335,35 +401,40 @@ export default function StudyPlanPage() {
           <div className="space-y-6">
             <button
               onClick={() => setStep(2)}
-              className="text-sm text-zinc-500 hover:text-zinc-900 dark:hover:text-white flex items-center gap-1"
+              className="inline-flex items-center gap-1.5 text-sm text-slate-500 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
             >
-              ← Back
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+              Back
             </button>
 
-            <div className="bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-200 dark:border-zinc-800 p-6">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 rounded-xl bg-violet-100 dark:bg-violet-900 flex items-center justify-center">
-                  <span className="text-lg">⏱️</span>
+            <div className="bg-white dark:bg-slate-900/50 rounded-2xl border border-slate-200 dark:border-slate-800 p-6 shadow-xl shadow-slate-200/50 dark:shadow-none">
+              <div className="flex items-center gap-4 mb-8">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center shadow-lg shadow-indigo-500/20">
+                  <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
                 </div>
                 <div>
-                  <h2 className="font-semibold text-zinc-900 dark:text-white">
-                    Weekly study hours?
+                  <h2 className="font-semibold text-slate-900 dark:text-white text-lg">
+                    Hours per week?
                   </h2>
-                  <p className="text-sm text-zinc-500">
+                  <p className="text-slate-500 text-sm">
                     Be realistic — consistency beats intensity
                   </p>
                 </div>
               </div>
 
-              <div className="grid grid-cols-5 gap-2 mb-6">
+              <div className="grid grid-cols-5 gap-2 mb-8">
                 {hourOptions.map((h) => (
                   <button
                     key={h}
                     onClick={() => setHoursPerWeek(h)}
-                    className={`py-3 rounded-xl text-sm font-semibold transition-all ${
+                    className={`py-4 rounded-xl text-sm font-semibold transition-all duration-200 ${
                       hoursPerWeek === h
-                        ? "bg-violet-600 text-white shadow-lg shadow-violet-500/25"
-                        : "bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-200 dark:hover:bg-zinc-700"
+                        ? "bg-gradient-to-r from-indigo-500 to-purple-500 text-white shadow-lg shadow-indigo-500/30 scale-105"
+                        : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700"
                     }`}
                   >
                     {h}h
@@ -371,29 +442,36 @@ export default function StudyPlanPage() {
                 ))}
               </div>
 
-              {/* Summary */}
-              <div className="bg-zinc-50 dark:bg-zinc-800/50 rounded-xl p-4 mb-6">
+              {/* Summary card */}
+              <div className="bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-800/50 dark:to-slate-800/30 rounded-xl p-5 mb-8 border border-slate-200/50 dark:border-slate-700/50">
                 <div className="grid grid-cols-3 gap-4 text-center">
                   <div>
-                    <div className="text-2xl font-bold text-zinc-900 dark:text-white">{selectedCert?.name}</div>
-                    <div className="text-xs text-zinc-500">Certification</div>
+                    <div className="text-2xl font-bold bg-gradient-to-r from-indigo-500 to-purple-500 bg-clip-text text-transparent">
+                      {selectedCert?.name}
+                    </div>
+                    <div className="text-xs text-slate-500 mt-1">Certification</div>
                   </div>
                   <div>
-                    <div className="text-2xl font-bold text-zinc-900 dark:text-white">{weeks}w</div>
-                    <div className="text-xs text-zinc-500">Duration</div>
+                    <div className="text-2xl font-bold text-slate-900 dark:text-white">{weeks}</div>
+                    <div className="text-xs text-slate-500 mt-1">Weeks</div>
                   </div>
                   <div>
-                    <div className="text-2xl font-bold text-violet-600">{weeks * hoursPerWeek}h</div>
-                    <div className="text-xs text-zinc-500">Total</div>
+                    <div className="text-2xl font-bold bg-gradient-to-r from-emerald-500 to-teal-500 bg-clip-text text-transparent">
+                      {weeks * hoursPerWeek}h
+                    </div>
+                    <div className="text-xs text-slate-500 mt-1">Total hours</div>
                   </div>
                 </div>
               </div>
 
               <button
                 onClick={generatePlan}
-                className="w-full py-3.5 bg-violet-600 hover:bg-violet-700 text-white rounded-xl font-semibold transition-all flex items-center justify-center gap-2"
+                className="w-full py-4 bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600 text-white rounded-xl font-semibold transition-all shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/40 hover:-translate-y-0.5 flex items-center justify-center gap-2"
               >
-                Generate Study Plan ✨
+                <span>Generate My Plan</span>
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
               </button>
             </div>
           </div>
@@ -403,91 +481,104 @@ export default function StudyPlanPage() {
         {step === 4 && studyPlan && (
           <div className="space-y-6">
             {/* Header Card */}
-            <div className="bg-gradient-to-br from-violet-600 to-violet-700 rounded-2xl p-6 text-white">
-              <div className="flex items-start justify-between mb-4">
+            <div className="bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 rounded-2xl p-6 text-white shadow-xl shadow-indigo-500/25">
+              <div className="flex items-start justify-between mb-6">
                 <div>
-                  <h2 className="text-2xl font-bold">{studyPlan.certification.name}</h2>
-                  <p className="text-violet-200 text-sm">Study Plan</p>
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/20 text-sm font-medium mb-3">
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    Plan Generated
+                  </div>
+                  <h2 className="text-3xl font-bold">{studyPlan.certification.name}</h2>
+                  <p className="text-white/70">{studyPlan.certification.fullName}</p>
                 </div>
                 <button
                   onClick={() => { setStep(1); setStudyPlan(null); }}
-                  className="text-violet-200 hover:text-white text-sm underline"
+                  className="text-white/70 hover:text-white text-sm flex items-center gap-1 transition-colors"
                 >
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                  </svg>
                   Start over
                 </button>
               </div>
 
-              <div className="grid grid-cols-3 gap-4">
-                <div className="bg-white/10 rounded-xl p-3 text-center">
-                  <div className="text-2xl font-bold">{studyPlan.totalWeeks}</div>
-                  <div className="text-xs text-violet-200">weeks</div>
+              <div className="grid grid-cols-3 gap-3">
+                <div className="bg-white/10 backdrop-blur rounded-xl p-4 text-center">
+                  <div className="text-3xl font-bold">{studyPlan.totalWeeks}</div>
+                  <div className="text-sm text-white/70">weeks</div>
                 </div>
-                <div className="bg-white/10 rounded-xl p-3 text-center">
-                  <div className="text-2xl font-bold">{studyPlan.hoursPerWeek}</div>
-                  <div className="text-xs text-violet-200">hrs/week</div>
+                <div className="bg-white/10 backdrop-blur rounded-xl p-4 text-center">
+                  <div className="text-3xl font-bold">{studyPlan.hoursPerWeek}</div>
+                  <div className="text-sm text-white/70">hrs/week</div>
                 </div>
-                <div className="bg-white/10 rounded-xl p-3 text-center">
-                  <div className="text-2xl font-bold">{studyPlan.totalHours}</div>
-                  <div className="text-xs text-violet-200">total hrs</div>
+                <div className="bg-white/10 backdrop-blur rounded-xl p-4 text-center">
+                  <div className="text-3xl font-bold">{studyPlan.totalHours}</div>
+                  <div className="text-sm text-white/70">total</div>
                 </div>
               </div>
 
-              <div className="mt-4 pt-4 border-t border-white/20 flex items-center justify-between">
-                <span className="text-sm text-violet-200">🎯 Target exam</span>
+              <div className="mt-5 pt-5 border-t border-white/20 flex items-center justify-between">
+                <div className="flex items-center gap-2 text-white/70">
+                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                  Target exam date
+                </div>
                 <span className="font-semibold">{studyPlan.examDate}</span>
               </div>
             </div>
 
             {/* Phase Legend */}
-            <div className="flex justify-center gap-4 text-sm">
-              <span className="flex items-center gap-1.5">
-                <span className="w-3 h-3 rounded-full bg-blue-500"></span>
-                <span className="text-zinc-600 dark:text-zinc-400">Learn</span>
-              </span>
-              <span className="flex items-center gap-1.5">
-                <span className="w-3 h-3 rounded-full bg-amber-500"></span>
-                <span className="text-zinc-600 dark:text-zinc-400">Practice</span>
-              </span>
-              <span className="flex items-center gap-1.5">
-                <span className="w-3 h-3 rounded-full bg-emerald-500"></span>
-                <span className="text-zinc-600 dark:text-zinc-400">Review</span>
-              </span>
+            <div className="flex justify-center gap-6 py-2">
+              {[
+                { phase: "learn", label: "Learn", color: "bg-blue-500" },
+                { phase: "practice", label: "Practice", color: "bg-amber-500" },
+                { phase: "review", label: "Review", color: "bg-emerald-500" },
+              ].map((p) => (
+                <div key={p.phase} className="flex items-center gap-2">
+                  <span className={`w-3 h-3 rounded-full ${p.color}`} />
+                  <span className="text-sm text-slate-600 dark:text-slate-400">{p.label}</span>
+                </div>
+              ))}
             </div>
 
             {/* Weekly Plans */}
             <div className="space-y-3">
               {studyPlan.weeks.map((week) => {
-                const colors = phaseColors[week.phase];
+                const config = phaseConfig[week.phase];
                 return (
                   <div
                     key={week.week}
-                    className={`rounded-xl border ${colors.border} ${colors.light} p-4`}
+                    className={`rounded-xl border ${config.border} ${config.light} backdrop-blur p-4 transition-all hover:shadow-lg`}
                   >
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className={`w-8 h-8 rounded-lg ${colors.bg} text-white flex items-center justify-center font-bold text-sm`}>
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className={`w-10 h-10 rounded-xl ${config.bg} text-white flex items-center justify-center font-bold shadow-lg`}>
                         {week.week}
                       </div>
                       <div className="flex-1">
                         <div className="flex items-center gap-2">
-                          <span className="font-semibold text-zinc-900 dark:text-white">
+                          <span className="font-semibold text-slate-900 dark:text-white">
                             Week {week.week}
                           </span>
-                          <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${colors.bg} text-white uppercase`}>
-                            {week.phase}
+                          <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${config.bg} text-white uppercase tracking-wide`}>
+                            {config.icon} {week.phase}
                           </span>
                         </div>
-                        <span className="text-xs text-zinc-500">{week.totalHours} hours</span>
+                        <span className="text-sm text-slate-500">{week.totalHours} hours this week</span>
                       </div>
                     </div>
 
-                    <div className="flex flex-wrap gap-1.5">
+                    <div className="flex flex-wrap gap-2">
                       {week.domains.map((d) => (
                         <Link
                           key={d.slug}
                           href={`/${studyPlan.certification.slug}/practice-questions/${d.slug}`}
-                          className="px-2.5 py-1 bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-lg text-xs text-zinc-700 dark:text-zinc-300 hover:border-violet-400 hover:text-violet-600 transition-all"
+                          className="px-3 py-1.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm text-slate-700 dark:text-slate-300 hover:border-indigo-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-all hover:shadow-md group"
                         >
-                          {d.name} <span className="text-zinc-400">({d.hours}h)</span>
+                          <span className="font-medium">{d.name}</span>
+                          <span className="text-slate-400 ml-1.5 group-hover:text-indigo-400">({d.hours}h)</span>
                         </Link>
                       ))}
                     </div>
@@ -497,18 +588,35 @@ export default function StudyPlanPage() {
             </div>
 
             {/* Actions */}
-            <div className="flex gap-3">
+            <div className="flex gap-3 pt-4">
               <button
                 onClick={copyPlan}
-                className="flex-1 py-3 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-700 dark:text-zinc-300 rounded-xl font-medium transition-all flex items-center justify-center gap-2"
+                className="flex-1 py-4 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-xl font-semibold transition-all flex items-center justify-center gap-2"
               >
-                {copied ? "✓ Copied!" : "📋 Copy Plan"}
+                {copied ? (
+                  <>
+                    <svg className="w-5 h-5 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    Copied!
+                  </>
+                ) : (
+                  <>
+                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                    </svg>
+                    Copy Plan
+                  </>
+                )}
               </button>
               <Link
                 href={`/${studyPlan.certification.slug}/practice-questions`}
-                className="flex-1 py-3 bg-violet-600 hover:bg-violet-700 text-white rounded-xl font-medium transition-all text-center"
+                className="flex-1 py-4 bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600 text-white rounded-xl font-semibold transition-all shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/40 text-center flex items-center justify-center gap-2"
               >
-                Start Practicing →
+                Start Practicing
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
               </Link>
             </div>
           </div>
