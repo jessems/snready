@@ -45,9 +45,8 @@ export async function getAccessData(
     raw = await kv.get(email);
     if (raw) {
       // Opportunistically migrate: write to new key
-      const parsed = JSON.parse(raw);
-      const ttl = parsed.plan === "lifetime" ? undefined : SESSION_TTL_SECONDS;
-      await kv.put(`access:${email}`, raw, ttl ? { expirationTtl: ttl } : {});
+      // Both plans are now lifetime, no TTL needed
+      await kv.put(`access:${email}`, raw, {});
     }
   }
   if (!raw) return null;

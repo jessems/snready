@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useAccess } from "./AccessProvider";
 
-type PlanType = "30day" | "lifetime";
+type PlanType = "single" | "all";
 
 interface CheckoutButtonProps {
   certification?: string;
@@ -14,7 +14,7 @@ interface CheckoutButtonProps {
 
 export function CheckoutButton({
   certification,
-  plan = "30day",
+  plan = "single",
   className = "",
   children,
 }: CheckoutButtonProps) {

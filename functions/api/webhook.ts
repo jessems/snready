@@ -27,7 +27,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     if (event.type === "checkout.session.completed") {
       const session = event.data.object as Stripe.Checkout.Session;
       const email = session.customer_details?.email;
-      const plan = session.metadata?.plan || "30day";
+      const plan = session.metadata?.plan || "single";
       const certification = session.metadata?.certification || "all";
 
       if (email) {

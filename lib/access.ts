@@ -1,6 +1,6 @@
 // Client-side auth helpers — cookie-based sessions
 
-type PlanType = "30day" | "lifetime";
+type PlanType = "single" | "all";
 
 export interface AuthSession {
   authenticated: boolean;

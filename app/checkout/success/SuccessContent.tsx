@@ -6,7 +6,7 @@ import { useSearchParams } from "next/navigation";
 import { verifySession } from "@/lib/access";
 import { useAccess } from "@/components/AccessProvider";
 
-type PlanType = "30day" | "lifetime";
+type PlanType = "single" | "all";
 
 interface SessionResult {
   success: boolean;
@@ -146,8 +146,8 @@ export default function SuccessContent() {
     );
   }
 
-  const isLifetime = result?.plan === "lifetime";
-  const planName = isLifetime ? "Lifetime" : "30-Day";
+  const isAllCerts = result?.plan === "all";
+  const planName = isAllCerts ? "All Certifications" : "Single Certification";
 
   return (
     <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 lg:px-8">
@@ -230,13 +230,9 @@ export default function SuccessContent() {
               <svg className="mt-1 h-4 w-4 flex-shrink-0 text-emerald-500" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
               </svg>
-              {isLifetime ? (
-                <span><strong>Lifetime access</strong> — never expires</span>
-              ) : (
-                <span>30-day access from today</span>
-              )}
+              <span><strong>Lifetime access</strong> — never expires</span>
             </li>
-            {isLifetime && (
+            {isAllCerts && (
               <>
                 <li className="flex items-start gap-2">
                   <svg className="mt-1 h-4 w-4 flex-shrink-0 text-emerald-500" fill="currentColor" viewBox="0 0 20 20">

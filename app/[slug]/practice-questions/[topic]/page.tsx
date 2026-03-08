@@ -261,14 +261,14 @@ export default async function TopicQuestionsPage({ params }: PageProps) {
                 <div className="mt-4 space-y-2">
                   <CheckoutButton
                     certification={certification.name}
-                    plan="30day"
+                    plan="single"
                     className="w-full rounded-lg bg-white/20 py-2 text-sm font-medium text-white transition-colors hover:bg-white/30"
                   >
                     {certification.name} Lifetime — $9
                   </CheckoutButton>
                   <CheckoutButton
                     certification={certification.name}
-                    plan="lifetime"
+                    plan="all"
                     className="w-full rounded-lg bg-white py-2 text-sm font-medium text-emerald-600 transition-colors hover:bg-emerald-50"
                   >
                     All Certs Lifetime — $49
