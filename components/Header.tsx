@@ -148,6 +148,14 @@ export default function Header() {
                 >
                   Paths
                 </Link>
+
+                {/* Demand Index Link */}
+                <Link
+                  href="/demand"
+                  className="text-sm font-medium text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
+                >
+                  Demand
+                </Link>
               </div>
 
               {/* Auth Section */}
@@ -281,6 +289,13 @@ export default function Header() {
               className="block py-2 text-sm font-medium text-zinc-600 dark:text-zinc-400"
             >
               Resources
+            </Link>
+            <Link
+              href="/demand"
+              onClick={() => setShowMobileMenu(false)}
+              className="block py-2 text-sm font-medium text-zinc-600 dark:text-zinc-400"
+            >
+              Demand Index
             </Link>
           </div>
         </div>
