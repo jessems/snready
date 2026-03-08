@@ -715,6 +715,183 @@
         "release": "Xanadu",
         "reviewed": false
       }
+    },
+    {
+      "id": "cis-sp-foundational-data-010",
+      "certification": "cis-sp",
+      "topic": "foundational-data-management",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "Which tables have sys_domain field for domain separation in CMDB Reconciliation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Identifier and Identifier Entries tables"
+        },
+        {
+          "id": "b",
+          "text": "Reconciliation Definition and Datasource Precedence tables"
+        },
+        {
+          "id": "c",
+          "text": "All CMDB tables"
+        },
+        {
+          "id": "d",
+          "text": "No tables have domain fields"
+        }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "Reconciliation Definition (cmdb_reconciliation_definition) and Datasource Precedence (cmdb_datasource_precedence) tables have sys_domain, sys_overrides, and sys_domain_path fields, allowing domain-specific reconciliation rules. Identification rules are always global.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Identifier and Identifier Entries tables don't have sys_domain field - they're always global"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Not all CMDB tables have domain fields"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Some tables do have domain fields for reconciliation"
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "The reconciliation definition rules that are used during the reconciliation process can be defined for different domains. For example, the following tables do have sys_domain, sys_overrides, sys_domain_path fields: Reconciliation Definition, Datasource Precedence, Data Source Staleness Definitions.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/servicenow-platform/configuration-management-database-cmdb/domain-separation-identification-reconciliation.html"
+      },
+      "labels": {
+        "domain": "Foundational Data Management",
+        "subtopics": ["CMDB", "Reconciliation"],
+        "tags": ["cmdb", "reconciliation", "domain-fields"]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": false
+    },
+    {
+      "id": "cis-sp-foundational-data-011",
+      "certification": "cis-sp",
+      "topic": "foundational-data-management",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Where are Identification Rules defined in a domain-separated instance?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Per domain"
+        },
+        {
+          "id": "b",
+          "text": "At the global level only"
+        },
+        {
+          "id": "c",
+          "text": "Per user"
+        },
+        {
+          "id": "d",
+          "text": "Per CI class"
+        }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "Identification rules and identification inclusion rules are always defined at the global level. The following tables don't have a sys_domain field: Identifier (cmdb_identifier), Identifier Entries (cmdb_identifier_entry), Related Entries (cmdb_related_entry), Identification Inclusion Rules (cmdb_ie_active_config).",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Identification rules cannot be domain-specific"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Identification rules are not per-user"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "While rules apply to CI classes, the rules themselves are global"
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "The identification rules and identification inclusion rules used during the identification process are always defined at the global level. For example, the following tables don't have a sys_domain field: Identifier, Identifier Entries, Related Entries, Identification Inclusion Rules.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/servicenow-platform/configuration-management-database-cmdb/domain-separation-identification-reconciliation.html"
+      },
+      "labels": {
+        "domain": "Foundational Data Management",
+        "subtopics": ["CMDB", "Identification Rules"],
+        "tags": ["identification", "global", "rules"]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": false
+    },
+    {
+      "id": "cis-sp-foundational-data-012",
+      "certification": "cis-sp",
+      "topic": "foundational-data-management",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "An MSP needs different CI data staleness rules for different customer domains. Which table should be configured?",
+      "options": [
+        {
+          "id": "a",
+          "text": "cmdb_identifier"
+        },
+        {
+          "id": "b",
+          "text": "cmdb_datasource_staleness"
+        },
+        {
+          "id": "c",
+          "text": "cmdb_identifier_entry"
+        },
+        {
+          "id": "d",
+          "text": "cmdb_ie_active_config"
+        }
+      ],
+      "correctAnswers": ["b"],
+      "explanation": {
+        "correct": "The Data Source Staleness Definitions table (cmdb_datasource_staleness) has sys_domain field and can be configured per domain to define different staleness rules for each customer's CIs.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "cmdb_identifier is for identification rules which are global"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "cmdb_identifier_entry is for identification which is global"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "This is for identification inclusion rules which are global"
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "The following tables do have sys_domain, sys_overrides, sys_domain_path fields: Reconciliation Definition (cmdb_reconciliation_definition), Datasource Precedence (cmdb_datasource_precedence), Data Source Staleness Definitions (cmdb_datasource_staleness).",
+        "url": "https://www.servicenow.com/docs/r/xanadu/servicenow-platform/configuration-management-database-cmdb/domain-separation-identification-reconciliation.html"
+      },
+      "labels": {
+        "domain": "Foundational Data Management",
+        "subtopics": ["CMDB", "Staleness"],
+        "tags": ["staleness", "domain-specific", "msp"]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": false
     }
   ]
 }
