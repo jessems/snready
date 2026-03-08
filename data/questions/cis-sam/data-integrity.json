@@ -648,6 +648,487 @@
         "release": "Xanadu",
         "reviewed": false
       }
+    },
+    {
+      "id": "cis-sam-data-integrity-409",
+      "certification": "cis-sam",
+      "topic": "data-integrity",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What are the six possible normalization statuses for a discovery model in Software Asset Management?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Normalized, Partially Normalized, Publisher Normalized, Match Not Found, Manually Normalized, New"
+        },
+        {
+          "id": "b",
+          "text": "Complete, Partial, Publisher Only, Not Found, Manual, Pending"
+        },
+        {
+          "id": "c",
+          "text": "Verified, Unverified, Publisher Match, No Match, Override, Queued"
+        },
+        {
+          "id": "d",
+          "text": "Matched, Unmatched, Publisher Matched, Error, Corrected, Initial"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "The six normalization statuses are: Normalized (fully matched on publisher, product, version), Partially Normalized (matched publisher and product only), Publisher Normalized (matched publisher only), Match Not Found (no matches), Manually Normalized (manually filled in), and New (not yet processed).",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "These are not the official status names used in SAM.",
+            "reference": "docs.servicenow.com/normalization-status"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "These are not the correct terminology for normalization statuses.",
+            "reference": "docs.servicenow.com/normalization-status"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "These do not match the actual normalization status values in ServiceNow.",
+            "reference": "docs.servicenow.com/normalization-status"
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/normalization-status"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "docs",
+        "path": "normalization-status.md",
+        "excerpt": "Normalization status can have six different results: Normalized, Partially Normalized, Publisher Normalized, Match Not Found, Manually Normalized, New."
+      },
+      "labels": {
+        "certification": "cis-sam",
+        "domain": "Data Integrity & Sources",
+        "domainSlug": "data-integrity",
+        "domainPercentage": 28,
+        "subtopics": [
+          "Normalization"
+        ],
+        "tags": [
+          "normalization",
+          "status",
+          "discovery-model"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-04T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sam-data-integrity-410",
+      "certification": "cis-sam",
+      "topic": "data-integrity",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "When a discovery model has a \"Partially Normalized\" status, which fields are editable?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Publisher field only"
+        },
+        {
+          "id": "b",
+          "text": "Version field only"
+        },
+        {
+          "id": "c",
+          "text": "Product and version fields"
+        },
+        {
+          "id": "d",
+          "text": "All fields including publisher, product, and version"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "When a discovery model is Partially Normalized, it means publisher and product fields are already matched. Only the version field is editable. Once version information is added, the status changes to Manually Normalized.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "In Partially Normalized status, the publisher is already matched and not editable.",
+            "reference": "docs.servicenow.com/normalization-status"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Only the version field is editable; the product is already normalized.",
+            "reference": "docs.servicenow.com/normalization-status"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "All fields being editable applies to Match Not Found status, not Partially Normalized.",
+            "reference": "docs.servicenow.com/normalization-status"
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/normalization-status"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "normalization-status.md",
+        "excerpt": "Partially Normalized: A discovery model is partially normalized based on publisher and product fields only. In this case, the version field is editable."
+      },
+      "labels": {
+        "certification": "cis-sam",
+        "domain": "Data Integrity & Sources",
+        "domainSlug": "data-integrity",
+        "domainPercentage": 28,
+        "subtopics": [
+          "Normalization"
+        ],
+        "tags": [
+          "normalization",
+          "partially-normalized",
+          "discovery"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-04T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sam-data-integrity-411",
+      "certification": "cis-sam",
+      "topic": "data-integrity",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A discovery model shows \"Match Not Found\" status. What does this indicate and what action can be taken?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The software was uninstalled; wait for the next discovery scan"
+        },
+        {
+          "id": "b",
+          "text": "None of the three key fields matched a rule in the Software Library; all key fields can be manually edited"
+        },
+        {
+          "id": "c",
+          "text": "The discovery process failed; re-run discovery"
+        },
+        {
+          "id": "d",
+          "text": "The license expired; renew the entitlement"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "Match Not Found means the normalization process could not match any of the three key fields (publisher, product, version) with a rule in the Software Library. All key fields become editable, and once manually filled in, the status changes to Manually Normalized. This often occurs for custom software specific to an organization.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Match Not Found relates to normalization rules, not software installation status.",
+            "reference": "docs.servicenow.com/normalization-status"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "This is not a discovery failure; the software was discovered but could not be matched to the library.",
+            "reference": "docs.servicenow.com/normalization-status"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Normalization status is unrelated to license expiration.",
+            "reference": "docs.servicenow.com/normalization-status"
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/normalization-status"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "normalization-status.md",
+        "excerpt": "Match Not Found: The normalization process could not match any of the three key fields with a rule in the Software Library. All key fields are editable. Match Not Found status could occur if a normalization rule for the software does not exist, for example, custom software."
+      },
+      "labels": {
+        "certification": "cis-sam",
+        "domain": "Data Integrity & Sources",
+        "domainSlug": "data-integrity",
+        "domainPercentage": 28,
+        "subtopics": [
+          "Normalization"
+        ],
+        "tags": [
+          "normalization",
+          "match-not-found",
+          "troubleshooting"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-04T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sam-data-integrity-412",
+      "certification": "cis-sam",
+      "topic": "data-integrity",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which discovery tools can be used to discover software installations in an environment for Software Asset Management?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Only ServiceNow Discovery"
+        },
+        {
+          "id": "b",
+          "text": "ServiceNow Discovery or Microsoft SCCM"
+        },
+        {
+          "id": "c",
+          "text": "Only third-party ITSM tools"
+        },
+        {
+          "id": "d",
+          "text": "Manual entry only"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "A discovery process such as ServiceNow Discovery or Microsoft SCCM (2012 v2 or 2016) can be used to discover software installed in your environment. The discovered software is then normalized and matched to software discovery models.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "While ServiceNow Discovery is supported, Microsoft SCCM is also a valid discovery source.",
+            "reference": "docs.servicenow.com/c_SAMOverview"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "ServiceNow has its own native Discovery tool in addition to supporting third-party sources.",
+            "reference": "docs.servicenow.com/c_SAMOverview"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "SAM supports automated discovery, not just manual entry.",
+            "reference": "docs.servicenow.com/c_SAMOverview"
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/c_SAMOverview"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "c_SAMOverview.md",
+        "excerpt": "A discovery process, such as ServiceNow Discovery or Microsoft SCCM (2012 v2 or 2016), can be used to discover the software installed in your environment."
+      },
+      "labels": {
+        "certification": "cis-sam",
+        "domain": "Data Integrity & Sources",
+        "domainSlug": "data-integrity",
+        "domainPercentage": 28,
+        "subtopics": [
+          "Discovery sources"
+        ],
+        "tags": [
+          "discovery",
+          "sccm",
+          "data-sources"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-04T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sam-data-integrity-413",
+      "certification": "cis-sam",
+      "topic": "data-integrity",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_select",
+      "question": "Which fields are compared during the normalization process to match discovered software against the ServiceNow repository? (Choose three.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Discovered publisher"
+        },
+        {
+          "id": "b",
+          "text": "Installation date"
+        },
+        {
+          "id": "c",
+          "text": "Discovered product"
+        },
+        {
+          "id": "d",
+          "text": "Discovered version"
+        },
+        {
+          "id": "e",
+          "text": "License key"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "c",
+        "d"
+      ],
+      "selectCount": 3,
+      "isNegative": false,
+      "explanation": {
+        "correct": "The normalization process compares discovered publisher, discovered product, and discovered version values against the ServiceNow repository of normalized equivalents. These three key fields determine the normalization status.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Installation date is not used for normalization matching; it is metadata about when the software was installed.",
+            "reference": "docs.servicenow.com/c_SAMOverview"
+          },
+          {
+            "choiceId": "e",
+            "explanation": "License keys are managed in entitlements, not used for software normalization matching.",
+            "reference": "docs.servicenow.com/c_SAMOverview"
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/c_SAMOverview"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "c_SAMOverview.md",
+        "excerpt": "The normalization process compares the discovered publisher, discovered product, and discovered version values against the ServiceNow repository of normalized equivalents."
+      },
+      "labels": {
+        "certification": "cis-sam",
+        "domain": "Data Integrity & Sources",
+        "domainSlug": "data-integrity",
+        "domainPercentage": 28,
+        "subtopics": [
+          "Normalization"
+        ],
+        "tags": [
+          "normalization",
+          "discovery",
+          "fields"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-04T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sam-data-integrity-414",
+      "certification": "cis-sam",
+      "topic": "data-integrity",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "When a discovery model is fully normalized, to which fields is it normalized?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Publisher only"
+        },
+        {
+          "id": "b",
+          "text": "Publisher and product"
+        },
+        {
+          "id": "c",
+          "text": "Version and full version"
+        },
+        {
+          "id": "d",
+          "text": "All fields except version"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "When a discovery model is normalized (fully normalized), it is normalized to the version and full version. If the discovery model is only partially normalized or publisher normalized, it will not be updated to full version.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Publisher normalization alone is a different status (Publisher Normalized).",
+            "reference": "docs.servicenow.com/normalization-status"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "Publisher and product matching without version results in Partially Normalized status.",
+            "reference": "docs.servicenow.com/normalization-status"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Full normalization specifically includes version matching.",
+            "reference": "docs.servicenow.com/normalization-status"
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/normalization-status"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "normalization-status.md",
+        "excerpt": "When a discovery model is normalized, it is normalized to the version and full version. However, if the discovery model is partially normalized or publisher normalized, then the discovery model will not be updated to full version."
+      },
+      "labels": {
+        "certification": "cis-sam",
+        "domain": "Data Integrity & Sources",
+        "domainSlug": "data-integrity",
+        "domainPercentage": 28,
+        "subtopics": [
+          "Normalization"
+        ],
+        "tags": [
+          "normalization",
+          "version",
+          "full-version"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-04T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     }
   ]
 }
