@@ -315,6 +315,64 @@ export default function ResourcesPage() {
         </div>
       </section>
 
+      {/* SNReady Tools Section */}
+      <section className="py-12 border-b border-zinc-200 dark:border-zinc-800">
+        <div className="mx-auto max-w-4xl px-4">
+          <div className="flex items-center gap-3 mb-6">
+            <span className="text-2xl">⚡</span>
+            <div>
+              <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-50">
+                Free Interactive Tools
+              </h2>
+              <p className="text-zinc-600 dark:text-zinc-400">
+                Use these tools to plan your ServiceNow certification journey
+              </p>
+            </div>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-3">
+            <a
+              href="/quiz"
+              className="block rounded-xl border-2 border-emerald-200 bg-emerald-50 p-5 transition-all hover:border-emerald-400 hover:shadow-md dark:border-emerald-800 dark:bg-emerald-950/30 dark:hover:border-emerald-600"
+            >
+              <div className="text-3xl mb-3">🎯</div>
+              <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
+                Find My Certification
+              </h3>
+              <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
+                Take a quick quiz to discover which ServiceNow certification matches your career goals.
+              </p>
+            </a>
+
+            <a
+              href="/study-plan"
+              className="block rounded-xl border-2 border-blue-200 bg-blue-50 p-5 transition-all hover:border-blue-400 hover:shadow-md dark:border-blue-800 dark:bg-blue-950/30 dark:hover:border-blue-600"
+            >
+              <div className="text-3xl mb-3">📅</div>
+              <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
+                Study Plan Generator
+              </h3>
+              <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
+                Generate a personalized week-by-week study schedule for any certification.
+              </p>
+            </a>
+
+            <a
+              href="/salary-calculator"
+              className="block rounded-xl border-2 border-yellow-200 bg-yellow-50 p-5 transition-all hover:border-yellow-400 hover:shadow-md dark:border-yellow-800 dark:bg-yellow-950/30 dark:hover:border-yellow-600"
+            >
+              <div className="text-3xl mb-3">💰</div>
+              <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
+                Salary Calculator
+              </h3>
+              <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
+                See how certifications, experience, and location affect your ServiceNow salary.
+              </p>
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* Resource Categories */}
       <section className="py-12">
         <div className="mx-auto max-w-4xl px-4">
