@@ -155,8 +155,75 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Pricing Section */}
+      {/* Free Tools Section */}
       <section className="py-16 bg-white dark:bg-zinc-950">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-zinc-900 dark:text-zinc-50">
+              Free Career Planning Tools
+            </h2>
+            <p className="mt-4 text-lg text-zinc-600 dark:text-zinc-400">
+              Start your ServiceNow certification journey with these interactive tools
+            </p>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-3">
+            {/* Certification Quiz */}
+            <Link
+              href="/quiz"
+              className="group rounded-xl border-2 border-emerald-200 bg-emerald-50 p-6 transition-all hover:border-emerald-400 hover:shadow-lg dark:border-emerald-800 dark:bg-emerald-950/30 dark:hover:border-emerald-600"
+            >
+              <div className="text-4xl mb-4">🎯</div>
+              <h3 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100 group-hover:text-emerald-700 dark:group-hover:text-emerald-400">
+                Find My Certification
+              </h3>
+              <p className="mt-2 text-zinc-600 dark:text-zinc-400">
+                Take a quick quiz to discover which ServiceNow certification matches your career goals
+              </p>
+              <div className="mt-4 text-emerald-600 font-medium group-hover:underline">
+                Take the quiz →
+              </div>
+            </Link>
+
+            {/* Study Plan Generator */}
+            <Link
+              href="/study-plan"
+              className="group rounded-xl border-2 border-blue-200 bg-blue-50 p-6 transition-all hover:border-blue-400 hover:shadow-lg dark:border-blue-800 dark:bg-blue-950/30 dark:hover:border-blue-600"
+            >
+              <div className="text-4xl mb-4">📅</div>
+              <h3 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100 group-hover:text-blue-700 dark:group-hover:text-blue-400">
+                Study Plan Generator
+              </h3>
+              <p className="mt-2 text-zinc-600 dark:text-zinc-400">
+                Get a personalized week-by-week study schedule for any certification
+              </p>
+              <div className="mt-4 text-blue-600 font-medium group-hover:underline">
+                Generate plan →
+              </div>
+            </Link>
+
+            {/* Salary Calculator */}
+            <Link
+              href="/salary-calculator"
+              className="group rounded-xl border-2 border-yellow-200 bg-yellow-50 p-6 transition-all hover:border-yellow-400 hover:shadow-lg dark:border-yellow-800 dark:bg-yellow-950/30 dark:hover:border-yellow-600"
+            >
+              <div className="text-4xl mb-4">💰</div>
+              <h3 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100 group-hover:text-yellow-700 dark:group-hover:text-yellow-400">
+                Salary Calculator
+              </h3>
+              <p className="mt-2 text-zinc-600 dark:text-zinc-400">
+                See how certifications, experience, and location affect your ServiceNow salary
+              </p>
+              <div className="mt-4 text-yellow-600 font-medium group-hover:underline">
+                Calculate salary →
+              </div>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing Section */}
+      <section className="py-16 bg-zinc-50 dark:bg-zinc-900">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-zinc-900 dark:text-zinc-50">
