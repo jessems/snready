@@ -148,14 +148,14 @@ export function QuestionsWithPaywall({
               <div className="mt-6 grid gap-3 sm:grid-cols-2">
                 <CheckoutButton
                   certification={certification}
-                  plan="30day"
+                  plan="single"
                   className="w-full rounded-lg border-2 border-emerald-600 bg-white py-3 font-semibold text-emerald-600 transition-colors hover:bg-emerald-50 dark:bg-zinc-800 dark:hover:bg-zinc-700"
                 >
                   {certification} Lifetime — $9
                 </CheckoutButton>
                 <CheckoutButton
                   certification={certification}
-                  plan="lifetime"
+                  plan="all"
                   className="w-full rounded-lg bg-emerald-600 py-3 font-semibold text-white transition-colors hover:bg-emerald-700"
                 >
                   Lifetime All Certs — $49 ⭐

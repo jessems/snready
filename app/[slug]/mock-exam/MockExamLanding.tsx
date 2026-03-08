@@ -281,13 +281,13 @@ export default function MockExamLanding({
                   <div className="mt-4 flex flex-col gap-3 sm:flex-row">
                     <CheckoutButton
                       certification={examConfig.certSlug}
-                      plan="30day"
+                      plan="single"
                       className="inline-flex items-center justify-center rounded-lg border border-emerald-600 bg-white px-4 py-2 font-semibold text-emerald-600 transition-colors hover:bg-emerald-50 dark:bg-transparent dark:hover:bg-emerald-900/30"
                     >
-                      $9 — {certification.name} (30 days)
+                      $9 — {certification.name} Lifetime
                     </CheckoutButton>
                     <CheckoutButton
-                      plan="lifetime"
+                      plan="all"
                       className="inline-flex items-center justify-center rounded-lg bg-emerald-600 px-4 py-2 font-semibold text-white transition-colors hover:bg-emerald-700"
                     >
                       $49 — All Certifications (Lifetime)
