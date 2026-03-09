@@ -315,6 +315,88 @@ export default function ResourcesPage() {
         </div>
       </section>
 
+      {/* Interactive Tools Section */}
+      <section className="py-12">
+        <div className="mx-auto max-w-4xl px-4">
+          <div className="flex items-center gap-3 mb-6">
+            <span className="text-2xl">🎯</span>
+            <div>
+              <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-50">
+                Free Interactive Tools
+              </h2>
+              <p className="text-zinc-600 dark:text-zinc-400">
+                Personalized tools to guide your certification journey
+              </p>
+            </div>
+          </div>
+
+          <div className="grid gap-4 md:grid-cols-3">
+            {/* Readiness Checker */}
+            <Link
+              href="/readiness"
+              className="rounded-xl border-2 border-blue-200 bg-blue-50/50 p-6 transition-all hover:border-blue-400 hover:shadow-lg dark:border-blue-800 dark:bg-blue-950/20 dark:hover:border-blue-600"
+            >
+              <div className="w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center mb-4 dark:bg-blue-900/50">
+                <svg className="w-6 h-6 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50 mb-2">
+                Exam Readiness Checker
+              </h3>
+              <p className="text-sm text-zinc-600 dark:text-zinc-400 mb-3">
+                Quick 10-question assessment to gauge your exam readiness. Get domain-by-domain score breakdown.
+              </p>
+              <span className="inline-flex items-center text-sm font-medium text-blue-600 dark:text-blue-400">
+                Check Now →
+              </span>
+            </Link>
+
+            {/* Study Plan Generator */}
+            <Link
+              href="/study-plan"
+              className="rounded-xl border border-zinc-200 bg-white p-6 transition-all hover:border-emerald-300 hover:shadow-lg dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-emerald-700"
+            >
+              <div className="w-12 h-12 rounded-xl bg-emerald-100 flex items-center justify-center mb-4 dark:bg-emerald-900/50">
+                <svg className="w-6 h-6 text-emerald-600 dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50 mb-2">
+                Study Plan Generator
+              </h3>
+              <p className="text-sm text-zinc-600 dark:text-zinc-400 mb-3">
+                Create a personalized week-by-week study schedule based on your timeline and availability.
+              </p>
+              <span className="inline-flex items-center text-sm font-medium text-emerald-600 dark:text-emerald-400">
+                Generate Plan →
+              </span>
+            </Link>
+
+            {/* Certification Quiz */}
+            <Link
+              href="/quiz"
+              className="rounded-xl border border-zinc-200 bg-white p-6 transition-all hover:border-purple-300 hover:shadow-lg dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-purple-700"
+            >
+              <div className="w-12 h-12 rounded-xl bg-purple-100 flex items-center justify-center mb-4 dark:bg-purple-900/50">
+                <svg className="w-6 h-6 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50 mb-2">
+                Which Cert Is Right?
+              </h3>
+              <p className="text-sm text-zinc-600 dark:text-zinc-400 mb-3">
+                Not sure which certification to pursue? Take a quick quiz to find your ideal path.
+              </p>
+              <span className="inline-flex items-center text-sm font-medium text-purple-600 dark:text-purple-400">
+                Take Quiz →
+              </span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Resource Categories */}
       <section className="py-12">
         <div className="mx-auto max-w-4xl px-4">

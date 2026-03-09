@@ -169,6 +169,12 @@ export default function RootLayout({
                 </h3>
                 <div className="mt-4 space-y-3">
                   <Link
+                    href="/readiness"
+                    className="block text-sm text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
+                  >
+                    ✓ Am I Ready? (Free)
+                  </Link>
+                  <Link
                     href="/pricing"
                     className="block text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
                   >
