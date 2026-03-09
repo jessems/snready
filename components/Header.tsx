@@ -148,6 +148,14 @@ export default function Header() {
                 >
                   Paths
                 </Link>
+
+                {/* Salaries Link */}
+                <Link
+                  href="/salaries"
+                  className="text-sm font-medium text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
+                >
+                  💰 Salaries
+                </Link>
               </div>
 
               {/* Auth Section */}
@@ -281,6 +289,13 @@ export default function Header() {
               className="block py-2 text-sm font-medium text-zinc-600 dark:text-zinc-400"
             >
               Resources
+            </Link>
+            <Link
+              href="/salaries"
+              onClick={() => setShowMobileMenu(false)}
+              className="block py-2 text-sm font-medium text-zinc-600 dark:text-zinc-400"
+            >
+              💰 Salaries
             </Link>
           </div>
         </div>
