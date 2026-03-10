@@ -13,12 +13,20 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   const signature = request.headers.get("stripe-signature");
 
   if (!signature) {
+    console.error("Webhook error: No stripe-signature header");
     return new Response("No signature", { status: 400 });
+  }
+
+  if (!env.STRIPE_WEBHOOK_SECRET) {
+    console.error("Webhook error: STRIPE_WEBHOOK_SECRET not configured");
+    return new Response("Webhook secret not configured", { status: 500 });
   }
 
   try {
     const body = await request.text();
-    const event = stripe.webhooks.constructEvent(
+    
+    // Use constructEventAsync for Cloudflare Workers (required for Stripe SDK v20+)
+    const event = await stripe.webhooks.constructEventAsync(
       body,
       signature,
       env.STRIPE_WEBHOOK_SECRET
@@ -59,9 +67,10 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       headers: { "Content-Type": "application/json" },
     });
   } catch (error) {
-    console.error("Webhook error:", error);
+    const errorMessage = error instanceof Error ? error.message : "Unknown error";
+    console.error("Webhook error:", errorMessage, error);
     return new Response(
-      JSON.stringify({ error: "Webhook processing failed" }),
+      JSON.stringify({ error: "Webhook processing failed", details: errorMessage }),
       { status: 400, headers: { "Content-Type": "application/json" } }
     );
   }
