@@ -109,6 +109,14 @@ export default function Header() {
                   )}
                 </div>
 
+                {/* Quiz Link */}
+                <Link
+                  href="/quiz"
+                  className="text-sm font-medium text-emerald-600 hover:text-emerald-700 dark:text-emerald-400 dark:hover:text-emerald-300"
+                >
+                  🎯 Find My Cert
+                </Link>
+
                 {/* Blog Link */}
                 <Link
                   href="/blog"
@@ -260,6 +268,13 @@ export default function Header() {
               className="block py-2 text-sm font-medium text-emerald-600 dark:text-emerald-400"
             >
               View all certifications →
+            </Link>
+            <Link
+              href="/quiz"
+              onClick={() => setShowMobileMenu(false)}
+              className="block py-2 text-sm font-medium text-emerald-600 dark:text-emerald-400"
+            >
+              🎯 Find My Cert (Quiz)
             </Link>
             <Link
               href="/blog"
