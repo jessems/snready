@@ -1082,6 +1082,357 @@ If you use ITSM daily but don't configure it, you need to shift your mindset. Th
 [Practice CIS-ITSM Questions →](/cis-itsm/practice-questions)
 `
   },
+  {
+    slug: "servicenow-certification-requirements-complete-guide",
+    title: "ServiceNow Certification Requirements 2026: Costs, Prerequisites & Validity",
+    description: "Complete guide to ServiceNow certification requirements including exam costs, prerequisites, passing scores, and certification validity periods for all certification types.",
+    publishedAt: "2026-03-01",
+    author: "SNReady Team",
+    tags: ["certification", "requirements", "exam costs", "prerequisites"],
+    featured: false,
+    readingTime: 15,
+    content: `
+## ServiceNow Certification Requirements Overview
+
+Planning your ServiceNow certification path? This guide covers everything you need to know about requirements, costs, prerequisites, and validity for all ServiceNow certifications in 2026.
+
+**Quick Facts:**
+- Most exams cost $210-$315 USD
+- Passing scores range from 63% to 70%
+- Most certifications require CSA as a prerequisite
+- Certifications are tied to release versions (recertification required)
+
+## Certification Costs Breakdown
+
+### Foundation & Mainline Certifications ($210)
+
+| Certification | Full Name | Cost |
+|--------------|-----------|------|
+| CSA | Certified System Administrator | $210 |
+| CAD | Certified Application Developer | $210 |
+| CTA | Certified Technical Architect | $210 |
+| CPOA | Certified Platform Owner Advisor | $210 |
+
+### CIS Implementation Specialist ($315)
+
+All Certified Implementation Specialist (CIS) exams cost **$315 USD**:
+
+- CIS-ITSM (IT Service Management)
+- CIS-CSM (Customer Service Management)
+- CIS-Discovery
+- CIS-SM (Service Mapping)
+- CIS-EM (Event Management)
+- CIS-HR (HR Service Delivery)
+- CIS-SAM (Software Asset Management)
+- CIS-HAM (Hardware Asset Management)
+- CIS-PA (Performance Analytics)
+- CIS-VR (Vulnerability Response)
+- CIS-SIR (Security Incident Response)
+- CIS-FSM (Field Service Management)
+- CIS-RCI (Risk & Compliance)
+- CIS-SPM (Strategic Portfolio Management)
+
+## Prerequisites by Certification Type
+
+### No Prerequisites
+
+**CSA (Certified System Administrator)** is the only mainline certification with no formal prerequisites. It's the starting point for most ServiceNow careers.
+
+However, ServiceNow recommends:
+- ServiceNow Administration Fundamentals course
+- 6-12 months platform experience
+- Access to a Personal Developer Instance (PDI)
+
+### CSA Required
+
+Most certifications require passing CSA first:
+
+| Requires CSA | Additional Requirements |
+|-------------|------------------------|
+| CAD | None |
+| CIS-ITSM | None |
+| CIS-CSM | None |
+| CIS-Discovery | None |
+| CIS-SM | CIS-Discovery recommended |
+| CIS-EM | None |
+| CIS-HR | None |
+| CIS-SAM | None |
+| CIS-HAM | None |
+| CIS-PA | None |
+| CIS-VR | None |
+| CIS-SIR | None |
+| CIS-FSM | None |
+
+### Multiple Prerequisites
+
+**CTA (Certified Technical Architect):**
+- CSA required
+- CAD required
+- CIS certification recommended
+- 3+ years ServiceNow experience recommended
+
+**CMA (Certified Master Architect):**
+- CTA required
+- 5+ years ServiceNow experience
+- Multiple successful implementations
+- Interview/presentation required
+
+## Exam Formats & Passing Scores
+
+### Standard Exam Format
+
+| Aspect | Typical Value |
+|--------|--------------|
+| Duration | 90 minutes |
+| Questions | 60 questions |
+| Format | Multiple choice, multi-select |
+| Passing Score | 70% (42/60) |
+| Delivery | Kryterion (proctored) |
+
+## Certification Validity & Recertification
+
+### Delta Exams
+
+**What:** Shorter exams covering new features in the latest release  
+**Cost:** $75 USD  
+**When:** Available after each major release  
+
+### Maintaining Certifications
+
+**Options for Staying Current:**
+1. **Delta Exam:** $75, focuses on new features only
+2. **Full Retake:** $210-$315, take the entire current-version exam
+3. **Let it Expire:** Some people let lesser-used certs expire
+
+## Recommended Study Timeline
+
+### CSA (First Timer)
+
+| Experience Level | Study Time |
+|-----------------|------------|
+| No IT background | 8-12 weeks |
+| IT professional, no ServiceNow | 4-6 weeks |
+| Uses ServiceNow as end user | 3-4 weeks |
+| Configures ServiceNow occasionally | 2-3 weeks |
+
+### CAD
+
+| Experience Level | Study Time |
+|-----------------|------------|
+| No JavaScript experience | 8-10 weeks |
+| JavaScript developer | 2-4 weeks |
+| ServiceNow consultant | 2-3 weeks |
+
+## Registration Process
+
+### Step-by-Step
+
+1. **Create Now Learning Account** at nowlearning.servicenow.com
+2. **Purchase Exam Voucher** through Now Learning
+3. **Schedule with Kryterion** (online proctored or test center)
+4. **Take Exam** with valid ID
+
+### What You Need on Exam Day
+
+**Online Proctored:**
+- Government-issued ID
+- Webcam and microphone
+- Stable internet connection
+- Private, quiet room
+- Clear desk policy
+
+## Common Questions
+
+### Can I skip CSA?
+
+Technically, some exams don't enforce the prerequisite. But you'll struggle—CIS exams assume CSA knowledge. Don't skip CSA.
+
+### What if I fail?
+
+14-day waiting period before retake, full exam fee again.
+
+### Can I use notes during the exam?
+
+No. All ServiceNow certification exams are closed-book.
+
+## Ready to Start?
+
+- [CSA Practice Questions](/csa/practice-questions)
+- [CAD Practice Questions](/cad/practice-questions)
+- [All Certifications](/certifications)
+`
+  },
+  {
+    slug: "how-to-pass-cad-30-days",
+    title: "How to Pass ServiceNow CAD in 30 Days: A Realistic Study Plan",
+    description: "A day-by-day study plan for passing the Certified Application Developer (CAD) exam in 30 days, including what to study, when to practice, and how to avoid common pitfalls.",
+    publishedAt: "2026-03-01",
+    author: "SNReady Team",
+    tags: ["CAD", "study plan", "exam prep", "developer"],
+    featured: false,
+    readingTime: 14,
+    content: `
+## Can You Really Pass CAD in 30 Days?
+
+**Yes**, but with conditions:
+
+- You already have CSA (required prerequisite)
+- You have some JavaScript experience
+- You can dedicate 2-3 hours daily
+- You have access to a PDI (Personal Developer Instance)
+
+If you're starting from zero JavaScript, add 2-4 weeks for language fundamentals.
+
+## The 30-Day Plan Overview
+
+| Week | Focus | Hours/Day |
+|------|-------|-----------|
+| Week 1 | JavaScript + GlideRecord Foundations | 2-3 hours |
+| Week 2 | Server-Side Scripting | 2-3 hours |
+| Week 3 | Client-Side Scripting + UI Policies | 2-3 hours |
+| Week 4 | REST APIs + Scoped Apps + Review | 2-3 hours |
+
+**Total study time:** ~70-90 hours
+
+## Week 1: JavaScript + GlideRecord Foundations
+
+### Day 1-2: JavaScript Essentials
+
+CAD doesn't require expert JavaScript, but you need to be comfortable with:
+
+- Variables (var, let, const)
+- Functions (regular and arrow)
+- Objects and arrays
+- Loops (for, while, for...in)
+- Conditionals (if/else, switch)
+- String manipulation
+- Error handling (try/catch)
+
+### Day 3-4: GlideRecord Deep Dive
+
+GlideRecord is ~40% of the CAD exam. Master it.
+
+**Essential Operations:**
+- Query with addQuery() and query()
+- Insert with initialize() and insert()
+- Update with get() and update()
+- Delete with deleteRecord()
+
+**Advanced GlideRecord:**
+- addEncodedQuery()
+- addOrCondition()
+- GlideAggregate for counts/sums
+
+### Day 5-7: Practice in PDI
+
+Don't just read—build:
+1. Script that finds all high-priority incidents from the last 7 days
+2. Insert that creates test records with random data
+3. Update script that bulk-updates records based on criteria
+
+## Week 2: Server-Side Scripting
+
+### Day 8-9: Business Rules
+
+**Types (know all four):**
+| Type | When | Use Case |
+|------|------|----------|
+| before | Before DB operation | Validate, modify fields |
+| after | After DB operation | Create related records |
+| async | Background | Heavy processing |
+| display | Form loads | Calculate display values |
+
+### Day 10-11: Script Includes
+
+Focus on:
+- Class-based pattern
+- extend() for inheritance
+- Client-callable script includes
+- When to use script includes vs business rules
+
+### Day 12-14: Scheduled Jobs, Events & Transform Maps
+
+Transform maps are often overlooked but consistently on the exam:
+- Transform map scripts (onBefore, onAfter)
+- Coalesce fields
+- Field mapping vs scripted mapping
+
+## Week 3: Client-Side Scripting
+
+### Day 15-16: Client Scripts
+
+**Types:**
+| Type | When |
+|------|------|
+| onLoad | Form loads |
+| onChange | Field changes |
+| onSubmit | Form submits |
+| onCellEdit | List cell edit |
+
+**GlideForm (g_form) Essentials:**
+- getValue(), setValue()
+- setDisplay(), setMandatory(), setReadOnly()
+- showFieldMsg()
+- addOption(), clearOptions()
+
+### Day 17-18: UI Policies
+
+When to use UI Policy vs Client Script:
+- **UI Policy:** Simple show/hide, mandatory, read-only
+- **Client Script:** Complex logic, server calls
+
+### Day 19-21: GlideAjax & UI Actions
+
+Essential for calling server-side from client. Practice the full pattern: client script → script include → response handling.
+
+## Week 4: REST APIs + Scoped Apps + Review
+
+### Day 22-23: REST APIs
+
+**Inbound:** Scripted REST APIs  
+**Outbound:** RESTMessageV2
+
+### Day 24-25: Scoped Applications
+
+Key Concepts:
+- Application scope and naming
+- Cross-scope access
+- Application properties
+- Update sets vs application repository
+
+### Day 26-29: Practice Exams & Review
+
+1. Take full practice exams
+2. Review every wrong answer
+3. Note weak topics
+4. Re-study those areas
+
+**Warning Signs:**
+- <50%: Need more foundation work
+- 50-65%: Close, focus on weak areas
+- 65-75%: Good position, refine edges
+- >75%: Ready
+
+### Day 30: Light Review + Rest
+
+Don't cram. Light review of notes, one short quiz, ensure exam logistics are set, get good sleep.
+
+## Common CAD Pitfalls
+
+1. **Ignoring the PDI** — Reading code is different from writing it
+2. **Skipping Transform Maps** — They appear on every exam
+3. **Over-Relying on Practice Questions** — You need understanding, not memorization
+4. **Underestimating Client Scripting** — CAD has significant client-side content
+
+## Ready to Start?
+
+Day 1 starts now:
+
+[CAD Practice Questions →](/cad/practice-questions)
+
+Good luck!
+`
+  }
 ];
 
 export function getAllPosts(): BlogPost[] {
