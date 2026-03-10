@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getAllPosts, getPostBySlug } from "@/data/blog/posts";
 import { MarkdownContent } from "@/components/MarkdownContent";
+import NewsletterSignup from "@/components/NewsletterSignup";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -208,6 +209,23 @@ export default async function BlogPostPage({ params }: Props) {
             </div>
           </div>
         )}
+
+        {/* Newsletter CTA */}
+        <div className="mt-16 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 p-8 text-white">
+          <h3 className="text-xl font-bold">
+            📬 Get Weekly Study Tips
+          </h3>
+          <p className="mt-2 text-emerald-100">
+            Join 500+ ServiceNow professionals. Free CSA study checklist included.
+          </p>
+          <div className="mt-6">
+            <NewsletterSignup
+              variant="inline"
+              buttonText="Subscribe"
+              className="[&_input]:border-white/20 [&_input]:bg-white/10 [&_input]:text-white [&_input]:placeholder-white/60 [&_input:focus]:border-white/40 [&_button]:bg-white [&_button]:text-emerald-700 [&_button:hover]:bg-emerald-50 [&_p]:text-emerald-100"
+            />
+          </div>
+        </div>
       </article>
     </>
   );

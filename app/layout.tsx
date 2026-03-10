@@ -6,6 +6,7 @@ import Link from "next/link";
 import { BASE_URL } from "@/lib/seo";
 import { Providers } from "@/components/Providers";
 import Header from "@/components/Header";
+import NewsletterSignup from "@/components/NewsletterSignup";
 import "./globals.css";
 
 const geistSans = GeistSans;
@@ -114,6 +115,29 @@ export default function RootLayout({
             {children}
           </main>
         </Providers>
+        {/* Newsletter Banner */}
+        <div className="border-t border-zinc-200 bg-gradient-to-r from-emerald-50 to-teal-50 py-10 dark:border-zinc-800 dark:from-emerald-950/30 dark:to-teal-950/30">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+            <div className="flex flex-col items-center gap-6 md:flex-row md:justify-between">
+              <div className="text-center md:text-left">
+                <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+                  📬 Get Weekly Study Tips
+                </h3>
+                <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
+                  Join 500+ ServiceNow professionals. Free CSA checklist included.
+                </p>
+              </div>
+              <div className="w-full max-w-sm">
+                <NewsletterSignup
+                  variant="inline"
+                  buttonText="Subscribe"
+                  compact
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
         <footer className="border-t border-zinc-200 py-12 dark:border-zinc-800">
           <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
@@ -204,6 +228,12 @@ export default function RootLayout({
                   >
                     Compare Certifications
                   </Link>
+                  <Link
+                    href="/newsletter"
+                    className="block text-sm text-emerald-600 hover:text-emerald-700 dark:text-emerald-400 dark:hover:text-emerald-300"
+                  >
+                    Newsletter
+                  </Link>
                 </div>
               </div>
 
@@ -241,7 +271,7 @@ export default function RootLayout({
                 </h3>
                 <p className="mt-4 text-sm text-zinc-600 dark:text-zinc-400">
                   Practice questions derived from official Now Learning content.
-                  19 certifications, 1300+ questions, $9 lifetime access.
+                  20 certifications, 1350+ questions, $9 lifetime access.
                 </p>
                 <div className="mt-4 space-y-2">
                   <a
