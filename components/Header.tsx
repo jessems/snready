@@ -117,6 +117,14 @@ export default function Header() {
                   Blog
                 </Link>
 
+                {/* Difficulty Rankings */}
+                <Link
+                  href="/difficulty-rankings"
+                  className="text-sm font-medium text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
+                >
+                  Difficulty
+                </Link>
+
                 {/* Compare Link */}
                 <Link
                   href="/vs"
