@@ -116,7 +116,7 @@ export default function RootLayout({
         </Providers>
         <footer className="border-t border-zinc-200 py-12 dark:border-zinc-800">
           <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
+            <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-5">
               {/* Certifications */}
               <div>
                 <h3 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
@@ -203,6 +203,39 @@ export default function RootLayout({
                     className="block text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
                   >
                     Compare Certifications
+                  </Link>
+                  <Link
+                    href="/faq"
+                    className="block text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
+                  >
+                    FAQ
+                  </Link>
+                </div>
+              </div>
+
+              {/* Free Tools */}
+              <div>
+                <h3 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+                  Free Tools
+                </h3>
+                <div className="mt-4 space-y-3">
+                  <Link
+                    href="/quiz"
+                    className="block text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
+                  >
+                    Certification Quiz
+                  </Link>
+                  <Link
+                    href="/study-plan"
+                    className="block text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
+                  >
+                    Study Plan Generator
+                  </Link>
+                  <Link
+                    href="/salaries"
+                    className="block text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
+                  >
+                    Salary Database
                   </Link>
                 </div>
               </div>
