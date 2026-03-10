@@ -125,6 +125,17 @@ export default function Header() {
                   Compare
                 </Link>
 
+                {/* Readiness Checker Link - Highlighted */}
+                <Link
+                  href="/readiness"
+                  className="text-sm font-medium text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 flex items-center gap-1"
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  Am I Ready?
+                </Link>
+
                 {/* Pricing Link */}
                 <Link
                   href="/pricing"
@@ -260,6 +271,16 @@ export default function Header() {
               className="block py-2 text-sm font-medium text-emerald-600 dark:text-emerald-400"
             >
               View all certifications →
+            </Link>
+            <Link
+              href="/readiness"
+              onClick={() => setShowMobileMenu(false)}
+              className="flex items-center gap-2 py-2 text-sm font-medium text-blue-600 dark:text-blue-400"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              Am I Ready? (Free Check)
             </Link>
             <Link
               href="/blog"
