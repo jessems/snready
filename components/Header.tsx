@@ -125,6 +125,14 @@ export default function Header() {
                   Compare
                 </Link>
 
+                {/* Salary Calculator - Highlighted */}
+                <Link
+                  href="/salary-calculator"
+                  className="text-sm font-medium text-emerald-600 hover:text-emerald-700 dark:text-emerald-400 dark:hover:text-emerald-300"
+                >
+                  💰 Salary
+                </Link>
+
                 {/* Pricing Link */}
                 <Link
                   href="/pricing"
@@ -260,6 +268,13 @@ export default function Header() {
               className="block py-2 text-sm font-medium text-emerald-600 dark:text-emerald-400"
             >
               View all certifications →
+            </Link>
+            <Link
+              href="/salary-calculator"
+              onClick={() => setShowMobileMenu(false)}
+              className="block py-2 text-sm font-medium text-emerald-600 dark:text-emerald-400"
+            >
+              💰 Salary Calculator
             </Link>
             <Link
               href="/blog"

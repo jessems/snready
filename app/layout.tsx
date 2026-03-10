@@ -162,12 +162,30 @@ export default function RootLayout({
                 </div>
               </div>
 
-              {/* Resources */}
+              {/* Tools & Resources */}
               <div>
                 <h3 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
-                  Resources
+                  Free Tools
                 </h3>
                 <div className="mt-4 space-y-3">
+                  <Link
+                    href="/quiz"
+                    className="block text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
+                  >
+                    🎯 Find My Certification
+                  </Link>
+                  <Link
+                    href="/study-plan"
+                    className="block text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
+                  >
+                    📅 Study Plan Generator
+                  </Link>
+                  <Link
+                    href="/salary-calculator"
+                    className="block text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
+                  >
+                    💰 Salary Calculator
+                  </Link>
                   <Link
                     href="/pricing"
                     className="block text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
