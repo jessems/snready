@@ -1,4 +1,5 @@
 import Stripe from "stripe";
+import { generateFeedbackToken } from "../lib/feedback";
 
 interface Env {
   STRIPE_SECRET_KEY: string;
@@ -39,6 +40,9 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
         // No TTL - keep forever for both plans
         const kvOptions = {};
 
+        const purchaseTime = Date.now();
+        const feedbackToken = generateFeedbackToken(email.toLowerCase(), session.id);
+        
         await env.SNREADY_ACCESS.put(
           `access:${email.toLowerCase()}`,
           JSON.stringify({
@@ -47,10 +51,25 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
             expiresAt,
             sessionId: session.id,
             certification,
-            createdAt: Date.now(),
+            createdAt: purchaseTime,
           }),
           kvOptions
         );
+        
+        // Store purchase for check-in system (21-day follow-up emails)
+        await env.SNREADY_ACCESS.put(
+          `purchase:${purchaseTime}:${email.toLowerCase()}`,
+          JSON.stringify({
+            email: email.toLowerCase(),
+            certification,
+            plan,
+            sessionId: session.id,
+            purchasedAt: purchaseTime,
+            feedbackToken,
+            checkInSent: false,
+          })
+        );
+        
         console.log(`Access granted to ${email} (${plan}) until ${new Date(expiresAt).toISOString()}`);
       }
     }
