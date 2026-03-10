@@ -5,15 +5,15 @@ interface Env {
   SITE_URL: string;
 }
 
-type PlanType = "30day" | "lifetime";
+type PlanType = "single" | "all";
 
 const PLANS = {
-  "30day": {
+  "single": {
     price: 900, // $9.00 in cents
     name: "Lifetime Access — Single Certification",
     // Description is generated dynamically to include cert name
   },
-  "lifetime": {
+  "all": {
     price: 4900, // $49.00 in cents
     name: "Lifetime Access — All Certifications",
     description: "Lifetime access to ALL certifications and practice questions — never expires",
@@ -24,21 +24,21 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   const { request, env } = context;
 
   try {
-    const { certification, plan = "30day" } = await request.json() as { 
+    const { certification, plan = "single" } = await request.json() as { 
       certification?: string;
       plan?: PlanType;
     };
 
-    const selectedPlan = PLANS[plan] || PLANS["30day"];
+    const selectedPlan = PLANS[plan] || PLANS["single"];
     const stripe = new Stripe(env.STRIPE_SECRET_KEY);
 
     // Generate description based on plan and certification
-    const productDescription = plan === "lifetime"
-      ? PLANS.lifetime.description
+    const productDescription = plan === "all"
+      ? PLANS.all.description
       : `Lifetime access to ${certification?.toUpperCase() || "all"} practice questions with detailed explanations — never expires`;
 
-    const productName = plan === "lifetime"
-      ? `SNReady ${PLANS.lifetime.name}`
+    const productName = plan === "all"
+      ? `SNReady ${PLANS.all.name}`
       : `SNReady ${certification?.toUpperCase() || "Full Access"} — Lifetime`;
 
     const session = await stripe.checkout.sessions.create({

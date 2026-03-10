@@ -45,7 +45,7 @@ export default function AccountPage() {
     );
   }
 
-  const isLifetime = plan === "lifetime";
+  const isAllCerts = plan === "all";
   const expiresDate = expiresAt ? new Date(expiresAt) : null;
   const isExpired = !hasAccess && expiresAt != null;
 
@@ -70,19 +70,12 @@ export default function AccountPage() {
                   Active
                 </span>
                 <span className="text-sm text-zinc-500 dark:text-zinc-400">
-                  {isLifetime ? "Lifetime" : "30-Day"} Plan
+                  {isAllCerts ? "All Certifications" : "Single Certification"} — Lifetime
                 </span>
               </div>
-              {!isLifetime && expiresDate && (
-                <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-                  Expires: {expiresDate.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
-                </p>
-              )}
-              {isLifetime && (
-                <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-                  Your lifetime access never expires.
-                </p>
-              )}
+              <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+                Your lifetime access never expires.
+              </p>
             </div>
           ) : (
             <div className="mt-2">
@@ -101,13 +94,13 @@ export default function AccountPage() {
               </p>
               <div className="mt-4 grid gap-3 sm:grid-cols-2">
                 <CheckoutButton
-                  plan="30day"
+                  plan="single"
                   className="w-full rounded-lg border-2 border-emerald-600 bg-white py-3 font-semibold text-emerald-600 transition-colors hover:bg-emerald-50 dark:bg-zinc-800 dark:hover:bg-zinc-700"
                 >
-                  30 Days — $9
+                  Single Cert Lifetime — $9
                 </CheckoutButton>
                 <CheckoutButton
-                  plan="lifetime"
+                  plan="all"
                   className="w-full rounded-lg bg-emerald-600 py-3 font-semibold text-white transition-colors hover:bg-emerald-700"
                 >
                   Lifetime All Certs — $49

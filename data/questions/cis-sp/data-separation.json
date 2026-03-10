@@ -876,6 +876,180 @@
         "release": "Xanadu",
         "reviewed": false
       }
+    },
+    {
+      "id": "cis-sp-data-separation-012",
+      "certification": "cis-sp",
+      "topic": "data-separation",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "In domain separation, what does 'visibility from below' mean?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Child domains can see records in parent domains"
+        },
+        {
+          "id": "b",
+          "text": "Parent domains can see records in child domains"
+        },
+        {
+          "id": "c",
+          "text": "All domains see all records"
+        },
+        {
+          "id": "d",
+          "text": "No domains can see any records"
+        }
+      ],
+      "correctAnswers": ["a"],
+      "explanation": {
+        "correct": "'Visibility from below' allows child domains to see records that exist in their parent domains. This enables sharing of common reference data while maintaining separation for domain-specific records.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "This describes 'visibility from above' or 'contains', not 'visibility from below'"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Full visibility defeats the purpose of domain separation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "This would make the system unusable"
+          }
+        ]
+      },
+      "source": {
+        "type": "exam-blueprint",
+        "excerpt": "Visibility from below allows child domains to see parent domain records"
+      },
+      "labels": {
+        "domain": "Data Separation/Visibility",
+        "subtopics": ["Domain Visibility", "Inheritance"],
+        "tags": ["visibility", "inheritance", "parent-child"]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": false
+    },
+    {
+      "id": "cis-sp-data-separation-013",
+      "certification": "cis-sp",
+      "topic": "data-separation",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which system property controls IRE domain separation mode in CMDB?",
+      "options": [
+        {
+          "id": "a",
+          "text": "glide.identification_engine.platform_domain_separation_enabled"
+        },
+        {
+          "id": "b",
+          "text": "glide.cmdb.domain_mode"
+        },
+        {
+          "id": "c",
+          "text": "sys.domain_separation.ire"
+        },
+        {
+          "id": "d",
+          "text": "cmdb.identification.domain"
+        }
+      ],
+      "correctAnswers": ["a"],
+      "explanation": {
+        "correct": "The system property glide.identification_engine.platform_domain_separation_enabled controls IRE domain separation mode. When set to false (default), strict mode is used where CIs are only identified within the logged-in user's domain.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "This is not a valid ServiceNow system property"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "This is not a valid ServiceNow system property"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "This is not a valid ServiceNow system property"
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Use the glide.identification_engine.platform_domain_separation_enabled system property to switch between those two modes for IRE domain separation.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/servicenow-platform/configuration-management-database-cmdb/domain-separation-identification-reconciliation.html"
+      },
+      "labels": {
+        "domain": "Data Separation/Visibility",
+        "subtopics": ["CMDB", "IRE"],
+        "tags": ["ire", "cmdb", "system-property"]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": false
+    },
+    {
+      "id": "cis-sp-data-separation-014",
+      "certification": "cis-sp",
+      "topic": "data-separation",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_select",
+      "question": "In IRE strict mode (default), which statements are TRUE? (Choose two.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "CIs are only identified within the logged-in user's domain"
+        },
+        {
+          "id": "b",
+          "text": "Parent domains can access all child domain CIs"
+        },
+        {
+          "id": "c",
+          "text": "Duplicate CIs across domains are NOT considered duplicates"
+        },
+        {
+          "id": "d",
+          "text": "All domains share a single identification scope"
+        }
+      ],
+      "correctAnswers": ["a", "c"],
+      "selectCount": 2,
+      "explanation": {
+        "correct": "In strict mode (default), identification processes only CIs where the domain ID matches the logged-in user's domain. If duplicate CIs exist across domains (including parent and child domains), they are NOT considered duplicates because their domain IDs don't match.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "This is platform domain separation mode behavior, not strict mode"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "In strict mode, each domain has its own identification scope"
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Strict mode (enabled by default): In this mode, identification processes only those CIs in which the domain ID is identical to the domain of the currently logged in user. If duplicate CIs exist across domains (including parent and child domains), then those CIs aren't considered duplicate CIs because their domain IDs don't match.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/servicenow-platform/configuration-management-database-cmdb/domain-separation-identification-reconciliation.html"
+      },
+      "labels": {
+        "domain": "Data Separation/Visibility",
+        "subtopics": ["CMDB", "IRE", "Strict Mode"],
+        "tags": ["ire", "strict-mode", "identification"]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": false
     }
   ]
 }

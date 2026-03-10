@@ -591,7 +591,7 @@ export default async function CertificationPage({ params }: PageProps) {
                       </ul>
                       <CheckoutButton
                         certification={cert.name}
-                        plan="lifetime"
+                        plan="all"
                         className="mt-4 w-full rounded-lg bg-emerald-600 py-2 font-semibold text-white transition-colors hover:bg-emerald-700"
                       >
                         Get Lifetime Access
@@ -627,7 +627,7 @@ export default async function CertificationPage({ params }: PageProps) {
                       </ul>
                       <CheckoutButton
                         certification={cert.name}
-                        plan="30day"
+                        plan="single"
                         className="mt-6 w-full rounded-lg bg-white py-3 font-semibold text-emerald-700 transition-colors hover:bg-emerald-50"
                       >
                         Get Lifetime Access
@@ -654,7 +654,7 @@ export default async function CertificationPage({ params }: PageProps) {
                       </ul>
                       <CheckoutButton
                         certification={cert.name}
-                        plan="lifetime"
+                        plan="all"
                         className="mt-6 w-full rounded-lg bg-emerald-600 py-3 font-semibold text-white transition-colors hover:bg-emerald-700"
                       >
                         Get Lifetime Access

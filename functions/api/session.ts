@@ -31,7 +31,7 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
     }
 
     const email = session.customer_details?.email;
-    const plan = session.metadata?.plan || "30day";
+    const plan = session.metadata?.plan || "single";
     const certification = session.metadata?.certification || "all";
 
     if (!email) {
@@ -42,15 +42,12 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
     }
 
     // Grant access (in case webhook was slow)
-    const durationMs = plan === "lifetime" 
-      ? 100 * 365 * 24 * 60 * 60 * 1000 
-      : 30 * 24 * 60 * 60 * 1000;
-    
+    // Both plans are lifetime access (100 years)
+    const durationMs = 100 * 365 * 24 * 60 * 60 * 1000;
     const expiresAt = Date.now() + durationMs;
     
-    const kvOptions = plan === "lifetime" 
-      ? {} 
-      : { expirationTtl: 30 * 24 * 60 * 60 };
+    // No TTL expiration - lifetime for both plans
+    const kvOptions = {};
 
     const normalizedEmail = email.toLowerCase();
 

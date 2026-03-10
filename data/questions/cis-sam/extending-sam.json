@@ -648,6 +648,248 @@
         "release": "Xanadu",
         "reviewed": false
       }
+    },
+    {
+      "id": "cis-sam-extending-sam-1409",
+      "certification": "cis-sam",
+      "topic": "extending-sam",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which role is required to create or modify a custom license metric script in SAM?",
+      "options": [
+        {
+          "id": "a",
+          "text": "sam_user"
+        },
+        {
+          "id": "b",
+          "text": "sam_admin"
+        },
+        {
+          "id": "c",
+          "text": "sam_developer"
+        },
+        {
+          "id": "d",
+          "text": "admin"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "The sam_developer role is required to create or modify a custom license metric script. The sam_admin role can only read custom metric scripts.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "sam_user has read-only access to SAM data, not development capabilities.",
+            "reference": "docs.servicenow.com/add-custom-license-metric"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "sam_admin can read custom metric scripts but cannot create or modify them.",
+            "reference": "docs.servicenow.com/add-custom-license-metric"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "While admin may have access, sam_developer is the specific role designated for this function.",
+            "reference": "docs.servicenow.com/add-custom-license-metric"
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/add-custom-license-metric"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "docs",
+        "path": "add-custom-license-metric.md",
+        "excerpt": "Role required to create or modify a custom metric script: sam_developer. Role required to read custom metric script: sam_admin."
+      },
+      "labels": {
+        "certification": "cis-sam",
+        "domain": "Extending SAM",
+        "domainSlug": "extending-sam",
+        "domainPercentage": 15,
+        "subtopics": [
+          "Custom license metrics"
+        ],
+        "tags": [
+          "roles",
+          "sam_developer",
+          "custom-metrics",
+          "scripts"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-04T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sam-extending-sam-1410",
+      "certification": "cis-sam",
+      "topic": "extending-sam",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What is the purpose of creating a custom license metric in SAM?",
+      "options": [
+        {
+          "id": "a",
+          "text": "To generate custom reports for management"
+        },
+        {
+          "id": "b",
+          "text": "To define specific software calculations not included in predefined license metrics"
+        },
+        {
+          "id": "c",
+          "text": "To change the discovery schedule"
+        },
+        {
+          "id": "d",
+          "text": "To modify user access permissions"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "Custom license metrics can be created to define specific software calculations not included in the predefined license metrics list. They are useful for calculating rights per user or device for certain software products from lesser-known publishers.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Custom reports are created using the reporting module, not custom license metrics.",
+            "reference": "docs.servicenow.com/add-custom-license-metric"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Discovery scheduling is configured separately from license metrics.",
+            "reference": "docs.servicenow.com/add-custom-license-metric"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "User permissions are managed through roles, not license metrics.",
+            "reference": "docs.servicenow.com/add-custom-license-metric"
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/add-custom-license-metric"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "add-custom-license-metric.md",
+        "excerpt": "Custom license metrics can be created to define specific software calculations not included in the predefined license metrics list. Custom license metrics are useful so reconciliation can calculate rights per user or device for certain software products."
+      },
+      "labels": {
+        "certification": "cis-sam",
+        "domain": "Extending SAM",
+        "domainSlug": "extending-sam",
+        "domainPercentage": 15,
+        "subtopics": [
+          "Custom license metrics"
+        ],
+        "tags": [
+          "custom-metrics",
+          "reconciliation",
+          "licensing"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-04T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sam-extending-sam-1411",
+      "certification": "cis-sam",
+      "topic": "extending-sam",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "An organization needs to calculate licensing for a software bundle from a lesser-known publisher that is not in the predefined metrics list. What should they do?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Contact ServiceNow to add the publisher to the global library"
+        },
+        {
+          "id": "b",
+          "text": "Create a custom license metric with a calculation script"
+        },
+        {
+          "id": "c",
+          "text": "Manually track the licenses outside of ServiceNow"
+        },
+        {
+          "id": "d",
+          "text": "Mark all installations as non-licensable"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "For software bundles from lesser-known publishers, you can create a custom license metric to avoid over-counting installs and define specific calculations. Navigate to Software Asset > Administration > Custom License Metrics to create a new record with a calculation script.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "While you can request library updates, creating a custom metric is the immediate solution for unique requirements.",
+            "reference": "docs.servicenow.com/add-custom-license-metric"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Manual tracking defeats the purpose of using SAM for license management.",
+            "reference": "docs.servicenow.com/add-custom-license-metric"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Marking as non-licensable would hide compliance issues rather than solve them.",
+            "reference": "docs.servicenow.com/add-custom-license-metric"
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/add-custom-license-metric"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "add-custom-license-metric.md",
+        "excerpt": "You can create a custom metric to avoid over counting installs for products that are part of an unrecognized bundle. Navigate to All > Software Asset > Administration > Custom License Metrics and create a new record."
+      },
+      "labels": {
+        "certification": "cis-sam",
+        "domain": "Extending SAM",
+        "domainSlug": "extending-sam",
+        "domainPercentage": 15,
+        "subtopics": [
+          "Custom license metrics"
+        ],
+        "tags": [
+          "custom-metrics",
+          "bundles",
+          "calculation-script",
+          "lesser-known-publishers"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-04T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     }
   ]
 }
