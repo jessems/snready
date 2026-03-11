@@ -4,17 +4,52 @@ import { useState, useEffect } from "react";
 import { SalaryFilter, SalaryStats } from "@/lib/salaries/types";
 import { ROLES, CERTIFICATIONS, EXPERIENCE_RANGES } from "@/lib/salaries/types";
 import { COUNTRIES, getCountryName } from "@/lib/salaries/countries";
+import seedData from "@/data/salary-seed-data.json";
 
-// Seed data based on Glassdoor, ZipRecruiter, Indeed, Salary.com + Reddit threads
-// See /data/salary-seed-data.json for sources
-const MOCK_DATA: Record<string, SalaryStats> = {
-  all: { count: 127, median: 118000, p25: 85000, p75: 155000, min: 50000, max: 250000 },
-  Developer: { count: 48, median: 123000, p25: 100000, p75: 150000, min: 65000, max: 210000 },
-  Administrator: { count: 35, median: 95000, p25: 78000, p75: 127000, min: 50000, max: 165000 },
-  Architect: { count: 12, median: 165000, p25: 140000, p75: 195000, min: 120000, max: 250000 },
-  Consultant: { count: 22, median: 135000, p25: 110000, p75: 165000, min: 80000, max: 210000 },
-  Manager: { count: 10, median: 145000, p25: 120000, p75: 175000, min: 95000, max: 220000 },
-};
+// Computed from real data: Reddit 2024 salary thread, Glassdoor, ZipRecruiter, Indeed
+// See /data/salary-seed-data.json for full dataset with sources
+function computeStats(): Record<string, SalaryStats> {
+  const submissions = seedData.sampleSubmissions;
+  const byRole: Record<string, number[]> = {};
+  const allSalaries: number[] = [];
+
+  submissions.forEach((s) => {
+    const salary = s.baseSalary;
+    if (!salary || salary < 10000) return; // Skip non-US/low outliers
+    
+    allSalaries.push(salary);
+    const role = s.role;
+    if (!byRole[role]) byRole[role] = [];
+    byRole[role].push(salary);
+  });
+
+  const calcStats = (arr: number[]): SalaryStats => {
+    const sorted = [...arr].sort((a, b) => a - b);
+    const len = sorted.length;
+    return {
+      count: len,
+      median: sorted[Math.floor(len / 2)],
+      p25: sorted[Math.floor(len * 0.25)],
+      p75: sorted[Math.floor(len * 0.75)],
+      min: sorted[0],
+      max: sorted[len - 1],
+    };
+  };
+
+  const result: Record<string, SalaryStats> = {
+    all: calcStats(allSalaries),
+  };
+
+  Object.entries(byRole).forEach(([role, salaries]) => {
+    if (salaries.length >= 2) {
+      result[role] = calcStats(salaries);
+    }
+  });
+
+  return result;
+}
+
+const SALARY_DATA = computeStats();
 
 interface SalaryDashboardProps {
   hasSubmitted: boolean;
@@ -35,7 +70,7 @@ export default function SalaryDashboard({
     }).format(amount);
   };
 
-  const stats = MOCK_DATA[filter.role || "all"];
+  const stats = SALARY_DATA[filter.role || "all"] || SALARY_DATA["all"];
 
   return (
     <div className="space-y-8">
@@ -60,7 +95,9 @@ export default function SalaryDashboard({
           <div className="text-sm text-gray-600">Middle 50% range</div>
         </div>
         <div className="bg-white p-6 rounded-xl shadow-sm border">
-          <div className="text-3xl font-bold text-green-600">20</div>
+          <div className="text-3xl font-bold text-green-600">
+            {new Set(seedData.sampleSubmissions.map((s) => s.country)).size}
+          </div>
           <div className="text-sm text-gray-600">Countries represented</div>
         </div>
       </div>
@@ -160,7 +197,7 @@ export default function SalaryDashboard({
               </tr>
             </thead>
             <tbody className="divide-y">
-              {Object.entries(MOCK_DATA)
+              {Object.entries(SALARY_DATA)
                 .filter(([key]) => key !== "all")
                 .sort((a, b) => b[1].median - a[1].median)
                 .map(([role, data]) => (
