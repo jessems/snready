@@ -5,14 +5,15 @@ import { SalaryFilter, SalaryStats } from "@/lib/salaries/types";
 import { ROLES, CERTIFICATIONS, EXPERIENCE_RANGES } from "@/lib/salaries/types";
 import { COUNTRIES, getCountryName } from "@/lib/salaries/countries";
 
-// Mock data - will be replaced with real API calls
+// Seed data based on Glassdoor, ZipRecruiter, Indeed, Salary.com + Reddit threads
+// See /data/salary-seed-data.json for sources
 const MOCK_DATA: Record<string, SalaryStats> = {
-  all: { count: 847, median: 125000, p25: 95000, p75: 165000, min: 55000, max: 285000 },
-  Developer: { count: 312, median: 130000, p25: 100000, p75: 170000, min: 60000, max: 250000 },
-  Administrator: { count: 198, median: 105000, p25: 85000, p75: 135000, min: 55000, max: 185000 },
-  Architect: { count: 87, median: 175000, p25: 145000, p75: 210000, min: 120000, max: 285000 },
-  Consultant: { count: 156, median: 135000, p25: 110000, p75: 175000, min: 75000, max: 245000 },
-  Manager: { count: 94, median: 155000, p25: 125000, p75: 195000, min: 95000, max: 265000 },
+  all: { count: 127, median: 118000, p25: 85000, p75: 155000, min: 50000, max: 250000 },
+  Developer: { count: 48, median: 123000, p25: 100000, p75: 150000, min: 65000, max: 210000 },
+  Administrator: { count: 35, median: 95000, p25: 78000, p75: 127000, min: 50000, max: 165000 },
+  Architect: { count: 12, median: 165000, p25: 140000, p75: 195000, min: 120000, max: 250000 },
+  Consultant: { count: 22, median: 135000, p25: 110000, p75: 165000, min: 80000, max: 210000 },
+  Manager: { count: 10, median: 145000, p25: 120000, p75: 175000, min: 95000, max: 220000 },
 };
 
 interface SalaryDashboardProps {

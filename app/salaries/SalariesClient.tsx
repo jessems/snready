@@ -80,16 +80,16 @@ export default function SalariesClient() {
           {/* Quick stats */}
           <div className="flex flex-wrap gap-8 mt-8">
             <div>
-              <div className="text-3xl font-bold">847</div>
-              <div className="text-blue-200">Submissions</div>
+              <div className="text-3xl font-bold">127</div>
+              <div className="text-blue-200">Data Points</div>
             </div>
             <div>
-              <div className="text-3xl font-bold">$125K</div>
+              <div className="text-3xl font-bold">$118K</div>
               <div className="text-blue-200">Median Salary</div>
             </div>
             <div>
-              <div className="text-3xl font-bold">20</div>
-              <div className="text-blue-200">Countries</div>
+              <div className="text-3xl font-bold">5</div>
+              <div className="text-blue-200">Sources</div>
             </div>
           </div>
         </div>
@@ -231,15 +231,30 @@ export default function SalariesClient() {
           </p>
 
           <h3>ServiceNow Salary FAQ</h3>
+          <p className="text-sm text-gray-500 mb-4">
+            Data sourced from Glassdoor, ZipRecruiter, Indeed, Salary.com, and community salary threads. 
+            <a href="#submit" className="text-blue-600 underline ml-1">Submit yours</a> to improve accuracy.
+          </p>
           <details className="mb-4">
             <summary className="cursor-pointer font-semibold">
               What is the average ServiceNow developer salary?
             </summary>
             <p className="mt-2">
-              Based on our data, the median ServiceNow developer salary is $130,000
-              in the United States. The middle 50% earn between $100,000 and $170,000.
-              Factors like certifications, experience, and location significantly impact
-              compensation.
+              The median ServiceNow developer salary is <strong>$123,000</strong> in the United States, 
+              according to Glassdoor and ZipRecruiter data. The middle 50% earn between $100,000 (25th percentile) 
+              and $150,000 (75th percentile). Senior developers and those with multiple certifications 
+              often exceed $185,000. Factors like certifications, experience, and location significantly impact compensation.
+            </p>
+          </details>
+          <details className="mb-4">
+            <summary className="cursor-pointer font-semibold">
+              What is the average ServiceNow administrator salary?
+            </summary>
+            <p className="mt-2">
+              ServiceNow administrators earn a median of <strong>$95,000</strong> in the US. Entry-level admins 
+              with just CSA certification typically start around $65,000-$80,000, while experienced admins 
+              (5+ years) report salaries of $120,000-$150,000. Remote positions and those at larger enterprises 
+              tend to pay at the higher end of the range.
             </p>
           </details>
           <details className="mb-4">
@@ -247,9 +262,10 @@ export default function SalariesClient() {
               How much do ServiceNow consultants charge per hour?
             </summary>
             <p className="mt-2">
-              Independent ServiceNow consultants typically charge between $75-150/hour,
-              with highly specialized architects commanding $150-250/hour. Rates vary
-              significantly by location, specialization, and client type.
+              Based on community data, independent ServiceNow consultants typically charge <strong>$65-$125/hour</strong>,
+              with the median around $85/hour. Highly specialized architects and CTAs command <strong>$125-$175+/hour</strong>. 
+              W2 contractors through agencies typically see $90-$120/hour bill rates with 60-70% take-home.
+              Rates vary significantly by specialization (ITOM/SecOps pay premiums), location, and client type.
             </p>
           </details>
           <details className="mb-4">
@@ -257,9 +273,10 @@ export default function SalariesClient() {
               Does ServiceNow certification increase salary?
             </summary>
             <p className="mt-2">
-              Yes. Our data shows that certified professionals earn 15-25% more than
-              non-certified peers in similar roles. Multiple certifications and
-              advanced certifications (like CTA) correlate with even higher compensation.
+              Yes. Industry data shows that certified professionals earn <strong>15-25% more</strong> than
+              non-certified peers in similar roles. The CSA is table stakes for most positions. 
+              Adding CAD or a CIS certification typically correlates with $10-20K higher offers.
+              CTA (Certified Technical Architect) holders report the highest premiums, often $50K+ above developer averages.
             </p>
           </details>
         </div>
