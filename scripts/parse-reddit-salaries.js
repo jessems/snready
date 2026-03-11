@@ -7,7 +7,16 @@ const path = require('path');
 const dataDir = path.join(__dirname, '../data/reddit-salary-threads');
 
 // Parse salary from text like "$130k", "130000", "£40k", "99,000", etc.
-function parseSalary(text) {
+function parseSalary(text, country) {
+  const lower = text.toLowerCase();
+  
+  // Skip if it's clearly monthly or hourly (we want annual)
+  if (/per month|monthly|per hour|hourly|\/ ?month|\/ ?hour/i.test(text)) {
+    // Try to find annual salary explicitly mentioned
+    const annualMatch = text.match(/(\d{2,3})[,.]?(\d{3})?\s*(per year|annually|annual|p\.a\.|pa)/i);
+    if (!annualMatch) return null;
+  }
+  
   // Look for patterns like $130k, $130,000, 130k, etc.
   const patterns = [
     /[\$£€]\s*(\d{1,3})[,.]?(\d{3})/,      // $130,000 or $130.000
@@ -27,7 +36,18 @@ function parseSalary(text) {
       } else if (num < 1000) {
         num = num * 1000;
       }
-      if (num >= 20000 && num <= 500000) {
+      
+      // Sanity checks based on country
+      if (country === 'IN' && num > 200000) {
+        // Likely INR, need to convert or skip
+        return null;
+      }
+      if (country === 'PH' && num > 100000) {
+        // Might be PHP, skip
+        return null;
+      }
+      
+      if (num >= 15000 && num <= 500000) {
         return num;
       }
     }
@@ -94,14 +114,50 @@ function parseRole(text) {
 // Detect country
 function parseCountry(text) {
   const lower = text.toLowerCase();
-  if (lower.includes('uk') || lower.includes('united kingdom') || lower.includes('london') || text.includes('£')) return 'GB';
-  if (lower.includes('canada') || lower.includes('canadian') || lower.includes('toronto') || lower.includes('ontario')) return 'CA';
-  if (lower.includes('india') || lower.includes('bangalore') || lower.includes('hyderabad') || lower.includes('inr') || text.includes('₹')) return 'IN';
-  if (lower.includes('australia') || lower.includes('sydney') || lower.includes('melbourne')) return 'AU';
-  if (lower.includes('germany') || lower.includes('berlin') || lower.includes('munich')) return 'DE';
-  // US states/cities
-  if (/\b(california|ca|texas|tx|florida|fl|new york|ny|nc|ohio|virginia|va|colorado|georgia|ga|illinois|washington|seattle|chicago|austin|denver|atlanta|boston|raleigh|durham)\b/i.test(text)) return 'US';
-  if (text.includes('$') && !lower.includes('cad') && !lower.includes('aud')) return 'US';
+  
+  // European countries first (check € and specific mentions)
+  if (text.includes('€') || lower.includes('euro ') || lower.includes('eur ')) {
+    if (lower.includes('belgium')) return 'BE';
+    if (lower.includes('netherlands') || lower.includes('amsterdam')) return 'NL';
+    if (lower.includes('germany') || lower.includes('berlin') || lower.includes('munich')) return 'DE';
+    if (lower.includes('france') || lower.includes('paris')) return 'FR';
+    if (lower.includes('ireland') || lower.includes('dublin')) return 'IE';
+    if (lower.includes('central europe')) return 'DE'; // Default Central Europe to Germany
+    return 'DE'; // Default Euro to Germany
+  }
+  
+  // UK - must check before generic $ check
+  if (text.includes('£') || lower.includes('gbp')) return 'GB';
+  if (/\b(uk|united kingdom|london|manchester|birmingham|scotland|england|wales)\b/i.test(lower)) return 'GB';
+  
+  // India
+  if (text.includes('₹') || lower.includes('inr') || lower.includes('rupee')) return 'IN';
+  if (/\b(india|bangalore|bengaluru|hyderabad|mumbai|chennai|pune|delhi|noida|gurgaon)\b/i.test(lower)) return 'IN';
+  if (lower.includes('lakh') || lower.includes('crore')) return 'IN';
+  
+  // Canada - check before $ as they use CAD
+  if (lower.includes('cad') || lower.includes('canadian')) return 'CA';
+  if (/\b(canada|toronto|vancouver|montreal|ottawa|calgary|ontario|quebec|alberta)\b/i.test(lower)) return 'CA';
+  
+  // Australia
+  if (lower.includes('aud') || lower.includes('australian')) return 'AU';
+  if (/\b(australia|sydney|melbourne|brisbane|perth|adelaide)\b/i.test(lower)) return 'AU';
+  
+  // Philippines
+  if (/\b(philippines|ph|manila|cebu|filipino)\b/i.test(lower)) return 'PH';
+  
+  // LATAM
+  if (lower.includes('latam') || lower.includes('latin america')) return 'MX';
+  if (/\b(mexico|brazil|argentina|colombia|chile)\b/i.test(lower)) return 'MX';
+  
+  // US states/cities - check last
+  if (/\b(usa|u\.s\.|united states)\b/i.test(lower)) return 'US';
+  if (/\b(california|texas|florida|new york|north carolina|ohio|virginia|colorado|georgia|illinois|washington|arizona|massachusetts|michigan|minnesota|pennsylvania|tennessee|wisconsin)\b/i.test(lower)) return 'US';
+  if (/\b(seattle|chicago|austin|denver|atlanta|boston|raleigh|durham|phoenix|dallas|houston|los angeles|san francisco|miami|portland|charlotte|nashville|san diego|minneapolis|detroit)\b/i.test(lower)) return 'US';
+  
+  // Default $ to US only if no other indicators
+  if (text.includes('$') && !lower.includes('cad') && !lower.includes('aud') && !lower.includes('nzd')) return 'US';
+  
   return null;
 }
 
@@ -133,7 +189,11 @@ function parseRemote(text) {
 function parseComment(body, commentId, source, createdUtc) {
   if (!body || body === '[deleted]' || body === '[removed]' || body.length < 20) return null;
   
-  const salary = parseSalary(body);
+  // Detect country first so we can validate salary
+  const country = parseCountry(body);
+  if (!country) return null; // Skip if we can't determine country
+  
+  const salary = parseSalary(body, country);
   if (!salary) return null;
   
   let role = parseRole(body);
@@ -142,9 +202,6 @@ function parseComment(body, commentId, source, createdUtc) {
     if (salary >= 60000) role = 'Developer';
     else return null;
   }
-  
-  const country = parseCountry(body);
-  if (!country) return null; // Skip if we can't determine country
   
   const yoe = parseYoE(body);
   const certs = parseCerts(body);
