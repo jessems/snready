@@ -130,7 +130,7 @@ function parseRemote(text) {
 }
 
 // Parse a single comment - now more flexible
-function parseComment(body, commentId, source) {
+function parseComment(body, commentId, source, createdUtc) {
   if (!body || body === '[deleted]' || body === '[removed]' || body.length < 20) return null;
   
   const salary = parseSalary(body);
@@ -150,6 +150,9 @@ function parseComment(body, commentId, source) {
   const certs = parseCerts(body);
   const location = parseLocation(body);
   const remote = parseRemote(body);
+  
+  // Convert Unix timestamp to ISO date
+  const reportedAt = createdUtc ? new Date(createdUtc * 1000).toISOString().split('T')[0] : null;
 
   return {
     role,
@@ -160,7 +163,8 @@ function parseComment(body, commentId, source) {
     city: location,
     remote,
     source,
-    sourceId: commentId
+    sourceId: commentId,
+    reportedAt
   };
 }
 
@@ -175,7 +179,7 @@ for (const file of files) {
     const source = `reddit-${file.replace('.json', '')}`;
     
     for (const comment of data.data || []) {
-      const parsed = parseComment(comment.body, comment.id, source);
+      const parsed = parseComment(comment.body, comment.id, source, comment.created_utc);
       if (parsed && !seen.has(parsed.sourceId)) {
         seen.add(parsed.sourceId);
         results.push(parsed);
@@ -192,6 +196,7 @@ console.log(`-- Total: ${results.length} entries\n`);
 
 for (const r of results) {
   const city = r.city ? `'${r.city.replace(/'/g, "''")}'` : 'NULL';
-  const sql = `INSERT OR IGNORE INTO salary_submissions (role, base_salary, yoe_servicenow, certifications, country, city, remote_pct, source, source_id, source_url) VALUES ('${r.role}', ${r.salary}, ${r.yoe ? `'${r.yoe}'` : 'NULL'}, '${r.certs}', '${r.country}', ${city}, ${r.remote || 'NULL'}, '${r.source}', '${r.sourceId}', 'https://reddit.com');`;
+  const reportedAt = r.reportedAt ? `'${r.reportedAt}'` : 'NULL';
+  const sql = `INSERT OR REPLACE INTO salary_submissions (role, base_salary, yoe_servicenow, certifications, country, city, remote_pct, source, source_id, source_url, reported_at) VALUES ('${r.role}', ${r.salary}, ${r.yoe ? `'${r.yoe}'` : 'NULL'}, '${r.certs}', '${r.country}', ${city}, ${r.remote || 'NULL'}, '${r.source}', '${r.sourceId}', 'https://reddit.com', ${reportedAt});`;
   console.log(sql);
 }

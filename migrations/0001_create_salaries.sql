@@ -34,6 +34,7 @@ CREATE TABLE IF NOT EXISTS salary_submissions (
   
   -- Metadata
   submitted_at TEXT DEFAULT (datetime('now')),
+  reported_at TEXT, -- Original date salary was reported (from Reddit, etc.)
   verified INTEGER DEFAULT 0,
   notes TEXT,
   
