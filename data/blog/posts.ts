@@ -1082,6 +1082,518 @@ If you use ITSM daily but don't configure it, you need to shift your mindset. Th
 [Practice CIS-ITSM Questions →](/cis-itsm/practice-questions)
 `
   },
+  {
+    slug: "cis-data-foundations-complete-guide",
+    title: "CIS-Data Foundations: The Complete 2026 Study Guide",
+    description: "Master ServiceNow's CMDB certification. Covers CSDM, data ingestion, governance, and the reconciliation concepts that trip people up.",
+    publishedAt: "2026-03-11",
+    author: "SNReady Team",
+    tags: ["CIS-DF", "CMDB", "CSDM", "data management"],
+    featured: true,
+    readingTime: 14,
+    content: `
+## Why CIS-Data Foundations Matters
+
+Every ServiceNow implementation touches the CMDB eventually. Discovery writes to it. ITSM references it. Security depends on it. ITOM visualizes it.
+
+But most CMDBs are garbage. Duplicates everywhere. Stale data. Orphaned records. Nobody trusts it.
+
+CIS-Data Foundations (CIS-DF) is the certification that proves you know how to build a CMDB that actually works.
+
+## What CIS-DF Actually Tests
+
+The exam covers five domains:
+
+| Domain | Weight | What It Tests |
+|--------|--------|---------------|
+| Configuration | 16% | CI Class Manager, relationship types, table setup |
+| Ingest | 19% | Discovery, import sets, IRE, data sources |
+| Govern | 45% | Health dashboards, audit policies, lifecycle management |
+| Insight | 14% | Dependency views, impact analysis, visualization |
+| CSDM Fundamentals | 6% | Common Service Data Model framework |
+
+Notice something? **Governance is 45%** of the exam. This isn't a Discovery certification. It's a data quality certification.
+
+## The Concepts That Trip People Up
+
+### 1. IRE vs. Identification Rules
+
+Everyone confuses these.
+
+**Identification Rules** tell ServiceNow how to identify unique CIs. "Match on serial number" or "match on IP address + hostname."
+
+**IRE (Identification and Reconciliation Engine)** is the system that RUNS those rules. It's the machine that executes the logic.
+
+When you're configuring rules, you're writing identification rules. When you're troubleshooting why records aren't matching, you're debugging IRE behavior.
+
+Exam questions test:
+- How identification rules match incoming data to existing CIs
+- What happens when multiple rules match
+- The priority order when rules conflict
+- How reconciliation handles conflicting data sources
+
+### 2. CSDM Layers
+
+The Common Service Data Model has layers:
+
+**Foundation → Design → Build → Manage Technical Services → Manage Business Services → Consume**
+
+**Foundation:** Hardware assets, software assets, users, groups
+**Design:** Service definitions, service offerings, portfolios
+**Build:** Technical services, business services, applications
+**Manage Technical Services:** Discovery, monitoring, events
+**Manage Business Services:** SLAs, availability, performance
+**Consume:** Service catalog, incidents, requests
+
+The exam tests:
+- Which CI classes belong to which layers
+- How data flows between layers
+- Why you populate Foundation before Manage
+
+### 3. Data Source Priority
+
+Multiple systems can write to the same CI. Discovery, import sets, manual entry, integrations.
+
+When they conflict, which wins?
+
+That's data source priority. Higher priority = wins conflicts.
+
+The exam tests:
+- Default priority ordering
+- When to override priority
+- What happens when sources tie
+- How priority affects reconciliation
+
+### 4. Health Dashboard Concepts
+
+CMDB Health isn't just one dashboard. It's a framework:
+
+**Completeness:** Are required fields populated?
+**Compliance:** Do CIs match organizational standards?
+**Correctness:** Is the data accurate and valid?
+**Relationship Health:** Are relationships defined and bidirectional?
+
+Each has its own metrics, KPIs, and remediation workflows.
+
+Exam questions test:
+- Which metric measures what
+- How to configure health scorecards
+- Remediation task workflows
+- Dashboard interpretation
+
+### 5. Reconciliation vs. Deduplication
+
+**Reconciliation:** Choosing which data source wins when multiple sources update the same field.
+
+**Deduplication:** Merging multiple records that represent the same real-world CI.
+
+Different problems. Different solutions. Different configuration.
+
+## Study Strategy by Domain
+
+### Configuration (16%)
+
+Focus areas:
+- CI Class Manager and extending base classes
+- Relationship types (Contains, Runs On, Depends On, etc.)
+- CI attributes vs. dependent relationships
+- Discovery schedules and credential configuration
+
+Lab practice:
+- Create a custom CI class
+- Define relationships between classes
+- Configure identification rules for your class
+
+### Ingest (19%)
+
+Focus areas:
+- Discovery patterns and sensors
+- Import sets and transform maps for CMDB
+- Integration hub for CI data
+- Data source management and scheduling
+
+Lab practice:
+- Run Discovery against a PDI network
+- Create an import set that populates CIs
+- Configure coalesce fields for CMDB imports
+
+### Govern (45%)
+
+This is where the exam lives. Focus areas:
+- CMDB Health framework
+- Attestation and audit policies
+- Data quality rules and policies
+- Lifecycle management (provisioning, decommissioning)
+- CI staleness and orphan detection
+
+Lab practice:
+- Configure health dashboards
+- Create attestation policies
+- Set up orphan detection rules
+- Build remediation workflows
+
+### Insight (14%)
+
+Focus areas:
+- Dependency views and impact visualization
+- Application mapping
+- Service mapping dependency analysis
+- Change impact assessment
+
+Lab practice:
+- Build a dependency view
+- Use impact analysis for change planning
+- Navigate Application Services
+
+### CSDM Fundamentals (6%)
+
+Focus areas:
+- Layer definitions and CI class mapping
+- Service definition hierarchy
+- CSDM implementation patterns
+
+This is conceptual more than hands-on. Know the framework.
+
+## Common Exam Question Patterns
+
+### Pattern 1: The "Which Comes First" Question
+
+> "Before running Discovery, which configuration must be completed first?"
+
+CSDM order matters. Foundation before Build. Credentials before Discovery. The exam tests sequencing.
+
+### Pattern 2: The Reconciliation Scenario
+
+> "Two data sources report different values for the same CI attribute. Source A has priority 100. Source B has priority 200. Which value is stored?"
+
+Know your priority logic (higher number typically wins, but confirm in your study materials).
+
+### Pattern 3: The Health Metric Interpretation
+
+> "A CI shows 85% Completeness but 40% Correctness. What does this indicate?"
+
+Completeness = fields are filled. Correctness = values are accurate. High completeness + low correctness = lots of wrong data.
+
+### Pattern 4: The CSDM Classification
+
+> "Where in the CSDM does 'Application Service' belong?"
+
+Know which classes belong to which layers.
+
+## The Exam Itself
+
+- 60 questions, 90 minutes
+- 70% to pass (42/60)
+- Prerequisite: CSA certification
+- Multi-select questions exist
+- Heavy emphasis on governance scenarios
+
+## Preparation Timeline
+
+Assuming CSA and some CMDB exposure:
+
+- **Week 1-2:** CSDM framework, CI class design, relationships
+- **Week 3-4:** Discovery and data ingestion patterns
+- **Week 5-7:** Governance deep dive (this is 45% — spend time here)
+- **Week 8:** Insights, visualization, practice exams
+
+If you don't work with CMDB daily, add 2 weeks of hands-on PDI practice.
+
+## Resources That Help
+
+**Official:**
+- CMDB Fundamentals course (Now Learning)
+- CMDB Health Deep Dive course
+- CSDM Fundamentals course
+- ServiceNow documentation (CMDB section)
+
+**Hands-on:**
+- PDI with Discovery configured
+- Import set exercises
+- Health dashboard configuration
+
+**Practice:**
+- Scenario-based questions that test implementation decisions
+- Multi-select practice (the exam uses these heavily)
+
+## Why This Certification Matters
+
+Every organization with ServiceNow needs CMDB expertise. Most have broken CMDBs. The people who can fix them — who understand governance, not just Discovery — are valuable.
+
+CIS-DF proves you understand the full lifecycle: design, ingest, govern, visualize. That's harder to find than "I can run Discovery."
+
+If you're working in ITOM, ITSM, or platform engineering, this certification signals you understand the data foundation everything else depends on.
+
+[Practice CIS-DF Questions →](/cis-df/practice-questions)
+`
+  },
+  {
+    slug: "cis-hr-service-delivery-guide",
+    title: "CIS-HR Service Delivery: What You Need to Know in 2026",
+    description: "ServiceNow's HR module is exploding in adoption. Here's how to prepare for the CIS-HR certification and what makes it different from ITSM.",
+    publishedAt: "2026-03-11",
+    author: "SNReady Team",
+    tags: ["CIS-HR", "HRSD", "HR Service Delivery", "career"],
+    featured: true,
+    readingTime: 11,
+    content: `
+## HR Service Delivery Is ServiceNow's Growth Area
+
+While everyone focuses on ITSM, ServiceNow's HR Service Delivery (HRSD) module is quietly becoming one of the platform's biggest success stories.
+
+Why? Because HR teams have the same problems IT had 10 years ago:
+- Requests scattered across email, chat, ticketing systems
+- No visibility into case status
+- Manual processes that should be automated
+- Employees frustrated with self-service gaps
+
+HRSD applies ServiceNow's workflow engine to HR problems. And organizations are adopting it fast.
+
+## What CIS-HR Tests
+
+The exam covers four domains:
+
+| Domain | Weight | What It Tests |
+|--------|--------|---------------|
+| HR System Architecture | 25% | Data model, tables, integrations |
+| Core HR Applications | 35% | Case management, knowledge, lifecycle events |
+| HR Security Model | 20% | COE structure, data privacy, ACLs |
+| HR Journeys | 20% | Lifecycle events, onboarding, offboarding |
+
+Unlike some CIS exams, this one is pretty evenly weighted. You can't skip any domain.
+
+## Key Concepts That Trip People Up
+
+### 1. Centers of Excellence (COE)
+
+This is the foundational concept of ServiceNow HRSD.
+
+A COE is an organizational unit for HR services. Different COEs handle different types of requests:
+
+- Benefits COE: Health insurance, retirement, perks
+- Payroll COE: Salary, deductions, reimbursements
+- Talent COE: Performance, learning, succession
+- Employee Relations COE: Complaints, investigations
+
+Each COE has:
+- Its own queue/assignment groups
+- Its own knowledge base
+- Its own HR services catalog
+- Its own agents
+
+The exam tests:
+- How COEs affect case routing
+- How to configure COE-specific knowledge
+- When to create new COEs vs. use existing ones
+- COE hierarchy and escalation
+
+### 2. HR Case vs. Interaction vs. Task
+
+Three different records, three different purposes:
+
+**HR Case:** The full employee request. Has a state, lifecycle, resolution.
+
+**Interaction:** The conversation log. Chat, email, phone records attached to a case.
+
+**HR Task:** Work items within a case. If a case requires multiple steps (get manager approval, update system, send confirmation), each is a task.
+
+Exam questions test:
+- When to create cases vs. tasks
+- How interactions attach to cases
+- State flow for each record type
+
+### 3. Lifecycle Events
+
+An employee's career has events:
+- Hired
+- Promoted
+- Relocated
+- On leave
+- Returning from leave
+- Terminated
+
+Lifecycle Events automate what happens at each stage.
+
+**Onboarding:** Automatically creates tasks for equipment, access provisioning, training assignments, buddy assignment.
+
+**Offboarding:** Automatically revokes access, collects equipment, triggers exit interview, processes final pay.
+
+The exam tests:
+- Lifecycle event configuration
+- Activity sets and when they trigger
+- Event-driven workflows
+- Integration with HR systems of record
+
+### 4. HR Document Management
+
+HRSD handles sensitive documents:
+- Offer letters
+- Contracts
+- Performance reviews
+- Medical documentation
+
+Document Templates + Document Generation = automated document creation.
+
+The exam tests:
+- Template configuration
+- Document generation triggers
+- Storage and access controls
+- Retention policies
+
+### 5. Employee Privacy
+
+HR data is sensitive. More sensitive than IT data.
+
+HRSD has specific privacy controls:
+- Restricted caller access
+- Case privacy flags
+- COE-level data isolation
+- Document redaction capabilities
+
+The exam tests:
+- When to use restricted vs. standard cases
+- How privacy flags affect visibility
+- Data masking for sensitive fields
+- Audit trail requirements
+
+## How CIS-HR Differs from CIS-ITSM
+
+Both are case management certifications. But the mental model is different.
+
+**ITSM:** Problems affecting work. User is usually the requester and affected party. Technical troubleshooting focus.
+
+**HRSD:** Personal employee matters. User is always the affected party. Confidentiality is paramount. Emotional intelligence matters.
+
+**ITSM:** Priority based on business impact. How many users affected?
+
+**HRSD:** Priority based on employee need. Is someone's paycheck wrong? That's always urgent.
+
+**ITSM:** Knowledge is public by default. Anyone can read troubleshooting articles.
+
+**HRSD:** Knowledge is often restricted. Compensation policies might be manager-only. Medical accommodation procedures might be HR-only.
+
+If you're coming from ITSM, the biggest shift is thinking about employee experience, not just ticket resolution.
+
+## Study Strategy
+
+### Week 1-2: Architecture Foundation
+
+- HRSD data model (HR Profile, HR Service, HR Case)
+- COE structure and configuration
+- Integration patterns with HRIS systems (Workday, SuccessFactors, ADP)
+- Table relationships and extensions
+
+### Week 3-4: Core Applications
+
+- Case management workflows
+- Knowledge management for HR
+- HR Service Catalog design
+- Agent workspace for HR agents
+
+### Week 5: Security Deep Dive
+
+- COE-based access control
+- Employee privacy implementation
+- Document security
+- Audit and compliance
+
+### Week 6: Lifecycle Events & Journeys
+
+- Onboarding journey configuration
+- Offboarding automation
+- Lifecycle event triggers
+- Cross-COE coordination
+
+### Week 7-8: Practice & Review
+
+- Scenario-based practice questions
+- Hands-on configuration in PDI
+- Gap identification and remediation
+
+## Common Exam Patterns
+
+### Pattern 1: COE Routing
+
+> "An employee submits a request about incorrect benefits deductions. Which COE should handle this case?"
+
+The answer requires understanding COE boundaries. Benefits handles benefit questions. Payroll handles pay questions. Benefit deductions could be either — know the distinction.
+
+### Pattern 2: Privacy Scenario
+
+> "An HR agent needs to create a case about a harassment complaint. What should they configure to ensure limited visibility?"
+
+Restricted caller, private case, appropriate COE assignment, document security.
+
+### Pattern 3: Lifecycle Event Sequence
+
+> "An employee is being transferred to a new location. Which lifecycle event activities should trigger?"
+
+Location change affects badge access, desk assignment, reporting structure, benefits eligibility (if changing states/countries). Know the full chain.
+
+### Pattern 4: Integration Design
+
+> "The organization uses Workday as the HR system of record. How should employee data synchronize with ServiceNow?"
+
+Integration patterns: scheduled import vs. real-time events. What data lives where. Conflict resolution when data differs.
+
+## The Exam Itself
+
+- 60 questions, 90 minutes
+- 70% to pass (42/60)
+- Prerequisite: CSA certification
+- Scenario-heavy (employee situations)
+- Tests both technical configuration and HR process understanding
+
+## Career Implications
+
+HRSD specialists are increasingly valuable:
+
+**Why:** HR digital transformation is a top priority for many organizations. COVID accelerated remote onboarding needs. Employee experience is a competitive differentiator.
+
+**Salary premium:** CIS-HR commands similar rates to CIS-ITSM, sometimes higher in organizations prioritizing HR transformation.
+
+**Growth path:** HR Service Delivery Architect, Employee Experience Lead, HR Platform Owner.
+
+**Market dynamics:** Fewer people have CIS-HR than CIS-ITSM. Less competition for roles.
+
+## If You're Coming From ITSM
+
+The good news: case management fundamentals transfer. You understand workflows, SLAs, knowledge management.
+
+The adjustment: Employee experience thinking. Privacy requirements. The emotional stakes of HR issues (someone's paycheck, their job security, their career trajectory).
+
+Read some HR case studies. Understand why an employee calling about a benefits denial is different from a user calling about a printer jam.
+
+## Resources
+
+**Official:**
+- HR Service Delivery Fundamentals (Now Learning)
+- HRSD Implementation course
+- ServiceNow HRSD documentation
+
+**Hands-on:**
+- PDI with HRSD plugin
+- Configure a COE from scratch
+- Build an onboarding journey
+- Create HR Service Catalog items
+
+**Practice:**
+- Scenario questions that test HR process understanding
+- Privacy configuration scenarios
+- Lifecycle event sequencing
+
+## The Bottom Line
+
+CIS-HR is an emerging certification in a growing space. If you're already in ServiceNow and want to specialize, HR Service Delivery offers:
+- Less competition than ITSM
+- Growing demand
+- Meaningful work (you're improving employee experiences)
+
+The exam requires both technical configuration skills AND understanding of HR processes. Study both.
+
+[Practice CIS-HR Questions →](/cis-hr/practice-questions)
+`
+  },
 ];
 
 export function getAllPosts(): BlogPost[] {
