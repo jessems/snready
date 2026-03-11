@@ -30,33 +30,70 @@ export default function SalariesClient() {
   }, []);
 
   const handleSubmit = async (data: SalarySubmission) => {
-    // TODO: Send to API
-    console.log("Submitting:", data);
-    
-    // For now, simulate API response
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    
-    // Store submission
+    // Submit to D1 via API
+    const response = await fetch('/api/salaries/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        role: data.role,
+        baseSalary: data.baseSalary,
+        bonus: data.bonus,
+        equity: data.equity,
+        hourlyRate: data.hourlyRate,
+        employmentType: data.employmentType,
+        yoeServiceNow: data.yoeServiceNow,
+        yoeTotal: typeof data.yoeTotal === 'string' ? parseInt(data.yoeTotal) || null : data.yoeTotal,
+        certifications: data.certifications,
+        education: null, // Not collected in current form
+        country: data.country,
+        city: data.city,
+        remotePct: data.remotePct,
+        companyType: data.companyType,
+        companySize: data.companySize,
+      }),
+    });
+
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.error || 'Failed to submit salary');
+    }
+
+    // Store submission locally
     setSubmittedData(data);
-    
-    // Calculate mock percentile
+
+    // Fetch updated stats to calculate percentile
+    const statsResponse = await fetch('/api/salaries/stats');
+    const stats = await statsResponse.json();
+
+    // Calculate percentile based on their role
     const totalComp = data.baseSalary || (data.hourlyRate || 0) * 2080;
-    const mockResult: PercentileResult = {
-      percentile: Math.min(99, Math.max(1, Math.floor((totalComp / 200000) * 75 + Math.random() * 20))),
+    const roleStats = stats.byRole?.find((r: any) => r.role === data.role) || stats.overall;
+    
+    // Estimate percentile position
+    let percentile = 50;
+    if (roleStats) {
+      if (totalComp <= roleStats.p25) percentile = 25;
+      else if (totalComp <= roleStats.median) percentile = 25 + ((totalComp - roleStats.p25) / (roleStats.median - roleStats.p25)) * 25;
+      else if (totalComp <= roleStats.p75) percentile = 50 + ((totalComp - roleStats.median) / (roleStats.p75 - roleStats.median)) * 25;
+      else percentile = 75 + Math.min(24, ((totalComp - roleStats.p75) / roleStats.p75) * 50);
+    }
+
+    const result: PercentileResult = {
+      percentile: Math.round(Math.min(99, Math.max(1, percentile))),
       yourSalary: totalComp + (data.bonus || 0) + (data.equity || 0),
-      median: 125000,
-      p25: 95000,
-      p75: 165000,
-      sampleSize: 847,
+      median: roleStats?.median || stats.overall.median,
+      p25: roleStats?.p25 || stats.overall.p25,
+      p75: roleStats?.p75 || stats.overall.p75,
+      sampleSize: roleStats?.count || stats.overall.count,
       comparisonGroup: `${data.role}s with ${data.yoeServiceNow} experience`,
     };
     
     localStorage.setItem(
       STORAGE_KEY,
-      JSON.stringify({ submission: data, result: mockResult })
+      JSON.stringify({ submission: data, result })
     );
     
-    setPercentileResult(mockResult);
+    setPercentileResult(result);
     setHasSubmitted(true);
   };
 

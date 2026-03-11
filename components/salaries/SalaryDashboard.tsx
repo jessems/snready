@@ -3,53 +3,17 @@
 import { useState, useEffect } from "react";
 import { SalaryFilter, SalaryStats } from "@/lib/salaries/types";
 import { ROLES, CERTIFICATIONS, EXPERIENCE_RANGES } from "@/lib/salaries/types";
-import { COUNTRIES, getCountryName } from "@/lib/salaries/countries";
-import seedData from "@/data/salary-seed-data.json";
+import { COUNTRIES } from "@/lib/salaries/countries";
 
-// Computed from real data: Reddit 2024 salary thread, Glassdoor, ZipRecruiter, Indeed
-// See /data/salary-seed-data.json for full dataset with sources
-function computeStats(): Record<string, SalaryStats> {
-  const submissions = seedData.sampleSubmissions;
-  const byRole: Record<string, number[]> = {};
-  const allSalaries: number[] = [];
-
-  submissions.forEach((s) => {
-    const salary = s.baseSalary;
-    if (!salary || salary < 10000) return; // Skip non-US/low outliers
-    
-    allSalaries.push(salary);
-    const role = s.role;
-    if (!byRole[role]) byRole[role] = [];
-    byRole[role].push(salary);
-  });
-
-  const calcStats = (arr: number[]): SalaryStats => {
-    const sorted = [...arr].sort((a, b) => a - b);
-    const len = sorted.length;
-    return {
-      count: len,
-      median: sorted[Math.floor(len / 2)],
-      p25: sorted[Math.floor(len * 0.25)],
-      p75: sorted[Math.floor(len * 0.75)],
-      min: sorted[0],
-      max: sorted[len - 1],
-    };
-  };
-
-  const result: Record<string, SalaryStats> = {
-    all: calcStats(allSalaries),
-  };
-
-  Object.entries(byRole).forEach(([role, salaries]) => {
-    if (salaries.length >= 2) {
-      result[role] = calcStats(salaries);
-    }
-  });
-
-  return result;
+interface RoleStats extends SalaryStats {
+  role: string;
 }
 
-const SALARY_DATA = computeStats();
+interface APIStats {
+  overall: SalaryStats & { countries: number };
+  byRole: RoleStats[];
+  updatedAt: string;
+}
 
 interface SalaryDashboardProps {
   hasSubmitted: boolean;
@@ -61,6 +25,18 @@ export default function SalaryDashboard({
   onSubmitClick,
 }: SalaryDashboardProps) {
   const [filter, setFilter] = useState<SalaryFilter>({});
+  const [apiStats, setApiStats] = useState<APIStats | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch("/api/salaries/stats")
+      .then((res) => res.json())
+      .then((data) => {
+        setApiStats(data);
+        setLoading(false);
+      })
+      .catch(() => setLoading(false));
+  }, []);
 
   const formatCurrency = (amount: number) => {
     return new Intl.NumberFormat("en-US", {
@@ -70,7 +46,27 @@ export default function SalaryDashboard({
     }).format(amount);
   };
 
-  const stats = SALARY_DATA[filter.role || "all"] || SALARY_DATA["all"];
+  // Get stats for current filter
+  const getStats = (): SalaryStats => {
+    if (!apiStats) {
+      return { count: 0, median: 0, p25: 0, p75: 0, min: 0, max: 0 };
+    }
+    if (filter.role) {
+      const roleStats = apiStats.byRole.find((r) => r.role === filter.role);
+      if (roleStats) return roleStats;
+    }
+    return apiStats.overall;
+  };
+
+  const stats = getStats();
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center py-12">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-8">
@@ -96,7 +92,7 @@ export default function SalaryDashboard({
         </div>
         <div className="bg-white p-6 rounded-xl shadow-sm border">
           <div className="text-3xl font-bold text-green-600">
-            {new Set(seedData.sampleSubmissions.map((s) => s.country)).size}
+            {apiStats?.overall.countries || 0}
           </div>
           <div className="text-sm text-gray-600">Countries represented</div>
         </div>
@@ -197,12 +193,11 @@ export default function SalaryDashboard({
               </tr>
             </thead>
             <tbody className="divide-y">
-              {Object.entries(SALARY_DATA)
-                .filter(([key]) => key !== "all")
-                .sort((a, b) => b[1].median - a[1].median)
-                .map(([role, data]) => (
-                  <tr key={role} className="hover:bg-gray-50">
-                    <td className="p-4 font-medium">{role}</td>
+              {(apiStats?.byRole || [])
+                .sort((a, b) => b.median - a.median)
+                .map((data) => (
+                  <tr key={data.role} className="hover:bg-gray-50">
+                    <td className="p-4 font-medium">{data.role}</td>
                     <td className="p-4 text-right text-blue-600 font-semibold">
                       {formatCurrency(data.median)}
                     </td>
