@@ -1,0 +1,36 @@
+-- Seed data from Reddit r/servicenow 2024 Salary Sharing Thread
+-- Source: https://www.reddit.com/r/servicenow/comments/1ij7ja4/
+-- Archived: https://web.archive.org/web/20250207000343/https://www.reddit.com/r/servicenow/comments/1ij7ja4/
+-- Scraped: 2026-03-11
+
+INSERT OR IGNORE INTO salary_submissions (role, base_salary, bonus, equity, yoe_servicenow, yoe_total, certifications, education, country, city, remote_pct, company_type, source, source_id, source_url) VALUES
+('Architect', 169000, NULL, NULL, '6-10 years', 8, '["CSA","CAD","CIS-ITSM","CIS-CSM","CIS-Discovery"]', 'Bachelor''s', 'US', 'Denver', 100, 'End-user/Customer', 'reddit-2024-salary', 'r2024-001', 'https://www.reddit.com/r/servicenow/comments/1ij7ja4/'),
+('Administrator', 120000, NULL, NULL, '6-10 years', 8, '[]', 'None', 'US', NULL, 100, 'End-user/Customer', 'reddit-2024-salary', 'r2024-002', 'https://www.reddit.com/r/servicenow/comments/1ij7ja4/'),
+('Developer', 135000, 6750, NULL, '3-5 years', 6, '["CSA","CAD"]', 'High School', 'CA', NULL, 100, 'Partner/Consultancy', 'reddit-2024-salary', 'r2024-003', 'https://www.reddit.com/r/servicenow/comments/1ij7ja4/'),
+('Administrator', 88000, NULL, NULL, '3-5 years', 6, '["CSA","CIS-ITSM"]', 'None', 'US', 'Midwest', 40, 'End-user/Customer', 'reddit-2024-salary', 'r2024-004', 'https://www.reddit.com/r/servicenow/comments/1ij7ja4/'),
+('Product Owner', 185000, 27000, NULL, '6-10 years', 12, '[]', 'Bachelor''s', 'US', 'NYC', 100, 'End-user/Customer', 'reddit-2024-salary', 'r2024-005', 'https://www.reddit.com/r/servicenow/comments/1ij7ja4/'),
+('Architect', 200000, 20000, NULL, '6-10 years', 8, '["CSA","CAD","CIS-HRSD","CIS-CSM"]', 'Bachelor''s', 'US', 'Minneapolis', 100, 'Partner/Consultancy', 'reddit-2024-salary', 'r2024-006', 'https://www.reddit.com/r/servicenow/comments/1ij7ja4/'),
+('Product Owner', 192000, 57600, NULL, '10+ years', 11, '["CSA","CIS"]', 'None', 'US', 'Phoenix', 100, 'End-user/Customer', 'reddit-2024-salary', 'r2024-007', 'https://www.reddit.com/r/servicenow/comments/1ij7ja4/'),
+('Developer', 115000, NULL, NULL, '3-5 years', 4, '["CSA","CAD","CIS-ITSM"]', 'Master''s', 'US', 'Mid-Atlantic', 100, 'End-user/Customer', 'reddit-2024-salary', 'r2024-008', 'https://www.reddit.com/r/servicenow/comments/1ij7ja4/'),
+('Developer', 85000, NULL, NULL, '1-2 years', 2, '[]', 'Bachelor''s', 'US', 'California', 100, 'End-user/Customer', 'reddit-2024-salary', 'r2024-009', 'https://www.reddit.com/r/servicenow/comments/1ij7ja4/'),
+('Administrator', 95000, NULL, NULL, '3-5 years', 4, '["CSA","ITIL"]', 'Bachelor''s', 'US', 'Northeast', 100, 'End-user/Customer', 'reddit-2024-salary', 'r2024-010', 'https://www.reddit.com/r/servicenow/comments/1ij7ja4/'),
+('Product Owner', 182000, 27300, NULL, '6-10 years', 7, '["CSA","CIS-Discovery","CIS-SM","CIS-SAM","CIS-EM"]', 'Bachelor''s', 'US', 'Southeast', 40, 'End-user/Customer', 'reddit-2024-salary', 'r2024-011', 'https://www.reddit.com/r/servicenow/comments/1ij7ja4/'),
+('Developer', 165000, NULL, NULL, '3-5 years', 5, '["CSA","CAD","CIS-SAM","CIS-HAM","CIS-Discovery","ITIL"]', 'Master''s', 'US', 'Intermountain West', 100, 'End-user/Customer', 'reddit-2024-salary', 'r2024-012', 'https://www.reddit.com/r/servicenow/comments/1ij7ja4/'),
+('Consultant', 7500, NULL, NULL, '1-2 years', 2, '["CSA","CAD"]', 'Bachelor''s', 'IN', NULL, 100, 'Partner/Consultancy', 'reddit-2024-salary', 'r2024-013', 'https://www.reddit.com/r/servicenow/comments/1ij7ja4/'),
+('Developer', 100000, NULL, NULL, '3-5 years', 4, '["CSA","CAD","CIS-ITSM"]', 'Bachelor''s', 'GB', NULL, 60, 'End-user/Customer', 'reddit-2024-salary', 'r2024-014', 'https://www.reddit.com/r/servicenow/comments/1ij7ja4/'),
+('Administrator', 79000, NULL, NULL, '<1 year', 3, '["Azure Administrator"]', 'Master''s', 'US', 'New England', 100, 'End-user/Customer', 'reddit-2024-salary', 'r2024-015', 'https://www.reddit.com/r/servicenow/comments/1ij7ja4/'),
+('Architect', 197000, 37430, 50000, '10+ years', 12, '["CSA","CAD","CIS-ITSM","CIS-CSM","CIS-HRSD","CIS-Discovery","CTA"]', 'Bachelor''s', 'US', 'Austin', 100, 'End-user/Customer', 'reddit-2024-salary', 'r2024-016', 'https://www.reddit.com/r/servicenow/comments/1ij7ja4/'),
+('Administrator', 88500, NULL, NULL, '<1 year', NULL, '[]', 'Master''s', 'US', 'Central', 100, 'End-user/Customer', 'reddit-2024-salary', 'r2024-017', 'https://www.reddit.com/r/servicenow/comments/1ij7ja4/'),
+('Developer', 150000, 3000, NULL, '3-5 years', 5, '["CSA","CAD","CIS-CSM"]', 'Master''s', 'US', NULL, 100, 'End-user/Customer', 'reddit-2024-salary', 'r2024-018', 'https://www.reddit.com/r/servicenow/comments/1ij7ja4/'),
+('Developer', 130000, NULL, NULL, '3-5 years', 6, '["CSA","CAD"]', 'Bachelor''s', 'US', 'East Coast', 100, 'End-user/Customer', 'reddit-2024-salary', 'r2024-019', 'https://www.reddit.com/r/servicenow/comments/1ij7ja4/'),
+('Administrator', 67000, NULL, NULL, '3-5 years', 4, '[]', 'Bachelor''s', 'US', 'Texas', 100, 'End-user/Customer', 'reddit-2024-salary', 'r2024-020', 'https://www.reddit.com/r/servicenow/comments/1ij7ja4/'),
+('Administrator', 100000, 6000, NULL, '1-2 years', 4, '["CSA"]', 'Bachelor''s', 'US', 'Midwest', 60, 'End-user/Customer', 'reddit-2024-salary', 'r2024-021', 'https://www.reddit.com/r/servicenow/comments/1ij7ja4/'),
+('Developer', 93000, NULL, NULL, '10+ years', NULL, '[]', 'Associate''s', 'US', 'South', 100, 'End-user/Customer', 'reddit-2024-salary', 'r2024-022', 'https://www.reddit.com/r/servicenow/comments/1ij7ja4/'),
+('Developer', 82000, NULL, NULL, '1-2 years', 3, '["CSA","CAD","CIS-Discovery"]', 'Bachelor''s', 'CA', NULL, 100, 'Partner/Consultancy', 'reddit-2024-salary', 'r2024-023', 'https://www.reddit.com/r/servicenow/comments/1ij7ja4/'),
+('Developer', 62000, NULL, NULL, '1-2 years', 2, '["CSA","CAD","CIS-Discovery"]', 'Bachelor''s', 'US', 'Southwest', 100, 'End-user/Customer', 'reddit-2024-salary', 'r2024-024', 'https://www.reddit.com/r/servicenow/comments/1ij7ja4/'),
+('Developer', 33500, 4200, NULL, '3-5 years', 6, '["CSA","CAD","CIS-HRSD"]', 'Bachelor''s', 'IN', NULL, 40, 'Partner/Consultancy', 'reddit-2024-salary', 'r2024-025', 'https://www.reddit.com/r/servicenow/comments/1ij7ja4/'),
+('Administrator', 97000, NULL, NULL, '6-10 years', 8, '["CSA","CAD"]', 'Master''s', 'US', NULL, NULL, 'End-user/Customer', 'reddit-2024-salary', 'r2024-026', 'https://www.reddit.com/r/servicenow/comments/1ij7ja4/'),
+('Consultant', 112000, NULL, NULL, '<1 year', 1, '["CSA","CAD","CIS-ITSM","ITIL"]', 'High School', 'US', NULL, 100, 'Partner/Consultancy', 'reddit-2024-salary', 'r2024-027', 'https://www.reddit.com/r/servicenow/comments/1ij7ja4/'),
+('Consultant', 17000, NULL, NULL, '1-2 years', 2, '["CSA","CAD","CIS-HRSD"]', 'Bachelor''s', 'MX', NULL, 40, 'Partner/Consultancy', 'reddit-2024-salary', 'r2024-028', 'https://www.reddit.com/r/servicenow/comments/1ij7ja4/'),
+('Product Owner', 96000, 9600, NULL, '6-10 years', 8, '["CSA","CIS-ITSM","CIS-HRSD","CIS-SPM"]', 'Bachelor''s', 'PL', NULL, 100, 'End-user/Customer', 'reddit-2024-salary', 'r2024-029', 'https://www.reddit.com/r/servicenow/comments/1ij7ja4/'),
+('Architect', 188000, 37600, NULL, '10+ years', 23, '[]', 'Bachelor''s', 'US', 'Bay Area', 100, 'End-user/Customer', 'reddit-2024-salary', 'r2024-030', 'https://www.reddit.com/r/servicenow/comments/1ij7ja4/');
