@@ -164,7 +164,8 @@ function parseComment(body, commentId, source, createdUtc) {
     remote,
     source,
     sourceId: commentId,
-    reportedAt
+    reportedAt,
+    postId: null // Will be set by caller
   };
 }
 
@@ -182,6 +183,9 @@ for (const file of files) {
       const parsed = parseComment(comment.body, comment.id, source, comment.created_utc);
       if (parsed && !seen.has(parsed.sourceId)) {
         seen.add(parsed.sourceId);
+        // Extract post ID from link_id (format: "t3_xxxxx") or filename
+        const linkId = comment.link_id || '';
+        parsed.postId = linkId.replace('t3_', '') || file.match(/(\w+)\.json/)?.[1] || 'unknown';
         results.push(parsed);
       }
     }
@@ -197,6 +201,8 @@ console.log(`-- Total: ${results.length} entries\n`);
 for (const r of results) {
   const city = r.city ? `'${r.city.replace(/'/g, "''")}'` : 'NULL';
   const reportedAt = r.reportedAt ? `'${r.reportedAt}'` : 'NULL';
-  const sql = `INSERT OR REPLACE INTO salary_submissions (role, base_salary, yoe_servicenow, certifications, country, city, remote_pct, source, source_id, source_url, reported_at) VALUES ('${r.role}', ${r.salary}, ${r.yoe ? `'${r.yoe}'` : 'NULL'}, '${r.certs}', '${r.country}', ${city}, ${r.remote || 'NULL'}, '${r.source}', '${r.sourceId}', 'https://reddit.com', ${reportedAt});`;
+  // Build proper Reddit comment URL with anchor
+  const commentUrl = `https://www.reddit.com/r/servicenow/comments/${r.postId}/comment/${r.sourceId}/`;
+  const sql = `INSERT OR REPLACE INTO salary_submissions (role, base_salary, yoe_servicenow, certifications, country, city, remote_pct, source, source_id, source_url, reported_at) VALUES ('${r.role}', ${r.salary}, ${r.yoe ? `'${r.yoe}'` : 'NULL'}, '${r.certs}', '${r.country}', ${city}, ${r.remote || 'NULL'}, '${r.source}', '${r.sourceId}', '${commentUrl}', ${reportedAt});`;
   console.log(sql);
 }
