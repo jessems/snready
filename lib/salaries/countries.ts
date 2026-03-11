@@ -1,0 +1,36 @@
+export const COUNTRIES = [
+  { code: "US", name: "United States" },
+  { code: "CA", name: "Canada" },
+  { code: "GB", name: "United Kingdom" },
+  { code: "DE", name: "Germany" },
+  { code: "NL", name: "Netherlands" },
+  { code: "AU", name: "Australia" },
+  { code: "IN", name: "India" },
+  { code: "FR", name: "France" },
+  { code: "CH", name: "Switzerland" },
+  { code: "BE", name: "Belgium" },
+  { code: "IE", name: "Ireland" },
+  { code: "SE", name: "Sweden" },
+  { code: "NO", name: "Norway" },
+  { code: "DK", name: "Denmark" },
+  { code: "FI", name: "Finland" },
+  { code: "ES", name: "Spain" },
+  { code: "IT", name: "Italy" },
+  { code: "PL", name: "Poland" },
+  { code: "AT", name: "Austria" },
+  { code: "NZ", name: "New Zealand" },
+  { code: "SG", name: "Singapore" },
+  { code: "JP", name: "Japan" },
+  { code: "BR", name: "Brazil" },
+  { code: "MX", name: "Mexico" },
+  { code: "ZA", name: "South Africa" },
+  { code: "AE", name: "United Arab Emirates" },
+  { code: "SA", name: "Saudi Arabia" },
+  { code: "PH", name: "Philippines" },
+  { code: "MY", name: "Malaysia" },
+  { code: "OTHER", name: "Other" },
+] as const;
+
+export function getCountryName(code: string): string {
+  return COUNTRIES.find((c) => c.code === code)?.name || code;
+}
