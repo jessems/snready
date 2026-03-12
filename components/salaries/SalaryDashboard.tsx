@@ -254,23 +254,34 @@ export default function SalaryDashboard({
                     </div>
                     <span className="font-semibold text-slate-900">{formatCurrency(data.median)}</span>
                   </div>
-                  <div className="relative h-8 bg-slate-100 rounded-lg overflow-hidden">
-                    <div
-                      className={`absolute inset-y-0 left-0 bg-gradient-to-r ${colorClass} rounded-lg transition-all duration-500 group-hover:brightness-110`}
-                      style={{ width: `${barWidth}%` }}
-                    />
-                    {/* Range indicator */}
+                  <div className="relative h-10 bg-slate-100 rounded-lg overflow-hidden">
+                    {/* P25-P75 range background */}
                     <div 
-                      className="absolute inset-y-2 bg-white/30 rounded"
+                      className="absolute inset-y-0 bg-slate-300/60 border-l-2 border-r-2 border-slate-400"
                       style={{ 
                         left: `${(data.p25 / maxSalary) * 100}%`, 
                         width: `${((data.p75 - data.p25) / maxSalary) * 100}%` 
                       }}
                     />
+                    {/* Median bar */}
+                    <div
+                      className={`absolute inset-y-0 left-0 bg-gradient-to-r ${colorClass} rounded-lg transition-all duration-500 group-hover:brightness-110`}
+                      style={{ width: `${barWidth}%` }}
+                    />
+                    {/* P25 marker */}
+                    <div 
+                      className="absolute top-0 bottom-0 w-0.5 bg-slate-600"
+                      style={{ left: `${(data.p25 / maxSalary) * 100}%` }}
+                    />
+                    {/* P75 marker */}
+                    <div 
+                      className="absolute top-0 bottom-0 w-0.5 bg-slate-600"
+                      style={{ left: `${(data.p75 / maxSalary) * 100}%` }}
+                    />
                   </div>
-                  <div className="flex justify-between text-xs text-slate-400 mt-1">
-                    <span>P25: {formatCurrency(data.p25)}</span>
-                    <span>P75: {formatCurrency(data.p75)}</span>
+                  <div className="flex justify-between text-xs mt-1.5">
+                    <span className="text-slate-600 font-medium">P25: {formatCurrency(data.p25)}</span>
+                    <span className="text-slate-600 font-medium">P75: {formatCurrency(data.p75)}</span>
                   </div>
                 </div>
               );
