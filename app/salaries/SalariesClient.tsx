@@ -8,11 +8,18 @@ import { SalarySubmission, PercentileResult } from "@/lib/salaries/types";
 
 const STORAGE_KEY = "snready_salary_submitted";
 
+interface HeaderStats {
+  count: number;
+  median: number;
+  countries: number;
+}
+
 export default function SalariesClient() {
   const [view, setView] = useState<"landing" | "form" | "results">("landing");
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const [percentileResult, setPercentileResult] = useState<PercentileResult | null>(null);
   const [submittedData, setSubmittedData] = useState<SalarySubmission | null>(null);
+  const [headerStats, setHeaderStats] = useState<HeaderStats>({ count: 0, median: 0, countries: 0 });
 
   useEffect(() => {
     // Check if user has already submitted
@@ -27,6 +34,20 @@ export default function SalariesClient() {
         // Invalid stored data, ignore
       }
     }
+    
+    // Fetch real stats for header
+    fetch("/api/salaries/stats")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.overall) {
+          setHeaderStats({
+            count: data.overall.count || 0,
+            median: data.overall.median || 0,
+            countries: data.overall.countries || 0,
+          });
+        }
+      })
+      .catch(() => {});
   }, []);
 
   const handleSubmit = async (data: SalarySubmission) => {
@@ -111,22 +132,22 @@ export default function SalariesClient() {
           </h1>
           <p className="text-xl text-blue-100 max-w-2xl">
             Real compensation data from ServiceNow professionals. 
-            See how your salary compares to 800+ admins, developers, architects, and consultants.
+            See how your salary compares to {headerStats.count || '100+'}  admins, developers, architects, and consultants.
           </p>
           
           {/* Quick stats */}
           <div className="flex flex-wrap gap-8 mt-8">
             <div>
-              <div className="text-3xl font-bold">127</div>
+              <div className="text-3xl font-bold">{headerStats.count || '—'}</div>
               <div className="text-blue-200">Data Points</div>
             </div>
             <div>
-              <div className="text-3xl font-bold">$118K</div>
+              <div className="text-3xl font-bold">${headerStats.median ? Math.round(headerStats.median / 1000) + 'K' : '—'}</div>
               <div className="text-blue-200">Median Salary</div>
             </div>
             <div>
-              <div className="text-3xl font-bold">5</div>
-              <div className="text-blue-200">Sources</div>
+              <div className="text-3xl font-bold">{headerStats.countries || '—'}</div>
+              <div className="text-blue-200">Countries</div>
             </div>
           </div>
         </div>
