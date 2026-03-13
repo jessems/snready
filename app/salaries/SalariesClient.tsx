@@ -8,11 +8,18 @@ import { SalarySubmission, PercentileResult } from "@/lib/salaries/types";
 
 const STORAGE_KEY = "snready_salary_submitted";
 
+interface HeroStats {
+  count: number;
+  median: number;
+  countries: number;
+}
+
 export default function SalariesClient() {
   const [view, setView] = useState<"landing" | "form" | "results">("landing");
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const [percentileResult, setPercentileResult] = useState<PercentileResult | null>(null);
   const [submittedData, setSubmittedData] = useState<SalarySubmission | null>(null);
+  const [heroStats, setHeroStats] = useState<HeroStats>({ count: 200, median: 100000, countries: 17 });
 
   useEffect(() => {
     const submitted = localStorage.getItem(STORAGE_KEY);
@@ -26,6 +33,20 @@ export default function SalariesClient() {
         // Invalid stored data, ignore
       }
     }
+    
+    // Fetch live stats for hero
+    fetch('/api/salaries/stats')
+      .then(res => res.json())
+      .then(data => {
+        if (data.overall) {
+          setHeroStats({
+            count: data.overall.count,
+            median: data.overall.median,
+            countries: data.overall.countries || 17
+          });
+        }
+      })
+      .catch(() => {});
   }, []);
 
   const handleSubmit = async (data: SalarySubmission) => {
@@ -148,15 +169,15 @@ export default function SalariesClient() {
             {/* Stats Row */}
             <div className="grid grid-cols-3 gap-4 md:gap-8 max-w-lg">
               <div className="text-center md:text-left">
-                <div className="text-3xl md:text-4xl font-bold text-white">127</div>
+                <div className="text-3xl md:text-4xl font-bold text-white">{heroStats.count}</div>
                 <div className="text-sm text-slate-400">Salaries</div>
               </div>
               <div className="text-center md:text-left">
-                <div className="text-3xl md:text-4xl font-bold text-white">$118K</div>
+                <div className="text-3xl md:text-4xl font-bold text-white">${Math.round(heroStats.median / 1000)}K</div>
                 <div className="text-sm text-slate-400">Median</div>
               </div>
               <div className="text-center md:text-left">
-                <div className="text-3xl md:text-4xl font-bold text-white">7</div>
+                <div className="text-3xl md:text-4xl font-bold text-white">{heroStats.countries}</div>
                 <div className="text-sm text-slate-400">Countries</div>
               </div>
             </div>
