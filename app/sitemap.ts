@@ -3,6 +3,7 @@ import { getCertificationSlugs, getAllTopicSlugs, getAllDeltaSlugs } from "@/lib
 import { getAllPosts } from "@/data/blog/posts";
 import { getAllComparisonSlugs } from "@/lib/comparisons";
 import { getAllCompetitorSlugs } from "@/data/competitor-comparisons";
+import { ALL_SEGMENTS } from "@/lib/salaries/segments";
 
 export const dynamic = "force-static";
 
@@ -171,6 +172,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.85,
   }));
 
+  // === Salary segment pages (role + country specific) ===
+  const salarySegmentPages: MetadataRoute.Sitemap = ALL_SEGMENTS.map((segment) => ({
+    url: `${BASE_URL}/salaries/${segment.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "weekly" as const,
+    priority: 0.85,
+  }));
+
   // === Future: Individual question pages (Phase 3) ===
   // const questionIds = await getAllQuestionIds();
   // const individualQuestionPages = questionIds.map(...)
@@ -185,5 +194,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...blogPages,
     ...competitorPages,
     ...deltaPages,
+    ...salarySegmentPages,
   ];
 }
