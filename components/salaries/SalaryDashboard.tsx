@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import { SalaryFilter, SalaryStats } from "@/lib/salaries/types";
 import { ROLES, CERTIFICATIONS, EXPERIENCE_RANGES } from "@/lib/salaries/types";
 import { COUNTRIES } from "@/lib/salaries/countries";
+import Link from "next/link";
+import { getRoleSegments, getCountrySegments } from "@/lib/salaries/segments";
 
 interface RoleStats extends SalaryStats {
   role: string;
@@ -419,6 +421,69 @@ export default function SalaryDashboard({
           </div>
         </>
       )}
+
+      {/* Browse by Role & Country - Internal Links for SEO */}
+      <div className="grid md:grid-cols-2 gap-6">
+        {/* Browse by Role */}
+        <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+          <h3 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
+            <span className="text-xl">👤</span>
+            Browse by Role
+          </h3>
+          <ul className="space-y-2">
+            {getRoleSegments().map((segment) => (
+              <li key={segment.slug}>
+                <Link
+                  href={`/salaries/${segment.slug}`}
+                  className="flex items-center justify-between p-3 rounded-lg hover:bg-slate-50 transition group"
+                >
+                  <span className="text-slate-700 group-hover:text-blue-600 font-medium">
+                    {segment.displayName} Salary
+                  </span>
+                  <svg
+                    className="w-4 h-4 text-slate-400 group-hover:text-blue-600 transition"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Browse by Country */}
+        <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+          <h3 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
+            <span className="text-xl">🌍</span>
+            Browse by Country
+          </h3>
+          <ul className="space-y-2">
+            {getCountrySegments().map((segment) => (
+              <li key={segment.slug}>
+                <Link
+                  href={`/salaries/${segment.slug}`}
+                  className="flex items-center justify-between p-3 rounded-lg hover:bg-slate-50 transition group"
+                >
+                  <span className="text-slate-700 group-hover:text-blue-600 font-medium">
+                    Salaries in {segment.displayName}
+                  </span>
+                  <svg
+                    className="w-4 h-4 text-slate-400 group-hover:text-blue-600 transition"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
 
       {/* CTA Footer */}
       {!hasSubmitted && (
