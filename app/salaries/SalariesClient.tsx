@@ -159,7 +159,12 @@ export default function SalariesClient() {
                 </svg>
               </button>
               <button
-                onClick={() => setView("landing")}
+                onClick={() => {
+                  setView("landing");
+                  setTimeout(() => {
+                    document.getElementById('salary-dashboard')?.scrollIntoView({ behavior: 'smooth' });
+                  }, 100);
+                }}
                 className="px-6 py-3 bg-white/10 backdrop-blur-sm text-white rounded-xl font-semibold hover:bg-white/20 transition border border-white/20"
               >
                 Explore Data
@@ -231,10 +236,12 @@ export default function SalariesClient() {
 
         {/* Main Content */}
         {view === "landing" && (
-          <SalaryDashboard
-            hasSubmitted={hasSubmitted}
-            onSubmitClick={() => setView("form")}
-          />
+          <div id="salary-dashboard">
+            <SalaryDashboard
+              hasSubmitted={hasSubmitted}
+              onSubmitClick={() => setView("form")}
+            />
+          </div>
         )}
 
         {view === "form" && (
