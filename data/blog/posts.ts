@@ -22,7 +22,7 @@ export const blogPosts: BlogPost[] = [
     tags: ["salary", "career", "data"],
     featured: true,
     readingTime: 11,
-    content: \`
+    content: `
 ## The Problem with ServiceNow Salary Data
 
 Google "ServiceNow developer salary" and you'll find Glassdoor estimates, Indeed averages, and LinkedIn "insights." All based on opaque methodologies and often wildly inaccurate.
@@ -240,7 +240,7 @@ We built a tool to see where you stack up. Enter your role, location, and experi
 *Data: 205 salary disclosures from r/servicenow (2021-2026). Updated monthly.*
 
 *Have salary data to share? [Submit anonymously](/salaries) to help the community.*
-\`
+`
   },
   {
     slug: "csa-exam-reddit-tips-that-actually-work",
