@@ -64,6 +64,8 @@ Since the US makes up half our data (104 entries), here's the breakdown:
 | Manager | $96,000 | 7 |
 | Administrator | $92,928 | 14 |
 
+[CHART:ROLE_SALARY]
+
 **Key insight:** Architects earn 40% more than developers on average. The architect premium is real.
 
 ### The $200K+ Club
@@ -76,6 +78,8 @@ Since the US makes up half our data (104 entries), here's the breakdown:
 - **Company type:** Mix of product companies, consulting firms, and FAANG
 
 The highest reported salary ($382,500 base) came from a developer with 3-5 years ServiceNow experience at a major tech company. Stock grants weren't included — total comp was likely $500K+.
+
+[CHART:DISTRIBUTION]
 
 ## How Experience Actually Affects Salary
 
@@ -101,6 +105,8 @@ Our data includes years of experience for about 60% of entries. Here's what we s
 - More variance — some plateau, others break through
 
 The biggest salary jumps happen between years 2-5. After year 10, increases depend more on role changes than tenure.
+
+[CHART:EXPERIENCE]
 
 ## The Certification Question
 
@@ -140,6 +146,8 @@ ServiceNow is global. Salaries vary wildly by location.
 | India | $34,800 | 5 |
 
 **Key insight:** US salaries are 57% higher than UK salaries on average. Canadian salaries are about 18% lower than US.
+
+[CHART:US_VS_UK]
 
 **Switzerland** tops the chart, but with only 2 data points. The country's high cost of living and strong tech market drive premium rates.
 
