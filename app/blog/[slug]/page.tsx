@@ -3,6 +3,43 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getAllPosts, getPostBySlug } from "@/data/blog/posts";
 import { MarkdownContent } from "@/components/MarkdownContent";
+import {
+  RoleSalaryChart,
+  USvsUKChart,
+  ExperienceSalaryChart,
+  TopEarnersChart,
+} from "@/components/blog/SalaryCharts";
+
+// Special component for salary blog post that includes charts
+function SalaryPostContent({ content }: { content: string }) {
+  // Split content at chart markers
+  const sections = content.split(/\[CHART:(\w+)\]/);
+  
+  return (
+    <>
+      {sections.map((section, index) => {
+        // Even indices are content, odd are chart names
+        if (index % 2 === 0) {
+          return <MarkdownContent key={index} content={section} />;
+        }
+        
+        // Render the appropriate chart
+        switch (section) {
+          case "ROLE_SALARY":
+            return <RoleSalaryChart key={index} />;
+          case "US_VS_UK":
+            return <USvsUKChart key={index} />;
+          case "EXPERIENCE":
+            return <ExperienceSalaryChart key={index} />;
+          case "DISTRIBUTION":
+            return <TopEarnersChart key={index} />;
+          default:
+            return null;
+        }
+      })}
+    </>
+  );
+}
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -151,7 +188,11 @@ export default async function BlogPostPage({ params }: Props) {
 
         {/* Content */}
         <div className="prose prose-zinc dark:prose-invert max-w-none prose-headings:font-semibold prose-a:text-emerald-600 prose-a:no-underline hover:prose-a:underline prose-code:text-emerald-600 dark:prose-a:text-emerald-400 dark:prose-code:text-emerald-400">
-          <MarkdownContent content={post.content} />
+          {slug === "servicenow-salaries-2026-real-data" ? (
+            <SalaryPostContent content={post.content} />
+          ) : (
+            <MarkdownContent content={post.content} />
+          )}
         </div>
 
         {/* CTA */}
