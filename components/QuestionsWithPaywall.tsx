@@ -18,7 +18,7 @@ export function QuestionsWithPaywall({
   premiumQuestions,
   certification,
 }: QuestionsWithPaywallProps) {
-  const { authenticated, hasAccess, loading } = useAccess();
+  const { authenticated, hasAccess, hasAccessTo, loading } = useAccess();
   const [showLoginModal, setShowLoginModal] = useState(false);
 
   const handlePurchase = () => {
@@ -48,8 +48,8 @@ export function QuestionsWithPaywall({
     );
   }
 
-  // If user has access, show all questions
-  if (hasAccess) {
+  // If user has access to this certification, show all questions
+  if (hasAccessTo(certification)) {
     return (
       <div className="space-y-6">
         {freeQuestions.map((question, index) => (

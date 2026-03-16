@@ -10,6 +10,7 @@ export interface AuthSession {
     plan?: PlanType;
     expiresAt?: number;
     certification?: string;
+    certifications?: string[];
   };
 }
 
