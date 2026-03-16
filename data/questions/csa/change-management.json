@@ -852,6 +852,376 @@
         "release": "Xanadu",
         "reviewed": false
       }
+    },
+    {
+      "id": "csa-cm-011",
+      "certification": "csa",
+      "topic": "change-management",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "An update set has been marked as 'Complete' but additional changes are needed. What is the recommended approach?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Revert the update set back to 'In Progress' and make the changes"
+        },
+        {
+          "id": "b",
+          "text": "Create a new update set and commit them in the order they were created"
+        },
+        {
+          "id": "c",
+          "text": "Delete the completed update set and start over"
+        },
+        {
+          "id": "d",
+          "text": "Merge the changes directly into the default update set"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Once an update set is marked as complete, don't revert it back to in-progress. Instead, start a new update set and commit them in the order they were created. Use naming conventions like 'Performance Enhancements' and 'Performance Enhancements 2' to keep them organized.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Best practice is to NOT revert a completed update set back to in-progress."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Deleting a completed update set loses the captured changes. Create a new one instead."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The default update set should not be used for moving customizations between instances."
+          }
+        ]
+      },
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "course": {
+          "courseSlug": "servicenow-administration-fundamentals-xanadu",
+          "lessonTitle": "Migration and integration"
+        }
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Change Management",
+        "domainSlug": "change-management",
+        "domainPercentage": 10,
+        "subtopics": [
+          "Update set best practices"
+        ],
+        "tags": [
+          "update sets",
+          "complete",
+          "best practices"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-16T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-cm-012",
+      "certification": "csa",
+      "topic": "change-management",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "How many instances does a ServiceNow customer receive at minimum?",
+      "options": [
+        {
+          "id": "a",
+          "text": "One (production only)"
+        },
+        {
+          "id": "b",
+          "text": "Two (production and non-production)"
+        },
+        {
+          "id": "c",
+          "text": "Three (production, staging, and development)"
+        },
+        {
+          "id": "d",
+          "text": "Four (production, test, development, and QA)"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Customers receive at least two instances: production and non-production. They can add more for tasks like testing, development, or quality assurance.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Customers receive at least two instances, not one."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The minimum is two instances. Additional instances can be added but are not included by default."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Four instances are not the minimum; the minimum is two."
+          }
+        ]
+      },
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "course": {
+          "courseSlug": "servicenow-administration-fundamentals-xanadu",
+          "lessonTitle": "Explore the power of the ServiceNow Platform"
+        }
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Change Management",
+        "domainSlug": "change-management",
+        "domainPercentage": 10,
+        "subtopics": [
+          "Instance architecture"
+        ],
+        "tags": [
+          "instances",
+          "production",
+          "non-production"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-16T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-cm-013",
+      "certification": "csa",
+      "topic": "change-management",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What architecture does ServiceNow use for its instances?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Multi-instance multi-tenant"
+        },
+        {
+          "id": "b",
+          "text": "Single-instance multi-tenant"
+        },
+        {
+          "id": "c",
+          "text": "Multi-instance single-tenant"
+        },
+        {
+          "id": "d",
+          "text": "Single-instance single-tenant"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "ServiceNow uses a multi-instance single-tenant architecture, meaning each instance has its own isolated database. Each instance is hosted at a ServiceNow data center with a unique URL.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "ServiceNow is single-tenant (each customer has isolated instances), not multi-tenant."
+          },
+          {
+            "choiceId": "b",
+            "explanation": "ServiceNow provides multiple instances per customer (multi-instance) with single tenancy."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Customers receive multiple instances (at least 2), so it is multi-instance."
+          }
+        ]
+      },
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "course": {
+          "courseSlug": "servicenow-administration-fundamentals-xanadu",
+          "lessonTitle": "Explore the power of the ServiceNow Platform"
+        }
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Change Management",
+        "domainSlug": "change-management",
+        "domainPercentage": 10,
+        "subtopics": [
+          "Platform architecture"
+        ],
+        "tags": [
+          "multi-instance",
+          "single-tenant",
+          "architecture"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-16T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-cm-014",
+      "certification": "csa",
+      "topic": "change-management",
+      "cognitiveLevel": "comprehension",
+      "type": "multiple_choice",
+      "question": "What is the purpose of the Change Advisory Board (CAB) Workbench?",
+      "options": [
+        {
+          "id": "a",
+          "text": "To automatically approve all change requests"
+        },
+        {
+          "id": "b",
+          "text": "To help CAB managers schedule and manage meetings to review and authorize change requests"
+        },
+        {
+          "id": "c",
+          "text": "To create new change request templates"
+        },
+        {
+          "id": "d",
+          "text": "To generate reports on historical change success rates"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The Change Advisory Board Workbench helps CAB managers schedule and manage meetings to review and authorize change requests.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The CAB Workbench facilitates review meetings; it doesn't automatically approve changes."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Change templates are created through the change management module, not the CAB Workbench."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "While reporting is available, the primary purpose is managing CAB review meetings."
+          }
+        ]
+      },
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "course": {
+          "courseSlug": "servicenow-administration-fundamentals-xanadu",
+          "lessonTitle": "Configure Self Service"
+        }
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Change Management",
+        "domainSlug": "change-management",
+        "domainPercentage": 10,
+        "subtopics": [
+          "CAB Workbench"
+        ],
+        "tags": [
+          "CAB",
+          "change advisory board",
+          "change authorization"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-16T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-cm-015",
+      "certification": "csa",
+      "topic": "change-management",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "When merging multiple update sets, how does ServiceNow handle conflicts where the same object was modified?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It rejects the merge entirely"
+        },
+        {
+          "id": "b",
+          "text": "It keeps the latest change to the object"
+        },
+        {
+          "id": "c",
+          "text": "It prompts the admin to choose which version to keep"
+        },
+        {
+          "id": "d",
+          "text": "It creates a new version combining both changes"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "When merging update sets, the latest change to an object is kept. This is why it's important to commit update sets in the order they were created.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The merge is not rejected; the system handles conflicts by keeping the latest change."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The system automatically keeps the latest change rather than prompting for selection."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "ServiceNow doesn't merge the content of both changes; it keeps the latest one."
+          }
+        ]
+      },
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "course": {
+          "courseSlug": "servicenow-administration-fundamentals-xanadu",
+          "lessonTitle": "Migration and integration"
+        }
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Change Management",
+        "domainSlug": "change-management",
+        "domainPercentage": 10,
+        "subtopics": [
+          "Update set merging"
+        ],
+        "tags": [
+          "update sets",
+          "merge",
+          "conflicts"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-16T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     }
   ]
 }
