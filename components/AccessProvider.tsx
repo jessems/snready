@@ -9,9 +9,11 @@ interface AccessContextType {
   email: string | null;
   plan: string | null;
   expiresAt: number | null;
+  certifications: string[];
   loading: boolean;
   logout: () => Promise<void>;
   refresh: () => Promise<void>;
+  hasAccessTo: (certification: string) => boolean;
 }
 
 const AccessContext = createContext<AccessContextType | null>(null);
@@ -22,43 +24,44 @@ export function AccessProvider({ children }: { children: ReactNode }) {
   const [email, setEmail] = useState<string | null>(null);
   const [plan, setPlan] = useState<string | null>(null);
   const [expiresAt, setExpiresAt] = useState<number | null>(null);
+  const [certifications, setCertifications] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
+
+  const applySession = useCallback((session: Awaited<ReturnType<typeof getAuthSession>>) => {
+    setAuthenticated(session.authenticated);
+    setEmail(session.email || null);
+    setHasAccess(session.access.hasAccess);
+    setPlan(session.access.plan || null);
+    setExpiresAt(session.access.expiresAt || null);
+    setCertifications(session.access.certifications || []);
+  }, []);
 
   const refresh = useCallback(async () => {
     try {
-      const session = await getAuthSession();
-      setAuthenticated(session.authenticated);
-      setEmail(session.email || null);
-      setHasAccess(session.access.hasAccess);
-      setPlan(session.access.plan || null);
-      setExpiresAt(session.access.expiresAt || null);
+      applySession(await getAuthSession());
     } catch {
       setAuthenticated(false);
       setEmail(null);
       setHasAccess(false);
       setPlan(null);
       setExpiresAt(null);
+      setCertifications([]);
     }
     setLoading(false);
-  }, []);
+  }, [applySession]);
 
   useEffect(() => {
-    getAuthSession().then(session => {
-      setAuthenticated(session.authenticated);
-      setEmail(session.email || null);
-      setHasAccess(session.access.hasAccess);
-      setPlan(session.access.plan || null);
-      setExpiresAt(session.access.expiresAt || null);
-    }).catch(() => {
+    getAuthSession().then(applySession).catch(() => {
       setAuthenticated(false);
       setEmail(null);
       setHasAccess(false);
       setPlan(null);
       setExpiresAt(null);
+      setCertifications([]);
     }).finally(() => {
       setLoading(false);
     });
-  }, []);
+  }, [applySession]);
 
   const logout = async () => {
     await logoutSession();
@@ -67,10 +70,17 @@ export function AccessProvider({ children }: { children: ReactNode }) {
     setEmail(null);
     setPlan(null);
     setExpiresAt(null);
+    setCertifications([]);
   };
 
+  const hasAccessTo = useCallback((cert: string) => {
+    if (!hasAccess) return false;
+    if (plan === "all") return true;
+    return certifications.some(c => c.toLowerCase() === cert.toLowerCase());
+  }, [hasAccess, plan, certifications]);
+
   return (
-    <AccessContext.Provider value={{ authenticated, hasAccess, email, plan, expiresAt, loading, logout, refresh }}>
+    <AccessContext.Provider value={{ authenticated, hasAccess, email, plan, expiresAt, certifications, loading, logout, refresh, hasAccessTo }}>
       {children}
     </AccessContext.Provider>
   );

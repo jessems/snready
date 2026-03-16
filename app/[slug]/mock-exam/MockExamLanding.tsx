@@ -33,7 +33,7 @@ export default function MockExamLanding({
   examConfig,
   totalQuestions,
 }: MockExamLandingProps) {
-  const { hasAccess, loading: accessLoading } = useAccess();
+  const { hasAccessTo, loading: accessLoading } = useAccess();
   const [viewMode, setViewMode] = useState<ViewMode>("landing");
   const [currentSession, setCurrentSession] = useState<MockExamSession | null>(null);
   const [currentResult, setCurrentResult] = useState<MockExamResult | null>(null);
@@ -235,7 +235,7 @@ export default function MockExamLanding({
         <div className="mt-6">
           {accessLoading ? (
             <div className="h-14 w-48 animate-pulse rounded-lg bg-zinc-200 dark:bg-zinc-700" />
-          ) : hasAccess ? (
+          ) : hasAccessTo(certification.name) ? (
             <button
               onClick={handleStartExam}
               disabled={isStarting}

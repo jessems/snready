@@ -70,14 +70,39 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
       { expirationTtl: 30 * 24 * 60 * 60 }
     );
 
+    // Merge with existing access (support multiple single-cert purchases)
+    const existingAccess = await env.SNREADY_ACCESS.get(`access:${normalizedEmail}`);
+    let certifications: string[] = [];
+    let effectivePlan = plan;
+
+    if (existingAccess) {
+      try {
+        const existing = JSON.parse(existingAccess);
+        certifications = existing.certifications || (existing.certification ? [existing.certification] : []);
+        // If they already have "all" plan, keep it
+        if (existing.plan === "all") effectivePlan = "all";
+      } catch {}
+    }
+
+    // Add new certification if single plan
+    if (plan === "single" && certification && !certifications.includes(certification)) {
+      certifications.push(certification);
+    }
+
+    // "all" plan means all certs
+    if (plan === "all") {
+      effectivePlan = "all";
+    }
+
     await env.SNREADY_ACCESS.put(
       `access:${normalizedEmail}`,
       JSON.stringify({
         paid: true,
-        plan,
+        plan: effectivePlan,
         expiresAt,
         sessionId: session.id,
         certification,
+        certifications,
         createdAt: Date.now(),
       }),
       kvOptions
@@ -87,9 +112,10 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
       JSON.stringify({
         success: true,
         email,
-        plan,
+        plan: effectivePlan,
         expiresAt,
         certification,
+        certifications,
       }),
       {
         headers: {

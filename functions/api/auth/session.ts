@@ -52,6 +52,7 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
         plan: accessRecord.plan,
         expiresAt: accessRecord.expiresAt,
         certification: accessRecord.certification,
+        certifications: accessRecord.certifications || (accessRecord.certification ? [accessRecord.certification] : []),
       }
     : { hasAccess: false };
 
