@@ -29,6 +29,14 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       plan?: PlanType;
     };
 
+    // Prevent single-cert checkout without specifying which certification
+    if (plan === "single" && !certification) {
+      return new Response(
+        JSON.stringify({ error: "Certification is required for single-cert purchases" }),
+        { status: 400, headers: { "Content-Type": "application/json" } }
+      );
+    }
+
     const selectedPlan = PLANS[plan] || PLANS["single"];
     const stripe = new Stripe(env.STRIPE_SECRET_KEY);
 
