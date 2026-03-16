@@ -92,19 +92,19 @@ export default function AccountPage() {
               <p className="mt-4 text-sm text-zinc-600 dark:text-zinc-400">
                 Get access to unlock all practice questions with detailed explanations.
               </p>
-              <div className="mt-4 grid gap-3 sm:grid-cols-2">
-                <CheckoutButton
-                  plan="single"
-                  className="w-full rounded-lg border-2 border-emerald-600 bg-white py-3 font-semibold text-emerald-600 transition-colors hover:bg-emerald-50 dark:bg-zinc-800 dark:hover:bg-zinc-700"
-                >
-                  Single Cert Lifetime — $9
-                </CheckoutButton>
+              <div className="mt-4 grid gap-3">
                 <CheckoutButton
                   plan="all"
                   className="w-full rounded-lg bg-emerald-600 py-3 font-semibold text-white transition-colors hover:bg-emerald-700"
                 >
                   Lifetime All Certs — $49
                 </CheckoutButton>
+                <Link
+                  href="/certifications"
+                  className="w-full rounded-lg border-2 border-emerald-600 bg-white py-3 text-center font-semibold text-emerald-600 transition-colors hover:bg-emerald-50 dark:bg-zinc-800 dark:hover:bg-zinc-700"
+                >
+                  Or buy a single cert — $9
+                </Link>
               </div>
             </div>
           )}
