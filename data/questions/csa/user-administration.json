@@ -1270,6 +1270,522 @@
         "release": "Xanadu",
         "reviewed": false
       }
+    },
+    {
+      "id": "csa-ua-016",
+      "certification": "csa",
+      "topic": "user-administration",
+      "cognitiveLevel": "comprehension",
+      "type": "multiple_choice",
+      "question": "What is the recommended method for assigning roles to users in ServiceNow?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Assign roles directly to individual user records"
+        },
+        {
+          "id": "b",
+          "text": "Add users to groups and assign roles to the groups"
+        },
+        {
+          "id": "c",
+          "text": "Use update sets to assign roles"
+        },
+        {
+          "id": "d",
+          "text": "Configure roles through the CMDB"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Rather than adding roles to individual users, the recommended approach is to add the user to a group and assign the role to the group. This makes maintenance easier when people transfer to different roles in the organization.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "While possible, assigning roles directly to users makes maintenance difficult when organizational changes occur."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Update sets are for migrating configuration changes between instances, not for role assignment."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The CMDB tracks configuration items, not user roles."
+          }
+        ]
+      },
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "course": {
+          "courseSlug": "servicenow-administration-fundamentals-xanadu",
+          "lessonTitle": "User access and personas"
+        }
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "User Administration & Security",
+        "domainSlug": "user-administration",
+        "domainPercentage": 15,
+        "subtopics": [
+          "Role assignment best practices"
+        ],
+        "tags": [
+          "roles",
+          "groups",
+          "best practices"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-16T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-ua-017",
+      "certification": "csa",
+      "topic": "user-administration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What indicates that elevated privileges are activated for an administrator's session?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A lock icon appears in the navigation menu"
+        },
+        {
+          "id": "b",
+          "text": "An upward arrow appears next to the user's avatar"
+        },
+        {
+          "id": "c",
+          "text": "The background color of the instance changes"
+        },
+        {
+          "id": "d",
+          "text": "A notification email is sent to the security team"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "An upward arrow next to your avatar indicates activated elevated privileges. These roles last only for your session and end with logout, session timeout, or user impersonation.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "There is no lock icon for elevated privileges; the indicator is an upward arrow by the avatar."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The background color does not change for elevated privileges."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "No email notification is sent when elevating privileges."
+          }
+        ]
+      },
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "course": {
+          "courseSlug": "servicenow-administration-fundamentals-xanadu",
+          "lessonTitle": "Application and access control"
+        }
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "User Administration & Security",
+        "domainSlug": "user-administration",
+        "domainPercentage": 15,
+        "subtopics": [
+          "Elevated privileges"
+        ],
+        "tags": [
+          "elevated privileges",
+          "security",
+          "admin role"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-16T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-ua-018",
+      "certification": "csa",
+      "topic": "user-administration",
+      "cognitiveLevel": "comprehension",
+      "type": "multiple_choice",
+      "question": "In which order does ServiceNow evaluate access control rules?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Allow rules first, then deny rules"
+        },
+        {
+          "id": "b",
+          "text": "Field rules first, then table rules"
+        },
+        {
+          "id": "c",
+          "text": "Deny rules first, then allow rules if deny conditions are met"
+        },
+        {
+          "id": "d",
+          "text": "All rules are evaluated simultaneously"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "The system checks deny rules first. If any deny rule conditions are unmet, access is blocked. Allow rules are evaluated only when no deny rules apply or if all deny rule criteria are satisfied.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Deny rules are checked before allow rules, not the other way around."
+          },
+          {
+            "choiceId": "b",
+            "explanation": "Access controls check table access first, then field access \u2014 but deny/allow ordering is the key evaluation sequence."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Rules are evaluated in a specific order: deny rules first, then allow rules."
+          }
+        ]
+      },
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "course": {
+          "courseSlug": "servicenow-administration-fundamentals-xanadu",
+          "lessonTitle": "Application and access control"
+        }
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "User Administration & Security",
+        "domainSlug": "user-administration",
+        "domainPercentage": 15,
+        "subtopics": [
+          "ACL evaluation order"
+        ],
+        "tags": [
+          "ACL",
+          "deny rules",
+          "allow rules",
+          "access control"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-16T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-ua-019",
+      "certification": "csa",
+      "topic": "user-administration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_select",
+      "question": "Which actions can users WITHOUT any assigned roles perform in ServiceNow? (Choose 2)",
+      "options": [
+        {
+          "id": "a",
+          "text": "View a dashboard"
+        },
+        {
+          "id": "b",
+          "text": "Create business rules"
+        },
+        {
+          "id": "c",
+          "text": "Access the service catalog"
+        },
+        {
+          "id": "d",
+          "text": "Manage access control lists"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "c"
+      ],
+      "explanation": {
+        "correct": "Users without any assigned roles can still log in and access common actions such as viewing a dashboard, accessing the service catalog, viewing knowledge articles, and taking surveys. These are often referred to as self-service users.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Creating business rules requires administrative roles."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Managing ACLs requires the security_admin role."
+          }
+        ]
+      },
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "course": {
+          "courseSlug": "servicenow-administration-fundamentals-xanadu",
+          "lessonTitle": "User access and personas"
+        }
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "User Administration & Security",
+        "domainSlug": "user-administration",
+        "domainPercentage": 15,
+        "subtopics": [
+          "Self-service users"
+        ],
+        "tags": [
+          "self-service",
+          "no roles",
+          "user access"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-16T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-ua-020",
+      "certification": "csa",
+      "topic": "user-administration",
+      "cognitiveLevel": "comprehension",
+      "type": "multiple_choice",
+      "question": "Which statement about user impersonation is TRUE?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Any user can impersonate another user"
+        },
+        {
+          "id": "b",
+          "text": "Impersonation allows access to security incidents even if you don't have those roles"
+        },
+        {
+          "id": "c",
+          "text": "Only users with the admin or impersonator role can impersonate other users"
+        },
+        {
+          "id": "d",
+          "text": "Impersonation persists across multiple login sessions"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "Only admins and users with the impersonator role can impersonate other users to test their access. When impersonating a user with a specific admin role, you cannot access certain features like security incidents unless you already have those roles.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Only users with the admin or impersonator role can impersonate others."
+          },
+          {
+            "choiceId": "b",
+            "explanation": "When impersonating, you cannot access features like security incidents unless you already have those specific roles."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Impersonation does not persist across login sessions."
+          }
+        ]
+      },
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "course": {
+          "courseSlug": "servicenow-administration-fundamentals-xanadu",
+          "lessonTitle": "User access and personas"
+        }
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "User Administration & Security",
+        "domainSlug": "user-administration",
+        "domainPercentage": 15,
+        "subtopics": [
+          "User impersonation"
+        ],
+        "tags": [
+          "impersonation",
+          "admin role",
+          "testing access"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-16T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-ua-021",
+      "certification": "csa",
+      "topic": "user-administration",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A user has the catalog_admin role. What access does this provide?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Only access to the Service Catalog application"
+        },
+        {
+          "id": "b",
+          "text": "Only access to user criteria modules"
+        },
+        {
+          "id": "c",
+          "text": "Access to all Service Catalog and user criteria modules, plus additional catalog_admin permissions"
+        },
+        {
+          "id": "d",
+          "text": "Full admin access to all platform features"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "The catalog_admin role includes permissions from both user_criteria_admin and catalog roles, providing access to all applications and modules of both roles plus any permissions specific to catalog_admin.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "catalog_admin includes more than just the catalog role \u2014 it also contains user_criteria_admin permissions."
+          },
+          {
+            "choiceId": "b",
+            "explanation": "catalog_admin includes user criteria access but also catalog and additional permissions."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "catalog_admin provides access to catalog-related features, not full admin access."
+          }
+        ]
+      },
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "course": {
+          "courseSlug": "servicenow-administration-fundamentals-xanadu",
+          "lessonTitle": "User access and personas"
+        }
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "User Administration & Security",
+        "domainSlug": "user-administration",
+        "domainPercentage": 15,
+        "subtopics": [
+          "Role inheritance"
+        ],
+        "tags": [
+          "catalog_admin",
+          "role inheritance",
+          "permissions"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-16T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-ua-022",
+      "certification": "csa",
+      "topic": "user-administration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What is the purpose of the ServiceNow Security Center?",
+      "options": [
+        {
+          "id": "a",
+          "text": "To manage user passwords and authentication only"
+        },
+        {
+          "id": "b",
+          "text": "To monitor security compliance, manage hardening settings, and run security scans"
+        },
+        {
+          "id": "c",
+          "text": "To configure firewalls and network security"
+        },
+        {
+          "id": "d",
+          "text": "To create and manage encryption keys"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "ServiceNow Security Center is a built-in tool that helps system administrators manage and improve instance security. It includes hardening checks, security scanning, customer actions, notifications, and compliance scoring.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Security Center covers much more than passwords \u2014 it includes hardening, scanning, compliance, and metrics."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Security Center focuses on instance security settings, not network infrastructure."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Encryption key management is not the primary purpose of Security Center."
+          }
+        ]
+      },
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "course": {
+          "courseSlug": "servicenow-administration-fundamentals-xanadu",
+          "lessonTitle": "ServiceNow Security Center"
+        }
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "User Administration & Security",
+        "domainSlug": "user-administration",
+        "domainPercentage": 15,
+        "subtopics": [
+          "Security Center"
+        ],
+        "tags": [
+          "security center",
+          "hardening",
+          "compliance"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-16T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     }
   ]
 }
