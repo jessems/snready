@@ -1018,6 +1018,324 @@
         "release": "Yokohama",
         "reviewed": false
       }
+    },
+    {
+      "id": "cad-ui-policies-actions-014",
+      "certification": "cad",
+      "topic": "ui-policies-actions",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What is the key advantage of using a UI Policy instead of a Client Script for making a field mandatory based on another field's value?",
+      "options": [
+        {
+          "id": "a",
+          "text": "UI Policies run on the server side for better security"
+        },
+        {
+          "id": "b",
+          "text": "UI Policies can achieve this without writing any JavaScript code"
+        },
+        {
+          "id": "c",
+          "text": "UI Policies support asynchronous execution"
+        },
+        {
+          "id": "d",
+          "text": "UI Policies can modify database records directly"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "UI Policies provide a no-code interface for common form manipulations like making fields mandatory, read-only, or visible/hidden based on conditions. This can be configured entirely through the condition builder and UI Policy Actions without JavaScript. See: https://docs.servicenow.com/bundle/xanadu-application-development/page/script/server-scripting/concept/c_UIPolicies.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "UI Policies execute on the client side (browser), not the server. They manipulate the form UI in real-time.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/script/server-scripting/concept/c_UIPolicies.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "UI Policies execute synchronously when their conditions are met. They do not support async execution.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/script/server-scripting/concept/c_UIPolicies.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "UI Policies only affect the form UI (visibility, mandatory, read-only). They do not directly modify database records. Use Data Policies for server-side enforcement.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/script/server-scripting/concept/c_UIPolicies.html"
+          }
+        ]
+      },
+      "references": [
+        "Scripting in ServiceNow Fundamentals - UI Policies"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "scripting-in-servicenow-fundamentals/06-ssnf-ui-policies.md",
+        "excerpt": "UI Policies provide a no-code way to control form behavior"
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "UI Policies & Actions",
+        "domainSlug": "ui-policies-actions",
+        "domainPercentage": 10,
+        "subtopics": [
+          "UI Policies vs Client Scripts"
+        ],
+        "tags": [
+          "ui-policies",
+          "no-code",
+          "mandatory"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-17T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-ui-policies-actions-015",
+      "certification": "cad",
+      "topic": "ui-policies-actions",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_select",
+      "question": "Which of the following actions can be configured in a UI Policy Action without scripting? (Choose three.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Make a field mandatory"
+        },
+        {
+          "id": "b",
+          "text": "Make a field read-only"
+        },
+        {
+          "id": "c",
+          "text": "Set a field's value to a specific string"
+        },
+        {
+          "id": "d",
+          "text": "Make a field visible or hidden"
+        },
+        {
+          "id": "e",
+          "text": "Send an email notification"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b",
+        "d"
+      ],
+      "selectCount": 3,
+      "explanation": {
+        "correct": "UI Policy Actions support three form manipulation actions without code: setting a field as mandatory (true/false), read-only (true/false), and visible (true/false). These are the core form UI controls. See: https://docs.servicenow.com/bundle/xanadu-application-development/page/script/server-scripting/concept/c_UIPolicies.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "c",
+            "explanation": "While UI Policies can clear a field value, setting a specific value requires the 'Run scripts' option and custom scripting in the Execute if true/false script fields.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/script/server-scripting/concept/c_UIPolicies.html"
+          },
+          {
+            "choiceId": "e",
+            "explanation": "UI Policies cannot send emails. Email notifications are configured through Notifications or triggered via Business Rules/Flow Designer.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/script/server-scripting/concept/c_UIPolicies.html"
+          }
+        ]
+      },
+      "references": [
+        "Scripting in ServiceNow Fundamentals - UI Policies"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "scripting-in-servicenow-fundamentals/06-ssnf-ui-policies.md",
+        "excerpt": "UI Policy Actions: mandatory, read-only, visible"
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "UI Policies & Actions",
+        "domainSlug": "ui-policies-actions",
+        "domainPercentage": 10,
+        "subtopics": [
+          "UI Policy Actions"
+        ],
+        "tags": [
+          "ui-policies",
+          "actions",
+          "mandatory",
+          "read-only",
+          "visible"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-17T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-ui-policies-actions-016",
+      "certification": "cad",
+      "topic": "ui-policies-actions",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "A UI Policy and a UI Policy Action both affect the 'mandatory' setting of the same field but with conflicting values. What determines the outcome?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The Client Script always takes precedence"
+        },
+        {
+          "id": "b",
+          "text": "The UI Policy with the higher Order value takes precedence"
+        },
+        {
+          "id": "c",
+          "text": "The UI Policy with the lower Order value takes precedence"
+        },
+        {
+          "id": "d",
+          "text": "The last UI Policy to evaluate wins regardless of Order"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "When multiple UI Policies conflict, the one with the higher Order number takes precedence (executes last and wins). This is the opposite of Client Scripts where lower Order executes first. The higher-ordered UI Policy's settings override earlier ones. See: https://docs.servicenow.com/bundle/xanadu-application-development/page/script/server-scripting/concept/c_UIPolicies.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Client Scripts and UI Policies are separate mechanisms. UI Policy conflicts are resolved by their own Order field, not by Client Scripts.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/script/server-scripting/concept/c_UIPolicies.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Unlike Client Scripts (where lower Order executes first), UI Policies with higher Order values take precedence because they execute last.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/script/server-scripting/concept/c_UIPolicies.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Evaluation order is determined by the Order field, not random. Higher Order values evaluate last and therefore win.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/script/server-scripting/concept/c_UIPolicies.html"
+          }
+        ]
+      },
+      "references": [
+        "Scripting in ServiceNow Fundamentals - UI Policies"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "scripting-in-servicenow-fundamentals/06-ssnf-ui-policies.md",
+        "excerpt": "UI Policy order determines precedence when multiple policies affect the same field"
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "UI Policies & Actions",
+        "domainSlug": "ui-policies-actions",
+        "domainPercentage": 10,
+        "subtopics": [
+          "UI Policy order",
+          "Conflict resolution"
+        ],
+        "tags": [
+          "ui-policies",
+          "order",
+          "precedence"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-17T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-ui-policies-actions-017",
+      "certification": "cad",
+      "topic": "ui-policies-actions",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A developer needs to ensure that a field is mandatory both when users fill out forms AND when records are updated via import sets or web services. Which approach should they use?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A UI Policy with 'Apply to all views' checked"
+        },
+        {
+          "id": "b",
+          "text": "A Client Script with the Inherited checkbox"
+        },
+        {
+          "id": "c",
+          "text": "A Data Policy with the 'Apply to import sets' option enabled"
+        },
+        {
+          "id": "d",
+          "text": "A UI Action with mandatory validation"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "Data Policies enforce field constraints server-side, including for non-UI operations like import sets, web services, and APIs. UI Policies only affect form-based interactions. Data Policies ensure data integrity regardless of how the record is created or updated. See: https://docs.servicenow.com/bundle/xanadu-application-development/page/administer/data-quality/concept/c_DataPolicy.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "UI Policies only enforce rules on the form UI. Records created via import sets or web services bypass the UI entirely, so UI Policies have no effect.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/script/server-scripting/concept/c_UIPolicies.html"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "Client Scripts execute in the browser and cannot enforce rules on server-side operations like imports or API calls.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/script/client-scripts/concept/c_ClientScripts.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "UI Actions are buttons/links on forms and cannot enforce mandatory fields on non-UI operations.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/script/server-scripting/concept/c_UIActions.html"
+          }
+        ]
+      },
+      "references": [
+        "Application Development Fundamentals"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "application-development-fundamentals-on-demand/01-adf-configure-application-security.md",
+        "excerpt": "Data Policies enforce data integrity server-side, including for import sets and web services"
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "UI Policies & Actions",
+        "domainSlug": "ui-policies-actions",
+        "domainPercentage": 10,
+        "subtopics": [
+          "Data Policies",
+          "Server-side enforcement"
+        ],
+        "tags": [
+          "ui-policies",
+          "data-policy",
+          "import-sets"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-17T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     }
   ]
 }

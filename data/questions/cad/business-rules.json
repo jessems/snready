@@ -1091,6 +1091,478 @@
         "release": "Yokohama",
         "reviewed": false
       }
+    },
+    {
+      "id": "cad-business-rules-015",
+      "certification": "cad",
+      "topic": "business-rules",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "A developer needs to pass server-side data to a client script without using an AJAX call. Which type of business rule and mechanism should they use?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Before business rule with current object"
+        },
+        {
+          "id": "b",
+          "text": "Display business rule with g_scratchpad"
+        },
+        {
+          "id": "c",
+          "text": "After business rule with gs.addInfoMessage()"
+        },
+        {
+          "id": "d",
+          "text": "Async business rule with GlideAjax"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Display business rules run when a form is loaded (before display) and can use g_scratchpad to pass server-side data to client scripts. g_scratchpad is only available in display business rules. See: https://docs.servicenow.com/bundle/xanadu-application-development/page/script/business-rules/concept/c_DisplayBusinessRules.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Before business rules execute before a database operation (insert/update/delete) and cannot pass data to client scripts via g_scratchpad.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/script/business-rules/concept/c_BusinessRules.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "While gs.addInfoMessage() displays a message on the form, it does not provide structured data access for client scripts to consume.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/script/business-rules/concept/c_BusinessRules.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Async business rules run as scheduled jobs after the transaction completes and have no connection to the client-side UI.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/script/business-rules/concept/c_BusinessRules.html"
+          }
+        ]
+      },
+      "references": [
+        "Scripting in ServiceNow Fundamentals - Business Rules"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "scripting-in-servicenow-fundamentals/07-ssnf-business-rules.md",
+        "excerpt": "we have this thing called g_scratchpad, which only works with display business rules. And it allows us to take data from the server side and pass it to the client side."
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Business Rules",
+        "domainSlug": "business-rules",
+        "domainPercentage": 15,
+        "subtopics": [
+          "Display business rules",
+          "g_scratchpad"
+        ],
+        "tags": [
+          "business-rules",
+          "g_scratchpad",
+          "display-rules",
+          "server-client-data"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-17T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-business-rules-016",
+      "certification": "cad",
+      "topic": "business-rules",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_select",
+      "question": "Which of the following are valid GlideSystem logging methods that write to the system log? (Choose two.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "gs.info()"
+        },
+        {
+          "id": "b",
+          "text": "gs.print()"
+        },
+        {
+          "id": "c",
+          "text": "gs.warn()"
+        },
+        {
+          "id": "d",
+          "text": "gs.console()"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "c"
+      ],
+      "selectCount": 2,
+      "explanation": {
+        "correct": "gs.info() logs informational messages and gs.warn() logs warning messages to the system log (syslog). Other valid methods include gs.error(), gs.debug(), and gs.log(). See: https://docs.servicenow.com/bundle/xanadu-application-development/page/script/server-scripting/concept/c_GlideSystemLogging.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "gs.print() is used to write to the screen/output in background scripts, not to the system log table.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/script/server-scripting/concept/c_GlideSystemLogging.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "gs.console() does not exist as a GlideSystem method. Console logging is a browser-side concept (console.log).",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/script/server-scripting/concept/c_GlideSystemLogging.html"
+          }
+        ]
+      },
+      "references": [
+        "Scripting in ServiceNow Fundamentals - Business Rules"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "scripting-in-servicenow-fundamentals/07-ssnf-business-rules.md",
+        "excerpt": "gs.info, for informational events; error, for critical errors; warn, for things that might be an issue; debug, just when we're in debug mode"
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Business Rules",
+        "domainSlug": "business-rules",
+        "domainPercentage": 15,
+        "subtopics": [
+          "Server-side debugging",
+          "GlideSystem logging"
+        ],
+        "tags": [
+          "business-rules",
+          "debugging",
+          "gs-logging"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-17T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-business-rules-017",
+      "certification": "cad",
+      "topic": "business-rules",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A developer has a business rule that sends email notifications after an incident is created. Users report that form submissions are slow. What change would improve performance?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Change the business rule from 'after' to 'before'"
+        },
+        {
+          "id": "b",
+          "text": "Change the business rule to 'async' (asynchronous)"
+        },
+        {
+          "id": "c",
+          "text": "Change the business rule to 'display'"
+        },
+        {
+          "id": "d",
+          "text": "Add the Advanced checkbox and rewrite in JavaScript"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Asynchronous business rules run as scheduled jobs separate from the user's transaction, so the user regains control of their UI immediately. Email notifications are not time-sensitive enough to block the user's session. See: https://docs.servicenow.com/bundle/xanadu-application-development/page/script/business-rules/concept/c_AsyncBusinessRules.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Before business rules still execute synchronously within the user's transaction. They run before the database write but still block the UI.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/script/business-rules/concept/c_BusinessRules.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Display business rules run when a form is loaded for viewing, not when records are created or updated. They cannot send notifications on insert.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/script/business-rules/concept/c_DisplayBusinessRules.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The business rule is already using JavaScript. The Advanced checkbox just reveals the script editor. The issue is timing (sync vs async), not the scripting approach.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/script/business-rules/concept/c_BusinessRules.html"
+          }
+        ]
+      },
+      "references": [
+        "Scripting in ServiceNow Fundamentals - Business Rules"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "scripting-in-servicenow-fundamentals/07-ssnf-business-rules.md",
+        "excerpt": "When possible, use asynchronous business rules. And we do this so that the user is not waiting on this script to execute before they can continue anything else."
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Business Rules",
+        "domainSlug": "business-rules",
+        "domainPercentage": 15,
+        "subtopics": [
+          "Async business rules",
+          "Performance"
+        ],
+        "tags": [
+          "business-rules",
+          "async",
+          "performance"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-17T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-business-rules-018",
+      "certification": "cad",
+      "topic": "business-rules",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "Which statement about the Script Debugger for business rules is correct?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Breakpoints set by one developer are visible to all other developers"
+        },
+        {
+          "id": "b",
+          "text": "Asynchronous business rules can be stepped through in the Script Debugger"
+        },
+        {
+          "id": "c",
+          "text": "Each developer's debug session is independent with their own breakpoints"
+        },
+        {
+          "id": "d",
+          "text": "The Script Debugger modifies the production script during debugging"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "The Script Debugger creates a unique session per developer. Breakpoints are session-specific and not shared with or visible to other developers. Multiple developers can debug the same script simultaneously without interfering. See: https://docs.servicenow.com/bundle/xanadu-application-development/page/script/server-scripting/concept/c_ScriptDebugger.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Breakpoints are session-specific. Each developer's breakpoints are private and not visible to others.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/script/server-scripting/concept/c_ScriptDebugger.html"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "Asynchronous business rules become scheduled jobs and cannot be stepped through in the Script Debugger because they don't execute within the interactive session.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/script/server-scripting/concept/c_ScriptDebugger.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The Script Debugger only reads and pauses the script during execution. It does not modify the saved script code.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/script/server-scripting/concept/c_ScriptDebugger.html"
+          }
+        ]
+      },
+      "references": [
+        "Scripting in ServiceNow Fundamentals - Business Rules"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "scripting-in-servicenow-fundamentals/07-ssnf-business-rules.md",
+        "excerpt": "each developer, anytime they open up the Script Debugger, it is its own session. The breakpoints you set are specific to that session. They are not global"
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Business Rules",
+        "domainSlug": "business-rules",
+        "domainPercentage": 15,
+        "subtopics": [
+          "Script Debugger",
+          "Debugging"
+        ],
+        "tags": [
+          "business-rules",
+          "debugging",
+          "script-debugger"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-17T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-business-rules-019",
+      "certification": "cad",
+      "topic": "business-rules",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "In a 'before' business rule, what is unique about modifying the current record compared to an 'after' business rule?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Before rules require an explicit current.update() call to save changes"
+        },
+        {
+          "id": "b",
+          "text": "Before rules can modify the current record without calling update() because the record hasn't been written yet"
+        },
+        {
+          "id": "c",
+          "text": "Before rules cannot access the current object at all"
+        },
+        {
+          "id": "d",
+          "text": "Before rules automatically create a new version of the record"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "In a 'before' business rule, changes to the current object are automatically included when the record is written to the database, since the write hasn't happened yet. In contrast, 'after' business rules require explicit update() calls because the record has already been saved. See: https://docs.servicenow.com/bundle/xanadu-application-development/page/script/business-rules/concept/c_BusinessRules.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Calling current.update() in a before rule is actually an anti-pattern that can cause recursive execution. The changes are saved automatically with the pending write.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/script/business-rules/concept/c_BusinessRules.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Before business rules have full access to the current object. They can read and modify field values before the database write occurs.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/script/business-rules/concept/c_BusinessRules.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Business rules do not create record versions. Version tracking is handled by auditing configuration, not business rule types.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/script/business-rules/concept/c_BusinessRules.html"
+          }
+        ]
+      },
+      "references": [
+        "Scripting in ServiceNow Fundamentals - Business Rules"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "scripting-in-servicenow-fundamentals/07-ssnf-business-rules.md",
+        "excerpt": "before we do a record update... the records been submitted... before it's actually written to the database, we are going to execute a rule to perform some activity"
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Business Rules",
+        "domainSlug": "business-rules",
+        "domainPercentage": 15,
+        "subtopics": [
+          "Before business rules",
+          "current object"
+        ],
+        "tags": [
+          "business-rules",
+          "before-rules",
+          "current-object"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-17T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-business-rules-020",
+      "certification": "cad",
+      "topic": "business-rules",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A developer needs to access the department name of the caller on an incident record in a business rule. Which Dot-walking expression is correct?",
+      "options": [
+        {
+          "id": "a",
+          "text": "current.caller_id.getDepartment().name"
+        },
+        {
+          "id": "b",
+          "text": "current.caller_id.department.name"
+        },
+        {
+          "id": "c",
+          "text": "current.department.caller_id.name"
+        },
+        {
+          "id": "d",
+          "text": "gs.getUser().department.name"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Dot-walking allows traversal from the current record through reference fields to related tables. current.caller_id references the User table, .department references the Department table from the user, and .name gets the department's name. See: https://docs.servicenow.com/bundle/xanadu-application-development/page/script/server-scripting/concept/c_DotWalkingInScripts.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "getDepartment() is not a GlideRecord method. Dot-walking uses field names directly, not getter methods for reference traversal.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/script/server-scripting/concept/c_DotWalkingInScripts.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "This reverses the relationship. The incident table doesn't have a department field directly; department is on the user (caller_id) record.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/script/server-scripting/concept/c_DotWalkingInScripts.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "gs.getUser() returns the currently logged-in user, not the caller on the incident. This would get the wrong user's department.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/script/server-scripting/concept/c_GlideSystem.html"
+          }
+        ]
+      },
+      "references": [
+        "Scripting in ServiceNow Fundamentals - Business Rules"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "scripting-in-servicenow-fundamentals/07-ssnf-business-rules.md",
+        "excerpt": "current.caller_id.department.name is going to give us sales because that's what that callers department's name is. And we're going from table to table to table. This is Dot-walking."
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Business Rules",
+        "domainSlug": "business-rules",
+        "domainPercentage": 15,
+        "subtopics": [
+          "Dot-walking",
+          "Reference fields"
+        ],
+        "tags": [
+          "business-rules",
+          "dot-walking",
+          "reference-fields"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-17T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     }
   ]
 }

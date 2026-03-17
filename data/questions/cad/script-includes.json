@@ -944,6 +944,322 @@
         "release": "Yokohama",
         "reviewed": false
       }
+    },
+    {
+      "id": "cad-script-includes-013",
+      "certification": "cad",
+      "topic": "script-includes",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What class must a Script Include extend to be callable from a client-side GlideAjax request?",
+      "options": [
+        {
+          "id": "a",
+          "text": "GlideRecord"
+        },
+        {
+          "id": "b",
+          "text": "AbstractAjaxProcessor"
+        },
+        {
+          "id": "c",
+          "text": "GlideScriptedProcessor"
+        },
+        {
+          "id": "d",
+          "text": "ScriptableServiceRequest"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Script Includes that need to be called from client-side GlideAjax must extend AbstractAjaxProcessor. This base class handles the AJAX request/response mechanism and provides methods like getParameter() and newItem() for communication. The 'Client callable' checkbox must also be enabled. See: https://docs.servicenow.com/bundle/xanadu-application-development/page/script/server-scripting/concept/c_ScriptIncludes.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "GlideRecord is the database API for querying tables. Script Includes extend AbstractAjaxProcessor, not GlideRecord, for client access.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/script/server-scripting/concept/c_ScriptIncludes.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "GlideScriptedProcessor is used for Scripted REST Services and custom URL handling, not for GlideAjax communication.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/script/server-scripting/concept/c_ScriptIncludes.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "ScriptableServiceRequest is not a standard ServiceNow class. The correct class for GlideAjax is AbstractAjaxProcessor.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/script/server-scripting/concept/c_ScriptIncludes.html"
+          }
+        ]
+      },
+      "references": [
+        "Scripting in ServiceNow Fundamentals - Script Includes"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "scripting-in-servicenow-fundamentals/10-ssnf-script-includes.md",
+        "excerpt": "Script Include extends AbstractAjaxProcessor for client-callable functionality"
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Script Includes",
+        "domainSlug": "script-includes",
+        "domainPercentage": 10,
+        "subtopics": [
+          "AbstractAjaxProcessor",
+          "Client callable"
+        ],
+        "tags": [
+          "script-includes",
+          "abstractajaxprocessor",
+          "glideajax"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-17T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-script-includes-014",
+      "certification": "cad",
+      "topic": "script-includes",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "Which statement about Script Includes is NOT correct?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Script Includes are loaded on demand only when called"
+        },
+        {
+          "id": "b",
+          "text": "The Script Include name must match the class name defined in the script"
+        },
+        {
+          "id": "c",
+          "text": "Script Includes execute on the client side like Client Scripts"
+        },
+        {
+          "id": "d",
+          "text": "Script Includes can be used in Business Rules, Scheduled Jobs, and other server scripts"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "isNegative": true,
+      "explanation": {
+        "correct": "Script Includes are server-side scripts, not client-side. They execute on the ServiceNow server and can be called from other server-side scripts. The only way to invoke them from the client is indirectly through GlideAjax (which still executes the Script Include on the server). See: https://docs.servicenow.com/bundle/xanadu-application-development/page/script/server-scripting/concept/c_ScriptIncludes.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "This is correct. Script Includes use lazy loading — they are only loaded into memory when referenced, which improves performance.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/script/server-scripting/concept/c_ScriptIncludes.html"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "This is correct. The Script Include record name must match the JavaScript class name for the system to find and load it properly.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/script/server-scripting/concept/c_ScriptIncludes.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "This is correct. Script Includes are reusable server-side code that can be called from Business Rules, Scheduled Jobs, UI Actions, Flow Designer, and other server scripts.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/script/server-scripting/concept/c_ScriptIncludes.html"
+          }
+        ]
+      },
+      "references": [
+        "Scripting in ServiceNow Fundamentals - Script Includes"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "scripting-in-servicenow-fundamentals/10-ssnf-script-includes.md",
+        "excerpt": "Script Includes are server-side reusable code loaded on demand"
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Script Includes",
+        "domainSlug": "script-includes",
+        "domainPercentage": 10,
+        "subtopics": [
+          "Script Include fundamentals"
+        ],
+        "tags": [
+          "script-includes",
+          "server-side",
+          "negative"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-17T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-script-includes-015",
+      "certification": "cad",
+      "topic": "script-includes",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A developer has a complex calculation that is used in both a Business Rule and a Scheduled Job. What is the best practice approach?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Copy the calculation code into both the Business Rule and the Scheduled Job"
+        },
+        {
+          "id": "b",
+          "text": "Create a Script Include with the calculation and call it from both locations"
+        },
+        {
+          "id": "c",
+          "text": "Create a UI Script that both can reference"
+        },
+        {
+          "id": "d",
+          "text": "Create a Client Script with global scope"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Script Includes are designed for reusable server-side code. Creating a Script Include with the calculation logic allows it to be called from any server-side context (Business Rules, Scheduled Jobs, Flow Designer, etc.) without code duplication. See: https://docs.servicenow.com/bundle/xanadu-application-development/page/script/server-scripting/concept/c_ScriptIncludes.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Duplicating code violates the DRY (Don't Repeat Yourself) principle and creates maintenance issues — any fix must be applied in multiple places.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/script/server-scripting/concept/c_ScriptIncludes.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "UI Scripts run on the client side (browser) and cannot be called from server-side Business Rules or Scheduled Jobs.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/script/client-scripts/concept/c_UIScripts.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Client Scripts run in the browser and cannot be invoked from server-side Business Rules or Scheduled Jobs.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/script/client-scripts/concept/c_ClientScripts.html"
+          }
+        ]
+      },
+      "references": [
+        "Scripting in ServiceNow Fundamentals - Script Includes"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "scripting-in-servicenow-fundamentals/10-ssnf-script-includes.md",
+        "excerpt": "Script Includes provide reusable server-side functionality that can be called from multiple server-side contexts"
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Script Includes",
+        "domainSlug": "script-includes",
+        "domainPercentage": 10,
+        "subtopics": [
+          "Code reuse",
+          "Best practices"
+        ],
+        "tags": [
+          "script-includes",
+          "reuse",
+          "best-practices"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-17T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-script-includes-016",
+      "certification": "cad",
+      "topic": "script-includes",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "In a client-callable Script Include extending AbstractAjaxProcessor, which method is used to retrieve parameters sent from a GlideAjax call?",
+      "options": [
+        {
+          "id": "a",
+          "text": "this.getParameter('sysparm_name')"
+        },
+        {
+          "id": "b",
+          "text": "current.getValue('sysparm_name')"
+        },
+        {
+          "id": "c",
+          "text": "gs.getProperty('sysparm_name')"
+        },
+        {
+          "id": "d",
+          "text": "request.getParameter('sysparm_name')"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "In an AbstractAjaxProcessor Script Include, this.getParameter() retrieves parameters that were added on the client side using ga.addParam(). Parameters typically use the 'sysparm_' prefix convention. See: https://docs.servicenow.com/bundle/xanadu-application-development/page/script/ajax/concept/c_GlideAjax.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "current is used in Business Rules to access the current record, not in Script Includes to retrieve AJAX parameters.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/script/ajax/concept/c_GlideAjax.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "gs.getProperty() retrieves system properties from sys_properties, not AJAX request parameters.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/app-store/dev_portal/API_reference/GlideSystem/concept/c_GlideSystemAPI.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "While 'request' is used in Scripted REST APIs, AbstractAjaxProcessor uses 'this.getParameter()' to access AJAX parameters.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/script/ajax/concept/c_GlideAjax.html"
+          }
+        ]
+      },
+      "references": [
+        "Scripting in ServiceNow Fundamentals - Script Includes"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "scripting-in-servicenow-fundamentals/10-ssnf-script-includes.md",
+        "excerpt": "AbstractAjaxProcessor provides getParameter() for retrieving client-sent parameters"
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Script Includes",
+        "domainSlug": "script-includes",
+        "domainPercentage": 10,
+        "subtopics": [
+          "AbstractAjaxProcessor",
+          "getParameter"
+        ],
+        "tags": [
+          "script-includes",
+          "glideajax",
+          "parameters"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-17T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     }
   ]
 }
