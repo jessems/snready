@@ -1890,6 +1890,478 @@
         "release": "Yokohama",
         "reviewed": false
       }
+    },
+    {
+      "id": "cad-scripting-apis-025",
+      "certification": "cad",
+      "topic": "scripting-apis",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_select",
+      "question": "Which GlideSystem methods display messages directly on the user's form rather than writing to the system log? (Choose two.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "gs.addInfoMessage()"
+        },
+        {
+          "id": "b",
+          "text": "gs.info()"
+        },
+        {
+          "id": "c",
+          "text": "gs.addErrorMessage()"
+        },
+        {
+          "id": "d",
+          "text": "gs.log()"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "c"
+      ],
+      "selectCount": 2,
+      "explanation": {
+        "correct": "gs.addInfoMessage() and gs.addErrorMessage() display messages at the top of the form visible to the user. In contrast, gs.info() and gs.log() write to the system log (syslog) table which is only visible to administrators. See: https://docs.servicenow.com/bundle/xanadu-application-development/page/app-store/dev_portal/API_reference/GlideSystem/concept/c_GlideSystemAPI.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "gs.info() writes informational messages to the system log, not to the user's form.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/app-store/dev_portal/API_reference/GlideSystem/concept/c_GlideSystemAPI.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "gs.log() is an older logging method that writes to the system log. It has been largely replaced by gs.info().",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/app-store/dev_portal/API_reference/GlideSystem/concept/c_GlideSystemAPI.html"
+          }
+        ]
+      },
+      "references": [
+        "Scripting in ServiceNow Fundamentals - GlideSystem"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "scripting-in-servicenow-fundamentals/08-ssnf-glidesystem.md",
+        "excerpt": "addInfoMessage, addErrorMessage displays in the form. gs.info, previously, it's going to log that into our syslog."
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Scripting & APIs",
+        "domainSlug": "scripting-apis",
+        "domainPercentage": 25,
+        "subtopics": [
+          "GlideSystem methods",
+          "User messages"
+        ],
+        "tags": [
+          "scripting",
+          "glidesystem",
+          "messages"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-17T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-scripting-apis-026",
+      "certification": "cad",
+      "topic": "scripting-apis",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A developer needs to count the total number of active incidents assigned to a specific group without loading all records into memory. Which API should they use?",
+      "options": [
+        {
+          "id": "a",
+          "text": "GlideRecord with getRowCount()"
+        },
+        {
+          "id": "b",
+          "text": "GlideAggregate with addAggregate('COUNT')"
+        },
+        {
+          "id": "c",
+          "text": "GlideSystem with gs.getProperty()"
+        },
+        {
+          "id": "d",
+          "text": "GlideRecord with a while loop counter"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "GlideAggregate is specifically designed for aggregate database operations (COUNT, SUM, MIN, MAX, AVG) without loading individual records. It performs the calculation at the database level, making it far more efficient than retrieving records and counting them. See: https://docs.servicenow.com/bundle/xanadu-application-development/page/app-store/dev_portal/API_reference/GlideAggregate/concept/c_GlideAggregateAPI.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "GlideRecord.getRowCount() loads all matching records first, which is inefficient for large tables. GlideAggregate performs the count at the database level.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/app-store/dev_portal/API_reference/GlideAggregate/concept/c_GlideAggregateAPI.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "gs.getProperty() retrieves system property values, not record counts.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/app-store/dev_portal/API_reference/GlideSystem/concept/c_GlideSystemAPI.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Iterating through all records with a while loop to count them is extremely inefficient and can cause performance issues on large tables.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/app-store/dev_portal/API_reference/GlideAggregate/concept/c_GlideAggregateAPI.html"
+          }
+        ]
+      },
+      "references": [
+        "Scripting in ServiceNow Fundamentals - GlideRecord"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "scripting-in-servicenow-fundamentals/09-ssnf-gliderecord.md",
+        "excerpt": "GlideAggregate for counting and summing"
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Scripting & APIs",
+        "domainSlug": "scripting-apis",
+        "domainPercentage": 25,
+        "subtopics": [
+          "GlideAggregate",
+          "Performance"
+        ],
+        "tags": [
+          "scripting",
+          "glideaggregate",
+          "performance"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-17T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-scripting-apis-027",
+      "certification": "cad",
+      "topic": "scripting-apis",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What is the difference between getValue() and getDisplayValue() when called on a reference field in a GlideRecord?",
+      "options": [
+        {
+          "id": "a",
+          "text": "getValue() returns the display name; getDisplayValue() returns the sys_id"
+        },
+        {
+          "id": "b",
+          "text": "getValue() returns the sys_id; getDisplayValue() returns the human-readable display value"
+        },
+        {
+          "id": "c",
+          "text": "Both methods return the same value for reference fields"
+        },
+        {
+          "id": "d",
+          "text": "getValue() returns the full GlideRecord; getDisplayValue() returns a string"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "For reference fields, getValue() returns the sys_id of the referenced record, while getDisplayValue() returns the display value (typically the name field) of that record. This distinction is critical when building queries vs displaying data to users. See: https://docs.servicenow.com/bundle/xanadu-application-development/page/app-store/dev_portal/API_reference/GlideRecord/concept/c_GlideRecordAPI.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "This is reversed. getValue() returns the sys_id (the internal reference), while getDisplayValue() returns the human-readable name.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/app-store/dev_portal/API_reference/GlideRecord/concept/c_GlideRecordAPI.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "For reference fields, these methods return different values — the sys_id vs the display name. They would return the same value for simple text fields.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/app-store/dev_portal/API_reference/GlideRecord/concept/c_GlideRecordAPI.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "getValue() returns a string (the sys_id), not a GlideRecord object. Both methods return string values.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/app-store/dev_portal/API_reference/GlideRecord/concept/c_GlideRecordAPI.html"
+          }
+        ]
+      },
+      "references": [
+        "Scripting in ServiceNow Fundamentals - GlideRecord"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "scripting-in-servicenow-fundamentals/09-ssnf-gliderecord.md",
+        "excerpt": "Know the difference between getValue() and getDisplayValue()"
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Scripting & APIs",
+        "domainSlug": "scripting-apis",
+        "domainPercentage": 25,
+        "subtopics": [
+          "GlideRecord methods",
+          "Reference fields"
+        ],
+        "tags": [
+          "scripting",
+          "gliderecord",
+          "getValue",
+          "getDisplayValue"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-17T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-scripting-apis-028",
+      "certification": "cad",
+      "topic": "scripting-apis",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A developer needs to query all incidents with priority 1 OR priority 2. Which GlideRecord approach is correct?",
+      "options": [
+        {
+          "id": "a",
+          "text": "gr.addQuery('priority', '1'); gr.addQuery('priority', '2');"
+        },
+        {
+          "id": "b",
+          "text": "gr.addQuery('priority', '1').addOrCondition('priority', '2');"
+        },
+        {
+          "id": "c",
+          "text": "gr.addQuery('priority', '1 OR 2');"
+        },
+        {
+          "id": "d",
+          "text": "gr.addOrQuery('priority', '1', '2');"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "addQuery() returns a GlideQueryCondition object. Calling addOrCondition() on that object creates an OR relationship. The first addQuery() returns the condition, and addOrCondition() adds an alternative match. See: https://docs.servicenow.com/bundle/xanadu-application-development/page/app-store/dev_portal/API_reference/GlideRecord/concept/c_GlideRecordAPI.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Calling addQuery() twice creates an AND condition, not OR. This would return records where priority equals both 1 AND 2 simultaneously, which is impossible.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/app-store/dev_portal/API_reference/GlideRecord/concept/c_GlideRecordAPI.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "addQuery() does not parse 'OR' from a string value. This would look for a literal value of '1 OR 2' in the priority field.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/app-store/dev_portal/API_reference/GlideRecord/concept/c_GlideRecordAPI.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "addOrQuery() is not a valid GlideRecord method. The correct approach is addQuery().addOrCondition().",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/app-store/dev_portal/API_reference/GlideRecord/concept/c_GlideRecordAPI.html"
+          }
+        ]
+      },
+      "references": [
+        "Scripting in ServiceNow Fundamentals - GlideRecord"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "scripting-in-servicenow-fundamentals/09-ssnf-gliderecord.md",
+        "excerpt": "Understand addQuery(), addEncodedQuery(), and query chaining"
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Scripting & APIs",
+        "domainSlug": "scripting-apis",
+        "domainPercentage": 25,
+        "subtopics": [
+          "GlideRecord queries",
+          "OR conditions"
+        ],
+        "tags": [
+          "scripting",
+          "gliderecord",
+          "queries",
+          "addOrCondition"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-17T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-scripting-apis-029",
+      "certification": "cad",
+      "topic": "scripting-apis",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "Which statement about GlideAjax is correct?",
+      "options": [
+        {
+          "id": "a",
+          "text": "GlideAjax calls execute synchronously and block the browser UI"
+        },
+        {
+          "id": "b",
+          "text": "GlideAjax enables asynchronous communication from client scripts to server-side Script Includes"
+        },
+        {
+          "id": "c",
+          "text": "GlideAjax can only be used in business rules"
+        },
+        {
+          "id": "d",
+          "text": "GlideAjax replaces the need for REST API integrations"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "GlideAjax provides asynchronous client-to-server communication. A client script uses GlideAjax to call a server-side Script Include that extends AbstractAjaxProcessor, and receives the response via a callback function without blocking the UI. See: https://docs.servicenow.com/bundle/xanadu-application-development/page/script/ajax/concept/c_GlideAjax.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "GlideAjax calls are asynchronous by default, using callback functions. While synchronous calls are possible with getXMLWait(), they are discouraged.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/script/ajax/concept/c_GlideAjax.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "GlideAjax is a client-side API used in Client Scripts and UI Actions, not in business rules (which are server-side).",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/script/ajax/concept/c_GlideAjax.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "GlideAjax is for internal client-to-server communication within ServiceNow. REST APIs are for external system integrations.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/script/ajax/concept/c_GlideAjax.html"
+          }
+        ]
+      },
+      "references": [
+        "Scripting in ServiceNow Fundamentals - Script Includes"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "scripting-in-servicenow-fundamentals/10-ssnf-script-includes.md",
+        "excerpt": "GlideAjax for asynchronous client-server communication"
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Scripting & APIs",
+        "domainSlug": "scripting-apis",
+        "domainPercentage": 25,
+        "subtopics": [
+          "GlideAjax",
+          "Client-server communication"
+        ],
+        "tags": [
+          "scripting",
+          "glideajax",
+          "async"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-17T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-scripting-apis-030",
+      "certification": "cad",
+      "topic": "scripting-apis",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which GlideRecord method should a developer use to check if a query returned any results before processing records?",
+      "options": [
+        {
+          "id": "a",
+          "text": "gr.hasResults()"
+        },
+        {
+          "id": "b",
+          "text": "gr.hasNext()"
+        },
+        {
+          "id": "c",
+          "text": "gr.getRowCount() > 0"
+        },
+        {
+          "id": "d",
+          "text": "gr.isEmpty()"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "hasNext() returns true if there are more records to iterate over. After calling query(), using hasNext() before next() is the recommended way to check if any records matched. This avoids loading all records just to check existence. See: https://docs.servicenow.com/bundle/xanadu-application-development/page/app-store/dev_portal/API_reference/GlideRecord/concept/c_GlideRecordAPI.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "hasResults() is not a standard GlideRecord method in ServiceNow.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/app-store/dev_portal/API_reference/GlideRecord/concept/c_GlideRecordAPI.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "While getRowCount() works, it requires retrieving the full result set count which can be slow on large tables. hasNext() is more efficient for a simple existence check.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/app-store/dev_portal/API_reference/GlideRecord/concept/c_GlideRecordAPI.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "isEmpty() is not a GlideRecord method. You should use hasNext() to check for results.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/app-store/dev_portal/API_reference/GlideRecord/concept/c_GlideRecordAPI.html"
+          }
+        ]
+      },
+      "references": [
+        "Scripting in ServiceNow Fundamentals - GlideRecord"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "scripting-in-servicenow-fundamentals/09-ssnf-gliderecord.md",
+        "excerpt": "GlideRecord CRUD operations (query, insert, update, delete)"
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Scripting & APIs",
+        "domainSlug": "scripting-apis",
+        "domainPercentage": 25,
+        "subtopics": [
+          "GlideRecord methods"
+        ],
+        "tags": [
+          "scripting",
+          "gliderecord",
+          "hasNext"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-17T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     }
   ]
 }

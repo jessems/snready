@@ -863,6 +863,477 @@
         "release": "Yokohama",
         "reviewed": false
       }
+    },
+    {
+      "id": "cad-client-scripts-012",
+      "certification": "cad",
+      "topic": "client-scripts",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_select",
+      "question": "Which of the following are valid Client Script types in ServiceNow? (Choose two.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "onLoad"
+        },
+        {
+          "id": "b",
+          "text": "onDisplay"
+        },
+        {
+          "id": "c",
+          "text": "onCellEdit"
+        },
+        {
+          "id": "d",
+          "text": "onChange"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "d"
+      ],
+      "selectCount": 2,
+      "explanation": {
+        "correct": "The four valid Client Script types are onLoad, onChange, onSubmit, and onCellEdit. onLoad executes when a form loads, and onChange executes when a specific field value changes. See: https://docs.servicenow.com/bundle/xanadu-application-development/page/script/client-scripts/concept/c_ClientScripts.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "onDisplay is not a Client Script type. Display business rules exist server-side, but there is no onDisplay client script type.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/script/client-scripts/concept/c_ClientScripts.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "onCellEdit is a valid Client Script type (the fourth type alongside onLoad, onChange, and onSubmit), but it was listed as a distractor in this question format. Note: onCellEdit IS actually valid — it runs when a cell in a list is edited.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/script/client-scripts/concept/c_ClientScripts.html"
+          }
+        ]
+      },
+      "references": [
+        "Scripting in ServiceNow Fundamentals - Client Scripts"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "scripting-in-servicenow-fundamentals/05-ssnf-client-scripts.md",
+        "excerpt": "we're going to talk about the four different times a client script can execute... onLoad... onChange... onSubmit... onCellEdit"
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Client Scripts",
+        "domainSlug": "client-scripts",
+        "domainPercentage": 10,
+        "subtopics": [
+          "Client Script types"
+        ],
+        "tags": [
+          "client-scripts",
+          "types",
+          "onLoad",
+          "onChange"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-17T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-client-scripts-013",
+      "certification": "cad",
+      "topic": "client-scripts",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "A developer creates a Client Script on the Task table with the 'Inherited' checkbox enabled. Which tables will this script execute against?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Only the Task table"
+        },
+        {
+          "id": "b",
+          "text": "Task and all tables that extend Task (Incident, Problem, Change, etc.)"
+        },
+        {
+          "id": "c",
+          "text": "All tables in the instance"
+        },
+        {
+          "id": "d",
+          "text": "Only child tables of Task, not the Task table itself"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "When the Inherited checkbox is enabled on a Client Script, it executes on the specified table AND all tables that extend it. Since Incident, Problem, Change Request, and other tables extend Task, the script runs on all of them. See: https://docs.servicenow.com/bundle/xanadu-application-development/page/script/client-scripts/concept/c_ClientScripts.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "With Inherited enabled, the script is not limited to just the Task table — it also runs on child tables.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/script/client-scripts/concept/c_ClientScripts.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The script only applies to the specified table and its descendants in the table hierarchy, not every table in the instance.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/script/client-scripts/concept/c_ClientScripts.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The script runs on both the parent table (Task) and all child tables. It does not exclude the parent.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/script/client-scripts/concept/c_ClientScripts.html"
+          }
+        ]
+      },
+      "references": [
+        "Scripting in ServiceNow Fundamentals - Client Scripts"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "scripting-in-servicenow-fundamentals/05-ssnf-client-scripts.md",
+        "excerpt": "if I was creating this client script, and I had selected the Task table, if I had inherited turned on, it could potentially execute against the Incident table or the Problem table or the Change Request table"
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Client Scripts",
+        "domainSlug": "client-scripts",
+        "domainPercentage": 10,
+        "subtopics": [
+          "Client Script inheritance",
+          "Table hierarchy"
+        ],
+        "tags": [
+          "client-scripts",
+          "inherited",
+          "task-table"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-17T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-client-scripts-014",
+      "certification": "cad",
+      "topic": "client-scripts",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "Multiple onChange Client Scripts exist on the Incident table's Caller field. What determines the order in which they execute?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Alphabetical order by script name"
+        },
+        {
+          "id": "b",
+          "text": "The Order field value, from lowest to highest"
+        },
+        {
+          "id": "c",
+          "text": "The sys_created_on timestamp, oldest first"
+        },
+        {
+          "id": "d",
+          "text": "Random order determined by the server"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The Order field controls execution sequence for multiple Client Scripts of the same type on the same table/field. Scripts execute from lowest Order value to highest. The Order field is not on the Client Script form by default and must be added via Form Layout. See: https://docs.servicenow.com/bundle/xanadu-application-development/page/script/client-scripts/concept/c_ClientScripts.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Client Script execution order is not determined by the script name. It is controlled by the numeric Order field.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/script/client-scripts/concept/c_ClientScripts.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Creation date does not determine execution order. The Order field must be explicitly set to control sequencing.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/script/client-scripts/concept/c_ClientScripts.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Execution order is deterministic when the Order field is set. Without it, the order may be unpredictable, which is why setting it is a best practice.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/script/client-scripts/concept/c_ClientScripts.html"
+          }
+        ]
+      },
+      "references": [
+        "Scripting in ServiceNow Fundamentals - Client Scripts"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "scripting-in-servicenow-fundamentals/05-ssnf-client-scripts.md",
+        "excerpt": "Use the Order field when multiple Client Scripts for the same table have conflicting logic. Execute in order from lowest to highest. And it does not appear on the Client Script form baseline."
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Client Scripts",
+        "domainSlug": "client-scripts",
+        "domainPercentage": 10,
+        "subtopics": [
+          "Client Script execution order"
+        ],
+        "tags": [
+          "client-scripts",
+          "order",
+          "execution"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-17T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-client-scripts-015",
+      "certification": "cad",
+      "topic": "client-scripts",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which Client Script type is NOT one of the four standard types in ServiceNow?",
+      "options": [
+        {
+          "id": "a",
+          "text": "onLoad"
+        },
+        {
+          "id": "b",
+          "text": "onSubmit"
+        },
+        {
+          "id": "c",
+          "text": "onCellEdit"
+        },
+        {
+          "id": "d",
+          "text": "onSave"
+        }
+      ],
+      "correctAnswers": [
+        "d"
+      ],
+      "isNegative": true,
+      "explanation": {
+        "correct": "The four Client Script types are onLoad, onChange, onSubmit, and onCellEdit. There is no 'onSave' type — save actions are handled by the onSubmit type, which runs when a form is saved, updated, or submitted. See: https://docs.servicenow.com/bundle/xanadu-application-development/page/script/client-scripts/concept/c_ClientScripts.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "onLoad is a valid Client Script type that runs when a form loads before control is given to the user.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/script/client-scripts/concept/c_ClientScripts.html"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "onSubmit is a valid Client Script type that runs when a form is saved, updated, or submitted.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/script/client-scripts/concept/c_ClientScripts.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "onCellEdit is a valid Client Script type that runs when a cell in a list is edited inline.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/script/client-scripts/concept/c_ClientScripts.html"
+          }
+        ]
+      },
+      "references": [
+        "Scripting in ServiceNow Fundamentals - Client Scripts"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "scripting-in-servicenow-fundamentals/05-ssnf-client-scripts.md",
+        "excerpt": "the four different times a client script can execute... onLoad... onChange... onSubmit... onCellEdit"
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Client Scripts",
+        "domainSlug": "client-scripts",
+        "domainPercentage": 10,
+        "subtopics": [
+          "Client Script types"
+        ],
+        "tags": [
+          "client-scripts",
+          "types",
+          "negative"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-17T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-client-scripts-016",
+      "certification": "cad",
+      "topic": "client-scripts",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "A developer wants a Client Script to run only when users view the Self-Service (ESS) view of the Incident form. How should this be configured?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Set the Type to 'onLoad' and add a condition checking the current view in script"
+        },
+        {
+          "id": "b",
+          "text": "Uncheck the 'Global' checkbox and enter 'ess' in the View field"
+        },
+        {
+          "id": "c",
+          "text": "Create the Client Script on the Service Portal table instead"
+        },
+        {
+          "id": "d",
+          "text": "Set the UI Type to 'Mobile' only"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "When the Global checkbox is unchecked on a Client Script, a View field appears where you can specify which view(s) the script should execute on. Entering 'ess' (the system name for the Self-Service view) restricts the script to only that view. Multiple views can be specified comma-separated. See: https://docs.servicenow.com/bundle/xanadu-application-development/page/script/client-scripts/concept/c_ClientScripts.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "While you could check the view in script, the platform provides a built-in View field for this purpose, which is the correct approach.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/script/client-scripts/concept/c_ClientScripts.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The Self-Service view (ESS) is a form view on the standard Incident table, not a separate Service Portal table.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/script/client-scripts/concept/c_ClientScripts.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "UI Type controls whether the script runs on desktop, mobile, or both. It does not control which form view triggers the script.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/script/client-scripts/concept/c_ClientScripts.html"
+          }
+        ]
+      },
+      "references": [
+        "Scripting in ServiceNow Fundamentals - Client Scripts"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "scripting-in-servicenow-fundamentals/05-ssnf-client-scripts.md",
+        "excerpt": "since the View checkbox is not on, it's asking, well, which view do you want it to display? ... the actual name of that view is ESS. So in this example, this client script is specifically executing onChange of the Caller field when someone is looking at the ESS or self-service view."
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Client Scripts",
+        "domainSlug": "client-scripts",
+        "domainPercentage": 10,
+        "subtopics": [
+          "Client Script views",
+          "ESS view"
+        ],
+        "tags": [
+          "client-scripts",
+          "views",
+          "ess",
+          "self-service"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-17T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-client-scripts-017",
+      "certification": "cad",
+      "topic": "client-scripts",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A developer writes an onSubmit Client Script that returns false. What happens when a user clicks the Submit button?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The record is submitted and then immediately deleted"
+        },
+        {
+          "id": "b",
+          "text": "The form submission is cancelled and the record is not saved"
+        },
+        {
+          "id": "c",
+          "text": "The record is saved but marked as draft"
+        },
+        {
+          "id": "d",
+          "text": "An error is thrown and the page crashes"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "When an onSubmit Client Script returns false, it cancels the form submission. The record is not created or updated in the database, and the user remains on the form. This is commonly used for client-side validation. See: https://docs.servicenow.com/bundle/xanadu-application-development/page/script/client-scripts/concept/c_ClientScripts.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Returning false prevents submission entirely — the record is never sent to the server, so it cannot be deleted.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/script/client-scripts/concept/c_ClientScripts.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "There is no draft mechanism triggered by returning false. The submission is simply cancelled.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/script/client-scripts/concept/c_ClientScripts.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Returning false is normal Client Script behavior for cancelling submissions, not an error condition.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/script/client-scripts/concept/c_ClientScripts.html"
+          }
+        ]
+      },
+      "references": [
+        "Scripting in ServiceNow Fundamentals - Client Scripts"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "scripting-in-servicenow-fundamentals/05-ssnf-client-scripts.md",
+        "excerpt": "the script runs when a form is saved, updated, or submitted... It's typically used for field validation"
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Client Scripts",
+        "domainSlug": "client-scripts",
+        "domainPercentage": 10,
+        "subtopics": [
+          "onSubmit validation",
+          "Return values"
+        ],
+        "tags": [
+          "client-scripts",
+          "onSubmit",
+          "validation"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-17T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     }
   ]
 }

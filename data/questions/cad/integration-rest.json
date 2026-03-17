@@ -1032,6 +1032,317 @@
         "release": "Yokohama",
         "reviewed": false
       }
+    },
+    {
+      "id": "cad-integration-rest-014",
+      "certification": "cad",
+      "topic": "integration-rest",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which ServiceNow feature allows developers to define custom API endpoints with specific HTTP methods, paths, and scripted logic?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Outbound REST Message"
+        },
+        {
+          "id": "b",
+          "text": "Scripted REST API"
+        },
+        {
+          "id": "c",
+          "text": "Import Set API"
+        },
+        {
+          "id": "d",
+          "text": "Web Service Provider"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Scripted REST APIs allow developers to create custom RESTful endpoints in ServiceNow with specific HTTP methods (GET, POST, PUT, DELETE), URL paths, and server-side scripting logic. They provide full control over request/response handling. See: https://docs.servicenow.com/bundle/xanadu-application-development/page/integrate/custom-web-services/concept/c_ScriptedRESTAPIs.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Outbound REST Messages are for calling external APIs FROM ServiceNow, not for creating endpoints within ServiceNow.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/integrate/outbound-rest/concept/c_OutboundRESTMessage.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Import Set API is a built-in API for importing data into staging tables. It's not customizable for arbitrary endpoints.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/integrate/inbound-rest/concept/c_ImportSetAPI.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Web Service Provider is an older SOAP-based concept. Scripted REST API is the modern approach for creating custom REST endpoints.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/integrate/custom-web-services/concept/c_ScriptedRESTAPIs.html"
+          }
+        ]
+      },
+      "references": [
+        "Application Development Fundamentals - Web Services"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "application-development-fundamentals-on-demand/03-adf-web-services.md",
+        "excerpt": "Scripted REST APIs allow you to create custom endpoints with specific methods and scripted logic"
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Integration & REST",
+        "domainSlug": "integration-rest",
+        "domainPercentage": 10,
+        "subtopics": [
+          "Scripted REST API"
+        ],
+        "tags": [
+          "integration",
+          "rest-api",
+          "scripted-rest"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-17T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-integration-rest-015",
+      "certification": "cad",
+      "topic": "integration-rest",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_select",
+      "question": "Which of the following are components of an Outbound REST Message in ServiceNow? (Choose two.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "REST Message record with endpoint URL and authentication"
+        },
+        {
+          "id": "b",
+          "text": "HTTP Methods (GET, POST, PUT, DELETE) configured as child records"
+        },
+        {
+          "id": "c",
+          "text": "A Transform Map for response parsing"
+        },
+        {
+          "id": "d",
+          "text": "A MID Server connection profile"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b"
+      ],
+      "selectCount": 2,
+      "explanation": {
+        "correct": "An Outbound REST Message consists of a parent record defining the endpoint URL and authentication method, plus child HTTP Method records for each operation (GET, POST, etc.) that define specific paths, headers, and request bodies. See: https://docs.servicenow.com/bundle/xanadu-application-development/page/integrate/outbound-rest/concept/c_OutboundRESTMessage.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "c",
+            "explanation": "Transform Maps are used with Import Sets for data transformation, not for parsing REST responses. REST response parsing is done in script.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/integrate/outbound-rest/concept/c_OutboundRESTMessage.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "MID Server connection profiles are used for integrations that require on-premise network access. They are optional and not a core component of REST Messages.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/integrate/outbound-rest/concept/c_OutboundRESTMessage.html"
+          }
+        ]
+      },
+      "references": [
+        "Application Development Fundamentals - Web Services"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "application-development-fundamentals-on-demand/03-adf-web-services.md",
+        "excerpt": "REST Message with endpoint and authentication, plus HTTP Methods as child records"
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Integration & REST",
+        "domainSlug": "integration-rest",
+        "domainPercentage": 10,
+        "subtopics": [
+          "Outbound REST Messages"
+        ],
+        "tags": [
+          "integration",
+          "rest-message",
+          "outbound"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-17T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-integration-rest-016",
+      "certification": "cad",
+      "topic": "integration-rest",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A developer needs to allow an external system to create incidents in ServiceNow via REST. Which approach requires the least custom development?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Create a Scripted REST API with custom incident creation logic"
+        },
+        {
+          "id": "b",
+          "text": "Use the built-in Table API (api/now/table/incident) with POST method"
+        },
+        {
+          "id": "c",
+          "text": "Create an Outbound REST Message to pull data from the external system"
+        },
+        {
+          "id": "d",
+          "text": "Build a custom MID Server integration"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The ServiceNow Table API provides built-in CRUD operations on any table. An external system can POST JSON to /api/now/table/incident to create incidents with no custom development needed — only authentication setup is required. See: https://docs.servicenow.com/bundle/xanadu-application-development/page/integrate/inbound-rest/concept/c_TableAPI.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "While Scripted REST APIs work, they require custom development. The Table API already provides incident creation out of the box.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/integrate/inbound-rest/concept/c_TableAPI.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Outbound REST Messages are for ServiceNow calling external systems, not for external systems calling ServiceNow.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/integrate/outbound-rest/concept/c_OutboundRESTMessage.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "MID Servers are for on-premise integrations requiring network access. A REST API integration doesn't require a MID Server.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/integrate/inbound-rest/concept/c_TableAPI.html"
+          }
+        ]
+      },
+      "references": [
+        "Application Development Fundamentals - Web Services"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "application-development-fundamentals-on-demand/03-adf-web-services.md",
+        "excerpt": "Table API provides out-of-box CRUD operations for any table"
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Integration & REST",
+        "domainSlug": "integration-rest",
+        "domainPercentage": 10,
+        "subtopics": [
+          "Table API",
+          "Inbound REST"
+        ],
+        "tags": [
+          "integration",
+          "table-api",
+          "inbound"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-17T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-integration-rest-017",
+      "certification": "cad",
+      "topic": "integration-rest",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What authentication method is NOT supported by ServiceNow's Outbound REST Message?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Basic authentication"
+        },
+        {
+          "id": "b",
+          "text": "OAuth 2.0"
+        },
+        {
+          "id": "c",
+          "text": "Mutual TLS (certificate-based)"
+        },
+        {
+          "id": "d",
+          "text": "SAML assertion authentication"
+        }
+      ],
+      "correctAnswers": [
+        "d"
+      ],
+      "isNegative": true,
+      "explanation": {
+        "correct": "Outbound REST Messages support Basic, OAuth 2.0, and Mutual TLS (certificate-based) authentication. SAML is a browser-based SSO protocol not designed for server-to-server REST API communication. See: https://docs.servicenow.com/bundle/xanadu-application-development/page/integrate/outbound-rest/concept/c_OutboundRESTMessage.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Basic authentication (username/password encoded in Base64) is a supported and commonly used method for REST Messages.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/integrate/outbound-rest/concept/c_OutboundRESTMessage.html"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "OAuth 2.0 is fully supported for Outbound REST Messages, including OAuth profiles for token management.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/integrate/outbound-rest/concept/c_OutboundRESTMessage.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Mutual TLS using client certificates is supported for secure server-to-server communication.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/integrate/outbound-rest/concept/c_OutboundRESTMessage.html"
+          }
+        ]
+      },
+      "references": [
+        "Application Development Fundamentals - Web Services"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "application-development-fundamentals-on-demand/03-adf-web-services.md",
+        "excerpt": "REST Message authentication methods include Basic, OAuth 2.0, and certificate-based"
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Integration & REST",
+        "domainSlug": "integration-rest",
+        "domainPercentage": 10,
+        "subtopics": [
+          "REST authentication"
+        ],
+        "tags": [
+          "integration",
+          "authentication",
+          "negative"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-17T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     }
   ]
 }

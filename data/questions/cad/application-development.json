@@ -3330,6 +3330,480 @@
         "release": "Yokohama",
         "reviewed": false
       }
+    },
+    {
+      "id": "cad-application-development-044",
+      "certification": "cad",
+      "topic": "application-development",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "When creating a custom application in ServiceNow, what is the primary purpose of Application Scope?",
+      "options": [
+        {
+          "id": "a",
+          "text": "To define which users can access the application"
+        },
+        {
+          "id": "b",
+          "text": "To isolate application artifacts and prevent naming conflicts with other applications"
+        },
+        {
+          "id": "c",
+          "text": "To determine which ServiceNow instance the application runs on"
+        },
+        {
+          "id": "d",
+          "text": "To set the maximum number of records the application can create"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Application Scope provides namespace isolation for application artifacts (tables, scripts, properties, etc.). Each scoped application has a unique scope prefix that prevents naming conflicts and controls cross-scope access to protect application integrity. See: https://docs.servicenow.com/bundle/xanadu-application-development/page/build/applications/concept/c_ScopedApps.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "User access is controlled by Application Access settings and roles, not by the application scope itself.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/build/applications/concept/c_ScopedApps.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Application scope is about namespace isolation within an instance, not about which instance runs the app.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/build/applications/concept/c_ScopedApps.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "There is no record count limit tied to application scope. Scope is about artifact isolation and namespace management.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/build/applications/concept/c_ScopedApps.html"
+          }
+        ]
+      },
+      "references": [
+        "Application Development Fundamentals"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "application-development-fundamentals-on-demand/02-adf-scoped-application-model.md",
+        "excerpt": "Application scope isolates application artifacts and prevents naming conflicts"
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Application Development",
+        "domainSlug": "application-development",
+        "domainPercentage": 20,
+        "subtopics": [
+          "Application scope",
+          "Scoped applications"
+        ],
+        "tags": [
+          "app-dev",
+          "scope",
+          "namespace"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-17T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-application-development-045",
+      "certification": "cad",
+      "topic": "application-development",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A developer needs to import data from a CSV file into a custom table. What is the correct sequence of steps?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Create Transform Map → Upload CSV → Run Transform → Verify data"
+        },
+        {
+          "id": "b",
+          "text": "Upload CSV to Import Set table → Create Transform Map → Run Transform → Verify data"
+        },
+        {
+          "id": "c",
+          "text": "Create custom table → Upload CSV directly to the table → Verify data"
+        },
+        {
+          "id": "d",
+          "text": "Create REST API → POST CSV data → Process with Business Rule"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The import process follows: 1) Upload CSV to create an Import Set staging table, 2) Create a Transform Map to define field mappings between staging and target table, 3) Run the Transform to move data, 4) Verify the results. The staging table acts as an intermediary for data validation. See: https://docs.servicenow.com/bundle/xanadu-application-development/page/script/server-scripting/concept/c_ImportSets.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "You cannot create a Transform Map before uploading the CSV, because the Transform Map needs the staging table columns (created by the upload) to map from.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/script/server-scripting/concept/c_ImportSets.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "ServiceNow does not support direct CSV upload to custom tables. The Import Set mechanism with staging tables and Transform Maps is required.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/script/server-scripting/concept/c_ImportSets.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "While REST can be used for data import, it's not the standard approach for CSV file imports. Import Sets are the platform's built-in mechanism.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/script/server-scripting/concept/c_ImportSets.html"
+          }
+        ]
+      },
+      "references": [
+        "Application Development Fundamentals - Import Data"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "application-development-fundamentals-on-demand/01-adf-import-data.md",
+        "excerpt": "Upload CSV to Import Set staging table, create Transform Map for field mappings, run Transform"
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Application Development",
+        "domainSlug": "application-development",
+        "domainPercentage": 20,
+        "subtopics": [
+          "Import Sets",
+          "Transform Maps",
+          "Data import"
+        ],
+        "tags": [
+          "app-dev",
+          "import-sets",
+          "transform-maps"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-17T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-application-development-046",
+      "certification": "cad",
+      "topic": "application-development",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_select",
+      "question": "Which of the following are components of the Service Catalog? (Choose two.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Record Producers"
+        },
+        {
+          "id": "b",
+          "text": "Transform Maps"
+        },
+        {
+          "id": "c",
+          "text": "Order Guides"
+        },
+        {
+          "id": "d",
+          "text": "Business Rules"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "c"
+      ],
+      "selectCount": 2,
+      "explanation": {
+        "correct": "Record Producers and Order Guides are Service Catalog components. Record Producers create records on tables via the catalog interface (e.g., creating incidents from self-service). Order Guides bundle multiple catalog items into a guided ordering process. See: https://docs.servicenow.com/bundle/xanadu-it-service-management/page/product/service-catalog-management/concept/c_ServiceCatalogManagement.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Transform Maps are part of the Import Set framework for data imports, not the Service Catalog.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-it-service-management/page/product/service-catalog-management/concept/c_ServiceCatalogManagement.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Business Rules are server-side scripts for table operations. While they can interact with catalog items, they are not catalog components themselves.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-it-service-management/page/product/service-catalog-management/concept/c_ServiceCatalogManagement.html"
+          }
+        ]
+      },
+      "references": [
+        "Application Development Fundamentals - Service Catalog"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "application-development-fundamentals-on-demand/01-adf-service-catalog.md",
+        "excerpt": "Service Catalog components include Catalog Items, Record Producers, and Order Guides"
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Application Development",
+        "domainSlug": "application-development",
+        "domainPercentage": 20,
+        "subtopics": [
+          "Service Catalog",
+          "Record Producers",
+          "Order Guides"
+        ],
+        "tags": [
+          "app-dev",
+          "service-catalog",
+          "record-producers"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-17T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-application-development-047",
+      "certification": "cad",
+      "topic": "application-development",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What is the purpose of the Automated Test Framework (ATF) in ServiceNow application development?",
+      "options": [
+        {
+          "id": "a",
+          "text": "To automatically generate code for custom applications"
+        },
+        {
+          "id": "b",
+          "text": "To create and run automated tests that validate application functionality without manual testing"
+        },
+        {
+          "id": "c",
+          "text": "To benchmark application performance under load"
+        },
+        {
+          "id": "d",
+          "text": "To automatically deploy applications to production"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "ATF allows developers to create automated test cases that simulate user interactions and validate expected outcomes. Tests can verify form submissions, workflows, business rules, and other application behaviors, replacing manual regression testing. See: https://docs.servicenow.com/bundle/xanadu-application-development/page/administer/auto-test-framework/concept/automated-test-framework.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "ATF does not generate application code. It creates test cases to validate that existing code and configurations work correctly.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/administer/auto-test-framework/concept/automated-test-framework.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "ATF tests functional correctness, not performance. Load testing requires different tools.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/administer/auto-test-framework/concept/automated-test-framework.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "ATF validates application behavior; it does not handle deployment. Update Sets or application publishing handle deployment.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/administer/auto-test-framework/concept/automated-test-framework.html"
+          }
+        ]
+      },
+      "references": [
+        "Application Development Fundamentals - ATF"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "application-development-fundamentals-on-demand/01-adf-test-with-automated-test-framework-atf.md",
+        "excerpt": "ATF creates and runs automated tests to validate application functionality"
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Application Development",
+        "domainSlug": "application-development",
+        "domainPercentage": 20,
+        "subtopics": [
+          "Automated Test Framework",
+          "Testing"
+        ],
+        "tags": [
+          "app-dev",
+          "atf",
+          "testing"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-17T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-application-development-048",
+      "certification": "cad",
+      "topic": "application-development",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which tool in ServiceNow provides a low-code way to automate processes using triggers, actions, and conditions without traditional scripting?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Script Editor"
+        },
+        {
+          "id": "b",
+          "text": "Flow Designer"
+        },
+        {
+          "id": "c",
+          "text": "Business Rule Builder"
+        },
+        {
+          "id": "d",
+          "text": "Script Debugger"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Flow Designer is ServiceNow's low-code/no-code automation tool. It uses a visual interface with triggers (when to run), actions (what to do), and conditions (branching logic) to create automated workflows without writing JavaScript. See: https://docs.servicenow.com/bundle/xanadu-application-development/page/administer/flow-designer/concept/flow-designer.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The Script Editor is a code editing interface, not a low-code automation tool.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/administer/flow-designer/concept/flow-designer.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Business Rule Builder is not a specific ServiceNow tool name. Business rules are configured via the Business Rule form with conditions and scripts.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/administer/flow-designer/concept/flow-designer.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Script Debugger is used for debugging existing scripts, not for creating automated workflows.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/administer/flow-designer/concept/flow-designer.html"
+          }
+        ]
+      },
+      "references": [
+        "Application Development Fundamentals - Flow Designer"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "application-development-fundamentals-on-demand/01-adf-flow-designer-to-manage-deployment-states.md",
+        "excerpt": "Flow Designer provides low-code automation using triggers, actions, and conditions"
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Application Development",
+        "domainSlug": "application-development",
+        "domainPercentage": 20,
+        "subtopics": [
+          "Flow Designer",
+          "Low-code development"
+        ],
+        "tags": [
+          "app-dev",
+          "flow-designer",
+          "automation"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-17T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cad-application-development-049",
+      "certification": "cad",
+      "topic": "application-development",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A developer needs to control which roles can read, write, create, and delete records on a custom table. Which mechanism should they configure?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Client Scripts with role checks"
+        },
+        {
+          "id": "b",
+          "text": "Access Control Rules (ACLs)"
+        },
+        {
+          "id": "c",
+          "text": "UI Policies with role conditions"
+        },
+        {
+          "id": "d",
+          "text": "Data Policies with user filters"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Access Control Rules (ACLs) are the platform's security mechanism for controlling CRUD operations on tables and fields based on roles, conditions, and scripts. ACLs are evaluated server-side and enforce security regardless of how data is accessed (UI, API, import). See: https://docs.servicenow.com/bundle/xanadu-application-development/page/administer/contextual-security/concept/access-control-rules.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Client Scripts run in the browser and can be bypassed. They should never be used as the sole security mechanism for data access.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/administer/contextual-security/concept/access-control-rules.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "UI Policies control form behavior (mandatory, visible, read-only) but don't enforce data access security. They can be bypassed via APIs.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/administer/contextual-security/concept/access-control-rules.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Data Policies enforce data integrity rules (mandatory fields, format validation), not role-based access control.",
+            "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/administer/contextual-security/concept/access-control-rules.html"
+          }
+        ]
+      },
+      "references": [
+        "Application Development Fundamentals - Security"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "application-development-fundamentals-on-demand/01-adf-configure-application-security.md",
+        "excerpt": "Access Control Rules define who can read, write, create, and delete records based on roles and conditions"
+      },
+      "labels": {
+        "certification": "cad",
+        "domain": "Application Development",
+        "domainSlug": "application-development",
+        "domainPercentage": 20,
+        "subtopics": [
+          "ACLs",
+          "Application security"
+        ],
+        "tags": [
+          "app-dev",
+          "security",
+          "acls",
+          "roles"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-17T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     }
   ]
 }
