@@ -266,15 +266,6 @@ export default function VersionDiffClient({
                   <span className="rounded-full bg-emerald-100 px-2 py-0.5 text-xs font-medium text-emerald-700 dark:bg-emerald-900 dark:text-emerald-300">
                     {product.entries.length}
                   </span>
-                  {versionSlug && (
-                    <Link
-                      href={`/version-diff/${versionSlug}/${product.slug}`}
-                      onClick={(e) => e.stopPropagation()}
-                      className="text-xs text-zinc-400 hover:text-emerald-600 dark:hover:text-emerald-400"
-                    >
-                      View all →
-                    </Link>
-                  )}
                 </div>
                 <div className="hidden sm:flex gap-1.5">
                   {(Object.entries(TYPE_CONFIG) as [keyof typeof TYPE_CONFIG, (typeof TYPE_CONFIG)[keyof typeof TYPE_CONFIG]][]).map(
@@ -293,6 +284,19 @@ export default function VersionDiffClient({
 
               {isExpanded && (
                 <div className="border-t border-zinc-100 dark:border-zinc-800">
+                  {versionSlug && (
+                    <Link
+                      href={`/version-diff/${versionSlug}/${product.slug}`}
+                      className="flex items-center justify-between px-5 py-3 bg-emerald-50 text-emerald-700 hover:bg-emerald-100 transition-colors dark:bg-emerald-950 dark:text-emerald-300 dark:hover:bg-emerald-900"
+                    >
+                      <span className="text-sm font-medium">
+                        View all {product.name} changes →
+                      </span>
+                      <span className="text-xs rounded-full bg-emerald-200 px-2 py-0.5 font-medium dark:bg-emerald-800">
+                        {product.entries.length} entries
+                      </span>
+                    </Link>
+                  )}
                   {product.entries.map((entry, i) => (
                     <div
                       key={i}
