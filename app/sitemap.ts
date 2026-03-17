@@ -4,6 +4,7 @@ import { getAllPosts } from "@/data/blog/posts";
 import { getAllComparisonSlugs } from "@/lib/comparisons";
 import { getAllCompetitorSlugs } from "@/data/competitor-comparisons";
 import { ALL_SEGMENTS } from "@/lib/salaries/segments";
+import { getReleaseSummary } from "@/lib/release-notes";
 
 export const dynamic = "force-static";
 
@@ -74,6 +75,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
     {
       url: `${BASE_URL}/compare`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.85,
+    },
+    {
+      url: `${BASE_URL}/version-diff`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.85,
@@ -184,6 +191,26 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // const questionIds = await getAllQuestionIds();
   // const individualQuestionPages = questionIds.map(...)
 
+  // Version Diff pages
+  const releaseSummary = getReleaseSummary();
+  const versionDiffPages: MetadataRoute.Sitemap = [];
+  for (const [versionSlug, versionData] of Object.entries(releaseSummary.versions)) {
+    versionDiffPages.push({
+      url: `${BASE_URL}/version-diff/${versionSlug}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    });
+    for (const product of versionData.products) {
+      versionDiffPages.push({
+        url: `${BASE_URL}/version-diff/${versionSlug}/${product.slug}`,
+        lastModified: new Date(),
+        changeFrequency: "monthly" as const,
+        priority: 0.6,
+      });
+    }
+  }
+
   return [
     ...staticPages,
     ...certPages,
@@ -195,5 +222,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...competitorPages,
     ...deltaPages,
     ...salarySegmentPages,
+    ...versionDiffPages,
   ];
 }
