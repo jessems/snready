@@ -217,6 +217,7 @@ export default async function VersionPage({ params }: PageProps) {
           versions={{ [version]: versionData }}
           products={summary.products}
           certs={certs}
+          versionSlug={version}
         />
 
         {/* Product Area Links */}

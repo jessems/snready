@@ -68,10 +68,12 @@ export default function VersionDiffClient({
   versions,
   products,
   certs,
+  versionSlug,
 }: {
   versions: Record<string, VersionData>;
   products: string[];
   certs: string[];
+  versionSlug?: string;
 }) {
   const versionSlugs = Object.keys(versions);
   const [selectedVersion, setSelectedVersion] = useState(
@@ -307,6 +309,15 @@ export default function VersionDiffClient({
                   <span className="text-xs px-2 py-0.5 rounded-full bg-[var(--accent-light)] text-[var(--accent)]">
                     {product.entries.length}
                   </span>
+                  {versionSlug && (
+                    <Link
+                      href={`/version-diff/${versionSlug}/${product.slug}`}
+                      onClick={(e) => e.stopPropagation()}
+                      className="text-xs text-[var(--text-secondary)] hover:text-[var(--accent)] ml-1"
+                    >
+                      View all →
+                    </Link>
+                  )}
                 </div>
                 <div className="flex gap-1">
                   {Object.entries(TYPE_CONFIG).map(([type, config]) => {
