@@ -13,11 +13,7 @@ const VERSION_META: Record<
   string,
   { name: string; date: string; year: string }
 > = {
-  "washington-dc": {
-    name: "Washington DC",
-    date: "March 2024",
-    year: "2024",
-  },
+  "washington-dc": { name: "Washington DC", date: "March 2024", year: "2024" },
   xanadu: { name: "Xanadu", date: "September 2024", year: "2024" },
   yokohama: { name: "Yokohama", date: "March 2025", year: "2025" },
   zurich: { name: "Zurich", date: "September 2025", year: "2025" },
@@ -27,9 +23,7 @@ export async function generateStaticParams() {
   return Object.keys(VERSION_META).map((version) => ({ version }));
 }
 
-export async function generateMetadata({
-  params,
-}: PageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { version } = await params;
   const meta = VERSION_META[version];
   if (!meta) return {};
@@ -39,21 +33,18 @@ export async function generateMetadata({
   if (!versionData) return {};
 
   return {
-    title: `ServiceNow ${meta.name} Release Notes: ${versionData.totalEntries} Changes Across ${versionData.products.length} Products (${meta.year}) | SNReady`,
-    description: `What's new in ServiceNow ${meta.name} (${meta.date}). ${versionData.totalEntries} documented changes across ${versionData.products.length} product areas. Filter by product, impact level, and certification relevance.`,
+    title: `ServiceNow ${meta.name} Release Notes: ${versionData.totalEntries} Changes (${meta.year}) | SNReady`,
+    description: `What's new in ServiceNow ${meta.name} (${meta.date}). ${versionData.totalEntries} documented changes across ${versionData.products.length} product areas. Filter by product, impact, and certification.`,
     keywords: [
       `servicenow ${meta.name.toLowerCase()} new features`,
       `servicenow ${meta.name.toLowerCase()} release notes`,
       `servicenow ${meta.name.toLowerCase()} changes`,
-      `servicenow ${meta.name.toLowerCase()} what's new`,
       `servicenow ${meta.name.toLowerCase()} deprecated features`,
-      `servicenow ${meta.name.toLowerCase()} upgrade`,
     ],
     openGraph: {
-      title: `ServiceNow ${meta.name} Release Notes — ${versionData.totalEntries} Changes (${meta.year})`,
-      description: `${versionData.totalEntries} documented changes across ${versionData.products.length} products in ServiceNow ${meta.name}. Searchable and filterable.`,
+      title: `ServiceNow ${meta.name} Release Notes — ${versionData.totalEntries} Changes`,
+      description: `${versionData.totalEntries} documented changes across ${versionData.products.length} products in ServiceNow ${meta.name}.`,
       url: `https://snready.com/version-diff/${version}`,
-      type: "website",
     },
   };
 }
@@ -67,28 +58,21 @@ export default async function VersionPage({ params }: PageProps) {
   const versionData = summary.versions[version];
   if (!versionData) notFound();
 
-  // Collect certs
   const allCerts = new Set<string>();
   versionData.products.forEach((p) =>
     p.entries.forEach((e) => e.certRelevance.forEach((c) => allCerts.add(c)))
   );
   const certs = [...allCerts].sort();
 
-  // Type counts
   const typeCounts = { new: 0, changed: 0, deprecated: 0, fixed: 0 };
   versionData.products.forEach((p) =>
-    p.entries.forEach(
-      (e) => typeCounts[e.type as keyof typeof typeCounts]++
-    )
+    p.entries.forEach((e) => typeCounts[e.type as keyof typeof typeCounts]++)
   );
 
   const breadcrumbJsonLd = generateBreadcrumbJsonLd([
     { name: "Home", url: "https://snready.com" },
     { name: "Version Diff", url: "https://snready.com/version-diff" },
-    {
-      name: meta.name,
-      url: `https://snready.com/version-diff/${version}`,
-    },
+    { name: meta.name, url: `https://snready.com/version-diff/${version}` },
   ]);
 
   const faqJsonLd = {
@@ -100,11 +84,7 @@ export default async function VersionPage({ params }: PageProps) {
         name: `What's new in ServiceNow ${meta.name}?`,
         acceptedAnswer: {
           "@type": "Answer",
-          text: `ServiceNow ${meta.name} (${meta.date}) introduced ${versionData.totalEntries} changes across ${versionData.products.length} product areas. Key areas include ${versionData.products
-            .sort((a, b) => b.entryCount - a.entryCount)
-            .slice(0, 5)
-            .map((p) => p.name)
-            .join(", ")}.`,
+          text: `ServiceNow ${meta.name} (${meta.date}) introduced ${versionData.totalEntries} changes across ${versionData.products.length} product areas. Key areas include ${versionData.products.sort((a, b) => b.entryCount - a.entryCount).slice(0, 5).map((p) => p.name).join(", ")}.`,
         },
       },
       {
@@ -112,29 +92,16 @@ export default async function VersionPage({ params }: PageProps) {
         name: `What was deprecated in ServiceNow ${meta.name}?`,
         acceptedAnswer: {
           "@type": "Answer",
-          text:
-            typeCounts.deprecated > 0
-              ? `${typeCounts.deprecated} features or behaviors were deprecated in the ${meta.name} release. Use the filter tool above to see all deprecations by product area.`
-              : `The ${meta.name} release documentation does not highlight specific deprecations in the N-1 upgrade path.`,
-        },
-      },
-      {
-        "@type": "Question",
-        name: `How many products changed in ServiceNow ${meta.name}?`,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: `${versionData.products.length} product areas received updates in ServiceNow ${meta.name}, with a total of ${versionData.totalEntries} documented changes.${
-            versionData.fromVersion
-              ? ` These notes cover upgrades from ${versionData.fromVersion}.`
-              : ""
-          }`,
+          text: typeCounts.deprecated > 0
+            ? `${typeCounts.deprecated} features were deprecated in ${meta.name}. Use the filter tool to see all deprecations by product area.`
+            : `The ${meta.name} release notes do not highlight specific deprecations in the N-1 upgrade path.`,
         },
       },
     ],
   };
 
   return (
-    <div className="min-h-[calc(100vh-65px)] subtle-gradient">
+    <div className="min-h-screen bg-white dark:bg-zinc-950">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
@@ -145,74 +112,70 @@ export default async function VersionPage({ params }: PageProps) {
       />
 
       {/* Hero */}
-      <div className="border-b border-[var(--border)] bg-[var(--card-bg)]">
-        <div className="max-w-5xl mx-auto px-6 py-10">
+      <section className="border-b border-zinc-200 bg-gradient-to-b from-emerald-50 to-white dark:border-zinc-800 dark:from-zinc-900 dark:to-zinc-950">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-10">
           {/* Breadcrumb */}
-          <nav className="text-sm text-[var(--text-secondary)] mb-4">
-            <Link href="/version-diff" className="hover:text-[var(--accent)]">
+          <nav className="mb-4 text-sm text-zinc-500 dark:text-zinc-400">
+            <Link href="/version-diff" className="hover:text-emerald-600 dark:hover:text-emerald-400">
               Version Diff
             </Link>
             <span className="mx-2">›</span>
-            <span className="text-[var(--text-primary)]">{meta.name}</span>
+            <span className="text-zinc-900 dark:text-zinc-100">{meta.name}</span>
           </nav>
 
-          <div className="flex items-center gap-3 mb-3">
-            <div className="w-10 h-10 rounded-xl bg-[var(--accent-light)] flex items-center justify-center">
-              <svg
-                className="w-5 h-5 text-[var(--accent)]"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={1.5}
-                  d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
-                />
-              </svg>
-            </div>
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div>
-              <h1 className="text-2xl md:text-3xl font-bold text-[var(--text-primary)]">
-                ServiceNow {meta.name} Release Notes
+              <h1 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
+                ServiceNow <span className="text-emerald-600">{meta.name}</span>
               </h1>
-              <p className="text-[var(--text-secondary)]">
-                {meta.date} ·{" "}
-                {versionData.fromVersion
-                  ? `Upgrading from ${versionData.fromVersion}`
-                  : `${versionData.totalEntries} changes`}
+              <p className="mt-2 text-zinc-600 dark:text-zinc-400">
+                {meta.date} · {versionData.totalEntries} changes · {versionData.products.length} products
+                {versionData.fromVersion && ` · Upgrading from ${versionData.fromVersion}`}
               </p>
             </div>
           </div>
 
-          <p className="text-[var(--text-secondary)] leading-relaxed mt-3 max-w-3xl">
-            {versionData.totalEntries} documented changes across{" "}
-            {versionData.products.length} product areas in ServiceNow{" "}
-            {meta.name}. Search by keyword, filter by product or certification,
-            and focus on what matters to your upgrade.
-          </p>
-
-          {/* Version nav */}
-          <div className="flex flex-wrap gap-2 mt-5">
+          {/* Version nav pills */}
+          <div className="mt-6 flex flex-wrap gap-2">
             {Object.entries(VERSION_META).map(([slug, m]) => (
               <Link
                 key={slug}
                 href={`/version-diff/${slug}`}
-                className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${
+                className={`rounded-full px-4 py-1.5 text-sm font-medium transition-all ${
                   slug === version
-                    ? "bg-[var(--accent)] text-white shadow-md"
-                    : "bg-[var(--card-bg)] text-[var(--text-secondary)] hover:bg-[var(--card-bg-hover)] border border-[var(--border)]"
+                    ? "bg-emerald-600 text-white shadow-md"
+                    : "border border-zinc-200 bg-white text-zinc-600 hover:border-emerald-300 hover:text-emerald-600 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-300 dark:hover:border-emerald-600"
                 }`}
               >
                 {m.name}
               </Link>
             ))}
           </div>
+
+          {/* Type stats */}
+          <div className="mt-6 grid grid-cols-4 gap-3 max-w-lg">
+            <div className="rounded-lg bg-emerald-50 p-3 text-center dark:bg-emerald-950">
+              <div className="text-xl font-bold text-emerald-700 dark:text-emerald-400">{typeCounts.new}</div>
+              <div className="text-[10px] font-medium uppercase tracking-wider text-emerald-600 dark:text-emerald-500">New</div>
+            </div>
+            <div className="rounded-lg bg-blue-50 p-3 text-center dark:bg-blue-950">
+              <div className="text-xl font-bold text-blue-700 dark:text-blue-400">{typeCounts.changed}</div>
+              <div className="text-[10px] font-medium uppercase tracking-wider text-blue-600 dark:text-blue-500">Changed</div>
+            </div>
+            <div className="rounded-lg bg-amber-50 p-3 text-center dark:bg-amber-950">
+              <div className="text-xl font-bold text-amber-700 dark:text-amber-400">{typeCounts.deprecated}</div>
+              <div className="text-[10px] font-medium uppercase tracking-wider text-amber-600 dark:text-amber-500">Deprecated</div>
+            </div>
+            <div className="rounded-lg bg-purple-50 p-3 text-center dark:bg-purple-950">
+              <div className="text-xl font-bold text-purple-700 dark:text-purple-400">{typeCounts.fixed}</div>
+              <div className="text-[10px] font-medium uppercase tracking-wider text-purple-600 dark:text-purple-500">Fixed</div>
+            </div>
+          </div>
         </div>
-      </div>
+      </section>
 
       {/* Main Content */}
-      <div className="max-w-5xl mx-auto px-6 py-8">
+      <section className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-10">
         <VersionDiffClient
           versions={{ [version]: versionData }}
           products={summary.products}
@@ -220,9 +183,9 @@ export default async function VersionPage({ params }: PageProps) {
           versionSlug={version}
         />
 
-        {/* Product Area Links */}
-        <div className="mt-12 border-t border-[var(--border)] pt-8">
-          <h2 className="text-lg font-semibold text-[var(--text-primary)] mb-4">
+        {/* Browse by Product */}
+        <div className="mt-14 border-t border-zinc-200 pt-10 dark:border-zinc-800">
+          <h2 className="text-lg font-bold text-zinc-900 dark:text-zinc-100 mb-4">
             Browse by Product Area
           </h2>
           <div className="flex flex-wrap gap-2">
@@ -232,56 +195,39 @@ export default async function VersionPage({ params }: PageProps) {
                 <Link
                   key={p.slug}
                   href={`/version-diff/${version}/${p.slug}`}
-                  className="px-3 py-1.5 rounded-lg text-sm border border-[var(--border)] bg-[var(--card-bg)] text-[var(--text-secondary)] hover:border-[var(--accent)] hover:text-[var(--accent)] transition-all"
+                  className="rounded-full border border-zinc-200 bg-white px-3 py-1.5 text-sm text-zinc-600 transition-all hover:border-emerald-300 hover:text-emerald-600 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-300 dark:hover:border-emerald-600"
                 >
                   {p.name}{" "}
-                  <span className="text-xs opacity-60">({p.entryCount})</span>
+                  <span className="text-zinc-400 dark:text-zinc-500">
+                    ({p.entryCount})
+                  </span>
                 </Link>
               ))}
           </div>
         </div>
 
         {/* SEO Content */}
-        <div className="mt-12 border-t border-[var(--border)] pt-8 space-y-6">
-          <section>
-            <h2 className="text-xl font-semibold text-[var(--text-primary)] mb-3">
-              What&apos;s New in ServiceNow {meta.name}?
-            </h2>
-            <p className="text-[var(--text-secondary)] leading-relaxed">
-              The ServiceNow {meta.name} release ({meta.date}) brought{" "}
-              {versionData.totalEntries} documented changes across{" "}
-              {versionData.products.length} product areas. The biggest updates
-              were in{" "}
-              {versionData.products
-                .sort((a, b) => b.entryCount - a.entryCount)
-                .slice(0, 3)
-                .map((p) => `${p.name} (${p.entryCount} changes)`)
-                .join(", ")}
-              .
-              {versionData.fromVersion &&
-                ` These release notes cover the upgrade path from ${versionData.fromVersion} to ${meta.name}.`}
-            </p>
-          </section>
-
-          <section>
-            <h2 className="text-xl font-semibold text-[var(--text-primary)] mb-3">
-              Studying for a Certification?
-            </h2>
-            <p className="text-[var(--text-secondary)] leading-relaxed">
-              Use the certification filter above to see only the {meta.name}{" "}
-              changes relevant to your exam. Then practice with our{" "}
-              <Link
-                href="/certifications"
-                className="text-[var(--accent)] hover:underline"
-              >
-                practice questions
-              </Link>{" "}
-              — 20 certifications, 1,380+ questions, all based on official
-              course content.
-            </p>
-          </section>
+        <div className="mt-14 border-t border-zinc-200 pt-10 dark:border-zinc-800">
+          <h2 className="text-xl font-bold text-zinc-900 dark:text-zinc-100 mb-3">
+            What&apos;s New in ServiceNow {meta.name}?
+          </h2>
+          <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-3xl">
+            The ServiceNow {meta.name} release ({meta.date}) brought{" "}
+            {versionData.totalEntries} documented changes across{" "}
+            {versionData.products.length} product areas. The biggest updates were in{" "}
+            {versionData.products
+              .sort((a, b) => b.entryCount - a.entryCount)
+              .slice(0, 3)
+              .map((p) => `${p.name} (${p.entryCount} changes)`)
+              .join(", ")}
+            . Practice with our{" "}
+            <Link href="/certifications" className="text-emerald-600 hover:underline dark:text-emerald-400">
+              certification prep questions
+            </Link>{" "}
+            to stay current.
+          </p>
         </div>
-      </div>
+      </section>
     </div>
   );
 }
