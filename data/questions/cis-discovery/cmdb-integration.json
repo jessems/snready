@@ -704,6 +704,660 @@
         "release": "Zurich",
         "reviewed": false
       }
+    },
+    {
+      "certification": "cis-discovery",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "references": [
+        "Discovery Fundamentals Course"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "course",
+        "path": "discovery-fundamentals-on-demand/"
+      },
+      "meta": {
+        "generatedAt": "2026-03-18T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "id": "cis-discovery-cmdb-010",
+      "topic": "cmdb-integration",
+      "question": "What is the purpose of the Multisource CMDB feature introduced in the Paris release?",
+      "options": [
+        {
+          "id": "a",
+          "text": "To allow multiple MID Servers to discover the same CI simultaneously"
+        },
+        {
+          "id": "b",
+          "text": "To retain raw data from every discovery source, including rejected values, for auditing and comparison"
+        },
+        {
+          "id": "c",
+          "text": "To merge duplicate CIs from different sources automatically"
+        },
+        {
+          "id": "d",
+          "text": "To prioritize cloud-based discovery sources over on-premise sources"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Multisource CMDB retains the raw details for every discovery source in the CMDB MultiSource Data [cmdb_multisource_data] table, both for sources that were selected for updates and those that were rejected by reconciliation rules.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Multisource CMDB is about tracking data from multiple sources, not parallel MID Server operations",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "While reconciliation handles duplicates, Multisource CMDB specifically retains all source data for visibility",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Multisource CMDB doesn't set source priorities; that's done by reconciliation rules",
+            "reference": "Discovery Fundamentals course"
+          }
+        ]
+      },
+      "labels": {
+        "certification": "cis-discovery",
+        "domain": "Configuration Management Database",
+        "domainSlug": "cmdb-integration",
+        "domainPercentage": 15,
+        "subtopics": [
+          "Multisource CMDB",
+          "Reconciliation"
+        ],
+        "tags": []
+      }
+    },
+    {
+      "certification": "cis-discovery",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "references": [
+        "Discovery Fundamentals Course"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "discovery-fundamentals-on-demand/"
+      },
+      "meta": {
+        "generatedAt": "2026-03-18T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "id": "cis-discovery-cmdb-011",
+      "topic": "cmdb-integration",
+      "question": "What CMDB Health metrics are included in the Correctness KPI? (Choose 2)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Orphan CIs"
+        },
+        {
+          "id": "b",
+          "text": "Staleness"
+        },
+        {
+          "id": "c",
+          "text": "Completeness"
+        },
+        {
+          "id": "d",
+          "text": "Duplicate CIs"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b"
+      ],
+      "explanation": {
+        "correct": "The Correctness KPI aggregates metrics including Orphan (CIs left unintentionally) and Staleness (CIs not updated within the Effective Duration). Completeness and Duplicates are separate KPIs.",
+        "wrongAnswers": [
+          {
+            "choiceId": "c",
+            "explanation": "Completeness is its own separate KPI that measures mandatory and recommended field population",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Duplicate detection is a separate KPI that uses identification rules to find duplicate CIs",
+            "reference": "Discovery Fundamentals course"
+          }
+        ]
+      },
+      "labels": {
+        "certification": "cis-discovery",
+        "domain": "Configuration Management Database",
+        "domainSlug": "cmdb-integration",
+        "domainPercentage": 15,
+        "subtopics": [
+          "CMDB Health Dashboard",
+          "KPIs"
+        ],
+        "tags": []
+      }
+    },
+    {
+      "certification": "cis-discovery",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "references": [
+        "Discovery Fundamentals Course"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "discovery-fundamentals-on-demand/"
+      },
+      "meta": {
+        "generatedAt": "2026-03-18T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "id": "cis-discovery-cmdb-012",
+      "topic": "cmdb-integration",
+      "question": "How does Discovery create Asset records from discovered Configuration Items?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Discovery populates the Assets table directly during the Exploration phase"
+        },
+        {
+          "id": "b",
+          "text": "Discovery creates/updates a CI record which has a Model and Model Category; the Model Category then determines if an Asset record is created"
+        },
+        {
+          "id": "c",
+          "text": "An administrator must manually create Asset records after Discovery completes"
+        },
+        {
+          "id": "d",
+          "text": "Asset records are created by a scheduled job that runs nightly"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Discovery does not populate the Assets table directly. Instead, Discovery creates or updates a CI record with a Model and Model Category. The Model Category determines if an Asset is automatically created and linked to the CI.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Discovery never populates the Assets table directly",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Asset creation is automatic based on Model Category configuration, not manual",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Assets are created in real-time during CI processing, not by a nightly scheduled job",
+            "reference": "Discovery Fundamentals course"
+          }
+        ]
+      },
+      "labels": {
+        "certification": "cis-discovery",
+        "domain": "Configuration Management Database",
+        "domainSlug": "cmdb-integration",
+        "domainPercentage": 15,
+        "subtopics": [
+          "Asset Management",
+          "Model Categories"
+        ],
+        "tags": []
+      }
+    },
+    {
+      "certification": "cis-discovery",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "references": [
+        "Discovery Fundamentals Course"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "discovery-fundamentals-on-demand/"
+      },
+      "meta": {
+        "generatedAt": "2026-03-18T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "id": "cis-discovery-cmdb-013",
+      "topic": "cmdb-integration",
+      "question": "What is the relationship between CI classes and Model Categories?",
+      "options": [
+        {
+          "id": "a",
+          "text": "CI classes and Model Categories have a many-to-many relationship"
+        },
+        {
+          "id": "b",
+          "text": "CI classes and Model Categories have a one-to-one relationship"
+        },
+        {
+          "id": "c",
+          "text": "Multiple CI classes can share one Model Category"
+        },
+        {
+          "id": "d",
+          "text": "Model Categories are optional for CI classification"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "CI classes and Model Categories have a one-to-one relationship \u2014 only one CI class can be associated to one Model Category. The Model Category determines whether an Asset record is created.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The relationship is strictly one-to-one, not many-to-many",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Only one CI class can be associated to one Model Category",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Model Categories are required for proper CI-to-Asset linkage in Discovery",
+            "reference": "Discovery Fundamentals course"
+          }
+        ]
+      },
+      "labels": {
+        "certification": "cis-discovery",
+        "domain": "Configuration Management Database",
+        "domainSlug": "cmdb-integration",
+        "domainPercentage": 15,
+        "subtopics": [
+          "Model Categories",
+          "CI Classes"
+        ],
+        "tags": []
+      }
+    },
+    {
+      "certification": "cis-discovery",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "references": [
+        "Discovery Fundamentals Course"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "discovery-fundamentals-on-demand/"
+      },
+      "meta": {
+        "generatedAt": "2026-03-18T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "id": "cis-discovery-cmdb-014",
+      "topic": "cmdb-integration",
+      "question": "Under what conditions is an Asset NOT automatically created from a discovered CI? (Choose 2)",
+      "options": [
+        {
+          "id": "a",
+          "text": "When Enforce CI verification is enabled on the Model Category"
+        },
+        {
+          "id": "b",
+          "text": "When the CI is classified as a Linux Server"
+        },
+        {
+          "id": "c",
+          "text": "When the Model and Model Category are assigned in the wrong sequence (configuration error)"
+        },
+        {
+          "id": "d",
+          "text": "When the CI has more than 10 relationships"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "c"
+      ],
+      "explanation": {
+        "correct": "Assets are not auto-created when: 1) Enforce CI verification is enabled (CIs get 'Requires verification' status), or 2) Configuration errors where Model and Model Category are assigned in wrong sequence.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Linux Server CIs can have assets auto-created; the CI class doesn't prevent it",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The number of relationships has no effect on automatic asset creation",
+            "reference": "Discovery Fundamentals course"
+          }
+        ]
+      },
+      "labels": {
+        "certification": "cis-discovery",
+        "domain": "Configuration Management Database",
+        "domainSlug": "cmdb-integration",
+        "domainPercentage": 15,
+        "subtopics": [
+          "Asset Management",
+          "CI Verification"
+        ],
+        "tags": []
+      }
+    },
+    {
+      "certification": "cis-discovery",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "references": [
+        "Discovery Fundamentals Course"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "discovery-fundamentals-on-demand/"
+      },
+      "meta": {
+        "generatedAt": "2026-03-18T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "id": "cis-discovery-cmdb-015",
+      "topic": "cmdb-integration",
+      "question": "What two business rules keep Asset records and CI records synchronized?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Create Asset Rule and Delete Asset Rule"
+        },
+        {
+          "id": "b",
+          "text": "Update CI fields on change (on Asset table) and Update Asset fields on change (on Configuration Item table)"
+        },
+        {
+          "id": "c",
+          "text": "Sync Forward Rule and Sync Backward Rule"
+        },
+        {
+          "id": "d",
+          "text": "Asset Reconciliation Rule and CI Reconciliation Rule"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Two business rules maintain synchronization: 'Update CI fields on change' on the Asset [alm_asset] table, and 'Update Asset fields on change' on the Configuration Item [cmdb_ci] table.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "These are not the actual business rule names",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "These are not the actual business rule names",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Reconciliation rules handle multi-source data, not Asset-CI synchronization",
+            "reference": "Discovery Fundamentals course"
+          }
+        ]
+      },
+      "labels": {
+        "certification": "cis-discovery",
+        "domain": "Configuration Management Database",
+        "domainSlug": "cmdb-integration",
+        "domainPercentage": 15,
+        "subtopics": [
+          "Asset-CI Sync",
+          "Business Rules"
+        ],
+        "tags": []
+      }
+    },
+    {
+      "certification": "cis-discovery",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "references": [
+        "Discovery Fundamentals Course"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "discovery-fundamentals-on-demand/"
+      },
+      "meta": {
+        "generatedAt": "2026-03-18T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "id": "cis-discovery-cmdb-016",
+      "topic": "cmdb-integration",
+      "question": "What determines if a CI is considered 'stale' in the CMDB Health Dashboard?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The CI has not been accessed by any user in the last 30 days"
+        },
+        {
+          "id": "b",
+          "text": "The CI was not updated within the Effective Duration specified in the applicable staleness rule"
+        },
+        {
+          "id": "c",
+          "text": "The CI has no relationships to other CIs"
+        },
+        {
+          "id": "d",
+          "text": "The CI's Discovery source has been decommissioned"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "A CI is stale if it wasn't updated within the Effective Duration in the applicable staleness rule. The default rule for cmdb_ci sets this to 60 days. Class-specific rules can override this.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Staleness is based on update time, not user access",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Having no relationships makes a CI an orphan candidate, not stale",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Staleness is based on update timing regardless of discovery source status",
+            "reference": "Discovery Fundamentals course"
+          }
+        ]
+      },
+      "labels": {
+        "certification": "cis-discovery",
+        "domain": "Configuration Management Database",
+        "domainSlug": "cmdb-integration",
+        "domainPercentage": 15,
+        "subtopics": [
+          "CMDB Health",
+          "Staleness"
+        ],
+        "tags": []
+      }
+    },
+    {
+      "certification": "cis-discovery",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "references": [
+        "Discovery Fundamentals Course"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "discovery-fundamentals-on-demand/"
+      },
+      "meta": {
+        "generatedAt": "2026-03-18T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "id": "cis-discovery-cmdb-017",
+      "topic": "cmdb-integration",
+      "question": "What scheduled jobs can administrators use to manage recommended fields for CMDB Health? (Choose 2)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Add Identifier Fields In Recommended Rules"
+        },
+        {
+          "id": "b",
+          "text": "Remove Identifier Fields In Recommended Rules"
+        },
+        {
+          "id": "c",
+          "text": "Sync Recommended Fields From CSDM"
+        },
+        {
+          "id": "d",
+          "text": "Auto-Populate Missing Required Fields"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b"
+      ],
+      "explanation": {
+        "correct": "Two scheduled jobs manage recommended fields: 'Add Identifier Fields In Recommended Rules' sets criterion attributes from active identification rules as recommended, and 'Remove Identifier Fields In Recommended Rules' unsets them.",
+        "wrongAnswers": [
+          {
+            "choiceId": "c",
+            "explanation": "This is not a real scheduled job name",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "This is not a real scheduled job name",
+            "reference": "Discovery Fundamentals course"
+          }
+        ]
+      },
+      "labels": {
+        "certification": "cis-discovery",
+        "domain": "Configuration Management Database",
+        "domainSlug": "cmdb-integration",
+        "domainPercentage": 15,
+        "subtopics": [
+          "CMDB Health",
+          "Recommended Fields"
+        ],
+        "tags": []
+      }
+    },
+    {
+      "certification": "cis-discovery",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "references": [
+        "Discovery Fundamentals Course"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "discovery-fundamentals-on-demand/"
+      },
+      "meta": {
+        "generatedAt": "2026-03-18T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "id": "cis-discovery-cmdb-018",
+      "topic": "cmdb-integration",
+      "question": "What is the maximum threshold number of CIs that can fail a CMDB health metric test before processing stops?",
+      "options": [
+        {
+          "id": "a",
+          "text": "10,000"
+        },
+        {
+          "id": "b",
+          "text": "50,000"
+        },
+        {
+          "id": "c",
+          "text": "100,000"
+        },
+        {
+          "id": "d",
+          "text": "Unlimited"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "The maximum threshold is 100,000, even if you specify a higher number. When reached, health processing stops for the metric for that cycle.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "10,000 is not the maximum; you can set up to 100,000",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "50,000 is not the maximum threshold",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "There is a hard limit of 100,000",
+            "reference": "Discovery Fundamentals course"
+          }
+        ]
+      },
+      "labels": {
+        "certification": "cis-discovery",
+        "domain": "Configuration Management Database",
+        "domainSlug": "cmdb-integration",
+        "domainPercentage": 15,
+        "subtopics": [
+          "CMDB Health",
+          "Thresholds"
+        ],
+        "tags": []
+      }
     }
   ]
 }

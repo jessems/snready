@@ -1654,6 +1654,666 @@
         "release": "Zurich",
         "reviewed": false
       }
+    },
+    {
+      "certification": "cis-discovery",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "references": [
+        "Discovery Fundamentals Course"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "discovery-fundamentals-on-demand/"
+      },
+      "meta": {
+        "generatedAt": "2026-03-18T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "id": "cis-discovery-pattern-design-022",
+      "topic": "pattern-design",
+      "question": "What happens to temporary variables created during pattern execution when the pattern completes successfully?",
+      "options": [
+        {
+          "id": "a",
+          "text": "They are permanently stored in a separate pattern variable table"
+        },
+        {
+          "id": "b",
+          "text": "Variables matching CMDB field names populate the CI record; others are discarded"
+        },
+        {
+          "id": "c",
+          "text": "All variables are saved to the Discovery Log for auditing"
+        },
+        {
+          "id": "d",
+          "text": "They persist in memory for the next pattern execution"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "When a pattern completes, any temporary variable whose name matches a field on the CI's CMDB table is used to populate that field. Variables that don't match are discarded.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "There is no separate permanent storage for pattern variables",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The Discovery Log records step execution but doesn't store all temporary variables permanently",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Pattern variables exist only during execution and are not persisted between runs",
+            "reference": "Discovery Fundamentals course"
+          }
+        ]
+      },
+      "labels": {
+        "certification": "cis-discovery",
+        "domain": "Discovery Pattern Design",
+        "domainSlug": "pattern-design",
+        "domainPercentage": 35,
+        "subtopics": [
+          "Temporary Variables",
+          "CI Population"
+        ],
+        "tags": []
+      }
+    },
+    {
+      "certification": "cis-discovery",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "references": [
+        "Discovery Fundamentals Course"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "discovery-fundamentals-on-demand/"
+      },
+      "meta": {
+        "generatedAt": "2026-03-18T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "id": "cis-discovery-pattern-design-023",
+      "topic": "pattern-design",
+      "question": "In Pattern Designer, what does the Transform Table operation do that differs from Merge Table?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Transform Table merges matching variables from two tables while Merge Table does not"
+        },
+        {
+          "id": "b",
+          "text": "Transform Table works on one or two tables and builds new variables using concatenation, without merging matching variables"
+        },
+        {
+          "id": "c",
+          "text": "Transform Table is used only for scalar variables while Merge Table handles tabular data"
+        },
+        {
+          "id": "d",
+          "text": "Transform Table automatically publishes the pattern after execution"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Transform Table works on one or two tables and allows you to build larger pattern tables using scalar or tabular variables with concatenation. Unlike Merge Table, it does not merge matching variable names between tables.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "This describes Merge Table, not Transform Table",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Transform Table works with both scalar and tabular variables",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Neither operation triggers automatic publishing",
+            "reference": "Discovery Fundamentals course"
+          }
+        ]
+      },
+      "labels": {
+        "certification": "cis-discovery",
+        "domain": "Discovery Pattern Design",
+        "domainSlug": "pattern-design",
+        "domainPercentage": 35,
+        "subtopics": [
+          "Transform Table",
+          "Merge Table"
+        ],
+        "tags": []
+      }
+    },
+    {
+      "certification": "cis-discovery",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "references": [
+        "Discovery Fundamentals Course"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "discovery-fundamentals-on-demand/"
+      },
+      "meta": {
+        "generatedAt": "2026-03-18T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "id": "cis-discovery-pattern-design-024",
+      "topic": "pattern-design",
+      "question": "What must you do after successfully modifying a discovery pattern for the changes to take effect in production? (Choose 2)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Click the Publish button in Pattern Designer"
+        },
+        {
+          "id": "b",
+          "text": "Restart the MID Server"
+        },
+        {
+          "id": "c",
+          "text": "Save the pattern"
+        },
+        {
+          "id": "d",
+          "text": "Clear the Discovery cache"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "c"
+      ],
+      "explanation": {
+        "correct": "After modifying a pattern, you must save it and click the Publish button. The most current version will not run if Publish is not clicked. MID Server restart is not required.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "MID Server restart is not required for pattern changes to take effect",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "There is no Discovery cache that needs clearing for pattern updates",
+            "reference": "Discovery Fundamentals course"
+          }
+        ]
+      },
+      "labels": {
+        "certification": "cis-discovery",
+        "domain": "Discovery Pattern Design",
+        "domainSlug": "pattern-design",
+        "domainPercentage": 35,
+        "subtopics": [
+          "Pattern Publishing"
+        ],
+        "tags": []
+      }
+    },
+    {
+      "certification": "cis-discovery",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "references": [
+        "Discovery Fundamentals Course"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "discovery-fundamentals-on-demand/"
+      },
+      "meta": {
+        "generatedAt": "2026-03-18T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "id": "cis-discovery-pattern-design-025",
+      "topic": "pattern-design",
+      "question": "What syntax is used in Pattern Designer to apply applicative credentials (username and password) within a command?",
+      "options": [
+        {
+          "id": "a",
+          "text": "${username} and ${password}"
+        },
+        {
+          "id": "b",
+          "text": "$$username$$ and $$password$$"
+        },
+        {
+          "id": "c",
+          "text": "$cred.username and $cred.password"
+        },
+        {
+          "id": "d",
+          "text": "{{username}} and {{password}}"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "To make the Now Platform apply applicative credentials while executing a command, use $$username$$ for the user name and $$password$$ for the password as placeholders.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "This is not the correct Pattern Designer credential syntax",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "This is not a valid credential placeholder format in Pattern Designer",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Double curly braces are not used for credentials in Pattern Designer",
+            "reference": "Discovery Fundamentals course"
+          }
+        ]
+      },
+      "labels": {
+        "certification": "cis-discovery",
+        "domain": "Discovery Pattern Design",
+        "domainSlug": "pattern-design",
+        "domainPercentage": 35,
+        "subtopics": [
+          "Applicative Credentials",
+          "Syntax"
+        ],
+        "tags": []
+      }
+    },
+    {
+      "certification": "cis-discovery",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "references": [
+        "Discovery Fundamentals Course"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "discovery-fundamentals-on-demand/"
+      },
+      "meta": {
+        "generatedAt": "2026-03-18T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "id": "cis-discovery-pattern-design-026",
+      "topic": "pattern-design",
+      "question": "Which regular expression flavor is used within ServiceNow's Pattern Designer?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Python (re module)"
+        },
+        {
+          "id": "b",
+          "text": "JavaScript (ECMAScript)"
+        },
+        {
+          "id": "c",
+          "text": "Ruby flavor with case-insensitive flag hardcoded"
+        },
+        {
+          "id": "d",
+          "text": "POSIX Extended Regular Expressions"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "The regex used within Pattern Designer is Ruby flavor, and the case-insensitive flag is hardcoded. This means [A-Z] matches any letter, not just capitals.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Pattern Designer does not use Python regex",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "Pattern Designer does not use JavaScript regex",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "POSIX ERE is not used in Pattern Designer",
+            "reference": "Discovery Fundamentals course"
+          }
+        ]
+      },
+      "labels": {
+        "certification": "cis-discovery",
+        "domain": "Discovery Pattern Design",
+        "domainSlug": "pattern-design",
+        "domainPercentage": 35,
+        "subtopics": [
+          "Regular Expressions",
+          "Syntax"
+        ],
+        "tags": []
+      }
+    },
+    {
+      "certification": "cis-discovery",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "references": [
+        "Discovery Fundamentals Course"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "discovery-fundamentals-on-demand/"
+      },
+      "meta": {
+        "generatedAt": "2026-03-18T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "id": "cis-discovery-pattern-design-027",
+      "topic": "pattern-design",
+      "question": "How does the WMI Query operation work in Pattern Designer?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It sends raw SQL queries to Windows Management Instrumentation"
+        },
+        {
+          "id": "b",
+          "text": "It provides a UI that auto-generates WMI queries based on Namespace with a Condition Clause, and selected Fields become variables in the target table"
+        },
+        {
+          "id": "c",
+          "text": "It requires manually writing PowerShell scripts that are sent to the target"
+        },
+        {
+          "id": "d",
+          "text": "It queries the Windows registry directly without using WMI protocols"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The WMI Query operation has its own UI that auto-generates a WMI query based on Namespace with a Condition Clause. All Fields selected become variables in the target table.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "WMI uses WQL (WMI Query Language), not raw SQL, and the operation auto-generates the query",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The operation generates WMI queries through a UI, not PowerShell scripts",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "WMI Query uses the WMI protocol, not direct registry access",
+            "reference": "Discovery Fundamentals course"
+          }
+        ]
+      },
+      "labels": {
+        "certification": "cis-discovery",
+        "domain": "Discovery Pattern Design",
+        "domainSlug": "pattern-design",
+        "domainPercentage": 35,
+        "subtopics": [
+          "WMI Query",
+          "Windows Discovery"
+        ],
+        "tags": []
+      }
+    },
+    {
+      "certification": "cis-discovery",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "references": [
+        "Discovery Fundamentals Course"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "discovery-fundamentals-on-demand/"
+      },
+      "meta": {
+        "generatedAt": "2026-03-18T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "id": "cis-discovery-pattern-design-028",
+      "topic": "pattern-design",
+      "question": "What is the SNMP Query operation's default port, and what variable types does it support?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Port 162; supports only scalar variables"
+        },
+        {
+          "id": "b",
+          "text": "Port 161; supports both Scalar and Table variable types"
+        },
+        {
+          "id": "c",
+          "text": "Port 161; supports only table variables"
+        },
+        {
+          "id": "d",
+          "text": "Port 443; supports scalar, table, and array variable types"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "SNMP Query operates over port 161 and supports both Scalar (single MIB object) and Table (multiple related MIB objects) variable types.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Port 162 is used for SNMP traps, not queries. SNMP Query also supports table variables",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "SNMP Query supports both scalar and table types, not just tables",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "SNMP uses port 161, not 443",
+            "reference": "Discovery Fundamentals course"
+          }
+        ]
+      },
+      "labels": {
+        "certification": "cis-discovery",
+        "domain": "Discovery Pattern Design",
+        "domainSlug": "pattern-design",
+        "domainPercentage": 35,
+        "subtopics": [
+          "SNMP Query",
+          "Network Discovery"
+        ],
+        "tags": []
+      }
+    },
+    {
+      "certification": "cis-discovery",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "references": [
+        "Discovery Fundamentals Course"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "discovery-fundamentals-on-demand/"
+      },
+      "meta": {
+        "generatedAt": "2026-03-18T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "id": "cis-discovery-pattern-design-029",
+      "topic": "pattern-design",
+      "question": "Why is it considered a best practice to avoid hard-coding values in discovery patterns?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Hard-coded values cause patterns to fail during debugging"
+        },
+        {
+          "id": "b",
+          "text": "Hard-coded values consume more pattern storage space"
+        },
+        {
+          "id": "c",
+          "text": "If targets are updated or changed, hard-coded values may become stale and incorrect"
+        },
+        {
+          "id": "d",
+          "text": "Hard-coded values prevent patterns from being published"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "Hard-coded values (constants) don't adapt when targets change. Best practice is to use queried information from targets so patterns stay accurate as infrastructure evolves.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Hard-coded values work fine in debug mode; the issue is production accuracy over time",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "Storage space is not the concern with hard-coded values",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Hard-coded values do not prevent publishing",
+            "reference": "Discovery Fundamentals course"
+          }
+        ]
+      },
+      "labels": {
+        "certification": "cis-discovery",
+        "domain": "Discovery Pattern Design",
+        "domainSlug": "pattern-design",
+        "domainPercentage": 35,
+        "subtopics": [
+          "Best Practices"
+        ],
+        "tags": []
+      }
+    },
+    {
+      "certification": "cis-discovery",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "references": [
+        "Discovery Fundamentals Course"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "discovery-fundamentals-on-demand/"
+      },
+      "meta": {
+        "generatedAt": "2026-03-18T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "id": "cis-discovery-pattern-design-030",
+      "topic": "pattern-design",
+      "question": "What is the purpose of the 'Shared Library' feature in Pattern Designer?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It stores all patterns in a central repository for version control"
+        },
+        {
+          "id": "b",
+          "text": "It allows reusable step sequences to be created from existing pattern steps and inserted into other patterns"
+        },
+        {
+          "id": "c",
+          "text": "It provides a library of pre-built patterns from the ServiceNow Store"
+        },
+        {
+          "id": "d",
+          "text": "It shares credential information between multiple patterns"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Shared Library lets you select existing steps in a pattern, right-click to 'Create shared library', and then reuse that step sequence in other patterns via Library Reference.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Shared Library is for step reuse, not version control of entire patterns",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Shared Library is for user-created step sequences, not pre-built Store patterns",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Credential sharing is handled by credential aliases, not Shared Library",
+            "reference": "Discovery Fundamentals course"
+          }
+        ]
+      },
+      "labels": {
+        "certification": "cis-discovery",
+        "domain": "Discovery Pattern Design",
+        "domainSlug": "pattern-design",
+        "domainPercentage": 35,
+        "subtopics": [
+          "Shared Library",
+          "Pattern Reuse"
+        ],
+        "tags": []
+      }
     }
   ]
 }
