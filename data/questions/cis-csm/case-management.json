@@ -765,6 +765,279 @@
         "release": "Xanadu",
         "reviewed": false
       }
+    },
+    {
+      "id": "cis-csm-cm-011",
+      "certification": "cis-csm",
+      "topic": "case-management",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What is the difference between a case action summary and a post case review in CSM?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Case action summaries are internal only; post case reviews are customer-facing only"
+        },
+        {
+          "id": "b",
+          "text": "Case action summaries provide updates while a case is in progress; post case reviews summarize resolved cases"
+        },
+        {
+          "id": "c",
+          "text": "Case action summaries are automated; post case reviews are manual"
+        },
+        {
+          "id": "d",
+          "text": "There is no difference \u2014 they are the same feature with different names"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Case action summaries are used while a case is in progress to provide periodic updates to customers and stakeholders. Post case reviews are created after case resolution to document root cause, resolution, mitigation plans, and preventive actions.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Both can include customer-visible and internal content. Case action summaries can be published to customers."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Both are created by agents \u2014 neither is fully automated."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "They serve different purposes: in-progress updates vs. post-resolution documentation."
+          }
+        ]
+      }
+    },
+    {
+      "id": "cis-csm-cm-012",
+      "certification": "cis-csm",
+      "topic": "case-management",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A customer service manager creates a post case review for a major case. What can they do with the review for associated child cases?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Child cases automatically receive the review when published"
+        },
+        {
+          "id": "b",
+          "text": "The manager can copy the review to associated child cases"
+        },
+        {
+          "id": "c",
+          "text": "Child cases must have their own independent reviews created"
+        },
+        {
+          "id": "d",
+          "text": "Post case reviews cannot be created for major cases"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Customer service managers can create and publish reviews for major cases, and these reviews can be copied to associated child cases. This avoids duplicating effort for issues that affected multiple customers.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Reviews are not automatically pushed to child cases \u2014 managers must explicitly copy them."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "While independent reviews can be created, managers have the option to copy from the major case."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Post case reviews can and should be created for major cases."
+          }
+        ]
+      }
+    },
+    {
+      "id": "cis-csm-cm-013",
+      "certification": "cis-csm",
+      "topic": "case-management",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_select",
+      "question": "What can case action summaries in CSM include? (Choose two.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Internal content visible only to internal users"
+        },
+        {
+          "id": "b",
+          "text": "Customer-visible information"
+        },
+        {
+          "id": "c",
+          "text": "Automated SLA breach predictions"
+        },
+        {
+          "id": "d",
+          "text": "Agent performance metrics"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b"
+      ],
+      "explanation": {
+        "correct": "Case action summaries can include both internal content and customer-visible information. Summaries available to customers include only customer-visible information, while summaries for internal users include both types.",
+        "wrongAnswers": [
+          {
+            "choiceId": "c",
+            "explanation": "SLA breach predictions are part of SLA management, not case action summaries."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Agent performance metrics are tracked through reporting, not embedded in case summaries."
+          }
+        ]
+      }
+    },
+    {
+      "id": "cis-csm-cm-014",
+      "certification": "cis-csm",
+      "topic": "case-management",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "An entitlement is configured with 'cases' as the unit type and 50 total units. How is the Remaining Units field updated?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Manually by the CSM manager after each case"
+        },
+        {
+          "id": "b",
+          "text": "By the 'Update case entitlement on Close' business rule when a case is closed"
+        },
+        {
+          "id": "c",
+          "text": "Automatically when a new case is created"
+        },
+        {
+          "id": "d",
+          "text": "By a scheduled job that runs nightly"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "When using cases as the unit type, the 'Update case entitlement on Close' business rule updates the Remaining Units field when a case associated with the entitlement is closed.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The update is automated through a business rule, not done manually."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Units are deducted on case closure, not creation, to prevent counting abandoned or duplicate cases."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The update happens in real-time via business rule, not a scheduled batch job."
+          }
+        ]
+      }
+    },
+    {
+      "id": "cis-csm-cm-015",
+      "certification": "cis-csm",
+      "topic": "case-management",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What is the purpose of service definitions in CSM case management?",
+      "options": [
+        {
+          "id": "a",
+          "text": "To define SLA response times for different service levels"
+        },
+        {
+          "id": "b",
+          "text": "To create connections between products, services, and case types"
+        },
+        {
+          "id": "c",
+          "text": "To configure the Service Portal layout for customers"
+        },
+        {
+          "id": "d",
+          "text": "To specify agent working hours and schedules"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Service definitions create connections between products, services, and case types. Agents can use service definitions to create cases of the right type to support specific service requests.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "SLA response times are configured through SLA definitions, not service definitions."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Service Portal layout is configured through portal configuration, not service definitions."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Agent schedules are managed through schedule records, not service definitions."
+          }
+        ]
+      }
+    },
+    {
+      "id": "cis-csm-cm-016",
+      "certification": "cis-csm",
+      "topic": "case-management",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "What feature should be configured to automatically close cases that remain in the Resolved state without customer action?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Case action status"
+        },
+        {
+          "id": "b",
+          "text": "Auto Close Resolved Cases"
+        },
+        {
+          "id": "c",
+          "text": "Escalation management"
+        },
+        {
+          "id": "d",
+          "text": "Case digest notifications"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The Auto Close Resolved Cases feature automatically closes cases in the Resolved state if customers do not take any action within a configured period. This prevents cases from staying open indefinitely after resolution.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Case action status provides visual indicators for case prioritization, not automatic closure."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Escalation management raises case priority, not closes cases."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Case digests communicate updates to stakeholders but don't close cases."
+          }
+        ]
+      }
     }
   ]
 }

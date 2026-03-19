@@ -464,6 +464,187 @@
         "release": "Xanadu",
         "reviewed": false
       }
+    },
+    {
+      "id": "cis-csm-bpk-007",
+      "certification": "cis-csm",
+      "topic": "best-practices-knowledge",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "What is the recommended approach for handling entitlements that use 'hours' as the unit type?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The platform automatically tracks hours through the Remaining Units field"
+        },
+        {
+          "id": "b",
+          "text": "Customers must create a custom business rule to deduct hours based on agent time spent"
+        },
+        {
+          "id": "c",
+          "text": "Hours-based entitlements are not supported in CSM"
+        },
+        {
+          "id": "d",
+          "text": "A scheduled job calculates hours from timecard entries"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "While case-based entitlements have a built-in business rule ('Update case entitlement on Close'), hours-based entitlements require customers to create a separate business rule. For example, a rule that deducts the time an agent spends on a case when it is resolved.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Automatic tracking only works for case-based units. Hours require a custom business rule."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Hours are a supported unit type \u2014 they just require custom business rule implementation."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "There is no out-of-box scheduled job for this. A custom business rule is needed."
+          }
+        ]
+      }
+    },
+    {
+      "id": "cis-csm-bpk-008",
+      "certification": "cis-csm",
+      "topic": "best-practices-knowledge",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "When implementing escalation management in CSM, what should be created to control the escalation process?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Escalation rules and notification templates"
+        },
+        {
+          "id": "b",
+          "text": "Escalation templates and severity definitions"
+        },
+        {
+          "id": "c",
+          "text": "Escalation workflows and approval policies"
+        },
+        {
+          "id": "d",
+          "text": "Escalation groups and routing rules"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "CSM escalation management requires creating escalation templates and severity definitions to control the escalation process. These define how escalations are handled and what severity levels are available.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "While notifications may be involved, the core configuration is escalation templates and severity definitions."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Escalation templates and severity definitions are the primary configuration items, not workflows and approval policies."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Escalation management uses templates and severity definitions, not groups and routing rules."
+          }
+        ]
+      }
+    },
+    {
+      "id": "cis-csm-bpk-009",
+      "certification": "cis-csm",
+      "topic": "best-practices-knowledge",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_select",
+      "question": "Which actions can a post case review approval workflow support? (Choose two.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Approvers can suggest changes to the review document"
+        },
+        {
+          "id": "b",
+          "text": "Approvers receive email notifications about pending reviews"
+        },
+        {
+          "id": "c",
+          "text": "Reviews are automatically published after 48 hours without response"
+        },
+        {
+          "id": "d",
+          "text": "Rejected reviews are automatically deleted from the system"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b"
+      ],
+      "explanation": {
+        "correct": "The post case review approval workflow allows agents to add approval groups or users. Approvers can suggest changes or approve the document, and they receive email notifications about pending reviews.",
+        "wrongAnswers": [
+          {
+            "choiceId": "c",
+            "explanation": "Reviews require explicit approval \u2014 they don't auto-publish on timeout."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Rejected reviews may need revision but are not automatically deleted."
+          }
+        ]
+      }
+    },
+    {
+      "id": "cis-csm-bpk-010",
+      "certification": "cis-csm",
+      "topic": "best-practices-knowledge",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "An organization wants to share addresses across related accounts in their account hierarchy. What CSM feature supports this?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Account address domain separation"
+        },
+        {
+          "id": "b",
+          "text": "Address sharing through account hierarchy"
+        },
+        {
+          "id": "c",
+          "text": "Global address book"
+        },
+        {
+          "id": "d",
+          "text": "Contact address inheritance"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "CSM supports address sharing through account hierarchy, allowing related accounts to share addresses. This is separate from address sharing for non-related accounts.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Domain separation controls data visibility across domains, not address sharing between accounts."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "There is no 'global address book' feature in CSM \u2014 address sharing is hierarchy-based."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Contact address inheritance is not a CSM feature. Address sharing works at the account level through hierarchy."
+          }
+        ]
+      }
     }
   ]
 }

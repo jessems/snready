@@ -1777,6 +1777,325 @@
         "release": "Xanadu",
         "reviewed": false
       }
+    },
+    {
+      "id": "cis-csm-cfg-024",
+      "certification": "cis-csm",
+      "topic": "csm-configuration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What is the recommended method for configuring CSM case management features?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Manually navigate to each configuration page"
+        },
+        {
+          "id": "b",
+          "text": "Use the Customer Service guided setup"
+        },
+        {
+          "id": "c",
+          "text": "Import an XML update set with default configuration"
+        },
+        {
+          "id": "d",
+          "text": "Run a PowerShell configuration script"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The Customer Service guided setup (Customer Service > Administration > Guided Setup) walks through the entire setup and configuration process for case management, providing a structured approach to configuring all required features.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "While manual navigation works, the guided setup is the recommended and structured approach."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Configuration is done through the guided setup, not XML imports."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "ServiceNow is configured through the platform UI, not PowerShell scripts."
+          }
+        ]
+      }
+    },
+    {
+      "id": "cis-csm-cfg-025",
+      "certification": "cis-csm",
+      "topic": "csm-configuration",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "An organization wants to automatically route incoming cases to the most qualified agent based on skills and availability. Which CSM feature should they configure?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Case routing with matching rules only"
+        },
+        {
+          "id": "b",
+          "text": "Assignment workbench with matching criteria and configuration"
+        },
+        {
+          "id": "c",
+          "text": "Auto-assignment based on round-robin"
+        },
+        {
+          "id": "d",
+          "text": "Direct assignment through the case form"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The assignment workbench uses configurable criteria such as skills and availability to evaluate agents in a group and provide an overall ranking. Managers can view results and assign tasks with one click. It requires creating matching criteria and an assignment workbench configuration.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Matching rules identify cases but don't evaluate agent skills and availability for ranking."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Round-robin doesn't consider skills or availability \u2014 it simply rotates assignments."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Direct assignment is manual and doesn't leverage skills/availability matching."
+          }
+        ]
+      }
+    },
+    {
+      "id": "cis-csm-cfg-026",
+      "certification": "cis-csm",
+      "topic": "csm-configuration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What does the case action status feature provide in CSM?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Automatic case closure after a defined period"
+        },
+        {
+          "id": "b",
+          "text": "Visual indicators in the case list to highlight cases that need attention"
+        },
+        {
+          "id": "c",
+          "text": "Automated email notifications for overdue cases"
+        },
+        {
+          "id": "d",
+          "text": "Dashboard widgets showing case volume trends"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Case action status provides visual indicators in the Action Status column on the case list. It tracks blocking tasks and helps agents quickly identify and prioritize cases that need attention.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Automatic case closure is a separate feature called 'Auto Close Resolved Cases.'"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Notifications are configured separately through SLA escalation or notification rules."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Dashboard widgets are part of reporting, not the case action status feature."
+          }
+        ]
+      }
+    },
+    {
+      "id": "cis-csm-cfg-027",
+      "certification": "cis-csm",
+      "topic": "csm-configuration",
+      "cognitiveLevel": "application",
+      "type": "multiple_select",
+      "question": "Which plugins are required to activate Major Issue Management in CSM? (Choose two.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Customer Service [com.sn_customerservice]"
+        },
+        {
+          "id": "b",
+          "text": "Targeted Communications [com.sn_publications]"
+        },
+        {
+          "id": "c",
+          "text": "Performance Analytics [com.snc.pa]"
+        },
+        {
+          "id": "d",
+          "text": "Virtual Agent [com.glide.cs.chatbot]"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b"
+      ],
+      "explanation": {
+        "correct": "Major Issue Management requires three plugins: Customer Service, Targeted Communications, and Task Communications Management. Both Customer Service and Targeted Communications are essential dependencies.",
+        "wrongAnswers": [
+          {
+            "choiceId": "c",
+            "explanation": "Performance Analytics is not a prerequisite for Major Issue Management."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Virtual Agent is a separate feature and not required for Major Issue Management."
+          }
+        ]
+      }
+    },
+    {
+      "id": "cis-csm-cfg-028",
+      "certification": "cis-csm",
+      "topic": "csm-configuration",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A CSM administrator wants to bring important customer information to agents' attention when they open a case. Which feature should be configured?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Case action status indicators"
+        },
+        {
+          "id": "b",
+          "text": "Special handling notes"
+        },
+        {
+          "id": "c",
+          "text": "Escalation management"
+        },
+        {
+          "id": "d",
+          "text": "Case digest summaries"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Special handling notes bring important case information to an agent's attention. They can be configured to display as pop-up windows or in a related list on the case form, ensuring agents see critical customer-specific information.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Case action status shows visual indicators in the case list for prioritization, not customer-specific information."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Escalation management raises awareness about important issues but doesn't display contextual customer information on the form."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Case digests are for communicating case updates to customers and stakeholders, not displaying info to agents."
+          }
+        ]
+      }
+    },
+    {
+      "id": "cis-csm-cfg-029",
+      "certification": "cis-csm",
+      "topic": "csm-configuration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What happens when case synchronization is enabled for major issue management?",
+      "options": [
+        {
+          "id": "a",
+          "text": "All cases in the system are automatically linked together"
+        },
+        {
+          "id": "b",
+          "text": "Fields from the major (parent) case are synchronized to associated child cases"
+        },
+        {
+          "id": "c",
+          "text": "Case data is replicated to a backup instance"
+        },
+        {
+          "id": "d",
+          "text": "Customer contact information is synced across all their cases"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "When case synchronization is enabled, fields from the major (parent) case are synchronized to associated child cases. This is configured through the system property 'Synchronize fields from parent to child case.'",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Synchronization only applies between major (parent) cases and their associated child cases."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Case synchronization is about parent-child case field updates, not instance backup."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Customer contact sync is not what major case synchronization provides."
+          }
+        ]
+      }
+    },
+    {
+      "id": "cis-csm-cfg-030",
+      "certification": "cis-csm",
+      "topic": "csm-configuration",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "How does CSM case routing work to assign cases to agents?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Cases are randomly distributed to available agents"
+        },
+        {
+          "id": "b",
+          "text": "Matching rules identify cases that meet conditions, then assignment rules route them to agents"
+        },
+        {
+          "id": "c",
+          "text": "All cases go to a manager who manually assigns them"
+        },
+        {
+          "id": "d",
+          "text": "Cases are assigned based on alphabetical order of agent last names"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "CSM case routing uses a two-step process: matching rules identify cases that meet certain conditions, and then assignment rules route those matched cases to appropriate customer service agents.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Random distribution doesn't consider case conditions or agent suitability."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "While managers can manually assign, the routing feature automates this through matching and assignment rules."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Alphabetical assignment is not a feature of CSM routing."
+          }
+        ]
+      }
     }
   ]
 }

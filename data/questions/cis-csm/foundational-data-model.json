@@ -1244,6 +1244,279 @@
         "release": "Xanadu",
         "reviewed": false
       }
+    },
+    {
+      "id": "cis-csm-fdm-017",
+      "certification": "cis-csm",
+      "topic": "foundational-data-model",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "In a B2B2C data model, which record type represents the end user who actually uses the product or service?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Account"
+        },
+        {
+          "id": "b",
+          "text": "Contact"
+        },
+        {
+          "id": "c",
+          "text": "Consumer"
+        },
+        {
+          "id": "d",
+          "text": "Partner"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "In the B2B2C model, the Consumer record represents the end user. The business customer (Account) sells to or supports their consumers, and ServiceNow CSM tracks these consumers separately from the business contacts.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Account represents the business customer, not the end consumer in B2B2C."
+          },
+          {
+            "choiceId": "b",
+            "explanation": "Contact is associated with a business account. The Consumer record is the correct entity for end users in B2B2C."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Partner is not a standard CSM data model entity for end users."
+          }
+        ]
+      }
+    },
+    {
+      "id": "cis-csm-fdm-018",
+      "certification": "cis-csm",
+      "topic": "foundational-data-model",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What is the purpose of an install base item in CSM?",
+      "options": [
+        {
+          "id": "a",
+          "text": "To track software licenses across the organization"
+        },
+        {
+          "id": "b",
+          "text": "To represent a specific product or service instance owned or used by a customer"
+        },
+        {
+          "id": "c",
+          "text": "To manage the installation process for new software"
+        },
+        {
+          "id": "d",
+          "text": "To store the customer's IT infrastructure configuration"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Install base items represent specific instances of products or services that a customer owns or uses. They enable tracking of service requirements, warranties, and maintenance needs for individual customer assets.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Software license management is handled by SAM, not install base items in CSM."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Install base items track existing product instances, not the installation process itself."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "IT infrastructure is tracked in the CMDB. Install base items are customer-facing product/service instances."
+          }
+        ]
+      }
+    },
+    {
+      "id": "cis-csm-fdm-019",
+      "certification": "cis-csm",
+      "topic": "foundational-data-model",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A customer has a service contract that covers multiple products. Each product has specific support entitlements. How are entitlements associated in the CSM data model?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Entitlements can only be associated with accounts, not individual products"
+        },
+        {
+          "id": "b",
+          "text": "Entitlements are associated with service contracts and can be linked to specific products, assets, or accounts"
+        },
+        {
+          "id": "c",
+          "text": "Each product must have its own separate service contract"
+        },
+        {
+          "id": "d",
+          "text": "Entitlements are automatically created when a product is added to the CMDB"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Service entitlements can be associated with a product, an asset, an account, or a contract. A single service contract can include multiple entitlements covering different products or services.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Entitlements can be associated with products, assets, accounts, and contracts \u2014 not just accounts."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "A single contract can include multiple service entitlements for different products."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Entitlements are manually configured and associated \u2014 they are not automatically created from CMDB entries."
+          }
+        ]
+      }
+    },
+    {
+      "id": "cis-csm-fdm-020",
+      "certification": "cis-csm",
+      "topic": "foundational-data-model",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What does the 'Remaining Units' field on a service entitlement track?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The number of agents available to work on cases"
+        },
+        {
+          "id": "b",
+          "text": "The number of remaining cases or hours available under the entitlement"
+        },
+        {
+          "id": "c",
+          "text": "The remaining days until the entitlement expires"
+        },
+        {
+          "id": "d",
+          "text": "The number of products still covered under the contract"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Entitlements are counted on a per-unit basis. The Unit field defines whether units are cases or hours. The Remaining Units field tracks how many cases or hours remain and is updated by business rules when cases are closed.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Agent availability is managed through assignment workbench, not entitlement units."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Contract expiration is tracked by date fields on the contract, not the Remaining Units field."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Product coverage is defined by entitlement associations, not the Remaining Units counter."
+          }
+        ]
+      }
+    },
+    {
+      "id": "cis-csm-fdm-021",
+      "certification": "cis-csm",
+      "topic": "foundational-data-model",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which role is required to create install base characteristics in CSM?",
+      "options": [
+        {
+          "id": "a",
+          "text": "admin"
+        },
+        {
+          "id": "b",
+          "text": "sn_customerservice_agent"
+        },
+        {
+          "id": "c",
+          "text": "sn_customerservice_manager"
+        },
+        {
+          "id": "d",
+          "text": "itil"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "Only users with the sn_customerservice_manager role can create install base characteristics. Administrators can activate the Install Base Characteristics plugin, but creating the characteristics requires the manager role.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Admin can activate the plugin but creating characteristics requires the sn_customerservice_manager role."
+          },
+          {
+            "choiceId": "b",
+            "explanation": "Agents can view and use characteristics but cannot create them."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The itil role is for ITSM, not CSM install base management."
+          }
+        ]
+      }
+    },
+    {
+      "id": "cis-csm-fdm-022",
+      "certification": "cis-csm",
+      "topic": "foundational-data-model",
+      "cognitiveLevel": "application",
+      "type": "multiple_select",
+      "question": "Which of the following can a service contract in CSM include? (Choose two.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Multiple service entitlements"
+        },
+        {
+          "id": "b",
+          "text": "Only one SLA definition"
+        },
+        {
+          "id": "c",
+          "text": "Multiple SLAs"
+        },
+        {
+          "id": "d",
+          "text": "Only accounts, not consumers"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "c"
+      ],
+      "explanation": {
+        "correct": "A service contract can include multiple service entitlements and multiple SLAs. It can also include accounts, contacts, or consumers and specify covered assets.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "A contract can include multiple SLAs, not just one."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "A contract can include an account and contact OR a consumer \u2014 it supports both entity types."
+          }
+        ]
+      }
     }
   ]
 }
