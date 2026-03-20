@@ -1169,6 +1169,292 @@
         "release": "Xanadu",
         "reviewed": false
       }
+    },
+    {
+      "id": "cis-pa-breakdowns-016",
+      "certification": "cis-pa",
+      "topic": "breakdowns",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What does a breakdown source reference in the Performance Analytics architecture?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A business process table like Incident"
+        },
+        {
+          "id": "b",
+          "text": "An inventory table like User or Choice"
+        },
+        {
+          "id": "c",
+          "text": "A score table like pa_scores_l1"
+        },
+        {
+          "id": "d",
+          "text": "A dashboard configuration table"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Breakdown sources reference inventory tables containing information needed to filter, categorize, or break down data. Examples include User [sys_user] and Choice [sys_choice].",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Business process tables are referenced by indicator sources, not breakdown sources.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Score tables store collected data; they are not referenced by breakdown sources.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Dashboard tables are not referenced by breakdown sources.",
+            "reference": "Performance Analytics Documentation"
+          }
+        ]
+      },
+      "references": [
+        "Performance Analytics Documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "https://www.servicenow.com/docs/r/xanadu/now-intelligence/performance-analytics/",
+        "excerpt": ""
+      }
+    },
+    {
+      "id": "cis-pa-breakdowns-017",
+      "certification": "cis-pa",
+      "topic": "breakdowns",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_select",
+      "question": "Which two capabilities does the optimized data collector provide for breakdowns? (Choose two.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Support for dot-walked conditions"
+        },
+        {
+          "id": "b",
+          "text": "Support for two large breakdowns with up to 1 million records each"
+        },
+        {
+          "id": "c",
+          "text": "Unlimited number of breakdowns per indicator"
+        },
+        {
+          "id": "d",
+          "text": "Automatic breakdown creation from table fields"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b"
+      ],
+      "explanation": {
+        "correct": "The optimized data collector supports dot-walked conditions and two large breakdowns with up to 1 million records each, along with breakdown relations.",
+        "wrongAnswers": [
+          {
+            "choiceId": "c",
+            "explanation": "The optimized collector supports at least 10 breakdowns, not unlimited.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Breakdowns must be manually created; they are not auto-generated.",
+            "reference": "Performance Analytics Documentation"
+          }
+        ]
+      },
+      "references": [
+        "Performance Analytics Documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "https://www.servicenow.com/docs/r/xanadu/now-intelligence/performance-analytics/",
+        "excerpt": ""
+      }
+    },
+    {
+      "id": "cis-pa-breakdowns-018",
+      "certification": "cis-pa",
+      "topic": "breakdowns",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "During data collection, what information is stored in the scores array for each processed record?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Indicator, Breakdown 1, Artifact 1, Breakdown 2, Artifact 2, Domain, Value, Array of sys_id"
+        },
+        {
+          "id": "b",
+          "text": "Indicator, Score, Timestamp, User"
+        },
+        {
+          "id": "c",
+          "text": "Table, Record, Field, Value, Breakdown"
+        },
+        {
+          "id": "d",
+          "text": "Source, Indicator, Period, Count, Sum"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "The scores array structure is: Indicator, Breakdown 1, Artifact 1, Breakdown 2, Artifact 2, Domain, Value, Array of [sys_id].",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "This is not the correct array structure.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "This is not the correct array structure.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "This is not the correct array structure.",
+            "reference": "Performance Analytics Documentation"
+          }
+        ]
+      },
+      "references": [
+        "Performance Analytics Documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "https://www.servicenow.com/docs/r/xanadu/now-intelligence/performance-analytics/",
+        "excerpt": ""
+      }
+    },
+    {
+      "id": "cis-pa-breakdowns-019",
+      "certification": "cis-pa",
+      "topic": "breakdowns",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "An administrator configures an indicator with 10 breakdowns and breakdown matrix enabled. When the indicator is excluded from breakdown collection for Assignment Group, what is logged?",
+      "options": [
+        {
+          "id": "a",
+          "text": "An error indicating the breakdown cannot be excluded"
+        },
+        {
+          "id": "b",
+          "text": "A message like 'Not collecting for Indicator with excluded Breakdown: Assignment Group'"
+        },
+        {
+          "id": "c",
+          "text": "Nothing; excluded breakdowns are silently skipped"
+        },
+        {
+          "id": "d",
+          "text": "A warning that breakdown matrix will be incomplete"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The log specifies which indicators are not collected for excluded breakdowns, showing entries like: Not collecting for Indicator: [name] with excluded Breakdown: Assignment Group.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Excluding breakdowns is a valid configuration, not an error.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Excluded breakdowns are logged, not silently skipped.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The system logs the exclusion directly, not a matrix completeness warning.",
+            "reference": "Performance Analytics Documentation"
+          }
+        ]
+      },
+      "references": [
+        "Performance Analytics Documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "https://www.servicenow.com/docs/r/xanadu/now-intelligence/performance-analytics/",
+        "excerpt": ""
+      }
+    },
+    {
+      "id": "cis-pa-breakdowns-020",
+      "certification": "cis-pa",
+      "topic": "breakdowns",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What information does a breakdown source contain in addition to a reference to an inventory table?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A reference to a field with unique values and conditions for filtering records"
+        },
+        {
+          "id": "b",
+          "text": "A formula for calculating breakdown scores"
+        },
+        {
+          "id": "c",
+          "text": "A list of associated dashboards"
+        },
+        {
+          "id": "d",
+          "text": "A schedule for breakdown data collection"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "Breakdown sources contain a reference to an inventory table, a reference to a field on the table with unique values for every record, and conditions for filtering records.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Breakdown sources don't contain formulas; they define data structures.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Dashboard associations are not part of breakdown sources.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Collection schedules are on data collection jobs, not breakdown sources.",
+            "reference": "Performance Analytics Documentation"
+          }
+        ]
+      },
+      "references": [
+        "Performance Analytics Documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "https://www.servicenow.com/docs/r/xanadu/now-intelligence/performance-analytics/",
+        "excerpt": ""
+      }
     }
   ]
 }

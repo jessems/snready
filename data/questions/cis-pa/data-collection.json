@@ -465,6 +465,520 @@
         "release": "Xanadu",
         "reviewed": false
       }
+    },
+    {
+      "id": "cis-pa-data-collection-007",
+      "certification": "cis-pa",
+      "topic": "data-collection",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which three levels of logging does Performance Analytics provide for data collection jobs?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Job events, job logs, and job log details"
+        },
+        {
+          "id": "b",
+          "text": "Error logs, warning logs, and info logs"
+        },
+        {
+          "id": "c",
+          "text": "Collection logs, processing logs, and storage logs"
+        },
+        {
+          "id": "d",
+          "text": "System logs, application logs, and audit logs"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "Performance Analytics provides three levels of log: job events (which jobs executed), job logs (overview of each job), and job log details (what happened in each step).",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "PA does not categorize logs by severity level in this way.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "These are not the three PA log levels.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "These are general ServiceNow log categories, not PA-specific levels.",
+            "reference": "Performance Analytics Documentation"
+          }
+        ]
+      },
+      "references": [
+        "Performance Analytics Documentation"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "docs",
+        "path": "https://www.servicenow.com/docs/r/xanadu/now-intelligence/performance-analytics/",
+        "excerpt": ""
+      }
+    },
+    {
+      "id": "cis-pa-data-collection-008",
+      "certification": "cis-pa",
+      "topic": "data-collection",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What does the nested collection optimization do in the classic data collector?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Collects data for nested indicator sources in parallel"
+        },
+        {
+          "id": "b",
+          "text": "Creates one object per indicator instead of duplicates for every breakdown and element"
+        },
+        {
+          "id": "c",
+          "text": "Nests breakdown scores within indicator score records"
+        },
+        {
+          "id": "d",
+          "text": "Processes child domains before parent domains"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Nested collection replaces flat mapping to reduce redundant objects. Instead of creating identical indicator objects for every breakdown and element, only one object is created for the indicator.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Nested collection is about memory optimization, not parallel processing.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "It reduces redundant objects in memory, not score record nesting.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "It has nothing to do with domain processing order.",
+            "reference": "Performance Analytics Documentation"
+          }
+        ]
+      },
+      "references": [
+        "Performance Analytics Documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "https://www.servicenow.com/docs/r/xanadu/now-intelligence/performance-analytics/",
+        "excerpt": ""
+      }
+    },
+    {
+      "id": "cis-pa-data-collection-009",
+      "certification": "cis-pa",
+      "topic": "data-collection",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What is the default value of the flush snapshot count property (com.snc.pa.dc.flush_snapshot_count) in Performance Analytics?",
+      "options": [
+        {
+          "id": "a",
+          "text": "100"
+        },
+        {
+          "id": "b",
+          "text": "500"
+        },
+        {
+          "id": "c",
+          "text": "1000"
+        },
+        {
+          "id": "d",
+          "text": "5000"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "The flush_snapshot_count property defaults to 1000. It controls the maximum number of PA snapshots stored in memory before offloading them to the database.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "100 is not the default value.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "500 is not the default value.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "5000 is not the default value.",
+            "reference": "Performance Analytics Documentation"
+          }
+        ]
+      },
+      "references": [
+        "Performance Analytics Documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "https://www.servicenow.com/docs/r/xanadu/now-intelligence/performance-analytics/",
+        "excerpt": ""
+      }
+    },
+    {
+      "id": "cis-pa-data-collection-010",
+      "certification": "cis-pa",
+      "topic": "data-collection",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "When a data collection job processes an indicator source condition that includes 'Today', how is 'Today' interpreted?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Relative to the current system date"
+        },
+        {
+          "id": "b",
+          "text": "Relative to the period for which the data collection job is executed"
+        },
+        {
+          "id": "c",
+          "text": "Relative to the job's scheduled start time"
+        },
+        {
+          "id": "d",
+          "text": "Relative to UTC midnight"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "If the indicator source specifies Today in one of the conditions, Today is considered relative to the period for which the data collection job is executed, not the current date.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Today is relative to the collection period, not the current system date.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "It is relative to the collection period, not the scheduled start time.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "It uses the collection period, not UTC midnight.",
+            "reference": "Performance Analytics Documentation"
+          }
+        ]
+      },
+      "references": [
+        "Performance Analytics Documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "https://www.servicenow.com/docs/r/xanadu/now-intelligence/performance-analytics/",
+        "excerpt": ""
+      }
+    },
+    {
+      "id": "cis-pa-data-collection-011",
+      "certification": "cis-pa",
+      "topic": "data-collection",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "An administrator notices that a data collection job's statistics show 'errors: 5'. Where should they look first for detailed troubleshooting information?",
+      "options": [
+        {
+          "id": "a",
+          "text": "System logs \u2192 All"
+        },
+        {
+          "id": "b",
+          "text": "Performance Analytics \u2192 Admin Console \u2192 Troubleshoot"
+        },
+        {
+          "id": "c",
+          "text": "Data collection job \u2192 Job log details"
+        },
+        {
+          "id": "d",
+          "text": "Platform Analytics \u2192 Diagnostics"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "Job log details describe what happened in each step of an executed job and provide the most granular troubleshooting information for collection errors.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "System logs are too broad; PA-specific log details are more useful.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "The Admin Console Troubleshoot panel is good for overview but job log details provide step-by-step information.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Platform Analytics Diagnostics run predefined tests, not job-specific troubleshooting.",
+            "reference": "Performance Analytics Documentation"
+          }
+        ]
+      },
+      "references": [
+        "Performance Analytics Documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "https://www.servicenow.com/docs/r/xanadu/now-intelligence/performance-analytics/",
+        "excerpt": ""
+      }
+    },
+    {
+      "id": "cis-pa-data-collection-012",
+      "certification": "cis-pa",
+      "topic": "data-collection",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_select",
+      "question": "Which two statements about the map/reduce function during PA data collection are true? (Choose two.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "It deletes previous scores for indicators before processing new records"
+        },
+        {
+          "id": "b",
+          "text": "It processes records sequentially without tracking memory usage"
+        },
+        {
+          "id": "c",
+          "text": "It logs the percentage of records processed and result object size"
+        },
+        {
+          "id": "d",
+          "text": "It can only process a maximum of 10,000 records per run"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "c"
+      ],
+      "explanation": {
+        "correct": "During data collection, the map/reduce function first deletes previous scores for the indicators and breakdowns, then processes each record while logging progress percentage and memory usage (result object size).",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "The map/reduce function does track and log memory usage during processing.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The optimized collector can handle over 10 million records; there is no 10,000 limit.",
+            "reference": "Performance Analytics Documentation"
+          }
+        ]
+      },
+      "references": [
+        "Performance Analytics Documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "https://www.servicenow.com/docs/r/xanadu/now-intelligence/performance-analytics/",
+        "excerpt": ""
+      }
+    },
+    {
+      "id": "cis-pa-data-collection-013",
+      "certification": "cis-pa",
+      "topic": "data-collection",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What does the com.snc.pa.dc.use_hashcode_for_distinct property control?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Whether distinct indicators use hash-based deduplication for score storage"
+        },
+        {
+          "id": "b",
+          "text": "Whether count distinct aggregations are stored as a hashcode instead of separate values"
+        },
+        {
+          "id": "c",
+          "text": "Whether distinct breakdown elements are hashed for faster lookup"
+        },
+        {
+          "id": "d",
+          "text": "Whether the data collector uses hash partitioning for parallel processing"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The use_hashcode_for_distinct property stores count distinct aggregations as a hashcode instead of as separate values, improving efficiency. It defaults to true.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "This property specifically affects count distinct aggregations, not general deduplication.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "It affects aggregation storage, not breakdown element lookup.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "It is not related to parallel processing or partitioning.",
+            "reference": "Performance Analytics Documentation"
+          }
+        ]
+      },
+      "references": [
+        "Performance Analytics Documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "https://www.servicenow.com/docs/r/xanadu/now-intelligence/performance-analytics/",
+        "excerpt": ""
+      }
+    },
+    {
+      "id": "cis-pa-data-collection-014",
+      "certification": "cis-pa",
+      "topic": "data-collection",
+      "cognitiveLevel": "application",
+      "type": "multiple_select",
+      "question": "An administrator is reviewing the data collection job log. Which two pieces of information are shown at the start of the collection job? (Choose two.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "The domain of the Run As user"
+        },
+        {
+          "id": "b",
+          "text": "The total number of records to be processed"
+        },
+        {
+          "id": "c",
+          "text": "Whether scores, text index, or both are being collected"
+        },
+        {
+          "id": "d",
+          "text": "The estimated completion time"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "c"
+      ],
+      "explanation": {
+        "correct": "The job log starts by showing the domain of the Run As user and what is being collected (scores, text index, or both), along with the optimization property settings.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "The total record count is shown during processing, not at the start.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Estimated completion time is not logged at the start of collection.",
+            "reference": "Performance Analytics Documentation"
+          }
+        ]
+      },
+      "references": [
+        "Performance Analytics Documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "https://www.servicenow.com/docs/r/xanadu/now-intelligence/performance-analytics/",
+        "excerpt": ""
+      }
+    },
+    {
+      "id": "cis-pa-data-collection-015",
+      "certification": "cis-pa",
+      "topic": "data-collection",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What happens to batch inserts of scores when nested collection is enabled in the classic data collector?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Batch inserts are automatically optimized"
+        },
+        {
+          "id": "b",
+          "text": "Batch inserts of scores are not supported with nested collection"
+        },
+        {
+          "id": "c",
+          "text": "Batch inserts are doubled in size for efficiency"
+        },
+        {
+          "id": "d",
+          "text": "Batch inserts are queued and processed after nested collection completes"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "When using nested collection, batch inserts of scores are not supported. This is a trade-off for the reduced memory usage that nested collection provides.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Batch inserts are not supported, not optimized, with nested collection.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Batch inserts cannot be used at all with nested collection.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Batch inserts are disabled entirely, not queued.",
+            "reference": "Performance Analytics Documentation"
+          }
+        ]
+      },
+      "references": [
+        "Performance Analytics Documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "https://www.servicenow.com/docs/r/xanadu/now-intelligence/performance-analytics/",
+        "excerpt": ""
+      }
     }
   ]
 }
