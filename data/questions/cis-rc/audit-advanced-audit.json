@@ -242,6 +242,520 @@
         "release": "Xanadu",
         "reviewed": false
       }
+    },
+    {
+      "id": "cis-rc-audit-advanced-audit-004",
+      "certification": "cis-rc",
+      "topic": "audit-advanced-audit",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which role is required to request evidence in Audit Management?",
+      "options": [
+        {
+          "id": "a",
+          "text": "sn_grc.business_user"
+        },
+        {
+          "id": "b",
+          "text": "sn_audit.user"
+        },
+        {
+          "id": "c",
+          "text": "sn_audit.viewer"
+        },
+        {
+          "id": "d",
+          "text": "itil"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "An audit user with the sn_audit.user role can request evidence and assign the request to another user.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "sn_grc.business_user can approve evidence but requesting requires sn_audit.user.",
+            "reference": "GRC Documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "sn_audit.viewer has read-only access.",
+            "reference": "GRC Documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "itil is an ITSM role, not an audit role.",
+            "reference": "GRC Documentation"
+          }
+        ]
+      },
+      "references": [
+        "GRC Documentation"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "docs",
+        "path": "https://www.servicenow.com/docs/r/xanadu/governance-risk-compliance/",
+        "excerpt": ""
+      }
+    },
+    {
+      "id": "cis-rc-audit-advanced-audit-005",
+      "certification": "cis-rc",
+      "topic": "audit-advanced-audit",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "In the evidence request workflow, what happens when the requester changes the assignee after evidence has been requested?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Both the original and new assignee can view the request"
+        },
+        {
+          "id": "b",
+          "text": "The original assignee can no longer view the request"
+        },
+        {
+          "id": "c",
+          "text": "The request is automatically canceled and recreated"
+        },
+        {
+          "id": "d",
+          "text": "The original assignee must transfer the request manually"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "If the requester changes the assignee after requesting evidence, the original assignee can no longer view the request. Only the currently assigned person can view it, ensuring confidentiality.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Only the current assignee can view the request, not both.",
+            "reference": "GRC Documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The request is not canceled; only the assignee is changed.",
+            "reference": "GRC Documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "No manual transfer is needed; the system handles the change.",
+            "reference": "GRC Documentation"
+          }
+        ]
+      },
+      "references": [
+        "GRC Documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "https://www.servicenow.com/docs/r/xanadu/governance-risk-compliance/",
+        "excerpt": ""
+      }
+    },
+    {
+      "id": "cis-rc-audit-advanced-audit-006",
+      "certification": "cis-rc",
+      "topic": "audit-advanced-audit",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_select",
+      "question": "Which two actions can an evidence approver take in Audit Management? (Choose two.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Approve the attached evidence"
+        },
+        {
+          "id": "b",
+          "text": "Delete the evidence request permanently"
+        },
+        {
+          "id": "c",
+          "text": "Request revision of the evidence"
+        },
+        {
+          "id": "d",
+          "text": "Reassign the evidence to a different engagement"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "c"
+      ],
+      "explanation": {
+        "correct": "An evidence approver can approve the evidence, request revision (if it needs correction), or request information (for more details).",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Approvers cannot delete evidence requests.",
+            "reference": "GRC Documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Reassigning to a different engagement is not an approver action.",
+            "reference": "GRC Documentation"
+          }
+        ]
+      },
+      "references": [
+        "GRC Documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "https://www.servicenow.com/docs/r/xanadu/governance-risk-compliance/",
+        "excerpt": ""
+      }
+    },
+    {
+      "id": "cis-rc-audit-advanced-audit-007",
+      "certification": "cis-rc",
+      "topic": "audit-advanced-audit",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_select",
+      "question": "Which two roles are required to automatically generate control tests from an engagement? (Choose two.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "sn_audit.admin"
+        },
+        {
+          "id": "b",
+          "text": "sn_audit.manager"
+        },
+        {
+          "id": "c",
+          "text": "sn_audit.user"
+        },
+        {
+          "id": "d",
+          "text": "sn_grc.business_user"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b"
+      ],
+      "explanation": {
+        "correct": "Both the sn_audit.admin and sn_audit.manager roles are required to automatically generate control tests from an engagement.",
+        "wrongAnswers": [
+          {
+            "choiceId": "c",
+            "explanation": "sn_audit.user can perform audit testing but cannot generate control tests.",
+            "reference": "GRC Documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "sn_grc.business_user is for evidence approval, not control test generation.",
+            "reference": "GRC Documentation"
+          }
+        ]
+      },
+      "references": [
+        "GRC Documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "https://www.servicenow.com/docs/r/xanadu/governance-risk-compliance/",
+        "excerpt": ""
+      }
+    },
+    {
+      "id": "cis-rc-audit-advanced-audit-008",
+      "certification": "cis-rc",
+      "topic": "audit-advanced-audit",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "In which state can an evidence request be canceled by the requester?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Only in Draft state"
+        },
+        {
+          "id": "b",
+          "text": "In any state before Review"
+        },
+        {
+          "id": "c",
+          "text": "Only after approval"
+        },
+        {
+          "id": "d",
+          "text": "In any state"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "A requester can cancel the evidence request tasks any time until the tasks reach the Review state.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Cancellation is available beyond just Draft state, up until Review.",
+            "reference": "GRC Documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Cancellation must happen before review, not after approval.",
+            "reference": "GRC Documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Cancellation is not available in all states.",
+            "reference": "GRC Documentation"
+          }
+        ]
+      },
+      "references": [
+        "GRC Documentation"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "docs",
+        "path": "https://www.servicenow.com/docs/r/xanadu/governance-risk-compliance/",
+        "excerpt": ""
+      }
+    },
+    {
+      "id": "cis-rc-audit-advanced-audit-009",
+      "certification": "cis-rc",
+      "topic": "audit-advanced-audit",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What is the primary purpose of the Engagement Overview in Audit Management?",
+      "options": [
+        {
+          "id": "a",
+          "text": "To create new audit engagements"
+        },
+        {
+          "id": "b",
+          "text": "To provide an executive view into audit results and engagement breakdowns"
+        },
+        {
+          "id": "c",
+          "text": "To assign auditors to engagements"
+        },
+        {
+          "id": "d",
+          "text": "To generate compliance reports"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The Engagement Overview provides an executive view into audit results, engagement breakdowns by task, and allows areas of concern to be identified quickly.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Creating engagements is done elsewhere, not in the overview.",
+            "reference": "GRC Documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Auditor assignment is a separate function.",
+            "reference": "GRC Documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Compliance reporting is a different feature.",
+            "reference": "GRC Documentation"
+          }
+        ]
+      },
+      "references": [
+        "GRC Documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "https://www.servicenow.com/docs/r/xanadu/governance-risk-compliance/",
+        "excerpt": ""
+      }
+    },
+    {
+      "id": "cis-rc-audit-advanced-audit-010",
+      "certification": "cis-rc",
+      "topic": "audit-advanced-audit",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "An auditor needs to automatically generate control tests for multiple test plans in an engagement. Where should they navigate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Audit > Control Tests > Generate"
+        },
+        {
+          "id": "b",
+          "text": "The Test Plans related list on the engagement form"
+        },
+        {
+          "id": "c",
+          "text": "Audit > Engagements > Auto-Generate"
+        },
+        {
+          "id": "d",
+          "text": "Policy and Compliance > Control Tests"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "To generate control tests, open the engagement, click the Test Plans related list, select test plans, and click Generate Control Tests.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "This navigation path does not exist.",
+            "reference": "GRC Documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Auto-generate is accessed through the engagement form, not a separate menu.",
+            "reference": "GRC Documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Control tests in audit context are managed through audit engagements.",
+            "reference": "GRC Documentation"
+          }
+        ]
+      },
+      "references": [
+        "GRC Documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "https://www.servicenow.com/docs/r/xanadu/governance-risk-compliance/",
+        "excerpt": ""
+      }
+    },
+    {
+      "id": "cis-rc-audit-advanced-audit-011",
+      "certification": "cis-rc",
+      "topic": "audit-advanced-audit",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "Which type of audit focuses specifically on internal controls related to financial data infrastructure?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Financial Audit"
+        },
+        {
+          "id": "b",
+          "text": "Compliance Audit"
+        },
+        {
+          "id": "c",
+          "text": "SOX Audit"
+        },
+        {
+          "id": "d",
+          "text": "IT Audit"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "A SOX (Sarbanes-Oxley) compliance audit measures how well a company manages its internal controls dealing with infrastructure that handles financial data.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Financial audits evaluate financial reports and reporting processes broadly.",
+            "reference": "GRC Documentation"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "Compliance audits cover adherence to laws and internal guidelines generally.",
+            "reference": "GRC Documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "IT audits examine IT infrastructure broadly, not specifically financial data controls.",
+            "reference": "GRC Documentation"
+          }
+        ]
+      },
+      "references": [
+        "GRC Documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "https://www.servicenow.com/docs/r/xanadu/governance-risk-compliance/",
+        "excerpt": ""
+      }
+    },
+    {
+      "id": "cis-rc-audit-advanced-audit-012",
+      "certification": "cis-rc",
+      "topic": "audit-advanced-audit",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which role is required to approve evidence before it is sent to the requester?",
+      "options": [
+        {
+          "id": "a",
+          "text": "sn_audit.admin"
+        },
+        {
+          "id": "b",
+          "text": "sn_grc.business_user"
+        },
+        {
+          "id": "c",
+          "text": "sn_audit.manager"
+        },
+        {
+          "id": "d",
+          "text": "admin"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The sn_grc.business_user role is required to approve evidence before evidence review.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "sn_audit.admin manages audit administration, not evidence approval.",
+            "reference": "GRC Documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "sn_audit.manager manages engagements, not evidence approval.",
+            "reference": "GRC Documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "admin is too broad; the specific role is sn_grc.business_user.",
+            "reference": "GRC Documentation"
+          }
+        ]
+      },
+      "references": [
+        "GRC Documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "https://www.servicenow.com/docs/r/xanadu/governance-risk-compliance/",
+        "excerpt": ""
+      }
     }
   ]
 }
