@@ -1165,6 +1165,292 @@
         "release": "Xanadu",
         "reviewed": false
       }
+    },
+    {
+      "id": "cis-pa-indicators-016",
+      "certification": "cis-pa",
+      "topic": "indicators",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "In the PA architecture, what must match between an indicator and its indicator source for data collection to work?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The table reference"
+        },
+        {
+          "id": "b",
+          "text": "The indicator frequency"
+        },
+        {
+          "id": "c",
+          "text": "The breakdown configuration"
+        },
+        {
+          "id": "d",
+          "text": "The dashboard assignment"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The frequencies of the indicator and the indicator source must match. An indicator frequency is the frequency for which data is collected for an indicator.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The table is defined on the indicator source; the indicator inherits it.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Breakdown configuration is separate from the indicator-source relationship.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Dashboard assignment is unrelated to data collection.",
+            "reference": "Performance Analytics Documentation"
+          }
+        ]
+      },
+      "references": [
+        "Performance Analytics Documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "https://www.servicenow.com/docs/r/xanadu/now-intelligence/performance-analytics/",
+        "excerpt": ""
+      }
+    },
+    {
+      "id": "cis-pa-indicators-017",
+      "certification": "cis-pa",
+      "topic": "indicators",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "An indicator has additional conditions beyond those inherited from its indicator source. When does the system evaluate these additional conditions?",
+      "options": [
+        {
+          "id": "a",
+          "text": "When the indicator source is created"
+        },
+        {
+          "id": "b",
+          "text": "During the map/reduce function when processing each record"
+        },
+        {
+          "id": "c",
+          "text": "When the dashboard is rendered"
+        },
+        {
+          "id": "d",
+          "text": "When the data collection job is scheduled"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "During the map/reduce processing of each record, the system executes or evaluates any scripts and validates indicator conditions, including additional conditions set on the indicator.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Additional conditions are evaluated at collection time, not source creation time.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Additional conditions filter during collection, not at render time.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Conditions are evaluated during job execution, not scheduling.",
+            "reference": "Performance Analytics Documentation"
+          }
+        ]
+      },
+      "references": [
+        "Performance Analytics Documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "https://www.servicenow.com/docs/r/xanadu/now-intelligence/performance-analytics/",
+        "excerpt": ""
+      }
+    },
+    {
+      "id": "cis-pa-indicators-018",
+      "certification": "cis-pa",
+      "topic": "indicators",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What happens when a data collection job encounters an indicator with a null score value?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The null value is stored as zero"
+        },
+        {
+          "id": "b",
+          "text": "The null value is logged and a configured 'Value when nil' is stored"
+        },
+        {
+          "id": "c",
+          "text": "The indicator is skipped for that collection period"
+        },
+        {
+          "id": "d",
+          "text": "An error is logged and the job continues"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Any indicator with a null value is logged, and the configured 'Value when nil' is stored as the score. The log shows entries like: Stored 'Value when nil': 0.0 as score for indicator.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Zero is not automatically used; the 'Value when nil' setting determines the stored value.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The indicator is not skipped; a nil value is stored.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "It is not treated as an error.",
+            "reference": "Performance Analytics Documentation"
+          }
+        ]
+      },
+      "references": [
+        "Performance Analytics Documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "https://www.servicenow.com/docs/r/xanadu/now-intelligence/performance-analytics/",
+        "excerpt": ""
+      }
+    },
+    {
+      "id": "cis-pa-indicators-019",
+      "certification": "cis-pa",
+      "topic": "indicators",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_select",
+      "question": "Which two fields does an indicator source contain? (Choose two.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Reference to a business process table"
+        },
+        {
+          "id": "b",
+          "text": "Dashboard widget configuration"
+        },
+        {
+          "id": "c",
+          "text": "Conditions for filtering records of the table"
+        },
+        {
+          "id": "d",
+          "text": "Breakdown matrix settings"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "c"
+      ],
+      "explanation": {
+        "correct": "Indicator sources contain a reference to a business process table, a reference to a field with unique values, conditions for filtering records, and the indicator frequency.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Dashboard widget configuration is not part of an indicator source.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Breakdown matrix settings are configured separately, not on indicator sources.",
+            "reference": "Performance Analytics Documentation"
+          }
+        ]
+      },
+      "references": [
+        "Performance Analytics Documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "https://www.servicenow.com/docs/r/xanadu/now-intelligence/performance-analytics/",
+        "excerpt": ""
+      }
+    },
+    {
+      "id": "cis-pa-indicators-020",
+      "certification": "cis-pa",
+      "topic": "indicators",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "An administrator sets up a formula indicator using two contributing indicators. During data collection, one contributing indicator has no score for March. What should the administrator configure to allow the formula to calculate using zero instead?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Set 'Value when nil' to 0 on the contributing indicator"
+        },
+        {
+          "id": "b",
+          "text": "Enable 'Allow formula component to be null' on the formula indicator"
+        },
+        {
+          "id": "c",
+          "text": "Configure a default score on the indicator source"
+        },
+        {
+          "id": "d",
+          "text": "Set the formula to use COALESCE function"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The 'Allow formula component to be null' checkbox must be selected on the formula indicator to handle null contributing scores. When enabled, null values are treated as zero in the calculation.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Value when nil affects the contributing indicator's own collection, not formula behavior.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Default scores on indicator sources don't affect formula null handling.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "COALESCE is not a PA formula configuration option.",
+            "reference": "Performance Analytics Documentation"
+          }
+        ]
+      },
+      "references": [
+        "Performance Analytics Documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "https://www.servicenow.com/docs/r/xanadu/now-intelligence/performance-analytics/",
+        "excerpt": ""
+      }
     }
   ]
 }

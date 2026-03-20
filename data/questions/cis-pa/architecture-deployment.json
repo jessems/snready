@@ -475,6 +475,520 @@
         "release": "Xanadu",
         "reviewed": false
       }
+    },
+    {
+      "id": "cis-pa-architecture-deployment-007",
+      "certification": "cis-pa",
+      "topic": "architecture-deployment",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which system property must be set to false to deactivate the optimized data collector in Performance Analytics?",
+      "options": [
+        {
+          "id": "a",
+          "text": "com.snc.pa.dc.optimized"
+        },
+        {
+          "id": "b",
+          "text": "com.snc.pa.dc.hsql"
+        },
+        {
+          "id": "c",
+          "text": "com.snc.pa.dc.enabled"
+        },
+        {
+          "id": "d",
+          "text": "com.snc.pa.collector.mode"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The system property com.snc.pa.dc.hsql must be set to false to deactivate the optimized data collector.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "This is not a valid PA system property.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "This property does not exist for controlling the data collector.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "This is not the correct property name.",
+            "reference": "Performance Analytics Documentation"
+          }
+        ]
+      },
+      "references": [
+        "Performance Analytics Documentation"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "docs",
+        "path": "https://www.servicenow.com/docs/r/xanadu/now-intelligence/performance-analytics/",
+        "excerpt": ""
+      }
+    },
+    {
+      "id": "cis-pa-architecture-deployment-008",
+      "certification": "cis-pa",
+      "topic": "architecture-deployment",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "Which database type is NOT supported by the optimized Performance Analytics data collector?",
+      "options": [
+        {
+          "id": "a",
+          "text": "MySQL"
+        },
+        {
+          "id": "b",
+          "text": "PostgreSQL"
+        },
+        {
+          "id": "c",
+          "text": "Oracle"
+        },
+        {
+          "id": "d",
+          "text": "MariaDB"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "Oracle databases are not supported by the optimized data collector. The optimized collector supports only instances where indicator scores are stored on the pa_scores_l1 and pa_scores_l2 tables.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "MySQL is supported by the optimized data collector.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "PostgreSQL is supported by the optimized data collector.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "MariaDB is supported by the optimized data collector.",
+            "reference": "Performance Analytics Documentation"
+          }
+        ]
+      },
+      "references": [
+        "Performance Analytics Documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "https://www.servicenow.com/docs/r/xanadu/now-intelligence/performance-analytics/",
+        "excerpt": ""
+      }
+    },
+    {
+      "id": "cis-pa-architecture-deployment-009",
+      "certification": "cis-pa",
+      "topic": "architecture-deployment",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_select",
+      "question": "Which two tables are used to store indicator scores when the optimized data collector is active? (Choose two.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "pa_scores"
+        },
+        {
+          "id": "b",
+          "text": "pa_scores_l1"
+        },
+        {
+          "id": "c",
+          "text": "pa_scores_l2"
+        },
+        {
+          "id": "d",
+          "text": "pa_scores_archive"
+        }
+      ],
+      "correctAnswers": [
+        "b",
+        "c"
+      ],
+      "explanation": {
+        "correct": "The optimized data collector supports only instances where indicator scores are stored on the Scores Level 1 [pa_scores_l1] and Scores Level 2 [pa_scores_l2] tables.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The pa_scores table is the legacy single-table structure; the optimized collector requires the split tables.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "pa_scores_archive is not a standard PA table.",
+            "reference": "Performance Analytics Documentation"
+          }
+        ]
+      },
+      "references": [
+        "Performance Analytics Documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "https://www.servicenow.com/docs/r/xanadu/now-intelligence/performance-analytics/",
+        "excerpt": ""
+      }
+    },
+    {
+      "id": "cis-pa-architecture-deployment-010",
+      "certification": "cis-pa",
+      "topic": "architecture-deployment",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What is the minimum role required to create indicator sources and breakdown sources in Performance Analytics?",
+      "options": [
+        {
+          "id": "a",
+          "text": "pa_viewer"
+        },
+        {
+          "id": "b",
+          "text": "pa_power_user"
+        },
+        {
+          "id": "c",
+          "text": "pa_data_collector"
+        },
+        {
+          "id": "d",
+          "text": "pa_admin"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "The pa_data_collector role is the minimum role required to create indicator sources and breakdown sources, as stated in the PA architecture documentation.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "pa_viewer only allows viewing PA data, not creating data structures.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "pa_power_user can create indicators but pa_data_collector is the specific role for sources.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "pa_admin has broader permissions but pa_data_collector is the minimum required.",
+            "reference": "Performance Analytics Documentation"
+          }
+        ]
+      },
+      "references": [
+        "Performance Analytics Documentation"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "docs",
+        "path": "https://www.servicenow.com/docs/r/xanadu/now-intelligence/performance-analytics/",
+        "excerpt": ""
+      }
+    },
+    {
+      "id": "cis-pa-architecture-deployment-011",
+      "certification": "cis-pa",
+      "topic": "architecture-deployment",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "How does the optimized data collector handle memory differently from the classic data collector during score processing?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It loads all scores into node memory at once for faster processing"
+        },
+        {
+          "id": "b",
+          "text": "It moves packets of scores to temporary storage on disk during the job"
+        },
+        {
+          "id": "c",
+          "text": "It streams scores directly to the database without any intermediate storage"
+        },
+        {
+          "id": "d",
+          "text": "It uses a distributed cache across multiple nodes"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The optimized data collector moves packets of scores to temporary storage on disk using an embedded database. At the end of the job, scores are written to the scores tables and the temporary database is cleared.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "This describes the classic collector behavior, not the optimized one.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Scores are moved to temporary disk storage first, not streamed directly.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The optimized collector uses local embedded database storage, not distributed cache.",
+            "reference": "Performance Analytics Documentation"
+          }
+        ]
+      },
+      "references": [
+        "Performance Analytics Documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "https://www.servicenow.com/docs/r/xanadu/now-intelligence/performance-analytics/",
+        "excerpt": ""
+      }
+    },
+    {
+      "id": "cis-pa-architecture-deployment-012",
+      "certification": "cis-pa",
+      "topic": "architecture-deployment",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "An organization wants to use Performance Analytics to analyze incident data. In the PA architecture, which component directly references the Incident table and defines filtering conditions?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Indicator"
+        },
+        {
+          "id": "b",
+          "text": "Indicator source"
+        },
+        {
+          "id": "c",
+          "text": "Breakdown source"
+        },
+        {
+          "id": "d",
+          "text": "Dashboard widget"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "An indicator source is the metadata object that references a business process table (like Incident), defines a unique field, and specifies conditions for filtering records.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Indicators define what to measure but get their table reference through indicator sources.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Breakdown sources reference inventory tables for categorization, not business process tables.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Dashboard widgets display data but don't define data source references.",
+            "reference": "Performance Analytics Documentation"
+          }
+        ]
+      },
+      "references": [
+        "Performance Analytics Documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "https://www.servicenow.com/docs/r/xanadu/now-intelligence/performance-analytics/",
+        "excerpt": ""
+      }
+    },
+    {
+      "id": "cis-pa-architecture-deployment-013",
+      "certification": "cis-pa",
+      "topic": "architecture-deployment",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_select",
+      "question": "Which two capabilities does the optimized Performance Analytics data collector support? (Choose two.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Handling over 10 million records without adverse performance impact"
+        },
+        {
+          "id": "b",
+          "text": "Running on Oracle databases"
+        },
+        {
+          "id": "c",
+          "text": "Supporting at least 10 breakdowns with breakdown matrix enabled"
+        },
+        {
+          "id": "d",
+          "text": "Batch inserts of scores using nested collection"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "c"
+      ],
+      "explanation": {
+        "correct": "The optimized data collector supports handling over 10 million records and at least 10 breakdowns with breakdown matrix enabled, including dot-walked conditions and two large breakdowns with up to 1 million records.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Oracle databases are explicitly not supported by the optimized data collector.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Batch inserts of scores are not supported with nested collection.",
+            "reference": "Performance Analytics Documentation"
+          }
+        ]
+      },
+      "references": [
+        "Performance Analytics Documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "https://www.servicenow.com/docs/r/xanadu/now-intelligence/performance-analytics/",
+        "excerpt": ""
+      }
+    },
+    {
+      "id": "cis-pa-architecture-deployment-014",
+      "certification": "cis-pa",
+      "topic": "architecture-deployment",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "In the Performance Analytics architecture, which level contains breakdown sources that reference inventory tables?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Level 0 \u2014 Database tables"
+        },
+        {
+          "id": "b",
+          "text": "Level 1 \u2014 Sources"
+        },
+        {
+          "id": "c",
+          "text": "Level 2 \u2014 Indicators and breakdowns"
+        },
+        {
+          "id": "d",
+          "text": "Level 3 \u2014 Widgets"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "In the PA architecture, Level 1 contains both indicator sources and breakdown sources. Breakdown sources reference inventory tables like User [sys_user] or Choice [sys_choice].",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Level 0 contains the raw database tables themselves.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Level 2 contains indicators and breakdowns that use sources from Level 1.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Level 3 contains visualization components.",
+            "reference": "Performance Analytics Documentation"
+          }
+        ]
+      },
+      "references": [
+        "Performance Analytics Documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "https://www.servicenow.com/docs/r/xanadu/now-intelligence/performance-analytics/",
+        "excerpt": ""
+      }
+    },
+    {
+      "id": "cis-pa-architecture-deployment-015",
+      "certification": "cis-pa",
+      "topic": "architecture-deployment",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What is the default state of the optimized data collector starting from the Tokyo release?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Disabled; must be manually activated per instance"
+        },
+        {
+          "id": "b",
+          "text": "Active by default on all instances"
+        },
+        {
+          "id": "c",
+          "text": "Active only on instances with a Premium PA subscription"
+        },
+        {
+          "id": "d",
+          "text": "Active only on new instances, not upgrades"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The optimized data collector is active by default on all instances starting in Tokyo. It is activated upon upgrading.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "It is active by default, not disabled.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "It is active regardless of subscription level.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "It activates on both new instances and upgrades.",
+            "reference": "Performance Analytics Documentation"
+          }
+        ]
+      },
+      "references": [
+        "Performance Analytics Documentation"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "docs",
+        "path": "https://www.servicenow.com/docs/r/xanadu/now-intelligence/performance-analytics/",
+        "excerpt": ""
+      }
     }
   ]
 }

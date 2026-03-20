@@ -1169,6 +1169,292 @@
         "release": "Xanadu",
         "reviewed": false
       }
+    },
+    {
+      "id": "cis-pa-visualization-dashboards-016",
+      "certification": "cis-pa",
+      "topic": "visualization-dashboards",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "When dashboards are migrated between ServiceNow releases, which roles are automatically populated in the 'Restrict to roles' field?",
+      "options": [
+        {
+          "id": "a",
+          "text": "admin and dashboard_admin"
+        },
+        {
+          "id": "b",
+          "text": "pa_viewer and pa_contributor"
+        },
+        {
+          "id": "c",
+          "text": "itil and pa_power_user"
+        },
+        {
+          "id": "d",
+          "text": "No roles are automatically populated"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "When dashboards are migrated between releases, the Restrict to roles field is automatically populated with pa_viewer and pa_contributor to ensure only users who could access the dashboard before migration can access it afterward.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "admin and dashboard_admin are not the automatically populated roles.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "itil and pa_power_user are not used for migration role restriction.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Roles are automatically populated during migration.",
+            "reference": "Performance Analytics Documentation"
+          }
+        ]
+      },
+      "references": [
+        "Performance Analytics Documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "https://www.servicenow.com/docs/r/xanadu/now-intelligence/performance-analytics/",
+        "excerpt": ""
+      }
+    },
+    {
+      "id": "cis-pa-visualization-dashboards-017",
+      "certification": "cis-pa",
+      "topic": "visualization-dashboards",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A user views a dashboard with a pie chart widget showing 36 incident records. They drill down into the list view. How many records will they see?",
+      "options": [
+        {
+          "id": "a",
+          "text": "All 36 records"
+        },
+        {
+          "id": "b",
+          "text": "Only records the user has ACL access to"
+        },
+        {
+          "id": "c",
+          "text": "No records \u2014 list views require separate permissions"
+        },
+        {
+          "id": "d",
+          "text": "Records filtered by the user's domain only"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "While aggregate data visualizations like pie or bar reports show all data regardless of ACLs, when a user drills down into the list view, only records the user is allowed to access are visible.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The list view applies ACLs, so the user may not see all 36.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Users can see list data, but filtered by their ACLs.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "ACL filtering applies, which may include but is not limited to domain filtering.",
+            "reference": "Performance Analytics Documentation"
+          }
+        ]
+      },
+      "references": [
+        "Performance Analytics Documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "https://www.servicenow.com/docs/r/xanadu/now-intelligence/performance-analytics/",
+        "excerpt": ""
+      }
+    },
+    {
+      "id": "cis-pa-visualization-dashboards-018",
+      "certification": "cis-pa",
+      "topic": "visualization-dashboards",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_select",
+      "question": "Which two roles can change dashboard group permissions? (Choose two.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "pa_power_user"
+        },
+        {
+          "id": "b",
+          "text": "pa_admin"
+        },
+        {
+          "id": "c",
+          "text": "dashboard_admin"
+        },
+        {
+          "id": "d",
+          "text": "pa_viewer"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b"
+      ],
+      "explanation": {
+        "correct": "Users with pa_power_user, pa_admin, and admin roles can change dashboard group permissions.",
+        "wrongAnswers": [
+          {
+            "choiceId": "c",
+            "explanation": "While dashboard_admin can edit dashboards, the documentation specifies pa_power_user, pa_admin, and admin for group permissions.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "pa_viewer has read-only access and cannot change group permissions.",
+            "reference": "Performance Analytics Documentation"
+          }
+        ]
+      },
+      "references": [
+        "Performance Analytics Documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "https://www.servicenow.com/docs/r/xanadu/now-intelligence/performance-analytics/",
+        "excerpt": ""
+      }
+    },
+    {
+      "id": "cis-pa-visualization-dashboards-019",
+      "certification": "cis-pa",
+      "topic": "visualization-dashboards",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What happens when a user without any roles attempts to view a responsive dashboard that has been shared with them?",
+      "options": [
+        {
+          "id": "a",
+          "text": "They cannot access the dashboard at all"
+        },
+        {
+          "id": "b",
+          "text": "They can view the dashboard but cannot create or edit dashboards"
+        },
+        {
+          "id": "c",
+          "text": "They can view and edit the dashboard"
+        },
+        {
+          "id": "d",
+          "text": "They see a request access form"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Users without a role can view dashboards that have been shared with them, but cannot create or edit dashboards.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Users without roles CAN view dashboards shared with them.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "They can only view, not edit.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "No request access form is shown; they simply have view access.",
+            "reference": "Performance Analytics Documentation"
+          }
+        ]
+      },
+      "references": [
+        "Performance Analytics Documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "https://www.servicenow.com/docs/r/xanadu/now-intelligence/performance-analytics/",
+        "excerpt": ""
+      }
+    },
+    {
+      "id": "cis-pa-visualization-dashboards-020",
+      "certification": "cis-pa",
+      "topic": "visualization-dashboards",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "An administrator wants to see which Performance Analytics components are affected before changing a field name used in reports. Which Admin Console feature should they use?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Troubleshoot panel"
+        },
+        {
+          "id": "b",
+          "text": "Content Library"
+        },
+        {
+          "id": "c",
+          "text": "Dependency Assessment"
+        },
+        {
+          "id": "d",
+          "text": "Usage dashboards"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "Dependency Assessment enables viewing, analyzing, and managing relationships between PA components. You can identify all reports, indicators, and interactive filters affected by a change like renaming a field.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Troubleshoot is for diagnostic errors and failed jobs, not impact analysis.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "Content Library is for guided setup and plugin management.",
+            "reference": "Performance Analytics Documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Usage dashboards show statistics, not component dependency analysis.",
+            "reference": "Performance Analytics Documentation"
+          }
+        ]
+      },
+      "references": [
+        "Performance Analytics Documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "https://www.servicenow.com/docs/r/xanadu/now-intelligence/performance-analytics/",
+        "excerpt": ""
+      }
     }
   ]
 }
