@@ -1284,6 +1284,292 @@
         "release": "Xanadu",
         "reviewed": false
       }
+    },
+    {
+      "id": "cis-ham-data-integrity-017",
+      "certification": "cis-ham",
+      "topic": "data-integrity",
+      "cognitiveLevel": "comprehension",
+      "type": "multiple_choice",
+      "question": "What does the glide.asset.create_ci_with_ire property enable?",
+      "options": [
+        {
+          "id": "a",
+          "text": "CIs to be created from assets using the Identification and Reconciliation Engine (IRE)"
+        },
+        {
+          "id": "b",
+          "text": "Automatic synchronization of CI status with asset status"
+        },
+        {
+          "id": "c",
+          "text": "Bulk import of CIs from external discovery tools"
+        },
+        {
+          "id": "d",
+          "text": "Automatic deletion of duplicate CIs"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "This property enables CIs to be created from assets using the CMDB Identification and Reconciliation Engine (IRE). CIs are named using 'Serial Number - Model Name' format with source 'SNAssetManagement'. It applies to CI classes extended from cmdb_ci_hardware that have identification rules on serial number.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Asset-CI status synchronization is handled by separate business rules, not this property."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Bulk import from discovery tools uses different integration mechanisms."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Duplicate CI management is a separate IRE function, not controlled by this property."
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/r/xanadu/it-asset-management/hardware-asset-management/c_ManagingAssets"
+      ],
+      "isFree": false,
+      "labels": {
+        "certification": "cis-ham",
+        "domain": "Data Integrity & Sources",
+        "domainSlug": "data-integrity",
+        "domainPercentage": 25,
+        "subtopics": [
+          "IRE",
+          "Asset-CI sync"
+        ],
+        "tags": [
+          "ire",
+          "asset-ci",
+          "property"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-23T12:42:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-ham-data-integrity-018",
+      "certification": "cis-ham",
+      "topic": "data-integrity",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which business rules keep asset and CI records synchronized?",
+      "options": [
+        {
+          "id": "a",
+          "text": "'Update CI fields on change' and 'Update Asset fields on change'"
+        },
+        {
+          "id": "b",
+          "text": "'Sync Asset' and 'Sync CI'"
+        },
+        {
+          "id": "c",
+          "text": "'Asset CI Sync' and 'CI Asset Sync'"
+        },
+        {
+          "id": "d",
+          "text": "'Create Asset from CI' and 'Create CI from Asset'"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "Two business rules maintain synchronization: 'Update CI fields on change' (on the Asset [alm_asset] table) and 'Update Asset fields on change' (on the Configuration Item [cmdb_ci] table).",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "These are not the actual business rule names used for asset-CI synchronization."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "These are not the actual business rule names."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "These rules would handle creation, not ongoing synchronization."
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/r/xanadu/it-asset-management/hardware-asset-management/c_ManagingAssets"
+      ],
+      "isFree": false,
+      "labels": {
+        "certification": "cis-ham",
+        "domain": "Data Integrity & Sources",
+        "domainSlug": "data-integrity",
+        "domainPercentage": 25,
+        "subtopics": [
+          "Asset-CI sync",
+          "Business rules"
+        ],
+        "tags": [
+          "business-rules",
+          "synchronization",
+          "asset-ci"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-23T12:42:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-ham-data-integrity-019",
+      "certification": "cis-ham",
+      "topic": "data-integrity",
+      "cognitiveLevel": "comprehension",
+      "type": "multiple_choice",
+      "question": "What is the purpose of the sn_itam_enable_cache_for_asset_ci_mapping property?",
+      "options": [
+        {
+          "id": "a",
+          "text": "To cache asset records for faster search results"
+        },
+        {
+          "id": "b",
+          "text": "To cache asset-CI field mappings, state mappings, and hardware status mappings for improved synchronization performance"
+        },
+        {
+          "id": "c",
+          "text": "To cache CI records in memory for bulk operations"
+        },
+        {
+          "id": "d",
+          "text": "To enable distributed caching across multiple application nodes"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "This property caches: Asset and CI field mappings, Asset state and CI install status mappings, and Asset state and CI hardware status mappings. These cached mappings are used during synchronization, improving system performance.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "This property caches mapping definitions, not asset records themselves."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "It caches mapping relationships, not CI records in memory."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "This is about mapping cache for synchronization, not distributed caching infrastructure."
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/r/xanadu/it-asset-management/hardware-asset-management/c_ManagingAssets"
+      ],
+      "isFree": false,
+      "labels": {
+        "certification": "cis-ham",
+        "domain": "Data Integrity & Sources",
+        "domainSlug": "data-integrity",
+        "domainPercentage": 25,
+        "subtopics": [
+          "Asset-CI sync",
+          "Performance"
+        ],
+        "tags": [
+          "cache",
+          "performance",
+          "mapping",
+          "synchronization"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-23T12:42:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-ham-data-integrity-020",
+      "certification": "cis-ham",
+      "topic": "data-integrity",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which of the following fields are synchronized between Asset and CI records? (Choose 3)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Serial Number"
+        },
+        {
+          "id": "b",
+          "text": "Description"
+        },
+        {
+          "id": "c",
+          "text": "Assigned to"
+        },
+        {
+          "id": "d",
+          "text": "Location"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "c",
+        "d"
+      ],
+      "selectCount": 3,
+      "isNegative": false,
+      "explanation": {
+        "correct": "Fields synchronized between Asset and CI include: Asset tag, Assigned, Assigned to, Company, Cost (asset to CI only), Cost center, Department, Location, Model, Serial number, and many others. Description is not in the synchronized field list.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Description is not in the list of synchronized fields between asset and CI records."
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/r/xanadu/it-asset-management/hardware-asset-management/c_ManagingAssets"
+      ],
+      "isFree": false,
+      "labels": {
+        "certification": "cis-ham",
+        "domain": "Data Integrity & Sources",
+        "domainSlug": "data-integrity",
+        "domainPercentage": 25,
+        "subtopics": [
+          "Asset-CI sync"
+        ],
+        "tags": [
+          "synchronization",
+          "fields",
+          "asset-ci"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-23T12:42:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     }
   ]
 }

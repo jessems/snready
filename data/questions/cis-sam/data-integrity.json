@@ -93,11 +93,11 @@
       "options": [
         {
           "id": "a",
-          "text": "Integration — Microsoft SCCM 2016 (com.snc.integration.sccm2016)"
+          "text": "Integration \u2014 Microsoft SCCM 2016 (com.snc.integration.sccm2016)"
         },
         {
           "id": "b",
-          "text": "Integration — Microsoft SCCM 2016 Software Usage (com.snc.samp.usage_sccm_2016)"
+          "text": "Integration \u2014 Microsoft SCCM 2016 Software Usage (com.snc.samp.usage_sccm_2016)"
         },
         {
           "id": "c",
@@ -115,7 +115,7 @@
       "selectCount": 2,
       "isNegative": false,
       "explanation": {
-        "correct": "To pull software usage data from SCCM, you need both the SCCM integration plugin (e.g., Integration — Microsoft SCCM 2016) AND the corresponding software usage plugin (e.g., Integration — Microsoft SCCM 2016 Software Usage).",
+        "correct": "To pull software usage data from SCCM, you need both the SCCM integration plugin (e.g., Integration \u2014 Microsoft SCCM 2016) AND the corresponding software usage plugin (e.g., Integration \u2014 Microsoft SCCM 2016 Software Usage).",
         "wrongAnswers": [
           {
             "choiceId": "c",
@@ -136,7 +136,7 @@
       "source": {
         "type": "docs",
         "path": "configure-sccm-sam.md",
-        "excerpt": "If you want to pull software usage data from SCCM, activate the software usage plugin for your version of SCCM: Integration — Microsoft SCCM 2016 Software Usage (com.snc.samp.usage_sccm_2016) plugin"
+        "excerpt": "If you want to pull software usage data from SCCM, activate the software usage plugin for your version of SCCM: Integration \u2014 Microsoft SCCM 2016 Software Usage (com.snc.samp.usage_sccm_2016) plugin"
       },
       "labels": {
         "certification": "cis-sam",
@@ -1125,6 +1125,577 @@
       },
       "meta": {
         "generatedAt": "2026-03-04T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sam-data-integrity-415",
+      "certification": "cis-sam",
+      "topic": "data-integrity",
+      "cognitiveLevel": "comprehension",
+      "type": "multiple_choice",
+      "question": "What happens when a software install record is written to the Software Installations table during discovery?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A business rule checks if the discovered publisher/product/version combination exists in the Discovery Model table"
+        },
+        {
+          "id": "b",
+          "text": "The installation is immediately normalized against the Content Service"
+        },
+        {
+          "id": "c",
+          "text": "An entitlement is automatically created for the software"
+        },
+        {
+          "id": "d",
+          "text": "The software is added to the Product Results table"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "When software install records are written to the Software Installations table, a business rule verifies whether the unique combination of discovered publisher, product, and version exists in the Discovery Model table. If it exists, the reference is set; if not, a new Discovery Model record is created.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Normalization runs as a separate process after discovery, not immediately when records are written."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Entitlements are not automatically created from discovered installations; they represent purchased licenses."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Product Results are generated during reconciliation, not during the discovery process."
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/c_SAMDiscovery"
+      ],
+      "isFree": false,
+      "labels": {
+        "certification": "cis-sam",
+        "domain": "Data Integrity & Sources",
+        "domainSlug": "data-integrity",
+        "domainPercentage": 21,
+        "subtopics": [
+          "Discovery integration"
+        ],
+        "tags": [
+          "discovery",
+          "business-rule",
+          "discovery-model"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-23T12:42:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sam-data-integrity-416",
+      "certification": "cis-sam",
+      "topic": "data-integrity",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "In which table are discovered software installations stored?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Software Model [cmdb_sam_sw_model]"
+        },
+        {
+          "id": "b",
+          "text": "Software Installations [cmdb_sam_sw_install]"
+        },
+        {
+          "id": "c",
+          "text": "Discovery Model [cmdb_sam_sw_discovery_model]"
+        },
+        {
+          "id": "d",
+          "text": "Product Results [samp_product_result]"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "Discovered software is stored in the Software Installations [cmdb_sam_sw_install] table. Discovery populates this table, which then references records in the Discovery Model table.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Software Model stores product definitions for licensing, not raw discovered installations."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Discovery Model stores unique publisher/product/version combinations, not individual installation records."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Product Results are generated during reconciliation, not during discovery."
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/c_SAMDiscovery"
+      ],
+      "isFree": false,
+      "labels": {
+        "certification": "cis-sam",
+        "domain": "Data Integrity & Sources",
+        "domainSlug": "data-integrity",
+        "domainPercentage": 21,
+        "subtopics": [
+          "Discovery tables"
+        ],
+        "tags": [
+          "discovery",
+          "tables",
+          "software-installations"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-23T12:42:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sam-data-integrity-417",
+      "certification": "cis-sam",
+      "topic": "data-integrity",
+      "cognitiveLevel": "comprehension",
+      "type": "multiple_choice",
+      "question": "What is the purpose of wide-net normalization in SAM?",
+      "options": [
+        {
+          "id": "a",
+          "text": "To normalize all discovery models regardless of their status"
+        },
+        {
+          "id": "b",
+          "text": "To normalize discovery models with similar discovered field values that weren't fully normalized by content rules"
+        },
+        {
+          "id": "c",
+          "text": "To override manual normalization with automated content"
+        },
+        {
+          "id": "d",
+          "text": "To expand the scope of discovery to additional network segments"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "Wide-net normalization reduces the need for the Content Service team to create separate normalization rules for each product by normalizing discovery models that share similar discovered field values and couldn't be normalized using content rules.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Wide-net normalization only applies to models not fully normalized by regular content rules, not all models."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Wide-net normalization supplements manual normalization; it doesn't override it."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Wide-net normalization is about software data normalization, not network discovery scope."
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/c_SAMDiscovery"
+      ],
+      "isFree": false,
+      "labels": {
+        "certification": "cis-sam",
+        "domain": "Data Integrity & Sources",
+        "domainSlug": "data-integrity",
+        "domainPercentage": 21,
+        "subtopics": [
+          "Normalization"
+        ],
+        "tags": [
+          "normalization",
+          "wide-net"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-23T12:42:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sam-data-integrity-418",
+      "certification": "cis-sam",
+      "topic": "data-integrity",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "An organization wants to use machine learning to normalize unrecognized discovered software. Which property must be enabled?",
+      "options": [
+        {
+          "id": "a",
+          "text": "com.snc.samp.wide_net_normalization.enabled"
+        },
+        {
+          "id": "b",
+          "text": "com.snc.samp.enable.ml_normalization"
+        },
+        {
+          "id": "c",
+          "text": "com.snc.samp.automaticsmrcreation"
+        },
+        {
+          "id": "d",
+          "text": "com.snc.samp.recon.enablecustommetrics"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "The com.snc.samp.enable.ml_normalization property enables machine learning normalization for discovery models. It's enabled by default and only applies to models that couldn't be normalized using content rules. Only users with admin role can modify it.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "This property enables wide-net normalization (pattern-based), not machine learning normalization."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "This property auto-creates software models for unlicensed products, unrelated to normalization."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "This property enables custom license metrics during reconciliation, not ML normalization."
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/sam-properties"
+      ],
+      "isFree": false,
+      "labels": {
+        "certification": "cis-sam",
+        "domain": "Data Integrity & Sources",
+        "domainSlug": "data-integrity",
+        "domainPercentage": 21,
+        "subtopics": [
+          "Normalization",
+          "Machine Learning"
+        ],
+        "tags": [
+          "normalization",
+          "machine-learning",
+          "properties"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-23T12:42:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sam-data-integrity-419",
+      "certification": "cis-sam",
+      "topic": "data-integrity",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which SCCM integration plugins are certified for Software Asset Management? (Choose 2)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Integration \u2014 Microsoft SCCM 2012 v2"
+        },
+        {
+          "id": "b",
+          "text": "Integration \u2014 Microsoft SCCM 2010"
+        },
+        {
+          "id": "c",
+          "text": "Integration \u2014 Microsoft SCCM 2016"
+        },
+        {
+          "id": "d",
+          "text": "Integration \u2014 Microsoft SCCM 2020"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "c"
+      ],
+      "selectCount": 2,
+      "isNegative": false,
+      "explanation": {
+        "correct": "Both SCCM 2012 v2 (com.snc.integration.sccm2012v2) and SCCM 2016 (com.snc.integration.sccm2016) plugins are certified for SAM. Note that these plugins are being deprecated; the Service Graph connector for Microsoft SCCM is the recommended replacement.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "There is no SCCM 2010 integration plugin. The supported versions are 2012 v2 and 2016."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "There is no SCCM 2020 plugin. The 2016 plugin is compatible with SCCM versions 1606, 1906, 1910, and 2002."
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/c_SAMDiscovery"
+      ],
+      "isFree": false,
+      "labels": {
+        "certification": "cis-sam",
+        "domain": "Data Integrity & Sources",
+        "domainSlug": "data-integrity",
+        "domainPercentage": 21,
+        "subtopics": [
+          "SCCM integration"
+        ],
+        "tags": [
+          "sccm",
+          "integration",
+          "plugins"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-23T12:42:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sam-data-integrity-420",
+      "certification": "cis-sam",
+      "topic": "data-integrity",
+      "cognitiveLevel": "comprehension",
+      "type": "multiple_choice",
+      "question": "What are normalization suggestions in SAM used for?",
+      "options": [
+        {
+          "id": "a",
+          "text": "To suggest new software purchases based on usage patterns"
+        },
+        {
+          "id": "b",
+          "text": "To evaluate discovery models that were manually normalized when updated content differs from current values"
+        },
+        {
+          "id": "c",
+          "text": "To recommend which discovery patterns to run next"
+        },
+        {
+          "id": "d",
+          "text": "To suggest optimal license metric configurations"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "Normalization suggestions are automatically identified when there is a difference between updated normalization content and your current content. They help evaluate manually normalized discovery models against the most up-to-date information from the Content Service.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Software purchase suggestions are not part of the normalization process."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Discovery pattern recommendations are separate from normalization suggestions."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "License metric configuration is separate from normalization suggestions."
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/c_SAMDiscovery"
+      ],
+      "isFree": false,
+      "labels": {
+        "certification": "cis-sam",
+        "domain": "Data Integrity & Sources",
+        "domainSlug": "data-integrity",
+        "domainPercentage": 21,
+        "subtopics": [
+          "Normalization"
+        ],
+        "tags": [
+          "normalization",
+          "suggestions"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-23T12:42:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sam-data-integrity-421",
+      "certification": "cis-sam",
+      "topic": "data-integrity",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which property allows SAM administrators to exclude software installed on specific devices from SAM?",
+      "options": [
+        {
+          "id": "a",
+          "text": "com.snc.samp.exclude_device_flag"
+        },
+        {
+          "id": "b",
+          "text": "com.snc.samp.recon.group"
+        },
+        {
+          "id": "c",
+          "text": "com.snc.samp.automaticsmcreation"
+        },
+        {
+          "id": "d",
+          "text": "com.snc.samp.debug"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "The com.snc.samp.exclude_device_flag property excludes software installed on devices where the Exclude from SAM column is set to true. You enter the column name 'exclude_from_sam' to activate this feature on the cmdb_ci_hardware table.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "This property determines grouping during reconciliation (Company, Cost Center, etc.), not device exclusion."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "This property auto-creates software models for non-licensable products, unrelated to device exclusion."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "This property enables debugging of reconciliation results, not device exclusion."
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/sam-properties"
+      ],
+      "isFree": false,
+      "labels": {
+        "certification": "cis-sam",
+        "domain": "Data Integrity & Sources",
+        "domainSlug": "data-integrity",
+        "domainPercentage": 21,
+        "subtopics": [
+          "SAM properties"
+        ],
+        "tags": [
+          "properties",
+          "device-exclusion"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-23T12:42:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sam-data-integrity-422",
+      "certification": "cis-sam",
+      "topic": "data-integrity",
+      "cognitiveLevel": "comprehension",
+      "type": "multiple_choice",
+      "question": "What is the recommended replacement for the deprecated Microsoft SCCM integration plugins?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Service Graph connector for Microsoft SCCM"
+        },
+        {
+          "id": "b",
+          "text": "Integration Hub for Microsoft SCCM"
+        },
+        {
+          "id": "c",
+          "text": "CMDB Connector for Microsoft Endpoint Manager"
+        },
+        {
+          "id": "d",
+          "text": "Direct API integration with Microsoft Intune"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "The Service Graph connector for Microsoft SCCM (available from the ServiceNow Store) is the recommended replacement. A Migration Readiness Tool is available to prepare instances for migration from the SCCM plugin to the Service Graph connector.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Integration Hub is not the replacement; the Service Graph connector is specifically designed for SCCM integration."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "There is no 'CMDB Connector for Microsoft Endpoint Manager' as the specific replacement."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Direct API integration with Intune is not the recommended replacement for SCCM integration plugins."
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/c_SAMDiscovery"
+      ],
+      "isFree": false,
+      "labels": {
+        "certification": "cis-sam",
+        "domain": "Data Integrity & Sources",
+        "domainSlug": "data-integrity",
+        "domainPercentage": 21,
+        "subtopics": [
+          "SCCM integration"
+        ],
+        "tags": [
+          "sccm",
+          "service-graph-connector",
+          "migration"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-23T12:42:00Z",
         "version": "1.1",
         "release": "Xanadu",
         "reviewed": false

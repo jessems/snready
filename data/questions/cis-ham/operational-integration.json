@@ -879,6 +879,370 @@
         "release": "Xanadu",
         "reviewed": false
       }
+    },
+    {
+      "id": "cis-ham-operational-integration-012",
+      "certification": "cis-ham",
+      "topic": "operational-integration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which subscription unit ratio applies to Mobile Devices in the HAM licensing model?",
+      "options": [
+        {
+          "id": "a",
+          "text": "4:1"
+        },
+        {
+          "id": "b",
+          "text": "5:1"
+        },
+        {
+          "id": "c",
+          "text": "10:1"
+        },
+        {
+          "id": "d",
+          "text": "15:1"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "Mobile Devices have a subscription unit ratio of 10:1, meaning 10 mobile device assets require 1 subscription unit.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "4:1 is the ratio for End User Computers, not Mobile Devices."
+          },
+          {
+            "choiceId": "b",
+            "explanation": "5:1 is the ratio for Network Gear, not Mobile Devices."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "15:1 is the ratio for Monitors, not Mobile Devices."
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/r/xanadu/it-asset-management/hardware-asset-management/ham-licensing"
+      ],
+      "isFree": false,
+      "labels": {
+        "certification": "cis-ham",
+        "domain": "Operational Integration",
+        "domainSlug": "operational-integration",
+        "domainPercentage": 20,
+        "subtopics": [
+          "HAM licensing"
+        ],
+        "tags": [
+          "licensing",
+          "mobile-devices",
+          "subscription-units"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-23T12:42:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-ham-operational-integration-013",
+      "certification": "cis-ham",
+      "topic": "operational-integration",
+      "cognitiveLevel": "comprehension",
+      "type": "multiple_choice",
+      "question": "What system property controls whether HAM licensing applies to custom model categories?",
+      "options": [
+        {
+          "id": "a",
+          "text": "sn_hamp.enable_custom_category_licensing"
+        },
+        {
+          "id": "b",
+          "text": "sn_ham_active_entitlements"
+        },
+        {
+          "id": "c",
+          "text": "glide.create_alm_asset.async"
+        },
+        {
+          "id": "d",
+          "text": "glide.asset.create_ci_with_ire"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "The sn_hamp.enable_custom_category_licensing property (default false) controls whether HAM licensing applies to custom model categories. When true, custom model category assets are excluded from HAM workflows unless their parent is an opted-in licensable category.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "This property stores HAM entitlement details for on-premise instances, not custom category licensing."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "This property controls async asset creation from CIs, unrelated to licensing."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "This property enables CI creation using IRE, not related to custom category licensing."
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/r/xanadu/it-asset-management/hardware-asset-management/ham-licensing"
+      ],
+      "isFree": false,
+      "labels": {
+        "certification": "cis-ham",
+        "domain": "Operational Integration",
+        "domainSlug": "operational-integration",
+        "domainPercentage": 20,
+        "subtopics": [
+          "HAM licensing",
+          "Properties"
+        ],
+        "tags": [
+          "licensing",
+          "custom-categories",
+          "properties"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-23T12:42:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-ham-operational-integration-014",
+      "certification": "cis-ham",
+      "topic": "operational-integration",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "An organization has an on-premise ServiceNow instance. How should they store their HAM entitlement details?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Upload an entitlement file to the Asset Management module"
+        },
+        {
+          "id": "b",
+          "text": "Update the sn_ham_active_entitlements system property with a comma-separated list of entitlements"
+        },
+        {
+          "id": "c",
+          "text": "Create entitlement records in the Software Entitlement table"
+        },
+        {
+          "id": "d",
+          "text": "Contact ServiceNow support to activate entitlements remotely"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "On-premise instances don't download entitlements automatically. You use the sn_ham_active_entitlements system property with comma-separated values like: ham_computer_license, ham_server_license, etc.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "There is no entitlement file upload mechanism; the system property is used for on-premise instances."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "HAM entitlements are managed via the system property, not the Software Entitlement table."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "ServiceNow support doesn't activate on-premise entitlements; the system property is used."
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/r/xanadu/it-asset-management/hardware-asset-management/ham-licensing"
+      ],
+      "isFree": false,
+      "labels": {
+        "certification": "cis-ham",
+        "domain": "Operational Integration",
+        "domainSlug": "operational-integration",
+        "domainPercentage": 20,
+        "subtopics": [
+          "HAM licensing",
+          "On-premise"
+        ],
+        "tags": [
+          "licensing",
+          "on-premise",
+          "entitlements",
+          "properties"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-23T12:42:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-ham-operational-integration-015",
+      "certification": "cis-ham",
+      "topic": "operational-integration",
+      "cognitiveLevel": "comprehension",
+      "type": "multiple_choice",
+      "question": "What happens to child assets when expenses are tracked in the TCO system?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Child asset expenses are tracked independently and do not affect the parent"
+        },
+        {
+          "id": "b",
+          "text": "Expenses on child assets are added to the TCO of the parent asset; removing a child doesn't affect parent TCO"
+        },
+        {
+          "id": "c",
+          "text": "Child asset expenses replace the parent asset expenses"
+        },
+        {
+          "id": "d",
+          "text": "Expenses are only tracked at the parent level and distributed to children"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "When cost is incurred on a child asset, the same cost is added to the parent asset's TCO. If a child asset is removed, its expense lines persist and the parent's TCO is not affected. If a child is swapped, one expense line is created for operational cost.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Child expenses DO affect the parent \u2014 they are added to the parent's TCO."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Child expenses are added to the parent, they don't replace parent expenses."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Expenses can be tracked at both parent and child levels; child expenses roll up to the parent."
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/r/xanadu/it-asset-management/hardware-asset-management/asset-mgmt-tco"
+      ],
+      "isFree": false,
+      "labels": {
+        "certification": "cis-ham",
+        "domain": "Operational Integration",
+        "domainSlug": "operational-integration",
+        "domainPercentage": 20,
+        "subtopics": [
+          "TCO",
+          "Asset hierarchy"
+        ],
+        "tags": [
+          "tco",
+          "child-assets",
+          "expense-lines"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-23T12:42:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-ham-operational-integration-016",
+      "certification": "cis-ham",
+      "topic": "operational-integration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What is the maximum number of lines that can be created in a Multiple model hardware asset refresh request?",
+      "options": [
+        {
+          "id": "a",
+          "text": "25"
+        },
+        {
+          "id": "b",
+          "text": "50"
+        },
+        {
+          "id": "c",
+          "text": "100"
+        },
+        {
+          "id": "d",
+          "text": "Unlimited"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "When using the Multiple model refresh type, you can create up to 50 lines, each specifying a different replacement model for a specific old asset.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The limit is 50 lines, not 25."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The limit is 50 lines, not 100."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "There is a limit of 50 lines per multiple model refresh request."
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/r/xanadu/it-asset-management/hardware-asset-management/hardware-asset-refresh"
+      ],
+      "isFree": false,
+      "labels": {
+        "certification": "cis-ham",
+        "domain": "Operational Integration",
+        "domainSlug": "operational-integration",
+        "domainPercentage": 20,
+        "subtopics": [
+          "Asset refresh"
+        ],
+        "tags": [
+          "refresh",
+          "multiple-model",
+          "limits"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-23T12:42:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     }
   ]
 }
