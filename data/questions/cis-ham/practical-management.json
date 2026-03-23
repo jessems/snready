@@ -1432,6 +1432,370 @@
         "release": "Xanadu",
         "reviewed": false
       }
+    },
+    {
+      "id": "cis-ham-practical-management-019",
+      "certification": "cis-ham",
+      "topic": "practical-management",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What role is required to use the hardware asset refresh request flow?",
+      "options": [
+        {
+          "id": "a",
+          "text": "asset_manager"
+        },
+        {
+          "id": "b",
+          "text": "inventory_user"
+        },
+        {
+          "id": "c",
+          "text": "itil"
+        },
+        {
+          "id": "d",
+          "text": "ham_admin"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "The inventory_user role is required to use the hardware asset refresh request flow.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The asset_manager role is not the specific role required for the refresh request flow."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The itil role provides general ITSM access but is not the required role for asset refresh."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "ham_admin is not a standard ServiceNow role name; inventory_user is required."
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/r/xanadu/it-asset-management/hardware-asset-management/hardware-asset-refresh"
+      ],
+      "isFree": false,
+      "labels": {
+        "certification": "cis-ham",
+        "domain": "Practical Management",
+        "domainSlug": "practical-management",
+        "domainPercentage": 25,
+        "subtopics": [
+          "Asset refresh",
+          "Roles"
+        ],
+        "tags": [
+          "refresh",
+          "roles",
+          "inventory-user"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-23T12:42:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-ham-practical-management-020",
+      "certification": "cis-ham",
+      "topic": "practical-management",
+      "cognitiveLevel": "comprehension",
+      "type": "multiple_choice",
+      "question": "How does the system determine if a hardware asset is eligible for refresh?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Based on the number of incidents reported against the asset"
+        },
+        {
+          "id": "b",
+          "text": "By comparing the asset creation date with the useful_life field to determine if the asset is past its useful life period"
+        },
+        {
+          "id": "c",
+          "text": "When the warranty expires on the asset"
+        },
+        {
+          "id": "d",
+          "text": "Based on manual assessment by the asset manager"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "The weekly scheduled job 'SAM - Calculate refresh eligibility' uses the SAMRefreshEligibilityCalculator Script Include to compare the asset creation date with the useful_life field (in months). Assets past their useful life period have the 'Qualified for refresh' flag set to true.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Incident count is not used to determine refresh eligibility; it's based on useful_life comparison."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Warranty expiration is tracked separately; refresh eligibility uses the useful_life field."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "While managers can initiate refreshes, eligibility is calculated automatically by a scheduled job."
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/r/xanadu/it-asset-management/hardware-asset-management/hardware-asset-refresh"
+      ],
+      "isFree": false,
+      "labels": {
+        "certification": "cis-ham",
+        "domain": "Practical Management",
+        "domainSlug": "practical-management",
+        "domainPercentage": 25,
+        "subtopics": [
+          "Asset refresh"
+        ],
+        "tags": [
+          "refresh",
+          "eligibility",
+          "useful-life"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-23T12:42:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-ham-practical-management-021",
+      "certification": "cis-ham",
+      "topic": "practical-management",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What are the two refresh type options available when creating a hardware asset refresh request?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Standard and Express"
+        },
+        {
+          "id": "b",
+          "text": "Single model and Multiple model"
+        },
+        {
+          "id": "c",
+          "text": "Individual and Bulk"
+        },
+        {
+          "id": "d",
+          "text": "Automatic and Manual"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "When creating a hardware asset refresh request, you choose between Single model (replace all old assets with the same model) or Multiple model (replace with different models for each asset). Multiple model supports up to 50 lines.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Standard and Express are not the refresh type options in HAM."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Individual and Bulk are not the named options; Single model and Multiple model are used."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Automatic and Manual are not the refresh type options in the catalog item."
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/r/xanadu/it-asset-management/hardware-asset-management/hardware-asset-refresh"
+      ],
+      "isFree": false,
+      "labels": {
+        "certification": "cis-ham",
+        "domain": "Practical Management",
+        "domainSlug": "practical-management",
+        "domainPercentage": 25,
+        "subtopics": [
+          "Asset refresh"
+        ],
+        "tags": [
+          "refresh",
+          "single-model",
+          "multiple-model"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-23T12:42:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-ham-practical-management-022",
+      "certification": "cis-ham",
+      "topic": "practical-management",
+      "cognitiveLevel": "comprehension",
+      "type": "multiple_choice",
+      "question": "When an asset is retired via an incident, which related records are automatically updated?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Only the asset record"
+        },
+        {
+          "id": "b",
+          "text": "CI, related asset record, software allocations, and maintenance contracts"
+        },
+        {
+          "id": "c",
+          "text": "CI and asset record only"
+        },
+        {
+          "id": "d",
+          "text": "Asset record and purchase orders"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "When the Change Management application triggers the retire asset event, the retire task updates: CI, related asset record, software allocations, and maintenance contracts. This reduces manual intervention needed to update records.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Multiple records are updated automatically, not just the asset record."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "In addition to CI and asset, software allocations and maintenance contracts are also updated."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Purchase orders are not part of the automatic retirement update; software allocations and maintenance contracts are."
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/r/xanadu/it-asset-management/hardware-asset-management/asset-lifecycle-automation"
+      ],
+      "isFree": false,
+      "labels": {
+        "certification": "cis-ham",
+        "domain": "Practical Management",
+        "domainSlug": "practical-management",
+        "domainPercentage": 25,
+        "subtopics": [
+          "Asset lifecycle",
+          "Retirement"
+        ],
+        "tags": [
+          "retire",
+          "automation",
+          "ci-sync"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-23T12:42:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-ham-practical-management-023",
+      "certification": "cis-ham",
+      "topic": "practical-management",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "When an asset is retired or swapped via an incident, how is the Stockroom field populated?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It defaults to the first stockroom in the system"
+        },
+        {
+          "id": "b",
+          "text": "Based on the asset's location, using supporting stockroom priorities if multiple exist"
+        },
+        {
+          "id": "c",
+          "text": "The user must manually select a stockroom"
+        },
+        {
+          "id": "d",
+          "text": "It always uses the default stockroom configured in system properties"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "The Stockroom field is populated based on the location of the asset. If there's no stockroom at the asset's location, the field isn't populated. If the location is supported by multiple stockrooms as service locations, the stockroom is selected based on priority.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The system uses the asset's location to determine the appropriate stockroom, not the first available."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The stockroom is automatically populated based on location; manual selection isn't required."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "There's no system-wide default stockroom property; it's based on the asset's location."
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/r/xanadu/it-asset-management/hardware-asset-management/asset-lifecycle-automation"
+      ],
+      "isFree": false,
+      "labels": {
+        "certification": "cis-ham",
+        "domain": "Practical Management",
+        "domainSlug": "practical-management",
+        "domainPercentage": 25,
+        "subtopics": [
+          "Asset lifecycle",
+          "Stockroom"
+        ],
+        "tags": [
+          "stockroom",
+          "location",
+          "swap",
+          "retire"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-23T12:42:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     }
   ]
 }

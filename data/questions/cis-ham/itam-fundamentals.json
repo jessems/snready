@@ -957,6 +957,435 @@
         "release": "Xanadu",
         "reviewed": false
       }
+    },
+    {
+      "id": "cis-ham-itam-fundamentals-013",
+      "certification": "cis-ham",
+      "topic": "itam-fundamentals",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which minimum HAM version is required to access the Asset Total Cost of Ownership feature?",
+      "options": [
+        {
+          "id": "a",
+          "text": "HAM 8.0.0"
+        },
+        {
+          "id": "b",
+          "text": "HAM 9.0.0"
+        },
+        {
+          "id": "c",
+          "text": "HAM 10.0.0"
+        },
+        {
+          "id": "d",
+          "text": "HAM 11.0.0"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "You must install Hardware Asset Management version 10.0.0 or later to access the Asset Total Cost of Ownership feature.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "HAM 8.0.0 predates the TCO feature; 10.0.0 is required."
+          },
+          {
+            "choiceId": "b",
+            "explanation": "HAM 9.0.0 does not include TCO; 10.0.0 is the minimum version."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "HAM 11.0.0 is not the minimum; TCO was introduced in HAM 10.0.0."
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/r/xanadu/it-asset-management/hardware-asset-management/asset-mgmt-tco"
+      ],
+      "isFree": false,
+      "labels": {
+        "certification": "cis-ham",
+        "domain": "ITAM Fundamentals",
+        "domainSlug": "itam-fundamentals",
+        "domainPercentage": 20,
+        "subtopics": [
+          "HAM versions"
+        ],
+        "tags": [
+          "version",
+          "tco",
+          "requirements"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-23T12:42:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-ham-itam-fundamentals-014",
+      "certification": "cis-ham",
+      "topic": "itam-fundamentals",
+      "cognitiveLevel": "comprehension",
+      "type": "multiple_choice",
+      "question": "What resource categories were added with HAM license version 5.0? (Choose 2)",
+      "options": [
+        {
+          "id": "a",
+          "text": "End User Computers and Servers"
+        },
+        {
+          "id": "b",
+          "text": "Monitors and Storage"
+        },
+        {
+          "id": "c",
+          "text": "Printers and Unclassified hardware"
+        },
+        {
+          "id": "d",
+          "text": "Mobile Devices and Network Gear"
+        }
+      ],
+      "correctAnswers": [
+        "b",
+        "c"
+      ],
+      "selectCount": 2,
+      "isNegative": false,
+      "explanation": {
+        "correct": "Unclassified hardware, Monitors, Storage, and Printers are available with HAM version 10.1.0 and later only when you upgrade to HAM license version 5.0. You must explicitly opt in these resource categories.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "End User Computers and Servers were available in earlier HAM license versions."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Mobile Devices and Network Gear were available in earlier HAM license versions."
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/r/xanadu/it-asset-management/hardware-asset-management/ham-licensing"
+      ],
+      "isFree": false,
+      "labels": {
+        "certification": "cis-ham",
+        "domain": "ITAM Fundamentals",
+        "domainSlug": "itam-fundamentals",
+        "domainPercentage": 20,
+        "subtopics": [
+          "HAM licensing"
+        ],
+        "tags": [
+          "licensing",
+          "version-5",
+          "resource-categories"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-23T12:42:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-ham-itam-fundamentals-015",
+      "certification": "cis-ham",
+      "topic": "itam-fundamentals",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "How does the system property glide.create_alm_asset.async affect asset creation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Assets are created in batches of 100"
+        },
+        {
+          "id": "b",
+          "text": "When true, assets are created by a scheduled job that runs every 15 minutes instead of immediately"
+        },
+        {
+          "id": "c",
+          "text": "Assets are created through an API call to an external system"
+        },
+        {
+          "id": "d",
+          "text": "Asset creation is disabled until manual trigger"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "When set to true, the 'Asset - Create asset delayed sync' scheduled job runs every 15 minutes to create assets. This allows a large number of CIs to be created quickly without waiting for asset creation. When false (default for upgrades from Orlando or earlier), assets are created immediately.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "There is no batch size of 100; the scheduled job runs every 15 minutes and processes queued creations."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Asset creation happens internally via scheduled job, not through external API calls."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The property doesn't disable creation; it delays it to a scheduled job interval."
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/r/xanadu/it-asset-management/hardware-asset-management/c_ManagingAssets"
+      ],
+      "isFree": false,
+      "labels": {
+        "certification": "cis-ham",
+        "domain": "ITAM Fundamentals",
+        "domainSlug": "itam-fundamentals",
+        "domainPercentage": 20,
+        "subtopics": [
+          "System properties",
+          "Asset creation"
+        ],
+        "tags": [
+          "async",
+          "property",
+          "asset-creation"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-23T12:42:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-ham-itam-fundamentals-016",
+      "certification": "cis-ham",
+      "topic": "itam-fundamentals",
+      "cognitiveLevel": "comprehension",
+      "type": "multiple_choice",
+      "question": "What is the purpose of the five disposal order tasks in the asset disposal workflow?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Verify, Schedule pickup, Pack, Ship, Confirm"
+        },
+        {
+          "id": "b",
+          "text": "Planning, Scheduling, Verification, Departure, Confirmation"
+        },
+        {
+          "id": "c",
+          "text": "Approve, Document, Wipe, Pack, Dispose"
+        },
+        {
+          "id": "d",
+          "text": "Identify, Assess, Approve, Process, Archive"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "The disposal workflow guides through five tasks: planning, scheduling, verification, departure, and final confirmation. Closing each task completes it and creates the next task in the workflow.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "While Verify is mentioned as the first task, the complete set is planning, scheduling, verification, departure, and confirmation."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "This is not the correct sequence of disposal workflow tasks."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "This is not the correct sequence; it doesn't match HAM's disposal workflow."
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/r/xanadu/it-asset-management/hardware-asset-management/asset-lifecycle-automation"
+      ],
+      "isFree": false,
+      "labels": {
+        "certification": "cis-ham",
+        "domain": "ITAM Fundamentals",
+        "domainSlug": "itam-fundamentals",
+        "domainPercentage": 20,
+        "subtopics": [
+          "Asset lifecycle",
+          "Disposal"
+        ],
+        "tags": [
+          "disposal",
+          "workflow",
+          "lifecycle"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-23T12:42:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-ham-itam-fundamentals-017",
+      "certification": "cis-ham",
+      "topic": "itam-fundamentals",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which asset tasks are available in Incident Management? (Choose 3)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Update/Repair"
+        },
+        {
+          "id": "b",
+          "text": "Deploy"
+        },
+        {
+          "id": "c",
+          "text": "Swap"
+        },
+        {
+          "id": "d",
+          "text": "Retire"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "c",
+        "d"
+      ],
+      "selectCount": 3,
+      "isNegative": false,
+      "explanation": {
+        "correct": "Incident Management supports three asset tasks: Update/Repair, Swap, and Retire. Deploy is available in Change Management and Field Service Management, not Incident Management.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Deploy is available in Change Management and Field Service Management, not in Incident Management."
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/r/xanadu/it-asset-management/hardware-asset-management/asset-lifecycle-automation"
+      ],
+      "isFree": false,
+      "labels": {
+        "certification": "cis-ham",
+        "domain": "ITAM Fundamentals",
+        "domainSlug": "itam-fundamentals",
+        "domainPercentage": 20,
+        "subtopics": [
+          "Asset tasks",
+          "Incident Management"
+        ],
+        "tags": [
+          "asset-tasks",
+          "incident",
+          "swap",
+          "retire"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-23T12:42:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-ham-itam-fundamentals-018",
+      "certification": "cis-ham",
+      "topic": "itam-fundamentals",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A HAM administrator wants to disable the mandatory asset action requirement when closing incidents. Which system property should be set to false?",
+      "options": [
+        {
+          "id": "a",
+          "text": "sn_hamp.enable_asset_action_validation_change_request"
+        },
+        {
+          "id": "b",
+          "text": "sn_hamp.enable_asset_action_validation_incident"
+        },
+        {
+          "id": "c",
+          "text": "glide.create_alm_asset.async"
+        },
+        {
+          "id": "d",
+          "text": "sn_hamp.enable_custom_category_licensing"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "Setting sn_hamp.enable_asset_action_validation_incident to false removes the mandatory asset action requirement when closing incidents. Available from HAM version 11.0.2 onward.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "This property controls asset action validation for change requests, not incidents."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "This property controls asynchronous asset creation from CIs, not incident closure validation."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "This property controls HAM licensing for custom model categories, not incident validation."
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/r/xanadu/it-asset-management/hardware-asset-management/asset-lifecycle-automation"
+      ],
+      "isFree": false,
+      "labels": {
+        "certification": "cis-ham",
+        "domain": "ITAM Fundamentals",
+        "domainSlug": "itam-fundamentals",
+        "domainPercentage": 20,
+        "subtopics": [
+          "System properties",
+          "Incident Management"
+        ],
+        "tags": [
+          "property",
+          "incident",
+          "asset-action",
+          "validation"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-23T12:42:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     }
   ]
 }

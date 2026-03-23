@@ -1138,6 +1138,589 @@
         "release": "Xanadu",
         "reviewed": false
       }
+    },
+    {
+      "id": "cis-sam-software-compliance-815",
+      "certification": "cis-sam",
+      "topic": "software-compliance",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which license metric group requires the SaaS License Management plugin to be installed?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Common"
+        },
+        {
+          "id": "b",
+          "text": "Concurrent Licenses"
+        },
+        {
+          "id": "c",
+          "text": "Subscription and Consumption"
+        },
+        {
+          "id": "d",
+          "text": "Adobe"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "Installing SaaS License Management adds the Subscription and Consumption metric groups. The Subscription group includes User Subscription, and the Consumption group includes SaaS Consumption metrics.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Common metric group is available in the base SAM application without additional plugins."
+          },
+          {
+            "choiceId": "b",
+            "explanation": "Concurrent Licenses require the Software Asset Management Professional for Engineering Applications plugin, not SaaS License Management."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Adobe metrics require the Adobe publisher pack, not the SaaS License Management plugin."
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/c_SAMLicenseMetrics"
+      ],
+      "isFree": false,
+      "labels": {
+        "certification": "cis-sam",
+        "domain": "Software Compliance & Reconciliation",
+        "domainSlug": "software-compliance",
+        "domainPercentage": 23,
+        "subtopics": [
+          "License metrics"
+        ],
+        "tags": [
+          "license-metrics",
+          "saas",
+          "subscription"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-23T12:42:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sam-software-compliance-816",
+      "certification": "cis-sam",
+      "topic": "software-compliance",
+      "cognitiveLevel": "comprehension",
+      "type": "multiple_choice",
+      "question": "What is the difference between Floating and Token license metrics in the Concurrent Licenses group?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Floating shares software licenses; Token shares a pool of tokens that may require multiple tokens per software checkout"
+        },
+        {
+          "id": "b",
+          "text": "Floating is for cloud software; Token is for on-premise software"
+        },
+        {
+          "id": "c",
+          "text": "Floating allows unlimited users; Token has a strict user limit"
+        },
+        {
+          "id": "d",
+          "text": "There is no difference; they are aliases for the same metric"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "Floating licenses share and manage a pool of software licenses, checking out one license per request. Token licenses share a pool of tokens, and each software access may check out one or more tokens. Both are based on peak usage.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Both Floating and Token are concurrent license types that can apply to any deployment model."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Both are limited by the pool size; neither allows unlimited users."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "They are distinct metrics with different licensing units (software licenses vs. tokens)."
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/c_SAMLicenseMetrics"
+      ],
+      "isFree": false,
+      "labels": {
+        "certification": "cis-sam",
+        "domain": "Software Compliance & Reconciliation",
+        "domainSlug": "software-compliance",
+        "domainPercentage": 23,
+        "subtopics": [
+          "License metrics",
+          "Concurrent"
+        ],
+        "tags": [
+          "license-metrics",
+          "concurrent",
+          "floating",
+          "token"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-23T12:42:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sam-software-compliance-817",
+      "certification": "cis-sam",
+      "topic": "software-compliance",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "An organization uses Oracle databases on VMware. Which property controls the level of aggregation for Oracle license reconciliation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "com.snc.samp.recon.group"
+        },
+        {
+          "id": "b",
+          "text": "com.snc.samp.oracle.reconlevel"
+        },
+        {
+          "id": "c",
+          "text": "com.snc.samp.oracle.hostaffinityenabled"
+        },
+        {
+          "id": "d",
+          "text": "com.snc.samp.recon.max_workers"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "The com.snc.samp.oracle.reconlevel property sets the aggregation level for Oracle Database and WebLogic Server licenses on VMware. Options are ESX, ESX cluster (default), or vCenter(s).",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "This property sets general reconciliation grouping (Company, Region, etc.), not Oracle-specific aggregation."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "This property enables host affinity rules for Oracle at the vCenter(s) level, but doesn't set the aggregation level."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "This property controls parallel scheduled jobs for reconciliation, not Oracle aggregation."
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/sam-properties"
+      ],
+      "isFree": false,
+      "labels": {
+        "certification": "cis-sam",
+        "domain": "Software Compliance & Reconciliation",
+        "domainSlug": "software-compliance",
+        "domainPercentage": 23,
+        "subtopics": [
+          "Oracle licensing",
+          "reconciliation"
+        ],
+        "tags": [
+          "oracle",
+          "vmware",
+          "aggregation",
+          "reconciliation"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-23T12:42:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sam-software-compliance-818",
+      "certification": "cis-sam",
+      "topic": "software-compliance",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What are the three aggregation levels available for Oracle reconciliation on VMware?",
+      "options": [
+        {
+          "id": "a",
+          "text": "VM, Host, Cluster"
+        },
+        {
+          "id": "b",
+          "text": "ESX, ESX cluster, vCenter(s)"
+        },
+        {
+          "id": "c",
+          "text": "Physical, Virtual, Hybrid"
+        },
+        {
+          "id": "d",
+          "text": "Server, Datacenter, Enterprise"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "The three aggregation levels are: ESX (considers all processor cores on the ESX host), ESX cluster (considers all processors on every ESX server within a cluster \u2014 default), and vCenter(s) (considers all processor cores on every ESX server).",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "These are generic virtualization terms, not the specific SAM property values."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Physical/Virtual/Hybrid are deployment models, not Oracle reconciliation aggregation levels."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Server/Datacenter/Enterprise are Microsoft licensing tiers, not Oracle aggregation levels."
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/sam-properties"
+      ],
+      "isFree": false,
+      "labels": {
+        "certification": "cis-sam",
+        "domain": "Software Compliance & Reconciliation",
+        "domainSlug": "software-compliance",
+        "domainPercentage": 23,
+        "subtopics": [
+          "Oracle licensing"
+        ],
+        "tags": [
+          "oracle",
+          "vmware",
+          "aggregation"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-23T12:42:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sam-software-compliance-819",
+      "certification": "cis-sam",
+      "topic": "software-compliance",
+      "cognitiveLevel": "comprehension",
+      "type": "multiple_choice",
+      "question": "How does the Microsoft Per Core (with CAL) license metric handle VMware clusters with vMotion or DRS enabled?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Only the ESX server currently hosting the VM is licensed"
+        },
+        {
+          "id": "b",
+          "text": "The peak capacity of cores on all ESX servers within the cluster is considered for licensing"
+        },
+        {
+          "id": "c",
+          "text": "Only the ESX server with the most cores is licensed"
+        },
+        {
+          "id": "d",
+          "text": "Each VM is licensed individually regardless of the host"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "When vMotion or DRS is enabled, any VM can move to any ESX Server within the cluster. Therefore, the peak capacity of cores on ALL ESX Servers in the cluster is considered for the rights needed to license the cluster.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "With vMotion/DRS, VMs can move between hosts, so licensing a single host is insufficient."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "All ESX servers in the cluster are considered, not just the one with the most cores."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Per Core (with CAL) licenses at the cluster level for ESX servers, not per individual VM."
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/c_SAMLicenseMetrics"
+      ],
+      "isFree": false,
+      "labels": {
+        "certification": "cis-sam",
+        "domain": "Software Compliance & Reconciliation",
+        "domainSlug": "software-compliance",
+        "domainPercentage": 23,
+        "subtopics": [
+          "Microsoft licensing"
+        ],
+        "tags": [
+          "microsoft",
+          "per-core",
+          "vmware",
+          "vmotion"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-23T12:42:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sam-software-compliance-820",
+      "certification": "cis-sam",
+      "topic": "software-compliance",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "IBM Processor Value Unit (PVU) licensing supports two capacity modes. What are they?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Full capacity and Subcapacity"
+        },
+        {
+          "id": "b",
+          "text": "Standard and Enterprise"
+        },
+        {
+          "id": "c",
+          "text": "Per-socket and Per-core"
+        },
+        {
+          "id": "d",
+          "text": "Physical and Virtual"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "IBM PVU licensing supports Full capacity (requires licenses for all activated processor cores in the physical hardware environment) and Subcapacity (requires licenses for less than the full capacity of your server or group of servers).",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Standard and Enterprise are edition names, not PVU capacity modes."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Per-socket and Per-core are different license metrics, not modes within PVU."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Physical and Virtual describe deployment types; PVU has Full capacity and Subcapacity modes."
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/c_SAMLicenseMetrics"
+      ],
+      "isFree": false,
+      "labels": {
+        "certification": "cis-sam",
+        "domain": "Software Compliance & Reconciliation",
+        "domainSlug": "software-compliance",
+        "domainPercentage": 23,
+        "subtopics": [
+          "IBM licensing"
+        ],
+        "tags": [
+          "ibm",
+          "pvu",
+          "full-capacity",
+          "subcapacity"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-23T12:42:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sam-software-compliance-821",
+      "certification": "cis-sam",
+      "topic": "software-compliance",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A customer wants to determine whether to use RHEL Server or RHEL for Virtual Datacenters licenses. Which property controls the optimization threshold?",
+      "options": [
+        {
+          "id": "a",
+          "text": "com.snc.samp.oracle.reconlevel"
+        },
+        {
+          "id": "b",
+          "text": "com.snc.samp.windowserver.license.threshold"
+        },
+        {
+          "id": "c",
+          "text": "The Red Hat Enterprise Linux Server for Virtual Datacenters license cost optimization threshold property"
+        },
+        {
+          "id": "d",
+          "text": "com.snc.samp.recon.group"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "This property determines whether to use RHEL Server or RHEL for Virtual Datacenters licenses. The default threshold is 3.2, based on the ratio of RHEL Server subscription list price to RHEL for Virtual Datacenters subscription price. It requires the IBM publisher pack.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "This property controls Oracle reconciliation aggregation level, not Red Hat licensing."
+          },
+          {
+            "choiceId": "b",
+            "explanation": "This property controls Windows Server Datacenter vs Standard Edition licensing optimization, not Red Hat."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "This property controls reconciliation grouping, not Red Hat license optimization."
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/sam-properties"
+      ],
+      "isFree": false,
+      "labels": {
+        "certification": "cis-sam",
+        "domain": "Software Compliance & Reconciliation",
+        "domainSlug": "software-compliance",
+        "domainPercentage": 23,
+        "subtopics": [
+          "Red Hat licensing"
+        ],
+        "tags": [
+          "redhat",
+          "rhel",
+          "licensing",
+          "optimization"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-23T12:42:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sam-software-compliance-822",
+      "certification": "cis-sam",
+      "topic": "software-compliance",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "How many cores per processor does VMware's Per Processor license metric require by default?",
+      "options": [
+        {
+          "id": "a",
+          "text": "16 cores per processor"
+        },
+        {
+          "id": "b",
+          "text": "32 cores per processor"
+        },
+        {
+          "id": "c",
+          "text": "48 cores per processor"
+        },
+        {
+          "id": "d",
+          "text": "64 cores per processor"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "VMware's Per Processor license metric requires one license per 32 cores per CPU. A 'Maximum cores per processor' metric attribute with a default value of 32 is automatically created on software models for VMware per processor entitlements.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The default is 32 cores per processor, not 16."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The default is 32 cores per processor, not 48."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The default is 32 cores per processor, not 64."
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/c_SAMLicenseMetrics"
+      ],
+      "isFree": false,
+      "labels": {
+        "certification": "cis-sam",
+        "domain": "Software Compliance & Reconciliation",
+        "domainSlug": "software-compliance",
+        "domainPercentage": 23,
+        "subtopics": [
+          "VMware licensing"
+        ],
+        "tags": [
+          "vmware",
+          "per-processor",
+          "cores"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-23T12:42:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     }
   ]
 }

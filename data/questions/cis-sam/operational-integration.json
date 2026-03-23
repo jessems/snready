@@ -892,6 +892,580 @@
         "release": "Xanadu",
         "reviewed": false
       }
+    },
+    {
+      "id": "cis-sam-operational-integration-1212",
+      "certification": "cis-sam",
+      "topic": "operational-integration",
+      "cognitiveLevel": "comprehension",
+      "type": "multiple_choice",
+      "question": "What happens when a software model is marked as restricted in SAM?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The software is automatically uninstalled from all devices"
+        },
+        {
+          "id": "b",
+          "text": "Removal candidates are created for any software associated with that software model"
+        },
+        {
+          "id": "c",
+          "text": "The software model is deleted from the CMDB"
+        },
+        {
+          "id": "d",
+          "text": "All entitlements for the software are automatically retired"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "When a software model is marked as restricted, removal candidates are created for any software associated with that software model. The state is automatically set to 'Awaiting Revocation' with justification 'Restricted Software'.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "SAM creates removal candidates but doesn't automatically uninstall software; that requires CSD integration."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Marking software as restricted doesn't delete the software model; it triggers removal candidate creation."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Entitlements are not automatically retired; restricted status affects installations, not entitlements."
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/c_SAMOptimization"
+      ],
+      "isFree": false,
+      "labels": {
+        "certification": "cis-sam",
+        "domain": "Operational Integration",
+        "domainSlug": "operational-integration",
+        "domainPercentage": 19,
+        "subtopics": [
+          "Restricted software"
+        ],
+        "tags": [
+          "restricted",
+          "removal-candidates",
+          "reclamation"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-23T12:42:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sam-operational-integration-1213",
+      "certification": "cis-sam",
+      "topic": "operational-integration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which scheduled job creates removal candidates based on reclamation rules and software usage?",
+      "options": [
+        {
+          "id": "a",
+          "text": "SAM \u2014 Daily Job"
+        },
+        {
+          "id": "b",
+          "text": "SAM \u2014 Identify new reclamation candidates"
+        },
+        {
+          "id": "c",
+          "text": "SAM \u2014 Updating Existing Reclamation Candidates"
+        },
+        {
+          "id": "d",
+          "text": "SAM \u2014 Normalize discovery models"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "The 'SAM \u2014 Identify new reclamation candidates' scheduled job runs monthly and uses reclamation rules and software usage to create removal candidates. It requires at least one successful reconciliation to have run first.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "SAM \u2014 Daily Job handles normalization and other daily tasks, not removal candidate creation."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "This weekly job updates existing removal candidates in 'Awaiting Revocation' state to 'Closed Complete', but doesn't create new ones."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "This job normalizes discovery models, unrelated to removal candidate creation."
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/c_SAMOptimization"
+      ],
+      "isFree": false,
+      "labels": {
+        "certification": "cis-sam",
+        "domain": "Operational Integration",
+        "domainSlug": "operational-integration",
+        "domainPercentage": 19,
+        "subtopics": [
+          "Reclamation",
+          "Scheduled jobs"
+        ],
+        "tags": [
+          "reclamation",
+          "scheduled-job",
+          "removal-candidates"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-23T12:42:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sam-operational-integration-1214",
+      "certification": "cis-sam",
+      "topic": "operational-integration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What are the possible states for a removal candidate? (Choose 3)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Awaiting Revocation"
+        },
+        {
+          "id": "b",
+          "text": "In Progress"
+        },
+        {
+          "id": "c",
+          "text": "Closed Complete"
+        },
+        {
+          "id": "d",
+          "text": "Attention Required"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "c",
+        "d"
+      ],
+      "selectCount": 3,
+      "isNegative": false,
+      "explanation": {
+        "correct": "Valid removal candidate states include: Attention Required, Ready, Awaiting User, Awaiting Approval, Awaiting Revocation, Closed Complete, Closed Skipped, and Closed Canceled. 'In Progress' is not a valid state.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "'In Progress' is not a valid removal candidate state. The workflow states are Attention Required, Ready, Awaiting User, Awaiting Approval, Awaiting Revocation, Closed Complete, Closed Skipped, and Closed Canceled."
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/c_SAMOptimization"
+      ],
+      "isFree": false,
+      "labels": {
+        "certification": "cis-sam",
+        "domain": "Operational Integration",
+        "domainSlug": "operational-integration",
+        "domainPercentage": 19,
+        "subtopics": [
+          "Reclamation workflow"
+        ],
+        "tags": [
+          "reclamation",
+          "removal-candidates",
+          "states"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-23T12:42:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sam-operational-integration-1215",
+      "certification": "cis-sam",
+      "topic": "operational-integration",
+      "cognitiveLevel": "comprehension",
+      "type": "multiple_choice",
+      "question": "When does a removal candidate enter the 'Attention Required' state?",
+      "options": [
+        {
+          "id": "a",
+          "text": "When the software cannot be uninstalled automatically"
+        },
+        {
+          "id": "b",
+          "text": "When the User field is empty on an automatic removal candidate that has Notify User selected"
+        },
+        {
+          "id": "c",
+          "text": "When the user rejects the removal request"
+        },
+        {
+          "id": "d",
+          "text": "When the removal candidate exceeds the SLA timeline"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "A removal candidate enters 'Attention Required' when the User field is empty on an automatic removal candidate that has the Notify User check box selected. Once the User field is populated, the state automatically changes to Ready.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Inability to uninstall doesn't trigger this state; it's about missing user information."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "User rejection moves the candidate to 'Awaiting Approval' for manager review, not 'Attention Required'."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "There is no SLA-based state transition to 'Attention Required'."
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/c_SAMOptimization"
+      ],
+      "isFree": false,
+      "labels": {
+        "certification": "cis-sam",
+        "domain": "Operational Integration",
+        "domainSlug": "operational-integration",
+        "domainPercentage": 19,
+        "subtopics": [
+          "Reclamation workflow"
+        ],
+        "tags": [
+          "reclamation",
+          "attention-required",
+          "states"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-23T12:42:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sam-operational-integration-1216",
+      "certification": "cis-sam",
+      "topic": "operational-integration",
+      "cognitiveLevel": "comprehension",
+      "type": "multiple_choice",
+      "question": "How does the reclamation workflow differ for restricted software versus low usage justifications?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Restricted software is automatically executed without user approval; low usage prompts the user for approval"
+        },
+        {
+          "id": "b",
+          "text": "Both require user approval before proceeding"
+        },
+        {
+          "id": "c",
+          "text": "Low usage is automatically executed; restricted software requires manager approval"
+        },
+        {
+          "id": "d",
+          "text": "Both skip the user and go directly to Closed Complete"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "Workflows for restricted software (and unlicensed) justifications execute automatically \u2014 the user is notified of unauthorized use but is NOT prompted for approval. Low usage (and unallocated) justifications prompt the user for approval before proceeding.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Restricted and unlicensed justifications are automatic; only low usage and unallocated prompt the user."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "It's the opposite: restricted is automatic, low usage prompts the user."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Neither goes directly to Closed Complete; restricted goes to Awaiting Revocation and low usage prompts user first."
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/c_SAMOptimization"
+      ],
+      "isFree": false,
+      "labels": {
+        "certification": "cis-sam",
+        "domain": "Operational Integration",
+        "domainSlug": "operational-integration",
+        "domainPercentage": 19,
+        "subtopics": [
+          "Reclamation workflow"
+        ],
+        "tags": [
+          "reclamation",
+          "restricted",
+          "low-usage",
+          "justification"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-23T12:42:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sam-operational-integration-1217",
+      "certification": "cis-sam",
+      "topic": "operational-integration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What is the default license period (in days) for Citrix applications to be considered during reconciliation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "30 days"
+        },
+        {
+          "id": "b",
+          "text": "60 days"
+        },
+        {
+          "id": "c",
+          "text": "90 days"
+        },
+        {
+          "id": "d",
+          "text": "180 days"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "The default license period for Citrix applications is 90 days, controlled by the com.snc.samp.citrix.app.license.period property. This property is only available when the Citrix publisher pack is activated.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "30 days is the default for engineering application peak usage period, not Citrix applications."
+          },
+          {
+            "choiceId": "b",
+            "explanation": "60 days is the analysis period for the Aha! reclamation rule, not the Citrix license period."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "180 days is not the default Citrix license period; the default is 90 days."
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/sam-properties"
+      ],
+      "isFree": false,
+      "labels": {
+        "certification": "cis-sam",
+        "domain": "Operational Integration",
+        "domainSlug": "operational-integration",
+        "domainPercentage": 19,
+        "subtopics": [
+          "Citrix integration"
+        ],
+        "tags": [
+          "citrix",
+          "license-period",
+          "properties"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-23T12:42:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sam-operational-integration-1218",
+      "certification": "cis-sam",
+      "topic": "operational-integration",
+      "cognitiveLevel": "comprehension",
+      "type": "multiple_choice",
+      "question": "How is suite-based software reclamation handled differently from individual product reclamation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Suite reclamation creates one removal candidate per suite component"
+        },
+        {
+          "id": "b",
+          "text": "Suite reclamation is performed at the user level with one removal candidate for the entire suite, showing potential savings for the whole suite"
+        },
+        {
+          "id": "c",
+          "text": "Suite components can be reclaimed individually"
+        },
+        {
+          "id": "d",
+          "text": "Suite reclamation requires manual approval for each component"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "For suite-based products, bulk reclamation is performed at the user level. One removal candidate is created for the entire suite, and you can add suite components via the Software Installation related list. Potential savings show the entire suite value. Suite components cannot be reclaimed individually.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "One removal candidate is created for the entire suite, not one per component."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Suite components cannot be reclaimed individually; reclamation is at the suite level."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Suite reclamation follows the same workflow as individual products; no per-component approval is needed."
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/c_SAMOptimization"
+      ],
+      "isFree": false,
+      "labels": {
+        "certification": "cis-sam",
+        "domain": "Operational Integration",
+        "domainSlug": "operational-integration",
+        "domainPercentage": 19,
+        "subtopics": [
+          "Reclamation",
+          "Suites"
+        ],
+        "tags": [
+          "reclamation",
+          "suites",
+          "bulk"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-23T12:42:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sam-operational-integration-1219",
+      "certification": "cis-sam",
+      "topic": "operational-integration",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A weekly scheduled job automatically updates removal candidates in the 'Awaiting Revocation' state to 'Closed Complete'. What additional condition must be met?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The user must have approved the removal"
+        },
+        {
+          "id": "b",
+          "text": "The software install field must be empty"
+        },
+        {
+          "id": "c",
+          "text": "The removal candidate must be older than 30 days"
+        },
+        {
+          "id": "d",
+          "text": "The manager must have signed off on the removal"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "The weekly scheduled job 'SAM \u2014 Updating Existing Reclamation Candidates' automatically updates removal candidates in the Awaiting Revocation state to Closed Complete only when the software install field is empty (indicating the software has been removed).",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "User approval happens earlier in the workflow; the weekly job checks the software install field, not approval status."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "There is no 30-day age requirement; the condition is the software install field being empty."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Manager sign-off is part of the approval workflow, not the weekly cleanup job condition."
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/r/xanadu/it-asset-management/now-assist-for-software-asset-management-sam/c_SAMOptimization"
+      ],
+      "isFree": false,
+      "labels": {
+        "certification": "cis-sam",
+        "domain": "Operational Integration",
+        "domainSlug": "operational-integration",
+        "domainPercentage": 19,
+        "subtopics": [
+          "Reclamation workflow",
+          "Scheduled jobs"
+        ],
+        "tags": [
+          "reclamation",
+          "awaiting-revocation",
+          "scheduled-job"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-23T12:42:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     }
   ]
 }
