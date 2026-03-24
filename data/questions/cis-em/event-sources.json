@@ -783,6 +783,306 @@
         "release": "Xanadu",
         "reviewed": false
       }
+    },
+    {
+      "id": "cis-em-event-sources-011",
+      "certification": "cis-em",
+      "topic": "event-sources",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which push connector supports both OAuth and basic authentication for event collection?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Prometheus"
+        },
+        {
+          "id": "b",
+          "text": "Dynatrace"
+        },
+        {
+          "id": "c",
+          "text": "Grafana"
+        },
+        {
+          "id": "d",
+          "text": "Sentry"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Dynatrace supports both OAuth authentication and basic authentication for event collection through the instance. Other connectors like Azure, Datadog, and ThousandEyes also support dual authentication. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/connectors-and-listeners.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Prometheus supports only basic authentication.",
+            "reference": "Connectors documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Grafana supports only basic authentication.",
+            "reference": "Connectors documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Sentry supports only basic authentication.",
+            "reference": "Connectors documentation"
+          }
+        ]
+      },
+      "isFree": false
+    },
+    {
+      "id": "cis-em-event-sources-012",
+      "certification": "cis-em",
+      "topic": "event-sources",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What is required before using push connectors for event collection in Event Management?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The ITOM Visibility plugin must be activated"
+        },
+        {
+          "id": "b",
+          "text": "The Event Management Connectors plugin must be installed from the ServiceNow Store"
+        },
+        {
+          "id": "c",
+          "text": "A dedicated MID Server cluster must be configured"
+        },
+        {
+          "id": "d",
+          "text": "The Discovery plugin must be running"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Integrating with push connectors is only available by installing the Event Management Connector plugin from the ServiceNow Store. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/push-event-listener.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "ITOM Visibility is not required for push connectors.",
+            "reference": "Push connector documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "A dedicated MID Server cluster is not required; some push connectors collect through the instance directly.",
+            "reference": "Push connector documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Discovery is not a prerequisite for push connectors.",
+            "reference": "Push connector documentation"
+          }
+        ]
+      },
+      "isFree": false
+    },
+    {
+      "id": "cis-em-event-sources-013",
+      "certification": "cis-em",
+      "topic": "event-sources",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which component runs the SNMP listener for collecting SNMP traps?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The ServiceNow instance directly"
+        },
+        {
+          "id": "b",
+          "text": "The MID Server"
+        },
+        {
+          "id": "c",
+          "text": "The SNMP Gateway appliance"
+        },
+        {
+          "id": "d",
+          "text": "The Event Management plugin"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The SNMP listener runs on the MID Server, which acts as a collection endpoint for SNMP traps. The MID Server sends the traps to the ServiceNow instance for further processing. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/connectors-and-listeners.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The SNMP listener runs on the MID Server, not directly on the instance.",
+            "reference": "SNMP trap collection documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "There is no SNMP Gateway appliance in ServiceNow architecture.",
+            "reference": "SNMP trap collection documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The Event Management plugin does not run the SNMP listener; the MID Server does.",
+            "reference": "SNMP trap collection documentation"
+          }
+        ]
+      },
+      "isFree": false
+    },
+    {
+      "id": "cis-em-event-sources-014",
+      "certification": "cis-em",
+      "topic": "event-sources",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "An organization needs to collect events from a monitoring tool that is not natively supported by Event Management. What approach should they take?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Wait for ServiceNow to release a native connector"
+        },
+        {
+          "id": "b",
+          "text": "Create a custom pull connector with a script, connector definition, and connector instance"
+        },
+        {
+          "id": "c",
+          "text": "Use the Discovery plugin to import events"
+        },
+        {
+          "id": "d",
+          "text": "Manually enter events through the ServiceNow UI"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "You can create a customized pull connector that requires a script, connector definition, and connector instance to retrieve events on behalf of an event source. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/connectors-and-listeners.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Creating a custom connector is the recommended approach rather than waiting.",
+            "reference": "Custom connectors documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Discovery is for CI identification, not event collection.",
+            "reference": "Custom connectors documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Manual entry is not scalable; custom connectors automate collection.",
+            "reference": "Custom connectors documentation"
+          }
+        ]
+      },
+      "isFree": false
+    },
+    {
+      "id": "cis-em-event-sources-015",
+      "certification": "cis-em",
+      "topic": "event-sources",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which event collection method does NOT require a MID Server?",
+      "options": [
+        {
+          "id": "a",
+          "text": "BMC TrueSight push connector"
+        },
+        {
+          "id": "b",
+          "text": "AWS push connector"
+        },
+        {
+          "id": "c",
+          "text": "Microsoft Azure MID Push Connector"
+        },
+        {
+          "id": "d",
+          "text": "GCP MID Push Connector"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The AWS push connector processes Amazon Web Services alarms with event collection through the instance directly, not requiring a MID Server. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/connectors-and-listeners.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "BMC TrueSight event collection is through the MID Server.",
+            "reference": "Connectors documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "As the name implies, the Azure MID Push Connector collects through the MID Server.",
+            "reference": "Connectors documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The GCP MID Push Connector collects through the MID Server.",
+            "reference": "Connectors documentation"
+          }
+        ]
+      },
+      "isFree": false
+    },
+    {
+      "id": "cis-em-event-sources-016",
+      "certification": "cis-em",
+      "topic": "event-sources",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What are the four methods by which Event Management can collect events sent to the instance?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Direct instance, MID Server, SNMP trap, and email"
+        },
+        {
+          "id": "b",
+          "text": "Direct instance, REST API, database query, and webhook"
+        },
+        {
+          "id": "c",
+          "text": "Pull connector, push connector, SOAP API, and syslog"
+        },
+        {
+          "id": "d",
+          "text": "MID Server, email, FTP, and SSH"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "After event collection configuration, Event Management can collect events that are sent directly to the instance, or via the MID Server, SNMP trap, or email. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/push-event-listener.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Database query, REST API, and webhook are not the primary collection categories described in the documentation.",
+            "reference": "Push connector documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "SOAP API, syslog, and FTP are not primary event collection methods for Event Management.",
+            "reference": "Push connector documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "FTP and SSH are not event collection methods in Event Management.",
+            "reference": "Push connector documentation"
+          }
+        ]
+      },
+      "isFree": false
     }
   ]
 }

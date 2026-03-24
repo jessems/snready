@@ -713,6 +713,486 @@
         "release": "Xanadu",
         "reviewed": false
       }
+    },
+    {
+      "id": "cis-sir-integrations-010",
+      "certification": "cis-sir",
+      "topic": "integrations",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which email-related property defines where external integrations should send emails for Security Operations email parsing?",
+      "options": [
+        {
+          "id": "a",
+          "text": "email_from"
+        },
+        {
+          "id": "b",
+          "text": "email_to"
+        },
+        {
+          "id": "c",
+          "text": "email_parser_address"
+        },
+        {
+          "id": "d",
+          "text": "email_inbound"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "All Security Operations plugins have a property (email_to) that defines the email address where external integrations should send emails to be parsed by the email parsers.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "email_from is not the property used; the correct one is email_to",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/email-parsing.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The property is called email_to, not email_parser_address",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/email-parsing.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The correct property is email_to",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/email-parsing.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/xanadu/security-management/email-parsing.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "scraped-docs/cis-secops-api/email-parsing.md",
+        "excerpt": "All Security Operations plugins have a property (email_to) that defines the email address where external integrations should send emails."
+      },
+      "labels": {
+        "certification": "cis-sir",
+        "domain": "Security Incident Integrations",
+        "domainSlug": "integrations",
+        "domainPercentage": 0,
+        "subtopics": [
+          "email parsing"
+        ],
+        "tags": [
+          "email",
+          "parsing",
+          "integration"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-24T02:03:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sir-integrations-011",
+      "certification": "cis-sir",
+      "topic": "integrations",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What happens when an email sent to the Security Operations email address does not match any email parser?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The email is automatically deleted"
+        },
+        {
+          "id": "b",
+          "text": "The email is stored as unmatched and can be reviewed and reprocessed"
+        },
+        {
+          "id": "c",
+          "text": "A security incident is created with default values"
+        },
+        {
+          "id": "d",
+          "text": "An error notification is sent to the admin"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "Matched emails create or update Security Operations records, while unmatched emails can be reviewed and reprocessed by administrators.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Unmatched emails are not deleted; they are stored for review",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/email-parsing.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "No automatic incident is created for unmatched emails",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/email-parsing.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Unmatched emails are stored for review rather than generating error notifications",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/email-parsing.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/xanadu/security-management/email-parsing.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "scraped-docs/cis-secops-api/email-parsing.md",
+        "excerpt": "Unmatched emails can be reviewed and reprocessed."
+      },
+      "labels": {
+        "certification": "cis-sir",
+        "domain": "Security Incident Integrations",
+        "domainSlug": "integrations",
+        "domainPercentage": 0,
+        "subtopics": [
+          "email parsing",
+          "unmatched emails"
+        ],
+        "tags": [
+          "email",
+          "parsing",
+          "unmatched"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-24T02:03:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sir-integrations-012",
+      "certification": "cis-sir",
+      "topic": "integrations",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What is the purpose of domain separation in SIR integrations?",
+      "options": [
+        {
+          "id": "a",
+          "text": "To separate email domains for spam filtering"
+        },
+        {
+          "id": "b",
+          "text": "To enable third-party integrations to be configured on a per-domain basis for service providers"
+        },
+        {
+          "id": "c",
+          "text": "To create separate DNS domains for each integration"
+        },
+        {
+          "id": "d",
+          "text": "To isolate network traffic between integrations"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "Starting from the Madrid release, domain separation enables third-party integrations to be configured on a per-domain basis, allowing service providers to manage integrations separately for each tenant.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Domain separation in SIR is about data isolation, not email spam filtering",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/security-incident-response/domain-separation-security-incident-response.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Domain separation refers to ServiceNow data domains, not DNS domains",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/security-incident-response/domain-separation-security-incident-response.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Domain separation is about data and process isolation, not network traffic",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/security-incident-response/domain-separation-security-incident-response.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/xanadu/security-management/security-incident-response/domain-separation-security-incident-response.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "scraped-docs/cis-secops-api/domain-separation-security-incident-response.md",
+        "excerpt": "Third-party integrations can be configured on a per-domain basis."
+      },
+      "labels": {
+        "certification": "cis-sir",
+        "domain": "Security Incident Integrations",
+        "domainSlug": "integrations",
+        "domainPercentage": 0,
+        "subtopics": [
+          "domain separation"
+        ],
+        "tags": [
+          "domain-separation",
+          "integrations"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-24T02:03:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sir-integrations-013",
+      "certification": "cis-sir",
+      "topic": "integrations",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A service provider wants to standardize SOC procedures across multiple customers while maintaining data isolation. Which SIR capability supports this?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Multi-instance architecture"
+        },
+        {
+          "id": "b",
+          "text": "Domain separation with Standard level support"
+        },
+        {
+          "id": "c",
+          "text": "SIR clustering"
+        },
+        {
+          "id": "d",
+          "text": "Virtual private SIR instances"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "Domain separation in SIR enables service providers to standardize SOC and SIR procedures across their customer base while maintaining separate workspaces, dashboards, and data isolation for each tenant.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "SIR uses domain separation within a single instance, not multi-instance",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/security-incident-response/domain-separation-security-incident-response.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "SIR clustering is not a feature; domain separation provides this capability",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/security-incident-response/domain-separation-security-incident-response.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Virtual private instances are not a SIR feature; domain separation handles this",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/security-incident-response/domain-separation-security-incident-response.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/xanadu/security-management/security-incident-response/domain-separation-security-incident-response.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "scraped-docs/cis-secops-api/domain-separation-security-incident-response.md",
+        "excerpt": "Domain separation enables service providers to standardize SOC and SIR procedures across the customer base with lowered operational costs."
+      },
+      "labels": {
+        "certification": "cis-sir",
+        "domain": "Security Incident Integrations",
+        "domainSlug": "integrations",
+        "domainPercentage": 0,
+        "subtopics": [
+          "domain separation",
+          "service provider"
+        ],
+        "tags": [
+          "domain-separation",
+          "service-provider",
+          "SOC"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-24T02:03:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sir-integrations-014",
+      "certification": "cis-sir",
+      "topic": "integrations",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which types of records can be created through Security Operations email parsing? ",
+      "options": [
+        {
+          "id": "a",
+          "text": "Only security incidents"
+        },
+        {
+          "id": "b",
+          "text": "Security incidents, requests, vulnerable items, vulnerabilities, observables, and attack methods"
+        },
+        {
+          "id": "c",
+          "text": "Only security incidents and vulnerability records"
+        },
+        {
+          "id": "d",
+          "text": "Only security incidents and observables"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "Email parsing can create multiple types of Security Operations records including security incidents, requests, vulnerable items, vulnerabilities, security incident observables, attack methods, and more.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Email parsing supports many record types beyond just security incidents",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/email-parsing.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Email parsing supports additional record types like observables and attack methods",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/email-parsing.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Email parsing also creates requests, vulnerable items, vulnerabilities, and attack methods",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/email-parsing.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/xanadu/security-management/email-parsing.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "scraped-docs/cis-secops-api/email-parsing.md",
+        "excerpt": "Create Security Operations records, for example, security incidents, requests, vulnerable items, vulnerabilities, security incident observables, attack methods, and more."
+      },
+      "labels": {
+        "certification": "cis-sir",
+        "domain": "Security Incident Integrations",
+        "domainSlug": "integrations",
+        "domainPercentage": 0,
+        "subtopics": [
+          "email parsing record types"
+        ],
+        "tags": [
+          "email",
+          "parsing",
+          "records"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-24T02:03:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sir-integrations-015",
+      "certification": "cis-sir",
+      "topic": "integrations",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What level of domain separation support does Security Incident Response provide?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Basic"
+        },
+        {
+          "id": "b",
+          "text": "Standard"
+        },
+        {
+          "id": "c",
+          "text": "Advanced"
+        },
+        {
+          "id": "d",
+          "text": "Premium"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "Security Incident Response provides Standard level domain separation support, which includes all aspects of Basic level support plus domain-aware application properties and SP-configurable business logic per customer.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "SIR provides Standard level, not Basic",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/security-incident-response/domain-separation-security-incident-response.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The support level is Standard, not Advanced",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/security-incident-response/domain-separation-security-incident-response.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The support level is Standard, not Premium",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/security-incident-response/domain-separation-security-incident-response.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/xanadu/security-management/security-incident-response/domain-separation-security-incident-response.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "scraped-docs/cis-secops-api/domain-separation-security-incident-response.md",
+        "excerpt": "Support level: Standard"
+      },
+      "labels": {
+        "certification": "cis-sir",
+        "domain": "Security Incident Integrations",
+        "domainSlug": "integrations",
+        "domainPercentage": 0,
+        "subtopics": [
+          "domain separation support level"
+        ],
+        "tags": [
+          "domain-separation",
+          "standard"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-24T02:03:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     }
   ]
 }

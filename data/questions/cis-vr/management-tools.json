@@ -1118,6 +1118,326 @@
         "release": "Xanadu",
         "reviewed": false
       }
+    },
+    {
+      "id": "cis-vr-management-tools-015",
+      "certification": "cis-vr",
+      "topic": "management-tools",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What happens when an approved exception expires in Vulnerability Response?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The vulnerable item is permanently closed"
+        },
+        {
+          "id": "b",
+          "text": "The vulnerable item or remediation task reverts to the Open state"
+        },
+        {
+          "id": "c",
+          "text": "The exception is automatically renewed for another period"
+        },
+        {
+          "id": "d",
+          "text": "The vulnerable item is deleted from the system"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "When an approved exception expires, the VI or RT reverts to the Open state, allowing for renewed action on the vulnerability.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Expiry reverts the state to Open, not permanently closed",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-exception-management.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Exceptions are not auto-renewed; they revert to Open state",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-exception-management.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "VIs are not deleted; they return to Open state",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-exception-management.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-exception-management.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "scraped-docs/cis-secops-api/vr-exception-management.md",
+        "excerpt": "Expired requests revert the VI or RT to the Open state, allowing for renewed action."
+      },
+      "labels": {
+        "certification": "cis-vr",
+        "domain": "Management Tools and Processes",
+        "domainSlug": "management-tools",
+        "domainPercentage": 0,
+        "subtopics": [
+          "exception expiry"
+        ],
+        "tags": [
+          "exception",
+          "expiry",
+          "open-state"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-24T02:03:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-vr-management-tools-016",
+      "certification": "cis-vr",
+      "topic": "management-tools",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "How does Vulnerability Response track the number of times a record has been deferred?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Through manual entry by analysts"
+        },
+        {
+          "id": "b",
+          "text": "A scheduled job (set deferral counts) runs daily to post counts for records deferred more than once"
+        },
+        {
+          "id": "c",
+          "text": "Through real-time counters on each record"
+        },
+        {
+          "id": "d",
+          "text": "By querying the audit log on demand"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "A scheduled job, 'set deferral counts', runs daily to post counts for records that are deferred more than once in the Deferral count column.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Deferral tracking is automated, not manual",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vulnerability-groups.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "A daily scheduled job updates the counts, not real-time counters",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vulnerability-groups.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The scheduled job proactively updates counts, not on-demand querying",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vulnerability-groups.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vulnerability-groups.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "scraped-docs/cis-secops-api/vulnerability-groups.md",
+        "excerpt": "A scheduled job, set deferral counts, runs daily to post counts for the records that are deferred more than once."
+      },
+      "labels": {
+        "certification": "cis-vr",
+        "domain": "Management Tools and Processes",
+        "domainSlug": "management-tools",
+        "domainPercentage": 0,
+        "subtopics": [
+          "deferral tracking"
+        ],
+        "tags": [
+          "deferral",
+          "scheduled-job",
+          "tracking"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-24T02:03:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-vr-management-tools-017",
+      "certification": "cis-vr",
+      "topic": "management-tools",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What is the approval workflow for exception requests in Vulnerability Response?",
+      "options": [
+        {
+          "id": "a",
+          "text": "No approval is needed; exceptions are automatically granted"
+        },
+        {
+          "id": "b",
+          "text": "A single-level approval by any admin"
+        },
+        {
+          "id": "c",
+          "text": "Up to two levels of approval, but if no first-level approver exists, an exception cannot be requested"
+        },
+        {
+          "id": "d",
+          "text": "Approval is only required for critical vulnerabilities"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "Exception approval can be a two-level workflow. If only the first-level approver is present, the exception can be requested and approved. However, if there's no first-level approver, an exception can't be requested.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Exceptions require approval; they are not automatically granted",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-exception-management.html"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "The workflow supports two levels and requires at least a first-level approver",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-exception-management.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Approval is required regardless of vulnerability severity",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-exception-management.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr-exception-management.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "scraped-docs/cis-secops-api/vr-exception-management.md",
+        "excerpt": "Approving an exception request can be a two-level workflow. If there's no first-level approver, an exception can't be requested."
+      },
+      "labels": {
+        "certification": "cis-vr",
+        "domain": "Management Tools and Processes",
+        "domainSlug": "management-tools",
+        "domainPercentage": 0,
+        "subtopics": [
+          "exception approval workflow"
+        ],
+        "tags": [
+          "exception",
+          "approval",
+          "two-level"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-24T02:03:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-vr-management-tools-018",
+      "certification": "cis-vr",
+      "topic": "management-tools",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Starting with v23.0 of Vulnerability Response, what replaced the Vulnerable Item State Approval workflow?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A new Business Rule"
+        },
+        {
+          "id": "b",
+          "text": "The Vulnerability State Approval Change flow in Flow Designer"
+        },
+        {
+          "id": "c",
+          "text": "A scheduled job for state transitions"
+        },
+        {
+          "id": "d",
+          "text": "Manual state approval by admins only"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "Starting with v23.0 of Vulnerability Response, the Vulnerable Item State Approval workflow is deprecated and replaced by the flow 'Vulnerability State Approval Change' in the Flow Designer.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "A flow in Flow Designer replaced the workflow, not a Business Rule",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vulnerabillity-states.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The replacement is a Flow Designer flow, not a scheduled job",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vulnerabillity-states.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The approval is now handled by a Flow Designer flow, not manual-only",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vulnerabillity-states.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vulnerabillity-states.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "scraped-docs/cis-secops-api/vulnerabillity-states.md",
+        "excerpt": "The Vulnerable Item State Approval workflow is deprecated and replaced by the flow Vulnerability State Approval Change in the flow designer."
+      },
+      "labels": {
+        "certification": "cis-vr",
+        "domain": "Management Tools and Processes",
+        "domainSlug": "management-tools",
+        "domainPercentage": 0,
+        "subtopics": [
+          "state approval flow"
+        ],
+        "tags": [
+          "flow-designer",
+          "state-approval",
+          "deprecated"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-24T02:03:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     }
   ]
 }

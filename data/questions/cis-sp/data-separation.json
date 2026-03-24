@@ -902,7 +902,9 @@
           "text": "No domains can see any records"
         }
       ],
-      "correctAnswers": ["a"],
+      "correctAnswers": [
+        "a"
+      ],
       "explanation": {
         "correct": "'Visibility from below' allows child domains to see records that exist in their parent domains. This enables sharing of common reference data while maintaining separation for domain-specific records.",
         "wrongAnswers": [
@@ -926,8 +928,15 @@
       },
       "labels": {
         "domain": "Data Separation/Visibility",
-        "subtopics": ["Domain Visibility", "Inheritance"],
-        "tags": ["visibility", "inheritance", "parent-child"]
+        "subtopics": [
+          "Domain Visibility",
+          "Inheritance"
+        ],
+        "tags": [
+          "visibility",
+          "inheritance",
+          "parent-child"
+        ]
       },
       "meta": {
         "version": "1.0",
@@ -961,7 +970,9 @@
           "text": "cmdb.identification.domain"
         }
       ],
-      "correctAnswers": ["a"],
+      "correctAnswers": [
+        "a"
+      ],
       "explanation": {
         "correct": "The system property glide.identification_engine.platform_domain_separation_enabled controls IRE domain separation mode. When set to false (default), strict mode is used where CIs are only identified within the logged-in user's domain.",
         "wrongAnswers": [
@@ -985,8 +996,15 @@
       },
       "labels": {
         "domain": "Data Separation/Visibility",
-        "subtopics": ["CMDB", "IRE"],
-        "tags": ["ire", "cmdb", "system-property"]
+        "subtopics": [
+          "CMDB",
+          "IRE"
+        ],
+        "tags": [
+          "ire",
+          "cmdb",
+          "system-property"
+        ]
       },
       "meta": {
         "version": "1.0",
@@ -1020,7 +1038,10 @@
           "text": "All domains share a single identification scope"
         }
       ],
-      "correctAnswers": ["a", "c"],
+      "correctAnswers": [
+        "a",
+        "c"
+      ],
       "selectCount": 2,
       "explanation": {
         "correct": "In strict mode (default), identification processes only CIs where the domain ID matches the logged-in user's domain. If duplicate CIs exist across domains (including parent and child domains), they are NOT considered duplicates because their domain IDs don't match.",
@@ -1041,8 +1062,16 @@
       },
       "labels": {
         "domain": "Data Separation/Visibility",
-        "subtopics": ["CMDB", "IRE", "Strict Mode"],
-        "tags": ["ire", "strict-mode", "identification"]
+        "subtopics": [
+          "CMDB",
+          "IRE",
+          "Strict Mode"
+        ],
+        "tags": [
+          "ire",
+          "strict-mode",
+          "identification"
+        ]
       },
       "meta": {
         "version": "1.0",
@@ -1050,6 +1079,318 @@
         "reviewed": false
       },
       "isFree": false
+    },
+    {
+      "id": "cis-sp-data-separation-015",
+      "certification": "cis-sp",
+      "topic": "data-separation",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A tenant administrator reports they can see records from another tenant's domain. What should be investigated first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Check if the user has the admin role which bypasses domain restrictions"
+        },
+        {
+          "id": "b",
+          "text": "Restart the instance"
+        },
+        {
+          "id": "c",
+          "text": "Delete the user's account"
+        },
+        {
+          "id": "d",
+          "text": "Check if domain separation is still enabled"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "Users with the admin role can see records across all domains. The first step is to verify the user's roles, as admin bypasses domain restrictions. Tenant admins should have domain-specific admin roles instead.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Restarting doesn't address role-based access issues",
+            "reference": "Troubleshooting"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Deleting accounts is extreme; the issue is likely role assignment",
+            "reference": "User management"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Domain separation being disabled would affect all users, not just one",
+            "reference": "Domain separation status"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow Domain Separation documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "domain-separation-troubleshooting",
+        "excerpt": "Cross-domain visibility troubleshooting"
+      },
+      "labels": {
+        "certification": "cis-sp",
+        "domain": "Data Separation",
+        "domainSlug": "data-separation",
+        "domainPercentage": 24,
+        "subtopics": [
+          "Troubleshooting",
+          "Role management"
+        ],
+        "tags": [
+          "troubleshooting",
+          "admin-role",
+          "cross-domain-access"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-24T02:03:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sp-data-separation-016",
+      "certification": "cis-sp",
+      "topic": "data-separation",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "How does domain separation affect record-level ACLs (Access Control Lists)?",
+      "options": [
+        {
+          "id": "a",
+          "text": "ACLs are completely replaced by domain separation"
+        },
+        {
+          "id": "b",
+          "text": "Domain separation adds an additional layer of data filtering; ACLs still apply within the domain context"
+        },
+        {
+          "id": "c",
+          "text": "ACLs override domain separation rules"
+        },
+        {
+          "id": "d",
+          "text": "Domain separation and ACLs cannot coexist"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Domain separation and ACLs work together — domain separation first filters records by domain visibility, then ACLs provide additional access control within the visible domain records.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "ACLs remain active and complement domain separation",
+            "reference": "ACL behavior"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Domain separation filtering happens before ACL evaluation",
+            "reference": "Access control layers"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "They work together as complementary security layers",
+            "reference": "Security architecture"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow Domain Separation documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "domain-separation-acl",
+        "excerpt": "Domain separation and ACL interaction"
+      },
+      "labels": {
+        "certification": "cis-sp",
+        "domain": "Data Separation",
+        "domainSlug": "data-separation",
+        "domainPercentage": 24,
+        "subtopics": [
+          "ACLs",
+          "Access control layers"
+        ],
+        "tags": [
+          "acl",
+          "access-control",
+          "security-layers"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-24T02:03:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sp-data-separation-017",
+      "certification": "cis-sp",
+      "topic": "data-separation",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What is 'domain overrides' functionality in domain separation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The ability to disable domain separation for specific users"
+        },
+        {
+          "id": "b",
+          "text": "The ability for a child domain to have its own version of a parent domain record (e.g., business rule, UI policy) that takes precedence within that domain"
+        },
+        {
+          "id": "c",
+          "text": "The ability to move records between domains"
+        },
+        {
+          "id": "d",
+          "text": "The ability to merge two domains into one"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Domain overrides allow child domains to create their own versions of parent domain records like business rules, UI policies, or notifications. The child domain version takes precedence within that domain.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Domain overrides customize records per domain, not disable domain separation",
+            "reference": "Domain overrides"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Moving records between domains is a different operation",
+            "reference": "Record management"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Domain merging is not what domain overrides provides",
+            "reference": "Domain management"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow Domain Separation documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "domain-separation-overrides",
+        "excerpt": "Domain overrides concept"
+      },
+      "labels": {
+        "certification": "cis-sp",
+        "domain": "Data Separation",
+        "domainSlug": "data-separation",
+        "domainPercentage": 24,
+        "subtopics": [
+          "Domain overrides",
+          "Record customization"
+        ],
+        "tags": [
+          "domain-overrides",
+          "business-rules",
+          "customization"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-24T02:03:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sp-data-separation-018",
+      "certification": "cis-sp",
+      "topic": "data-separation",
+      "cognitiveLevel": "analysis",
+      "type": "multiple_choice",
+      "question": "A service provider is evaluating whether to domain-separate a custom table. Which factors should they consider? (Choose two)",
+      "options": [
+        {
+          "id": "a",
+          "text": "The color scheme of the table's forms"
+        },
+        {
+          "id": "b",
+          "text": "Whether the table contains tenant-specific data that must be isolated"
+        },
+        {
+          "id": "c",
+          "text": "Whether related tables and processes are already domain-separated"
+        },
+        {
+          "id": "d",
+          "text": "The physical location of the database server"
+        }
+      ],
+      "correctAnswers": [
+        "b",
+        "c"
+      ],
+      "explanation": {
+        "correct": "Key factors include whether the data needs tenant isolation and whether related tables/processes are already domain-separated, to maintain referential integrity and consistent domain boundaries.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Form appearance is unrelated to domain separation decisions",
+            "reference": "UI design"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "ServiceNow is cloud-hosted; physical location isn't a factor in domain separation decisions",
+            "reference": "Cloud architecture"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow Domain Separation documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "domain-separation-custom-tables",
+        "excerpt": "Custom table domain separation considerations"
+      },
+      "labels": {
+        "certification": "cis-sp",
+        "domain": "Data Separation",
+        "domainSlug": "data-separation",
+        "domainPercentage": 24,
+        "subtopics": [
+          "Custom tables",
+          "Planning"
+        ],
+        "tags": [
+          "custom-tables",
+          "planning",
+          "data-isolation"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-24T02:03:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     }
   ]
 }

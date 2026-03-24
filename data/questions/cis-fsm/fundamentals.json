@@ -1595,7 +1595,9 @@
           "text": "Configure user roles and security policies"
         }
       ],
-      "correctAnswers": ["b"],
+      "correctAnswers": [
+        "b"
+      ],
       "explanation": {
         "correct": "Dispatcher Workspace is the main working space for dispatchers, bringing speed and efficiency to field service scheduling. It provides dispatchers and managers with a complete view of tasks, teams, locations, and status, enabling them to manage work efficiently, simplify resource management, and maximize productivity.",
         "wrongAnswers": [
@@ -1619,8 +1621,15 @@
       },
       "labels": {
         "domain": "Field Service Management Fundamentals",
-        "subtopics": ["Dispatcher Workspace", "Personas"],
-        "tags": ["field-service", "dispatcher", "workspace"]
+        "subtopics": [
+          "Dispatcher Workspace",
+          "Personas"
+        ],
+        "tags": [
+          "field-service",
+          "dispatcher",
+          "workspace"
+        ]
       },
       "meta": {
         "version": "1.0",
@@ -1658,7 +1667,11 @@
           "text": "Automatic inventory purchasing from suppliers"
         }
       ],
-      "correctAnswers": ["a", "c", "d"],
+      "correctAnswers": [
+        "a",
+        "c",
+        "d"
+      ],
       "selectCount": 3,
       "explanation": {
         "correct": "Dispatcher Workspace provides: (1) a single configurable workspace showing everything from unassigned tasks to technician schedules and maps, (2) automated work assignment utilizing dynamic scheduling based on skills, availability, parts, and distance, and (3) route optimization to reduce travel time and costs by visualizing and improving multiple technician routes simultaneously.",
@@ -1679,8 +1692,1285 @@
       },
       "labels": {
         "domain": "Field Service Management Fundamentals",
-        "subtopics": ["Dispatcher Workspace", "Key Features"],
-        "tags": ["field-service", "dispatcher", "features"]
+        "subtopics": [
+          "Dispatcher Workspace",
+          "Key Features"
+        ],
+        "tags": [
+          "field-service",
+          "dispatcher",
+          "features"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": false
+    },
+    {
+      "id": "cis-fsm-fundamentals-903",
+      "certification": "cis-fsm",
+      "topic": "fundamentals",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which of the following is a valid work order state in Field Service Management?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Pending Dispatch"
+        },
+        {
+          "id": "b",
+          "text": "Awaiting Qualification"
+        },
+        {
+          "id": "c",
+          "text": "Scheduled"
+        },
+        {
+          "id": "d",
+          "text": "On Route"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Awaiting Qualification is a valid work order state that appears when qualification is enabled. The qualifier reviews the work order before it moves to Qualified state.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "Pending Dispatch is a work order task state, not a work order state. The equivalent work order state is 'Ready for Dispatch'.",
+            "reference": "Work order states documentation"
+          },
+          {
+            "id": "c",
+            "explanation": "Scheduled is a work order task state available when soft booking is enabled, not a work order state.",
+            "reference": "Work order states documentation"
+          },
+          {
+            "id": "d",
+            "explanation": "On Route is a substate of the Accepted work order task state, not a work order state.",
+            "reference": "Work order task states documentation"
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Awaiting Qualification: The work order has been drafted but hasn't been qualified. Note: This state only shows if qualification is enabled.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/field-service-management/work-order-management/work-order-states.html"
+      },
+      "labels": {
+        "domain": "Field Service Management Fundamentals",
+        "subtopics": [
+          "Work Order States"
+        ],
+        "tags": [
+          "work-orders",
+          "states",
+          "lifecycle"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": false
+    },
+    {
+      "id": "cis-fsm-fundamentals-904",
+      "certification": "cis-fsm",
+      "topic": "fundamentals",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What happens to all existing work orders in Draft, Awaiting Qualification, or Qualified states when an administrator disables the qualification requirement?",
+      "options": [
+        {
+          "id": "a",
+          "text": "They remain in their current state until manually updated"
+        },
+        {
+          "id": "b",
+          "text": "They are automatically set to Ready for Dispatch"
+        },
+        {
+          "id": "c",
+          "text": "They are moved to the Canceled state"
+        },
+        {
+          "id": "d",
+          "text": "They are set back to Draft state"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "When qualification is enabled and then disabled, all existing work orders awaiting qualification, in draft, or already qualified are automatically set to Ready for Dispatch.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "The system automatically transitions these work orders rather than leaving them in their current state.",
+            "reference": "Work order states documentation"
+          },
+          {
+            "id": "c",
+            "explanation": "Disabling qualification does not cancel work orders. They are transitioned to Ready for Dispatch.",
+            "reference": "Work order states documentation"
+          },
+          {
+            "id": "d",
+            "explanation": "Work orders are moved forward to Ready for Dispatch, not backward to Draft.",
+            "reference": "Work order states documentation"
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "If you have qualification enabled and then disable it, then all existing work orders awaiting qualification, in draft, or already qualified are set to ready for dispatch.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/field-service-management/work-order-management/work-order-states.html"
+      },
+      "labels": {
+        "domain": "Field Service Management Fundamentals",
+        "subtopics": [
+          "Work Order States",
+          "Qualification"
+        ],
+        "tags": [
+          "work-orders",
+          "states",
+          "qualification"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": false
+    },
+    {
+      "id": "cis-fsm-fundamentals-905",
+      "certification": "cis-fsm",
+      "topic": "fundamentals",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "From which integrated record types can a work order be created in Field Service Management? (Select the option that lists ONLY valid source types.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Case, Incident, Change, Project Task, Service Request"
+        },
+        {
+          "id": "b",
+          "text": "Case, Incident, Problem, Change, Knowledge Article"
+        },
+        {
+          "id": "c",
+          "text": "Case, Incident, Change, Asset, Service Request"
+        },
+        {
+          "id": "d",
+          "text": "Incident, Problem, Change, Project Task, CMDB CI"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "Work orders can be created from Cases (CSM), Incidents, Change Requests, Project Tasks (PPM), and Service Requests. Data from the source record automatically copies to the new work order.",
+        "wrongAnswers": [
+          {
+            "id": "b",
+            "explanation": "Problem and Knowledge Article are not valid source types for creating work orders. The valid types include Service Requests, not Problems.",
+            "reference": "Integrated work order entry documentation"
+          },
+          {
+            "id": "c",
+            "explanation": "Asset is not a valid source type for creating work orders directly. Project Task is valid but is missing from this option.",
+            "reference": "Integrated work order entry documentation"
+          },
+          {
+            "id": "d",
+            "explanation": "Problem and CMDB CI are not valid source types. Cases and Service Requests are valid but missing from this option.",
+            "reference": "Integrated work order entry documentation"
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "You can create a work order from the following integrated record types: Case, Incident, Change, Project task, Service requests.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/field-service-management/Work-order-fsm.html"
+      },
+      "labels": {
+        "domain": "Field Service Management Fundamentals",
+        "subtopics": [
+          "Work Order Creation",
+          "Integrations"
+        ],
+        "tags": [
+          "work-orders",
+          "integrations",
+          "csm",
+          "itsm"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": false
+    },
+    {
+      "id": "cis-fsm-fundamentals-906",
+      "certification": "cis-fsm",
+      "topic": "fundamentals",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which FSM user role is responsible for reviewing and qualifying work orders to ensure work order tasks are properly created?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Initiator"
+        },
+        {
+          "id": "b",
+          "text": "Qualifier"
+        },
+        {
+          "id": "c",
+          "text": "Dispatcher"
+        },
+        {
+          "id": "d",
+          "text": "Manager"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The Qualifier role reviews and qualifies work orders to ensure that the work order tasks are created and meet a certain standard before they move to the next step.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "The Initiator creates new work orders or creates them from other record types such as incidents or changes, but does not qualify them.",
+            "reference": "FSM users documentation"
+          },
+          {
+            "id": "c",
+            "explanation": "The Dispatcher assigns work order tasks to the most appropriate and available agents, but does not qualify work orders.",
+            "reference": "FSM users documentation"
+          },
+          {
+            "id": "d",
+            "explanation": "The Manager monitors the progress of work order tasks and can reassign tasks, but qualification is the Qualifier's responsibility.",
+            "reference": "FSM users documentation"
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Qualifier: Review and qualify work orders to ensure that the work order tasks are created.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/field-service-management/explore-fsm.html"
+      },
+      "labels": {
+        "domain": "Field Service Management Fundamentals",
+        "subtopics": [
+          "Personas",
+          "Roles"
+        ],
+        "tags": [
+          "roles",
+          "qualifier",
+          "personas"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": false
+    },
+    {
+      "id": "cis-fsm-fundamentals-907",
+      "certification": "cis-fsm",
+      "topic": "fundamentals",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "A work order task transitions to the 'Pending Dispatch' state. What action triggered this transition?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The dispatcher assigned the task to an agent"
+        },
+        {
+          "id": "b",
+          "text": "The qualifier added the dispatch group and selected Qualified on the task"
+        },
+        {
+          "id": "c",
+          "text": "The agent accepted the task assignment"
+        },
+        {
+          "id": "d",
+          "text": "The system automatically scheduled the task via dynamic scheduling"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "A work order task enters the Pending Dispatch state when the qualifier adds the dispatch group and selects Qualified on the work order task.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "When a dispatcher assigns the task to an agent, the task moves to the Assigned state, not Pending Dispatch.",
+            "reference": "Work order task states documentation"
+          },
+          {
+            "id": "c",
+            "explanation": "When an agent accepts the task, it moves to the Accepted state.",
+            "reference": "Work order task states documentation"
+          },
+          {
+            "id": "d",
+            "explanation": "Dynamic scheduling would move the task to Assigned or Scheduled state, not Pending Dispatch.",
+            "reference": "Work order task states documentation"
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Pending dispatch: The qualifier adds the dispatch group and selects Qualified on the work order task.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/field-service-management/work-order-management/work-order-task-states.html"
+      },
+      "labels": {
+        "domain": "Field Service Management Fundamentals",
+        "subtopics": [
+          "Work Order Task States"
+        ],
+        "tags": [
+          "work-order-tasks",
+          "states",
+          "lifecycle"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": false
+    },
+    {
+      "id": "cis-fsm-fundamentals-908",
+      "certification": "cis-fsm",
+      "topic": "fundamentals",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What substate does a work order task enter when the assigned field service agent selects 'Start travel'?",
+      "options": [
+        {
+          "id": "a",
+          "text": "In Transit"
+        },
+        {
+          "id": "b",
+          "text": "On Route"
+        },
+        {
+          "id": "c",
+          "text": "Traveling"
+        },
+        {
+          "id": "d",
+          "text": "En Route"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "When a field service agent selects 'Start travel' on a work order task, the task enters the 'On Route' substate within the Accepted state.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "In Transit is not a valid work order task substate in FSM.",
+            "reference": "Work order task states documentation"
+          },
+          {
+            "id": "c",
+            "explanation": "Traveling is not a valid substate. The correct substate is 'On Route'.",
+            "reference": "Work order task states documentation"
+          },
+          {
+            "id": "d",
+            "explanation": "En Route is not the correct term. ServiceNow uses 'On Route' as the substate name.",
+            "reference": "Work order task states documentation"
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Accepted: The Field Service agent accepts the task and they're ready to work on it. Note: If the Field Service agent selects Start travel on the work order task, then the task enters the On route substate.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/field-service-management/work-order-management/work-order-task-states.html"
+      },
+      "labels": {
+        "domain": "Field Service Management Fundamentals",
+        "subtopics": [
+          "Work Order Task States",
+          "Mobile"
+        ],
+        "tags": [
+          "work-order-tasks",
+          "states",
+          "travel"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": false
+    },
+    {
+      "id": "cis-fsm-fundamentals-909",
+      "certification": "cis-fsm",
+      "topic": "fundamentals",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A field service organization wants to implement a quality check step before work orders are dispatched. Which configuration enables this requirement?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Enable the 'Qualification is required for new requests' switch in Field Service Administration > Configuration"
+        },
+        {
+          "id": "b",
+          "text": "Activate the Field Service Quality Management plugin"
+        },
+        {
+          "id": "c",
+          "text": "Create a custom state flow with a validation business rule"
+        },
+        {
+          "id": "d",
+          "text": "Configure an SLA to enforce review before dispatch"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "To enable work order qualification, navigate to All > Field Service > Administration > Configuration and turn on the 'Qualification is required for new requests' switch. This adds the Awaiting Qualification and Qualified states to the work order lifecycle.",
+        "wrongAnswers": [
+          {
+            "id": "b",
+            "explanation": "The Quality Management plugin is for assessing completed task quality, not for pre-dispatch qualification of work orders.",
+            "reference": "Configure qualification documentation"
+          },
+          {
+            "id": "c",
+            "explanation": "While custom state flows are possible, the built-in qualification toggle is the standard approach and does not require custom scripting.",
+            "reference": "Configure qualification documentation"
+          },
+          {
+            "id": "d",
+            "explanation": "SLAs track timing of work order completion, not pre-dispatch quality checks.",
+            "reference": "Configure qualification documentation"
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Navigate to All > Field Service > Administration > Configuration. Turn on the switch that says Qualification is required for new requests.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/field-service-management/work-order-management/configure-qualify-fsm.html"
+      },
+      "labels": {
+        "domain": "Field Service Management Fundamentals",
+        "subtopics": [
+          "Qualification",
+          "Configuration"
+        ],
+        "tags": [
+          "qualification",
+          "configuration",
+          "work-orders"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": false
+    },
+    {
+      "id": "cis-fsm-fundamentals-910",
+      "certification": "cis-fsm",
+      "topic": "fundamentals",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which FSM persona can track an agent's travel and work time, part requirements, and asset usage?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Manager"
+        },
+        {
+          "id": "b",
+          "text": "Qualifier"
+        },
+        {
+          "id": "c",
+          "text": "Dispatcher"
+        },
+        {
+          "id": "d",
+          "text": "Administrator"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "Dispatchers assign work order tasks to the most appropriate and available agents. They can also track agent's travel and work time, part requirements, and asset usage.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "Managers monitor progress and can reassign tasks, but tracking travel/work time and parts is primarily a dispatcher function.",
+            "reference": "FSM users documentation"
+          },
+          {
+            "id": "b",
+            "explanation": "Qualifiers review and qualify work orders. They do not track travel time or asset usage.",
+            "reference": "FSM users documentation"
+          },
+          {
+            "id": "d",
+            "explanation": "Administrators configure the application, but operational tracking of travel time and parts is the dispatcher's responsibility.",
+            "reference": "FSM users documentation"
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Dispatcher: Assign the work order tasks to the most appropriate and available agents. Dispatcher can also track agent's travel and work time, part requirements, and asset usage.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/field-service-management/explore-fsm.html"
+      },
+      "labels": {
+        "domain": "Field Service Management Fundamentals",
+        "subtopics": [
+          "Personas",
+          "Dispatcher"
+        ],
+        "tags": [
+          "dispatcher",
+          "roles",
+          "tracking"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": false
+    },
+    {
+      "id": "cis-fsm-fundamentals-911",
+      "certification": "cis-fsm",
+      "topic": "fundamentals",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What is the purpose of work order templates in Field Service Management?",
+      "options": [
+        {
+          "id": "a",
+          "text": "To define SLA thresholds for different work order priorities"
+        },
+        {
+          "id": "b",
+          "text": "To automatically create tasks and part requirements on work orders for common activities"
+        },
+        {
+          "id": "c",
+          "text": "To configure the Dispatcher Workspace layout and filters"
+        },
+        {
+          "id": "d",
+          "text": "To define agent skill requirements for qualification groups"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Work order templates automatically create tasks and part requirements on work orders for common activities, such as password reset or memory upgrades. They allow quick creation of well-defined work orders.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "SLA thresholds are configured separately in SLA definitions, not through work order templates.",
+            "reference": "Work order templates documentation"
+          },
+          {
+            "id": "c",
+            "explanation": "Dispatcher Workspace layout and filters are configured through the Dispatcher Workspace configuration, not work order templates.",
+            "reference": "Work order templates documentation"
+          },
+          {
+            "id": "d",
+            "explanation": "Agent skill requirements are managed through workforce management and skill configuration, not work order templates.",
+            "reference": "Work order templates documentation"
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Work order templates allow you to quickly create well-defined work orders. These templates automatically create tasks and part requirements on work orders for common activities, such as password reset or memory upgrades.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/field-service-management/work-order-management/c_WorkOrderTemplates.html"
+      },
+      "labels": {
+        "domain": "Field Service Management Fundamentals",
+        "subtopics": [
+          "Work Order Templates"
+        ],
+        "tags": [
+          "templates",
+          "work-orders"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": false
+    },
+    {
+      "id": "cis-fsm-fundamentals-912",
+      "certification": "cis-fsm",
+      "topic": "fundamentals",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which three default SLAs are automatically assigned to work orders based on priority level?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Same business day, Next business day, 5 business days"
+        },
+        {
+          "id": "b",
+          "text": "4 hours, 8 hours, 24 hours"
+        },
+        {
+          "id": "c",
+          "text": "1 business day, 3 business days, 7 business days"
+        },
+        {
+          "id": "d",
+          "text": "Same business day, 3 business days, 5 business days"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "The three default SLAs are: WM - Same business day (Priority 1-Critical and 2-High), WM - Next business day (Priority 3-Moderate), and WM - 5 business days (Priority 4-Low).",
+        "wrongAnswers": [
+          {
+            "id": "b",
+            "explanation": "FSM uses business-day-based SLAs, not hour-based SLAs.",
+            "reference": "FSM SLAs documentation"
+          },
+          {
+            "id": "c",
+            "explanation": "The default SLAs are Same business day, Next business day, and 5 business days. 3 and 7 business days are not defaults.",
+            "reference": "FSM SLAs documentation"
+          },
+          {
+            "id": "d",
+            "explanation": "3 business days is not a default SLA. The moderate priority default is Next business day.",
+            "reference": "FSM SLAs documentation"
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "WM - 5 business days: Assigned to work orders with a priority level of 4 (Low). WM - Next business day: Assigned to work orders with a priority level of 3 (Moderate). WM - Same business day: Assigned to work orders with a priority level of 2 (High) or 1 (Critical).",
+        "url": "https://www.servicenow.com/docs/r/xanadu/field-service-management/c_FieldServiceAutomationSLAs.html"
+      },
+      "labels": {
+        "domain": "Field Service Management Fundamentals",
+        "subtopics": [
+          "SLAs"
+        ],
+        "tags": [
+          "sla",
+          "work-orders",
+          "priority"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": false
+    },
+    {
+      "id": "cis-fsm-fundamentals-913",
+      "certification": "cis-fsm",
+      "topic": "fundamentals",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What happens to the SLA when the priority of a work order is changed?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The existing SLA is updated with the new time allocation"
+        },
+        {
+          "id": "b",
+          "text": "The system cancels the current SLA and applies the SLA appropriate for the new priority"
+        },
+        {
+          "id": "c",
+          "text": "Both the old and new SLAs run in parallel"
+        },
+        {
+          "id": "d",
+          "text": "The SLA remains unchanged until manually updated by an administrator"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "If you change the priority of the work order, the system cancels the current SLA and applies the SLA appropriate for the new priority. The SLA timer continues to run even if the priority is changed.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "The system does not update the existing SLA. It cancels it and applies a new one based on the new priority.",
+            "reference": "FSM SLAs documentation"
+          },
+          {
+            "id": "c",
+            "explanation": "SLAs do not run in parallel. The old SLA is canceled when a new priority-based SLA is applied.",
+            "reference": "FSM SLAs documentation"
+          },
+          {
+            "id": "d",
+            "explanation": "The SLA change is automatic based on priority, not a manual process.",
+            "reference": "FSM SLAs documentation"
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "If you change the priority of the work order, the system cancels the current SLA and applies the SLA appropriate for the new priority. The SLA timer continues to run even if the priority is changed.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/field-service-management/c_FieldServiceAutomationSLAs.html"
+      },
+      "labels": {
+        "domain": "Field Service Management Fundamentals",
+        "subtopics": [
+          "SLAs",
+          "Priority"
+        ],
+        "tags": [
+          "sla",
+          "priority",
+          "work-orders"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": false
+    },
+    {
+      "id": "cis-fsm-fundamentals-914",
+      "certification": "cis-fsm",
+      "topic": "fundamentals",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which SLA bar color in Dispatcher Workspace indicates that more than 75% of the SLA duration has elapsed?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Green"
+        },
+        {
+          "id": "b",
+          "text": "Yellow"
+        },
+        {
+          "id": "c",
+          "text": "Red"
+        },
+        {
+          "id": "d",
+          "text": "Orange"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "In Dispatcher Workspace, SLA duration indicators use color coding: Green (below 50%), Yellow (between 50% and 75%), and Red (above 75%) to visually indicate SLA urgency.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "Green indicates the SLA is below 50% of its duration, meaning there is ample time remaining.",
+            "reference": "FSM SLAs documentation"
+          },
+          {
+            "id": "b",
+            "explanation": "Yellow indicates the SLA is between 50% and 75% of its duration.",
+            "reference": "FSM SLAs documentation"
+          },
+          {
+            "id": "d",
+            "explanation": "Orange is not used as an SLA indicator color. The three colors are Green, Yellow, and Red.",
+            "reference": "FSM SLAs documentation"
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Below 50%: Green. In-between 50% and 75%: Yellow. Above 75%: Red.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/field-service-management/c_FieldServiceAutomationSLAs.html"
+      },
+      "labels": {
+        "domain": "Field Service Management Fundamentals",
+        "subtopics": [
+          "SLAs",
+          "Dispatcher Workspace"
+        ],
+        "tags": [
+          "sla",
+          "dispatcher-workspace",
+          "visual-indicators"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": false
+    },
+    {
+      "id": "cis-fsm-fundamentals-915",
+      "certification": "cis-fsm",
+      "topic": "fundamentals",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A customer wants to track the real-time location of a field service agent assigned to their work order task. Which FSM feature provides this capability?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Dispatcher Workspace map view"
+        },
+        {
+          "id": "b",
+          "text": "Customer Experience with Geolocation Tracking"
+        },
+        {
+          "id": "c",
+          "text": "Agent Calendar workforce view"
+        },
+        {
+          "id": "d",
+          "text": "Route Optimization dashboard"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The Customer Experience feature in FSM provides customers with timely updates about their reported issues, enabling them to track the location of agents via the Geolocation tracking map and provide agent feedback.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "Dispatcher Workspace map is for dispatchers to manage agents, not for customers to track agents.",
+            "reference": "Customer Experience documentation"
+          },
+          {
+            "id": "c",
+            "explanation": "Agent Calendar is for agents and managers to view schedules, not for customer-facing location tracking.",
+            "reference": "Customer Experience documentation"
+          },
+          {
+            "id": "d",
+            "explanation": "Route Optimization optimizes task routes for agents, it does not provide customer-facing tracking.",
+            "reference": "Customer Experience documentation"
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "The Customer Experience feature in Field Service Management provides customers with timely updates about their reported issues, enabling them to track the location of agents and provide agent feedback.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/field-service-management/customer-experience.html"
+      },
+      "labels": {
+        "domain": "Field Service Management Fundamentals",
+        "subtopics": [
+          "Customer Experience",
+          "Geolocation"
+        ],
+        "tags": [
+          "customer-experience",
+          "tracking",
+          "geolocation"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": false
+    },
+    {
+      "id": "cis-fsm-fundamentals-916",
+      "certification": "cis-fsm",
+      "topic": "fundamentals",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "How does the Customer Experience feature collect agent feedback from customers?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Customers are prompted to rate agents during the next login to the service portal"
+        },
+        {
+          "id": "b",
+          "text": "A survey link is sent via email and SMS when the agent marks the work order task as complete"
+        },
+        {
+          "id": "c",
+          "text": "Managers manually send feedback forms to customers after work completion"
+        },
+        {
+          "id": "d",
+          "text": "Customers fill out a feedback form on the agent's mobile device before the agent leaves"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "When an agent marks the work order task as complete, the customer receives a survey link through email and SMS to provide feedback. The system calculates the average rating and stores it in the wm_agent_rating table.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "Feedback is not collected during portal login. It is sent proactively via email and SMS upon task completion.",
+            "reference": "Agent feedback documentation"
+          },
+          {
+            "id": "c",
+            "explanation": "The feedback process is automated, not manually initiated by managers.",
+            "reference": "Agent feedback documentation"
+          },
+          {
+            "id": "d",
+            "explanation": "Feedback is collected remotely via survey links, not on the agent's mobile device.",
+            "reference": "Agent feedback documentation"
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "When agent marks the work order task as complete, the customer receives a survey link through email and SMS to provide feedback. Customers can provide feedback on a field service agent by rating the agent and posting their comments.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/field-service-management/agent-feedback-fsm.html"
+      },
+      "labels": {
+        "domain": "Field Service Management Fundamentals",
+        "subtopics": [
+          "Agent Feedback",
+          "Customer Experience"
+        ],
+        "tags": [
+          "feedback",
+          "customer-experience",
+          "survey"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": false
+    },
+    {
+      "id": "cis-fsm-fundamentals-917",
+      "certification": "cis-fsm",
+      "topic": "fundamentals",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which Field Service Management Guided Setup capability is accurate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It includes all features and capabilities of Field Service Management"
+        },
+        {
+          "id": "b",
+          "text": "It assists with only the basic configuration and doesn't include all features"
+        },
+        {
+          "id": "c",
+          "text": "It requires the wm_admin role to access"
+        },
+        {
+          "id": "d",
+          "text": "It can only be accessed from the Field Service module"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The Guided Setup assists with only the basic configuration and doesn't include all the features and capabilities of Field Service Management. It organizes configuration activities into categories and helps track progress.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "The Guided Setup explicitly states it assists with only the basic configuration, not all features.",
+            "reference": "FSM Guided Setup documentation"
+          },
+          {
+            "id": "c",
+            "explanation": "No specific role is required to access the Guided Setup. The documentation states 'Role required: none'.",
+            "reference": "FSM Guided Setup documentation"
+          },
+          {
+            "id": "d",
+            "explanation": "Guided Setup is accessed from All > Administration > Guided Setup, not exclusively from the Field Service module.",
+            "reference": "FSM Guided Setup documentation"
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "This guided setup assists you with only the basic configuration and doesn't include all the features and capabilities of Field Service Management.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/field-service-management/configuring-field-service-management-with-guided-setup.html"
+      },
+      "labels": {
+        "domain": "Field Service Management Fundamentals",
+        "subtopics": [
+          "Guided Setup"
+        ],
+        "tags": [
+          "guided-setup",
+          "configuration"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": false
+    },
+    {
+      "id": "cis-fsm-fundamentals-918",
+      "certification": "cis-fsm",
+      "topic": "fundamentals",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "In Field Service Management, which entity is used for domain separation to organize data and processes?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Assignment Group"
+        },
+        {
+          "id": "b",
+          "text": "Company"
+        },
+        {
+          "id": "c",
+          "text": "Location"
+        },
+        {
+          "id": "d",
+          "text": "Department"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Domain separation in FSM uses the Company entity to organize data and processes. The Company field is mandatory on the Work Order form to ensure proper domain assignment.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "Assignment Groups are filtered by domain but are not the entity used for domain separation. Company is the primary entity.",
+            "reference": "Domain separation documentation"
+          },
+          {
+            "id": "c",
+            "explanation": "Locations are used for territory management, not as the primary entity for domain separation.",
+            "reference": "Domain separation documentation"
+          },
+          {
+            "id": "d",
+            "explanation": "Department is not used for FSM domain separation. Company is the entity that determines the domain.",
+            "reference": "Domain separation documentation"
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "In the Field Service Management application, domain separation utilizes the Company entity to organize data and processes, ensuring that users access only domain-specific information.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/field-service-management/domain-separation-field-service.html"
+      },
+      "labels": {
+        "domain": "Field Service Management Fundamentals",
+        "subtopics": [
+          "Domain Separation"
+        ],
+        "tags": [
+          "domain-separation",
+          "company",
+          "multi-tenant"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": false
+    },
+    {
+      "id": "cis-fsm-fundamentals-919",
+      "certification": "cis-fsm",
+      "topic": "fundamentals",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A manager wants to view work order tasks assigned to their agents that were created in the last 30 days, including both open and closed tasks. Which module should they navigate to?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Field Service > Manager > Work Order Task"
+        },
+        {
+          "id": "b",
+          "text": "Field Service > Manager > Recent Work Order Tasks"
+        },
+        {
+          "id": "c",
+          "text": "Field Service > Manager > My Team"
+        },
+        {
+          "id": "d",
+          "text": "Field Service > Overview > All Tasks"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The Recent Work Order Tasks module lists work order tasks created for the manager's agents and groups within the last 30 days, including both open and closed tasks.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "The Work Order Task module lists only open work order tasks assigned to the manager's agents and groups, not closed ones.",
+            "reference": "Field service agent management documentation"
+          },
+          {
+            "id": "c",
+            "explanation": "My Team provides a list of agents in the manager's assignment groups, not work order tasks.",
+            "reference": "Field service agent management documentation"
+          },
+          {
+            "id": "d",
+            "explanation": "This is not a valid FSM navigation path.",
+            "reference": "Field service agent management documentation"
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Recent Work Order Tasks: Lists work order tasks that were created for the manager's agents and groups within the last 30 days. This list includes open and closed work order tasks.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/field-service-management/field-service-agent-management.html"
+      },
+      "labels": {
+        "domain": "Field Service Management Fundamentals",
+        "subtopics": [
+          "Manager Module"
+        ],
+        "tags": [
+          "manager",
+          "work-order-tasks",
+          "reporting"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      },
+      "isFree": false
+    },
+    {
+      "id": "cis-fsm-fundamentals-920",
+      "certification": "cis-fsm",
+      "topic": "fundamentals",
+      "cognitiveLevel": "analysis",
+      "type": "multiple_choice",
+      "question": "A field service organization notices that agents are frequently rejecting tasks. The manager wants to see which agents have low customer satisfaction ratings. Where is the calculated average agent rating stored and displayed?",
+      "options": [
+        {
+          "id": "a",
+          "text": "On the agent's user record in the Performance tab"
+        },
+        {
+          "id": "b",
+          "text": "In the wm_agent_rating table and displayed on the Geolocation tracking map"
+        },
+        {
+          "id": "c",
+          "text": "In the Performance Analytics dashboard under Agent Metrics"
+        },
+        {
+          "id": "d",
+          "text": "On the Dispatcher Workspace agent details panel"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The system calculates the average rating of an agent and stores it in the wm_agent_rating table. The Geolocation tracking map displays the calculated rating of an agent to customers tracking the agent. The 'Process agent rating, Daily Data Collection' job runs every night to refresh the data.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "The agent rating is not stored on the user record Performance tab. It is stored in the dedicated wm_agent_rating table.",
+            "reference": "Agent feedback documentation"
+          },
+          {
+            "id": "c",
+            "explanation": "While Performance Analytics can show FSM metrics, the calculated agent rating from customer feedback is specifically stored in wm_agent_rating.",
+            "reference": "Agent feedback documentation"
+          },
+          {
+            "id": "d",
+            "explanation": "The Dispatcher Workspace agent details panel does not specifically display the customer feedback rating from the wm_agent_rating table.",
+            "reference": "Agent feedback documentation"
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "The system calculates the average rating of an agent and store it in the wm_agent_rating table. The Geolocation tracking map displays the calculated rating of an agent to the customers who are tracking the agent.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/field-service-management/agent-feedback-fsm.html"
+      },
+      "labels": {
+        "domain": "Field Service Management Fundamentals",
+        "subtopics": [
+          "Agent Feedback",
+          "Ratings"
+        ],
+        "tags": [
+          "agent-feedback",
+          "ratings",
+          "customer-experience"
+        ]
       },
       "meta": {
         "version": "1.0",

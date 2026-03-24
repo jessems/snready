@@ -321,6 +321,967 @@
         "release": "Xanadu",
         "reviewed": false
       }
+    },
+    {
+      "id": "cis-vr-reporting-005",
+      "certification": "cis-vr",
+      "topic": "reporting",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which role is required to view the CISO dashboard in Vulnerability Response?",
+      "options": [
+        {
+          "id": "a",
+          "text": "sn_vul.vulnerability_admin"
+        },
+        {
+          "id": "b",
+          "text": "sn_vul.vulnerability_ciso"
+        },
+        {
+          "id": "c",
+          "text": "sn_vul.vulnerability_analyst"
+        },
+        {
+          "id": "d",
+          "text": "pa_viewer"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "The sn_vul.vulnerability_ciso role is required to view the CISO dashboard. The sn_vul.ciso_write role is needed to edit it.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "vulnerability_admin can view VR data but the CISO dashboard specifically requires vulnerability_ciso",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vulnerability-mgmnt-CISO-dashboard.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "vulnerability_analyst views the PA dashboard, not the CISO dashboard",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vulnerability-mgmnt-CISO-dashboard.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "pa_viewer is for the PA dashboard, not the CISO dashboard",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vulnerability-mgmnt-CISO-dashboard.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vulnerability-mgmnt-CISO-dashboard.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "scraped-docs/cis-secops-api/vulnerability-mgmnt-CISO-dashboard.md",
+        "excerpt": "sn_vul.vulnerability_ciso to view the dashboard."
+      },
+      "labels": {
+        "certification": "cis-vr",
+        "domain": "Reporting and Dashboards",
+        "domainSlug": "reporting",
+        "domainPercentage": 0,
+        "subtopics": [
+          "CISO dashboard",
+          "roles"
+        ],
+        "tags": [
+          "CISO",
+          "dashboard",
+          "role"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-24T02:03:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-vr-reporting-006",
+      "certification": "cis-vr",
+      "topic": "reporting",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What must be installed and activated before using the CISO dashboard in Vulnerability Response?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Vulnerability Response Core plugin only"
+        },
+        {
+          "id": "b",
+          "text": "Performance Analytics for Vulnerability Response and the corresponding PA job"
+        },
+        {
+          "id": "c",
+          "text": "ServiceNow ITSM module"
+        },
+        {
+          "id": "d",
+          "text": "Security Incident Response plugin"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "To activate the CISO dashboard, you must install Performance Analytics for Vulnerability Response and activate the corresponding Performance Analytics job.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "VR Core alone is not sufficient; Performance Analytics for VR is required",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vulnerability-mgmnt-CISO-dashboard.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "ITSM module is not required for the CISO dashboard",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vulnerability-mgmnt-CISO-dashboard.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "SIR plugin is separate from the VR CISO dashboard requirements",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vulnerability-mgmnt-CISO-dashboard.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vulnerability-mgmnt-CISO-dashboard.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "scraped-docs/cis-secops-api/vulnerability-mgmnt-CISO-dashboard.md",
+        "excerpt": "You must install Performance Analytics for Vulnerability Response and activate the corresponding Performance Analytics job."
+      },
+      "labels": {
+        "certification": "cis-vr",
+        "domain": "Reporting and Dashboards",
+        "domainSlug": "reporting",
+        "domainPercentage": 0,
+        "subtopics": [
+          "CISO dashboard activation"
+        ],
+        "tags": [
+          "CISO",
+          "PA",
+          "activation"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-24T02:03:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-vr-reporting-007",
+      "certification": "cis-vr",
+      "topic": "reporting",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which scheduled jobs must be run to refresh data on the CISO dashboard?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Update vulnerability items and Refresh CISO data"
+        },
+        {
+          "id": "b",
+          "text": "Update dashboard tables followed by [PA VR] CISO Dashboard"
+        },
+        {
+          "id": "c",
+          "text": "Run PA collection and Generate CISO report"
+        },
+        {
+          "id": "d",
+          "text": "Sync vulnerability data and Update CISO metrics"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "You must run the 'Update dashboard tables' scheduled job followed by '[PA VR] CISO Dashboard' to refresh the CISO dashboard data.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The correct jobs are 'Update dashboard tables' and '[PA VR] CISO Dashboard'",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vulnerability-mgmnt-CISO-dashboard.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The specific jobs are 'Update dashboard tables' and '[PA VR] CISO Dashboard'",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vulnerability-mgmnt-CISO-dashboard.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The correct scheduled jobs are 'Update dashboard tables' and '[PA VR] CISO Dashboard'",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vulnerability-mgmnt-CISO-dashboard.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vulnerability-mgmnt-CISO-dashboard.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "scraped-docs/cis-secops-api/vulnerability-mgmnt-CISO-dashboard.md",
+        "excerpt": "Must run Update dashboard tables followed by [PA VR] CISO Dashboard to refresh data."
+      },
+      "labels": {
+        "certification": "cis-vr",
+        "domain": "Reporting and Dashboards",
+        "domainSlug": "reporting",
+        "domainPercentage": 0,
+        "subtopics": [
+          "CISO dashboard scheduled jobs"
+        ],
+        "tags": [
+          "CISO",
+          "scheduled-jobs",
+          "dashboard"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-24T02:03:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-vr-reporting-008",
+      "certification": "cis-vr",
+      "topic": "reporting",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What is the purpose of the Unified Vulnerability Response Dashboard?",
+      "options": [
+        {
+          "id": "a",
+          "text": "To manage only host vulnerabilities"
+        },
+        {
+          "id": "b",
+          "text": "To provide a comprehensive view of vulnerabilities across infrastructure, cloud, applications, and containers in a centralized dashboard"
+        },
+        {
+          "id": "c",
+          "text": "To display only application vulnerability data"
+        },
+        {
+          "id": "d",
+          "text": "To show historical vulnerability trends only"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "The Unified Vulnerability Response Dashboard provides a comprehensive view of an organization's vulnerabilities and risks across infrastructure, cloud, applications, and containers for better visibility and remediation.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The Unified Dashboard covers all types, not just host vulnerabilities",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-manager-workspace/vr-unified-dashboard.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "It covers infrastructure, cloud, applications, and containers, not just applications",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-manager-workspace/vr-unified-dashboard.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "It provides real-time visibility and remediation tracking, not just historical trends",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-manager-workspace/vr-unified-dashboard.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-manager-workspace/vr-unified-dashboard.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "scraped-docs/cis-secops-api/vr-unified-dashboard.md",
+        "excerpt": "The Unified Vulnerability Response dashboard provides a comprehensive view of an organization's vulnerabilities and risks across infrastructure, cloud, applications, and containers."
+      },
+      "labels": {
+        "certification": "cis-vr",
+        "domain": "Reporting and Dashboards",
+        "domainSlug": "reporting",
+        "domainPercentage": 0,
+        "subtopics": [
+          "unified dashboard"
+        ],
+        "tags": [
+          "unified",
+          "dashboard",
+          "comprehensive"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-24T02:03:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-vr-reporting-009",
+      "certification": "cis-vr",
+      "topic": "reporting",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which default dashboard is displayed for users with the sn_vul_cmn_vulnerability_admin or sn_vul_cmn_vulnerability_analyst role in the Vulnerability Manager Workspace?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Vulnerability PA Dashboard"
+        },
+        {
+          "id": "b",
+          "text": "Unified Dashboard"
+        },
+        {
+          "id": "c",
+          "text": "Application overview"
+        },
+        {
+          "id": "d",
+          "text": "Container overview"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "The Unified Dashboard is the default dashboard displayed for users with sn_vul_cmn_vulnerability_admin or sn_vul_cmn_vulnerability_analyst roles.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Vulnerability PA Dashboard is default for sn_vul_vulnerability_admin/analyst, not the common roles",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-manager-workspace/vr-ws-dashboards.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Application overview is default for sn_vul_app_sec_manager",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-manager-workspace/vr-ws-dashboards.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Container overview is default for container vulnerability roles",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-manager-workspace/vr-ws-dashboards.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-manager-workspace/vr-ws-dashboards.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "scraped-docs/cis-secops-api/vr-ws-dashboards.md",
+        "excerpt": "Unified Dashboard is default for sn_vul_cmn_vulnerability_admin or sn_vul_cmn_vulnerability_analyst."
+      },
+      "labels": {
+        "certification": "cis-vr",
+        "domain": "Reporting and Dashboards",
+        "domainSlug": "reporting",
+        "domainPercentage": 0,
+        "subtopics": [
+          "default dashboards by role"
+        ],
+        "tags": [
+          "dashboard",
+          "unified",
+          "role"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-24T02:03:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-vr-reporting-010",
+      "certification": "cis-vr",
+      "topic": "reporting",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which dashboard is the default for users with the sn_vul_app_sec_manager role in the Vulnerability Manager Workspace?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Unified Dashboard"
+        },
+        {
+          "id": "b",
+          "text": "Vulnerability PA Dashboard"
+        },
+        {
+          "id": "c",
+          "text": "Application overview"
+        },
+        {
+          "id": "d",
+          "text": "CISO Dashboard"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "The Application overview dashboard is the default dashboard displayed for users with the sn_vul_app_sec_manager role.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Unified Dashboard is for common vulnerability roles",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-manager-workspace/vr-ws-dashboards.html"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "Vulnerability PA Dashboard is for host vulnerability roles",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-manager-workspace/vr-ws-dashboards.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "CISO Dashboard requires the sn_vul.vulnerability_ciso role",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-manager-workspace/vr-ws-dashboards.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-manager-workspace/vr-ws-dashboards.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "scraped-docs/cis-secops-api/vr-ws-dashboards.md",
+        "excerpt": "Application overview is default for sn_vul_app_sec_manager."
+      },
+      "labels": {
+        "certification": "cis-vr",
+        "domain": "Reporting and Dashboards",
+        "domainSlug": "reporting",
+        "domainPercentage": 0,
+        "subtopics": [
+          "application security dashboard"
+        ],
+        "tags": [
+          "dashboard",
+          "application",
+          "role"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-24T02:03:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-vr-reporting-011",
+      "certification": "cis-vr",
+      "topic": "reporting",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What does the Vulnerability Response Health Dashboard indicate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The number of active vulnerability scanners"
+        },
+        {
+          "id": "b",
+          "text": "The overall health score of the Vulnerability Response application"
+        },
+        {
+          "id": "c",
+          "text": "The network health of systems with vulnerabilities"
+        },
+        {
+          "id": "d",
+          "text": "The status of integration connections"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "The Vulnerability Response Health Dashboard indicates the overall health score of the Vulnerability Response application.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The Health Dashboard measures application health, not scanner count",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-manager-workspace/vr-ws-dashboards.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "It measures VR application health, not network health",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-manager-workspace/vr-ws-dashboards.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Integration status is separate from the VR Health Dashboard",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-manager-workspace/vr-ws-dashboards.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-manager-workspace/vr-ws-dashboards.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "scraped-docs/cis-secops-api/vr-ws-dashboards.md",
+        "excerpt": "Vulnerability Response Health Dashboard indicates the overall health score of the Vulnerability Response application."
+      },
+      "labels": {
+        "certification": "cis-vr",
+        "domain": "Reporting and Dashboards",
+        "domainSlug": "reporting",
+        "domainPercentage": 0,
+        "subtopics": [
+          "health dashboard"
+        ],
+        "tags": [
+          "health",
+          "dashboard",
+          "score"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-24T02:03:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-vr-reporting-012",
+      "certification": "cis-vr",
+      "topic": "reporting",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A vulnerability manager wants to view real-time reports on critical vulnerable items by assignment group. Which dashboard tab should they use?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Remediation tab"
+        },
+        {
+          "id": "b",
+          "text": "Exceptions tab"
+        },
+        {
+          "id": "c",
+          "text": "Overview tab"
+        },
+        {
+          "id": "d",
+          "text": "Vulnerable CIs tab"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "The Overview tab on the Vulnerability Management (PA) dashboard includes the 'Critical Vulnerable Items by Assignment Group' real-time report.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The Remediation tab shows unassigned VIs and remediation data, not critical VIs by assignment group",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr_real_time_report_PA_VR.html"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "The Exceptions tab shows deferred VIs and deferral requests",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr_real_time_report_PA_VR.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Vulnerable CIs tab shows CIs without owners and retired CIs",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr_real_time_report_PA_VR.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr_real_time_report_PA_VR.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "scraped-docs/cis-secops-api/vr_real_time_report_PA_VR.md",
+        "excerpt": "Overview tab: Critical Vulnerable Items by Assignment Group."
+      },
+      "labels": {
+        "certification": "cis-vr",
+        "domain": "Reporting and Dashboards",
+        "domainSlug": "reporting",
+        "domainPercentage": 0,
+        "subtopics": [
+          "PA dashboard tabs"
+        ],
+        "tags": [
+          "PA",
+          "overview",
+          "assignment-group"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-24T02:03:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-vr-reporting-013",
+      "certification": "cis-vr",
+      "topic": "reporting",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which real-time report is available on the Vulnerable CIs tab of the PA dashboard?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Critical Vulnerable Items by Assignment Group"
+        },
+        {
+          "id": "b",
+          "text": "Deferred Vulnerable Items by Reason"
+        },
+        {
+          "id": "c",
+          "text": "Retired or Stolen CIs with Active VIs"
+        },
+        {
+          "id": "d",
+          "text": "Unassigned Vulnerable Items"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "The Vulnerable CIs tab includes 'Vulnerable CIs Without Owners' and 'Retired or Stolen CIs with Active VIs' reports.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Critical VIs by Assignment Group is on the Overview tab",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr_real_time_report_PA_VR.html"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "Deferred VIs by Reason is on the Exceptions tab",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr_real_time_report_PA_VR.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Unassigned Vulnerable Items is on the Remediation tab",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr_real_time_report_PA_VR.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr_real_time_report_PA_VR.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "scraped-docs/cis-secops-api/vr_real_time_report_PA_VR.md",
+        "excerpt": "Vulnerable CIs tab: Retired or Stolen CIs with Active VIs."
+      },
+      "labels": {
+        "certification": "cis-vr",
+        "domain": "Reporting and Dashboards",
+        "domainSlug": "reporting",
+        "domainPercentage": 0,
+        "subtopics": [
+          "PA dashboard vulnerable CIs"
+        ],
+        "tags": [
+          "PA",
+          "vulnerable-CIs",
+          "reports"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-24T02:03:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-vr-reporting-014",
+      "certification": "cis-vr",
+      "topic": "reporting",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What type of subscription is required for the Performance Analytics for Vulnerability Response application?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It is included free with the VR base system"
+        },
+        {
+          "id": "b",
+          "text": "A separate subscription from the ServiceNow Store"
+        },
+        {
+          "id": "c",
+          "text": "It requires the ITSM Pro license"
+        },
+        {
+          "id": "d",
+          "text": "No subscription needed; it is available with any ServiceNow instance"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "The Performance Analytics for Vulnerability Response application is available with a separate subscription from the ServiceNow Store.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "PA for VR requires a separate subscription, it is not free",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr_real_time_report_PA_VR.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "ITSM Pro license is not the requirement; a separate store subscription is needed",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr_real_time_report_PA_VR.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "A separate subscription from the ServiceNow Store is required",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr_real_time_report_PA_VR.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vr_real_time_report_PA_VR.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "scraped-docs/cis-secops-api/vr_real_time_report_PA_VR.md",
+        "excerpt": "Performance Analytics for Vulnerability Response application is available with a separate subscription from the ServiceNow Store."
+      },
+      "labels": {
+        "certification": "cis-vr",
+        "domain": "Reporting and Dashboards",
+        "domainSlug": "reporting",
+        "domainPercentage": 0,
+        "subtopics": [
+          "PA subscription"
+        ],
+        "tags": [
+          "PA",
+          "subscription",
+          "store"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-24T02:03:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-vr-reporting-015",
+      "certification": "cis-vr",
+      "topic": "reporting",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What filtering options are available on the Vulnerability Management (PA) dashboard?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Only by severity level"
+        },
+        {
+          "id": "b",
+          "text": "By assignment group, exploits, risk rating, or state"
+        },
+        {
+          "id": "c",
+          "text": "Only by date range"
+        },
+        {
+          "id": "d",
+          "text": "Only by vulnerability scanner type"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "On the PA dashboard, you can filter reports by assignment group, exploits, risk rating, or state to quickly gain insight into vulnerability exposure.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Multiple filter options are available beyond just severity level",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vulnerability-mgmnt-pa-dashboard.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Date range is not the only filter; assignment group, exploits, risk rating, and state are available",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vulnerability-mgmnt-pa-dashboard.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Filtering includes assignment group, exploits, risk rating, and state, not just scanner type",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vulnerability-mgmnt-pa-dashboard.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vulnerability-mgmnt-pa-dashboard.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "scraped-docs/cis-secops-api/vulnerability-mgmnt-pa-dashboard.md",
+        "excerpt": "You can filter reports by assignment group, exploits, risk rating, or state."
+      },
+      "labels": {
+        "certification": "cis-vr",
+        "domain": "Reporting and Dashboards",
+        "domainSlug": "reporting",
+        "domainPercentage": 0,
+        "subtopics": [
+          "PA dashboard filtering"
+        ],
+        "tags": [
+          "PA",
+          "filtering",
+          "dashboard"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-24T02:03:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-vr-reporting-016",
+      "certification": "cis-vr",
+      "topic": "reporting",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which role is needed to edit the CISO dashboard in Vulnerability Response?",
+      "options": [
+        {
+          "id": "a",
+          "text": "sn_vul.vulnerability_ciso"
+        },
+        {
+          "id": "b",
+          "text": "sn_vul.ciso_write"
+        },
+        {
+          "id": "c",
+          "text": "sn_vul.vulnerability_admin"
+        },
+        {
+          "id": "d",
+          "text": "pa_admin"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "The sn_vul.ciso_write role is required to edit the CISO dashboard. The sn_vul.vulnerability_ciso role is only needed to view it.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "vulnerability_ciso is for viewing, not editing the dashboard",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vulnerability-mgmnt-CISO-dashboard.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "vulnerability_admin manages VR data but ciso_write is specifically for editing the CISO dashboard",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vulnerability-mgmnt-CISO-dashboard.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "pa_admin is a general PA role, not specific to VR CISO dashboard editing",
+            "reference": "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vulnerability-mgmnt-CISO-dashboard.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/xanadu/security-management/vulnerability-response/vulnerability-mgmnt-CISO-dashboard.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "scraped-docs/cis-secops-api/vulnerability-mgmnt-CISO-dashboard.md",
+        "excerpt": "sn_vul.ciso_write to edit the dashboard."
+      },
+      "labels": {
+        "certification": "cis-vr",
+        "domain": "Reporting and Dashboards",
+        "domainSlug": "reporting",
+        "domainPercentage": 0,
+        "subtopics": [
+          "CISO dashboard edit role"
+        ],
+        "tags": [
+          "CISO",
+          "edit",
+          "role"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-24T02:03:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     }
   ]
 }

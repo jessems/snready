@@ -473,6 +473,206 @@
         "release": "Xanadu",
         "reviewed": false
       }
+    },
+    {
+      "id": "cis-em-metric-intelligence-007",
+      "certification": "cis-em",
+      "topic": "metric-intelligence",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What is the default monitoring job frequency for self-health monitors in Event Management?",
+      "options": [
+        {
+          "id": "a",
+          "text": "60 seconds"
+        },
+        {
+          "id": "b",
+          "text": "120 seconds"
+        },
+        {
+          "id": "c",
+          "text": "180 seconds"
+        },
+        {
+          "id": "d",
+          "text": "300 seconds"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The default monitoring job frequency for self-health monitors is 120 seconds. This value can be configured in the Monitoring Configuration form. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/task/custom-configure-threshold-monitoring.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "60 seconds is not the default; 120 seconds is the default frequency.",
+            "reference": "Self-health monitoring documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "180 seconds is not the default monitoring job frequency.",
+            "reference": "Self-health monitoring documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "300 seconds is not the default monitoring job frequency.",
+            "reference": "Self-health monitoring documentation"
+          }
+        ]
+      },
+      "isFree": false
+    },
+    {
+      "id": "cis-em-metric-intelligence-008",
+      "certification": "cis-em",
+      "topic": "metric-intelligence",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "Which health monitor scripts are provided with the base system for self-health monitoring?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Check delay in event processing, Connectors Monitor, Get Event Processing state, and MID Server Threshold Alerts"
+        },
+        {
+          "id": "b",
+          "text": "Event Processing Monitor, Alert Generation Monitor, and CI Health Monitor"
+        },
+        {
+          "id": "c",
+          "text": "Instance Performance Monitor, Database Health Check, and Memory Usage Monitor"
+        },
+        {
+          "id": "d",
+          "text": "Event Queue Monitor, Alert Queue Monitor, and Notification Monitor"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "The base system provides four health monitor scripts: Check delay in event processing, Connectors Monitor, Get Event Processing state, and MID Server Threshold Alerts. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/task/custom-configure-threshold-monitoring.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "These are not the actual names of the provided health monitor scripts.",
+            "reference": "Self-health monitoring documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "These are not Event Management self-health monitor scripts.",
+            "reference": "Self-health monitoring documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "These are not the actual names of the provided health monitor scripts.",
+            "reference": "Self-health monitoring documentation"
+          }
+        ]
+      },
+      "isFree": false
+    },
+    {
+      "id": "cis-em-metric-intelligence-009",
+      "certification": "cis-em",
+      "topic": "metric-intelligence",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "An administrator wants to create an alert when any Event Management connector has been idle for more than 35 seconds. Which self-health monitor should they configure?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Connectors Status"
+        },
+        {
+          "id": "b",
+          "text": "Connector's Idle state monitoring"
+        },
+        {
+          "id": "c",
+          "text": "Event Processing job"
+        },
+        {
+          "id": "d",
+          "text": "Delay in event processing"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The 'Connector's Idle state monitoring' monitor verifies whether any connectors were in idle state that surpassed the configured threshold in minutes. The Critical Threshold can be set to the desired value. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/task/configure-threshold-monitoring.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Connectors Status monitors the active/inactive status of connectors, not idle duration.",
+            "reference": "Self-health monitoring documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Event Processing job monitors the state of event processing jobs, not connector idle time.",
+            "reference": "Self-health monitoring documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Delay in event processing tracks how long events remain in Ready state, not connector idle time.",
+            "reference": "Self-health monitoring documentation"
+          }
+        ]
+      },
+      "isFree": false
+    },
+    {
+      "id": "cis-em-metric-intelligence-010",
+      "certification": "cis-em",
+      "topic": "metric-intelligence",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which two scheduled jobs are automatically scheduled when self-health monitoring is enabled in Event Management?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Event Management - Insert Health Monitor and Event Management - Update Health Monitor"
+        },
+        {
+          "id": "b",
+          "text": "Event Management - Health Check and Event Management - Health Alert"
+        },
+        {
+          "id": "c",
+          "text": "Event Management - Monitor Connectors and Event Management - Monitor Events"
+        },
+        {
+          "id": "d",
+          "text": "Event Management - Self-Health Scan and Event Management - Self-Health Report"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "When self-health monitoring is enabled, two jobs are scheduled: 'Event Management - Insert Health Monitor' (runs scripts every hour) and 'Event Management - Update Health Monitor' (runs update scripts every minute). Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/task/configure-threshold-monitoring.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "These are not the actual scheduled job names for self-health monitoring.",
+            "reference": "Self-health monitoring documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "These are not the actual scheduled job names for self-health monitoring.",
+            "reference": "Self-health monitoring documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "These are not the actual scheduled job names for self-health monitoring.",
+            "reference": "Self-health monitoring documentation"
+          }
+        ]
+      },
+      "isFree": false
     }
   ]
 }

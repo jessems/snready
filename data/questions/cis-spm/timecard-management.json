@@ -240,6 +240,316 @@
         "release": "Xanadu",
         "reviewed": false
       }
+    },
+    {
+      "id": "cis-spm-timecard-004",
+      "certification": "cis-spm",
+      "topic": "timecard-management",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_select",
+      "question": "Which actions can a time card approver perform on submitted time sheets? (Choose THREE)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Approve the time sheet"
+        },
+        {
+          "id": "b",
+          "text": "Reject the time sheet"
+        },
+        {
+          "id": "c",
+          "text": "Recall the time sheet for corrections"
+        },
+        {
+          "id": "d",
+          "text": "Delete the time sheet permanently"
+        },
+        {
+          "id": "e",
+          "text": "Reassign the time sheet to a different resource"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b",
+        "c"
+      ],
+      "explanation": {
+        "correct": "Time card approvers can review, approve, reject, or recall submitted time sheets for corrections.",
+        "wrongAnswers": [
+          {
+            "choiceId": "d",
+            "explanation": "Approvers cannot permanently delete time sheets; they can only approve, reject, or recall them",
+            "reference": "Time Card Management documentation"
+          },
+          {
+            "choiceId": "e",
+            "explanation": "Reassigning time sheets to different resources is not an approver action",
+            "reference": "Time Card Management documentation"
+          }
+        ]
+      },
+      "references": [
+        "Time Card Management documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "cis-spm-api/time-card-management.md",
+        "excerpt": "Time card approvers can review, approve, reject, or recall submitted time sheets for corrections."
+      },
+      "labels": {
+        "certification": "cis-spm",
+        "domain": "Timecard Management",
+        "domainSlug": "timecard-management",
+        "domainPercentage": 5,
+        "subtopics": [
+          "Approval process"
+        ],
+        "tags": [
+          "timecard",
+          "approval"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-24T00:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-spm-timecard-005",
+      "certification": "cis-spm",
+      "topic": "timecard-management",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What limitation exists when a time card approver delegates their approval tasks?",
+      "options": [
+        {
+          "id": "a",
+          "text": "They cannot delegate to users outside their department"
+        },
+        {
+          "id": "b",
+          "text": "They cannot limit delegation to individual resources"
+        },
+        {
+          "id": "c",
+          "text": "They can only delegate for a maximum of 30 days"
+        },
+        {
+          "id": "d",
+          "text": "They must get admin approval before delegating"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Approvers can delegate their approval tasks, but cannot limit delegation to individual resources. The delegation applies to all time card approvals assigned to them.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "There is no department restriction mentioned for delegation",
+            "reference": "Time Card Management documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "There is no 30-day maximum mentioned for delegation",
+            "reference": "Time Card Management documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Admin approval is not required for delegating time card approval tasks",
+            "reference": "Time Card Management documentation"
+          }
+        ]
+      },
+      "references": [
+        "Time Card Management documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "cis-spm-api/time-card-management.md",
+        "excerpt": "Approvers can delegate their approval tasks, but cannot limit delegation to individual resources."
+      },
+      "labels": {
+        "certification": "cis-spm",
+        "domain": "Timecard Management",
+        "domainSlug": "timecard-management",
+        "domainPercentage": 5,
+        "subtopics": [
+          "Delegation"
+        ],
+        "tags": [
+          "timecard",
+          "delegation",
+          "approval"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-24T00:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-spm-timecard-006",
+      "certification": "cis-spm",
+      "topic": "timecard-management",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which ServiceNow table does Time Card Management work with to record time worked on tasks?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Time Entry [time_entry]"
+        },
+        {
+          "id": "b",
+          "text": "Task [task]"
+        },
+        {
+          "id": "c",
+          "text": "Project Task [pm_project_task]"
+        },
+        {
+          "id": "d",
+          "text": "Time Sheet [time_sheet]"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Time Card Management works with the Task table to record time worked on various task types, such as projects, incidents, problems, and change requests.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Time Entry is not the core table that Time Card Management integrates with; it works with the Task table",
+            "reference": "Time Card Management documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "While Project Tasks extend the Task table, Time Card Management works with the base Task table to support multiple task types",
+            "reference": "Time Card Management documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Time Sheet is a Time Card Management artifact, not the table it works with for task tracking",
+            "reference": "Time Card Management documentation"
+          }
+        ]
+      },
+      "references": [
+        "Time Card Management documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "cis-spm-api/time-card-management.md",
+        "excerpt": "Time Card Management works with the Task table to record time worked on various task types, such as projects, incidents, problems, and change requests."
+      },
+      "labels": {
+        "certification": "cis-spm",
+        "domain": "Timecard Management",
+        "domainSlug": "timecard-management",
+        "domainPercentage": 5,
+        "subtopics": [
+          "Data model"
+        ],
+        "tags": [
+          "timecard",
+          "task-table"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-24T00:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-spm-timecard-007",
+      "certification": "cis-spm",
+      "topic": "timecard-management",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "On which mobile platforms can users access and manage time sheets using the ServiceNow Mobile Timesheets app?",
+      "options": [
+        {
+          "id": "a",
+          "text": "iOS only"
+        },
+        {
+          "id": "b",
+          "text": "Android only"
+        },
+        {
+          "id": "c",
+          "text": "iOS and Android"
+        },
+        {
+          "id": "d",
+          "text": "iOS, Android, and Windows Mobile"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "Users can access and manage time sheets through the ServiceNow Mobile Timesheets app on iOS and Android devices.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The Mobile Timesheets app is available on both iOS and Android, not just iOS",
+            "reference": "Time Card Management documentation"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "The Mobile Timesheets app is available on both iOS and Android, not just Android",
+            "reference": "Time Card Management documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Windows Mobile is not mentioned as a supported platform for the Mobile Timesheets app",
+            "reference": "Time Card Management documentation"
+          }
+        ]
+      },
+      "references": [
+        "Time Card Management documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "cis-spm-api/time-card-management.md",
+        "excerpt": "Users can access and manage time sheets through the ServiceNow Mobile Timesheets app on iOS and Android devices."
+      },
+      "labels": {
+        "certification": "cis-spm",
+        "domain": "Timecard Management",
+        "domainSlug": "timecard-management",
+        "domainPercentage": 5,
+        "subtopics": [
+          "Mobile access"
+        ],
+        "tags": [
+          "timecard",
+          "mobile"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-24T00:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     }
   ]
 }
