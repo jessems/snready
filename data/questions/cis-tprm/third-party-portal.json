@@ -561,6 +561,399 @@
         "release": "Xanadu",
         "reviewed": false
       }
+    },
+    {
+      "id": "cis-tprm-portal-008",
+      "certification": "cis-tprm",
+      "topic": "third-party-portal",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_select",
+      "question": "What tasks can third-party contacts perform using the Third-party portal? (Choose THREE)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Respond to questionnaires for assessments"
+        },
+        {
+          "id": "b",
+          "text": "Perform assigned tasks"
+        },
+        {
+          "id": "c",
+          "text": "Communicate with risk-assessment staff regarding issues"
+        },
+        {
+          "id": "d",
+          "text": "Approve due diligence requests"
+        },
+        {
+          "id": "e",
+          "text": "Modify TPRM system properties"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b",
+        "c"
+      ],
+      "explanation": {
+        "correct": "Third-party contacts use the Third-party portal to securely organize, prioritize, and perform tasks like responding to questionnaires for assessments, performing tasks, and communicating with risk-assessment staff regarding issues.",
+        "wrongAnswers": [
+          {
+            "choiceId": "d",
+            "explanation": "Due diligence request approval is performed by internal TPRM approvers, not third-party contacts",
+            "reference": "TPRM Configuration documentation"
+          },
+          {
+            "choiceId": "e",
+            "explanation": "System properties can only be modified by admins, not third-party contacts",
+            "reference": "TPRM Configuration documentation"
+          }
+        ]
+      },
+      "references": [
+        "TPRM Configuration documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "cis-tprm-api/tprm-configuring.md",
+        "excerpt": "They use the Third-party portal to securely organize, prioritize, and perform tasks like responding to questionnaires for assessments, performing tasks, and communicating with your risk-assessment staff regarding issues."
+      },
+      "labels": {
+        "certification": "cis-tprm",
+        "domain": "Third-party Portal",
+        "domainSlug": "third-party-portal",
+        "domainPercentage": 10,
+        "subtopics": [
+          "Portal capabilities"
+        ],
+        "tags": [
+          "portal",
+          "third-party-contacts"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-24T00:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-tprm-portal-009",
+      "certification": "cis-tprm",
+      "topic": "third-party-portal",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which roles can set up third-party contacts to grant access to the Third-party portal?",
+      "options": [
+        {
+          "id": "a",
+          "text": "admin only"
+        },
+        {
+          "id": "b",
+          "text": "admin or sn_vdr_risk_asmt.vendor_risk_manager"
+        },
+        {
+          "id": "c",
+          "text": "sn_vdr_risk_asmt.vendor_risk_assessor only"
+        },
+        {
+          "id": "d",
+          "text": "Any user with the itil role"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The admin or sn_vdr_risk_asmt.vendor_risk_manager role is required to set up third-party contacts and grant them access to the Third-party portal.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Both admin and vendor_risk_manager roles can set up third-party contacts, not just admin",
+            "reference": "TPRM Configuration documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The vendor_risk_assessor role is for assessments, not for setting up portal access",
+            "reference": "TPRM Configuration documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The itil role does not provide access to set up third-party contacts",
+            "reference": "TPRM Configuration documentation"
+          }
+        ]
+      },
+      "references": [
+        "TPRM Configuration documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "cis-tprm-api/tprm-configuring.md",
+        "excerpt": "Role required: admin or sn_vdr_risk_asmt.vendor_risk_manager"
+      },
+      "labels": {
+        "certification": "cis-tprm",
+        "domain": "Third-party Portal",
+        "domainSlug": "third-party-portal",
+        "domainPercentage": 10,
+        "subtopics": [
+          "Portal setup",
+          "Roles"
+        ],
+        "tags": [
+          "portal",
+          "roles",
+          "contacts"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-24T00:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-tprm-portal-010",
+      "certification": "cis-tprm",
+      "topic": "third-party-portal",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What must be set up to enable secure access for external third parties to the TPRM portal?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A VPN connection for each third party"
+        },
+        {
+          "id": "b",
+          "text": "An authentication policy using platform post-authentication policies"
+        },
+        {
+          "id": "c",
+          "text": "Individual admin accounts for each third-party contact"
+        },
+        {
+          "id": "d",
+          "text": "A dedicated TPRM instance for external users"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "An authentication policy must be added to enable secure access for external third parties. This uses the platform post-authentication policies to enable third parties to secure access to your instance.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "VPN connections are not required; access is secured through authentication policies",
+            "reference": "TPRM Configuration documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Third-party contacts are set up with specific roles, not individual admin accounts",
+            "reference": "TPRM Configuration documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "A dedicated instance is not required; authentication policies control access on the existing instance",
+            "reference": "TPRM Configuration documentation"
+          }
+        ]
+      },
+      "references": [
+        "TPRM Configuration documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "cis-tprm-api/tprm-configuring.md",
+        "excerpt": "Add an authentication policy to enable secure access for external third parties. Use the platform post-authentication policies."
+      },
+      "labels": {
+        "certification": "cis-tprm",
+        "domain": "Third-party Portal",
+        "domainSlug": "third-party-portal",
+        "domainPercentage": 10,
+        "subtopics": [
+          "Authentication",
+          "Security"
+        ],
+        "tags": [
+          "portal",
+          "authentication",
+          "security"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-24T00:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-tprm-portal-011",
+      "certification": "cis-tprm",
+      "topic": "third-party-portal",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "Which questionnaire classification must be used for fourth-party registration questionnaires sent to third parties through the portal?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Risk Assessment classification"
+        },
+        {
+          "id": "b",
+          "text": "Fourth-party template classification with Fourth-party information metric category"
+        },
+        {
+          "id": "c",
+          "text": "Compliance Assessment classification"
+        },
+        {
+          "id": "d",
+          "text": "Standard vendor questionnaire classification"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "You can use the base system fourth-party registration questionnaire or a custom questionnaire that has the Fourth-party template classification and has a Fourth-party information metric category added.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Risk Assessment classification is for general risk assessments, not fourth-party registration",
+            "reference": "Fourth-party registration documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Compliance Assessment classification is for compliance assessments, not fourth-party registration",
+            "reference": "Fourth-party registration documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Standard vendor questionnaire is not the specific classification needed for fourth-party registration",
+            "reference": "Fourth-party registration documentation"
+          }
+        ]
+      },
+      "references": [
+        "Fourth-party registration documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "cis-tprm-api/tprm-fourth-party-register.md",
+        "excerpt": "a custom questionnaire that has the Fourth-party template classification and has a Fourth-party information metric category added."
+      },
+      "labels": {
+        "certification": "cis-tprm",
+        "domain": "Third-party Portal",
+        "domainSlug": "third-party-portal",
+        "domainPercentage": 10,
+        "subtopics": [
+          "Questionnaire configuration",
+          "Fourth-party"
+        ],
+        "tags": [
+          "portal",
+          "questionnaire",
+          "fourth-party"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-24T00:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-tprm-portal-012",
+      "certification": "cis-tprm",
+      "topic": "third-party-portal",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What must be configured to enable email notification of assessments and issues to third-party contacts?",
+      "options": [
+        {
+          "id": "a",
+          "text": "SMTP server settings in system properties"
+        },
+        {
+          "id": "b",
+          "text": "Email communication with third-party contacts"
+        },
+        {
+          "id": "c",
+          "text": "Notification rules in the Service Portal"
+        },
+        {
+          "id": "d",
+          "text": "Push notification subscriptions for each contact"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "You must enable email communication with third-party contacts to enable email notification of assessments and issues. This is a specific TPRM configuration task.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "SMTP settings are a platform-level configuration, not the specific TPRM email setup task",
+            "reference": "TPRM Configuration documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Service Portal notification rules are not how TPRM email notifications are configured",
+            "reference": "TPRM Configuration documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Push notifications are not the configured mechanism; email communication is used",
+            "reference": "TPRM Configuration documentation"
+          }
+        ]
+      },
+      "references": [
+        "TPRM Configuration documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "cis-tprm-api/tprm-configuring.md",
+        "excerpt": "Configure email communication with third-party contacts to enable email notification of assessments and issues."
+      },
+      "labels": {
+        "certification": "cis-tprm",
+        "domain": "Third-party Portal",
+        "domainSlug": "third-party-portal",
+        "domainPercentage": 10,
+        "subtopics": [
+          "Email configuration"
+        ],
+        "tags": [
+          "portal",
+          "email",
+          "notifications"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-24T00:00:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     }
   ]
 }

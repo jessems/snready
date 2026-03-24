@@ -1261,6 +1261,556 @@
         "release": "Xanadu",
         "reviewed": false
       }
+    },
+    {
+      "id": "cis-em-event-configuration-017",
+      "certification": "cis-em",
+      "topic": "event-configuration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "By default, what fields are concatenated to populate the Message Key if it is not provided in an event?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Source, Node, and Severity"
+        },
+        {
+          "id": "b",
+          "text": "Source, Type, Node, Resource, and Metric Name"
+        },
+        {
+          "id": "c",
+          "text": "Node, Resource, Description, and Severity"
+        },
+        {
+          "id": "d",
+          "text": "Source, CI, and Description"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "If the Message Key is not populated, the system concatenates the Source, Type, Node, Resource, and Metric Name fields to populate the Message Key. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/c_EMEventIdentifier.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Severity is not part of the Message Key concatenation.",
+            "reference": "Event identifiers documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Description and Severity are not part of the default Message Key fields.",
+            "reference": "Event identifiers documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "CI and Description are not part of the default Message Key concatenation.",
+            "reference": "Event identifiers documentation"
+          }
+        ]
+      },
+      "isFree": false
+    },
+    {
+      "id": "cis-em-event-configuration-018",
+      "certification": "cis-em",
+      "topic": "event-configuration",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What is the effect of event rules on event records in the Event table?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Event rules directly modify the event records in the Event table"
+        },
+        {
+          "id": "b",
+          "text": "Event rules do not change event records; changes are stored in instance memory"
+        },
+        {
+          "id": "c",
+          "text": "Event rules delete processed events from the Event table"
+        },
+        {
+          "id": "d",
+          "text": "Event rules move events from the Event table to the Alert table"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Event rules do not change the event records in the Event table. Changes to event data are stored in the ServiceNow instance memory. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/create-event-rules.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Event rules never modify event records directly in the Event table.",
+            "reference": "Event rules documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Event rules do not delete events; events remain for review regardless of rule processing.",
+            "reference": "Event rules documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Event rules do not move events; they process events and generate alerts as separate records.",
+            "reference": "Event rules documentation"
+          }
+        ]
+      },
+      "isFree": false
+    },
+    {
+      "id": "cis-em-event-configuration-019",
+      "certification": "cis-em",
+      "topic": "event-configuration",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "An administrator wants to test how a specific event will be processed without affecting production alerts. What feature should they use?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Event forwarding"
+        },
+        {
+          "id": "b",
+          "text": "Simulate event processing"
+        },
+        {
+          "id": "c",
+          "text": "Event field mapping preview"
+        },
+        {
+          "id": "d",
+          "text": "Event rule dry run"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The Simulate event processing feature allows you to simulate event processing logic on events and display the resulting alert without creating actual alerts. Access it from an event record's Related Links section. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/task/simulate-event-processing.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Event forwarding sends events to external systems; it does not simulate processing.",
+            "reference": "Event forwarding documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "There is no specific 'Event field mapping preview' feature.",
+            "reference": "Event management documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The feature is called 'Simulate event processing', not 'Event rule dry run'.",
+            "reference": "Event management documentation"
+          }
+        ]
+      },
+      "isFree": false
+    },
+    {
+      "id": "cis-em-event-configuration-020",
+      "certification": "cis-em",
+      "topic": "event-configuration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Where are event field mappings applied in the event processing flow?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Before event rule processing"
+        },
+        {
+          "id": "b",
+          "text": "After event rule processing and prior to alert generation"
+        },
+        {
+          "id": "c",
+          "text": "After alert generation"
+        },
+        {
+          "id": "d",
+          "text": "During event collection by the MID Server"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Event field mappings apply after event rule processing and prior to alert generation. The mapping values from the Event Mapping Pair table apply to the alert, while the original event severity remains unchanged. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/c_EMEventFieldMapping.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Event field mappings are applied after event rule processing, not before.",
+            "reference": "Event field mapping documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Mappings are applied prior to alert generation, not after.",
+            "reference": "Event field mapping documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Event field mappings are processed on the instance, not during MID Server collection.",
+            "reference": "Event field mapping documentation"
+          }
+        ]
+      },
+      "isFree": false
+    },
+    {
+      "id": "cis-em-event-configuration-021",
+      "certification": "cis-em",
+      "topic": "event-configuration",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What happens to event field mapping rules when processing events that have no matching event rule?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Event field mappings are skipped entirely"
+        },
+        {
+          "id": "b",
+          "text": "The system still searches for and applies event field mappings"
+        },
+        {
+          "id": "c",
+          "text": "A default mapping is automatically created"
+        },
+        {
+          "id": "d",
+          "text": "The event is discarded without creating an alert"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "In the event processing flow, the system searches for an event field mapping even if there was no matching event rule. If a mapping is found, it is applied. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/em-process-flow.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Event field mappings are always searched for, regardless of whether an event rule was matched.",
+            "reference": "Event Management process flow"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "No default mapping is automatically created; existing mappings are searched.",
+            "reference": "Event Management process flow"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Events without matching rules are not discarded; they can still generate alerts through field mappings.",
+            "reference": "Event Management process flow"
+          }
+        ]
+      },
+      "isFree": false
+    },
+    {
+      "id": "cis-em-event-configuration-022",
+      "certification": "cis-em",
+      "topic": "event-configuration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What is the purpose of the 'Apply additional matching rules' check box in an event rule?",
+      "options": [
+        {
+          "id": "a",
+          "text": "To apply the rule to events from multiple sources simultaneously"
+        },
+        {
+          "id": "b",
+          "text": "To run multiple sequential rules defined for the same event"
+        },
+        {
+          "id": "c",
+          "text": "To apply the rule to both events and alerts"
+        },
+        {
+          "id": "d",
+          "text": "To enable the rule to run on closed alerts"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Selecting 'Apply additional matching rules' allows multiple sequential rules defined for the same event to run in ascending order as defined in the Order field. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/create-event-rules.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "This option controls sequential rule execution, not multi-source application.",
+            "reference": "Event rules documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Event rules process events only, not alerts directly.",
+            "reference": "Event rules documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Event rules process events, not closed alerts.",
+            "reference": "Event rules documentation"
+          }
+        ]
+      },
+      "isFree": false
+    },
+    {
+      "id": "cis-em-event-configuration-023",
+      "certification": "cis-em",
+      "topic": "event-configuration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "How does Event Management handle table rotation for the em_event table by default?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Events are deleted after 24 hours"
+        },
+        {
+          "id": "b",
+          "text": "The em_event table is rotated to an offload table with base table cleanup after seven rotations"
+        },
+        {
+          "id": "c",
+          "text": "Events are archived to a cold storage table monthly"
+        },
+        {
+          "id": "d",
+          "text": "Table rotation is disabled by default and must be manually enabled"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "By default, the table rotation for Event Management rotates the em_event table to an offload table and the base table cleanup takes place after seven table rotations. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/task/event-table-rotation.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Events are not simply deleted after 24 hours; table rotation manages data growth.",
+            "reference": "Event table rotation documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "There is no cold storage archival; table rotation uses offload tables.",
+            "reference": "Event table rotation documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Table rotation is used by Event Management by default.",
+            "reference": "Event table rotation documentation"
+          }
+        ]
+      },
+      "isFree": false
+    },
+    {
+      "id": "cis-em-event-configuration-024",
+      "certification": "cis-em",
+      "topic": "event-configuration",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "An administrator receives events with a custom field 'org_severity' containing values Low, Medium, and High. How should they map these to standard alert severity values?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Create event rules with transform scripts for each severity level"
+        },
+        {
+          "id": "b",
+          "text": "Create an Event Field Mapping rule with Transform Value Pairs"
+        },
+        {
+          "id": "c",
+          "text": "Modify the event directly using a business rule on the em_event table"
+        },
+        {
+          "id": "d",
+          "text": "Configure a custom connector to translate severity values"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Event Field Mapping rules with Transform Value Pairs are designed for exactly this purpose - mapping values from specific event fields to alert field values. For example, mapping org_severity Low→Warning, Medium→Major, High→Critical. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/c_EMEventFieldMapping.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "While event rule transforms could work, Event Field Mappings with Transform Value Pairs is the purpose-built feature for this.",
+            "reference": "Event field mapping documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Modifying events directly via business rules is not the recommended approach; Event Field Mappings preserve the original event.",
+            "reference": "Event field mapping documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Connectors handle event collection, not severity value translation.",
+            "reference": "Event field mapping documentation"
+          }
+        ]
+      },
+      "isFree": false
+    },
+    {
+      "id": "cis-em-event-configuration-025",
+      "certification": "cis-em",
+      "topic": "event-configuration",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What is the purpose of alert tags in Event Management?",
+      "options": [
+        {
+          "id": "a",
+          "text": "To categorize alerts by business unit for reporting"
+        },
+        {
+          "id": "b",
+          "text": "To consolidate normalized fields and improve admin experience for transforming alert fields (key/value)"
+        },
+        {
+          "id": "c",
+          "text": "To assign priority scores to alerts"
+        },
+        {
+          "id": "d",
+          "text": "To create visual labels on the Event Management dashboard"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Alert tags consolidate all normalized fields and improve the admin experience to transform and normalize alert fields (key/value), enabling reuse of normalized fields across different sources. This improves alert quality for correlation and provides more out-of-the-box TBAC definitions. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/processing-events.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Alert tags are for field normalization and correlation, not business unit categorization.",
+            "reference": "Alert tags documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Alert tags do not directly assign priority scores.",
+            "reference": "Alert tags documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Alert tags are not visual dashboard labels; they are normalized key/value pairs.",
+            "reference": "Alert tags documentation"
+          }
+        ]
+      },
+      "isFree": false
+    },
+    {
+      "id": "cis-em-event-configuration-026",
+      "certification": "cis-em",
+      "topic": "event-configuration",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What does team-based integration in Event Management ensure regarding event rule execution?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Each team's rules run independently without any ordering"
+        },
+        {
+          "id": "b",
+          "text": "Connector ownership and execution of rules give precedence to global rules"
+        },
+        {
+          "id": "c",
+          "text": "Team rules always override global rules"
+        },
+        {
+          "id": "d",
+          "text": "Rules are executed alphabetically by team name"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Team-based integrations ensure that connector ownership and execution of rules give precedence to global rules. Event rules applied to assignment groups only run after the global rules have run. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/create-event-rules.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Team rules are ordered with respect to global rules; global rules run first.",
+            "reference": "Team-based integrations documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Global rules take precedence and run before team-specific rules.",
+            "reference": "Team-based integrations documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Rules are not executed alphabetically; they follow the global-first, team-second ordering.",
+            "reference": "Team-based integrations documentation"
+          }
+        ]
+      },
+      "isFree": false
+    },
+    {
+      "id": "cis-em-event-configuration-027",
+      "certification": "cis-em",
+      "topic": "event-configuration",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "An administrator wants to view the rules that will be applied to a specific event before it is processed. Where can they find this information?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Navigate to Event Management > Rules > Event Rule Simulator"
+        },
+        {
+          "id": "b",
+          "text": "Open the event record and select 'Simulate event processing' from Related Links"
+        },
+        {
+          "id": "c",
+          "text": "Run the 'Event Rule Analysis' scheduled job"
+        },
+        {
+          "id": "d",
+          "text": "Check the Event Management dashboard analytics"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "You can simulate event processing by opening an event from All Events, then selecting 'Simulate event processing' from the Related Links section. The Activities tab shows which rules and mappings were applied. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/task/simulate-event-processing.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "There is no separate 'Event Rule Simulator' navigation path; the simulation is accessed from individual event records.",
+            "reference": "Simulate event processing documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "There is no 'Event Rule Analysis' scheduled job; simulation is done per-event from the event record.",
+            "reference": "Simulate event processing documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Dashboard analytics show trends, not per-event rule application details.",
+            "reference": "Simulate event processing documentation"
+          }
+        ]
+      },
+      "isFree": false
     }
   ]
 }

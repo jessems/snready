@@ -345,7 +345,9 @@
           "text": "They are unrelated concepts"
         }
       ],
-      "correctAnswers": ["b"],
+      "correctAnswers": [
+        "b"
+      ],
       "explanation": {
         "correct": "TOP is the root domain at the highest level of the domain hierarchy and contains all records. The global domain is a special domain used to store shared reference data (like system properties) that should be visible to all domains. Records in global domain are typically accessible from all domains.",
         "wrongAnswers": [
@@ -369,8 +371,15 @@
       },
       "labels": {
         "domain": "Initial Domain Setup and Architecture",
-        "subtopics": ["TOP Domain", "Global Domain"],
-        "tags": ["top", "global", "hierarchy"]
+        "subtopics": [
+          "TOP Domain",
+          "Global Domain"
+        ],
+        "tags": [
+          "top",
+          "global",
+          "hierarchy"
+        ]
       },
       "meta": {
         "version": "1.0",
@@ -378,6 +387,788 @@
         "reviewed": false
       },
       "isFree": true
+    },
+    {
+      "id": "cis-sp-initial-domain-setup-006",
+      "certification": "cis-sp",
+      "topic": "initial-domain-setup",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which property must be set to true to enable domain separation on a ServiceNow instance?",
+      "options": [
+        {
+          "id": "a",
+          "text": "glide.sys.domain.enabled"
+        },
+        {
+          "id": "b",
+          "text": "glide.sys.domain.delegated_administration"
+        },
+        {
+          "id": "c",
+          "text": "glide.sys.domain.separation"
+        },
+        {
+          "id": "d",
+          "text": "glide.sys.domain.active"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "The property glide.sys.domain.enabled must be set to true to activate domain separation on the instance.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "glide.sys.domain.delegated_administration enables delegated admin but doesn't enable domain separation itself",
+            "reference": "Domain separation properties"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "This is not a valid ServiceNow property for domain separation",
+            "reference": "Domain separation properties"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "This is not a valid ServiceNow property for domain separation",
+            "reference": "Domain separation properties"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow Domain Separation documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "domain-separation-setup",
+        "excerpt": "Enable domain separation property"
+      },
+      "labels": {
+        "certification": "cis-sp",
+        "domain": "Initial Domain Setup and Architecture",
+        "domainSlug": "initial-domain-setup",
+        "domainPercentage": 9,
+        "subtopics": [
+          "Domain properties",
+          "Configuration"
+        ],
+        "tags": [
+          "domain-separation",
+          "properties",
+          "setup"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-24T02:03:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sp-initial-domain-setup-007",
+      "certification": "cis-sp",
+      "topic": "initial-domain-setup",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What is the domain hierarchy structure in ServiceNow?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A flat structure where all domains are equal"
+        },
+        {
+          "id": "b",
+          "text": "A tree structure with global at the root, TOP domain below it, and customer domains as children of TOP"
+        },
+        {
+          "id": "c",
+          "text": "A mesh network where all domains connect to each other"
+        },
+        {
+          "id": "d",
+          "text": "A two-level structure with only global and one customer domain"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "ServiceNow domain separation uses a hierarchical tree structure: Global domain is the root, the TOP domain sits below global, and tenant/customer domains are created as children under TOP.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Domains are organized hierarchically, not as a flat structure",
+            "reference": "Domain hierarchy"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Domains follow a parent-child tree, not a mesh",
+            "reference": "Domain architecture"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Multiple levels and multiple customer domains are supported",
+            "reference": "Multi-tenancy"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow Domain Separation documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "domain-separation-architecture",
+        "excerpt": "Domain hierarchy structure"
+      },
+      "labels": {
+        "certification": "cis-sp",
+        "domain": "Initial Domain Setup and Architecture",
+        "domainSlug": "initial-domain-setup",
+        "domainPercentage": 9,
+        "subtopics": [
+          "Domain hierarchy",
+          "Architecture"
+        ],
+        "tags": [
+          "domain-hierarchy",
+          "top-domain",
+          "global-domain"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-24T02:03:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sp-initial-domain-setup-008",
+      "certification": "cis-sp",
+      "topic": "initial-domain-setup",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What is the significance of the TOP domain in ServiceNow domain separation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It replaces the global domain"
+        },
+        {
+          "id": "b",
+          "text": "It serves as the parent domain for all tenant domains and is typically used by the service provider"
+        },
+        {
+          "id": "c",
+          "text": "It is only used for testing purposes"
+        },
+        {
+          "id": "d",
+          "text": "It automatically duplicates all global domain records"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The TOP domain is the service provider's domain that sits directly below global. All tenant/customer domains are created as children of TOP, and the service provider manages shared resources at this level.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "TOP exists alongside global; global remains the root domain",
+            "reference": "Domain hierarchy"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "TOP is a production domain used by the service provider",
+            "reference": "TOP domain purpose"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Records are not automatically duplicated between domains",
+            "reference": "Domain data management"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow Domain Separation documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "domain-separation-architecture",
+        "excerpt": "TOP domain purpose"
+      },
+      "labels": {
+        "certification": "cis-sp",
+        "domain": "Initial Domain Setup and Architecture",
+        "domainSlug": "initial-domain-setup",
+        "domainPercentage": 9,
+        "subtopics": [
+          "TOP domain",
+          "Service provider domain"
+        ],
+        "tags": [
+          "top-domain",
+          "service-provider",
+          "tenant-management"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-24T02:03:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sp-initial-domain-setup-009",
+      "certification": "cis-sp",
+      "topic": "initial-domain-setup",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "An MSP is setting up domain separation and needs to determine where shared configuration items like knowledge articles should reside. Where should they place shared content?",
+      "options": [
+        {
+          "id": "a",
+          "text": "In each tenant domain individually"
+        },
+        {
+          "id": "b",
+          "text": "In the TOP or global domain so it is visible to all child domains"
+        },
+        {
+          "id": "c",
+          "text": "In a separate ServiceNow instance"
+        },
+        {
+          "id": "d",
+          "text": "In an external content management system"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Shared content should be placed in the TOP or global domain because domain separation visibility rules allow child domains to see records from parent domains by default.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Duplicating content in each domain creates maintenance overhead",
+            "reference": "Content management"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Separate instances defeat the purpose of domain separation",
+            "reference": "Architecture decisions"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "External systems add unnecessary complexity for content that can be shared natively",
+            "reference": "Integration"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow Domain Separation documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "domain-separation-architecture",
+        "excerpt": "Shared content placement"
+      },
+      "labels": {
+        "certification": "cis-sp",
+        "domain": "Initial Domain Setup and Architecture",
+        "domainSlug": "initial-domain-setup",
+        "domainPercentage": 9,
+        "subtopics": [
+          "Content sharing",
+          "Domain visibility"
+        ],
+        "tags": [
+          "shared-content",
+          "visibility",
+          "parent-domain"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-24T02:03:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sp-initial-domain-setup-010",
+      "certification": "cis-sp",
+      "topic": "initial-domain-setup",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which of the following is a prerequisite before enabling domain separation on a ServiceNow instance? (Choose two)",
+      "options": [
+        {
+          "id": "a",
+          "text": "All existing data must be deleted"
+        },
+        {
+          "id": "b",
+          "text": "Careful planning of the domain hierarchy and data segregation strategy"
+        },
+        {
+          "id": "c",
+          "text": "Understanding which applications support domain separation"
+        },
+        {
+          "id": "d",
+          "text": "Upgrading to the latest ServiceNow release"
+        }
+      ],
+      "correctAnswers": [
+        "b",
+        "c"
+      ],
+      "explanation": {
+        "correct": "Before enabling domain separation, organizations must plan their domain hierarchy carefully and verify which applications support domain separation, as not all applications are domain-separation aware.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Existing data doesn't need to be deleted; it needs to be properly assigned to domains",
+            "reference": "Data migration"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "While staying current is recommended, domain separation doesn't require the absolute latest release",
+            "reference": "Platform versions"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow Domain Separation documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "domain-separation-planning",
+        "excerpt": "Prerequisites for domain separation"
+      },
+      "labels": {
+        "certification": "cis-sp",
+        "domain": "Initial Domain Setup and Architecture",
+        "domainSlug": "initial-domain-setup",
+        "domainPercentage": 9,
+        "subtopics": [
+          "Planning",
+          "Prerequisites"
+        ],
+        "tags": [
+          "prerequisites",
+          "planning",
+          "application-support"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-24T02:03:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sp-initial-domain-setup-011",
+      "certification": "cis-sp",
+      "topic": "initial-domain-setup",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What happens to existing records when domain separation is first enabled on an instance?",
+      "options": [
+        {
+          "id": "a",
+          "text": "All records are automatically deleted"
+        },
+        {
+          "id": "b",
+          "text": "Existing records remain in the global domain until explicitly reassigned"
+        },
+        {
+          "id": "c",
+          "text": "Records are randomly distributed across domains"
+        },
+        {
+          "id": "d",
+          "text": "The instance must be rebuilt from scratch"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "When domain separation is enabled, existing records stay in the global domain. Administrators must then assign records to appropriate domains as part of the migration process.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Records are preserved; enabling domain separation is non-destructive",
+            "reference": "Data preservation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Records stay in global; they don't move automatically",
+            "reference": "Domain assignment"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Domain separation is enabled on existing instances without rebuilding",
+            "reference": "Setup process"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow Domain Separation documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "domain-separation-setup",
+        "excerpt": "Enabling domain separation effects"
+      },
+      "labels": {
+        "certification": "cis-sp",
+        "domain": "Initial Domain Setup and Architecture",
+        "domainSlug": "initial-domain-setup",
+        "domainPercentage": 9,
+        "subtopics": [
+          "Data migration",
+          "Initial setup"
+        ],
+        "tags": [
+          "data-migration",
+          "existing-records",
+          "global-domain"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-24T02:03:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sp-initial-domain-setup-012",
+      "certification": "cis-sp",
+      "topic": "initial-domain-setup",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What is delegated administration in the context of domain separation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Allowing any user to administer any domain"
+        },
+        {
+          "id": "b",
+          "text": "Enabling domain-level administrators to manage users, groups, and configurations within their own domain"
+        },
+        {
+          "id": "c",
+          "text": "Removing the need for a global administrator"
+        },
+        {
+          "id": "d",
+          "text": "Automatically synchronizing admin settings across domains"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Delegated administration allows service providers to give tenant administrators control over their own domain's users, groups, and certain configurations without affecting other domains.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Delegated admin restricts administration to specific domains, not all domains",
+            "reference": "Access control"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Global administrators are still needed for platform-level management",
+            "reference": "Admin hierarchy"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Settings are managed independently per domain, not synchronized",
+            "reference": "Domain independence"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow Domain Separation documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "domain-separation-delegated-admin",
+        "excerpt": "Delegated administration concept"
+      },
+      "labels": {
+        "certification": "cis-sp",
+        "domain": "Initial Domain Setup and Architecture",
+        "domainSlug": "initial-domain-setup",
+        "domainPercentage": 9,
+        "subtopics": [
+          "Delegated administration",
+          "Tenant management"
+        ],
+        "tags": [
+          "delegated-admin",
+          "tenant-admin",
+          "domain-management"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-24T02:03:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sp-initial-domain-setup-013",
+      "certification": "cis-sp",
+      "topic": "initial-domain-setup",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A service provider needs to onboard a new customer tenant. Which steps are required? (Choose two)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Create a new ServiceNow instance for the customer"
+        },
+        {
+          "id": "b",
+          "text": "Create a new domain under the TOP domain for the customer"
+        },
+        {
+          "id": "c",
+          "text": "Assign appropriate users and groups to the new domain"
+        },
+        {
+          "id": "d",
+          "text": "Disable domain separation temporarily"
+        }
+      ],
+      "correctAnswers": [
+        "b",
+        "c"
+      ],
+      "explanation": {
+        "correct": "Onboarding a new tenant requires creating a child domain under TOP and assigning users/groups to that domain with appropriate roles.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Domain separation allows multiple tenants on a single instance",
+            "reference": "Multi-tenancy"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Domain separation should remain enabled; disabling it would affect all tenants",
+            "reference": "Domain separation management"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow Domain Separation documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "domain-separation-tenant-onboarding",
+        "excerpt": "Tenant onboarding steps"
+      },
+      "labels": {
+        "certification": "cis-sp",
+        "domain": "Initial Domain Setup and Architecture",
+        "domainSlug": "initial-domain-setup",
+        "domainPercentage": 9,
+        "subtopics": [
+          "Tenant onboarding",
+          "Domain creation"
+        ],
+        "tags": [
+          "tenant-onboarding",
+          "domain-creation",
+          "user-assignment"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-24T02:03:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sp-initial-domain-setup-014",
+      "certification": "cis-sp",
+      "topic": "initial-domain-setup",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "Why is domain separation considered irreversible once enabled in production?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Because ServiceNow doesn't provide an uninstall option"
+        },
+        {
+          "id": "b",
+          "text": "Because the sys_domain field is added to many tables and data relationships become domain-dependent, making reversal extremely complex"
+        },
+        {
+          "id": "c",
+          "text": "Because it requires a special license that cannot be returned"
+        },
+        {
+          "id": "d",
+          "text": "Because other instances are automatically affected"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Once enabled, domain separation adds the sys_domain field to numerous tables and all data operations become domain-aware. Reversing this would require restructuring all domain-dependent data relationships.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "While there's no simple toggle, the reason is the deep data impact",
+            "reference": "Technical complexity"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Licensing is separate from the technical irreversibility",
+            "reference": "Licensing"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Each instance is independently managed",
+            "reference": "Instance independence"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow Domain Separation documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "domain-separation-planning",
+        "excerpt": "Irreversibility of domain separation"
+      },
+      "labels": {
+        "certification": "cis-sp",
+        "domain": "Initial Domain Setup and Architecture",
+        "domainSlug": "initial-domain-setup",
+        "domainPercentage": 9,
+        "subtopics": [
+          "Planning considerations",
+          "Irreversibility"
+        ],
+        "tags": [
+          "irreversibility",
+          "planning",
+          "sys-domain"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-24T02:03:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sp-initial-domain-setup-015",
+      "certification": "cis-sp",
+      "topic": "initial-domain-setup",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which role is required to create and manage domains in ServiceNow?",
+      "options": [
+        {
+          "id": "a",
+          "text": "itil"
+        },
+        {
+          "id": "b",
+          "text": "admin"
+        },
+        {
+          "id": "c",
+          "text": "domain_admin"
+        },
+        {
+          "id": "d",
+          "text": "user_admin"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The admin role is required to create and manage the domain hierarchy. Domain administrators (domain_admin) can manage within their domain but cannot create new domains.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The itil role is for ITSM users, not domain management",
+            "reference": "Role types"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "domain_admin can manage within a domain but cannot create new domains in the hierarchy",
+            "reference": "Domain administration"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "user_admin manages users but not the domain structure",
+            "reference": "User administration"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow Domain Separation documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "domain-separation-roles",
+        "excerpt": "Required roles for domain management"
+      },
+      "labels": {
+        "certification": "cis-sp",
+        "domain": "Initial Domain Setup and Architecture",
+        "domainSlug": "initial-domain-setup",
+        "domainPercentage": 9,
+        "subtopics": [
+          "Roles",
+          "Administration"
+        ],
+        "tags": [
+          "roles",
+          "admin",
+          "domain-management"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-24T02:03:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     }
   ]
 }

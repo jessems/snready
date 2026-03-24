@@ -741,7 +741,9 @@
           "text": "No tables have domain fields"
         }
       ],
-      "correctAnswers": ["b"],
+      "correctAnswers": [
+        "b"
+      ],
       "explanation": {
         "correct": "Reconciliation Definition (cmdb_reconciliation_definition) and Datasource Precedence (cmdb_datasource_precedence) tables have sys_domain, sys_overrides, and sys_domain_path fields, allowing domain-specific reconciliation rules. Identification rules are always global.",
         "wrongAnswers": [
@@ -765,8 +767,15 @@
       },
       "labels": {
         "domain": "Foundational Data Management",
-        "subtopics": ["CMDB", "Reconciliation"],
-        "tags": ["cmdb", "reconciliation", "domain-fields"]
+        "subtopics": [
+          "CMDB",
+          "Reconciliation"
+        ],
+        "tags": [
+          "cmdb",
+          "reconciliation",
+          "domain-fields"
+        ]
       },
       "meta": {
         "version": "1.0",
@@ -800,7 +809,9 @@
           "text": "Per CI class"
         }
       ],
-      "correctAnswers": ["b"],
+      "correctAnswers": [
+        "b"
+      ],
       "explanation": {
         "correct": "Identification rules and identification inclusion rules are always defined at the global level. The following tables don't have a sys_domain field: Identifier (cmdb_identifier), Identifier Entries (cmdb_identifier_entry), Related Entries (cmdb_related_entry), Identification Inclusion Rules (cmdb_ie_active_config).",
         "wrongAnswers": [
@@ -824,8 +835,15 @@
       },
       "labels": {
         "domain": "Foundational Data Management",
-        "subtopics": ["CMDB", "Identification Rules"],
-        "tags": ["identification", "global", "rules"]
+        "subtopics": [
+          "CMDB",
+          "Identification Rules"
+        ],
+        "tags": [
+          "identification",
+          "global",
+          "rules"
+        ]
       },
       "meta": {
         "version": "1.0",
@@ -859,7 +877,9 @@
           "text": "cmdb_ie_active_config"
         }
       ],
-      "correctAnswers": ["b"],
+      "correctAnswers": [
+        "b"
+      ],
       "explanation": {
         "correct": "The Data Source Staleness Definitions table (cmdb_datasource_staleness) has sys_domain field and can be configured per domain to define different staleness rules for each customer's CIs.",
         "wrongAnswers": [
@@ -883,8 +903,15 @@
       },
       "labels": {
         "domain": "Foundational Data Management",
-        "subtopics": ["CMDB", "Staleness"],
-        "tags": ["staleness", "domain-specific", "msp"]
+        "subtopics": [
+          "CMDB",
+          "Staleness"
+        ],
+        "tags": [
+          "staleness",
+          "domain-specific",
+          "msp"
+        ]
       },
       "meta": {
         "version": "1.0",
@@ -892,6 +919,480 @@
         "reviewed": false
       },
       "isFree": false
+    },
+    {
+      "id": "cis-sp-foundational-data-013",
+      "certification": "cis-sp",
+      "topic": "foundational-data-management",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "How does the domain_path field work in domain-separated tables?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It stores the user's navigation history"
+        },
+        {
+          "id": "b",
+          "text": "It contains the full path from the root domain to the record's domain, enabling efficient domain hierarchy queries"
+        },
+        {
+          "id": "c",
+          "text": "It stores the file path for attachments"
+        },
+        {
+          "id": "d",
+          "text": "It records the URL path for the record"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The sys_domain_path field stores the complete hierarchy path (e.g., /global/TOP/CustomerA/) enabling the system to efficiently determine domain visibility and inheritance.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Navigation history is tracked separately from domain paths",
+            "reference": "Domain path purpose"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Attachment paths use different fields",
+            "reference": "Attachment management"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "URL paths are generated dynamically, not stored in sys_domain_path",
+            "reference": "URL generation"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow Domain Separation documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "domain-separation-fields",
+        "excerpt": "sys_domain_path field"
+      },
+      "labels": {
+        "certification": "cis-sp",
+        "domain": "Foundational Data Management",
+        "domainSlug": "foundational-data-management",
+        "domainPercentage": 22,
+        "subtopics": [
+          "Domain path",
+          "Data fields"
+        ],
+        "tags": [
+          "sys-domain-path",
+          "domain-hierarchy",
+          "data-fields"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-24T02:03:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sp-foundational-data-014",
+      "certification": "cis-sp",
+      "topic": "foundational-data-management",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A service provider needs to import CI data for multiple tenants via a single data source. How should they handle domain assignment during import?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Import all data to global and manually reassign later"
+        },
+        {
+          "id": "b",
+          "text": "Use transform map scripts to set the sys_domain field based on tenant identifiers in the source data"
+        },
+        {
+          "id": "c",
+          "text": "Create separate import sets for each tenant"
+        },
+        {
+          "id": "d",
+          "text": "Domain assignment happens automatically"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Transform map scripts can programmatically set the sys_domain field during import based on tenant identifiers in the source data, ensuring correct domain assignment at import time.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Importing to global requires additional manual effort and risks data exposure",
+            "reference": "Import best practices"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "While possible, separate imports are less efficient than using transform scripts for domain routing",
+            "reference": "Import efficiency"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Domain assignment requires explicit configuration; it doesn't happen automatically for imported data",
+            "reference": "Domain assignment"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow Domain Separation documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "domain-separation-imports",
+        "excerpt": "Data import with domain separation"
+      },
+      "labels": {
+        "certification": "cis-sp",
+        "domain": "Foundational Data Management",
+        "domainSlug": "foundational-data-management",
+        "domainPercentage": 22,
+        "subtopics": [
+          "Data import",
+          "Transform maps"
+        ],
+        "tags": [
+          "data-import",
+          "transform-maps",
+          "domain-assignment"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-24T02:03:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sp-foundational-data-015",
+      "certification": "cis-sp",
+      "topic": "foundational-data-management",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "In CMDB domain separation, what is the purpose of the 'containment' domain separation mode for IRE?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It quarantines infected CIs"
+        },
+        {
+          "id": "b",
+          "text": "It ensures CIs are only matched within their own domain during identification, preventing cross-domain CI matching"
+        },
+        {
+          "id": "c",
+          "text": "It limits the size of the CMDB"
+        },
+        {
+          "id": "d",
+          "text": "It encrypts CI data within domains"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Containment mode (also known as strict mode) ensures that CI identification only matches records within the same domain, preventing a CI in one tenant's domain from matching with another tenant's CIs.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Containment refers to domain boundary enforcement, not security quarantine",
+            "reference": "IRE modes"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "CMDB size is managed through other mechanisms",
+            "reference": "CMDB management"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Encryption is handled by separate security features",
+            "reference": "Data encryption"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow CMDB Domain Separation documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "cmdb-domain-separation",
+        "excerpt": "IRE containment mode"
+      },
+      "labels": {
+        "certification": "cis-sp",
+        "domain": "Foundational Data Management",
+        "domainSlug": "foundational-data-management",
+        "domainPercentage": 22,
+        "subtopics": [
+          "IRE modes",
+          "CI identification"
+        ],
+        "tags": [
+          "ire",
+          "containment",
+          "ci-identification"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-24T02:03:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sp-foundational-data-016",
+      "certification": "cis-sp",
+      "topic": "foundational-data-management",
+      "cognitiveLevel": "analysis",
+      "type": "multiple_choice",
+      "question": "An MSP notices that CMDB Health scores are inconsistent across tenant domains. What is the MOST likely explanation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "CMDB Health doesn't work with domain separation"
+        },
+        {
+          "id": "b",
+          "text": "Each domain can have different Health Preferences and metric configurations, leading to different scoring criteria"
+        },
+        {
+          "id": "c",
+          "text": "The CMDB Health plugin needs to be reinstalled"
+        },
+        {
+          "id": "d",
+          "text": "Only the global domain can have health scores"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "CMDB Health preferences (like staleness thresholds and inclusion rules) are domain-separated, meaning each domain can have different configurations that produce different scores.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "CMDB Health is supported with domain separation",
+            "reference": "CMDB Health compatibility"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Plugin reinstallation doesn't address domain-specific configuration differences",
+            "reference": "Plugin management"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Health scores are calculated per domain when domain separation is active",
+            "reference": "CMDB Health"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow CMDB Health documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "cmdb-health-domain-separation",
+        "excerpt": "Domain-specific health scores"
+      },
+      "labels": {
+        "certification": "cis-sp",
+        "domain": "Foundational Data Management",
+        "domainSlug": "foundational-data-management",
+        "domainPercentage": 22,
+        "subtopics": [
+          "CMDB Health",
+          "Domain-specific configuration"
+        ],
+        "tags": [
+          "cmdb-health",
+          "health-scores",
+          "domain-configuration"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-24T02:03:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sp-foundational-data-017",
+      "certification": "cis-sp",
+      "topic": "foundational-data-management",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which table is used to define domain visibility rules in ServiceNow?",
+      "options": [
+        {
+          "id": "a",
+          "text": "sys_user_group"
+        },
+        {
+          "id": "b",
+          "text": "domain_table_access"
+        },
+        {
+          "id": "c",
+          "text": "sys_db_object"
+        },
+        {
+          "id": "d",
+          "text": "sys_user_role"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The domain_table_access table defines which domains have visibility to records in specific tables, controlling cross-domain data access beyond the default hierarchy-based visibility.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "sys_user_group manages groups, not domain visibility rules",
+            "reference": "Group management"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "sys_db_object defines table metadata, not domain access rules",
+            "reference": "Table definitions"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "sys_user_role manages roles, not domain visibility",
+            "reference": "Role management"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow Domain Separation documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "domain-separation-visibility",
+        "excerpt": "Domain visibility configuration"
+      },
+      "labels": {
+        "certification": "cis-sp",
+        "domain": "Foundational Data Management",
+        "domainSlug": "foundational-data-management",
+        "domainPercentage": 22,
+        "subtopics": [
+          "Domain visibility",
+          "Access control"
+        ],
+        "tags": [
+          "domain-visibility",
+          "table-access",
+          "access-control"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-24T02:03:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sp-foundational-data-018",
+      "certification": "cis-sp",
+      "topic": "foundational-data-management",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What is the sys_overrides field used for in domain separation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "To override system security"
+        },
+        {
+          "id": "b",
+          "text": "To allow a domain-specific record to override a parent domain record with the same key values"
+        },
+        {
+          "id": "c",
+          "text": "To bypass approval workflows"
+        },
+        {
+          "id": "d",
+          "text": "To override user session timeouts"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The sys_overrides field enables domain-specific customization by allowing a child domain record to override a parent domain record, such as having a domain-specific business rule override a global one.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "sys_overrides is for domain record inheritance, not security bypass",
+            "reference": "Domain overrides"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Approval workflows use different override mechanisms",
+            "reference": "Workflow management"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Session timeouts are managed by system properties",
+            "reference": "Session management"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow Domain Separation documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "domain-separation-overrides",
+        "excerpt": "sys_overrides field purpose"
+      },
+      "labels": {
+        "certification": "cis-sp",
+        "domain": "Foundational Data Management",
+        "domainSlug": "foundational-data-management",
+        "domainPercentage": 22,
+        "subtopics": [
+          "Record overrides",
+          "Domain customization"
+        ],
+        "tags": [
+          "sys-overrides",
+          "domain-customization",
+          "record-inheritance"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-24T02:03:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     }
   ]
 }

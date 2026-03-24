@@ -1585,6 +1585,237 @@ If you use ITSM daily but don't configure it, you need to shift your mindset. Th
 [Practice CIS-ITSM Questions →](/cis-itsm/practice-questions)
 `
   },
+  {
+    slug: "servicenow-cad-exam-complete-guide-2026",
+    title: "ServiceNow CAD Exam 2026: Complete Study Guide (From Someone Who Passed)",
+    description: "Everything you need to pass the ServiceNow Certified Application Developer exam — topics breakdown, study strategy, scripting tips, and practice resources.",
+    publishedAt: "2026-03-24",
+    author: "SNReady Team",
+    tags: ["CAD", "certifications", "study-guide", "scripting", "exam-prep"],
+    featured: true,
+    readingTime: 14,
+    content: `
+## What Is the CAD Exam?
+
+The **Certified Application Developer (CAD)** exam proves you can build applications on the ServiceNow platform. Unlike the CSA (which focuses on administration), the CAD tests your ability to write code, build integrations, and create custom applications.
+
+**Quick Facts:**
+- **Exam fee:** $210
+- **Questions:** ~60 multiple choice
+- **Duration:** 90 minutes
+- **Passing score:** ~70% (ServiceNow doesn't publish the exact cutoff)
+- **Prerequisite:** CSA certification (recommended, not strictly required)
+- **Maintenance:** Delta exam with each new release
+
+## Who Should Take the CAD?
+
+The CAD is right for you if:
+- You **write scripts** on ServiceNow (Business Rules, Client Scripts, Script Includes)
+- You build custom applications using **App Engine Studio** or Studio
+- You integrate ServiceNow with external systems via **REST/SOAP**
+- You want to move from admin work into development
+
+It's **not** the right next step if you primarily configure out-of-box features without scripting. In that case, a CIS certification (like CIS-ITSM) might be more relevant.
+
+## Exam Domains and Weights
+
+Here's where the exam focuses your energy — and where most people get surprised:
+
+| Domain | Weight | What It Covers |
+|--------|--------|----------------|
+| **Application Development** | ~33% | App Engine, tables, forms, UI policies, ACLs, data schema |
+| **Scripting** | ~18% | GlideRecord, GlideSystem, GlideAjax, server vs client APIs |
+| **Business Rules** | ~11% | Before/after/async rules, when to use them, common patterns |
+| **REST Integrations** | ~10% | Inbound/outbound REST, Scripted REST APIs, IntegrationHub |
+| **UI Policies & Actions** | ~10% | Client-side policies, UI actions, form behavior |
+| **Script Includes** | ~9% | Reusable server-side code, extending classes, GlideAjax callable |
+| **Client Scripts** | ~9% | onChange, onLoad, onSubmit, onCellEdit, g_form API |
+
+### The Big Surprise
+
+**Application Development is a third of the exam.** Many developers focus on scripting because it feels hardest, but application architecture questions carry the most weight. Know your tables, dictionaries, ACLs, update sets, and app scoping inside and out.
+
+## The 7 Topics You Must Master
+
+### 1. Application Development (33%)
+
+This is the backbone of the exam. You need to understand:
+
+- **App Engine Studio vs Studio:** When to use each, capabilities, and limitations
+- **Application scoping:** Global vs scoped apps, scope restrictions, cross-scope access
+- **Table design:** Extending tables, table inheritance, reference fields, many-to-many relationships
+- **Update sets:** How they work, naming conventions, collisions, moving between instances
+- **ACLs:** Role-based access, row-level security, ACL evaluation order, debugging
+
+**Pro tip:** The exam loves questions about what happens when you extend a table. Know that child tables inherit ACLs, Business Rules, and dictionary entries from parent tables.
+
+### 2. Scripting APIs (18%)
+
+The scripting section isn't about writing complex code from scratch — it's about **knowing the right API for the job**.
+
+**Must-know APIs:**
+- \`GlideRecord\` — query, insert, update, deleteRecord, addQuery, addEncodedQuery
+- \`GlideSystem (gs)\` — gs.info(), gs.getUser(), gs.now(), gs.addInfoMessage()
+- \`GlideAjax\` — client-to-server communication pattern
+- \`GlideAggregate\` — COUNT, SUM, AVG without loading records
+
+**Common exam question pattern:** "Which API would you use to..." — they test whether you know GlideRecord vs GlideAggregate vs direct SQL (trick answer: never direct SQL).
+
+### 3. Business Rules (11%)
+
+Business Rules are server-side scripts that run when records are displayed, inserted, updated, or deleted.
+
+**Key concepts:**
+- **When to run:** before vs after vs async vs display
+- **Before rules** can modify current record (no \`current.update()\` needed)
+- **After rules** require \`current.update()\` if you want to modify the record
+- **Async rules** run in background, good for heavy processing
+- **Order of execution:** Business Rules run in order (100 = default), lower numbers first
+- \`current\` vs \`previous\` objects and when \`previous\` is available
+
+**Classic trick question:** "When should you call current.update() in a before Business Rule?" Answer: **Never.** The system automatically saves after before rules complete.
+
+### 4. REST Integrations (10%)
+
+ServiceNow's integration capabilities come up more than many expect:
+
+- **Outbound REST:** REST Message + HTTP Method configuration
+- **Inbound REST:** Scripted REST APIs — resources, query parameters, request body
+- **Table API:** /api/now/table/{tableName} — GET, POST, PUT, PATCH, DELETE
+- **Authentication:** Basic auth, OAuth 2.0, mutual auth
+- **IntegrationHub:** Flow Designer actions for integrations (ETL, spoke actions)
+
+**Study tip:** Know the difference between Scripted REST APIs (custom endpoints) and the Table API (standard CRUD). The exam tests when to use each.
+
+### 5. UI Policies & Actions (10%)
+
+- **UI Policies:** Client-side form manipulation without scripting
+- **UI Actions:** Buttons, links, and context menu items on forms/lists
+- **UI Policy vs Client Script:** UI Policies for simple show/hide/mandatory, Client Scripts for complex logic
+- **Reverse if false:** Automatically undo changes when conditions aren't met
+
+### 6. Script Includes (9%)
+
+- **What:** Reusable server-side JavaScript stored in a single record
+- **Client callable:** Must extend AbstractAjaxProcessor for GlideAjax
+- **Classless vs class-based:** When to use each pattern
+- **Extending:** Using \`Class.create()\` and prototype pattern
+- **Testing:** Script Include testing framework
+
+### 7. Client Scripts (9%)
+
+- **Types:** onChange, onLoad, onSubmit, onCellEdit
+- **g_form API:** setValue, getValue, setVisible, setMandatory, setReadOnly, addOption
+- **g_list API:** For list editing
+- **Performance:** Minimize server calls from client scripts (use GlideAjax, not synchronous GlideRecord)
+- **onChange triggers:** Know that setValue in an onChange can trigger another onChange
+
+## Study Strategy: The 6-Week Plan
+
+### Weeks 1-2: Foundation
+- Complete **Application Development Fundamentals** on Now Learning (free)
+- Complete **Scripting in ServiceNow Fundamentals** on Now Learning (free)
+- Set up a **Personal Developer Instance** (PDI) at developer.servicenow.com
+- Build a simple app from scratch in your PDI
+
+### Weeks 3-4: Deep Dive
+- Focus on **Business Rules** and **Client Scripts** — write at least 10 of each
+- Build a **Scripted REST API** that performs CRUD operations
+- Practice **Script Includes** with GlideAjax patterns
+- Study **ACL evaluation order** — this trips people up
+
+### Week 5: Integration & Polish
+- Set up **REST integrations** between your PDI and a test API
+- Review **Update Set** management and app scoping rules
+- Study **UI Policies vs Client Scripts** decision matrix
+- Take practice tests to identify gaps
+
+### Week 6: Review & Exam
+- Focus on weak areas identified by practice tests
+- Review ServiceNow documentation for any unclear topics
+- Take a timed mock exam under real conditions
+- **Schedule exam for end of week** — don't let study drag on
+
+## Common Mistakes That Cost People the Exam
+
+### 1. Ignoring App Architecture
+Developers who script all day sometimes neglect application development concepts. Tables, dictionaries, app scoping, and update sets are **one-third of the exam**.
+
+### 2. Studying Only Theory
+The CAD is practical. If you haven't built a Business Rule that actually runs, you'll struggle with scenario questions. Get your hands dirty in a PDI.
+
+### 3. Confusing Server vs Client APIs
+This is the #1 source of wrong answers:
+- **Server-side:** GlideRecord, GlideSystem, GlideAggregate
+- **Client-side:** g_form, g_list, GlideAjax (calls server from client)
+- **Never works client-side:** Direct GlideRecord queries (despite what some tutorials show)
+
+### 4. Skipping REST
+"I don't do integrations at work" is common, but REST questions are 10% of the exam. You need to understand at least the Table API and basic Scripted REST API concepts.
+
+### 5. Not Timing Practice Tests
+Many people know the material but run out of time. 90 minutes for 60 questions is 90 seconds per question. Practice under timed conditions.
+
+## Scripting Cheat Sheet for the Exam
+
+Here's what you should have memorized:
+
+**GlideRecord basics:**
+- \`gr.addQuery('field', 'value')\` — exact match
+- \`gr.addQuery('field', 'CONTAINS', 'value')\` — partial match
+- \`gr.addEncodedQuery('active=true^priority=1')\` — complex queries
+- \`gr.query()\` — execute the query
+- \`gr.next()\` — iterate results
+- \`gr.getRowCount()\` — total matching records (use sparingly)
+
+**Business Rule context:**
+- \`current\` — the record being operated on
+- \`previous\` — the record before changes (only in update operations)
+- \`current.operation()\` — returns 'insert', 'update', or 'delete'
+- \`current.changes()\` — true if any field changed
+- \`current.field.changes()\` — true if specific field changed
+
+**Client Script essentials:**
+- \`g_form.getValue('field')\` — get field value
+- \`g_form.setValue('field', 'value')\` — set field value
+- \`g_form.setMandatory('field', true)\` — make mandatory
+- \`g_form.setVisible('field', false)\` — hide field
+- \`g_form.addInfoMessage('text')\` — display message
+
+## Practice Resources
+
+Here's what we recommend (and yes, we're biased, but honest):
+
+1. **Now Learning courses** (free) — Start here, always
+2. **Personal Developer Instance** (free) — Build real things
+3. **ServiceNow Documentation** (free) — Reference for everything
+4. **[SNReady CAD Practice Tests](/cad/practice-questions)** — 170+ questions with detailed explanations, generated from official course content
+5. **ServiceNow Community** (free) — Real-world Q&A
+
+### What About Brain Dumps?
+
+**Don't.** We wrote a [whole article about why brain dumps fail](/blog/why-servicenow-brain-dumps-will-fail-you). The short version: ServiceNow rotates questions frequently, brain dumps teach memorization not understanding, and you'll struggle with delta exams and real work.
+
+## After You Pass
+
+Once you're CAD certified:
+
+1. **Update LinkedIn immediately** — add to certifications section AND headline
+2. **Claim your Credly badge** — ServiceNow issues digital badges via Credly
+3. **Consider your next cert:** CIS-ITSM or CIS-CSM are common next steps
+4. **Stay current:** You'll need to pass a delta exam when ServiceNow releases a new version (typically annually)
+
+## The Bottom Line
+
+The CAD exam rewards people who **build things**, not just study theory. If you can build an application with Business Rules, Client Scripts, a REST integration, and proper ACLs in your PDI, you'll pass.
+
+Give yourself 4-6 weeks. Use the free Now Learning courses. Build in your PDI. Take practice tests. You've got this.
+
+[Practice CAD Questions →](/cad/practice-questions)
+
+[Take a Timed CAD Mock Exam →](/cad/timed-exam)
+`
+  },
 ];
 
 export function getAllPosts(): BlogPost[] {

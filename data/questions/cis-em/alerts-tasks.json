@@ -1422,6 +1422,606 @@
         "release": "Xanadu",
         "reviewed": false
       }
+    },
+    {
+      "id": "cis-em-alerts-tasks-019",
+      "certification": "cis-em",
+      "topic": "alerts-tasks",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What are the three types of categories that determine the alert priority score?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Accumulated categories, choice-list categories, and time-based categories"
+        },
+        {
+          "id": "b",
+          "text": "Accumulated categories, choice-list categories, and CI type weight factor mapping"
+        },
+        {
+          "id": "c",
+          "text": "Static categories, dynamic categories, and CI type categories"
+        },
+        {
+          "id": "d",
+          "text": "Severity categories, impact categories, and urgency categories"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The alert priority score is a composite of accumulated categories (e.g., number of impacted business services, CI type, number of secondary alerts), choice-list categories (alert state, severity, role), and CI type weight factor mapping. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/alert-priority.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "There is no 'time-based categories' concept in alert priority scoring.",
+            "reference": "Alert priority documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Static and dynamic categories are not the terminology used for alert priority.",
+            "reference": "Alert priority documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "These are ITIL incident priority factors, not Event Management alert priority categories.",
+            "reference": "Alert priority documentation"
+          }
+        ]
+      },
+      "isFree": false
+    },
+    {
+      "id": "cis-em-alerts-tasks-020",
+      "certification": "cis-em",
+      "topic": "alerts-tasks",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "In rule-based alert grouping, what happens when a secondary alert has its own secondary alert?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A three-level hierarchy is created"
+        },
+        {
+          "id": "b",
+          "text": "The hierarchy is flattened to preserve only two levels"
+        },
+        {
+          "id": "c",
+          "text": "The deepest secondary alert is removed from the group"
+        },
+        {
+          "id": "d",
+          "text": "Both secondary alerts become primary alerts"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Only one level of secondary alerts is permitted. Event Management flattens the hierarchy to preserve only two levels - a primary alert and sibling secondary alerts. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/c_EMEventCorrelationRules.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Event Management does not allow more than two levels in alert correlation hierarchies.",
+            "reference": "Rule-based alert grouping documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The alert is not removed; instead, it becomes a sibling secondary alert under the original primary.",
+            "reference": "Rule-based alert grouping documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Secondary alerts do not become primary alerts through hierarchy flattening.",
+            "reference": "Rule-based alert grouping documentation"
+          }
+        ]
+      },
+      "isFree": false
+    },
+    {
+      "id": "cis-em-alerts-tasks-021",
+      "certification": "cis-em",
+      "topic": "alerts-tasks",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "An administrator sets the property evt_mgmt.rule_based_manual_closure to 'No'. What happens when the primary alert is closed?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Secondary alerts remain grouped under the primary alert"
+        },
+        {
+          "id": "b",
+          "text": "Secondary alerts become stand-alone open alerts"
+        },
+        {
+          "id": "c",
+          "text": "The parent reference is removed and secondary alerts are closed"
+        },
+        {
+          "id": "d",
+          "text": "Secondary alerts are automatically escalated to incidents"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "When the property is set to No, after the primary alert is closed, the parent reference is removed from the secondary alerts (grouping is dissolved), and the secondary alerts are closed and become stand-alone. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/c_EMEventCorrelationRules.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The grouping is always dissolved when the primary alert is closed.",
+            "reference": "Rule-based alert grouping documentation"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "This behavior occurs when the property is set to Yes, not No.",
+            "reference": "Rule-based alert grouping documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Secondary alerts are not automatically escalated to incidents when a primary closes.",
+            "reference": "Rule-based alert grouping documentation"
+          }
+        ]
+      },
+      "isFree": false
+    },
+    {
+      "id": "cis-em-alerts-tasks-022",
+      "certification": "cis-em",
+      "topic": "alerts-tasks",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which property determines how Event Management handles a new event similar to events on an existing closed alert?",
+      "options": [
+        {
+          "id": "a",
+          "text": "evt_mgmt.alert_reopens_incident"
+        },
+        {
+          "id": "b",
+          "text": "evt_mgmt.active_interval"
+        },
+        {
+          "id": "c",
+          "text": "evt_mgmt.incident_closes_alert"
+        },
+        {
+          "id": "d",
+          "text": "evt_mgmt.flapping_interval"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The active interval property (evt_mgmt.active_interval) determines whether a new event reopens an existing closed alert or creates a new alert. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/c_EMAlertRule.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "This property controls whether reopening an alert also reopens associated incidents.",
+            "reference": "Alert lifecycle configuration"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "This property controls whether resolving an incident also closes the alert.",
+            "reference": "Alert lifecycle configuration"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "This is not a real Event Management property name.",
+            "reference": "Alert lifecycle configuration"
+          }
+        ]
+      },
+      "isFree": false
+    },
+    {
+      "id": "cis-em-alerts-tasks-023",
+      "certification": "cis-em",
+      "topic": "alerts-tasks",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "When a CI is in maintenance due to an active change request, how are alerts on that CI treated in Event Management?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Alerts are deleted from the system"
+        },
+        {
+          "id": "b",
+          "text": "Alerts are excluded from impact calculation and hidden from the Alerts tab"
+        },
+        {
+          "id": "c",
+          "text": "Alerts are automatically resolved"
+        },
+        {
+          "id": "d",
+          "text": "Alerts continue to appear normally but are marked as low priority"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "When a CI is in maintenance, all alerts on the affected CI are excluded from impact calculation, and the Alerts tab temporarily hides all corresponding alerts. The impact tree shows the CI in green with a note of '(In Maintenance)'. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/c_EMHowImpactTree.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Alerts are not deleted; they are temporarily hidden and excluded from impact calculation.",
+            "reference": "CIs in maintenance documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Alerts are not resolved; they are hidden until maintenance ends.",
+            "reference": "CIs in maintenance documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Alerts are hidden, not just marked as low priority.",
+            "reference": "CIs in maintenance documentation"
+          }
+        ]
+      },
+      "isFree": false
+    },
+    {
+      "id": "cis-em-alerts-tasks-024",
+      "certification": "cis-em",
+      "topic": "alerts-tasks",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which of the following is an accumulated category in the alert priority score calculation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Alert state"
+        },
+        {
+          "id": "b",
+          "text": "Alert severity"
+        },
+        {
+          "id": "c",
+          "text": "Number of secondary alerts"
+        },
+        {
+          "id": "d",
+          "text": "Role (Parent/None/Secondary)"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "Number of secondary alerts is an accumulated category. A parent alert with many secondary alerts has a higher priority than one with fewer. Alert state, severity, and role are choice-list categories. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/alert-priority.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Alert state is a choice-list category, not an accumulated category.",
+            "reference": "Alert priority documentation"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "Alert severity is a choice-list category, not an accumulated category.",
+            "reference": "Alert priority documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Role is a choice-list category, not an accumulated category.",
+            "reference": "Alert priority documentation"
+          }
+        ]
+      },
+      "isFree": false
+    },
+    {
+      "id": "cis-em-alerts-tasks-025",
+      "certification": "cis-em",
+      "topic": "alerts-tasks",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "An alert has severity Critical and is the parent of 15 secondary alerts impacting 3 business services. Which factor does NOT contribute to its priority score?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Number of impacted business services"
+        },
+        {
+          "id": "b",
+          "text": "Number of secondary alerts"
+        },
+        {
+          "id": "c",
+          "text": "The description text of the alert"
+        },
+        {
+          "id": "d",
+          "text": "Alert severity level"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "The alert description text is not a factor in priority score calculation. Priority is determined by accumulated categories (impacted services, CI type, secondary alerts) and choice-list categories (state, severity, role). Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/alert-priority.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Number of impacted business services is an accumulated category that contributes to the priority score.",
+            "reference": "Alert priority documentation"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "Number of secondary alerts is an accumulated category that contributes to the priority score.",
+            "reference": "Alert priority documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Alert severity is a choice-list category that contributes to the priority score.",
+            "reference": "Alert priority documentation"
+          }
+        ]
+      },
+      "isFree": false
+    },
+    {
+      "id": "cis-em-alerts-tasks-026",
+      "certification": "cis-em",
+      "topic": "alerts-tasks",
+      "cognitiveLevel": "analysis",
+      "type": "multiple_choice",
+      "question": "Three alert correlation rules exist: Rule 1 makes A secondary to B, Rule 2 makes C and D secondary to A, and Rule 3 makes A secondary to E. When all alerts trigger, what is the final grouping?",
+      "options": [
+        {
+          "id": "a",
+          "text": "E is primary with A, B, C, D as secondary alerts"
+        },
+        {
+          "id": "b",
+          "text": "B is primary with A, C, D as secondary alerts; E is standalone"
+        },
+        {
+          "id": "c",
+          "text": "A is primary with B, C, D, E as secondary alerts"
+        },
+        {
+          "id": "d",
+          "text": "B and E are both primary alerts for A"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Rule 1 makes A secondary to B. Rule 2 makes C and D secondary to A, but the hierarchy is flattened so A, C, D are all secondary to B. Rule 3 cannot apply because multiple parents are not allowed (A already has B as primary). E remains standalone. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/c_EMEventCorrelationRules.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Rule 3 cannot override Rule 1 since A already has B as its primary. Multiple parents are not allowed.",
+            "reference": "Rule-based alert grouping documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Rule 1 executes first, making A secondary to B, not a primary alert.",
+            "reference": "Rule-based alert grouping documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Multiple parents are not allowed in Event Management alert correlation.",
+            "reference": "Rule-based alert grouping documentation"
+          }
+        ]
+      },
+      "isFree": false
+    },
+    {
+      "id": "cis-em-alerts-tasks-027",
+      "certification": "cis-em",
+      "topic": "alerts-tasks",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What happens when you resolve an incident that is associated with an alert?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The alert is always automatically closed"
+        },
+        {
+          "id": "b",
+          "text": "The alert can close based on the evt_mgmt.incident_closes_alert property"
+        },
+        {
+          "id": "c",
+          "text": "The alert state changes to Acknowledged"
+        },
+        {
+          "id": "d",
+          "text": "The alert is moved to a historical table"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "When you resolve an incident associated with an alert, the alert can also close according to the evt_mgmt.incident_closes_alert property setting. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/c_EMAlert.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The behavior depends on the evt_mgmt.incident_closes_alert property; it is not always automatic.",
+            "reference": "Alert management documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Resolving an incident does not change the alert to Acknowledged state.",
+            "reference": "Alert management documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Alerts are not moved to a historical table when incidents are resolved.",
+            "reference": "Alert management documentation"
+          }
+        ]
+      },
+      "isFree": false
+    },
+    {
+      "id": "cis-em-alerts-tasks-028",
+      "certification": "cis-em",
+      "topic": "alerts-tasks",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "Which alert group type can be configured using the Automatic Group Filter?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Automated, CMDB, and Text"
+        },
+        {
+          "id": "b",
+          "text": "Automated and Manual only"
+        },
+        {
+          "id": "c",
+          "text": "CMDB and Rule-based only"
+        },
+        {
+          "id": "d",
+          "text": "Text and Time-based only"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "The Automatic Group Filter supports three group types: Automated, CMDB, and Text. You can assign more than one group type with a single filter condition, but each group type can have only one active filter. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/task/alert-filtering.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Manual alert grouping is not configured through Automatic Group Filters.",
+            "reference": "Alert filtering documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Rule-based is not one of the group types for Automatic Group Filters; Text is also supported.",
+            "reference": "Alert filtering documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Time-based is not a valid group type. The correct types are Automated, CMDB, and Text.",
+            "reference": "Alert filtering documentation"
+          }
+        ]
+      },
+      "isFree": false
+    },
+    {
+      "id": "cis-em-alerts-tasks-029",
+      "certification": "cis-em",
+      "topic": "alerts-tasks",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A change request for a CI has a state of 'Scheduled' and the current time is between the Planned start date and Planned end date. How does Event Management treat this CI?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The CI and its alerts are treated normally"
+        },
+        {
+          "id": "b",
+          "text": "The CI is considered in maintenance; alerts are excluded from impact calculation"
+        },
+        {
+          "id": "c",
+          "text": "Only critical alerts on the CI are shown"
+        },
+        {
+          "id": "d",
+          "text": "The CI is removed from the CMDB temporarily"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "An active change request has State = Scheduled or Implement AND the current time is between planned/actual start and end dates. The CI is considered in maintenance and alerts are excluded from impact calculation. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/c_EMHowImpactTree.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "When a change request is active and within the scheduled time window, the CI is in maintenance.",
+            "reference": "CIs in maintenance documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "All alerts are hidden, not just non-critical ones.",
+            "reference": "CIs in maintenance documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The CI remains in the CMDB; it is simply treated as being in maintenance.",
+            "reference": "CIs in maintenance documentation"
+          }
+        ]
+      },
+      "isFree": false
+    },
+    {
+      "id": "cis-em-alerts-tasks-030",
+      "certification": "cis-em",
+      "topic": "alerts-tasks",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What is the default value mapping for the 'Open' alert state in the alert priority score?",
+      "options": [
+        {
+          "id": "a",
+          "text": "0"
+        },
+        {
+          "id": "b",
+          "text": "1"
+        },
+        {
+          "id": "c",
+          "text": "2"
+        },
+        {
+          "id": "d",
+          "text": "3"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "In the alert priority score, the default mapping values for alert states are: Open = 1, Reopen = 2, Flapping = 3. Priority is not calculated for Closed state. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/alert-priority.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "0 is not a default state mapping value. Open defaults to 1.",
+            "reference": "Alert priority documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "2 is the default mapping value for Reopen state, not Open.",
+            "reference": "Alert priority documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "3 is the default mapping value for Flapping state, not Open.",
+            "reference": "Alert priority documentation"
+          }
+        ]
+      },
+      "isFree": false
     }
   ]
 }

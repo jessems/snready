@@ -502,7 +502,9 @@
           "text": "To compress database tables"
         }
       ],
-      "correctAnswers": ["b"],
+      "correctAnswers": [
+        "b"
+      ],
       "explanation": {
         "correct": "Instance Data Replication (IDR) allows ServiceNow customers to replicate and synchronize data between producer and consumer instances. Adapters can modify data during replication to ensure accurate data representation across systems.",
         "wrongAnswers": [
@@ -529,8 +531,15 @@
         "certification": "cpoa",
         "domain": "Data",
         "domainSlug": "data",
-        "subtopics": ["IDR", "Data Replication"],
-        "tags": ["idr", "replication", "instances"]
+        "subtopics": [
+          "IDR",
+          "Data Replication"
+        ],
+        "tags": [
+          "idr",
+          "replication",
+          "instances"
+        ]
       },
       "meta": {
         "generatedAt": "2026-03-05T02:00:00Z",
@@ -564,7 +573,10 @@
           "text": "Archive adapter for moving old data"
         }
       ],
-      "correctAnswers": ["a", "b"],
+      "correctAnswers": [
+        "a",
+        "b"
+      ],
       "selectCount": 2,
       "explanation": {
         "correct": "The Pattern adapter uses regular expressions to identify and transform input patterns (e.g., reformatting names). The Calculation adapter performs arithmetic operations like multiplication, applying max/min limits, or floor/ceiling operations on numeric data.",
@@ -588,8 +600,15 @@
         "certification": "cpoa",
         "domain": "Data",
         "domainSlug": "data",
-        "subtopics": ["IDR", "Adapters"],
-        "tags": ["idr", "adapters", "data-transformation"]
+        "subtopics": [
+          "IDR",
+          "Adapters"
+        ],
+        "tags": [
+          "idr",
+          "adapters",
+          "data-transformation"
+        ]
       },
       "meta": {
         "generatedAt": "2026-03-05T02:00:00Z",
@@ -623,7 +642,9 @@
           "text": "External auditors"
         }
       ],
-      "correctAnswers": ["b"],
+      "correctAnswers": [
+        "b"
+      ],
       "explanation": {
         "correct": "Data stewards and data governance teams are responsible for defining data quality standards, monitoring data integrity, establishing data policies, and ensuring consistent data management practices across the platform.",
         "wrongAnswers": [
@@ -651,8 +672,15 @@
         "certification": "cpoa",
         "domain": "Data",
         "domainSlug": "data",
-        "subtopics": ["Data Governance", "Roles"],
-        "tags": ["data-steward", "data-quality", "governance"]
+        "subtopics": [
+          "Data Governance",
+          "Roles"
+        ],
+        "tags": [
+          "data-steward",
+          "data-quality",
+          "governance"
+        ]
       },
       "meta": {
         "generatedAt": "2026-03-05T02:00:00Z",
@@ -686,7 +714,9 @@
           "text": "Split adapter"
         }
       ],
-      "correctAnswers": ["b"],
+      "correctAnswers": [
+        "b"
+      ],
       "explanation": {
         "correct": "The Fixed-width format adapter reformats fixed-width input data using pattern matching. For phone numbers, Match: ########## with Output: (###) ###-#### converts 7605551212 to (760) 555-1212. Use # to represent digits.",
         "wrongAnswers": [
@@ -713,11 +743,417 @@
         "certification": "cpoa",
         "domain": "Data",
         "domainSlug": "data",
-        "subtopics": ["IDR", "Data Formatting"],
-        "tags": ["idr", "fixed-width", "formatting"]
+        "subtopics": [
+          "IDR",
+          "Data Formatting"
+        ],
+        "tags": [
+          "idr",
+          "fixed-width",
+          "formatting"
+        ]
       },
       "meta": {
         "generatedAt": "2026-03-05T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cpoa-data-011",
+      "certification": "cpoa",
+      "topic": "data",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "An organization discovers that duplicate records are causing inaccurate reports in ServiceNow. Which approach should the Platform Owner take first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Delete all duplicate records immediately"
+        },
+        {
+          "id": "b",
+          "text": "Implement data quality rules and deduplication using CMDB Health"
+        },
+        {
+          "id": "c",
+          "text": "Create a new reporting table"
+        },
+        {
+          "id": "d",
+          "text": "Disable reporting until data is clean"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "CMDB Health and data quality rules help identify and remediate duplicates systematically, ensuring data integrity for accurate reporting.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Mass deletion without analysis risks losing valid records",
+            "reference": "Data quality management"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Creating new tables doesn't solve the underlying data quality issue",
+            "reference": "Data architecture"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Disabling reporting is disruptive and doesn't address root cause",
+            "reference": "Reporting best practices"
+          }
+        ]
+      },
+      "references": [
+        "Data quality management",
+        "CMDB Health"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "exam-blueprint",
+        "path": "cpoa-data",
+        "excerpt": "Identify approaches to data quality management"
+      },
+      "labels": {
+        "certification": "cpoa",
+        "domain": "Data",
+        "domainSlug": "data",
+        "domainPercentage": 11.4,
+        "subtopics": [
+          "Data quality",
+          "Deduplication"
+        ],
+        "tags": [
+          "data-quality",
+          "cmdb-health",
+          "deduplication"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-24T02:03:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cpoa-data-012",
+      "certification": "cpoa",
+      "topic": "data",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What is the purpose of the CMDB (Configuration Management Database) in ServiceNow?",
+      "options": [
+        {
+          "id": "a",
+          "text": "To store user credentials securely"
+        },
+        {
+          "id": "b",
+          "text": "To provide a single system of record for IT infrastructure and service relationships"
+        },
+        {
+          "id": "c",
+          "text": "To replace the need for reporting"
+        },
+        {
+          "id": "d",
+          "text": "To manage financial transactions"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The CMDB serves as the single system of record for all configuration items (CIs) and their relationships, enabling ITSM processes like incident, change, and problem management.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Credentials are managed by authentication systems, not the CMDB",
+            "reference": "CMDB fundamentals"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Reporting complements the CMDB; it doesn't replace it",
+            "reference": "Reporting vs CMDB"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Financial management uses different modules like ITFM",
+            "reference": "CMDB scope"
+          }
+        ]
+      },
+      "references": [
+        "CMDB fundamentals"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "exam-blueprint",
+        "path": "cpoa-data",
+        "excerpt": "Understand the role of the CMDB"
+      },
+      "labels": {
+        "certification": "cpoa",
+        "domain": "Data",
+        "domainSlug": "data",
+        "domainPercentage": 11.4,
+        "subtopics": [
+          "CMDB",
+          "Configuration items"
+        ],
+        "tags": [
+          "cmdb",
+          "configuration-management",
+          "ci"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-24T02:03:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cpoa-data-013",
+      "certification": "cpoa",
+      "topic": "data",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which ServiceNow feature allows you to create scheduled data imports from external sources?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Update Sets"
+        },
+        {
+          "id": "b",
+          "text": "Scheduled Import Sets"
+        },
+        {
+          "id": "c",
+          "text": "Flow Designer"
+        },
+        {
+          "id": "d",
+          "text": "Service Catalog"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Scheduled Import Sets allow automated, recurring data imports from external data sources into ServiceNow tables using transform maps.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Update Sets are for promoting configurations between instances, not importing external data",
+            "reference": "Update Sets"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Flow Designer automates processes but is not specifically for bulk data imports",
+            "reference": "Flow Designer"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Service Catalog is for service requests, not data imports",
+            "reference": "Service Catalog"
+          }
+        ]
+      },
+      "references": [
+        "Import Sets",
+        "Data integration"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "exam-blueprint",
+        "path": "cpoa-data",
+        "excerpt": "Understand data integration approaches"
+      },
+      "labels": {
+        "certification": "cpoa",
+        "domain": "Data",
+        "domainSlug": "data",
+        "domainPercentage": 11.4,
+        "subtopics": [
+          "Data integration",
+          "Import Sets"
+        ],
+        "tags": [
+          "import-sets",
+          "data-integration",
+          "scheduled-imports"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-24T02:03:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cpoa-data-014",
+      "certification": "cpoa",
+      "topic": "data",
+      "cognitiveLevel": "analysis",
+      "type": "multiple_choice",
+      "question": "A Platform Owner needs to provide executives with trend data showing how incident volumes have changed over the past 12 months. Which ServiceNow capability is BEST suited for this requirement?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Standard list reports"
+        },
+        {
+          "id": "b",
+          "text": "Performance Analytics"
+        },
+        {
+          "id": "c",
+          "text": "CMDB dashboards"
+        },
+        {
+          "id": "d",
+          "text": "System logs"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Performance Analytics provides trend analysis, time-series data, and historical snapshots that are ideal for showing how metrics change over time, unlike standard reports which show point-in-time data.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Standard reports show current data but lack historical trend capabilities",
+            "reference": "Reporting vs PA"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "CMDB dashboards focus on infrastructure health, not incident trends",
+            "reference": "CMDB dashboards"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "System logs are for technical troubleshooting, not executive reporting",
+            "reference": "System logs"
+          }
+        ]
+      },
+      "references": [
+        "Performance Analytics",
+        "Trend reporting"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "exam-blueprint",
+        "path": "cpoa-data",
+        "excerpt": "Differentiate between Reporting and Performance Analytics"
+      },
+      "labels": {
+        "certification": "cpoa",
+        "domain": "Data",
+        "domainSlug": "data",
+        "domainPercentage": 11.4,
+        "subtopics": [
+          "Performance Analytics",
+          "Trend analysis"
+        ],
+        "tags": [
+          "performance-analytics",
+          "trending",
+          "executive-reporting"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-24T02:03:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cpoa-data-015",
+      "certification": "cpoa",
+      "topic": "data",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What is the key difference between a 'Report' and a 'Dashboard' in ServiceNow?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Reports are interactive; dashboards are static"
+        },
+        {
+          "id": "b",
+          "text": "A dashboard is a collection of widgets including reports, providing a consolidated view of multiple data points"
+        },
+        {
+          "id": "c",
+          "text": "Dashboards can only display pie charts"
+        },
+        {
+          "id": "d",
+          "text": "Reports are only available to administrators"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "A dashboard provides a consolidated view by combining multiple widgets (reports, Performance Analytics indicators, and other visual elements) into a single page for at-a-glance monitoring.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Both can be interactive; dashboards aggregate multiple reports",
+            "reference": "Reporting concepts"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Dashboards support many widget types including lists, charts, gauges, and PA indicators",
+            "reference": "Dashboard widgets"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Reports can be shared with any user who has appropriate access",
+            "reference": "Report access"
+          }
+        ]
+      },
+      "references": [
+        "Reporting",
+        "Dashboards"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "exam-blueprint",
+        "path": "cpoa-data",
+        "excerpt": "Understand reporting and dashboards"
+      },
+      "labels": {
+        "certification": "cpoa",
+        "domain": "Data",
+        "domainSlug": "data",
+        "domainPercentage": 11.4,
+        "subtopics": [
+          "Reporting",
+          "Dashboards"
+        ],
+        "tags": [
+          "reporting",
+          "dashboards",
+          "widgets"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-24T02:03:00Z",
         "version": "1.1",
         "release": "Xanadu",
         "reviewed": false

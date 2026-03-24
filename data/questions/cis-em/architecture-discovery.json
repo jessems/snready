@@ -475,6 +475,206 @@
         "release": "Xanadu",
         "reviewed": false
       }
+    },
+    {
+      "id": "cis-em-architecture-discovery-007",
+      "certification": "cis-em",
+      "topic": "architecture-discovery",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What is the difference between a discovered service and an application service in Event Management?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Discovered services are identified through Service Mapping; application services are created by selecting specific CIs"
+        },
+        {
+          "id": "b",
+          "text": "Discovered services are manually created; application services are auto-discovered"
+        },
+        {
+          "id": "c",
+          "text": "Discovered services only monitor servers; application services monitor all CI types"
+        },
+        {
+          "id": "d",
+          "text": "There is no difference; they are the same concept"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "Discovered services are identified through Service Mapping and include service maps with mapping relationships. Application services are created by selecting specific CIs for targeted monitoring and management. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/exploring-event-management.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "It is the opposite: discovered services are auto-identified via Service Mapping, while application services are manually created.",
+            "reference": "Exploring Event Management"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Both service types can monitor various CI types, not just servers.",
+            "reference": "Exploring Event Management"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "They are distinct concepts with different creation methods.",
+            "reference": "Exploring Event Management"
+          }
+        ]
+      },
+      "isFree": false
+    },
+    {
+      "id": "cis-em-architecture-discovery-008",
+      "certification": "cis-em",
+      "topic": "architecture-discovery",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "On a service map, what does a red CI icon indicate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The CI is in maintenance mode"
+        },
+        {
+          "id": "b",
+          "text": "The CI has a Critical severity alert"
+        },
+        {
+          "id": "c",
+          "text": "The CI has been decommissioned"
+        },
+        {
+          "id": "d",
+          "text": "The CI has a Major severity alert"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "On service maps, the color of an impacted CI represents the severity of the associated alert. Red indicates Critical severity, meaning immediate action is required. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/Understand-Service-Maps.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "CIs in maintenance are shown in green, not red.",
+            "reference": "Service maps documentation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Decommissioned CIs are not specifically indicated by red; red means Critical alert.",
+            "reference": "Service maps documentation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Major severity is represented by orange, not red.",
+            "reference": "Service maps documentation"
+          }
+        ]
+      },
+      "isFree": false
+    },
+    {
+      "id": "cis-em-architecture-discovery-009",
+      "certification": "cis-em",
+      "topic": "architecture-discovery",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which scheduled job triggers the impact calculation in Event Management and how often does it run?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Event Management — Impact Calculator Trigger, every 6 seconds"
+        },
+        {
+          "id": "b",
+          "text": "Event Management — Impact Calculator Trigger, every 60 seconds"
+        },
+        {
+          "id": "c",
+          "text": "Event Management — Handle Impact Stuck Service, every 6 seconds"
+        },
+        {
+          "id": "d",
+          "text": "Event Management — Connector execution job, every 10 seconds"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "The 'Event Management — Impact Calculator Trigger' scheduled job triggers the impact calculation and runs every 6 seconds. The dashboard and impact tree are refreshed using the calculated figures. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/reference/r_InstalledWithEventManagement.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "The Impact Calculator Trigger runs every 6 seconds, not 60 seconds.",
+            "reference": "Components installed with Event Management"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Handle Impact Stuck Service runs every 2 minutes 31 seconds and handles stuck services, not impact calculation.",
+            "reference": "Components installed with Event Management"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The Connector execution job manages connector scheduling, not impact calculation.",
+            "reference": "Components installed with Event Management"
+          }
+        ]
+      },
+      "isFree": false
+    },
+    {
+      "id": "cis-em-architecture-discovery-010",
+      "certification": "cis-em",
+      "topic": "architecture-discovery",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What is a Dynamic CI Group in Event Management?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A group of CIs that are automatically discovered by Service Mapping"
+        },
+        {
+          "id": "b",
+          "text": "A collection of CIs grouped based on shared criteria, such as location, that helps populate application services"
+        },
+        {
+          "id": "c",
+          "text": "A temporary group of CIs created during incident resolution"
+        },
+        {
+          "id": "d",
+          "text": "A group of CIs that share the same alert severity level"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Dynamic CI Groups are collections of CIs grouped based on shared criteria, such as location. They help populate application services, simplifying management. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/concept/exploring-event-management.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Dynamic CI Groups are not created by Service Mapping; they are based on shared criteria.",
+            "reference": "Exploring Event Management"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Dynamic CI Groups are persistent, not temporary groups created during incidents.",
+            "reference": "Exploring Event Management"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Dynamic CI Groups are based on CI attributes like location, not alert severity.",
+            "reference": "Exploring Event Management"
+          }
+        ]
+      },
+      "isFree": false
     }
   ]
 }

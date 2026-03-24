@@ -1302,7 +1302,9 @@
           "text": "By creating separate tables for each domain"
         }
       ],
-      "correctAnswers": ["b"],
+      "correctAnswers": [
+        "b"
+      ],
       "explanation": {
         "correct": "Business rules can be made domain-specific by setting the domain (sys_domain) field on the business rule record. When a business rule is associated with a specific domain, it only executes when the record operation occurs within that domain.",
         "wrongAnswers": [
@@ -1326,8 +1328,15 @@
       },
       "labels": {
         "domain": "Process Separation",
-        "subtopics": ["Business Rules", "Domain-specific configuration"],
-        "tags": ["business-rules", "domain-specific", "process-separation"]
+        "subtopics": [
+          "Business Rules",
+          "Domain-specific configuration"
+        ],
+        "tags": [
+          "business-rules",
+          "domain-specific",
+          "process-separation"
+        ]
       },
       "meta": {
         "version": "1.0",
@@ -1361,7 +1370,10 @@
           "text": "ServiceNow release version"
         }
       ],
-      "correctAnswers": ["a", "c"],
+      "correctAnswers": [
+        "a",
+        "c"
+      ],
       "selectCount": 2,
       "explanation": {
         "correct": "Workflows and catalog items can both be made domain-specific. Workflows can have domain assignments to control which domains they execute in. Catalog items can be assigned to specific domains to limit visibility and access.",
@@ -1382,8 +1394,15 @@
       },
       "labels": {
         "domain": "Process Separation",
-        "subtopics": ["Workflows", "Service Catalog"],
-        "tags": ["workflows", "catalog", "domain-specific"]
+        "subtopics": [
+          "Workflows",
+          "Service Catalog"
+        ],
+        "tags": [
+          "workflows",
+          "catalog",
+          "domain-specific"
+        ]
       },
       "meta": {
         "version": "1.0",
@@ -1417,7 +1436,9 @@
           "text": "Use email-based approvals only"
         }
       ],
-      "correctAnswers": ["b"],
+      "correctAnswers": [
+        "b"
+      ],
       "explanation": {
         "correct": "Creating domain-specific approval workflows allows each customer domain to have customized approval processes that meet their unique requirements, while maintaining separation between customers.",
         "wrongAnswers": [
@@ -1441,8 +1462,15 @@
       },
       "labels": {
         "domain": "Process Separation",
-        "subtopics": ["Approval Workflows", "Multi-tenancy"],
-        "tags": ["approvals", "workflows", "msp"]
+        "subtopics": [
+          "Approval Workflows",
+          "Multi-tenancy"
+        ],
+        "tags": [
+          "approvals",
+          "workflows",
+          "msp"
+        ]
       },
       "meta": {
         "version": "1.0",
@@ -1476,7 +1504,9 @@
           "text": "The system throws an error"
         }
       ],
-      "correctAnswers": ["c"],
+      "correctAnswers": [
+        "c"
+      ],
       "explanation": {
         "correct": "When both global and domain-specific business rules exist, both execute. Global rules execute first, followed by domain-specific rules. This allows for base functionality with domain customizations on top.",
         "wrongAnswers": [
@@ -1500,8 +1530,15 @@
       },
       "labels": {
         "domain": "Process Separation",
-        "subtopics": ["Business Rules", "Execution Order"],
-        "tags": ["business-rules", "execution", "global"]
+        "subtopics": [
+          "Business Rules",
+          "Execution Order"
+        ],
+        "tags": [
+          "business-rules",
+          "execution",
+          "global"
+        ]
       },
       "meta": {
         "version": "1.0",
@@ -1535,7 +1572,9 @@
           "text": "domain_name"
         }
       ],
-      "correctAnswers": ["a"],
+      "correctAnswers": [
+        "a"
+      ],
       "explanation": {
         "correct": "The sys_domain field controls domain assignment for workflows and most other domain-separated records. This standard field is used throughout ServiceNow for domain separation.",
         "wrongAnswers": [
@@ -1559,8 +1598,15 @@
       },
       "labels": {
         "domain": "Process Separation",
-        "subtopics": ["Domain Fields", "Workflows"],
-        "tags": ["sys_domain", "workflows", "fields"]
+        "subtopics": [
+          "Domain Fields",
+          "Workflows"
+        ],
+        "tags": [
+          "sys_domain",
+          "workflows",
+          "fields"
+        ]
       },
       "meta": {
         "version": "1.0",
@@ -1594,7 +1640,10 @@
           "text": "SLA calculations for task records"
         }
       ],
-      "correctAnswers": ["a", "d"],
+      "correctAnswers": [
+        "a",
+        "d"
+      ],
       "selectCount": 2,
       "explanation": {
         "correct": "SLA Definitions can be made domain-specific to define different service levels per customer. SLA calculations apply to task records based on the record's domain, ensuring correct SLA tracking per tenant.",
@@ -1615,8 +1664,15 @@
       },
       "labels": {
         "domain": "Process Separation",
-        "subtopics": ["SLA", "Domain Separation"],
-        "tags": ["sla", "domain-specific", "service-levels"]
+        "subtopics": [
+          "SLA",
+          "Domain Separation"
+        ],
+        "tags": [
+          "sla",
+          "domain-specific",
+          "service-levels"
+        ]
       },
       "meta": {
         "version": "1.0",
@@ -1624,6 +1680,164 @@
         "reviewed": false
       },
       "isFree": false
+    },
+    {
+      "id": "cis-sp-process-separation-023",
+      "certification": "cis-sp",
+      "topic": "process-separation",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A service provider needs different notification templates for incidents based on the customer domain. What is the best approach?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Create a single notification and modify it at runtime with scripts"
+        },
+        {
+          "id": "b",
+          "text": "Create domain-specific notifications using domain overrides so each tenant domain has its own notification version"
+        },
+        {
+          "id": "c",
+          "text": "Disable notifications and use email integration instead"
+        },
+        {
+          "id": "d",
+          "text": "Create separate email accounts for each tenant"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Domain overrides for notifications allow each tenant to have customized notification content and rules while inheriting defaults from the parent domain.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Runtime script modification is fragile and hard to maintain",
+            "reference": "Notification management"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "ServiceNow notifications are the proper mechanism; external email adds complexity",
+            "reference": "Communication"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Separate email accounts don't address notification template customization",
+            "reference": "Email management"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow Domain Separation documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "domain-separation-notifications",
+        "excerpt": "Domain-specific notifications"
+      },
+      "labels": {
+        "certification": "cis-sp",
+        "domain": "Process Separation",
+        "domainSlug": "process-separation",
+        "domainPercentage": 32,
+        "subtopics": [
+          "Notifications",
+          "Domain overrides"
+        ],
+        "tags": [
+          "notifications",
+          "domain-overrides",
+          "tenant-customization"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-24T02:03:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sp-process-separation-024",
+      "certification": "cis-sp",
+      "topic": "process-separation",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "How does domain separation affect scheduled jobs in ServiceNow?",
+      "options": [
+        {
+          "id": "a",
+          "text": "All scheduled jobs run in the global domain only"
+        },
+        {
+          "id": "b",
+          "text": "Scheduled jobs can be domain-separated so they execute in the context of their assigned domain, processing only that domain's data"
+        },
+        {
+          "id": "c",
+          "text": "Scheduled jobs ignore domain separation"
+        },
+        {
+          "id": "d",
+          "text": "Each domain requires its own MID Server for scheduled jobs"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Scheduled jobs can be assigned to specific domains, ensuring they run in that domain's context and only process records within that domain's visibility scope.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Scheduled jobs can be created in any domain, not just global",
+            "reference": "Scheduled jobs"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Scheduled jobs respect domain boundaries when properly configured",
+            "reference": "Domain awareness"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "MID Servers can serve multiple domains; separate MID Servers per domain aren't required for scheduled jobs",
+            "reference": "MID Server"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow Domain Separation documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "domain-separation-scheduled-jobs",
+        "excerpt": "Scheduled jobs with domain separation"
+      },
+      "labels": {
+        "certification": "cis-sp",
+        "domain": "Process Separation",
+        "domainSlug": "process-separation",
+        "domainPercentage": 32,
+        "subtopics": [
+          "Scheduled jobs",
+          "Domain context"
+        ],
+        "tags": [
+          "scheduled-jobs",
+          "domain-context",
+          "job-execution"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-24T02:03:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     }
   ]
 }

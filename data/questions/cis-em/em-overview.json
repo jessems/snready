@@ -313,6 +313,156 @@
         "release": "Xanadu",
         "reviewed": false
       }
+    },
+    {
+      "id": "cis-em-em-overview-005",
+      "certification": "cis-em",
+      "topic": "em-overview",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which three roles are installed with Event Management?",
+      "options": [
+        {
+          "id": "a",
+          "text": "evt_mgmt_admin, evt_mgmt_operator, evt_mgmt_user"
+        },
+        {
+          "id": "b",
+          "text": "evt_mgmt_admin, evt_mgmt_operator, evt_mgmt_developer"
+        },
+        {
+          "id": "c",
+          "text": "itom_admin, itom_operator, itom_user"
+        },
+        {
+          "id": "d",
+          "text": "evt_mgmt_admin, evt_mgmt_user, evt_mgmt_viewer"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "Event Management installs three primary roles: evt_mgmt_admin (configures properties and rules), evt_mgmt_operator (manages alerts including close and acknowledge), and evt_mgmt_user (read access and basic alert operations). A fourth role, evt_mgmt_integration, is also installed. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/reference/r_InstalledWithEventManagement.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "There is no evt_mgmt_developer role; the correct roles are admin, operator, and user.",
+            "reference": "Components installed with Event Management"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "These are not the actual Event Management role names.",
+            "reference": "Components installed with Event Management"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "There is no evt_mgmt_viewer role; the correct roles include evt_mgmt_operator.",
+            "reference": "Components installed with Event Management"
+          }
+        ]
+      },
+      "isFree": false
+    },
+    {
+      "id": "cis-em-em-overview-006",
+      "certification": "cis-em",
+      "topic": "em-overview",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What is the relationship between the evt_mgmt_operator and evt_mgmt_user roles?",
+      "options": [
+        {
+          "id": "a",
+          "text": "They are independent roles with no overlap"
+        },
+        {
+          "id": "b",
+          "text": "evt_mgmt_operator contains the evt_mgmt_user role"
+        },
+        {
+          "id": "c",
+          "text": "evt_mgmt_user contains the evt_mgmt_operator role"
+        },
+        {
+          "id": "d",
+          "text": "Both roles contain the evt_mgmt_admin role"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The evt_mgmt_operator role contains the evt_mgmt_user role. In addition to evt_mgmt_user permissions, the operator can also activate operations on alerts such as acknowledge, close, open incident, and run remediations. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/reference/r_InstalledWithEventManagement.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The roles are hierarchical; evt_mgmt_operator includes evt_mgmt_user.",
+            "reference": "Components installed with Event Management"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "It is the opposite: evt_mgmt_operator contains evt_mgmt_user, not the other way around.",
+            "reference": "Components installed with Event Management"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Neither role contains evt_mgmt_admin; admin is a separate higher-level role.",
+            "reference": "Components installed with Event Management"
+          }
+        ]
+      },
+      "isFree": false
+    },
+    {
+      "id": "cis-em-em-overview-007",
+      "certification": "cis-em",
+      "topic": "em-overview",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What is the purpose of the evt_mgmt_integration role?",
+      "options": [
+        {
+          "id": "a",
+          "text": "To configure Event Management connectors and listeners"
+        },
+        {
+          "id": "b",
+          "text": "To provide create access to the Event and Registered Nodes tables for integrating with external event sources"
+        },
+        {
+          "id": "c",
+          "text": "To manage the lifecycle of alerts and incidents"
+        },
+        {
+          "id": "d",
+          "text": "To configure and run Service Mapping discoveries"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The evt_mgmt_integration role has create access to the Event [em_event] and Registered Nodes [em_registered_nodes] tables to integrate with external event sources. Reference: https://docs.servicenow.com/bundle/xanadu-it-operations-management/page/product/event-management/reference/r_InstalledWithEventManagement.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Configuring connectors and listeners requires the evt_mgmt_admin role.",
+            "reference": "Components installed with Event Management"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Managing alert lifecycle is the responsibility of evt_mgmt_operator and evt_mgmt_user roles.",
+            "reference": "Components installed with Event Management"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Service Mapping discoveries are not related to the evt_mgmt_integration role.",
+            "reference": "Components installed with Event Management"
+          }
+        ]
+      },
+      "isFree": false
     }
   ]
 }

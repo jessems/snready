@@ -423,7 +423,9 @@
           "text": "Enterprise support"
         }
       ],
-      "correctAnswers": ["c"],
+      "correctAnswers": [
+        "c"
+      ],
       "explanation": {
         "correct": "CMDB has Standard level domain separation support. This includes all aspects of Basic level support, plus domain-aware application properties and business logic that allows service providers to create or modify processes per customer tenant.",
         "wrongAnswers": [
@@ -447,8 +449,15 @@
       },
       "labels": {
         "domain": "Domain Support in Applications",
-        "subtopics": ["CMDB", "Support Levels"],
-        "tags": ["cmdb", "standard-support", "applications"]
+        "subtopics": [
+          "CMDB",
+          "Support Levels"
+        ],
+        "tags": [
+          "cmdb",
+          "standard-support",
+          "applications"
+        ]
       },
       "meta": {
         "version": "1.0",
@@ -482,7 +491,10 @@
           "text": "Instance time zone"
         }
       ],
-      "correctAnswers": ["a", "b"],
+      "correctAnswers": [
+        "a",
+        "b"
+      ],
       "selectCount": 2,
       "explanation": {
         "correct": "CMDB Health and CMDB Query Builder both support domain separation. This allows domain-specific health monitoring and querying of configuration items within appropriate domain boundaries.",
@@ -503,8 +515,15 @@
       },
       "labels": {
         "domain": "Domain Support in Applications",
-        "subtopics": ["CMDB", "Features"],
-        "tags": ["cmdb-health", "query-builder", "domain-separation"]
+        "subtopics": [
+          "CMDB",
+          "Features"
+        ],
+        "tags": [
+          "cmdb-health",
+          "query-builder",
+          "domain-separation"
+        ]
       },
       "meta": {
         "version": "1.0",
@@ -512,6 +531,634 @@
         "reviewed": false
       },
       "isFree": false
+    },
+    {
+      "id": "cis-sp-domain-support-apps-008",
+      "certification": "cis-sp",
+      "topic": "domain-support-applications",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which domain separation support level means an application stores data in the global domain and has no domain awareness?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Not supported"
+        },
+        {
+          "id": "b",
+          "text": "Baseline"
+        },
+        {
+          "id": "c",
+          "text": "Standard"
+        },
+        {
+          "id": "d",
+          "text": "Enhanced"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "At the 'Not supported' level, the application has no domain awareness and stores all data in the global domain, making it unsuitable for multi-tenant environments.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Baseline provides basic domain separation with the sys_domain field on key tables",
+            "reference": "Support levels"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Standard provides domain-separated processes and configurations",
+            "reference": "Support levels"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Enhanced provides full domain-specific customization capabilities",
+            "reference": "Support levels"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow Domain Separation compatibility matrix"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "domain-separation-support-levels",
+        "excerpt": "Not supported level definition"
+      },
+      "labels": {
+        "certification": "cis-sp",
+        "domain": "Domain Separation Support for Applications",
+        "domainSlug": "domain-support-applications",
+        "domainPercentage": 13,
+        "subtopics": [
+          "Support levels",
+          "Application compatibility"
+        ],
+        "tags": [
+          "support-levels",
+          "not-supported",
+          "application-compatibility"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-24T02:03:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sp-domain-support-apps-009",
+      "certification": "cis-sp",
+      "topic": "domain-support-applications",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What does it mean when an application has 'Standard' domain separation support?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The application cannot be used with domain separation"
+        },
+        {
+          "id": "b",
+          "text": "The application supports domain-separated data and processes, with most features working in a multi-tenant environment"
+        },
+        {
+          "id": "c",
+          "text": "The application requires a separate instance per tenant"
+        },
+        {
+          "id": "d",
+          "text": "The application only works in the global domain"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Standard support means the application's data and processes are domain-separated, with most features functioning correctly in a multi-tenant environment, though some advanced customizations may be limited.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Standard means it IS supported, with domain-separated data and processes",
+            "reference": "Support levels"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Standard support works within a single domain-separated instance",
+            "reference": "Multi-tenancy"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Standard support enables domain-specific data, not just global",
+            "reference": "Domain separation"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow Domain Separation compatibility matrix"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "domain-separation-support-levels",
+        "excerpt": "Standard support level"
+      },
+      "labels": {
+        "certification": "cis-sp",
+        "domain": "Domain Separation Support for Applications",
+        "domainSlug": "domain-support-applications",
+        "domainPercentage": 13,
+        "subtopics": [
+          "Standard support",
+          "Application features"
+        ],
+        "tags": [
+          "standard-support",
+          "domain-separated-processes",
+          "multi-tenant"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-24T02:03:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sp-domain-support-apps-010",
+      "certification": "cis-sp",
+      "topic": "domain-support-applications",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A service provider wants to use Vulnerability Response in a domain-separated environment. What should they check first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "If the application has enough licenses"
+        },
+        {
+          "id": "b",
+          "text": "The domain separation compatibility matrix to verify the support level and any limitations"
+        },
+        {
+          "id": "c",
+          "text": "If MID Servers are configured"
+        },
+        {
+          "id": "d",
+          "text": "The number of active users"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Before deploying any application in a domain-separated environment, administrators should check the domain separation compatibility matrix to understand the support level and known limitations.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Licensing is important but doesn't determine domain separation compatibility",
+            "reference": "Licensing"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "MID Server configuration is an operational step, not a compatibility check",
+            "reference": "MID Server"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "User count doesn't affect domain separation compatibility",
+            "reference": "User management"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow Domain Separation compatibility matrix"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "domain-separation-compatibility",
+        "excerpt": "Checking application compatibility"
+      },
+      "labels": {
+        "certification": "cis-sp",
+        "domain": "Domain Separation Support for Applications",
+        "domainSlug": "domain-support-applications",
+        "domainPercentage": 13,
+        "subtopics": [
+          "Compatibility matrix",
+          "Application planning"
+        ],
+        "tags": [
+          "compatibility-matrix",
+          "vulnerability-response",
+          "planning"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-24T02:03:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sp-domain-support-apps-011",
+      "certification": "cis-sp",
+      "topic": "domain-support-applications",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which ITSM application has Enhanced domain separation support? (Choose two)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Incident Management"
+        },
+        {
+          "id": "b",
+          "text": "Change Management"
+        },
+        {
+          "id": "c",
+          "text": "Visual Task Boards"
+        },
+        {
+          "id": "d",
+          "text": "Problem Management"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "d"
+      ],
+      "explanation": {
+        "correct": "Incident Management and Problem Management have Enhanced domain separation support, allowing domain-specific process customization including priority matrices and assignment rules.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Change Management has Standard support, not Enhanced",
+            "reference": "Domain separation support levels"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Visual Task Boards have limited domain separation support",
+            "reference": "Application support"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow Domain Separation compatibility matrix"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "domain-separation-itsm",
+        "excerpt": "ITSM domain separation support levels"
+      },
+      "labels": {
+        "certification": "cis-sp",
+        "domain": "Domain Separation Support for Applications",
+        "domainSlug": "domain-support-applications",
+        "domainPercentage": 13,
+        "subtopics": [
+          "ITSM applications",
+          "Enhanced support"
+        ],
+        "tags": [
+          "itsm",
+          "incident-management",
+          "problem-management"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-24T02:03:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sp-domain-support-apps-012",
+      "certification": "cis-sp",
+      "topic": "domain-support-applications",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "How does Service Catalog handle domain separation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Catalogs and catalog items cannot be domain-separated"
+        },
+        {
+          "id": "b",
+          "text": "Catalogs, categories, and catalog items can be assigned to specific domains, controlling visibility per tenant"
+        },
+        {
+          "id": "c",
+          "text": "Each tenant must have a completely separate Service Catalog instance"
+        },
+        {
+          "id": "d",
+          "text": "Service Catalog ignores domain separation entirely"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Service Catalog supports domain separation — catalogs, categories, and catalog items can be assigned to specific domains, controlling which tenants can see and request which items.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Service Catalog has domain separation support for items, categories, and catalogs",
+            "reference": "Service Catalog"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Domain separation eliminates the need for separate instances",
+            "reference": "Multi-tenancy"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Service Catalog is domain-aware and respects domain boundaries",
+            "reference": "Application support"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow Domain Separation documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "domain-separation-service-catalog",
+        "excerpt": "Service Catalog domain separation"
+      },
+      "labels": {
+        "certification": "cis-sp",
+        "domain": "Domain Separation Support for Applications",
+        "domainSlug": "domain-support-applications",
+        "domainPercentage": 13,
+        "subtopics": [
+          "Service Catalog",
+          "Domain visibility"
+        ],
+        "tags": [
+          "service-catalog",
+          "catalog-items",
+          "domain-visibility"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-24T02:03:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sp-domain-support-apps-013",
+      "certification": "cis-sp",
+      "topic": "domain-support-applications",
+      "cognitiveLevel": "analysis",
+      "type": "multiple_choice",
+      "question": "A service provider discovers that a specific ServiceNow application they need has only 'Baseline' domain separation support. What does this imply for their implementation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "They cannot use the application at all"
+        },
+        {
+          "id": "b",
+          "text": "The application has basic domain data separation but may lack domain-specific process customization for individual tenants"
+        },
+        {
+          "id": "c",
+          "text": "The application will work exactly like one with Enhanced support"
+        },
+        {
+          "id": "d",
+          "text": "They need to purchase additional plugins"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Baseline support means the sys_domain field exists on key tables for data separation, but the application may not support domain-specific process customization or configurations per tenant.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Baseline applications can still be used, just with limited domain-specific features",
+            "reference": "Baseline limitations"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Baseline has fewer domain-specific features than Enhanced",
+            "reference": "Support level comparison"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Support level is inherent to the application, not a plugin purchase",
+            "reference": "Plugin management"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow Domain Separation compatibility matrix"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "domain-separation-support-levels",
+        "excerpt": "Baseline support implications"
+      },
+      "labels": {
+        "certification": "cis-sp",
+        "domain": "Domain Separation Support for Applications",
+        "domainSlug": "domain-support-applications",
+        "domainPercentage": 13,
+        "subtopics": [
+          "Baseline support",
+          "Implementation planning"
+        ],
+        "tags": [
+          "baseline-support",
+          "limitations",
+          "implementation-planning"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-24T02:03:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sp-domain-support-apps-014",
+      "certification": "cis-sp",
+      "topic": "domain-support-applications",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which plugin extends domain separation support for Performance Analytics?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Domain Support for Performance Analytics (com.snc.pa.domain)"
+        },
+        {
+          "id": "b",
+          "text": "Domain Separation plugin (com.glide.domain.msp_extensions.installer)"
+        },
+        {
+          "id": "c",
+          "text": "Performance Analytics Premium"
+        },
+        {
+          "id": "d",
+          "text": "ITSM Domain Support"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "The Domain Support for Performance Analytics plugin (com.snc.pa.domain) extends PA with domain-specific capabilities including domain-separated indicators, breakdowns, and dashboards.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "This is the base MSP extensions plugin, not specific to Performance Analytics",
+            "reference": "Domain plugins"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "PA Premium is a licensing tier, not a domain separation plugin",
+            "reference": "Performance Analytics"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "ITSM Domain Support is not the plugin name for PA domain separation",
+            "reference": "Plugin names"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow Domain Separation - Performance Analytics"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "domain-separation-pa",
+        "excerpt": "PA domain separation plugin"
+      },
+      "labels": {
+        "certification": "cis-sp",
+        "domain": "Domain Separation Support for Applications",
+        "domainSlug": "domain-support-applications",
+        "domainPercentage": 13,
+        "subtopics": [
+          "Performance Analytics",
+          "Domain plugins"
+        ],
+        "tags": [
+          "performance-analytics",
+          "domain-plugin",
+          "pa-domain"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-24T02:03:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sp-domain-support-apps-015",
+      "certification": "cis-sp",
+      "topic": "domain-support-applications",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What is the impact of using an application that does NOT support domain separation in a domain-separated instance?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The instance crashes"
+        },
+        {
+          "id": "b",
+          "text": "Data from all tenants may be visible to all users of that application, creating potential data leakage"
+        },
+        {
+          "id": "c",
+          "text": "The application automatically becomes domain-aware"
+        },
+        {
+          "id": "d",
+          "text": "Only the admin user can access the application"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Applications without domain separation support store data in the global domain without domain boundaries, potentially exposing one tenant's data to users in other domains.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The instance continues to function; the issue is data visibility",
+            "reference": "Platform stability"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Applications don't automatically gain domain awareness",
+            "reference": "Domain separation behavior"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Access isn't restricted to admin; it's that domain boundaries aren't enforced",
+            "reference": "Access control"
+          }
+        ]
+      },
+      "references": [
+        "ServiceNow Domain Separation documentation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "path": "domain-separation-risks",
+        "excerpt": "Risks of unsupported applications"
+      },
+      "labels": {
+        "certification": "cis-sp",
+        "domain": "Domain Separation Support for Applications",
+        "domainSlug": "domain-support-applications",
+        "domainPercentage": 13,
+        "subtopics": [
+          "Data leakage",
+          "Application risk"
+        ],
+        "tags": [
+          "data-leakage",
+          "unsupported-applications",
+          "risk"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-24T02:03:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     }
   ]
 }
