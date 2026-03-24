@@ -277,6 +277,15 @@ export default async function CertificationPage({ params }: PageProps) {
                       Take Mock Exam
                     </Link>
                     <Link
+                      href={`/${slug}/readiness-check`}
+                      className="inline-flex h-12 items-center justify-center gap-2 rounded-lg border-2 border-[var(--accent)] px-6 text-base font-medium text-[var(--accent)] transition-colors hover:bg-[var(--accent-light)]"
+                    >
+                      <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      Am I Exam Ready?
+                    </Link>
+                    <Link
                       href={`/${slug}/practice-questions`}
                       className="inline-flex h-12 items-center justify-center rounded-lg border border-zinc-300 bg-white px-6 text-base font-medium text-zinc-900 transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-100"
                     >
