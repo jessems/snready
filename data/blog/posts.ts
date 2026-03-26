@@ -2556,6 +2556,565 @@ Give yourself 4-6 weeks. Use the free Now Learning courses. Build in your PDI. T
 [Take a Timed CAD Mock Exam →](/cad/timed-exam)
 `
   },
+  {
+    slug: "servicenow-cis-csm-exam-guide-2026",
+    title: "CIS-CSM Exam Guide 2026: How to Pass ServiceNow Customer Service Management",
+    description: "Complete CIS-CSM study guide covering all 5 exam domains, study timeline, resources, and practice questions. Pass your Customer Service Management certification first try.",
+    publishedAt: "2026-03-26",
+    author: "SNReady Team",
+    tags: ["CIS-CSM", "study guide", "certifications", "customer service management"],
+    readingTime: 12,
+    content: `
+## What Is the CIS-CSM Certification?
+
+The **Certified Implementation Specialist — Customer Service Management (CIS-CSM)** proves you can implement and configure ServiceNow's CSM application. It's one of the most in-demand CIS certifications because virtually every ServiceNow customer has some form of customer-facing service operations.
+
+Unlike the CSA, this is an **implementation** exam. You're not just administering the platform — you're designing and configuring CSM solutions for real business requirements.
+
+### Prerequisites
+
+- **CSA certification** (required)
+- Recommended: 6-12 months hands-on CSM experience
+- Complete the CSM Essentials course on Now Learning (free)
+
+## Exam Format
+
+| Detail | Info |
+|--------|------|
+| **Questions** | 60 multiple choice |
+| **Duration** | 90 minutes |
+| **Passing score** | ~70% (42/60) |
+| **Cost** | $315 |
+| **Delivery** | Kryterion online or test center |
+| **Prerequisite** | CSA certification |
+| **Maintenance** | Delta exam with each major release |
+
+## The 5 Exam Domains (With Weights)
+
+The CIS-CSM exam covers 5 domains. Here's how they're weighted:
+
+### 1. CSM Configuration (30%)
+
+This is the biggest domain — nearly a third of the exam. You need to know:
+
+- **Agent Workspace configuration** — how to set up and customize the CSM workspace
+- **Customer Service Portal** setup and configuration
+- **Assignment rules and workflows** for case routing
+- **CSM properties and system settings**
+- **Playbooks** — guided resolution paths for agents
+- **CSM integrations** with ITSM (creating incidents from cases)
+
+**Study tip:** Spend proportional time here. If you have 4 weeks to study, dedicate the first full week to CSM configuration.
+
+### 2. Foundational Data Model (25%)
+
+The CSM data model is more complex than you'd expect:
+
+- **Account and Contact** records — relationships, hierarchies
+- **Consumer records** vs Contact records — when to use which
+- **Product and Asset** integration
+- **Entitlements and SLAs** — service-level management
+- **CSM tables and relationships** — how cases, accounts, contacts, and assets connect
+
+**Key concept:** Understand the difference between B2B (Account/Contact model) and B2C (Consumer model). The exam tests this heavily.
+
+### 3. Case Management (20%)
+
+Core operational knowledge:
+
+- **Case lifecycle** — creation through resolution
+- **Case types** and categorization
+- **Major Issue Management** — handling widespread problems
+- **Communication channels** — email, portal, phone, chat
+- **Special handling notes** — customer-specific instructions
+- **Case escalation** procedures
+
+### 4. Workspace, Portals, and Analytics (15%)
+
+- **Configurable Workspace** for agents
+- **Customer Service Portal (CSP)** customization
+- **Service Portal widgets** for CSM
+- **Performance Analytics dashboards** for CSM
+- **Reporting** on case metrics, SLA compliance
+
+### 5. Best Practices and Knowledge (10%)
+
+- **Knowledge Management** integration with CSM
+- **Knowledge articles** for agents and customers
+- **Self-service** strategy and configuration
+- **CSM implementation best practices**
+- **Major case management** procedures
+
+## 4-Week Study Plan
+
+### Week 1: Foundation (Data Model + Configuration Basics)
+
+- Complete CSM Essentials on Now Learning (free)
+- Study the CSM data model thoroughly — draw it out
+- Set up CSM in your PDI and create accounts, contacts, consumers
+- **Practice:** [Free CIS-CSM Practice Questions →](/cis-csm/free-questions)
+
+### Week 2: Deep Configuration
+
+- Focus on Agent Workspace configuration
+- Configure CSM Portal
+- Set up assignment rules and case workflows
+- Practice creating playbooks
+- Configure CSM-ITSM integration
+
+### Week 3: Case Management + Operations
+
+- Work through the case lifecycle end-to-end
+- Configure entitlements and SLAs
+- Set up communication channels
+- Practice Major Issue Management
+- Build CSM dashboards with Performance Analytics
+
+### Week 4: Review + Practice Exams
+
+- Take [timed mock exams](/cis-csm/timed-exam) under real conditions
+- Review weak domains based on mock exam results
+- Re-read Knowledge Management sections
+- Focus on best practices documentation
+- **Target:** Consistently score 80%+ on practice tests
+
+## Key Topics That Catch People Off Guard
+
+### 1. Consumer vs Contact
+
+This trips up a lot of candidates. **Contacts** belong to **Accounts** (B2B). **Consumers** are standalone (B2C). The exam expects you to know exactly when to use each model and how they interact.
+
+### 2. Entitlements
+
+CSM entitlements are more nuanced than ITSM SLAs. You need to understand:
+- Product entitlements vs service entitlements
+- How entitlements connect to accounts and assets
+- Entitlement allocation (# of cases, time-based)
+
+### 3. Agent Workspace vs Classic UI
+
+The exam assumes you know the Configurable Workspace approach. Don't just study classic CSM — make sure you can configure workspace views, lists, and form layouts.
+
+### 4. CSM-ITSM Bridge
+
+How do you create an incident from a case? How does case resolution flow when the underlying incident is resolved? This integration is tested specifically.
+
+## Resources
+
+### Free
+
+- **Now Learning:** CSM Essentials course (complete this first)
+- **ServiceNow Docs:** [CSM Documentation](https://www.servicenow.com/docs/) — the official reference
+- **PDI:** Practice everything you learn in a real instance
+- **SNReady:** [92 free and premium CIS-CSM practice questions](/cis-csm)
+
+### Paid
+
+- **ServiceNow official training** — CSM Implementation course (~$2,000-3,000)
+- **SNReady Premium** — Full question bank with explanations ($9)
+
+## Exam Day Tips
+
+1. **Time management:** 90 seconds per question. Flag and move on if stuck.
+2. **Read carefully:** "Which TWO" and "All EXCEPT" questions are common.
+3. **Think implementation:** This isn't theory — think about how you'd actually configure it.
+4. **Data model questions:** When in doubt, think about the table relationships.
+5. **Don't overthink:** Your first instinct on configuration questions is usually right if you've practiced in a PDI.
+
+## Ready to Start?
+
+[Try Free CIS-CSM Practice Questions →](/cis-csm/free-questions)
+
+[Take a Timed CIS-CSM Mock Exam →](/cis-csm/timed-exam)
+`
+  },
+  {
+    slug: "servicenow-cis-hr-exam-guide-2026",
+    title: "CIS-HR Exam Guide 2026: How to Pass ServiceNow HR Service Delivery",
+    description: "Complete CIS-HR study guide with all 4 exam domains explained, study strategies, key topics, and practice questions for the HR Service Delivery certification.",
+    publishedAt: "2026-03-26",
+    author: "SNReady Team",
+    tags: ["CIS-HR", "study guide", "certifications", "HR service delivery"],
+    readingTime: 11,
+    content: `
+## Why CIS-HR?
+
+ServiceNow HR Service Delivery (HRSD) is one of the fastest-growing product lines on the platform. As organizations digitize their employee experiences, demand for certified HRSD implementers keeps climbing.
+
+The **CIS-HR** certification validates your ability to implement and configure ServiceNow's HR Service Delivery application — from case management to lifecycle events to document management.
+
+### Is CIS-HR Right for You?
+
+CIS-HR is ideal if you:
+- Work with HR departments implementing ServiceNow
+- Already have your CSA and want a CIS specialization
+- Want to specialize in employee experience / HR technology
+- Work at an organization actively using HRSD
+
+## Exam Format
+
+| Detail | Info |
+|--------|------|
+| **Questions** | 60 multiple choice |
+| **Duration** | 90 minutes |
+| **Passing score** | ~70% (42/60) |
+| **Cost** | $315 |
+| **Delivery** | Kryterion online or test center |
+| **Prerequisite** | CSA certification |
+| **Maintenance** | Delta exam per major release |
+
+## The 4 Exam Domains
+
+### 1. HR System Architecture & Data Model (25%)
+
+This domain tests your understanding of how HRSD fits into the ServiceNow platform:
+
+- **HR Service Delivery architecture** — the application stack
+- **Core tables:** hr_case, hr_profile, sn_hr_core_task
+- **HR criteria** — targeting content and services to specific employee groups
+- **HR service catalog** — structure, categories, and request fulfillment
+- **Center of Excellence (CoE)** configuration
+- **HR profile** vs sys_user — what lives where and why
+
+**Key insight:** The HR profile extends the user record with HR-specific data. Understanding this relationship is fundamental to every other domain.
+
+### 2. HR Journeys & Lifecycle Events (30%)
+
+This is the highest-weighted domain. Lifecycle events (onboarding, offboarding, transfers, leaves of absence) are the heart of HRSD:
+
+- **Lifecycle events** — configuration, activities, and workflows
+- **Employee journeys** — guided, multi-step experiences
+- **Activity sets** — grouping tasks for lifecycle events
+- **Employee Center** — the employee-facing portal
+- **Virtual Agent** for HR — conversational HR service
+- **Knowledge Management** for HR — employee-facing articles
+
+**What catches people:** Activity sets and their sequencing. The exam tests whether you know how to chain activities, set dependencies, and configure conditional activities based on employee attributes.
+
+### 3. Core HR Applications (25%)
+
+The operational backbone:
+
+- **HR Case Management** — creating, routing, escalating HR cases
+- **Document Management** — employee document templates, generation, e-signatures
+- **HR agent workspace** — configuring the agent experience
+- **Universal Request** — unified request handling across departments
+- **Performance Analytics** for HR — dashboards and KPIs
+- **Predictive Intelligence** for HR case categorization
+
+**Study tip:** Document Management is a surprisingly large topic. Know how document templates work, how to generate documents from lifecycle events, and how e-signature integrations are configured.
+
+### 4. HR Security & Access (20%)
+
+Security is critical in HR — employee data is among the most sensitive in any organization:
+
+- **HR criteria-based security** — who sees what
+- **Before-query business rules** for HR data
+- **HR roles** — sn_hr_core.admin, sn_hr_core.case_writer, sn_hr_core.manager, etc.
+- **Employee document security** — restricting access to sensitive documents
+- **ACLs specific to HR** tables
+- **Data separation** for shared service centers
+
+**Key concept:** HR criteria is NOT the same as user criteria. HR criteria uses HR-specific fields (department, location, employment type) to control visibility of HR content, services, and data.
+
+## 4-Week Study Plan
+
+### Week 1: Architecture & Data Model
+
+- Complete HRSD Fundamentals on Now Learning
+- Study the HR data model — draw out table relationships
+- Set up HRSD plugin in your PDI
+- Create HR profiles, categories, and basic services
+- **Practice:** [Free CIS-HR Practice Questions →](/cis-hr/free-questions)
+
+### Week 2: Lifecycle Events & Journeys
+
+- Configure a complete onboarding lifecycle event
+- Build activity sets with dependencies
+- Set up Employee Center
+- Create employee journeys
+- This is 30% of the exam — spend proportional time
+
+### Week 3: Core Applications & Security
+
+- Set up HR Case Management workflows
+- Configure document templates and generation
+- Build HR dashboards
+- Implement HR criteria-based security
+- Configure HR roles and ACLs
+
+### Week 4: Review & Mock Exams
+
+- Take [timed mock exams](/cis-hr/timed-exam) under real conditions
+- Review weak areas based on results
+- Re-read lifecycle event configurations
+- **Target:** 80%+ consistently on practice tests
+
+## Topics That Surprise Exam Takers
+
+### 1. HR Criteria vs User Criteria
+
+This is the #1 gotcha. **User criteria** is platform-wide (Service Portal, Knowledge). **HR criteria** is specific to HRSD and uses HR-specific attributes. They look similar but are configured differently and used in different contexts.
+
+### 2. Document Templates & Generation
+
+Many candidates underestimate this area. You need to know:
+- How to create document templates
+- How lifecycle events trigger document generation
+- E-signature integration options
+- Document security and retention policies
+
+### 3. Employee Center vs Service Portal
+
+Employee Center is the modern employee-facing experience. It's NOT just a rebranded Service Portal — it's a distinct application with its own configuration patterns. Know the differences.
+
+### 4. Universal Request
+
+Universal Request allows employees to submit requests without knowing which department handles them. Understanding how it routes to HR vs IT vs Facilities is a tested topic.
+
+## Resources
+
+### Free
+
+- **Now Learning:** HRSD Fundamentals course
+- **ServiceNow Docs:** HR Service Delivery documentation
+- **PDI:** Activate HRSD plugin and practice
+- **SNReady:** [81 CIS-HR practice questions](/cis-hr) (free + premium)
+
+### Paid
+
+- **ServiceNow instructor-led training** (~$2,000-3,000)
+- **SNReady Premium** — Full question bank with detailed explanations ($9)
+
+## Exam Day Strategy
+
+1. **Watch for "HR criteria" vs "user criteria"** — the exam loves this distinction
+2. **Lifecycle event questions** are scenario-heavy — think through the full flow
+3. **Security questions** often have "almost right" answers — read all options carefully
+4. **Flag and return** — don't spend more than 2 minutes on any question
+5. **Think employee-first** — many best-practice questions favor the employee experience
+
+## Start Practicing
+
+[Try Free CIS-HR Practice Questions →](/cis-hr/free-questions)
+
+[Take a Timed CIS-HR Mock Exam →](/cis-hr/timed-exam)
+`
+  },
+  {
+    slug: "free-servicenow-practice-questions-2026",
+    title: "Free ServiceNow Practice Questions 2026: Every Certification Covered",
+    description: "Access free ServiceNow practice questions for all 20 certifications — CSA, CAD, CIS-ITSM, CIS-Discovery, and more. No signup required. Start practicing now.",
+    publishedAt: "2026-03-26",
+    author: "SNReady Team",
+    tags: ["free practice questions", "certifications", "CSA", "CAD", "CIS-ITSM", "study resources"],
+    featured: true,
+    readingTime: 8,
+    content: `
+## Free Practice Questions for Every ServiceNow Certification
+
+Looking for free ServiceNow practice questions? You're in the right place. SNReady offers **free practice questions for all 20 ServiceNow certifications** — no signup, no credit card, no catch.
+
+Here's the complete list with direct links.
+
+## Foundation Certifications
+
+### CSA — Certified System Administrator
+
+The most popular ServiceNow certification. Our CSA questions cover all 8 exam domains:
+
+- Platform Overview & Navigation
+- User Administration & Security
+- Database Administration
+- Self-Service & Process Automation
+- Introduction to Development
+- Data Migration & Integration
+- Collaboration & Reporting
+
+**100 questions** — Mix of free and premium
+
+[Start Free CSA Practice Questions →](/csa/free-questions)
+
+### CAD — Certified Application Developer
+
+For developers building on the ServiceNow platform:
+
+- Scripting & Application Development
+- Business Rules & Client Scripts
+- REST API Integration
+- UI Policies & Script Includes
+
+**130 questions** — The largest question bank on the site
+
+[Start Free CAD Practice Questions →](/cad/free-questions)
+
+## Implementation Specialist Certifications
+
+### CIS-ITSM — IT Service Management
+
+Covers incident, problem, change, and request management:
+
+[Start Free CIS-ITSM Questions →](/cis-itsm/free-questions)
+
+### CIS-Discovery
+
+Network discovery, pattern design, and CMDB integration:
+
+[Start Free CIS-Discovery Questions →](/cis-discovery/free-questions)
+
+### CIS-CSM — Customer Service Management
+
+Case management, customer portals, and CSM configuration:
+
+[Start Free CIS-CSM Questions →](/cis-csm/free-questions)
+
+### CIS-HR — HR Service Delivery
+
+Lifecycle events, HR case management, and employee experience:
+
+[Start Free CIS-HR Questions →](/cis-hr/free-questions)
+
+### CIS-SAM — Software Asset Management
+
+Software licensing, compliance, and asset lifecycle:
+
+[Start Free CIS-SAM Questions →](/cis-sam/free-questions)
+
+### CIS-HAM — Hardware Asset Management
+
+Hardware lifecycle, stockrooms, and asset tracking:
+
+[Start Free CIS-HAM Questions →](/cis-ham/free-questions)
+
+### CIS-PA — Performance Analytics
+
+Dashboards, indicators, and data collection:
+
+[Start Free CIS-PA Questions →](/cis-pa/free-questions)
+
+### CIS-SM — Service Mapping
+
+Service maps, patterns, and dependency views:
+
+[Start Free CIS-SM Questions →](/cis-sm/free-questions)
+
+### CIS-EM — Event Management
+
+Event processing, alert management, and integrations:
+
+[Start Free CIS-EM Questions →](/cis-em/free-questions)
+
+### CIS-VR — Vulnerability Response
+
+Vulnerability management, prioritization, and remediation:
+
+[Start Free CIS-VR Questions →](/cis-vr/free-questions)
+
+### CIS-SIR — Security Incident Response
+
+Security incidents, threat intelligence, and response playbooks:
+
+[Start Free CIS-SIR Questions →](/cis-sir/free-questions)
+
+### CIS-RC — Risk & Compliance
+
+GRC framework, risk management, and compliance:
+
+[Start Free CIS-RC Questions →](/cis-rc/free-questions)
+
+### CIS-DF — Data Foundations (CMDB)
+
+CMDB configuration, CSDM, data governance, and health:
+
+**213 questions** — Our deepest question bank
+
+[Start Free CIS-DF Questions →](/cis-df/free-questions)
+
+### CIS-FSM — Field Service Management
+
+Work orders, scheduling, and dispatch:
+
+[Start Free CIS-FSM Questions →](/cis-fsm/free-questions)
+
+### CIS-SP — Security Platform
+
+Security operations platform configuration:
+
+[Start Free CIS-SP Questions →](/cis-sp/free-questions)
+
+### CIS-SPM — Strategic Portfolio Management
+
+Project and portfolio management:
+
+[Start Free CIS-SPM Questions →](/cis-spm/free-questions)
+
+### CIS-TPRM — Third-Party Risk Management
+
+Vendor risk assessment and management:
+
+[Start Free CIS-TPRM Questions →](/cis-tprm/free-questions)
+
+### CPOA — Certified Platform Owner Advisor
+
+Platform governance and strategy:
+
+[Start Free CPOA Questions →](/cpoa/free-questions)
+
+## Why Free Practice Questions Matter
+
+### 1. They Show You the Exam Format
+
+ServiceNow exams use specific question styles — single-select, multi-select ("choose 2"), and negative questions ("which is NOT..."). Practicing with realistic questions eliminates format surprises on exam day.
+
+### 2. They Reveal Knowledge Gaps
+
+You don't know what you don't know until you test yourself. Free practice questions help you identify weak domains *before* you spend $210-$315 on the real exam.
+
+### 3. They Build Confidence
+
+Walking into the exam having already answered similar questions makes a real difference. You spend less time on anxiety and more time on actual problem-solving.
+
+## How SNReady Practice Questions Are Different
+
+### Written by Practitioners, Not AI Dumps
+
+Every question is based on actual ServiceNow documentation and course content. We don't scrape brain dump sites. Our questions test real understanding, not memorization of leaked answers.
+
+### Detailed Explanations
+
+Every question includes:
+- **Why the correct answer is right** — not just "A is correct"
+- **Why each wrong answer is wrong** — understanding the reasoning
+- **Key concepts** — what you should remember
+
+### Matches Real Exam Format
+
+- 35% multi-select questions (matching the actual exam ratio)
+- 15% negative questions ("which is NOT...")
+- Scenario-based questions that test application, not recall
+
+## Free vs Premium
+
+| Feature | Free | Premium ($9) |
+|---------|------|-------------|
+| Questions per cert | 3-5 per domain | Full question bank |
+| Explanations | ✅ Full | ✅ Full |
+| Timed mock exams | ❌ | ✅ |
+| Domain breakdown | ❌ | ✅ |
+| All 20 certifications | ✅ | ✅ |
+| Price | $0 | $9 one-time |
+
+**$9 gets you access to all 20 certifications.** That's less than 5% of what you'd pay for one exam attempt.
+
+## Start Practicing Now
+
+Pick your certification and start with the free questions. No signup required.
+
+[Browse All Certifications →](/)
+
+[Take a Timed Mock Exam →](/csa/timed-exam)
+`
+  },
 ];
 
 export function getAllPosts(): BlogPost[] {
