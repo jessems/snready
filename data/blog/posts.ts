@@ -14,6 +14,746 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "how-to-pass-servicenow-csa-first-time",
+    title: "How to Pass the ServiceNow CSA Exam on Your First Try (2026 Guide)",
+    description: "A no-nonsense, step-by-step guide to passing the ServiceNow Certified System Administrator exam on your first attempt. Save $210 by not retaking it.",
+    publishedAt: "2026-03-25",
+    author: "SNReady Team",
+    tags: ["CSA", "exam prep", "study guide", "certifications"],
+    featured: true,
+    readingTime: 11,
+    content: `
+## The Stakes Are Real
+
+Failing the CSA exam costs you $210. Not a "try again" fee — the full exam price again. That's $420 total for one certification if you fail once.
+
+This guide exists so you don't waste that money.
+
+We've analyzed hundreds of Reddit posts, talked to certified professionals, and studied the exam blueprint to create a concrete, week-by-week plan that works.
+
+## Step 1: Understand What You're Walking Into
+
+**The exam:**
+- 60 questions, 90 minutes
+- ~70% passing score (42 correct answers)
+- Multiple choice and multi-select
+- Online proctored or test center
+- $210 per attempt
+
+**The domains:**
+
+| Domain | Weight | Translation |
+|--------|--------|-------------|
+| Database Administration | 20% | Tables, fields, import sets, data schema |
+| User Admin & Security | 15% | Users, groups, roles, ACLs |
+| UI & Navigation | 15% | Forms, lists, views, modules |
+| Self-Service & Automation | 15% | Service Catalog, Flow Designer, notifications |
+| Reporting & Dashboards | 10% | Reports, dashboards, performance analytics basics |
+| Change Management | 10% | Change types, CAB, risk assessment |
+| Incident Management | 10% | Incident lifecycle, assignment, SLAs |
+| Problem Management | 5% | Problem vs incident, known errors, root cause |
+
+**Key insight:** Database Administration is 20% — one-fifth of the exam. If you're weak on tables, fields, and import sets, you're giving away 12 questions.
+
+## Step 2: Get Your Resources (All Free)
+
+Everything you need to pass is free:
+
+### 1. Now Learning Courses (Required)
+Go to [nowlearning.servicenow.com](https://nowlearning.servicenow.com) and complete:
+- **ServiceNow Administration Fundamentals** — This is the course. The exam is based on it.
+- The ebook included with this course is your primary study material
+
+### 2. Personal Developer Instance (Required)
+Go to [developer.servicenow.com](https://developer.servicenow.com) and request a PDI. This is a free, fully functional ServiceNow instance where you can practice.
+
+You cannot pass this exam by reading alone. You need to click around the platform.
+
+### 3. ServiceNow Documentation (Reference)
+[docs.servicenow.com](https://docs.servicenow.com) — Use this to look up anything unclear from the course.
+
+### 4. Practice Questions (Strongly Recommended)
+You need to test yourself before the real exam. Free questions let you see your gaps without spending money on a failed attempt.
+
+## Step 3: The 3-Week Study Plan
+
+### Week 1: Read and Absorb
+
+**Days 1-2: Read the ebook (first pass)**
+- Read the entire Administration Fundamentals ebook front to back
+- Don't skip sections — even topics you think you know
+- Highlight or note anything that's new to you
+
+**Days 3-5: Hands-on in PDI**
+- Complete all labs from the course
+- For each lab, also experiment beyond what's asked
+- Created a user? Now create a group, assign roles, test what they can see
+- Built a report? Now build a dashboard with multiple reports
+
+**Days 6-7: Review**
+- Re-read your notes
+- Identify your weakest 2-3 domains
+- These become your focus for Week 2
+
+### Week 2: Go Deep
+
+**Days 1-2: Database Administration (20% of exam)**
+- Tables: Create tables, extend tables, understand inheritance
+- Fields: Types, dictionary entries, dictionary overrides
+- Import Sets: Transform maps, coalesce fields, data sources
+- **Practice in PDI:** Import a CSV, set up transform maps, run imports
+
+**Days 3-4: Your Weakest Domains**
+- Spend focused time on whatever confused you in Week 1
+- Use the PDI for every concept — don't just read about it
+- Check ServiceNow docs for topics the ebook covers briefly
+
+**Days 5-7: Self-Service & Automation + Security**
+- Service Catalog: Items, variables, workflows
+- Flow Designer: Triggers, actions, conditions
+- Notifications: Events, email notifications, digest rules
+- ACLs: How evaluation works, debugging access issues
+
+### Week 3: Test and Polish
+
+**Days 1-3: Practice Questions**
+- Take practice tests under timed conditions
+- For every wrong answer, go back to the source material
+- Don't just learn the right answer — understand **why** each wrong answer is wrong
+
+**Days 4-5: Targeted Review**
+- Focus exclusively on domains where you scored below 70%
+- Re-do relevant labs in your PDI
+- Create flashcards for anything you keep getting wrong
+
+**Days 6: Light Review Only**
+- Skim your notes
+- No new material
+- Get a good night's sleep
+
+**Day 7: Exam Day**
+
+## Step 4: The Exam Day Playbook
+
+### Before the Exam
+- Test your webcam and internet (if online proctored)
+- Have your government ID ready
+- Clear your desk completely (proctors will ask you to show your workspace)
+- Close all other applications
+- Use the bathroom
+
+### During the Exam
+
+**First Pass (0-45 minutes):**
+- Answer everything you know immediately
+- Flag anything that requires thought
+- Don't spend more than 90 seconds on any question
+- Goal: Answer 40-45 questions
+
+**Second Pass (45-75 minutes):**
+- Return to flagged questions
+- Eliminate obviously wrong answers first
+- For scenario questions: read the LAST sentence first (what they're actually asking), then the setup
+
+**Final Pass (75-90 minutes):**
+- Review flagged questions one more time
+- Only change answers if you find a concrete reason to (not just doubt)
+- Make sure you've answered every question (no penalty for guessing)
+
+### Question Types to Watch For
+
+**"Which is NOT..."** — Your brain wants to find the right answer. Force yourself to identify what IS correct, then pick the outlier.
+
+**"Choose two"** — Exactly two are correct. If you're between three options, find the one that's LEAST correct.
+
+**"Best practice"** — ServiceNow has official recommendations. "Best practice" doesn't mean "what works" — it means what ServiceNow documentation recommends.
+
+**Scenario questions** — These describe a situation and ask what to do. Read carefully — the answer is usually in the details of the scenario, not in general knowledge.
+
+## Step 5: Common Failure Points (and How to Avoid Them)
+
+### Failure Point 1: Skipping Import Sets
+
+Import sets, transform maps, and coalesce fields appear heavily on the exam. Many people skip this topic because it seems dry.
+
+**Fix:** In your PDI, import a CSV file with employee data. Set up a transform map. Use coalesce on the employee ID field. Run it twice and see what happens. Now break it and fix it.
+
+### Failure Point 2: Not Understanding ACL Evaluation
+
+"How does ServiceNow check if a user can access this record?" If you can't answer that clearly, you'll lose points.
+
+**Quick version:**
+1. Does a matching ACL exist? If no ACL at all → access DENIED
+2. Multiple matching ACLs → ALL must pass
+3. More specific ACLs (table.field) override less specific (table.*)
+4. Row-level → no matching row ACL = access allowed
+
+### Failure Point 3: Confusing Similar Features
+
+The exam loves asking "when would you use X vs Y?"
+
+| Feature A | Feature B | Key Difference |
+|-----------|-----------|----------------|
+| UI Policy | Client Script | UI Policy is no-code; Client Script is code |
+| Business Rule | Script Include | BR runs automatically; SI is called explicitly |
+| Data Source | Import Set | Data Source defines where; Import Set is the staging table |
+| Assignment Rule | Assignment Group | Rule auto-assigns; Group is who can be assigned |
+
+### Failure Point 4: Ignoring Notifications
+
+Email notifications, events, and digest rules sound boring. They show up on the exam.
+
+Know:
+- Event-based vs. record-based notifications
+- When to use each
+- How to debug "notification didn't send"
+
+### Failure Point 5: Not Enough Hands-On Time
+
+Reading about ServiceNow and using ServiceNow are different. If you haven't navigated to System Properties → found the setting → changed it → verified the change, you'll struggle with navigation questions.
+
+**Minimum PDI time:** 10-15 hours across your study period.
+
+## The "Am I Ready?" Checklist
+
+Before scheduling your exam, honestly check:
+
+- [ ] I can explain what a table, field, and record are in ServiceNow terms
+- [ ] I can import data using Import Sets and Transform Maps
+- [ ] I understand ACL evaluation order
+- [ ] I know the difference between UI Policies and Client Scripts
+- [ ] I can create a Service Catalog item with variables
+- [ ] I understand Incident, Problem, and Change management lifecycles
+- [ ] I can build a basic report and add it to a dashboard
+- [ ] I know what Flow Designer does and when to use it
+- [ ] I score 80%+ on practice tests consistently
+
+If you can't check all of these, you're not ready. Study more — it's cheaper than a retake.
+
+## After You Pass
+
+1. **Claim your Credly badge** within 48 hours
+2. **Update LinkedIn** — add certification + badge
+3. **Start your job search** if that's the goal
+4. **Plan for maintenance** — you'll need a delta exam when the next release ships (~annually)
+5. **Consider next steps:** CAD if you want development, CIS-ITSM if you're staying in admin/implementation
+
+## The Math That Makes This Worth It
+
+**Investment:** $210 exam + 40-80 hours study + $0-9 practice questions
+
+**Return:** ServiceNow CSA roles start at $75K-95K (US). General IT support is $50K-70K.
+
+Even at the low end, that's a $5K+ salary increase. The exam pays for itself in the first week of your new salary.
+
+Don't overthink it. Study the material. Practice in a PDI. Test yourself. Pass on the first try.
+
+[Take Free CSA Practice Questions →](/csa/free-questions)
+
+[Start a Timed CSA Mock Exam →](/csa/timed-exam)
+
+---
+
+*Updated March 2026. Based on the current Xanadu exam blueprint.*
+`
+  },
+  {
+    slug: "servicenow-cis-discovery-exam-guide-2026",
+    title: "CIS-Discovery Exam 2026: What You Actually Need to Know",
+    description: "The complete guide to passing the ServiceNow CIS-Discovery certification. Covers all 4 exam domains, pattern design, CMDB integration, and the gotchas that catch experienced admins.",
+    publishedAt: "2026-03-25",
+    author: "SNReady Team",
+    tags: ["CIS-Discovery", "certifications", "study-guide", "CMDB", "exam-prep"],
+    readingTime: 12,
+    content: `
+## Why CIS-Discovery Is Different
+
+Most CIS exams test you on configuring a module. CIS-Discovery tests you on understanding a **system of systems** — Discovery doesn't just live in ServiceNow. It reaches out to your infrastructure, scans networks, classifies devices, and populates the CMDB.
+
+If you've only configured ITSM modules, this exam will surprise you. It's as much about networking concepts and infrastructure as it is about ServiceNow.
+
+## The Exam Blueprint
+
+| Domain | Weight | Focus |
+|--------|--------|-------|
+| **Pattern Design** | ~35% | Discovery patterns, probes, sensors, classifiers |
+| **Discovery Configuration** | ~35% | Schedules, credentials, MID servers, network scanning |
+| **CMDB Integration** | ~15% | Reconciliation, IRE, CI relationships |
+| **Engagement Readiness** | ~15% | Planning, prerequisites, customer conversations |
+
+**The big takeaway:** 70% of the exam is Pattern Design + Discovery Configuration. Master these two and you're most of the way there.
+
+## Domain 1: Pattern Design (~35%)
+
+This is the most technical domain. It covers how Discovery identifies and classifies what it finds.
+
+### How Discovery Works (The Flow)
+
+1. **Schedule triggers** → Discovery starts scanning
+2. **Port scan** → Finds devices on the network
+3. **Classification** → Determines device type (Windows server, Linux, network switch, etc.)
+4. **Exploration** → Runs patterns/probes to collect details
+5. **CMDB update** → Creates/updates CIs with discovered data
+
+### Patterns vs Probes/Sensors
+
+**Horizontal patterns** are the modern approach (Xanadu):
+- Written in ServiceNow Pattern Language (SNPL)
+- Visual pattern designer
+- Reusable steps
+- Easier to maintain and debug
+
+**Probes and sensors** are the legacy approach:
+- Probes: SSH/WMI/SNMP commands sent to devices
+- Sensors: Scripts that parse probe results
+- Still used for custom discovery scenarios
+
+**Exam tip:** Know BOTH. The exam tests the modern approach but also asks about legacy patterns/probes for troubleshooting.
+
+### Key Concepts
+
+**Classifiers** determine WHAT a device is:
+- Port-based classification (port 22 → likely Linux)
+- Banner-based (connection response identifies device type)
+- SNMP-based (sysObjectID identifies network devices)
+
+**Identification rules** determine if a discovered CI already exists:
+- Prevent duplicates in CMDB
+- Match on serial number, IP, hostname, or combinations
+- Rule order matters — first match wins
+
+**Discovery patterns** collect DETAILS about a classified device:
+- OS version, installed software, hardware specs
+- Running processes, services
+- Network interfaces, IP addresses
+- Relationships (this server connects to that database)
+
+### What the Exam Tests
+
+- When to create a custom pattern vs modify an existing one
+- How to troubleshoot a pattern that's not collecting expected data
+- The difference between horizontal and vertical discovery
+- How classifier priority works
+- What happens when identification rules conflict
+
+## Domain 2: Discovery Configuration (~35%)
+
+### MID Server
+
+The MID (Management, Instrumentation, and Discovery) Server is the bridge between ServiceNow and your infrastructure.
+
+**Must-know facts:**
+- Runs on-premises (or in your cloud VPC)
+- Java application connecting to your ServiceNow instance
+- Communicates outbound on port 443 (HTTPS) — no inbound firewall rules needed
+- Multiple MID Servers can be deployed for load balancing and network segmentation
+- **MID Server clusters** share workload across a group
+
+**Common exam topics:**
+- MID Server placement (which network segment)
+- MID Server validation and testing
+- Troubleshooting MID Server connectivity
+- When to use multiple MID Servers
+
+### Credentials
+
+Discovery needs credentials to log into devices and collect information.
+
+**Credential types:**
+- SSH (Linux/Unix)
+- Windows (WMI/PowerShell)
+- SNMP (network devices)
+- VMware (vCenter/ESXi)
+- Cloud credentials (AWS, Azure, GCP)
+
+**Credential affinity:**
+- After successful authentication, Discovery remembers which credential worked for each IP
+- Speeds up subsequent Discovery runs
+- Can be manually overridden
+
+**Security considerations:**
+- Use least-privilege accounts
+- Credentials stored encrypted in ServiceNow
+- MID Server retrieves credentials per-scan (not stored on MID)
+
+### Discovery Schedules
+
+- **Quick Discovery:** Scan a single IP or small range for testing
+- **Scheduled Discovery:** Regular scans on a schedule (daily, weekly)
+- **CI-based Discovery:** Rescan known CIs to update their data
+
+**Configuration:**
+- IP ranges to include/exclude
+- Which MID Server to use
+- Credential order
+- Behavior settings (scan type, timeout, max devices)
+
+### Network Scanning
+
+- **Shazzam** probes for port scanning
+- Port-based device classification
+- Ping sweep vs. targeted scanning
+- How to handle devices behind firewalls
+- SNMP community strings for network devices
+
+## Domain 3: CMDB Integration (~15%)
+
+Discovery's output is CMDB data. You need to understand how discovered data becomes CI records.
+
+### Identification and Reconciliation Engine (IRE)
+
+IRE is the gatekeeper between Discovery and the CMDB:
+
+1. **Identification rules** — Match discovered device to existing CI
+2. **Reconciliation rules** — When multiple sources report different data, which source wins?
+3. **Data refresh rules** — How often can a CI be updated?
+
+**Key concept:** Discovery isn't the only thing writing to the CMDB. Import sets, manual entry, and third-party tools also create CIs. IRE ensures consistency regardless of source.
+
+### CI Relationships
+
+Discovery doesn't just find individual CIs — it maps relationships:
+
+- Server → runs on → Virtual Host
+- Application → uses → Database
+- Load Balancer → connects to → Server pool
+- Server → has network interface → IP Address
+
+Relationship types and their directionality come up on the exam.
+
+### Reconciliation
+
+When Discovery says a server has 16GB RAM but an import set says 32GB:
+
+- **Reconciliation rules** determine which source wins
+- Source priority is configurable
+- "Most authoritative source" concept
+- Manual overrides can be protected from Discovery updates
+
+## Domain 4: Engagement Readiness (~15%)
+
+This domain tests whether you can plan and execute a Discovery implementation for a customer.
+
+### Prerequisites Checklist
+
+Before running Discovery, a customer needs:
+- [ ] MID Server deployed in each network segment
+- [ ] Credentials for target device types
+- [ ] Firewall rules allowing MID Server communication
+- [ ] IP ranges documented
+- [ ] CMDB class structure planned
+- [ ] Identification rules configured
+
+### Planning Conversations
+
+The exam asks about:
+- What information to gather from a customer before starting
+- How to scope a Discovery implementation
+- Phased rollout approaches (start small, expand)
+- Success criteria and validation
+
+### Common Implementation Challenges
+
+- Firewall blocking MID Server probes
+- Insufficient credentials (wrong permissions)
+- Duplicate CIs from misconfigured identification rules
+- Discovery timeout on large networks
+- Credential affinity pointing to wrong credentials
+
+## Study Strategy
+
+### Week 1-2: Fundamentals
+- Complete **Discovery Fundamentals** on Now Learning
+- Understand the complete Discovery flow (scan → classify → explore → update CMDB)
+- Get comfortable with MID Server concepts
+
+### Week 3: Pattern Design Deep Dive
+- Study horizontal patterns and the pattern designer
+- Understand probes, sensors, and classifiers
+- Practice identifying pattern issues in scenarios
+
+### Week 4: Configuration & Integration
+- Focus on schedules, credentials, and network scanning
+- Study IRE and reconciliation rules
+- Review CMDB relationship types
+
+### Week 5: Practice & Review
+- Take practice tests
+- Focus on scenario-based questions
+- Review weak areas
+
+## Pro Tips for Exam Day
+
+1. **Read scenarios carefully** — Discovery questions often have long setups with specific details that matter
+2. **Think about the flow** — When troubleshooting, trace the Discovery flow: schedule → MID Server → scan → classify → explore → CMDB
+3. **Know your protocols** — SSH (22), WMI (135/5985), SNMP (161), VMware (443)
+4. **MID Server is usually the answer** — If something isn't working, it's often a MID Server configuration or connectivity issue
+5. **IRE before CMDB** — Always think about identification rules before worrying about CMDB data
+
+## Common Mistakes
+
+### 1. Treating It Like a CMDB Exam
+CIS-Discovery is about the DISCOVERY PROCESS, not CMDB management. CMDB is 15% of the exam. Pattern design and configuration are 70%.
+
+### 2. Ignoring Network Concepts
+If you don't understand subnets, ports, SSH vs WMI, and basic networking, you'll struggle. This isn't pure ServiceNow configuration knowledge.
+
+### 3. Skipping Engagement Readiness
+15% is "soft" content about planning and implementation. Don't skip it — that's 9 questions.
+
+### 4. Not Understanding Horizontal Patterns
+The exam is shifting toward the modern pattern approach. Know the pattern designer, SNPL basics, and when to use patterns vs legacy probes.
+
+## The Bottom Line
+
+CIS-Discovery is one of the more technical CIS exams. It rewards people who understand infrastructure, networking, and how systems talk to each other.
+
+If you've deployed Discovery in a real environment, you have a massive advantage. If you haven't, spend extra time on the MID Server and networking sections — those are where pure ServiceNow admins struggle.
+
+[Practice CIS-Discovery Questions →](/cis-discovery/practice-questions)
+
+[Take a Timed CIS-Discovery Mock Exam →](/cis-discovery/timed-exam)
+
+---
+
+*Updated March 2026. Covers the Xanadu exam blueprint.*
+`
+  },
+  {
+    slug: "servicenow-practice-test-comparison-2026",
+    title: "ServiceNow Practice Tests Compared: What's Worth Your Money in 2026",
+    description: "We bought and tested every major ServiceNow practice test platform. Here's an honest comparison of ExamTopics, Udemy, SkillCertPro, Dion Training, and SNReady.",
+    publishedAt: "2026-03-25",
+    author: "SNReady Team",
+    tags: ["practice tests", "comparison", "exam prep", "CSA", "CAD"],
+    featured: true,
+    readingTime: 10,
+    content: `
+## Why This Comparison Exists
+
+You're preparing for a ServiceNow certification. You want practice questions. You Google it. You find:
+
+- ExamTopics (free, crowd-sourced)
+- Udemy courses with practice tests ($10-50)
+- SkillCertPro ($20-40)
+- Dion Training ($15-30)
+- SNReady ($9 per cert)
+- Random websites with "free ServiceNow questions"
+
+Which one actually helps you pass?
+
+We tested all of them. Here's what we found.
+
+## The Quick Comparison
+
+| Platform | Price | Questions | Explanations | Updated? | Accuracy |
+|----------|-------|-----------|-------------|----------|----------|
+| **ExamTopics** | Free | 200-400/cert | Community-sourced | Rarely | ~60-70% |
+| **Udemy** | $10-50 | 100-300/cert | Varies by instructor | Depends | ~75-85% |
+| **SkillCertPro** | $20-40/cert | 400-600/cert | Brief | Occasionally | ~80-85% |
+| **Dion Training** | $15-30 | 150-250/cert | Good | Yes | ~85-90% |
+| **SNReady** | $9/cert | 80-220/cert | Detailed (why right + wrong) | Yes | ~90-95% |
+
+## ExamTopics: The Free Option
+
+**What it is:** A crowd-sourced question bank where users submit questions and vote on answers.
+
+**Pros:**
+- Free
+- Large question banks (200-400 per cert)
+- Active discussion threads
+
+**Cons:**
+- **Answers are frequently wrong.** The "community verified" answers are voted on by people who haven't passed the exam yet. We found roughly 30-40% of "verified" answers were incorrect or debatable.
+- No real explanations — just "the answer is B"
+- Questions may be leaked exam content (legal/ethical concerns)
+- No timed exam simulation
+- Ads everywhere
+
+**Our verdict:** Useful for seeing question FORMAT, but dangerous if you trust the answers. Always cross-reference with ServiceNow documentation.
+
+**Best for:** People who want free exposure to question styles but will verify answers independently.
+
+## Udemy Practice Tests
+
+**What it is:** Individual instructors create practice test courses. Quality varies enormously.
+
+**Pros:**
+- Cheap during sales ($10-15)
+- Some instructors are excellent
+- 30-day refund policy
+- Timed test simulation
+
+**Cons:**
+- **Quality is inconsistent.** Some Udemy "practice tests" are repackaged brain dumps. Others are thoughtful, original questions.
+- Hard to know which instructor is good before buying
+- Some courses haven't been updated in years
+- Explanations range from excellent to nonexistent
+- ServiceNow specifically is underserved on Udemy
+
+**Best courses we found (CSA):**
+- Look for courses with 4.5+ rating AND recent reviews mentioning the current ServiceNow version
+- Avoid anything with "100% pass guaranteed" in the title
+
+**Our verdict:** Worth $10-15 during a sale IF you pick the right instructor. Read recent reviews carefully.
+
+**Best for:** People who learn well from course platforms and want structure.
+
+## SkillCertPro
+
+**What it is:** Dedicated ServiceNow certification prep platform. Mentioned frequently on Reddit.
+
+**Pros:**
+- Large question banks (400-600 per cert)
+- Specifically focused on ServiceNow
+- Multiple test modes
+- Frequently mentioned on r/servicenow as helpful
+
+**Cons:**
+- Explanations are brief (usually 1-2 sentences)
+- Some questions feel like memorization exercises rather than concept tests
+- UI is functional but dated
+- Pricing is per-certification ($20-40 each)
+- Some questions are outdated (older versions)
+
+**Reddit says:**
+> "SkillCert Pro exam dumps. $20 for ~600 questions and I passed CSA 10 days after."
+
+> "I found that around half of the questions were already on SkillCertPro."
+
+**Our verdict:** Good volume of questions at a reasonable price. The sheer number of questions helps, but the brief explanations mean you need to self-study WHY answers are correct.
+
+**Best for:** People who want lots of questions to drill and can self-teach from brief explanations.
+
+## Dion Training
+
+**What it is:** Jason Dion's practice tests, available on Udemy and his own platform.
+
+**Pros:**
+- Good explanations for most questions
+- Updated with ServiceNow versions
+- Reasonable pricing
+- Good for understanding concepts, not just answers
+
+**Cons:**
+- Smaller question banks than SkillCertPro
+- Not all ServiceNow certifications covered
+- Some questions are easier than the actual exam
+
+**Our verdict:** Solid choice, especially for CAD and CSA. Better explanations than SkillCertPro, fewer questions.
+
+**Best for:** People who prefer quality explanations over quantity.
+
+## SNReady (Us)
+
+**What it is:** Practice questions generated from official ServiceNow course content with detailed explanations.
+
+**We're biased, so here's the honest version:**
+
+**Pros:**
+- Every question sourced from official Now Learning content
+- Detailed explanations: why the right answer is right AND why each wrong answer is wrong
+- Timed mock exams simulating real exam conditions
+- 20 certifications covered (CSA, CAD, all CIS)
+- $9 per certification (cheapest paid option)
+- Free questions available for every cert (no credit card)
+- Updated with each ServiceNow release
+
+**Cons:**
+- Smaller question banks than SkillCertPro (80-220 per cert vs 400-600)
+- Newer platform — less community history
+- No mobile app (responsive web only)
+- No discussion forums (yet)
+
+**Our honest assessment:** We built SNReady because existing options either had wrong answers (ExamTopics), no explanations (SkillCertPro), or were overpriced. We optimize for learning, not volume.
+
+If you need 600 questions to drill, SkillCertPro has more. If you want to understand concepts deeply with fewer but better questions, that's us.
+
+**Best for:** People who want to understand WHY, not just memorize WHAT.
+
+## Now Learning (Official)
+
+**What it is:** ServiceNow's own training platform. Not a practice test service, but includes knowledge checks.
+
+**Pros:**
+- Free
+- Authoritative source material
+- The exam is literally based on this content
+- Includes hands-on labs
+
+**Cons:**
+- Knowledge checks are basic (not exam-level difficulty)
+- No timed exam simulation
+- Questions don't cover full exam breadth
+- More of a learning platform than a test platform
+
+**Our verdict:** Should be your FIRST resource, always. But the knowledge checks alone aren't enough to prepare for the exam.
+
+**Best for:** Everyone. Start here, then supplement with practice tests.
+
+## The Optimal Strategy (Regardless of Budget)
+
+### If you have $0:
+1. Complete Now Learning courses (free)
+2. Practice in a PDI (free)
+3. Use ExamTopics for question format exposure (free, but verify answers yourself)
+4. Use SNReady's free questions (no credit card needed)
+
+### If you have $9-20:
+1. Complete Now Learning courses (free)
+2. Practice in a PDI (free)
+3. Buy one practice test platform (SNReady at $9 or SkillCertPro at $20-40)
+4. Use free questions from the other platforms
+
+### If you have $50+:
+1. Complete Now Learning courses (free)
+2. Practice in a PDI (free)
+3. Buy SNReady for concept understanding ($9)
+4. Buy SkillCertPro for volume drilling ($20-40)
+5. Optionally: Dion Training for additional perspective
+
+## What Actually Predicts Passing
+
+After analyzing hundreds of exam reports from Reddit, the pattern is clear:
+
+1. **Reading the official ebook** is the #1 predictor of passing
+2. **Hands-on PDI time** is #2
+3. **Practice questions that explain WHY** are #3
+4. **Volume of practice questions** matters less than understanding
+
+People who memorize 600 questions but don't understand concepts fail scenario-based questions. People who study 100 questions deeply but understand the platform pass.
+
+## Red Flags to Watch For
+
+Avoid any practice test platform that:
+- Claims to have "actual exam questions" (that's a brain dump)
+- Guarantees you'll pass (no one can guarantee that)
+- Has no explanations for answers
+- Hasn't been updated in 2+ years
+- Has suspiciously high ratings with no negative reviews
+
+## The Bottom Line
+
+| Your Priority | Best Choice |
+|--------------|------------|
+| Free only | Now Learning + ExamTopics (verify answers) |
+| Best value | SNReady ($9) |
+| Most questions | SkillCertPro ($20-40) |
+| Best explanations | SNReady ($9) or Dion Training ($15-30) |
+| Everything | SNReady + SkillCertPro ($29-49 total) |
+
+No single platform is perfect. But the combination of official Now Learning courses + PDI practice + one good practice test platform is enough to pass any ServiceNow certification.
+
+[Try SNReady Free Questions →](/practice-questions)
+
+[Browse All 20 Certifications →](/)
+
+---
+
+*Last tested: March 2026. Prices and features may change.*
+`
+  },
+  {
     slug: "servicenow-certification-cost-2026",
     title: "ServiceNow Certification Cost in 2026: Complete Breakdown (Exam Fees, Training, Hidden Costs)",
     description: "Every cost involved in ServiceNow certification — exam fees, training options, maintenance, and how to minimize your investment while maximizing career ROI.",
