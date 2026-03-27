@@ -753,6 +753,609 @@
         "release": "Xanadu",
         "reviewed": false
       }
+    },
+    {
+      "id": "cis-sm-sm-configuration-506",
+      "certification": "cis-sm",
+      "topic": "sm-configuration",
+      "cognitiveLevel": "comprehension",
+      "type": "multiple_choice",
+      "question": "What are the three MID Server selection criteria that Service Mapping uses to choose the relevant MID Server?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Application, Capability, and IP range"
+        },
+        {
+          "id": "b",
+          "text": "Domain, Protocol, and IP address"
+        },
+        {
+          "id": "c",
+          "text": "OS type, Network zone, and Credential set"
+        },
+        {
+          "id": "d",
+          "text": "Priority, Location, and Application type"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "Service Mapping uses three MID Server selection criteria: Application (defines what application a MID Server works with), Capability (defines network capability such as SSH, WMI, SNMP), and IP range (limits operation to a specific IP range).",
+        "wrongAnswers": [
+          {
+            "id": "b",
+            "explanation": "While IP is related, the three criteria are specifically Application, Capability, and IP range — not Domain or Protocol."
+          },
+          {
+            "id": "c",
+            "explanation": "OS type, Network zone, and Credential set are not the MID Server selection criteria for Service Mapping."
+          },
+          {
+            "id": "d",
+            "explanation": "Priority and Location are not the documented MID Server selection criteria; they are Application, Capability, and IP range."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "MID Servers have the following selection criteria: Application, Capability, IP range.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/it-operations-management/service-mapping/configure-mid-service-mapping.html"
+      },
+      "labels": {
+        "domain": "Service Mapping Configuration",
+        "subtopics": [
+          "MID Server selection"
+        ],
+        "tags": [
+          "mid-server",
+          "selection-criteria",
+          "configuration"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sm-sm-configuration-507",
+      "certification": "cis-sm",
+      "topic": "sm-configuration",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "Service Mapping cannot find a MID Server with matching selection criteria for a discovery request. What happens next?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Service Mapping uses a random MID Server"
+        },
+        {
+          "id": "b",
+          "text": "Service Mapping chooses the default MID Server"
+        },
+        {
+          "id": "c",
+          "text": "The discovery request fails immediately"
+        },
+        {
+          "id": "d",
+          "text": "Service Mapping queues the request until a MID Server is available"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "If there are no MID Servers with matching selection criteria, Service Mapping chooses the default MID Server. If there is no default MID Server either, Service Mapping cannot start the discovery process.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "Random MID Server selection is only used in specific legacy upgrade scenarios when no default is configured and no IP ranges exist."
+          },
+          {
+            "id": "c",
+            "explanation": "The request does not fail immediately — Service Mapping first tries to use the default MID Server before giving up."
+          },
+          {
+            "id": "d",
+            "explanation": "Service Mapping does not queue requests; it falls back to the default MID Server or fails if none is available."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "If there are no MID Servers with matching selection criteria, Service Mapping chooses the default MID Server.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/it-operations-management/service-mapping/configure-mid-service-mapping.html"
+      },
+      "labels": {
+        "domain": "Service Mapping Configuration",
+        "subtopics": [
+          "MID Server selection",
+          "Default MID"
+        ],
+        "tags": [
+          "mid-server",
+          "default",
+          "fallback"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sm-sm-configuration-508",
+      "certification": "cis-sm",
+      "topic": "sm-configuration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which versions of PowerShell does ServiceNow support for MID Server communication with Windows servers?",
+      "options": [
+        {
+          "id": "a",
+          "text": "PowerShell 2.0 through 5.1"
+        },
+        {
+          "id": "b",
+          "text": "PowerShell 3.0 through 5.1"
+        },
+        {
+          "id": "c",
+          "text": "PowerShell 5.0 through 7.0"
+        },
+        {
+          "id": "d",
+          "text": "PowerShell 4.0 through 7.2"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "ServiceNow supports PowerShell 3.0 up to 5.1 for MID Server communication with Windows servers using WMI and WinRM protocols.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "PowerShell 2.0 is not supported; support starts from PowerShell 3.0."
+          },
+          {
+            "id": "c",
+            "explanation": "PowerShell 7.0 is not in the supported range; the maximum supported version is 5.1."
+          },
+          {
+            "id": "d",
+            "explanation": "Neither PowerShell 4.0 as the starting point nor 7.2 as the ending point is correct."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "ServiceNow now supports PowerShell 3.0 up to 5.1.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/it-operations-management/service-mapping/configure-mid-service-mapping.html"
+      },
+      "labels": {
+        "domain": "Service Mapping Configuration",
+        "subtopics": [
+          "PowerShell",
+          "MID Server"
+        ],
+        "tags": [
+          "powershell",
+          "mid-server",
+          "windows"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sm-sm-configuration-509",
+      "certification": "cis-sm",
+      "topic": "sm-configuration",
+      "cognitiveLevel": "comprehension",
+      "type": "multiple_choice",
+      "question": "What is the default maximum number of CI relations allowed for a service before the map view is automatically disabled?",
+      "options": [
+        {
+          "id": "a",
+          "text": "1,000"
+        },
+        {
+          "id": "b",
+          "text": "3,000"
+        },
+        {
+          "id": "c",
+          "text": "5,000"
+        },
+        {
+          "id": "d",
+          "text": "10,000"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "The sa.max_relations_in_service property defaults to 5,000. Exceeding this value automatically prohibits services from displaying in the map view. Very large application services may cause performance issues, so users can view CI lists instead.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "1,000 is the default for sa.service.max_ci_service_population, not the map display limit."
+          },
+          {
+            "id": "b",
+            "explanation": "3,000 is the default for sa.service_history.max_allowed_bubbles (history changes), not the CI relations limit."
+          },
+          {
+            "id": "d",
+            "explanation": "10,000 is not the default; the property defaults to 5,000."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "sa.max_relations_in_service: The maximum number of CI relations for a service. Default value: 5000.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/it-operations-management/service-mapping/components-installed-with-service-mapping.html"
+      },
+      "labels": {
+        "domain": "Service Mapping Configuration",
+        "subtopics": [
+          "Properties",
+          "Service map limits"
+        ],
+        "tags": [
+          "properties",
+          "max-relations",
+          "performance"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sm-sm-configuration-510",
+      "certification": "cis-sm",
+      "topic": "sm-configuration",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "An organization with domain separation enabled wants to deploy MID Servers for Service Mapping. Where should the MID Servers be placed?",
+      "options": [
+        {
+          "id": "a",
+          "text": "In the top-level global domain"
+        },
+        {
+          "id": "b",
+          "text": "In each domain at every level of the hierarchy"
+        },
+        {
+          "id": "c",
+          "text": "In the lowest domain level (leaf domain)"
+        },
+        {
+          "id": "d",
+          "text": "In a dedicated MID Server domain outside the hierarchy"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "In deployments where domain separation is enabled and domains are configured to form a hierarchy, MID Servers must be placed in the lowest domain level, a \"leaf domain.\"",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "MID Servers should not be placed in the global domain; they must be in leaf domains for proper domain separation."
+          },
+          {
+            "id": "b",
+            "explanation": "MID Servers are not required at every level — they must specifically be in the lowest (leaf) domain level."
+          },
+          {
+            "id": "d",
+            "explanation": "There is no concept of a dedicated MID Server domain outside the hierarchy; placement must be in leaf domains."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "In deployments where domain separation is enabled and domains are configured to form a hierarchy, MID Servers must be placed in the lowest domain level, a \"leaf domain\".",
+        "url": "https://www.servicenow.com/docs/r/xanadu/it-operations-management/service-mapping/configure-mid-service-mapping.html"
+      },
+      "labels": {
+        "domain": "Service Mapping Configuration",
+        "subtopics": [
+          "Domain separation",
+          "MID Server placement"
+        ],
+        "tags": [
+          "domain-separation",
+          "mid-server",
+          "leaf-domain"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sm-sm-configuration-511",
+      "certification": "cis-sm",
+      "topic": "sm-configuration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What property controls the maximum depth of a service instance map in Service Mapping?",
+      "options": [
+        {
+          "id": "a",
+          "text": "sa.max_relations_in_service"
+        },
+        {
+          "id": "b",
+          "text": "glide.service_mapping.computation_depth"
+        },
+        {
+          "id": "c",
+          "text": "sa.rediscovery.batch_size"
+        },
+        {
+          "id": "d",
+          "text": "sa.discovery_task_timeout_min"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The glide.service_mapping.computation_depth property controls the maximum depth of a service instance map. Its default value is 25.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "sa.max_relations_in_service controls the maximum number of CI relations in a service, not the map depth."
+          },
+          {
+            "id": "c",
+            "explanation": "sa.rediscovery.batch_size controls the number of discovery tasks executed in a single batch, not map depth."
+          },
+          {
+            "id": "d",
+            "explanation": "sa.discovery_task_timeout_min controls the maximum time for a Service Mapping task in minutes."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "glide.service_mapping.computation_depth: This property controls the maximal depth of the service instance map. Default value: 25.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/it-operations-management/service-mapping/components-installed-with-service-mapping.html"
+      },
+      "labels": {
+        "domain": "Service Mapping Configuration",
+        "subtopics": [
+          "Properties",
+          "Map depth"
+        ],
+        "tags": [
+          "computation-depth",
+          "properties",
+          "service-map"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sm-sm-configuration-512",
+      "certification": "cis-sm",
+      "topic": "sm-configuration",
+      "cognitiveLevel": "comprehension",
+      "type": "multiple_choice",
+      "question": "What happens if a MID Server does not have sufficient credentials to access a device during Service Mapping discovery?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The discovery fails and generates an error"
+        },
+        {
+          "id": "b",
+          "text": "The MID Server can run Nmap commands to collect basic information without credentials"
+        },
+        {
+          "id": "c",
+          "text": "Service Mapping skips the device and continues with other CIs"
+        },
+        {
+          "id": "d",
+          "text": "The MID Server prompts the administrator for credentials"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "If the MID Server does not have sufficient credentials to access a device or application, it can run Network Mapper (Nmap) commands to collect basic information without using credentials. This requires additional configuration.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "While errors may occur, the credential-less discovery with Nmap option allows basic information collection without credentials."
+          },
+          {
+            "id": "c",
+            "explanation": "Rather than simply skipping, Service Mapping can use Nmap for credential-less discovery if configured."
+          },
+          {
+            "id": "d",
+            "explanation": "MID Servers do not interactively prompt administrators for credentials; they use configured credentials or Nmap."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "If the MID Server does not have sufficient credentials to access a device or application, it can run Network Mapper (Nmap) commands to collect basic information without using credentials.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/it-operations-management/service-mapping/configure-mid-service-mapping.html"
+      },
+      "labels": {
+        "domain": "Service Mapping Configuration",
+        "subtopics": [
+          "Credential-less discovery",
+          "Nmap"
+        ],
+        "tags": [
+          "nmap",
+          "credential-less",
+          "mid-server"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sm-sm-configuration-513",
+      "certification": "cis-sm",
+      "topic": "sm-configuration",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "What values can the sa.topdown.mapping_with_acc_mode property be set to for controlling top-down discovery with Agent Client Collector?",
+      "options": [
+        {
+          "id": "a",
+          "text": "0 (MID only), 1 (ACC first, fallback to MID), 2 (ACC only)"
+        },
+        {
+          "id": "b",
+          "text": "0 (disabled), 1 (enabled), 2 (debug mode)"
+        },
+        {
+          "id": "c",
+          "text": "0 (ACC only), 1 (MID only), 2 (hybrid mode)"
+        },
+        {
+          "id": "d",
+          "text": "0 (auto-detect), 1 (manual selection), 2 (round-robin)"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "The sa.topdown.mapping_with_acc_mode property has three values: 0 means top-down discovery runs using MID Server exclusively, 1 means ACC is attempted first with MID Server fallback, and 2 means ACC exclusively (terminates if unsuccessful).",
+        "wrongAnswers": [
+          {
+            "id": "b",
+            "explanation": "The property is not a simple enable/disable toggle; it defines the MID Server selection mode for top-down discovery."
+          },
+          {
+            "id": "c",
+            "explanation": "The values are reversed — 0 is MID-only, not ACC-only."
+          },
+          {
+            "id": "d",
+            "explanation": "There is no auto-detect or round-robin mode; the three options are MID-only, ACC-first, and ACC-only."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "0: Top-down discovery runs using the MID Server exclusively. 1: Top-down discovery initially attempts to run using Agent Client Collector. If no agent is available, then it defaults to using the MID Server. 2: Top-down discovery runs using Agent Client Collector exclusively.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/it-operations-management/service-mapping/components-installed-with-service-mapping.html"
+      },
+      "labels": {
+        "domain": "Service Mapping Configuration",
+        "subtopics": [
+          "ACC",
+          "Top-down discovery"
+        ],
+        "tags": [
+          "acc",
+          "top-down",
+          "mid-server",
+          "properties"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sm-sm-configuration-514",
+      "certification": "cis-sm",
+      "topic": "sm-configuration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "In base systems, which commands does traffic-based discovery rely on for collecting TCP-related data?",
+      "options": [
+        {
+          "id": "a",
+          "text": "ping, traceroute, and nslookup"
+        },
+        {
+          "id": "b",
+          "text": "netstat, ss, and lsof"
+        },
+        {
+          "id": "c",
+          "text": "nmap, curl, and wget"
+        },
+        {
+          "id": "d",
+          "text": "tcpdump, wireshark, and iftop"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "In base systems, traffic-based discovery relies solely on TCP-related data collected using the netstat, ss, and lsof commands. Discovery based on Netflow and VPC logs requires additional configuration.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "ping, traceroute, and nslookup are network diagnostic tools, not used for traffic-based discovery data collection."
+          },
+          {
+            "id": "c",
+            "explanation": "Nmap is used for credential-less discovery, not traffic-based data collection. curl and wget are HTTP tools."
+          },
+          {
+            "id": "d",
+            "explanation": "tcpdump and wireshark are packet capture tools not used by Service Mapping for traffic-based discovery."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "In base systems, traffic-based discovery relies solely on TCP-related data collected using the netstat, ss, and lsof commands.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/it-operations-management/service-mapping/configure-netflow-service-mapping.html"
+      },
+      "labels": {
+        "domain": "Service Mapping Configuration",
+        "subtopics": [
+          "Traffic-based discovery",
+          "Data collection"
+        ],
+        "tags": [
+          "netstat",
+          "traffic-based",
+          "tcp"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     }
   ]
 }

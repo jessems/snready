@@ -685,6 +685,340 @@
         "release": "Xanadu",
         "reviewed": false
       }
+    },
+    {
+      "id": "cis-sm-discovery-configuration-705",
+      "certification": "cis-sm",
+      "topic": "discovery-configuration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which scheduled job generates entry point candidates from netflow and netstat data for bulk application service mapping?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Flow Discovery Scheduler"
+        },
+        {
+          "id": "b",
+          "text": "Generate entry point candidates from netflow and netstat data"
+        },
+        {
+          "id": "c",
+          "text": "Update Query Based Services"
+        },
+        {
+          "id": "d",
+          "text": "Update App Service Status"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The \"Generate entry point candidates from netflow and netstat data\" scheduled job runs daily, scans the TCP Connection [cmdb_tcp] table, and stores entry points in the Candidate Entry Points [sa_cand_entry_point] table. It supports generating entry points for bulk application service mapping.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "The Flow Discovery Scheduler triggers network flow discovery and writes data into the sa_flow_connector table, but does not generate entry point candidates."
+          },
+          {
+            "id": "c",
+            "explanation": "Update Query Based Services runs every 10 minutes to update views for technical services, not to generate entry points."
+          },
+          {
+            "id": "d",
+            "explanation": "Update App Service Status runs every minute to update the discovery status attribute, not to generate entry points."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Generate entry point candidates from netflow and netstat data: Runs daily. Scans the TCP Connection [cmdb_tcp] table and uses this data to generate entry points and store them in the Candidate Entry Points [sa_cand_entry_point] table.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/it-operations-management/service-mapping/components-installed-with-service-mapping.html"
+      },
+      "labels": {
+        "domain": "Discovery Configuration",
+        "subtopics": [
+          "Scheduled jobs",
+          "Entry points"
+        ],
+        "tags": [
+          "scheduled-jobs",
+          "entry-points",
+          "netflow"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sm-discovery-configuration-706",
+      "certification": "cis-sm",
+      "topic": "discovery-configuration",
+      "cognitiveLevel": "comprehension",
+      "type": "multiple_choice",
+      "question": "What is the default timeout for a Service Mapping task, including waiting for execution in internal queues and ECC queue?",
+      "options": [
+        {
+          "id": "a",
+          "text": "60 minutes"
+        },
+        {
+          "id": "b",
+          "text": "90 minutes"
+        },
+        {
+          "id": "c",
+          "text": "120 minutes"
+        },
+        {
+          "id": "d",
+          "text": "180 minutes"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "The sa.discovery_task_timeout_min property controls the maximum time for a Service Mapping task and defaults to 120 minutes. This includes waiting for execution in internal queues and ECC queue.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "60 minutes is not the default; the default is 120 minutes, with a minimum recommended value of 30 minutes."
+          },
+          {
+            "id": "b",
+            "explanation": "90 minutes is the default exam duration for CIS-SM, not the Service Mapping task timeout."
+          },
+          {
+            "id": "d",
+            "explanation": "180 minutes exceeds the default timeout of 120 minutes."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "sa.discovery_task_timeout_min: Maximum time for a Service Mapping task in minutes. Default value: 120.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/it-operations-management/service-mapping/components-installed-with-service-mapping.html"
+      },
+      "labels": {
+        "domain": "Discovery Configuration",
+        "subtopics": [
+          "Properties",
+          "Timeouts"
+        ],
+        "tags": [
+          "timeout",
+          "properties",
+          "discovery-task"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sm-discovery-configuration-707",
+      "certification": "cis-sm",
+      "topic": "discovery-configuration",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "An organization wants to limit traffic-based connections from a single CI to keep service maps manageable. Which property should they configure?",
+      "options": [
+        {
+          "id": "a",
+          "text": "sa.max_relations_in_service"
+        },
+        {
+          "id": "b",
+          "text": "sa.traffic_based_discovery.max_connections"
+        },
+        {
+          "id": "c",
+          "text": "svc_by_tags.max_ci_limit"
+        },
+        {
+          "id": "d",
+          "text": "glide.service_mapping.computation_depth"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The sa.traffic_based_discovery.max_connections property (default: 30) limits the maximum number of traffic-based connections from a single CI, helping keep the map size reasonable.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "sa.max_relations_in_service limits the total CI relations in a service for map display, not per-CI traffic connections."
+          },
+          {
+            "id": "c",
+            "explanation": "svc_by_tags.max_ci_limit controls the maximum CIs in a tag-based application service, not traffic connections."
+          },
+          {
+            "id": "d",
+            "explanation": "This property controls the depth of the service map, not the number of traffic-based connections per CI."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "sa.traffic_based_discovery.max_connections: Maximum number of traffic-based connections from a single CI. Default value: 30.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/it-operations-management/service-mapping/components-installed-with-service-mapping.html"
+      },
+      "labels": {
+        "domain": "Discovery Configuration",
+        "subtopics": [
+          "Traffic-based discovery",
+          "Properties"
+        ],
+        "tags": [
+          "max-connections",
+          "traffic-based",
+          "properties"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sm-discovery-configuration-708",
+      "certification": "cis-sm",
+      "topic": "discovery-configuration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which ports are ignored by default during traffic-based discovery?",
+      "options": [
+        {
+          "id": "a",
+          "text": "80, 443, 8080, 8443"
+        },
+        {
+          "id": "b",
+          "text": "445, 139, 111, 2049, 860, 3260, 135, 53"
+        },
+        {
+          "id": "c",
+          "text": "22, 23, 3389, 5900"
+        },
+        {
+          "id": "d",
+          "text": "25, 110, 143, 993, 995"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The sa.traffic_based_discovery.ignored_ports property defaults to 445, 139, 111, 2049, 860, 3260, 135, 53. These are common service ports (SMB, NetBIOS, NFS, iSCSI, RPC, DNS) that are typically not relevant for application service mapping.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "HTTP/HTTPS ports (80, 443, 8080, 8443) are not ignored by default — they are often important for application service mapping."
+          },
+          {
+            "id": "c",
+            "explanation": "SSH (22), Telnet (23), RDP (3389), and VNC (5900) are remote access ports not in the default ignored list."
+          },
+          {
+            "id": "d",
+            "explanation": "Email ports (SMTP, POP3, IMAP) are not in the default ignored ports list."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "sa.traffic_based_discovery.ignored_ports: Default value: 445, 139, 111, 2049, 860, 3260, 135, 53.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/it-operations-management/service-mapping/components-installed-with-service-mapping.html"
+      },
+      "labels": {
+        "domain": "Discovery Configuration",
+        "subtopics": [
+          "Traffic-based discovery",
+          "Properties"
+        ],
+        "tags": [
+          "ignored-ports",
+          "traffic-based",
+          "properties"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sm-discovery-configuration-709",
+      "certification": "cis-sm",
+      "topic": "discovery-configuration",
+      "cognitiveLevel": "comprehension",
+      "type": "multiple_choice",
+      "question": "How often does the \"Deferred Discovery Cleanup\" scheduled job run, and what does it do?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Every 10 minutes; it cleans up stale discovery logs"
+        },
+        {
+          "id": "b",
+          "text": "Every minute; it detects and cancels discovery schedules on TCP connections not active for 5 minutes"
+        },
+        {
+          "id": "c",
+          "text": "Every hour; it removes completed discovery tasks"
+        },
+        {
+          "id": "d",
+          "text": "Daily; it archives old discovery results"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The Deferred Discovery Cleanup scheduled job runs every minute. It detects and cancels discovery schedules on TCP connections that are not in the active state anymore (5 minutes of no activity).",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "The job runs every minute, not every 10 minutes, and it cancels discovery schedules on inactive TCP connections rather than cleaning logs."
+          },
+          {
+            "id": "c",
+            "explanation": "The job runs every minute, not hourly, and handles TCP connection cleanup, not completed task removal."
+          },
+          {
+            "id": "d",
+            "explanation": "The job runs every minute, not daily, and cancels inactive TCP discovery schedules rather than archiving results."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Deferred Discovery Cleanup: Runs every minute. Detects and cancels discovery schedules on TCP connections that are not in the active state anymore (5 minutes of no activity).",
+        "url": "https://www.servicenow.com/docs/r/xanadu/it-operations-management/service-mapping/components-installed-with-service-mapping.html"
+      },
+      "labels": {
+        "domain": "Discovery Configuration",
+        "subtopics": [
+          "Scheduled jobs"
+        ],
+        "tags": [
+          "scheduled-jobs",
+          "cleanup",
+          "deferred-discovery"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     }
   ]
 }

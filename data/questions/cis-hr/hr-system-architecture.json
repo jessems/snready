@@ -2058,6 +2058,274 @@
         "release": "Xanadu",
         "reviewed": false
       }
+    },
+    {
+      "id": "cis-hr-hr-system-architecture-027",
+      "certification": "cis-hr",
+      "topic": "hr-system-architecture",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which plugin must be activated for the Employee Center to be available with HR Service Delivery?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Human Resources Scoped App: Lifecycle Events [com.sn_hr_lifecycle_events]"
+        },
+        {
+          "id": "b",
+          "text": "Human Resources Scoped App: Core [com.sn_hr_core]"
+        },
+        {
+          "id": "c",
+          "text": "Employee Center Pro [com.sn_hr_employee_center_pro]"
+        },
+        {
+          "id": "d",
+          "text": "HR taxonomy [com.sn_hr_emp_taxonomy]"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The Employee Center is available to use when you activate the Human Resources Scoped App: Core [com.sn_hr_core] plugin. Source: https://www.servicenow.com/docs/r/xanadu/employee-service-management/hr-service-delivery/employee-center-hr.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The Lifecycle Events plugin is for lifecycle event management, not a prerequisite for Employee Center availability."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Employee Center Pro provides enhanced features, but the base Employee Center availability depends on the HR Core plugin."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The HR taxonomy plugin maps HR catalog items to topics but is not the base requirement for Employee Center."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "The Employee Center is available to use when you activate the Human Resources Scoped App: Core [com.sn_hr_core] plugin.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/employee-service-management/hr-service-delivery/employee-center-hr.html"
+      },
+      "labels": {
+        "domain": "HR System Architecture",
+        "subtopics": [
+          "Employee Center",
+          "Plugins"
+        ],
+        "tags": [
+          "employee-center",
+          "hr-core",
+          "plugins"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-hr-hr-system-architecture-028",
+      "certification": "cis-hr",
+      "topic": "hr-system-architecture",
+      "cognitiveLevel": "comprehension",
+      "type": "multiple_choice",
+      "question": "What does the HR taxonomy plugin (com.sn_hr_emp_taxonomy) provide when activated?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Pre-configured mappings of HR catalog items and knowledge articles to HR topics"
+        },
+        {
+          "id": "b",
+          "text": "Automatic creation of HR cases for all employees"
+        },
+        {
+          "id": "c",
+          "text": "Performance Analytics dashboards for HR metrics"
+        },
+        {
+          "id": "d",
+          "text": "Integration with third-party HRIS systems"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "The HR taxonomy plugin delivers pre-configured mappings of HR catalog items and knowledge articles to the HR topics provided by the Employee Experience taxonomy. This enables employees to discover different content types within a single topic and powers search in Employee Center. Source: https://www.servicenow.com/docs/r/xanadu/employee-service-management/hr-service-delivery/employee-center-hr.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "The taxonomy plugin maps content to topics; it does not automatically create HR cases."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Performance Analytics dashboards are provided by the PA-Content Pack plugin, not the taxonomy plugin."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Third-party HRIS integration is handled by separate integrations, not the taxonomy plugin."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "HR taxonomy delivers pre-configured mappings of the HR catalog items and knowledge articles to the HR topics provided by the Employee Experience taxonomy.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/employee-service-management/hr-service-delivery/employee-center-hr.html"
+      },
+      "labels": {
+        "domain": "HR System Architecture",
+        "subtopics": [
+          "HR taxonomy",
+          "Employee Center"
+        ],
+        "tags": [
+          "hr-taxonomy",
+          "employee-center",
+          "catalog"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-hr-hr-system-architecture-029",
+      "certification": "cis-hr",
+      "topic": "hr-system-architecture",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What system property prevents accidental deletion of the only Lifecycle Events administrator?",
+      "options": [
+        {
+          "id": "a",
+          "text": "sn_hr_le.max_admin_count"
+        },
+        {
+          "id": "b",
+          "text": "sn_hr_le.min_admin_count"
+        },
+        {
+          "id": "c",
+          "text": "sn_hr_le.admin_protection"
+        },
+        {
+          "id": "d",
+          "text": "sn_hr_le.require_admin"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The sn_hr_le.min_admin_count system property helps prevent deleting the only Enterprise Onboarding and Transition admin user by requiring a minimum number (default is two) of active users with this role. Source: https://www.servicenow.com/docs/r/xanadu/employee-service-management/lifecycle-events/components-installed-with-enterprise-onboarding-and-transitions.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "There is no max_admin_count property; the correct property uses min_admin_count."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "admin_protection is not a valid system property name for this feature."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "require_admin is not the correct property; the system uses min_admin_count with a default of 2."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "This property helps to prevent you from deleting your only Enterprise Onboarding and Transition admin user by requiring a minimum number (the default is two) of active users with this role.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/employee-service-management/lifecycle-events/components-installed-with-enterprise-onboarding-and-transitions.html"
+      },
+      "labels": {
+        "domain": "HR System Architecture",
+        "subtopics": [
+          "System properties",
+          "Admin protection"
+        ],
+        "tags": [
+          "min-admin-count",
+          "lifecycle-events",
+          "system-properties"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-hr-hr-system-architecture-030",
+      "certification": "cis-hr",
+      "topic": "hr-system-architecture",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "An organization wants employees to access the Employee Center dashboard from Microsoft Teams. Which statement is correct?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A separate plugin must be installed for Microsoft Teams integration"
+        },
+        {
+          "id": "b",
+          "text": "Employee Center dashboard is embedded in Microsoft Teams and replaces the Hub dashboard from Rome onwards"
+        },
+        {
+          "id": "c",
+          "text": "Only administrators can access Employee Center through Microsoft Teams"
+        },
+        {
+          "id": "d",
+          "text": "Microsoft Teams integration requires Employee Center Pro"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The Hub dashboard was replaced with the Employee Center dashboard from Rome. With embedded Employee Center in Microsoft Teams, employees can request help, search for self-service content, and work on tasks. Source: https://www.servicenow.com/docs/r/xanadu/employee-service-management/employee-center.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "While ServiceNow for Microsoft Teams is needed, the Employee Center dashboard integration is a built-in capability from Rome."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "All employees can access the Employee Center dashboard from Microsoft Teams, not just administrators."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Employee Center Pro provides enhanced features but is not required for the basic Teams integration."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Your Hub dashboard is replaced with Employee Center dashboard from Rome. With embedded Employee Center, you can request help, search for self-service content, and work on your tasks from within Microsoft Teams.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/employee-service-management/employee-center.html"
+      },
+      "labels": {
+        "domain": "HR System Architecture",
+        "subtopics": [
+          "Employee Center",
+          "Microsoft Teams"
+        ],
+        "tags": [
+          "employee-center",
+          "microsoft-teams",
+          "integration"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     }
   ]
 }

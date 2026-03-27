@@ -1265,6 +1265,273 @@
         "release": "Xanadu",
         "reviewed": false
       }
+    },
+    {
+      "id": "cis-hr-hr-journeys-017",
+      "certification": "cis-hr",
+      "topic": "hr-journeys",
+      "cognitiveLevel": "comprehension",
+      "type": "multiple_choice",
+      "question": "What are the available activity types for a lifecycle event activity? (Choose four.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Approval, Employee task, Fulfiller activity, and Notification"
+        },
+        {
+          "id": "b",
+          "text": "Request, Approval, Assignment, and Escalation"
+        },
+        {
+          "id": "c",
+          "text": "Task, Subtask, Review, and Completion"
+        },
+        {
+          "id": "d",
+          "text": "Form, Workflow, Script, and Email"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "Lifecycle Events activities can be approvals, employee tasks, fulfiller activities, notifications, flows, content, or activity containers. The four primary types listed in the activity type field are Approval, Employee task, Fulfiller activity, and Notification. Source: https://www.servicenow.com/docs/r/xanadu/employee-service-management/lifecycle-events/configure-hr-lifecycle-event-activity.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Request, Assignment, and Escalation are not activity types in Lifecycle Events."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Task, Subtask, Review, and Completion are not the documented activity types."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Form, Workflow, Script, and Email are not activity types; while Notification sends emails, the types are named differently."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Lifecycle Events activities can be approvals, employee tasks, fulfiller activities, notifications, flows, content, or activity containers.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/employee-service-management/lifecycle-events/configure-hr-lifecycle-event-activity.html"
+      },
+      "labels": {
+        "domain": "HR Journeys",
+        "subtopics": [
+          "Lifecycle Events",
+          "Activity types"
+        ],
+        "tags": [
+          "activity-types",
+          "lifecycle-events"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-hr-hr-journeys-018",
+      "certification": "cis-hr",
+      "topic": "hr-journeys",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "Which role is required to create lifecycle event activities?",
+      "options": [
+        {
+          "id": "a",
+          "text": "sn_hr_le.admin only"
+        },
+        {
+          "id": "b",
+          "text": "sn_hr_le.activity_writer with membership in the activity's owning group"
+        },
+        {
+          "id": "c",
+          "text": "sn_hr_le.case_writer"
+        },
+        {
+          "id": "d",
+          "text": "sn_hr_le.activity_reader"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Creating lifecycle event activities requires the sn_hr_le.activity_writer role AND membership in the owning group that owns the activity. Each activity must be associated with an owning group. Source: https://www.servicenow.com/docs/r/xanadu/employee-service-management/lifecycle-events/configure-hr-lifecycle-event-activity.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "While the admin role can manage activities, the specific requirement is activity_writer plus owning group membership."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The case_writer role creates lifecycle event cases, not activities."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The activity_reader role has read-only access and cannot create activities."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Role required: sn_hr_le.activity_writer and membership in the owning group that owns the activity.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/employee-service-management/lifecycle-events/configure-hr-lifecycle-event-activity.html"
+      },
+      "labels": {
+        "domain": "HR Journeys",
+        "subtopics": [
+          "Lifecycle Events",
+          "Roles"
+        ],
+        "tags": [
+          "activity-writer",
+          "owning-group",
+          "lifecycle-events"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-hr-hr-journeys-019",
+      "certification": "cis-hr",
+      "topic": "hr-journeys",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "How is a lifecycle event activity set triggered?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Only manually by an HR administrator"
+        },
+        {
+          "id": "b",
+          "text": "Immediately upon creation of the lifecycle event case or after completion of another activity set"
+        },
+        {
+          "id": "c",
+          "text": "Based on a scheduled date configured in the calendar"
+        },
+        {
+          "id": "d",
+          "text": "Through a Flow Designer trigger only"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Activity sets can be triggered immediately upon creation of the lifecycle event case or after the completion of another activity set. You define when the activity set is triggered during configuration. Source: https://www.servicenow.com/docs/r/xanadu/employee-service-management/lifecycle-events/configure-hr-lifecycle-event-activity-set.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Activity sets can be triggered automatically based on case creation or activity set completion, not only manually."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "While timing can be configured, the trigger mechanism is based on case creation or activity set completion, not a standalone calendar schedule."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "While flows can be part of activities, activity set triggering is based on case creation or previous activity set completion."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "You must define when the activity set is triggered, such as immediately upon creation of the lifecycle event case or after the completion of another activity set.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/employee-service-management/lifecycle-events/configure-hr-lifecycle-event-activity-set.html"
+      },
+      "labels": {
+        "domain": "HR Journeys",
+        "subtopics": [
+          "Lifecycle Events",
+          "Activity sets"
+        ],
+        "tags": [
+          "activity-sets",
+          "triggers",
+          "lifecycle-events"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-hr-hr-journeys-020",
+      "certification": "cis-hr",
+      "topic": "hr-journeys",
+      "cognitiveLevel": "comprehension",
+      "type": "multiple_choice",
+      "question": "What is the purpose of audience records in lifecycle event activities?",
+      "options": [
+        {
+          "id": "a",
+          "text": "To define which fulfillers are assigned to complete the activity"
+        },
+        {
+          "id": "b",
+          "text": "To define conditions or criteria that the subject person must meet for the activity to trigger"
+        },
+        {
+          "id": "c",
+          "text": "To restrict which managers can view the activity results"
+        },
+        {
+          "id": "d",
+          "text": "To determine the notification recipients for the activity"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "If a lifecycle event activity has a targeted audience, you can use audience records to define the conditions or criteria that the subject person of a lifecycle event case must meet for the activity to trigger on their behalf. Source: https://www.servicenow.com/docs/r/xanadu/employee-service-management/lifecycle-events/configure-hr-lifecycle-event-activity.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Fulfiller assignment is managed through owning groups, not audience records."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Audience records control activity triggering for the subject person, not manager visibility."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Notification recipients are configured in the notification activity type, not through audience records."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "If the activity has a targeted audience, you can use audience records to define the conditions or criteria that the subject person of a lifecycle event case must meet for the activity to trigger on their behalf.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/employee-service-management/lifecycle-events/configure-hr-lifecycle-event-activity.html"
+      },
+      "labels": {
+        "domain": "HR Journeys",
+        "subtopics": [
+          "Lifecycle Events",
+          "Audience records"
+        ],
+        "tags": [
+          "audience-records",
+          "activity-targeting",
+          "lifecycle-events"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     }
   ]
 }
