@@ -411,6 +411,271 @@
         "release": "Xanadu",
         "reviewed": false
       }
+    },
+    {
+      "id": "cis-sm-engagement-readiness-1107",
+      "certification": "cis-sm",
+      "topic": "engagement-readiness",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which prerequisites must be met before using the Application Service Readiness Dashboard for ML-based mapping? (Choose two.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Install and activate the Predictive Intelligence plugin"
+        },
+        {
+          "id": "b",
+          "text": "Enable the ADME property (glide.discovery.enable_adme)"
+        },
+        {
+          "id": "c",
+          "text": "Configure SNMP v3 credentials on all MID Servers"
+        },
+        {
+          "id": "d",
+          "text": "Install the ITOM Health plugin"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b"
+      ],
+      "explanation": {
+        "correct": "Two key prerequisites for the Application Service Readiness Dashboard are: installing and activating the Predictive Intelligence plugin, and enabling the ADME property (glide.discovery.enable_adme set to True) for enhanced discovery data collection.",
+        "wrongAnswers": [
+          {
+            "id": "c",
+            "explanation": "SNMP v3 credentials are for network device discovery, not a prerequisite for the ML-based readiness dashboard."
+          },
+          {
+            "id": "d",
+            "explanation": "ITOM Health is a separate module; the prerequisites are Predictive Intelligence and ADME property enablement."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Prerequisites: Install and enable Predictive Intelligence (PI) plugin. Enable ADME property: Ensure that the glide.discovery.enable_adme property is set to True.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/it-operations-management/service-mapping/readiness-dashboard-ml.html"
+      },
+      "labels": {
+        "domain": "Service Mapping Engagement Readiness",
+        "subtopics": [
+          "Readiness dashboard",
+          "Prerequisites"
+        ],
+        "tags": [
+          "readiness-dashboard",
+          "predictive-intelligence",
+          "adme"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sm-engagement-readiness-1108",
+      "certification": "cis-sm",
+      "topic": "engagement-readiness",
+      "cognitiveLevel": "comprehension",
+      "type": "multiple_choice",
+      "question": "In the Application Service Readiness Dashboard, what does \"Missing source-target AFP\" indicate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Application services are missing discovery credentials"
+        },
+        {
+          "id": "b",
+          "text": "Application services are missing some application fingerprints for a source or target process"
+        },
+        {
+          "id": "c",
+          "text": "Application services have duplicate CI entries"
+        },
+        {
+          "id": "d",
+          "text": "Application services have exceeded the maximum CI limit"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "\"Missing source-target AFP\" means the number of application services are missing some application fingerprints for a source or target process. To resolve, calibrate the fingerprint-based discovery.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "Missing credentials is a different issue handled by MID Server configuration, not the AFP status."
+          },
+          {
+            "id": "c",
+            "explanation": "Duplicate CI entries are handled by the deduplication scheduled job, not the AFP status."
+          },
+          {
+            "id": "d",
+            "explanation": "Exceeding CI limits relates to property thresholds, not missing application fingerprints."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Missing source-target AFP: The number of application services missing some application fingerprints for a source or target process. To solve issues, calibrate the fingerprint-based discovery.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/it-operations-management/service-mapping/readiness-dashboard-ml.html"
+      },
+      "labels": {
+        "domain": "Service Mapping Engagement Readiness",
+        "subtopics": [
+          "Readiness dashboard",
+          "ML issues"
+        ],
+        "tags": [
+          "readiness-dashboard",
+          "afp",
+          "missing-fingerprints"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sm-engagement-readiness-1109",
+      "certification": "cis-sm",
+      "topic": "engagement-readiness",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which role is required to access the Application Service Readiness Dashboard in the Service Mapping workspace?",
+      "options": [
+        {
+          "id": "a",
+          "text": "app_service_user"
+        },
+        {
+          "id": "b",
+          "text": "service_mapping_admin"
+        },
+        {
+          "id": "c",
+          "text": "pd_admin"
+        },
+        {
+          "id": "d",
+          "text": "itom_admin"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The service_mapping_admin role is required to access the Application Service Readiness Dashboard in the Service Mapping configurable workspace.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "The app_service_user role can view service maps but does not have access to the readiness dashboard."
+          },
+          {
+            "id": "c",
+            "explanation": "The pd_admin role manages Pattern Designer, not the readiness dashboard."
+          },
+          {
+            "id": "d",
+            "explanation": "The itom_admin role is for ITOM Guided Setup, not specifically the Service Mapping readiness dashboard."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Required ServiceNow AI Platform roles: service_mapping_admin.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/it-operations-management/service-mapping/readiness-dashboard-ml.html"
+      },
+      "labels": {
+        "domain": "Service Mapping Engagement Readiness",
+        "subtopics": [
+          "Readiness dashboard",
+          "Roles"
+        ],
+        "tags": [
+          "readiness-dashboard",
+          "roles",
+          "service-mapping-admin"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sm-engagement-readiness-1110",
+      "certification": "cis-sm",
+      "topic": "engagement-readiness",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "The readiness dashboard shows \"Confidence level unavailable\" for several application services. What should the administrator do?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Restart the MID Server and re-run discovery"
+        },
+        {
+          "id": "b",
+          "text": "Wait until the application fingerprints training is complete"
+        },
+        {
+          "id": "c",
+          "text": "Manually assign confidence levels to each connection"
+        },
+        {
+          "id": "d",
+          "text": "Re-install the Predictive Intelligence plugin"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "If the confidence level appears as N/A, the administrator should wait until the application fingerprints training is complete. Predictive Intelligence needs time to train models before it can assign confidence levels.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "Restarting the MID Server does not resolve confidence level unavailability; the issue is that AFP training is not complete."
+          },
+          {
+            "id": "c",
+            "explanation": "Confidence levels are automatically assigned by Predictive Intelligence after training; they cannot be manually assigned."
+          },
+          {
+            "id": "d",
+            "explanation": "Reinstalling the plugin is unnecessary; the training simply needs time to complete."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Confidence level unavailable: If the confidence level appears as N/A, wait until the application fingerprints training is complete.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/it-operations-management/service-mapping/readiness-dashboard-ml.html"
+      },
+      "labels": {
+        "domain": "Service Mapping Engagement Readiness",
+        "subtopics": [
+          "Readiness dashboard",
+          "Troubleshooting"
+        ],
+        "tags": [
+          "confidence-levels",
+          "afp-training",
+          "troubleshooting"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     }
   ]
 }

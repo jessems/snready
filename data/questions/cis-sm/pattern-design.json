@@ -1168,6 +1168,802 @@
         "release": "Xanadu",
         "reviewed": false
       }
+    },
+    {
+      "id": "cis-sm-pattern-design-306",
+      "certification": "cis-sm",
+      "topic": "pattern-design",
+      "cognitiveLevel": "comprehension",
+      "type": "multiple_choice",
+      "question": "Which user role has the ability to view, create, edit, and publish discovery patterns in Pattern Designer?",
+      "options": [
+        {
+          "id": "a",
+          "text": "PD user"
+        },
+        {
+          "id": "b",
+          "text": "PD admin"
+        },
+        {
+          "id": "c",
+          "text": "PD MID"
+        },
+        {
+          "id": "d",
+          "text": "PDE viewer"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The PD admin role can view, create, edit, and publish patterns in Pattern Designer.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "The PD user role has read-only access to Discovery Pattern Log, not the ability to create or edit patterns."
+          },
+          {
+            "id": "c",
+            "explanation": "The PD MID role is assigned to MID Server records, enabling the MID Server to interpret and run pattern-based probes."
+          },
+          {
+            "id": "d",
+            "explanation": "The PDE viewer role can only view Command Validation Tasks and related tables but cannot modify or edit them."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "PD admin: Can view, create, edit, and publish patterns.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/it-operations-management/discovery-and-service-mapping-patterns/configuring-pattern-designer-plugins.html"
+      },
+      "labels": {
+        "domain": "Service Mapping Pattern Design",
+        "subtopics": [
+          "Pattern Designer roles"
+        ],
+        "tags": [
+          "pattern-designer",
+          "roles",
+          "pd-admin"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sm-pattern-design-307",
+      "certification": "cis-sm",
+      "topic": "pattern-design",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which two applications does ServiceNow use to release discovery patterns? (Choose two.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Discovery and Service Mapping Patterns (sn_itom_pattern)"
+        },
+        {
+          "id": "b",
+          "text": "Visibility Content (sn_pattern_design)"
+        },
+        {
+          "id": "c",
+          "text": "Pattern Designer Core (sn_pd_core)"
+        },
+        {
+          "id": "d",
+          "text": "ITOM Discovery Engine (sn_itom_discovery)"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b"
+      ],
+      "explanation": {
+        "correct": "ServiceNow releases all discovery patterns using two applications: Discovery and Service Mapping Patterns (sn_itom_pattern) for patterns originally released on the ServiceNow Store, and Visibility Content (sn_pattern_design) for patterns that were part of family releases up until Tokyo.",
+        "wrongAnswers": [
+          {
+            "id": "c",
+            "explanation": "There is no application called Pattern Designer Core. Pattern Designer (com.snc.pattern.designer) provides the UI but is not a pattern release vehicle."
+          },
+          {
+            "id": "d",
+            "explanation": "There is no application called ITOM Discovery Engine for releasing patterns."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "ServiceNow releases all discovery patterns using the following applications: Discovery and Service Mapping Patterns (sn_itom_pattern) and Visibility Content (sn_pattern_design).",
+        "url": "https://www.servicenow.com/docs/r/xanadu/it-operations-management/discovery-and-service-mapping-patterns/configuring-pattern-designer-plugins.html"
+      },
+      "labels": {
+        "domain": "Service Mapping Pattern Design",
+        "subtopics": [
+          "Pattern applications"
+        ],
+        "tags": [
+          "pattern-designer",
+          "applications",
+          "plugins"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sm-pattern-design-308",
+      "certification": "cis-sm",
+      "topic": "pattern-design",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "An administrator wants to improve a pattern so that a CI connection previously found by traffic-based discovery is always found for all CIs of the same type. What should the administrator do?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Create a connection rule based on Predictive Intelligence suggestions"
+        },
+        {
+          "id": "b",
+          "text": "Modify the pattern to parse configuration files containing the IP address and port data"
+        },
+        {
+          "id": "c",
+          "text": "Enable Netflow data collection for the CI type"
+        },
+        {
+          "id": "d",
+          "text": "Add a manual connection in the application service"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "To ensure a traffic-based connection is always discovered, you modify the pattern to search CI configuration files for the IP address and port, then create a pattern step to parse this file. This way, Service Mapping extracts the connection information directly from the configuration file during pattern-based discovery.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "Connection rules apply to traffic-based suggestions but do not make the connection permanent across all CIs of the same type via pattern discovery."
+          },
+          {
+            "id": "c",
+            "explanation": "Netflow enriches traffic-based discovery but does not modify patterns to discover connections directly from configuration files."
+          },
+          {
+            "id": "d",
+            "explanation": "Manual connections are a one-time addition for a specific service instance, not a scalable approach for all CIs of a type."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "You can search CI configuration files to locate data discovered using traffic-based discovery. If there are configuration files containing this data, you create a pattern step to parse this file.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/it-operations-management/discovery-and-service-mapping-patterns/connection-section-traffic-based.html"
+      },
+      "labels": {
+        "domain": "Service Mapping Pattern Design",
+        "subtopics": [
+          "Traffic-based pattern improvement"
+        ],
+        "tags": [
+          "patterns",
+          "traffic-based",
+          "configuration-files"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sm-pattern-design-309",
+      "certification": "cis-sm",
+      "topic": "pattern-design",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What is the primary purpose of the PDE viewer role in Pattern Designer?",
+      "options": [
+        {
+          "id": "a",
+          "text": "To create and publish new discovery patterns"
+        },
+        {
+          "id": "b",
+          "text": "To view Command Validation Tasks, Results, and Command Lists without edit permissions"
+        },
+        {
+          "id": "c",
+          "text": "To run pattern-based probes on the MID Server"
+        },
+        {
+          "id": "d",
+          "text": "To debug patterns in the Pattern Designer workspace"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Starting with Pattern Designer Enhancements version 3.9.0, the PDE viewer role allows users to view Command Validation Tasks, Command Validation Task Results, and Command Lists, but does not grant permissions to modify or edit them.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "Creating and publishing patterns requires the PD admin role."
+          },
+          {
+            "id": "c",
+            "explanation": "Running pattern-based probes on MID Servers is the function of the PD MID role."
+          },
+          {
+            "id": "d",
+            "explanation": "Debugging patterns requires the PD admin role; PDE viewer is read-only for validation tasks."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "PDE viewer: users can view Command Validation Tasks, Command Validation Tasks Results, and Command List. The pde_viewer can view the Command Validation Tool modules and related tables, but doesn't have permissions to modify or edit them.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/it-operations-management/discovery-and-service-mapping-patterns/configuring-pattern-designer-plugins.html"
+      },
+      "labels": {
+        "domain": "Service Mapping Pattern Design",
+        "subtopics": [
+          "Pattern Designer roles"
+        ],
+        "tags": [
+          "pde-viewer",
+          "roles",
+          "pattern-designer"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sm-pattern-design-310",
+      "certification": "cis-sm",
+      "topic": "pattern-design",
+      "cognitiveLevel": "comprehension",
+      "type": "multiple_choice",
+      "question": "How does ServiceNow Discovery find Apache Kafka and Zookeeper components?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Using REST API calls to the Kafka broker"
+        },
+        {
+          "id": "b",
+          "text": "Using the Kafka and Zookeeper discovery pattern"
+        },
+        {
+          "id": "c",
+          "text": "Using SNMP probes to query Kafka metrics"
+        },
+        {
+          "id": "d",
+          "text": "Using WMI commands on the Kafka server"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "ServiceNow Discovery uses the Kafka and Zookeeper discovery pattern to find Kafka data built on the Zookeeper synchronization service.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "Discovery does not use REST API calls to find Kafka; it uses a dedicated discovery pattern."
+          },
+          {
+            "id": "c",
+            "explanation": "SNMP probes are used for network device discovery, not application discovery of Kafka."
+          },
+          {
+            "id": "d",
+            "explanation": "WMI commands are specific to Windows environments; Kafka typically runs on Linux and is discovered via patterns."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "ServiceNow Discovery uses the Kafka and Zookeeper discovery pattern to find Kafka data built on the Zookeeper synchronization service.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/it-operations-management/discovery-and-service-mapping-patterns/available-patterns.html"
+      },
+      "labels": {
+        "domain": "Service Mapping Pattern Design",
+        "subtopics": [
+          "Application patterns",
+          "Kafka discovery"
+        ],
+        "tags": [
+          "kafka",
+          "zookeeper",
+          "discovery-patterns"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sm-pattern-design-311",
+      "certification": "cis-sm",
+      "topic": "pattern-design",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "Which role is required to fine-tune patterns using traffic-based discovery data?",
+      "options": [
+        {
+          "id": "a",
+          "text": "service_mapping_admin"
+        },
+        {
+          "id": "b",
+          "text": "pd_admin"
+        },
+        {
+          "id": "c",
+          "text": "app_service_admin"
+        },
+        {
+          "id": "d",
+          "text": "discovery_admin"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The pd_admin role is required to fine-tune patterns using traffic-based discovery. This role enables creating and modifying existing patterns that Service Mapping and Discovery use for horizontal and top-down discovery.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "The service_mapping_admin role manages Service Mapping setup but fine-tuning patterns specifically requires the pd_admin role."
+          },
+          {
+            "id": "c",
+            "explanation": "The app_service_admin role creates and modifies service instances and views maps, but cannot edit patterns."
+          },
+          {
+            "id": "d",
+            "explanation": "The discovery_admin role manages Discovery settings but pattern modification requires the pd_admin role."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Role required: pd_admin. Basic knowledge of programming is desirable.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/it-operations-management/discovery-and-service-mapping-patterns/connection-section-traffic-based.html"
+      },
+      "labels": {
+        "domain": "Service Mapping Pattern Design",
+        "subtopics": [
+          "Pattern customization",
+          "Roles"
+        ],
+        "tags": [
+          "pd-admin",
+          "traffic-based",
+          "pattern-fine-tuning"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sm-pattern-design-312",
+      "certification": "cis-sm",
+      "topic": "pattern-design",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Where are non-activated discovery patterns stored in ServiceNow?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Discovery Patterns [sa_pattern] table"
+        },
+        {
+          "id": "b",
+          "text": "Service Mapping Draft Pattern [sa_pattern_draft] table"
+        },
+        {
+          "id": "c",
+          "text": "Pattern Extensions [sa_pattern_extension] table"
+        },
+        {
+          "id": "d",
+          "text": "Custom operation [sa_custom_operation] table"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Non-activated (draft) discovery patterns are stored in the Service Mapping Draft Pattern [sa_pattern_draft] table. Once activated, patterns are stored in the Discovery Patterns [sa_pattern] table.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "The Discovery Patterns [sa_pattern] table contains published/activated patterns, not draft patterns."
+          },
+          {
+            "id": "c",
+            "explanation": "The Pattern Extensions table stores pattern extension sections, not draft patterns."
+          },
+          {
+            "id": "d",
+            "explanation": "The Custom operation table stores information on user-defined discovery pattern operations."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Service Mapping Draft Pattern [sa_pattern_draft]: Contains non-activated discovery patterns.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/it-operations-management/service-mapping/components-installed-with-service-mapping.html"
+      },
+      "labels": {
+        "domain": "Service Mapping Pattern Design",
+        "subtopics": [
+          "Pattern storage",
+          "Tables"
+        ],
+        "tags": [
+          "pattern-draft",
+          "tables",
+          "sa_pattern_draft"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sm-pattern-design-313",
+      "certification": "cis-sm",
+      "topic": "pattern-design",
+      "cognitiveLevel": "comprehension",
+      "type": "multiple_choice",
+      "question": "What encryption standard does the Password2 field type in Pattern Designer comply with?",
+      "options": [
+        {
+          "id": "a",
+          "text": "AES-256 with FIPS 140-2-L1 protection"
+        },
+        {
+          "id": "b",
+          "text": "NIST 800-57 guidelines with FIPS 140-2-L3 protection"
+        },
+        {
+          "id": "c",
+          "text": "RSA-2048 with NIST 800-63 protection"
+        },
+        {
+          "id": "d",
+          "text": "TLS 1.3 with FIPS 140-2-L2 protection"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The Password (two-way encrypted) field type works in accordance with NIST 800-57 guidelines and provides FIPS 140-2-L3 protection for encrypting and decrypting data in patterns.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "While AES-256 may be used internally, the documented standard is NIST 800-57 with FIPS 140-2-L3 (not L1) protection."
+          },
+          {
+            "id": "c",
+            "explanation": "NIST 800-63 relates to digital identity guidelines, not the encryption standard used by Password2 fields."
+          },
+          {
+            "id": "d",
+            "explanation": "TLS 1.3 is a transport protocol, not the encryption standard used for Password2 field type storage."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "The field type works in accordance with NIST 800-57 guidelines and provides FIPS 140-2-L3 protection.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/it-operations-management/discovery-and-service-mapping-patterns/configuring-pattern-designer-plugins.html"
+      },
+      "labels": {
+        "domain": "Service Mapping Pattern Design",
+        "subtopics": [
+          "Pattern security",
+          "Encryption"
+        ],
+        "tags": [
+          "password2",
+          "encryption",
+          "fips"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sm-pattern-design-314",
+      "certification": "cis-sm",
+      "topic": "pattern-design",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What does the Pattern Designer (com.snc.pattern.designer) application provide?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The discovery patterns used by Service Mapping"
+        },
+        {
+          "id": "b",
+          "text": "The UI for creating or customizing discovery patterns"
+        },
+        {
+          "id": "c",
+          "text": "The MID Server communication layer for pattern execution"
+        },
+        {
+          "id": "d",
+          "text": "The scheduling engine for pattern-based discovery"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The Pattern Designer application provides the UI for creating or customizing discovery patterns. It is automatically installed with Discovery or Service Mapping. The patterns themselves are released using dedicated pattern applications.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "Discovery patterns are released through separate applications: Discovery and Service Mapping Patterns and Visibility Content."
+          },
+          {
+            "id": "c",
+            "explanation": "MID Server communication is handled by the MID Server application, not Pattern Designer."
+          },
+          {
+            "id": "d",
+            "explanation": "Discovery scheduling is managed through Discovery Schedules, not the Pattern Designer application."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "The Pattern Designer (com.snc.pattern.designer) application provides the UI for creating or customizing discovery patterns. Pattern Designer is automatically installed with Discovery or Service Mapping.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/it-operations-management/discovery-and-service-mapping-patterns/configuring-pattern-designer-plugins.html"
+      },
+      "labels": {
+        "domain": "Service Mapping Pattern Design",
+        "subtopics": [
+          "Pattern Designer"
+        ],
+        "tags": [
+          "pattern-designer",
+          "application",
+          "UI"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sm-pattern-design-315",
+      "certification": "cis-sm",
+      "topic": "pattern-design",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "An organization needs to discover Amazon ElastiCache Redis clusters. Which discovery pattern should they use?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Amazon AWS - Redis Cluster pattern"
+        },
+        {
+          "id": "b",
+          "text": "Amazon ElastiCache discovery pattern"
+        },
+        {
+          "id": "c",
+          "text": "Amazon AWS - Cache Service pattern"
+        },
+        {
+          "id": "d",
+          "text": "Amazon RDS discovery pattern"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The Amazon ElastiCache discovery pattern is used to find Redis clusters deployed as part of the ElastiCache service. ElastiCache is compatible with both Redis and Memcached, but the pattern collects information only for Redis.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "There is no specific \"Redis Cluster\" pattern; the ElastiCache pattern handles Redis cluster discovery."
+          },
+          {
+            "id": "c",
+            "explanation": "There is no \"Cache Service\" pattern. The ElastiCache discovery pattern is the correct one for Redis cache clusters."
+          },
+          {
+            "id": "d",
+            "explanation": "The Amazon RDS pattern discovers relational database services, not ElastiCache Redis clusters."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "The ServiceNow Discovery application uses the Amazon ElastiCache discovery pattern to find Redis clusters deployed as part of the ElastiCache service. ElastiCache is compatible with both Redis and Memcached, but the pattern collects information only for Redis.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/it-operations-management/discovery-and-service-mapping-patterns/available-patterns.html"
+      },
+      "labels": {
+        "domain": "Service Mapping Pattern Design",
+        "subtopics": [
+          "Cloud patterns",
+          "AWS discovery"
+        ],
+        "tags": [
+          "elasticache",
+          "redis",
+          "aws",
+          "discovery-patterns"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sm-pattern-design-316",
+      "certification": "cis-sm",
+      "topic": "pattern-design",
+      "cognitiveLevel": "comprehension",
+      "type": "multiple_choice",
+      "question": "How frequently does ServiceNow release new discovery patterns on the ServiceNow Store?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Quarterly"
+        },
+        {
+          "id": "b",
+          "text": "Monthly"
+        },
+        {
+          "id": "c",
+          "text": "Bi-annually with major releases"
+        },
+        {
+          "id": "d",
+          "text": "Weekly"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "ServiceNow releases new discovery patterns on the ServiceNow Store on a monthly basis to ensure that organizations can discover the latest industry-standard devices and applications. Major ServiceNow versions incorporate patterns previously released on the Store.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "Patterns are released more frequently than quarterly — they are released monthly."
+          },
+          {
+            "id": "c",
+            "explanation": "While major releases incorporate previously released patterns, new patterns are released monthly on the Store."
+          },
+          {
+            "id": "d",
+            "explanation": "Patterns are released monthly, not weekly."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "ServiceNow releases new discovery patterns on the ServiceNow Store on a monthly basis to ensure that your organization can discover the latest industry-standard devices and applications.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/it-operations-management/discovery-and-service-mapping-patterns/available-patterns.html"
+      },
+      "labels": {
+        "domain": "Service Mapping Pattern Design",
+        "subtopics": [
+          "Pattern releases"
+        ],
+        "tags": [
+          "pattern-releases",
+          "servicenow-store",
+          "monthly"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sm-pattern-design-317",
+      "certification": "cis-sm",
+      "topic": "pattern-design",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What table stores information about slow execution of pattern steps for monitoring and troubleshooting?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Discovery log [sa_discovery_log]"
+        },
+        {
+          "id": "b",
+          "text": "Slow Steps [sys_step_pattern]"
+        },
+        {
+          "id": "c",
+          "text": "Performance Statistics [sa_performance_statistics]"
+        },
+        {
+          "id": "d",
+          "text": "Service Discovery Messages [sa_discovery_message]"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The Slow Steps [sys_step_pattern] table stores information about slow execution of pattern steps. The \"Slow steps stats persist\" scheduled job runs every minute to collect this data.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "The Discovery log table contains general discovery logs, not specific slow step execution data."
+          },
+          {
+            "id": "c",
+            "explanation": "The Performance Statistics table stores overall event processing time data for Event Management, not pattern step execution."
+          },
+          {
+            "id": "d",
+            "explanation": "The Service Discovery Messages table contains messages from Service Mapping discovery, not pattern step performance data."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Slow Steps [sys_step_pattern]: Stores information about slow execution of pattern steps. This data is used for monitoring and troubleshooting.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/it-operations-management/service-mapping/components-installed-with-service-mapping.html"
+      },
+      "labels": {
+        "domain": "Service Mapping Pattern Design",
+        "subtopics": [
+          "Pattern monitoring",
+          "Tables"
+        ],
+        "tags": [
+          "slow-steps",
+          "troubleshooting",
+          "sys_step_pattern"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     }
   ]
 }

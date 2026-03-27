@@ -690,6 +690,341 @@
         "release": "Xanadu",
         "reviewed": false
       }
+    },
+    {
+      "id": "cis-sm-cmdb-integration-1005",
+      "certification": "cis-sm",
+      "topic": "cmdb-integration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which role is required to view maps for operational service instances and retrieve service content using the REST API?",
+      "options": [
+        {
+          "id": "a",
+          "text": "service_mapping_admin"
+        },
+        {
+          "id": "b",
+          "text": "app_service_user"
+        },
+        {
+          "id": "c",
+          "text": "app_service_admin"
+        },
+        {
+          "id": "d",
+          "text": "sm_app_owner"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The app_service_user role views maps for operational service instances and retrieves service content using the getContent - GET REST API. The itil role contains the app_service_user role.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "The service_mapping_admin role is for setting up and administering Service Mapping, which is broader than needed for viewing maps."
+          },
+          {
+            "id": "c",
+            "explanation": "The app_service_admin role creates and modifies service instances; app_service_user is sufficient for viewing."
+          },
+          {
+            "id": "d",
+            "explanation": "The sm_app_owner role is for service instance owners who review mapping results, not for general map viewing via REST API."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "app_service_user: Views maps for operational service instances and retrieves service content using the getContent - GET REST API.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/it-operations-management/service-mapping/components-installed-with-service-mapping.html"
+      },
+      "labels": {
+        "domain": "Configuration Management Database",
+        "subtopics": [
+          "Roles",
+          "REST API"
+        ],
+        "tags": [
+          "roles",
+          "app-service-user",
+          "rest-api"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sm-cmdb-integration-1006",
+      "certification": "cis-sm",
+      "topic": "cmdb-integration",
+      "cognitiveLevel": "comprehension",
+      "type": "multiple_choice",
+      "question": "Which scheduled job calculates the licensing metric for the overall number of discovered servers on an instance?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Update App Service Status"
+        },
+        {
+          "id": "b",
+          "text": "Calculate number of servers"
+        },
+        {
+          "id": "c",
+          "text": "Update Query Based Services"
+        },
+        {
+          "id": "d",
+          "text": "Slow steps stats persist"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The \"Calculate number of servers\" scheduled job runs every Sunday and updates the licensing metric with the overall number of discovered servers on the instance. On domain-separated instances, the number is updated for each domain.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "Update App Service Status runs every minute to update discovery status attributes, not licensing metrics."
+          },
+          {
+            "id": "c",
+            "explanation": "Update Query Based Services runs every 10 minutes to update views for technical services."
+          },
+          {
+            "id": "d",
+            "explanation": "Slow steps stats persist runs every minute to collect data on slow pattern step execution."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Calculate number of servers: Runs every Sunday. Updates the licensing metric with the overall number of discovered servers on instance.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/it-operations-management/service-mapping/components-installed-with-service-mapping.html"
+      },
+      "labels": {
+        "domain": "Configuration Management Database",
+        "subtopics": [
+          "Scheduled jobs",
+          "Licensing"
+        ],
+        "tags": [
+          "licensing",
+          "scheduled-jobs",
+          "server-count"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sm-cmdb-integration-1007",
+      "certification": "cis-sm",
+      "topic": "cmdb-integration",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "Service Mapping and a third-party monitoring tool have identified the same CI differently, resulting in duplicate CMDB records. Which scheduled job addresses this issue?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Update App Service Status"
+        },
+        {
+          "id": "b",
+          "text": "Calculate number of servers"
+        },
+        {
+          "id": "c",
+          "text": "sm dedup tracker for specific discovery sources"
+        },
+        {
+          "id": "d",
+          "text": "Run DNS Lookup For All Entry Points"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "The \"sm dedup tracker for specific discovery sources\" scheduled job scans CMDB application tables for CIs identified as generic applications. If it identifies duplicate records based on CI type and discovery source, it creates a deduplication task.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "Update App Service Status updates the discovery status attribute, not deduplication of CIs."
+          },
+          {
+            "id": "b",
+            "explanation": "Calculate number of servers handles licensing metrics, not CI deduplication."
+          },
+          {
+            "id": "d",
+            "explanation": "DNS Lookup updates IP address information, not CI deduplication."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "sm dedup tracker for specific discovery sources: scans the CMDB application tables that contain information about CIs identified as generic applications. If the scheduled job identifies duplicate records based on the CI type and the discovery source, it creates a deduplication task.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/it-operations-management/service-mapping/components-installed-with-service-mapping.html"
+      },
+      "labels": {
+        "domain": "Configuration Management Database",
+        "subtopics": [
+          "Deduplication",
+          "Scheduled jobs"
+        ],
+        "tags": [
+          "deduplication",
+          "cmdb",
+          "scheduled-jobs"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sm-cmdb-integration-1008",
+      "certification": "cis-sm",
+      "topic": "cmdb-integration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What is the maximum number of active CI relationships allowed for tag-based discovery by default?",
+      "options": [
+        {
+          "id": "a",
+          "text": "3"
+        },
+        {
+          "id": "b",
+          "text": "5"
+        },
+        {
+          "id": "c",
+          "text": "10"
+        },
+        {
+          "id": "d",
+          "text": "20"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The svc_by_tags.max.traversal.rules.active property defaults to 5. Service Mapping uses only active CI relationships for tag-based discovery.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "3 is the default for svc_by_tags.max.categories.per.family (categories per service family), not active traversal rules."
+          },
+          {
+            "id": "c",
+            "explanation": "10 is not the default for active traversal rules; the default is 5."
+          },
+          {
+            "id": "d",
+            "explanation": "20 is the default number of local/global connection rules evaluated, not the active traversal rules for tag-based discovery."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "svc_by_tags.max.traversal.rules.active: Set the maximum allowed number of CI relationships that can be in the active state. Default value: 5.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/it-operations-management/service-mapping/components-installed-with-service-mapping.html"
+      },
+      "labels": {
+        "domain": "Configuration Management Database",
+        "subtopics": [
+          "Tag-based discovery",
+          "Properties"
+        ],
+        "tags": [
+          "tag-based",
+          "traversal-rules",
+          "properties"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sm-cmdb-integration-1009",
+      "certification": "cis-sm",
+      "topic": "cmdb-integration",
+      "cognitiveLevel": "comprehension",
+      "type": "multiple_choice",
+      "question": "Which install statuses are excluded by default from tag-based service mapping?",
+      "options": [
+        {
+          "id": "a",
+          "text": "In Maintenance (3) and Pending Install (4)"
+        },
+        {
+          "id": "b",
+          "text": "Retired (7) and Absent (100)"
+        },
+        {
+          "id": "c",
+          "text": "On Order (2) and In Stock (6)"
+        },
+        {
+          "id": "d",
+          "text": "Pending Repair (5) and Stolen (8)"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The svc_by_tags.install_status.blacklist property defaults to \"7,100\", which corresponds to Retired (7) and Absent (100). CIs with these install statuses are excluded from tag-based service mapping.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "In Maintenance (3) and Pending Install (4) are not in the default exclusion list."
+          },
+          {
+            "id": "c",
+            "explanation": "On Order (2) and In Stock (6) are not in the default exclusion list."
+          },
+          {
+            "id": "d",
+            "explanation": "Pending Repair (5) and Stolen (8) are not in the default exclusion list."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "svc_by_tags.install_status.blacklist: Default value: 7,100. Retired=7, Absent=100.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/it-operations-management/service-mapping/components-installed-with-service-mapping.html"
+      },
+      "labels": {
+        "domain": "Configuration Management Database",
+        "subtopics": [
+          "Tag-based discovery",
+          "Install status"
+        ],
+        "tags": [
+          "tag-based",
+          "install-status",
+          "blacklist"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     }
   ]
 }

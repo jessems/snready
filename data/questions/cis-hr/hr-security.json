@@ -941,6 +941,274 @@
         "release": "Xanadu",
         "reviewed": false
       }
+    },
+    {
+      "id": "cis-hr-hr-security-013",
+      "certification": "cis-hr",
+      "topic": "hr-security",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which role contains the sn_hr_le.activity_writer role in the Lifecycle Events role hierarchy?",
+      "options": [
+        {
+          "id": "a",
+          "text": "sn_hr_le.case_writer"
+        },
+        {
+          "id": "b",
+          "text": "sn_hr_le.activity_set_manager"
+        },
+        {
+          "id": "c",
+          "text": "sn_hr_le.activity_reader"
+        },
+        {
+          "id": "d",
+          "text": "sn_hr_le.case_reader"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The sn_hr_le.activity_set_manager role contains the sn_hr_le.activity_writer role. This means activity set managers can activate and trigger HR activity sets and also have the ability to create activities. Source: https://www.servicenow.com/docs/r/xanadu/employee-service-management/lifecycle-events/components-installed-with-enterprise-onboarding-and-transitions.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The case_writer role contains case_reader and hr_core case_writer, not activity_writer."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The activity_reader role is contained within activity_writer, not the other way around."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The case_reader role contains sn_hr_core.case_reader, not activity_writer."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Activity set manager [sn_hr_le.activity_set_manager]: Can activate and trigger HR activity sets. Contains roles: sn_hr_le.activity_writer.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/employee-service-management/lifecycle-events/components-installed-with-enterprise-onboarding-and-transitions.html"
+      },
+      "labels": {
+        "domain": "HR Security",
+        "subtopics": [
+          "Roles",
+          "Role hierarchy"
+        ],
+        "tags": [
+          "roles",
+          "activity-set-manager",
+          "role-hierarchy"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-hr-hr-security-014",
+      "certification": "cis-hr",
+      "topic": "hr-security",
+      "cognitiveLevel": "comprehension",
+      "type": "multiple_choice",
+      "question": "Which roles are contained within the Lifecycle Events administrator (sn_hr_le.admin) role? (Choose three.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "sn_hr_le.activity_set_manager, sn_hr_le.case_reader, and sn_hr_le.case_writer"
+        },
+        {
+          "id": "b",
+          "text": "sn_hr_le.activity_reader, sn_hr_le.activity_writer, and pa_viewer"
+        },
+        {
+          "id": "c",
+          "text": "sn_hr_core.admin, skill_admin, and survey_reader"
+        },
+        {
+          "id": "d",
+          "text": "itil, admin, and sn_hr_core.case_writer"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "The sn_hr_le.admin role contains sn_hr_le.activity_set_manager, skill_admin, sn_hr_le.case_reader, sn_hr_le.case_writer, sn_hr_core.content_writer, pa_viewer, and survey_admin. Options a lists three of these correctly. Source: https://www.servicenow.com/docs/r/xanadu/employee-service-management/lifecycle-events/components-installed-with-enterprise-onboarding-and-transitions.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "While pa_viewer is contained, activity_reader and activity_writer are not directly contained — activity_set_manager is, which contains activity_writer."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "sn_hr_core.admin and survey_reader are not listed as contained roles for sn_hr_le.admin."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "itil and admin are not contained roles within sn_hr_le.admin."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Lifecycle Events administrator [sn_hr_le.admin] contains roles: sn_hr_le.activity_set_manager, skill_admin, sn_hr_le.case_reader, sn_hr_le.case_writer, sn_hr_core.content_writer.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/employee-service-management/lifecycle-events/components-installed-with-enterprise-onboarding-and-transitions.html"
+      },
+      "labels": {
+        "domain": "HR Security",
+        "subtopics": [
+          "Roles",
+          "Admin role"
+        ],
+        "tags": [
+          "sn-hr-le-admin",
+          "contained-roles",
+          "role-hierarchy"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-hr-hr-security-015",
+      "certification": "cis-hr",
+      "topic": "hr-security",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "An HR team member needs to be able to read Lifecycle Events cases but should not create or modify them. Which role should be assigned?",
+      "options": [
+        {
+          "id": "a",
+          "text": "sn_hr_le.case_writer"
+        },
+        {
+          "id": "b",
+          "text": "sn_hr_le.case_reader"
+        },
+        {
+          "id": "c",
+          "text": "sn_hr_le.admin"
+        },
+        {
+          "id": "d",
+          "text": "sn_hr_le.activity_reader"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The sn_hr_le.case_reader role can read Lifecycle Events cases without the ability to create or modify them. It contains the sn_hr_core.case_reader role. Source: https://www.servicenow.com/docs/r/xanadu/employee-service-management/lifecycle-events/components-installed-with-enterprise-onboarding-and-transitions.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The case_writer role can create cases, which exceeds the read-only requirement."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The admin role provides full management access, far exceeding the read-only requirement."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The activity_reader role provides read access to activity sets and activities, not cases."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Case reader [sn_hr_le.case_reader]: Can read Lifecycle Events cases. Contains roles: sn_hr_core.case_reader.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/employee-service-management/lifecycle-events/components-installed-with-enterprise-onboarding-and-transitions.html"
+      },
+      "labels": {
+        "domain": "HR Security",
+        "subtopics": [
+          "Roles",
+          "Case access"
+        ],
+        "tags": [
+          "case-reader",
+          "read-only",
+          "lifecycle-events"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-hr-hr-security-016",
+      "certification": "cis-hr",
+      "topic": "hr-security",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "In the Critical Event Management portal, which role is automatically assigned to all employees?",
+      "options": [
+        {
+          "id": "a",
+          "text": "sn_critical.admin"
+        },
+        {
+          "id": "b",
+          "text": "sn_critical.user"
+        },
+        {
+          "id": "c",
+          "text": "sn_critical.manager"
+        },
+        {
+          "id": "d",
+          "text": "sn_critical.responder"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "All employees are assigned the sn_critical.user role automatically. This role enables the employee to report an emergency and view emergency procedures through the Employee Center. Source: https://www.servicenow.com/docs/r/xanadu/employee-service-management/critical-event-management/employee-center-portal-overview.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The admin role is not automatically assigned to all employees; it is for administrators only."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The manager role is not automatically assigned to all employees."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The responder role is not the automatically assigned role; sn_critical.user is the universal role."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "All employees are assigned the sn_critical.user role automatically. This role enables the employee to report an emergency and view emergency procedures.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/employee-service-management/critical-event-management/employee-center-portal-overview.html"
+      },
+      "labels": {
+        "domain": "HR Security",
+        "subtopics": [
+          "Critical Event Management",
+          "Roles"
+        ],
+        "tags": [
+          "critical-event-management",
+          "sn-critical-user",
+          "auto-assigned"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     }
   ]
 }
