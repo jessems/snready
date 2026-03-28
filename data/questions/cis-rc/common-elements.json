@@ -797,6 +797,319 @@
         "path": "https://www.servicenow.com/docs/r/xanadu/governance-risk-compliance/",
         "excerpt": ""
       }
+    },
+    {
+      "id": "cis-rc-common-elements-013",
+      "certification": "cis-rc",
+      "topic": "common-elements",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "In the audit observation lifecycle, what is the correct sequence of states?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Draft \u2192 Finalize \u2192 Review \u2192 Respond \u2192 Closed"
+        },
+        {
+          "id": "b",
+          "text": "Draft \u2192 Review \u2192 Respond \u2192 Finalize \u2192 Closed"
+        },
+        {
+          "id": "c",
+          "text": "Review \u2192 Draft \u2192 Respond \u2192 Finalize \u2192 Closed"
+        },
+        {
+          "id": "d",
+          "text": "Draft \u2192 Respond \u2192 Review \u2192 Finalize \u2192 Closed"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "Audit observations progress through: Draft, Review, Respond, Finalize, and Closed states.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Finalize comes after Respond, not before Review.",
+            "reference": "docs.servicenow.com"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Draft is the first state, not Review.",
+            "reference": "docs.servicenow.com"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Review comes before Respond in the lifecycle.",
+            "reference": "docs.servicenow.com"
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/grc"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "cis-rc-api/audit-observations.md",
+        "excerpt": "An audit observation moves through the following states: Draft, Review, Respond, Finalize, and Closed."
+      },
+      "labels": {
+        "certification": "cis-rc",
+        "domain": "Common Elements",
+        "domainSlug": "common-elements",
+        "domainPercentage": 15,
+        "subtopics": [
+          "Observation lifecycle"
+        ],
+        "tags": [
+          "audit",
+          "observations"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-28T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-rc-common-elements-014",
+      "certification": "cis-rc",
+      "topic": "common-elements",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "An auditor wants to create an observation from an engagement. Under which condition is this NOT possible?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The engagement is in the Planning state"
+        },
+        {
+          "id": "b",
+          "text": "The engagement is in the Active state"
+        },
+        {
+          "id": "c",
+          "text": "The engagement is in the Closed state"
+        },
+        {
+          "id": "d",
+          "text": "The engagement is in the In Progress state"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "selectCount": 1,
+      "isNegative": true,
+      "explanation": {
+        "correct": "An observation can be created from an engagement only if the engagement is NOT in the Follow Up or Closed states.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Observations can be created from engagements in Planning state.",
+            "reference": "docs.servicenow.com"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "Active engagements allow observation creation.",
+            "reference": "docs.servicenow.com"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "In Progress engagements allow observation creation.",
+            "reference": "docs.servicenow.com"
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/grc"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "cis-rc-api/audit-observations.md",
+        "excerpt": "An audit user can create an observation from an engagement if the engagement is not in the Follow Up or Closed states."
+      },
+      "labels": {
+        "certification": "cis-rc",
+        "domain": "Common Elements",
+        "domainSlug": "common-elements",
+        "domainPercentage": 15,
+        "subtopics": [
+          "Observations"
+        ],
+        "tags": [
+          "audit",
+          "observations",
+          "engagement"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-28T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-rc-common-elements-015",
+      "certification": "cis-rc",
+      "topic": "common-elements",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_select",
+      "question": "When reviewing audit observations, the audit team can classify an observation as which of the following? (Choose two.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "A reportable issue"
+        },
+        {
+          "id": "b",
+          "text": "A compliance violation"
+        },
+        {
+          "id": "c",
+          "text": "A recommendation or best practice"
+        },
+        {
+          "id": "d",
+          "text": "An automated remediation task"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "c"
+      ],
+      "selectCount": 2,
+      "isNegative": false,
+      "explanation": {
+        "correct": "The audit team reviews observations to determine if they are reportable issues, or can be tracked as recommendations, observations, or best practices.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Compliance violations are tracked in Policy and Compliance, not as audit observation classifications.",
+            "reference": "docs.servicenow.com"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Automated remediation is not an observation classification type.",
+            "reference": "docs.servicenow.com"
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/grc"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "cis-rc-api/audit-observations.md",
+        "excerpt": "The audit team can determine if the observation can be tracked as a recommendation, an observation, or a best practice."
+      },
+      "labels": {
+        "certification": "cis-rc",
+        "domain": "Common Elements",
+        "domainSlug": "common-elements",
+        "domainPercentage": 15,
+        "subtopics": [
+          "Observation classification"
+        ],
+        "tags": [
+          "audit",
+          "observations"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-28T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-rc-common-elements-016",
+      "certification": "cis-rc",
+      "topic": "common-elements",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "Which highlights of the Audit Workspace represent improvements over the legacy interface?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Batch processing of audit engagements"
+        },
+        {
+          "id": "b",
+          "text": "360\u00b0 view to consider scores and ratings, and visualize data relationships across the enterprise"
+        },
+        {
+          "id": "c",
+          "text": "Automated control testing without human intervention"
+        },
+        {
+          "id": "d",
+          "text": "Direct integration with external audit firms"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "The Audit Workspace provides a 360\u00b0 view to consider scores and ratings and visualize data relationships across the enterprise for a record.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Batch processing is not listed as a highlight of the new Audit Workspace.",
+            "reference": "docs.servicenow.com"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The workspace doesn't automate control testing without human intervention.",
+            "reference": "docs.servicenow.com"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "External audit firm integration is not a listed feature of the Audit Workspace.",
+            "reference": "docs.servicenow.com"
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/grc"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "cis-rc-api/audit-management-overview-ws.md",
+        "excerpt": "360\u00b0 view to consider scores and ratings, and visualize data relationship across the enterprise for a record."
+      },
+      "labels": {
+        "certification": "cis-rc",
+        "domain": "Common Elements",
+        "domainSlug": "common-elements",
+        "domainPercentage": 15,
+        "subtopics": [
+          "Audit Workspace"
+        ],
+        "tags": [
+          "workspace",
+          "360-view"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-28T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     }
   ]
 }

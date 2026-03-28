@@ -1386,6 +1386,323 @@
         "release": "Xanadu",
         "reviewed": false
       }
+    },
+    {
+      "id": "cis-ham-itam-fundamentals-019",
+      "certification": "cis-ham",
+      "topic": "itam-fundamentals",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What determines whether a hardware asset is eligible for refresh?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The asset's current depreciation value"
+        },
+        {
+          "id": "b",
+          "text": "A scheduled job compares the asset creation date against the model's useful_life field"
+        },
+        {
+          "id": "c",
+          "text": "Manual flagging by the asset manager"
+        },
+        {
+          "id": "d",
+          "text": "The number of incidents reported against the asset"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "The scheduled job 'SAM - Calculate Refresh Eligibility' runs weekly, comparing asset creation dates against the hardware model's useful_life (in months) to set the Refresh Eligible flag.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Depreciation is tracked separately and doesn't directly determine refresh eligibility.",
+            "reference": "docs.servicenow.com"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Refresh eligibility is calculated automatically, not manually flagged.",
+            "reference": "docs.servicenow.com"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Incident count is not a factor in the automated refresh eligibility calculation.",
+            "reference": "docs.servicenow.com"
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/ham"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "cis-ham-api-en/hardware-asset-refresh.md",
+        "excerpt": "The scheduled job SAM - Calculate Refresh Eligibility runs weekly and invokes the SAMRefreshEligibilityCalculator. The asset creation date is compared with the useful_life field to determine eligibility."
+      },
+      "labels": {
+        "certification": "cis-ham",
+        "domain": "ITAM Fundamentals",
+        "domainSlug": "itam-fundamentals",
+        "domainPercentage": 20,
+        "subtopics": [
+          "Refresh eligibility"
+        ],
+        "tags": [
+          "refresh",
+          "lifecycle"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-28T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-ham-itam-fundamentals-020",
+      "certification": "cis-ham",
+      "topic": "itam-fundamentals",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which role is required to submit a Hardware Asset Refresh request?",
+      "options": [
+        {
+          "id": "a",
+          "text": "asset_manager"
+        },
+        {
+          "id": "b",
+          "text": "inventory_user"
+        },
+        {
+          "id": "c",
+          "text": "itil"
+        },
+        {
+          "id": "d",
+          "text": "ham_admin"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "The inventory_user role is required to submit a Hardware Asset Refresh request.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "asset_manager has broader permissions but inventory_user is the specific required role.",
+            "reference": "docs.servicenow.com"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "itil is the ITSM role, not the HAM refresh request role.",
+            "reference": "docs.servicenow.com"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "ham_admin is not the standard role name for this function.",
+            "reference": "docs.servicenow.com"
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/ham"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "cis-ham-api-en/hardware-asset-refresh.md",
+        "excerpt": "Role required: inventory_user."
+      },
+      "labels": {
+        "certification": "cis-ham",
+        "domain": "ITAM Fundamentals",
+        "domainSlug": "itam-fundamentals",
+        "domainPercentage": 20,
+        "subtopics": [
+          "Roles"
+        ],
+        "tags": [
+          "roles",
+          "refresh"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-28T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-ham-itam-fundamentals-021",
+      "certification": "cis-ham",
+      "topic": "itam-fundamentals",
+      "cognitiveLevel": "application",
+      "type": "multiple_select",
+      "question": "When an asset is retired via a change request, which records are automatically updated by the retirement task? (Choose three.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "CI record"
+        },
+        {
+          "id": "b",
+          "text": "Software allocations"
+        },
+        {
+          "id": "c",
+          "text": "User department record"
+        },
+        {
+          "id": "d",
+          "text": "Maintenance contracts"
+        },
+        {
+          "id": "e",
+          "text": "Vendor contact information"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b",
+        "d"
+      ],
+      "selectCount": 3,
+      "isNegative": false,
+      "explanation": {
+        "correct": "When an asset is retired, the retirement task automatically updates the CI, related asset record, software allocations, and maintenance contracts.",
+        "wrongAnswers": [
+          {
+            "choiceId": "c",
+            "explanation": "User department records are not automatically updated by asset retirement tasks.",
+            "reference": "docs.servicenow.com"
+          },
+          {
+            "choiceId": "e",
+            "explanation": "Vendor contact information is not affected by asset retirement.",
+            "reference": "docs.servicenow.com"
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/ham"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "cis-ham-api-en/asset-lifecycle-automation.md",
+        "excerpt": "The retire task updates: CI, related asset record, software allocations, maintenance contracts."
+      },
+      "labels": {
+        "certification": "cis-ham",
+        "domain": "ITAM Fundamentals",
+        "domainSlug": "itam-fundamentals",
+        "domainPercentage": 20,
+        "subtopics": [
+          "Asset retirement"
+        ],
+        "tags": [
+          "retirement",
+          "automation"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-28T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-ham-itam-fundamentals-022",
+      "certification": "cis-ham",
+      "topic": "itam-fundamentals",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "In the Hardware Asset Refresh request, what is the difference between 'Single model' and 'Multiple model' refresh types?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Single model refreshes one asset; Multiple model refreshes multiple assets"
+        },
+        {
+          "id": "b",
+          "text": "Single model replaces all old assets with the same new model; Multiple model allows different replacement models per asset"
+        },
+        {
+          "id": "c",
+          "text": "Single model is for hardware only; Multiple model includes software"
+        },
+        {
+          "id": "d",
+          "text": "Single model requires approval; Multiple model is auto-approved"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "Single model replaces all old hardware assets with the same model of new assets. Multiple model allows you to replace old assets with different models of new hardware assets.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Both types can refresh multiple assets; the difference is whether replacement models are uniform or varied.",
+            "reference": "docs.servicenow.com"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Both types are for hardware assets only.",
+            "reference": "docs.servicenow.com"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Both types go through the same approval process.",
+            "reference": "docs.servicenow.com"
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/ham"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "cis-ham-api-en/hardware-asset-refresh.md",
+        "excerpt": "You can choose to replace all the old hardware assets with the same or different models of new hardware assets."
+      },
+      "labels": {
+        "certification": "cis-ham",
+        "domain": "ITAM Fundamentals",
+        "domainSlug": "itam-fundamentals",
+        "domainPercentage": 20,
+        "subtopics": [
+          "Asset refresh"
+        ],
+        "tags": [
+          "refresh",
+          "models"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-28T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     }
   ]
 }

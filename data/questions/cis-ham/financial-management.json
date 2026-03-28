@@ -878,6 +878,318 @@
         "release": "Xanadu",
         "reviewed": false
       }
+    },
+    {
+      "id": "cis-ham-financial-management-013",
+      "certification": "cis-ham",
+      "topic": "financial-management",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "In the hardware disposal workflow, what happens automatically when you close a disposal task?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The asset record is immediately deleted from the system"
+        },
+        {
+          "id": "b",
+          "text": "The next task in the disposal workflow is automatically created"
+        },
+        {
+          "id": "c",
+          "text": "A purchase order for a replacement asset is generated"
+        },
+        {
+          "id": "d",
+          "text": "The CI is moved to the retired state and all contracts are terminated"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "Closing a disposal task completes it and automatically creates the next task in the workflow sequence.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Asset records are not deleted; they are updated to reflect disposal status.",
+            "reference": "docs.servicenow.com"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Replacement purchase orders are not automatically generated during disposal.",
+            "reference": "docs.servicenow.com"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "CI retirement happens at the end of the disposal workflow, not after each individual task.",
+            "reference": "docs.servicenow.com"
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/ham"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "cis-ham-api-en/asset-lifecycle-automation.md",
+        "excerpt": "Closing a task completes the task and creates the next task in the workflow."
+      },
+      "labels": {
+        "certification": "cis-ham",
+        "domain": "Financial Management",
+        "domainSlug": "financial-management",
+        "domainPercentage": 5,
+        "subtopics": [
+          "Disposal workflow"
+        ],
+        "tags": [
+          "disposal",
+          "lifecycle"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-28T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-ham-financial-management-014",
+      "certification": "cis-ham",
+      "topic": "financial-management",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_select",
+      "question": "Which are the five tasks in the hardware asset disposal workflow? (Choose two that are part of the sequence.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Verify and Schedule pickup"
+        },
+        {
+          "id": "b",
+          "text": "Purchase and Deploy"
+        },
+        {
+          "id": "c",
+          "text": "Departure and Final confirmation"
+        },
+        {
+          "id": "d",
+          "text": "Audit and Compliance check"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "c"
+      ],
+      "selectCount": 2,
+      "isNegative": false,
+      "explanation": {
+        "correct": "The five disposal tasks are: Planning, Scheduling, Verification, Departure, and Final confirmation. Verify is the first task, and after closing it, Schedule pickup is automatically created.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Purchase and Deploy are part of asset procurement, not the disposal workflow.",
+            "reference": "docs.servicenow.com"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Audit and Compliance check are not part of the standard disposal workflow tasks.",
+            "reference": "docs.servicenow.com"
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/ham"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "cis-ham-api-en/asset-lifecycle-automation.md",
+        "excerpt": "This workflow guides you through five asset disposal tasks: planning, scheduling, verification, departure, and the final confirmation."
+      },
+      "labels": {
+        "certification": "cis-ham",
+        "domain": "Financial Management",
+        "domainSlug": "financial-management",
+        "domainPercentage": 5,
+        "subtopics": [
+          "Disposal tasks"
+        ],
+        "tags": [
+          "disposal",
+          "workflow"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-28T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-ham-financial-management-015",
+      "certification": "cis-ham",
+      "topic": "financial-management",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A hardware asset is being retired via an incident. How is the Stockroom field populated on the retirement task?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It defaults to the organization's main warehouse"
+        },
+        {
+          "id": "b",
+          "text": "It is populated based on the location of the asset, using service location priority if multiple stockrooms exist"
+        },
+        {
+          "id": "c",
+          "text": "The agent must manually select the stockroom"
+        },
+        {
+          "id": "d",
+          "text": "It uses the stockroom assigned to the agent's department"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "When retired via an incident, the Stockroom field is populated based on the asset's location. If multiple stockrooms support that location via service locations, the field is auto-populated based on priority.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "It uses the asset's location, not a default main warehouse.",
+            "reference": "docs.servicenow.com"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The stockroom is auto-populated based on asset location, not manually selected.",
+            "reference": "docs.servicenow.com"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Agent department stockroom is not the logic used for retirement tasks.",
+            "reference": "docs.servicenow.com"
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/ham"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "cis-ham-api-en/asset-lifecycle-automation.md",
+        "excerpt": "The Stockroom field is populated based on the location of the asset. If the asset location is supported by multiple stockrooms as part of service locations, the Stockroom field is automatically populated based on priority."
+      },
+      "labels": {
+        "certification": "cis-ham",
+        "domain": "Financial Management",
+        "domainSlug": "financial-management",
+        "domainPercentage": 5,
+        "subtopics": [
+          "Asset retirement"
+        ],
+        "tags": [
+          "stockroom",
+          "retirement"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-28T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-ham-financial-management-016",
+      "certification": "cis-ham",
+      "topic": "financial-management",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which system property can be set to false to remove the mandatory asset action requirement when closing incidents in HAM?",
+      "options": [
+        {
+          "id": "a",
+          "text": "sn_hamp.enable_asset_lifecycle_automation"
+        },
+        {
+          "id": "b",
+          "text": "sn_hamp.enable_asset_action_validation_incident"
+        },
+        {
+          "id": "c",
+          "text": "sn_hamp.require_asset_disposal_on_close"
+        },
+        {
+          "id": "d",
+          "text": "sn_hamp.incident_asset_action_required"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "Setting sn_hamp.enable_asset_action_validation_incident to false removes the mandatory asset action requirement for closing incidents.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "This is not the correct system property name for this setting.",
+            "reference": "docs.servicenow.com"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "This property name doesn't exist in the HAM configuration.",
+            "reference": "docs.servicenow.com"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "This is not the correct property name; the actual property uses 'enable_asset_action_validation_incident'.",
+            "reference": "docs.servicenow.com"
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/ham"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "cis-ham-api-en/asset-lifecycle-automation.md",
+        "excerpt": "You can set the value of the system property sn_hamp.enable_asset_action_validation_incident to false."
+      },
+      "labels": {
+        "certification": "cis-ham",
+        "domain": "Financial Management",
+        "domainSlug": "financial-management",
+        "domainPercentage": 5,
+        "subtopics": [
+          "System properties"
+        ],
+        "tags": [
+          "properties",
+          "incidents"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-28T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     }
   ]
 }
