@@ -1243,6 +1243,239 @@
         "release": "Xanadu",
         "reviewed": false
       }
+    },
+    {
+      "id": "cis-ham-operational-integration-017",
+      "certification": "cis-ham",
+      "topic": "operational-integration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which applications provide asset tasks for the Deploy operation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Incident Management and Change Management only"
+        },
+        {
+          "id": "b",
+          "text": "Change Management and Field Service Management"
+        },
+        {
+          "id": "c",
+          "text": "All three: Incident, Change, and Field Service Management"
+        },
+        {
+          "id": "d",
+          "text": "Only Field Service Management"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "selectCount": 1,
+      "isNegative": false,
+      "explanation": {
+        "correct": "Deploy asset tasks are available in Change Management and Field Service Management. Incident Management provides Retire and Swap tasks, not Deploy.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Incident Management does not provide Deploy tasks \u2014 it provides Update/Repair, Swap, and Retire.",
+            "reference": "docs.servicenow.com"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Incident Management doesn't support Deploy operations.",
+            "reference": "docs.servicenow.com"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Change Management also supports Deploy, not just FSM.",
+            "reference": "docs.servicenow.com"
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/ham"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "cis-ham-api-en/asset-lifecycle-automation.md",
+        "excerpt": "Change Management: Deploy, Retire. Field Service Management: Deploy. Incident Management: Update/Repair, Swap, Retire."
+      },
+      "labels": {
+        "certification": "cis-ham",
+        "domain": "Operational Integration",
+        "domainSlug": "operational-integration",
+        "domainPercentage": 15,
+        "subtopics": [
+          "Asset tasks"
+        ],
+        "tags": [
+          "integration",
+          "deploy"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-28T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-ham-operational-integration-018",
+      "certification": "cis-ham",
+      "topic": "operational-integration",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What is NOT triggered by the automated asset lifecycle workflow?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Transfer order workflow when asset is in stock"
+        },
+        {
+          "id": "b",
+          "text": "Purchase order workflow when asset must be bought"
+        },
+        {
+          "id": "c",
+          "text": "Updates to excluded asset records"
+        },
+        {
+          "id": "d",
+          "text": "Automatic update of CI records after workflow completion"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "selectCount": 1,
+      "isNegative": true,
+      "explanation": {
+        "correct": "The automated workflow is NOT triggered for excluded assets. Excluded asset records must be manually updated.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Transfer order workflows are triggered when assets are in stock.",
+            "reference": "docs.servicenow.com"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "Purchase order workflows are triggered when assets must be bought.",
+            "reference": "docs.servicenow.com"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "CI records are automatically updated after workflow completion.",
+            "reference": "docs.servicenow.com"
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/ham"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "cis-ham-api-en/asset-lifecycle-automation.md",
+        "excerpt": "The automated workflow isn't triggered for excluded assets. You must manually update your asset records or CIs for the excluded assets."
+      },
+      "labels": {
+        "certification": "cis-ham",
+        "domain": "Operational Integration",
+        "domainSlug": "operational-integration",
+        "domainPercentage": 15,
+        "subtopics": [
+          "Lifecycle automation"
+        ],
+        "tags": [
+          "automation",
+          "excluded-assets"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-28T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-ham-operational-integration-019",
+      "certification": "cis-ham",
+      "topic": "operational-integration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_select",
+      "question": "Which asset task operations are available through Incident Management? (Choose two.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Deploy"
+        },
+        {
+          "id": "b",
+          "text": "Swap"
+        },
+        {
+          "id": "c",
+          "text": "Retire"
+        },
+        {
+          "id": "d",
+          "text": "Transfer"
+        }
+      ],
+      "correctAnswers": [
+        "b",
+        "c"
+      ],
+      "selectCount": 2,
+      "isNegative": false,
+      "explanation": {
+        "correct": "Incident Management provides Update/Repair, Swap, and Retire asset task operations. Deploy is available through Change Management and Field Service Management.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Deploy is available in Change Management and FSM, not Incident Management.",
+            "reference": "docs.servicenow.com"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Transfer is handled through the transfer order workflow, not as an Incident Management asset task.",
+            "reference": "docs.servicenow.com"
+          }
+        ]
+      },
+      "references": [
+        "docs.servicenow.com/ham"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "docs",
+        "path": "cis-ham-api-en/asset-lifecycle-automation.md",
+        "excerpt": "Incident Management: Update/Repair, Swap, Retire."
+      },
+      "labels": {
+        "certification": "cis-ham",
+        "domain": "Operational Integration",
+        "domainSlug": "operational-integration",
+        "domainPercentage": 15,
+        "subtopics": [
+          "Asset tasks"
+        ],
+        "tags": [
+          "incident",
+          "asset-tasks"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-03-28T02:00:00Z",
+        "version": "1.1",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     }
   ]
 }
