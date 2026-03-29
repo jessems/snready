@@ -798,6 +798,98 @@
         "release": "Xanadu",
         "reviewed": false
       }
+    },
+    {
+      "id": "cis-sir-risk-011",
+      "certification": "cis-sir",
+      "topic": "risk",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "How does SIR calculate the risk score for a security incident?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Based solely on the CVSS score of related vulnerabilities"
+        },
+        {
+          "id": "b",
+          "text": "By combining factors like affected CI business criticality, threat severity, and incident category"
+        },
+        {
+          "id": "c",
+          "text": "Using a fixed score assigned at incident creation"
+        },
+        {
+          "id": "d",
+          "text": "Based on the number of observables attached to the incident"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "SIR's risk scoring considers multiple factors including the business criticality of affected CIs, the threat severity, incident category, and other configurable parameters to provide a comprehensive risk assessment.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "CVSS is specific to vulnerabilities; SIR risk scoring incorporates broader factors"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Risk scores are dynamically calculated, not fixed at creation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Observable count is not the primary factor in risk scoring"
+          }
+        ]
+      }
+    },
+    {
+      "id": "cis-sir-risk-012",
+      "certification": "cis-sir",
+      "topic": "risk",
+      "cognitiveLevel": "analysis",
+      "type": "multiple_choice",
+      "question": "What is the benefit of linking security incidents to CMDB configuration items?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It allows automatic patching of affected systems"
+        },
+        {
+          "id": "b",
+          "text": "It enables impact assessment based on CI relationships and business criticality"
+        },
+        {
+          "id": "c",
+          "text": "It triggers automatic incident resolution"
+        },
+        {
+          "id": "d",
+          "text": "It removes the need for manual investigation"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Linking security incidents to CMDB CIs enables analysts to assess business impact by understanding affected services, downstream dependencies, and the business criticality of compromised assets.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Patching is a separate remediation activity, not triggered by CI linking alone"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "CI linking supports investigation but doesn't automatically resolve incidents"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Manual investigation is still required; CI linking provides context to aid the investigation"
+          }
+        ]
+      }
     }
   ]
 }

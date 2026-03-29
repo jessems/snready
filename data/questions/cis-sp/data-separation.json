@@ -1188,7 +1188,7 @@
         "b"
       ],
       "explanation": {
-        "correct": "Domain separation and ACLs work together — domain separation first filters records by domain visibility, then ACLs provide additional access control within the visible domain records.",
+        "correct": "Domain separation and ACLs work together \u2014 domain separation first filters records by domain visibility, then ACLs provide additional access control within the visible domain records.",
         "wrongAnswers": [
           {
             "choiceId": "a",
@@ -1390,6 +1390,95 @@
         "version": "1.1",
         "release": "Xanadu",
         "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sp-data-separation-019",
+      "certification": "cis-sp",
+      "topic": "data-separation",
+      "cognitiveLevel": "analysis",
+      "type": "multiple_select",
+      "question": "Which TWO statements are true about domain-separated tables? (Choose 2)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Records inherit the domain of the user who creates them by default"
+        },
+        {
+          "id": "b",
+          "text": "The sys_domain field is automatically added when domain separation is enabled on a table"
+        },
+        {
+          "id": "c",
+          "text": "All tables are domain-separated by default when the plugin is activated"
+        },
+        {
+          "id": "d",
+          "text": "Domain separation can be removed from a table after it has been enabled"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b"
+      ],
+      "explanation": {
+        "correct": "Records inherit the creating user's domain by default, and enabling domain separation on a table automatically adds the sys_domain field to track which domain each record belongs to.",
+        "wrongAnswers": [
+          {
+            "choiceId": "c",
+            "explanation": "Only specific tables are domain-separated; you must enable it per table or it's enabled for supported tables"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Once domain separation is enabled on a table, it cannot be easily removed without data migration"
+          }
+        ]
+      }
+    },
+    {
+      "id": "cis-sp-data-separation-020",
+      "certification": "cis-sp",
+      "topic": "data-separation",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A service provider needs to share a knowledge base article across all tenant domains. In which domain should the article be created?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The TOP domain"
+        },
+        {
+          "id": "b",
+          "text": "The global domain"
+        },
+        {
+          "id": "c",
+          "text": "Each tenant domain individually"
+        },
+        {
+          "id": "d",
+          "text": "A shared content domain"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Records in the global domain are visible to all child domains. Creating the article in the global domain makes it accessible across all tenants without duplication.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "TOP is the highest system domain but global is the correct choice for shared content visibility"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "This would require duplicating content and is not the recommended approach"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "There is no standard 'shared content domain' concept in ServiceNow domain separation"
+          }
+        ]
       }
     }
   ]

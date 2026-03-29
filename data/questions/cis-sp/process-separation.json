@@ -1838,6 +1838,95 @@
         "release": "Xanadu",
         "reviewed": false
       }
+    },
+    {
+      "id": "cis-sp-process-separation-025",
+      "certification": "cis-sp",
+      "topic": "process-separation",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A tenant wants a custom approval workflow that differs from the standard process. How should domain separation handle this?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Create a domain-specific workflow in the tenant's domain"
+        },
+        {
+          "id": "b",
+          "text": "Modify the global workflow to include conditional logic per tenant"
+        },
+        {
+          "id": "c",
+          "text": "Clone the instance for each tenant"
+        },
+        {
+          "id": "d",
+          "text": "Use a single workflow with tenant-specific notification templates only"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "Domain separation supports creating domain-specific workflows that override the global version, allowing each tenant to have customized processes without affecting other domains.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Modifying global workflows adds complexity and risk; domain-specific versions are the proper approach"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Cloning defeats the purpose of multi-tenancy and domain separation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "This only addresses notifications, not the full approval workflow"
+          }
+        ]
+      }
+    },
+    {
+      "id": "cis-sp-process-separation-026",
+      "certification": "cis-sp",
+      "topic": "process-separation",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_select",
+      "question": "Which TWO process elements can be domain-separated in ServiceNow? (Choose 2)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Business rules"
+        },
+        {
+          "id": "b",
+          "text": "Update sets"
+        },
+        {
+          "id": "c",
+          "text": "Notifications"
+        },
+        {
+          "id": "d",
+          "text": "System properties (all)"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "c"
+      ],
+      "explanation": {
+        "correct": "Business rules and notifications support domain separation, allowing different processing logic and notification templates per domain/tenant.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Update sets are scoped but not domain-separated in the traditional sense"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Only specific system properties support domain separation, not all properties"
+          }
+        ]
+      }
     }
   ]
 }
