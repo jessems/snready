@@ -3115,6 +3115,211 @@ Pick your certification and start with the free questions. No signup required.
 [Take a Timed Mock Exam →](/csa/timed-exam)
 `
   },
+  {
+    slug: "all-servicenow-certifications-complete-guide-2026",
+    title: "All 28 ServiceNow Certifications Explained (2026 Complete Guide)",
+    description: "Every ServiceNow certification in one place: requirements, costs, difficulty, career impact, and which ones to get first. Updated for 2026.",
+    publishedAt: "2026-03-30",
+    author: "SNReady Team",
+    tags: ["certifications", "career", "study guide", "CSA", "CAD", "CIS"],
+    featured: true,
+    readingTime: 18,
+    content: `
+## How Many ServiceNow Certifications Are There?
+
+As of 2026, ServiceNow offers **28+ certifications** across four levels: Foundational, Professional, Expert, and Specialist. They span administration, development, implementation, and architecture.
+
+This guide covers every certification, who it's for, what it costs, and — most importantly — which ones actually matter for your career.
+
+## The Certification Hierarchy
+
+### Level 1: Foundational
+| Certification | Full Name | Cost | Questions | Time |
+|---|---|---|---|---|
+| **[CSA](/csa)** | Certified System Administrator | $210 | 60 | 90 min |
+
+CSA is the starting point for everyone. Period. Even if you want to be a developer or architect, you need CSA first. It's the prerequisite for almost everything else.
+
+**Who it's for:** Anyone starting in ServiceNow — admins, developers, consultants, managers.
+
+**Difficulty:** Moderate. Most people pass with 2-4 weeks of focused study. The exam tests practical platform knowledge: tables, forms, ACLs, workflows, import sets.
+
+→ [Practice CSA Questions](/csa/practice-questions) | [CSA Study Guide](/blog/how-to-pass-servicenow-csa-first-time)
+
+### Level 2: Professional — Application Development
+
+| Certification | Full Name | Cost | Questions | Time |
+|---|---|---|---|---|
+| **[CAD](/cad)** | Certified Application Developer | $210 | 60 | 90 min |
+
+CAD is the developer certification. If you write scripts, build apps, or work with APIs on ServiceNow, this is your cert.
+
+**Who it's for:** Developers, technical consultants, anyone who touches code on the platform.
+
+**Difficulty:** Hard. Requires solid JavaScript knowledge plus ServiceNow-specific scripting (Business Rules, Client Scripts, Script Includes, REST APIs).
+
+→ [Practice CAD Questions](/cad/practice-questions) | [CSA vs CAD Comparison](/blog/csa-vs-cad-real-talk)
+
+### Level 2: Professional — Implementation Specialist Certifications
+
+These are the "CIS" certs — the bread and butter of ServiceNow consulting. Each one covers a specific product module.
+
+#### IT Operations & Service Management
+
+| Certification | Full Name | Domains | Practice |
+|---|---|---|---|
+| **[CIS-ITSM](/cis-itsm)** | IT Service Management | 7 | [Practice →](/cis-itsm/practice-questions) |
+| **[CIS-Discovery](/cis-discovery)** | Discovery | 4 | [Practice →](/cis-discovery/practice-questions) |
+| **[CIS-EM](/cis-em)** | Event Management | 6 | [Practice →](/cis-em/practice-questions) |
+| **[CIS-SM](/cis-sm)** | Service Mapping | 6 | [Practice →](/cis-sm/practice-questions) |
+
+**CIS-ITSM** is the most popular CIS cert and the most valuable for consultants. Incident, Problem, Change, and Request management are the core of what most companies use ServiceNow for.
+
+**CIS-Discovery** and **CIS-SM** are paired — Discovery finds infrastructure, Service Mapping maps relationships. If you do ITOM work, get both.
+
+#### Data & Configuration
+
+| Certification | Full Name | Domains | Practice |
+|---|---|---|---|
+| **[CIS-DF](/cis-df)** | Data Foundations (CMDB) | 5 | [Practice →](/cis-df/practice-questions) |
+
+CIS-DF replaced the old CIS-CMDB certification. It covers CMDB, CSDM, data integrity, and Health. Essential if you touch the CMDB — and everyone touches the CMDB.
+
+→ [Practice CIS-DF Questions](/cis-df/practice-questions)
+
+#### Customer & HR Service
+
+| Certification | Full Name | Domains | Practice |
+|---|---|---|---|
+| **[CIS-CSM](/cis-csm)** | Customer Service Management | 5 | [Practice →](/cis-csm/practice-questions) |
+| **[CIS-HR](/cis-hr)** | HR Service Delivery | 4 | [Practice →](/cis-hr/practice-questions) |
+| **[CIS-FSM](/cis-fsm)** | Field Service Management | 5 | [Practice →](/cis-fsm/practice-questions) |
+
+These are growing fast. CSM and HR are two of ServiceNow's fastest-growing product lines. If you specialize in either, the certification significantly boosts your rates.
+
+#### Asset Management
+
+| Certification | Full Name | Domains | Practice |
+|---|---|---|---|
+| **[CIS-SAM](/cis-sam)** | Software Asset Management | 5 | [Practice →](/cis-sam/practice-questions) |
+| **[CIS-HAM](/cis-ham)** | Hardware Asset Management | 5 | [Practice →](/cis-ham/practice-questions) |
+
+SAM and HAM are niche but valuable. Companies with large software/hardware inventories need people who can configure these modules. Less competition = higher rates.
+
+#### Governance, Risk & Compliance
+
+| Certification | Full Name | Domains | Practice |
+|---|---|---|---|
+| **[CIS-RC](/cis-rc)** | Risk & Compliance | 7 | [Practice →](/cis-rc/practice-questions) |
+| **[CIS-VR](/cis-vr)** | Vulnerability Response | 5 | [Practice →](/cis-vr/practice-questions) |
+| **[CIS-SIR](/cis-sir)** | Security Incident Response | 6 | [Practice →](/cis-sir/practice-questions) |
+| **[CIS-TPRM](/cis-tprm)** | Third Party Risk Management | 6 | [Practice →](/cis-tprm/practice-questions) |
+
+GRC and SecOps are where the money is in 2026. Security certifications command premium rates because the demand far outstrips supply.
+
+#### Strategic Portfolio & Performance
+
+| Certification | Full Name | Domains | Practice |
+|---|---|---|---|
+| **[CIS-SPM](/cis-spm)** | Strategic Portfolio Management | 9 | [Practice →](/cis-spm/practice-questions) |
+| **[CIS-SP](/cis-sp)** | Service Provider | 5 | [Practice →](/cis-sp/practice-questions) |
+| **[CIS-PA](/cis-pa)** | Performance Analytics | 6 | [Practice →](/cis-pa/practice-questions) |
+| **[CPOA](/cpoa)** | Certified Pre-Sales & Operations Analyst | 6 | [Practice →](/cpoa/practice-questions) |
+
+CIS-PA is underrated. Every customer wants dashboards and reports. Performance Analytics knowledge makes you more valuable on every project.
+
+### Level 3: Expert & Specialist
+
+ServiceNow also offers CTA (Certified Technical Architect) and CMA (Certified Master Architect) certifications. These require extensive experience and involve multi-day practical exams. They're the highest-earning certifications in the ecosystem but are out of scope for most people in their first few years.
+
+## Which Certifications Should You Get? (Decision Framework)
+
+### Just Starting Out
+1. **CSA** — Non-negotiable. Get this first.
+2. **CIS-ITSM** — The most universally useful CIS cert.
+3. **CAD** — If you want to develop, not just configure.
+
+### 2-3 Years In
+4. **CIS-DF** — CMDB knowledge makes you dangerous (in a good way).
+5. **Your specialization CIS** — CSM, HR, Discovery, etc., based on your project work.
+6. **CIS-PA** — Everyone needs dashboards. This makes you the person who builds them.
+
+### Career Accelerators
+- **CIS-SIR + CIS-VR** — SecOps duo. Highest-paying niche.
+- **CIS-SAM + CIS-HAM** — Asset management. Less competition.
+- **CIS-SPM** — Project portfolio management. Earns trust with executives.
+
+## Certification Costs: The Full Picture
+
+| Item | Cost |
+|---|---|
+| Exam attempt | $210 |
+| Failed attempt | +$210 (full price retake) |
+| Now Learning courses | Free |
+| Developer instance | Free |
+| Total if you pass first time | **$210** |
+| Total if you fail once | **$420** |
+
+**That's why practice tests matter.** A $9 investment in practice questions can save you $210 on a retake.
+
+## Delta Exams: Staying Current
+
+ServiceNow releases a new version every 6 months (Vancouver, Washington DC, Xanadu, Yokohama, Zurich...). Your certification stays current for the release you passed on plus the next one. After that, you need to pass a delta exam.
+
+Delta exams are:
+- Shorter (30-40 questions)
+- Focus only on new features in the latest release
+- Free (included with your certification)
+- Must be completed within the maintenance window
+
+**Don't let your cert lapse.** Delta exams are much easier than the full exam.
+
+## How Long Does Each Certification Take?
+
+Based on community feedback and our data:
+
+| Certification | Study Time | Prerequisite |
+|---|---|---|
+| CSA | 2-4 weeks | None |
+| CAD | 3-6 weeks | CSA |
+| CIS-ITSM | 2-4 weeks | CSA |
+| CIS-DF | 3-5 weeks | CSA |
+| CIS-Discovery | 2-4 weeks | CSA |
+| CIS-CSM | 2-4 weeks | CSA |
+| CIS-HR | 2-3 weeks | CSA |
+| Other CIS | 2-4 weeks | CSA |
+
+These assume 1-2 hours/day of study. Double it if you're starting from scratch.
+
+## What Certified Professionals Earn
+
+Based on our [salary database of 200+ entries](/salaries):
+
+| Role | Median Salary (US) |
+|---|---|
+| ServiceNow Administrator (CSA) | $95,000 - $120,000 |
+| ServiceNow Developer (CAD) | $110,000 - $140,000 |
+| ServiceNow Consultant (CIS-*) | $120,000 - $160,000 |
+| ServiceNow Architect (CTA) | $160,000 - $200,000+ |
+
+Each additional certification typically adds $5,000-$15,000 to your market value. The ROI on a $210 exam is enormous.
+
+→ [See full salary data](/salaries)
+
+## Start Practicing Today
+
+We have **100+ practice questions for all 20 certifications**, generated from official ServiceNow course content. Start with the free questions — no signup required.
+
+| Your Goal | Start Here |
+|---|---|
+| First certification | [CSA Practice Questions](/csa/practice-questions) |
+| Developer track | [CAD Practice Questions](/cad/practice-questions) |
+| Consultant track | [CIS-ITSM Practice Questions](/cis-itsm/practice-questions) |
+| Not sure yet | [Take our certification quiz](/quiz) |
+| Create a study schedule | [Study Plan Generator](/study-plan) |
+| Browse everything | [All Certifications](/certifications) |
+`
+  },
 ];
 
 export function getAllPosts(): BlogPost[] {
