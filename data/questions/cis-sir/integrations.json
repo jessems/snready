@@ -1193,6 +1193,95 @@
         "release": "Xanadu",
         "reviewed": false
       }
+    },
+    {
+      "id": "cis-sir-integrations-016",
+      "certification": "cis-sir",
+      "topic": "integrations",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_select",
+      "question": "Which TWO types of integrations does SIR support for threat intelligence? (Choose 2)",
+      "options": [
+        {
+          "id": "a",
+          "text": "STIX/TAXII feed integration"
+        },
+        {
+          "id": "b",
+          "text": "Observable enrichment integrations"
+        },
+        {
+          "id": "c",
+          "text": "Direct database replication from SIEM"
+        },
+        {
+          "id": "d",
+          "text": "Real-time video feed analysis"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b"
+      ],
+      "explanation": {
+        "correct": "SIR supports STIX/TAXII feeds for ingesting structured threat intelligence data and observable enrichment integrations (like WHOIS, VirusTotal) for enriching indicators of compromise.",
+        "wrongAnswers": [
+          {
+            "choiceId": "c",
+            "explanation": "Database replication is not a standard SIR integration method; APIs are used instead"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Video feed analysis is not a threat intelligence integration in SIR"
+          }
+        ]
+      }
+    },
+    {
+      "id": "cis-sir-integrations-017",
+      "certification": "cis-sir",
+      "topic": "integrations",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "How can SIR submit observables to a Zscaler URL category list?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Through manual export and import into Zscaler"
+        },
+        {
+          "id": "b",
+          "text": "Directly from the observable record or security incident through built-in integration actions"
+        },
+        {
+          "id": "c",
+          "text": "Only through a custom REST API script"
+        },
+        {
+          "id": "d",
+          "text": "By emailing the observables to Zscaler support"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "SIR provides built-in integration with Zscaler that allows analysts to submit observables directly to URL category allow/deny lists from the observable record or the security incident.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Manual export is not needed; the integration is built-in"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Custom scripting is not required; SIR has native Zscaler integration"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Email-based submission is not how SIR integrates with Zscaler"
+          }
+        ]
+      }
     }
   ]
 }

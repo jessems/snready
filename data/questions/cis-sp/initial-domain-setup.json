@@ -92,7 +92,7 @@
       "options": [
         {
           "id": "a",
-          "text": "Domain Support — Domain Extension Installer"
+          "text": "Domain Support \u2014 Domain Extension Installer"
         },
         {
           "id": "b",
@@ -111,7 +111,7 @@
         "a"
       ],
       "explanation": {
-        "correct": "The Domain Support — Domain Extension Installer plugin must be activated to enable domain separation capabilities. This plugin adds the necessary infrastructure for creating and managing domains.",
+        "correct": "The Domain Support \u2014 Domain Extension Installer plugin must be activated to enable domain separation capabilities. This plugin adds the necessary infrastructure for creating and managing domains.",
         "wrongAnswers": [
           {
             "choiceId": "b",
@@ -137,7 +137,7 @@
       "source": {
         "type": "documentation",
         "path": "scraped-docs/cis-em-api/t_EMConfigureDomainSeparation.md",
-        "excerpt": "If it is not already active, activate the Domain Support – Domain Extension Installer plugin."
+        "excerpt": "If it is not already active, activate the Domain Support \u2013 Domain Extension Installer plugin."
       },
       "labels": {
         "certification": "cis-sp",
@@ -1168,6 +1168,98 @@
         "version": "1.1",
         "release": "Xanadu",
         "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sp-initial-domain-setup-016",
+      "certification": "cis-sp",
+      "topic": "initial-domain-setup",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A company wants to ensure that users in a child domain cannot see records from the parent domain. Which property should be configured?",
+      "options": [
+        {
+          "id": "a",
+          "text": "glide.sys.domain.force_mutual_exclusion"
+        },
+        {
+          "id": "b",
+          "text": "glide.sys.domain.restrict_visibility"
+        },
+        {
+          "id": "c",
+          "text": "glide.sys.domain.deny_parent_access"
+        },
+        {
+          "id": "d",
+          "text": "glide.sys.domain.mutual_exclusion"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "The glide.sys.domain.force_mutual_exclusion property prevents users in child domains from viewing parent domain records, enforcing strict separation between domains.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "This is not a valid ServiceNow property for domain separation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "This is not a valid ServiceNow property name"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Close but incorrect \u2014 the correct property includes 'force_' prefix"
+          }
+        ]
+      }
+    },
+    {
+      "id": "cis-sp-initial-domain-setup-017",
+      "certification": "cis-sp",
+      "topic": "initial-domain-setup",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What is the maximum recommended depth for a domain hierarchy in ServiceNow?",
+      "options": [
+        {
+          "id": "a",
+          "text": "2 levels"
+        },
+        {
+          "id": "b",
+          "text": "3 levels"
+        },
+        {
+          "id": "c",
+          "text": "5 levels"
+        },
+        {
+          "id": "d",
+          "text": "There is no recommended limit"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "ServiceNow recommends a maximum of 3 levels in the domain hierarchy (global \u2192 company \u2192 department) to maintain performance and manageability.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "While simpler is better, 2 levels is not the specific recommendation"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "5 levels would create excessive complexity and potential performance issues"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "ServiceNow does provide a recommended limit of 3 levels"
+          }
+        ]
       }
     }
   ]

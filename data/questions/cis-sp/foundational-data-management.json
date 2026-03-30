@@ -190,7 +190,7 @@
         "b"
       ],
       "explanation": {
-        "correct": "If the Domain Support — Domain Extensions Installer plugin is activated, then the CMDB Health dashboard is domain aware. It aggregates and reports health failures and scores based on user's domain visibility of CIs. If domain visibility lets a user see a CI, then the audit rule in that user's domain applies to that CI.",
+        "correct": "If the Domain Support \u2014 Domain Extensions Installer plugin is activated, then the CMDB Health dashboard is domain aware. It aggregates and reports health failures and scores based on user's domain visibility of CIs. If domain visibility lets a user see a CI, then the audit rule in that user's domain applies to that CI.",
         "wrongAnswers": [
           {
             "choiceId": "a",
@@ -295,7 +295,7 @@
       "source": {
         "type": "documentation",
         "path": "scraped-docs/cis-df-api/cmdb-health-domain-separation.md",
-        "excerpt": "Required fields – These are based on the class schema defined in the platform's System dictionary and is fixed for all domains. Orphan – Orphan rules are domain separated; there are different orphan rules for different domains."
+        "excerpt": "Required fields \u2013 These are based on the class schema defined in the platform's System dictionary and is fixed for all domains. Orphan \u2013 Orphan rules are domain separated; there are different orphan rules for different domains."
       },
       "labels": {
         "certification": "cis-sp",
@@ -534,7 +534,7 @@
       "source": {
         "type": "documentation",
         "path": "scraped-docs/cis-df-api/cmdb-health-domain-separation.md",
-        "excerpt": "Failure Threshold, Create Task, Task Assignee Group – All these settings can be set differently for different domains depending on what is needed in each domain."
+        "excerpt": "Failure Threshold, Create Task, Task Assignee Group \u2013 All these settings can be set differently for different domains depending on what is needed in each domain."
       },
       "labels": {
         "certification": "cis-sp",
@@ -613,7 +613,7 @@
       "source": {
         "type": "documentation",
         "path": "scraped-docs/cis-df-api/cmdb-health-domain-separation.md",
-        "excerpt": "Active – This setting is the most important because it affects how long the jobs run. The more domains with flags set to Active, the longer the jobs take. If there is a large number of domains (>100) the job can take a very long time."
+        "excerpt": "Active \u2013 This setting is the most important because it affects how long the jobs run. The more domains with flags set to Active, the longer the jobs take. If there is a large number of domains (>100) the job can take a very long time."
       },
       "labels": {
         "certification": "cis-sp",
@@ -1392,6 +1392,98 @@
         "version": "1.1",
         "release": "Xanadu",
         "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sp-foundational-data-management-019",
+      "certification": "cis-sp",
+      "topic": "foundational-data-management",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What happens to CMDB configuration items when domain separation is enabled?",
+      "options": [
+        {
+          "id": "a",
+          "text": "All CIs are automatically duplicated for each domain"
+        },
+        {
+          "id": "b",
+          "text": "CIs can be assigned to specific domains using the sys_domain field"
+        },
+        {
+          "id": "c",
+          "text": "CMDB does not support domain separation"
+        },
+        {
+          "id": "d",
+          "text": "CIs are always visible across all domains regardless of separation"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "When domain separation is enabled, CMDB configuration items can be assigned to specific domains using the sys_domain field, controlling which tenants can see which CIs.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "CIs are not automatically duplicated; they are assigned to domains"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "CMDB fully supports domain separation"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Domain separation restricts CI visibility based on domain assignment"
+          }
+        ]
+      }
+    },
+    {
+      "id": "cis-sp-foundational-data-management-020",
+      "certification": "cis-sp",
+      "topic": "foundational-data-management",
+      "cognitiveLevel": "analysis",
+      "type": "multiple_choice",
+      "question": "Which approach is recommended for managing users who need access to multiple domains?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Create duplicate user accounts in each domain"
+        },
+        {
+          "id": "b",
+          "text": "Assign the user to the global domain"
+        },
+        {
+          "id": "c",
+          "text": "Use domain override records to grant cross-domain access"
+        },
+        {
+          "id": "d",
+          "text": "Elevate the user to the admin role"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "Domain override records allow specific users to access records in domains other than their own without creating duplicates or granting excessive privileges.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Duplicate accounts create management overhead and are not recommended"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "Assigning to global domain may grant too broad access"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Admin role is excessive and violates least-privilege principle"
+          }
+        ]
       }
     }
   ]

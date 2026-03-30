@@ -1436,6 +1436,141 @@
         "release": "Xanadu",
         "reviewed": false
       }
+    },
+    {
+      "id": "cis-vr-data-ingestion-019",
+      "certification": "cis-vr",
+      "topic": "data-ingestion",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_select",
+      "question": "Which TWO vulnerability scanner integrations are available out-of-the-box in ServiceNow? (Choose 2)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Qualys"
+        },
+        {
+          "id": "b",
+          "text": "Tenable.io"
+        },
+        {
+          "id": "c",
+          "text": "OpenVAS"
+        },
+        {
+          "id": "d",
+          "text": "Burp Suite"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b"
+      ],
+      "explanation": {
+        "correct": "ServiceNow provides out-of-the-box integrations with Qualys and Tenable.io for importing vulnerability scan data into Vulnerability Response.",
+        "wrongAnswers": [
+          {
+            "choiceId": "c",
+            "explanation": "OpenVAS does not have a native out-of-the-box integration; custom integration would be needed"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Burp Suite is a web application testing tool, not a standard VR integration"
+          }
+        ]
+      }
+    },
+    {
+      "id": "cis-vr-data-ingestion-020",
+      "certification": "cis-vr",
+      "topic": "data-ingestion",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "What happens when a vulnerability scanner imports a vulnerability that already exists in ServiceNow?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A duplicate record is always created"
+        },
+        {
+          "id": "b",
+          "text": "The existing record is updated with the latest scan data based on matching rules"
+        },
+        {
+          "id": "c",
+          "text": "The import is rejected entirely"
+        },
+        {
+          "id": "d",
+          "text": "The old record is deleted and a new one is created"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Matching rules identify existing vulnerability records and update them with the latest scan data (last seen date, status, etc.) rather than creating duplicates.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Matching rules prevent duplicate creation by identifying existing records"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The import proceeds but updates existing records instead of creating new ones"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Existing records are updated in place, preserving history and relationships"
+          }
+        ]
+      }
+    },
+    {
+      "id": "cis-vr-data-ingestion-021",
+      "certification": "cis-vr",
+      "topic": "data-ingestion",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What is the role of the Vulnerable Item (VI) record in Vulnerability Response?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It represents the vulnerability definition from the NVD database"
+        },
+        {
+          "id": "b",
+          "text": "It represents the association between a specific vulnerability and an affected configuration item"
+        },
+        {
+          "id": "c",
+          "text": "It stores the scan schedule configuration"
+        },
+        {
+          "id": "d",
+          "text": "It tracks the remediation task progress"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "A Vulnerable Item (VI) record represents the specific instance where a vulnerability exists on a particular CI, linking the vulnerability definition to the affected asset.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The vulnerability definition is stored in the Vulnerability (VE) record, not the VI"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Scan schedules are configured in the integration settings, not VI records"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Remediation task progress is tracked on the remediation task record"
+          }
+        ]
+      }
     }
   ]
 }
