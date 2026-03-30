@@ -3,6 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getAllPosts, getPostBySlug } from "@/data/blog/posts";
 import { MarkdownContent } from "@/components/MarkdownContent";
+import { getBlogRelatedCerts } from "@/lib/internal-links";
+import { getCertificationBySlug } from "@/lib/data";
 import {
   RoleSalaryChart,
   USvsUKChart,
@@ -195,35 +197,103 @@ export default async function BlogPostPage({ params }: Props) {
           )}
         </div>
 
-        {/* CTA */}
-        <div className="mt-12 rounded-xl border-2 border-emerald-200 bg-emerald-50 p-6 dark:border-emerald-800 dark:bg-emerald-900/20">
-          <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
-            Ready to practice?
-          </h3>
-          <p className="mt-2 text-zinc-600 dark:text-zinc-400">
-            Test your knowledge with questions generated from official ServiceNow content.
-          </p>
-          <div className="mt-4 flex flex-wrap gap-3">
-            <Link
-              href="/csa/practice-questions"
-              className="inline-flex items-center rounded-lg bg-emerald-600 px-4 py-2 font-medium text-white hover:bg-emerald-700"
-            >
-              CSA Practice
-            </Link>
-            <Link
-              href="/cad/practice-questions"
-              className="inline-flex items-center rounded-lg border border-emerald-600 px-4 py-2 font-medium text-emerald-600 hover:bg-emerald-50 dark:text-emerald-400 dark:hover:bg-emerald-900/30"
-            >
-              CAD Practice
-            </Link>
-            <Link
-              href="/certifications"
-              className="inline-flex items-center rounded-lg border border-zinc-300 px-4 py-2 font-medium text-zinc-700 hover:bg-zinc-50 dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-800"
-            >
-              All Certifications
-            </Link>
-          </div>
-        </div>
+        {/* CTA — dynamic based on related certifications */}
+        {(() => {
+          const relatedCertSlugs = getBlogRelatedCerts(slug);
+          const relatedCerts = relatedCertSlugs
+            .map((s) => {
+              const c = getCertificationBySlug(s);
+              return c ? { slug: s, name: c.name } : null;
+            })
+            .filter(Boolean)
+            .slice(0, 3);
+
+          return (
+            <div className="mt-12 rounded-xl border-2 border-emerald-200 bg-emerald-50 p-6 dark:border-emerald-800 dark:bg-emerald-900/20">
+              <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+                Ready to practice?
+              </h3>
+              <p className="mt-2 text-zinc-600 dark:text-zinc-400">
+                Test your knowledge with questions generated from official ServiceNow content.
+              </p>
+              <div className="mt-4 flex flex-wrap gap-3">
+                {relatedCerts.length > 0 ? (
+                  <>
+                    <Link
+                      href={`/${relatedCerts[0]!.slug}/practice-questions`}
+                      className="inline-flex items-center rounded-lg bg-emerald-600 px-4 py-2 font-medium text-white hover:bg-emerald-700"
+                    >
+                      {relatedCerts[0]!.name} Practice
+                    </Link>
+                    {relatedCerts.slice(1).map((c) => (
+                      <Link
+                        key={c!.slug}
+                        href={`/${c!.slug}/practice-questions`}
+                        className="inline-flex items-center rounded-lg border border-emerald-600 px-4 py-2 font-medium text-emerald-600 hover:bg-emerald-50 dark:text-emerald-400 dark:hover:bg-emerald-900/30"
+                      >
+                        {c!.name} Practice
+                      </Link>
+                    ))}
+                  </>
+                ) : (
+                  <>
+                    <Link
+                      href="/csa/practice-questions"
+                      className="inline-flex items-center rounded-lg bg-emerald-600 px-4 py-2 font-medium text-white hover:bg-emerald-700"
+                    >
+                      CSA Practice
+                    </Link>
+                    <Link
+                      href="/cad/practice-questions"
+                      className="inline-flex items-center rounded-lg border border-emerald-600 px-4 py-2 font-medium text-emerald-600 hover:bg-emerald-50 dark:text-emerald-400 dark:hover:bg-emerald-900/30"
+                    >
+                      CAD Practice
+                    </Link>
+                  </>
+                )}
+                <Link
+                  href="/certifications"
+                  className="inline-flex items-center rounded-lg border border-zinc-300 px-4 py-2 font-medium text-zinc-700 hover:bg-zinc-50 dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-800"
+                >
+                  All Certifications
+                </Link>
+              </div>
+            </div>
+          );
+        })()}
+
+        {/* Related Certifications */}
+        {(() => {
+          const relatedCertSlugs = getBlogRelatedCerts(slug);
+          const certs = relatedCertSlugs
+            .map((s) => {
+              const c = getCertificationBySlug(s);
+              return c ? { slug: s, name: c.name, fullName: c.fullName } : null;
+            })
+            .filter(Boolean);
+
+          if (certs.length === 0) return null;
+
+          return (
+            <div className="mt-8">
+              <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+                Related Certifications
+              </h3>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {certs.map((c) => (
+                  <Link
+                    key={c!.slug}
+                    href={`/${c!.slug}`}
+                    className="inline-flex items-center gap-1.5 rounded-full border border-zinc-200 bg-white px-3 py-1.5 text-sm font-medium text-zinc-700 transition-colors hover:border-emerald-300 hover:text-emerald-600 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-300 dark:hover:border-emerald-600 dark:hover:text-emerald-400"
+                  >
+                    <span className="h-2 w-2 rounded-full bg-emerald-500" />
+                    {c!.name}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          );
+        })()}
 
         {/* Related Posts */}
         {relatedPosts.length > 0 && (

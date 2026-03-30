@@ -18,6 +18,7 @@ import {
 } from "@/lib/data";
 import { ExamTipsSnippet } from "@/components/ExamTipsSnippet";
 import { DumpsAlternativeSection } from "@/components/DumpsAlternativeSection";
+import { RelatedResources } from "@/components/RelatedResources";
 import { breadcrumbs, generateBreadcrumbJsonLd } from "@/lib/breadcrumbs";
 
 interface PageProps {
@@ -721,6 +722,11 @@ export default async function CertificationPage({ params }: PageProps) {
             </div>
           </div>
         </section>
+
+        {/* Related Resources */}
+        {isReady && (
+          <RelatedResources certSlug={slug} certName={cert.name} />
+        )}
 
         {/* CTA */}
         <section className="bg-emerald-600 py-16 dark:bg-emerald-700">
