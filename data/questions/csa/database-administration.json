@@ -1463,6 +1463,441 @@
         "release": "Xanadu",
         "reviewed": false
       }
+    },
+    {
+      "id": "csa-db-019",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "An administrator needs to import 5,000 user records from a CSV file. After the import, several records have incorrect department values. Which step in the import process most likely caused this issue?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The Transform Map field mapping for Department used an incorrect coalesce field"
+        },
+        {
+          "id": "b",
+          "text": "The CSV file was too large to process"
+        },
+        {
+          "id": "c",
+          "text": "The import set table was not created"
+        },
+        {
+          "id": "d",
+          "text": "The user running the import lacked the admin role"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "When reference field mappings (like Department) use incorrect coalesce fields in the Transform Map, records may map to wrong values or create duplicates. The coalesce field determines how imported values match existing reference records.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "ServiceNow handles large CSV imports; 5,000 records is well within limits."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "If the import set table wasn't created, the import would fail entirely, not produce incorrect values."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The import_admin or admin role is needed to run imports, but role issues would prevent the import, not cause incorrect mappings."
+          }
+        ]
+      },
+      "certification": "csa",
+      "topic": "database-administration",
+      "references": [],
+      "isFree": false,
+      "source": {
+        "type": "generated",
+        "course": {
+          "courseSlug": "servicenow-administration-fundamentals-xanadu",
+          "moduleTitle": "CSA Expansion",
+          "lessonSlug": "database-administration",
+          "lessonTitle": "CSA database-administration expansion questions",
+          "url": ""
+        },
+        "path": "",
+        "excerpt": ""
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "database-administration",
+        "domainSlug": "database-administration",
+        "subtopics": [],
+        "tags": []
+      },
+      "meta": {
+        "generatedAt": "2026-03-31T02:09:00Z",
+        "version": "2.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-db-020",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which two field types in ServiceNow store references to records in other tables? (Choose 2)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Reference field"
+        },
+        {
+          "id": "b",
+          "text": "Glide List field"
+        },
+        {
+          "id": "c",
+          "text": "String field"
+        },
+        {
+          "id": "d",
+          "text": "Integer field"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b"
+      ],
+      "explanation": {
+        "correct": "Reference fields store a single reference (sys_id) to a record in another table. Glide List fields store multiple references (comma-separated sys_ids) to records in another table.",
+        "wrongAnswers": [
+          {
+            "choiceId": "c",
+            "explanation": "String fields store plain text values, not record references."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Integer fields store numeric values, not references to other records."
+          }
+        ]
+      },
+      "certification": "csa",
+      "topic": "database-administration",
+      "references": [],
+      "isFree": false,
+      "source": {
+        "type": "generated",
+        "course": {
+          "courseSlug": "servicenow-administration-fundamentals-xanadu",
+          "moduleTitle": "CSA Expansion",
+          "lessonSlug": "database-administration",
+          "lessonTitle": "CSA database-administration expansion questions",
+          "url": ""
+        },
+        "path": "",
+        "excerpt": ""
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "database-administration",
+        "domainSlug": "database-administration",
+        "subtopics": [],
+        "tags": []
+      },
+      "meta": {
+        "generatedAt": "2026-03-31T02:09:00Z",
+        "version": "2.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-db-021",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What is the purpose of a 'coalesce' field in a Transform Map?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It determines whether to update an existing record or insert a new one during import"
+        },
+        {
+          "id": "b",
+          "text": "It combines multiple source columns into one target field"
+        },
+        {
+          "id": "c",
+          "text": "It encrypts sensitive data during import"
+        },
+        {
+          "id": "d",
+          "text": "It validates data format before insertion"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "A coalesce field acts as a unique identifier during data import. If a record with a matching coalesce value exists, it's updated; if not, a new record is inserted. This prevents duplicate records during imports.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Combining columns is done through field mapping scripts, not coalescing."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Data encryption is handled by encryption contexts, not coalesce fields."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Data validation can be done through transform scripts, not the coalesce setting itself."
+          }
+        ]
+      },
+      "certification": "csa",
+      "topic": "database-administration",
+      "references": [],
+      "isFree": false,
+      "source": {
+        "type": "generated",
+        "course": {
+          "courseSlug": "servicenow-administration-fundamentals-xanadu",
+          "moduleTitle": "CSA Expansion",
+          "lessonSlug": "database-administration",
+          "lessonTitle": "CSA database-administration expansion questions",
+          "url": ""
+        },
+        "path": "",
+        "excerpt": ""
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "database-administration",
+        "domainSlug": "database-administration",
+        "subtopics": [],
+        "tags": []
+      },
+      "meta": {
+        "generatedAt": "2026-03-31T02:09:00Z",
+        "version": "2.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-db-022",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "An administrator wants to create a field that automatically calculates the number of days between the Opened date and the Resolved date on an incident. Which field type is most appropriate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Duration field with a calculated default value"
+        },
+        {
+          "id": "b",
+          "text": "Integer field with a Business Rule to calculate the value"
+        },
+        {
+          "id": "c",
+          "text": "Formula field that references the two date fields"
+        },
+        {
+          "id": "d",
+          "text": "String field with a UI Policy to display the calculation"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "An Integer field populated by a Business Rule (before insert/update) that calculates the day difference between opened_at and resolved_at is the most reliable approach. Business Rules ensure the value is always accurate when the record is saved.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Duration fields store time spans but calculated default values only run on record creation, not on updates."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "ServiceNow doesn't have a 'Formula field' type in the standard platform."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "UI Policies control form display behavior; they don't calculate and store values in the database."
+          }
+        ]
+      },
+      "certification": "csa",
+      "topic": "database-administration",
+      "references": [],
+      "isFree": false,
+      "source": {
+        "type": "generated",
+        "course": {
+          "courseSlug": "servicenow-administration-fundamentals-xanadu",
+          "moduleTitle": "CSA Expansion",
+          "lessonSlug": "database-administration",
+          "lessonTitle": "CSA database-administration expansion questions",
+          "url": ""
+        },
+        "path": "",
+        "excerpt": ""
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "database-administration",
+        "domainSlug": "database-administration",
+        "subtopics": [],
+        "tags": []
+      },
+      "meta": {
+        "generatedAt": "2026-03-31T02:09:00Z",
+        "version": "2.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-db-023",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What is the maximum number of rows that can be displayed in a single list view by default in ServiceNow?",
+      "options": [
+        {
+          "id": "a",
+          "text": "20"
+        },
+        {
+          "id": "b",
+          "text": "100"
+        },
+        {
+          "id": "c",
+          "text": "500"
+        },
+        {
+          "id": "d",
+          "text": "Unlimited"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "By default, ServiceNow displays 20 rows per page in list views. This can be changed by the user (up to the system maximum) or by an administrator through the glide.ui.per_page system property.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "100 rows can be configured but is not the default setting."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "500 is not the default; displaying this many rows would impact performance."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Lists always paginate; there is no unlimited display option by default."
+          }
+        ]
+      },
+      "certification": "csa",
+      "topic": "database-administration",
+      "references": [],
+      "isFree": false,
+      "source": {
+        "type": "generated",
+        "course": {
+          "courseSlug": "servicenow-administration-fundamentals-xanadu",
+          "moduleTitle": "CSA Expansion",
+          "lessonSlug": "database-administration",
+          "lessonTitle": "CSA database-administration expansion questions",
+          "url": ""
+        },
+        "path": "",
+        "excerpt": ""
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "database-administration",
+        "domainSlug": "database-administration",
+        "subtopics": [],
+        "tags": []
+      },
+      "meta": {
+        "generatedAt": "2026-03-31T02:09:00Z",
+        "version": "2.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-db-024",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "Which statement about table inheritance in ServiceNow is correct?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Child tables inherit all fields and business logic from their parent table"
+        },
+        {
+          "id": "b",
+          "text": "Child tables share the same physical database table but cannot have additional fields"
+        },
+        {
+          "id": "c",
+          "text": "Parent table records are automatically duplicated in child tables"
+        },
+        {
+          "id": "d",
+          "text": "Table inheritance only works with the Task table"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "In ServiceNow's table inheritance model, child tables (extensions) inherit all parent fields, ACLs, business rules, and other configurations. Child tables can also define additional fields specific to their needs.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Child tables CAN have additional fields beyond what the parent defines."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Records exist in one table; they are not duplicated across parent and child tables."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "While Task is the most common example, any table can be extended to create inheritance hierarchies."
+          }
+        ]
+      },
+      "certification": "csa",
+      "topic": "database-administration",
+      "references": [],
+      "isFree": false,
+      "source": {
+        "type": "generated",
+        "course": {
+          "courseSlug": "servicenow-administration-fundamentals-xanadu",
+          "moduleTitle": "CSA Expansion",
+          "lessonSlug": "database-administration",
+          "lessonTitle": "CSA database-administration expansion questions",
+          "url": ""
+        },
+        "path": "",
+        "excerpt": ""
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "database-administration",
+        "domainSlug": "database-administration",
+        "subtopics": [],
+        "tags": []
+      },
+      "meta": {
+        "generatedAt": "2026-03-31T02:09:00Z",
+        "version": "2.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     }
   ]
 }
