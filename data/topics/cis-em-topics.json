@@ -12,7 +12,7 @@
         "keyConcepts": "Event Management is a robust application that helps keep IT systems healthy by spotting problems quickly and fixing them. It collects events from different sources, figures out what's causing the issues, and converts them into alerts. These alerts are then analyzed, grouped, and acted upon to resolve issues and maintain system health. Event Management seamlessly integrates with various monitoring tools via connectors and listeners, enabling comprehensive data collection and correlation.",
         "whyItMatters": "Understanding Event Management's role in ITOM is essential for the CIS-EM exam. This domain tests your knowledge of how Event Management fits into the broader IT operations landscape, its value proposition for customers, and how it integrates with other ServiceNow applications like Alert Intelligence and CSDM."
       },
-      "questionCount": 4
+      "questionCount": 7
     },
     {
       "id": "architecture-discovery",
@@ -25,7 +25,7 @@
         "keyConcepts": "The MID Server plays a central role in Event Management by polling external monitoring tools and sending event information to the ServiceNow instance. Events are stored in the em_event table and processed through rules to generate alerts. Alerts are bound to Configuration Items (CIs) for root cause analysis purposes. The architecture enables viewing alerts on dashboards, in Alert Intelligence, or from service maps.",
         "whyItMatters": "Understanding the Event Management architecture is crucial for implementing and troubleshooting event collection. This domain tests your knowledge of how events flow from monitoring tools through MID Servers to alerts, and how CMDB integration enables meaningful root cause analysis."
       },
-      "questionCount": 6
+      "questionCount": 10
     },
     {
       "id": "event-configuration",
@@ -38,7 +38,7 @@
         "keyConcepts": "Event Field Mappings allow you to transform event data by mapping values from specific event fields to other fields. Mapping types include single field transforms, copy operations, regex-based mappings, reference table lookups, and advanced scripting. Event rules determine how events are processed, with options for ignoring events, applying transforms, accumulating thresholds, and generating alerts based on message keys. The evt_mgmt_admin role is required for most configuration tasks.",
         "whyItMatters": "This domain carries the highest exam weight because proper event configuration is essential for effective Event Management. You must understand how to configure event rules, field mappings, thresholds, and CI binding to transform raw events into actionable alerts."
       },
-      "questionCount": 16
+      "questionCount": 27
     },
     {
       "id": "alerts-tasks",
@@ -51,7 +51,7 @@
         "keyConcepts": "Alert Management Rules (sn_em_arm) determine responses to alerts such as opening incidents, running subflows, or launching remediation actions. Rules are evaluated every 11 seconds by scheduled jobs and run only on open alerts. Alert clustering using key values groups related alerts based on CI attributes like location or supplier. For enhanced performance, use subflows instead of workflows. Users with evt_mgmt_admin can create rules; evt_mgmt_operator can manually run them.",
         "whyItMatters": "Alert management is where Event Management delivers value by automating responses to IT issues. Understanding alert rules, clustering, correlation, and synchronization with alert grouping is essential for the exam and real-world implementations."
       },
-      "questionCount": 18
+      "questionCount": 30
     },
     {
       "id": "event-sources",
@@ -64,7 +64,7 @@
         "keyConcepts": "Event Management provides numerous pull connectors (SCOM, Nagios, vCenter, IBM Netcool, etc.) that poll external tools, and push connectors/listeners that receive events sent directly to the instance. Events can also arrive via email server, script, SNMP trap, or web service API. All connectors support external credential storage. The Operational Intelligence plugin (com.snc.sa.metric) is required for Azure Metrics and AWS CloudWatch Metrics connectors.",
         "whyItMatters": "Knowing which connectors are available and how to configure event sources is fundamental to Event Management implementation. The exam tests your knowledge of specific connector capabilities, supported versions, and push vs pull methods."
       },
-      "questionCount": 10
+      "questionCount": 16
     },
     {
       "id": "metric-intelligence",
@@ -77,7 +77,7 @@
         "keyConcepts": "Threshold monitoring generates events when metrics exceed defined bounds. The MID Web Server extension can receive metric data using key-based HMAC authentication. The API endpoint for raw metrics is /api/mid/sa/metrics. Timestamps in authentication requests must be within 15 minutes of the MID Server time. The Operational Intelligence plugin enables advanced metric connectors for Azure and AWS CloudWatch.",
         "whyItMatters": "Metric Intelligence extends Event Management beyond events to time-series data analysis. Understanding metric collection, thresholds, and the data pipeline is important for comprehensive ITOM implementations."
       },
-      "questionCount": 6
+      "questionCount": 10
     }
   ]
 }
