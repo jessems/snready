@@ -3320,6 +3320,175 @@ We have **100+ practice questions for all 20 certifications**, generated from of
 | Browse everything | [All Certifications](/certifications) |
 `
   },
+  {
+    slug: "servicenow-csa-practice-test-200-questions-2026",
+    title: "ServiceNow CSA Practice Test: 200 Questions to Pass the Exam (2026)",
+    description: "The most comprehensive free CSA practice test available. 200 exam-quality questions across all 8 domains. See where you stand before spending $210.",
+    publishedAt: "2026-03-31",
+    author: "SNReady Team",
+    tags: ["CSA", "practice test", "exam prep", "free questions"],
+    featured: true,
+    readingTime: 14,
+    content: `
+## Why 200 Questions Matters
+
+Most ServiceNow CSA practice tests give you 40-60 questions. That's not enough to find your blind spots.
+
+The real CSA exam has 60 questions covering 8 domains. If you only practice with 50 questions, you might never see a question on view rules, coalesce fields, or delegated administration — all of which appear on the real exam.
+
+We built 200 questions because that's what it takes to genuinely prepare. You'll see every topic multiple times, in different formats, from different angles.
+
+## What the Real CSA Exam Looks Like
+
+Before you practice, know what you're preparing for:
+
+| Aspect | Details |
+|--------|---------|
+| **Total questions** | 60 |
+| **Time limit** | 90 minutes |
+| **Passing score** | ~70% (42 correct) |
+| **Question types** | Single choice, multi-select ("choose 2"), negative ("which is NOT") |
+| **Cost per attempt** | $210 |
+| **Format** | Online proctored or test center |
+
+**The exam is not conceptual.** You won't see "What is an incident?" You'll see "Which field on the incident form determines the SLA calculation when the caller is a VIP?" Specificity matters.
+
+## Domain Breakdown: Where to Focus
+
+Our 200 questions mirror the official exam blueprint:
+
+| Domain | Exam Weight | Our Questions | Focus Areas |
+|--------|------------|---------------|-------------|
+| User Interface & Navigation | 15% | 30 | Lists, filters, forms, views, Next Experience, favorites |
+| User Administration & Security | 15% | 30 | ACLs, roles, groups, delegated admin, security settings |
+| Database Administration | 12% | 24 | Table inheritance, import sets, transform maps, coalesce, field types |
+| Self-Service & Automation | 15% | 30 | Service Catalog, Flow Designer, Knowledge Base, Record Producers |
+| Incident Management | 12% | 24 | Lifecycle, priority matrix, SLAs, Major Incidents, assignment rules |
+| Problem Management | 8% | 16 | Known Errors, root cause analysis, proactive vs reactive |
+| Change Management | 10% | 20 | Standard/Normal/Emergency, CAB, conflict detection, rollback |
+| Reporting & Dashboards | 13% | 26 | Report types, PA vs reports, scheduled reports, drill-down |
+
+## Question Types You'll Face
+
+The real exam uses several question formats. Our practice test includes all of them:
+
+### 1. Single Choice (35%)
+*"Which tool is used to define relationships between fields in an import set table and a target table?"*
+- A. Data Source
+- B. **Transform Map** ✓
+- C. Update Set
+- D. Import Log
+
+### 2. Multi-Select "Choose 2" (20%)
+*"Which two field types store references to records in other tables? (Choose 2)"*
+- A. **Reference field** ✓
+- B. **Glide List field** ✓
+- C. String field
+- D. Integer field
+
+### 3. Negative Questions (15%)
+*"Which statement about Next Experience UI is NOT true?"*
+These test whether you can identify the incorrect statement among plausible options. Don't skip the "NOT" in the question.
+
+### 4. Multi-Select "Choose 3" (15%)
+*"What are the three types of change in ServiceNow's Change Management? (Choose 3)"*
+These require knowing multiple correct answers — partial credit is typically not given.
+
+### 5. Scenario-Based (15%)
+*"A user reports that a reference field on a form is not displaying expected records. Which two actions should an administrator investigate?"*
+These test your ability to apply knowledge to real situations.
+
+## Topic Deep Dive: What Trips People Up
+
+Based on hundreds of Reddit posts and exam feedback, here are the areas where candidates struggle most:
+
+### 🔴 Import Sets & Transform Maps (Database Administration)
+This is the #1 topic people underestimate. Know:
+- The complete import process: Data Source → Import Set → Transform Map → Target Table
+- What coalesce fields do (determine insert vs update)
+- How to handle reference field mappings
+- What happens when transforms fail
+
+### 🔴 ACL Evaluation Order (User Administration)
+ACLs use AND logic when multiple rules match. If you have a table-level ACL and a field-level ACL, BOTH must pass. This surprises people who expect "most specific wins."
+
+### 🔴 Flow Designer vs Workflow (Self-Service)
+Flow Designer is ServiceNow's current automation tool. Know:
+- Triggers (record-based, scheduled, application)
+- Actions vs Subflows
+- It's no-code/low-code (no scripting required for most actions)
+
+### 🟡 Change Types (Change Management)
+Know the three types cold:
+- **Standard**: Pre-approved, low-risk, uses templates
+- **Normal**: Requires assessment and CAB approval
+- **Emergency**: Fast-tracked for critical fixes
+
+### 🟡 Problem vs Incident (Problem Management)
+- Incident = restore service ASAP
+- Problem = find root cause
+- Known Error = root cause identified, workaround documented
+
+## How to Use Our Practice Test
+
+### Strategy 1: Full Mock Exam First
+1. Go to [CSA Mock Exam](/csa/mock-exam)
+2. Take the 60-question timed test (90 minutes)
+3. See your domain-by-domain breakdown
+4. Focus your study on domains below 70%
+
+### Strategy 2: Domain-by-Domain Deep Dive
+If you know your weak areas, go directly to that domain:
+- [UI & Navigation Questions](/csa/practice-questions/ui-navigation)
+- [User Administration Questions](/csa/practice-questions/user-administration)
+- [Database Administration Questions](/csa/practice-questions/database-administration)
+- [Self-Service & Automation Questions](/csa/practice-questions/self-service-automation)
+- [Incident Management Questions](/csa/practice-questions/incident-management)
+- [Problem Management Questions](/csa/practice-questions/problem-management)
+- [Change Management Questions](/csa/practice-questions/change-management)
+- [Reporting & Dashboards Questions](/csa/practice-questions/reporting-dashboards)
+
+### Strategy 3: Spaced Repetition
+1. Take all free questions first
+2. Note which ones you got wrong
+3. Review those topics in the [Admin Fundamentals course](https://nowlearning.servicenow.com)
+4. Come back and take the practice test again in 3-5 days
+5. Repeat until you're consistently above 85%
+
+**Aim for 85%+ on practice questions.** The real exam adds pressure — budget a 10-15% performance drop.
+
+## Common Mistakes to Avoid
+
+### ❌ Studying only the course slides
+The course teaches concepts. The exam tests application. You need hands-on time in a PDI.
+
+### ❌ Skipping multi-select questions in practice
+About 35% of the real exam is multi-select. If you only practice single-choice, you're unprepared for a third of the exam.
+
+### ❌ Memorizing answers instead of understanding
+Our questions have detailed explanations for every option — correct AND wrong. Read the wrong-answer explanations. They teach you why common mistakes are wrong.
+
+### ❌ Ignoring Problem Management because it's only 8%
+That's still 5 questions. Five easy questions if you know the material. Five lost points if you don't.
+
+### ❌ Not timing yourself
+90 minutes for 60 questions is 1.5 minutes per question. That's tight when multi-select questions need you to evaluate 5-6 options. Practice under time pressure.
+
+## Ready to Start?
+
+We have **200 CSA questions** — the most comprehensive practice test available for ServiceNow CSA. Start with the free questions, see your score, then unlock the full bank.
+
+| Action | Link |
+|--------|------|
+| Start free CSA questions | [Free CSA Practice Questions](/csa/free-questions) |
+| Take a timed mock exam | [CSA Mock Exam](/csa/mock-exam) |
+| See all 8 domain topics | [CSA Study Topics](/csa) |
+| Create a study schedule | [Study Plan Generator](/study-plan) |
+| Not sure CSA is right for you? | [Certification Quiz](/quiz) |
+
+Every question includes full explanations. No brain dumps. No memorization. Just genuine exam preparation.
+`
+  },
 ];
 
 export function getAllPosts(): BlogPost[] {
