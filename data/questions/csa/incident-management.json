@@ -1375,6 +1375,441 @@
         "release": "Xanadu",
         "reviewed": false
       }
+    },
+    {
+      "id": "csa-inc-019",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "Multiple users report the same email service outage. An administrator has already created a Major Incident. What should be done with the individual incident tickets?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Associate them as child incidents to the Major Incident"
+        },
+        {
+          "id": "b",
+          "text": "Delete all duplicate incidents"
+        },
+        {
+          "id": "c",
+          "text": "Merge them into a single incident record"
+        },
+        {
+          "id": "d",
+          "text": "Close them as 'Not Reproducible'"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "Child incidents should be associated with the Major Incident (parent). This maintains individual user tracking while consolidating the resolution effort. When the Major Incident is resolved, child incidents can be batch-resolved.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Deleting incidents removes the audit trail and individual user records needed for reporting and communication."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Merging loses individual caller information and contact details needed for user notifications."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The issue IS reproducible \u2014 it's a confirmed outage. Closing as Not Reproducible would be incorrect."
+          }
+        ]
+      },
+      "certification": "csa",
+      "topic": "incident-management",
+      "references": [],
+      "isFree": false,
+      "source": {
+        "type": "generated",
+        "course": {
+          "courseSlug": "servicenow-administration-fundamentals-xanadu",
+          "moduleTitle": "CSA Expansion",
+          "lessonSlug": "incident-management",
+          "lessonTitle": "CSA incident-management expansion questions",
+          "url": ""
+        },
+        "path": "",
+        "excerpt": ""
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "incident-management",
+        "domainSlug": "incident-management",
+        "subtopics": [],
+        "tags": []
+      },
+      "meta": {
+        "generatedAt": "2026-03-31T02:09:00Z",
+        "version": "2.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-inc-020",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "Which statements about SLA (Service Level Agreement) tracking on incidents are true? (Choose 2)",
+      "options": [
+        {
+          "id": "a",
+          "text": "SLAs can trigger notifications when approaching breach time"
+        },
+        {
+          "id": "b",
+          "text": "SLA timers pause automatically when an incident is in a 'Pending' state"
+        },
+        {
+          "id": "c",
+          "text": "SLAs can only measure resolution time, not response time"
+        },
+        {
+          "id": "d",
+          "text": "SLA definitions cannot use conditions to match specific incident types"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b"
+      ],
+      "explanation": {
+        "correct": "SLAs support escalation notifications at configured thresholds (e.g., 50%, 75% of target time). SLA timers pause based on configured pause conditions, commonly when incidents are in Pending/Awaiting states, ensuring time isn't counted when the service desk is waiting on the caller.",
+        "wrongAnswers": [
+          {
+            "choiceId": "c",
+            "explanation": "SLAs can measure multiple stages including response time, resolution time, and any custom stage."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "SLA definitions use conditions to target specific priorities, categories, or any incident field values."
+          }
+        ]
+      },
+      "certification": "csa",
+      "topic": "incident-management",
+      "references": [],
+      "isFree": false,
+      "source": {
+        "type": "generated",
+        "course": {
+          "courseSlug": "servicenow-administration-fundamentals-xanadu",
+          "moduleTitle": "CSA Expansion",
+          "lessonSlug": "incident-management",
+          "lessonTitle": "CSA incident-management expansion questions",
+          "url": ""
+        },
+        "path": "",
+        "excerpt": ""
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "incident-management",
+        "domainSlug": "incident-management",
+        "subtopics": [],
+        "tags": []
+      },
+      "meta": {
+        "generatedAt": "2026-03-31T02:09:00Z",
+        "version": "2.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-inc-021",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What is the purpose of an 'Assignment Rule' in Incident Management?",
+      "options": [
+        {
+          "id": "a",
+          "text": "To automatically assign incidents to specific groups or users based on defined conditions"
+        },
+        {
+          "id": "b",
+          "text": "To restrict which users can view incidents"
+        },
+        {
+          "id": "c",
+          "text": "To set the priority of incoming incidents"
+        },
+        {
+          "id": "d",
+          "text": "To define SLA targets for incident resolution"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "Assignment Rules automatically route incidents to the appropriate assignment group or individual based on conditions like category, configuration item, or location, ensuring efficient ticket routing.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Viewing restrictions are controlled by ACLs, not Assignment Rules."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Priority is determined by the Priority Lookup matrix (Impact \u00d7 Urgency), not Assignment Rules."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "SLA targets are defined in SLA Definitions, not Assignment Rules."
+          }
+        ]
+      },
+      "certification": "csa",
+      "topic": "incident-management",
+      "references": [],
+      "isFree": false,
+      "source": {
+        "type": "generated",
+        "course": {
+          "courseSlug": "servicenow-administration-fundamentals-xanadu",
+          "moduleTitle": "CSA Expansion",
+          "lessonSlug": "incident-management",
+          "lessonTitle": "CSA incident-management expansion questions",
+          "url": ""
+        },
+        "path": "",
+        "excerpt": ""
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "incident-management",
+        "domainSlug": "incident-management",
+        "subtopics": [],
+        "tags": []
+      },
+      "meta": {
+        "generatedAt": "2026-03-31T02:09:00Z",
+        "version": "2.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-inc-022",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "An incident has been resolved but the caller disagrees with the resolution and wants it reopened. What state should the incident be changed to?",
+      "options": [
+        {
+          "id": "a",
+          "text": "In Progress"
+        },
+        {
+          "id": "b",
+          "text": "New"
+        },
+        {
+          "id": "c",
+          "text": "On Hold"
+        },
+        {
+          "id": "d",
+          "text": "Active \u2014 by creating a new incident referencing the original"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "When a resolved incident is reopened due to caller dissatisfaction, it should be moved back to 'In Progress' to continue the investigation. This maintains the original incident record and tracks the reopen in the activity log.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Setting it to New would lose the context of prior work and investigation."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "On Hold means waiting for information; reopened incidents need active investigation."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Creating a new incident loses the original context and is not the standard process for reopening."
+          }
+        ]
+      },
+      "certification": "csa",
+      "topic": "incident-management",
+      "references": [],
+      "isFree": false,
+      "source": {
+        "type": "generated",
+        "course": {
+          "courseSlug": "servicenow-administration-fundamentals-xanadu",
+          "moduleTitle": "CSA Expansion",
+          "lessonSlug": "incident-management",
+          "lessonTitle": "CSA incident-management expansion questions",
+          "url": ""
+        },
+        "path": "",
+        "excerpt": ""
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "incident-management",
+        "domainSlug": "incident-management",
+        "subtopics": [],
+        "tags": []
+      },
+      "meta": {
+        "generatedAt": "2026-03-31T02:09:00Z",
+        "version": "2.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-inc-023",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "How does ServiceNow calculate incident Priority by default?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Using a Priority Lookup matrix that combines Impact and Urgency values"
+        },
+        {
+          "id": "b",
+          "text": "The caller manually selects the priority when creating the incident"
+        },
+        {
+          "id": "c",
+          "text": "Based solely on the assignment group's workload"
+        },
+        {
+          "id": "d",
+          "text": "Using AI to analyze the short description text"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "ServiceNow uses a Priority Lookup Rules data lookup that calculates Priority based on the combination of Impact (scope of effect) and Urgency (time sensitivity). For example, Impact: High + Urgency: High = Priority: 1 - Critical.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Priority is calculated automatically from Impact and Urgency, not manually selected (by default)."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Workload doesn't factor into priority calculation."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "While Now Assist can suggest categories, default priority calculation uses the Impact/Urgency matrix."
+          }
+        ]
+      },
+      "certification": "csa",
+      "topic": "incident-management",
+      "references": [],
+      "isFree": false,
+      "source": {
+        "type": "generated",
+        "course": {
+          "courseSlug": "servicenow-administration-fundamentals-xanadu",
+          "moduleTitle": "CSA Expansion",
+          "lessonSlug": "incident-management",
+          "lessonTitle": "CSA incident-management expansion questions",
+          "url": ""
+        },
+        "path": "",
+        "excerpt": ""
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "incident-management",
+        "domainSlug": "incident-management",
+        "subtopics": [],
+        "tags": []
+      },
+      "meta": {
+        "generatedAt": "2026-03-31T02:09:00Z",
+        "version": "2.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-inc-024",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What is the purpose of the 'Caller' field on an Incident record?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It identifies the user who reported or is affected by the incident"
+        },
+        {
+          "id": "b",
+          "text": "It shows which phone line the call came in on"
+        },
+        {
+          "id": "c",
+          "text": "It determines the assignment group for the incident"
+        },
+        {
+          "id": "d",
+          "text": "It sets the SLA target for the incident"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "The Caller field identifies the person who reported the incident or is affected by it. This is used for communication, tracking, and may influence routing and SLA calculations based on the caller's VIP status or location.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "The Caller field is a reference to a user record, not a phone system field."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Assignment is typically based on category, CI, or assignment rules, not the caller directly."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "SLA targets are based on priority and SLA definitions, not the caller field alone."
+          }
+        ]
+      },
+      "certification": "csa",
+      "topic": "incident-management",
+      "references": [],
+      "isFree": false,
+      "source": {
+        "type": "generated",
+        "course": {
+          "courseSlug": "servicenow-administration-fundamentals-xanadu",
+          "moduleTitle": "CSA Expansion",
+          "lessonSlug": "incident-management",
+          "lessonTitle": "CSA incident-management expansion questions",
+          "url": ""
+        },
+        "path": "",
+        "excerpt": ""
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "incident-management",
+        "domainSlug": "incident-management",
+        "subtopics": [],
+        "tags": []
+      },
+      "meta": {
+        "generatedAt": "2026-03-31T02:09:00Z",
+        "version": "2.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     }
   ]
 }

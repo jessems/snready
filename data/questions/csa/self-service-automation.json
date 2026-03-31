@@ -1786,6 +1786,587 @@
         "release": "Xanadu",
         "reviewed": false
       }
+    },
+    {
+      "id": "csa-ss-023",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A service catalog item needs to automatically create both an Incident and a Change Request when ordered. Which approach is recommended?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Configure a Flow Designer flow triggered by the catalog item that creates both records"
+        },
+        {
+          "id": "b",
+          "text": "Create two separate catalog items and bundle them"
+        },
+        {
+          "id": "c",
+          "text": "Write a background script that monitors new RITM records"
+        },
+        {
+          "id": "d",
+          "text": "Use an email notification to trigger record creation"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "Flow Designer is the recommended automation tool for catalog item fulfillment. A flow triggered by the Service Catalog item can create multiple records (Incident and Change Request) with proper relationships and field mappings.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Bundling items requires users to order two items and doesn't maintain relationships between the resulting records."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Background scripts are not triggered by events and don't provide reliable automation for catalog fulfillment."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Email-based triggers are unreliable for record creation and not the recommended automation approach."
+          }
+        ]
+      },
+      "certification": "csa",
+      "topic": "self-service-automation",
+      "references": [],
+      "isFree": false,
+      "source": {
+        "type": "generated",
+        "course": {
+          "courseSlug": "servicenow-administration-fundamentals-xanadu",
+          "moduleTitle": "CSA Expansion",
+          "lessonSlug": "self-service-automation",
+          "lessonTitle": "CSA self-service-automation expansion questions",
+          "url": ""
+        },
+        "path": "",
+        "excerpt": ""
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "self-service-automation",
+        "domainSlug": "self-service-automation",
+        "subtopics": [],
+        "tags": []
+      },
+      "meta": {
+        "generatedAt": "2026-03-31T02:09:00Z",
+        "version": "2.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-ss-024",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "In the Service Catalog, what is the difference between a 'Record Producer' and a 'Catalog Item'?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A Record Producer creates a record in a specific table; a Catalog Item creates a Requested Item (RITM) with a fulfillment workflow"
+        },
+        {
+          "id": "b",
+          "text": "They are the same thing with different names"
+        },
+        {
+          "id": "c",
+          "text": "A Record Producer is for hardware; a Catalog Item is for software"
+        },
+        {
+          "id": "d",
+          "text": "Record Producers can only be used by administrators"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "Record Producers create records directly in a specified target table (e.g., Incident, Change Request). Catalog Items follow the request fulfillment process, creating a Request with Requested Items (RITMs) and optional tasks.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "They serve different purposes \u2014 Record Producers bypass the request process, while Catalog Items use it."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Both can be used for any type of service; the distinction is about the fulfillment process, not content type."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Record Producers can be made available to any user with the appropriate catalog access."
+          }
+        ]
+      },
+      "certification": "csa",
+      "topic": "self-service-automation",
+      "references": [],
+      "isFree": false,
+      "source": {
+        "type": "generated",
+        "course": {
+          "courseSlug": "servicenow-administration-fundamentals-xanadu",
+          "moduleTitle": "CSA Expansion",
+          "lessonSlug": "self-service-automation",
+          "lessonTitle": "CSA self-service-automation expansion questions",
+          "url": ""
+        },
+        "path": "",
+        "excerpt": ""
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "self-service-automation",
+        "domainSlug": "self-service-automation",
+        "subtopics": [],
+        "tags": []
+      },
+      "meta": {
+        "generatedAt": "2026-03-31T02:09:00Z",
+        "version": "2.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-ss-025",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "Which statements about Flow Designer are true? (Choose 2)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Flows can be triggered by record creation, updates, or scheduled intervals"
+        },
+        {
+          "id": "b",
+          "text": "Flow Designer requires JavaScript coding for all actions"
+        },
+        {
+          "id": "c",
+          "text": "Subflows allow reusable logic that can be called from multiple flows"
+        },
+        {
+          "id": "d",
+          "text": "Flows can only run synchronously"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "c"
+      ],
+      "explanation": {
+        "correct": "Flow Designer supports multiple trigger types (record-based, scheduled, application-based) and subflows enable reusable automation components that can be shared across flows.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Flow Designer is primarily no-code/low-code; most actions are configured through a graphical interface without scripting."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Flows typically run asynchronously in the background, though some actions can be configured to wait."
+          }
+        ]
+      },
+      "certification": "csa",
+      "topic": "self-service-automation",
+      "references": [],
+      "isFree": false,
+      "source": {
+        "type": "generated",
+        "course": {
+          "courseSlug": "servicenow-administration-fundamentals-xanadu",
+          "moduleTitle": "CSA Expansion",
+          "lessonSlug": "self-service-automation",
+          "lessonTitle": "CSA self-service-automation expansion questions",
+          "url": ""
+        },
+        "path": "",
+        "excerpt": ""
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "self-service-automation",
+        "domainSlug": "self-service-automation",
+        "subtopics": [],
+        "tags": []
+      },
+      "meta": {
+        "generatedAt": "2026-03-31T02:09:00Z",
+        "version": "2.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-ss-026",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "An organization wants to require manager approval for any catalog request over $1,000. Where should this approval be configured?",
+      "options": [
+        {
+          "id": "a",
+          "text": "In the catalog item's Approval field using a generated approval based on the price"
+        },
+        {
+          "id": "b",
+          "text": "In a Flow Designer approval action with a condition checking the item price"
+        },
+        {
+          "id": "c",
+          "text": "In a UI Policy on the Request form"
+        },
+        {
+          "id": "d",
+          "text": "In the user's manager field only"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Flow Designer's 'Ask for Approval' action can include conditions based on variables like price. This allows dynamic approval routing \u2014 only triggering manager approval when the price exceeds $1,000.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The catalog item Approval field can generate approvals but doesn't support conditional price-based logic without a flow."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "UI Policies control form display, not approval processes."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The manager field identifies who the approver is, but approval rules and conditions are configured separately."
+          }
+        ]
+      },
+      "certification": "csa",
+      "topic": "self-service-automation",
+      "references": [],
+      "isFree": false,
+      "source": {
+        "type": "generated",
+        "course": {
+          "courseSlug": "servicenow-administration-fundamentals-xanadu",
+          "moduleTitle": "CSA Expansion",
+          "lessonSlug": "self-service-automation",
+          "lessonTitle": "CSA self-service-automation expansion questions",
+          "url": ""
+        },
+        "path": "",
+        "excerpt": ""
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "self-service-automation",
+        "domainSlug": "self-service-automation",
+        "subtopics": [],
+        "tags": []
+      },
+      "meta": {
+        "generatedAt": "2026-03-31T02:09:00Z",
+        "version": "2.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-ss-027",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What is the purpose of the 'Knowledge Base' in ServiceNow self-service?",
+      "options": [
+        {
+          "id": "a",
+          "text": "To provide searchable articles that help users resolve issues without creating tickets"
+        },
+        {
+          "id": "b",
+          "text": "To store system configuration documentation only"
+        },
+        {
+          "id": "c",
+          "text": "To replace the Service Catalog entirely"
+        },
+        {
+          "id": "d",
+          "text": "To manage user passwords"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "Knowledge Bases contain articles organized by category that enable self-service. Users can search for solutions to common issues, reducing ticket volume through 'shift left' \u2014 resolving issues at the lowest cost tier.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Knowledge Bases serve end users and IT staff, not just system configuration documentation."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Knowledge Bases complement the Service Catalog; they serve different purposes."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Password management is handled through user administration, not Knowledge Bases."
+          }
+        ]
+      },
+      "certification": "csa",
+      "topic": "self-service-automation",
+      "references": [],
+      "isFree": false,
+      "source": {
+        "type": "generated",
+        "course": {
+          "courseSlug": "servicenow-administration-fundamentals-xanadu",
+          "moduleTitle": "CSA Expansion",
+          "lessonSlug": "self-service-automation",
+          "lessonTitle": "CSA self-service-automation expansion questions",
+          "url": ""
+        },
+        "path": "",
+        "excerpt": ""
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "self-service-automation",
+        "domainSlug": "self-service-automation",
+        "subtopics": [],
+        "tags": []
+      },
+      "meta": {
+        "generatedAt": "2026-03-31T02:09:00Z",
+        "version": "2.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-ss-028",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What is the correct order of records created when a user submits a Service Catalog request?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Request \u2192 Requested Item (RITM) \u2192 Catalog Task(s)"
+        },
+        {
+          "id": "b",
+          "text": "Incident \u2192 Request \u2192 Catalog Task(s)"
+        },
+        {
+          "id": "c",
+          "text": "Catalog Task \u2192 Requested Item \u2192 Request"
+        },
+        {
+          "id": "d",
+          "text": "Change Request \u2192 Request \u2192 Requested Item"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "The Service Catalog creates a Request (sc_request) which contains one or more Requested Items (sc_req_item/RITM), which may generate Catalog Tasks (sc_task) for fulfillment. This is the standard three-tier request model.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Incidents are not created as part of the standard catalog request process."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The order is reversed \u2014 Requests are created first, not Catalog Tasks."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Change Requests are separate from the catalog request process."
+          }
+        ]
+      },
+      "certification": "csa",
+      "topic": "self-service-automation",
+      "references": [],
+      "isFree": false,
+      "source": {
+        "type": "generated",
+        "course": {
+          "courseSlug": "servicenow-administration-fundamentals-xanadu",
+          "moduleTitle": "CSA Expansion",
+          "lessonSlug": "self-service-automation",
+          "lessonTitle": "CSA self-service-automation expansion questions",
+          "url": ""
+        },
+        "path": "",
+        "excerpt": ""
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "self-service-automation",
+        "domainSlug": "self-service-automation",
+        "subtopics": [],
+        "tags": []
+      },
+      "meta": {
+        "generatedAt": "2026-03-31T02:09:00Z",
+        "version": "2.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-ss-029",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "Which notification channel should an administrator configure to send a user an update when their catalog request is approved?",
+      "options": [
+        {
+          "id": "a",
+          "text": "An email notification triggered by the RITM approval state change"
+        },
+        {
+          "id": "b",
+          "text": "A popup alert on the ServiceNow homepage"
+        },
+        {
+          "id": "c",
+          "text": "A system log entry visible only to administrators"
+        },
+        {
+          "id": "d",
+          "text": "A change to the user's browser bookmark"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "Email notifications triggered by record state changes (like RITM stage/approval changes) are the standard way to inform users about request status updates in ServiceNow.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Homepage popup alerts are not a standard notification mechanism for catalog requests."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "System logs are for troubleshooting, not user-facing notifications."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Browser bookmarks cannot be modified by ServiceNow and are not a notification channel."
+          }
+        ]
+      },
+      "certification": "csa",
+      "topic": "self-service-automation",
+      "references": [],
+      "isFree": false,
+      "source": {
+        "type": "generated",
+        "course": {
+          "courseSlug": "servicenow-administration-fundamentals-xanadu",
+          "moduleTitle": "CSA Expansion",
+          "lessonSlug": "self-service-automation",
+          "lessonTitle": "CSA self-service-automation expansion questions",
+          "url": ""
+        },
+        "path": "",
+        "excerpt": ""
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "self-service-automation",
+        "domainSlug": "self-service-automation",
+        "subtopics": [],
+        "tags": []
+      },
+      "meta": {
+        "generatedAt": "2026-03-31T02:09:00Z",
+        "version": "2.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-ss-030",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What is the 'Service Portal' in ServiceNow?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A user-facing website built with widgets that provides self-service capabilities outside the platform UI"
+        },
+        {
+          "id": "b",
+          "text": "A dashboard for administrators to monitor system health"
+        },
+        {
+          "id": "c",
+          "text": "A mobile app available on app stores"
+        },
+        {
+          "id": "d",
+          "text": "The main backend interface for ITIL users"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "Service Portal is a framework for creating user-facing websites using configurable widgets. It provides a simplified, branded experience for end users to access the Service Catalog, Knowledge Base, and submit requests without needing access to the full platform UI.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "System health monitoring is done through Performance Analytics and the Admin Console, not Service Portal."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "While ServiceNow has mobile apps, Service Portal is a web-based framework, not a native app."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The backend interface for ITIL users is the platform UI or Agent Workspace, not Service Portal."
+          }
+        ]
+      },
+      "certification": "csa",
+      "topic": "self-service-automation",
+      "references": [],
+      "isFree": false,
+      "source": {
+        "type": "generated",
+        "course": {
+          "courseSlug": "servicenow-administration-fundamentals-xanadu",
+          "moduleTitle": "CSA Expansion",
+          "lessonSlug": "self-service-automation",
+          "lessonTitle": "CSA self-service-automation expansion questions",
+          "url": ""
+        },
+        "path": "",
+        "excerpt": ""
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "self-service-automation",
+        "domainSlug": "self-service-automation",
+        "subtopics": [],
+        "tags": []
+      },
+      "meta": {
+        "generatedAt": "2026-03-31T02:09:00Z",
+        "version": "2.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     }
   ]
 }

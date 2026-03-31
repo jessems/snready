@@ -1786,6 +1786,592 @@
         "release": "Xanadu",
         "reviewed": false
       }
+    },
+    {
+      "id": "csa-ua-023",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "An administrator needs to prevent users in the 'itil' group from editing the Priority field on Incident records, but they should still be able to view it. Which approach is correct?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Create a write ACL on the incident.priority field that excludes the itil role"
+        },
+        {
+          "id": "b",
+          "text": "Remove the Priority field from the incident form"
+        },
+        {
+          "id": "c",
+          "text": "Create a UI Policy that makes Priority read-only for itil users"
+        },
+        {
+          "id": "d",
+          "text": "Delete the Priority field from the Incident table"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "A UI Policy with a condition checking the user's role can make the Priority field read-only for itil users while keeping it visible. This is the standard approach for role-based field-level restrictions on forms.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "While ACLs can control write access, a field-level write ACL that excludes itil would also affect other operations. UI Policy is more targeted for form-level display control."
+          },
+          {
+            "choiceId": "b",
+            "explanation": "Removing the field prevents viewing it entirely, which contradicts the requirement to keep it visible."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Deleting a core field like Priority would break system functionality and is never appropriate."
+          }
+        ]
+      },
+      "certification": "csa",
+      "topic": "user-administration",
+      "references": [],
+      "isFree": false,
+      "source": {
+        "type": "generated",
+        "course": {
+          "courseSlug": "servicenow-administration-fundamentals-xanadu",
+          "moduleTitle": "CSA Expansion",
+          "lessonSlug": "user-administration",
+          "lessonTitle": "CSA user-administration expansion questions",
+          "url": ""
+        },
+        "path": "",
+        "excerpt": ""
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "user-administration",
+        "domainSlug": "user-administration",
+        "subtopics": [],
+        "tags": []
+      },
+      "meta": {
+        "generatedAt": "2026-03-31T02:09:00Z",
+        "version": "2.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-ua-024",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which three elements make up an Access Control List (ACL) rule in ServiceNow? (Choose 3)",
+      "options": [
+        {
+          "id": "a",
+          "text": "The object being secured (table/field)"
+        },
+        {
+          "id": "b",
+          "text": "The operation (read, write, create, delete)"
+        },
+        {
+          "id": "c",
+          "text": "The permissions required (role, condition, script)"
+        },
+        {
+          "id": "d",
+          "text": "The time zone of the user"
+        },
+        {
+          "id": "e",
+          "text": "The browser type being used"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b",
+        "c"
+      ],
+      "explanation": {
+        "correct": "An ACL rule consists of three parts: the object (what is being protected \u2014 a table, field, or record), the operation (what action is being controlled \u2014 read, write, create, or delete), and the permissions (who is allowed \u2014 defined by roles, conditions, and/or scripts).",
+        "wrongAnswers": [
+          {
+            "choiceId": "d",
+            "explanation": "Time zone is a user preference setting, not a component of ACL rules."
+          },
+          {
+            "choiceId": "e",
+            "explanation": "Browser type is not relevant to ACL evaluation."
+          }
+        ]
+      },
+      "certification": "csa",
+      "topic": "user-administration",
+      "references": [],
+      "isFree": false,
+      "source": {
+        "type": "generated",
+        "course": {
+          "courseSlug": "servicenow-administration-fundamentals-xanadu",
+          "moduleTitle": "CSA Expansion",
+          "lessonSlug": "user-administration",
+          "lessonTitle": "CSA user-administration expansion questions",
+          "url": ""
+        },
+        "path": "",
+        "excerpt": ""
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "user-administration",
+        "domainSlug": "user-administration",
+        "subtopics": [],
+        "tags": []
+      },
+      "meta": {
+        "generatedAt": "2026-03-31T02:09:00Z",
+        "version": "2.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-ua-025",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What is the evaluation order when multiple ACL rules apply to the same object and operation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "All matching ACL rules must pass \u2014 they are evaluated with AND logic"
+        },
+        {
+          "id": "b",
+          "text": "Only the first matching ACL rule is evaluated"
+        },
+        {
+          "id": "c",
+          "text": "The most restrictive ACL always wins"
+        },
+        {
+          "id": "d",
+          "text": "ACL rules are evaluated randomly"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "When multiple ACL rules match the same object and operation, ALL must pass. ServiceNow uses AND logic \u2014 the user must satisfy every matching ACL rule to be granted access.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "All matching rules are evaluated, not just the first one."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "It's not about 'most restrictive wins' \u2014 all rules must pass independently."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "ACL evaluation follows a defined order, not random."
+          }
+        ]
+      },
+      "certification": "csa",
+      "topic": "user-administration",
+      "references": [],
+      "isFree": false,
+      "source": {
+        "type": "generated",
+        "course": {
+          "courseSlug": "servicenow-administration-fundamentals-xanadu",
+          "moduleTitle": "CSA Expansion",
+          "lessonSlug": "user-administration",
+          "lessonTitle": "CSA user-administration expansion questions",
+          "url": ""
+        },
+        "path": "",
+        "excerpt": ""
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "user-administration",
+        "domainSlug": "user-administration",
+        "subtopics": [],
+        "tags": []
+      },
+      "meta": {
+        "generatedAt": "2026-03-31T02:09:00Z",
+        "version": "2.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-ua-026",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A new employee needs access to the Incident table but should NOT be able to delete any records. Which ACL configuration achieves this?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Grant read, write, and create ACLs but do not grant a delete ACL for the user's role"
+        },
+        {
+          "id": "b",
+          "text": "Create a delete ACL that explicitly denies the user's role"
+        },
+        {
+          "id": "c",
+          "text": "Remove the Incident module from the user's application menu"
+        },
+        {
+          "id": "d",
+          "text": "Set the 'active' field to read-only on the incident form"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "In ServiceNow, if no ACL grants a specific operation for a role, that operation is denied by default. By granting read/write/create but not creating a delete ACL for the role, delete access is implicitly denied.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "While explicit deny works, the simpler approach is to not grant delete access at all. ACLs deny by default when no matching rule grants access."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Removing a module from navigation doesn't prevent access to the table through direct URL, lists, or other means."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Making the active field read-only doesn't prevent record deletion."
+          }
+        ]
+      },
+      "certification": "csa",
+      "topic": "user-administration",
+      "references": [],
+      "isFree": false,
+      "source": {
+        "type": "generated",
+        "course": {
+          "courseSlug": "servicenow-administration-fundamentals-xanadu",
+          "moduleTitle": "CSA Expansion",
+          "lessonSlug": "user-administration",
+          "lessonTitle": "CSA user-administration expansion questions",
+          "url": ""
+        },
+        "path": "",
+        "excerpt": ""
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "user-administration",
+        "domainSlug": "user-administration",
+        "subtopics": [],
+        "tags": []
+      },
+      "meta": {
+        "generatedAt": "2026-03-31T02:09:00Z",
+        "version": "2.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-ua-027",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which user property determines the language displayed in the ServiceNow interface?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The browser's Accept-Language header only"
+        },
+        {
+          "id": "b",
+          "text": "The Language field on the user's System Properties"
+        },
+        {
+          "id": "c",
+          "text": "The Preferred language field on the user record"
+        },
+        {
+          "id": "d",
+          "text": "The instance's system locale setting only"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "The Preferred language field on the sys_user record determines the interface language for that user. If not set, the system falls back to the instance default language.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The browser language header may influence initial detection but the user record setting takes precedence."
+          },
+          {
+            "choiceId": "b",
+            "explanation": "System Properties control instance-wide settings, not individual user language preferences."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The system locale is the fallback, but individual user settings override it."
+          }
+        ]
+      },
+      "certification": "csa",
+      "topic": "user-administration",
+      "references": [],
+      "isFree": false,
+      "source": {
+        "type": "generated",
+        "course": {
+          "courseSlug": "servicenow-administration-fundamentals-xanadu",
+          "moduleTitle": "CSA Expansion",
+          "lessonSlug": "user-administration",
+          "lessonTitle": "CSA user-administration expansion questions",
+          "url": ""
+        },
+        "path": "",
+        "excerpt": ""
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "user-administration",
+        "domainSlug": "user-administration",
+        "subtopics": [],
+        "tags": []
+      },
+      "meta": {
+        "generatedAt": "2026-03-31T02:09:00Z",
+        "version": "2.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-ua-028",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What is the purpose of 'delegated administration' in ServiceNow?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Allowing specific users to grant roles that they themselves possess to other users"
+        },
+        {
+          "id": "b",
+          "text": "Automatically assigning admin roles to all managers"
+        },
+        {
+          "id": "c",
+          "text": "Delegating system upgrades to non-admin users"
+        },
+        {
+          "id": "d",
+          "text": "Sharing admin credentials with a team"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "Delegated administration allows designated users (not full admins) to manage group membership and assign specific roles that they themselves hold, reducing the burden on system administrators.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Delegated administration is a targeted permission, not automatic role assignment to managers."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "System upgrades require full admin access and cannot be delegated this way."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Sharing credentials violates security best practices and is not what delegated administration means."
+          }
+        ]
+      },
+      "certification": "csa",
+      "topic": "user-administration",
+      "references": [],
+      "isFree": false,
+      "source": {
+        "type": "generated",
+        "course": {
+          "courseSlug": "servicenow-administration-fundamentals-xanadu",
+          "moduleTitle": "CSA Expansion",
+          "lessonSlug": "user-administration",
+          "lessonTitle": "CSA user-administration expansion questions",
+          "url": ""
+        },
+        "path": "",
+        "excerpt": ""
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "user-administration",
+        "domainSlug": "user-administration",
+        "subtopics": [],
+        "tags": []
+      },
+      "meta": {
+        "generatedAt": "2026-03-31T02:09:00Z",
+        "version": "2.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-ua-029",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "Which of the following is NOT a valid method to assign a role to a user in ServiceNow?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Adding the role directly to the user's Roles related list"
+        },
+        {
+          "id": "b",
+          "text": "Adding the user to a group that has the role"
+        },
+        {
+          "id": "c",
+          "text": "Inheriting the role through the role hierarchy (contained roles)"
+        },
+        {
+          "id": "d",
+          "text": "Setting the role in the user's email signature"
+        }
+      ],
+      "correctAnswers": [
+        "d"
+      ],
+      "explanation": {
+        "correct": "Email signatures have no connection to role assignment in ServiceNow. Roles are assigned directly to users, through group membership, or through role inheritance (contained roles).",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Direct role assignment via the Roles related list is a standard method."
+          },
+          {
+            "choiceId": "b",
+            "explanation": "Group-based role assignment is the recommended method for managing roles at scale."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Role inheritance through 'contains' relationships is a valid built-in mechanism."
+          }
+        ]
+      },
+      "certification": "csa",
+      "topic": "user-administration",
+      "references": [],
+      "isFree": false,
+      "source": {
+        "type": "generated",
+        "course": {
+          "courseSlug": "servicenow-administration-fundamentals-xanadu",
+          "moduleTitle": "CSA Expansion",
+          "lessonSlug": "user-administration",
+          "lessonTitle": "CSA user-administration expansion questions",
+          "url": ""
+        },
+        "path": "",
+        "excerpt": ""
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "user-administration",
+        "domainSlug": "user-administration",
+        "subtopics": [],
+        "tags": []
+      },
+      "meta": {
+        "generatedAt": "2026-03-31T02:09:00Z",
+        "version": "2.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-ua-030",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What happens when an administrator activates the 'High Security Settings' plugin?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It enforces stricter password policies and session timeout settings"
+        },
+        {
+          "id": "b",
+          "text": "It encrypts all database tables automatically"
+        },
+        {
+          "id": "c",
+          "text": "It requires biometric authentication for all users"
+        },
+        {
+          "id": "d",
+          "text": "It disables all REST API access"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "The High Security Settings plugin enforces stricter password complexity requirements, shorter session timeouts, and other hardened security configurations.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Database encryption is handled separately through Edge Encryption, not the High Security plugin."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Biometric authentication is not a feature of the High Security Settings plugin."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "REST API access is controlled separately through ACLs and API policies."
+          }
+        ]
+      },
+      "certification": "csa",
+      "topic": "user-administration",
+      "references": [],
+      "isFree": false,
+      "source": {
+        "type": "generated",
+        "course": {
+          "courseSlug": "servicenow-administration-fundamentals-xanadu",
+          "moduleTitle": "CSA Expansion",
+          "lessonSlug": "user-administration",
+          "lessonTitle": "CSA user-administration expansion questions",
+          "url": ""
+        },
+        "path": "",
+        "excerpt": ""
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "user-administration",
+        "domainSlug": "user-administration",
+        "subtopics": [],
+        "tags": []
+      },
+      "meta": {
+        "generatedAt": "2026-03-31T02:09:00Z",
+        "version": "2.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     }
   ]
 }
