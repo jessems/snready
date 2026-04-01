@@ -1244,6 +1244,565 @@
         "release": "Xanadu",
         "reviewed": false
       }
+    },
+    {
+      "id": "cis-itsm-request-management-016",
+      "certification": "cis-itsm",
+      "topic": "request-management",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A service desk agent receives a phone call from an employee who needs access to a shared network drive. The agent navigates to the Service Catalog and submits the request on behalf of the employee. Which feature of Request Management makes this possible?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Record producers allow agents to create requests from any form"
+        },
+        {
+          "id": "b",
+          "text": "Delegated requests allow a user to request a catalog item on behalf of someone else"
+        },
+        {
+          "id": "c",
+          "text": "Universal requests automatically route items to the correct assignment group"
+        },
+        {
+          "id": "d",
+          "text": "Order guides bundle multiple items into a single request"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "If the configuration allows for delegated requests, a user can request a catalog item on behalf of someone else. This is the feature that enables a service desk agent to submit a request for an employee who called in.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Record producers create records (such as incidents) via the Service Catalog, but the scenario describes ordering a catalog item on behalf of another user, which is delegated requesting.",
+            "reference": "ITSM Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Universal requests involve a routing agent creating a request from a universal request, but the scenario specifically describes an agent submitting a catalog item on behalf of someone, which is delegated requesting.",
+            "reference": "ITSM Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Order guides bundle multiple items together but do not address the ability to submit requests on behalf of another user.",
+            "reference": "ITSM Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "ITSM Fundamentals"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "it-service-management-itsm-fundamentals/05-request-management.md",
+        "excerpt": "If the configuration allows for delegated requests, a user can request a catalog item on behalf of someone else."
+      },
+      "labels": {
+        "certification": "cis-itsm",
+        "domain": "Request Management",
+        "domainSlug": "request-management",
+        "domainPercentage": 15,
+        "subtopics": [
+          "Delegated requests",
+          "Request submittal"
+        ],
+        "tags": [
+          "delegated",
+          "service-desk",
+          "submittal"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-04-01T02:03:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewStatus": "pending"
+      }
+    },
+    {
+      "id": "cis-itsm-request-management-017",
+      "certification": "cis-itsm",
+      "topic": "request-management",
+      "cognitiveLevel": "comprehension",
+      "type": "multiple_choice",
+      "question": "When a user checks out multiple items from the Service Catalog at the same time, what is the relationship between requests and requested items?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Each item generates its own separate request record"
+        },
+        {
+          "id": "b",
+          "text": "One request record is created containing multiple requested item records"
+        },
+        {
+          "id": "c",
+          "text": "A single requested item record is created that contains all items"
+        },
+        {
+          "id": "d",
+          "text": "Multiple request records are created and linked to a parent order guide"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "When multiple items are requested together, there will be one request record (REQ) with multiple requested item records (RITM). The request acts as a container to group all associated requested items, approvals, and fulfillment tasks together.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Items ordered together in a single checkout are grouped under one request record, not separate requests.",
+            "reference": "ITSM Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Each item ordered gets its own requested item (RITM) record. They are not combined into a single RITM.",
+            "reference": "ITSM Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Order guides bundle catalog items but the checkout process creates a single request record, not multiple requests linked to an order guide.",
+            "reference": "ITSM Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "ITSM Fundamentals"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "it-service-management-itsm-fundamentals/05-request-management.md",
+        "excerpt": "If multiple items are requested together, there will be one request record with multiple requested item records."
+      },
+      "labels": {
+        "certification": "cis-itsm",
+        "domain": "Request Management",
+        "domainSlug": "request-management",
+        "domainPercentage": 15,
+        "subtopics": [
+          "Request structure",
+          "Requested items"
+        ],
+        "tags": [
+          "request",
+          "RITM",
+          "structure"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-04-01T02:03:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewStatus": "pending"
+      }
+    },
+    {
+      "id": "cis-itsm-request-management-018",
+      "certification": "cis-itsm",
+      "topic": "request-management",
+      "cognitiveLevel": "analysis",
+      "type": "multiple_choice",
+      "question": "A company is onboarding a new employee and needs to provision a laptop, install software, and set up network access. An administrator wants to streamline this so the hiring manager can submit everything in one step. Which approach best meets this requirement?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Create a record producer that generates all three items simultaneously"
+        },
+        {
+          "id": "b",
+          "text": "Create an order guide that bundles the laptop, software, and network access catalog items"
+        },
+        {
+          "id": "c",
+          "text": "Create a single catalog item with three catalog tasks"
+        },
+        {
+          "id": "d",
+          "text": "Create a content item that links to the three separate catalog items"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Order guides allow for the convenient bundling of multiple items, such as when providing new IT equipment, software, and account access to a new employee. This is precisely the scenario described\u2014combining laptop, software, and network access into one guided request.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Record producers create records like incidents or other table records via the Service Catalog. They are not designed to bundle multiple catalog items into one request.",
+            "reference": "ITSM Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "While a single catalog item with multiple tasks could work for a simple workflow, it does not allow the hiring manager to select or deselect individual items. Order guides provide this flexibility.",
+            "reference": "ITSM Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Content items provide information (like knowledge articles) rather than orderable goods and services. They cannot be used to bundle catalog items.",
+            "reference": "ITSM Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "ITSM Fundamentals"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "it-service-management-itsm-fundamentals/05-request-management.md",
+        "excerpt": "Order guides allow for the convenient bundling of multiple items, such as when providing new IT equipment, software, and account access to a new employee."
+      },
+      "labels": {
+        "certification": "cis-itsm",
+        "domain": "Request Management",
+        "domainSlug": "request-management",
+        "domainPercentage": 15,
+        "subtopics": [
+          "Order guides",
+          "Employee onboarding"
+        ],
+        "tags": [
+          "order-guide",
+          "bundling",
+          "onboarding"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-04-01T02:03:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewStatus": "pending"
+      }
+    },
+    {
+      "id": "cis-itsm-request-management-019",
+      "certification": "cis-itsm",
+      "topic": "request-management",
+      "cognitiveLevel": "knowledge",
+      "type": "multi_select",
+      "question": "Which of the following are valid methods for initiating a request in ServiceNow? (Choose three)",
+      "options": [
+        {
+          "id": "a",
+          "text": "A service desk agent creates a request directly in ServiceNow based on a phone call"
+        },
+        {
+          "id": "b",
+          "text": "An end user submits a request via the self-service portal"
+        },
+        {
+          "id": "c",
+          "text": "A request is automatically generated through REST API integration"
+        },
+        {
+          "id": "d",
+          "text": "A problem record automatically generates a request when moved to Known Error state"
+        },
+        {
+          "id": "e",
+          "text": "An incident automatically converts to a request after resolution"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b",
+        "c"
+      ],
+      "explanation": {
+        "correct": "Requests can be initiated in multiple ways: directly in ServiceNow by a service desk agent (based on a phone call or chat), by end users via self-service portals, or automatically through REST API integration. Virtual agent, walk-up experiences, and universal requests are also valid initiation methods.",
+        "wrongAnswers": [
+          {
+            "choiceId": "d",
+            "explanation": "Problem records moving to Known Error state do not automatically generate service requests. Problem Management and Request Management are separate processes.",
+            "reference": "ITSM Fundamentals course"
+          },
+          {
+            "choiceId": "e",
+            "explanation": "Incidents do not automatically convert to requests upon resolution. These are distinct ITSM processes with separate lifecycles.",
+            "reference": "ITSM Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "ITSM Fundamentals"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "it-service-management-itsm-fundamentals/05-request-management.md",
+        "excerpt": "Requests can be initiated in multiple ways, including directly in ServiceNow... end users may initiate requests via self-service... requests can also be automatically initiated through integration."
+      },
+      "labels": {
+        "certification": "cis-itsm",
+        "domain": "Request Management",
+        "domainSlug": "request-management",
+        "domainPercentage": 15,
+        "subtopics": [
+          "Request initiation",
+          "Submittal methods"
+        ],
+        "tags": [
+          "submittal",
+          "self-service",
+          "integration"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-04-01T02:03:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewStatus": "pending"
+      }
+    },
+    {
+      "id": "cis-itsm-request-management-020",
+      "certification": "cis-itsm",
+      "topic": "request-management",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A fulfiller has just completed configuring a new laptop for an employee. Before closing the catalog task, what information should the fulfiller update on the catalog task record?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Only change the state to Closed Complete"
+        },
+        {
+          "id": "b",
+          "text": "Update configuration items added/modified/removed, add work notes detailing actions taken and challenges encountered, then click Close Task"
+        },
+        {
+          "id": "c",
+          "text": "Reassign the task to the requester for verification before closing"
+        },
+        {
+          "id": "d",
+          "text": "Update the request record directly with fulfillment details and close all tasks at once"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "When a task is finished, the fulfiller should update the catalog task record with information on any configuration items that were added, modified, or removed, include work notes detailing actions taken and challenges encountered, and then click Close Task to close it and trigger any dependent tasks.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Simply changing the state is insufficient. The fulfiller must also document configuration item changes and work notes before closing the task.",
+            "reference": "ITSM Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The standard process does not require reassigning the task to the requester for verification. The fulfiller closes the task after completing the work and documenting it.",
+            "reference": "ITSM Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Fulfillment work is carried out at the catalog task level, not the request level. Each task should be updated and closed individually.",
+            "reference": "ITSM Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "ITSM Fundamentals"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "it-service-management-itsm-fundamentals/05-request-management.md",
+        "excerpt": "This update should include information on any configuration items that were added, modified, or removed. It should also include work notes detailing the actions that were taken and any challenges encountered."
+      },
+      "labels": {
+        "certification": "cis-itsm",
+        "domain": "Request Management",
+        "domainSlug": "request-management",
+        "domainPercentage": 15,
+        "subtopics": [
+          "Task completion",
+          "Fulfillment documentation"
+        ],
+        "tags": [
+          "catalog-task",
+          "fulfillment",
+          "documentation"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-04-01T02:03:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewStatus": "pending"
+      }
+    },
+    {
+      "id": "cis-itsm-request-management-021",
+      "certification": "cis-itsm",
+      "topic": "request-management",
+      "cognitiveLevel": "comprehension",
+      "type": "multiple_choice",
+      "question": "During the closure stage of Request Management, in what order are records automatically closed?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Request \u2192 Requested Items \u2192 Catalog Tasks"
+        },
+        {
+          "id": "b",
+          "text": "Catalog Tasks \u2192 Requested Items \u2192 Request"
+        },
+        {
+          "id": "c",
+          "text": "Requested Items \u2192 Catalog Tasks \u2192 Request"
+        },
+        {
+          "id": "d",
+          "text": "All records are closed simultaneously when the fulfiller clicks Close Task"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "During the closure stage, requests are automatically closed starting from the catalog task level up to the requested item level, and ultimately to the request level. This bottom-up closure ensures all work is completed before higher-level records are closed.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Closure works from the bottom up (tasks first), not top down. The request is the last record to close, not the first.",
+            "reference": "ITSM Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Requested items cannot close before their associated catalog tasks are completed. Tasks close first, then requested items, then the request.",
+            "reference": "ITSM Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Records are not closed simultaneously. They follow a cascading bottom-up closure from catalog tasks to requested items to the request.",
+            "reference": "ITSM Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "ITSM Fundamentals"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "it-service-management-itsm-fundamentals/05-request-management.md",
+        "excerpt": "Requests are automatically closed, starting from the catalog task level up to the requested item level, and ultimately to the request level."
+      },
+      "labels": {
+        "certification": "cis-itsm",
+        "domain": "Request Management",
+        "domainSlug": "request-management",
+        "domainPercentage": 15,
+        "subtopics": [
+          "Closure process",
+          "Automatic closure"
+        ],
+        "tags": [
+          "closure",
+          "automatic",
+          "lifecycle"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-04-01T02:03:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewStatus": "pending"
+      }
+    },
+    {
+      "id": "cis-itsm-request-management-022",
+      "certification": "cis-itsm",
+      "topic": "request-management",
+      "cognitiveLevel": "knowledge",
+      "type": "multi_select",
+      "question": "Which roles in the Service Catalog application allow a user to modify catalog items? (Choose two)",
+      "options": [
+        {
+          "id": "a",
+          "text": "catalog_editor"
+        },
+        {
+          "id": "b",
+          "text": "itil"
+        },
+        {
+          "id": "c",
+          "text": "catalog_manager"
+        },
+        {
+          "id": "d",
+          "text": "approver_user"
+        },
+        {
+          "id": "e",
+          "text": "catalog_builder_editor"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "c"
+      ],
+      "explanation": {
+        "correct": "The catalog_editor role allows a user to modify and refresh categories and catalog items for a particular catalog. The catalog_manager role allows an individual to make changes to service catalogs, categories, and catalog items. Both roles can modify catalog items.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "The ITIL role allows users to view and manage work request records, but does not grant the ability to modify catalog items themselves.",
+            "reference": "ITSM Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The approver_user role grants authority to approve or reject requests, not to modify catalog item definitions.",
+            "reference": "ITSM Fundamentals course"
+          },
+          {
+            "choiceId": "e",
+            "explanation": "The catalog_builder_editor role allows creating and managing items using the Catalog Builder application with pre-established templates, which has specific limitations. While it can create items, the question focuses on modifying existing catalog items directly, which is the domain of catalog_editor and catalog_manager.",
+            "reference": "ITSM Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "ITSM Fundamentals"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "it-service-management-itsm-fundamentals/02-service-catalog.md",
+        "excerpt": "A person who holds the catalog_editor role has the ability to modify and refresh categories and catalog items... the role of catalog_manager... can make changes to service catalogs, categories, and catalog items."
+      },
+      "labels": {
+        "certification": "cis-itsm",
+        "domain": "Request Management",
+        "domainSlug": "request-management",
+        "domainPercentage": 15,
+        "subtopics": [
+          "Service Catalog roles",
+          "Access control"
+        ],
+        "tags": [
+          "roles",
+          "catalog-editor",
+          "catalog-manager"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-04-01T02:03:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewStatus": "pending"
+      }
     }
   ]
 }
