@@ -3489,6 +3489,179 @@ We have **200 CSA questions** — the most comprehensive practice test available
 Every question includes full explanations. No brain dumps. No memorization. Just genuine exam preparation.
 `
   },
+  {
+    slug: "servicenow-cis-itsm-practice-test-160-questions-2026",
+    title: "CIS-ITSM Practice Test: 160 Questions to Pass the ServiceNow ITSM Exam (2026)",
+    description: "The most comprehensive CIS-ITSM practice test available. 160 questions covering all 7 exam domains with detailed explanations. Free sample included.",
+    publishedAt: "2026-04-01",
+    author: "SNReady Team",
+    tags: ["CIS-ITSM", "practice test", "exam prep", "ITSM"],
+    featured: true,
+    readingTime: 12,
+    content: `
+## Why CIS-ITSM Is the Hardest "Easy" Exam
+
+You passed CSA. You've been working with Incident, Change, and Problem Management for months. CIS-ITSM should be a breeze, right?
+
+Wrong. The CIS-ITSM exam has a **higher failure rate than most people expect** because it tests implementation knowledge, not just daily usage. You need to know *why* things are configured a certain way, not just *how* to use them.
+
+The exam has **60 questions in 90 minutes**. You need roughly **70% to pass**. That means you can miss about 18 questions — sounds generous until you realize multi-select questions are all-or-nothing.
+
+## What the CIS-ITSM Exam Actually Tests
+
+The exam covers 7 domains. Here's how they break down:
+
+| Domain | Weight | Our Questions |
+|--------|--------|--------------|
+| Incident Management | 20% | 28 questions |
+| Change Management | 20% | 28 questions |
+| Problem Management | 15% | 24 questions |
+| Request Management | 15% | 22 questions |
+| ITSM Overview | 10% | 18 questions |
+| SLA Management | 10% | 17 questions |
+| Reporting & Metrics | 10% | 17 questions |
+
+That's **160 total practice questions** — far more than the 60 you'll see on exam day, giving you massive coverage.
+
+## Domain Breakdown: What Catches People Off Guard
+
+### Incident Management (20%)
+
+This is your biggest domain. Everyone thinks they know incidents, but the exam goes deep:
+
+- **Major Incident workflows** — Not just "it's a P1." How do communications work? What triggers the major incident process?
+- **Parent-child relationships** — What happens to children when the parent resolves? What if the parent reopens?
+- **SLA behavior** — Clock pausing on hold, priority changes mid-ticket, the exact color codes on the timeline
+- **Universal Request** — Integration plugins and how incidents get created from different channels
+
+**Sample question:** *An incident has Priority 3 with a running SLA. The priority changes to Priority 1. What happens to the existing SLA?*
+
+If you hesitated, you need more practice on this domain.
+
+### Change Management (20%)
+
+Equal weight to Incident, but trickier:
+
+- **Change types** — Standard, Normal, Emergency. Know what gets skipped for each.
+- **CAB vs ECAB** — Different membership, different urgency, different process
+- **Conflict detection** — Blackout windows, maintenance schedules, CI conflicts
+- **Change models** — Pre-built templates that streamline standard changes
+
+The exam loves asking about state transitions. A change goes through New → Assess → Authorize → Scheduled → Implement → Review → Closed. Know every transition and what blocks progression.
+
+### Problem Management (15%)
+
+The domain people study least and regret most:
+
+- **Three lifecycle stages** — Detection & Logging, Investigation & Diagnosis, Resolution
+- **Known Error Database** — When to create a Known Error, what gets auto-populated
+- **Root Cause Analysis** — The two key questions RCA answers
+- **Problem tasks** — How they relate to changes, who can create them
+
+### Request Management (15%)
+
+Not just "user wants something":
+
+- **Service Catalog architecture** — Categories, catalog items, record producers, order guides
+- **Request lifecycle** — The four stages and what happens at each
+- **Fulfillment workflows** — Parallel vs sequential tasks, approval routing
+- **Catalog task states** — What triggers closure, what blocks it
+
+### ITSM Overview (10%)
+
+Deceptively hard because it's broad:
+
+- **ITSM tiers** — Standard vs Pro vs Enterprise. Know what's included in each.
+- **CSDM** — The five domains and how they connect
+- **Personas** — Who does what in the ServiceNow ITSM ecosystem
+- **Now Mobile vs Now Agent** — Different apps for different users
+
+### SLA Management (10%)
+
+Technical and precise:
+
+- **SLA types** — Response SLA vs Resolution SLA, when each starts and stops
+- **Clock behavior** — Pausing, restarting, retroactive changes
+- **Timeline colors** — Green, yellow, red, grey. Know the percentage thresholds.
+- **OLA and UC** — Operational Level Agreements and Underpinning Contracts
+
+### Reporting & Metrics (10%)
+
+Often overlooked, but free points if you study:
+
+- **Benchmarks** — What they measure, how they compare
+- **ITSM Pro analytics** — Predictive Intelligence, Performance Analytics
+- **Surveys** — Configuration, frequency controls, trigger conditions
+- **Walk-up Experience** — The in-person service desk feature
+
+## How to Use These 160 Questions
+
+### Step 1: Take the Free Assessment
+Start with our [free CIS-ITSM questions](/cis-itsm/free-questions) — 29 questions across all domains. This gives you a baseline score without any commitment.
+
+### Step 2: Identify Weak Domains
+Look at which domains you scored lowest on. Typically:
+- If you're a **daily ITSM user**, you'll struggle with Overview and Reporting (theoretical)
+- If you're a **developer/admin**, you'll struggle with Change Management details
+- If you're **new to ServiceNow**, start with ITSM Overview and SLA Management
+
+### Step 3: Domain-Focused Practice
+Work through questions one domain at a time. Read every explanation — even for questions you got right. The explanations teach you *why*, which is what the exam tests.
+
+### Step 4: Timed Mock Exam
+Once you're scoring 80%+ on individual domains, take a [timed mock exam](/cis-itsm/mock-exam). This simulates the real 90-minute pressure with randomized questions.
+
+### Step 5: Review and Repeat
+After each mock exam, review every wrong answer. The exam recycles similar concepts in different scenarios.
+
+## Question Types You'll Face
+
+Our practice test mirrors the real exam format:
+
+### Single Choice (Most Common)
+*"What is the primary purpose of..."* — One correct answer from four options.
+
+### Multi-Select (Tricky)
+*"Which of the following are true? (Choose two.)"* — Must select ALL correct answers. No partial credit on the real exam.
+
+### Scenario-Based (Hardest)
+*"A user reports X. Investigation shows Y. What should happen next?"* — Tests application of knowledge, not memorization.
+
+### Negative Questions
+*"Which is NOT a valid..."* — Read carefully. These trip up speed-readers.
+
+## Common Mistakes That Cost People the Exam
+
+### ❌ Studying only Incident and Change
+Yes, they're 40% combined. But ignoring the other 60% means you need near-perfect scores on your strong domains. That's risky.
+
+### ❌ Confusing Problem and Incident
+The exam will deliberately blur the line. Remember: Incidents restore service. Problems find root causes. If a question says "prevent future occurrences," that's Problem Management.
+
+### ❌ Not knowing SLA color codes
+Green (0-50%), Yellow (50-75%), Red (75-100%), Grey (paused). The exam treats these as fundamental knowledge.
+
+### ❌ Skipping the Delta content
+ServiceNow updates the exam with each release. Our delta questions cover Zurich-specific changes that older study materials miss entirely.
+
+### ❌ Relying on brain dumps
+Memorized answers don't help when the exam rephrases questions. Understanding *why* an answer is correct lets you handle any variation.
+
+## Ready to Start?
+
+We have **160 CIS-ITSM questions** — the most comprehensive practice test available for this certification. Every question includes detailed explanations for both correct and incorrect answers.
+
+| Action | Link |
+|--------|------|
+| Start free CIS-ITSM questions | [Free CIS-ITSM Practice Questions](/cis-itsm/free-questions) |
+| Take a timed mock exam | [CIS-ITSM Mock Exam](/cis-itsm/mock-exam) |
+| See all 7 domain topics | [CIS-ITSM Study Topics](/cis-itsm) |
+| Create a study schedule | [Study Plan Generator](/study-plan) |
+| Not sure which cert to take? | [Certification Quiz](/quiz) |
+
+Every question includes full explanations. No brain dumps. No memorization. Just genuine exam preparation that builds real understanding.
+`
+  },
 ];
 
 export function getAllPosts(): BlogPost[] {

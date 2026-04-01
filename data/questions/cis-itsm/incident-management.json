@@ -1668,6 +1668,626 @@
         "release": "Xanadu",
         "reviewed": false
       }
+    },
+    {
+      "id": "cis-itsm-incident-management-021",
+      "certification": "cis-itsm",
+      "topic": "incident-management",
+      "cognitiveLevel": "comprehension",
+      "type": "multiple_choice",
+      "question": "What is the definition of an incident in ServiceNow ITSM?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A planned change to a configuration item that requires approval"
+        },
+        {
+          "id": "b",
+          "text": "An unplanned interruption or reduction in quality of an IT service, or failure of a CI not yet impacting service"
+        },
+        {
+          "id": "c",
+          "text": "The underlying root cause of one or more service disruptions"
+        },
+        {
+          "id": "d",
+          "text": "A request from a user for information or a standard service"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "An incident is defined as an unplanned interruption to an IT service, a reduction in the quality of an IT service, or the failure of a configuration item that has not yet impacted an IT service. This distinguishes incidents from problems (root causes), changes (planned modifications), and service requests.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "A planned change to a configuration item describes a Change Request, not an incident",
+            "reference": "ITSM Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The underlying root cause of service disruptions describes a Problem record, not an incident",
+            "reference": "ITSM Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "User requests for information or standard services are handled through Service Requests, not incidents",
+            "reference": "ITSM Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "ITSM Fundamentals",
+        "ITIL Foundation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "it-service-management-itsm-fundamentals/02-incident-management-creation-and-classification.md",
+        "excerpt": "An incident refers to an unexpected disruption or deterioration in the quality of a technical service, or the failure of a configuration item that has not yet affected a technical service."
+      },
+      "labels": {
+        "certification": "cis-itsm",
+        "domain": "Incident Management",
+        "domainSlug": "incident-management",
+        "domainPercentage": 20,
+        "subtopics": [
+          "Incident definition",
+          "ITSM terminology"
+        ],
+        "tags": [
+          "incident",
+          "definition",
+          "terminology"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-04-01T02:03:00Z",
+        "version": "1.0",
+        "model": "claude-opus-4-6"
+      }
+    },
+    {
+      "id": "cis-itsm-incident-management-022",
+      "certification": "cis-itsm",
+      "topic": "incident-management",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A service desk agent places an incident On Hold with the reason 'Awaiting Caller.' What additional requirement does the system enforce for this specific on hold reason?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The Work Notes field becomes mandatory"
+        },
+        {
+          "id": "b",
+          "text": "The Additional Comments field becomes mandatory"
+        },
+        {
+          "id": "c",
+          "text": "A manager approval is required before the hold takes effect"
+        },
+        {
+          "id": "d",
+          "text": "The Assigned To field must be cleared"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "When the On Hold reason is set to 'Awaiting Caller,' the Additional Comments field becomes mandatory. This ensures that the caller is notified about what information is needed, since Additional Comments trigger notifications to the caller.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Work Notes are internal-only and not visible to the caller. The system requires Additional Comments, not Work Notes, for the Awaiting Caller hold reason",
+            "reference": "ITSM Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "No manager approval is required to place an incident On Hold. The agent can set this state directly",
+            "reference": "ITSM Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The Assigned To field does not need to be cleared when placing an incident on hold. The agent remains assigned",
+            "reference": "ITSM Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "ITSM Fundamentals",
+        "ITIL Foundation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "it-service-management-itsm-fundamentals/02-incident-management-creation-and-classification.md",
+        "excerpt": "If the On hold reason is Awaiting Caller, the Additional comments becomes mandatory."
+      },
+      "labels": {
+        "certification": "cis-itsm",
+        "domain": "Incident Management",
+        "domainSlug": "incident-management",
+        "domainPercentage": 20,
+        "subtopics": [
+          "On Hold state",
+          "Awaiting Caller"
+        ],
+        "tags": [
+          "incident",
+          "on-hold",
+          "awaiting-caller"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-04-01T02:03:00Z",
+        "version": "1.0",
+        "model": "claude-opus-4-6"
+      }
+    },
+    {
+      "id": "cis-itsm-incident-management-023",
+      "certification": "cis-itsm",
+      "topic": "incident-management",
+      "cognitiveLevel": "analysis",
+      "type": "multiple_choice",
+      "question": "A user reports they cannot access a critical application. Investigation reveals that an application job is hung, preventing all users from logging in. From an Incident Management perspective, what is the correct course of action?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Investigate why the job hung before taking any action to restore service"
+        },
+        {
+          "id": "b",
+          "text": "Remove the hung job to restore application access, then document the resolution"
+        },
+        {
+          "id": "c",
+          "text": "Escalate directly to Problem Management to determine the root cause before restoring service"
+        },
+        {
+          "id": "d",
+          "text": "Wait for the hung job to resolve itself and monitor the situation"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Incident Management's primary focus is to restore service as quickly as possible. In this scenario, removing the hung job restores application access for users. Determining why the job hung and preventing recurrence is the focus of Problem Management, not Incident Management.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Investigating the root cause before restoring service delays resolution. Incident Management focuses on swift service restoration, not root cause analysis",
+            "reference": "ITSM Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Escalating to Problem Management before restoring service is incorrect. Service should be restored first through Incident Management, then Problem Management can investigate the underlying cause",
+            "reference": "ITSM Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Waiting for the job to self-resolve is not an appropriate incident management response, especially for a critical application affecting all users",
+            "reference": "ITSM Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "ITSM Fundamentals",
+        "ITIL Foundation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "it-service-management-itsm-fundamentals/05-incident-management-investigation-and-resolution.md",
+        "excerpt": "Incident Management's focus is to get rid of the hung job so that users can access the application once again. Its focus is not to determine why the job hung."
+      },
+      "labels": {
+        "certification": "cis-itsm",
+        "domain": "Incident Management",
+        "domainSlug": "incident-management",
+        "domainPercentage": 20,
+        "subtopics": [
+          "Service restoration",
+          "Incident vs Problem"
+        ],
+        "tags": [
+          "incident",
+          "scenario",
+          "restoration",
+          "problem-management"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-04-01T02:03:00Z",
+        "version": "1.0",
+        "model": "claude-opus-4-6"
+      }
+    },
+    {
+      "id": "cis-itsm-incident-management-024",
+      "certification": "cis-itsm",
+      "topic": "incident-management",
+      "cognitiveLevel": "knowledge",
+      "type": "multi_select",
+      "question": "Which TWO of the following are objectives of Incident Management? (Choose 2)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Align incident management priorities and activities with those of the business"
+        },
+        {
+          "id": "b",
+          "text": "Identify and eliminate the root cause of recurring incidents"
+        },
+        {
+          "id": "c",
+          "text": "Enhance the business perception of IT by resolving incidents quickly and communicating professionally"
+        },
+        {
+          "id": "d",
+          "text": "Implement permanent infrastructure changes to prevent all future incidents"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "c"
+      ],
+      "explanation": {
+        "correct": "Two key objectives of Incident Management are: (1) aligning incident management priorities and activities with those of the business, and (2) enhancing the business perception of IT through quick resolution and professional communication. Other objectives include ensuring efficient response using standard methods and improving visibility of incidents to business and support staff.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Identifying and eliminating root causes is the objective of Problem Management, not Incident Management. Incident Management focuses on service restoration",
+            "reference": "ITSM Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Implementing permanent infrastructure changes falls under Change Management. Incident Management uses temporary workarounds to restore service",
+            "reference": "ITSM Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "ITSM Fundamentals",
+        "ITIL Foundation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "it-service-management-itsm-fundamentals/02-incident-management-creation-and-classification.md",
+        "excerpt": "The fourth objective is to align the priorities and activities of incident management with those of the business... the third objective is to enhance the business perception of IT by resolving incidents quickly and communicating them in a professional manner."
+      },
+      "labels": {
+        "certification": "cis-itsm",
+        "domain": "Incident Management",
+        "domainSlug": "incident-management",
+        "domainPercentage": 20,
+        "subtopics": [
+          "Incident Management objectives"
+        ],
+        "tags": [
+          "incident",
+          "objectives",
+          "multi-select"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-04-01T02:03:00Z",
+        "version": "1.0",
+        "model": "claude-opus-4-6"
+      }
+    },
+    {
+      "id": "cis-itsm-incident-management-025",
+      "certification": "cis-itsm",
+      "topic": "incident-management",
+      "cognitiveLevel": "comprehension",
+      "type": "multiple_choice",
+      "question": "What is the default number of days an incident remains in the Resolved state before it is automatically closed?",
+      "options": [
+        {
+          "id": "a",
+          "text": "3 days"
+        },
+        {
+          "id": "b",
+          "text": "5 days"
+        },
+        {
+          "id": "c",
+          "text": "7 days"
+        },
+        {
+          "id": "d",
+          "text": "14 days"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "The standard (default) time for an incident to remain in a Resolved state before automatically closing is 7 days. If the user takes no action within this time frame, the incident will automatically transition to Closed. This value can be configured to meet organizational needs.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "3 days is not the default resolved-to-closed timer. The default is 7 days",
+            "reference": "ITSM Fundamentals course"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "5 days is not the default resolved-to-closed timer. The default is 7 days",
+            "reference": "ITSM Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "14 days is not the default resolved-to-closed timer. The default is 7 days",
+            "reference": "ITSM Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "ITSM Fundamentals",
+        "ITIL Foundation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "it-service-management-itsm-fundamentals/05-incident-management-investigation-and-resolution.md",
+        "excerpt": "The standard time for an incident to remain in a resolved state is seven days. If the user takes no action within this time frame, the incident will automatically be closed."
+      },
+      "labels": {
+        "certification": "cis-itsm",
+        "domain": "Incident Management",
+        "domainSlug": "incident-management",
+        "domainPercentage": 20,
+        "subtopics": [
+          "Resolved state",
+          "Auto-close timer"
+        ],
+        "tags": [
+          "incident",
+          "resolved",
+          "auto-close",
+          "timer"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-04-01T02:03:00Z",
+        "version": "1.0",
+        "model": "claude-opus-4-6"
+      }
+    },
+    {
+      "id": "cis-itsm-incident-management-026",
+      "certification": "cis-itsm",
+      "topic": "incident-management",
+      "cognitiveLevel": "application",
+      "type": "multi_select",
+      "question": "Which THREE types of service disruptions can be created from the Additional Actions menu on an incident record? (Choose 3)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Degradations"
+        },
+        {
+          "id": "b",
+          "text": "Outages"
+        },
+        {
+          "id": "c",
+          "text": "Planned outages"
+        },
+        {
+          "id": "d",
+          "text": "Partial failures"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b",
+        "c"
+      ],
+      "explanation": {
+        "correct": "From the Additional Actions menu on an incident record, technical support teams can create outages to monitor downtime of configuration items. The three types of service disruptions available are degradations, outages, and planned outages.",
+        "wrongAnswers": [
+          {
+            "choiceId": "d",
+            "explanation": "Partial failures is not one of the three service disruption types available in ServiceNow. The valid types are degradations, outages, and planned outages",
+            "reference": "ITSM Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "ITSM Fundamentals",
+        "ITIL Foundation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "it-service-management-itsm-fundamentals/05-incident-management-investigation-and-resolution.md",
+        "excerpt": "There are three types of service disruptions-- degradations, outages, and planned outages."
+      },
+      "labels": {
+        "certification": "cis-itsm",
+        "domain": "Incident Management",
+        "domainSlug": "incident-management",
+        "domainPercentage": 20,
+        "subtopics": [
+          "Service disruptions",
+          "Additional Actions"
+        ],
+        "tags": [
+          "incident",
+          "outages",
+          "degradations",
+          "additional-actions"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-04-01T02:03:00Z",
+        "version": "1.0",
+        "model": "claude-opus-4-6"
+      }
+    },
+    {
+      "id": "cis-itsm-incident-management-027",
+      "certification": "cis-itsm",
+      "topic": "incident-management",
+      "cognitiveLevel": "comprehension",
+      "type": "multiple_choice",
+      "question": "How does ServiceNow determine the priority of an incident?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It is manually set by the service desk agent based on their judgment"
+        },
+        {
+          "id": "b",
+          "text": "It is automatically calculated based on the Impact and Urgency values using a priority data lookup table"
+        },
+        {
+          "id": "c",
+          "text": "It is determined by the caller's VIP status and the category of the incident"
+        },
+        {
+          "id": "d",
+          "text": "It is set by a script that evaluates the assignment group and affected CI"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "In ServiceNow, the Priority field is initially read-only and is automatically calculated by selecting the appropriate Impact and Urgency values. These values are mapped through the priority data lookup table, which can be customized without scripting.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Priority is not manually set by agents. It is a read-only field calculated from Impact and Urgency values",
+            "reference": "ITSM Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Priority is not based on VIP status or category. It is derived from the Impact and Urgency matrix in the priority data lookup table",
+            "reference": "ITSM Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Priority is not calculated by a script evaluating assignment group or CI. It uses the priority data lookup table based on Impact and Urgency",
+            "reference": "ITSM Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "ITSM Fundamentals",
+        "ITIL Foundation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "it-service-management-itsm-fundamentals/02-incident-management-creation-and-classification.md",
+        "excerpt": "The priority field is initially read-only but can be set by selecting the appropriate impact and urgency values. Additionally, priority values can be customized in the priority data lookup table."
+      },
+      "labels": {
+        "certification": "cis-itsm",
+        "domain": "Incident Management",
+        "domainSlug": "incident-management",
+        "domainPercentage": 20,
+        "subtopics": [
+          "Priority calculation",
+          "Impact and Urgency"
+        ],
+        "tags": [
+          "incident",
+          "priority",
+          "impact",
+          "urgency"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-04-01T02:03:00Z",
+        "version": "1.0",
+        "model": "claude-opus-4-6"
+      }
+    },
+    {
+      "id": "cis-itsm-incident-management-028",
+      "certification": "cis-itsm",
+      "topic": "incident-management",
+      "cognitiveLevel": "analysis",
+      "type": "multi_select",
+      "question": "When a parent incident is reopened by an end user, which TWO statements are correct? (Choose 2)",
+      "options": [
+        {
+          "id": "a",
+          "text": "The parent incident state is set to In Progress"
+        },
+        {
+          "id": "b",
+          "text": "All child incidents are also set to In Progress"
+        },
+        {
+          "id": "c",
+          "text": "The child incidents remain Closed"
+        },
+        {
+          "id": "d",
+          "text": "The parent incident state is set to New"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "c"
+      ],
+      "explanation": {
+        "correct": "When a parent incident is reopened by an end user, the parent incident state is set to In Progress, but the child incidents remain Closed. This is the one exception to the rule that parent and child incidents share the same state. Note: when an agent reopens a parent incident, both parent and child incidents are set to In Progress.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Child incidents are NOT set to In Progress when the end user reopens the parent. They remain Closed. This behavior differs from when an agent reopens the parent, which does reopen child incidents",
+            "reference": "ITSM Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The parent incident is set to In Progress when reopened, not to New. The New state is only for newly created incidents",
+            "reference": "ITSM Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "ITSM Fundamentals",
+        "ITIL Foundation"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "it-service-management-itsm-fundamentals/05-incident-management-investigation-and-resolution.md",
+        "excerpt": "In case the parent incident is reopened by the end user, its state is set to in-progress, but the child incidents remain closed."
+      },
+      "labels": {
+        "certification": "cis-itsm",
+        "domain": "Incident Management",
+        "domainSlug": "incident-management",
+        "domainPercentage": 20,
+        "subtopics": [
+          "Parent-child incidents",
+          "End user reopen behavior"
+        ],
+        "tags": [
+          "incident",
+          "parent-child",
+          "reopen",
+          "end-user"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-04-01T02:03:00Z",
+        "version": "1.0",
+        "model": "claude-opus-4-6"
+      }
     }
   ]
 }

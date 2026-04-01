@@ -1328,6 +1328,642 @@
         "release": "Xanadu",
         "reviewed": false
       }
+    },
+    {
+      "id": "cis-itsm-problem-management-017",
+      "certification": "cis-itsm",
+      "topic": "problem-management",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A support analyst has completed the root cause analysis for a problem and determined that a permanent fix requires infrastructure changes. What should the analyst do next within the Problem Management process?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Close the problem record immediately"
+        },
+        {
+          "id": "b",
+          "text": "Create a change request from the problem record"
+        },
+        {
+          "id": "c",
+          "text": "Delete the problem and create an incident instead"
+        },
+        {
+          "id": "d",
+          "text": "Reassign the problem to Incident Management"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "When a permanent solution requires infrastructure changes, the analyst should create a change request from the problem record. ServiceNow copies fields such as short description, description, configuration item, and priority from the problem to the change request, ensuring traceability between the problem and the change.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The problem should not be closed until the fix has been implemented and verified. The status should move to Fix In Progress while the change is underway.",
+            "reference": "ITSM Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Problems and incidents serve different purposes. A problem investigates root causes; deleting it would lose all investigation data.",
+            "reference": "ITSM Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Incident Management handles service restoration, not implementing permanent fixes. The problem record should remain in Problem Management.",
+            "reference": "ITSM Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "ITSM Fundamentals"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "it-service-management-itsm-fundamentals/11-problem-management-investigation-and-resolution.md",
+        "excerpt": "At this stage, we may opt for a permanent solution by implementing a change request or determining that the workaround suffices to fix the problem."
+      },
+      "labels": {
+        "certification": "cis-itsm",
+        "domain": "Problem Management",
+        "domainSlug": "problem-management",
+        "domainPercentage": 15,
+        "subtopics": [
+          "Resolution and closure",
+          "Change requests from problems"
+        ],
+        "tags": [
+          "problem",
+          "change-request",
+          "resolution"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-04-01T02:03:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "language": "en"
+      }
+    },
+    {
+      "id": "cis-itsm-problem-management-018",
+      "certification": "cis-itsm",
+      "topic": "problem-management",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which role in ServiceNow Problem Management has the ability to administer problem properties in addition to creating and updating problems?",
+      "options": [
+        {
+          "id": "a",
+          "text": "problem_admin"
+        },
+        {
+          "id": "b",
+          "text": "problem_manager"
+        },
+        {
+          "id": "c",
+          "text": "problem_task_analyst"
+        },
+        {
+          "id": "d",
+          "text": "itil"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The problem_manager role can create and update problems, problem tasks, and related records. Additionally, this role can administer problem properties and is the only role that can reopen a problem record, making it suitable for someone serving in a managerial capacity.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The problem_admin role can create, update, and delete problems, problem tasks, and related records, but administering problem properties is specifically called out for the problem_manager role.",
+            "reference": "ITSM Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The problem_task_analyst role is limited to creating and updating problem tasks, not administering problem properties.",
+            "reference": "ITSM Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The itil role is a general ITSM role and does not specifically grant problem property administration privileges.",
+            "reference": "ITSM Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "ITSM Fundamentals"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "it-service-management-itsm-fundamentals/08-problem-management-detection-and-logging.md",
+        "excerpt": "This user can also administer problem properties, and this is the only role that could reopen a problem record."
+      },
+      "labels": {
+        "certification": "cis-itsm",
+        "domain": "Problem Management",
+        "domainSlug": "problem-management",
+        "domainPercentage": 15,
+        "subtopics": [
+          "Problem Management roles",
+          "problem_manager role"
+        ],
+        "tags": [
+          "problem",
+          "roles",
+          "problem-manager"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-04-01T02:03:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "language": "en"
+      }
+    },
+    {
+      "id": "cis-itsm-problem-management-019",
+      "certification": "cis-itsm",
+      "topic": "problem-management",
+      "cognitiveLevel": "comprehension",
+      "type": "multiple_choice",
+      "question": "What happens to the problem state when a problem record is saved after being assigned to an individual or group?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It changes from New to Root Cause Analysis"
+        },
+        {
+          "id": "b",
+          "text": "It changes from New to Assess"
+        },
+        {
+          "id": "c",
+          "text": "It changes from New to Fix In Progress"
+        },
+        {
+          "id": "d",
+          "text": "It remains in the New state until manually updated"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "After saving the assigned problem, its status automatically changes from New to Assess. At this point, the team can start looking for similar incidents, changes, and duplicates, and examine the problem's size, scope, and potential cause and effect.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Root Cause Analysis is the state that follows Assess, not the state immediately after assignment.",
+            "reference": "ITSM Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Fix In Progress indicates a change is being implemented to resolve the problem, which occurs much later in the lifecycle.",
+            "reference": "ITSM Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The state change is automatic upon saving the assigned problem; it does not require manual intervention.",
+            "reference": "ITSM Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "ITSM Fundamentals"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "it-service-management-itsm-fundamentals/08-problem-management-detection-and-logging.md",
+        "excerpt": "After saving the assigned problem, its status changes from new to assess."
+      },
+      "labels": {
+        "certification": "cis-itsm",
+        "domain": "Problem Management",
+        "domainSlug": "problem-management",
+        "domainPercentage": 15,
+        "subtopics": [
+          "Problem states",
+          "Detection and logging"
+        ],
+        "tags": [
+          "problem",
+          "state-transitions",
+          "assess"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-04-01T02:03:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "language": "en"
+      }
+    },
+    {
+      "id": "cis-itsm-problem-management-020",
+      "certification": "cis-itsm",
+      "topic": "problem-management",
+      "cognitiveLevel": "analysis",
+      "type": "multiple_choice",
+      "question": "A problem has been resolved with a workaround, and the team has decided that no permanent solution will be implemented due to cost constraints. What is the expected outcome for this problem record?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The record is deleted from the system since no permanent fix was applied"
+        },
+        {
+          "id": "b",
+          "text": "The record is marked as Resolved and remains listed in the Known Error Database"
+        },
+        {
+          "id": "c",
+          "text": "The record is automatically reopened after 30 days"
+        },
+        {
+          "id": "d",
+          "text": "The record is moved to Change Management for further processing"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "When a workaround is found satisfactory and no permanent solution is implemented, the problem record is marked as Resolved but still remains listed in the Known Error Database (KEDB). This ensures the workaround information remains accessible for future incident resolution.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Problem records are never deleted simply because no permanent fix was applied. They are preserved for knowledge and historical reference.",
+            "reference": "ITSM Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "There is no automatic 30-day reopening mechanism. Problems can only be reopened by users with the problem_manager role.",
+            "reference": "ITSM Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "If no permanent solution is being pursued, there is no need to create a change request. The problem is simply resolved with the workaround.",
+            "reference": "ITSM Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "ITSM Fundamentals"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "it-service-management-itsm-fundamentals/11-problem-management-investigation-and-resolution.md",
+        "excerpt": "In cases where the workaround was found to be satisfactory and no permanent solution was implemented, the issue record will still be listed in the known error database despite being marked as resolved."
+      },
+      "labels": {
+        "certification": "cis-itsm",
+        "domain": "Problem Management",
+        "domainSlug": "problem-management",
+        "domainPercentage": 15,
+        "subtopics": [
+          "Known Error Database",
+          "Resolution and closure"
+        ],
+        "tags": [
+          "problem",
+          "kedb",
+          "workaround",
+          "cost-analysis"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-04-01T02:03:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "language": "en"
+      }
+    },
+    {
+      "id": "cis-itsm-problem-management-021",
+      "certification": "cis-itsm",
+      "topic": "problem-management",
+      "cognitiveLevel": "comprehension",
+      "type": "multi_select",
+      "question": "Which of the following fields are automatically copied from a problem record to a change request when the change is created from the problem form? (Choose three)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Short description"
+        },
+        {
+          "id": "b",
+          "text": "Assignment group"
+        },
+        {
+          "id": "c",
+          "text": "Configuration item"
+        },
+        {
+          "id": "d",
+          "text": "Priority"
+        },
+        {
+          "id": "e",
+          "text": "Work notes"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "c",
+        "d"
+      ],
+      "explanation": {
+        "correct": "When creating a change request from the problem form, ServiceNow automatically copies the short description, description, configuration item, and priority from the problem record to the change request. This ensures consistency and traceability between the two records.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "The assignment group is not automatically copied because the change may need to be assigned to a different team than the one investigating the problem.",
+            "reference": "ITSM Fundamentals course"
+          },
+          {
+            "choiceId": "e",
+            "explanation": "Work notes are internal investigation details specific to the problem and are not copied to the change request.",
+            "reference": "ITSM Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "ITSM Fundamentals"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "it-service-management-itsm-fundamentals/11-problem-management-investigation-and-resolution.md",
+        "excerpt": "When creating the change request form, the problem form, some fields are copied from the problem record to the change request. For example, the short description, the description, the configuration item, as well as the priority."
+      },
+      "labels": {
+        "certification": "cis-itsm",
+        "domain": "Problem Management",
+        "domainSlug": "problem-management",
+        "domainPercentage": 15,
+        "subtopics": [
+          "Change requests from problems",
+          "Field mapping"
+        ],
+        "tags": [
+          "problem",
+          "change-request",
+          "field-mapping"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-04-01T02:03:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "language": "en"
+      }
+    },
+    {
+      "id": "cis-itsm-problem-management-022",
+      "certification": "cis-itsm",
+      "topic": "problem-management",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A problem owner has identified a fix for a problem with several related incidents currently in the 'Awaiting Problem' state. How should the problem owner communicate the fix to the affected incident records?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Manually update each incident record with the fix details"
+        },
+        {
+          "id": "b",
+          "text": "Click 'Communicate Fix' in the Related Links section of the problem form"
+        },
+        {
+          "id": "c",
+          "text": "Close all related incidents and create new ones with the fix information"
+        },
+        {
+          "id": "d",
+          "text": "Send an email to all incident assignees outside of ServiceNow"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The problem owner can click 'Communicate Fix' in the Related Links section of the problem form. This action copies the contents of the Fix Notes field to the Work Notes field for all active incidents related to the problem record, efficiently sharing the resolution details.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "While possible, manually updating each incident is inefficient and error-prone. ServiceNow provides the Communicate Fix feature specifically for this purpose.",
+            "reference": "ITSM Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Closing and recreating incidents would lose historical data and is not a proper practice in Problem Management.",
+            "reference": "ITSM Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Communication should be done within ServiceNow to maintain an audit trail and ensure proper record updates.",
+            "reference": "ITSM Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "ITSM Fundamentals"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "it-service-management-itsm-fundamentals/11-problem-management-investigation-and-resolution.md",
+        "excerpt": "The problem owner can share the fix with incidents that are either on hold or awaiting problem state by clicking Communicate Fix in the related links section of the problem form."
+      },
+      "labels": {
+        "certification": "cis-itsm",
+        "domain": "Problem Management",
+        "domainSlug": "problem-management",
+        "domainPercentage": 15,
+        "subtopics": [
+          "Communicate Fix",
+          "Incident communication"
+        ],
+        "tags": [
+          "problem",
+          "communicate-fix",
+          "incidents"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-04-01T02:03:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "language": "en"
+      }
+    },
+    {
+      "id": "cis-itsm-problem-management-023",
+      "certification": "cis-itsm",
+      "topic": "problem-management",
+      "cognitiveLevel": "knowledge",
+      "type": "multi_select",
+      "question": "Which tabs are available on the Problem form for documenting investigation and resolution details? (Choose three)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Analysis Information"
+        },
+        {
+          "id": "b",
+          "text": "Resolution Information"
+        },
+        {
+          "id": "c",
+          "text": "Change History"
+        },
+        {
+          "id": "d",
+          "text": "Other Information"
+        },
+        {
+          "id": "e",
+          "text": "SLA Information"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b",
+        "d"
+      ],
+      "explanation": {
+        "correct": "The Problem form includes the Analysis Information tab (for root cause details and temporary solutions), the Resolution Information tab (for the permanent fix, resolver name, and fix date), and the Other Information tab (for tracking who reported and confirmed the problem). A Notes tab is also present but was not listed as an option.",
+        "wrongAnswers": [
+          {
+            "choiceId": "c",
+            "explanation": "Change History is not one of the standard tabs on the Problem form. Change-related information is tracked through linked change request records.",
+            "reference": "ITSM Fundamentals course"
+          },
+          {
+            "choiceId": "e",
+            "explanation": "SLA Information is not one of the standard documentation tabs on the Problem form. SLA tracking is handled separately.",
+            "reference": "ITSM Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "ITSM Fundamentals"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "it-service-management-itsm-fundamentals/08-problem-management-detection-and-logging.md",
+        "excerpt": "The form has three tabs, Analysis Information, Resolution Information, and Other Information."
+      },
+      "labels": {
+        "certification": "cis-itsm",
+        "domain": "Problem Management",
+        "domainSlug": "problem-management",
+        "domainPercentage": 15,
+        "subtopics": [
+          "Problem form layout",
+          "Documentation"
+        ],
+        "tags": [
+          "problem",
+          "form-tabs",
+          "documentation"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-04-01T02:03:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "language": "en"
+      }
+    },
+    {
+      "id": "cis-itsm-problem-management-024",
+      "certification": "cis-itsm",
+      "topic": "problem-management",
+      "cognitiveLevel": "analysis",
+      "type": "multiple_choice",
+      "question": "A recurring incident has been identified through trend analysis before any major service disruption occurs. A problem record is created. Regardless of how the problem was detected, what state will the problem record be in when first created?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Assess"
+        },
+        {
+          "id": "b",
+          "text": "New"
+        },
+        {
+          "id": "c",
+          "text": "Root Cause Analysis"
+        },
+        {
+          "id": "d",
+          "text": "Proactive"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Regardless of whether a problem arises reactively from an incident, proactively through trend analysis, or by any other means of detection, the state is always automatically set to New on the problem form when first created. This is the initial state where the problem is logged but not yet assessed.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The Assess state is reached after the problem has been assigned and saved, not at initial creation.",
+            "reference": "ITSM Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Root Cause Analysis is a later investigation state, not the initial state upon creation.",
+            "reference": "ITSM Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Proactive is not a problem state in ServiceNow. It describes a detection method, not a lifecycle state.",
+            "reference": "ITSM Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "ITSM Fundamentals"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "it-service-management-itsm-fundamentals/08-problem-management-detection-and-logging.md",
+        "excerpt": "It makes no difference whether the problem arises reactively from an incident, proactively through trend analysis, or by any other means of detection. The state will always be automatically set to a new state on the problem form."
+      },
+      "labels": {
+        "certification": "cis-itsm",
+        "domain": "Problem Management",
+        "domainSlug": "problem-management",
+        "domainPercentage": 15,
+        "subtopics": [
+          "Problem states",
+          "Proactive detection"
+        ],
+        "tags": [
+          "problem",
+          "proactive",
+          "state-transitions",
+          "trend-analysis"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-04-01T02:03:00Z",
+        "version": "1.0",
+        "release": "Xanadu",
+        "language": "en"
+      }
     }
   ]
 }
