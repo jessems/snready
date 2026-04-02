@@ -3662,6 +3662,174 @@ We have **160 CIS-ITSM questions** — the most comprehensive practice test avai
 Every question includes full explanations. No brain dumps. No memorization. Just genuine exam preparation that builds real understanding.
 `
   },
+  {
+    slug: "servicenow-cad-practice-test-200-questions-2026",
+    title: "ServiceNow CAD Practice Test: 200 Questions to Pass the Application Developer Exam (2026)",
+    description: "200 expert-written CAD practice questions covering all 7 exam domains. Scripting, business rules, client scripts, REST APIs, and more — with full explanations.",
+    publishedAt: "2026-04-02",
+    author: "SNReady Team",
+    tags: ["CAD", "practice test", "exam prep", "application developer"],
+    featured: true,
+    readingTime: 13,
+    content: `
+## Why 200 Questions Matters for the CAD Exam
+
+The Certified Application Developer (CAD) exam is the coding exam in the ServiceNow certification path. It tests whether you can actually build things on the platform — business rules, client scripts, script includes, REST integrations, and scoped applications.
+
+**The exam at a glance:**
+- 60 questions, 90 minutes
+- ~70% passing score (42 correct)
+- Multiple choice and multi-select
+- Heavy on scripting scenarios
+- $210 per attempt
+
+Unlike the CSA (which tests admin knowledge), the CAD tests your ability to write and debug code. You need to understand GlideRecord, GlideAjax, business rule timing, client-side vs server-side execution, and REST API patterns.
+
+200 practice questions means you can take over 3 full mock exams without repeating a single question.
+
+## What Our 200 Questions Cover
+
+Our CAD question bank is distributed across all 7 exam domains:
+
+| Domain | Questions | What's Tested |
+|--------|-----------|---------------|
+| [Application Development](/cad/application-development) | 53 | Scoped apps, update sets, tables, app scope, Studio |
+| [Scripting & APIs](/cad/scripting-apis) | 34 | GlideRecord, GlideSystem, GlideAjax, server vs client |
+| [Business Rules](/cad/business-rules) | 24 | Before/after/async/display, abort actions, current/previous |
+| [Client Scripts](/cad/client-scripts) | 21 | onLoad, onChange, onSubmit, g_form, g_user |
+| [UI Policies & Actions](/cad/ui-policies-actions) | 21 | Visibility, mandatory, read-only, reverse if false |
+| [Integration & REST APIs](/cad/integration-rest) | 21 | Table API, RESTMessageV2, auth methods, HTTP methods |
+| [Script Includes](/cad/script-includes) | 20 | AbstractAjaxProcessor, client-callable, reusability |
+
+## The 5 Question Types You'll Face
+
+### 1. Straight Knowledge Questions (~30%)
+> "What does the 'Reverse if false' option do on a UI Policy?"
+
+These test whether you know what platform features do. They're the easiest to study for.
+
+### 2. Scenario-Based Questions (~25%)
+> "A developer creates a before business rule that sets a field value, but it's not being saved. What is the most likely cause?"
+
+These give you a situation and ask you to troubleshoot. You need real platform experience for these — not just memorized definitions.
+
+### 3. Multi-Select (Choose 2 or 3) (~20%)
+> "Which TWO authentication methods are supported by ServiceNow's inbound REST APIs?"
+
+The real exam has a significant number of multi-select questions. Many practice tests skip these entirely. We don't.
+
+### 4. Negative Questions (~15%)
+> "Which of the following is NOT a valid g_form method?"
+
+These trip people up because you need to identify the wrong answer. They test the boundaries of your knowledge.
+
+### 5. Code Analysis (~10%)
+> "A developer writes an onChange client script but it does not fire when the form loads. What should they add?"
+
+These require you to read code or debug scenarios. The CAD exam has more of these than any other ServiceNow cert.
+
+## Domain Deep Dive: Where People Fail
+
+### Scripting & APIs — The Make-or-Break Domain
+This domain tests your fundamental scripting knowledge. The most common mistakes:
+
+- **Confusing server-side and client-side APIs** — g_form is client, GlideRecord is server. Mixing them up in the wrong context is the #1 error.
+- **Not knowing GlideRecord query patterns** — addQuery vs addEncodedQuery, when to use get() vs query()
+- **GlideAjax callback patterns** — The asynchronous nature trips up developers used to synchronous code
+
+**Key APIs to know cold:**
+- GlideRecord (query, insert, update, delete)
+- GlideSystem (gs.info, gs.addInfoMessage, gs.getUser)
+- GlideAjax (client-to-server communication)
+- RESTMessageV2 (outbound REST calls)
+
+### Business Rules — Timing Is Everything
+The exam loves testing business rule timing:
+
+| Timing | When It Runs | Key Fact |
+|--------|-------------|----------|
+| Before | Before DB operation | Changes to current auto-save |
+| After | After DB operation | current.update() needed for changes |
+| Async | After, in background | Does not block the user |
+| Display | When form loads | Can add scratchpad data |
+
+**Critical rule:** Never call current.update() in a before business rule. It causes double saves and recursion issues.
+
+### Client Scripts — Know Your Events
+- **onLoad** — Form opens (query or insert)
+- **onChange** — Field value changes (does NOT fire on load by default)
+- **onSubmit** — Form submitted (return false to cancel)
+- **onCellEdit** — List view cell editing
+
+The distinction between these events shows up in almost every CAD exam.
+
+### REST Integration — HTTP Methods Matter
+| Method | Table API Use |
+|--------|---------------|
+| GET | Read records |
+| POST | Create records |
+| PUT | Replace records |
+| PATCH | Partial update |
+| DELETE | Delete records |
+
+Know sysparm_fields, sysparm_query, sysparm_display_value, and sysparm_limit.
+
+## How to Use These 200 Questions
+
+### Strategy 1: Domain-by-Domain Study (Recommended)
+1. Start with [Scripting & APIs](/cad/scripting-apis) — it's the foundation
+2. Move to [Business Rules](/cad/business-rules) — build on scripting knowledge
+3. Then [Client Scripts](/cad/client-scripts) and [UI Policies](/cad/ui-policies-actions)
+4. [Script Includes](/cad/script-includes) — ties server-side concepts together
+5. [REST APIs](/cad/integration-rest) — integration patterns
+6. Finish with [Application Development](/cad/application-development) — the big picture
+
+### Strategy 2: Mock Exam Mode
+Use our [Timed Mock Exam](/cad/mock-exam) to simulate real conditions:
+- 60 random questions from all domains
+- 90-minute timer
+- No mid-exam feedback
+- Domain-level score breakdown at the end
+
+### Strategy 3: Weak Area Focus
+Take a mock exam first. Identify your weakest 2-3 domains. Spend focused study time on those domains, then retest.
+
+## CAD vs CSA: Key Differences
+
+| Aspect | CSA | CAD |
+|--------|-----|-----|
+| Focus | Administration & configuration | Development & scripting |
+| Coding Required | Minimal | Extensive |
+| Difficulty | Entry-level | Intermediate |
+| Study Time | 3-4 weeks | 4-6 weeks |
+| Pass Rate | Higher | Lower |
+| Practice Questions | [200 questions](/csa/free-questions) | [200 questions](/cad/free-questions) |
+
+If you're deciding between the two, read our [CSA vs CAD comparison](/blog/csa-vs-cad-real-talk).
+
+## Essential Study Resources
+
+| Resource | Type | Cost |
+|----------|------|------|
+| [Application Development Fundamentals](https://nowlearning.servicenow.com) | Official course | Free |
+| [Scripting in ServiceNow Fundamentals](https://nowlearning.servicenow.com) | Official course | Free |
+| [Personal Developer Instance](https://developer.servicenow.com) | Hands-on practice | Free |
+| [SNReady CAD Practice Questions](/cad/free-questions) | 200 practice questions | Free / Premium |
+| [ServiceNow Docs](https://docs.servicenow.com) | Reference | Free |
+| [Study Plan Generator](/study-plan) | Personalized schedule | Free |
+
+## Start Practicing Now
+
+| What You Need | Where to Find It |
+|--------------|-----------------|
+| 200 CAD practice questions | [Start practicing →](/cad/free-questions) |
+| Full mock exam simulation | [Take mock exam →](/cad/mock-exam) |
+| Personalized study plan | [Generate plan →](/study-plan) |
+| Not sure which cert to take? | [Certification Quiz](/quiz) |
+
+Every question includes detailed explanations for both correct and incorrect answers. No brain dumps. No shortcut memorization. Real understanding that translates to passing the exam and doing the job.
+`
+  },
 ];
 
 export function getAllPosts(): BlogPost[] {

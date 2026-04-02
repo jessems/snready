@@ -196,7 +196,7 @@
           },
           {
             "choiceId": "c",
-            "explanation": "'Reverse if false' does not change the condition logic itself. The condition remains the same; the checkbox controls what happens when the condition evaluates to false—the UI policy actions are reversed.",
+            "explanation": "'Reverse if false' does not change the condition logic itself. The condition remains the same; the checkbox controls what happens when the condition evaluates to false\u2014the UI policy actions are reversed.",
             "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/administer/form-administration/concept/c_UIPolicies.html"
           },
           {
@@ -265,7 +265,7 @@
         "c"
       ],
       "explanation": {
-        "correct": "ServiceNow recommends UI policies over client scripts when both can achieve the same result because UI policies are usually unscripted. They use the Condition builder and UI policy actions, making them easier to maintain—especially for less technical administrators who may not know how to script.",
+        "correct": "ServiceNow recommends UI policies over client scripts when both can achieve the same result because UI policies are usually unscripted. They use the Condition builder and UI policy actions, making them easier to maintain\u2014especially for less technical administrators who may not know how to script.",
         "wrongAnswers": [
           {
             "choiceId": "a",
@@ -349,7 +349,7 @@
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Making a field mandatory based on another field's value is a standard UI policy action. A condition can be set on the UI policy, and a UI policy action can set the target field to mandatory—no scripting required.",
+            "explanation": "Making a field mandatory based on another field's value is a standard UI policy action. A condition can be set on the UI policy, and a UI policy action can set the target field to mandatory\u2014no scripting required.",
             "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/administer/form-administration/concept/c_UIPolicies.html"
           },
           {
@@ -400,7 +400,7 @@
       "options": [
         {
           "id": "a",
-          "text": "Create two separate UI policies—one for the Critical condition and one for the non-Critical condition"
+          "text": "Create two separate UI policies\u2014one for the Critical condition and one for the non-Critical condition"
         },
         {
           "id": "b",
@@ -1335,6 +1335,187 @@
         "version": "1.1",
         "release": "Xanadu",
         "reviewed": false
+      }
+    },
+    {
+      "id": "cad-ui-policies-021",
+      "certification": "cad",
+      "topic": "ui-policies-actions",
+      "cognitiveLevel": "analysis",
+      "type": "multiple_choice",
+      "question": "A form has both a UI Policy making a field read-only and a client script setting the same field to writable. Which takes precedence?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The client script always overrides UI Policies"
+        },
+        {
+          "id": "b",
+          "text": "The UI Policy takes precedence because it runs after client scripts"
+        },
+        {
+          "id": "c",
+          "text": "The last one to execute takes precedence, based on order"
+        },
+        {
+          "id": "d",
+          "text": "UI Policies with 'Reverse if false' enabled always win"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "Both UI Policies and client scripts manipulate the form DOM. The last one to execute will determine the final state. UI Policies typically run after onLoad client scripts, but the execution order depends on configuration.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Client scripts do not always override UI Policies. The order of execution determines the outcome."
+          },
+          {
+            "choiceId": "b",
+            "explanation": "While UI Policies often run after onLoad scripts, this is not an absolute rule and depends on the specific configuration."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "'Reverse if false' controls whether the UI Policy reverses its actions when conditions are no longer met. It does not determine precedence over client scripts."
+          }
+        ]
+      }
+    },
+    {
+      "id": "cad-ui-policies-022",
+      "certification": "cad",
+      "topic": "ui-policies-actions",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What does the 'Reverse if false' option do on a UI Policy?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Deletes the UI Policy if its conditions are never met"
+        },
+        {
+          "id": "b",
+          "text": "Reverses the UI Policy actions when the conditions are no longer true"
+        },
+        {
+          "id": "c",
+          "text": "Applies the opposite actions when the form first loads"
+        },
+        {
+          "id": "d",
+          "text": "Prevents the UI Policy from running on insert operations"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "'Reverse if false' automatically reverses the UI Policy actions (e.g., if the policy made a field mandatory, it becomes non-mandatory) when the conditions are no longer met.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The option does not delete the UI Policy. It only reverses the actions dynamically."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "It does not apply opposite actions on load. It reverses actions when conditions change from true to false."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "This option has nothing to do with insert operations. Use the 'On insert' checkbox for that."
+          }
+        ]
+      }
+    },
+    {
+      "id": "cad-ui-policies-023",
+      "certification": "cad",
+      "topic": "ui-policies-actions",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A developer needs to hide a section on a form when the State is 'Closed'. What is the recommended approach?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Create a UI Policy with condition State = Closed and a UI Policy Action to hide the section"
+        },
+        {
+          "id": "b",
+          "text": "Write an onLoad client script to check state and hide the section element"
+        },
+        {
+          "id": "c",
+          "text": "Create an ACL to restrict access to the section"
+        },
+        {
+          "id": "d",
+          "text": "Use a UI Macro to conditionally render the section"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "UI Policies are the recommended no-code approach for conditionally showing/hiding form sections. Create a UI Policy with the condition and add a UI Policy Action targeting the section.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "While a client script could hide sections, UI Policies are preferred because they are easier to maintain and don't require coding."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "ACLs control data access at the security level, not form element visibility."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "UI Macros are for custom UI components and are not the standard approach for conditionally hiding form sections."
+          }
+        ]
+      }
+    },
+    {
+      "id": "cad-ui-policies-024",
+      "certification": "cad",
+      "topic": "ui-policies-actions",
+      "cognitiveLevel": "analysis",
+      "type": "multi_select",
+      "question": "Which TWO actions can a UI Policy Action perform on a form field? (Choose 2)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Set the field value to a specific string"
+        },
+        {
+          "id": "b",
+          "text": "Make the field mandatory"
+        },
+        {
+          "id": "c",
+          "text": "Change the field's data type"
+        },
+        {
+          "id": "d",
+          "text": "Make the field read-only"
+        }
+      ],
+      "correctAnswers": [
+        "b",
+        "d"
+      ],
+      "explanation": {
+        "correct": "UI Policy Actions can set a field's mandatory, visible, and read-only properties. Making a field mandatory and read-only are two of the three core actions.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "UI Policy Actions control field properties (mandatory, visible, read-only) but cannot set field values. Use a client script or business rule to set values."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "A field's data type is defined in the dictionary and cannot be changed by a UI Policy Action."
+          }
+        ]
       }
     }
   ]

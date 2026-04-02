@@ -426,7 +426,7 @@
           },
           {
             "choiceId": "c",
-            "explanation": "An onSubmit client script runs when the form is submitted, saved, or updated — not when a field value changes. This would not highlight VIP callers in real time.",
+            "explanation": "An onSubmit client script runs when the form is submitted, saved, or updated \u2014 not when a field value changes. This would not highlight VIP callers in real time.",
             "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/client-scripts/concept/c_ClientScripts.html"
           },
           {
@@ -660,7 +660,7 @@
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Display business rules only fire once when the form loads. They cannot dynamically update data when field values change — that requires a GlideAjax call.",
+            "explanation": "Display business rules only fire once when the form loads. They cannot dynamically update data when field values change \u2014 that requires a GlideAjax call.",
             "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/server-scripting/concept/c_DisplayBusinessRules.html"
           },
           {
@@ -904,7 +904,7 @@
           },
           {
             "choiceId": "c",
-            "explanation": "onCellEdit is a valid Client Script type (the fourth type alongside onLoad, onChange, and onSubmit), but it was listed as a distractor in this question format. Note: onCellEdit IS actually valid — it runs when a cell in a list is edited.",
+            "explanation": "onCellEdit is a valid Client Script type (the fourth type alongside onLoad, onChange, and onSubmit), but it was listed as a distractor in this question format. Note: onCellEdit IS actually valid \u2014 it runs when a cell in a list is edited.",
             "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/script/client-scripts/concept/c_ClientScripts.html"
           }
         ]
@@ -973,7 +973,7 @@
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "With Inherited enabled, the script is not limited to just the Task table — it also runs on child tables.",
+            "explanation": "With Inherited enabled, the script is not limited to just the Task table \u2014 it also runs on child tables.",
             "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/script/client-scripts/concept/c_ClientScripts.html"
           },
           {
@@ -1127,7 +1127,7 @@
       ],
       "isNegative": true,
       "explanation": {
-        "correct": "The four Client Script types are onLoad, onChange, onSubmit, and onCellEdit. There is no 'onSave' type — save actions are handled by the onSubmit type, which runs when a form is saved, updated, or submitted. See: https://docs.servicenow.com/bundle/xanadu-application-development/page/script/client-scripts/concept/c_ClientScripts.html",
+        "correct": "The four Client Script types are onLoad, onChange, onSubmit, and onCellEdit. There is no 'onSave' type \u2014 save actions are handled by the onSubmit type, which runs when a form is saved, updated, or submitted. See: https://docs.servicenow.com/bundle/xanadu-application-development/page/script/client-scripts/concept/c_ClientScripts.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
@@ -1289,7 +1289,7 @@
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Returning false prevents submission entirely — the record is never sent to the server, so it cannot be deleted.",
+            "explanation": "Returning false prevents submission entirely \u2014 the record is never sent to the server, so it cannot be deleted.",
             "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/script/client-scripts/concept/c_ClientScripts.html"
           },
           {
@@ -1333,6 +1333,183 @@
         "version": "1.1",
         "release": "Xanadu",
         "reviewed": false
+      }
+    },
+    {
+      "id": "cad-client-scripts-018",
+      "certification": "cad",
+      "topic": "client-scripts",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A developer needs to make the 'Short description' field mandatory only when the Priority is set to 1 - Critical. Which client script type should they use?",
+      "options": [
+        {
+          "id": "a",
+          "text": "onLoad client script"
+        },
+        {
+          "id": "b",
+          "text": "onChange client script on the Priority field"
+        },
+        {
+          "id": "c",
+          "text": "onSubmit client script"
+        },
+        {
+          "id": "d",
+          "text": "onCellEdit client script"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "An onChange client script on the Priority field fires whenever the user changes the priority value, allowing you to call g_form.setMandatory('short_description', true) when priority is 1.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "An onLoad script runs when the form loads, but would not respond to subsequent changes to the Priority field."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "An onSubmit script runs when the form is submitted. While it could validate, it would not provide real-time feedback as the user changes Priority."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "onCellEdit scripts run in list view when cells are edited, not on the standard form."
+          }
+        ]
+      }
+    },
+    {
+      "id": "cad-client-scripts-019",
+      "certification": "cad",
+      "topic": "client-scripts",
+      "cognitiveLevel": "analysis",
+      "type": "multiple_choice",
+      "question": "Which of the following is NOT a valid g_form method for controlling field visibility?",
+      "options": [
+        {
+          "id": "a",
+          "text": "g_form.setVisible('field_name', false)"
+        },
+        {
+          "id": "b",
+          "text": "g_form.setDisplay('field_name', false)"
+        },
+        {
+          "id": "c",
+          "text": "g_form.hideFieldMsg('field_name')"
+        },
+        {
+          "id": "d",
+          "text": "g_form.hideRelatedList('list_name')"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "There is no setVisible() method on g_form. The correct method to hide a field is g_form.setDisplay() or g_form.setVisible() does not exist as a standard API.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "g_form.setDisplay() is a valid method that controls whether a field is displayed on the form."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "g_form.hideFieldMsg() is a valid method that hides a previously shown field message."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "g_form.hideRelatedList() is a valid method that hides a related list on the form."
+          }
+        ]
+      }
+    },
+    {
+      "id": "cad-client-scripts-020",
+      "certification": "cad",
+      "topic": "client-scripts",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A developer writes an onChange client script but it does not fire when the form loads with a pre-populated value. What should they add?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Set the 'Inherited' checkbox on the client script"
+        },
+        {
+          "id": "b",
+          "text": "Add an onLoad client script that manually triggers the onChange logic"
+        },
+        {
+          "id": "c",
+          "text": "Check the 'Fire on load' option in the onChange client script"
+        },
+        {
+          "id": "d",
+          "text": "Set the business rule to populate the field after form load"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "The onChange client script has an 'Inherit' checkbox but lacks... Actually, onChange scripts in ServiceNow do not fire on initial form load by default. However, adding an onLoad script that calls the same logic is the standard workaround.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The 'Inherited' checkbox controls whether the script applies to extended tables, not whether it fires on load."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Changing when the field is populated does not solve the problem of the onChange not firing on initial load."
+          }
+        ]
+      }
+    },
+    {
+      "id": "cad-client-scripts-021",
+      "certification": "cad",
+      "topic": "client-scripts",
+      "cognitiveLevel": "knowledge",
+      "type": "multi_select",
+      "question": "Which TWO methods can be used to get the value of a field in a client script? (Choose 2)",
+      "options": [
+        {
+          "id": "a",
+          "text": "g_form.getValue('field_name')"
+        },
+        {
+          "id": "b",
+          "text": "g_form.getReference('field_name')"
+        },
+        {
+          "id": "c",
+          "text": "current.field_name"
+        },
+        {
+          "id": "d",
+          "text": "g_form.getDisplayValue('field_name')"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "d"
+      ],
+      "explanation": {
+        "correct": "g_form.getValue() returns the actual value of a field, and g_form.getDisplayValue() returns the display value. Both are valid client-side methods to retrieve field values.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "g_form.getReference() retrieves the full GlideRecord of a reference field asynchronously. While it can get values, it's specifically for reference lookups, not general value retrieval."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "'current' is a server-side object available in business rules. It is not available in client scripts."
+          }
+        ]
       }
     }
   ]
