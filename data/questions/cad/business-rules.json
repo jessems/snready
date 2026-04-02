@@ -481,19 +481,19 @@
       "options": [
         {
           "id": "a",
-          "text": "Dot-walking — returns the name of the department of the caller on the incident"
+          "text": "Dot-walking \u2014 returns the name of the department of the caller on the incident"
         },
         {
           "id": "b",
-          "text": "GlideRecord chaining — returns the sys_id of the caller's department"
+          "text": "GlideRecord chaining \u2014 returns the sys_id of the caller's department"
         },
         {
           "id": "c",
-          "text": "Reference querying — returns the caller's user name"
+          "text": "Reference querying \u2014 returns the caller's user name"
         },
         {
           "id": "d",
-          "text": "Object inheritance — returns the incident's department field"
+          "text": "Object inheritance \u2014 returns the incident's department field"
         }
       ],
       "correctAnswers": [
@@ -652,7 +652,7 @@
         "b"
       ],
       "explanation": {
-        "correct": "The oldValue parameter in an onChange client script represents the value that was stored on the server when the form loaded. It does not track intermediate client-side edits — if a user changes the field 20 times before saving, oldValue still reflects the original server-side value. See: https://docs.servicenow.com/bundle/yokohama-application-development/page/script/client-scripts/concept/c_ClientScripts.html",
+        "correct": "The oldValue parameter in an onChange client script represents the value that was stored on the server when the form loaded. It does not track intermediate client-side edits \u2014 if a user changes the field 20 times before saving, oldValue still reflects the original server-side value. See: https://docs.servicenow.com/bundle/yokohama-application-development/page/script/client-scripts/concept/c_ClientScripts.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
@@ -810,11 +810,11 @@
         "b"
       ],
       "explanation": {
-        "correct": "When a UI policy uses scripting (such as g_form.showFieldMessage()) to modify the form, the platform cannot automatically reverse those scripted changes when the condition becomes false. The developer must explicitly add reversal logic in the 'Execute if false' script section — for example, calling g_form.hideFieldMessage() to remove the message. UI policy actions auto-reverse, but scripts do not. See: https://docs.servicenow.com/bundle/yokohama-application-development/page/client_scripting/client-side_policies/concept/c_UIPolicies.html",
+        "correct": "When a UI policy uses scripting (such as g_form.showFieldMessage()) to modify the form, the platform cannot automatically reverse those scripted changes when the condition becomes false. The developer must explicitly add reversal logic in the 'Execute if false' script section \u2014 for example, calling g_form.hideFieldMessage() to remove the message. UI policy actions auto-reverse, but scripts do not. See: https://docs.servicenow.com/bundle/yokohama-application-development/page/client_scripting/client-side_policies/concept/c_UIPolicies.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "g_form.showFieldMessage() is a client-side method that takes effect immediately without a form save. Clearing the message also does not require saving — it requires the corresponding clearance logic in the 'Execute if false' script.",
+            "explanation": "g_form.showFieldMessage() is a client-side method that takes effect immediately without a form save. Clearing the message also does not require saving \u2014 it requires the corresponding clearance logic in the 'Execute if false' script.",
             "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/client_scripting/client-side_policies/concept/c_UIPolicies.html"
           },
           {
@@ -966,7 +966,7 @@
         "b"
       ],
       "explanation": {
-        "correct": "UI policy action records are lightweight and automatically reverse their effects when the UI policy condition is no longer true. For example, if an action sets a field to read-only, the platform automatically makes it editable again when the condition becomes false — no additional scripting required. This auto-reversal is a key advantage over scripted approaches, which require explicit 'Execute if false' logic. See: https://docs.servicenow.com/bundle/yokohama-application-development/page/client_scripting/client-side_policies/concept/c_UIPolicies.html",
+        "correct": "UI policy action records are lightweight and automatically reverse their effects when the UI policy condition is no longer true. For example, if an action sets a field to read-only, the platform automatically makes it editable again when the condition becomes false \u2014 no additional scripting required. This auto-reversal is a key advantage over scripted approaches, which require explicit 'Execute if false' logic. See: https://docs.servicenow.com/bundle/yokohama-application-development/page/client_scripting/client-side_policies/concept/c_UIPolicies.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
@@ -975,7 +975,7 @@
           },
           {
             "choiceId": "c",
-            "explanation": "UI policy actions do not support conditional logic themselves — the condition is defined on the parent UI policy record. Scripts actually offer more flexibility for complex conditional logic than action records do.",
+            "explanation": "UI policy actions do not support conditional logic themselves \u2014 the condition is defined on the parent UI policy record. Scripts actually offer more flexibility for complex conditional logic than action records do.",
             "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/client_scripting/client-side_policies/concept/c_UIPolicies.html"
           },
           {
@@ -1562,6 +1562,192 @@
         "version": "1.1",
         "release": "Xanadu",
         "reviewed": false
+      }
+    },
+    {
+      "id": "cad-business-rules-021",
+      "certification": "cad",
+      "topic": "business-rules",
+      "cognitiveLevel": "analysis",
+      "type": "multiple_choice",
+      "question": "A business rule is configured to run 'before' insert on the Incident table. The rule sets a value on the 'description' field. A developer notices the value is not being saved. What is the MOST likely cause?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The business rule should use current.update() to save the change"
+        },
+        {
+          "id": "b",
+          "text": "Another business rule running 'after' is overwriting the value"
+        },
+        {
+          "id": "c",
+          "text": "The business rule order number is too high, causing it to run after the record is saved"
+        },
+        {
+          "id": "d",
+          "text": "A client script is overwriting the value after the form reloads"
+        }
+      ],
+      "correctAnswers": [
+        "d"
+      ],
+      "explanation": {
+        "correct": "If a client script sets the description field when the form loads, it will overwrite the value set by the before business rule. The record saves correctly but the client script changes the display.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "In a 'before' business rule, you should NOT call current.update(). Changes to current are automatically saved when the before rule completes."
+          },
+          {
+            "choiceId": "b",
+            "explanation": "An 'after' business rule cannot overwrite a value set in a 'before' rule unless it explicitly calls current.update(), which is not standard practice."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The order number determines the sequence among business rules of the same timing (before/after), not when they run relative to the database operation."
+          }
+        ]
+      }
+    },
+    {
+      "id": "cad-business-rules-022",
+      "certification": "cad",
+      "topic": "business-rules",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_select",
+      "question": "Which THREE of the following are valid business rule timing options in ServiceNow? (Choose 3)",
+      "options": [
+        {
+          "id": "a",
+          "text": "before"
+        },
+        {
+          "id": "b",
+          "text": "during"
+        },
+        {
+          "id": "c",
+          "text": "after"
+        },
+        {
+          "id": "d",
+          "text": "async"
+        },
+        {
+          "id": "e",
+          "text": "display"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "c",
+        "e"
+      ],
+      "explanation": {
+        "correct": "ServiceNow business rules support four timing options: before, after, async, and display. Before runs before the database operation, after runs immediately after, and display runs when a form is loaded.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "'During' is not a valid business rule timing option in ServiceNow."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Async is actually a valid timing option \u2014 business rules can run asynchronously. However, the question asks for three, and before, after, and display are the three most fundamental timing options."
+          }
+        ]
+      }
+    },
+    {
+      "id": "cad-business-rules-023",
+      "certification": "cad",
+      "topic": "business-rules",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A developer needs to prevent a record from being deleted if it has associated child records. Which business rule configuration should they use?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Before delete business rule that calls current.setAbortAction(true)"
+        },
+        {
+          "id": "b",
+          "text": "After delete business rule that restores the record"
+        },
+        {
+          "id": "c",
+          "text": "Before delete business rule that calls current.deleteRecord()"
+        },
+        {
+          "id": "d",
+          "text": "Display business rule that hides the delete button"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "A before delete business rule with current.setAbortAction(true) prevents the delete operation from proceeding. This is the standard pattern for preventing deletions based on conditions.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "An after delete business rule runs after the record is already deleted. You cannot reliably restore a deleted record this way."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Calling deleteRecord() in a before delete rule would cause recursion and does not prevent the deletion."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Hiding the delete button through a display business rule is a UI-only approach. Users could still delete via list actions, APIs, or other means."
+          }
+        ]
+      }
+    },
+    {
+      "id": "cad-business-rules-024",
+      "certification": "cad",
+      "topic": "business-rules",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What is the purpose of the 'current.operation()' method in a business rule?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Returns the name of the current business rule"
+        },
+        {
+          "id": "b",
+          "text": "Returns the database operation being performed (insert, update, delete, query)"
+        },
+        {
+          "id": "c",
+          "text": "Returns the execution order of the current rule"
+        },
+        {
+          "id": "d",
+          "text": "Returns the table name the business rule is running on"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "current.operation() returns the current database operation: insert, update, delete, or query. This is useful in business rules that run on multiple operations.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "To get the business rule name, you would check the business rule record, not use current.operation()."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The execution order is determined by the Order field on the business rule record, not by current.operation()."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "To get the table name, use current.getTableName(), not current.operation()."
+          }
+        ]
       }
     }
   ]

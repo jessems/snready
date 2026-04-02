@@ -811,7 +811,7 @@
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Processing only the first record would occur with an if(gr.next()) statement. Using while(gr.hasNext()) does not process a single record and return — it creates an infinite loop because hasNext() never advances the record pointer.",
+            "explanation": "Processing only the first record would occur with an if(gr.next()) statement. Using while(gr.hasNext()) does not process a single record and return \u2014 it creates an infinite loop because hasNext() never advances the record pointer.",
             "reference": "https://docs.servicenow.com/bundle/yokohama-api-reference/page/app-store/dev_portal/API_reference/GlideRecord/concept/c_GlideRecordAPI.html"
           },
           {
@@ -979,7 +979,7 @@
           },
           {
             "choiceId": "d",
-            "explanation": "GlideAggregate is designed for aggregate operations like COUNT, SUM, and AVG — not for filtering records with complex query conditions. It does not replace the need for addEncodedQuery() in this scenario.",
+            "explanation": "GlideAggregate is designed for aggregate operations like COUNT, SUM, and AVG \u2014 not for filtering records with complex query conditions. It does not replace the need for addEncodedQuery() in this scenario.",
             "reference": "https://docs.servicenow.com/bundle/yokohama-api-reference/page/app-store/dev_portal/API_reference/GlideAggregate/concept/c_GlideAggregateAPI.html"
           }
         ]
@@ -1125,11 +1125,11 @@
         "b"
       ],
       "explanation": {
-        "correct": "A subflow is a sequence of reusable actions that can be started from a flow, a subflow, or a script. Unlike flows, subflows do not require a trigger — they are called by other automation components. Subflows can also be used to group together common actions and brought into a flow like a template. See https://docs.servicenow.com/bundle/yokohama-build-workflows/page/administer/flow-designer/concept/flow-designer.html",
+        "correct": "A subflow is a sequence of reusable actions that can be started from a flow, a subflow, or a script. Unlike flows, subflows do not require a trigger \u2014 they are called by other automation components. Subflows can also be used to group together common actions and brought into a flow like a template. See https://docs.servicenow.com/bundle/yokohama-build-workflows/page/administer/flow-designer/concept/flow-designer.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "This is incorrect. A flow requires a trigger and at least one action. A subflow does not require a trigger at all — it is invoked by other flows, subflows, or scripts.",
+            "explanation": "This is incorrect. A flow requires a trigger and at least one action. A subflow does not require a trigger at all \u2014 it is invoked by other flows, subflows, or scripts.",
             "reference": "https://docs.servicenow.com/bundle/yokohama-build-workflows/page/administer/flow-designer/concept/flow-designer.html"
           },
           {
@@ -1417,7 +1417,7 @@
       "topic": "scripting-apis",
       "cognitiveLevel": "understanding",
       "type": "multiple_choice",
-      "question": "Why does a UI policy in advanced view provide two separate scripting fields — 'Execute if true' and 'Execute if false'?",
+      "question": "Why does a UI policy in advanced view provide two separate scripting fields \u2014 'Execute if true' and 'Execute if false'?",
       "options": [
         {
           "id": "a",
@@ -2084,7 +2084,7 @@
           },
           {
             "choiceId": "c",
-            "explanation": "For reference fields, these methods return different values — the sys_id vs the display name. They would return the same value for simple text fields.",
+            "explanation": "For reference fields, these methods return different values \u2014 the sys_id vs the display name. They would return the same value for simple text fields.",
             "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/app-store/dev_portal/API_reference/GlideRecord/concept/c_GlideRecordAPI.html"
           },
           {
@@ -2361,6 +2361,187 @@
         "version": "1.1",
         "release": "Xanadu",
         "reviewed": false
+      }
+    },
+    {
+      "id": "cad-scripting-apis-031",
+      "certification": "cad",
+      "topic": "scripting-apis",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A developer needs to get the display value of a reference field called 'assigned_to' in a server-side script. Which method should they use?",
+      "options": [
+        {
+          "id": "a",
+          "text": "current.assigned_to"
+        },
+        {
+          "id": "b",
+          "text": "current.assigned_to.getDisplayValue()"
+        },
+        {
+          "id": "c",
+          "text": "current.getDisplayValue('assigned_to')"
+        },
+        {
+          "id": "d",
+          "text": "current.assigned_to.toString()"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The getDisplayValue() method on a reference field's GlideElement returns the display value of the referenced record, typically the name field.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "This returns the GlideElement object, not the display value. It would need .getDisplayValue() to get the human-readable name."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "getDisplayValue() on the GlideRecord with a field name returns the display value, but the standard approach for reference fields is to call it on the GlideElement directly."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "toString() returns the sys_id of the referenced record, not the display value."
+          }
+        ]
+      }
+    },
+    {
+      "id": "cad-scripting-apis-032",
+      "certification": "cad",
+      "topic": "scripting-apis",
+      "cognitiveLevel": "analysis",
+      "type": "multiple_select",
+      "question": "Which TWO of the following are valid ways to query records using GlideRecord in a server-side script? (Choose 2)",
+      "options": [
+        {
+          "id": "a",
+          "text": "gr.addQuery('active', true); gr.query();"
+        },
+        {
+          "id": "b",
+          "text": "gr.find('active', true);"
+        },
+        {
+          "id": "c",
+          "text": "gr.addEncodedQuery('active=true'); gr.query();"
+        },
+        {
+          "id": "d",
+          "text": "gr.select('active', true);"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "c"
+      ],
+      "explanation": {
+        "correct": "Both addQuery() and addEncodedQuery() are valid methods to build queries on a GlideRecord. addQuery() takes field, operator, and value parameters, while addEncodedQuery() takes a URL-encoded query string.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "There is no find() method on GlideRecord. Use addQuery() or addEncodedQuery() followed by query()."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "There is no select() method on GlideRecord. This is not a valid ServiceNow API method."
+          }
+        ]
+      }
+    },
+    {
+      "id": "cad-scripting-apis-033",
+      "certification": "cad",
+      "topic": "scripting-apis",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which API is used to make outbound REST calls from a server-side script in ServiceNow?",
+      "options": [
+        {
+          "id": "a",
+          "text": "GlideHTTPClient"
+        },
+        {
+          "id": "b",
+          "text": "RESTMessageV2"
+        },
+        {
+          "id": "c",
+          "text": "GlideURLRequest"
+        },
+        {
+          "id": "d",
+          "text": "sn_ws.SOAPMessageV2"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "RESTMessageV2 (sn_ws.RESTMessageV2) is the server-side API used to make outbound REST API calls from ServiceNow scripts.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "GlideHTTPClient is not a standard ServiceNow API. RESTMessageV2 is the correct API for outbound REST calls."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "GlideURLRequest is not a standard ServiceNow API for REST calls."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "SOAPMessageV2 is used for SOAP-based web service calls, not REST calls."
+          }
+        ]
+      }
+    },
+    {
+      "id": "cad-scripting-apis-034",
+      "certification": "cad",
+      "topic": "scripting-apis",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A developer wants to display an informational message to the user after a form is submitted and reloaded. Which method should they use in a business rule?",
+      "options": [
+        {
+          "id": "a",
+          "text": "gs.addInfoMessage()"
+        },
+        {
+          "id": "b",
+          "text": "gs.print()"
+        },
+        {
+          "id": "c",
+          "text": "g_form.addInfoMessage()"
+        },
+        {
+          "id": "d",
+          "text": "gs.log()"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "gs.addInfoMessage() displays a blue informational message on the next page load. It is available in server-side scripts like business rules.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "gs.print() writes output to the system log, not to the user interface."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "g_form.addInfoMessage() is a client-side method and cannot be used in a business rule, which runs server-side."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "gs.log() writes to the system log and does not display messages to the user."
+          }
+        ]
       }
     }
   ]

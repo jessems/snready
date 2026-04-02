@@ -31,7 +31,7 @@
         "b"
       ],
       "explanation": {
-        "correct": "A Script Include stores reusable JavaScript for server-side execution. Script Includes follow a 'write once, use many' pattern — they are written once and can be called from anywhere server-side JavaScript is accepted. They must be explicitly called to run and do not have automatic triggers. See: https://docs.servicenow.com/bundle/yokohama-api-reference/page/script/script-includes/concept/c_ScriptIncludes.html",
+        "correct": "A Script Include stores reusable JavaScript for server-side execution. Script Includes follow a 'write once, use many' pattern \u2014 they are written once and can be called from anywhere server-side JavaScript is accepted. They must be explicitly called to run and do not have automatic triggers. See: https://docs.servicenow.com/bundle/yokohama-api-reference/page/script/script-includes/concept/c_ScriptIncludes.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
@@ -45,7 +45,7 @@
           },
           {
             "choiceId": "d",
-            "explanation": "Scheduled Jobs are used to run automation at defined time intervals. Script Includes do not run on a schedule — they must be explicitly called from other scripts or processes.",
+            "explanation": "Scheduled Jobs are used to run automation at defined time intervals. Script Includes do not run on a schedule \u2014 they must be explicitly called from other scripts or processes.",
             "reference": "https://docs.servicenow.com/bundle/yokohama-platform-administration/page/administer/time/concept/c_ScheduledJobs.html"
           }
         ]
@@ -123,7 +123,7 @@
           },
           {
             "choiceId": "d",
-            "explanation": "The previous object is also unavailable in Script Includes for the same reason — there is no table association. The previous object is available in Business Rules alongside current.",
+            "explanation": "The previous object is also unavailable in Script Includes for the same reason \u2014 there is no table association. The previous object is available in Business Rules alongside current.",
             "reference": "https://docs.servicenow.com/bundle/yokohama-api-reference/page/script/business-rules/concept/c_BusinessRules.html"
           }
         ]
@@ -270,7 +270,7 @@
         "b"
       ],
       "explanation": {
-        "correct": "Script Includes must be explicitly called to run — they have no automatic triggers tied to table events. Additionally, the Name field of the Script Include record must exactly match the function name (for classless) or the class variable name (for class-based) defined in the Script field. This naming match is critical for the Script Include to work properly. See: https://docs.servicenow.com/bundle/yokohama-api-reference/page/script/script-includes/concept/c_ScriptIncludes.html",
+        "correct": "Script Includes must be explicitly called to run \u2014 they have no automatic triggers tied to table events. Additionally, the Name field of the Script Include record must exactly match the function name (for classless) or the class variable name (for class-based) defined in the Script field. This naming match is critical for the Script Include to work properly. See: https://docs.servicenow.com/bundle/yokohama-api-reference/page/script/script-includes/concept/c_ScriptIncludes.html",
         "wrongAnswers": [
           {
             "choiceId": "c",
@@ -514,7 +514,7 @@
           },
           {
             "choiceId": "d",
-            "explanation": "While the g_scratchpad technique works to pass data from a display Business Rule to the client, it only executes when the form loads — it does not support dynamic, on-demand data retrieval without a page reload. GlideAjax with AbstractAjaxProcessor is the correct approach for asynchronous requests.",
+            "explanation": "While the g_scratchpad technique works to pass data from a display Business Rule to the client, it only executes when the form loads \u2014 it does not support dynamic, on-demand data retrieval without a page reload. GlideAjax with AbstractAjaxProcessor is the correct approach for asynchronous requests.",
             "reference": "https://docs.servicenow.com/bundle/yokohama-api-reference/page/script/business-rules/concept/c_DisplayBusinessRules.html"
           }
         ]
@@ -897,7 +897,7 @@
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Creating a separate Script Include adds unnecessary complexity. The initialize function within the same Script Include is designed for this exact purpose — centralizing shared setup logic.",
+            "explanation": "Creating a separate Script Include adds unnecessary complexity. The initialize function within the same Script Include is designed for this exact purpose \u2014 centralizing shared setup logic.",
             "reference": "https://docs.servicenow.com/bundle/yokohama-api-reference/page/script/script-includes/concept/c_ScriptIncludes.html"
           },
           {
@@ -1058,7 +1058,7 @@
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "This is correct. Script Includes use lazy loading — they are only loaded into memory when referenced, which improves performance.",
+            "explanation": "This is correct. Script Includes use lazy loading \u2014 they are only loaded into memory when referenced, which improves performance.",
             "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/script/server-scripting/concept/c_ScriptIncludes.html"
           },
           {
@@ -1136,7 +1136,7 @@
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Duplicating code violates the DRY (Don't Repeat Yourself) principle and creates maintenance issues — any fix must be applied in multiple places.",
+            "explanation": "Duplicating code violates the DRY (Don't Repeat Yourself) principle and creates maintenance issues \u2014 any fix must be applied in multiple places.",
             "reference": "https://docs.servicenow.com/bundle/xanadu-application-development/page/script/server-scripting/concept/c_ScriptIncludes.html"
           },
           {
@@ -1259,6 +1259,190 @@
         "version": "1.1",
         "release": "Xanadu",
         "reviewed": false
+      }
+    },
+    {
+      "id": "cad-script-includes-017",
+      "certification": "cad",
+      "topic": "script-includes",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What must be true for a Script Include to be accessible from a client script via GlideAjax?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The Script Include must extend AbstractAjaxProcessor and have 'Client callable' checked"
+        },
+        {
+          "id": "b",
+          "text": "The Script Include must be in the global scope"
+        },
+        {
+          "id": "c",
+          "text": "The Script Include must have the 'Public' access modifier"
+        },
+        {
+          "id": "d",
+          "text": "The Script Include must be attached to the same table as the client script"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "To be called from a client script via GlideAjax, a Script Include must extend AbstractAjaxProcessor and have the 'Client callable' checkbox selected.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Script Includes can be in any application scope and still be client-callable, as long as they extend AbstractAjaxProcessor and are marked client-callable."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "There is no 'Public' access modifier on Script Includes. The 'Client callable' checkbox is what controls client-side access."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Script Includes are not attached to specific tables. They are standalone server-side scripts."
+          }
+        ]
+      }
+    },
+    {
+      "id": "cad-script-includes-018",
+      "certification": "cad",
+      "topic": "script-includes",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A developer creates a Script Include called 'IncidentUtils' with a method 'getHighPriority()'. How would they call this from a business rule?",
+      "options": [
+        {
+          "id": "a",
+          "text": "var util = new IncidentUtils(); util.getHighPriority();"
+        },
+        {
+          "id": "b",
+          "text": "IncidentUtils.getHighPriority();"
+        },
+        {
+          "id": "c",
+          "text": "gs.include('IncidentUtils').getHighPriority();"
+        },
+        {
+          "id": "d",
+          "text": "var util = GlideScriptInclude('IncidentUtils'); util.getHighPriority();"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "Script Includes are instantiated using the 'new' keyword with the Script Include name, then methods are called on the instance: new IncidentUtils().getHighPriority().",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "This syntax would only work for static methods. Standard Script Include methods require instantiation with 'new'."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "gs.include() is used for on-demand loading of Script Includes but does not return an instance to call methods on directly."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "GlideScriptInclude is not the correct way to instantiate a Script Include. Use 'new ScriptIncludeName()'."
+          }
+        ]
+      }
+    },
+    {
+      "id": "cad-script-includes-019",
+      "certification": "cad",
+      "topic": "script-includes",
+      "cognitiveLevel": "analysis",
+      "type": "multiple_choice",
+      "question": "What is the primary benefit of using Script Includes over writing logic directly in business rules?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Script Includes execute faster than business rules"
+        },
+        {
+          "id": "b",
+          "text": "Script Includes promote code reusability across multiple scripts"
+        },
+        {
+          "id": "c",
+          "text": "Script Includes can access client-side APIs"
+        },
+        {
+          "id": "d",
+          "text": "Script Includes bypass ACL restrictions"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Script Includes encapsulate reusable logic that can be called from business rules, scheduled jobs, UI actions, and other server-side scripts, promoting code reuse and maintainability.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Script Includes do not inherently execute faster. They run on the same server-side engine as business rules."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Script Includes are server-side and cannot directly access client-side APIs like g_form."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Script Includes do not bypass ACLs. They respect the same security model as other server-side scripts."
+          }
+        ]
+      }
+    },
+    {
+      "id": "cad-script-includes-020",
+      "certification": "cad",
+      "topic": "script-includes",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which property of a Script Include determines if it loads automatically or on demand?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The 'Active' checkbox"
+        },
+        {
+          "id": "b",
+          "text": "The 'Accessible from' field"
+        },
+        {
+          "id": "c",
+          "text": "The API Name field"
+        },
+        {
+          "id": "d",
+          "text": "The 'Protection policy' field"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The 'Accessible from' field determines the scope accessibility of a Script Include. Script Includes load on demand when instantiated with 'new' - they are not automatically loaded unless explicitly called.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The 'Active' checkbox determines if the Script Include is available at all, not how it loads."
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The API Name is the identifier used to instantiate the Script Include. It doesn't control loading behavior."
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The Protection policy controls whether the script can be modified in other instances, not loading behavior."
+          }
+        ]
       }
     }
   ]
