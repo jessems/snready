@@ -2316,6 +2316,1193 @@
         ],
         "tags": []
       }
+    },
+    {
+      "id": "cis-discovery-configuration-031",
+      "certification": "cis-discovery",
+      "topic": "discovery-configuration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What is the default Shazzam batch size, and what is the minimum enforced by the UI policy?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Default 500, minimum 128"
+        },
+        {
+          "id": "b",
+          "text": "Default 1000, minimum 256"
+        },
+        {
+          "id": "c",
+          "text": "Default 2000, minimum 512"
+        },
+        {
+          "id": "d",
+          "text": "Default 256, minimum 64"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The default Shazzam batch size is 1000. A UI policy enforces a minimum batch size of 256 because batch sizes below 256 IP addresses do not benefit from clustering. The policy converts any value below 256 to zero.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The default is 1000, not 500, and the minimum is 256, not 128.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The default is 1000, not 2000, and the minimum is 256, not 512.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "256 is the minimum, not the default. The default is 1000.",
+            "reference": "Discovery Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "Discovery Fundamentals - Phases, Probes, and Classifications"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "discovery-fundamentals-on-demand/01-phases-probes-and-classifications.md",
+        "excerpt": "By default, the batch size is 1000. A UI policy enforces a minimum batch size of 256."
+      },
+      "labels": {
+        "certification": "cis-discovery",
+        "domain": "Discovery Configuration",
+        "domainSlug": "discovery-configuration",
+        "domainPercentage": 35,
+        "subtopics": [
+          "Shazzam",
+          "Batch size"
+        ],
+        "tags": [
+          "shazzam",
+          "performance",
+          "batch size"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-04-03T02:00:00Z",
+        "version": "1.1",
+        "release": "Zurich",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-discovery-configuration-032",
+      "certification": "cis-discovery",
+      "topic": "discovery-configuration",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "An administrator wants to prevent Discovery from scanning Unix servers while still discovering Windows servers and network devices. What is the recommended approach?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Delete the SSH port probe from the system"
+        },
+        {
+          "id": "b",
+          "text": "Use the Configuration Console to disable Unix Servers, which removes the SSH Port Probe from Shazzam"
+        },
+        {
+          "id": "c",
+          "text": "Remove all SSH credentials from the Credentials table"
+        },
+        {
+          "id": "d",
+          "text": "Create a behavior that blocks port 22 scanning for all IP ranges"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The Configuration Console allows you to select which device types to include or exclude. When Unix Servers is disabled, the Shazzam probe does not contain the SSH Port Probe and no Unix systems will be discovered. Importantly, this does not deactivate the probe or classifier for general use \u2014 the item remains available for other processes.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Deleting the SSH port probe would affect the entire system. The Configuration Console provides targeted control without permanent changes.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Removing credentials would prevent authentication but Shazzam would still scan SSH ports, potentially causing unnecessary network traffic.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "While behaviors can control protocols, the Configuration Console is the recommended and simplest approach for excluding entire device types.",
+            "reference": "Discovery Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "Discovery Fundamentals - Phases, Probes, and Classifications"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "discovery-fundamentals-on-demand/01-phases-probes-and-classifications.md",
+        "excerpt": "Unix Servers is disabled. As a result, the Shazzam probe does not contain the SSH Port Probe and no Unix systems will be discovered."
+      },
+      "labels": {
+        "certification": "cis-discovery",
+        "domain": "Discovery Configuration",
+        "domainSlug": "discovery-configuration",
+        "domainPercentage": 35,
+        "subtopics": [
+          "Configuration Console",
+          "Device exclusion"
+        ],
+        "tags": [
+          "configuration console",
+          "unix",
+          "exclusion"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-04-03T02:00:00Z",
+        "version": "1.1",
+        "release": "Zurich",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-discovery-configuration-033",
+      "certification": "cis-discovery",
+      "topic": "discovery-configuration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which role is required to access the Discovery Admin Workspace?",
+      "options": [
+        {
+          "id": "a",
+          "text": "admin"
+        },
+        {
+          "id": "b",
+          "text": "discovery_admin"
+        },
+        {
+          "id": "c",
+          "text": "itil"
+        },
+        {
+          "id": "d",
+          "text": "discovery_user"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The discovery_admin role is required to access the Discovery Admin Workspace, which provides a single place to monitor Discovery performance, manage schedules and statuses, and set up new IP-based or Cloud Discovery schedules.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "While the admin role grants broad access, the specific role for Discovery Admin Workspace is discovery_admin.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The itil role is for IT Service Management tasks, not Discovery administration.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "discovery_user is not the role required for the Discovery Admin Workspace \u2014 it requires discovery_admin.",
+            "reference": "Discovery Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "Discovery Fundamentals - Running Discovery"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "discovery-fundamentals-on-demand/01-running-discovery.md",
+        "excerpt": "The following roles have access to the Discovery Admin Workspace: discovery_admin"
+      },
+      "labels": {
+        "certification": "cis-discovery",
+        "domain": "Discovery Configuration",
+        "domainSlug": "discovery-configuration",
+        "domainPercentage": 35,
+        "subtopics": [
+          "Roles",
+          "Admin Workspace"
+        ],
+        "tags": [
+          "roles",
+          "workspace",
+          "administration"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-04-03T02:00:00Z",
+        "version": "1.1",
+        "release": "Zurich",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-discovery-configuration-034",
+      "certification": "cis-discovery",
+      "topic": "discovery-configuration",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "An organization needs to enable Discovery debugging to understand why a Linux device is being classified as a generic server. Which system property should be set to true, and where should the administrator look for classification details?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Set glide.discovery.debug.classification to true and review the Node Log File Browser for classifier details"
+        },
+        {
+          "id": "b",
+          "text": "Set discovery.debug.enabled to true and review the ECC Queue output messages"
+        },
+        {
+          "id": "c",
+          "text": "Set mid.discovery.debug to true and review the Discovery Status record errors tab"
+        },
+        {
+          "id": "d",
+          "text": "Set glide.discovery.log.verbose to true and review the MID Server log file"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "When glide.discovery.debug.classification is set to true, the Node Log File Browser can be used to list all classifiers in order that were tried for a discovery, including the attributes and values being tested in the classification criteria. This is very useful for building additional classification criteria or troubleshooting why a device is not classified as expected.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "discovery.debug.enabled is not the correct property. The ECC Queue shows probe/sensor messages but not detailed classification debugging.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "mid.discovery.debug is not the correct property for classification debugging. The errors tab shows errors, not classification details.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "glide.discovery.log.verbose is not the specific property for classification debugging.",
+            "reference": "Discovery Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "Discovery Fundamentals - Phases, Probes, and Classifications"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "discovery-fundamentals-on-demand/01-phases-probes-and-classifications.md",
+        "excerpt": "When glide.discovery.debug.classification = true, the Node Log File Browser can be used to list all classifiers tried for a discovery."
+      },
+      "labels": {
+        "certification": "cis-discovery",
+        "domain": "Discovery Configuration",
+        "domainSlug": "discovery-configuration",
+        "domainPercentage": 35,
+        "subtopics": [
+          "Debug classification",
+          "Troubleshooting"
+        ],
+        "tags": [
+          "debugging",
+          "classification",
+          "troubleshooting"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-04-03T02:00:00Z",
+        "version": "1.1",
+        "release": "Zurich",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-discovery-configuration-035",
+      "certification": "cis-discovery",
+      "topic": "discovery-configuration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What is the purpose of credential aliases in Discovery schedules?",
+      "options": [
+        {
+          "id": "a",
+          "text": "To create backup credentials in case primary credentials fail"
+        },
+        {
+          "id": "b",
+          "text": "To allow specific credentials on Discovery schedules, preventing unnecessary exposure of elevated privileges"
+        },
+        {
+          "id": "c",
+          "text": "To encrypt credentials during transmission between the instance and MID Server"
+        },
+        {
+          "id": "d",
+          "text": "To map credentials to specific CI types for automatic authentication"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Credential aliases provide more control over which credentials a Discovery schedule is allowed to use and prevent the unnecessary exposure of credentials with elevated privileges. Without credential aliases, Discovery schedules can access all credentials defined in the instance, which might not be desirable.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Credential aliases are not backup credentials \u2014 they restrict which credentials a schedule can use.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Credential encryption during transmission is handled by TLS and the MID Server encryption key, not by credential aliases.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Credential aliases work at the schedule level, not at the CI type level. Credential affinity handles the mapping between credentials and devices.",
+            "reference": "Discovery Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "Discovery Fundamentals - Credentials and Behaviors"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "discovery-fundamentals-on-demand/01-credentials-and-behaviors.md",
+        "excerpt": "Credential aliases provide more control over which credentials a Discovery schedule is allowed to use and prevents the unnecessary exposure of credentials with elevated privileges."
+      },
+      "labels": {
+        "certification": "cis-discovery",
+        "domain": "Discovery Configuration",
+        "domainSlug": "discovery-configuration",
+        "domainPercentage": 35,
+        "subtopics": [
+          "Credential aliases",
+          "Security"
+        ],
+        "tags": [
+          "credentials",
+          "aliases",
+          "security"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-04-03T02:00:00Z",
+        "version": "1.1",
+        "release": "Zurich",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-discovery-configuration-036",
+      "certification": "cis-discovery",
+      "topic": "discovery-configuration",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A Discovery administrator needs to discover Windows servers across multiple Active Directory domains using a single MID Server. What is the recommended approach?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Install a separate MID Server in each domain"
+        },
+        {
+          "id": "b",
+          "text": "Use PowerShell with domain-specific credentials stored in the ServiceNow Credentials table"
+        },
+        {
+          "id": "c",
+          "text": "Configure WMI with trust relationships between all domains"
+        },
+        {
+          "id": "d",
+          "text": "Use SNMP credentials with domain-level community strings"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "PowerShell is the preferred method for running Discovery over multiple Windows domains because it allows a single MID Server to authenticate on machines on different domains using credentials stored on the instance. The mid.powershell.use_credentials parameter must be set to true for the ServiceNow credentials table to be used.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "While possible, this is not necessary. PowerShell enables a single MID Server to discover across multiple domains.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "WMI without PowerShell would require the MID Server service account to have access in each domain, which is more complex to manage.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "SNMP is for network devices like routers and switches, not for Windows server discovery.",
+            "reference": "Discovery Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "Discovery Fundamentals - Credentials and Behaviors"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "discovery-fundamentals-on-demand/01-credentials-and-behaviors.md",
+        "excerpt": "PowerShell is the preferred method for running Discovery over multiple Windows domains because it allows a single MID Server to authenticate on machines on different domains."
+      },
+      "labels": {
+        "certification": "cis-discovery",
+        "domain": "Discovery Configuration",
+        "domainSlug": "discovery-configuration",
+        "domainPercentage": 35,
+        "subtopics": [
+          "PowerShell",
+          "Multi-domain"
+        ],
+        "tags": [
+          "powershell",
+          "windows",
+          "multi-domain"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-04-03T02:00:00Z",
+        "version": "1.1",
+        "release": "Zurich",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-discovery-configuration-037",
+      "certification": "cis-discovery",
+      "topic": "discovery-configuration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "How does ServiceNow Discovery handle credential management when accessing a device for the first time?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It requires an administrator to manually assign credentials to each device before discovery"
+        },
+        {
+          "id": "b",
+          "text": "It tries all available credentials until it finds the correct ones, then creates a credential affinity for subsequent discoveries"
+        },
+        {
+          "id": "c",
+          "text": "It uses the MID Server service account for all initial discoveries"
+        },
+        {
+          "id": "d",
+          "text": "It prompts the administrator for credentials during the discovery process"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "When Discovery first attempts to access a device, it tries all available credentials until finding the correct ones. After identifying working credentials, Discovery creates an affinity between the credentials and the device using the Credential Affinity [dscy_credentials_affinity] table. All subsequent discoveries attempt to match credentials from this table. If credentials change, Discovery tries all available credentials again to create a new affinity.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Manual credential assignment per device is not required \u2014 Discovery automatically tries available credentials and establishes affinity.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The MID Server service account is only used when PowerShell is not configured or mid.powershell.use_credentials is false.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Discovery is automated and does not prompt for credentials during execution.",
+            "reference": "Discovery Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "Discovery Fundamentals - Credentials and Behaviors"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "discovery-fundamentals-on-demand/01-credentials-and-behaviors.md",
+        "excerpt": "Discovery and Orchestration try all available credentials until they find the correct ones. They create an affinity between the credentials and the device using the Credential Affinity table."
+      },
+      "labels": {
+        "certification": "cis-discovery",
+        "domain": "Discovery Configuration",
+        "domainSlug": "discovery-configuration",
+        "domainPercentage": 35,
+        "subtopics": [
+          "Credential affinity",
+          "Auto-discovery"
+        ],
+        "tags": [
+          "credentials",
+          "affinity",
+          "auto-discovery"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-04-03T02:00:00Z",
+        "version": "1.1",
+        "release": "Zurich",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-discovery-configuration-038",
+      "certification": "cis-discovery",
+      "topic": "discovery-configuration",
+      "cognitiveLevel": "analysis",
+      "type": "multiple_choice",
+      "question": "Which statement about Discovery behaviors is correct?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Behaviors determine the order in which credentials are tried during classification"
+        },
+        {
+          "id": "b",
+          "text": "Behaviors determine what probes Shazzam launches and from which MID servers these probes are launched"
+        },
+        {
+          "id": "c",
+          "text": "Behaviors control the frequency of Discovery schedule execution"
+        },
+        {
+          "id": "d",
+          "text": "Behaviors manage the reconciliation rules between multiple data sources"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "A Discovery Behavior determines what probes Shazzam launches and from which MID servers these probes are launched. This is particularly useful for devices running two protocols simultaneously (e.g., SSH and SNMP) \u2014 a behavior can control which protocol is explored and prevent the other from being explored.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Credential ordering is handled by credential affinity and the credential matching process, not by behaviors.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Discovery schedule frequency is configured in the Discovery Schedule itself, not in behaviors.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Reconciliation rules are managed by the IRE (Identification and Reconciliation Engine), not by behaviors.",
+            "reference": "Discovery Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "Discovery Fundamentals - Credentials and Behaviors"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "discovery-fundamentals-on-demand/01-credentials-and-behaviors.md",
+        "excerpt": "A Discovery Behavior determines what probes Shazzam launches and from which MID servers these probes are launched."
+      },
+      "labels": {
+        "certification": "cis-discovery",
+        "domain": "Discovery Configuration",
+        "domainSlug": "discovery-configuration",
+        "domainPercentage": 35,
+        "subtopics": [
+          "Behaviors",
+          "Probe control"
+        ],
+        "tags": [
+          "behaviors",
+          "shazzam",
+          "probes"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-04-03T02:00:00Z",
+        "version": "1.1",
+        "release": "Zurich",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-discovery-configuration-039",
+      "certification": "cis-discovery",
+      "topic": "discovery-configuration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What three options are available for running Discovery after the MID Server is installed?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Manual scan, Scheduled scan, and API-triggered scan"
+        },
+        {
+          "id": "b",
+          "text": "Quick Discovery, run the Quick Start-created schedule, or create a new Discovery Schedule"
+        },
+        {
+          "id": "c",
+          "text": "IP-based discovery, DNS-based discovery, and Cloud-based discovery"
+        },
+        {
+          "id": "d",
+          "text": "Full discovery, Incremental discovery, and Targeted discovery"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "After the MID Server is installed and configured, three options are available for running Discovery: (1) do a Quick Discovery, (2) run the Discovery Schedule created during step 4 of Quick Start, or (3) create a new Discovery Schedule with custom IP ranges and MID Server configuration.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "These are not the three documented options. Discovery is run via Quick Discovery, Quick Start schedules, or new custom schedules.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "These describe discovery types, not the three options for initiating Discovery after MID Server setup.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Full, Incremental, and Targeted are not the documented options for running Discovery.",
+            "reference": "Discovery Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "Discovery Fundamentals - Running Discovery"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "discovery-fundamentals-on-demand/01-running-discovery.md",
+        "excerpt": "Three options are available: Quick Discovery, run the Quick Start schedule, or create a new Discovery Schedule."
+      },
+      "labels": {
+        "certification": "cis-discovery",
+        "domain": "Discovery Configuration",
+        "domainSlug": "discovery-configuration",
+        "domainPercentage": 35,
+        "subtopics": [
+          "Running Discovery",
+          "Schedule types"
+        ],
+        "tags": [
+          "discovery schedule",
+          "quick discovery",
+          "quick start"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-04-03T02:00:00Z",
+        "version": "1.1",
+        "release": "Zurich",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-discovery-configuration-040",
+      "certification": "cis-discovery",
+      "topic": "discovery-configuration",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "How are credentials secured during transmission from the ServiceNow instance to the MID Server?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Credentials are sent in clear text over HTTPS"
+        },
+        {
+          "id": "b",
+          "text": "The instance decrypts the stored password, re-encrypts it with the MID Server's encryption key, and sends it over an encrypted TLS session"
+        },
+        {
+          "id": "c",
+          "text": "Credentials are hashed using SHA-256 before transmission"
+        },
+        {
+          "id": "d",
+          "text": "The MID Server retrieves credentials directly from the database using its service account"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The instance retrieves the encrypted password from the database, decrypts it, then re-encrypts it using the MID Server's encryption key. The re-encrypted credentials are sent over the encrypted TLS session already established between the MID Server and instance. The MID Server then decrypts the password in memory. At no point is the password stored unencrypted on disk.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Credentials are not sent in clear text \u2014 they are re-encrypted with the MID Server's key before transmission over TLS.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Hashing would make the credentials unrecoverable. They are encrypted (not hashed) so the MID Server can decrypt them for use.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The MID Server does not directly access the instance database. Credentials are transmitted through the ECC Queue mechanism.",
+            "reference": "Discovery Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "Discovery Fundamentals - Credentials and Behaviors"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "discovery-fundamentals-on-demand/01-credentials-and-behaviors.md",
+        "excerpt": "The instance decrypts the encrypted password, re-encrypts it using the MID server encryption key, and sends it over the encrypted TLS session."
+      },
+      "labels": {
+        "certification": "cis-discovery",
+        "domain": "Discovery Configuration",
+        "domainSlug": "discovery-configuration",
+        "domainPercentage": 35,
+        "subtopics": [
+          "Credential security",
+          "Encryption"
+        ],
+        "tags": [
+          "security",
+          "encryption",
+          "credentials",
+          "mid server"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-04-03T02:00:00Z",
+        "version": "1.1",
+        "release": "Zurich",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-discovery-configuration-041",
+      "certification": "cis-discovery",
+      "topic": "discovery-configuration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What is unique about SNMP credential authentication compared to SSH and Windows credential authentication during Discovery?",
+      "options": [
+        {
+          "id": "a",
+          "text": "SNMP credentials include both username and password"
+        },
+        {
+          "id": "b",
+          "text": "SNMP uses UDP and credential authentication occurs during each phase of Discovery, not just the Classification phase"
+        },
+        {
+          "id": "c",
+          "text": "SNMP authentication only occurs during the Port Scan phase"
+        },
+        {
+          "id": "d",
+          "text": "SNMP credentials are validated by the instance before being sent to the MID Server"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Because SNMP uses UDP by default, credential authentication takes place during each phase of Discovery \u2014 meaning it is not limited to just the Classification phase. Credentials are used with each probe query sent. This contrasts with SSH and Windows authentication which takes place during the Classification phase.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "SNMP credentials do not include a username \u2014 they only include a password (the community string).",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "SNMP authentication occurs during ALL phases, not just the Port Scan phase.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Credential validation happens at the MID Server when attempting to access the target device, not on the instance.",
+            "reference": "Discovery Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "Discovery Fundamentals - Credentials and Behaviors"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "discovery-fundamentals-on-demand/01-credentials-and-behaviors.md",
+        "excerpt": "Because SNMP uses UDP by default, credential authentication takes place during each phase of Discovery."
+      },
+      "labels": {
+        "certification": "cis-discovery",
+        "domain": "Discovery Configuration",
+        "domainSlug": "discovery-configuration",
+        "domainPercentage": 35,
+        "subtopics": [
+          "SNMP",
+          "Authentication phases"
+        ],
+        "tags": [
+          "snmp",
+          "authentication",
+          "udp"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-04-03T02:00:00Z",
+        "version": "1.1",
+        "release": "Zurich",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-discovery-configuration-042",
+      "certification": "cis-discovery",
+      "topic": "discovery-configuration",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "An administrator needs to discover Unix/Linux devices using Discovery but the organization's security policy prohibits giving root credentials. What is the recommended alternative?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Use SNMP credentials instead of SSH for Unix discovery"
+        },
+        {
+          "id": "b",
+          "text": "Give non-root credentials and configure sudo by editing /etc/sudoers with visudo on each target system"
+        },
+        {
+          "id": "c",
+          "text": "Use PowerShell remoting to connect to Unix devices"
+        },
+        {
+          "id": "d",
+          "text": "Install the ServiceNow agent on each Unix device for agentless discovery"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "If root credentials are not desirable from a security perspective, the alternative is to give other credentials for Discovery and grant the user the right to execute certain commands with root privileges using sudo. Each target system must be configured by editing the /etc/sudoers file using the visudo command. Discovery uses sudo on probes that have the must_sudo parameter set to true.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "SNMP would only provide network device information, not the detailed OS-level data that SSH-based Discovery collects.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "PowerShell remoting is for Windows environments. Unix/Linux uses SSH for Discovery.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Discovery is agentless by nature \u2014 there is no 'ServiceNow agent' to install on target devices for standard Discovery.",
+            "reference": "Discovery Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "Discovery Fundamentals - Credentials and Behaviors"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "discovery-fundamentals-on-demand/01-credentials-and-behaviors.md",
+        "excerpt": "Give other credentials for Discovery, but grant the user the right to execute certain commands with root privileges using sudo."
+      },
+      "labels": {
+        "certification": "cis-discovery",
+        "domain": "Discovery Configuration",
+        "domainSlug": "discovery-configuration",
+        "domainPercentage": 35,
+        "subtopics": [
+          "Unix credentials",
+          "Sudo"
+        ],
+        "tags": [
+          "unix",
+          "sudo",
+          "security",
+          "credentials"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-04-03T02:00:00Z",
+        "version": "1.1",
+        "release": "Zurich",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-discovery-configuration-043",
+      "certification": "cis-discovery",
+      "topic": "discovery-configuration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What does the Discovery External Credential Storage plugin enable?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Storing Discovery credentials in an encrypted file on the MID Server"
+        },
+        {
+          "id": "b",
+          "text": "Retrieving Discovery credentials from a customer-determined external credential repository instead of ServiceNow Credentials records"
+        },
+        {
+          "id": "c",
+          "text": "Syncing credentials between multiple ServiceNow instances"
+        },
+        {
+          "id": "d",
+          "text": "Automatically rotating Discovery credentials on a scheduled basis"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The Discovery External Credential Storage plugin enables a ServiceNow instance to retrieve Discovery credentials from an external credential repository rather than directly from ServiceNow Credentials records. The instance maintains a unique identifier for each credential and the credential type. The MID Server uses a customer-provided JAR file to resolve the identifier into usable credentials.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "External Credential Storage retrieves credentials from an external repository (like CyberArk or HashiCorp Vault), not from files on the MID Server.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The plugin does not handle inter-instance credential sync \u2014 it integrates with external vault solutions.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Credential rotation would be managed by the external credential store, not by this plugin.",
+            "reference": "Discovery Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "Discovery Fundamentals - Credentials and Behaviors"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "discovery-fundamentals-on-demand/01-credentials-and-behaviors.md",
+        "excerpt": "The Discovery External Credential Storage plugin enables retrieval from an external credential repository using a customer-provided JAR file."
+      },
+      "labels": {
+        "certification": "cis-discovery",
+        "domain": "Discovery Configuration",
+        "domainSlug": "discovery-configuration",
+        "domainPercentage": 35,
+        "subtopics": [
+          "External credential storage",
+          "Integration"
+        ],
+        "tags": [
+          "credentials",
+          "external storage",
+          "plugin"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-04-03T02:00:00Z",
+        "version": "1.1",
+        "release": "Zurich",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-discovery-configuration-044",
+      "certification": "cis-discovery",
+      "topic": "discovery-configuration",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "When creating a new IP-based Discovery schedule from the Discovery Admin Workspace, which of the following is NOT a required configuration step?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Choose a MID Server"
+        },
+        {
+          "id": "b",
+          "text": "Define IP ranges (existing sets or manual entry)"
+        },
+        {
+          "id": "c",
+          "text": "Configure credential aliases for the schedule"
+        },
+        {
+          "id": "d",
+          "text": "Enter a name for the Discovery schedule"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "When creating an IP-based Discovery schedule, the required steps are: enter a name, choose Discovery locations, choose IP ranges (from existing sets or manually), choose a MID Server, and configure the schedule. Credential aliases are optional \u2014 without them, Discovery uses all available credentials.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Choosing a MID Server is a required step when creating a new Discovery schedule.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "IP ranges are required \u2014 they can be selected from existing IP range sets or manually entered.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "A name is required for every Discovery schedule.",
+            "reference": "Discovery Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "Discovery Fundamentals - Running Discovery"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "discovery-fundamentals-on-demand/01-running-discovery.md",
+        "excerpt": "Enter a name, choose Discovery locations, choose IP ranges, choose MID Server, configure the schedule."
+      },
+      "labels": {
+        "certification": "cis-discovery",
+        "domain": "Discovery Configuration",
+        "domainSlug": "discovery-configuration",
+        "domainPercentage": 35,
+        "subtopics": [
+          "Discovery Schedule",
+          "Configuration"
+        ],
+        "tags": [
+          "schedule",
+          "configuration",
+          "ip ranges"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-04-03T02:00:00Z",
+        "version": "1.1",
+        "release": "Zurich",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-discovery-configuration-045",
+      "certification": "cis-discovery",
+      "topic": "discovery-configuration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What Discovery type is defaulted when creating a new Discovery schedule, and what does it mean?",
+      "options": [
+        {
+          "id": "a",
+          "text": "IP Addresses \u2014 discovered devices are recorded as IP records only"
+        },
+        {
+          "id": "b",
+          "text": "Configuration Items \u2014 discovered devices will be created as CI records, classified, and populated into CMDB tables"
+        },
+        {
+          "id": "c",
+          "text": "Network Devices \u2014 only routers, switches, and network infrastructure are discovered"
+        },
+        {
+          "id": "d",
+          "text": "All Assets \u2014 everything on the network is cataloged including unmanaged devices"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "When viewing the details of a Discovery schedule, the Discovery type defaults to Configuration Items. This means that when the schedule runs, discovered devices will be created as CI records, classified, and populated into their respective CMDB tables.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The default is Configuration Items, not IP Addresses. CIs are full records with classification and CMDB population.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The default discovers all device types that can be classified, not just network devices.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "'All Assets' is not a Discovery type option. The default is Configuration Items.",
+            "reference": "Discovery Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "Discovery Fundamentals - Running Discovery"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "discovery-fundamentals-on-demand/01-running-discovery.md",
+        "excerpt": "The Discovery type defaulted to Configuration Items. Discovered devices will be created as a CI record and classified into CMDB tables."
+      },
+      "labels": {
+        "certification": "cis-discovery",
+        "domain": "Discovery Configuration",
+        "domainSlug": "discovery-configuration",
+        "domainPercentage": 35,
+        "subtopics": [
+          "Discovery type",
+          "Configuration Items"
+        ],
+        "tags": [
+          "schedule",
+          "configuration items",
+          "cmdb"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-04-03T02:00:00Z",
+        "version": "1.1",
+        "release": "Zurich",
+        "reviewed": false
+      }
     }
   ]
 }

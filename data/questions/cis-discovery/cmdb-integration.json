@@ -1358,6 +1358,794 @@
         ],
         "tags": []
       }
+    },
+    {
+      "id": "cis-discovery-cmdb-019",
+      "certification": "cis-discovery",
+      "topic": "cmdb-integration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What is the Multisource CMDB feature and what problem does it solve?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It allows multiple instances to share a single CMDB database"
+        },
+        {
+          "id": "b",
+          "text": "It retains raw details from every discovery source, enabling analysis of why specific attribute values were selected or rejected during reconciliation"
+        },
+        {
+          "id": "c",
+          "text": "It enables Discovery to use multiple MID Servers simultaneously for faster scanning"
+        },
+        {
+          "id": "d",
+          "text": "It creates separate CMDB tables for each data source"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "With Multisource CMDB, the raw details for every discovery source are retained \u2014 both for sources selected for an update and those rejected. This data is stored in the CMDB MultiSource Data [cmdb_multisource_data] table, enabling administrators to understand how CI data came from different sources and compare values across sources.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Multisource CMDB is about tracking multiple data sources within a single instance, not sharing a CMDB between instances.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Multisource CMDB is about data source tracking, not about MID Server distribution for scanning.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Multisource CMDB stores source data in the cmdb_multisource_data table, not in separate tables per source.",
+            "reference": "Discovery Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "Discovery Fundamentals - Phases, Probes, and Classifications"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "discovery-fundamentals-on-demand/01-phases-probes-and-classifications.md",
+        "excerpt": "With Multisource CMDB, the raw details for every discovery source are retained."
+      },
+      "labels": {
+        "certification": "cis-discovery",
+        "domain": "CMDB Integration",
+        "domainSlug": "cmdb-integration",
+        "domainPercentage": 15,
+        "subtopics": [
+          "Multisource CMDB",
+          "Data reconciliation"
+        ],
+        "tags": [
+          "multisource",
+          "cmdb",
+          "reconciliation"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-04-03T02:00:00Z",
+        "version": "1.1",
+        "release": "Zurich",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-discovery-cmdb-020",
+      "certification": "cis-discovery",
+      "topic": "cmdb-integration",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "An administrator needs to determine which identifier was used during Discovery to reconcile a device with an existing CMDB CI. Where should they look?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Discovery Status > Discovery Log > Check Pattern Log link, then select Payload Processing"
+        },
+        {
+          "id": "b",
+          "text": "Discovery Status > ECC Queue > Output messages"
+        },
+        {
+          "id": "c",
+          "text": "CMDB > CI record > Reconciliation History related list"
+        },
+        {
+          "id": "d",
+          "text": "Discovery Admin Workspace > Diagnostics tab"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "To view which CI identifier was used during Discovery, navigate to the Status record > Discovery Log and click on the Check Pattern Log link. Once the Horizontal Discovery Log page loads, select the Payload Processing structure to view which rules were used to reconcile the device.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "The ECC Queue shows probe and sensor messages but doesn't specifically show identifier usage details.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "While the CI record shows data source history, the specific identifier used during a particular discovery run is found in the Discovery Log.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The Discovery Admin Workspace Diagnostics tab is for schedule-level diagnostics, not individual CI reconciliation details.",
+            "reference": "Discovery Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "Discovery Fundamentals - Phases, Probes, and Classifications"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "discovery-fundamentals-on-demand/01-phases-probes-and-classifications.md",
+        "excerpt": "Navigate to the Status record > Discovery Log and click on the Check Pattern Log link. Select the Payload Processing structure to view which rules were used."
+      },
+      "labels": {
+        "certification": "cis-discovery",
+        "domain": "CMDB Integration",
+        "domainSlug": "cmdb-integration",
+        "domainPercentage": 15,
+        "subtopics": [
+          "CI identification",
+          "Pattern log"
+        ],
+        "tags": [
+          "identification",
+          "reconciliation",
+          "pattern log"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-04-03T02:00:00Z",
+        "version": "1.1",
+        "release": "Zurich",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-discovery-cmdb-021",
+      "certification": "cis-discovery",
+      "topic": "cmdb-integration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What happens when a child table has its own CI Identifier and the 'Allow fallback to parent's rules' checkbox is NOT checked?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The parent table's identifier is always tried first, then the child's"
+        },
+        {
+          "id": "b",
+          "text": "If the child table's identifier finds no match, a new CI is created without checking the parent's rules"
+        },
+        {
+          "id": "c",
+          "text": "Both the child and parent identifiers are tried simultaneously"
+        },
+        {
+          "id": "d",
+          "text": "The system throws an error and the CI is not created"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "If a CI Identifier is created on a child table, that identifier is tried first. Without the 'Allow fallback to parent's rules' checkbox checked, and if there is no match from the child table CI Identifier, a new CI is created. The parent table's Identifier is not tried.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The child table's identifier is tried first, not the parent's. Parent rules only apply when fallback is enabled.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Identifiers are tried sequentially based on hierarchy and order, not simultaneously.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "No error is thrown \u2014 a new CI is simply created when no match is found and fallback is disabled.",
+            "reference": "Discovery Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "Discovery Fundamentals - Phases, Probes, and Classifications"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "discovery-fundamentals-on-demand/01-phases-probes-and-classifications.md",
+        "excerpt": "Without the checkbox checked, then a new CI is created if there is not match from the child table Identifier."
+      },
+      "labels": {
+        "certification": "cis-discovery",
+        "domain": "CMDB Integration",
+        "domainSlug": "cmdb-integration",
+        "domainPercentage": 15,
+        "subtopics": [
+          "CI Identifiers",
+          "Fallback rules"
+        ],
+        "tags": [
+          "identification",
+          "child table",
+          "fallback"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-04-03T02:00:00Z",
+        "version": "1.1",
+        "release": "Zurich",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-discovery-cmdb-022",
+      "certification": "cis-discovery",
+      "topic": "cmdb-integration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "In which table is Multisource CMDB data stored, and since which ServiceNow release was this capability introduced?",
+      "options": [
+        {
+          "id": "a",
+          "text": "cmdb_datasource_last_update table, introduced in New York"
+        },
+        {
+          "id": "b",
+          "text": "cmdb_multisource_data table, introduced in Paris"
+        },
+        {
+          "id": "c",
+          "text": "cmdb_ci_multisource table, introduced in Orlando"
+        },
+        {
+          "id": "d",
+          "text": "cmdb_reconciliation_data table, introduced in Quebec"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Since the Paris release, a new table called CMDB MultiSource Data [cmdb_multisource_data] was implemented to track all CI records and attributes including data sources that updated the record or were rejected. Prior to Paris, only the cmdb_datasource_last_update table tracked the last data source that updated a record.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The cmdb_datasource_last_update table existed before Paris but only tracked the LAST update source. Multisource tracking came in Paris with the new table.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "cmdb_ci_multisource is not the correct table name. The correct name is cmdb_multisource_data.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "cmdb_reconciliation_data is not a real table. The feature was introduced in Paris, not Quebec.",
+            "reference": "Discovery Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "Discovery Fundamentals - Phases, Probes, and Classifications"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "discovery-fundamentals-on-demand/01-phases-probes-and-classifications.md",
+        "excerpt": "Since the Paris release, a new table called CMDB MultiSource Data [cmdb_multisource_data] was implemented."
+      },
+      "labels": {
+        "certification": "cis-discovery",
+        "domain": "CMDB Integration",
+        "domainSlug": "cmdb-integration",
+        "domainPercentage": 15,
+        "subtopics": [
+          "Multisource CMDB",
+          "Paris release"
+        ],
+        "tags": [
+          "multisource",
+          "paris",
+          "cmdb tables"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-04-03T02:00:00Z",
+        "version": "1.1",
+        "release": "Zurich",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-discovery-cmdb-023",
+      "certification": "cis-discovery",
+      "topic": "cmdb-integration",
+      "cognitiveLevel": "analysis",
+      "type": "multiple_choice",
+      "question": "An organization has multiple data sources populating the CMDB: ServiceNow Discovery, SCCM imports, and manual Excel uploads. Which Multisource CMDB capability helps them answer 'Show me all servers where the reported RAM differs between SCCM and Discovery'?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The cmdb_datasource_last_update table can be queried to compare last-updated values"
+        },
+        {
+          "id": "b",
+          "text": "The cmdb_multisource_data table retains all source values, enabling cross-source attribute comparison"
+        },
+        {
+          "id": "c",
+          "text": "The IRE automatically flags conflicting values in the CI record's activity log"
+        },
+        {
+          "id": "d",
+          "text": "The Reconciliation Dashboard provides side-by-side comparisons of all sources"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The cmdb_multisource_data table retains raw details from every discovery source \u2014 both selected and rejected values. Administrators can query and report on this data to compare attribute values across sources, making it easy to identify discrepancies like different RAM values between SCCM and Discovery.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The cmdb_datasource_last_update table only tracks the LAST source that updated each attribute, not all sources' values for comparison.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The IRE uses reconciliation rules to select winners but doesn't create a specific activity log of conflicts.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "There is no out-of-box 'Reconciliation Dashboard' with side-by-side comparisons. Administrators query the multisource table directly.",
+            "reference": "Discovery Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "Discovery Fundamentals - Phases, Probes, and Classifications"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "discovery-fundamentals-on-demand/01-phases-probes-and-classifications.md",
+        "excerpt": "Show me all servers where the reported RAM is different between SCCM and ServiceNow Discovery \u2014 answerable via cmdb_multisource_data."
+      },
+      "labels": {
+        "certification": "cis-discovery",
+        "domain": "CMDB Integration",
+        "domainSlug": "cmdb-integration",
+        "domainPercentage": 15,
+        "subtopics": [
+          "Multisource CMDB",
+          "Cross-source comparison"
+        ],
+        "tags": [
+          "multisource",
+          "reconciliation",
+          "reporting"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-04-03T02:00:00Z",
+        "version": "1.1",
+        "release": "Zurich",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-discovery-cmdb-024",
+      "certification": "cis-discovery",
+      "topic": "cmdb-integration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "How does the CI Identifier determine which entry to try first when reconciling a discovered device?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Entries are tried in alphabetical order by field name"
+        },
+        {
+          "id": "b",
+          "text": "The Order attribute controls the sequence \u2014 once a match is made, no other attempts are made"
+        },
+        {
+          "id": "c",
+          "text": "All entries are evaluated simultaneously and the best match wins"
+        },
+        {
+          "id": "d",
+          "text": "Entries are tried based on the data type of the criterion attribute"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Identifier Entries define which fields are tried for matching. The Order attribute controls the sequence in which entries are attempted. Once a match is made, no other attempts are made. This means the most specific identifier should have the lowest order number.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Entries are ordered by the Order attribute, not alphabetically.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Entries are tried sequentially, not simultaneously. The first match wins.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The evaluation order is determined by the Order attribute, not by data types.",
+            "reference": "Discovery Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "Discovery Fundamentals - Phases, Probes, and Classifications"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "discovery-fundamentals-on-demand/01-phases-probes-and-classifications.md",
+        "excerpt": "The Order attribute controls the sequence the Identifier Entries are tried. Once a match is made, no other attempts are made."
+      },
+      "labels": {
+        "certification": "cis-discovery",
+        "domain": "CMDB Integration",
+        "domainSlug": "cmdb-integration",
+        "domainPercentage": 15,
+        "subtopics": [
+          "CI Identifiers",
+          "Order"
+        ],
+        "tags": [
+          "identification",
+          "order",
+          "matching"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-04-03T02:00:00Z",
+        "version": "1.1",
+        "release": "Zurich",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-discovery-cmdb-025",
+      "certification": "cis-discovery",
+      "topic": "cmdb-integration",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "What data visualization indicators are shown on the Discovery Status record when viewing details?",
+      "options": [
+        {
+          "id": "a",
+          "text": "CPU usage, memory consumption, network bandwidth, and scan duration"
+        },
+        {
+          "id": "b",
+          "text": "Errors, Total Devices, New Devices Discovered, Total IPs, and Duplicate IPs"
+        },
+        {
+          "id": "c",
+          "text": "Credentials tested, authentication failures, timeouts, and retries"
+        },
+        {
+          "id": "d",
+          "text": "Patterns executed, sensors triggered, probes sent, and CIs updated"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The Discovery Status record shows data visualization indicators for Errors, Total Devices and New Devices Discovered, Total and Duplicate IPs. Selecting an indicator displays details about the devices discovered, including IP, classification, and whether the device was newly Created or Updated.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "These are system performance metrics, not Discovery Status indicators.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "While credential-related information may appear in logs, these are not the primary status indicators.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "These are process-level details found in logs and ECC Queue, not the main status indicators.",
+            "reference": "Discovery Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "Discovery Fundamentals - Running Discovery"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "discovery-fundamentals-on-demand/01-running-discovery.md",
+        "excerpt": "Data visualization indicators for Errors, Total Devices and New Devices Discovered, Total and Duplicate IP's."
+      },
+      "labels": {
+        "certification": "cis-discovery",
+        "domain": "CMDB Integration",
+        "domainSlug": "cmdb-integration",
+        "domainPercentage": 15,
+        "subtopics": [
+          "Discovery Status",
+          "Monitoring"
+        ],
+        "tags": [
+          "status",
+          "monitoring",
+          "visualization"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-04-03T02:00:00Z",
+        "version": "1.1",
+        "release": "Zurich",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-discovery-cmdb-026",
+      "certification": "cis-discovery",
+      "topic": "cmdb-integration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "In the ECC Queue, how do you distinguish between a probe record and a sensor record?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Probe records have a 'Type' field set to 'Probe' and sensor records have it set to 'Sensor'"
+        },
+        {
+          "id": "b",
+          "text": "Sensor records are in the input queue, and probe records are in the output queue"
+        },
+        {
+          "id": "c",
+          "text": "Probe records contain XML payloads while sensor records contain JSON"
+        },
+        {
+          "id": "d",
+          "text": "Probe records have a status of 'Sent' and sensor records have a status of 'Received'"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "To determine whether a record is for a probe or a sensor, look at the value in the Queue column. Sensor records are in the input queue (incoming data from the MID Server), and probe records are in the output queue (outgoing commands to the MID Server).",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "There is no 'Type' field distinguishing probes from sensors. The Queue column (input/output) is the distinguishing factor.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Both probes and sensors use XML payloads in the ECC Queue.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The distinction is based on the Queue column (input/output), not a status field.",
+            "reference": "Discovery Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "Discovery Fundamentals - Phases, Probes, and Classifications"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "discovery-fundamentals-on-demand/01-phases-probes-and-classifications.md",
+        "excerpt": "Sensor records are in the input queue, and probe records are in the output queue."
+      },
+      "labels": {
+        "certification": "cis-discovery",
+        "domain": "CMDB Integration",
+        "domainSlug": "cmdb-integration",
+        "domainPercentage": 15,
+        "subtopics": [
+          "ECC Queue",
+          "Probes and sensors"
+        ],
+        "tags": [
+          "ecc queue",
+          "probes",
+          "sensors"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-04-03T02:00:00Z",
+        "version": "1.1",
+        "release": "Zurich",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-discovery-cmdb-027",
+      "certification": "cis-discovery",
+      "topic": "cmdb-integration",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "Cloud Discovery uses a fundamentally different architecture than IP-based Discovery. Which statement correctly describes how Cloud Discovery works?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Cloud Discovery scans IP ranges assigned to cloud providers and uses SNMP to classify virtual machines"
+        },
+        {
+          "id": "b",
+          "text": "Patterns running from the MID Server send API requests to cloud endpoints, and responses are converted into CMDB objects and relationships"
+        },
+        {
+          "id": "c",
+          "text": "Cloud Discovery requires installing MID Servers inside each cloud provider's network"
+        },
+        {
+          "id": "d",
+          "text": "Cloud Discovery uses agentless scanning with credential-less probes similar to Nmap"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Cloud resource discovery works via a connection to a cloud endpoint requiring credentials and correct authentication. Patterns running from the MID Server send request API calls for information about cloud resources and relations. Responses are passed back through the MID Server, reconciled, and converted into CMDB objects and relation records.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Cloud Discovery uses cloud provider APIs, not IP scanning and SNMP.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "MID Servers connect to cloud endpoints via APIs \u2014 they don't need to be installed inside the cloud provider's network.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Cloud Discovery requires credentials for cloud endpoint authentication, unlike credentialless Nmap-based discovery.",
+            "reference": "Discovery Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "Discovery Fundamentals - Running Discovery"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "discovery-fundamentals-on-demand/01-running-discovery.md",
+        "excerpt": "Patterns, running from the MID Server, send request API calls. Responses are passed back, reconciled, and converted into CMDB objects."
+      },
+      "labels": {
+        "certification": "cis-discovery",
+        "domain": "CMDB Integration",
+        "domainSlug": "cmdb-integration",
+        "domainPercentage": 15,
+        "subtopics": [
+          "Cloud Discovery",
+          "Architecture"
+        ],
+        "tags": [
+          "cloud",
+          "api",
+          "architecture"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-04-03T02:00:00Z",
+        "version": "1.1",
+        "release": "Zurich",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-discovery-cmdb-028",
+      "certification": "cis-discovery",
+      "topic": "cmdb-integration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which types of storage can ServiceNow Discovery find and map dependencies for? (Choose 2)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Direct-attached storage (DAS), network-attached storage (NAS), and storage area network (SAN)"
+        },
+        {
+          "id": "b",
+          "text": "Virtual storage for VMware ESX servers and Linux KVM, mapped to underlying physical storage"
+        },
+        {
+          "id": "c",
+          "text": "Cloud-only storage like S3 and Azure Blob Storage"
+        },
+        {
+          "id": "d",
+          "text": "Tape backup libraries and optical storage arrays"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b"
+      ],
+      "explanation": {
+        "correct": "Discovery finds and maps dependencies for DAS, NAS, and SAN storage (including via SMI-S/CIM and Fibre Channel/iSCSI), as well as virtual storage for VMware ESX servers and Linux KVM which it maps to underlying physical storage.",
+        "wrongAnswers": [
+          {
+            "choiceId": "c",
+            "explanation": "Cloud storage services like S3 are discovered via Cloud Discovery, not standard storage discovery patterns.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Tape backup libraries and optical storage arrays are not listed among the storage types Discovery maps.",
+            "reference": "Discovery Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "Discovery Fundamentals - Credentials and Behaviors"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "discovery-fundamentals-on-demand/01-credentials-and-behaviors.md",
+        "excerpt": "Discovery finds and maps dependencies for DAS, NAS, SAN, and virtual storage for VMware ESX and Linux KVM."
+      },
+      "labels": {
+        "certification": "cis-discovery",
+        "domain": "CMDB Integration",
+        "domainSlug": "cmdb-integration",
+        "domainPercentage": 15,
+        "subtopics": [
+          "Storage discovery",
+          "Dependency mapping"
+        ],
+        "tags": [
+          "storage",
+          "das",
+          "nas",
+          "san",
+          "vmware"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-04-03T02:00:00Z",
+        "version": "1.1",
+        "release": "Zurich",
+        "reviewed": false
+      }
     }
   ]
 }

@@ -1364,6 +1364,798 @@
         ],
         "tags": []
       }
+    },
+    {
+      "id": "cis-discovery-engagement-027",
+      "certification": "cis-discovery",
+      "topic": "engagement-readiness",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "When configuring a Cloud Discovery schedule for Azure, what information must be provided for the Service Account?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Azure AD tenant ID and client certificate only"
+        },
+        {
+          "id": "b",
+          "text": "The Subscription ID or Management Group ID, along with valid credentials"
+        },
+        {
+          "id": "c",
+          "text": "The Azure portal URL and administrator email address"
+        },
+        {
+          "id": "d",
+          "text": "A VPN connection string and MID Server API key"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "When configuring a Cloud Discovery Service Account for Azure, you must provide the Subscription ID or Management Group ID along with valid credentials. You can pick from an existing Service Account or create a new one.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "While Azure AD authentication may be involved, the specific requirement mentioned is Subscription ID or Management Group ID with credentials.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Portal URLs and email addresses are not the required configuration items for Cloud Discovery.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "VPN connections are not required \u2014 Cloud Discovery uses API-based access through the MID Server.",
+            "reference": "Discovery Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "Discovery Fundamentals - Running Discovery"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "discovery-fundamentals-on-demand/01-running-discovery.md",
+        "excerpt": "Provide the Subscription ID or Management Group ID, along with valid credentials."
+      },
+      "labels": {
+        "certification": "cis-discovery",
+        "domain": "Engagement Readiness",
+        "domainSlug": "engagement-readiness",
+        "domainPercentage": 15,
+        "subtopics": [
+          "Cloud Discovery",
+          "Azure"
+        ],
+        "tags": [
+          "cloud",
+          "azure",
+          "service account"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-04-03T02:00:00Z",
+        "version": "1.1",
+        "release": "Zurich",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-discovery-engagement-028",
+      "certification": "cis-discovery",
+      "topic": "engagement-readiness",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What best practice should ServiceNow professional services or partners follow regarding customer credentials?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Enter customer credentials during initial setup and change them after go-live"
+        },
+        {
+          "id": "b",
+          "text": "Not enter customer credentials themselves, but have customers enter their own credentials"
+        },
+        {
+          "id": "c",
+          "text": "Store customer credentials in a shared document for the project team"
+        },
+        {
+          "id": "d",
+          "text": "Use a single service account for all customer credentials during implementation"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "It is good practice for ServiceNow professional services or partners to NOT enter customer credentials, but rather have customers enter their own credentials. This maintains security and ensures proper credential ownership.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Partners should never handle customer credentials directly, regardless of when they plan to change them.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Sharing credentials in documents is a major security violation and never a recommended practice.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "A single shared service account is not a best practice \u2014 customers should manage their own credentials.",
+            "reference": "Discovery Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "Discovery Fundamentals - Credentials and Behaviors"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "discovery-fundamentals-on-demand/01-credentials-and-behaviors.md",
+        "excerpt": "It is good practice for partners to not enter customer credentials, but rather have customers enter their own."
+      },
+      "labels": {
+        "certification": "cis-discovery",
+        "domain": "Engagement Readiness",
+        "domainSlug": "engagement-readiness",
+        "domainPercentage": 15,
+        "subtopics": [
+          "Best practices",
+          "Security"
+        ],
+        "tags": [
+          "best practices",
+          "credentials",
+          "security"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-04-03T02:00:00Z",
+        "version": "1.1",
+        "release": "Zurich",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-discovery-engagement-019",
+      "certification": "cis-discovery",
+      "topic": "engagement-readiness",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What is the loopback address commonly used when creating a basic Discovery Schedule to discover the MID Server host itself?",
+      "options": [
+        {
+          "id": "a",
+          "text": "10.0.0.1"
+        },
+        {
+          "id": "b",
+          "text": "127.0.0.1"
+        },
+        {
+          "id": "c",
+          "text": "192.168.1.1"
+        },
+        {
+          "id": "d",
+          "text": "0.0.0.0"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "When creating a basic Discovery Schedule, the target IP can be configured as 127.0.0.1, which is the loopback address for the localhost where the MID Server is installed. This is a common first test to verify Discovery is working correctly.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "10.0.0.1 is a private IP address, not the standard loopback address.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "192.168.1.1 is a common default gateway address, not the loopback address.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "0.0.0.0 is used to represent 'all interfaces' or 'any address', not a specific loopback.",
+            "reference": "Discovery Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "Discovery Fundamentals - Running Discovery"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "discovery-fundamentals-on-demand/01-running-discovery.md",
+        "excerpt": "The target IP can be configured as 127.0.0.1, which is a loopback address for the localhost where the MID Server is installed."
+      },
+      "labels": {
+        "certification": "cis-discovery",
+        "domain": "Engagement Readiness",
+        "domainSlug": "engagement-readiness",
+        "domainPercentage": 15,
+        "subtopics": [
+          "Basic configuration",
+          "Testing"
+        ],
+        "tags": [
+          "loopback",
+          "testing",
+          "mid server"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-04-03T02:00:00Z",
+        "version": "1.1",
+        "release": "Zurich",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-discovery-engagement-020",
+      "certification": "cis-discovery",
+      "topic": "engagement-readiness",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "Discovery does not proceed past the Classification phase for a group of Windows servers. What is the MOST likely root cause?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The servers are powered off or unreachable on the network"
+        },
+        {
+          "id": "b",
+          "text": "Incorrect credentials are supplied or authentication is failing"
+        },
+        {
+          "id": "c",
+          "text": "The Discovery Schedule IP ranges are misconfigured"
+        },
+        {
+          "id": "d",
+          "text": "The Shazzam batch size is too small for the number of IPs"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "If Discovery does not get past the Classification Phase, it is generally an authentication issue \u2014 incorrect credentials are supplied or potentially no appropriate classification exists. This contrasts with connectivity issues (Shazzam phase) where devices are unreachable.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "If servers were unreachable, Discovery would not proceed past the Port Scan (Shazzam) phase, not the Classification phase.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "IP range misconfiguration would prevent devices from being scanned at all, causing a Shazzam-level failure.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Batch size affects performance, not authentication. The issue is past the Port Scan phase.",
+            "reference": "Discovery Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "Discovery Fundamentals - Phases, Probes, and Classifications"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "discovery-fundamentals-on-demand/01-phases-probes-and-classifications.md",
+        "excerpt": "If Discovery does not get past the Classification Phase, generally it is an authentication issue."
+      },
+      "labels": {
+        "certification": "cis-discovery",
+        "domain": "Engagement Readiness",
+        "domainSlug": "engagement-readiness",
+        "domainPercentage": 15,
+        "subtopics": [
+          "Troubleshooting",
+          "Classification"
+        ],
+        "tags": [
+          "troubleshooting",
+          "authentication",
+          "classification"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-04-03T02:00:00Z",
+        "version": "1.1",
+        "release": "Zurich",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-discovery-engagement-021",
+      "certification": "cis-discovery",
+      "topic": "engagement-readiness",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which tools can be used to validate permissions from the MID Server to target devices for troubleshooting Discovery authentication issues?",
+      "options": [
+        {
+          "id": "a",
+          "text": "ping, traceroute, and netstat"
+        },
+        {
+          "id": "b",
+          "text": "PuTTY for SSH, wbemtest for WMI, and iReasoning for SNMP"
+        },
+        {
+          "id": "c",
+          "text": "nmap, wireshark, and tcpdump"
+        },
+        {
+          "id": "d",
+          "text": "curl, wget, and telnet"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Permissions can be validated from the MID Server to target devices using PuTTY for SSH connections, wbemtest for WMI (Windows) connections, and iReasoning for SNMP device connections. These tools test the specific protocols Discovery uses.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "These are network connectivity tools, not protocol-specific authentication validation tools for Discovery.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "These are network analysis tools useful for packet capture, but not the recommended tools for validating Discovery permissions.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "These are HTTP/web-oriented tools, not suited for validating SSH, WMI, or SNMP authentication.",
+            "reference": "Discovery Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "Discovery Fundamentals - Phases, Probes, and Classifications"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "discovery-fundamentals-on-demand/01-phases-probes-and-classifications.md",
+        "excerpt": "Permissions can be validated from the MID Server using PuTTY for SSH, wbemtest for WMI, and iReasoning for SNMP."
+      },
+      "labels": {
+        "certification": "cis-discovery",
+        "domain": "Engagement Readiness",
+        "domainSlug": "engagement-readiness",
+        "domainPercentage": 15,
+        "subtopics": [
+          "Troubleshooting tools",
+          "Validation"
+        ],
+        "tags": [
+          "troubleshooting",
+          "putty",
+          "wbemtest",
+          "ireasoning"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-04-03T02:00:00Z",
+        "version": "1.1",
+        "release": "Zurich",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-discovery-engagement-022",
+      "certification": "cis-discovery",
+      "topic": "engagement-readiness",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What is the main benefit of Credentialless Discovery for new ServiceNow implementations?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It eliminates the need for credentials permanently"
+        },
+        {
+          "id": "b",
+          "text": "It greatly improves time to value by enabling broad discovery of basic IT asset information with minimal effort on Day 1"
+        },
+        {
+          "id": "c",
+          "text": "It provides the same level of detail as credential-based discovery"
+        },
+        {
+          "id": "d",
+          "text": "It bypasses firewalls and network security controls"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Credentialless Discovery greatly improves time to value by enabling broad discovery of basic information on the majority of customers' IT assets with minimal effort. It helps Discovery provide value on Day 1, even before all credentials are configured.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Credentialless Discovery provides basic information only. When credential issues are resolved, credential-based discovery updates the CIs with full details.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Credentialless Discovery collects basic information (hostname, OS family, MAC address) \u2014 far less detail than credential-based discovery.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Credentialless Discovery still requires network connectivity. It does not bypass security controls.",
+            "reference": "Discovery Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "Discovery Fundamentals - Credentials and Behaviors"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "discovery-fundamentals-on-demand/01-credentials-and-behaviors.md",
+        "excerpt": "Greatly improves time to value by enabling broad discovery of basic information with minimal effort. Helps Discovery provide value on Day 1."
+      },
+      "labels": {
+        "certification": "cis-discovery",
+        "domain": "Engagement Readiness",
+        "domainSlug": "engagement-readiness",
+        "domainPercentage": 15,
+        "subtopics": [
+          "Credentialless Discovery",
+          "Time to value"
+        ],
+        "tags": [
+          "credentialless",
+          "implementation",
+          "day 1"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-04-03T02:00:00Z",
+        "version": "1.1",
+        "release": "Zurich",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-discovery-engagement-023",
+      "certification": "cis-discovery",
+      "topic": "engagement-readiness",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "An organization's security team wants to know how MID Server automation credentials are protected. Which statement accurately describes the security mechanism?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Automation credentials are stored encrypted on the MID Server's hard disk using the instance key"
+        },
+        {
+          "id": "b",
+          "text": "Automation credentials are secured by encrypting them with the MID Server's trusted public key prior to transmission, and the private key is used for decryption"
+        },
+        {
+          "id": "c",
+          "text": "Automation credentials use the same AES256 encryption as the MID Server service account password"
+        },
+        {
+          "id": "d",
+          "text": "Automation credentials are never stored \u2014 they are generated dynamically for each operation"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Automation credentials are secured by encrypting them in the instance with the MID Server's trusted public key prior to transmission. When the MID Server is created, it generates a keypair (public and private key). After validation, the MID Server uses the private key to decrypt automation credentials. Organizations should occasionally rekey the MID Server to meet security requirements.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The MID Server's encryption key remains in memory and not on the hard disk. Credentials are decrypted in memory for use.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "AES256 is used for the local MID Server service account password. Automation credentials use public/private key encryption.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Credentials are stored encrypted on the instance and transmitted encrypted \u2014 they are not generated dynamically.",
+            "reference": "Discovery Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "Discovery Fundamentals - Credentials and Behaviors"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "discovery-fundamentals-on-demand/01-credentials-and-behaviors.md",
+        "excerpt": "Automation credentials are secured by encrypting them with the MID Server's trusted public key. The MID Server generates a keypair."
+      },
+      "labels": {
+        "certification": "cis-discovery",
+        "domain": "Engagement Readiness",
+        "domainSlug": "engagement-readiness",
+        "domainPercentage": 15,
+        "subtopics": [
+          "MID Server security",
+          "Encryption"
+        ],
+        "tags": [
+          "security",
+          "encryption",
+          "mid server",
+          "automation"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-04-03T02:00:00Z",
+        "version": "1.1",
+        "release": "Zurich",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-discovery-engagement-024",
+      "certification": "cis-discovery",
+      "topic": "engagement-readiness",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which common fields are needed when creating a basic Discovery Schedule?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Name, Discover type, Credentials, and Behavior"
+        },
+        {
+          "id": "b",
+          "text": "Name, Discover type, MID Server, and Discovery IP Ranges"
+        },
+        {
+          "id": "c",
+          "text": "Name, Pattern list, Classification rules, and Reconciliation policy"
+        },
+        {
+          "id": "d",
+          "text": "Name, Cloud provider, Service Account, and Subscription ID"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Creating a basic Discovery Schedule requires only a few fields: Name, Discover (type), MID Server, and Discovery IP Ranges. These are the common fields needed to get a basic Discovery running.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Credentials and Behaviors are optional advanced configurations, not required for a basic schedule.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Patterns and classification rules are not configured at the schedule level \u2014 they are system-wide configurations.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "These fields are for Cloud Discovery schedules, not basic IP-based Discovery schedules.",
+            "reference": "Discovery Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "Discovery Fundamentals - Running Discovery"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "discovery-fundamentals-on-demand/01-running-discovery.md",
+        "excerpt": "Common fields are Name, Discover, MID Server, and Discovery IP Ranges."
+      },
+      "labels": {
+        "certification": "cis-discovery",
+        "domain": "Engagement Readiness",
+        "domainSlug": "engagement-readiness",
+        "domainPercentage": 15,
+        "subtopics": [
+          "Schedule configuration",
+          "Basic setup"
+        ],
+        "tags": [
+          "schedule",
+          "configuration",
+          "basic"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-04-03T02:00:00Z",
+        "version": "1.1",
+        "release": "Zurich",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-discovery-engagement-025",
+      "certification": "cis-discovery",
+      "topic": "engagement-readiness",
+      "cognitiveLevel": "analysis",
+      "type": "multiple_choice",
+      "question": "Discovery does not proceed past the Shazzam probe for several IP addresses. What should the administrator check FIRST?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Check that the correct credentials are defined in the Credentials table"
+        },
+        {
+          "id": "b",
+          "text": "Check network connectivity \u2014 the devices may be powered off, unreachable, or blocked by a firewall"
+        },
+        {
+          "id": "c",
+          "text": "Check that the CI classifiers are properly configured"
+        },
+        {
+          "id": "d",
+          "text": "Check that the Discovery patterns are associated with the correct CI types"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Common issues at the Port Scan (Shazzam) phase are connectivity-related. If Discovery does not go beyond the Shazzam probe, you can assume there is a connectivity issue \u2014 the device is not turned on or does not exist. Credential and classification issues manifest at later phases.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Credential issues cause problems at the Classification phase, not at the Shazzam/Port Scan phase.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Classifiers are used after Shazzam succeeds. If Shazzam fails, classification never starts.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Patterns are triggered after classification. Shazzam-level failures are connectivity-related.",
+            "reference": "Discovery Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "Discovery Fundamentals - Phases, Probes, and Classifications"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "discovery-fundamentals-on-demand/01-phases-probes-and-classifications.md",
+        "excerpt": "If Discovery does not go beyond the Shazzam probe, you can assume there is a connectivity issue."
+      },
+      "labels": {
+        "certification": "cis-discovery",
+        "domain": "Engagement Readiness",
+        "domainSlug": "engagement-readiness",
+        "domainPercentage": 15,
+        "subtopics": [
+          "Troubleshooting",
+          "Connectivity"
+        ],
+        "tags": [
+          "troubleshooting",
+          "shazzam",
+          "connectivity"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-04-03T02:00:00Z",
+        "version": "1.1",
+        "release": "Zurich",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-discovery-engagement-026",
+      "certification": "cis-discovery",
+      "topic": "engagement-readiness",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What plugin is required to use the Cloud Discovery Workspace in ServiceNow?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Discovery - IP Based plugin"
+        },
+        {
+          "id": "b",
+          "text": "Cloud Discovery Workspace plugin"
+        },
+        {
+          "id": "c",
+          "text": "Cloud Management Platform plugin"
+        },
+        {
+          "id": "d",
+          "text": "ITOM Visibility Cloud plugin"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The Cloud Discovery Workspace requires the Cloud Discovery Workspace plugin. This workspace provides access to Dashboard metrics, Schedules, Status, MID Server details, Credentials, Service Accounts, cloud discovery errors, diagnostics, and alert configurations.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The Discovery - IP Based plugin is for IP-based Discovery, not the Cloud Discovery Workspace.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Cloud Management Platform is a different product \u2014 the specific plugin needed is Cloud Discovery Workspace.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "ITOM Visibility Cloud is not the correct plugin name for the Cloud Discovery Workspace.",
+            "reference": "Discovery Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "Discovery Fundamentals - Running Discovery"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "discovery-fundamentals-on-demand/01-running-discovery.md",
+        "excerpt": "The Cloud Discovery Workspace does require the Cloud Discovery Workspace plugin."
+      },
+      "labels": {
+        "certification": "cis-discovery",
+        "domain": "Engagement Readiness",
+        "domainSlug": "engagement-readiness",
+        "domainPercentage": 15,
+        "subtopics": [
+          "Cloud Discovery",
+          "Plugins"
+        ],
+        "tags": [
+          "cloud",
+          "workspace",
+          "plugin"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-04-03T02:00:00Z",
+        "version": "1.1",
+        "release": "Zurich",
+        "reviewed": false
+      }
     }
   ]
 }

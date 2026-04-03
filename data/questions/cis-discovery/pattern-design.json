@@ -2314,6 +2314,1186 @@
         ],
         "tags": []
       }
+    },
+    {
+      "id": "cis-discovery-pattern-design-031",
+      "certification": "cis-discovery",
+      "topic": "pattern-design",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A Discovery administrator needs to create a pattern that discovers both infrastructure details and application-specific data for a custom application. Which two pattern sections must be configured? (Choose 2)",
+      "options": [
+        {
+          "id": "a",
+          "text": "An Identification section with CI type mapping and an Extension section for additional attributes"
+        },
+        {
+          "id": "b",
+          "text": "A Connection section for network topology and a Trigger section for probe activation"
+        },
+        {
+          "id": "c",
+          "text": "An Application Identification section with process classification and a Connection section"
+        },
+        {
+          "id": "d",
+          "text": "A Classification section for device type and a Reconciliation section for CMDB updates"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "Horizontal Discovery patterns require an Identification section that maps discovered data to CI types and uses identification rules, plus an Extension section that collects additional attributes about the discovered CI. These two sections handle the core identification and exploration phases unified by patterns.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Connection sections exist for relationship mapping, but there is no 'Trigger section' in Pattern Designer.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Application Identification sections are used for application patterns specifically, not for combined infrastructure and application discovery in a single pattern.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Classification is handled by CI Classifiers, not pattern sections. Reconciliation is handled by the IRE, not a pattern section.",
+            "reference": "Discovery Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "Discovery Fundamentals - Horizontal Discovery Patterns"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "discovery-fundamentals-on-demand/01-horizontal-discovery-patterns.md",
+        "excerpt": "Windows OS \u2013 Servers pattern has an Identification and Extension section, each containing steps used to extract and validate information about the Windows Server."
+      },
+      "labels": {
+        "certification": "cis-discovery",
+        "domain": "Discovery Pattern Design",
+        "domainSlug": "pattern-design",
+        "domainPercentage": 35,
+        "subtopics": [
+          "Pattern sections",
+          "Identification",
+          "Extension"
+        ],
+        "tags": [
+          "patterns",
+          "horizontal discovery"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-04-03T02:00:00Z",
+        "version": "1.1",
+        "release": "Zurich",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-discovery-pattern-design-032",
+      "certification": "cis-discovery",
+      "topic": "pattern-design",
+      "cognitiveLevel": "analysis",
+      "type": "multiple_choice",
+      "question": "A horizontal discovery pattern for Windows servers is not collecting software installation data. The Identification section completes successfully but the Extension section shows no results. What is the MOST likely cause?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The CI Classifier is not configured to trigger the HorizontalDiscoveryProbe"
+        },
+        {
+          "id": "b",
+          "text": "The pattern's Extension section operations are not configured to query software-related data sources"
+        },
+        {
+          "id": "c",
+          "text": "The MID Server does not have PowerShell enabled for remote execution"
+        },
+        {
+          "id": "d",
+          "text": "The Discovery Configuration Console has software discovery disabled for this CI type"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "If the Identification section completes successfully, the pattern is being triggered correctly and credentials are working. The Extension section collects additional details like software, RAM, CPU, and network information. If it shows no results, the operations within the Extension section are likely not configured to query the appropriate data sources for software installations.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "If the Classifier wasn't triggering the probe, the entire pattern would fail, not just the Extension section.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "If PowerShell wasn't enabled, the credential-based discovery would fail during classification, before reaching the pattern's Extension section.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The Configuration Console controls which CI types are discovered via probes and classifiers, not which Extension operations run within a pattern.",
+            "reference": "Discovery Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "Discovery Fundamentals - Horizontal Discovery Patterns"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "discovery-fundamentals-on-demand/01-horizontal-discovery-patterns.md",
+        "excerpt": "The Exploration phase, using Discovery Patterns, will then gather details about the device, such as RAM, CPU, Network information, OS details, and software installations."
+      },
+      "labels": {
+        "certification": "cis-discovery",
+        "domain": "Discovery Pattern Design",
+        "domainSlug": "pattern-design",
+        "domainPercentage": 35,
+        "subtopics": [
+          "Extension section",
+          "Troubleshooting"
+        ],
+        "tags": [
+          "patterns",
+          "troubleshooting",
+          "software discovery"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-04-03T02:00:00Z",
+        "version": "1.1",
+        "release": "Zurich",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-discovery-pattern-design-033",
+      "certification": "cis-discovery",
+      "topic": "pattern-design",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which statement accurately describes the relationship between CI Classifiers and Horizontal Discovery Patterns?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A single pattern can be associated with multiple classifiers, and each classifier can trigger multiple patterns simultaneously"
+        },
+        {
+          "id": "b",
+          "text": "The classifier specifies the Horizontal Pattern probe, which in turn specifies which pattern to launch, and only the Horizontal Discovery Sensor is used"
+        },
+        {
+          "id": "c",
+          "text": "Patterns are independent of classifiers and are triggered directly by the Shazzam probe based on open port detection"
+        },
+        {
+          "id": "d",
+          "text": "Classifiers determine which traditional probes to send, while patterns are triggered separately by the Identification engine"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The classifier specifies the Horizontal Pattern probe in its Trigger Probes list, which in turn specifies which pattern to launch. The Horizontal pattern probe also contains a sensor which does the actual work of updating the CMDB. Once fired, only the Horizontal Discovery Sensor is used \u2014 other probes and sensors are not used.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Once a Discovery Pattern is fired by a probe, it cannot be used with other probes and sensors simultaneously.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Patterns are triggered through classifiers, not directly by Shazzam. Shazzam detects open ports, classifiers determine device type, and then trigger the appropriate pattern.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "With patterns, traditional probes and sensors are replaced. The classifier triggers the HorizontalDiscoveryProbe which launches the pattern.",
+            "reference": "Discovery Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "Discovery Fundamentals - Horizontal Discovery Patterns"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "discovery-fundamentals-on-demand/01-horizontal-discovery-patterns.md",
+        "excerpt": "The classifier specifies the Horizontal Pattern probe, which in turn specifies which pattern to launch. Only the Horizontal Discovery Sensor is used. Other probes and sensors are not used."
+      },
+      "labels": {
+        "certification": "cis-discovery",
+        "domain": "Discovery Pattern Design",
+        "domainSlug": "pattern-design",
+        "domainPercentage": 35,
+        "subtopics": [
+          "Classifiers",
+          "Pattern probe"
+        ],
+        "tags": [
+          "patterns",
+          "classifiers",
+          "horizontal discovery"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-04-03T02:00:00Z",
+        "version": "1.1",
+        "release": "Zurich",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-discovery-pattern-design-034",
+      "certification": "cis-discovery",
+      "topic": "pattern-design",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "An organization wants to use the same pattern for both Service Mapping (top-down) and horizontal Discovery. What modification is required to adapt a top-down pattern for horizontal discovery?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Change the pattern type from Application to Infrastructure in Pattern Designer settings"
+        },
+        {
+          "id": "b",
+          "text": "Follow the 'Use a pattern for horizontal discovery' documentation to make necessary modifications"
+        },
+        {
+          "id": "c",
+          "text": "Simply assign the pattern to a classifier's Trigger Probes list \u2014 no modifications needed"
+        },
+        {
+          "id": "d",
+          "text": "Convert all entry point references to PID references and remove Service Mapping dependencies"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Both Discovery and Service Mapping can use the same pattern for horizontal and top-down discovery, but they are edited differently. If you take a pattern that was exclusively used for top-down discovery and want to use it for horizontal discovery, you have to make specific modifications as documented in 'Use a pattern for horizontal discovery' under docs.servicenow.com.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "There is no simple 'type' toggle. The modifications involve structural changes to how the pattern handles identification and exploration.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "A top-down pattern requires modifications before it can be used for horizontal discovery \u2014 it cannot simply be assigned to a classifier.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "While horizontal discovery does use PIDs instead of entry points, the conversion involves more than just reference changes.",
+            "reference": "Discovery Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "Discovery Fundamentals - Horizontal Discovery Patterns"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "discovery-fundamentals-on-demand/01-horizontal-discovery-patterns.md",
+        "excerpt": "If you take a pattern that was exclusively used for top-down discovery and you want to use it for horizontal discovery, you have to make a few modifications."
+      },
+      "labels": {
+        "certification": "cis-discovery",
+        "domain": "Discovery Pattern Design",
+        "domainSlug": "pattern-design",
+        "domainPercentage": 35,
+        "subtopics": [
+          "Top-down vs Horizontal",
+          "Pattern reuse"
+        ],
+        "tags": [
+          "patterns",
+          "service mapping",
+          "horizontal discovery"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-04-03T02:00:00Z",
+        "version": "1.1",
+        "release": "Zurich",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-discovery-pattern-design-035",
+      "certification": "cis-discovery",
+      "topic": "pattern-design",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What are the two types of Horizontal Discovery Patterns?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Network patterns and Storage patterns"
+        },
+        {
+          "id": "b",
+          "text": "Infrastructure patterns (targeting hardware/hosts) and Application patterns (identified by running processes or TCP connections)"
+        },
+        {
+          "id": "c",
+          "text": "Windows patterns and Unix patterns"
+        },
+        {
+          "id": "d",
+          "text": "Physical patterns and Virtual patterns"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "There are two types of Horizontal Discovery Patterns: Infrastructure patterns (used to target hardware or hosts such as servers, load balancers, or power and network devices) and Application patterns (an application running on a host identified by a running process or via a TCP connection to another application).",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "While Discovery can discover network and storage devices, the pattern types are not categorized this way.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Patterns are not categorized by operating system. Both Windows and Unix can be discovered using Infrastructure patterns.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Physical and Virtual are not the two types of horizontal discovery patterns.",
+            "reference": "Discovery Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "Discovery Fundamentals - Horizontal Discovery Patterns"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "discovery-fundamentals-on-demand/01-horizontal-discovery-patterns.md",
+        "excerpt": "There are two types of Horizontal Discovery Patterns: Infrastructure and Application."
+      },
+      "labels": {
+        "certification": "cis-discovery",
+        "domain": "Discovery Pattern Design",
+        "domainSlug": "pattern-design",
+        "domainPercentage": 35,
+        "subtopics": [
+          "Pattern types",
+          "Infrastructure",
+          "Application"
+        ],
+        "tags": [
+          "patterns",
+          "horizontal discovery"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-04-03T02:00:00Z",
+        "version": "1.1",
+        "release": "Zurich",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-discovery-pattern-design-036",
+      "certification": "cis-discovery",
+      "topic": "pattern-design",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A Discovery administrator wants to track configuration files for a custom application discovered via patterns. Which statement is TRUE about configuration file tracking?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Configuration file tracking works with both traditional probes/sensors and patterns"
+        },
+        {
+          "id": "b",
+          "text": "Configuration file tracking is only available for patterns that discover applications, not for traditional probes and sensors"
+        },
+        {
+          "id": "c",
+          "text": "Configuration files are stored in the cmdb_ci_config_file table and cannot save file contents"
+        },
+        {
+          "id": "d",
+          "text": "Configuration file tracking requires a separate plugin and works independently of Discovery patterns"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Configuration file tracking is available for patterns that discover applications. On the pattern, you can create tracked file definitions that specify the CI type and the path of the configuration file. You can also specify whether to save file contents for viewing and comparing versions. Configuration file tracking is NOT available for discoveries performed by traditional probes and sensors.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Configuration file tracking is explicitly NOT available for discoveries performed by traditional probes and sensors \u2014 only for patterns.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Configuration files are stored in the Tracked Configuration file [cmdb_ci_config_file_tracked] table, and you CAN save file contents including previous versions.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Configuration file tracking is built into the pattern functionality and does not require a separate plugin.",
+            "reference": "Discovery Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "Discovery Fundamentals - Running Discovery"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "discovery-fundamentals-on-demand/01-running-discovery.md",
+        "excerpt": "Configuration file tracking is available for patterns that discover applications. Configuration file tracking is not available for discoveries performed by traditional probes and sensors."
+      },
+      "labels": {
+        "certification": "cis-discovery",
+        "domain": "Discovery Pattern Design",
+        "domainSlug": "pattern-design",
+        "domainPercentage": 35,
+        "subtopics": [
+          "Configuration file tracking",
+          "Application patterns"
+        ],
+        "tags": [
+          "patterns",
+          "configuration files",
+          "tracked files"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-04-03T02:00:00Z",
+        "version": "1.1",
+        "release": "Zurich",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-discovery-pattern-design-037",
+      "certification": "cis-discovery",
+      "topic": "pattern-design",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "In a horizontal discovery pattern, what triggers the HorizontalDiscoveryProbe to launch a specific pattern?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The Discovery Schedule configuration specifies which patterns to use for each IP range"
+        },
+        {
+          "id": "b",
+          "text": "The CI Classifier adds the HorizontalDiscoveryProbe to its Trigger Probes list, and the probe specifies which pattern to fire"
+        },
+        {
+          "id": "c",
+          "text": "The MID Server automatically selects the appropriate pattern based on the operating system detected"
+        },
+        {
+          "id": "d",
+          "text": "The Shazzam probe determines the pattern to use based on the open ports it discovers"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The Horizontal Discovery Probe is a single probe added to the Trigger Probes list of a Classifier. A specific pattern is populated in the Pattern field for firing when the probe is triggered during classification. For example, the Windows 2016 Server Classifier triggers the HorizontalDiscoveryProbe, which is tied to the Windows OS \u2013 Servers pattern.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Discovery Schedules define IP ranges and MID Servers, not pattern assignments. Pattern selection is determined by classifiers.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The MID Server executes patterns but does not select them. Pattern selection is determined by the classifier chain.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Shazzam detects open ports to determine which classify probes to launch, but it does not directly select patterns.",
+            "reference": "Discovery Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "Discovery Fundamentals - Horizontal Discovery Patterns"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "discovery-fundamentals-on-demand/01-horizontal-discovery-patterns.md",
+        "excerpt": "The Horizontal Discovery Probe is a single probe added to the Trigger probes list of a Classifier to fire a horizontal pattern."
+      },
+      "labels": {
+        "certification": "cis-discovery",
+        "domain": "Discovery Pattern Design",
+        "domainSlug": "pattern-design",
+        "domainPercentage": 35,
+        "subtopics": [
+          "Pattern triggering",
+          "Classifiers"
+        ],
+        "tags": [
+          "patterns",
+          "classifiers",
+          "HorizontalDiscoveryProbe"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-04-03T02:00:00Z",
+        "version": "1.1",
+        "release": "Zurich",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-discovery-pattern-design-038",
+      "certification": "cis-discovery",
+      "topic": "pattern-design",
+      "cognitiveLevel": "analysis",
+      "type": "multiple_choice",
+      "question": "Which statements about Discovery patterns are TRUE? (Choose 2)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Patterns unify the Identification and Exploration phases of discovery, replacing separate probes and sensors"
+        },
+        {
+          "id": "b",
+          "text": "Once a Discovery Pattern is fired by a probe, it can still be used alongside other probes and sensors for the same CI"
+        },
+        {
+          "id": "c",
+          "text": "The classifier must specify the Horizontal Pattern probe for pattern-based discovery to work"
+        },
+        {
+          "id": "d",
+          "text": "Patterns require the traditional Classify sensors to process data before they can execute"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "c"
+      ],
+      "explanation": {
+        "correct": "Patterns unify the Identification and Exploration phases of discovery \u2014 only the Horizontal Discovery Sensor is used, and other probes and sensors are not used. Additionally, the classifier must specify the Horizontal Pattern probe; if the classifier doesn't use patterns, it falls back to traditional probes. Both statements are fundamental to how pattern-based discovery operates.",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Once fired, a Discovery Pattern cannot be used with other Probes and Sensors \u2014 it replaces the traditional probe/sensor approach.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Patterns replace the traditional classify sensor workflow. The classifier triggers the pattern probe directly.",
+            "reference": "Discovery Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "Discovery Fundamentals - Horizontal Discovery Patterns"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "discovery-fundamentals-on-demand/01-horizontal-discovery-patterns.md",
+        "excerpt": "Patterns unify the Identification and Exploration phases of discovery. Only the Horizontal Discovery Sensor is used. Other probes and sensors are not used."
+      },
+      "labels": {
+        "certification": "cis-discovery",
+        "domain": "Discovery Pattern Design",
+        "domainSlug": "pattern-design",
+        "domainPercentage": 35,
+        "subtopics": [
+          "Pattern fundamentals",
+          "Unified phases"
+        ],
+        "tags": [
+          "patterns",
+          "identification",
+          "exploration"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-04-03T02:00:00Z",
+        "version": "1.1",
+        "release": "Zurich",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-discovery-pattern-design-039",
+      "certification": "cis-discovery",
+      "topic": "pattern-design",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "Where are tracked configuration files stored in ServiceNow, and how can they be accessed from the Dependency Map?",
+      "options": [
+        {
+          "id": "a",
+          "text": "In the cmdb_ci_config_file table, accessible by clicking the CI on the Dependency Map"
+        },
+        {
+          "id": "b",
+          "text": "In the cmdb_ci_config_file_tracked table, accessible by right-clicking on the Dependency Map and selecting View Form"
+        },
+        {
+          "id": "c",
+          "text": "In the sys_attachment table, accessible from the CI record's Related Links"
+        },
+        {
+          "id": "d",
+          "text": "In the discovery_log table, accessible from the Discovery Status record"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "All configuration files are saved as a CI in the Tracked Configuration file [cmdb_ci_config_file_tracked] table. If content saving is enabled, these CI records provide the contents of configuration files including previous versions. The Tracked Configuration file can also be accessed from the Dependency Map by right-clicking and selecting View Form.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The correct table is cmdb_ci_config_file_tracked, not cmdb_ci_config_file. Access from Dependency Map is via right-click, not regular click.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Configuration files are stored as CIs in their own table, not as attachments in sys_attachment.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The discovery_log table contains Discovery log entries, not tracked configuration files.",
+            "reference": "Discovery Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "Discovery Fundamentals - Running Discovery"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "discovery-fundamentals-on-demand/01-running-discovery.md",
+        "excerpt": "All configuration files are saved as a CI in the Tracked Configuration file [cmdb_ci_config_file_tracked] table."
+      },
+      "labels": {
+        "certification": "cis-discovery",
+        "domain": "Discovery Pattern Design",
+        "domainSlug": "pattern-design",
+        "domainPercentage": 35,
+        "subtopics": [
+          "Configuration file tracking",
+          "Dependency Map"
+        ],
+        "tags": [
+          "tracked files",
+          "dependency map"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-04-03T02:00:00Z",
+        "version": "1.1",
+        "release": "Zurich",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-discovery-pattern-design-040",
+      "certification": "cis-discovery",
+      "topic": "pattern-design",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What is the correct sequence of sections in a typical Horizontal Discovery Pattern for a Windows server?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Classification \u2192 Identification \u2192 Extension \u2192 Connection"
+        },
+        {
+          "id": "b",
+          "text": "Identification \u2192 Extension, with optional Connection sections"
+        },
+        {
+          "id": "c",
+          "text": "Port Scan \u2192 Classification \u2192 Identification \u2192 Exploration"
+        },
+        {
+          "id": "d",
+          "text": "Discovery \u2192 Mapping \u2192 Reconciliation \u2192 Update"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "A Horizontal Discovery Pattern contains an Identification section (for CI type mapping and identification rules) and an Extension section (for gathering additional details). Connection sections can be added optionally for relationship mapping. The pattern can define discovery steps after adding these sections.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Classification is handled by CI Classifiers outside the pattern, not as a section within the pattern.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Port Scan and Classification are Discovery phases that happen before the pattern is triggered, not sections within the pattern.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "These are not pattern section names. Patterns use Identification, Extension, and Connection sections.",
+            "reference": "Discovery Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "Discovery Fundamentals - Horizontal Discovery Patterns"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "discovery-fundamentals-on-demand/01-horizontal-discovery-patterns.md",
+        "excerpt": "Windows OS \u2013 Servers pattern has an Identification and Extension section, each containing steps used to extract and validate information."
+      },
+      "labels": {
+        "certification": "cis-discovery",
+        "domain": "Discovery Pattern Design",
+        "domainSlug": "pattern-design",
+        "domainPercentage": 35,
+        "subtopics": [
+          "Pattern structure",
+          "Sections"
+        ],
+        "tags": [
+          "patterns",
+          "identification",
+          "extension"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-04-03T02:00:00Z",
+        "version": "1.1",
+        "release": "Zurich",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-discovery-pattern-design-041",
+      "certification": "cis-discovery",
+      "topic": "pattern-design",
+      "cognitiveLevel": "analysis",
+      "type": "multiple_choice",
+      "question": "An administrator notices that a newly upgraded instance still uses traditional probes and sensors for some classifiers instead of patterns. What is the MOST likely explanation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The Discovery patterns plugin was not activated during the upgrade"
+        },
+        {
+          "id": "b",
+          "text": "Not all classifiers are configured to use patterns for discovery by default after an upgrade"
+        },
+        {
+          "id": "c",
+          "text": "Traditional probes always take priority over patterns in upgraded instances"
+        },
+        {
+          "id": "d",
+          "text": "The MID Server needs to be restarted to enable pattern support"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The classifier that triggers the pattern must specify the Horizontal Pattern probe. If you upgrade your instance to the current version, not all classifiers are configured to use patterns for discovery by default. Some classifiers may still reference traditional probes and sensors.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Discovery patterns are part of the core Discovery functionality, not a separate plugin.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "There is no priority hierarchy where probes override patterns. It depends on what the classifier is configured to trigger.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "While MID Server restart may be needed for some changes, the issue here is classifier configuration, not MID Server state.",
+            "reference": "Discovery Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "Discovery Fundamentals - Running Discovery"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "discovery-fundamentals-on-demand/01-running-discovery.md",
+        "excerpt": "The classifier that triggers the pattern must specify the Horizontal Pattern probe. If you upgrade your instance, not all classifiers are configured to use patterns for discovery by default."
+      },
+      "labels": {
+        "certification": "cis-discovery",
+        "domain": "Discovery Pattern Design",
+        "domainSlug": "pattern-design",
+        "domainPercentage": 35,
+        "subtopics": [
+          "Upgrade considerations",
+          "Classifier configuration"
+        ],
+        "tags": [
+          "patterns",
+          "upgrade",
+          "classifiers"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-04-03T02:00:00Z",
+        "version": "1.1",
+        "release": "Zurich",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-discovery-pattern-design-042",
+      "certification": "cis-discovery",
+      "topic": "pattern-design",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which probe is used by the Credentialless Discovery Network Device pattern to gather host information when credential-based classification fails?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The Shazzam probe with extended port scanning"
+        },
+        {
+          "id": "b",
+          "text": "The HorizontalDiscoveryProbe probe"
+        },
+        {
+          "id": "c",
+          "text": "The ClassifyProbe with fallback credentials"
+        },
+        {
+          "id": "d",
+          "text": "The NmapProbe with default community strings"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "If the host being scanned does not have a CI defined, Service Mapping launches the HorizontalDiscoveryProbe probe, which in turn launches the Credentialless Discovery Network Device pattern. This pattern attempts to create a new CI if one does not already exist or to update an existing CI in the Hardware [cmdb_ci_hardware] table.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Shazzam is the initial port scan probe. Credentialless discovery uses a different mechanism via the HorizontalDiscoveryProbe.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "There is no 'ClassifyProbe with fallback credentials.' Credentialless discovery specifically bypasses the need for credentials.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "While Nmap is used by the credentialless pattern, the triggering probe is the HorizontalDiscoveryProbe, not an 'NmapProbe.'",
+            "reference": "Discovery Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "Discovery Fundamentals - Credentials and Behaviors"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "discovery-fundamentals-on-demand/01-credentials-and-behaviors.md",
+        "excerpt": "Service Mapping launches the HorizontalDiscoveryProbe probe, which in turn launches the Credentialless Discovery Network Device pattern."
+      },
+      "labels": {
+        "certification": "cis-discovery",
+        "domain": "Discovery Pattern Design",
+        "domainSlug": "pattern-design",
+        "domainPercentage": 35,
+        "subtopics": [
+          "Credentialless discovery",
+          "HorizontalDiscoveryProbe"
+        ],
+        "tags": [
+          "patterns",
+          "credentialless",
+          "nmap"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-04-03T02:00:00Z",
+        "version": "1.1",
+        "release": "Zurich",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-discovery-pattern-design-043",
+      "certification": "cis-discovery",
+      "topic": "pattern-design",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "An organization needs to discover MSSQL Server instances using Discovery patterns. What type of credentials are required in addition to the host machine credentials?",
+      "options": [
+        {
+          "id": "a",
+          "text": "SNMP credentials with read-write community strings"
+        },
+        {
+          "id": "b",
+          "text": "Applicative credentials with access to MSSQL tables like sys.dm_exec_sessions and SERVERPROPERTY"
+        },
+        {
+          "id": "c",
+          "text": "CIM credentials for storage management"
+        },
+        {
+          "id": "d",
+          "text": "PowerShell credentials with domain admin privileges"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Some applications require credentials in addition to host machine credentials \u2014 these are called applicative credentials. For MSSQL discovery, the pattern uses applicative credentials to run MSSQL commands requiring a database user with access to sys.dm_exec_sessions, sys.dm_os_schedulers, and SERVERPROPERTY.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "SNMP credentials are for network devices like routers and switches, not SQL Server instances.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "CIM credentials are for storage server discovery via SMI-S/CIM, not SQL Server discovery.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "While Windows/PowerShell credentials may be needed for the host, MSSQL requires specific applicative credentials with database-level permissions.",
+            "reference": "Discovery Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "Discovery Fundamentals - Credentials and Behaviors"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "discovery-fundamentals-on-demand/01-credentials-and-behaviors.md",
+        "excerpt": "The pattern uses applicative credentials to run the MSSQL command. The credentials need access to sys.dm_exec_sessions, sys.dm_os_schedulers, SERVERPROPERTY."
+      },
+      "labels": {
+        "certification": "cis-discovery",
+        "domain": "Discovery Pattern Design",
+        "domainSlug": "pattern-design",
+        "domainPercentage": 35,
+        "subtopics": [
+          "Applicative credentials",
+          "MSSQL discovery"
+        ],
+        "tags": [
+          "credentials",
+          "applicative",
+          "mssql"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-04-03T02:00:00Z",
+        "version": "1.1",
+        "release": "Zurich",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-discovery-pattern-design-044",
+      "certification": "cis-discovery",
+      "topic": "pattern-design",
+      "cognitiveLevel": "analysis",
+      "type": "multiple_choice",
+      "question": "During credentialless discovery, which identification rule does Nmap use for CI reconciliation?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Serial number matching against existing CIs"
+        },
+        {
+          "id": "b",
+          "text": "MAC address matching combined with IP address"
+        },
+        {
+          "id": "c",
+          "text": "The Name attribute for reconciliation, skipping serial number rules"
+        },
+        {
+          "id": "d",
+          "text": "A combination of hostname and operating system version"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "Nmap will not use Serial number for CI reconciliation, so the first two identifier rules are skipped. Instead, Nmap uses the Name attribute for reconciliation. When the credential issue is resolved and Discovery runs again, the instance uses serial number, host name, and system class from credential-based discovery to update the CI.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "Nmap cannot retrieve serial numbers without credentials, so serial number-based identification rules are skipped.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "b",
+            "explanation": "MAC address is only available when the scanned host is on the same subnet as the MID Server. It's not the primary reconciliation method.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "While Nmap can identify OS family, it uses the Name attribute (hostname or IP) for reconciliation, not OS version.",
+            "reference": "Discovery Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "Discovery Fundamentals - Credentials and Behaviors"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "discovery-fundamentals-on-demand/01-credentials-and-behaviors.md",
+        "excerpt": "Nmap will not use Serial number for CI reconciliation, so the first two rules will be skipped. Nmap uses the Name attribute for reconciliation."
+      },
+      "labels": {
+        "certification": "cis-discovery",
+        "domain": "Discovery Pattern Design",
+        "domainSlug": "pattern-design",
+        "domainPercentage": 35,
+        "subtopics": [
+          "Credentialless discovery",
+          "CI reconciliation"
+        ],
+        "tags": [
+          "nmap",
+          "credentialless",
+          "identification"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-04-03T02:00:00Z",
+        "version": "1.1",
+        "release": "Zurich",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-discovery-pattern-design-045",
+      "certification": "cis-discovery",
+      "topic": "pattern-design",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What system property must be set to true to enable the Credentialless Discovery Network Device pattern to launch?",
+      "options": [
+        {
+          "id": "a",
+          "text": "glide.discovery.credentialless.enable"
+        },
+        {
+          "id": "b",
+          "text": "mid.discovery.credentialless.enable"
+        },
+        {
+          "id": "c",
+          "text": "discovery.nmap.enable"
+        },
+        {
+          "id": "d",
+          "text": "mid.nmap.credentialless_scan"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "To allow the Credentialless Discovery Network Device pattern to launch, the mid.discovery.credentialless.enable system property must be set to true. Setting it to false disables credentialless discovery entirely.",
+        "wrongAnswers": [
+          {
+            "choiceId": "a",
+            "explanation": "The property uses the 'mid.' prefix, not 'glide.' \u2014 it's mid.discovery.credentialless.enable.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "discovery.nmap.enable is not the correct property name for credentialless discovery.",
+            "reference": "Discovery Fundamentals course"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "mid.nmap.credentialless_scan is not a real ServiceNow property.",
+            "reference": "Discovery Fundamentals course"
+          }
+        ]
+      },
+      "references": [
+        "Discovery Fundamentals - Credentials and Behaviors"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "course",
+        "path": "discovery-fundamentals-on-demand/01-credentials-and-behaviors.md",
+        "excerpt": "Ensure that the mid.discovery.credentialless.enable system property is set to true."
+      },
+      "labels": {
+        "certification": "cis-discovery",
+        "domain": "Discovery Pattern Design",
+        "domainSlug": "pattern-design",
+        "domainPercentage": 35,
+        "subtopics": [
+          "Credentialless discovery",
+          "System properties"
+        ],
+        "tags": [
+          "credentialless",
+          "properties",
+          "nmap"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-04-03T02:00:00Z",
+        "version": "1.1",
+        "release": "Zurich",
+        "reviewed": false
+      }
     }
   ]
 }
