@@ -3830,6 +3830,197 @@ If you're deciding between the two, read our [CSA vs CAD comparison](/blog/csa-v
 Every question includes detailed explanations for both correct and incorrect answers. No brain dumps. No shortcut memorization. Real understanding that translates to passing the exam and doing the job.
 `
   },
+  {
+    slug: "cis-discovery-practice-test",
+    title: "CIS-Discovery Practice Test: 150 Questions to Pass the ServiceNow Discovery Exam (2026)",
+    description: "The most comprehensive CIS-Discovery practice test available. 150 questions across all 4 exam domains with detailed explanations. Know Discovery inside and out before exam day.",
+    publishedAt: "2026-04-03",
+    author: "SNReady Team",
+    tags: ["CIS-Discovery", "practice test", "exam prep", "ITOM", "Discovery"],
+    featured: true,
+    readingTime: 14,
+    content: `
+## Why CIS-Discovery Is One of the Harder CIS Exams
+
+The CIS-Discovery exam isn't just about knowing Discovery exists. It tests deep operational knowledge of how Discovery works at every phase — from Shazzam port scans to pattern-based exploration to CMDB reconciliation.
+
+Many candidates underestimate this exam because they've "used Discovery" in their day jobs. But using Discovery and understanding its internals are different things. The exam asks about specific system properties, probe sequences, credential flows, and pattern architecture that most admins never touch.
+
+**The exam at a glance:**
+- 60 questions, 90 minutes
+- ~70% passing score
+- $210 per attempt
+- Mix of single-choice and multi-select questions
+- Heavy emphasis on Pattern Design (35% of exam)
+
+## The 4 Exam Domains
+
+| Domain | Weight | Our Questions |
+|--------|--------|---------------|
+| Discovery Pattern Design | 35% | 45 questions |
+| Discovery Configuration | 35% | 45 questions |
+| CMDB Integration | 15% | 28 questions |
+| Engagement Readiness | 15% | 28 questions |
+
+Pattern Design and Configuration together make up **70% of the exam**. If you nail these two domains, you're most of the way there.
+
+## What Makes Our 150 Questions Different
+
+We built these questions from the Discovery Fundamentals course material and ServiceNow documentation — the same sources the exam is built from.
+
+**Our question mix matches the real exam:**
+- Single-choice questions (~65%)
+- Multi-select "Choose 2" questions (~20%)
+- Negative questions ("Which is NOT...") (~15%)
+- Scenario-based troubleshooting questions throughout
+
+Every question includes explanations for both the correct answer AND why each wrong answer is wrong. This is where real learning happens.
+
+## Domain Deep Dive
+
+### Discovery Pattern Design (45 Questions)
+
+This is the heaviest domain at 35%. Our questions cover:
+
+**Pattern Architecture:**
+- Infrastructure vs Application pattern types
+- Identification and Extension sections
+- How classifiers trigger HorizontalDiscoveryProbe
+- Top-down vs Horizontal pattern differences
+- Pattern reuse between Service Mapping and Discovery
+
+**Credentialless Discovery:**
+- How Nmap is used when credentials fail
+- The mid.discovery.credentialless.enable property
+- CI reconciliation using Name attribute (not serial number)
+- SetCredentialLessDeviceClassName MID Server script
+
+**Configuration File Tracking:**
+- cmdb_ci_config_file_tracked table
+- Only available for pattern-based discovery (NOT traditional probes)
+- Accessing tracked files from the Dependency Map
+
+**Key trap question areas:**
+- Candidates confuse top-down (entry points) with horizontal (PIDs)
+- Not all classifiers use patterns after upgrade — some still reference traditional probes
+- Once a pattern fires, other probes/sensors are NOT used
+
+### Discovery Configuration (45 Questions)
+
+Also 35% of the exam. Our questions cover:
+
+**Discovery Phases:**
+- Shazzam probe and batch sizing (default 1000, minimum 256)
+- Classification phase and debug properties
+- glide.discovery.debug.classification = true → Node Log File Browser
+- Configuration Console for enabling/disabling CI types
+
+**Credentials:**
+- Credential affinity and the dscy_credentials_affinity table
+- PowerShell for multi-domain Windows discovery
+- SNMP authentication at EVERY phase (not just Classification)
+- External Credential Storage plugin with customer-provided JAR files
+- Credential aliases for schedule-level security
+- sudo configuration for Unix/Linux discovery
+
+**Schedules & Workspace:**
+- Discovery Admin Workspace requires discovery_admin role
+- Default Discovery type is Configuration Items
+- Quick Discovery vs Quick Start schedule vs custom schedule
+- Cloud Discovery schedule configuration
+
+**Behaviors:**
+- Controls what probes Shazzam launches
+- Controls which MID Server launches probes
+- Critical for dual-protocol devices (SSH + SNMP)
+
+### CMDB Integration (28 Questions)
+
+15% of the exam — fewer questions but tricky. Our questions cover:
+
+**CI Identification:**
+- Hardware Rule Identifier for cmdb_ci_hardware
+- Order attribute controls identifier entry sequence
+- Allow fallback to parent's rules checkbox
+- Check Pattern Log → Payload Processing for reconciliation details
+
+**Multisource CMDB:**
+- cmdb_multisource_data table (introduced in Paris)
+- Previously only cmdb_datasource_last_update tracked last source
+- Cross-source attribute comparison capabilities
+- Answering "show me servers where RAM differs between SCCM and Discovery"
+
+**ECC Queue:**
+- Sensor records = input queue, Probe records = output queue
+- Discovery Status data visualization indicators
+
+**Cloud Discovery:**
+- API-based architecture (not IP scanning)
+- Patterns send API calls from MID Server to cloud endpoints
+- Cloud Discovery Workspace plugin required
+
+### Engagement Readiness (28 Questions)
+
+The "Day 1" domain — 15% of the exam:
+
+**MID Server:**
+- Installation, validation, and configuration
+- Credential encryption (AES256 for service account, public/private key for automation)
+- Loopback address 127.0.0.1 for initial testing
+
+**Troubleshooting:**
+- Shazzam failure = connectivity issue (device off or unreachable)
+- Classification failure = authentication issue (wrong credentials)
+- Validation tools: PuTTY (SSH), wbemtest (WMI), iReasoning (SNMP)
+
+**Best Practices:**
+- Partners should not enter customer credentials
+- Customers should enter their own credentials
+- Credentialless Discovery for Day 1 value
+
+## Study Strategy: 2-Week Plan
+
+### Week 1: Foundations
+- **Days 1-2:** Complete Discovery Fundamentals course on NowLearning
+- **Days 3-4:** Practice with Pattern Design questions (45 questions)
+- **Days 5-7:** Practice with Discovery Configuration questions (45 questions)
+
+### Week 2: Integration and Review
+- **Days 1-2:** CMDB Integration questions (28 questions)
+- **Day 3:** Engagement Readiness questions (28 questions)
+- **Days 4-5:** Review weak areas, re-do missed questions
+- **Day 6:** Full timed mock exam (60 questions, 90 minutes)
+- **Day 7:** Light review, rest before exam
+
+## The Questions You'll See
+
+Here's a taste of what our practice test covers:
+
+**Pattern Design example:**
+*"Which statement accurately describes the relationship between CI Classifiers and Horizontal Discovery Patterns?"*
+→ Tests whether you understand the classifier → probe → pattern chain
+
+**Configuration example:**
+*"An administrator needs to discover Windows servers across multiple AD domains with a single MID Server. What is the recommended approach?"*
+→ Tests PowerShell knowledge for multi-domain Discovery
+
+**CMDB Integration example:**
+*"In the ECC Queue, how do you distinguish between a probe record and a sensor record?"*
+→ Tests operational knowledge of Discovery internals
+
+**Engagement Readiness example:**
+*"Discovery does not proceed past the Shazzam probe. What should the administrator check FIRST?"*
+→ Tests troubleshooting methodology (connectivity vs authentication)
+
+## Start Practicing Now
+
+We have **150 CIS-Discovery questions** — more than any other practice test provider. Each question comes with detailed explanations that teach you the concepts, not just the answers.
+
+**[Start the CIS-Discovery Practice Test →](/cis-discovery)**
+
+Every question includes detailed explanations for both correct and incorrect answers. No brain dumps. No shortcut memorization. Real understanding of Discovery internals that will carry you through the exam and your career.
+`
+  },
 ];
 
 export function getAllPosts(): BlogPost[] {
