@@ -3830,6 +3830,175 @@ If you're deciding between the two, read our [CSA vs CAD comparison](/blog/csa-v
 Every question includes detailed explanations for both correct and incorrect answers. No brain dumps. No shortcut memorization. Real understanding that translates to passing the exam and doing the job.
 `
   },
+  {
+    slug: "servicenow-cis-sm-practice-test-150-questions-2026",
+    title: "CIS-Service Mapping Practice Test: 150 Questions to Pass the ServiceNow Exam (2026)",
+    description: "150 expert-written CIS-SM practice questions covering all 6 exam domains. Pattern design, traffic-based discovery, tag-based mapping, Predictive Intelligence — with full explanations.",
+    publishedAt: "2026-04-04",
+    author: "SNReady Team",
+    tags: ["CIS-SM", "practice test", "exam prep", "service mapping"],
+    featured: true,
+    readingTime: 14,
+    content: `
+## Why Service Mapping Is One of the Hardest CIS Exams
+
+The Certified Implementation Specialist - Service Mapping (CIS-SM) exam is widely considered one of the most technically demanding certifications in the ServiceNow ecosystem. It tests deep knowledge of pattern design, discovery configuration, traffic-based mapping, tag-based services, CMDB integration, and machine learning-powered discovery.
+
+**The exam at a glance:**
+- 60 questions, 90 minutes
+- ~70% passing score (42 correct)
+- Multiple choice and multi-select
+- Heavy on scenario-based questions
+- $210 per attempt
+
+Unlike broader certifications like CSA or CIS-ITSM, the CIS-SM exam requires hands-on experience with Pattern Designer, discovery schedules, entry points, credentials, and the Service Mapping home page. You need to understand how Service Mapping interacts with Discovery, the CMDB, and Predictive Intelligence.
+
+## What Our 150 Questions Cover
+
+We've built 150 practice questions sourced from the official ServiceNow Xanadu documentation, covering every exam domain at the correct weight:
+
+| Domain | Weight | Questions | What's Tested |
+|--------|--------|-----------|--------------|
+| Pattern Design | 30% | 38 | Pattern Designer, pattern types, customization, domain separation, CI types, roles, debugging |
+| SM Configuration | 20% | 26 | Traffic-based discovery, tag-based mapping, entry points, credentials, properties, schedules |
+| Discovery Configuration | 15% | 20 | CMDB-based mapping, readiness checklist, MID Server, ADM, traffic data tables |
+| CMDB Integration | 15% | 19 | Tag-based services, traversal rules, CI relationships, service map tables |
+| Machine Learning | 10% | 13 | Predictive Intelligence, confidence levels, connection suggestions, connection rules |
+| Engagement Readiness | 10% | 12 | Readiness checklist, roles, optional/mandatory checks, prerequisites |
+
+### Question Types Match the Real Exam
+
+Our questions include the same mix you'll face on exam day:
+
+- **Single choice** (~60%): Standard "which one" questions
+- **Multi-select** (~25%): "Choose 2" or "Choose 3" — these are where people lose points
+- **Scenario-based** (~30%): "An administrator configures X, then Y happens. What's the result?"
+- **Negative** (~10%): "Which is NOT..." or "All EXCEPT..."
+
+Every question includes a detailed explanation of why the correct answer is right AND why each wrong answer is wrong.
+
+## Domain Deep Dive: What to Study
+
+### 1. Pattern Design (30% — 18 questions on exam)
+
+This is the largest domain and covers everything about discovery patterns:
+
+**Key topics:**
+- Two pattern types: Infrastructure (Discovery only, device lists) and Application (both SM and Discovery)
+- Pattern customization creates a COPY — original is preserved for updates
+- Domain separation: global patterns vs domain-specific copies
+- Roles: Discovery admin and PD admin can create/edit/publish; PD user is read-only
+- Pattern operations don't support multi-language (non-English values cause failures)
+- Top-down discovery uses only the main CI type; horizontal discovers main + related
+- Patterns stored in Discovery Patterns [sa_pattern] table
+- Update set workflow: develop → test → export → commit in production
+- Visibility Content 6.28.0: activation/deactivation no longer counts as customization
+
+**Sample question:**
+> During Service Mapping top-down discovery, a pattern has F5 BigIP GTM as its main CI type and DNS names as related CI types. Which CI types are discovered?
+>
+> A) Only the main CI type ✅
+> B) Main and all related CI types
+> C) Only related CI types
+> D) No CI types
+
+### 2. SM Configuration (20% — 12 questions on exam)
+
+Configuration covers how you set up and tune Service Mapping:
+
+**Key topics:**
+- Traffic-based discovery is OFF by default (sa.traffic_based_discovery.active)
+- Four enablement levels: product → service instance → CI type → specific CI (more specific overrides general)
+- Must enable at product level before other levels work
+- Pattern-based connections override traffic-based duplicates (traffic-based removed)
+- Tag-based mapping: no credentials or elevated rights needed
+- Tags stored in Key Value [cmdb_key_value] table
+- Tag-based services in Tag-Based Application Service [cmdb_ci_service_by_tags] table
+
+**Sample question:**
+> Traffic-based discovery is enabled for a service instance with Tomcat, MySQL, and a web app. A CI type rule excludes Tomcat. Which CIs use traffic-based discovery?
+>
+> A) Only Tomcat
+> B) MySQL and web application only ✅
+> C) All three
+> D) None
+
+### 3. Discovery Configuration (15% — 9 questions on exam)
+
+This domain tests your understanding of how discovery works under the hood:
+
+**Key topics:**
+- CMDB-based mapping works WITHOUT MID Server access
+- When application can't be identified, ADM creates one in cmdb_ci_appl
+- TCP Connection [cmdb_tcp] stores netstat/lsof data
+- Flow Connector [sa_flow_connection] stores Netflow/VPC log data
+- Readiness Checklist: MID Server config is mandatory; hosts, load balancers, Netflow are optional
+
+### 4. CMDB Integration (15% — 9 questions on exam)
+
+How Service Mapping interacts with the CMDB:
+
+**Key topics:**
+- Traversal Rules [svc_traversal_rules] table defines how tag-based connections are created
+- CIs with multiple tags can belong to multiple services
+- Untagged CIs are included if they're part of relationships with tagged CIs
+- Service Mapping queries CMDB for matching tag values to create services
+
+### 5. Machine Learning (10% — 6 questions on exam)
+
+Predictive Intelligence powers smarter discovery:
+
+**Key topics:**
+- Property: sa_ml.connection_suggestions.active
+- Confidence levels: High (internal/specific), Medium (middleware/shared), Low (monitoring/widespread), Very Low (organization-wide like AD)
+- Connection rules enhance suggestions; evaluated in order (local first, then global)
+- During rediscovery, invalid rules → decision set to Undecided → connections removed
+
+### 6. Engagement Readiness (10% — 6 questions on exam)
+
+Pre-implementation readiness and prerequisites:
+
+**Key topics:**
+- service_mapping_admin role required for readiness checklist
+- Mandatory: MID Servers with IP ranges and capabilities configured
+- Optional: 100+ hosts, 3+ load balancers, Netflow/VPC, Cloud Discovery
+- Can still map without optional items but results may be incomplete
+
+## Study Plan: 2 Weeks to CIS-SM
+
+| Day | Focus | Action |
+|-----|-------|--------|
+| 1-3 | Pattern Design | Study pattern types, customization, domain separation. Do 15 practice questions. |
+| 4-5 | SM Configuration | Traffic-based discovery levels, tag-based mapping. Do 10 practice questions. |
+| 6-7 | Discovery Config | CMDB-based mapping, readiness checklist, tables. Do 10 practice questions. |
+| 8-9 | CMDB Integration | Tag-based services, traversal rules, relationships. Do 10 practice questions. |
+| 10 | ML + Engagement | Confidence levels, connection rules, readiness. Do 10 practice questions. |
+| 11-12 | Full Mock Exams | Take timed 60-question exams. Target 80%+. |
+| 13-14 | Review Weak Areas | Focus on domains below 70%. Retake questions you got wrong. |
+
+## Why Brain Dumps Won't Work for CIS-SM
+
+Service Mapping questions are heavily scenario-based. Brain dump memorization fails because:
+
+1. **The scenarios are specific** — you need to understand HOW traffic-based discovery precedence works, not just THAT it exists
+2. **Multi-select questions require complete knowledge** — choosing 2 out of 4 means you need to know all 4 options
+3. **ServiceNow updates the question bank** — Xanadu introduced new features that change correct answers from previous versions
+
+Our 150 questions teach you the WHY behind each answer, which is what you need for scenario questions.
+
+## Start Practicing Now
+
+Every question in our bank includes:
+- ✅ Detailed explanation of the correct answer
+- ❌ Why each wrong answer is wrong
+- 📚 Source reference to official ServiceNow docs
+- 🏷️ Domain and subtopic tags for targeted study
+
+[Start your CIS-SM practice test →](/cis-sm)
+
+The CIS-SM exam rewards depth of understanding. 150 questions with explanations will build that depth faster than any other study method.
+`
+  },
 ];
 
 export function getAllPosts(): BlogPost[] {

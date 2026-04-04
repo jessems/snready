@@ -1025,6 +1025,270 @@
         "release": "Xanadu",
         "reviewed": false
       }
+    },
+    {
+      "id": "cis-sm-cmdb-integration-1010",
+      "certification": "cis-sm",
+      "topic": "cmdb-integration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which table stores tag-based application services created by Service Mapping?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Application Service [cmdb_ci_service_auto]"
+        },
+        {
+          "id": "b",
+          "text": "Tag-Based Application Service [cmdb_ci_service_by_tags]"
+        },
+        {
+          "id": "c",
+          "text": "Service Map [sa_service_map]"
+        },
+        {
+          "id": "d",
+          "text": "Discovered Service [cmdb_ci_service_discovered]"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Service Mapping adds tag-based application services to the Tag-Based Application Service [cmdb_ci_service_by_tags] table.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "cmdb_ci_service_auto is for auto-discovered services."
+          },
+          {
+            "id": "c",
+            "explanation": "No standard sa_service_map table."
+          },
+          {
+            "id": "d",
+            "explanation": "Not the table for tag-based services."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Service Mapping adds new application services to the Tag-Based Application Service [cmdb_ci_service_by_tags] table.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/it-operations-management/service-mapping/tag-based-mapping.html"
+      },
+      "labels": {
+        "domain": "CMDB Integration",
+        "subtopics": [
+          "Tag-based mapping",
+          "Tables"
+        ],
+        "tags": [
+          "cmdb_ci_service_by_tags",
+          "tables"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sm-cmdb-integration-1011",
+      "certification": "cis-sm",
+      "topic": "cmdb-integration",
+      "cognitiveLevel": "comprehension",
+      "type": "multiple_choice",
+      "question": "How does Service Mapping create connections between tagged CIs in tag-based services?",
+      "options": [
+        {
+          "id": "a",
+          "text": "By running horizontal discovery on each CI"
+        },
+        {
+          "id": "b",
+          "text": "By using CI relationships from the Traversal Rules table"
+        },
+        {
+          "id": "c",
+          "text": "By analyzing network traffic between tagged CIs"
+        },
+        {
+          "id": "d",
+          "text": "By matching tag keys across CI classes"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Service Mapping creates connections based on CI relationships using the Traversal Rules for Application Services [svc_traversal_rules] table.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "Tag-based mapping uses CMDB relationships, not horizontal discovery."
+          },
+          {
+            "id": "c",
+            "explanation": "Traffic analysis is a different method."
+          },
+          {
+            "id": "d",
+            "explanation": "Connections are based on traversal rules, not tag key matching."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "The Traversal Rules for Application Services [svc_traversal_rules] table contains information used for creating tag-based application services.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/it-operations-management/service-mapping/tag-based-mapping.html"
+      },
+      "labels": {
+        "domain": "CMDB Integration",
+        "subtopics": [
+          "Tag-based mapping",
+          "Traversal rules"
+        ],
+        "tags": [
+          "traversal-rules",
+          "ci-relationships"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sm-cmdb-integration-1012",
+      "certification": "cis-sm",
+      "topic": "cmdb-integration",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "CIs with two tags assigned are included in tag-based mapping. What happens to these CIs?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Assigned only to the first matching service"
+        },
+        {
+          "id": "b",
+          "text": "Can be part of multiple services based on their tags"
+        },
+        {
+          "id": "c",
+          "text": "Excluded from mapping due to ambiguity"
+        },
+        {
+          "id": "d",
+          "text": "Flagged for manual review"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "CIs with more than one tag can be part of multiple services.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "CIs are not limited to one service."
+          },
+          {
+            "id": "c",
+            "explanation": "Multiple tags do not cause exclusion."
+          },
+          {
+            "id": "d",
+            "explanation": "No manual review is needed."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "CIs that have more than one tags assigned to them, can be part of multiple services.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/it-operations-management/service-mapping/tag-based-mapping.html"
+      },
+      "labels": {
+        "domain": "CMDB Integration",
+        "subtopics": [
+          "Tag-based mapping",
+          "Multi-service"
+        ],
+        "tags": [
+          "tags",
+          "multiple-services"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sm-cmdb-integration-1013",
+      "certification": "cis-sm",
+      "topic": "cmdb-integration",
+      "cognitiveLevel": "comprehension",
+      "type": "multiple_choice",
+      "question": "During tag-based mapping, why does Service Mapping include untagged CIs that are part of CI relationships?",
+      "options": [
+        {
+          "id": "a",
+          "text": "To ensure complete service maps by following relationship connections"
+        },
+        {
+          "id": "b",
+          "text": "Because all CMDB CIs are automatically included"
+        },
+        {
+          "id": "c",
+          "text": "To populate the tag database with missing entries"
+        },
+        {
+          "id": "d",
+          "text": "Because untagged CIs always belong to the global domain"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "Service Mapping includes CIs in relationships even without tags to ensure complete service map topology.",
+        "wrongAnswers": [
+          {
+            "id": "b",
+            "explanation": "Not all CMDB CIs are included."
+          },
+          {
+            "id": "c",
+            "explanation": "Not about populating the tag database."
+          },
+          {
+            "id": "d",
+            "explanation": "Domain assignment is unrelated."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Service Mapping includes CIs that are part of these relationships even if these CIs do not have tags assigned.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/it-operations-management/service-mapping/tag-based-mapping.html"
+      },
+      "labels": {
+        "domain": "CMDB Integration",
+        "subtopics": [
+          "Tag-based mapping",
+          "Relationships"
+        ],
+        "tags": [
+          "untagged-cis",
+          "relationships"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
     }
   ]
 }

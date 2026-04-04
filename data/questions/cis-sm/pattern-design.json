@@ -218,7 +218,7 @@
         },
         {
           "id": "b",
-          "text": "Disables the SNMP – Routing pattern for routers running BGP protocol"
+          "text": "Disables the SNMP \u2013 Routing pattern for routers running BGP protocol"
         },
         {
           "id": "c",
@@ -233,7 +233,7 @@
         "b"
       ],
       "explanation": {
-        "correct": "When glide.discovery.bgp_router_disable is set to true (the default), it disables running the SNMP – Routing pattern when discovering a router running the BGP protocol. This is done because enabling it can cause performance issues including out-of-memory issues on the MID Server.",
+        "correct": "When glide.discovery.bgp_router_disable is set to true (the default), it disables running the SNMP \u2013 Routing pattern when discovering a router running the BGP protocol. This is done because enabling it can cause performance issues including out-of-memory issues on the MID Server.",
         "wrongAnswers": [
           {
             "id": "a",
@@ -245,12 +245,12 @@
           },
           {
             "id": "d",
-            "explanation": "Serial number population is not affected by this property. It specifically controls whether the SNMP – Routing pattern runs for BGP routers."
+            "explanation": "Serial number population is not affected by this property. It specifically controls whether the SNMP \u2013 Routing pattern runs for BGP routers."
           }
         ]
       },
       "source": {
-        "excerpt": "glide.discovery.bgp_router_disable: Disables running the SNMP – Routing pattern when discovering a router running the BGP protocol... Notice that enabling this property can cause performance issues including out-of-memory issues on the MID Server.",
+        "excerpt": "glide.discovery.bgp_router_disable: Disables running the SNMP \u2013 Routing pattern when discovering a router running the BGP protocol... Notice that enabling this property can cause performance issues including out-of-memory issues on the MID Server.",
         "url": "https://www.servicenow.com/docs/bundle/xanadu-it-operations-management/page/product/discovery-and-service-mapping-patterns/network-router-patterns.html"
       },
       "labels": {
@@ -1865,7 +1865,7 @@
         "wrongAnswers": [
           {
             "id": "a",
-            "explanation": "Patterns are released more frequently than quarterly — they are released monthly."
+            "explanation": "Patterns are released more frequently than quarterly \u2014 they are released monthly."
           },
           {
             "id": "c",
@@ -1957,6 +1957,596 @@
           "slow-steps",
           "troubleshooting",
           "sys_step_pattern"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sm-pattern-design-318",
+      "certification": "cis-sm",
+      "topic": "pattern-design",
+      "cognitiveLevel": "comprehension",
+      "type": "multiple_choice",
+      "question": "What happens when you customize a preconfigured discovery pattern in ServiceNow?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The original pattern is permanently modified"
+        },
+        {
+          "id": "b",
+          "text": "A copy of the original pattern is created, and the original is preserved"
+        },
+        {
+          "id": "c",
+          "text": "The pattern is locked and cannot receive future updates"
+        },
+        {
+          "id": "d",
+          "text": "All instances using the pattern are immediately affected"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "When you customize a pattern, you create a copy of the original preconfigured pattern. The original version is preserved and updated separately when downloading updates from the ServiceNow Store.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "The original pattern is not modified. A separate customized copy is created."
+          },
+          {
+            "id": "c",
+            "explanation": "The original continues to receive updates independently."
+          },
+          {
+            "id": "d",
+            "explanation": "Only the local instance uses the customized version."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "When you customize a pattern, you actually create a copy of the original preconfigured pattern.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/it-operations-management/discovery-and-service-mapping-patterns/c_MappingPatternsCustomization.html"
+      },
+      "labels": {
+        "domain": "Service Mapping Pattern Design",
+        "subtopics": [
+          "Pattern customization",
+          "Pattern versioning"
+        ],
+        "tags": [
+          "customization",
+          "pattern-versions"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sm-pattern-design-319",
+      "certification": "cis-sm",
+      "topic": "pattern-design",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "In a domain-separated instance, what happens when you customize a global pattern and assign it to a specific domain?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The global pattern is replaced for all domains"
+        },
+        {
+          "id": "b",
+          "text": "A domain-specific copy is created; the original global pattern is used for all other domains"
+        },
+        {
+          "id": "c",
+          "text": "The pattern becomes unavailable in all other domains"
+        },
+        {
+          "id": "d",
+          "text": "Domain separation is disabled for that pattern type"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Customizing a global pattern for a specific domain creates a copy. The original global pattern is still used for all other domains.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "The global pattern is not replaced."
+          },
+          {
+            "id": "c",
+            "explanation": "The pattern remains available in other domains via the global version."
+          },
+          {
+            "id": "d",
+            "explanation": "Domain separation continues to function normally."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "If you customize an existing pattern in the global domain and assign it to a specific domain, you create a copy.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/it-operations-management/discovery-and-service-mapping-patterns/c_MappingPatternsCustomization.html"
+      },
+      "labels": {
+        "domain": "Service Mapping Pattern Design",
+        "subtopics": [
+          "Domain separation",
+          "Pattern customization"
+        ],
+        "tags": [
+          "domain-separation",
+          "global-patterns"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sm-pattern-design-320",
+      "certification": "cis-sm",
+      "topic": "pattern-design",
+      "cognitiveLevel": "application",
+      "type": "multiple_select",
+      "question": "Which TWO user roles can create, edit, and publish discovery patterns? (Choose 2)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Discovery admin"
+        },
+        {
+          "id": "b",
+          "text": "PD user"
+        },
+        {
+          "id": "c",
+          "text": "PD admin"
+        },
+        {
+          "id": "d",
+          "text": "PDE viewer"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "c"
+      ],
+      "explanation": {
+        "correct": "Both Discovery admin and PD admin can view, create, edit, and publish patterns.",
+        "wrongAnswers": [
+          {
+            "id": "b",
+            "explanation": "PD user has read-only access to Discovery Pattern Log."
+          },
+          {
+            "id": "d",
+            "explanation": "PDE viewer can only view Command Validation related tables."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Discovery admin: Can view, create, edit, and publish patterns. PD admin: Can view, create, edit, and publish patterns.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/it-operations-management/discovery-and-service-mapping-patterns/c_MappingPatternsCustomization.html"
+      },
+      "labels": {
+        "domain": "Service Mapping Pattern Design",
+        "subtopics": [
+          "Roles and permissions"
+        ],
+        "tags": [
+          "roles",
+          "discovery-admin",
+          "pd-admin"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sm-pattern-design-321",
+      "certification": "cis-sm",
+      "topic": "pattern-design",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What are the two main types of discovery patterns in ITOM Visibility?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Infrastructure patterns and Application patterns"
+        },
+        {
+          "id": "b",
+          "text": "Discovery patterns and Mapping patterns"
+        },
+        {
+          "id": "c",
+          "text": "Network patterns and Server patterns"
+        },
+        {
+          "id": "d",
+          "text": "Horizontal patterns and Vertical patterns"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "Patterns can be infrastructure or application type. Infrastructure patterns are used only by Discovery for device lists. Application patterns serve both Service Mapping and Discovery.",
+        "wrongAnswers": [
+          {
+            "id": "b",
+            "explanation": "There is no 'Mapping patterns' category."
+          },
+          {
+            "id": "c",
+            "explanation": "Patterns are not categorized as Network and Server."
+          },
+          {
+            "id": "d",
+            "explanation": "Horizontal and top-down are discovery process types, not pattern types."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Patterns can be of the infrastructure or application type.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/it-operations-management/discovery-and-service-mapping-patterns/c_MappingPatternsCustomization.html"
+      },
+      "labels": {
+        "domain": "Service Mapping Pattern Design",
+        "subtopics": [
+          "Pattern types"
+        ],
+        "tags": [
+          "infrastructure-patterns",
+          "application-patterns"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sm-pattern-design-322",
+      "certification": "cis-sm",
+      "topic": "pattern-design",
+      "cognitiveLevel": "comprehension",
+      "type": "multiple_choice",
+      "question": "Why might pattern operations fail when discovering devices in a non-English environment?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Pattern Designer only supports UTF-8 encoding"
+        },
+        {
+          "id": "b",
+          "text": "Pattern operations do not support multi-languages and non-English values cannot be parsed"
+        },
+        {
+          "id": "c",
+          "text": "The MID Server requires English locale"
+        },
+        {
+          "id": "d",
+          "text": "ServiceNow instances must be configured in English"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Pattern operations do not support multi-languages. Non-English values returned from operations cannot be parsed properly, causing discovery failure.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "The issue is about language parsing, not encoding."
+          },
+          {
+            "id": "c",
+            "explanation": "The MID Server can run in various locales."
+          },
+          {
+            "id": "d",
+            "explanation": "The instance language is not the issue."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Currently, pattern operations do not support multi-languages.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/it-operations-management/discovery-and-service-mapping-patterns/c_MappingPatternsCustomization.html"
+      },
+      "labels": {
+        "domain": "Service Mapping Pattern Design",
+        "subtopics": [
+          "Pattern limitations",
+          "Multi-language"
+        ],
+        "tags": [
+          "multi-language",
+          "pattern-operations"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sm-pattern-design-323",
+      "certification": "cis-sm",
+      "topic": "pattern-design",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A pattern for BIG-IP GTM F5 has F5 BigIP GTM as its main CI type and DNS names/network adapters as related CI types. During Service Mapping top-down discovery, which CI types are discovered?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Only the main CI type (F5 BigIP GTM)"
+        },
+        {
+          "id": "b",
+          "text": "The main CI type and all related CI types"
+        },
+        {
+          "id": "c",
+          "text": "Only the related CI types"
+        },
+        {
+          "id": "d",
+          "text": "No CI types \u2014 F5 requires a separate infrastructure pattern"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "For top-down discovery by Service Mapping, each application pattern discovers only the main CI type. Related CI types are discovered during horizontal discovery.",
+        "wrongAnswers": [
+          {
+            "id": "b",
+            "explanation": "Both main and related CI types are discovered during horizontal discovery, not top-down."
+          },
+          {
+            "id": "c",
+            "explanation": "Related CI types alone are not discovered in top-down."
+          },
+          {
+            "id": "d",
+            "explanation": "F5 BigIP GTM uses an application pattern for top-down discovery."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "For the top-down discovery performed by Service Mapping, each application pattern serves to discover only the main CI type.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/it-operations-management/discovery-and-service-mapping-patterns/c_MappingPatternsCustomization.html"
+      },
+      "labels": {
+        "domain": "Service Mapping Pattern Design",
+        "subtopics": [
+          "Top-down discovery",
+          "CI types"
+        ],
+        "tags": [
+          "main-ci-type",
+          "top-down"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sm-pattern-design-324",
+      "certification": "cis-sm",
+      "topic": "pattern-design",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "In which table are all discovery patterns stored in ServiceNow?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Discovery Definition [sa_discovery_definition]"
+        },
+        {
+          "id": "b",
+          "text": "Discovery Patterns [sa_pattern]"
+        },
+        {
+          "id": "c",
+          "text": "Pattern Steps [sa_pattern_step]"
+        },
+        {
+          "id": "d",
+          "text": "Discovery Schedule [discovery_schedule]"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Patterns of all types are stored in the Discovery Patterns [sa_pattern] table.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "Discovery Definition is for schedules, not patterns."
+          },
+          {
+            "id": "c",
+            "explanation": "Pattern Steps stores individual steps, not patterns themselves."
+          },
+          {
+            "id": "d",
+            "explanation": "Discovery Schedule stores schedule configs, not patterns."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Patterns of all types are stored in the Discovery Patterns [sa_pattern] table.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/it-operations-management/discovery-and-service-mapping-patterns/c_MappingPatternsCustomization.html"
+      },
+      "labels": {
+        "domain": "Service Mapping Pattern Design",
+        "subtopics": [
+          "Tables",
+          "Pattern storage"
+        ],
+        "tags": [
+          "sa_pattern",
+          "tables"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sm-pattern-design-325",
+      "certification": "cis-sm",
+      "topic": "pattern-design",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "What is the recommended workflow for deploying customized patterns to production?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Create patterns directly in production"
+        },
+        {
+          "id": "b",
+          "text": "Create and test in development, then export as an update set to production"
+        },
+        {
+          "id": "c",
+          "text": "Use the ServiceNow Store to push patterns"
+        },
+        {
+          "id": "d",
+          "text": "Clone the production instance and modify in place"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Create or modify patterns in development, test and verify, then export as an update set and commit in production.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "Creating directly in production bypasses testing."
+          },
+          {
+            "id": "c",
+            "explanation": "The Store is for preconfigured patterns, not custom ones."
+          },
+          {
+            "id": "d",
+            "explanation": "Cloning is unnecessary; update sets are the proper method."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Create or modify patterns, test them, and verify results in the development instance.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/it-operations-management/discovery-and-service-mapping-patterns/c_MappingPatternsCustomization.html"
+      },
+      "labels": {
+        "domain": "Service Mapping Pattern Design",
+        "subtopics": [
+          "Pattern deployment",
+          "Best practices"
+        ],
+        "tags": [
+          "update-sets",
+          "development-workflow"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sm-pattern-design-326",
+      "certification": "cis-sm",
+      "topic": "pattern-design",
+      "cognitiveLevel": "comprehension",
+      "type": "multiple_choice",
+      "question": "Starting with Visibility Content version 6.28.0, what changed about pattern activation behavior?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Activating patterns now requires Discovery admin exclusively"
+        },
+        {
+          "id": "b",
+          "text": "Activating or deactivating a pattern is no longer considered a customization"
+        },
+        {
+          "id": "c",
+          "text": "Patterns can only be activated through the ServiceNow Store"
+        },
+        {
+          "id": "d",
+          "text": "Pattern activation triggers automatic rediscovery"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Starting with Visibility Content version 6.28.0, activating or deactivating a pattern is no longer considered a customization and continues to receive updates.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "The change is about customization status, not role requirements."
+          },
+          {
+            "id": "c",
+            "explanation": "Patterns can still be activated from the Discovery Patterns list."
+          },
+          {
+            "id": "d",
+            "explanation": "Activation does not trigger automatic rediscovery."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Starting with Visibility Content version 6.28.0, activating or deactivating a pattern won't be considered a customization.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/it-operations-management/discovery-and-service-mapping-patterns/activate-disabled-pattern.html"
+      },
+      "labels": {
+        "domain": "Service Mapping Pattern Design",
+        "subtopics": [
+          "Pattern activation",
+          "Visibility Content"
+        ],
+        "tags": [
+          "pattern-activation",
+          "visibility-content"
         ]
       },
       "meta": {
