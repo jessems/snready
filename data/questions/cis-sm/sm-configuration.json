@@ -787,7 +787,7 @@
         "wrongAnswers": [
           {
             "id": "b",
-            "explanation": "While IP is related, the three criteria are specifically Application, Capability, and IP range — not Domain or Protocol."
+            "explanation": "While IP is related, the three criteria are specifically Application, Capability, and IP range \u2014 not Domain or Protocol."
           },
           {
             "id": "c",
@@ -857,7 +857,7 @@
           },
           {
             "id": "c",
-            "explanation": "The request does not fail immediately — Service Mapping first tries to use the default MID Server before giving up."
+            "explanation": "The request does not fail immediately \u2014 Service Mapping first tries to use the default MID Server before giving up."
           },
           {
             "id": "d",
@@ -1058,7 +1058,7 @@
           },
           {
             "id": "b",
-            "explanation": "MID Servers are not required at every level — they must specifically be in the lowest (leaf) domain level."
+            "explanation": "MID Servers are not required at every level \u2014 they must specifically be in the lowest (leaf) domain level."
           },
           {
             "id": "d",
@@ -1259,7 +1259,7 @@
           },
           {
             "id": "c",
-            "explanation": "The values are reversed — 0 is MID-only, not ACC-only."
+            "explanation": "The values are reversed \u2014 0 is MID-only, not ACC-only."
           },
           {
             "id": "d",
@@ -1349,6 +1349,399 @@
           "netstat",
           "traffic-based",
           "tcp"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sm-sm-configuration-515",
+      "certification": "cis-sm",
+      "topic": "sm-configuration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What property controls traffic-based discovery at the product level in Service Mapping?",
+      "options": [
+        {
+          "id": "a",
+          "text": "sa.discovery.traffic.enabled"
+        },
+        {
+          "id": "b",
+          "text": "sa.traffic_based_discovery.active"
+        },
+        {
+          "id": "c",
+          "text": "sm.traffic.discovery.mode"
+        },
+        {
+          "id": "d",
+          "text": "sa.service_mapping.traffic.on"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The sa.traffic_based_discovery.active property controls traffic-based discovery at the product level.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "Not a valid ServiceNow property."
+          },
+          {
+            "id": "c",
+            "explanation": "Not a valid property."
+          },
+          {
+            "id": "d",
+            "explanation": "Not a valid property."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "The Traffic based discovery (sa.traffic_based_discovery.active) property controls traffic-based discovery.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/it-operations-management/service-mapping/traffic-based-discovery.html"
+      },
+      "labels": {
+        "domain": "Service Mapping Configuration",
+        "subtopics": [
+          "Traffic-based discovery",
+          "Properties"
+        ],
+        "tags": [
+          "properties",
+          "traffic-based"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sm-sm-configuration-516",
+      "certification": "cis-sm",
+      "topic": "sm-configuration",
+      "cognitiveLevel": "comprehension",
+      "type": "multiple_select",
+      "question": "At which levels can traffic-based discovery be enabled? (Choose 2)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Product level and Service instance level"
+        },
+        {
+          "id": "b",
+          "text": "CI type level and Specific CI level"
+        },
+        {
+          "id": "c",
+          "text": "MID Server level and Domain level"
+        },
+        {
+          "id": "d",
+          "text": "Schedule level and Credential level"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b"
+      ],
+      "explanation": {
+        "correct": "Traffic-based discovery can be enabled at four levels: product, service instance, CI type, and specific CI.",
+        "wrongAnswers": [
+          {
+            "id": "c",
+            "explanation": "Not configurable at MID Server or Domain level."
+          },
+          {
+            "id": "d",
+            "explanation": "No schedule or credential level for this."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "You can enable it at different levels: product, service instance, CI type, specific CI.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/it-operations-management/service-mapping/traffic-based-discovery.html"
+      },
+      "labels": {
+        "domain": "Service Mapping Configuration",
+        "subtopics": [
+          "Traffic-based discovery",
+          "Configuration levels"
+        ],
+        "tags": [
+          "traffic-based",
+          "levels"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sm-sm-configuration-517",
+      "certification": "cis-sm",
+      "topic": "sm-configuration",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "Traffic-based discovery is enabled for a service instance with Tomcat, MySQL, and a web app. A CI type rule excludes Tomcat. Which CIs use traffic-based discovery?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Only Tomcat"
+        },
+        {
+          "id": "b",
+          "text": "MySQL and web application only"
+        },
+        {
+          "id": "c",
+          "text": "All three CIs"
+        },
+        {
+          "id": "d",
+          "text": "None \u2014 the rule disables all traffic-based discovery"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "CI type rules override service instance settings. The Tomcat exclusion means only MySQL and the web app use traffic-based discovery.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "Tomcat is excluded by the CI type rule."
+          },
+          {
+            "id": "c",
+            "explanation": "The CI type rule overrides the service instance setting for Tomcat."
+          },
+          {
+            "id": "d",
+            "explanation": "The rule only excludes Tomcat, not all CIs."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "You create a CI type rule that excludes all Tomcat servers. Service Mapping discovers MySQL and the web application.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/it-operations-management/service-mapping/traffic-based-discovery.html"
+      },
+      "labels": {
+        "domain": "Service Mapping Configuration",
+        "subtopics": [
+          "Traffic-based discovery",
+          "CI type rules"
+        ],
+        "tags": [
+          "ci-type-rules",
+          "precedence"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sm-sm-configuration-518",
+      "certification": "cis-sm",
+      "topic": "sm-configuration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What happens to duplicate connections when pattern-based discovery runs after traffic-based discovery?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Both connections are kept"
+        },
+        {
+          "id": "b",
+          "text": "Traffic-based connections are removed if they duplicate pattern-based ones"
+        },
+        {
+          "id": "c",
+          "text": "Pattern-based connections are removed"
+        },
+        {
+          "id": "d",
+          "text": "An error is logged requiring manual fix"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The system removes traffic-based connections that are also created by pattern-based discovery to avoid duplicates.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "Duplicates are not kept."
+          },
+          {
+            "id": "c",
+            "explanation": "Pattern-based connections take precedence; traffic-based duplicates are removed."
+          },
+          {
+            "id": "d",
+            "explanation": "Deduplication is automatic."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "The system removes any connections created by traffic-based discovery if they're also created by pattern-based discovery.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/it-operations-management/service-mapping/traffic-based-discovery.html"
+      },
+      "labels": {
+        "domain": "Service Mapping Configuration",
+        "subtopics": [
+          "Traffic-based discovery",
+          "Deduplication"
+        ],
+        "tags": [
+          "duplicates",
+          "deduplication"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sm-sm-configuration-519",
+      "certification": "cis-sm",
+      "topic": "sm-configuration",
+      "cognitiveLevel": "comprehension",
+      "type": "multiple_choice",
+      "question": "What advantage does tag-based mapping offer over other Service Mapping methods regarding credentials?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It uses OAuth 2.0 for credential rotation"
+        },
+        {
+          "id": "b",
+          "text": "It does not require configuring credentials or elevated rights"
+        },
+        {
+          "id": "c",
+          "text": "It stores credentials encrypted in CMDB"
+        },
+        {
+          "id": "d",
+          "text": "It shares credentials across MID Servers"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Tag-based mapping does not require configuring credentials or providing users with elevated rights.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "Tag-based mapping requires no credentials at all."
+          },
+          {
+            "id": "c",
+            "explanation": "The advantage is no credentials needed, not better encryption."
+          },
+          {
+            "id": "d",
+            "explanation": "It avoids credentials entirely."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Unlike other mapping methods, tag-based mapping does not require configuring credentials or providing users with elevated rights.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/it-operations-management/service-mapping/tag-based-mapping.html"
+      },
+      "labels": {
+        "domain": "Service Mapping Configuration",
+        "subtopics": [
+          "Tag-based mapping",
+          "Credentials"
+        ],
+        "tags": [
+          "tag-based",
+          "credentials"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sm-sm-configuration-520",
+      "certification": "cis-sm",
+      "topic": "sm-configuration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "In which table are discovered tags stored for tag-based Service Mapping?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Tag Definition [cmdb_tag_definition]"
+        },
+        {
+          "id": "b",
+          "text": "Key Value [cmdb_key_value]"
+        },
+        {
+          "id": "c",
+          "text": "CI Tag [cmdb_ci_tag]"
+        },
+        {
+          "id": "d",
+          "text": "Service Tags [sa_service_tags]"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "Discovered tags are populated into the Key Value [cmdb_key_value] table.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "No standard cmdb_tag_definition table exists."
+          },
+          {
+            "id": "c",
+            "explanation": "Not the standard location for discovered tags."
+          },
+          {
+            "id": "d",
+            "explanation": "No sa_service_tags table exists."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Discovery and Cloud Provisioning discover tags and populate data into the Key Value [cmdb_key_value] table.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/it-operations-management/service-mapping/tag-based-mapping.html"
+      },
+      "labels": {
+        "domain": "Service Mapping Configuration",
+        "subtopics": [
+          "Tag-based mapping",
+          "Tables"
+        ],
+        "tags": [
+          "cmdb_key_value",
+          "tags"
         ]
       },
       "meta": {

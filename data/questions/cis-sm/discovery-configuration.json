@@ -920,7 +920,7 @@
         "wrongAnswers": [
           {
             "id": "a",
-            "explanation": "HTTP/HTTPS ports (80, 443, 8080, 8443) are not ignored by default — they are often important for application service mapping."
+            "explanation": "HTTP/HTTPS ports (80, 443, 8080, 8443) are not ignored by default \u2014 they are often important for application service mapping."
           },
           {
             "id": "c",
@@ -1012,6 +1012,332 @@
           "scheduled-jobs",
           "cleanup",
           "deferred-discovery"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sm-discovery-configuration-710",
+      "certification": "cis-sm",
+      "topic": "discovery-configuration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What is CMDB-based mapping in Service Mapping?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A method requiring multiple MID Servers"
+        },
+        {
+          "id": "b",
+          "text": "A method using CMDB data to map services without MID Server access"
+        },
+        {
+          "id": "c",
+          "text": "A manual service map creation process"
+        },
+        {
+          "id": "d",
+          "text": "A backup method when all MID Servers are online"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "CMDB-based mapping uses data stored in the CMDB to run top-down discovery without requiring MID Server access.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "CMDB-based mapping does NOT require MID Servers."
+          },
+          {
+            "id": "c",
+            "explanation": "It is automated, not manual."
+          },
+          {
+            "id": "d",
+            "explanation": "It activates when a MID Server is NOT available."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "Using data stored in the CMDB, you can map application services without having to access a MID Server.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/it-operations-management/service-mapping/cmdb-based-mapping.html"
+      },
+      "labels": {
+        "domain": "Discovery Configuration",
+        "subtopics": [
+          "CMDB-based mapping"
+        ],
+        "tags": [
+          "cmdb-based-mapping",
+          "mid-server"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sm-discovery-configuration-711",
+      "certification": "cis-sm",
+      "topic": "discovery-configuration",
+      "cognitiveLevel": "comprehension",
+      "type": "multiple_choice",
+      "question": "During CMDB-based mapping, what happens if an application cannot be identified for a target process?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Discovery fails and logs an error"
+        },
+        {
+          "id": "b",
+          "text": "ADM logic classifies and creates an application in the CMDB"
+        },
+        {
+          "id": "c",
+          "text": "The CI is skipped"
+        },
+        {
+          "id": "d",
+          "text": "A manual task is created for review"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "If an application isn't identified, CMDB-based mapping uses ADM logic to classify and create an application. If ADM cannot classify it, a simple application is created in cmdb_ci_appl.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "Discovery does not fail; it falls back to ADM."
+          },
+          {
+            "id": "c",
+            "explanation": "The CI is not skipped."
+          },
+          {
+            "id": "d",
+            "explanation": "No manual task is created."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "If an application isn't identified, CMDB-based mapping uses ADM logic to classify and create an application.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/it-operations-management/service-mapping/cmdb-based-mapping.html"
+      },
+      "labels": {
+        "domain": "Discovery Configuration",
+        "subtopics": [
+          "CMDB-based mapping",
+          "ADM"
+        ],
+        "tags": [
+          "adm",
+          "application-classification"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sm-discovery-configuration-712",
+      "certification": "cis-sm",
+      "topic": "discovery-configuration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which table stores traffic data collected from netstat and lsof commands for traffic-based discovery?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Flow Connector [sa_flow_connection]"
+        },
+        {
+          "id": "b",
+          "text": "TCP Connection [cmdb_tcp]"
+        },
+        {
+          "id": "c",
+          "text": "Flow Services [sa_flow_service]"
+        },
+        {
+          "id": "d",
+          "text": "Network Traffic [sa_network_traffic]"
+        }
+      ],
+      "correctAnswers": [
+        "b"
+      ],
+      "explanation": {
+        "correct": "The TCP Connection [cmdb_tcp] table stores data from netstat and lsof commands, used during top-down discovery.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "Flow Connector stores Netflow/VPC log data."
+          },
+          {
+            "id": "c",
+            "explanation": "Flow Services stores Netflow/VPC data about listening ports."
+          },
+          {
+            "id": "d",
+            "explanation": "No standard sa_network_traffic table exists."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "TCP Connection [cmdb_tcp]: Source: netstat and lsof commands.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/it-operations-management/service-mapping/traffic-based-discovery.html"
+      },
+      "labels": {
+        "domain": "Discovery Configuration",
+        "subtopics": [
+          "Traffic-based discovery",
+          "Tables"
+        ],
+        "tags": [
+          "cmdb_tcp",
+          "netstat"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sm-discovery-configuration-713",
+      "certification": "cis-sm",
+      "topic": "discovery-configuration",
+      "cognitiveLevel": "comprehension",
+      "type": "multiple_choice",
+      "question": "What is the default state of traffic-based discovery in Service Mapping?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Enabled for all service instances"
+        },
+        {
+          "id": "b",
+          "text": "Enabled at product level only"
+        },
+        {
+          "id": "c",
+          "text": "Turned off by default"
+        },
+        {
+          "id": "d",
+          "text": "Enabled for CIs with credentials"
+        }
+      ],
+      "correctAnswers": [
+        "c"
+      ],
+      "explanation": {
+        "correct": "By default, traffic-based discovery is turned off. It must be explicitly enabled at the product level first.",
+        "wrongAnswers": [
+          {
+            "id": "a",
+            "explanation": "Not enabled by default."
+          },
+          {
+            "id": "b",
+            "explanation": "Off at all levels by default."
+          },
+          {
+            "id": "d",
+            "explanation": "Not tied to credential configuration."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "By default, traffic-based discovery in Service Mapping is turned off.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/it-operations-management/service-mapping/traffic-based-discovery.html"
+      },
+      "labels": {
+        "domain": "Discovery Configuration",
+        "subtopics": [
+          "Traffic-based discovery",
+          "Default settings"
+        ],
+        "tags": [
+          "default-settings",
+          "traffic-based"
+        ]
+      },
+      "meta": {
+        "version": "1.0",
+        "release": "Xanadu",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "cis-sm-discovery-configuration-714",
+      "certification": "cis-sm",
+      "topic": "discovery-configuration",
+      "cognitiveLevel": "application",
+      "type": "multiple_select",
+      "question": "Which TWO are mandatory checks in the Service Mapping Readiness Checklist? (Choose 2)",
+      "options": [
+        {
+          "id": "a",
+          "text": "MID Servers with correctly configured IP ranges"
+        },
+        {
+          "id": "b",
+          "text": "At least 100 hosts discovered in the last 14 days"
+        },
+        {
+          "id": "c",
+          "text": "MID Server applications and capabilities settings"
+        },
+        {
+          "id": "d",
+          "text": "Cloud Discovery is activated"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "c"
+      ],
+      "explanation": {
+        "correct": "The mandatory check requires MID Servers with correctly configured IP ranges and applications/capabilities settings. All other checks (hosts, load balancers, Netflow, Cloud) are optional.",
+        "wrongAnswers": [
+          {
+            "id": "b",
+            "explanation": "100 hosts is an optional check."
+          },
+          {
+            "id": "d",
+            "explanation": "Cloud Discovery is an optional check."
+          }
+        ]
+      },
+      "source": {
+        "excerpt": "(Mandatory) There are MID Servers with correctly configured IP ranges and the applications and capabilities settings.",
+        "url": "https://www.servicenow.com/docs/r/xanadu/it-operations-management/service-mapping/check-service-mapping-readiness-for-mapping.html"
+      },
+      "labels": {
+        "domain": "Discovery Configuration",
+        "subtopics": [
+          "Readiness checklist",
+          "MID Server"
+        ],
+        "tags": [
+          "readiness",
+          "mandatory-checks"
         ]
       },
       "meta": {
