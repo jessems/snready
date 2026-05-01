@@ -2367,6 +2367,354 @@
         "release": "Xanadu",
         "reviewed": false
       }
+    },
+    {
+      "id": "csa-ui-navigation-031",
+      "certification": "csa",
+      "topic": "ui-navigation",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What enables collecting data from related tables via reference fields in ServiceNow?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Field mapping"
+        },
+        {
+          "id": "b",
+          "text": "Dot-walking"
+        },
+        {
+          "id": "c",
+          "text": "Table joins"
+        },
+        {
+          "id": "d",
+          "text": "Reference linking"
+        }
+      ],
+      "correctAnswer": "b",
+      "explanation": "Dot-walking is ServiceNow's method for accessing data from related tables through reference fields. When you have a reference field pointing to another table, you can 'walk' through the reference using dot notation to access fields in the referenced table. For example, if an incident has a 'caller_id' reference field pointing to the user table, you can access the caller's department using 'caller_id.department'. This is fundamental to ServiceNow's data access patterns and is used extensively in both the UI and scripting.",
+      "references": [
+        {
+          "title": "ServiceNow Administration Fundamentals - Lists and Filters",
+          "type": "course",
+          "url": "https://nowlearning.servicenow.com"
+        }
+      ],
+      "tags": [
+        "dot-walking",
+        "reference-fields",
+        "data-access"
+      ],
+      "isFree": true,
+      "difficulty": "medium"
+    },
+    {
+      "id": "csa-ui-navigation-032",
+      "certification": "csa",
+      "topic": "ui-navigation",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "In a ServiceNow list, what do the controls in the list header allow users to do?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Edit individual records directly"
+        },
+        {
+          "id": "b",
+          "text": "Group, sort, show/hide columns, and filter data"
+        },
+        {
+          "id": "c",
+          "text": "Create new table relationships"
+        },
+        {
+          "id": "d",
+          "text": "Modify form layouts"
+        }
+      ],
+      "correctAnswer": "b",
+      "explanation": "List header controls provide essential data manipulation capabilities including grouping records by field values, sorting columns in ascending/descending order, showing or hiding columns to customize the view, and applying filters to narrow down displayed records. These controls help users organize and find information efficiently without modifying the underlying data structure or form layouts. Understanding these controls is fundamental for effective ServiceNow navigation.",
+      "references": [
+        {
+          "title": "ServiceNow Administration Fundamentals - Lists and Filters",
+          "type": "course",
+          "url": "https://nowlearning.servicenow.com"
+        }
+      ],
+      "tags": [
+        "list-controls",
+        "data-organization",
+        "user-interface"
+      ],
+      "isFree": false,
+      "difficulty": "easy"
+    },
+    {
+      "id": "csa-ui-navigation-033",
+      "certification": "csa",
+      "topic": "ui-navigation",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A user sees brackets around a list view name like '[Assigned to me]'. What does this indicate?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The view is locked by an administrator"
+        },
+        {
+          "id": "b",
+          "text": "The view is currently being edited"
+        },
+        {
+          "id": "c",
+          "text": "The view is not the default list view"
+        },
+        {
+          "id": "d",
+          "text": "The view has active filters applied"
+        }
+      ],
+      "correctAnswer": "c",
+      "explanation": "Brackets around a list view name indicate that you are not viewing the default list view. ServiceNow shows brackets to make it clear when you've switched from the default view to a different saved view, such as 'Assigned to me', 'Recent', or custom views. The default view typically shows without brackets. This visual indicator helps users understand which view they're currently using and is important for navigation awareness.",
+      "references": [
+        {
+          "title": "ServiceNow Administration Fundamentals - Lists and Filters",
+          "type": "course",
+          "url": "https://nowlearning.servicenow.com"
+        }
+      ],
+      "tags": [
+        "list-views",
+        "default-view",
+        "navigation-indicators"
+      ],
+      "isFree": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "csa-ui-navigation-034",
+      "certification": "csa",
+      "topic": "ui-navigation",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_select",
+      "question": "Which methods can be used to modify form layouts in ServiceNow? (Choose 2)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Form Designer"
+        },
+        {
+          "id": "b",
+          "text": "List Editor"
+        },
+        {
+          "id": "c",
+          "text": "Form Layout Tool"
+        },
+        {
+          "id": "d",
+          "text": "UI Policy Designer"
+        }
+      ],
+      "correctAnswer": [
+        "a",
+        "c"
+      ],
+      "explanation": "ServiceNow provides two primary methods for modifying form layouts: Form Designer (a drag-and-drop interface for arranging form elements) and Form Layout Tool (for more advanced layout modifications). List Editor is used for customizing list views, not forms. UI Policy Designer creates dynamic form behaviors but doesn't directly modify layouts. Understanding the distinction between these tools is important for form customization tasks.",
+      "references": [
+        {
+          "title": "ServiceNow Administration Fundamentals - Forms and Configuration",
+          "type": "course",
+          "url": "https://nowlearning.servicenow.com"
+        }
+      ],
+      "tags": [
+        "form-layout",
+        "form-designer",
+        "customization-tools"
+      ],
+      "isFree": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "csa-ui-navigation-035",
+      "certification": "csa",
+      "topic": "ui-navigation",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What happens when a user applies a filter condition and then navigates away from the list?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The filter is automatically saved permanently"
+        },
+        {
+          "id": "b",
+          "text": "The filter condition appears in the breadcrumb trail"
+        },
+        {
+          "id": "c",
+          "text": "The filter is lost immediately"
+        },
+        {
+          "id": "d",
+          "text": "The filter becomes a new list view"
+        }
+      ],
+      "correctAnswer": "b",
+      "explanation": "When users apply filter conditions to a list, ServiceNow maintains these conditions and displays them in the breadcrumb trail at the top of the list. This breadcrumb shows the current filter state and allows users to modify or remove filters. The breadcrumb trail provides navigation context and filter transparency. Filters are not automatically saved as permanent views unless explicitly saved, but they persist during the session and are visible in the breadcrumbs.",
+      "references": [
+        {
+          "title": "ServiceNow Administration Fundamentals - Lists and Filters",
+          "type": "course",
+          "url": "https://nowlearning.servicenow.com"
+        }
+      ],
+      "tags": [
+        "filters",
+        "breadcrumbs",
+        "navigation",
+        "session-persistence"
+      ],
+      "isFree": true,
+      "difficulty": "medium"
+    },
+    {
+      "id": "csa-ui-navigation-036",
+      "certification": "csa",
+      "topic": "ui-navigation",
+      "cognitiveLevel": "application",
+      "type": "multiple_select",
+      "question": "Which list personalization options are available to users in ServiceNow? (Choose 3)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Rearrange column order"
+        },
+        {
+          "id": "b",
+          "text": "Set column widths"
+        },
+        {
+          "id": "c",
+          "text": "Create new table fields"
+        },
+        {
+          "id": "d",
+          "text": "Save custom list views"
+        },
+        {
+          "id": "e",
+          "text": "Modify table schemas"
+        }
+      ],
+      "correctAnswer": [
+        "a",
+        "b",
+        "d"
+      ],
+      "explanation": "Users can personalize lists by rearranging column order (dragging columns to preferred positions), setting column widths (adjusting the display width of columns), and saving custom list views (preserving filter and display preferences). Users cannot create new table fields or modify table schemas - these are administrative functions requiring proper roles and permissions. List personalization focuses on display and organization, not data structure modifications.",
+      "references": [
+        {
+          "title": "ServiceNow Administration Fundamentals - Lists and Filters",
+          "type": "course",
+          "url": "https://nowlearning.servicenow.com"
+        }
+      ],
+      "tags": [
+        "list-personalization",
+        "user-customization",
+        "list-views"
+      ],
+      "isFree": false,
+      "difficulty": "medium"
+    },
+    {
+      "id": "csa-ui-navigation-037",
+      "certification": "csa",
+      "topic": "ui-navigation",
+      "cognitiveLevel": "understanding",
+      "type": "true_false_compound",
+      "question": "Evaluate these statements about ServiceNow configuration:\nA) Personal list configurations only affect the current user's view\nB) System-level form modifications affect all users\nC) Related lists show records from the same table as the main form",
+      "options": [
+        {
+          "id": "a",
+          "text": "A and B are true, C is false"
+        },
+        {
+          "id": "b",
+          "text": "A and C are true, B is false"
+        },
+        {
+          "id": "c",
+          "text": "B and C are true, A is false"
+        },
+        {
+          "id": "d",
+          "text": "All statements are true"
+        }
+      ],
+      "correctAnswer": "a",
+      "explanation": "Statement A is TRUE: Personal list configurations (column order, widths, personal views) only affect the individual user's experience. Statement B is TRUE: System-level form modifications (adding fields, changing layouts, UI policies) affect all users unless overridden by role-based configurations. Statement C is FALSE: Related lists typically show records from different tables that are related to the current record via reference fields (e.g., incidents related to a CI, tasks related to a change).",
+      "references": [
+        {
+          "title": "ServiceNow Administration Fundamentals - Forms and Lists Configuration",
+          "type": "course",
+          "url": "https://nowlearning.servicenow.com"
+        }
+      ],
+      "tags": [
+        "configuration-scope",
+        "personal-vs-system",
+        "related-lists"
+      ],
+      "isFree": true,
+      "difficulty": "hard"
+    },
+    {
+      "id": "csa-ui-navigation-038",
+      "certification": "csa",
+      "topic": "ui-navigation",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice_negative",
+      "question": "Which of the following is NOT a standard component of the ServiceNow list collector interface?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Available items list"
+        },
+        {
+          "id": "b",
+          "text": "Selected items list"
+        },
+        {
+          "id": "c",
+          "text": "Move arrows between lists"
+        },
+        {
+          "id": "d",
+          "text": "Drag-and-drop form builder"
+        }
+      ],
+      "correctAnswer": "d",
+      "explanation": "The list collector interface is used for selecting multiple items from a list and includes: an 'Available' items list showing selectable options, a 'Selected' items list showing chosen items, and move arrows (or add/remove buttons) to transfer items between the lists. A drag-and-drop form builder is NOT part of the list collector - that's a separate interface component used in Form Designer for building form layouts. Understanding UI component distinctions is important for proper system navigation.",
+      "references": [
+        {
+          "title": "ServiceNow Administration Fundamentals - User Interface Components",
+          "type": "course",
+          "url": "https://nowlearning.servicenow.com"
+        }
+      ],
+      "tags": [
+        "list-collector",
+        "ui-components",
+        "interface-elements"
+      ],
+      "isFree": false,
+      "difficulty": "easy"
     }
   ]
 }
