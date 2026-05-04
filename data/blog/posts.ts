@@ -3830,8 +3830,148 @@ If you're deciding between the two, read our [CSA vs CAD comparison](/blog/csa-v
 Every question includes detailed explanations for both correct and incorrect answers. No brain dumps. No shortcut memorization. Real understanding that translates to passing the exam and doing the job.
 `
   },
-];
+  {
+    slug: "snready-spring-2026-question-bank-expansion",
+    title: "Biggest Question Bank Update: 50 New CPOA Questions + CSA Now at 214 Questions",
+    description: "SNReady just dropped its largest content update. 50 new CPOA Technology questions covering MID Server upgrades, Hermes Messaging, and Instance Data Replication — plus CSA expanded to 214 questions.",
+    publishedAt: "2026-05-04",
+    author: "SNReady Team",
+    tags: ["CPOA", "CSA", "practice questions", "MID Server", "Hermes", "certifications", "study guide"],
+    featured: true,
+    readingTime: 6,
+    content: `
+## What's New
 
+Two major additions hit SNReady this week:
+
+**CPOA — 50 new Technology domain questions.** The Certified Process Optimization Administrator exam just got significantly more coverage. These new questions target the topics that trip up the most people on the actual exam: MID Server upgrades, Hermes Messaging Service, Instance Data Replication (IDR), and Cloning.
+
+**CSA — now 214 questions.** The Certified System Administrator question bank grew from 155 to 214 questions, covering Change Management, Incident Management, Database Administration, and more. That's a 38% increase.
+
+Here's what each expansion covers.
+
+## CPOA: 50 New Technology Questions
+
+The CPOA (Certified Process Optimization Administrator) exam focuses on platform administration at an advanced level. The Technology domain covers MID Server infrastructure, messaging architecture, and data replication — concepts that appear frequently on the exam and are hard to practice without a real system.
+
+### What's actually in the new questions:
+
+**MID Server Upgrades (7 questions)**
+- UI-based upgrades vs. command-line fallback procedures
+- Pre-upgrade readiness checks and validation steps
+- Troubleshooting failed or stuck MID Server upgrades
+- Upgrading MID Server clusters without service disruption
+
+**Hermes Messaging Service (8 questions)**
+- How Hermes topics and namespaces work
+- Configuring Kafka client connections to Hermes
+- Security roles required for Hermes administration
+- Producing and consuming messages between ServiceNow instances
+
+**Instance Data Replication / IDR (14 questions)**
+- Setting up producer and consumer instance configurations
+- Discrete vs. mapped replication patterns
+- Bidirectional replication configuration
+- Monitoring replication health and diagnosing delays
+- Data privacy and filtering in IDR
+
+**Cloning (5 questions)**
+- Post-clone validation steps and what to check first
+- Common clone failures and how to resolve them
+- What gets copied vs. what gets reset during a clone
+
+**Mixed Platform Administration scenarios (16 questions)**
+- Real-world admin situations combining MID Server, Hermes, and IDR
+- Troubleshooting cascading platform issues
+
+These questions were written from official ServiceNow documentation and validated against current CPOA exam blueprints. Every question includes full explanations for all answer choices — not just the correct one.
+
+[Practice CPOA Questions →](/cpoa/free-questions)
+
+## CSA: 214 Questions (Up from 155)
+
+The CSA exam bank expanded by 59 questions across four domains. These weren't filler — they target specific weak spots that study groups on Reddit and Discord consistently report.
+
+**Change Management (+20 questions)**
+- Change Advisory Board (CAB) Workbench configuration
+- Change conflict detection (scheduling overlaps on the same CI)
+- Standard vs. Normal vs. Emergency change workflows
+- Post-failed-implementation documentation requirements
+- Risk assessment and CAB approval logic
+
+**Incident Management (+12 questions)**
+- Major Incident parent-child ticket relationships
+- SLA pause conditions (why timers stop in Pending state)
+- Assignment Rules and automatic routing logic
+- Priority calculation from Impact × Urgency matrix
+- Reopening resolved incidents — correct state and workflow
+
+**Database Administration (+10 questions)**
+- Transform Map coalesce field behavior and duplicate prevention
+- Reference field vs. Glide List field (one vs. many references)
+- Import set staging table lifecycle
+- Table inheritance and child table behavior
+- Business Rule vs. calculated default for date arithmetic
+
+**Reporting & Dashboards (+8 questions)**
+- When to use a report vs. a dashboard
+- Configuring data sources and filters
+- Real-time dashboard updates for incident tracking
+
+**Self-Service & Automation (+9 questions)**
+- Service Catalog item variables and ordering logic
+- Flow Designer triggers, actions, and error handling
+- Record producer behavior and use cases
+
+[CSA Free Practice Questions →](/csa/free-questions)
+
+## Why We Added These Specific Topics
+
+We analyzed three data sources to decide what to add:
+
+1. **ServiceNow exam blueprints** — topic weights tell you WHAT to study, but not which specific sub-topics appear most
+2. **Reddit and Discord community feedback** — real exam reports from people who recently passed or failed
+3. **ServiceNow documentation depth** — topics that are well-documented but don't have good question coverage elsewhere
+
+MID Server upgrades and Hermes Messaging consistently came up as topics people felt unprepared for. These are infrastructure-level concepts that experienced admins learn through trial and error — but the exam tests them at a conceptual level you can master from practice questions.
+
+## How the Questions Are Built
+
+Every SNReady question goes through a pipeline:
+
+1. **Source material** — ServiceNow official documentation, exam blueprints, and Now Learning course content
+2. **Question drafting** — Multiple question types: single-choice, multi-select, negative (pick the wrong answer), and compound true/false
+3. **Cognitive classification** — Each question tagged as Knowledge, Understanding, or Application level
+4. **Explanation writing** — Full reasoning for every answer choice, including why wrong answers are wrong
+5. **Schema validation** — Automated checks ensure JSON format correctness, no duplicate IDs, and proper field types
+6. **Build verification** — The site won't deploy if any question file has structural errors
+
+The result is questions that actually prepare you for exam conditions — not just questions that look similar to what you've seen before.
+
+## What's Coming Next
+
+We're currently working on expanding:
+
+- **CIS-CISSM** — IT Service Management implementation questions
+- **CAD** — Application Developer exam coverage
+- **CPOA Process domain** — Flow Designer, App Engine, and process automation questions
+
+Follow [@SNReady](https://twitter.com/snready) for release announcements. Or just check back — we update multiple times per week.
+
+## Start Practicing
+
+All new questions are live now on SNReady.com:
+
+- [CPOA Free Practice Questions](/cpoa/free-questions) — includes the 50 new Technology questions
+- [CSA Free Practice Questions](/csa/free-questions) — all 214 questions
+- [Timed CPOA Mock Exam](/cpoa/timed-exam) — simulate real exam conditions
+- [Timed CSA Mock Exam](/csa/timed-exam) — 60 questions, 90 minutes
+
+---
+*Updated May 2026. All questions based on current ServiceNow Xanadu exam blueprints.*
+`
+  },
+];
 export function getAllPosts(): BlogPost[] {
   return [...blogPosts].sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
 }
