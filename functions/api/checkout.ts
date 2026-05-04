@@ -68,7 +68,8 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       success_url: `${env.SITE_URL}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${env.SITE_URL}/checkout/cancel`,
       metadata: {
-        certification: certification || "all",
+        // Normalize certification to uppercase to ensure consistent tracking in Stripe
+        certification: certification ? certification.toUpperCase() : "all",
         plan: plan,
       },
     });

@@ -173,6 +173,62 @@ export default async function CertificationPage({ params }: PageProps) {
               : `The ${cert.name} certification has no formal prerequisites, though ServiceNow recommends hands-on experience with the platform.`,
         },
       },
+      {
+        "@type": "Question",
+        name: `Is the ${cert.name} exam hard?`,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: `The difficulty of the ${cert.name} exam depends on your hands-on experience with ServiceNow. Most candidates find that practical experience with the platform, combined with focused study using practice tests, is the best way to pass. We recommend taking multiple practice exams to identify weak areas before scheduling the real exam.`,
+        },
+      },
+      {
+        "@type": "Question",
+        name: `How long should I study for the ${cert.name} exam?`,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: `Most candidates spend 2-4 weeks preparing for the ${cert.name} exam, studying for 1-2 hours per day. If you have significant ServiceNow experience, you may need less time. We recommend taking our practice test first to gauge your current level and focus your study time on weaker domains.`,
+        },
+      },
+      {
+        "@type": "Question",
+        name: `What is the ${cert.name} exam format?`,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: `The ${cert.name} exam consists of ${cert.examDetails.questionCount} questions in ${cert.examDetails.format.toLowerCase()} format. You have ${cert.examDetails.duration} minutes to complete it, and you need ${cert.examDetails.passingScore}% to pass. The exam is available online via remote proctoring or at a Pearson VUE testing center.`,
+        },
+      },
+      {
+        "@type": "Question",
+        name: `Can I take the ${cert.name} exam online?`,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: `Yes, the ${cert.name} exam can be taken online through ServiceNow's remote proctoring partner or in person at a Pearson VUE testing center. Online exams are remotely proctored and require a stable internet connection, a webcam, and a quiet private room.`,
+        },
+      },
+      {
+        "@type": "Question",
+        name: `Is ${cert.name} worth it?`,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: `The ${cert.name} certification validates your expertise in ${cert.fullName} and is valued by employers using ServiceNow. It demonstrates platform proficiency and is often a requirement for advanced roles. According to ServiceNow data, certified professionals frequently report improved career prospects and earning potential.`,
+        },
+      },
+      {
+        "@type": "Question",
+        name: `How is the ${cert.name} exam different from the CSA exam?`,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: `The CSA (Certified System Administrator) is a foundational exam covering platform administration basics. The ${cert.name} (${cert.fullName}) goes deeper into ${cert.level === "entry" ? "advanced administration topics" : "specialized " + cert.category + " skills"}, making it ideal for professionals who want to specialize or advance in specific areas of the ServiceNow platform.`,
+        },
+      },
+      {
+        "@type": "Question",
+        name: `How many times can I retake the ${cert.name} exam?`,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: `ServiceNow generally allows up to 3 exam attempts per 12-month period for most certifications. After a failed attempt, there's a mandatory waiting period before retaking. Check the specific retake policy on the ServiceNow certification portal before scheduling your exam.`,
+        },
+      },
     ],
   };
 
