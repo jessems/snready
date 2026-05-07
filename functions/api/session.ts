@@ -1,9 +1,15 @@
 import Stripe from "stripe";
+import { enqueuePurchaseFollowup } from "../lib/followup";
 import { makeSessionCookie } from "../lib/session";
 
 interface Env {
   STRIPE_SECRET_KEY: string;
   SNREADY_ACCESS: KVNamespace;
+  RESEND_API_KEY: string;
+  SITE_URL: string;
+  FOLLOWUP_DELAY_DAYS?: string;
+  FOLLOWUP_FROM_EMAIL?: string;
+  FOLLOWUP_REPLY_TO?: string;
 }
 
 // Verify a checkout session and grant access
@@ -107,6 +113,15 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
       }),
       kvOptions
     );
+
+    await enqueuePurchaseFollowup(env, {
+      sessionId: session.id,
+      email: normalizedEmail,
+      plan: effectivePlan,
+      certification,
+      certifications,
+      purchasedAt: (session.created || Math.floor(Date.now() / 1000)) * 1000,
+    });
 
     return new Response(
       JSON.stringify({
