@@ -24,15 +24,25 @@ export function CheckoutButton({
   const handleCheckout = async () => {
     setLoading(true);
     try {
-      // Store current page so we can return after checkout
-      localStorage.setItem("snready_checkout_return", window.location.pathname);
-      
+      // Store checkout context so success/cancel pages can recover intent.
+      const returnUrl = `${window.location.pathname}${window.location.search}`;
+      localStorage.setItem("snready_checkout_return", returnUrl);
+      localStorage.setItem(
+        "snready_checkout_intent",
+        JSON.stringify({
+          certification,
+          plan,
+          returnUrl,
+          startedAt: Date.now(),
+        })
+      );
+
       const response = await fetch("/api/checkout", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ certification, plan }),
+        body: JSON.stringify({ certification, plan, returnUrl }),
       });
 
       const data = await response.json();
@@ -42,11 +52,13 @@ export function CheckoutButton({
       } else {
         console.error("No checkout URL returned");
         localStorage.removeItem("snready_checkout_return");
+        localStorage.removeItem("snready_checkout_intent");
         setLoading(false);
       }
     } catch (error) {
       console.error("Checkout error:", error);
       localStorage.removeItem("snready_checkout_return");
+      localStorage.removeItem("snready_checkout_intent");
       setLoading(false);
     }
   };

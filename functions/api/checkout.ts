@@ -24,9 +24,10 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   const { request, env } = context;
 
   try {
-    const { certification, plan = "single" } = await request.json() as { 
+    const { certification, plan = "single", returnUrl } = await request.json() as {
       certification?: string;
       plan?: PlanType;
+      returnUrl?: string;
     };
 
     // Prevent single-cert checkout without specifying which certification
@@ -39,6 +40,19 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
 
     const selectedPlan = PLANS[plan] || PLANS["single"];
     const stripe = new Stripe(env.STRIPE_SECRET_KEY);
+    const normalizedCertification = certification ? certification.toUpperCase() : "ALL";
+    const safeReturnUrl = returnUrl?.startsWith("/") && !returnUrl.startsWith("//") ? returnUrl : undefined;
+    const cancelParams = new URLSearchParams({
+      plan,
+      certification: normalizedCertification,
+      session_id: "{CHECKOUT_SESSION_ID}",
+    });
+    if (safeReturnUrl) {
+      cancelParams.set("return_to", safeReturnUrl);
+    }
+    const cancelQuery = cancelParams
+      .toString()
+      .replace("%7BCHECKOUT_SESSION_ID%7D", "{CHECKOUT_SESSION_ID}");
 
     // Generate description based on plan and certification
     const productDescription = plan === "all"
@@ -66,11 +80,12 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       ],
       mode: "payment",
       success_url: `${env.SITE_URL}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${env.SITE_URL}/checkout/cancel`,
+      cancel_url: `${env.SITE_URL}/checkout/cancel?${cancelQuery}`,
       metadata: {
-        // Normalize certification to uppercase to ensure consistent tracking in Stripe
-        certification: certification ? certification.toUpperCase() : "all",
+        // Normalize certification to uppercase to ensure consistent tracking in Stripe.
+        certification: normalizedCertification,
         plan: plan,
+        returnUrl: safeReturnUrl || "",
       },
     });
 

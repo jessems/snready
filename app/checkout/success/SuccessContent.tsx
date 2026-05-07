@@ -26,6 +26,7 @@ export default function SuccessContent() {
     if (typeof window === "undefined") return null;
     const stored = localStorage.getItem("snready_checkout_return");
     if (stored) localStorage.removeItem("snready_checkout_return");
+    localStorage.removeItem("snready_checkout_intent");
     return stored;
   });
   const { refresh } = useAccess();
