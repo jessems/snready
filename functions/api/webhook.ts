@@ -1,9 +1,15 @@
 import Stripe from "stripe";
+import { enqueuePurchaseFollowup } from "../lib/followup";
 
 interface Env {
   STRIPE_SECRET_KEY: string;
   STRIPE_WEBHOOK_SECRET: string;
   SNREADY_ACCESS: KVNamespace;
+  RESEND_API_KEY: string;
+  SITE_URL: string;
+  FOLLOWUP_DELAY_DAYS?: string;
+  FOLLOWUP_FROM_EMAIL?: string;
+  FOLLOWUP_REPLY_TO?: string;
 }
 
 export const onRequestPost: PagesFunction<Env> = async (context) => {
@@ -59,6 +65,16 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
           }),
           kvOptions
         );
+
+        await enqueuePurchaseFollowup(env, {
+          sessionId: session.id,
+          email,
+          plan,
+          certification,
+          certifications: plan === "single" && certification ? [certification] : [],
+          purchasedAt: (session.created || Math.floor(Date.now() / 1000)) * 1000,
+        });
+
         console.log(`Access granted to ${email} (${plan}) until ${new Date(expiresAt).toISOString()}`);
       }
     }
