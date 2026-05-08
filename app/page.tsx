@@ -19,8 +19,15 @@ export default function Home() {
   const totalFreeQuestions = readyCerts.reduce((sum, cert) => sum + getTotalFreeQuestionCount(cert.slug), 0);
   const activeCertifications = readyCerts.length;
 
-  // Featured certifications for hero section (most popular)
-  const featuredSlugs = ["csa", "cad", "cis-itsm", "cis-df"];
+  // Feature high-demand certifications first; CIS-DF is a current recovery focus.
+  const featuredSlugs = ["csa", "cis-df", "cpoa", "cad", "cis-itsm"];
+  const sortedReadyCerts = [...readyCerts].sort((a, b) => {
+    const aIndex = featuredSlugs.indexOf(a.slug);
+    const bIndex = featuredSlugs.indexOf(b.slug);
+    const aRank = aIndex === -1 ? Number.MAX_SAFE_INTEGER : aIndex;
+    const bRank = bIndex === -1 ? Number.MAX_SAFE_INTEGER : bIndex;
+    return aRank - bRank || a.name.localeCompare(b.name);
+  });
 
   return (
     <div className="min-h-screen">
@@ -40,10 +47,10 @@ export default function Home() {
             </p>
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
-                href="/csa/practice-questions"
+                href="/cis-df/study-guide"
                 className="inline-flex h-12 items-center justify-center rounded-lg bg-emerald-600 px-8 text-base font-medium text-white transition-colors hover:bg-emerald-700"
               >
-                Start CSA Practice
+                Start CIS-DF Study Guide
               </Link>
               <Link
                 href="#certifications"
@@ -149,6 +156,53 @@ export default function Home() {
               <div className="text-3xl font-bold text-emerald-600">100%</div>
               <div className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
                 CIS Coverage
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CIS-DF Recovery Feature */}
+      <section className="bg-white py-16 dark:bg-zinc-950">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="rounded-2xl border border-emerald-200 bg-gradient-to-br from-emerald-50 to-white p-8 dark:border-emerald-900 dark:from-emerald-950/30 dark:to-zinc-900">
+            <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
+              <div>
+                <div className="inline-flex items-center rounded-full bg-emerald-100 px-3 py-1 text-sm font-medium text-emerald-700 dark:bg-emerald-900/50 dark:text-emerald-300">
+                  Popular CIS prerequisite
+                </div>
+                <h2 className="mt-4 text-3xl font-bold text-zinc-900 dark:text-zinc-50">
+                  Preparing for CIS-DF Data Foundations?
+                </h2>
+                <p className="mt-4 text-lg text-zinc-600 dark:text-zinc-400">
+                  CIS-DF is the gateway into ServiceNow implementation specialist tracks. Start with the 35% Govern domain, then drill Ingest and Insight with domain-specific questions.
+                </p>
+                <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+                  <Link
+                    href="/cis-df/study-guide"
+                    className="inline-flex h-11 items-center justify-center rounded-lg bg-emerald-600 px-5 text-sm font-medium text-white transition-colors hover:bg-emerald-700"
+                  >
+                    Read CIS-DF Study Guide
+                  </Link>
+                  <Link
+                    href="/cis-df/practice-questions/govern"
+                    className="inline-flex h-11 items-center justify-center rounded-lg border border-emerald-300 bg-white px-5 text-sm font-medium text-emerald-700 transition-colors hover:bg-emerald-50 dark:border-emerald-800 dark:bg-zinc-900 dark:text-emerald-300 dark:hover:bg-emerald-950/40"
+                  >
+                    Practice Govern Questions
+                  </Link>
+                </div>
+              </div>
+              <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
+                {[
+                  { label: "Highest-weight domain", value: "Govern 35%" },
+                  { label: "Full bank", value: `${getTotalQuestionCount("cis-df")}+ questions` },
+                  { label: "Free starter set", value: `${getTotalFreeQuestionCount("cis-df")}+ free` },
+                ].map((item) => (
+                  <div key={item.label} className="rounded-xl border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-900">
+                    <div className="text-lg font-bold text-emerald-600 dark:text-emerald-400">{item.value}</div>
+                    <div className="text-sm text-zinc-500 dark:text-zinc-400">{item.label}</div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -282,7 +336,7 @@ export default function Home() {
               </span>
             </div>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              {readyCerts.map((cert) => (
+              {sortedReadyCerts.map((cert) => (
                 <CertificationCard 
                   key={cert.slug} 
                   certification={{

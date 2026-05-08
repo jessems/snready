@@ -2,11 +2,9 @@ import { Metadata } from "next";
 import Link from "next/link";
 import {
   getCertificationBySlug,
-  getTopicsForCertification,
   getTotalQuestionCount,
-  getFreeQuestionsForCertification,
 } from "@/lib/data";
-import { generateBreadcrumbJsonLd, breadcrumbs } from "@/lib/breadcrumbs";
+import { generateBreadcrumbJsonLd } from "@/lib/breadcrumbs";
 
 export const metadata: Metadata = {
   title:
@@ -64,14 +62,15 @@ const SAMPLE_QUESTIONS = [
     question:
       "In the Build and Integrate domain, what is the purpose of the SDLC Component object?",
     options: [
-      "Tracks software license renewal dates",
-      "Represents a deployable unit within an application's deployment pipeline",
-      "Stores database schema versions",
-      "Maps user roles to technical services",
+      "Tracks software licenses and compliance",
+      "Identifies individually developed parts of an application, such as microservices and APIs",
+      "Manages user access to development environments",
+      "Stores backup copies of source code",
     ],
-    correctAnswer: "Represents a deployable unit within an application's deployment pipeline",
+    correctAnswer:
+      "Identifies individually developed parts of an application, such as microservices and APIs",
     explanation:
-      "The SDLC Component object represents a deployable unit within an application's deployment pipeline — it tracks what gets built, tested, and deployed as part of the software development lifecycle.",
+      "The SDLC Component identifies individually developed objects within an application — for example microservices and APIs that can be developed and released separately before becoming deployed service instances.",
     weight: 19,
   },
   {
@@ -80,15 +79,15 @@ const SAMPLE_QUESTIONS = [
     question:
       "What is the purpose of the Business Service object in the Service Consumption domain?",
     options: [
-      "To define technical infrastructure components",
-      "To represent the business functions that depend on technology services",
-      "To track software licensing information",
-      "To manage change request approvals",
+      "To store the technical configuration of applications",
+      "To identify business functions that depend on and are impacted by technology",
+      "To manage service catalog item offerings",
+      "To track incident tickets related to business functions",
     ],
     correctAnswer:
-      "To represent the business functions that depend on technology services",
+      "To identify business functions that depend on and are impacted by technology",
     explanation:
-      "The Business Service object sits in the Service Consumption domain and represents the business functions — the 'what the business does' — that rely on underlying technology services. This is a core CSDM concept.",
+      "Business Service represents the business functions that consume technology. It enables impact analysis: when a service instance or infrastructure CI has an issue, you can identify which part of the business is affected.",
     weight: 20,
   },
   {
@@ -97,15 +96,15 @@ const SAMPLE_QUESTIONS = [
     question:
       "In the CSDM Foundation domain, what is the primary purpose of the lifecycle stage and stage status attributes?",
     options: [
-      "To track user account deprovisioning",
-      "To indicate where a configuration item is in its operational lifecycle",
-      "To define database table relationships",
-      "To manage email notification rules",
+      "To replace all existing CI attributes with one status field",
+      "To provide standardized, non-customizable lifecycle tracking for assets and CIs",
+      "To allow unlimited custom status values",
+      "To sync status values automatically between ServiceNow instances",
     ],
     correctAnswer:
-      "To indicate where a configuration item is in its operational lifecycle",
+      "To provide standardized, non-customizable lifecycle tracking for assets and CIs",
     explanation:
-      "Lifecycle stage and stage status attributes track where a CI is in its journey from design through operations and eventual retirement. This is fundamental to CSDM and appears throughout the Govern domain.",
+      "Lifecycle stage and stage status attributes standardize lifecycle tracking across assets and CIs. ServiceNow intentionally limits customization so platform features can rely on consistent lifecycle values.",
     weight: 15,
   },
   {
@@ -216,9 +215,7 @@ const howToSteps = [
 
 export default async function CISDFStudyGuidePage() {
   const cert = getCertificationBySlug(CERT_SLUG)!;
-  const topics = getTopicsForCertification(CERT_SLUG);
   const totalQuestions = getTotalQuestionCount(CERT_SLUG);
-  const freeQuestions = await getFreeQuestionsForCertification(CERT_SLUG);
 
   const breadcrumbJsonLd = generateBreadcrumbJsonLd([
     { name: "Home", url: "/" },

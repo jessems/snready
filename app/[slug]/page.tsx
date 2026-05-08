@@ -339,6 +339,14 @@ export default async function CertificationPage({ params }: PageProps) {
                     >
                       Practice Questions
                     </Link>
+                    {slug === "cis-df" && (
+                      <Link
+                        href="/cis-df/study-guide"
+                        className="inline-flex h-12 items-center justify-center rounded-lg border border-emerald-300 bg-emerald-50 px-6 text-base font-medium text-emerald-700 transition-colors hover:bg-emerald-100 dark:border-emerald-800 dark:bg-emerald-950/40 dark:text-emerald-300"
+                      >
+                        CIS-DF Study Guide
+                      </Link>
+                    )}
                   </>
                 ) : (
                   <div className="flex flex-col gap-3">
@@ -368,6 +376,30 @@ export default async function CertificationPage({ params }: PageProps) {
             questionCount={totalQuestions}
             release={cert.release}
           />
+        )}
+
+        {/* CIS-DF Study Guide Promo */}
+        {slug === "cis-df" && (
+          <section className="border-y border-emerald-200 bg-emerald-50 py-8 dark:border-emerald-900 dark:bg-emerald-950/20">
+            <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                <div>
+                  <h2 className="text-xl font-bold text-zinc-900 dark:text-zinc-50">
+                    Start with Govern: 35% of the CIS-DF exam
+                  </h2>
+                  <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
+                    Use the CIS-DF study guide to prioritize Govern, Ingest, and Insight before you take the full mock exam.
+                  </p>
+                </div>
+                <Link
+                  href="/cis-df/study-guide"
+                  className="inline-flex h-11 items-center justify-center rounded-lg bg-emerald-600 px-5 text-sm font-medium text-white transition-colors hover:bg-emerald-700"
+                >
+                  Open the Study Guide
+                </Link>
+              </div>
+            </div>
+          </section>
         )}
 
         {/* Exam Details */}
