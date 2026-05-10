@@ -29,7 +29,9 @@ export async function generateStaticParams() {
   return getCertificationSlugs().map((slug) => ({ slug }));
 }
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const cert = getCertificationBySlug(slug);
 
@@ -57,12 +59,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     keywords.push(
       `${cert.name.toLowerCase()} dump`,
       `${cert.name.toLowerCase()} exam dumps`,
-      `${cert.name.toLowerCase()} dumps`
+      `${cert.name.toLowerCase()} dumps`,
     );
   }
 
   const year = new Date().getFullYear();
-  
+
   return {
     title: `ServiceNow ${cert.name} Practice Test [${year}] — Free Exam Questions`,
     description,
@@ -91,14 +93,21 @@ export default async function CertificationPage({ params }: PageProps) {
   const isReady = isCertificationReady(slug);
 
   // Load sample questions for the teaser section (5 questions from the free pool)
-  const allFreeQuestions = isReady ? await getFreeQuestionsForCertification(slug) : [];
+  const allFreeQuestions = isReady
+    ? await getFreeQuestionsForCertification(slug)
+    : [];
   const sampleQuestions = allFreeQuestions.slice(0, 5);
 
   // Delta exam info
   const hasDeltaExam = cert.deltaExam?.isMainline === true;
   const daysLeft = getDaysUntilDeltaDeadline(cert);
   const isWindowOpen = isDeltaWindowOpen(cert);
-  const deltaUrgency = daysLeft !== null && daysLeft <= 14 ? "urgent" : daysLeft !== null && daysLeft <= 30 ? "warning" : "normal";
+  const deltaUrgency =
+    daysLeft !== null && daysLeft <= 14
+      ? "urgent"
+      : daysLeft !== null && daysLeft <= 30
+        ? "warning"
+        : "normal";
 
   // Exam tips
   const examTips = getExamTips(slug);
@@ -122,7 +131,7 @@ export default async function CertificationPage({ params }: PageProps) {
 
   // JSON-LD structured data - Breadcrumb schema
   const breadcrumbJsonLd = generateBreadcrumbJsonLd(
-    breadcrumbs.certification(cert.name, slug)
+    breadcrumbs.certification(cert.name, slug),
   );
 
   // JSON-LD structured data - FAQ schema for exam details
@@ -263,17 +272,20 @@ export default async function CertificationPage({ params }: PageProps) {
             {deltaUrgency === "urgent" ? (
               <>
                 <span className="font-bold">Delta Exam Deadline!</span> Only{" "}
-                {daysLeft} days left to complete the {cert.deltaExam?.currentRelease} delta exam
+                {daysLeft} days left to complete the{" "}
+                {cert.deltaExam?.currentRelease} delta exam
                 <span className="ml-2">→</span>
               </>
             ) : deltaUrgency === "warning" ? (
               <>
-                {daysLeft} days remaining for the {cert.deltaExam?.currentRelease} delta exam
+                {daysLeft} days remaining for the{" "}
+                {cert.deltaExam?.currentRelease} delta exam
                 <span className="ml-2">→</span>
               </>
             ) : (
               <>
-                {cert.deltaExam?.currentRelease} Delta Exam is now open - {daysLeft} days remaining
+                {cert.deltaExam?.currentRelease} Delta Exam is now open -{" "}
+                {daysLeft} days remaining
                 <span className="ml-2">→</span>
               </>
             )}
@@ -328,8 +340,18 @@ export default async function CertificationPage({ params }: PageProps) {
                       href={`/${slug}/mock-exam`}
                       className="inline-flex h-12 items-center justify-center gap-2 rounded-lg bg-emerald-600 px-6 text-base font-medium text-white transition-colors hover:bg-emerald-700"
                     >
-                      <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      <svg
+                        className="h-5 w-5"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                        />
                       </svg>
                       Take Mock Exam
                     </Link>
@@ -339,12 +361,12 @@ export default async function CertificationPage({ params }: PageProps) {
                     >
                       Practice Questions
                     </Link>
-                    {slug === "cis-df" && (
+                    {["cis-df", "csa"].includes(slug) && (
                       <Link
-                        href="/cis-df/study-guide"
+                        href={`/${slug}/study-guide`}
                         className="inline-flex h-12 items-center justify-center rounded-lg border border-emerald-300 bg-emerald-50 px-6 text-base font-medium text-emerald-700 transition-colors hover:bg-emerald-100 dark:border-emerald-800 dark:bg-emerald-950/40 dark:text-emerald-300"
                       >
-                        CIS-DF Study Guide
+                        {cert.name} Study Guide
                       </Link>
                     )}
                   </>
@@ -388,7 +410,8 @@ export default async function CertificationPage({ params }: PageProps) {
                     Start with Govern: 35% of the CIS-DF exam
                   </h2>
                   <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
-                    Use the CIS-DF study guide to prioritize Govern, Ingest, and Insight before you take the full mock exam.
+                    Use the CIS-DF study guide to prioritize Govern, Ingest, and
+                    Insight before you take the full mock exam.
                   </p>
                 </div>
                 <Link
@@ -431,13 +454,17 @@ export default async function CertificationPage({ params }: PageProps) {
                 <div className="text-sm text-zinc-500">Exam Cost</div>
               </div>
               <div>
-                <div className={`text-2xl font-bold ${isReady ? "text-emerald-600" : "text-zinc-400 dark:text-zinc-500"}`}>
+                <div
+                  className={`text-2xl font-bold ${isReady ? "text-emerald-600" : "text-zinc-400 dark:text-zinc-500"}`}
+                >
                   {isReady ? `${totalQuestions}+` : "—"}
                 </div>
                 <div className="text-sm text-zinc-500">Practice Questions</div>
               </div>
               <div>
-                <div className={`text-2xl font-bold ${isReady ? "text-emerald-600" : "text-zinc-400 dark:text-zinc-500"}`}>
+                <div
+                  className={`text-2xl font-bold ${isReady ? "text-emerald-600" : "text-zinc-400 dark:text-zinc-500"}`}
+                >
                   {isReady ? freeQuestionCount : "—"}
                 </div>
                 <div className="text-sm text-zinc-500">Free Questions</div>
@@ -452,12 +479,32 @@ export default async function CertificationPage({ params }: PageProps) {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-sm font-medium text-emerald-600 hover:text-emerald-700 dark:text-emerald-400 dark:hover:text-emerald-300"
                 >
-                  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  <svg
+                    className="h-4 w-4"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                    />
                   </svg>
                   View Official Exam Blueprint on Now Learning
-                  <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  <svg
+                    className="h-3.5 w-3.5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                    />
                   </svg>
                 </a>
               </div>
@@ -480,20 +527,43 @@ export default async function CertificationPage({ params }: PageProps) {
                   className="inline-flex items-center gap-1 text-xs font-medium text-zinc-500 hover:text-emerald-600 dark:text-zinc-400 dark:hover:text-emerald-400"
                 >
                   <span className="inline-flex items-center gap-1 rounded-full bg-zinc-100 px-2 py-0.5 dark:bg-zinc-800">
-                    <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    <svg
+                      className="h-3 w-3"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
                     </svg>
                     From Official Blueprint
                   </span>
-                  <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  <svg
+                    className="h-3 w-3"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                    />
                   </svg>
                 </a>
               )}
             </div>
             <p className="mt-2 text-zinc-600 dark:text-zinc-400">
-              The {cert.name} exam covers these key areas{cert.blueprintUrl ? ' (per the official ServiceNow exam blueprint)' : ''}. Master each domain to
-              maximize your chances of passing.
+              The {cert.name} exam covers these key areas
+              {cert.blueprintUrl
+                ? " (per the official ServiceNow exam blueprint)"
+                : ""}
+              . Master each domain to maximize your chances of passing.
             </p>
             <div className="mt-8 grid gap-4 sm:grid-cols-2">
               {cert.domains.map((domain) => {
@@ -563,7 +633,11 @@ export default async function CertificationPage({ params }: PageProps) {
         {examTips && (
           <section className="py-8">
             <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-              <ExamTipsSnippet tips={examTips} certSlug={slug} certName={cert.name} />
+              <ExamTipsSnippet
+                tips={examTips}
+                certSlug={slug}
+                certName={cert.name}
+              />
             </div>
           </section>
         )}
@@ -603,23 +677,44 @@ export default async function CertificationPage({ params }: PageProps) {
             ) : (
               <div className="mt-8 rounded-xl border-2 border-dashed border-zinc-200 bg-zinc-50/50 p-6 sm:p-10 text-center dark:border-zinc-700 dark:bg-zinc-800/50">
                 <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-zinc-100 dark:bg-zinc-800">
-                  <svg className="h-6 w-6 text-zinc-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  <svg
+                    className="h-6 w-6 text-zinc-400"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={1.5}
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
                   </svg>
                 </div>
                 <p className="text-lg font-medium text-zinc-600 dark:text-zinc-300">
                   Practice questions coming soon
                 </p>
                 <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">
-                  We&apos;re preparing {cert.name} practice questions. In the meantime:
+                  We&apos;re preparing {cert.name} practice questions. In the
+                  meantime:
                 </p>
                 <Link
                   href="/csa"
                   className="mt-4 inline-flex items-center gap-2 rounded-lg border-2 border-emerald-200 bg-emerald-50 px-5 py-2.5 text-sm font-medium text-emerald-700 transition-colors hover:border-emerald-300 hover:bg-emerald-100 dark:border-emerald-800 dark:bg-emerald-950/50 dark:text-emerald-300"
                 >
                   Try CSA Practice Questions
-                  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                  <svg
+                    className="h-4 w-4"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+                    />
                   </svg>
                 </Link>
               </div>
@@ -651,7 +746,8 @@ export default async function CertificationPage({ params }: PageProps) {
                       {cert.name} Questions Are Free!
                     </h2>
                     <p className="mt-4 text-lg text-emerald-100">
-                      All {totalQuestions}+ practice questions are currently free — no payment required.
+                      All {totalQuestions}+ practice questions are currently
+                      free — no payment required.
                     </p>
                   </div>
 
@@ -670,12 +766,18 @@ export default async function CertificationPage({ params }: PageProps) {
                       Want access to ALL 19 certifications?
                     </p>
                     <div className="max-w-sm mx-auto rounded-xl bg-white p-6 text-center">
-                      <h3 className="text-lg font-semibold text-emerald-800">Lifetime All-Access</h3>
+                      <h3 className="text-lg font-semibold text-emerald-800">
+                        Lifetime All-Access
+                      </h3>
                       <div className="mt-2">
-                        <span className="text-3xl font-bold text-emerald-700">$49</span>
+                        <span className="text-3xl font-bold text-emerald-700">
+                          $49
+                        </span>
                       </div>
                       <ul className="mt-4 space-y-1 text-sm text-emerald-700">
-                        <li className="font-semibold">ALL certifications included</li>
+                        <li className="font-semibold">
+                          ALL certifications included
+                        </li>
                         <li>Lifetime access — never expires</li>
                       </ul>
                       <CheckoutButton
@@ -695,18 +797,25 @@ export default async function CertificationPage({ params }: PageProps) {
                       Get Full {cert.name} Access
                     </h2>
                     <p className="mt-4 text-lg text-emerald-100">
-                      Unlock all {totalQuestions}+ practice questions with detailed explanations
+                      Unlock all {totalQuestions}+ practice questions with
+                      detailed explanations
                     </p>
                   </div>
 
                   <div className="mt-10 grid gap-6 md:grid-cols-2 max-w-3xl mx-auto">
                     {/* Single Cert Lifetime Plan */}
                     <div className="rounded-xl bg-white/10 backdrop-blur p-6 text-center">
-                      <h3 className="text-lg font-semibold text-white">{cert.name} Only — Lifetime</h3>
+                      <h3 className="text-lg font-semibold text-white">
+                        {cert.name} Only — Lifetime
+                      </h3>
                       <div className="mt-4">
-                        <span className="text-4xl font-bold text-white">$9</span>
+                        <span className="text-4xl font-bold text-white">
+                          $9
+                        </span>
                       </div>
-                      <p className="mt-2 text-sm text-emerald-200">Because we want you to succeed ✨</p>
+                      <p className="mt-2 text-sm text-emerald-200">
+                        Because we want you to succeed ✨
+                      </p>
                       <ul className="mt-4 space-y-2 text-sm text-emerald-100">
                         <li>All {cert.name} questions</li>
                         <li>Timed mock exams</li>
@@ -728,18 +837,28 @@ export default async function CertificationPage({ params }: PageProps) {
                       <div className="absolute top-0 right-0 bg-amber-500 text-white text-xs font-bold px-3 py-1 rounded-bl-lg">
                         BEST VALUE
                       </div>
-                      <h3 className="text-lg font-semibold text-emerald-800">Lifetime Access</h3>
+                      <h3 className="text-lg font-semibold text-emerald-800">
+                        Lifetime Access
+                      </h3>
                       <div className="mt-4">
-                        <span className="text-4xl font-bold text-emerald-700">$49</span>
+                        <span className="text-4xl font-bold text-emerald-700">
+                          $49
+                        </span>
                       </div>
                       <ul className="mt-6 space-y-2 text-sm text-emerald-700">
-                        <li className="font-semibold text-emerald-800">ALL certifications included</li>
+                        <li className="font-semibold text-emerald-800">
+                          ALL certifications included
+                        </li>
                         <li>All practice questions</li>
                         <li>Timed mock exams</li>
                         <li>Personalized study plan generator</li>
                         <li>Detailed explanations</li>
-                        <li className="font-semibold">Lifetime access — never expires</li>
-                        <li className="font-semibold">Future updates included</li>
+                        <li className="font-semibold">
+                          Lifetime access — never expires
+                        </li>
+                        <li className="font-semibold">
+                          Future updates included
+                        </li>
                       </ul>
                       <CheckoutButton
                         certification={cert.name}
@@ -752,7 +871,8 @@ export default async function CertificationPage({ params }: PageProps) {
                   </div>
 
                   <p className="mt-6 text-center text-sm text-emerald-200">
-                    {freeQuestionCount} free questions available to try first • One-time payment, no subscription
+                    {freeQuestionCount} free questions available to try first •
+                    One-time payment, no subscription
                   </p>
                 </>
               )}
@@ -812,9 +932,7 @@ export default async function CertificationPage({ params }: PageProps) {
         </section>
 
         {/* Related Resources */}
-        {isReady && (
-          <RelatedResources certSlug={slug} certName={cert.name} />
-        )}
+        {isReady && <RelatedResources certSlug={slug} certName={cert.name} />}
 
         {/* CTA */}
         <section className="bg-emerald-600 py-16 dark:bg-emerald-700">
