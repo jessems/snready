@@ -1,16 +1,12 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import {
-  getCertificationBySlug,
-  getTotalQuestionCount,
-} from "@/lib/data";
+import { getCertificationBySlug, getTotalQuestionCount } from "@/lib/data";
 import { generateBreadcrumbJsonLd } from "@/lib/breadcrumbs";
 
 export const metadata: Metadata = {
-  title:
-    "How to Pass CIS-DF (Data Foundations) — Complete Study Guide [2026]",
+  title: "How to Pass CIS-DF (Data Foundations) — Complete Study Guide [2026]",
   description:
-    "Reddit-informed CIS-DF study guide for the ServiceNow Certified Implementation Specialist - Data Foundations exam. Domain breakdown, community study advice, common mistakes, and free practice questions. Govern (35%) is the highest-weight domain — here's how to master it.",
+    "Reddit-informed CIS-DF study guide for the ServiceNow Certified Implementation Specialist - Data Foundations exam. Includes a 4-week study calendar, domain-by-domain plan, PDI lab checklist, common mistakes, and free practice questions. Govern (35%) is the highest-weight domain — here's how to master it.",
   keywords: [
     "CIS-DF study guide",
     "CIS-DF exam prep",
@@ -31,7 +27,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "How to Pass CIS-DF | Complete Study Guide | SNReady",
     description:
-      "Domain-by-domain study plan for CIS-DF. Govern is 35% of the exam. Free practice questions included.",
+      "Domain-by-domain CIS-DF study plan with a 4-week calendar, PDI labs, readiness checklist, and free practice questions.",
     type: "article",
   },
 };
@@ -110,7 +106,8 @@ const SAMPLE_QUESTIONS = [
   {
     topic: "CSDM Fundamentals",
     topicSlug: "csdm-fundamentals",
-    question: "What is the primary purpose of the Common Service Data Model (CSDM)?",
+    question:
+      "What is the primary purpose of the Common Service Data Model (CSDM)?",
     options: [
       "To provide a standardized way to represent service data across the Now Platform",
       "To replace the CMDB with a new database schema",
@@ -173,6 +170,16 @@ const faqData = [
       "Across ServiceNow Reddit discussions, experienced practitioners repeatedly recommend three things: follow the official NowLearning learning path and exam blueprint, study the CSDM material instead of memorizing isolated table names, and use a personal developer instance for CMDB Health, relationships, Discovery/MID Server, and dashboard practice. Community advice also warns against relying on dumps because implementation-specialist exams test scenario judgment, not just definitions.",
   },
   {
+    question: "How should I structure a 4-week CIS-DF study plan?",
+    answer:
+      "Week 1 should cover CSDM fundamentals and baseline practice. Week 2 should focus heavily on Govern because it is 35% of the exam. Week 3 should cover Ingest, Insight, and Configuration with hands-on PDI labs. Week 4 should be timed mock exams, wrong-answer review, and targeted remediation until you score 80% or higher consistently.",
+  },
+  {
+    question: "What hands-on labs should I do before taking CIS-DF?",
+    answer:
+      "At minimum, use a ServiceNow personal developer instance to inspect CMDB class hierarchy, create a small CI relationship model, review CMDB Health, compare identification and reconciliation behavior, open Query Builder or dashboard views, and trace how business services connect to service instances and supporting CIs.",
+  },
+  {
     question: "Is there a delta exam for CIS-DF?",
     answer:
       "Yes. ServiceNow releases delta exams after each major release (e.g., Zurich). The delta exam covers only what changed in the new release and is a prerequisite for maintaining your certification. Delta exams typically have 10 questions, are 20 minutes long, and must be completed within the designated exam window.",
@@ -216,6 +223,140 @@ const howToSteps = [
     text: "After studying all domains, take at least 2-3 full-length CIS-DF practice exams under timed conditions. Review every wrong answer and trace it back to the specific domain and concept. Aim for scores consistently above 80% before scheduling the real exam.",
     position: 6,
   },
+];
+
+const fourWeekPlan = [
+  {
+    week: "Week 1",
+    title: "Build the CSDM foundation",
+    goal: "Understand the service model before memorizing products or table labels.",
+    focus: "CSDM Fundamentals + first diagnostic test",
+    tasks: [
+      "Read the official blueprint and map every objective to one of the five domains.",
+      "Draw Foundation, Service Usage, and Service Consumption domains from memory.",
+      "Take 25-40 mixed practice questions to establish a baseline score.",
+    ],
+    success:
+      "You can explain Business Service, Service Offering, Service Instance, Application Service, and supporting CIs without looking them up.",
+  },
+  {
+    week: "Week 2",
+    title: "Win Govern first",
+    goal: "Spend the most time on the domain worth 35% of the exam.",
+    focus: "Govern: data health, ownership, lifecycle, quality controls",
+    tasks: [
+      "Review CMDB Health KPIs and what each metric says about trustworthiness.",
+      "Practice lifecycle stage and stage status scenarios for assets, CIs, and services.",
+      "Answer Govern-only questions until you can justify the business reason behind each control.",
+    ],
+    success:
+      "Govern practice score is at least 80%, and missed questions are about edge cases rather than definitions.",
+  },
+  {
+    week: "Week 3",
+    title: "Connect ingestion to insight",
+    goal: "Understand how data enters the CMDB and how teams use it afterward.",
+    focus: "Ingest + Insight + Configuration",
+    tasks: [
+      "Compare manual CI creation, import sets, Discovery, MID Server, and Service Graph Connectors.",
+      "Practice IRE questions until identification vs. reconciliation is automatic.",
+      "Use a PDI to inspect CMDB Health, class hierarchy, relationships, and reporting views.",
+    ],
+    success:
+      "You can trace a CI from ingestion through reconciliation, relationship modeling, health reporting, and impact analysis.",
+  },
+  {
+    week: "Week 4",
+    title: "Simulate the real exam",
+    goal: "Convert knowledge into timed exam performance.",
+    focus: "Full mock exams + wrong-answer remediation",
+    tasks: [
+      "Take at least two 60-question timed mock exams.",
+      "Create a miss log grouped by domain and concept, not just by question stem.",
+      "Re-study only the weak domains, then retest until full-exam scores are consistently 80%+.",
+    ],
+    success:
+      "You can complete 60 questions in under 90 minutes, pass by a safe margin, and explain every missed concept.",
+  },
+];
+
+const pdiLabChecklist = [
+  {
+    lab: "CSDM relationship map",
+    domain: "CSDM Fundamentals / Govern",
+    outcome:
+      "Create or inspect a path from Business Service to Service Offering, Service Instance, Application Service, and underlying CIs.",
+  },
+  {
+    lab: "CMDB class hierarchy review",
+    domain: "Configuration",
+    outcome:
+      "Open the CI class hierarchy and identify how inherited fields and class-specific fields affect governance and reporting.",
+  },
+  {
+    lab: "CMDB Health dashboard walkthrough",
+    domain: "Govern / Insight",
+    outcome:
+      "Review completeness, correctness, compliance, and relationship health signals and explain what each metric would trigger operationally.",
+  },
+  {
+    lab: "Identification vs. reconciliation trace",
+    domain: "Ingest",
+    outcome:
+      "Compare how incoming CI data is matched to an existing record versus how attribute updates are accepted or rejected by source precedence.",
+  },
+  {
+    lab: "Query Builder or report drilldown",
+    domain: "Insight",
+    outcome:
+      "Build or inspect a CMDB query/report that answers an impact-analysis question, not just a list of CIs.",
+  },
+  {
+    lab: "Manual vs. automated data source decision",
+    domain: "Ingest / Govern",
+    outcome:
+      "Document when manual maintenance is acceptable and when Discovery, Service Graph Connectors, or MID Server-backed ingestion is required.",
+  },
+];
+
+const decisionDrills = [
+  {
+    prompt:
+      "A duplicate CI appears after a new integration starts loading server records.",
+    test: "Do you change reconciliation precedence, or identification rules?",
+    answer:
+      "Start with identification. Duplicate records usually mean the platform failed to recognize an incoming record as the same CI. Reconciliation governs attribute updates after the CI has already been identified.",
+  },
+  {
+    prompt:
+      "A business owner asks why CSDM distinguishes Business Service from Technical Service.",
+    test: "Can you explain value consumption versus technical delivery?",
+    answer:
+      "Business Services represent business capabilities/functions that consume technology. Technical services and service instances model how technology is delivered and supported. The separation enables impact and ownership analysis.",
+  },
+  {
+    prompt:
+      "A small team wants to maintain all CI relationships manually because it is faster this month.",
+    test: "Can you identify when that becomes governance risk?",
+    answer:
+      "Manual updates can work briefly for tiny, stable scopes, but they do not scale. As data volume or change rate grows, automated ingestion plus governance controls is needed to keep CMDB trust high.",
+  },
+  {
+    prompt:
+      "A dashboard shows many stale or incomplete CIs in a high-priority service map.",
+    test: "Do you treat it as reporting cosmetics or operational risk?",
+    answer:
+      "Treat it as operational risk. Poor CMDB health affects incident impact, change risk, asset visibility, and security response. Govern questions often test the consequence of untrusted data.",
+  },
+];
+
+const readinessChecklist = [
+  "Score 80% or higher on two full-length timed CIS-DF mock exams.",
+  "Explain every Govern objective without reading notes.",
+  "Describe the difference between identification and reconciliation using an example.",
+  "Draw the CSDM service relationship chain from memory.",
+  "Use a PDI to locate CMDB Health, class hierarchy, and relationship views.",
+  "Review all missed practice questions by domain and rewrite the underlying rule in your own words.",
 ];
 
 const communityTakeaways = [
@@ -456,11 +597,11 @@ export default async function CISDFStudyGuidePage() {
             </h1>
 
             <p className="mt-6 text-lg text-zinc-600 dark:text-zinc-300">
-              CIS-DF is the gateway to all ServiceNow CIS specialty certifications.
-              The exam tests your ability to build, govern, and report on trusted
-              configuration data using the CMDB and CSDM. This guide gives you a
-              domain-by-domain breakdown, a proven study plan, and free practice
-              questions — everything you need to pass.
+              CIS-DF is the gateway to all ServiceNow CIS specialty
+              certifications. The exam tests your ability to build, govern, and
+              report on trusted configuration data using the CMDB and CSDM. This
+              guide gives you a domain-by-domain breakdown, a proven study plan,
+              and free practice questions — everything you need to pass.
             </p>
 
             {/* Quick stats */}
@@ -502,7 +643,7 @@ export default async function CISDFStudyGuidePage() {
                     d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
                   />
                 </svg>
-                Take a Free Mock Exam
+                Take a Timed Mock Exam
               </Link>
               <Link
                 href="/cis-df/practice-questions"
@@ -522,10 +663,10 @@ export default async function CISDFStudyGuidePage() {
             </h2>
             <p className="mt-3 text-zinc-600 dark:text-zinc-400">
               The CIS-DF exam validates your ability to design, implement, and
-              govern a trusted CMDB using ServiceNow&apos;s Common Service Data Model
-              (CSDM). It is a core prerequisite for all CIS specialty
-              certifications including CIS-ITSM, CIS-HAM, CIS-SAM, CIS-Discovery,
-              CIS-SM, CIS-SIR, and CIS-VR.
+              govern a trusted CMDB using ServiceNow&apos;s Common Service Data
+              Model (CSDM). It is a core prerequisite for all CIS specialty
+              certifications including CIS-ITSM, CIS-HAM, CIS-SAM,
+              CIS-Discovery, CIS-SM, CIS-SIR, and CIS-VR.
             </p>
             <div className="mt-6 grid gap-4 sm:grid-cols-2">
               <div className="rounded-lg bg-white p-5 shadow-sm dark:bg-zinc-900">
@@ -721,6 +862,141 @@ export default async function CISDFStudyGuidePage() {
           </div>
         </section>
 
+        {/* Four Week Study Calendar */}
+        <section className="border-t border-zinc-200 bg-white py-16 dark:border-zinc-800 dark:bg-zinc-950">
+          <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <p className="text-sm font-semibold uppercase tracking-wide text-emerald-600 dark:text-emerald-400">
+                  4-week study calendar
+                </p>
+                <h2 className="mt-2 text-2xl font-bold text-zinc-900 dark:text-zinc-50">
+                  A realistic CIS-DF prep plan
+                </h2>
+              </div>
+              <Link
+                href="/cis-df/mock-exam"
+                className="inline-flex items-center justify-center rounded-lg border border-emerald-200 px-4 py-2 text-sm font-semibold text-emerald-700 hover:bg-emerald-50 dark:border-emerald-800 dark:text-emerald-300 dark:hover:bg-emerald-950/40"
+              >
+                Start with a baseline mock exam →
+              </Link>
+            </div>
+            <p className="mt-3 text-zinc-600 dark:text-zinc-400">
+              Use this as the repeatable model for SNReady study guides: a
+              simple calendar, weighted by the official exam blueprint, with
+              clear exit criteria for each week.
+            </p>
+
+            <div className="mt-8 grid gap-4 sm:grid-cols-2">
+              {fourWeekPlan.map((week) => (
+                <div
+                  key={week.week}
+                  className="rounded-xl border border-zinc-200 bg-zinc-50 p-5 dark:border-zinc-800 dark:bg-zinc-900"
+                >
+                  <div className="flex items-center justify-between gap-3">
+                    <span className="rounded-full bg-emerald-100 px-3 py-1 text-xs font-bold uppercase tracking-wide text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300">
+                      {week.week}
+                    </span>
+                    <span className="text-xs font-medium text-zinc-500 dark:text-zinc-400">
+                      {week.focus}
+                    </span>
+                  </div>
+                  <h3 className="mt-4 font-semibold text-zinc-900 dark:text-zinc-100">
+                    {week.title}
+                  </h3>
+                  <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+                    {week.goal}
+                  </p>
+                  <ul className="mt-4 space-y-2">
+                    {week.tasks.map((task) => (
+                      <li
+                        key={task}
+                        className="flex items-start gap-2 text-sm text-zinc-600 dark:text-zinc-400"
+                      >
+                        <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-500" />
+                        {task}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="mt-4 rounded-lg border border-emerald-100 bg-white p-3 text-sm text-emerald-900 dark:border-emerald-900/60 dark:bg-emerald-950/20 dark:text-emerald-100">
+                    <span className="font-semibold">Ready to move on:</span>{" "}
+                    {week.success}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Hands-on Labs */}
+        <section className="border-t border-zinc-200 bg-zinc-50 py-16 dark:border-zinc-800 dark:bg-zinc-900">
+          <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+            <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-50">
+              CIS-DF PDI Lab Checklist
+            </h2>
+            <p className="mt-2 text-zinc-600 dark:text-zinc-400">
+              CIS-DF rewards candidates who have seen CMDB and CSDM concepts in
+              the platform. Do these labs in a Personal Developer Instance
+              before you rely on flashcards.
+            </p>
+
+            <div className="mt-8 grid gap-4 sm:grid-cols-2">
+              {pdiLabChecklist.map((lab) => (
+                <div
+                  key={lab.lab}
+                  className="rounded-xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-950"
+                >
+                  <div className="text-xs font-semibold uppercase tracking-wide text-emerald-600 dark:text-emerald-400">
+                    {lab.domain}
+                  </div>
+                  <h3 className="mt-2 font-semibold text-zinc-900 dark:text-zinc-100">
+                    {lab.lab}
+                  </h3>
+                  <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+                    {lab.outcome}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Decision Drills */}
+        <section className="border-t border-zinc-200 py-16 dark:border-zinc-800">
+          <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+            <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-50">
+              Scenario Drills: Think Like the Exam
+            </h2>
+            <p className="mt-2 text-zinc-600 dark:text-zinc-400">
+              Use these as mini oral exams. If you can explain the decision, you
+              are studying the concept. If you can only identify a keyword, keep
+              practicing.
+            </p>
+
+            <div className="mt-8 space-y-4">
+              {decisionDrills.map((drill) => (
+                <div
+                  key={drill.prompt}
+                  className="rounded-xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-900"
+                >
+                  <h3 className="font-semibold text-zinc-900 dark:text-zinc-100">
+                    {drill.prompt}
+                  </h3>
+                  <p className="mt-2 text-sm font-medium text-amber-700 dark:text-amber-300">
+                    Exam test: {drill.test}
+                  </p>
+                  <p className="mt-3 text-sm text-zinc-600 dark:text-zinc-400">
+                    <span className="font-semibold text-zinc-900 dark:text-zinc-200">
+                      Strong answer:
+                    </span>{" "}
+                    {drill.answer}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Community / Reddit Takeaways */}
         <section className="border-t border-zinc-200 py-16 dark:border-zinc-800">
           <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
@@ -734,10 +1010,10 @@ export default async function CISDFStudyGuidePage() {
               <p className="mt-3 text-zinc-600 dark:text-zinc-400">
                 Reddit does not have many CIS-DF-specific exam reports yet, but
                 the recurring advice across r/servicenow CMDB, CSDM, Discovery,
-                and implementation-specialist certification threads is consistent:
-                use the official blueprint, practice hands-on, and learn why
-                data governance decisions are made — not just what fields are
-                named.
+                and implementation-specialist certification threads is
+                consistent: use the official blueprint, practice hands-on, and
+                learn why data governance decisions are made — not just what
+                fields are named.
               </p>
 
               <div className="mt-8 space-y-4">
@@ -1017,27 +1293,30 @@ export default async function CISDFStudyGuidePage() {
               Continue Your ServiceNow Journey
             </h2>
             <p className="mt-2 text-zinc-600 dark:text-zinc-400">
-              CIS-DF opens the door to these certifications. Build on your
-              Data Foundations knowledge.
+              CIS-DF opens the door to these certifications. Build on your Data
+              Foundations knowledge.
             </p>
 
             <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {[
                 {
                   name: "CIS-ITSM",
-                  fullName: "Certified Implementation Specialist - IT Service Management",
+                  fullName:
+                    "Certified Implementation Specialist - IT Service Management",
                   href: "/cis-itsm",
                   weight: "20% Change, 20% Incident",
                 },
                 {
                   name: "CIS-HAM",
-                  fullName: "Certified Implementation Specialist - Hardware Asset Management",
+                  fullName:
+                    "Certified Implementation Specialist - Hardware Asset Management",
                   href: "/cis-ham",
                   weight: "Requires CIS-DF",
                 },
                 {
                   name: "CIS-SAM",
-                  fullName: "Certified Implementation Specialist - Software Asset Management",
+                  fullName:
+                    "Certified Implementation Specialist - Software Asset Management",
                   href: "/cis-sam",
                   weight: "Requires CIS-DF",
                 },
@@ -1095,6 +1374,61 @@ export default async function CISDFStudyGuidePage() {
           </div>
         </section>
 
+        {/* Final Readiness Checklist */}
+        <section className="border-t border-zinc-200 bg-zinc-50 py-16 dark:border-zinc-800 dark:bg-zinc-950">
+          <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+            <div className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+                <div>
+                  <p className="text-sm font-semibold uppercase tracking-wide text-emerald-600 dark:text-emerald-400">
+                    Final gate
+                  </p>
+                  <h2 className="mt-2 text-2xl font-bold text-zinc-900 dark:text-zinc-50">
+                    Book the exam only when these are true
+                  </h2>
+                  <p className="mt-2 text-zinc-600 dark:text-zinc-400">
+                    This is the pass-readiness checklist SNReady should use
+                    across future study guides. It turns vague confidence into
+                    observable exam-prep signals.
+                  </p>
+                </div>
+                <Link
+                  href="/cis-df/practice-questions"
+                  className="inline-flex shrink-0 items-center justify-center rounded-lg bg-emerald-600 px-4 py-2 text-sm font-semibold text-white hover:bg-emerald-700"
+                >
+                  Drill weak domains →
+                </Link>
+              </div>
+
+              <div className="mt-6 grid gap-3 sm:grid-cols-2">
+                {readinessChecklist.map((item) => (
+                  <div
+                    key={item}
+                    className="flex items-start gap-3 rounded-lg border border-zinc-100 bg-zinc-50 p-3 dark:border-zinc-800 dark:bg-zinc-950"
+                  >
+                    <svg
+                      className="mt-0.5 h-5 w-5 shrink-0 text-emerald-500"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 12l2 2 4-4"
+                      />
+                    </svg>
+                    <span className="text-sm text-zinc-700 dark:text-zinc-300">
+                      {item}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Bottom CTA */}
         <section className="bg-emerald-600 py-16 dark:bg-emerald-700">
           <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
@@ -1111,7 +1445,7 @@ export default async function CISDFStudyGuidePage() {
                 href="/cis-df/mock-exam"
                 className="inline-flex h-12 items-center justify-center gap-2 rounded-lg bg-white px-8 text-base font-medium text-emerald-600 transition-colors hover:bg-emerald-50"
               >
-                Take the CIS-DF Mock Exam — Free
+                Take the CIS-DF Timed Mock Exam
               </Link>
               <Link
                 href="/cis-df/practice-questions"
