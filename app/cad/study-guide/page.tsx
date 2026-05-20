@@ -18,6 +18,9 @@ export const metadata: Metadata = {
     "GlideRecord exam questions",
     "ServiceNow scripting certification",
     "CAD mock exam",
+    "ServiceNow CAD decision matrix",
+    "CAD GlideRecord practice",
+    "CAD Business Rule timing",
   ],
   alternates: {
     canonical: "/cad/study-guide",
@@ -110,6 +113,17 @@ const faqData = [
     question: "When am I ready to schedule the CAD exam?",
     answer:
       "Schedule the exam after you can score 80% or higher on two timed mixed-domain mock exams, explain every missed question by execution context, and complete core app-development tasks without following step-by-step instructions.",
+  },
+  {
+    question:
+      "What is the fastest way to improve CAD scenario-question accuracy?",
+    answer:
+      "Build a decision matrix for common ServiceNow developer artifacts. For every missed question, label the requirement as data validation, form behavior, server automation, reusable logic, integration, security, or deployment. Then map it to the correct tool and execution context instead of memorizing isolated definitions.",
+  },
+  {
+    question: "Which CAD topics should I drill the week before the exam?",
+    answer:
+      "In the final week, drill GlideRecord and GlideAjax patterns, Business Rule timing, UI Policy versus Client Script decisions, Script Include reuse, REST/import scenarios, ACL and cross-scope behavior, update sets or app repository movement, and ATF validation. These topics appear as mixed implementation scenarios rather than standalone vocabulary.",
   },
 ];
 
@@ -315,6 +329,60 @@ const commonMistakes = [
     body: "Update sets, app repository/source control, and ATF appear in application lifecycle questions. CAD is about shipping safe apps, not just writing scripts.",
     icon: "🚢",
   },
+];
+
+const cadDecisionMatrix = [
+  {
+    requirement: "Set or validate a value before a record is saved",
+    bestTool: "Before Business Rule or Data Policy",
+    why: "Use server-side enforcement for data integrity. A before rule can set values on current; a Data Policy enforces field rules beyond the form.",
+    examTrap:
+      "Choosing an after Business Rule and calling current.update(), which can cause recursion or unnecessary writes.",
+  },
+  {
+    requirement: "Show, hide, require, or make fields read-only on a form",
+    bestTool: "UI Policy first; Client Script when logic is too complex",
+    why: "UI Policies express simple field behavior declaratively and are easier to maintain than script-heavy form logic.",
+    examTrap:
+      "Using Client Scripts for every form requirement and forgetting reverse-if-false or server-side enforcement needs.",
+  },
+  {
+    requirement: "Let a Client Script retrieve server-side data",
+    bestTool: "GlideAjax with a client-callable Script Include",
+    why: "The browser cannot safely run server APIs directly. GlideAjax keeps server logic reusable while returning only the needed answer.",
+    examTrap:
+      "Trying to use GlideRecord in client code or putting sensitive logic in the browser.",
+  },
+  {
+    requirement: "Reuse business logic across rules, APIs, and jobs",
+    bestTool: "Script Include",
+    why: "Script Includes centralize server-side logic, reduce duplicate code, and can be scoped or exposed intentionally.",
+    examTrap:
+      "Copying the same code into multiple Business Rules and missing scope or accessibility settings.",
+  },
+  {
+    requirement: "Load external records and transform them into a table",
+    bestTool: "Import Set + Transform Map",
+    why: "Import Sets stage incoming data; Transform Maps handle field mapping, transform scripts, and coalesce behavior.",
+    examTrap:
+      "Writing a custom integration before recognizing the built-in staging and transform pattern.",
+  },
+  {
+    requirement: "Expose custom server logic to external systems",
+    bestTool: "Scripted REST API",
+    why: "Scripted REST APIs define resources, HTTP methods, request parsing, response shape, and application-specific behavior.",
+    examTrap:
+      "Confusing inbound custom APIs with outbound REST Messages or generic Table API access.",
+  },
+];
+
+const codePatternChecklist = [
+  "Write GlideRecord queries with addQuery(), addEncodedQuery(), query(), next(), getValue(), and setValue() until you can predict each result.",
+  "Compare before, after, async, display, and query Business Rules in a table that logs execution order and available objects.",
+  "Build one Client Script that uses g_form only and one that calls GlideAjax, then explain why the second needed a Script Include.",
+  "Create a UI Policy and an equivalent Client Script for the same behavior; document which is easier to audit and maintain.",
+  "Build a Transform Map with coalesce enabled and test what happens when incoming data matches versus creates a record.",
+  "Move a small scoped-app change through update-set or app repository flow, then verify the behavior with an ATF test.",
 ];
 
 const sampleQuestions = [
@@ -679,6 +747,84 @@ export default function CADStudyGuidePage() {
         </section>
 
         <section className="border-t border-zinc-200 bg-zinc-50 py-16 dark:border-zinc-800 dark:bg-zinc-950">
+          <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+            <div className="max-w-3xl">
+              <p className="text-sm font-semibold uppercase tracking-wide text-emerald-600 dark:text-emerald-400">
+                CAD scenario decision matrix
+              </p>
+              <h2 className="mt-2 text-2xl font-bold text-zinc-900 dark:text-zinc-50">
+                Choose the right ServiceNow development artifact
+              </h2>
+              <p className="mt-3 text-zinc-600 dark:text-zinc-400">
+                CAD rarely rewards memorizing one API in isolation. It rewards
+                picking the safest artifact for a requirement, then explaining
+                execution context, maintainability, scope, and data integrity.
+                Use this matrix when reviewing missed questions.
+              </p>
+            </div>
+
+            <div className="mt-8 space-y-4">
+              {cadDecisionMatrix.map((item) => (
+                <div
+                  key={item.requirement}
+                  className="rounded-xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-900"
+                >
+                  <div className="grid gap-4 md:grid-cols-[1.1fr_0.9fr]">
+                    <div>
+                      <div className="text-xs font-semibold uppercase tracking-wide text-zinc-500 dark:text-zinc-400">
+                        Requirement
+                      </div>
+                      <h3 className="mt-1 font-semibold text-zinc-900 dark:text-zinc-100">
+                        {item.requirement}
+                      </h3>
+                      <p className="mt-3 text-sm text-zinc-600 dark:text-zinc-400">
+                        {item.why}
+                      </p>
+                    </div>
+                    <div className="rounded-lg border border-emerald-100 bg-emerald-50 p-4 dark:border-emerald-900/60 dark:bg-emerald-950/20">
+                      <div className="text-xs font-semibold uppercase tracking-wide text-emerald-700 dark:text-emerald-300">
+                        Best tool
+                      </div>
+                      <p className="mt-1 font-semibold text-emerald-900 dark:text-emerald-100">
+                        {item.bestTool}
+                      </p>
+                      <p className="mt-3 text-sm text-amber-800 dark:text-amber-200">
+                        <span className="font-semibold">Exam trap:</span>{" "}
+                        {item.examTrap}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-8 rounded-2xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900">
+              <h3 className="font-semibold text-zinc-900 dark:text-zinc-100">
+                Week-before code pattern checklist
+              </h3>
+              <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+                Complete these drills before relying on timed mocks. Each one
+                turns a common CAD vocabulary topic into implementation
+                judgment.
+              </p>
+              <ul className="mt-4 grid gap-3 sm:grid-cols-2">
+                {codePatternChecklist.map((item) => (
+                  <li
+                    key={item}
+                    className="flex items-start gap-2 text-sm text-zinc-600 dark:text-zinc-400"
+                  >
+                    <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-xs font-bold text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300">
+                      ✓
+                    </span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section className="border-t border-zinc-200 bg-white py-16 dark:border-zinc-800 dark:bg-zinc-950">
           <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
             <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-50">
               How to Study for CAD
