@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title:
     "How to Pass CPOA — Complete ServiceNow Platform Owner Study Guide [2026]",
   description:
-    "Complete ServiceNow CPOA study guide with official domain weights, a 4-week platform-owner study calendar, hands-on governance lab checklist, scenario drills, common mistakes, readiness checklist, and CPOA practice questions.",
+    "Complete ServiceNow CPOA study guide with official domain weights, a 4-week platform-owner study calendar, governance decision matrix, hands-on lab checklist, scenario drills, common mistakes, readiness checklist, and CPOA practice questions.",
   keywords: [
     "CPOA study guide",
     "ServiceNow CPOA study guide",
@@ -82,6 +82,11 @@ const faqData = [
       "Start with Technology because it is the largest domain at 22.9%, then Strategy at 21.4%. Together they represent nearly half the exam and anchor many scenario questions about upgrades, cloning, IDR, roadmaps, governance, and platform risk.",
   },
   {
+    question: "What makes CPOA different from CSA?",
+    answer:
+      "CSA validates administrator-level platform fundamentals. CPOA validates platform-owner decisions: roadmap prioritization, governance forums, upgrade and clone strategy, adoption planning, licensing impacts, data-quality ownership, and value reporting. Study by asking what decision reduces risk or proves platform value, not just which menu contains a feature.",
+  },
+  {
     question: "Is CPOA a technical exam or a governance exam?",
     answer:
       "It is both. CPOA is not a developer exam, but it expects enough technical understanding to make platform-owner decisions about upgrades, cloning, data replication, code promotion, data quality, integrations, licensing, and governance structures.",
@@ -95,6 +100,11 @@ const faqData = [
     question: "What hands-on practice helps most for CPOA?",
     answer:
       "Use a Personal Developer Instance or sandbox to inspect release notes, clone settings, update set movement, roles, reports, Performance Analytics examples, catalog/licensing implications, and governance artifacts. The goal is decision fluency, not memorizing UI clicks.",
+  },
+  {
+    question: "How should I review missed CPOA practice questions?",
+    answer:
+      "Do not only mark the correct answer. For each miss, write the domain, the decision owner, the risk being controlled, the governance forum or platform control involved, and the metric that would prove success. This turns misses into the platform-owner reasoning the exam is trying to test.",
   },
   {
     question: "When am I ready to schedule the CPOA exam?",
@@ -343,6 +353,53 @@ const sampleQuestions = [
     ],
     answer:
       "Licensing, transaction, support, integration, and governance impacts",
+  },
+];
+
+const decisionMatrix = [
+  {
+    situation:
+      "A release deadline conflicts with upgrade or clone testing time.",
+    domain: "Technology",
+    ownerMove:
+      "Protect production stability: validate in sub-production, confirm integrations, document rollback/communication plans, and use an approved maintenance window.",
+    watchFor:
+      "Answers that optimize schedule by skipping clone planning, UAT, ATF, or integration validation.",
+  },
+  {
+    situation:
+      "Demand exceeds delivery capacity and every business unit claims priority.",
+    domain: "Strategy / Governance",
+    ownerMove:
+      "Use portfolio or strategic governance to rank work by business value, risk, dependency, sponsor commitment, and platform roadmap fit.",
+    watchFor:
+      "Treating prioritization as an admin ticket queue or allowing loudest-stakeholder sequencing.",
+  },
+  {
+    situation:
+      "Citizen developers want to automate production workflows quickly.",
+    domain: "Strategy / People",
+    ownerMove:
+      "Enable low-code with delegated roles, guardrails, pattern reviews, ownership, testing, documentation, and technical-governance escalation paths.",
+    watchFor:
+      "Absolute answers: block all citizen development or allow unrestricted production changes.",
+  },
+  {
+    situation: "An executive dashboard shows activity but not platform value.",
+    domain: "Data",
+    ownerMove:
+      "Pair clean foundational data with outcome metrics such as cycle time, adoption, automation rate, CSAT, risk reduction, and backlog health.",
+    watchFor:
+      "Reporting-only answers that ignore data quality, KPI definitions, trend context, or business outcomes.",
+  },
+  {
+    situation:
+      "A catalog or integration expansion changes who requests and fulfills work.",
+    domain: "ServiceNow Governance",
+    ownerMove:
+      "Evaluate requester/fulfiller licensing, Integration Hub/spoke usage, support ownership, data flow, security, reporting, and subscription implications before rollout.",
+    watchFor:
+      "Narrow answers that review only the catalog item or technical connector and miss operating-model cost.",
   },
 ];
 
@@ -805,6 +862,45 @@ export default async function CPOAStudyGuidePage() {
         </section>
 
         <section className="border-t border-zinc-200 bg-zinc-50 py-16 dark:border-zinc-800 dark:bg-zinc-950">
+          <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+            <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-50">
+              CPOA Decision Matrix
+            </h2>
+            <p className="mt-2 text-zinc-600 dark:text-zinc-400">
+              Use this matrix when reviewing missed questions. CPOA distractors
+              often sound reasonable but ignore the platform owner&apos;s job:
+              protect stability, align priorities, assign ownership, and prove
+              value.
+            </p>
+            <div className="mt-8 space-y-4">
+              {decisionMatrix.map((item) => (
+                <div
+                  key={item.situation}
+                  className="rounded-xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-900"
+                >
+                  <div className="text-xs font-semibold uppercase tracking-wide text-emerald-600 dark:text-emerald-400">
+                    {item.domain}
+                  </div>
+                  <h3 className="mt-2 font-semibold text-zinc-900 dark:text-zinc-100">
+                    {item.situation}
+                  </h3>
+                  <p className="mt-3 text-sm text-zinc-600 dark:text-zinc-400">
+                    <span className="font-semibold text-zinc-900 dark:text-zinc-200">
+                      Platform-owner move:
+                    </span>{" "}
+                    {item.ownerMove}
+                  </p>
+                  <p className="mt-2 text-sm text-amber-700 dark:text-amber-300">
+                    <span className="font-semibold">Watch for traps:</span>{" "}
+                    {item.watchFor}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="border-t border-zinc-200 bg-white py-16 dark:border-zinc-800 dark:bg-zinc-950">
           <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
             <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-50">
               Common CPOA Study Mistakes
