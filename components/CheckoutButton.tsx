@@ -12,6 +12,8 @@ interface CheckoutButtonProps {
   children: React.ReactNode;
 }
 
+type CheckoutResponse = { url?: string };
+
 export function CheckoutButton({
   certification,
   plan = "single",
@@ -45,7 +47,7 @@ export function CheckoutButton({
         body: JSON.stringify({ certification, plan, returnUrl }),
       });
 
-      const data = await response.json();
+      const data = await response.json() as CheckoutResponse;
 
       if (data.url) {
         window.location.href = data.url;

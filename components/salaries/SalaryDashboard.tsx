@@ -32,7 +32,7 @@ export default function SalaryDashboard({
 
   useEffect(() => {
     fetch("/api/salaries/stats")
-      .then((res) => res.json())
+      .then((res) => res.json() as Promise<APIStats>)
       .then((data) => {
         setApiStats(data);
         setLoading(false);

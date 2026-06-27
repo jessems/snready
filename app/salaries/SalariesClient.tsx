@@ -14,6 +14,25 @@ interface HeroStats {
   countries: number;
 }
 
+type SalaryStatsResponse = {
+  overall: {
+    count: number;
+    median: number;
+    p25: number;
+    p75: number;
+    countries?: number;
+  };
+  byRole?: Array<{
+    role: string;
+    count: number;
+    median: number;
+    p25: number;
+    p75: number;
+  }>;
+};
+
+type ApiErrorResponse = { error?: string };
+
 export default function SalariesClient() {
   const [view, setView] = useState<"landing" | "form" | "results">("landing");
   const [hasSubmitted, setHasSubmitted] = useState(false);
@@ -36,7 +55,7 @@ export default function SalariesClient() {
     
     // Fetch live stats for hero
     fetch('/api/salaries/stats')
-      .then(res => res.json())
+      .then(res => res.json() as Promise<SalaryStatsResponse>)
       .then(data => {
         if (data.overall) {
           setHeroStats({
@@ -73,17 +92,17 @@ export default function SalariesClient() {
     });
 
     if (!response.ok) {
-      const error = await response.json();
+      const error = await response.json() as ApiErrorResponse;
       throw new Error(error.error || 'Failed to submit salary');
     }
 
     setSubmittedData(data);
 
     const statsResponse = await fetch('/api/salaries/stats');
-    const stats = await statsResponse.json();
+    const stats = await statsResponse.json() as SalaryStatsResponse;
 
     const totalComp = data.baseSalary || (data.hourlyRate || 0) * 2080;
-    const roleStats = stats.byRole?.find((r: any) => r.role === data.role) || stats.overall;
+    const roleStats = stats.byRole?.find((r) => r.role === data.role) || stats.overall;
     
     let percentile = 50;
     if (roleStats) {

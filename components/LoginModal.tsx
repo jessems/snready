@@ -8,6 +8,8 @@ interface LoginModalProps {
   onPurchase: () => void;
 }
 
+type MagicLinkResponse = { success?: boolean; error?: string };
+
 export function LoginModal({ isOpen, onClose, onPurchase }: LoginModalProps) {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
@@ -28,7 +30,7 @@ export function LoginModal({ isOpen, onClose, onPurchase }: LoginModalProps) {
         body: JSON.stringify({ email }),
       });
 
-      const data = await response.json();
+      const data = await response.json() as MagicLinkResponse;
 
       if (data.success) {
         setSent(true);

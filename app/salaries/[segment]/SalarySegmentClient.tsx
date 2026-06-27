@@ -141,7 +141,7 @@ export default function SalarySegmentClient({
           return;
         }
 
-        const result = await response.json();
+        const result = await response.json() as FilterResponse;
         setData(result);
       } catch (err) {
         console.error("Error fetching salary data:", err);
