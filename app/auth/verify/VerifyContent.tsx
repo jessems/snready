@@ -7,10 +7,19 @@ import { useAccess } from "@/components/AccessProvider";
 
 type Status = "loading" | "success" | "error" | "expired" | "no-access";
 
+type VerifyResponse = {
+  success?: boolean;
+  email?: string;
+  hasAccess?: boolean;
+  error?: string;
+};
+
 export default function VerifyContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const token = searchParams.get("token");
+  const redirect = searchParams.get("redirect");
+  const safeRedirect = redirect?.startsWith("/") && !redirect.startsWith("//") ? redirect : null;
   const [status, setStatus] = useState<Status>(token ? "loading" : "error");
   const [error, setError] = useState<string>(token ? "" : "No login token provided");
   const [email, setEmail] = useState<string>("");
@@ -23,7 +32,7 @@ export default function VerifyContent() {
     fetch(`/api/auth/verify?token=${encodeURIComponent(token)}`, {
       credentials: "include",
     })
-      .then((res) => res.json())
+      .then((res) => res.json() as Promise<VerifyResponse>)
       .then(async (data) => {
         if (data.success && data.email) {
           // Refresh the auth provider — it will read the session cookie
@@ -33,7 +42,7 @@ export default function VerifyContent() {
 
           // Redirect after 2 seconds
           setTimeout(() => {
-            router.push(data.hasAccess ? "/certifications" : "/account");
+            router.push(safeRedirect ?? (data.hasAccess ? "/certifications" : "/account"));
           }, 2000);
         } else if (data.error?.includes("expired")) {
           setStatus("expired");
@@ -47,7 +56,7 @@ export default function VerifyContent() {
         setStatus("error");
         setError("Failed to verify login link");
       });
-  }, [token, refresh, router]);
+  }, [token, safeRedirect, refresh, router]);
 
   if (status === "loading") {
     return (

@@ -14,6 +14,8 @@ export interface AuthSession {
   };
 }
 
+type SessionResponse = Partial<AuthSession>;
+
 /**
  * Fetches the current session from the server.
  * The server validates the httpOnly session cookie.
@@ -23,7 +25,7 @@ export async function getAuthSession(): Promise<AuthSession> {
     const response = await fetch("/api/auth/session", {
       credentials: "include",
     });
-    const data = await response.json();
+    const data = await response.json() as SessionResponse;
     if (data.authenticated) {
       return {
         authenticated: true,

@@ -1,18 +1,29 @@
+/// <reference types="@cloudflare/workers-types" />
+
 import { getSessionToken } from "../lib/session";
 
 interface Env {
   SNREADY_ACCESS: KVNamespace;
+  ADMIN_EMAILS?: string;
 }
 
-// Only these emails can access /admin/* routes
-const ADMIN_EMAILS = ["jessems@gmail.com"];
+// Only these emails can access /admin/* routes. ADMIN_EMAILS can be a comma-separated Pages env var.
+const DEFAULT_ADMIN_EMAILS = ["jessems@gmail.com"];
+
+function getAdminEmails(env: Env): string[] {
+  const configured = env.ADMIN_EMAILS
+    ?.split(",")
+    .map((email) => email.trim().toLowerCase())
+    .filter(Boolean);
+  return configured?.length ? configured : DEFAULT_ADMIN_EMAILS;
+}
 
 export const onRequest: PagesFunction<Env> = async (context) => {
   const { request, env, next } = context;
   const sessionToken = getSessionToken(request);
 
   if (!sessionToken) {
-    return new Response(unauthorizedPage("Not logged in"), {
+    return new Response(unauthorizedPage("Not logged in", new URL(request.url).pathname), {
       status: 401,
       headers: { "Content-Type": "text/html" },
     });
@@ -21,7 +32,7 @@ export const onRequest: PagesFunction<Env> = async (context) => {
   // Look up session
   const sessionRaw = await env.SNREADY_ACCESS.get(`session:${sessionToken}`);
   if (!sessionRaw) {
-    return new Response(unauthorizedPage("Session expired"), {
+    return new Response(unauthorizedPage("Session expired", new URL(request.url).pathname), {
       status: 401,
       headers: { "Content-Type": "text/html" },
     });
@@ -31,7 +42,7 @@ export const onRequest: PagesFunction<Env> = async (context) => {
   try {
     session = JSON.parse(sessionRaw);
   } catch {
-    return new Response(unauthorizedPage("Invalid session"), {
+    return new Response(unauthorizedPage("Invalid session", new URL(request.url).pathname), {
       status: 401,
       headers: { "Content-Type": "text/html" },
     });
@@ -40,15 +51,15 @@ export const onRequest: PagesFunction<Env> = async (context) => {
   // Check session expiry
   if (session.expiresAt < Date.now()) {
     await env.SNREADY_ACCESS.delete(`session:${sessionToken}`);
-    return new Response(unauthorizedPage("Session expired"), {
+    return new Response(unauthorizedPage("Session expired", new URL(request.url).pathname), {
       status: 401,
       headers: { "Content-Type": "text/html" },
     });
   }
 
   // Check if email is in admin list
-  if (!ADMIN_EMAILS.includes(session.email.toLowerCase())) {
-    return new Response(unauthorizedPage("Access denied"), {
+  if (!getAdminEmails(env).includes(session.email.toLowerCase())) {
+    return new Response(unauthorizedPage("Access denied", new URL(request.url).pathname), {
       status: 403,
       headers: { "Content-Type": "text/html" },
     });
@@ -58,7 +69,8 @@ export const onRequest: PagesFunction<Env> = async (context) => {
   return next();
 };
 
-function unauthorizedPage(reason: string): string {
+function unauthorizedPage(reason: string, redirectPath: string): string {
+  const escapedRedirectPath = redirectPath.replace(/"/g, "&quot;");
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -94,16 +106,34 @@ function unauthorizedPage(reason: string): string {
       font-size: 0.875rem;
       margin-bottom: 1.5rem;
     }
+    input {
+      width: 100%;
+      border: 1px solid #d4d4d8;
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      margin-bottom: 0.75rem;
+      font: inherit;
+    }
+    button,
     a {
       display: inline-block;
+      width: 100%;
+      border: 0;
       background: #059669;
       color: white;
       padding: 0.75rem 1.5rem;
       border-radius: 8px;
       text-decoration: none;
       font-weight: 500;
+      cursor: pointer;
     }
-    a:hover { background: #047857; }
+    button:hover, a:hover { background: #047857; }
+    button:disabled { opacity: 0.6; cursor: wait; }
+    .secondary { display: block; margin-top: 1rem; background: transparent; color: #52525b; }
+    .secondary:hover { background: transparent; color: #18181b; }
+    .message { font-size: 0.875rem; margin-top: 0.75rem; }
+    .error { color: #dc2626; }
+    .success { color: #047857; }
   </style>
 </head>
 <body>
@@ -111,8 +141,44 @@ function unauthorizedPage(reason: string): string {
     <h1>🔒 Admin Access Required</h1>
     <p>This page is restricted to site administrators.</p>
     <div class="reason">${reason}</div>
-    <a href="/">← Back to Home</a>
+    <form id="login-form">
+      <input id="email" type="email" autocomplete="email" placeholder="admin email" required />
+      <input id="redirect" type="hidden" value="${escapedRedirectPath}" />
+      <button id="submit" type="submit">Send admin login link</button>
+      <div id="message" class="message" aria-live="polite"></div>
+    </form>
+    <a class="secondary" href="/">← Back to Home</a>
   </div>
+  <script>
+    const form = document.getElementById('login-form');
+    const button = document.getElementById('submit');
+    const message = document.getElementById('message');
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      button.disabled = true;
+      message.className = 'message';
+      message.textContent = 'Sending login link...';
+      try {
+        const response = await fetch('/api/auth/send-magic-link', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            email: document.getElementById('email').value,
+            redirect: document.getElementById('redirect').value,
+          }),
+        });
+        const data = await response.json();
+        if (!response.ok || !data.success) throw new Error(data.error || 'Failed to send login link');
+        message.className = 'message success';
+        message.textContent = 'Login link sent. Open it from this browser to return here.';
+      } catch (error) {
+        message.className = 'message error';
+        message.textContent = error instanceof Error ? error.message : 'Failed to send login link';
+      } finally {
+        button.disabled = false;
+      }
+    });
+  </script>
 </body>
 </html>`;
 }
