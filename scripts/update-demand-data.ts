@@ -57,6 +57,12 @@ interface BraveResult {
   description: string;
 }
 
+interface BraveSearchResponse {
+  web?: {
+    results?: BraveResult[];
+  };
+}
+
 async function searchBrave(query: string): Promise<BraveResult[]> {
   const url = new URL('https://api.search.brave.com/res/v1/web/search');
   url.searchParams.set('q', query);
@@ -75,7 +81,7 @@ async function searchBrave(query: string): Promise<BraveResult[]> {
       return [];
     }
     
-    const data = await res.json();
+    const data = await res.json() as BraveSearchResponse;
     return data.web?.results || [];
   } catch (err) {
     console.error(`Error searching:`, err);
