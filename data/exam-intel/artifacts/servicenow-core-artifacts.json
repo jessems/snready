@@ -1,0 +1,98 @@
+{
+  "version": "1.0.0",
+  "generatedAt": "2026-06-27T00:00:00.000Z",
+  "description": "Reusable symbolic artifact registry for classifying ServiceNow exam-style question shapes without publishing or storing raw dump content.",
+  "artifacts": [
+    {
+      "id": "entity_table_name_lookup",
+      "name": "Entity/table name lookup",
+      "description": "Given a ServiceNow entity, class, record type, or concept, ask for its backing table or class name.",
+      "factType": "entity_table_name",
+      "generationUse": "Rotate table/class stems and typed same-family table distractors."
+    },
+    {
+      "id": "role_permission_lookup",
+      "name": "Role/permission lookup",
+      "description": "Given an action, module, feature, or capability, ask which role grants access or permission.",
+      "factType": "role_permission",
+      "generationUse": "Bind verified role facts to scenario stems and adjacent-role distractors."
+    },
+    {
+      "id": "choose_valid_components",
+      "name": "Choose valid components",
+      "description": "Ask which options are valid members, components, features, states, or values of a set.",
+      "factType": "component_membership",
+      "generationUse": "Use sibling concepts from the same product area as distractors."
+    },
+    {
+      "id": "configuration_order_sequence",
+      "name": "Configuration order/sequence",
+      "description": "Ask first/next/final step or dependency order in a configuration or process flow.",
+      "factType": "ordered_process",
+      "generationUse": "Rotate process steps while preserving the verified dependency ordering."
+    },
+    {
+      "id": "navigation_path_lookup",
+      "name": "Navigation path lookup",
+      "description": "Ask where to navigate in ServiceNow to reach a module, list, menu, workspace, or UI action.",
+      "factType": "navigation_path",
+      "generationUse": "Use adjacent application/module paths as distractors."
+    },
+    {
+      "id": "scenario_best_tool",
+      "name": "Scenario best tool/method",
+      "description": "Given a short scenario, ask for the best ServiceNow tool, method, configuration, or feature.",
+      "factType": "scenario_tool_fit",
+      "generationUse": "Create applied stems that discriminate between similar ServiceNow features."
+    },
+    {
+      "id": "identify_invalid_option",
+      "name": "Identify invalid option",
+      "description": "NOT/EXCEPT/cannot/invalid-style item asking which option does not belong.",
+      "factType": "negative_membership",
+      "generationUse": "Generate controlled negative variants from positive set membership facts."
+    },
+    {
+      "id": "concept_difference_lookup",
+      "name": "Concept difference lookup",
+      "description": "Ask for the key difference between two related ServiceNow concepts, records, or features.",
+      "factType": "concept_difference",
+      "generationUse": "Pair related concepts and rotate difference-focused distractors."
+    },
+    {
+      "id": "relationship_lookup",
+      "name": "Relationship lookup",
+      "description": "Ask how two ServiceNow concepts, records, CIs, or process objects relate to each other.",
+      "factType": "relationship",
+      "generationUse": "Bind entity pairs to verified relationship facts."
+    },
+    {
+      "id": "default_value_lookup",
+      "name": "Default value lookup",
+      "description": "Ask for a default property, value, state, duration, threshold, or preconfigured behavior.",
+      "factType": "default_value",
+      "generationUse": "Use nearby valid values and adjacent properties as distractors."
+    },
+    {
+      "id": "release_feature_lookup",
+      "name": "Release feature lookup",
+      "description": "Ask which feature, capability, API, or behavior was added or changed in a named release.",
+      "factType": "release_feature",
+      "generationUse": "Drive delta exam coverage from release-note facts."
+    },
+    {
+      "id": "business_outcome_lookup",
+      "name": "Business outcome lookup",
+      "description": "Ask what business outcome, benefit, KPI, or process result a ServiceNow feature supports.",
+      "factType": "business_outcome",
+      "generationUse": "Create outcome-oriented applied questions tied to source-backed benefits."
+    },
+    {
+      "id": "property_behavior_lookup",
+      "name": "Property behavior lookup",
+      "description": "Ask how a system property, setting, or configuration changes platform behavior.",
+      "factType": "property_behavior",
+      "generationUse": "Generate property-behavior variants with adjacent-property distractors."
+    }
+  ]
+}
