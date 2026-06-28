@@ -54,6 +54,17 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
 
     const normalizedEmail = email.toLowerCase().trim();
 
+    if (!env.MAGIC_LINK_SECRET || !env.RESEND_API_KEY) {
+      console.error("Magic link auth is not configured for this deployment", {
+        hasMagicLinkSecret: Boolean(env.MAGIC_LINK_SECRET),
+        hasResendApiKey: Boolean(env.RESEND_API_KEY),
+      });
+      return new Response(
+        JSON.stringify({ error: "Magic link auth is not configured for this deployment" }),
+        { status: 503, headers: { "Content-Type": "application/json" } }
+      );
+    }
+
     // Create magic link token (valid for 15 minutes)
     const expiresAt = Date.now() + 15 * 60 * 1000;
     const token = await createToken(normalizedEmail, expiresAt, env.MAGIC_LINK_SECRET);

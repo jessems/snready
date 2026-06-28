@@ -55,6 +55,25 @@ describe("magic link auth", () => {
     expect(url.searchParams.get("redirect")).toBe("/admin/coverage");
   });
 
+  it("returns a clear configuration error when preview auth secrets are missing", async () => {
+    const response = await sendMagicLink({
+      request: new Request("https://preview.snready.pages.dev/api/auth/send-magic-link", {
+        method: "POST",
+        body: JSON.stringify({ email: "jesse@example.com", redirect: "/admin/coverage" }),
+        headers: { "Content-Type": "application/json" },
+      }),
+      env: {
+        SNREADY_ACCESS: kvStore(),
+      },
+    } as unknown as Parameters<typeof sendMagicLink>[0]);
+
+    expect(response.status).toBe(503);
+    expect(await response.json()).toEqual({
+      error: "Magic link auth is not configured for this deployment",
+    });
+    expect(globalThis.fetch).not.toHaveBeenCalled();
+  });
+
   it("drops unsafe magic-link redirect targets", async () => {
     await sendMagicLink({
       request: new Request("https://snready.com/api/auth/send-magic-link", {
