@@ -14,6 +14,8 @@ export interface AuthSession {
   };
 }
 
+type SessionResponse = Partial<AuthSession>;
+
 /**
  * Fetches the current session from the server.
  * The server validates the httpOnly session cookie.
@@ -23,7 +25,7 @@ export async function getAuthSession(): Promise<AuthSession> {
     const response = await fetch("/api/auth/session", {
       credentials: "include",
     });
-    const data = await response.json();
+    const data = await response.json() as SessionResponse;
     if (data.authenticated) {
       return {
         authenticated: true,
@@ -55,23 +57,25 @@ export async function logoutSession(): Promise<void> {
   }
 }
 
-/**
- * Verifies a Stripe checkout session. Used by the checkout success page.
- * The server may set a session cookie on this response.
- */
-export async function verifySession(sessionId: string): Promise<{
+export type VerifySessionResponse = {
   success: boolean;
   email?: string;
   plan?: PlanType;
   expiresAt?: number;
   certification?: string;
   error?: string;
-}> {
+};
+
+/**
+ * Verifies a Stripe checkout session. Used by the checkout success page.
+ * The server may set a session cookie on this response.
+ */
+export async function verifySession(sessionId: string): Promise<VerifySessionResponse> {
   try {
     const response = await fetch(`/api/session?session_id=${sessionId}`, {
       credentials: "include",
     });
-    return await response.json();
+    return await response.json() as VerifySessionResponse;
   } catch {
     return { success: false, error: "Verification failed" };
   }

@@ -1,7 +1,9 @@
+/// <reference types="@cloudflare/workers-types" />
+
 interface Env {
   RESEND_API_KEY: string;
   MAGIC_LINK_SECRET: string;
-  SITE_URL: string;
+  SITE_URL?: string;
   SNREADY_ACCESS: KVNamespace;
 }
 
@@ -26,11 +28,22 @@ async function createToken(email: string, expiresAt: number, secret: string): Pr
   return `${emailBase64}:${expiresAt}:${signatureBase64}`;
 }
 
+function getRequestOrigin(request: Request): string {
+  const url = new URL(request.url);
+  return url.origin;
+}
+
+function sanitizeRedirect(value: unknown): string | null {
+  if (typeof value !== "string") return null;
+  if (!value.startsWith("/") || value.startsWith("//")) return null;
+  return value;
+}
+
 export const onRequestPost: PagesFunction<Env> = async (context) => {
   const { request, env } = context;
 
   try {
-    const { email } = await request.json() as { email: string };
+    const { email, redirect } = await request.json() as { email: string; redirect?: string };
 
     if (!email || !email.includes("@")) {
       return new Response(
@@ -41,11 +54,26 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
 
     const normalizedEmail = email.toLowerCase().trim();
 
+    if (!env.MAGIC_LINK_SECRET || !env.RESEND_API_KEY) {
+      console.error("Magic link auth is not configured for this deployment", {
+        hasMagicLinkSecret: Boolean(env.MAGIC_LINK_SECRET),
+        hasResendApiKey: Boolean(env.RESEND_API_KEY),
+      });
+      return new Response(
+        JSON.stringify({ error: "Magic link auth is not configured for this deployment" }),
+        { status: 503, headers: { "Content-Type": "application/json" } }
+      );
+    }
+
     // Create magic link token (valid for 15 minutes)
     const expiresAt = Date.now() + 15 * 60 * 1000;
     const token = await createToken(normalizedEmail, expiresAt, env.MAGIC_LINK_SECRET);
     
-    const magicLink = `${env.SITE_URL}/auth/verify?token=${encodeURIComponent(token)}`;
+    const redirectPath = sanitizeRedirect(redirect);
+    const magicUrl = new URL("/auth/verify", getRequestOrigin(request));
+    magicUrl.searchParams.set("token", token);
+    if (redirectPath) magicUrl.searchParams.set("redirect", redirectPath);
+    const magicLink = magicUrl.toString();
 
     // Send email via Resend
     const resendResponse = await fetch("https://api.resend.com/emails", {
