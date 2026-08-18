@@ -26,4 +26,14 @@ test.describe("production smoke", () => {
     expect(response?.status()).not.toBe(200);
     expect(body).not.toMatch(/raw dump|exam dump|observedQuestion|correctAnswers/i);
   });
+
+  test("admin exam intelligence is protected for visitors", async ({ page }) => {
+    const response = await page.goto("/admin/exam-intel", { waitUntil: "domcontentloaded" });
+    const body = page.locator("body");
+    expect(response?.status()).toBe(401);
+    await expect(body).toContainText(/Admin Access Required/i);
+    await expect(body).toContainText(/Send admin login link/i);
+    await expect(page.locator('input[type="hidden"][value="/admin/exam-intel"]')).toHaveCount(1);
+    await expect(body).not.toContainText(/Observed questions|Generation gaps|symbolic mappings/i);
+  });
 });

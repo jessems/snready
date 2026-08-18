@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Link from "next/link";
 import coverageManifest from "@/data/coverage/coverage-manifest.json";
 
 export const metadata: Metadata = {
@@ -205,9 +206,6 @@ export default function CoverageDashboard() {
   // Calculate overall stats
   const totalQuestions = certifications.reduce((sum, [, data]) => sum + data.summary.questionCount, 0);
   const totalChars = certifications.reduce((sum, [, data]) => sum + data.summary.totalChars, 0);
-  const avgCoverage = Math.round(
-    certifications.reduce((sum, [, data]) => sum + data.summary.requiredCoverage, 0) / certifications.length
-  );
   const fullCoverageCount = certifications.filter(([, data]) => data.summary.requiredCoverage >= 80).length;
 
   return (
@@ -222,6 +220,14 @@ export default function CoverageDashboard() {
           <p className="mt-1 text-sm text-zinc-500">
             Last generated: {new Date(manifest.generated).toLocaleString()}
           </p>
+          <div className="mt-4 flex flex-wrap gap-3 text-sm">
+            <Link
+              href="/admin/exam-intel"
+              className="inline-flex items-center rounded-lg bg-blue-600 px-3 py-2 font-medium text-white hover:bg-blue-700"
+            >
+              🧠 Exam Intelligence
+            </Link>
+          </div>
         </div>
 
         {/* Summary Cards */}
