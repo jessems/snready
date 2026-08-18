@@ -131,6 +131,7 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
         expiresAt,
         certification,
         certifications,
+        amountTotal: session.amount_total || undefined,
       }),
       {
         headers: {

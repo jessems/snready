@@ -5,6 +5,7 @@ import Script from "next/script";
 import Link from "next/link";
 import { BASE_URL } from "@/lib/seo";
 import { Providers } from "@/components/Providers";
+import { Analytics } from "@/components/Analytics";
 import Header from "@/components/Header";
 import "./globals.css";
 
@@ -89,7 +90,7 @@ export default function RootLayout({
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-21R4T0V162');
+            gtag('config', 'G-21R4T0V162', { send_page_view: false });
           `}
         </Script>
         <script
@@ -108,6 +109,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden`}
       >
+        <Analytics />
         <Providers>
           <Header />
           <main className="min-w-0 overflow-x-hidden">
