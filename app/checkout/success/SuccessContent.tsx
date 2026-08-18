@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { verifySession } from "@/lib/access";
+import { trackPurchaseOnce } from "@/lib/analytics";
 import { useAccess } from "@/components/AccessProvider";
 
 type PlanType = "single" | "all";
@@ -14,6 +15,7 @@ interface SessionResult {
   plan?: PlanType;
   expiresAt?: number;
   certification?: string;
+  amountTotal?: number;
   error?: string;
 }
 
@@ -39,6 +41,12 @@ export default function SuccessContent() {
         // Session cookie is set by the API response — refresh the auth provider
         await refresh();
         setResult(data as SessionResult);
+        trackPurchaseOnce({
+          transactionId: sessionId,
+          certification: data.certification,
+          plan: data.plan || "single",
+          value: typeof data.amountTotal === "number" ? data.amountTotal / 100 : data.plan === "all" ? 49 : 9,
+        });
         setStatus("success");
       } else {
         setResult(data as SessionResult);

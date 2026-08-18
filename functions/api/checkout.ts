@@ -7,6 +7,48 @@ interface Env {
 
 type PlanType = "single" | "all";
 
+type AttributionData = Record<string, string | undefined>;
+
+const ATTRIBUTION_METADATA_KEYS = [
+  "firstLandingPage",
+  "firstReferrer",
+  "firstUtmSource",
+  "firstUtmMedium",
+  "firstUtmCampaign",
+  "firstUtmTerm",
+  "firstUtmContent",
+  "firstGclid",
+  "firstGbraid",
+  "firstWbraid",
+  "firstMsclkid",
+  "lastLandingPage",
+  "lastReferrer",
+  "lastUtmSource",
+  "lastUtmMedium",
+  "lastUtmCampaign",
+  "lastUtmTerm",
+  "lastUtmContent",
+  "lastGclid",
+  "lastGbraid",
+  "lastWbraid",
+  "lastMsclkid",
+  "firstSeenAt",
+  "lastSeenAt",
+] as const;
+
+function attributionMetadata(attribution: AttributionData | undefined) {
+  const metadata: Record<string, string> = {};
+  if (!attribution || typeof attribution !== "object") return metadata;
+
+  for (const key of ATTRIBUTION_METADATA_KEYS) {
+    const rawValue = attribution[key];
+    if (typeof rawValue !== "string" || !rawValue) continue;
+    metadata[key] = rawValue.slice(0, 240);
+  }
+
+  return metadata;
+}
+
 const PLANS = {
   "single": {
     price: 900, // $9.00 in cents
@@ -24,10 +66,11 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   const { request, env } = context;
 
   try {
-    const { certification, plan = "single", returnUrl } = await request.json() as {
+    const { certification, plan = "single", returnUrl, attribution } = await request.json() as {
       certification?: string;
       plan?: PlanType;
       returnUrl?: string;
+      attribution?: AttributionData;
     };
 
     // Prevent single-cert checkout without specifying which certification
@@ -86,6 +129,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
         certification: normalizedCertification,
         plan: plan,
         returnUrl: safeReturnUrl || "",
+        ...attributionMetadata(attribution),
       },
     });
 

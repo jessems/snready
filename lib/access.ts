@@ -63,6 +63,7 @@ export type VerifySessionResponse = {
   plan?: PlanType;
   expiresAt?: number;
   certification?: string;
+  amountTotal?: number;
   error?: string;
 };
 

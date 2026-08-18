@@ -17,7 +17,13 @@ describe("checkout Pages Function", () => {
     expect(await response.json()).toEqual({ url: "https://checkout.stripe.test/session" });
     const payload = createCheckoutSession.mock.calls[0][0];
     expect(payload.line_items[0].price_data.unit_amount).toBe(900);
-    expect(payload.metadata).toMatchObject({ certification: "CSA", plan: "single", returnUrl: "/csa/practice-questions" });
+    expect(payload.metadata).toMatchObject({
+      certification: "CSA",
+      plan: "single",
+      returnUrl: "/csa/practice-questions",
+      firstUtmSource: "google",
+      lastLandingPage: "/pricing",
+    });
     expect(payload.success_url).toBe("https://snready.com/checkout/success?session_id={CHECKOUT_SESSION_ID}");
     expect(payload.cancel_url).toContain("return_to=%2Fcsa%2Fpractice-questions");
   });
