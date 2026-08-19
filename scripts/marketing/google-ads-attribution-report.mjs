@@ -83,6 +83,8 @@ const adAttributed = paid.filter(isGoogleAdsSession);
 const revenueCents = paid.reduce((sum, session) => sum + (session.amount_total || 0), 0);
 const adRevenueCents = adAttributed.reduce((sum, session) => sum + (session.amount_total || 0), 0);
 const googleAdsSales = adAttributed.length;
+const gaClientIdSessions = paid.filter((session) => Boolean(session.metadata?.gaClientId)).length;
+const gaSessionIdSessions = paid.filter((session) => Boolean(session.metadata?.gaSessionId || session.metadata?.gaSessionCookie)).length;
 const campaignBreakdown = new Map();
 
 for (const session of adAttributed) {
@@ -102,6 +104,7 @@ const nextCap = roas !== null && roas > 1 ? SCALE_SPEND_CAP : MONTHLY_SPEND_CAP;
 console.log(`**SNReady Google Ads ROAS — ${start.toISOString().slice(0, 7)} MTD**`);
 console.log(`- Total Stripe revenue: ${money(revenueCents, true)} from ${paid.length} paid sessions`);
 console.log(`- Google Ads-attributed revenue: ${money(adRevenueCents, true)} from ${googleAdsSales} paid sessions`);
+console.log(`- GA4 join keys captured: client_id on ${gaClientIdSessions}/${paid.length} paid sessions; session on ${gaSessionIdSessions}/${paid.length}`);
 if (spendMonthToDate !== null) {
   console.log(`- Google Ads spend entered: ${money(spendMonthToDate)}; ROAS: ${roas.toFixed(2)}x`);
   console.log(`- Budget decision: ${roas > 1 ? `positive return — eligible to scale up to ${money(nextCap)}/month` : `hold at ${money(MONTHLY_SPEND_CAP)}/month or reduce bids until ROAS improves`}`);

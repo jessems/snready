@@ -10,6 +10,9 @@ type PlanType = "single" | "all";
 type AttributionData = Record<string, string | undefined>;
 
 const ATTRIBUTION_METADATA_KEYS = [
+  "gaClientId",
+  "gaSessionId",
+  "gaSessionCookie",
   "firstLandingPage",
   "firstReferrer",
   "firstUtmSource",

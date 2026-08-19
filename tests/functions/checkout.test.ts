@@ -12,7 +12,17 @@ describe("checkout Pages Function", () => {
     expect(createCheckoutSession).not.toHaveBeenCalled();
   });
   it("creates a $9 single-cert checkout session with normalized metadata", async () => {
-    const response = await onRequestPost(context({ certification: "csa", plan: "single", returnUrl: "/csa/practice-questions", attribution: { firstUtmSource: "google", lastLandingPage: "/pricing" } }));
+    const response = await onRequestPost(context({
+      certification: "csa",
+      plan: "single",
+      returnUrl: "/csa/practice-questions",
+      attribution: {
+        gaClientId: "123456789.987654321",
+        gaSessionId: "1782533012",
+        firstUtmSource: "google",
+        lastLandingPage: "/pricing",
+      },
+    }));
     expect(response.status).toBe(200);
     expect(await response.json()).toEqual({ url: "https://checkout.stripe.test/session" });
     const payload = createCheckoutSession.mock.calls[0][0];
@@ -21,6 +31,8 @@ describe("checkout Pages Function", () => {
       certification: "CSA",
       plan: "single",
       returnUrl: "/csa/practice-questions",
+      gaClientId: "123456789.987654321",
+      gaSessionId: "1782533012",
       firstUtmSource: "google",
       lastLandingPage: "/pricing",
     });
