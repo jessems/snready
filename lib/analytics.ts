@@ -1,8 +1,13 @@
 export const GA_MEASUREMENT_ID = "G-21R4T0V162";
+export const GOOGLE_ADS_ID = process.env.NEXT_PUBLIC_GOOGLE_ADS_ID || "";
+export const GOOGLE_ADS_PURCHASE_LABEL = process.env.NEXT_PUBLIC_GOOGLE_ADS_PURCHASE_LABEL || "";
 
 export type PlanType = "single" | "all";
 
 export interface AttributionData {
+  gaClientId?: string;
+  gaSessionId?: string;
+  gaSessionCookie?: string;
   firstLandingPage?: string;
   firstReferrer?: string;
   firstUtmSource?: string;
@@ -98,6 +103,44 @@ function getParam(params: URLSearchParams, key: string) {
   return truncate(params.get(key) || undefined);
 }
 
+function getCookie(name: string) {
+  if (!isBrowser()) return undefined;
+
+  const match = document.cookie
+    .split(";")
+    .map((cookie) => cookie.trim())
+    .find((cookie) => cookie.startsWith(`${name}=`));
+
+  if (!match) return undefined;
+  return decodeURIComponent(match.slice(name.length + 1));
+}
+
+function getGaClientId() {
+  const cookie = getCookie("_ga");
+  if (!cookie) return undefined;
+
+  // Universal GA/GA4 cookies usually look like GA1.1.123456789.987654321.
+  // GA4 Measurement Protocol expects the final two numeric parts joined by a dot.
+  const parts = cookie.split(".");
+  if (parts.length >= 4) return truncate(parts.slice(-2).join("."), 100);
+  return truncate(cookie, 100);
+}
+
+function getGaSessionCookie() {
+  const measurementSuffix = GA_MEASUREMENT_ID.replace("G-", "");
+  return truncate(getCookie(`_ga_${measurementSuffix}`), 240);
+}
+
+function getGaSessionId() {
+  const cookie = getGaSessionCookie();
+  if (!cookie) return undefined;
+
+  // Current GA4 cookies include a segment like s1234567890. Keep this best-effort
+  // so future server-side/offline conversion work can join browser and Stripe data.
+  const sessionMatch = cookie.match(/(?:^|\.)s(\d+)(?:\.|$)/);
+  return truncate(sessionMatch?.[1], 100);
+}
+
 function hasCampaignParams(touch: TouchData) {
   return Boolean(
     touch.utmSource ||
@@ -135,6 +178,9 @@ function currentTouch(): TouchData | null {
 
 function flattenAttribution(stored: StoredAttribution): AttributionData {
   return {
+    gaClientId: getGaClientId(),
+    gaSessionId: getGaSessionId(),
+    gaSessionCookie: getGaSessionCookie(),
     firstLandingPage: stored.first?.landingPage,
     firstReferrer: stored.first?.referrer,
     firstUtmSource: stored.first?.utmSource,
@@ -234,6 +280,15 @@ export function trackPurchaseOnce(params: {
     certification: params.certification || "ALL",
     items: [commerceItem(params.plan, params.certification, params.value)],
   });
+
+  if (GOOGLE_ADS_ID && GOOGLE_ADS_PURCHASE_LABEL) {
+    trackEvent("conversion", {
+      send_to: `${GOOGLE_ADS_ID}/${GOOGLE_ADS_PURCHASE_LABEL}`,
+      transaction_id: params.transactionId,
+      currency: "USD",
+      value: params.value,
+    });
+  }
 }
 
 export function getPlanValue(plan: PlanType) {

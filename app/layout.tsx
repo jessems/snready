@@ -6,6 +6,7 @@ import Link from "next/link";
 import { BASE_URL } from "@/lib/seo";
 import { Providers } from "@/components/Providers";
 import { Analytics } from "@/components/Analytics";
+import { GA_MEASUREMENT_ID, GOOGLE_ADS_ID } from "@/lib/analytics";
 import Header from "@/components/Header";
 import "./globals.css";
 
@@ -82,7 +83,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-21R4T0V162"
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
           strategy="afterInteractive"
         />
         <Script id="google-analytics" strategy="afterInteractive">
@@ -90,7 +91,8 @@ export default function RootLayout({
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-21R4T0V162', { send_page_view: false });
+            gtag('config', '${GA_MEASUREMENT_ID}', { send_page_view: false });
+            ${GOOGLE_ADS_ID ? `gtag('config', '${GOOGLE_ADS_ID}');` : ""}
           `}
         </Script>
         <script

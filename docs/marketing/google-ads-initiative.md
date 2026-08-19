@@ -17,7 +17,16 @@ Enable Google Ads auto-tagging and use final URL suffix / tracking template UTMs
 utm_source=google&utm_medium=cpc&utm_campaign={campaignid}&utm_term={keyword}&utm_content={creative}&utm_id={campaignid}
 ```
 
-This PR stores first-touch and last-touch attribution in browser localStorage, passes those fields to `/api/checkout`, and persists them into Stripe Checkout Session metadata. Stripe remains the source of truth for paid conversions; GA4 gets `begin_checkout` and `purchase` ecommerce events.
+This tracking stores first-touch and last-touch attribution in browser localStorage, passes those fields to `/api/checkout`, and persists them into Stripe Checkout Session metadata. It also stores GA4 `gaClientId`, `gaSessionId`, and the raw GA4 session cookie on checkout sessions so later offline-conversion/server-side Measurement Protocol work can join paid Stripe conversions back to the browser session. Stripe remains the source of truth for paid conversions; GA4 gets `begin_checkout` and `purchase` ecommerce events. When the site has Google Ads tag settings configured, the success page also fires a direct Google Ads purchase conversion.
+
+### Website env vars for direct Google Ads conversions
+
+```bash
+NEXT_PUBLIC_GOOGLE_ADS_ID=AW-XXXXXXXXXX
+NEXT_PUBLIC_GOOGLE_ADS_PURCHASE_LABEL=AbCdEfGhIjKlMnOpQrSt
+```
+
+If these are unset, the website still captures attribution into Stripe metadata and GA4, but it skips the direct Google Ads conversion event.
 
 ## Initial campaigns to launch
 
