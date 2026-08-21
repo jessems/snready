@@ -25,6 +25,16 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
     );
   }
 
+  if (!env.STRIPE_SECRET_KEY) {
+    console.error("Checkout session verification is not configured for this deployment", {
+      hasStripeSecretKey: Boolean(env.STRIPE_SECRET_KEY),
+    });
+    return new Response(
+      JSON.stringify({ error: "Checkout session verification is not configured for this deployment" }),
+      { status: 503, headers: { "Content-Type": "application/json" } }
+    );
+  }
+
   try {
     const stripe = new Stripe(env.STRIPE_SECRET_KEY);
     const session = await stripe.checkout.sessions.retrieve(sessionId);
