@@ -1,6 +1,7 @@
 export const GA_MEASUREMENT_ID = "G-21R4T0V162";
-export const GOOGLE_ADS_ID = process.env.NEXT_PUBLIC_GOOGLE_ADS_ID || "";
-export const GOOGLE_ADS_PURCHASE_LABEL = process.env.NEXT_PUBLIC_GOOGLE_ADS_PURCHASE_LABEL || "";
+export const GOOGLE_ADS_ID = process.env.NEXT_PUBLIC_GOOGLE_ADS_ID || "AW-18397575219";
+export const GOOGLE_ADS_PURCHASE_LABEL =
+  process.env.NEXT_PUBLIC_GOOGLE_ADS_PURCHASE_LABEL || "De0BCKvawuQcELPw0sRE";
 
 export type PlanType = "single" | "all";
 
