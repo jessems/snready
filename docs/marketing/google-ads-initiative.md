@@ -11,11 +11,21 @@ Goal: drive incremental SNReady sales while keeping acquisition spend discipline
 
 ## Required campaign tracking
 
-Enable Google Ads auto-tagging and use final URL suffix / tracking template UTMs:
+Enable Google Ads auto-tagging.
+
+Use the **final URL suffix** below exactly as written:
 
 ```text
 utm_source=google&utm_medium=cpc&utm_campaign={campaignid}&utm_term={keyword}&utm_content={creative}&utm_id={campaignid}
 ```
+
+Leave the tracking template blank unless you explicitly need one. If you do use a tracking template, it must start with `{lpurl}` like this:
+
+```text
+{lpurl}?utm_source=google&utm_medium=cpc&utm_campaign={campaignid}&utm_term={keyword}&utm_content={creative}&utm_id={campaignid}
+```
+
+Do **not** paste the bare UTM string into the tracking-template field. That can produce malformed landing URLs and destroy attribution / conversion quality.
 
 This tracking stores first-touch and last-touch attribution in browser localStorage, passes those fields to `/api/checkout`, and persists them into Stripe Checkout Session metadata. It also stores GA4 `gaClientId`, `gaSessionId`, and the raw GA4 session cookie on checkout sessions so later offline-conversion/server-side Measurement Protocol work can join paid Stripe conversions back to the browser session. Stripe remains the source of truth for paid conversions; GA4 gets `begin_checkout` and `purchase` ecommerce events. When the site has Google Ads tag settings configured, the success page also fires a direct Google Ads purchase conversion.
 

@@ -74,6 +74,28 @@ function truncate(value: string | null | undefined, maxLength = 240) {
   return value.length > maxLength ? value.slice(0, maxLength) : value;
 }
 
+export function normalizeTrackedPath(value: string | null | undefined) {
+  if (!value) return "/";
+
+  const trimmed = value.trim();
+  if (!trimmed) return "/";
+
+  const embeddedAbsoluteUrlIndex = trimmed.search(/https?:\/\//i);
+  const sanitized = embeddedAbsoluteUrlIndex > 0 ? trimmed.slice(0, embeddedAbsoluteUrlIndex) : trimmed;
+
+  if (sanitized.startsWith("http://") || sanitized.startsWith("https://")) {
+    try {
+      const url = new URL(sanitized);
+      return truncate(`${url.pathname}${url.search}`) || "/";
+    } catch {
+      return "/";
+    }
+  }
+
+  const withLeadingSlash = sanitized.startsWith("/") ? sanitized : `/${sanitized}`;
+  return truncate(withLeadingSlash) || "/";
+}
+
 function readStoredAttribution(): StoredAttribution {
   if (!isBrowser()) return {};
 
@@ -162,7 +184,7 @@ function currentTouch(): TouchData | null {
   const url = new URL(window.location.href);
   const params = url.searchParams;
   return {
-    landingPage: truncate(`${url.pathname}${url.search}`) || "/",
+    landingPage: normalizeTrackedPath(`${url.pathname}${url.search}`),
     referrer: truncate(document.referrer) || "",
     utmSource: getParam(params, "utm_source"),
     utmMedium: getParam(params, "utm_medium"),
@@ -237,11 +259,13 @@ export function trackEvent(eventName: string, params: Record<string, unknown> = 
 export function trackPageView(path: string) {
   if (!isBrowser() || typeof window.gtag !== "function") return;
 
+  const normalizedPath = normalizeTrackedPath(path);
+
   window.gtag("event", "page_view", {
-    page_path: path,
+    page_path: normalizedPath,
     page_location: window.location.href,
     page_title: document.title,
-    content_group: getContentGroup(path),
+    content_group: getContentGroup(normalizedPath),
   });
 }
 
