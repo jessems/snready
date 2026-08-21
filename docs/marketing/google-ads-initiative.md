@@ -22,8 +22,8 @@ This tracking stores first-touch and last-touch attribution in browser localStor
 ### Website env vars for direct Google Ads conversions
 
 ```bash
-NEXT_PUBLIC_GOOGLE_ADS_ID=AW-XXXXXXXXXX
-NEXT_PUBLIC_GOOGLE_ADS_PURCHASE_LABEL=AbCdEfGhIjKlMnOpQrSt
+NEXT_PUBLIC_GOOGLE_ADS_ID=AW-18397575219
+NEXT_PUBLIC_GOOGLE_ADS_PURCHASE_LABEL=De0BCKvawuQcELPw0sRE
 ```
 
 If these are unset, the website still captures attribution into Stripe metadata and GA4, but it skips the direct Google Ads conversion event.
