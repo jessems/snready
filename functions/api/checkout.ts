@@ -52,6 +52,25 @@ function attributionMetadata(attribution: AttributionData | undefined) {
   return metadata;
 }
 
+function configuredSiteUrl(request: Request, siteUrl?: string): string {
+  const requestOrigin = new URL(request.url).origin;
+
+  if (!siteUrl) {
+    console.warn("Checkout SITE_URL missing; falling back to request origin", { requestOrigin });
+    return requestOrigin;
+  }
+
+  try {
+    return new URL(siteUrl).origin;
+  } catch {
+    console.warn("Checkout SITE_URL invalid; falling back to request origin", {
+      hasSiteUrl: Boolean(siteUrl),
+      requestOrigin,
+    });
+    return requestOrigin;
+  }
+}
+
 const PLANS = {
   "single": {
     price: 900, // $9.00 in cents
@@ -84,8 +103,20 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       );
     }
 
+    if (!env.STRIPE_SECRET_KEY) {
+      console.error("Checkout is not configured for this deployment", {
+        hasStripeSecretKey: Boolean(env.STRIPE_SECRET_KEY),
+        hasSiteUrl: Boolean(env.SITE_URL),
+      });
+      return new Response(
+        JSON.stringify({ error: "Checkout is not configured for this deployment" }),
+        { status: 503, headers: { "Content-Type": "application/json" } }
+      );
+    }
+
     const selectedPlan = PLANS[plan] || PLANS["single"];
     const stripe = new Stripe(env.STRIPE_SECRET_KEY);
+    const siteOrigin = configuredSiteUrl(request, env.SITE_URL);
     const normalizedCertification = certification ? certification.toUpperCase() : "ALL";
     const safeReturnUrl = returnUrl?.startsWith("/") && !returnUrl.startsWith("//") ? returnUrl : undefined;
     const cancelParams = new URLSearchParams({
@@ -125,8 +156,8 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
         },
       ],
       mode: "payment",
-      success_url: `${env.SITE_URL}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${env.SITE_URL}/checkout/cancel?${cancelQuery}`,
+      success_url: `${siteOrigin}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${siteOrigin}/checkout/cancel?${cancelQuery}`,
       metadata: {
         // Normalize certification to uppercase to ensure consistent tracking in Stripe.
         certification: normalizedCertification,
