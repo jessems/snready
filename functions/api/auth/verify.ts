@@ -5,6 +5,8 @@ interface Env {
   SNREADY_ACCESS: KVNamespace;
 }
 
+const MAGIC_LINK_SECRET_KV_KEY = "config:magic_link_secret";
+
 // Verify HMAC signature
 async function verifyToken(token: string, secret: string): Promise<{ valid: boolean; email?: string; error?: string }> {
   try {
@@ -48,6 +50,14 @@ async function verifyToken(token: string, secret: string): Promise<{ valid: bool
   }
 }
 
+async function resolveMagicLinkSecret(env: Env): Promise<string | null> {
+  const direct = env.MAGIC_LINK_SECRET?.trim();
+  if (direct) return direct;
+  const fallback = await env.SNREADY_ACCESS.get(MAGIC_LINK_SECRET_KV_KEY);
+  const normalized = fallback?.trim();
+  return normalized ? normalized : null;
+}
+
 export const onRequestGet: PagesFunction<Env> = async (context) => {
   const { request, env } = context;
   const url = new URL(request.url);
@@ -60,7 +70,16 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
     );
   }
 
-  const result = await verifyToken(token, env.MAGIC_LINK_SECRET);
+  const magicLinkSecret = await resolveMagicLinkSecret(env);
+
+  if (!magicLinkSecret) {
+    return new Response(
+      JSON.stringify({ error: "Magic link auth is not configured for this deployment" }),
+      { status: 503, headers: { "Content-Type": "application/json" } }
+    );
+  }
+
+  const result = await verifyToken(token, magicLinkSecret);
 
   if (!result.valid || !result.email) {
     return new Response(
