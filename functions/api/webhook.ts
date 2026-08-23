@@ -3,13 +3,32 @@ import { enqueuePurchaseFollowup } from "../lib/followup";
 
 interface Env {
   STRIPE_SECRET_KEY: string;
-  STRIPE_WEBHOOK_SECRET: string;
+  STRIPE_WEBHOOK_SECRET?: string;
+  STRIPE_WEBHOOK_SIGNING_SECRET?: string;
+  STRIPE_WEBHOOK_SECRET_KEY?: string;
   SNREADY_ACCESS: KVNamespace;
   RESEND_API_KEY: string;
   SITE_URL: string;
   FOLLOWUP_DELAY_DAYS?: string;
   FOLLOWUP_FROM_EMAIL?: string;
   FOLLOWUP_REPLY_TO?: string;
+}
+
+const WEBHOOK_SECRET_CANDIDATES = [
+  "STRIPE_WEBHOOK_SECRET",
+  "STRIPE_WEBHOOK_SIGNING_SECRET",
+  "STRIPE_WEBHOOK_SECRET_KEY",
+] as const;
+
+function resolveWebhookSecret(env: Env): string | null {
+  for (const key of WEBHOOK_SECRET_CANDIDATES) {
+    const value = env[key]?.trim();
+    if (value) {
+      return value;
+    }
+  }
+
+  return null;
 }
 
 export const onRequestPost: PagesFunction<Env> = async (context) => {
@@ -23,19 +42,25 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     return new Response("No signature", { status: 400 });
   }
 
-  if (!env.STRIPE_WEBHOOK_SECRET) {
-    console.error("Webhook error: STRIPE_WEBHOOK_SECRET not configured");
+  const webhookSecret = resolveWebhookSecret(env);
+  if (!webhookSecret) {
+    console.error("Webhook error: no Stripe webhook secret configured", {
+      configuredCandidates: WEBHOOK_SECRET_CANDIDATES.filter((key) => Boolean(env[key]?.trim())),
+      availableEnvKeys: Object.keys(env).filter((key) => key.startsWith("STRIPE_")).sort(),
+    });
     return new Response("Webhook secret not configured", { status: 500 });
   }
 
   try {
     const body = await request.text();
-    
-    // Use constructEventAsync for Cloudflare Workers (required for Stripe SDK v20+)
+    const cryptoProvider = Stripe.createSubtleCryptoProvider();
+
     const event = await stripe.webhooks.constructEventAsync(
       body,
       signature,
-      env.STRIPE_WEBHOOK_SECRET
+      webhookSecret,
+      undefined,
+      cryptoProvider
     );
 
     if (event.type === "checkout.session.completed") {
@@ -45,16 +70,12 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       const certification = session.metadata?.certification || "all";
 
       if (email) {
-        // Both plans are now lifetime (100 years)
         const durationMs = 100 * 365 * 24 * 60 * 60 * 1000;
-        
         const expiresAt = Date.now() + durationMs;
-        
-        // No TTL - keep forever for both plans
-        const kvOptions = {};
+        const normalizedEmail = email.toLowerCase();
 
         await env.SNREADY_ACCESS.put(
-          `access:${email.toLowerCase()}`,
+          `access:${normalizedEmail}`,
           JSON.stringify({
             paid: true,
             plan,
@@ -63,19 +84,27 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
             certification,
             createdAt: Date.now(),
           }),
-          kvOptions
+          {}
         );
 
-        await enqueuePurchaseFollowup(env, {
-          sessionId: session.id,
-          email,
-          plan,
-          certification,
-          certifications: plan === "single" && certification ? [certification] : [],
-          purchasedAt: (session.created || Math.floor(Date.now() / 1000)) * 1000,
-        });
+        try {
+          await enqueuePurchaseFollowup(env, {
+            sessionId: session.id,
+            email: normalizedEmail,
+            plan,
+            certification,
+            certifications: plan === "single" && certification ? [certification] : [],
+            purchasedAt: (session.created || Math.floor(Date.now() / 1000)) * 1000,
+          });
+        } catch (error) {
+          console.error("Webhook follow-up enqueue failed after access grant", {
+            sessionId: session.id,
+            email: normalizedEmail,
+            error,
+          });
+        }
 
-        console.log(`Access granted to ${email} (${plan}) until ${new Date(expiresAt).toISOString()}`);
+        console.log(`Access granted to ${normalizedEmail} (${plan}) until ${new Date(expiresAt).toISOString()}`);
       }
     }
 

@@ -12,54 +12,108 @@ interface Env {
   FOLLOWUP_REPLY_TO?: string;
 }
 
+const JSON_HEADERS = { "Content-Type": "application/json" };
+
+type SessionErrorCode =
+  | "missing_session_id"
+  | "session_not_found"
+  | "stripe_lookup_failed"
+  | "payment_not_completed"
+  | "missing_customer_email"
+  | "access_grant_failed";
+
+function jsonResponse(body: Record<string, unknown>, status: number, headers?: HeadersInit): Response {
+  return new Response(JSON.stringify(body), {
+    status,
+    headers: {
+      ...JSON_HEADERS,
+      ...(headers || {}),
+    },
+  });
+}
+
+function errorResponse(status: number, code: SessionErrorCode, error: string): Response {
+  return jsonResponse({ error, code }, status);
+}
+
+function isStripeSessionNotFound(error: unknown): boolean {
+  if (!error || typeof error !== "object") return false;
+
+  const stripeError = error as {
+    code?: string;
+    statusCode?: number;
+    raw?: { code?: string };
+  };
+
+  return (
+    stripeError.code === "resource_missing" ||
+    stripeError.statusCode === 404 ||
+    stripeError.raw?.code === "resource_missing"
+  );
+}
+
+async function retrieveStripeSession(stripeSecretKey: string, sessionId: string) {
+  const stripe = new Stripe(stripeSecretKey);
+
+  try {
+    return await stripe.checkout.sessions.retrieve(sessionId);
+  } catch (error) {
+    if (isStripeSessionNotFound(error)) {
+      console.warn("Checkout session not found", { sessionId, error });
+      return null;
+    }
+
+    console.error("Stripe session lookup failed", { sessionId, error });
+    throw error;
+  }
+}
+
 // Verify a checkout session and grant access
 export const onRequestGet: PagesFunction<Env> = async (context) => {
   const { request, env } = context;
   const url = new URL(request.url);
-  const sessionId = url.searchParams.get("session_id");
+  const sessionId = url.searchParams.get("session_id")?.trim();
 
   if (!sessionId) {
-    return new Response(
-      JSON.stringify({ error: "Session ID required" }),
-      { status: 400, headers: { "Content-Type": "application/json" } }
-    );
+    return errorResponse(400, "missing_session_id", "Session ID required");
   }
 
+  let session: Awaited<ReturnType<Stripe["checkout"]["sessions"]["retrieve"]>> | null;
+
   try {
-    const stripe = new Stripe(env.STRIPE_SECRET_KEY);
-    const session = await stripe.checkout.sessions.retrieve(sessionId);
+    session = await retrieveStripeSession(env.STRIPE_SECRET_KEY, sessionId);
+  } catch {
+    return errorResponse(502, "stripe_lookup_failed", "Stripe session lookup failed");
+  }
 
-    if (session.payment_status !== "paid") {
-      return new Response(
-        JSON.stringify({ error: "Payment not completed" }),
-        { status: 400, headers: { "Content-Type": "application/json" } }
-      );
-    }
+  if (!session) {
+    return errorResponse(404, "session_not_found", "Checkout session not found");
+  }
 
-    const email = session.customer_details?.email;
-    const plan = session.metadata?.plan || "single";
-    const certification = session.metadata?.certification || "all";
+  if (session.payment_status !== "paid") {
+    return errorResponse(400, "payment_not_completed", "Payment not completed");
+  }
 
-    if (!email) {
-      return new Response(
-        JSON.stringify({ error: "No email found" }),
-        { status: 400, headers: { "Content-Type": "application/json" } }
-      );
-    }
+  const email = session.customer_details?.email;
+  const plan = session.metadata?.plan || "single";
+  const certification = session.metadata?.certification || "all";
 
-    // Grant access (in case webhook was slow)
-    // Both plans are lifetime access (100 years)
-    const durationMs = 100 * 365 * 24 * 60 * 60 * 1000;
-    const expiresAt = Date.now() + durationMs;
-    
-    // No TTL expiration - lifetime for both plans
-    const kvOptions = {};
+  if (!email) {
+    return errorResponse(422, "missing_customer_email", "No email found for this checkout session");
+  }
 
-    const normalizedEmail = email.toLowerCase();
+  const durationMs = 100 * 365 * 24 * 60 * 60 * 1000;
+  const expiresAt = Date.now() + durationMs;
+  const normalizedEmail = email.toLowerCase();
+  const now = Date.now();
+  const sessionToken = crypto.randomUUID();
+  const sessionExpiresAt = now + 30 * 24 * 60 * 60 * 1000;
 
-    // Also create/update user record on payment
+  let certifications: string[] = [];
+  let effectivePlan = plan;
+
+  try {
     const existingUser = await env.SNREADY_ACCESS.get(`user:${normalizedEmail}`);
-    const now = Date.now();
     if (!existingUser) {
       await env.SNREADY_ACCESS.put(
         `user:${normalizedEmail}`,
@@ -67,35 +121,31 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
       );
     }
 
-    // Create a session so the user is logged in after payment
-    const sessionToken = crypto.randomUUID();
-    const sessionExpiresAt = now + 30 * 24 * 60 * 60 * 1000;
     await env.SNREADY_ACCESS.put(
       `session:${sessionToken}`,
       JSON.stringify({ email: normalizedEmail, createdAt: now, expiresAt: sessionExpiresAt }),
       { expirationTtl: 30 * 24 * 60 * 60 }
     );
 
-    // Merge with existing access (support multiple single-cert purchases)
     const existingAccess = await env.SNREADY_ACCESS.get(`access:${normalizedEmail}`);
-    let certifications: string[] = [];
-    let effectivePlan = plan;
 
     if (existingAccess) {
       try {
         const existing = JSON.parse(existingAccess);
         certifications = existing.certifications || (existing.certification ? [existing.certification] : []);
-        // If they already have "all" plan, keep it
         if (existing.plan === "all") effectivePlan = "all";
-      } catch {}
+      } catch (error) {
+        console.warn("Failed to parse existing access record; continuing with fresh grant", {
+          email: normalizedEmail,
+          error,
+        });
+      }
     }
 
-    // Add new certification if single plan
     if (plan === "single" && certification && !certifications.includes(certification)) {
       certifications.push(certification);
     }
 
-    // "all" plan means all certs
     if (plan === "all") {
       effectivePlan = "all";
     }
@@ -111,9 +161,15 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
         certifications,
         createdAt: Date.now(),
       }),
-      kvOptions
+      {}
     );
+  } catch (error) {
+    console.error("Session access grant failed", { sessionId, email: normalizedEmail, error });
+    return errorResponse(500, "access_grant_failed", "Access grant failed");
+  }
 
+  let followupWarning: string | undefined;
+  try {
     await enqueuePurchaseFollowup(env, {
       sessionId: session.id,
       email: normalizedEmail,
@@ -122,29 +178,29 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
       certifications,
       purchasedAt: (session.created || Math.floor(Date.now() / 1000)) * 1000,
     });
-
-    return new Response(
-      JSON.stringify({
-        success: true,
-        email,
-        plan: effectivePlan,
-        expiresAt,
-        certification,
-        certifications,
-        amountTotal: session.amount_total || undefined,
-      }),
-      {
-        headers: {
-          "Content-Type": "application/json",
-          "Set-Cookie": makeSessionCookie(sessionToken),
-        },
-      }
-    );
   } catch (error) {
-    console.error("Session verification error:", error);
-    return new Response(
-      JSON.stringify({ error: "Session verification failed" }),
-      { status: 500, headers: { "Content-Type": "application/json" } }
-    );
+    followupWarning = "purchase_followup_enqueue_failed";
+    console.error("Purchase follow-up enqueue failed after access grant", {
+      sessionId: session.id,
+      email: normalizedEmail,
+      error,
+    });
   }
+
+  return jsonResponse(
+    {
+      success: true,
+      email,
+      plan: effectivePlan,
+      expiresAt,
+      certification,
+      certifications,
+      amountTotal: session.amount_total || undefined,
+      ...(followupWarning ? { warnings: [followupWarning] } : {}),
+    },
+    200,
+    {
+      "Set-Cookie": makeSessionCookie(sessionToken),
+    }
+  );
 };
