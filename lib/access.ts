@@ -65,6 +65,7 @@ export type VerifySessionResponse = {
   certification?: string;
   amountTotal?: number;
   error?: string;
+  code?: string;
 };
 
 /**

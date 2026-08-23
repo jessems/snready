@@ -9,6 +9,8 @@ interface Env {
 
 const MAGIC_LINK_SECRET_KV_KEY = "config:magic_link_secret";
 const RESEND_API_KEY_KV_KEY = "config:resend_api_key";
+const MAGIC_LINK_FROM_EMAIL = "SNReady <jesse@snready.com>";
+const MAGIC_LINK_REPLY_TO = "jesse@snready.com";
 
 // Simple HMAC-like signature using Web Crypto
 async function createToken(email: string, expiresAt: number, secret: string): Promise<string> {
@@ -88,9 +90,6 @@ function getEmailText(magicLink: string): string {
   return `Log in to SNReady\n\nClick this link to log in: ${magicLink}\n\nThis link expires in 15 minutes.`;
 }
 
-const MAGIC_LINK_FROM_EMAIL = "SNReady <jesse@snready.com>";
-const MAGIC_LINK_REPLY_TO = "jesse@snready.com";
-
 async function sendViaResend(apiKey: string, normalizedEmail: string, magicLink: string): Promise<Response> {
   return fetch("https://api.resend.com/emails", {
     method: "POST",
@@ -109,41 +108,6 @@ async function sendViaResend(apiKey: string, normalizedEmail: string, magicLink:
   });
 }
 
-async function sendViaMailChannels(normalizedEmail: string, magicLink: string): Promise<Response> {
-  return fetch("https://api.mailchannels.net/tx/v1/send", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      personalizations: [
-        {
-          to: [{ email: normalizedEmail }],
-        },
-      ],
-      from: {
-        email: "jesse@snready.com",
-        name: "SNReady",
-      },
-      reply_to: {
-        email: "jesse@snready.com",
-        name: "SNReady Support",
-      },
-      subject: "Your SNReady Login Link",
-      content: [
-        {
-          type: "text/plain",
-          value: getEmailText(magicLink),
-        },
-        {
-          type: "text/html",
-          value: getEmailHtml(magicLink),
-        },
-      ],
-    }),
-  });
-}
-
 export const onRequestPost: PagesFunction<Env> = async (context) => {
   const { request, env } = context;
 
@@ -152,7 +116,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
 
     if (!email || !email.includes("@")) {
       return new Response(
-        JSON.stringify({ error: "Valid email required" }),
+        JSON.stringify({ error: "Valid email required", code: "invalid_email" }),
         { status: 400, headers: { "Content-Type": "application/json" } }
       );
     }
@@ -169,7 +133,24 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
         hasResendApiKeyKvFallback: Boolean(await env.SNREADY_ACCESS.get(RESEND_API_KEY_KV_KEY)),
       });
       return new Response(
-        JSON.stringify({ error: "Magic link auth is not configured for this deployment" }),
+        JSON.stringify({
+          error: "Magic link auth is not configured for this deployment",
+          code: "magic_link_not_configured",
+        }),
+        { status: 503, headers: { "Content-Type": "application/json" } }
+      );
+    }
+
+    if (!resendApiKey) {
+      console.error("Magic link email provider is not configured for this deployment", {
+        hasResendApiKey: Boolean(env.RESEND_API_KEY),
+        hasResendApiKeyKvFallback: Boolean(await env.SNREADY_ACCESS.get(RESEND_API_KEY_KV_KEY)),
+      });
+      return new Response(
+        JSON.stringify({
+          error: "Magic link email provider is not configured for this deployment",
+          code: "resend_not_configured",
+        }),
         { status: 503, headers: { "Content-Type": "application/json" } }
       );
     }
@@ -184,26 +165,18 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     if (redirectPath) magicUrl.searchParams.set("redirect", redirectPath);
     const magicLink = magicUrl.toString();
 
-    let emailResponse: Response;
-
-    if (resendApiKey) {
-      emailResponse = await sendViaResend(resendApiKey, normalizedEmail, magicLink);
-
-      if (!emailResponse.ok) {
-        const resendError = await emailResponse.text();
-        console.error("Resend error; falling back to MailChannels:", resendError);
-        emailResponse = await sendViaMailChannels(normalizedEmail, magicLink);
-      }
-    } else {
-      emailResponse = await sendViaMailChannels(normalizedEmail, magicLink);
-    }
+    const emailResponse = await sendViaResend(resendApiKey, normalizedEmail, magicLink);
 
     if (!emailResponse.ok) {
       const errorData = await emailResponse.text();
-      console.error("MailChannels error:", errorData);
+      console.error("Resend send failed", {
+        status: emailResponse.status,
+        body: errorData,
+        to: normalizedEmail,
+      });
       return new Response(
-        JSON.stringify({ error: "Failed to send email" }),
-        { status: 500, headers: { "Content-Type": "application/json" } }
+        JSON.stringify({ error: "Failed to send email", code: "resend_send_failed" }),
+        { status: 502, headers: { "Content-Type": "application/json" } }
       );
     }
 
@@ -214,7 +187,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   } catch (error) {
     console.error("Magic link error:", error);
     return new Response(
-      JSON.stringify({ error: "Failed to send magic link" }),
+      JSON.stringify({ error: "Failed to send magic link", code: "magic_link_request_failed" }),
       { status: 500, headers: { "Content-Type": "application/json" } }
     );
   }
