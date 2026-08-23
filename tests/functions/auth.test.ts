@@ -76,29 +76,7 @@ describe("magic link auth", () => {
     expect(globalThis.fetch).not.toHaveBeenCalled();
   });
 
-  it("falls back to KV-backed magic-link config and MailChannels when preview secrets are missing", async () => {
-    const response = await sendMagicLink({
-      request: new Request("https://preview.snready.pages.dev/api/auth/send-magic-link", {
-        method: "POST",
-        body: JSON.stringify({ email: "jesse@example.com", redirect: "/admin/coverage" }),
-        headers: { "Content-Type": "application/json" },
-      }),
-      env: {
-        SNREADY_ACCESS: kvStore({
-          "config:magic_link_secret": "kv-secret",
-        }),
-      },
-    } as unknown as Parameters<typeof sendMagicLink>[0]);
-
-    expect(response.status).toBe(200);
-    const [url, init] = (globalThis.fetch as ReturnType<typeof vi.fn>).mock.calls[0];
-    expect(url).toBe("https://api.mailchannels.net/tx/v1/send");
-    const payload = JSON.parse(init?.body as string);
-    expect(payload.from.email).toBe("jesse@snready.com");
-    expect(payload.reply_to.email).toBe("jesse@snready.com");
-  });
-
-  it("falls back to KV-backed Resend API keys when preview env vars are missing", async () => {
+  it("falls back to KV-backed Resend and signing secrets when preview env vars are missing", async () => {
     const response = await sendMagicLink({
       request: new Request("https://preview.snready.pages.dev/api/auth/send-magic-link", {
         method: "POST",
@@ -119,10 +97,9 @@ describe("magic link auth", () => {
     expect(init?.headers).toMatchObject({ Authorization: "Bearer re_kv_value" });
   });
 
-  it("falls back to MailChannels when Resend rejects the send attempt", async () => {
+  it("returns a distinguishable 502 when Resend rejects the send attempt", async () => {
     (globalThis.fetch as ReturnType<typeof vi.fn>)
-      .mockResolvedValueOnce(new Response("error code: 1010", { status: 403 }))
-      .mockResolvedValueOnce(new Response("{}", { status: 202 }));
+      .mockResolvedValueOnce(new Response("error code: 1010", { status: 403 }));
 
     const response = await sendMagicLink({
       request: new Request("https://snready.com/api/auth/send-magic-link", {
@@ -137,10 +114,14 @@ describe("magic link auth", () => {
       },
     } as unknown as Parameters<typeof sendMagicLink>[0]);
 
-    expect(response.status).toBe(200);
-    expect((globalThis.fetch as ReturnType<typeof vi.fn>).mock.calls).toHaveLength(2);
+    expect(response.status).toBe(502);
+    expect(await response.json()).toEqual({
+      error: "Email delivery failed",
+      code: "resend_send_failed",
+      details: "error code: 1010",
+    });
+    expect((globalThis.fetch as ReturnType<typeof vi.fn>).mock.calls).toHaveLength(1);
     expect((globalThis.fetch as ReturnType<typeof vi.fn>).mock.calls[0][0]).toBe("https://api.resend.com/emails");
-    expect((globalThis.fetch as ReturnType<typeof vi.fn>).mock.calls[1][0]).toBe("https://api.mailchannels.net/tx/v1/send");
   });
 
   it("drops unsafe magic-link redirect targets", async () => {
