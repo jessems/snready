@@ -5,6 +5,49 @@ interface Env {
   SITE_URL: string;
 }
 
+function errorResponse(status: number, error: string, code: string, extra?: Record<string, unknown>) {
+  return new Response(
+    JSON.stringify({ error, code, ...(extra || {}) }),
+    { status, headers: { "Content-Type": "application/json" } }
+  );
+}
+
+function stripeErrorDetails(error: unknown) {
+  if (!error || typeof error !== "object") {
+    return { code: "stripe_checkout_failed" };
+  }
+
+  const stripeError = error as {
+    type?: string;
+    code?: string;
+    statusCode?: number;
+    raw?: { type?: string; code?: string; message?: string };
+    message?: string;
+  };
+
+  const providerType = stripeError.type || stripeError.raw?.type;
+  const providerCode = stripeError.code || stripeError.raw?.code;
+  const providerMessage = stripeError.message || stripeError.raw?.message;
+  const providerStatus = stripeError.statusCode;
+
+  let code = "stripe_checkout_failed";
+  if (providerStatus === 401 || providerType === "StripeAuthenticationError" || providerType === "authentication_error") {
+    code = "stripe_auth_failed";
+  } else if (providerStatus === 403 || providerCode === "permission_error") {
+    code = "stripe_permission_denied";
+  } else if (providerType === "StripeInvalidRequestError" || providerType === "invalid_request_error" || providerStatus === 400) {
+    code = "stripe_checkout_invalid_request";
+  }
+
+  return {
+    code,
+    ...(providerType ? { providerType } : {}),
+    ...(providerCode ? { providerCode } : {}),
+    ...(providerStatus ? { providerStatus } : {}),
+    ...(providerMessage ? { providerMessage } : {}),
+  };
+}
+
 type PlanType = "single" | "all";
 
 type AttributionData = Record<string, string | undefined>;
@@ -78,10 +121,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
 
     // Prevent single-cert checkout without specifying which certification
     if (plan === "single" && !certification) {
-      return new Response(
-        JSON.stringify({ error: "Certification is required for single-cert purchases" }),
-        { status: 400, headers: { "Content-Type": "application/json" } }
-      );
+      return errorResponse(400, "Certification is required for single-cert purchases", "missing_certification");
     }
 
     const selectedPlan = PLANS[plan] || PLANS["single"];
@@ -140,10 +180,8 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       headers: { "Content-Type": "application/json" },
     });
   } catch (error) {
-    console.error("Stripe checkout error:", error);
-    return new Response(
-      JSON.stringify({ error: "Failed to create checkout session" }),
-      { status: 500, headers: { "Content-Type": "application/json" } }
-    );
+    const details = stripeErrorDetails(error);
+    console.error("Stripe checkout error:", details, error);
+    return errorResponse(502, "Stripe checkout failed", details.code, details);
   }
 };
