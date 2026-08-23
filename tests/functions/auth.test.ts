@@ -47,6 +47,8 @@ describe("magic link auth", () => {
     expect(await response.json()).toEqual({ success: true, message: "Magic link sent" });
 
     const resendPayload = JSON.parse((globalThis.fetch as ReturnType<typeof vi.fn>).mock.calls[0][1]?.body as string);
+    expect(resendPayload.from).toBe("SNReady <jesse@snready.com>");
+    expect(resendPayload.reply_to).toBe("jesse@snready.com");
     const link = resendPayload.text.match(/https:\/\/\S+/)?.[0];
     expect(link).toBeTruthy();
     const url = new URL(link);
@@ -89,8 +91,11 @@ describe("magic link auth", () => {
     } as unknown as Parameters<typeof sendMagicLink>[0]);
 
     expect(response.status).toBe(200);
-    const [url] = (globalThis.fetch as ReturnType<typeof vi.fn>).mock.calls[0];
+    const [url, init] = (globalThis.fetch as ReturnType<typeof vi.fn>).mock.calls[0];
     expect(url).toBe("https://api.mailchannels.net/tx/v1/send");
+    const payload = JSON.parse(init?.body as string);
+    expect(payload.from.email).toBe("jesse@snready.com");
+    expect(payload.reply_to.email).toBe("jesse@snready.com");
   });
 
   it("falls back to KV-backed Resend API keys when preview env vars are missing", async () => {

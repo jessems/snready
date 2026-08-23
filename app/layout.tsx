@@ -255,7 +255,7 @@ export default function RootLayout({
                 </p>
                 <div className="mt-4 space-y-2">
                   <a
-                    href="mailto:hello@snready.com"
+                    href="mailto:jesse@snready.com"
                     className="block text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
                   >
                     Contact
