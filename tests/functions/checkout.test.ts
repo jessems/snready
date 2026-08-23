@@ -8,7 +8,7 @@ describe("checkout Pages Function", () => {
   it("rejects single-cert checkout without a certification", async () => {
     const response = await onRequestPost(context({ plan: "single" }));
     expect(response.status).toBe(400);
-    expect(await response.json()).toEqual({ error: "Certification is required for single-cert purchases" });
+    expect(await response.json()).toEqual({ error: "Certification is required for single-cert purchases", code: "missing_certification" });
     expect(createCheckoutSession).not.toHaveBeenCalled();
   });
   it("creates a $9 single-cert checkout session with normalized metadata", async () => {
@@ -38,6 +38,26 @@ describe("checkout Pages Function", () => {
     });
     expect(payload.success_url).toBe("https://snready.com/checkout/success?session_id={CHECKOUT_SESSION_ID}");
     expect(payload.cancel_url).toContain("return_to=%2Fcsa%2Fpractice-questions");
+  });
+  it("returns structured Stripe details when checkout creation fails", async () => {
+    createCheckoutSession.mockRejectedValueOnce({
+      type: "StripePermissionError",
+      code: "permission_error",
+      statusCode: 403,
+      message: "This API key does not have permission to perform the request",
+    });
+
+    const response = await onRequestPost(context({ certification: "csa", plan: "single" }));
+
+    expect(response.status).toBe(502);
+    expect(await response.json()).toEqual({
+      error: "Stripe checkout failed",
+      code: "stripe_permission_denied",
+      providerType: "StripePermissionError",
+      providerCode: "permission_error",
+      providerStatus: 403,
+      providerMessage: "This API key does not have permission to perform the request",
+    });
   });
   it("creates a $49 all-access checkout and ignores unsafe return URLs", async () => {
     await onRequestPost(context({ certification: "csa", plan: "all", returnUrl: "https://evil.example/phish" }));
