@@ -88,6 +88,9 @@ function getEmailText(magicLink: string): string {
   return `Log in to SNReady\n\nClick this link to log in: ${magicLink}\n\nThis link expires in 15 minutes.`;
 }
 
+const MAGIC_LINK_FROM_EMAIL = "SNReady <jesse@snready.com>";
+const MAGIC_LINK_REPLY_TO = "jesse@snready.com";
+
 async function sendViaResend(apiKey: string, normalizedEmail: string, magicLink: string): Promise<Response> {
   return fetch("https://api.resend.com/emails", {
     method: "POST",
@@ -96,8 +99,9 @@ async function sendViaResend(apiKey: string, normalizedEmail: string, magicLink:
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      from: "SNReady <login@snready.com>",
+      from: MAGIC_LINK_FROM_EMAIL,
       to: normalizedEmail,
+      reply_to: MAGIC_LINK_REPLY_TO,
       subject: "Your SNReady Login Link",
       html: getEmailHtml(magicLink),
       text: getEmailText(magicLink),
@@ -118,7 +122,7 @@ async function sendViaMailChannels(normalizedEmail: string, magicLink: string): 
         },
       ],
       from: {
-        email: "login@snready.com",
+        email: "jesse@snready.com",
         name: "SNReady",
       },
       reply_to: {

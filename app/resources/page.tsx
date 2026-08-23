@@ -430,7 +430,7 @@ export default function ResourcesPage() {
             Let us know and we&apos;ll add it to the list.
           </p>
           <a
-            href="mailto:hello@snready.com?subject=Resource Suggestion for SNReady"
+            href="mailto:jesse@snready.com?subject=Resource Suggestion for SNReady"
             className="mt-4 inline-flex items-center text-emerald-600 hover:text-emerald-700 dark:text-emerald-400 dark:hover:text-emerald-300"
           >
             Suggest a resource →
