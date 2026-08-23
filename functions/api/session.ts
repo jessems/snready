@@ -40,14 +40,12 @@ function isStripeSessionNotFound(error: unknown): boolean {
   if (!error || typeof error !== "object") return false;
 
   const stripeError = error as {
-    type?: string;
     code?: string;
     statusCode?: number;
     raw?: { code?: string };
   };
 
   return (
-    stripeError.type === "StripeInvalidRequestError" ||
     stripeError.code === "resource_missing" ||
     stripeError.statusCode === 404 ||
     stripeError.raw?.code === "resource_missing"
@@ -85,7 +83,7 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
   try {
     session = await retrieveStripeSession(env.STRIPE_SECRET_KEY, sessionId);
   } catch {
-    return errorResponse(502, "stripe_lookup_failed", "Unable to verify checkout session");
+    return errorResponse(502, "stripe_lookup_failed", "Stripe session lookup failed");
   }
 
   if (!session) {
@@ -167,9 +165,10 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
     );
   } catch (error) {
     console.error("Session access grant failed", { sessionId, email: normalizedEmail, error });
-    return errorResponse(500, "access_grant_failed", "Unable to grant access for this checkout session");
+    return errorResponse(500, "access_grant_failed", "Access grant failed");
   }
 
+  let followupWarning: string | undefined;
   try {
     await enqueuePurchaseFollowup(env, {
       sessionId: session.id,
@@ -180,6 +179,7 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
       purchasedAt: (session.created || Math.floor(Date.now() / 1000)) * 1000,
     });
   } catch (error) {
+    followupWarning = "purchase_followup_enqueue_failed";
     console.error("Purchase follow-up enqueue failed after access grant", {
       sessionId: session.id,
       email: normalizedEmail,
@@ -196,6 +196,7 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
       certification,
       certifications,
       amountTotal: session.amount_total || undefined,
+      ...(followupWarning ? { warnings: [followupWarning] } : {}),
     },
     200,
     {

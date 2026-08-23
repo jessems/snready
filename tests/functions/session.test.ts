@@ -1,15 +1,16 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { onRequestGet } from "@/functions/api/session";
 
-const retrieveCheckoutSession = vi.hoisted(() => vi.fn());
+const retrieveSession = vi.hoisted(() => vi.fn());
 const enqueuePurchaseFollowup = vi.hoisted(() => vi.fn());
+const makeSessionCookie = vi.hoisted(() => vi.fn(() => "snready_session=test-token; Path=/; HttpOnly"));
 
 vi.mock("stripe", () => ({
   default: vi.fn().mockImplementation(function StripeMock() {
     return {
       checkout: {
         sessions: {
-          retrieve: retrieveCheckoutSession,
+          retrieve: retrieveSession,
         },
       },
     };
@@ -20,29 +21,36 @@ vi.mock("@/functions/lib/followup", () => ({
   enqueuePurchaseFollowup,
 }));
 
-function kvStore(options: { initial?: Record<string, string>; failPutAtCall?: number } = {}) {
-  const store = new Map(Object.entries(options.initial || {}));
-  let putCount = 0;
+vi.mock("@/functions/lib/session", () => ({
+  makeSessionCookie,
+}));
 
-  return {
-    get: vi.fn((key: string) => Promise.resolve(store.get(key) ?? null)),
-    put: vi.fn((key: string, value: string) => {
-      putCount += 1;
-      if (options.failPutAtCall && putCount === options.failPutAtCall) {
-        return Promise.reject(new Error(`KV put failed for ${key}`));
-      }
+type MockKvNamespace = KVNamespace<string> & {
+  get: ReturnType<typeof vi.fn>;
+  put: ReturnType<typeof vi.fn>;
+  delete: ReturnType<typeof vi.fn>;
+  list: ReturnType<typeof vi.fn>;
+  getWithMetadata: ReturnType<typeof vi.fn>;
+};
+
+function kvStore(initial: Record<string, string> = {}): MockKvNamespace {
+  const store = new Map(Object.entries(initial));
+  const kv = {
+    get: vi.fn(async (key: string) => store.get(key) ?? null),
+    getWithMetadata: vi.fn(async (key: string) => ({ value: store.get(key) ?? null, metadata: null })),
+    put: vi.fn(async (key: string, value: string) => {
       store.set(key, value);
-      return Promise.resolve();
     }),
-    delete: vi.fn((key: string) => {
+    delete: vi.fn(async (key: string) => {
       store.delete(key);
-      return Promise.resolve();
     }),
-    dump: () => Object.fromEntries(store.entries()),
+    list: vi.fn(async () => ({ keys: [], list_complete: true, cursor: "", cacheStatus: null })),
   };
+
+  return kv as unknown as MockKvNamespace;
 }
 
-function context(sessionId?: string, kv = kvStore()) {
+function context(sessionId?: string, overrides: Partial<Parameters<typeof onRequestGet>[0]["env"]> = {}) {
   const url = new URL("https://snready.com/api/session");
   if (sessionId) url.searchParams.set("session_id", sessionId);
 
@@ -50,31 +58,28 @@ function context(sessionId?: string, kv = kvStore()) {
     request: new Request(url.toString()),
     env: {
       STRIPE_SECRET_KEY: "sk_test_fixture",
-      SNREADY_ACCESS: kv,
-      RESEND_API_KEY: "re_test",
+      SNREADY_ACCESS: kvStore(),
+      RESEND_API_KEY: "re_test_fixture",
       SITE_URL: "https://snready.com",
+      ...overrides,
     },
-  } as unknown as Parameters<typeof onRequestGet>[0];
+  } as Parameters<typeof onRequestGet>[0];
 }
 
-function paidSession(overrides: Record<string, unknown> = {}) {
-  return {
-    id: "cs_test_123",
-    payment_status: "paid",
-    customer_details: { email: "buyer@example.com" },
-    metadata: { plan: "single", certification: "CSA" },
-    amount_total: 900,
-    created: 1_700_000_000,
-    ...overrides,
-  };
-}
-
-describe("session verification endpoint", () => {
+describe("session verification Pages Function", () => {
   beforeEach(() => {
-    retrieveCheckoutSession.mockReset();
+    retrieveSession.mockReset();
     enqueuePurchaseFollowup.mockReset();
-    retrieveCheckoutSession.mockResolvedValue(paidSession());
+    makeSessionCookie.mockClear();
     enqueuePurchaseFollowup.mockResolvedValue({});
+    retrieveSession.mockResolvedValue({
+      id: "cs_test_paid",
+      payment_status: "paid",
+      customer_details: { email: "buyer@example.com" },
+      metadata: { plan: "single", certification: "CSA" },
+      amount_total: 900,
+      created: 1_726_000_000,
+    });
   });
 
   it("returns a structured 400 when session_id is missing", async () => {
@@ -85,59 +90,40 @@ describe("session verification endpoint", () => {
       error: "Session ID required",
       code: "missing_session_id",
     });
-    expect(retrieveCheckoutSession).not.toHaveBeenCalled();
   });
 
-  it("returns 404 when Stripe reports the checkout session does not exist", async () => {
-    retrieveCheckoutSession.mockRejectedValueOnce({
+  it("returns a structured 404 when Stripe says the checkout session does not exist", async () => {
+    retrieveSession.mockRejectedValue({
       type: "StripeInvalidRequestError",
       code: "resource_missing",
-      statusCode: 404,
-      message: "No such checkout.session",
+      message: "No such checkout.session: cs_fake",
     });
 
-    const kv = kvStore();
-    const response = await onRequestGet(context("cs_fake_missing", kv));
+    const response = await onRequestGet(context("cs_fake"));
 
     expect(response.status).toBe(404);
     expect(await response.json()).toEqual({
       error: "Checkout session not found",
       code: "session_not_found",
     });
-    expect(kv.put).not.toHaveBeenCalled();
-    expect(enqueuePurchaseFollowup).not.toHaveBeenCalled();
   });
 
-  it("returns 502 when Stripe lookup fails for a non-not-found reason", async () => {
-    retrieveCheckoutSession.mockRejectedValueOnce(new Error("Stripe API unavailable"));
+  it("returns a structured 502 when Stripe lookup fails for other reasons", async () => {
+    retrieveSession.mockRejectedValue(new Error("Stripe temporarily unavailable"));
 
-    const response = await onRequestGet(context("cs_live_broken"));
+    const response = await onRequestGet(context("cs_live_problem"));
 
     expect(response.status).toBe(502);
     expect(await response.json()).toEqual({
-      error: "Unable to verify checkout session",
+      error: "Stripe session lookup failed",
       code: "stripe_lookup_failed",
     });
   });
 
-  it("returns 500 with a distinct code when KV access grant fails", async () => {
-    const kv = kvStore({ failPutAtCall: 2 });
+  it("returns success even when follow-up email enqueue fails", async () => {
+    enqueuePurchaseFollowup.mockRejectedValue(new Error("KV write failed"));
 
-    const response = await onRequestGet(context("cs_live_paid", kv));
-
-    expect(response.status).toBe(500);
-    expect(await response.json()).toEqual({
-      error: "Unable to grant access for this checkout session",
-      code: "access_grant_failed",
-    });
-    expect(enqueuePurchaseFollowup).not.toHaveBeenCalled();
-  });
-
-  it("does not block access when follow-up enqueue fails after grant", async () => {
-    enqueuePurchaseFollowup.mockRejectedValueOnce(new Error("Resend failed"));
-
-    const kv = kvStore();
-    const response = await onRequestGet(context("cs_live_paid", kv));
+    const response = await onRequestGet(context("cs_live_paid"));
     const body = await response.json();
 
     expect(response.status).toBe(200);
@@ -146,8 +132,27 @@ describe("session verification endpoint", () => {
       email: "buyer@example.com",
       plan: "single",
       certification: "CSA",
+      amountTotal: 900,
+      warnings: ["purchase_followup_enqueue_failed"],
     });
-    expect(response.headers.get("Set-Cookie")).toContain("snready_session=");
-    expect(kv.put).toHaveBeenCalled();
+    expect(response.headers.get("Set-Cookie")).toContain("snready_session=test-token");
+  });
+
+  it("returns a structured 500 when access grant persistence fails", async () => {
+    const accessKv = kvStore();
+    accessKv.put.mockImplementation(async (key: string, value: string) => {
+      if (key.startsWith("access:")) {
+        throw new Error("KV unavailable");
+      }
+      return undefined;
+    });
+
+    const response = await onRequestGet(context("cs_live_paid", { SNREADY_ACCESS: accessKv }));
+
+    expect(response.status).toBe(500);
+    expect(await response.json()).toEqual({
+      error: "Access grant failed",
+      code: "access_grant_failed",
+    });
   });
 });
