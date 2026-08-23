@@ -184,13 +184,23 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     if (redirectPath) magicUrl.searchParams.set("redirect", redirectPath);
     const magicLink = magicUrl.toString();
 
-    const emailResponse = resendApiKey
-      ? await sendViaResend(resendApiKey, normalizedEmail, magicLink)
-      : await sendViaMailChannels(normalizedEmail, magicLink);
+    let emailResponse: Response;
+
+    if (resendApiKey) {
+      emailResponse = await sendViaResend(resendApiKey, normalizedEmail, magicLink);
+
+      if (!emailResponse.ok) {
+        const resendError = await emailResponse.text();
+        console.error("Resend error; falling back to MailChannels:", resendError);
+        emailResponse = await sendViaMailChannels(normalizedEmail, magicLink);
+      }
+    } else {
+      emailResponse = await sendViaMailChannels(normalizedEmail, magicLink);
+    }
 
     if (!emailResponse.ok) {
       const errorData = await emailResponse.text();
-      console.error(resendApiKey ? "Resend error:" : "MailChannels error:", errorData);
+      console.error("MailChannels error:", errorData);
       return new Response(
         JSON.stringify({ error: "Failed to send email" }),
         { status: 500, headers: { "Content-Type": "application/json" } }
