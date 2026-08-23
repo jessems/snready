@@ -74,6 +74,46 @@ describe("magic link auth", () => {
     expect(globalThis.fetch).not.toHaveBeenCalled();
   });
 
+  it("falls back to KV-backed magic-link config and MailChannels when preview secrets are missing", async () => {
+    const response = await sendMagicLink({
+      request: new Request("https://preview.snready.pages.dev/api/auth/send-magic-link", {
+        method: "POST",
+        body: JSON.stringify({ email: "jesse@example.com", redirect: "/admin/coverage" }),
+        headers: { "Content-Type": "application/json" },
+      }),
+      env: {
+        SNREADY_ACCESS: kvStore({
+          "config:magic_link_secret": "kv-secret",
+        }),
+      },
+    } as unknown as Parameters<typeof sendMagicLink>[0]);
+
+    expect(response.status).toBe(200);
+    const [url] = (globalThis.fetch as ReturnType<typeof vi.fn>).mock.calls[0];
+    expect(url).toBe("https://api.mailchannels.net/tx/v1/send");
+  });
+
+  it("falls back to KV-backed Resend API keys when preview env vars are missing", async () => {
+    const response = await sendMagicLink({
+      request: new Request("https://preview.snready.pages.dev/api/auth/send-magic-link", {
+        method: "POST",
+        body: JSON.stringify({ email: "jesse@example.com", redirect: "/admin/coverage" }),
+        headers: { "Content-Type": "application/json" },
+      }),
+      env: {
+        SNREADY_ACCESS: kvStore({
+          "config:magic_link_secret": "kv-secret",
+          "config:resend_api_key": "re_kv_value",
+        }),
+      },
+    } as unknown as Parameters<typeof sendMagicLink>[0]);
+
+    expect(response.status).toBe(200);
+    const [url, init] = (globalThis.fetch as ReturnType<typeof vi.fn>).mock.calls[0];
+    expect(url).toBe("https://api.resend.com/emails");
+    expect(init?.headers).toMatchObject({ Authorization: "Bearer re_kv_value" });
+  });
+
   it("drops unsafe magic-link redirect targets", async () => {
     await sendMagicLink({
       request: new Request("https://snready.com/api/auth/send-magic-link", {
