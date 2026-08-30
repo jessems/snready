@@ -11,12 +11,18 @@ interface QuestionsWithPaywallProps {
   freeQuestions: Question[];
   premiumQuestions: Question[];
   certification: string;
+  examCost?: number;
+  freeQuestionCount?: number;
+  featureHighlights?: string[];
 }
 
 export function QuestionsWithPaywall({
   freeQuestions,
   premiumQuestions,
   certification,
+  examCost,
+  freeQuestionCount,
+  featureHighlights = [],
 }: QuestionsWithPaywallProps) {
   const { authenticated, hasAccess, hasAccessTo, loading } = useAccess();
   const [showLoginModal, setShowLoginModal] = useState(false);
@@ -141,9 +147,28 @@ export function QuestionsWithPaywall({
                 Get full access to all {certification} practice questions, timed mock exams, and detailed explanations.
               </p>
 
+              {featureHighlights.length > 0 && (
+                <ul className="mt-5 space-y-2 rounded-xl bg-zinc-50 p-4 text-left text-sm text-zinc-700 dark:bg-zinc-950 dark:text-zinc-300">
+                  {featureHighlights.map((highlight) => (
+                    <li key={highlight} className="flex gap-2">
+                      <span className="text-emerald-600 dark:text-emerald-400">•</span>
+                      <span>{highlight}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+
               <p className="mt-4 text-sm font-medium text-emerald-600 dark:text-emerald-400">
-                Because we want you to succeed ✨
+                {examCost
+                  ? `$9 once vs. a $${examCost} exam attempt — practice first.`
+                  : "Because we want you to succeed ✨"}
               </p>
+
+              {freeQuestionCount ? (
+                <p className="mt-2 text-xs text-zinc-500 dark:text-zinc-400">
+                  You already have {freeQuestionCount} free questions on this page.
+                </p>
+              ) : null}
 
               <div className="mt-6 grid gap-3 sm:grid-cols-2">
                 <CheckoutButton

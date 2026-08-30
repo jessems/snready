@@ -87,7 +87,7 @@ export default function PricingPage() {
         name: "Is there a free trial?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: `Yes! Each certification includes free practice questions (typically 15-35 questions) so you can try before you buy. We currently have ${totalFreeQuestions} free questions across all certifications.`,
+          text: `Yes! Each certification includes 15 free practice questions so you can try before you buy. We currently have ${totalFreeQuestions} free questions across all certifications.`,
         },
       },
       {
@@ -394,7 +394,7 @@ export default function PricingPage() {
               },
               {
                 q: "Is there a free trial?",
-                a: `Yes! Each certification includes free practice questions (typically 15-35 questions) so you can evaluate the quality before purchasing. We currently have ${totalFreeQuestions}+ free questions across all certifications.`,
+                a: `Yes! Each certification includes 15 free practice questions so you can evaluate the quality before purchasing. We currently have ${totalFreeQuestions}+ free questions across all certifications.`,
               },
               {
                 q: "Do I need to pay again when ServiceNow releases a new version?",

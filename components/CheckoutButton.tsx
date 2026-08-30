@@ -1,7 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { captureAttribution, getPlanValue, trackBeginCheckout } from "@/lib/analytics";
+import {
+  captureAttribution,
+  getPlanValue,
+  normalizeTrackedPath,
+  trackBeginCheckout,
+} from "@/lib/analytics";
 import { useAccess } from "./AccessProvider";
 
 type PlanType = "single" | "all";
@@ -28,7 +33,9 @@ export function CheckoutButton({
     setLoading(true);
     try {
       // Store checkout context so success/cancel pages can recover intent.
-      const returnUrl = `${window.location.pathname}${window.location.search}`;
+      const returnUrl = normalizeTrackedPath(
+        `${window.location.pathname}${window.location.search}`,
+      );
       const attribution = captureAttribution();
       const value = getPlanValue(plan);
       trackBeginCheckout({ certification, plan, value, returnUrl });

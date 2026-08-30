@@ -1,8 +1,13 @@
 // @vitest-environment jsdom
 
-import { describe, expect, it, vi } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 
-import { normalizeTrackedPath, trackPageView } from "@/lib/analytics";
+import {
+  normalizeTrackedLocation,
+  normalizeTrackedPath,
+  trackBeginCheckout,
+  trackPageView,
+} from "@/lib/analytics";
 
 describe("analytics path normalization", () => {
   it("keeps valid app paths unchanged", () => {
@@ -18,14 +23,39 @@ describe("analytics path normalization", () => {
   });
 
   it("converts absolute URLs into pathname + search", () => {
-    expect(normalizeTrackedPath("https://snready.com/csa/practice-questions?utm_source=google")).toBe(
-      "/csa/practice-questions?utm_source=google",
+    expect(
+      normalizeTrackedPath(
+        "https://snready.com/csa/practice-questions?utm_source=google",
+      ),
+    ).toBe("/csa/practice-questions?utm_source=google");
+  });
+
+  it("drops fragments and collapses duplicated slashes", () => {
+    expect(normalizeTrackedPath("//cis-itsm//practice-questions#pricing")).toBe(
+      "/cis-itsm/practice-questions",
+    );
+  });
+
+  it("normalizes tracked locations into clean URLs or clean app paths", () => {
+    expect(
+      normalizeTrackedLocation(
+        "https://snready.com/cis-itsm/practice-questions?utm_source=google",
+      ),
+    ).toBe("https://snready.com/cis-itsm/practice-questions?utm_source=google");
+    expect(normalizeTrackedLocation("/cis-itsm/practice-questionshttps://snready.com")).toBe(
+      "/cis-itsm/practice-questions",
     );
   });
 });
 
 describe("analytics tracking", () => {
-  it("sends normalized page paths to GA4", () => {
+  beforeEach(() => {
+    window.localStorage.clear();
+    document.title = "SNReady";
+    window.history.replaceState({}, "", "/csa/practice-questions");
+  });
+
+  it("sends normalized page paths and page locations to GA4", () => {
     const gtag = vi.fn();
     Object.defineProperty(window, "gtag", {
       configurable: true,
@@ -39,7 +69,31 @@ describe("analytics tracking", () => {
       "page_view",
       expect.objectContaining({
         page_path: "/csa/practice-questions",
+        page_location: `${window.location.origin}/csa/practice-questions`,
         content_group: "practice",
+      }),
+    );
+  });
+
+  it("normalizes checkout start paths before sending begin_checkout", () => {
+    const gtag = vi.fn();
+    Object.defineProperty(window, "gtag", {
+      configurable: true,
+      value: gtag,
+    });
+
+    trackBeginCheckout({
+      certification: "CIS-ITSM",
+      plan: "single",
+      value: 9,
+      returnUrl: "/cis-itsm/practice-questionshttps://snready.com",
+    });
+
+    expect(gtag).toHaveBeenCalledWith(
+      "event",
+      "begin_checkout",
+      expect.objectContaining({
+        checkout_start_path: "/cis-itsm/practice-questions",
       }),
     );
   });
