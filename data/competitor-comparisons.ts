@@ -113,7 +113,7 @@ export const competitorComparisons: CompetitorComparison[] = [
       { name: "Progress tracking", snready: true, competitor: "Video completion only" },
       { name: "Updated for current release", snready: "Xanadu/Yokohama", competitor: "Varies" },
       { name: "Mobile app", snready: "Responsive web", competitor: true },
-      { name: "Free preview", snready: "35+ free questions per cert", competitor: "Video previews" }
+      { name: "Free preview", snready: "15 free questions per cert", competitor: "Video previews" }
     ],
     verdict: "Udemy is excellent for learning ServiceNow concepts through video, but it's not designed for exam practice. Use Udemy to learn the material, then use SNReady to practice for the actual exam. They complement each other well.",
     whoShouldUse: "Use Udemy if you're new to ServiceNow and need foundational knowledge. Add SNReady when you're ready to practice for the certification exam.",
@@ -155,7 +155,7 @@ export const competitorComparisons: CompetitorComparison[] = [
       { name: "Timed mock exams", snready: true, competitor: true },
       { name: "Modern interface", snready: true, competitor: false },
       { name: "Progress tracking by domain", snready: true, competitor: false },
-      { name: "Free questions available", snready: "35+ per cert", competitor: false },
+      { name: "Free questions available", snready: "15 per cert", competitor: false },
       { name: "Question explanations", snready: "Detailed", competitor: "Brief" }
     ],
     verdict: "SkillCertPro is affordable and has helped people pass, but the question sourcing isn't transparent and some answers are incorrect. SNReady offers verified answers, detailed explanations, and domain-mapped progress tracking.",

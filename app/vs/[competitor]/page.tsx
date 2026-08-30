@@ -166,7 +166,7 @@ export default async function CompetitorComparisonPage({ params }: PageProps) {
               </li>
               <li className="flex items-center gap-2 text-green-800">
                 <CheckCircle className="w-4 h-4" />
-                <span>35+ free questions to try first</span>
+                <span>15 free questions to try first</span>
               </li>
               <li className="flex items-center gap-2 text-green-800">
                 <CheckCircle className="w-4 h-4" />
@@ -293,7 +293,7 @@ export default async function CompetitorComparisonPage({ params }: PageProps) {
             Try SNReady Free
           </h2>
           <p className="text-indigo-200 mb-8 text-lg">
-            35+ free questions per certification. No credit card required.
+            15 free questions per certification. No credit card required.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

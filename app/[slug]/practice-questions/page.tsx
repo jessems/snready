@@ -40,7 +40,7 @@ const CERT_LANDING_CONTENT: Record<
       "Practice the same decision patterns the real CIS-ITSM exam uses: incident vs. problem, CAB vs. ECAB, request fulfillment design, SLA behavior, and reporting tradeoffs.",
     trustPoints: [
       "140 scenario-style questions mapped across all 7 exam topics",
-      "35 free questions before you pay anything",
+      `${FREE_QUESTIONS_PER_CERT} free questions before you pay anything`,
       "Detailed explanations designed around official ServiceNow concepts",
     ],
     featureHighlights: [
