@@ -15,6 +15,7 @@ import {
 } from "@/lib/data";
 import { generateBreadcrumbJsonLd } from "@/lib/breadcrumbs";
 import { getCanonicalUrl } from "@/lib/seo";
+import { CheckoutButton } from "@/components/CheckoutButton";
 import { QuestionsWithPaywall } from "@/components/QuestionsWithPaywall";
 
 interface Props {
@@ -298,6 +299,26 @@ export default async function PracticeTestPage({ params }: Props) {
                       </li>
                     ))}
                   </ul>
+                  <div className="mt-6 grid gap-3 sm:grid-cols-[1fr_auto]">
+                    <Link
+                      href="#questions"
+                      className="inline-flex items-center justify-center rounded-xl border border-emerald-600 bg-white px-5 py-3 text-sm font-semibold text-emerald-700 transition-colors hover:bg-emerald-50 dark:bg-zinc-900 dark:text-emerald-300 dark:hover:bg-zinc-800"
+                    >
+                      Start with {freeQuestionCount} free questions
+                    </Link>
+                    <CheckoutButton
+                      certification={certification.name}
+                      plan="single"
+                      className="inline-flex items-center justify-center rounded-xl bg-emerald-600 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-emerald-700"
+                    >
+                      Unlock full bank — $9 once
+                    </CheckoutButton>
+                  </div>
+                  <div className="mt-3 flex flex-wrap gap-x-4 gap-y-2 text-xs text-zinc-500 dark:text-zinc-400">
+                    <span>✓ Instant checkout</span>
+                    <span>✓ Lifetime access</span>
+                    <span>✓ Detailed explanations</span>
+                  </div>
                   <p className="mt-5 text-sm text-emerald-700 dark:text-emerald-300">
                     {landingContent.urgencyNote}
                   </p>
