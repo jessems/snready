@@ -74,26 +74,52 @@ function truncate(value: string | null | undefined, maxLength = 240) {
   return value.length > maxLength ? value.slice(0, maxLength) : value;
 }
 
-export function normalizeTrackedPath(value: string | null | undefined) {
-  if (!value) return "/";
+function stripEmbeddedAbsoluteUrl(value: string) {
+  const embeddedAbsoluteUrlIndex = value.search(/https?:\/\//i);
+  return embeddedAbsoluteUrlIndex > 0 ? value.slice(0, embeddedAbsoluteUrlIndex) : value;
+}
 
-  const trimmed = value.trim();
-  if (!trimmed) return "/";
+function getNormalizedUrlParts(value: string) {
+  const withoutFragment = value.split("#")[0] || "";
+  const withoutEmbeddedUrl = stripEmbeddedAbsoluteUrl(withoutFragment).trim();
 
-  const embeddedAbsoluteUrlIndex = trimmed.search(/https?:\/\//i);
-  const sanitized = embeddedAbsoluteUrlIndex > 0 ? trimmed.slice(0, embeddedAbsoluteUrlIndex) : trimmed;
+  if (!withoutEmbeddedUrl) {
+    return { path: "/", location: "/" };
+  }
 
-  if (sanitized.startsWith("http://") || sanitized.startsWith("https://")) {
+  if (withoutEmbeddedUrl.startsWith("http://") || withoutEmbeddedUrl.startsWith("https://")) {
     try {
-      const url = new URL(sanitized);
-      return truncate(`${url.pathname}${url.search}`) || "/";
+      const url = new URL(withoutEmbeddedUrl);
+      const path = truncate(`${url.pathname}${url.search}`) || "/";
+      return {
+        path,
+        location: truncate(url.toString()) || path,
+      };
     } catch {
-      return "/";
+      return { path: "/", location: "/" };
     }
   }
 
-  const withLeadingSlash = sanitized.startsWith("/") ? sanitized : `/${sanitized}`;
-  return truncate(withLeadingSlash) || "/";
+  const normalizedPathname = withoutEmbeddedUrl.startsWith("/")
+    ? withoutEmbeddedUrl
+    : `/${withoutEmbeddedUrl}`;
+  const collapsedPathname = normalizedPathname.replace(/\/+/g, "/");
+  const path = truncate(collapsedPathname) || "/";
+
+  return {
+    path,
+    location: path,
+  };
+}
+
+export function normalizeTrackedPath(value: string | null | undefined) {
+  if (!value) return "/";
+  return getNormalizedUrlParts(value).path;
+}
+
+export function normalizeTrackedLocation(value: string | null | undefined) {
+  if (!value) return "/";
+  return getNormalizedUrlParts(value).location;
 }
 
 function readStoredAttribution(): StoredAttribution {
@@ -260,10 +286,13 @@ export function trackPageView(path: string) {
   if (!isBrowser() || typeof window.gtag !== "function") return;
 
   const normalizedPath = normalizeTrackedPath(path);
+  const normalizedLocation = normalizeTrackedLocation(
+    `${window.location.origin}${normalizedPath}`
+  );
 
   window.gtag("event", "page_view", {
     page_path: normalizedPath,
-    page_location: window.location.href,
+    page_location: normalizedLocation,
     page_title: document.title,
     content_group: getContentGroup(normalizedPath),
   });
@@ -275,12 +304,14 @@ export function trackBeginCheckout(params: {
   value: number;
   returnUrl: string;
 }) {
+  const normalizedReturnUrl = normalizeTrackedPath(params.returnUrl);
+
   trackEvent("begin_checkout", {
     currency: "USD",
     value: params.value,
     plan: params.plan,
     certification: params.certification || "ALL",
-    checkout_start_path: params.returnUrl,
+    checkout_start_path: normalizedReturnUrl,
     items: [commerceItem(params.plan, params.certification, params.value)],
   });
 }

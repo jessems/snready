@@ -23,6 +23,41 @@ interface Props {
   }>;
 }
 
+const CERT_LANDING_CONTENT: Record<
+  string,
+  {
+    heroEyebrow: string;
+    heroDescription: string;
+    trustPoints: string[];
+    featureHighlights: string[];
+    roleFit: string[];
+    urgencyNote: string;
+  }
+> = {
+  "cis-itsm": {
+    heroEyebrow: "Built for implementation specialists — not dump memorization.",
+    heroDescription:
+      "Practice the same decision patterns the real CIS-ITSM exam uses: incident vs. problem, CAB vs. ECAB, request fulfillment design, SLA behavior, and reporting tradeoffs.",
+    trustPoints: [
+      "140 scenario-style questions mapped across all 7 exam topics",
+      "35 free questions before you pay anything",
+      "Detailed explanations designed around official ServiceNow concepts",
+    ],
+    featureHighlights: [
+      "Incident Management and Change Management each represent 20% of the exam",
+      "Focus on implementation decisions, not just vocabulary recall",
+      "One-time $9 access is far cheaper than a $315 exam retake",
+    ],
+    roleFit: [
+      "Consultants implementing core ITSM workflows",
+      "Admins moving from CSA into specialist delivery work",
+      "Partners who need faster readiness before project staffing",
+    ],
+    urgencyNote:
+      "If you're already booking the exam, use the free set to validate weak spots first — then unlock the full bank only if the scenarios feel shaky.",
+  },
+};
+
 export async function generateStaticParams() {
   return getCertificationSlugs().map((slug) => ({
     slug,
@@ -40,8 +75,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
-  const title = `${certification.name} Practice Questions - Free ${certification.name} Exam Prep | SNReady`;
-  const description = `Practice ${getTotalQuestionCount(slug)}+ ${certification.name} exam questions. ${FREE_QUESTIONS_PER_CERT} free questions with detailed explanations to help you pass your ServiceNow ${certification.fullName} certification.`;
+  const landingContent = CERT_LANDING_CONTENT[slug];
+  const title = landingContent
+    ? `${certification.name} Practice Questions - ${certification.release} Exam Prep | SNReady`
+    : `${certification.name} Practice Questions - Free ${certification.name} Exam Prep | SNReady`;
+  const description = landingContent
+    ? `Practice ${getTotalQuestionCount(slug)}+ ${certification.name} exam questions for the ${certification.release} release. ${FREE_QUESTIONS_PER_CERT} free questions covering Incident, Change, Problem, Request, SLA, and reporting with detailed explanations.`
+    : `Practice ${getTotalQuestionCount(slug)}+ ${certification.name} exam questions. ${FREE_QUESTIONS_PER_CERT} free questions with detailed explanations to help you pass your ServiceNow ${certification.fullName} certification.`;
 
   return {
     title,
@@ -80,6 +120,10 @@ export default async function PracticeTestPage({ params }: Props) {
   // Load questions if certification is ready
   const allQuestions = isReady ? await getAllQuestionsForCertification(slug) : [];
   const freeQuestions = isReady ? await getFreeQuestionsForCertification(slug) : [];
+  const landingContent = CERT_LANDING_CONTENT[slug];
+  const highestWeightDomains = [...domains]
+    .sort((a, b) => b.percentage - a.percentage)
+    .slice(0, 3);
 
   // Get premium questions (all questions minus the free ones, by ID)
   const freeQuestionIds = new Set(freeQuestions.map(q => q.id));
@@ -232,8 +276,80 @@ export default async function PracticeTestPage({ params }: Props) {
               </div>
             </div>
 
+            {landingContent && (
+              <div className="mt-8 grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
+                <div className="rounded-2xl border border-emerald-200 bg-gradient-to-br from-emerald-50 via-white to-cyan-50 p-6 shadow-sm dark:border-emerald-900 dark:from-emerald-950/40 dark:via-zinc-950 dark:to-cyan-950/30">
+                  <p className="text-sm font-semibold uppercase tracking-[0.18em] text-emerald-700 dark:text-emerald-300">
+                    {landingContent.heroEyebrow}
+                  </p>
+                  <h2 className="mt-3 text-2xl font-bold text-zinc-900 dark:text-zinc-100">
+                    Pass the CIS-ITSM exam by practicing implementation decisions
+                  </h2>
+                  <p className="mt-3 max-w-3xl text-sm leading-6 text-zinc-600 dark:text-zinc-400">
+                    {landingContent.heroDescription}
+                  </p>
+                  <ul className="mt-5 grid gap-3 sm:grid-cols-3">
+                    {landingContent.trustPoints.map((point) => (
+                      <li
+                        key={point}
+                        className="rounded-xl border border-white/70 bg-white/90 p-4 text-sm font-medium text-zinc-700 shadow-sm dark:border-zinc-800 dark:bg-zinc-900/80 dark:text-zinc-200"
+                      >
+                        {point}
+                      </li>
+                    ))}
+                  </ul>
+                  <p className="mt-5 text-sm text-emerald-700 dark:text-emerald-300">
+                    {landingContent.urgencyNote}
+                  </p>
+                </div>
+
+                <div className="space-y-6">
+                  <div className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
+                    <h3 className="text-base font-semibold text-zinc-900 dark:text-zinc-100">
+                      Most weighted domains
+                    </h3>
+                    <div className="mt-4 space-y-3">
+                      {highestWeightDomains.map((domain) => (
+                        <div key={domain.slug}>
+                          <div className="flex items-center justify-between text-sm">
+                            <span className="font-medium text-zinc-800 dark:text-zinc-200">
+                              {domain.name}
+                            </span>
+                            <span className="text-emerald-600 dark:text-emerald-400">
+                              {domain.percentage}%
+                            </span>
+                          </div>
+                          <p className="mt-1 text-xs leading-5 text-zinc-500 dark:text-zinc-400">
+                            {domain.description}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
+                    <h3 className="text-base font-semibold text-zinc-900 dark:text-zinc-100">
+                      Best fit for
+                    </h3>
+                    <ul className="mt-4 space-y-2 text-sm text-zinc-600 dark:text-zinc-400">
+                      {landingContent.roleFit.map((item) => (
+                        <li key={item} className="flex gap-2">
+                          <span className="text-emerald-600 dark:text-emerald-400">✓</span>
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <div className="mt-5 rounded-xl bg-zinc-50 p-4 text-sm text-zinc-700 dark:bg-zinc-950 dark:text-zinc-300">
+                      <span className="font-semibold text-zinc-900 dark:text-zinc-100">Why people convert:</span>{" "}
+                      The free set is enough to diagnose gaps. The paid upgrade is there when you need the full question bank, mock exams, and lifetime updates.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+
             {/* Practice Questions Section */}
-            <div className="mt-12">
+            <div id="questions" className="mt-12">
               <div className="flex flex-wrap items-baseline justify-between gap-2 mb-6">
                 <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-100">
                   Practice Questions
@@ -247,6 +363,9 @@ export default async function PracticeTestPage({ params }: Props) {
                 freeQuestions={freeQuestions}
                 premiumQuestions={premiumQuestions}
                 certification={certification.name}
+                examCost={certification.examDetails?.cost}
+                freeQuestionCount={freeQuestionCount}
+                featureHighlights={landingContent?.featureHighlights}
               />
             </div>
 
