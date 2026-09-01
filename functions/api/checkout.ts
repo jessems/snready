@@ -1,8 +1,10 @@
 import Stripe from "stripe";
+import { recordCheckoutAttributionDiagnostic } from "../lib/attribution-diagnostics";
 
 interface Env {
   STRIPE_SECRET_KEY: string;
   SITE_URL: string;
+  SNREADY_ACCESS?: KVNamespace<string>;
 }
 
 function errorResponse(status: number, error: string, code: string, extra?: Record<string, unknown>) {
@@ -118,6 +120,13 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       returnUrl?: string;
       attribution?: AttributionData;
     };
+
+    await recordCheckoutAttributionDiagnostic(env.SNREADY_ACCESS, {
+      attribution,
+      certification,
+      plan,
+      returnUrl,
+    });
 
     // Prevent single-cert checkout without specifying which certification
     if (plan === "single" && !certification) {

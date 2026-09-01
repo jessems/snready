@@ -1,6 +1,10 @@
 #!/usr/bin/env node
 import fs from "node:fs";
 
+const ATTRIBUTION_DIAGNOSTICS_URL = process.env.ATTRIBUTION_DIAGNOSTICS_URL || "https://snready.com/api/attribution-diagnostics";
+const ATTRIBUTION_DIAGNOSTICS_SECRET = process.env.ATTRIBUTION_DIAGNOSTICS_SECRET || process.env.FOLLOWUP_RUN_SECRET || "";
+const ATTRIBUTION_DIAGNOSTICS_DAYS = Number(process.env.ATTRIBUTION_DIAGNOSTICS_DAYS || "7");
+
 const STRIPE_KEY_PATH = process.env.STRIPE_KEY_PATH || "/root/.hermes/profiles/snready/home/.hermes/profiles/snready/.stripe_key";
 const MONTHLY_SPEND_CAP = Number(process.env.GOOGLE_ADS_MONTHLY_SPEND_CAP || "100");
 const SCALE_SPEND_CAP = Number(process.env.GOOGLE_ADS_SCALE_SPEND_CAP || "250");
@@ -72,6 +76,22 @@ async function listCheckoutSessions(start, end) {
   return sessions.filter((session) => session.payment_status === "paid");
 }
 
+async function fetchAttributionDiagnostics(days = ATTRIBUTION_DIAGNOSTICS_DAYS) {
+  if (!ATTRIBUTION_DIAGNOSTICS_SECRET) return null;
+  const url = new URL(ATTRIBUTION_DIAGNOSTICS_URL);
+  url.searchParams.set("days", String(days));
+  const response = await fetch(url, {
+    headers: {
+      Authorization: `Bearer ${ATTRIBUTION_DIAGNOSTICS_SECRET}`,
+      Accept: "application/json",
+    },
+  });
+  if (!response.ok) {
+    throw new Error(`Attribution diagnostics ${response.status}: ${await response.text()}`);
+  }
+  return response.json();
+}
+
 function money(centsOrDollars, cents = false) {
   const value = cents ? centsOrDollars / 100 : centsOrDollars;
   return `$${value.toFixed(2)}`;
@@ -85,6 +105,12 @@ const adRevenueCents = adAttributed.reduce((sum, session) => sum + (session.amou
 const googleAdsSales = adAttributed.length;
 const gaClientIdSessions = paid.filter((session) => Boolean(session.metadata?.gaClientId)).length;
 const gaSessionIdSessions = paid.filter((session) => Boolean(session.metadata?.gaSessionId || session.metadata?.gaSessionCookie)).length;
+const paidAnyUtmSessions = paid.filter((session) => Boolean(session.metadata?.firstUtmSource || session.metadata?.lastUtmSource || session.metadata?.firstUtmMedium || session.metadata?.lastUtmMedium || session.metadata?.firstUtmCampaign || session.metadata?.lastUtmCampaign)).length;
+const paidAnyClickIdSessions = paid.filter((session) => Boolean(session.metadata?.firstGclid || session.metadata?.lastGclid || session.metadata?.firstGbraid || session.metadata?.lastGbraid || session.metadata?.firstWbraid || session.metadata?.lastWbraid)).length;
+const diagnostics = await fetchAttributionDiagnostics().catch((error) => {
+  console.warn(`Attribution diagnostics unavailable: ${error.message}`);
+  return null;
+});
 const campaignBreakdown = new Map();
 
 for (const session of adAttributed) {
@@ -104,7 +130,19 @@ const nextCap = roas !== null && roas > 1 ? SCALE_SPEND_CAP : MONTHLY_SPEND_CAP;
 console.log(`**SNReady Google Ads ROAS — ${start.toISOString().slice(0, 7)} MTD**`);
 console.log(`- Total Stripe revenue: ${money(revenueCents, true)} from ${paid.length} paid sessions`);
 console.log(`- Google Ads-attributed revenue: ${money(adRevenueCents, true)} from ${googleAdsSales} paid sessions`);
-console.log(`- GA4 join keys captured: client_id on ${gaClientIdSessions}/${paid.length} paid sessions; session on ${gaSessionIdSessions}/${paid.length}`);
+console.log(`- Paid-session metadata coverage: ga_client_id ${gaClientIdSessions}/${paid.length}; ga_session ${gaSessionIdSessions}/${paid.length}; any UTM ${paidAnyUtmSessions}/${paid.length}; any click ID ${paidAnyClickIdSessions}/${paid.length}`);
+if (diagnostics?.aggregate?.totalCheckouts) {
+  const agg = diagnostics.aggregate;
+  console.log(`- Checkout coverage (${diagnostics.records.length}d): ga_client_id ${agg.withGaClientId}/${agg.totalCheckouts}; ga_session ${agg.withGaSessionId}/${agg.totalCheckouts}; any UTM ${agg.withAnyUtm}/${agg.totalCheckouts}; any click ID ${agg.withAnyClickId}/${agg.totalCheckouts}; Google/CPC-like ${agg.googleCpcLike}/${agg.totalCheckouts}`);
+  const topSources = Object.entries(agg.sourceCounts || {}).sort((a, b) => b[1] - a[1]).slice(0, 5).map(([source, count]) => `${source} ${count}`).join(', ');
+  const topMedia = Object.entries(agg.mediumCounts || {}).sort((a, b) => b[1] - a[1]).slice(0, 5).map(([medium, count]) => `${medium} ${count}`).join(', ');
+  console.log(`- Checkout sources: ${topSources || 'none'}`);
+  console.log(`- Checkout media: ${topMedia || 'none'}`);
+} else if (ATTRIBUTION_DIAGNOSTICS_SECRET) {
+  console.log("- Checkout coverage: diagnostics endpoint returned no checkout records for the requested window yet");
+} else {
+  console.log("- Checkout coverage: set ATTRIBUTION_DIAGNOSTICS_SECRET or FOLLOWUP_RUN_SECRET to include pre-purchase checkout diagnostics");
+}
 if (spendMonthToDate !== null) {
   console.log(`- Google Ads spend entered: ${money(spendMonthToDate)}; ROAS: ${roas.toFixed(2)}x`);
   console.log(`- Budget decision: ${roas > 1 ? `positive return — eligible to scale up to ${money(nextCap)}/month` : `hold at ${money(MONTHLY_SPEND_CAP)}/month or reduce bids until ROAS improves`}`);
