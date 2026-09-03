@@ -11,6 +11,8 @@ export interface AttributionData {
   gaSessionCookie?: string;
   firstLandingPage?: string;
   firstReferrer?: string;
+  firstInferredSource?: string;
+  firstInferredMedium?: string;
   firstUtmSource?: string;
   firstUtmMedium?: string;
   firstUtmCampaign?: string;
@@ -22,6 +24,8 @@ export interface AttributionData {
   firstMsclkid?: string;
   lastLandingPage?: string;
   lastReferrer?: string;
+  lastInferredSource?: string;
+  lastInferredMedium?: string;
   lastUtmSource?: string;
   lastUtmMedium?: string;
   lastUtmCampaign?: string;
@@ -38,6 +42,8 @@ export interface AttributionData {
 interface TouchData {
   landingPage: string;
   referrer: string;
+  inferredSource?: string;
+  inferredMedium?: string;
   utmSource?: string;
   utmMedium?: string;
   utmCampaign?: string;
@@ -204,6 +210,70 @@ function hasCampaignParams(touch: TouchData) {
   );
 }
 
+function getHostname(value: string | null | undefined) {
+  if (!value) return "";
+
+  try {
+    return new URL(value).hostname.toLowerCase();
+  } catch {
+    return "";
+  }
+}
+
+function isInternalHostname(hostname: string) {
+  if (!hostname) return true;
+
+  const currentHost = window.location.hostname.toLowerCase();
+  const normalized = hostname.replace(/^www\./, "");
+  const normalizedCurrent = currentHost.replace(/^www\./, "");
+
+  return normalized === normalizedCurrent || normalized === "snready.com";
+}
+
+function inferReferrerAttribution(referrer: string) {
+  const hostname = getHostname(referrer);
+  if (!hostname || isInternalHostname(hostname)) return {};
+
+  const searchEngines = ["google.", "bing.", "yahoo.", "duckduckgo.", "baidu.", "yandex.", "ecosia."];
+  const normalizedHostname = hostname.replace(/^www\./, "");
+
+  if (searchEngines.some((candidate) => normalizedHostname === candidate.slice(0, -1) || normalizedHostname.includes(candidate))) {
+    const source = normalizedHostname.split(".")[0];
+    return {
+      inferredSource: truncate(source, 100),
+      inferredMedium: "search-referrer",
+    };
+  }
+
+  if (normalizedHostname === "chatgpt.com" || normalizedHostname.endsWith(".chatgpt.com")) {
+    return {
+      inferredSource: "chatgpt.com",
+      inferredMedium: "ai-assistant",
+    };
+  }
+
+  if (normalizedHostname === "claude.ai" || normalizedHostname.endsWith(".claude.ai")) {
+    return {
+      inferredSource: "claude.ai",
+      inferredMedium: "ai-assistant",
+    };
+  }
+
+  return {
+    inferredSource: truncate(normalizedHostname, 100),
+    inferredMedium: "referrer",
+  };
+}
+
+function isMeaningfulExternalReferrerChange(current: TouchData, previous?: TouchData) {
+  const currentHost = getHostname(current.referrer);
+  if (!currentHost || isInternalHostname(currentHost)) return false;
+
+  const previousHost = getHostname(previous?.referrer);
+
+  return currentHost !== previousHost || current.landingPage !== previous?.landingPage;
+}
+
 function currentTouch(): TouchData | null {
   if (!isBrowser()) return null;
 
@@ -212,6 +282,7 @@ function currentTouch(): TouchData | null {
   return {
     landingPage: normalizeTrackedPath(`${url.pathname}${url.search}`),
     referrer: truncate(document.referrer) || "",
+    ...inferReferrerAttribution(document.referrer),
     utmSource: getParam(params, "utm_source"),
     utmMedium: getParam(params, "utm_medium"),
     utmCampaign: getParam(params, "utm_campaign"),
@@ -232,6 +303,8 @@ function flattenAttribution(stored: StoredAttribution): AttributionData {
     gaSessionCookie: getGaSessionCookie(),
     firstLandingPage: stored.first?.landingPage,
     firstReferrer: stored.first?.referrer,
+    firstInferredSource: stored.first?.inferredSource,
+    firstInferredMedium: stored.first?.inferredMedium,
     firstUtmSource: stored.first?.utmSource,
     firstUtmMedium: stored.first?.utmMedium,
     firstUtmCampaign: stored.first?.utmCampaign,
@@ -243,6 +316,8 @@ function flattenAttribution(stored: StoredAttribution): AttributionData {
     firstMsclkid: stored.first?.msclkid,
     lastLandingPage: stored.last?.landingPage,
     lastReferrer: stored.last?.referrer,
+    lastInferredSource: stored.last?.inferredSource,
+    lastInferredMedium: stored.last?.inferredMedium,
     lastUtmSource: stored.last?.utmSource,
     lastUtmMedium: stored.last?.utmMedium,
     lastUtmCampaign: stored.last?.utmCampaign,
@@ -266,7 +341,10 @@ export function captureAttribution(): AttributionData {
 
   const next: StoredAttribution = {
     first: stored.first || touch,
-    last: !stored.last || hasCampaignParams(touch) ? touch : stored.last,
+    last:
+      !stored.last || hasCampaignParams(touch) || isMeaningfulExternalReferrerChange(touch, stored.last)
+        ? touch
+        : stored.last,
   };
 
   writeStoredAttribution(next);

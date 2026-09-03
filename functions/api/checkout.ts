@@ -3,6 +3,7 @@ import Stripe from "stripe";
 interface Env {
   STRIPE_SECRET_KEY: string;
   SITE_URL: string;
+  SNREADY_ACCESS?: KVNamespace;
 }
 
 function errorResponse(status: number, error: string, code: string, extra?: Record<string, unknown>) {
@@ -65,6 +66,8 @@ const ATTRIBUTION_METADATA_KEYS = [
   "gaSessionCookie",
   "firstLandingPage",
   "firstReferrer",
+  "firstInferredSource",
+  "firstInferredMedium",
   "firstUtmSource",
   "firstUtmMedium",
   "firstUtmCampaign",
@@ -76,6 +79,8 @@ const ATTRIBUTION_METADATA_KEYS = [
   "firstMsclkid",
   "lastLandingPage",
   "lastReferrer",
+  "lastInferredSource",
+  "lastInferredMedium",
   "lastUtmSource",
   "lastUtmMedium",
   "lastUtmCampaign",
@@ -100,6 +105,133 @@ function attributionMetadata(attribution: AttributionData | undefined) {
   }
 
   return metadata;
+}
+
+const ATTRIBUTION_DIAGNOSTICS_PREFIX = "attribution_diagnostics:";
+
+function utcDayKey(date = new Date()) {
+  return `${ATTRIBUTION_DIAGNOSTICS_PREFIX}${date.toISOString().slice(0, 10)}`;
+}
+
+function hasAnyUtm(attribution: AttributionData | undefined) {
+  if (!attribution) return false;
+  return Boolean(
+    attribution.firstUtmSource ||
+      attribution.firstUtmMedium ||
+      attribution.firstUtmCampaign ||
+      attribution.firstUtmTerm ||
+      attribution.firstUtmContent ||
+      attribution.lastUtmSource ||
+      attribution.lastUtmMedium ||
+      attribution.lastUtmCampaign ||
+      attribution.lastUtmTerm ||
+      attribution.lastUtmContent
+  );
+}
+
+function hasAnyClickId(attribution: AttributionData | undefined) {
+  if (!attribution) return false;
+  return Boolean(
+    attribution.firstGclid ||
+      attribution.lastGclid ||
+      attribution.firstGbraid ||
+      attribution.lastGbraid ||
+      attribution.firstWbraid ||
+      attribution.lastWbraid ||
+      attribution.firstMsclkid ||
+      attribution.lastMsclkid
+  );
+}
+
+function isStrictGoogleCpc(attribution: AttributionData | undefined) {
+  if (!attribution) return false;
+  const values = [
+    attribution.firstUtmSource,
+    attribution.lastUtmSource,
+    attribution.firstUtmMedium,
+    attribution.lastUtmMedium,
+    attribution.firstUtmCampaign,
+    attribution.lastUtmCampaign,
+    attribution.firstGclid,
+    attribution.lastGclid,
+    attribution.firstGbraid,
+    attribution.lastGbraid,
+    attribution.firstWbraid,
+    attribution.lastWbraid,
+  ]
+    .filter((value): value is string => typeof value === "string" && value.length > 0)
+    .map((value) => value.toLowerCase());
+
+  return values.some((value) =>
+    value === "google" ||
+    value === "cpc" ||
+    value === "ppc" ||
+    value.includes("google") ||
+    /^[a-z0-9_-]{20,}$/i.test(value)
+  );
+}
+
+function isInferredSearchReferrer(attribution: AttributionData | undefined) {
+  if (!attribution) return false;
+  return attribution.firstInferredMedium === "search-referrer" || attribution.lastInferredMedium === "search-referrer";
+}
+
+function bucketValue(value: string | undefined, fallback = "unknown") {
+  if (!value) return fallback;
+  return value.toLowerCase().slice(0, 80);
+}
+
+function incrementBucket(target: Record<string, number>, key: string) {
+  target[key] = (target[key] || 0) + 1;
+}
+
+async function recordAttributionDiagnostics(env: Env, input: {
+  plan: PlanType;
+  certification: string;
+  attribution?: AttributionData;
+}) {
+  if (!env.SNREADY_ACCESS) return;
+
+  const key = utcDayKey();
+
+  try {
+    const existingRaw = await env.SNREADY_ACCESS.get(key);
+    const existing = existingRaw ? JSON.parse(existingRaw) as Record<string, unknown> : {};
+    const buckets = (existing.buckets && typeof existing.buckets === "object") ? existing.buckets as Record<string, Record<string, number>> : {};
+    const sourceBucket = { ...(buckets.source || {}) };
+    const mediumBucket = { ...(buckets.medium || {}) };
+    const certBucket = { ...(buckets.certification || {}) };
+    const planBucket = { ...(buckets.plan || {}) };
+
+    incrementBucket(sourceBucket, bucketValue(input.attribution?.lastUtmSource || input.attribution?.firstUtmSource || input.attribution?.lastInferredSource || input.attribution?.firstInferredSource));
+    incrementBucket(mediumBucket, bucketValue(input.attribution?.lastUtmMedium || input.attribution?.firstUtmMedium || input.attribution?.lastInferredMedium || input.attribution?.firstInferredMedium));
+    incrementBucket(certBucket, bucketValue(input.certification));
+    incrementBucket(planBucket, bucketValue(input.plan));
+
+    const next = {
+      date: key.slice(ATTRIBUTION_DIAGNOSTICS_PREFIX.length),
+      updatedAt: new Date().toISOString(),
+      totals: {
+        totalCheckouts: Number(existing?.totals && typeof existing.totals === "object" ? (existing.totals as Record<string, unknown>).totalCheckouts || 0 : 0) + 1,
+        withGaClientId: Number(existing?.totals && typeof existing.totals === "object" ? (existing.totals as Record<string, unknown>).withGaClientId || 0 : 0) + (input.attribution?.gaClientId ? 1 : 0),
+        withGaSessionId: Number(existing?.totals && typeof existing.totals === "object" ? (existing.totals as Record<string, unknown>).withGaSessionId || 0 : 0) + (input.attribution?.gaSessionId || input.attribution?.gaSessionCookie ? 1 : 0),
+        withAnyUtm: Number(existing?.totals && typeof existing.totals === "object" ? (existing.totals as Record<string, unknown>).withAnyUtm || 0 : 0) + (hasAnyUtm(input.attribution) ? 1 : 0),
+        withAnyClickId: Number(existing?.totals && typeof existing.totals === "object" ? (existing.totals as Record<string, unknown>).withAnyClickId || 0 : 0) + (hasAnyClickId(input.attribution) ? 1 : 0),
+        strictGoogleCpc: Number(existing?.totals && typeof existing.totals === "object" ? (existing.totals as Record<string, unknown>).strictGoogleCpc || 0 : 0) + (isStrictGoogleCpc(input.attribution) ? 1 : 0),
+        inferredSearchReferrer: Number(existing?.totals && typeof existing.totals === "object" ? (existing.totals as Record<string, unknown>).inferredSearchReferrer || 0 : 0) + (isInferredSearchReferrer(input.attribution) ? 1 : 0),
+      },
+      buckets: {
+        source: sourceBucket,
+        medium: mediumBucket,
+        certification: certBucket,
+        plan: planBucket,
+      },
+    };
+
+    await env.SNREADY_ACCESS.put(key, JSON.stringify(next));
+  } catch (error) {
+    console.error("Failed to record attribution diagnostics", error);
+  }
 }
 
 const PLANS = {
@@ -161,6 +293,12 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     const productName = plan === "all"
       ? `SNReady ${PLANS.all.name}`
       : `SNReady ${certification?.toUpperCase() || "Full Access"} — Lifetime`;
+
+    await recordAttributionDiagnostics(env, {
+      plan,
+      certification: normalizedCertification,
+      attribution,
+    });
 
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
