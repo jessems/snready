@@ -77,6 +77,30 @@ describe("magic link auth", () => {
     expect(globalThis.fetch).not.toHaveBeenCalled();
   });
 
+  it("supports a dry-run auth smoke check without sending email", async () => {
+    const response = await sendMagicLink({
+      request: new Request("https://preview.snready.pages.dev/api/auth/send-magic-link", {
+        method: "POST",
+        body: JSON.stringify({ email: "jesse@example.com", dryRun: true }),
+        headers: { "Content-Type": "application/json" },
+      }),
+      env: {
+        RESEND_API_KEY: "re_test",
+        MAGIC_LINK_SECRET: "secret",
+        SNREADY_ACCESS: kvStore(),
+      },
+    } as unknown as Parameters<typeof sendMagicLink>[0]);
+
+    expect(response.status).toBe(200);
+    expect(await response.json()).toEqual({
+      success: true,
+      configured: true,
+      message: "Magic link auth configuration looks present",
+    });
+    expect(globalThis.fetch).not.toHaveBeenCalled();
+  });
+
+
   it("returns a clear provider error when Resend credentials are missing", async () => {
     const response = await sendMagicLink({
       request: new Request("https://preview.snready.pages.dev/api/auth/send-magic-link", {
@@ -142,6 +166,7 @@ describe("magic link auth", () => {
     expect(await response.json()).toEqual({
       error: "Failed to send email",
       code: "resend_send_failed",
+      providerStatus: 403,
     });
     expect((globalThis.fetch as ReturnType<typeof vi.fn>).mock.calls).toHaveLength(1);
     expect((globalThis.fetch as ReturnType<typeof vi.fn>).mock.calls[0][0]).toBe("https://api.resend.com/emails");

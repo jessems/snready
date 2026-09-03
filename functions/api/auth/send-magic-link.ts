@@ -108,17 +108,21 @@ async function sendViaResend(apiKey: string, normalizedEmail: string, magicLink:
   });
 }
 
+function jsonResponse(body: Record<string, unknown>, status = 200): Response {
+  return new Response(JSON.stringify(body), {
+    status,
+    headers: { "Content-Type": "application/json" },
+  });
+}
+
 export const onRequestPost: PagesFunction<Env> = async (context) => {
   const { request, env } = context;
 
   try {
-    const { email, redirect } = await request.json() as { email: string; redirect?: string };
+    const { email, redirect, dryRun } = await request.json() as { email: string; redirect?: string; dryRun?: boolean };
 
     if (!email || !email.includes("@")) {
-      return new Response(
-        JSON.stringify({ error: "Valid email required", code: "invalid_email" }),
-        { status: 400, headers: { "Content-Type": "application/json" } }
-      );
+      return jsonResponse({ error: "Valid email required", code: "invalid_email" }, 400);
     }
 
     const normalizedEmail = email.toLowerCase().trim();
@@ -132,13 +136,10 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
         hasResendApiKey: Boolean(env.RESEND_API_KEY),
         hasResendApiKeyKvFallback: Boolean(await env.SNREADY_ACCESS.get(RESEND_API_KEY_KV_KEY)),
       });
-      return new Response(
-        JSON.stringify({
-          error: "Magic link auth is not configured for this deployment",
-          code: "magic_link_not_configured",
-        }),
-        { status: 503, headers: { "Content-Type": "application/json" } }
-      );
+      return jsonResponse({
+        error: "Magic link auth is not configured for this deployment",
+        code: "magic_link_not_configured",
+      }, 503);
     }
 
     if (!resendApiKey) {
@@ -146,13 +147,18 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
         hasResendApiKey: Boolean(env.RESEND_API_KEY),
         hasResendApiKeyKvFallback: Boolean(await env.SNREADY_ACCESS.get(RESEND_API_KEY_KV_KEY)),
       });
-      return new Response(
-        JSON.stringify({
-          error: "Magic link email provider is not configured for this deployment",
-          code: "resend_not_configured",
-        }),
-        { status: 503, headers: { "Content-Type": "application/json" } }
-      );
+      return jsonResponse({
+        error: "Magic link email provider is not configured for this deployment",
+        code: "resend_not_configured",
+      }, 503);
+    }
+
+    if (dryRun) {
+      return jsonResponse({
+        success: true,
+        configured: true,
+        message: "Magic link auth configuration looks present",
+      });
     }
 
     // Create magic link token (valid for 15 minutes)
@@ -174,21 +180,16 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
         body: errorData,
         to: normalizedEmail,
       });
-      return new Response(
-        JSON.stringify({ error: "Failed to send email", code: "resend_send_failed" }),
-        { status: 502, headers: { "Content-Type": "application/json" } }
-      );
+      return jsonResponse({
+        error: "Failed to send email",
+        code: "resend_send_failed",
+        providerStatus: emailResponse.status,
+      }, 502);
     }
 
-    return new Response(
-      JSON.stringify({ success: true, message: "Magic link sent" }),
-      { headers: { "Content-Type": "application/json" } }
-    );
+    return jsonResponse({ success: true, message: "Magic link sent" });
   } catch (error) {
     console.error("Magic link error:", error);
-    return new Response(
-      JSON.stringify({ error: "Failed to send magic link", code: "magic_link_request_failed" }),
-      { status: 500, headers: { "Content-Type": "application/json" } }
-    );
+    return jsonResponse({ error: "Failed to send magic link", code: "magic_link_request_failed" }, 500);
   }
 };

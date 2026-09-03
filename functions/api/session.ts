@@ -17,6 +17,7 @@ const JSON_HEADERS = { "Content-Type": "application/json" };
 type SessionErrorCode =
   | "missing_session_id"
   | "session_not_found"
+  | "stripe_not_configured"
   | "stripe_lookup_failed"
   | "payment_not_completed"
   | "missing_customer_email"
@@ -76,6 +77,15 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
 
   if (!sessionId) {
     return errorResponse(400, "missing_session_id", "Session ID required");
+  }
+
+  if (!env.STRIPE_SECRET_KEY?.trim()) {
+    console.error("Session verification is not configured for this deployment", { missing: ["STRIPE_SECRET_KEY"] });
+    return jsonResponse({
+      error: "Session verification is not configured for this deployment",
+      code: "stripe_not_configured",
+      missing: ["STRIPE_SECRET_KEY"],
+    }, 503);
   }
 
   let session: Awaited<ReturnType<Stripe["checkout"]["sessions"]["retrieve"]>> | null;
