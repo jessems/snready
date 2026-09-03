@@ -3,6 +3,8 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 import {
+  captureAttribution,
+  getStoredAttribution,
   normalizeTrackedLocation,
   normalizeTrackedPath,
   trackBeginCheckout,
@@ -52,6 +54,8 @@ describe("analytics tracking", () => {
   beforeEach(() => {
     window.localStorage.clear();
     document.title = "SNReady";
+    document.cookie = "_ga=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
+    document.cookie = "_ga_21R4T0V162=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
     window.history.replaceState({}, "", "/csa/practice-questions");
   });
 
@@ -96,5 +100,66 @@ describe("analytics tracking", () => {
         checkout_start_path: "/cis-itsm/practice-questions",
       }),
     );
+  });
+
+  it("refreshes last touch for a meaningful external referrer even without UTMs", () => {
+    Object.defineProperty(document, "referrer", {
+      configurable: true,
+      value: "https://google.com/search?q=servicenow+csa",
+    });
+    window.history.replaceState({}, "", "/csa/practice-questions");
+
+    const first = captureAttribution();
+
+    expect(first.firstInferredSource).toBe("google");
+    expect(first.firstInferredMedium).toBe("search-referrer");
+    expect(first.lastInferredSource).toBe("google");
+
+    Object.defineProperty(document, "referrer", {
+      configurable: true,
+      value: "https://chatgpt.com/c/123",
+    });
+    window.history.replaceState({}, "", "/cad/practice-questions");
+
+    const updated = captureAttribution();
+
+    expect(updated.firstInferredSource).toBe("google");
+    expect(updated.lastInferredSource).toBe("chatgpt.com");
+    expect(updated.lastInferredMedium).toBe("ai-assistant");
+    expect(updated.lastLandingPage).toBe("/cad/practice-questions");
+  });
+
+  it("does not let internal navigation overwrite an external referrer touch", () => {
+    window.localStorage.setItem(
+      "snready_attribution",
+      JSON.stringify({
+        first: {
+          landingPage: "/csa/practice-questions",
+          referrer: "https://google.com/search?q=servicenow",
+          inferredSource: "google",
+          inferredMedium: "search-referrer",
+          seenAt: "2026-09-03T00:00:00.000Z",
+        },
+        last: {
+          landingPage: "/csa/practice-questions",
+          referrer: "https://google.com/search?q=servicenow",
+          inferredSource: "google",
+          inferredMedium: "search-referrer",
+          seenAt: "2026-09-03T00:00:00.000Z",
+        },
+      }),
+    );
+
+    Object.defineProperty(document, "referrer", {
+      configurable: true,
+      value: "https://snready.com/blog/csa-guide",
+    });
+    window.history.replaceState({}, "", "/checkout/cancel");
+
+    captureAttribution();
+    const stored = getStoredAttribution();
+
+    expect(stored.lastInferredSource).toBe("google");
+    expect(stored.lastLandingPage).toBe("/csa/practice-questions");
   });
 });
