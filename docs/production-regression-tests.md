@@ -26,6 +26,9 @@ If `PLAYWRIGHT_BASE_URL` is omitted, Playwright builds the static export and ser
 
 - public page availability
 - practice-question/paywall rendering
+- deployment auth readiness via magic-link dry run
+- deployment session endpoint structured validation responses
+- deployment checkout endpoint structured validation responses
 - checkout function request shaping
 - certification/topic/question data consistency
 - private exam-intelligence paths not exposing content

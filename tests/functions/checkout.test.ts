@@ -2,13 +2,23 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 import { onRequestPost } from "@/functions/api/checkout";
 const createCheckoutSession = vi.hoisted(() => vi.fn());
 vi.mock("stripe", () => ({ default: vi.fn().mockImplementation(function StripeMock() { return { checkout: { sessions: { create: createCheckoutSession } } }; }) }));
-function context(body: unknown) { return { request: new Request("https://snready.com/api/checkout", { method: "POST", body: JSON.stringify(body), headers: { "Content-Type": "application/json" } }), env: { STRIPE_SECRET_KEY: "sk_test_fixture", SITE_URL: "https://snready.com" } } as Parameters<typeof onRequestPost>[0]; }
+function context(body: unknown, envOverrides: Partial<{ STRIPE_SECRET_KEY: string; SITE_URL: string }> = {}) { return { request: new Request("https://snready.com/api/checkout", { method: "POST", body: JSON.stringify(body), headers: { "Content-Type": "application/json" } }), env: { STRIPE_SECRET_KEY: "sk_test_fixture", SITE_URL: "https://snready.com", ...envOverrides } } as Parameters<typeof onRequestPost>[0]; }
 describe("checkout Pages Function", () => {
   beforeEach(() => { createCheckoutSession.mockReset(); createCheckoutSession.mockResolvedValue({ url: "https://checkout.stripe.test/session" }); });
   it("rejects single-cert checkout without a certification", async () => {
     const response = await onRequestPost(context({ plan: "single" }));
     expect(response.status).toBe(400);
     expect(await response.json()).toEqual({ error: "Certification is required for single-cert purchases", code: "missing_certification" });
+    expect(createCheckoutSession).not.toHaveBeenCalled();
+  });
+  it("fails fast with a clear config error when Stripe env is missing", async () => {
+    const response = await onRequestPost(context({ certification: "csa", plan: "single" }, { STRIPE_SECRET_KEY: "", SITE_URL: "" }));
+    expect(response.status).toBe(503);
+    expect(await response.json()).toEqual({
+      error: "Checkout is not configured for this deployment",
+      code: "checkout_not_configured",
+      missing: ["STRIPE_SECRET_KEY", "SITE_URL"],
+    });
     expect(createCheckoutSession).not.toHaveBeenCalled();
   });
   it("creates a $9 single-cert checkout session with normalized metadata", async () => {

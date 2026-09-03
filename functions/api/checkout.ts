@@ -12,6 +12,13 @@ function errorResponse(status: number, error: string, code: string, extra?: Reco
   );
 }
 
+function missingCheckoutConfig(env: Env) {
+  const missing: string[] = [];
+  if (!env.STRIPE_SECRET_KEY?.trim()) missing.push("STRIPE_SECRET_KEY");
+  if (!env.SITE_URL?.trim()) missing.push("SITE_URL");
+  return missing;
+}
+
 function stripeErrorDetails(error: unknown) {
   if (!error || typeof error !== "object") {
     return { code: "stripe_checkout_failed" };
@@ -110,6 +117,12 @@ const PLANS = {
 
 export const onRequestPost: PagesFunction<Env> = async (context) => {
   const { request, env } = context;
+  const missing = missingCheckoutConfig(env);
+
+  if (missing.length > 0) {
+    console.error("Checkout is not configured for this deployment", { missing });
+    return errorResponse(503, "Checkout is not configured for this deployment", "checkout_not_configured", { missing });
+  }
 
   try {
     const { certification, plan = "single", returnUrl, attribution } = await request.json() as {

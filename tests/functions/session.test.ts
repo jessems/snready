@@ -92,6 +92,18 @@ describe("session verification Pages Function", () => {
     });
   });
 
+  it("fails fast with a clear config error when Stripe env is missing", async () => {
+    const response = await onRequestGet(context("cs_live_paid", { STRIPE_SECRET_KEY: "" }));
+
+    expect(response.status).toBe(503);
+    expect(await response.json()).toEqual({
+      error: "Session verification is not configured for this deployment",
+      code: "stripe_not_configured",
+      missing: ["STRIPE_SECRET_KEY"],
+    });
+    expect(retrieveSession).not.toHaveBeenCalled();
+  });
+
   it("returns a structured 404 when Stripe says the checkout session does not exist", async () => {
     retrieveSession.mockRejectedValue({
       type: "StripeInvalidRequestError",
@@ -117,6 +129,25 @@ describe("session verification Pages Function", () => {
     expect(await response.json()).toEqual({
       error: "Stripe session lookup failed",
       code: "stripe_lookup_failed",
+    });
+  });
+
+  it("returns a structured 400 when payment has not completed", async () => {
+    retrieveSession.mockResolvedValueOnce({
+      id: "cs_test_open",
+      payment_status: "unpaid",
+      customer_details: { email: "buyer@example.com" },
+      metadata: { plan: "single", certification: "CSA" },
+      amount_total: 900,
+      created: 1_726_000_000,
+    });
+
+    const response = await onRequestGet(context("cs_test_open"));
+
+    expect(response.status).toBe(400);
+    expect(await response.json()).toEqual({
+      error: "Payment not completed",
+      code: "payment_not_completed",
     });
   });
 
