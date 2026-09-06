@@ -3125,6 +3125,16 @@ Pick your certification and start with the free questions. No signup required.
     featured: true,
     readingTime: 18,
     content: `
+## Already picked a ServiceNow certification?
+
+Try a short free diagnostic before buying a question bank. Get a small topic-review snapshot and answer explanations, not a prediction of your exam result. No signup required.
+
+- [ServiceNow CAD free diagnostic](/cad/practice-questions#free-diagnostic) — application development practice.
+- [ServiceNow CIS-DF free diagnostic](/cis-df/practice-questions#free-diagnostic) — Data Foundations practice.
+- [ServiceNow CIS-ITSM free diagnostic](/cis-itsm/practice-questions#free-diagnostic) — ITSM practice.
+
+Single-cert access is $9 once; the $49 all-cert bundle is optional for multi-cert study.
+
 ## How Many ServiceNow Certifications Are There?
 
 As of 2026, ServiceNow offers **28+ certifications** across four levels: Foundational, Professional, Expert, and Specialist. They span administration, development, implementation, and architecture.
