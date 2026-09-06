@@ -257,19 +257,24 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   }
 
   try {
-    const { certification, plan = "single", returnUrl, attribution } = await request.json() as {
+    const { certification, plan: rawPlan, returnUrl, attribution } = await request.json() as {
       certification?: string;
-      plan?: PlanType;
+      plan?: unknown;
       returnUrl?: string;
       attribution?: AttributionData;
     };
+    const plan = rawPlan === undefined ? "single" : rawPlan;
+
+    if (plan !== "single" && plan !== "all") {
+      return errorResponse(400, "Invalid checkout plan", "invalid_plan");
+    }
 
     // Prevent single-cert checkout without specifying which certification
     if (plan === "single" && !certification) {
       return errorResponse(400, "Certification is required for single-cert purchases", "missing_certification");
     }
 
-    const selectedPlan = PLANS[plan] || PLANS["single"];
+    const selectedPlan = PLANS[plan];
     const stripe = new Stripe(env.STRIPE_SECRET_KEY);
     const normalizedCertification = certification ? certification.toUpperCase() : "ALL";
     const safeReturnUrl = returnUrl?.startsWith("/") && !returnUrl.startsWith("//") ? returnUrl : undefined;
