@@ -16,6 +16,7 @@ import {
 import { generateBreadcrumbJsonLd } from "@/lib/breadcrumbs";
 import { getCanonicalUrl } from "@/lib/seo";
 import { CheckoutButton } from "@/components/CheckoutButton";
+import { FreeDiagnostic } from "@/components/FreeDiagnostic";
 import { QuestionsWithPaywall } from "@/components/QuestionsWithPaywall";
 
 interface Props {
@@ -38,9 +39,9 @@ const CERT_LANDING_CONTENT: Record<
   "cis-itsm": {
     heroEyebrow: "Built for implementation specialists — not dump memorization.",
     heroDescription:
-      "Practice the same decision patterns the real CIS-ITSM exam uses: incident vs. problem, CAB vs. ECAB, request fulfillment design, SLA behavior, and reporting tradeoffs.",
+      "Review ITSM concepts and implementation decisions: incident vs. problem, CAB vs. ECAB, request fulfillment design, SLA behavior, and reporting tradeoffs.",
     trustPoints: [
-      "140 scenario-style questions mapped across all 7 exam topics",
+      "Knowledge and application practice across the listed exam topics",
       `${FREE_QUESTIONS_PER_CERT} free questions before you pay anything`,
       "Detailed explanations designed around official ServiceNow concepts",
     ],
@@ -361,13 +362,29 @@ export default async function PracticeTestPage({ params }: Props) {
                       ))}
                     </ul>
                     <div className="mt-5 rounded-xl bg-zinc-50 p-4 text-sm text-zinc-700 dark:bg-zinc-950 dark:text-zinc-300">
-                      <span className="font-semibold text-zinc-900 dark:text-zinc-100">Why people convert:</span>{" "}
+                      <span className="font-semibold text-zinc-900 dark:text-zinc-100">Try before you buy:</span>{" "}
                       The free set is enough to diagnose gaps. The paid upgrade is there when you need the full question bank, mock exams, and lifetime updates.
                     </div>
                   </div>
                 </div>
               </div>
             )}
+
+            {["cad", "cis-df"].includes(slug) && (
+              <section className="mt-8 rounded-xl border border-zinc-200 p-6 dark:border-zinc-800">
+                <h2 className="text-2xl font-bold">Try {certification.name} practice before you pay</h2>
+                <p className="mt-3">Explore {freeQuestionCount} free questions, then choose whether to unlock all {totalQuestions} questions across {topics.length} topics.</p>
+                <p className="mt-3">{slug === "cad" ? "Review application development, scripting, security and platform concepts." : "Review CMDB configuration, ingest, governance, insight and CSDM concepts."} Check the explanations in the free preview to judge whether the depth matches your study needs.</p>
+                <p className="mt-3">One certification costs $9 once. The optional $49 all-cert bundle is for studying multiple certifications; it is not required to finish this question bank.</p>
+                <Link className="mt-4 inline-block font-semibold text-cyan-700 underline" href="#free-diagnostic">Start the free diagnostic</Link>
+              </section>
+            )}
+            <FreeDiagnostic
+              certification={certification.name}
+              slug={slug}
+              questions={freeQuestions}
+              totalQuestionCount={totalQuestions}
+            />
 
             {/* Practice Questions Section */}
             <div id="questions" className="mt-12">

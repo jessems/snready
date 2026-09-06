@@ -16,6 +16,7 @@ interface CheckoutButtonProps {
   plan?: PlanType;
   className?: string;
   children: React.ReactNode;
+  onClick?: () => void;
 }
 
 type CheckoutResponse = { url?: string };
@@ -25,11 +26,13 @@ export function CheckoutButton({
   plan = "single",
   className = "",
   children,
+  onClick,
 }: CheckoutButtonProps) {
   const [loading, setLoading] = useState(false);
   const { hasAccess } = useAccess();
 
   const handleCheckout = async () => {
+    onClick?.();
     setLoading(true);
     try {
       // Store checkout context so success/cancel pages can recover intent.
