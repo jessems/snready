@@ -16,6 +16,7 @@ interface SessionResult {
   expiresAt?: number;
   certification?: string;
   amountTotal?: number;
+  amountCurrency?: string;
   error?: string;
 }
 
@@ -46,6 +47,7 @@ export default function SuccessContent() {
           certification: data.certification,
           plan: data.plan || "single",
           value: typeof data.amountTotal === "number" ? data.amountTotal / 100 : data.plan === "all" ? 49 : 9,
+          currency: data.amountCurrency,
         });
         setStatus("success");
       } else {

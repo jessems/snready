@@ -64,6 +64,7 @@ export type VerifySessionResponse = {
   expiresAt?: number;
   certification?: string;
   amountTotal?: number;
+  amountCurrency?: string;
   error?: string;
   code?: string;
 };
