@@ -1,5 +1,6 @@
 import Stripe from "stripe";
 import { enqueuePurchaseFollowup } from "../lib/followup";
+import { grantPurchaseAccess } from "../lib/purchase-access";
 import { makeSessionCookie } from "../lib/session";
 
 interface Env {
@@ -112,67 +113,27 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
     return errorResponse(422, "missing_customer_email", "No email found for this checkout session");
   }
 
-  const durationMs = 100 * 365 * 24 * 60 * 60 * 1000;
-  const expiresAt = Date.now() + durationMs;
-  const normalizedEmail = email.toLowerCase();
   const now = Date.now();
+  const normalizedEmail = email.toLowerCase();
   const sessionToken = crypto.randomUUID();
   const sessionExpiresAt = now + 30 * 24 * 60 * 60 * 1000;
 
-  let certifications: string[] = [];
-  let effectivePlan = plan;
+  let grant: Awaited<ReturnType<typeof grantPurchaseAccess>>;
 
   try {
-    const existingUser = await env.SNREADY_ACCESS.get(`user:${normalizedEmail}`);
-    if (!existingUser) {
-      await env.SNREADY_ACCESS.put(
-        `user:${normalizedEmail}`,
-        JSON.stringify({ email: normalizedEmail, createdAt: now, lastLoginAt: now })
-      );
-    }
-
     await env.SNREADY_ACCESS.put(
       `session:${sessionToken}`,
       JSON.stringify({ email: normalizedEmail, createdAt: now, expiresAt: sessionExpiresAt }),
       { expirationTtl: 30 * 24 * 60 * 60 }
     );
 
-    const existingAccess = await env.SNREADY_ACCESS.get(`access:${normalizedEmail}`);
-
-    if (existingAccess) {
-      try {
-        const existing = JSON.parse(existingAccess);
-        certifications = existing.certifications || (existing.certification ? [existing.certification] : []);
-        if (existing.plan === "all") effectivePlan = "all";
-      } catch (error) {
-        console.warn("Failed to parse existing access record; continuing with fresh grant", {
-          email: normalizedEmail,
-          error,
-        });
-      }
-    }
-
-    if (plan === "single" && certification && !certifications.includes(certification)) {
-      certifications.push(certification);
-    }
-
-    if (plan === "all") {
-      effectivePlan = "all";
-    }
-
-    await env.SNREADY_ACCESS.put(
-      `access:${normalizedEmail}`,
-      JSON.stringify({
-        paid: true,
-        plan: effectivePlan,
-        expiresAt,
-        sessionId: session.id,
-        certification,
-        certifications,
-        createdAt: Date.now(),
-      }),
-      {}
-    );
+    grant = await grantPurchaseAccess(env.SNREADY_ACCESS, {
+      email,
+      plan,
+      certification,
+      sessionId: session.id,
+      now,
+    });
   } catch (error) {
     console.error("Session access grant failed", { sessionId, email: normalizedEmail, error });
     return errorResponse(500, "access_grant_failed", "Access grant failed");
@@ -183,9 +144,9 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
     await enqueuePurchaseFollowup(env, {
       sessionId: session.id,
       email: normalizedEmail,
-      plan: effectivePlan,
+      plan: grant.effectivePlan,
       certification,
-      certifications,
+      certifications: grant.certifications,
       purchasedAt: (session.created || Math.floor(Date.now() / 1000)) * 1000,
     });
   } catch (error) {
@@ -201,10 +162,10 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
     {
       success: true,
       email,
-      plan: effectivePlan,
-      expiresAt,
+      plan: grant.effectivePlan,
+      expiresAt: grant.expiresAt,
       certification,
-      certifications,
+      certifications: grant.certifications,
       amountTotal: session.amount_total || undefined,
       ...(followupWarning ? { warnings: [followupWarning] } : {}),
     },

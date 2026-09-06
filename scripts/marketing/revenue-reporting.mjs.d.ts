@@ -1,0 +1,11 @@
+export function completeDayWindow(input?: { start?: string; end?: string; now?: Date }): { start: Date; end: Date; startDate: string; endDate: string };
+export function isSmokeSession(session: any): boolean;
+export function paidStripeTruth(sessions: any[]): any[];
+export function strictGoogleAdsEvidence(session: any): boolean;
+export function inferredSearchReferrerEvidence(session: any): boolean;
+export function summarizeRevenue(sessions: any[]): { paidCount: number; byCurrency: Record<string, number> };
+export function attributionCoverage(sessions: any[]): { total: number; withGaClientId: number; withSession: number; strictGoogleAds: number; inferredSearchReferrer: number };
+export function networkSplitName(row?: any): string;
+export function summarizeAdSpend(rows: any[], capDollars?: number): { spend: number; rawSpend: number; capped: boolean; byNetwork: Record<string, number> };
+export function roasByCurrency(revenueByCurrency: Record<string, number>, spendDollars: number): null | { USD: number } | { blocked: string };
+export function conversionOwnershipStatus(conversions?: any[]): Array<{ name: string; owner: string; status: string; includeInConversionsMetric: boolean; scope: string }>;
