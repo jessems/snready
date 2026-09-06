@@ -78,6 +78,7 @@ describe("session verification Pages Function", () => {
       customer_details: { email: "buyer@example.com" },
       metadata: { plan: "single", certification: "CSA" },
       amount_total: 900,
+      currency: "cad",
       created: 1_726_000_000,
     });
   });
@@ -164,6 +165,7 @@ describe("session verification Pages Function", () => {
       plan: "single",
       certification: "CSA",
       amountTotal: 900,
+      amountCurrency: "CAD",
       warnings: ["purchase_followup_enqueue_failed"],
     });
     expect(response.headers.get("Set-Cookie")).toContain("snready_session=test-token");

@@ -206,6 +206,7 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
       certification,
       certifications,
       amountTotal: session.amount_total || undefined,
+      amountCurrency: session.currency?.toUpperCase() || undefined,
       ...(followupWarning ? { warnings: [followupWarning] } : {}),
     },
     200,

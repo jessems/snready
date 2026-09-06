@@ -9,6 +9,7 @@ import {
   normalizeTrackedPath,
   trackBeginCheckout,
   trackPageView,
+  trackPurchaseOnce,
 } from "@/lib/analytics";
 
 describe("analytics path normalization", () => {
@@ -98,6 +99,50 @@ describe("analytics tracking", () => {
       "begin_checkout",
       expect.objectContaining({
         checkout_start_path: "/cis-itsm/practice-questions",
+      }),
+    );
+  });
+
+  it("tracks paid confirmed purchases once with child-owned Google Ads send_to, value, currency, and transaction id", () => {
+    const gtag = vi.fn();
+    Object.defineProperty(window, "gtag", {
+      configurable: true,
+      value: gtag,
+    });
+
+    trackPurchaseOnce({
+      transactionId: "cs_live_paid_123",
+      certification: "CIS-DF",
+      plan: "single",
+      value: 9,
+      currency: "cad",
+    });
+    trackPurchaseOnce({
+      transactionId: "cs_live_paid_123",
+      certification: "CIS-DF",
+      plan: "single",
+      value: 9,
+      currency: "cad",
+    });
+
+    expect(gtag).toHaveBeenCalledTimes(2);
+    expect(gtag).toHaveBeenCalledWith(
+      "event",
+      "purchase",
+      expect.objectContaining({
+        transaction_id: "cs_live_paid_123",
+        value: 9,
+        currency: "CAD",
+      }),
+    );
+    expect(gtag).toHaveBeenCalledWith(
+      "event",
+      "conversion",
+      expect.objectContaining({
+        send_to: "AW-18398619673/ePp1CJb5ve8cEJnQksVE",
+        transaction_id: "cs_live_paid_123",
+        value: 9,
+        currency: "CAD",
       }),
     );
   });

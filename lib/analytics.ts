@@ -1,7 +1,7 @@
 export const GA_MEASUREMENT_ID = "G-21R4T0V162";
-export const GOOGLE_ADS_ID = process.env.NEXT_PUBLIC_GOOGLE_ADS_ID || "AW-18397575219";
+export const GOOGLE_ADS_ID = process.env.NEXT_PUBLIC_GOOGLE_ADS_ID || "AW-18398619673";
 export const GOOGLE_ADS_PURCHASE_LABEL =
-  process.env.NEXT_PUBLIC_GOOGLE_ADS_PURCHASE_LABEL || "De0BCKvawuQcELPw0sRE";
+  process.env.NEXT_PUBLIC_GOOGLE_ADS_PURCHASE_LABEL || "ePp1CJb5ve8cEJnQksVE";
 
 export type PlanType = "single" | "all";
 
@@ -399,6 +399,7 @@ export function trackPurchaseOnce(params: {
   certification?: string;
   plan: PlanType;
   value: number;
+  currency?: string;
 }) {
   if (!isBrowser()) return;
 
@@ -406,9 +407,11 @@ export function trackPurchaseOnce(params: {
   if (window.localStorage.getItem(dedupeKey)) return;
   window.localStorage.setItem(dedupeKey, new Date().toISOString());
 
+  const currency = (params.currency || "USD").toUpperCase();
+
   trackEvent("purchase", {
     transaction_id: params.transactionId,
-    currency: "USD",
+    currency,
     value: params.value,
     plan: params.plan,
     certification: params.certification || "ALL",
@@ -419,7 +422,7 @@ export function trackPurchaseOnce(params: {
     trackEvent("conversion", {
       send_to: `${GOOGLE_ADS_ID}/${GOOGLE_ADS_PURCHASE_LABEL}`,
       transaction_id: params.transactionId,
-      currency: "USD",
+      currency,
       value: params.value,
     });
   }
