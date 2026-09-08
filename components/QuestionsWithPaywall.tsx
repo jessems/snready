@@ -5,6 +5,7 @@ import QuestionCard from "@/components/QuestionCard";
 import { CheckoutButton } from "@/components/CheckoutButton";
 import { LoginModal } from "@/components/LoginModal";
 import { useAccess } from "@/components/AccessProvider";
+import { trackPracticeStartOnce } from "@/lib/analytics";
 import type { Question } from "@/types";
 
 interface QuestionsWithPaywallProps {
@@ -32,6 +33,14 @@ export function QuestionsWithPaywall({
     // The checkout buttons handle navigation
   };
 
+  const handleFreeAnswer = () => {
+    trackPracticeStartOnce({
+      certification,
+      freeQuestionCount: freeQuestionCount ?? freeQuestions.length,
+      totalQuestionCount: freeQuestions.length + premiumQuestions.length,
+    });
+  };
+
   // While loading, show free questions + loading state for premium
   if (loading) {
     return (
@@ -42,6 +51,7 @@ export function QuestionsWithPaywall({
             key={question.id}
             question={question}
             questionNumber={index + 1}
+            onAnswer={handleFreeAnswer}
           />
         ))}
 
@@ -91,6 +101,7 @@ export function QuestionsWithPaywall({
               key={question.id}
               question={question}
               questionNumber={index + 1}
+              onAnswer={handleFreeAnswer}
             />
           ))}
         </>

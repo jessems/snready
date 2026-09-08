@@ -6,6 +6,8 @@ import {
   getPlanValue,
   normalizeTrackedPath,
   trackBeginCheckout,
+  trackCheckoutCreated,
+  trackCheckoutFailed,
 } from "@/lib/analytics";
 import { useAccess } from "./AccessProvider";
 
@@ -38,6 +40,7 @@ export function CheckoutButton({
       );
       const attribution = captureAttribution();
       const value = getPlanValue(plan);
+      const trackedReturnUrl = normalizeTrackedPath(window.location.pathname);
       trackBeginCheckout({ certification, plan, value, returnUrl });
 
       localStorage.setItem("snready_checkout_return", returnUrl);
@@ -62,16 +65,31 @@ export function CheckoutButton({
 
       const data = await response.json() as CheckoutResponse;
 
-      if (data.url) {
+      if (response.ok && data.url) {
+        trackCheckoutCreated({ certification, plan, value, returnUrl: trackedReturnUrl });
         window.location.href = data.url;
       } else {
         console.error("No checkout URL returned");
+        trackCheckoutFailed({
+          certification,
+          plan,
+          value,
+          returnUrl: trackedReturnUrl,
+          reason: response.ok ? "missing_checkout_url" : `http_${response.status}`,
+        });
         localStorage.removeItem("snready_checkout_return");
         localStorage.removeItem("snready_checkout_intent");
         setLoading(false);
       }
     } catch (error) {
       console.error("Checkout error:", error);
+      trackCheckoutFailed({
+        certification,
+        plan,
+        value: getPlanValue(plan),
+        returnUrl: normalizeTrackedPath(window.location.pathname),
+        reason: "network_error",
+      });
       localStorage.removeItem("snready_checkout_return");
       localStorage.removeItem("snready_checkout_intent");
       setLoading(false);

@@ -69,7 +69,9 @@ declare global {
 }
 
 const STORAGE_KEY = "snready_attribution";
+const PRACTICE_START_STORAGE_KEY = "snready_practice_start";
 const ATTRIBUTION_TTL_MS = 90 * 24 * 60 * 60 * 1000;
+const practiceStartMemoryDedupe = new Set<string>();
 
 function isBrowser() {
   return typeof window !== "undefined";
@@ -121,6 +123,16 @@ function getNormalizedUrlParts(value: string) {
 export function normalizeTrackedPath(value: string | null | undefined) {
   if (!value) return "/";
   return getNormalizedUrlParts(value).path;
+}
+
+function privacySafeTrackedPath(value: string | null | undefined) {
+  const normalized = normalizeTrackedPath(value);
+  try {
+    const url = new URL(normalized, "https://snready.com");
+    return url.pathname || "/";
+  } catch {
+    return normalized.split("?")[0] || "/";
+  }
 }
 
 export function normalizeTrackedLocation(value: string | null | undefined) {
@@ -391,6 +403,60 @@ export function trackBeginCheckout(params: {
     certification: params.certification || "ALL",
     checkout_start_path: normalizedReturnUrl,
     items: [commerceItem(params.plan, params.certification, params.value)],
+  });
+}
+
+type CheckoutTrackingParams = {
+  certification?: string;
+  plan: PlanType;
+  value: number;
+  returnUrl: string;
+};
+
+function checkoutEventPayload(params: CheckoutTrackingParams) {
+  return {
+    currency: "USD",
+    value: params.value,
+    plan: params.plan,
+    certification: params.certification || "ALL",
+    checkout_start_path: privacySafeTrackedPath(params.returnUrl),
+    items: [commerceItem(params.plan, params.certification, params.value)],
+  };
+}
+
+export function trackCheckoutCreated(params: CheckoutTrackingParams) {
+  trackEvent("checkout_created", checkoutEventPayload(params));
+}
+
+export function trackCheckoutFailed(params: CheckoutTrackingParams & { reason: string }) {
+  trackEvent("checkout_failed", {
+    ...checkoutEventPayload(params),
+    failure_reason: truncate(params.reason, 80) || "unknown",
+  });
+}
+
+export function trackPracticeStartOnce(params: {
+  certification: string;
+  freeQuestionCount: number;
+  totalQuestionCount: number;
+}) {
+  if (!isBrowser()) return;
+
+  const path = privacySafeTrackedPath(`${window.location.pathname}${window.location.search}`);
+  const key = `${PRACTICE_START_STORAGE_KEY}:${params.certification}:${path}`;
+  try {
+    if (window.sessionStorage.getItem(key)) return;
+    window.sessionStorage.setItem(key, new Date().toISOString());
+  } catch {
+    if (practiceStartMemoryDedupe.has(key)) return;
+    practiceStartMemoryDedupe.add(key);
+  }
+
+  trackEvent("practice_start", {
+    certification: params.certification,
+    free_question_count: params.freeQuestionCount,
+    total_question_count: params.totalQuestionCount,
+    practice_start_path: path,
   });
 }
 

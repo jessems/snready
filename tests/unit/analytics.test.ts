@@ -8,7 +8,10 @@ import {
   normalizeTrackedLocation,
   normalizeTrackedPath,
   trackBeginCheckout,
+  trackCheckoutCreated,
+  trackCheckoutFailed,
   trackPageView,
+  trackPracticeStartOnce,
   trackPurchaseOnce,
 } from "@/lib/analytics";
 
@@ -143,6 +146,79 @@ describe("analytics tracking", () => {
         transaction_id: "cs_live_paid_123",
         value: 9,
         currency: "CAD",
+      }),
+    );
+  });
+
+  it("tracks checkout_created and checkout_failed without PII while preserving begin_checkout as intent", () => {
+    const gtag = vi.fn();
+    Object.defineProperty(window, "gtag", {
+      configurable: true,
+      value: gtag,
+    });
+
+    trackBeginCheckout({
+      certification: "CIS-ITSM",
+      plan: "single",
+      value: 9,
+      returnUrl: "/cis-itsm/practice-questions",
+    });
+    trackCheckoutCreated({
+      certification: "CIS-ITSM",
+      plan: "single",
+      value: 9,
+      returnUrl: "/cis-itsm/practice-questions",
+    });
+    trackCheckoutFailed({
+      certification: "CIS-ITSM",
+      plan: "single",
+      value: 9,
+      returnUrl: "/cis-itsm/practice-questions?utm_source=google&campaign=safe&email=student@example.com",
+      reason: "stripe_checkout_failed",
+    });
+
+    expect(gtag).toHaveBeenCalledWith("event", "begin_checkout", expect.any(Object));
+    expect(gtag).toHaveBeenCalledWith(
+      "event",
+      "checkout_created",
+      expect.objectContaining({
+        checkout_start_path: "/cis-itsm/practice-questions",
+        certification: "CIS-ITSM",
+        plan: "single",
+        value: 9,
+      }),
+    );
+    expect(gtag).toHaveBeenCalledWith(
+      "event",
+      "checkout_failed",
+      expect.objectContaining({
+        checkout_start_path: "/cis-itsm/practice-questions",
+        failure_reason: "stripe_checkout_failed",
+      }),
+    );
+    expect(JSON.stringify(gtag.mock.calls)).not.toContain("student@example.com");
+  });
+
+  it("tracks practice_start only once per certification and page session", () => {
+    const gtag = vi.fn();
+    Object.defineProperty(window, "gtag", {
+      configurable: true,
+      value: gtag,
+    });
+
+    trackPracticeStartOnce({ certification: "CIS-Discovery", freeQuestionCount: 15, totalQuestionCount: 100 });
+    trackPracticeStartOnce({ certification: "CIS-Discovery", freeQuestionCount: 15, totalQuestionCount: 100 });
+    trackPracticeStartOnce({ certification: "CIS-ITSM", freeQuestionCount: 15, totalQuestionCount: 134 });
+
+    expect(gtag).toHaveBeenCalledTimes(2);
+    expect(gtag).toHaveBeenCalledWith(
+      "event",
+      "practice_start",
+      expect.objectContaining({
+        certification: "CIS-Discovery",
+        free_question_count: 15,
+        total_question_count: 100,
+        practice_start_path: "/csa/practice-questions",
       }),
     );
   });
