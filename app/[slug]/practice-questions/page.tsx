@@ -40,7 +40,7 @@ const CERT_LANDING_CONTENT: Record<
     heroDescription:
       "Practice the same decision patterns the real CIS-ITSM exam uses: incident vs. problem, CAB vs. ECAB, request fulfillment design, SLA behavior, and reporting tradeoffs.",
     trustPoints: [
-      "140 scenario-style questions mapped across all 7 exam topics",
+      "__TOTAL__ scenario-style questions mapped across all 7 exam topics",
       `${FREE_QUESTIONS_PER_CERT} free questions before you pay anything`,
       "Detailed explanations designed around official ServiceNow concepts",
     ],
@@ -56,6 +56,27 @@ const CERT_LANDING_CONTENT: Record<
     ],
     urgencyNote:
       "If you're already booking the exam, use the free set to validate weak spots first — then unlock the full bank only if the scenarios feel shaky.",
+  },
+  "cis-discovery": {
+    heroEyebrow: "Built for Discovery implementation practice — not dump memorization.",
+    heroDescription:
+      "Practice the implementation decisions the CIS-Discovery exam emphasizes: Pattern Designer logic, MID Server and credential setup, Discovery status troubleshooting, CMDB integration, and rollout readiness.",
+    trustPoints: [
+      "__TOTAL__ scenario-style questions mapped across all 4 exam domains",
+      `${FREE_QUESTIONS_PER_CERT} free questions before you pay anything`,
+      "US$9 once for lifetime access to the full bank, mock exams, and detailed explanations",
+    ],
+    featureHighlights: [
+      "Focus on troubleshooting and implementation judgment, not just definitions",
+      "One-time $9 access unlocks the full CIS-Discovery bank plus mocks and explanations",
+    ],
+    roleFit: [
+      "Consultants implementing ServiceNow Discovery",
+      "Admins moving into ITOM, CMDB, and MID Server delivery work",
+      "Practitioners who need focused practice before a scheduled exam",
+    ],
+    urgencyNote:
+      "Start with the 15 free questions to check whether Discovery scenarios feel familiar. Upgrade only if you want the full bank, mock exams, and explanations for one lifetime purchase.",
   },
 };
 
@@ -284,7 +305,7 @@ export default async function PracticeTestPage({ params }: Props) {
                     {landingContent.heroEyebrow}
                   </p>
                   <h2 className="mt-3 text-2xl font-bold text-zinc-900 dark:text-zinc-100">
-                    Pass the CIS-ITSM exam by practicing implementation decisions
+                    Build {certification.name} readiness by practicing implementation decisions
                   </h2>
                   <p className="mt-3 max-w-3xl text-sm leading-6 text-zinc-600 dark:text-zinc-400">
                     {landingContent.heroDescription}
@@ -295,7 +316,7 @@ export default async function PracticeTestPage({ params }: Props) {
                         key={point}
                         className="rounded-xl border border-white/70 bg-white/90 p-4 text-sm font-medium text-zinc-700 shadow-sm dark:border-zinc-800 dark:bg-zinc-900/80 dark:text-zinc-200"
                       >
-                        {point}
+                        {point.replace("__TOTAL__", String(allQuestions.length))}
                       </li>
                     ))}
                   </ul>
@@ -361,7 +382,7 @@ export default async function PracticeTestPage({ params }: Props) {
                       ))}
                     </ul>
                     <div className="mt-5 rounded-xl bg-zinc-50 p-4 text-sm text-zinc-700 dark:bg-zinc-950 dark:text-zinc-300">
-                      <span className="font-semibold text-zinc-900 dark:text-zinc-100">Why people convert:</span>{" "}
+                      <span className="font-semibold text-zinc-900 dark:text-zinc-100">When to upgrade:</span>{" "}
                       The free set is enough to diagnose gaps. The paid upgrade is there when you need the full question bank, mock exams, and lifetime updates.
                     </div>
                   </div>
