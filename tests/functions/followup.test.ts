@@ -1,0 +1,74 @@
+import { beforeEach, describe, expect, it, vi } from "vitest";
+import { enqueuePurchaseFollowup, processDueFollowups } from "@/functions/lib/followup";
+
+type MockKv = KVNamespace<string> & { store: Map<string, string> };
+
+function kvStore(initial: Record<string, string> = {}): MockKv {
+  const store = new Map(Object.entries(initial));
+  return {
+    store,
+    get: vi.fn(async (key: string) => store.get(key) ?? null),
+    put: vi.fn(async (key: string, value: string) => { store.set(key, value); }),
+    delete: vi.fn(async (key: string) => { store.delete(key); }),
+    list: vi.fn(async ({ prefix = "" }: { prefix?: string } = {}) => ({
+      keys: [...store.keys()].filter((key) => key.startsWith(prefix)).map((name) => ({ name })),
+      list_complete: true,
+      cursor: "",
+      cacheStatus: null,
+    })),
+    getWithMetadata: vi.fn(),
+  } as unknown as MockKv;
+}
+
+const env = (kv: MockKv) => ({
+  SNREADY_ACCESS: kv,
+  RESEND_API_KEY: "re_test",
+  SITE_URL: "https://snready.com",
+  FOLLOWUP_DELAY_DAYS: "21",
+});
+
+describe("purchase outcome follow-ups", () => {
+  beforeEach(() => vi.restoreAllMocks());
+
+  it("enqueues once per checkout session and creates a feedback token", async () => {
+    const kv = kvStore();
+    const purchase = { sessionId: "cs_paid", email: "Buyer@Example.com", plan: "single", certification: "CSA", purchasedAt: Date.UTC(2026, 7, 1) };
+
+    const first = await enqueuePurchaseFollowup(env(kv), purchase);
+    const second = await enqueuePurchaseFollowup(env(kv), purchase);
+
+    expect(second.feedbackToken).toBe(first.feedbackToken);
+    expect(kv.store.get(`purchase_feedback:${first.feedbackToken}`)).toBe("cs_paid");
+    expect([...kv.store.keys()].filter((key) => key.startsWith("purchase_followup_due:"))).toHaveLength(1);
+  });
+
+  it("skips suppressed customers without sending", async () => {
+    const kv = kvStore();
+    const purchasedAt = Date.UTC(2026, 7, 1);
+    await enqueuePurchaseFollowup(env(kv), { sessionId: "cs_suppressed", email: "buyer@example.com", plan: "single", certification: "CSA", purchasedAt });
+    kv.store.set("purchase_followup_suppressed:buyer@example.com", "1");
+    const fetchMock = vi.spyOn(globalThis, "fetch");
+
+    const result = await processDueFollowups(env(kv), { now: purchasedAt + 22 * 86_400_000, lookbackDays: 2 });
+
+    expect(result.skipped).toBe(1);
+    expect(result.sent).toBe(0);
+    expect(fetchMock).not.toHaveBeenCalled();
+  });
+
+  it("sends the outcome survey with one-click unsubscribe headers", async () => {
+    const kv = kvStore();
+    const purchasedAt = Date.UTC(2026, 7, 1);
+    const record = await enqueuePurchaseFollowup(env(kv), { sessionId: "cs_send", email: "buyer@example.com", plan: "single", certification: "CSA", purchasedAt });
+    vi.spyOn(globalThis, "fetch").mockResolvedValue(new Response(JSON.stringify({ id: "email_123" }), { status: 200 }));
+
+    const result = await processDueFollowups(env(kv), { now: purchasedAt + 22 * 86_400_000, lookbackDays: 2 });
+
+    expect(result.sent).toBe(1);
+    const request = JSON.parse(String(vi.mocked(fetch).mock.calls[0][1]?.body));
+    expect(request.subject).toBe("One question: did SNReady help you pass?");
+    expect(request.html).toContain(`/feedback?token=${record.feedbackToken}`);
+    expect(request.headers["List-Unsubscribe"]).toContain("/api/feedback/unsubscribe?token=");
+    expect(request.headers["List-Unsubscribe-Post"]).toBe("List-Unsubscribe=One-Click");
+  });
+});

@@ -20,6 +20,7 @@ export interface PurchaseFollowupRecord {
   sentAt?: number;
   resendId?: string;
   error?: string;
+  feedbackToken?: string;
 }
 
 export interface ProcessFollowupsResult {
@@ -75,30 +76,30 @@ function describePurchase(plan: string, certification: string, certifications?: 
 function buildFollowupEmail(record: PurchaseFollowupRecord, siteUrl: string): { subject: string; html: string; text: string } {
   const certDescription = describePurchase(record.plan, record.certification, record.certifications);
   const escapedCertDescription = escapeHtml(certDescription);
-  const subject = "Quick check-in: how did SNReady work for you?";
+  const subject = "One question: did SNReady help you pass?";
   const loginUrl = `${siteUrl.replace(/\/$/, "")}/login`;
+  const feedbackUrl = record.feedbackToken
+    ? `${siteUrl.replace(/\/$/, "")}/feedback?token=${encodeURIComponent(record.feedbackToken)}`
+    : loginUrl;
+  const unsubscribeUrl = record.feedbackToken
+    ? `${siteUrl.replace(/\/$/, "")}/api/feedback/unsubscribe?token=${encodeURIComponent(record.feedbackToken)}`
+    : loginUrl;
 
   const html = `
     <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 620px; margin: 0 auto; padding: 24px; color: #1f2937;">
       <h1 style="color: #059669; margin: 0 0 20px;">SNReady</h1>
       <p style="font-size: 16px; line-height: 1.6; margin: 0 0 16px;">Hey — just checking in after your SNReady purchase for <strong>${escapedCertDescription}</strong>.</p>
-      <p style="font-size: 16px; line-height: 1.6; margin: 0 0 16px;">Did you have a good experience? And more importantly, did you pass your certification exam?</p>
-      <p style="font-size: 16px; line-height: 1.6; margin: 0 0 20px;">Hit reply and let me know:</p>
-      <ul style="font-size: 16px; line-height: 1.7; padding-left: 24px; margin: 0 0 24px;">
-        <li>Whether you passed</li>
-        <li>Which exam you took</li>
-        <li>What SNReady helped with</li>
-        <li>What would have made it better</li>
-      </ul>
-      <p style="font-size: 16px; line-height: 1.6; margin: 0 0 24px;">If you are still studying, you can keep practicing here:</p>
+      <p style="font-size: 16px; line-height: 1.6; margin: 0 0 16px;">The only result that really matters is whether the questions helped on exam day.</p>
+      <p style="font-size: 16px; line-height: 1.6; margin: 0 0 20px;"><strong>Did you pass—and what should we improve for the next candidate?</strong></p>
       <div style="margin: 28px 0;">
-        <a href="${loginUrl}" style="background-color: #059669; color: #ffffff; padding: 14px 24px; text-decoration: none; border-radius: 8px; font-weight: 700; display: inline-block;">Keep practicing</a>
+        <a href="${feedbackUrl}" style="background-color: #059669; color: #ffffff; padding: 14px 24px; text-decoration: none; border-radius: 8px; font-weight: 700; display: inline-block;">Share my exam result</a>
       </div>
-      <p style="font-size: 14px; color: #6b7280; line-height: 1.6; margin-top: 28px;">Thanks for using SNReady — your feedback directly improves the question bank for future ServiceNow candidates.</p>
+      <p style="font-size: 14px; color: #6b7280; line-height: 1.6; margin-top: 28px;">It takes about 30 seconds. You can also reply with just “passed”, “not yet”, or “not this time”. We will only feature comments if you explicitly allow it.</p>
+      <p style="font-size: 12px; color: #9ca3af; line-height: 1.5; margin-top: 28px;">You received this one-time check-in because you purchased SNReady. <a href="${unsubscribeUrl}" style="color: #6b7280;">Do not send me customer follow-ups</a>.</p>
     </div>
   `;
 
-  const text = `SNReady\n\nHey — just checking in after your SNReady purchase for ${certDescription}.\n\nDid you have a good experience? And more importantly, did you pass your certification exam?\n\nHit reply and let me know:\n- Whether you passed\n- Which exam you took\n- What SNReady helped with\n- What would have made it better\n\nIf you are still studying, you can keep practicing here: ${loginUrl}\n\nThanks for using SNReady — your feedback directly improves the question bank for future ServiceNow candidates.`;
+  const text = `SNReady\n\nHey — checking in after your SNReady purchase for ${certDescription}.\n\nThe only result that really matters is whether the questions helped on exam day. Did you pass—and what should we improve for the next candidate?\n\nShare your result (about 30 seconds): ${feedbackUrl}\n\nOr reply with just “passed”, “not yet”, or “not this time”. We will only feature comments if you explicitly allow it.\n\nDo not send me customer follow-ups: ${unsubscribeUrl}`;
 
   return { subject, html, text };
 }
@@ -121,6 +122,10 @@ async function sendFollowupEmail(env: FollowupEnv, record: PurchaseFollowupRecor
       subject,
       html,
       text,
+      headers: record.feedbackToken ? {
+        "List-Unsubscribe": `<${env.SITE_URL.replace(/\/$/, "")}/api/feedback/unsubscribe?token=${encodeURIComponent(record.feedbackToken)}>`,
+        "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
+      } : undefined,
     }),
   });
 
@@ -146,11 +151,19 @@ export async function enqueuePurchaseFollowup(
     certification: string;
     certifications?: string[];
     purchasedAt?: number;
+    dueAt?: number;
   }
 ): Promise<PurchaseFollowupRecord> {
+  const recordKey = `purchase_followup:${purchase.sessionId}`;
+  const existing = await env.SNREADY_ACCESS.get(recordKey);
+  if (existing) {
+    return JSON.parse(existing) as PurchaseFollowupRecord;
+  }
+
   const normalizedEmail = normalizeEmail(purchase.email);
   const purchasedAt = purchase.purchasedAt || Date.now();
-  const dueAt = purchasedAt + getFollowupDelayDays(env) * DAY_MS;
+  const dueAt = purchase.dueAt ?? purchasedAt + getFollowupDelayDays(env) * DAY_MS;
+  const feedbackToken = crypto.randomUUID();
   const record: PurchaseFollowupRecord = {
     sessionId: purchase.sessionId,
     email: normalizedEmail,
@@ -161,14 +174,15 @@ export async function enqueuePurchaseFollowup(
     dueAt,
     status: "pending",
     createdAt: Date.now(),
+    feedbackToken,
   };
 
-  const recordKey = `purchase_followup:${purchase.sessionId}`;
   const dueKey = `purchase_followup_due:${dateKey(dueAt)}:${purchase.sessionId}`;
 
   await Promise.all([
     env.SNREADY_ACCESS.put(recordKey, JSON.stringify(record)),
     env.SNREADY_ACCESS.put(dueKey, purchase.sessionId),
+    env.SNREADY_ACCESS.put(`purchase_feedback:${feedbackToken}`, purchase.sessionId),
   ]);
 
   return record;
@@ -233,7 +247,7 @@ export async function processDueFollowups(
         continue;
       }
 
-      const record = JSON.parse(rawRecord) as PurchaseFollowupRecord;
+      let record = JSON.parse(rawRecord) as PurchaseFollowupRecord;
       if (record.status === "sent") {
         await env.SNREADY_ACCESS.delete(dueKey);
         result.skipped += 1;
@@ -241,6 +255,21 @@ export async function processDueFollowups(
       }
 
       if (record.dueAt > now) {
+        result.skipped += 1;
+        continue;
+      }
+
+      if (!record.feedbackToken) {
+        const feedbackToken = crypto.randomUUID();
+        record = { ...record, feedbackToken };
+        await Promise.all([
+          env.SNREADY_ACCESS.put(recordKey, JSON.stringify(record)),
+          env.SNREADY_ACCESS.put(`purchase_feedback:${feedbackToken}`, sessionId),
+        ]);
+      }
+
+      if (await env.SNREADY_ACCESS.get(`purchase_followup_suppressed:${record.email}`)) {
+        await env.SNREADY_ACCESS.delete(dueKey);
         result.skipped += 1;
         continue;
       }
