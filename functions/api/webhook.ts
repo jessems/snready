@@ -1,5 +1,6 @@
 import Stripe from "stripe";
 import { enqueuePurchaseFollowup } from "../lib/followup";
+import { grantPurchaseAccess } from "../lib/purchase-access";
 
 interface Env {
   STRIPE_SECRET_KEY: string;
@@ -69,42 +70,45 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       const plan = session.metadata?.plan || "single";
       const certification = session.metadata?.certification || "all";
 
+      if (session.payment_status !== "paid") {
+        console.warn("Ignoring checkout.session.completed without paid status", {
+          sessionId: session.id,
+          paymentStatus: session.payment_status,
+        });
+        return new Response(JSON.stringify({ received: true, ignored: "payment_not_completed" }), {
+          headers: { "Content-Type": "application/json" },
+        });
+      }
+
       if (email) {
-        const durationMs = 100 * 365 * 24 * 60 * 60 * 1000;
-        const expiresAt = Date.now() + durationMs;
         const normalizedEmail = email.toLowerCase();
+        const grant = await grantPurchaseAccess(env.SNREADY_ACCESS, {
+          email,
+          plan,
+          certification,
+          sessionId: session.id,
+        });
 
-        await env.SNREADY_ACCESS.put(
-          `access:${normalizedEmail}`,
-          JSON.stringify({
-            paid: true,
-            plan,
-            expiresAt,
-            sessionId: session.id,
-            certification,
-            createdAt: Date.now(),
-          }),
-          {}
-        );
-
-        try {
-          await enqueuePurchaseFollowup(env, {
-            sessionId: session.id,
-            email: normalizedEmail,
-            plan,
-            certification,
-            certifications: plan === "single" && certification ? [certification] : [],
-            purchasedAt: (session.created || Math.floor(Date.now() / 1000)) * 1000,
-          });
-        } catch (error) {
-          console.error("Webhook follow-up enqueue failed after access grant", {
-            sessionId: session.id,
-            email: normalizedEmail,
-            error,
-          });
+        if (!grant.accessAlreadyGranted) {
+          try {
+            await enqueuePurchaseFollowup(env, {
+              sessionId: session.id,
+              email: normalizedEmail,
+              plan: grant.effectivePlan,
+              certification,
+              certifications: grant.certifications,
+              purchasedAt: (session.created || Math.floor(Date.now() / 1000)) * 1000,
+            });
+          } catch (error) {
+            console.error("Webhook follow-up enqueue failed after access grant", {
+              sessionId: session.id,
+              email: normalizedEmail,
+              error,
+            });
+          }
         }
 
-        console.log(`Access granted to ${normalizedEmail} (${plan}) until ${new Date(expiresAt).toISOString()}`);
+        console.log(`Access granted to ${normalizedEmail} (${grant.effectivePlan}) until ${new Date(grant.expiresAt).toISOString()}`);
       }
     }
 

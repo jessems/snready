@@ -79,6 +79,7 @@ describe("webhook Pages Function", () => {
       data: {
         object: {
           id: "cs_test_paid",
+          payment_status: "paid",
           customer_details: { email: "Buyer@Example.com" },
           metadata: { plan: "single", certification: "CSA" },
           created: 1_726_000_000,
@@ -152,5 +153,44 @@ describe("webhook Pages Function", () => {
       expect.any(String),
       {}
     );
+  });
+
+  it("does not grant access or enqueue follow-up for completed but unpaid sessions", async () => {
+    const accessKv = kvStore();
+    constructEventAsync.mockResolvedValueOnce({
+      type: "checkout.session.completed",
+      data: {
+        object: {
+          id: "cs_test_unpaid",
+          payment_status: "unpaid",
+          customer_details: { email: "Buyer@Example.com" },
+          metadata: { plan: "single", certification: "CSA" },
+          created: 1_726_000_000,
+        },
+      },
+    });
+
+    const response = await onRequestPost(context({ SNREADY_ACCESS: accessKv }));
+
+    expect(response.status).toBe(200);
+    expect(await response.json()).toEqual({ received: true, ignored: "payment_not_completed" });
+    expect(accessKv.put).not.toHaveBeenCalledWith("access:buyer@example.com", expect.any(String), {});
+    expect(enqueuePurchaseFollowup).not.toHaveBeenCalled();
+  });
+
+  it("does not enqueue a duplicate follow-up when the same session was already granted", async () => {
+    const accessKv = kvStore();
+    accessKv.get.mockImplementation(async (key: string) => {
+      if (key === "access:buyer@example.com") {
+        return JSON.stringify({ paid: true, plan: "single", sessionId: "cs_test_paid", certification: "CSA", certifications: ["CSA"], createdAt: 1 });
+      }
+      return null;
+    });
+
+    const response = await onRequestPost(context({ SNREADY_ACCESS: accessKv }));
+
+    expect(response.status).toBe(200);
+    expect(await response.json()).toEqual({ received: true });
+    expect(enqueuePurchaseFollowup).not.toHaveBeenCalled();
   });
 });

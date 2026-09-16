@@ -1,5 +1,13 @@
 #!/usr/bin/env node
 import fs from "node:fs";
+import {
+  attributionCoverage,
+  completeDayWindow,
+  paidStripeTruth,
+  roasByCurrency,
+  strictGoogleAdsEvidence,
+  summarizeRevenue,
+} from "./revenue-reporting.mjs";
 
 const STRIPE_KEY_PATH = process.env.STRIPE_KEY_PATH || "/root/.hermes/profiles/snready/home/.hermes/profiles/snready/.stripe_key";
 const MONTHLY_SPEND_CAP = Number(process.env.GOOGLE_ADS_MONTHLY_SPEND_CAP || "100");
@@ -8,39 +16,7 @@ const spendMonthToDate = process.env.GOOGLE_ADS_SPEND_MONTH_TO_DATE ? Number(pro
 const diagnosticsUrl = process.env.ATTRIBUTION_DIAGNOSTICS_URL || "";
 const diagnosticsSecret = process.env.ATTRIBUTION_DIAGNOSTICS_SECRET || "";
 const diagnosticsDays = Number(process.env.ATTRIBUTION_DIAGNOSTICS_DAYS || "7");
-
-function monthWindow(now = new Date()) {
-  const start = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), 1, 0, 0, 0));
-  const next = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth() + 1, 1, 0, 0, 0));
-  return { start, next };
-}
-
-function isGoogleAdsSession(session) {
-  const m = session.metadata || {};
-  const values = [
-    m.firstUtmSource,
-    m.lastUtmSource,
-    m.firstUtmMedium,
-    m.lastUtmMedium,
-    m.firstUtmCampaign,
-    m.lastUtmCampaign,
-    m.firstGclid,
-    m.lastGclid,
-    m.firstGbraid,
-    m.lastGbraid,
-    m.firstWbraid,
-    m.lastWbraid,
-  ].filter(Boolean).map((value) => String(value).toLowerCase());
-
-  return values.some((value) =>
-    value === "google" ||
-    value === "cpc" ||
-    value === "ppc" ||
-    value.includes("google") ||
-    value.startsWith("gclid") ||
-    value.length > 20 && /^[a-z0-9_-]+$/i.test(value)
-  );
-}
+const reportWindow = completeDayWindow({ start: process.env.REPORT_START_DATE, end: process.env.REPORT_END_DATE });
 
 async function stripeGet(path, params = {}) {
   const key = fs.readFileSync(STRIPE_KEY_PATH, "utf8").trim();
@@ -99,14 +75,15 @@ function money(centsOrDollars, cents = false) {
   return `$${value.toFixed(2)}`;
 }
 
-const { start, next } = monthWindow();
-const paid = await listCheckoutSessions(start, next);
-const adAttributed = paid.filter(isGoogleAdsSession);
+const { start, end } = reportWindow;
+const allSessions = await listCheckoutSessions(start, end);
+const paid = paidStripeTruth(allSessions);
+const adAttributed = paid.filter(strictGoogleAdsEvidence);
+const revenue = summarizeRevenue(paid);
+const coverage = attributionCoverage(paid);
 const revenueCents = paid.reduce((sum, session) => sum + (session.amount_total || 0), 0);
 const adRevenueCents = adAttributed.reduce((sum, session) => sum + (session.amount_total || 0), 0);
 const googleAdsSales = adAttributed.length;
-const gaClientIdSessions = paid.filter((session) => Boolean(session.metadata?.gaClientId)).length;
-const gaSessionIdSessions = paid.filter((session) => Boolean(session.metadata?.gaSessionId || session.metadata?.gaSessionCookie)).length;
 const campaignBreakdown = new Map();
 const diagnostics = await fetchDiagnostics().catch((error) => ({ error: error instanceof Error ? error.message : String(error) }));
 
@@ -120,17 +97,25 @@ for (const session of adAttributed) {
 }
 
 const dailyBudget = MONTHLY_SPEND_CAP / 30.4;
-const maxSpendToDate = dailyBudget * ((Date.now() - start.getTime()) / (24 * 60 * 60 * 1000));
-const roas = spendMonthToDate && spendMonthToDate > 0 ? adRevenueCents / 100 / spendMonthToDate : null;
-const nextCap = roas !== null && roas > 1 ? SCALE_SPEND_CAP : MONTHLY_SPEND_CAP;
+const daysElapsed = (end.getTime() - start.getTime()) / (24 * 60 * 60 * 1000);
+const maxSpendToDate = dailyBudget * daysElapsed;
+const revenueForRoas = summarizeRevenue(adAttributed).byCurrency;
+const roas = spendMonthToDate && spendMonthToDate > 0 ? roasByCurrency(revenueForRoas, spendMonthToDate) : null;
+const roasValue = roas && !roas.blocked ? roas.USD : null;
+const nextCap = roasValue !== null && roasValue > 1 ? SCALE_SPEND_CAP : MONTHLY_SPEND_CAP;
 
-console.log(`**SNReady Google Ads ROAS — ${start.toISOString().slice(0, 7)} MTD**`);
-console.log(`- Total Stripe revenue: ${money(revenueCents, true)} from ${paid.length} paid sessions`);
-console.log(`- Google Ads-attributed revenue: ${money(adRevenueCents, true)} from ${googleAdsSales} paid sessions`);
-console.log(`- GA4 join keys captured: client_id on ${gaClientIdSessions}/${paid.length} paid sessions; session on ${gaSessionIdSessions}/${paid.length}`);
+console.log(`**SNReady Google Ads revenue — ${reportWindow.startDate}→${reportWindow.endDate} complete UTC days**`);
+console.log(`- Total Stripe paid truth: ${money(revenueCents, true)} from ${paid.length} paid sessions (smoke/test excluded)`);
+console.log(`- Revenue by currency: ${Object.entries(revenue.byCurrency).map(([currency, amount]) => `${currency} ${money(amount)}`).join(", ") || "none"}`);
+console.log(`- Strict Google Ads-attributed revenue: ${money(adRevenueCents, true)} from ${googleAdsSales} paid sessions`);
+console.log(`- Source attribution coverage: GA client ${coverage.withGaClientId}/${coverage.total}; GA/session cookie ${coverage.withSession}/${coverage.total}; strict Ads ${coverage.strictGoogleAds}/${coverage.total}; inferred search-referrer ${coverage.inferredSearchReferrer}/${coverage.total}`);
 if (spendMonthToDate !== null) {
-  console.log(`- Google Ads spend entered: ${money(spendMonthToDate)}; ROAS: ${roas.toFixed(2)}x`);
-  console.log(`- Budget decision: ${roas > 1 ? `positive return — eligible to scale up to ${money(nextCap)}/month` : `hold at ${money(MONTHLY_SPEND_CAP)}/month or reduce bids until ROAS improves`}`);
+  if (roas?.blocked) {
+    console.log(`- Google Ads spend entered: ${money(spendMonthToDate)}; ROAS not reported: ${roas.blocked}`);
+  } else {
+    console.log(`- Google Ads spend entered: ${money(spendMonthToDate)}; strict USD ROAS: ${roasValue.toFixed(2)}x`);
+  }
+  console.log(`- Budget decision: ${roasValue !== null && roasValue > 1 ? `positive strict return — eligible to scale up to ${money(nextCap)}/month` : `hold at or below ${money(MONTHLY_SPEND_CAP)}/month until strict ROAS improves`}`);
 } else {
   console.log(`- Spend data unavailable to this script. Keep Google Ads account budget at or below ${money(MONTHLY_SPEND_CAP)}/month until spend import/API access is connected.`);
   console.log(`- Pacing guardrail for today: expected MTD spend should be <= ${money(maxSpendToDate)} at the ${money(MONTHLY_SPEND_CAP)}/month cap.`);

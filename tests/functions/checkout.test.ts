@@ -57,6 +57,13 @@ describe("checkout Pages Function", () => {
     expect(createCheckoutSession).not.toHaveBeenCalled();
   });
 
+  it("rejects an explicit invalid plan before calling Stripe", async () => {
+    const response = await onRequestPost(context({ certification: "csa", plan: "invalid" }));
+    expect(response.status).toBe(400);
+    expect(await response.json()).toEqual({ error: "Invalid checkout plan", code: "invalid_plan" });
+    expect(createCheckoutSession).not.toHaveBeenCalled();
+  });
+
   it("fails fast with a clear config error when Stripe env is missing", async () => {
     const response = await onRequestPost(context({ certification: "csa", plan: "single" }, { STRIPE_SECRET_KEY: "", SITE_URL: "" }));
     expect(response.status).toBe(503);
