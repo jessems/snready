@@ -49,7 +49,7 @@ export function DumpsAlternativeSection({
     {
       label: "Price",
       dumps: "Free",
-      snready: "$9/30 days",
+      snready: "$9 lifetime",
     },
   ];
 
