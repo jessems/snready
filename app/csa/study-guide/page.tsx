@@ -33,44 +33,34 @@ const CERT_SLUG = "csa";
 
 const domainFocus: Record<string, string[]> = {
   "ui-navigation": [
-    "Application Navigator, favorites, history, and global search",
-    "List controls, filters, breadcrumbs, and personal list layouts",
-    "Forms, form sections, related lists, and record activity",
+    "Next Experience Unified Navigation: All, Favorites, History, and Workspaces menus",
+    "Filter navigator shortcuts (table.list, table.do), global search, and user preferences",
+    "What a ServiceNow instance is, instance cloning, and Admin Center",
   ],
-  "user-administration": [
-    "Users, groups, roles, and role inheritance",
-    "ACL evaluation, record access, and security debugging basics",
-    "Impersonation and safe testing of user access",
+  "instance-configuration": [
+    "Installing applications and plugins with Application Manager and the ServiceNow Store",
+    "System properties, Theme Builder, branding, and application scope",
+    "Core UI, Next Experience, workspaces, and Service Portal",
   ],
-  "database-administration": [
-    "Tables, fields, dictionary entries, and table inheritance",
-    "Reference fields, choice lists, import sets, and transform maps",
-    "When to extend a table versus create a new table",
+  "lists-forms-collaboration": [
+    "Lists, filters, breadcrumbs, tags, and form layout with Form Builder",
+    "Templates, task management, assignment rules, and Visual Task Boards",
+    "Notifications, data visualizations, dashboards, and Platform Analytics",
   ],
   "self-service-automation": [
-    "Service Catalog items, variables, variable sets, and order guides",
-    "Knowledge bases, article states, publishing, and feedback",
-    "Flow Designer triggers, actions, approvals, and automation choice points",
+    "Service Catalog items, record producers, order guides, variables, and variable sets",
+    "Knowledge bases, publishing and retirement workflows, and user criteria",
+    "Workflow Studio flows, subflows, triggers, flow logic, and Virtual Agent topics",
   ],
-  "incident-management": [
-    "Incident states, assignment, priority, impact, and urgency",
-    "SLA behavior, escalation, resolution, and closure",
-    "Major incidents and relationship to other ITSM processes",
+  "database-administration": [
+    "Tables, fields, table extension, dictionary overrides, and the schema map",
+    "Importing data with import sets, transform maps, and coalesce",
+    "ACLs, roles, Security Center, CMDB/CSDM basics, and the Shared Responsibility Model",
   ],
-  "problem-management": [
-    "Problem versus incident purpose and lifecycle",
-    "Root cause analysis, known errors, workarounds, and permanent fixes",
-    "Reactive versus proactive problem creation",
-  ],
-  "change-management": [
-    "Standard, normal, and emergency change models",
-    "CAB approvals, risk assessment, schedules, and blackout windows",
-    "Change tasks, implementation review, and conflict detection",
-  ],
-  "reporting-dashboards": [
-    "Report Builder, report types, filters, and sharing",
-    "Dashboards, widgets, scheduled reports, and subscriptions",
-    "When Performance Analytics is different from standard reporting",
+  "data-migration-integration": [
+    "UI policies versus data policies",
+    "Business rules, client scripts, and scripting basics",
+    "System update sets: capture, complete, preview, commit, and back out",
   ],
 };
 
@@ -78,7 +68,7 @@ const faqData = [
   {
     question: "What is the ServiceNow CSA exam?",
     answer:
-      "The ServiceNow Certified System Administrator (CSA) exam validates foundational platform administration skills: navigation, users and roles, data model basics, self-service, automation, core ITSM processes, and reporting.",
+      "The ServiceNow Certified System Administrator (CSA) exam validates foundational platform administration skills: navigation, users and roles, data model basics, self-service, automation, collaboration features, data management, security, and update sets.",
   },
   {
     question: "How many questions are on the CSA exam?",
@@ -98,17 +88,17 @@ const faqData = [
   {
     question: "Which CSA domains should I study first?",
     answer:
-      "Start with the 15% domains: User Interface & Navigation, User Administration & Security, and Self-Service & Automation. Then cover Reporting & Dashboards, Database Administration, Incident, Change, and Problem Management according to their blueprint weights.",
+      "Start with Database Management and Platform Security (30%), then Configuring Applications for Collaboration and Self Service & Automation (20% each). Then cover Data Migration and Integration (13%), Instance Configuration (10%), and Platform Overview and Navigation (7%), following the January 2026 blueprint weights.",
   },
   {
     question: "Do I need hands-on ServiceNow experience for CSA?",
     answer:
-      "Yes. CSA questions often look simple but test platform behavior. Use a Personal Developer Instance to practice lists, forms, groups, roles, ACLs, table inheritance, catalog items, flows, incidents, changes, and reports.",
+      "Yes. CSA questions often look simple but test platform behavior. Use a Personal Developer Instance to practice lists, forms, groups, roles, ACLs, table inheritance, catalog items, flows, import sets, update sets, and reports.",
   },
   {
     question: "Is CSA harder than it looks?",
     answer:
-      "CSA is an entry-level certification, but it is broad. The common failure pattern is memorizing definitions without understanding where features live in the UI or how records, roles, flows, and ITSM processes behave together.",
+      "CSA is an entry-level certification, but it is broad. The common failure pattern is memorizing definitions without understanding where features live in the UI or how records, roles, flows, imports, and update sets behave together.",
   },
   {
     question: "What should I do the week before the CSA exam?",
@@ -125,17 +115,17 @@ const howToSteps = [
   },
   {
     name: "Master navigation and security first",
-    text: "UI navigation and user administration are both high-weight domains and appear in nearly every admin workflow. Practice lists, forms, groups, roles, and ACL scenarios in a PDI.",
+    text: "Database Management and Platform Security is the largest domain (30%), and lists and forms appear in nearly every admin workflow. Practice lists, forms, groups, roles, and ACL scenarios in a PDI.",
     position: 2,
   },
   {
     name: "Learn the platform data model",
-    text: "Understand tables, fields, dictionary entries, reference fields, and inheritance before studying ITSM processes. Many CSA questions depend on knowing how records are stored and related.",
+    text: "Understand tables, fields, dictionary entries, reference fields, and inheritance before studying imports and automation. Many CSA questions depend on knowing how records are stored and related.",
     position: 3,
   },
   {
-    name: "Build catalog, knowledge, flow, and ITSM muscle memory",
-    text: "Create or inspect catalog items, knowledge articles, flows, incidents, problems, and changes so exam terms map to real UI behavior.",
+    name: "Build catalog, knowledge, and flow muscle memory",
+    text: "Create or inspect catalog items, record producers, knowledge articles, flows, and Virtual Agent topics so exam terms map to real UI behavior.",
     position: 4,
   },
   {
@@ -154,11 +144,11 @@ const fourWeekPlan = [
   {
     week: "Week 1",
     title: "Platform orientation and baseline",
-    focus: "UI & Navigation + diagnostic",
+    focus: "Platform Overview & Navigation + Instance Configuration + diagnostic",
     goal: "Make the platform feel familiar before deeper admin topics.",
     tasks: [
-      "Read the CSA blueprint and rank all eight domains by weight.",
-      "Practice Application Navigator, favorites, lists, filters, forms, related lists, and global search.",
+      "Read the CSA blueprint and rank all six domains by weight.",
+      "Practice Unified Navigation menus, favorites, lists, filters, forms, related lists, and global search.",
       "Take 30-60 mixed practice questions and create a domain miss log.",
     ],
     success:
@@ -167,36 +157,36 @@ const fourWeekPlan = [
   {
     week: "Week 2",
     title: "Security and data model",
-    focus: "User Administration + Database Administration",
+    focus: "Database Management & Platform Security",
     goal: "Understand how access and records work before automating anything.",
     tasks: [
       "Create test users, groups, and roles; practice impersonation safely.",
       "Review ACL purpose and how roles differ from record-level access.",
-      "Inspect task table inheritance, reference fields, dictionary entries, import sets, and transform maps.",
+      "Inspect task table inheritance, reference fields, dictionary entries, import sets, transform maps, and coalesce.",
     ],
     success:
       "You can explain why a user can see an application module but may still be blocked from a record or field.",
   },
   {
     week: "Week 3",
-    title: "Self-service and ITSM processes",
-    focus: "Catalog, Knowledge, Flow, Incident, Problem, Change",
-    goal: "Connect admin features to real service-management outcomes.",
+    title: "Self service and automation",
+    focus: "Catalog, Knowledge, Workflow Studio, Virtual Agent",
+    goal: "Connect admin features to real self-service outcomes.",
     tasks: [
       "Compare catalog items, record producers, variables, variable sets, and order guides.",
-      "Trace Incident, Problem, and Change lifecycles from creation through closure or review.",
-      "Build a simple Flow Designer automation and identify trigger/action/approval behavior.",
+      "Compare knowledge publishing workflows and Can Read versus Can Contribute user criteria.",
+      "Build a simple Workflow Studio flow and identify trigger, action, flow logic, and approval behavior.",
     ],
     success:
-      "You can choose between incident, problem, change, catalog, knowledge, and flow options in scenario questions.",
+      "You can choose between catalog item, record producer, order guide, knowledge, and flow options in scenario questions.",
   },
   {
     week: "Week 4",
-    title: "Reporting, review, and exam simulation",
-    focus: "Reporting & Dashboards + timed mocks",
+    title: "Collaboration, data migration, and exam simulation",
+    focus: "Lists, forms & dashboards + UI policies, business rules & update sets + timed mocks",
     goal: "Convert broad knowledge into consistent exam performance.",
     tasks: [
-      "Create standard reports and dashboards; practice sharing and scheduled reports.",
+      "Build data visualizations and dashboards, create a UI policy and a business rule, and move them with an update set.",
       "Take at least two 60-question timed CSA mock exams.",
       "Review missed questions by domain and repeat topic drills until weak domains reach 80%+.",
     ],
@@ -208,37 +198,37 @@ const fourWeekPlan = [
 const pdiLabChecklist = [
   {
     lab: "List and form fluency drill",
-    domain: "User Interface & Navigation",
+    domain: "Configuring Applications for Collaboration",
     outcome:
       "Filter a task list, save a favorite, open a form, inspect related lists, and explain what is personal versus administrator-controlled.",
   },
   {
     lab: "Users, groups, roles, and impersonation",
-    domain: "User Administration & Security",
+    domain: "Database Management and Platform Security",
     outcome:
       "Create a test user, add group membership, grant a role through the group, impersonate the user, and verify visible modules and records.",
   },
   {
     lab: "Table inheritance and dictionary review",
-    domain: "Database Administration",
+    domain: "Database Management and Platform Security",
     outcome:
       "Open tables that extend Task, identify inherited fields, inspect a dictionary entry, and explain when reference fields are used.",
   },
   {
-    lab: "Catalog item and Flow Designer walkthrough",
-    domain: "Self-Service & Automation",
+    lab: "Catalog item and Workflow Studio walkthrough",
+    domain: "Self Service & Automation",
     outcome:
       "Inspect a catalog item, identify variables and fulfillment logic, then review a flow trigger, action, condition, and approval step.",
   },
   {
-    lab: "Incident, Problem, Change lifecycle trace",
-    domain: "ITSM Processes",
+    lab: "Import set and update set drill",
+    domain: "Data Migration and Integration / Importing Data",
     outcome:
-      "Create or inspect records for each process and explain how incident restoration, problem root-cause analysis, and change risk control differ.",
+      "Import a small spreadsheet with a transform map that coalesces on a unique field, then capture a UI policy change in an update set and preview it.",
   },
   {
     lab: "Report and dashboard build",
-    domain: "Reporting & Dashboards",
+    domain: "Configuring Applications for Collaboration",
     outcome:
       "Create a filtered task report, choose an appropriate visualization, add it to a dashboard, and explain sharing/scheduling choices.",
   },
@@ -261,17 +251,17 @@ const decisionDrills = [
   },
   {
     prompt:
-      "A recurring outage has been restored repeatedly but keeps returning.",
-    test: "Is this still only Incident Management?",
+      "A weekly user import keeps creating duplicate user records.",
+    test: "Do you know which transform map setting fixes it?",
     answer:
-      "Incident Management restores service. Recurring incidents should trigger Problem Management to investigate root cause, document workarounds, and pursue a permanent fix.",
+      "Coalesce on a field with unique values, such as email or user ID. Matching rows then update existing records instead of inserting new ones.",
   },
   {
     prompt:
-      "A low-risk routine update is performed often and follows a proven path.",
-    test: "Should every occurrence require full CAB review?",
+      "A form change made in development must reach production safely.",
+    test: "Can you describe the update set path?",
     answer:
-      "Usually no. A standard change model can pre-approve repeatable, low-risk work while still keeping documentation and control.",
+      "Capture the change in an update set, mark it Complete, retrieve and preview it in test, commit and test it, then promote it from test to production.",
   },
   {
     prompt: "A manager asks for weekly incident counts by assignment group.",
@@ -294,31 +284,31 @@ const commonMistakes = [
   },
   {
     title: "Skipping table inheritance",
-    body: "Task inheritance explains why incident, problem, and change records share fields. Missing this concept makes database and ITSM questions harder.",
+    body: "Task inheritance explains why incident, problem, and change records share fields. Missing this concept makes data schema and ACL questions harder.",
     icon: "🧱",
   },
   {
-    title: "Memorizing ITSM states without purpose",
-    body: "Know why each process exists: incidents restore service, problems remove root cause, and changes control risk. State names alone are not enough.",
+    title: "Skipping imports and update sets",
+    body: "The current blueprint covers importing data, UI policies, business rules, and update sets. Know how coalesce works and how configuration moves between instances.",
     icon: "🔄",
   },
   {
-    title: "Ignoring Flow Designer basics",
-    body: "Modern CSA prep should include triggers, actions, conditions, approvals, and when Flow Designer is preferable to older automation patterns.",
+    title: "Ignoring Workflow Studio basics",
+    body: "Modern CSA prep should include triggers, actions, flow logic, subflows, approvals, and activating flows in Workflow Studio.",
     icon: "⚙️",
   },
   {
     title: "Not practicing reports",
-    body: "Reporting is weighted enough to matter. Build reports and dashboards so chart-type, filter, sharing, and scheduling questions feel obvious.",
+    body: "Visualizations and dashboards are part of the 20% collaboration domain. Build visualizations and dashboards so chart-type, filter, and sharing questions feel obvious.",
     icon: "📊",
   },
 ];
 
 const sampleQuestions = [
   {
-    topic: "User Interface & Navigation",
-    topicSlug: "ui-navigation",
-    weight: 15,
+    topic: "Configuring Applications for Collaboration",
+    topicSlug: "lists-forms-collaboration",
+    weight: 20,
     question: "What does a list in ServiceNow display?",
     options: [
       "A single record with all field sections",
@@ -331,9 +321,9 @@ const sampleQuestions = [
       "Lists show multiple records from a table with selected columns. Forms show a single record with fields, sections, and related lists.",
   },
   {
-    topic: "User Administration & Security",
+    topic: "Database Management and Platform Security",
     topicSlug: "user-administration",
-    weight: 15,
+    weight: 30,
     question:
       "Which mechanism controls record-level access to data in ServiceNow?",
     options: ["Favorites", "ACLs", "Update Sets", "Application Menus"],
@@ -342,20 +332,26 @@ const sampleQuestions = [
       "Access Control Lists determine whether users can read, write, create, or delete records and fields after role and condition checks are evaluated.",
   },
   {
-    topic: "Change Management",
-    topicSlug: "change-management",
-    weight: 10,
+    topic: "Data Migration and Integration",
+    topicSlug: "data-migration-integration",
+    weight: 13,
     question:
-      "Which change type is typically pre-approved for routine, low-risk work?",
-    options: ["Emergency", "Normal", "Standard", "Major"],
-    correctAnswer: "Standard",
+      "What does an update set capture?",
+    options: [
+      "Configuration changes, such as catalog item definitions and variables",
+      "Submitted orders and catalog tasks",
+      "All incident records created during development",
+      "User passwords",
+    ],
+    correctAnswer:
+      "Configuration changes, such as catalog item definitions and variables",
     explanation:
-      "Standard changes are repeatable, low risk, and pre-approved through a change model. Normal and emergency changes follow different approval paths.",
+      "An update set is a container for configuration customizations. Catalog item definitions and their variables are configuration, so they move with the update set. Records such as submitted requests are transactional data and stay on the instance where they were created.",
   },
   {
-    topic: "Reporting & Dashboards",
+    topic: "Configuring Applications for Collaboration",
     topicSlug: "reporting-dashboards",
-    weight: 13,
+    weight: 20,
     question: "What is the main purpose of a dashboard?",
     options: [
       "Store transform map scripts",
@@ -374,7 +370,7 @@ const readinessChecklist = [
   "Complete every PDI lab in this guide without step-by-step notes.",
   "Explain the difference between list, form, table, field, and record.",
   "Explain how users, groups, roles, and ACLs work together.",
-  "Choose the right process for incident, problem, change, catalog, knowledge, flow, and reporting scenarios.",
+  "Choose the right tool for catalog, knowledge, flow, import, update set, and dashboard scenarios.",
   "Review every missed practice question by domain and rewrite the underlying rule in your own words.",
 ];
 
@@ -435,7 +431,7 @@ export default function CSAStudyGuidePage() {
       "@type": "Thing",
       name: "ServiceNow Certified System Administrator",
       description:
-        "Foundational ServiceNow administration certification covering platform navigation, security, data, automation, ITSM, and reporting.",
+        "Foundational ServiceNow administration certification covering platform navigation, instance configuration, collaboration, self-service and automation, data and security, and data migration.",
     },
   };
 
@@ -552,7 +548,7 @@ export default function CSAStudyGuidePage() {
               The ServiceNow CSA exam validates that you can administer the Now
               Platform at a foundational level. It is broad rather than deep:
               expect questions across navigation, security, data, catalog,
-              knowledge, automation, ITSM processes, and reporting.
+              knowledge, automation, imports, update sets, and dashboards.
             </p>
             <div className="mt-6 grid gap-4 sm:grid-cols-2">
               <div className="rounded-lg bg-white p-5 shadow-sm dark:bg-zinc-900">
@@ -589,8 +585,8 @@ export default function CSAStudyGuidePage() {
               CSA Domain Breakdown
             </h2>
             <p className="mt-2 text-zinc-600 dark:text-zinc-400">
-              Study time should follow official blueprint weight. CSA has three
-              15% domains, so do not over-focus on only ITSM terminology.
+              Study time should follow official blueprint weight. Database
+              Management and Platform Security alone is 30% of the exam.
             </p>
 
             <div className="mt-8 space-y-4">

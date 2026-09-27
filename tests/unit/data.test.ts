@@ -16,7 +16,7 @@ describe("production data access", () => {
     const csaTopics = getTopicsForCertification("csa");
     expect(csaTopics.length).toBeGreaterThan(0);
     expect(csaTopics[0]).toMatchObject({ certification: "csa" });
-    expect(getTopicBySlug("csa", "ui-navigation")?.name).toMatch(/User Interface/i);
+    expect(getTopicBySlug("csa", "ui-navigation")?.name).toMatch(/Platform Overview/i);
     expect(getTopicsForCertification("does-not-exist")).toEqual([]);
     expect(getAllTopicSlugs()).toContainEqual({ certification: "csa", topic: "ui-navigation" });
   });

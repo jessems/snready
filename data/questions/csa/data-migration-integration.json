@@ -1,0 +1,2982 @@
+{
+  "certification": "csa",
+  "topic": "data-migration-integration",
+  "questions": [
+    {
+      "id": "csa-dm-201",
+      "certification": "csa",
+      "topic": "data-migration-integration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_select",
+      "question": "Which changes can UI policy actions make to a field on a form? (Choose three.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Make it mandatory"
+        },
+        {
+          "id": "b",
+          "text": "Make it visible or hidden"
+        },
+        {
+          "id": "c",
+          "text": "Make it read-only"
+        },
+        {
+          "id": "d",
+          "text": "Encrypt its value in the database"
+        },
+        {
+          "id": "e",
+          "text": "Change its column data type"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b",
+        "c"
+      ],
+      "explanation": {
+        "correct": "UI policies change form behavior dynamically, for example making fields read-only or mandatory, or hiding them. UI Policy Actions have Mandatory, Visible, and Read only choice lists (Leave alone, True, False). See https://www.servicenow.com/docs/r/australia/platform-administration/t_CreateAUIPolicy.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "d",
+            "explanation": "UI policies run in the browser and don't encrypt data.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/t_CreateAUIPolicy.html"
+          },
+          {
+            "choiceId": "e",
+            "explanation": "Data types are defined in the dictionary.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/t_CreateAUIPolicy.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/platform-administration/t_CreateAUIPolicy.html"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "t_CreateAUIPolicy",
+          "section": "Using UI policies",
+          "url": "https://www.servicenow.com/docs/r/australia/platform-administration/t_CreateAUIPolicy.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/platform-administration/t_CreateAUIPolicy.md",
+        "excerpt": "make the number field on a form read-only, make the short description field mandatory, and hide other fields"
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Data Migration and Integration",
+        "domainSlug": "data-migration-integration",
+        "domainPercentage": 13,
+        "subtopics": [
+          "UI Policies"
+        ],
+        "tags": [
+          "ui policy"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-dm-202",
+      "certification": "csa",
+      "topic": "data-migration-integration",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "An administrator can use either a client script or a UI policy to make a field mandatory. According to ServiceNow, why should they prefer the UI policy when possible?",
+      "options": [
+        {
+          "id": "a",
+          "text": "UI policies give faster load times"
+        },
+        {
+          "id": "b",
+          "text": "UI policies also secure the data on the server"
+        },
+        {
+          "id": "c",
+          "text": "UI policies work in every API integration"
+        },
+        {
+          "id": "d",
+          "text": "UI policies can't be overridden by ACLs"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "Client scripts can do everything UI policies do, but ServiceNow recommends UI policies when possible for faster load times. Basic UI policies need no scripting. See https://www.servicenow.com/docs/r/australia/platform-administration/t_CreateAUIPolicy.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "UI policies run on the client and aren't a data security control.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/t_CreateAUIPolicy.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "UI policies apply to forms in the UI, not to integrations; data policies cover other data sources.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/t_CreateAUIPolicy.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "ACLs and UI policies do different jobs.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/t_CreateAUIPolicy.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/platform-administration/t_CreateAUIPolicy.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "t_CreateAUIPolicy",
+          "section": "Using UI policies",
+          "url": "https://www.servicenow.com/docs/r/australia/platform-administration/t_CreateAUIPolicy.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/platform-administration/t_CreateAUIPolicy.md",
+        "excerpt": "You can also use client scripts to perform all of these actions, but for faster load times use UI policies when possible."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Data Migration and Integration",
+        "domainSlug": "data-migration-integration",
+        "domainPercentage": 13,
+        "subtopics": [
+          "UI Policies"
+        ],
+        "tags": [
+          "ui policy",
+          "client script"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-dm-203",
+      "certification": "csa",
+      "topic": "data-migration-integration",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "A UI policy has Reverse if false selected. What happens when its conditions change from true to false?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The UI policy actions are undone"
+        },
+        {
+          "id": "b",
+          "text": "Nothing; the actions remain"
+        },
+        {
+          "id": "c",
+          "text": "The form is submitted"
+        },
+        {
+          "id": "d",
+          "text": "The record is deleted"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "With Reverse if false selected, the UI policy actions run when the conditions are true and are undone when they evaluate to false. See https://www.servicenow.com/docs/r/australia/platform-administration/t_CreateAUIPolicy.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "That describes Reverse if false being cleared.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/t_CreateAUIPolicy.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "UI policies don't submit forms.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/t_CreateAUIPolicy.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "UI policies don't delete records.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/t_CreateAUIPolicy.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/platform-administration/t_CreateAUIPolicy.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "t_CreateAUIPolicy",
+          "section": "Using UI policies",
+          "url": "https://www.servicenow.com/docs/r/australia/platform-administration/t_CreateAUIPolicy.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/platform-administration/t_CreateAUIPolicy.md",
+        "excerpt": "Option for specifying that the UI policy action is undone when the conditions of its UI policy evaluate to false."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Data Migration and Integration",
+        "domainSlug": "data-migration-integration",
+        "domainPercentage": 13,
+        "subtopics": [
+          "UI Policies"
+        ],
+        "tags": [
+          "ui policy",
+          "reverse if false"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-dm-204",
+      "certification": "csa",
+      "topic": "data-migration-integration",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "A UI policy should make Additional comments mandatory only when a user changes State to Awaiting user info, not every time a record already in that state is opened. What should the administrator do?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Clear the On load check box"
+        },
+        {
+          "id": "b",
+          "text": "Select Global"
+        },
+        {
+          "id": "c",
+          "text": "Select Inherit"
+        },
+        {
+          "id": "d",
+          "text": "Set the Order to 1"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "On load controls whether the UI policy runs every time a form loads when its conditions are met. In the documented example, clearing On load means the policy applies only when the state is changed to Awaiting user info. See https://www.servicenow.com/docs/r/australia/platform-administration/t_CreateAUIPolicy.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Global controls whether the policy applies to all form views.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/t_CreateAUIPolicy.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Inherit controls whether extended tables inherit the policy.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/t_CreateAUIPolicy.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Order sets processing sequence when policies conflict.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/t_CreateAUIPolicy.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/platform-administration/t_CreateAUIPolicy.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "t_CreateAUIPolicy",
+          "section": "Using UI policies",
+          "url": "https://www.servicenow.com/docs/r/australia/platform-administration/t_CreateAUIPolicy.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/platform-administration/t_CreateAUIPolicy.md",
+        "excerpt": "clears the On load check box. This condition means that the UI policy applies only when the state is changed to Awaiting user info."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Data Migration and Integration",
+        "domainSlug": "data-migration-integration",
+        "domainPercentage": 13,
+        "subtopics": [
+          "UI Policies"
+        ],
+        "tags": [
+          "ui policy",
+          "on load"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-dm-205",
+      "certification": "csa",
+      "topic": "data-migration-integration",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "Two UI policies on the same table conflict. One has Order 100 and the other has Order 200. Which one's action takes effect?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The policy with Order 200, because the higher number executes last"
+        },
+        {
+          "id": "b",
+          "text": "The policy with Order 100"
+        },
+        {
+          "id": "c",
+          "text": "Neither; conflicting policies are both skipped"
+        },
+        {
+          "id": "d",
+          "text": "The one created first"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "UI policies run from lowest to highest Order. If two policies conflict, the one with the higher number executes. For inherited policies, the child table's policies run first, then the base table's. See https://www.servicenow.com/docs/r/australia/platform-administration/t_CreateAUIPolicy.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "The lower number runs first and is overridden.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/t_CreateAUIPolicy.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Both policies run.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/t_CreateAUIPolicy.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Creation date doesn't determine precedence.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/t_CreateAUIPolicy.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/platform-administration/t_CreateAUIPolicy.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "t_CreateAUIPolicy",
+          "section": "Using UI policies",
+          "url": "https://www.servicenow.com/docs/r/australia/platform-administration/t_CreateAUIPolicy.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/platform-administration/t_CreateAUIPolicy.md",
+        "excerpt": "If two policies conflict, the UI policy with the higher number executes."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Data Migration and Integration",
+        "domainSlug": "data-migration-integration",
+        "domainPercentage": 13,
+        "subtopics": [
+          "UI Policies"
+        ],
+        "tags": [
+          "ui policy",
+          "order"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-dm-206",
+      "certification": "csa",
+      "topic": "data-migration-integration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "When are UI policy conditions rechecked on an open form?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Only when a user manually changes a field on the form"
+        },
+        {
+          "id": "b",
+          "text": "Every time a UI action runs"
+        },
+        {
+          "id": "c",
+          "text": "Whenever the list editor changes a value"
+        },
+        {
+          "id": "d",
+          "text": "Every 60 seconds"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "UI policy conditions are only rechecked when a user manually changes a field on a form. Changes made by a UI action, context menu action, or the list editor are not evaluated. See https://www.servicenow.com/docs/r/australia/platform-administration/t_CreateAUIPolicy.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Changes made by UI actions are not evaluated.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/t_CreateAUIPolicy.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "List editor changes are not evaluated.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/t_CreateAUIPolicy.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "UI policies don't re-evaluate on a timer.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/t_CreateAUIPolicy.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/platform-administration/t_CreateAUIPolicy.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "t_CreateAUIPolicy",
+          "section": "Using UI policies",
+          "url": "https://www.servicenow.com/docs/r/australia/platform-administration/t_CreateAUIPolicy.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/platform-administration/t_CreateAUIPolicy.md",
+        "excerpt": "Conditions are only rechecked if a user manually changes a field on a form."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Data Migration and Integration",
+        "domainSlug": "data-migration-integration",
+        "domainPercentage": 13,
+        "subtopics": [
+          "UI Policies"
+        ],
+        "tags": [
+          "ui policy",
+          "conditions"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-dm-207",
+      "certification": "csa",
+      "topic": "data-migration-integration",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "Problems are updated by an external system through web services, and Close notes must be filled in before a problem is closed. The existing UI policy doesn't enforce this. What should the administrator use?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A data policy"
+        },
+        {
+          "id": "b",
+          "text": "Another UI policy"
+        },
+        {
+          "id": "c",
+          "text": "A client script"
+        },
+        {
+          "id": "d",
+          "text": "A form template"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "UI policies only apply to data entered on a form in the standard browser. Data policies apply to all data entered into the system, including data from import sets, web services, and the mobile UI. See https://www.servicenow.com/docs/r/australia/platform-administration/c_DataPolicy.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "UI policies don't apply to web service updates.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/c_DataPolicy.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Client scripts run in the browser and don't affect web service updates.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/c_DataPolicy.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Templates prefill forms; they don't enforce rules.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/c_DataPolicy.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/platform-administration/c_DataPolicy.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "c_DataPolicy",
+          "section": "Data policy",
+          "url": "https://www.servicenow.com/docs/r/australia/platform-administration/c_DataPolicy.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/platform-administration/c_DataPolicy.md",
+        "excerpt": "Data policies can apply rules to all data entered into the system, including data brought in through import sets or web services and data entered through the mobile UI."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Data Migration and Integration",
+        "domainSlug": "data-migration-integration",
+        "domainPercentage": 13,
+        "subtopics": [
+          "UI Policies"
+        ],
+        "tags": [
+          "data policy",
+          "ui policy"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-dm-208",
+      "certification": "csa",
+      "topic": "data-migration-integration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What is a business rule?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A server-side script that runs when a record is displayed, inserted, updated, or deleted, or when a table is queried"
+        },
+        {
+          "id": "b",
+          "text": "A client-side script that runs when a form loads"
+        },
+        {
+          "id": "c",
+          "text": "A rule that assigns tasks to groups without scripting"
+        },
+        {
+          "id": "d",
+          "text": "A security rule that controls access to records"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "A business rule is a server-side script that runs when a record is displayed, inserted, updated, or deleted, or when a table is queried. ServiceNow now recommends Workflow Studio for new process automation. See https://www.servicenow.com/docs/r/australia/api-reference/business-rules-classic/c_BusinessRules.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Client-side form scripts are client scripts.",
+            "reference": "https://www.servicenow.com/docs/r/australia/api-reference/business-rules-classic/c_BusinessRules.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Assignment without scripting uses assignment or data lookup rules.",
+            "reference": "https://www.servicenow.com/docs/r/australia/api-reference/business-rules-classic/c_BusinessRules.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Access is controlled by ACLs.",
+            "reference": "https://www.servicenow.com/docs/r/australia/api-reference/business-rules-classic/c_BusinessRules.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/api-reference/business-rules-classic/c_BusinessRules.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "c_BusinessRules",
+          "section": "Classic Business rules",
+          "url": "https://www.servicenow.com/docs/r/australia/api-reference/business-rules-classic/c_BusinessRules.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/api-reference/business-rules-classic/c_BusinessRules.md",
+        "excerpt": "A business rule is a server-side script that runs when a record is displayed, inserted, updated, or deleted, or when a table is queried."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Data Migration and Integration",
+        "domainSlug": "data-migration-integration",
+        "domainPercentage": 13,
+        "subtopics": [
+          "Business Rules"
+        ],
+        "tags": [
+          "business rules"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-dm-209",
+      "certification": "csa",
+      "topic": "data-migration-integration",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "A business rule must set a field value on the current record before it is saved to the database. Which When value should it use?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Before"
+        },
+        {
+          "id": "b",
+          "text": "After"
+        },
+        {
+          "id": "c",
+          "text": "Async"
+        },
+        {
+          "id": "d",
+          "text": "Display"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "Before business rules run after the user submits the form but before any action is taken on the record in the database. Changes made in before rules are saved automatically, so you don't need current.update(). See https://www.servicenow.com/docs/r/australia/api-reference/business-rules-classic/c_BusinessRules.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "After rules run after the database action and are best for updating related records.",
+            "reference": "https://www.servicenow.com/docs/r/australia/api-reference/business-rules-classic/c_BusinessRules.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Async rules run later as scheduled jobs.",
+            "reference": "https://www.servicenow.com/docs/r/australia/api-reference/business-rules-classic/c_BusinessRules.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Display rules run when the form is loaded, before it's shown to the user.",
+            "reference": "https://www.servicenow.com/docs/r/australia/api-reference/business-rules-classic/c_BusinessRules.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/api-reference/business-rules-classic/c_BusinessRules.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "c_BusinessRules",
+          "section": "Classic Business rules",
+          "url": "https://www.servicenow.com/docs/r/australia/api-reference/business-rules-classic/c_BusinessRules.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/api-reference/business-rules-classic/c_BusinessRules.md",
+        "excerpt": "After the user submits the form but before any action is taken on the record in the database."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Data Migration and Integration",
+        "domainSlug": "data-migration-integration",
+        "domainPercentage": 13,
+        "subtopics": [
+          "Business Rules"
+        ],
+        "tags": [
+          "business rules",
+          "before"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-dm-210",
+      "certification": "csa",
+      "topic": "data-migration-integration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "When does a Display business rule run?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Before the form is shown to the user, just after the data is read from the database"
+        },
+        {
+          "id": "b",
+          "text": "After the record is saved"
+        },
+        {
+          "id": "c",
+          "text": "When the scheduler runs a job"
+        },
+        {
+          "id": "d",
+          "text": "When the user logs out"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "Display business rules run before the form is presented to the user, just after the data is read from the database. They are often used to populate g_scratchpad for client scripts. See https://www.servicenow.com/docs/r/australia/api-reference/business-rules-classic/c_BusinessRules.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "That describes After rules.",
+            "reference": "https://www.servicenow.com/docs/r/australia/api-reference/business-rules-classic/c_BusinessRules.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "That describes Async rules.",
+            "reference": "https://www.servicenow.com/docs/r/australia/api-reference/business-rules-classic/c_BusinessRules.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Business rules aren't tied to logout.",
+            "reference": "https://www.servicenow.com/docs/r/australia/api-reference/business-rules-classic/c_BusinessRules.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/api-reference/business-rules-classic/c_BusinessRules.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "c_BusinessRules",
+          "section": "Classic Business rules",
+          "url": "https://www.servicenow.com/docs/r/australia/api-reference/business-rules-classic/c_BusinessRules.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/api-reference/business-rules-classic/c_BusinessRules.md",
+        "excerpt": "Before the form is presented to the user, just after the data is read from the database."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Data Migration and Integration",
+        "domainSlug": "data-migration-integration",
+        "domainPercentage": 13,
+        "subtopics": [
+          "Business Rules"
+        ],
+        "tags": [
+          "business rules",
+          "display"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-dm-211",
+      "certification": "csa",
+      "topic": "data-migration-integration",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "Why does ServiceNow advise against calling current.update() in a business rule script?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It can make business rules run again on the same table, causing recursion"
+        },
+        {
+          "id": "b",
+          "text": "It deletes the record"
+        },
+        {
+          "id": "c",
+          "text": "It is blocked for all administrators"
+        },
+        {
+          "id": "d",
+          "text": "It only works in client scripts"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "Avoid current.update() in business rules. It triggers business rules on the same table for insert and update, which can make a rule call itself over and over. Changes in before rules are saved automatically, and after rules are best for updating related records. See https://www.servicenow.com/docs/r/australia/api-reference/business-rules-classic/c_BusinessRules.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "update() saves the record; it doesn't delete it.",
+            "reference": "https://www.servicenow.com/docs/r/australia/api-reference/business-rules-classic/c_BusinessRules.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Admins can call it, but it's discouraged.",
+            "reference": "https://www.servicenow.com/docs/r/australia/api-reference/business-rules-classic/c_BusinessRules.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "current.update() is a server-side call.",
+            "reference": "https://www.servicenow.com/docs/r/australia/api-reference/business-rules-classic/c_BusinessRules.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/api-reference/business-rules-classic/c_BusinessRules.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "c_BusinessRules",
+          "section": "Classic Business rules",
+          "url": "https://www.servicenow.com/docs/r/australia/api-reference/business-rules-classic/c_BusinessRules.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/api-reference/business-rules-classic/c_BusinessRules.md",
+        "excerpt": "Avoid using current.update() in a business rule script."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Data Migration and Integration",
+        "domainSlug": "data-migration-integration",
+        "domainPercentage": 13,
+        "subtopics": [
+          "Business Rules"
+        ],
+        "tags": [
+          "business rules",
+          "recursion"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-dm-212",
+      "certification": "csa",
+      "topic": "data-migration-integration",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_select",
+      "question": "How do business rules differ from client scripts in when they apply? (Choose two.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Business rules apply to records whether they are accessed through forms, lists, or web services"
+        },
+        {
+          "id": "b",
+          "text": "Client scripts apply only when the form is edited"
+        },
+        {
+          "id": "c",
+          "text": "Business rules run only in the browser"
+        },
+        {
+          "id": "d",
+          "text": "Client scripts run on the server after the database operation"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b"
+      ],
+      "explanation": {
+        "correct": "Business rules apply consistently to records whether they're accessed through forms, lists, or web services. That's a major difference from client scripts, which apply only when the form is edited. See https://www.servicenow.com/docs/r/australia/api-reference/business-rules-classic/c_BusinessRules.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "c",
+            "explanation": "Business rules run on the server.",
+            "reference": "https://www.servicenow.com/docs/r/australia/api-reference/business-rules-classic/c_BusinessRules.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Client scripts run in the browser.",
+            "reference": "https://www.servicenow.com/docs/r/australia/api-reference/business-rules-classic/c_BusinessRules.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/api-reference/business-rules-classic/c_BusinessRules.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "c_BusinessRules",
+          "section": "Classic Business rules",
+          "url": "https://www.servicenow.com/docs/r/australia/api-reference/business-rules-classic/c_BusinessRules.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/api-reference/business-rules-classic/c_BusinessRules.md",
+        "excerpt": "Business rules apply consistently to records regardless of whether they are accessed through forms, lists, or web services."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Data Migration and Integration",
+        "domainSlug": "data-migration-integration",
+        "domainPercentage": 13,
+        "subtopics": [
+          "Business Rules"
+        ],
+        "tags": [
+          "business rules",
+          "client scripts"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-dm-213",
+      "certification": "csa",
+      "topic": "data-migration-integration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_select",
+      "question": "Which actions can administrators configure in a business rule without writing a script? (Choose three.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Set field values"
+        },
+        {
+          "id": "b",
+          "text": "Create information messages"
+        },
+        {
+          "id": "c",
+          "text": "Abort the transaction"
+        },
+        {
+          "id": "d",
+          "text": "Call an external REST API"
+        },
+        {
+          "id": "e",
+          "text": "Create a new table"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b",
+        "c"
+      ],
+      "explanation": {
+        "correct": "Administrators can set field values, create information messages, and abort transactions without writing a script. See https://www.servicenow.com/docs/r/australia/api-reference/business-rules-classic/c_BusinessRules.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "d",
+            "explanation": "Calling external APIs needs scripting or Integration Hub.",
+            "reference": "https://www.servicenow.com/docs/r/australia/api-reference/business-rules-classic/c_BusinessRules.html"
+          },
+          {
+            "choiceId": "e",
+            "explanation": "Tables are created in System Definition, not by business rules.",
+            "reference": "https://www.servicenow.com/docs/r/australia/api-reference/business-rules-classic/c_BusinessRules.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/api-reference/business-rules-classic/c_BusinessRules.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "c_BusinessRules",
+          "section": "Classic Business rules",
+          "url": "https://www.servicenow.com/docs/r/australia/api-reference/business-rules-classic/c_BusinessRules.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/api-reference/business-rules-classic/c_BusinessRules.md",
+        "excerpt": "Administrators can set field values, create information messages, and abort transactions without writing a script."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Data Migration and Integration",
+        "domainSlug": "data-migration-integration",
+        "domainPercentage": 13,
+        "subtopics": [
+          "Business Rules"
+        ],
+        "tags": [
+          "business rules",
+          "no-code"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-dm-214",
+      "certification": "csa",
+      "topic": "data-migration-integration",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "Why does ServiceNow recommend script includes instead of global business rules for reusable server functions?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Script includes load only on request, while global business rules load on every page"
+        },
+        {
+          "id": "b",
+          "text": "Script includes run in the browser"
+        },
+        {
+          "id": "c",
+          "text": "Global business rules can't access GlideRecord"
+        },
+        {
+          "id": "d",
+          "text": "Script includes bypass ACLs"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "Script includes load only on request, while global business rules load on every page in the system. That's why script includes are recommended for reusable code. See https://www.servicenow.com/docs/r/australia/api-reference/business-rules-classic/c_BusinessRules.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Script includes run on the server.",
+            "reference": "https://www.servicenow.com/docs/r/australia/api-reference/business-rules-classic/c_BusinessRules.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Global business rules can use GlideRecord; the concern is performance.",
+            "reference": "https://www.servicenow.com/docs/r/australia/api-reference/business-rules-classic/c_BusinessRules.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Script includes don't bypass security.",
+            "reference": "https://www.servicenow.com/docs/r/australia/api-reference/business-rules-classic/c_BusinessRules.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/api-reference/business-rules-classic/c_BusinessRules.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "c_BusinessRules",
+          "section": "Classic Business rules",
+          "url": "https://www.servicenow.com/docs/r/australia/api-reference/business-rules-classic/c_BusinessRules.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/api-reference/business-rules-classic/c_BusinessRules.md",
+        "excerpt": "Script includes load only on request while global business rules load on every page in the system."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Data Migration and Integration",
+        "domainSlug": "data-migration-integration",
+        "domainPercentage": 13,
+        "subtopics": [
+          "Business Rules"
+        ],
+        "tags": [
+          "business rules",
+          "script includes"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-dm-215",
+      "certification": "csa",
+      "topic": "data-migration-integration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "In the execution order of scripts and engines, what runs immediately before the database operation (insert, update, or delete)?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Before business rules with an order of 1000 or more"
+        },
+        {
+          "id": "b",
+          "text": "After business rules with an order below 1000"
+        },
+        {
+          "id": "c",
+          "text": "Email notifications"
+        },
+        {
+          "id": "d",
+          "text": "Async business rules"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "The order is: before rules with order below 1000, then before engines, then before rules with order of 1000 or more, then the database operation, then after rules with order below 1000, after engines, email notifications, and after rules with order of 1000 or more. See https://www.servicenow.com/docs/r/australia/api-reference/scripts/r_ExecutionOrderScriptsAndEngines.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "After rules run after the database operation.",
+            "reference": "https://www.servicenow.com/docs/r/australia/api-reference/scripts/r_ExecutionOrderScriptsAndEngines.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Notifications run after the database operation and after engines.",
+            "reference": "https://www.servicenow.com/docs/r/australia/api-reference/scripts/r_ExecutionOrderScriptsAndEngines.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Async rules run in the background after the operation.",
+            "reference": "https://www.servicenow.com/docs/r/australia/api-reference/scripts/r_ExecutionOrderScriptsAndEngines.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/api-reference/scripts/r_ExecutionOrderScriptsAndEngines.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "r_ExecutionOrderScriptsAndEngines",
+          "section": "Execution order of scripts and engines",
+          "url": "https://www.servicenow.com/docs/r/australia/api-reference/scripts/r_ExecutionOrderScriptsAndEngines.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/api-reference/scripts/r_ExecutionOrderScriptsAndEngines.md",
+        "excerpt": "Before business rules: Scripts configured to execute before the database operation with an order greater than or equal to 1000."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Data Migration and Integration",
+        "domainSlug": "data-migration-integration",
+        "domainPercentage": 13,
+        "subtopics": [
+          "Business Rules"
+        ],
+        "tags": [
+          "business rules",
+          "execution order"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-dm-216",
+      "certification": "csa",
+      "topic": "data-migration-integration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What is an update set?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A group of configuration changes that can be moved from one instance to another"
+        },
+        {
+          "id": "b",
+          "text": "A backup of all instance data"
+        },
+        {
+          "id": "c",
+          "text": "A set of records imported from a spreadsheet"
+        },
+        {
+          "id": "d",
+          "text": "A list of pending platform upgrades"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "An update set is a group of configuration changes that can be moved between instances. Developers create functionality on a non-production instance and promote the changes to another instance for testing or deployment. See https://www.servicenow.com/docs/r/australia/application-development/system-update-sets/exploring-system-update-sets.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Update sets hold configuration changes, not all data.",
+            "reference": "https://www.servicenow.com/docs/r/australia/application-development/system-update-sets/exploring-system-update-sets.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Imported records go through import sets.",
+            "reference": "https://www.servicenow.com/docs/r/australia/application-development/system-update-sets/exploring-system-update-sets.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Upgrades aren't delivered as update sets.",
+            "reference": "https://www.servicenow.com/docs/r/australia/application-development/system-update-sets/exploring-system-update-sets.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/application-development/system-update-sets/exploring-system-update-sets.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "exploring-system-update-sets",
+          "section": "Exploring System Update Sets",
+          "url": "https://www.servicenow.com/docs/r/australia/application-development/system-update-sets/exploring-system-update-sets.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/application-development/system-update-sets/exploring-system-update-sets.md",
+        "excerpt": "An update set is a group of configuration changes that can be moved from one instance to another."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Data Migration and Integration",
+        "domainSlug": "data-migration-integration",
+        "domainPercentage": 13,
+        "subtopics": [
+          "System update sets"
+        ],
+        "tags": [
+          "update sets"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-dm-217",
+      "certification": "csa",
+      "topic": "data-migration-integration",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "An administrator orders a catalog item on the development instance while building it. Which of these does the update set capture?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The catalog item definition and its variables, but not the submitted order or catalog tasks"
+        },
+        {
+          "id": "b",
+          "text": "The submitted order and catalog tasks only"
+        },
+        {
+          "id": "c",
+          "text": "Both the definition and all submitted orders"
+        },
+        {
+          "id": "d",
+          "text": "Nothing, because catalog items can't be captured"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "Update sets capture configuration details but not task or process data. They record catalog item definitions, variables, and variable choices, but not submitted orders or catalog tasks. See https://www.servicenow.com/docs/r/australia/application-development/system-update-sets/customizations-tracked-update-sets.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Orders and tasks are process data, which isn't captured.",
+            "reference": "https://www.servicenow.com/docs/r/australia/application-development/system-update-sets/customizations-tracked-update-sets.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Submitted orders are process data.",
+            "reference": "https://www.servicenow.com/docs/r/australia/application-development/system-update-sets/customizations-tracked-update-sets.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Catalog item definitions are captured.",
+            "reference": "https://www.servicenow.com/docs/r/australia/application-development/system-update-sets/customizations-tracked-update-sets.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/application-development/system-update-sets/customizations-tracked-update-sets.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "customizations-tracked-update-sets",
+          "section": "Customizations tracked by update sets",
+          "url": "https://www.servicenow.com/docs/r/australia/application-development/system-update-sets/customizations-tracked-update-sets.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/application-development/system-update-sets/customizations-tracked-update-sets.md",
+        "excerpt": "Update sets capture configuration details but exclude task or process data."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Data Migration and Integration",
+        "domainSlug": "data-migration-integration",
+        "domainPercentage": 13,
+        "subtopics": [
+          "System update sets"
+        ],
+        "tags": [
+          "update sets",
+          "tracked changes"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-dm-218",
+      "certification": "csa",
+      "topic": "data-migration-integration",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What does ServiceNow recommend for the path update sets take between instances?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Keep one common path, such as dev to test to production, and never migrate the same update set from multiple sources"
+        },
+        {
+          "id": "b",
+          "text": "Move update sets directly from dev to production to save time"
+        },
+        {
+          "id": "c",
+          "text": "Retrieve the same update set from several instances to compare"
+        },
+        {
+          "id": "d",
+          "text": "Edit update sets on production and move them back to dev"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "Pick a common path for update sets to move between instances and stick to it. Never migrate the same update set from multiple sources. Move update sets from dev to test, then from test to production. See https://www.servicenow.com/docs/r/australia/application-development/system-update-sets/exploring-system-update-sets.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Changes should be tested before production.",
+            "reference": "https://www.servicenow.com/docs/r/australia/application-development/system-update-sets/exploring-system-update-sets.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Never migrate the same update set from multiple sources.",
+            "reference": "https://www.servicenow.com/docs/r/australia/application-development/system-update-sets/exploring-system-update-sets.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Develop on dev and promote forward.",
+            "reference": "https://www.servicenow.com/docs/r/australia/application-development/system-update-sets/exploring-system-update-sets.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/application-development/system-update-sets/exploring-system-update-sets.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "exploring-system-update-sets",
+          "section": "Exploring System Update Sets",
+          "url": "https://www.servicenow.com/docs/r/australia/application-development/system-update-sets/exploring-system-update-sets.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/application-development/system-update-sets/exploring-system-update-sets.md",
+        "excerpt": "Never migrate the same update set from multiple sources."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Data Migration and Integration",
+        "domainSlug": "data-migration-integration",
+        "domainPercentage": 13,
+        "subtopics": [
+          "System update sets"
+        ],
+        "tags": [
+          "update sets",
+          "best practice"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-dm-219",
+      "certification": "csa",
+      "topic": "data-migration-integration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "A fix for a problem in update set A was made in update set B. In what order should they be committed on production?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A, then B, in the order they were made"
+        },
+        {
+          "id": "b",
+          "text": "B, then A"
+        },
+        {
+          "id": "c",
+          "text": "Only B"
+        },
+        {
+          "id": "d",
+          "text": "Either order, because the system sorts them"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "If an update set needed a fix, commit both update sets on production in the order they were made. See https://www.servicenow.com/docs/r/australia/application-development/system-update-sets/exploring-system-update-sets.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Committing out of order can overwrite newer changes with older ones.",
+            "reference": "https://www.servicenow.com/docs/r/australia/application-development/system-update-sets/exploring-system-update-sets.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Both sets must be committed.",
+            "reference": "https://www.servicenow.com/docs/r/australia/application-development/system-update-sets/exploring-system-update-sets.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The documentation says to commit them in the order they were made.",
+            "reference": "https://www.servicenow.com/docs/r/australia/application-development/system-update-sets/exploring-system-update-sets.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/application-development/system-update-sets/exploring-system-update-sets.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "exploring-system-update-sets",
+          "section": "Exploring System Update Sets",
+          "url": "https://www.servicenow.com/docs/r/australia/application-development/system-update-sets/exploring-system-update-sets.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/application-development/system-update-sets/exploring-system-update-sets.md",
+        "excerpt": "If the update set required a fix, commit both update sets in the order they were made."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Data Migration and Integration",
+        "domainSlug": "data-migration-integration",
+        "domainPercentage": 13,
+        "subtopics": [
+          "System update sets"
+        ],
+        "tags": [
+          "update sets",
+          "commit"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-dm-220",
+      "certification": "csa",
+      "topic": "data-migration-integration",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What does previewing a retrieved update set do?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Checks the retrieved update set against the local instance to find problems that should be resolved before committing"
+        },
+        {
+          "id": "b",
+          "text": "Commits the update set in a sandbox"
+        },
+        {
+          "id": "c",
+          "text": "Sends the update set to the source instance"
+        },
+        {
+          "id": "d",
+          "text": "Deletes older update sets"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "Previewing checks a retrieved update set against the local instance to find problems, which you should resolve before committing. Problems appear in the Update Set Preview Problems related list. See https://www.servicenow.com/docs/r/australia/application-development/system-update-sets/t_PreviewARemoteUpdateSet.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Previewing doesn't commit anything.",
+            "reference": "https://www.servicenow.com/docs/r/australia/application-development/system-update-sets/t_PreviewARemoteUpdateSet.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Previewing happens on the target instance.",
+            "reference": "https://www.servicenow.com/docs/r/australia/application-development/system-update-sets/t_PreviewARemoteUpdateSet.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Previewing doesn't delete update sets.",
+            "reference": "https://www.servicenow.com/docs/r/australia/application-development/system-update-sets/t_PreviewARemoteUpdateSet.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/application-development/system-update-sets/t_PreviewARemoteUpdateSet.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "t_PreviewARemoteUpdateSet",
+          "section": "Preview a remote update set",
+          "url": "https://www.servicenow.com/docs/r/australia/application-development/system-update-sets/t_PreviewARemoteUpdateSet.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/application-development/system-update-sets/t_PreviewARemoteUpdateSet.md",
+        "excerpt": "Previewing checks a retrieved update set against the local instance to find issues. Resolve all problems before committing the update set."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Data Migration and Integration",
+        "domainSlug": "data-migration-integration",
+        "domainPercentage": 13,
+        "subtopics": [
+          "System update sets"
+        ],
+        "tags": [
+          "update sets",
+          "preview"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-dm-221",
+      "certification": "csa",
+      "topic": "data-migration-integration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "How does the platform detect an update set collision?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It compares the Name and Updated values of the customer update records; the same name with different update dates is a collision"
+        },
+        {
+          "id": "b",
+          "text": "It compares the size of the update sets"
+        },
+        {
+          "id": "c",
+          "text": "It checks whether both update sets have the same description"
+        },
+        {
+          "id": "d",
+          "text": "It compares the sys_created_by field"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "A collision is an update that has a newer local update. The platform compares the Name and Updated fields of the customer update record from each update set. If the names match but the update dates differ, there's a collision. See https://www.servicenow.com/docs/r/australia/application-development/system-update-sets/update-set-collisions.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Size doesn't matter.",
+            "reference": "https://www.servicenow.com/docs/r/australia/application-development/system-update-sets/update-set-collisions.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Descriptions aren't compared.",
+            "reference": "https://www.servicenow.com/docs/r/australia/application-development/system-update-sets/update-set-collisions.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The creator isn't compared.",
+            "reference": "https://www.servicenow.com/docs/r/australia/application-development/system-update-sets/update-set-collisions.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/application-development/system-update-sets/update-set-collisions.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "update-set-collisions",
+          "section": "Update set collision resolution",
+          "url": "https://www.servicenow.com/docs/r/australia/application-development/system-update-sets/update-set-collisions.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/application-development/system-update-sets/update-set-collisions.md",
+        "excerpt": "If the name matches but there are different update date values, then there’s a collision."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Data Migration and Integration",
+        "domainSlug": "data-migration-integration",
+        "domainPercentage": 13,
+        "subtopics": [
+          "System update sets"
+        ],
+        "tags": [
+          "update sets",
+          "collisions"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-dm-222",
+      "certification": "csa",
+      "topic": "data-migration-integration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which update set should you never back out, because doing so can damage the instance configuration?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The Default update set"
+        },
+        {
+          "id": "b",
+          "text": "Any completed update set"
+        },
+        {
+          "id": "c",
+          "text": "A merged update set"
+        },
+        {
+          "id": "d",
+          "text": "Any update set with fewer than 10 updates"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "Don't back out the Default update set; it can damage the instance configuration. Backing out adds delete updates to your current set and reverses record-level and dictionary changes, which can cause data loss. See https://www.servicenow.com/docs/r/australia/application-development/system-update-sets/t_BackOutUpdateSet.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Completed update sets can be backed out, with care.",
+            "reference": "https://www.servicenow.com/docs/r/australia/application-development/system-update-sets/t_BackOutUpdateSet.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Merged sets aren't singled out in the warning.",
+            "reference": "https://www.servicenow.com/docs/r/australia/application-development/system-update-sets/t_BackOutUpdateSet.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The number of updates isn't the issue.",
+            "reference": "https://www.servicenow.com/docs/r/australia/application-development/system-update-sets/t_BackOutUpdateSet.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/application-development/system-update-sets/t_BackOutUpdateSet.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "t_BackOutUpdateSet",
+          "section": "Back out an update set",
+          "url": "https://www.servicenow.com/docs/r/australia/application-development/system-update-sets/t_BackOutUpdateSet.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/application-development/system-update-sets/t_BackOutUpdateSet.md",
+        "excerpt": "Don't back out the Default update set. This action can damage the configuration of the instance."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Data Migration and Integration",
+        "domainSlug": "data-migration-integration",
+        "domainPercentage": 13,
+        "subtopics": [
+          "System update sets"
+        ],
+        "tags": [
+          "update sets",
+          "back out"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-dm-223",
+      "certification": "csa",
+      "topic": "data-migration-integration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "How many default update sets can each application scope have?",
+      "options": [
+        {
+          "id": "a",
+          "text": "One"
+        },
+        {
+          "id": "b",
+          "text": "Two, one for development and one for production"
+        },
+        {
+          "id": "c",
+          "text": "Unlimited"
+        },
+        {
+          "id": "d",
+          "text": "None; default update sets exist only in global"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "Only one update set can be the default for any application scope. When the default set is marked Ignored or Completed, the system automatically creates a new default set for that scope. See https://www.servicenow.com/docs/r/australia/application-development/system-update-sets/default-update-sets.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "There is one default per scope.",
+            "reference": "https://www.servicenow.com/docs/r/australia/application-development/system-update-sets/default-update-sets.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "There is one default per scope.",
+            "reference": "https://www.servicenow.com/docs/r/australia/application-development/system-update-sets/default-update-sets.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Each scope can have a default set.",
+            "reference": "https://www.servicenow.com/docs/r/australia/application-development/system-update-sets/default-update-sets.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/application-development/system-update-sets/default-update-sets.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "default-update-sets",
+          "section": "Default update set",
+          "url": "https://www.servicenow.com/docs/r/australia/application-development/system-update-sets/default-update-sets.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/application-development/system-update-sets/default-update-sets.md",
+        "excerpt": "Only one update set can be the default set for any application scope."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Data Migration and Integration",
+        "domainSlug": "data-migration-integration",
+        "domainPercentage": 13,
+        "subtopics": [
+          "System update sets"
+        ],
+        "tags": [
+          "update sets",
+          "default"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-dm-224",
+      "certification": "csa",
+      "topic": "data-migration-integration",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "When merging update sets, which change is kept when several sets contain changes to the same object?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The most recent change for each object, based on the Updated field"
+        },
+        {
+          "id": "b",
+          "text": "The oldest change"
+        },
+        {
+          "id": "c",
+          "text": "The change from the largest update set"
+        },
+        {
+          "id": "d",
+          "text": "All changes are kept as duplicates"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "Merging moves the most recent change for each object from the original sets into the new set. The system decides which is most recent by comparing the Updated field. You can only merge update sets from the same application, and batching is the more robust alternative. See https://www.servicenow.com/docs/r/australia/application-development/system-update-sets/t_MergeUpdateSets.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "The newest change is kept.",
+            "reference": "https://www.servicenow.com/docs/r/australia/application-development/system-update-sets/t_MergeUpdateSets.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Update set size doesn't matter.",
+            "reference": "https://www.servicenow.com/docs/r/australia/application-development/system-update-sets/t_MergeUpdateSets.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Only the most recent change is moved.",
+            "reference": "https://www.servicenow.com/docs/r/australia/application-development/system-update-sets/t_MergeUpdateSets.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/application-development/system-update-sets/t_MergeUpdateSets.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "t_MergeUpdateSets",
+          "section": "Merge update sets",
+          "url": "https://www.servicenow.com/docs/r/australia/application-development/system-update-sets/t_MergeUpdateSets.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/application-development/system-update-sets/t_MergeUpdateSets.md",
+        "excerpt": "The most recent change for each object is moved from the original sets to the new set."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Data Migration and Integration",
+        "domainSlug": "data-migration-integration",
+        "domainPercentage": 13,
+        "subtopics": [
+          "System update sets"
+        ],
+        "tags": [
+          "update sets",
+          "merge"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-dm-225",
+      "certification": "csa",
+      "topic": "data-migration-integration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which statement about update sets and the system dictionary is correct?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Update sets don't track the removal of tables; you must remove tables manually on the target instance"
+        },
+        {
+          "id": "b",
+          "text": "Update sets always delete tables on the target instance"
+        },
+        {
+          "id": "c",
+          "text": "Dictionary changes can never be captured"
+        },
+        {
+          "id": "d",
+          "text": "Changing a column data type always applies, even if data is lost"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "Update sets don't track the removal of tables from the system dictionary, so tables must be removed manually on the target. Data type changes are tracked, but the target skips any change that would lose data and logs a message. See https://www.servicenow.com/docs/r/australia/application-development/system-update-sets/customizations-tracked-update-sets.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Table removal isn't tracked.",
+            "reference": "https://www.servicenow.com/docs/r/australia/application-development/system-update-sets/customizations-tracked-update-sets.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Many dictionary changes are captured.",
+            "reference": "https://www.servicenow.com/docs/r/australia/application-development/system-update-sets/customizations-tracked-update-sets.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The target skips type changes that would cause data loss.",
+            "reference": "https://www.servicenow.com/docs/r/australia/application-development/system-update-sets/customizations-tracked-update-sets.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/application-development/system-update-sets/customizations-tracked-update-sets.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "customizations-tracked-update-sets",
+          "section": "Customizations tracked by update sets",
+          "url": "https://www.servicenow.com/docs/r/australia/application-development/system-update-sets/customizations-tracked-update-sets.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/application-development/system-update-sets/customizations-tracked-update-sets.md",
+        "excerpt": "Update sets don’t track the removal of tables from the system dictionary. You must manually remove tables from the target instance."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Data Migration and Integration",
+        "domainSlug": "data-migration-integration",
+        "domainPercentage": 13,
+        "subtopics": [
+          "System update sets"
+        ],
+        "tags": [
+          "update sets",
+          "dictionary"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-dm-226",
+      "certification": "csa",
+      "topic": "data-migration-integration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which client script type can cancel form submission by returning false?",
+      "options": [
+        {
+          "id": "a",
+          "text": "onSubmit()"
+        },
+        {
+          "id": "b",
+          "text": "onLoad()"
+        },
+        {
+          "id": "c",
+          "text": "onChange()"
+        },
+        {
+          "id": "d",
+          "text": "onCellEdit()"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "onSubmit() runs when a form is submitted. It typically validates the form and can cancel submission by returning false. See https://www.servicenow.com/docs/r/australia/api-reference/scripts/client-scripts.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "onLoad() runs when the form is first rendered.",
+            "reference": "https://www.servicenow.com/docs/r/australia/api-reference/scripts/client-scripts.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "onChange() runs when a field value changes.",
+            "reference": "https://www.servicenow.com/docs/r/australia/api-reference/scripts/client-scripts.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "onCellEdit() runs when the list editor changes a cell.",
+            "reference": "https://www.servicenow.com/docs/r/australia/api-reference/scripts/client-scripts.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/api-reference/scripts/client-scripts.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "client-scripts",
+          "section": "Client scripts",
+          "url": "https://www.servicenow.com/docs/r/australia/api-reference/scripts/client-scripts.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/api-reference/scripts/client-scripts.md",
+        "excerpt": "An onSubmit() client script can cancel form submission by returning a value of false."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Data Migration and Integration",
+        "domainSlug": "data-migration-integration",
+        "domainPercentage": 13,
+        "subtopics": [
+          "Scripting in ServiceNow"
+        ],
+        "tags": [
+          "client scripts",
+          "onsubmit"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-dm-227",
+      "certification": "csa",
+      "topic": "data-migration-integration",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "An administrator uses a client script to hide a sensitive salary field from non-HR users. Why is this not enough?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Client scripts optimize the user experience and don't protect data; use ACLs or data policies to secure it"
+        },
+        {
+          "id": "b",
+          "text": "Client scripts only run on mobile"
+        },
+        {
+          "id": "c",
+          "text": "Client scripts can't hide fields"
+        },
+        {
+          "id": "d",
+          "text": "Client scripts run after the record is saved"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "Client scripts are meant to optimize the user experience on a form, not to prevent unwanted access to data. To protect data, make sensitive fields hidden or read-only through ACLs or data policies. See https://www.servicenow.com/docs/r/australia/api-reference/scripts/client-scripts.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Client scripts aren't supported on ServiceNow mobile apps; they run in the browser.",
+            "reference": "https://www.servicenow.com/docs/r/australia/api-reference/scripts/client-scripts.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Client scripts can hide fields, but hiding isn't security.",
+            "reference": "https://www.servicenow.com/docs/r/australia/api-reference/scripts/client-scripts.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Client scripts run in the browser during form use.",
+            "reference": "https://www.servicenow.com/docs/r/australia/api-reference/scripts/client-scripts.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/api-reference/scripts/client-scripts.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "client-scripts",
+          "section": "Client scripts",
+          "url": "https://www.servicenow.com/docs/r/australia/api-reference/scripts/client-scripts.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/api-reference/scripts/client-scripts.md",
+        "excerpt": "Client scripts are not meant to protect unwanted access to data."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Data Migration and Integration",
+        "domainSlug": "data-migration-integration",
+        "domainPercentage": 13,
+        "subtopics": [
+          "Scripting in ServiceNow"
+        ],
+        "tags": [
+          "client scripts",
+          "security"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-dm-228",
+      "certification": "csa",
+      "topic": "data-migration-integration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which client script type runs when the list editor changes a cell value?",
+      "options": [
+        {
+          "id": "a",
+          "text": "onCellEdit()"
+        },
+        {
+          "id": "b",
+          "text": "onChange()"
+        },
+        {
+          "id": "c",
+          "text": "onLoad()"
+        },
+        {
+          "id": "d",
+          "text": "onSubmit()"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "onCellEdit() runs when the list editor changes a cell value. Apart from onCellEdit(), client scripts only apply to forms and search pages. See https://www.servicenow.com/docs/r/australia/api-reference/scripts/client-scripts.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "onChange() runs on form field changes.",
+            "reference": "https://www.servicenow.com/docs/r/australia/api-reference/scripts/client-scripts.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "onLoad() runs when a form loads.",
+            "reference": "https://www.servicenow.com/docs/r/australia/api-reference/scripts/client-scripts.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "onSubmit() runs when a form is submitted.",
+            "reference": "https://www.servicenow.com/docs/r/australia/api-reference/scripts/client-scripts.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/api-reference/scripts/client-scripts.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "client-scripts",
+          "section": "Client scripts",
+          "url": "https://www.servicenow.com/docs/r/australia/api-reference/scripts/client-scripts.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/api-reference/scripts/client-scripts.md",
+        "excerpt": "runs when the list editor changes a cell value."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Data Migration and Integration",
+        "domainSlug": "data-migration-integration",
+        "domainPercentage": 13,
+        "subtopics": [
+          "Scripting in ServiceNow"
+        ],
+        "tags": [
+          "client scripts",
+          "oncelledit"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-dm-229",
+      "certification": "csa",
+      "topic": "data-migration-integration",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "A client script needs server data when the form loads, such as the caller's manager name. Which approach is recommended to avoid extra server lookups?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A display business rule that populates g_scratchpad"
+        },
+        {
+          "id": "b",
+          "text": "g_form.getReference() for each field"
+        },
+        {
+          "id": "c",
+          "text": "A synchronous GlideRecord query in the client script"
+        },
+        {
+          "id": "d",
+          "text": "Adding hidden fields to the form"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "If you know what the client needs before the form loads, a display business rule can put it in g_scratchpad properties, which are sent to the client with the form. GlideRecord and g_form.getReference() on the client are no longer recommended because of their performance impact. See https://www.servicenow.com/docs/r/australia/api-reference/scripts/client-script-best-practices.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "getReference() retrieves all fields and is no longer recommended.",
+            "reference": "https://www.servicenow.com/docs/r/australia/api-reference/scripts/client-script-best-practices.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Client-side GlideRecord is no longer recommended.",
+            "reference": "https://www.servicenow.com/docs/r/australia/api-reference/scripts/client-script-best-practices.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Adding hidden fields is the workaround that g_scratchpad replaces.",
+            "reference": "https://www.servicenow.com/docs/r/australia/api-reference/scripts/client-script-best-practices.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/api-reference/scripts/client-script-best-practices.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "client-script-best-practices",
+          "section": "Client-side scripting design and processing",
+          "url": "https://www.servicenow.com/docs/r/australia/api-reference/scripts/client-script-best-practices.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/api-reference/scripts/client-script-best-practices.md",
+        "excerpt": "a display business rule can create g_scratchpad properties to hold this information."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Data Migration and Integration",
+        "domainSlug": "data-migration-integration",
+        "domainPercentage": 13,
+        "subtopics": [
+          "Scripting in ServiceNow"
+        ],
+        "tags": [
+          "g_scratchpad",
+          "client scripts"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-dm-230",
+      "certification": "csa",
+      "topic": "data-migration-integration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "In server-side script, which statement creates a GlideRecord object for querying the Incident table?",
+      "options": [
+        {
+          "id": "a",
+          "text": "var target = new GlideRecord('incident');"
+        },
+        {
+          "id": "b",
+          "text": "var target = GlideRecord.get('incident');"
+        },
+        {
+          "id": "c",
+          "text": "var target = g_form.getTable('incident');"
+        },
+        {
+          "id": "d",
+          "text": "var target = new GlideAjax('incident');"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "To query a table, first create a GlideRecord object, for example var target = new GlideRecord('incident');. Then call query() and loop with next() to process each record. See https://www.servicenow.com/docs/r/australia/api-reference/scripts/c_UsingGlideRecordToQueryTables.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "This is not how a GlideRecord object is created.",
+            "reference": "https://www.servicenow.com/docs/r/australia/api-reference/scripts/c_UsingGlideRecordToQueryTables.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "g_form is a client-side form API.",
+            "reference": "https://www.servicenow.com/docs/r/australia/api-reference/scripts/c_UsingGlideRecordToQueryTables.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "GlideAjax calls client-callable script includes from the client.",
+            "reference": "https://www.servicenow.com/docs/r/australia/api-reference/scripts/c_UsingGlideRecordToQueryTables.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/api-reference/scripts/c_UsingGlideRecordToQueryTables.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "c_UsingGlideRecordToQueryTables",
+          "section": "Querying tables in script",
+          "url": "https://www.servicenow.com/docs/r/australia/api-reference/scripts/c_UsingGlideRecordToQueryTables.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/api-reference/scripts/c_UsingGlideRecordToQueryTables.md",
+        "excerpt": "var target = new GlideRecord('incident');"
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Data Migration and Integration",
+        "domainSlug": "data-migration-integration",
+        "domainPercentage": 13,
+        "subtopics": [
+          "Scripting in ServiceNow"
+        ],
+        "tags": [
+          "gliderecord"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-dm-231",
+      "certification": "csa",
+      "topic": "data-migration-integration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What does the Record for rollback? option do in the Scripts - Background module?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Creates a rollback context so the script's changes can be rolled back from Script Execution History"
+        },
+        {
+          "id": "b",
+          "text": "Prevents the script from changing any data"
+        },
+        {
+          "id": "c",
+          "text": "Runs the script on the rollback instance"
+        },
+        {
+          "id": "d",
+          "text": "Stops the script after 4 hours"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "Record for rollback? is selected by default and creates a rollback context for the script, so you can roll it back from Script Execution History. Execute in sandbox? prevents data changes, and Cancel after 4 hours stops long-running scripts. Don't run free-form scripts on production. See https://www.servicenow.com/docs/r/australia/api-reference/scripts/c_ScriptsBackground.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "That is Execute in sandbox?.",
+            "reference": "https://www.servicenow.com/docs/r/australia/api-reference/scripts/c_ScriptsBackground.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "There is no separate rollback instance.",
+            "reference": "https://www.servicenow.com/docs/r/australia/api-reference/scripts/c_ScriptsBackground.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "That is Cancel after 4 hours.",
+            "reference": "https://www.servicenow.com/docs/r/australia/api-reference/scripts/c_ScriptsBackground.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/api-reference/scripts/c_ScriptsBackground.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "c_ScriptsBackground",
+          "section": "Scripts - Background module",
+          "url": "https://www.servicenow.com/docs/r/australia/api-reference/scripts/c_ScriptsBackground.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/api-reference/scripts/c_ScriptsBackground.md",
+        "excerpt": "Creates a rollback context for the script execution."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Data Migration and Integration",
+        "domainSlug": "data-migration-integration",
+        "domainPercentage": 13,
+        "subtopics": [
+          "Scripting in ServiceNow"
+        ],
+        "tags": [
+          "background scripts"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-dm-232",
+      "certification": "csa",
+      "topic": "data-migration-integration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What does the Glide AJAX enabled (Client callable) option on a script include do?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Makes the script include available to client scripts through GlideAjax, subject to an associated ACL"
+        },
+        {
+          "id": "b",
+          "text": "Runs the script include automatically on every form load"
+        },
+        {
+          "id": "c",
+          "text": "Makes the script include run only on mobile"
+        },
+        {
+          "id": "d",
+          "text": "Converts the script include into a business rule"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "Glide AJAX enabled (Client callable) makes a script include available to client scripts, list or report filters, reference qualifiers, or the URL. It's invoked with GlideAjax and users must satisfy an ACL associated with the script include. See https://www.servicenow.com/docs/r/australia/api-reference/scripts/c_ScriptIncludes.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Script includes run only when called.",
+            "reference": "https://www.servicenow.com/docs/r/australia/api-reference/scripts/c_ScriptIncludes.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Mobile availability is the separate Mobile callable option.",
+            "reference": "https://www.servicenow.com/docs/r/australia/api-reference/scripts/c_ScriptIncludes.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Script includes remain script includes.",
+            "reference": "https://www.servicenow.com/docs/r/australia/api-reference/scripts/c_ScriptIncludes.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/api-reference/scripts/c_ScriptIncludes.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "c_ScriptIncludes",
+          "section": "Script includes",
+          "url": "https://www.servicenow.com/docs/r/australia/api-reference/scripts/c_ScriptIncludes.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/api-reference/scripts/c_ScriptIncludes.md",
+        "excerpt": "Glide AJAX enabled script includes are invoked from GlideAjax and require that users satisfy an ACL associated with the script include."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Data Migration and Integration",
+        "domainSlug": "data-migration-integration",
+        "domainPercentage": 13,
+        "subtopics": [
+          "Scripting in ServiceNow"
+        ],
+        "tags": [
+          "script includes",
+          "glideajax"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-dm-233",
+      "certification": "csa",
+      "topic": "data-migration-integration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_select",
+      "question": "By default, data policies apply to all GlideRecord operations. Which can you opt out of applying a data policy to? (Choose two.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Import sets"
+        },
+        {
+          "id": "b",
+          "text": "Target records of SOAP web services"
+        },
+        {
+          "id": "c",
+          "text": "Records submitted from the UI"
+        },
+        {
+          "id": "d",
+          "text": "The REST Table API"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b"
+      ],
+      "explanation": {
+        "correct": "You can opt out of applying a data policy to target records of SOAP web services, import sets, and client-side UI policies. Enforcement when a record is submitted from the UI can't be changed, and data policies apply to Scripted REST APIs and the REST Table API by default. See https://www.servicenow.com/docs/r/australia/platform-administration/c_DataPolicy.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "c",
+            "explanation": "A data policy is always enforced when a record is submitted from the UI.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/c_DataPolicy.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The REST Table API is covered by data policies by default and isn't in the opt-out list.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/c_DataPolicy.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/platform-administration/c_DataPolicy.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "c_DataPolicy",
+          "section": "Data policy",
+          "url": "https://www.servicenow.com/docs/r/australia/platform-administration/c_DataPolicy.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/platform-administration/c_DataPolicy.md",
+        "excerpt": "Target records of SOAP web services … Import sets"
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Data Migration and Integration",
+        "domainSlug": "data-migration-integration",
+        "domainPercentage": 13,
+        "subtopics": [
+          "UI Policies"
+        ],
+        "tags": [
+          "data policy"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-dm-234",
+      "certification": "csa",
+      "topic": "data-migration-integration",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "Why do the changes(), changesTo(), and changesFrom() methods not work in an async business rule script?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Async business rules don't have access to the previous version of the record"
+        },
+        {
+          "id": "b",
+          "text": "Async rules run in the browser"
+        },
+        {
+          "id": "c",
+          "text": "These methods only work in UI policies"
+        },
+        {
+          "id": "d",
+          "text": "Async rules run before the database operation"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "Async business rules don't have access to the previous version of a record, so changes(), changesTo(), and changesFrom() don't work in the script. The condition builder and condition field still support them. See https://www.servicenow.com/docs/r/australia/api-reference/business-rules-classic/c_BusinessRules.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Business rules run on the server.",
+            "reference": "https://www.servicenow.com/docs/r/australia/api-reference/business-rules-classic/c_BusinessRules.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "These are GlideElement methods used in server scripts.",
+            "reference": "https://www.servicenow.com/docs/r/australia/api-reference/business-rules-classic/c_BusinessRules.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Async rules run after the database operation, as a scheduled job.",
+            "reference": "https://www.servicenow.com/docs/r/australia/api-reference/business-rules-classic/c_BusinessRules.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/api-reference/business-rules-classic/c_BusinessRules.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "c_BusinessRules",
+          "section": "Classic Business rules",
+          "url": "https://www.servicenow.com/docs/r/australia/api-reference/business-rules-classic/c_BusinessRules.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/api-reference/business-rules-classic/c_BusinessRules.md",
+        "excerpt": "Asynchronous business rules do not have access to the previous version of a record."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Data Migration and Integration",
+        "domainSlug": "data-migration-integration",
+        "domainPercentage": 13,
+        "subtopics": [
+          "Business Rules"
+        ],
+        "tags": [
+          "business rules",
+          "async"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-dm-235",
+      "certification": "csa",
+      "topic": "data-migration-integration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which onChange() client script parameter tells you whether the change happened as part of a form load?",
+      "options": [
+        {
+          "id": "a",
+          "text": "isLoading"
+        },
+        {
+          "id": "b",
+          "text": "isTemplate"
+        },
+        {
+          "id": "c",
+          "text": "oldValue"
+        },
+        {
+          "id": "d",
+          "text": "control"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "onChange() client scripts get control, oldValue, newValue, isLoading, and isTemplate. isLoading shows whether the change occurred as part of a form load, and isTemplate shows whether it occurred as part of a template load. See https://www.servicenow.com/docs/r/australia/api-reference/scripts/client-scripts.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "isTemplate shows a template load.",
+            "reference": "https://www.servicenow.com/docs/r/australia/api-reference/scripts/client-scripts.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "oldValue holds the value when the record was loaded.",
+            "reference": "https://www.servicenow.com/docs/r/australia/api-reference/scripts/client-scripts.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "control is the DHTML widget whose value changed.",
+            "reference": "https://www.servicenow.com/docs/r/australia/api-reference/scripts/client-scripts.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/api-reference/scripts/client-scripts.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "client-scripts",
+          "section": "Client scripts",
+          "url": "https://www.servicenow.com/docs/r/australia/api-reference/scripts/client-scripts.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/api-reference/scripts/client-scripts.md",
+        "excerpt": "identifies whether the change occurs as part of a form load."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Data Migration and Integration",
+        "domainSlug": "data-migration-integration",
+        "domainPercentage": 13,
+        "subtopics": [
+          "Scripting in ServiceNow"
+        ],
+        "tags": [
+          "client scripts",
+          "onchange"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-dm-236",
+      "certification": "csa",
+      "topic": "data-migration-integration",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "When should an update set be marked Complete?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Only when it is ready to transfer to another instance"
+        },
+        {
+          "id": "b",
+          "text": "As soon as the first change is captured"
+        },
+        {
+          "id": "c",
+          "text": "Before any customizations are made"
+        },
+        {
+          "id": "d",
+          "text": "Only after it has been committed on production"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "When you've finished the customizations and compared local update sets to resolve conflicts, mark the update set Complete. Mark it Complete only when it is ready to transfer. See https://www.servicenow.com/docs/r/australia/application-development/system-update-sets/t_CompleteUpdateSets.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Marking it Complete too early means later changes go to another set.",
+            "reference": "https://www.servicenow.com/docs/r/australia/application-development/system-update-sets/t_CompleteUpdateSets.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "You make the customizations first.",
+            "reference": "https://www.servicenow.com/docs/r/australia/application-development/system-update-sets/t_CompleteUpdateSets.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Completion happens on the source instance before transfer.",
+            "reference": "https://www.servicenow.com/docs/r/australia/application-development/system-update-sets/t_CompleteUpdateSets.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/application-development/system-update-sets/t_CompleteUpdateSets.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "t_CompleteUpdateSets",
+          "section": "Mark an update set complete",
+          "url": "https://www.servicenow.com/docs/r/australia/application-development/system-update-sets/t_CompleteUpdateSets.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/application-development/system-update-sets/t_CompleteUpdateSets.md",
+        "excerpt": "Mark an update set as Complete only when it is ready to transfer."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Data Migration and Integration",
+        "domainSlug": "data-migration-integration",
+        "domainPercentage": 13,
+        "subtopics": [
+          "System update sets"
+        ],
+        "tags": [
+          "update sets",
+          "complete"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    }
+  ]
+}
