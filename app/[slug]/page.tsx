@@ -20,6 +20,8 @@ import { ExamTipsSnippet } from "@/components/ExamTipsSnippet";
 import { DumpsAlternativeSection } from "@/components/DumpsAlternativeSection";
 import { RelatedResources } from "@/components/RelatedResources";
 import { breadcrumbs, generateBreadcrumbJsonLd } from "@/lib/breadcrumbs";
+import { getCertSources, matchPracticeDomain } from "@/lib/cert-sources";
+import { OfficialStudyResources } from "@/components/OfficialStudyResources";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -111,6 +113,32 @@ export default async function CertificationPage({ params }: PageProps) {
 
   // Exam tips
   const examTips = getExamTips(slug);
+
+  // Official blueprint + credential path data (data/cert-sources/cert-sources.csv)
+  const sources = getCertSources(slug);
+  const blueprintUrl = sources?.blueprint.url ?? cert.blueprintUrl;
+  const topicSlugs = new Set(topics.map((t) => t.slug));
+  const domainCards = sources?.domains.length
+    ? sources.domains.map((d) => {
+        const practice = matchPracticeDomain(d, cert.domains);
+        return {
+          key: d.name,
+          name: d.name,
+          percentage: d.weight,
+          description: undefined as string | undefined,
+          subtopics: d.subtopics,
+          topicSlug:
+            practice && topicSlugs.has(practice.slug) ? practice.slug : undefined,
+        };
+      })
+    : cert.domains.map((d) => ({
+        key: d.slug,
+        name: d.name,
+        percentage: d.percentage,
+        description: d.description as string | undefined,
+        subtopics: [] as string[],
+        topicSlug: topicSlugs.has(d.slug) ? d.slug : undefined,
+      }));
 
   // JSON-LD structured data - Course schema
   const courseJsonLd = {
@@ -471,10 +499,10 @@ export default async function CertificationPage({ params }: PageProps) {
               </div>
             </div>
             {/* Official Blueprint Link */}
-            {cert.blueprintUrl && (
+            {blueprintUrl && (
               <div className="mt-6 pt-6 border-t border-zinc-200 dark:border-zinc-800">
                 <a
-                  href={cert.blueprintUrl}
+                  href={blueprintUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-sm font-medium text-emerald-600 hover:text-emerald-700 dark:text-emerald-400 dark:hover:text-emerald-300"
@@ -519,9 +547,9 @@ export default async function CertificationPage({ params }: PageProps) {
               <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-50">
                 Exam Domains
               </h2>
-              {cert.blueprintUrl && (
+              {blueprintUrl && (
                 <a
-                  href={cert.blueprintUrl}
+                  href={blueprintUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1 text-xs font-medium text-zinc-500 hover:text-emerald-600 dark:text-zinc-400 dark:hover:text-emerald-400"
@@ -560,14 +588,14 @@ export default async function CertificationPage({ params }: PageProps) {
             </div>
             <p className="mt-2 text-zinc-600 dark:text-zinc-400">
               The {cert.name} exam covers these key areas
-              {cert.blueprintUrl
+              {blueprintUrl
                 ? " (per the official ServiceNow exam blueprint)"
                 : ""}
               . Master each domain to maximize your chances of passing.
             </p>
             <div className="mt-8 grid gap-4 sm:grid-cols-2">
-              {cert.domains.map((domain) => {
-                const hasTopic = topics.some((t) => t.slug === domain.slug);
+              {domainCards.map((domain) => {
+                const hasTopic = domain.topicSlug !== undefined;
 
                 const domainContent = (
                   <>
@@ -580,7 +608,7 @@ export default async function CertificationPage({ params }: PageProps) {
                         {domain.name}
                       </h3>
                       <div className="flex items-center gap-2">
-                        {!hasTopic && (
+                        {!isReady && (
                           <span className="rounded-full bg-zinc-100 px-2 py-0.5 text-xs font-medium text-zinc-500 dark:bg-zinc-800 dark:text-zinc-400">
                             Coming soon
                           </span>
@@ -590,9 +618,19 @@ export default async function CertificationPage({ params }: PageProps) {
                         </span>
                       </div>
                     </div>
-                    <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-                      {domain.description}
-                    </p>
+                    {domain.subtopics.length > 0 ? (
+                      <ul className="mt-2 list-disc space-y-0.5 pl-5 text-sm text-zinc-600 dark:text-zinc-400">
+                        {domain.subtopics.map((t) => (
+                          <li key={t}>{t}</li>
+                        ))}
+                      </ul>
+                    ) : (
+                      domain.description && (
+                        <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+                          {domain.description}
+                        </p>
+                      )
+                    )}
                     <div className="mt-3">
                       <div className="h-2 w-full overflow-hidden rounded-full bg-zinc-100 dark:bg-zinc-800">
                         <div
@@ -607,8 +645,8 @@ export default async function CertificationPage({ params }: PageProps) {
                 if (hasTopic) {
                   return (
                     <Link
-                      key={domain.slug}
-                      href={`/${slug}/practice-questions/${domain.slug}`}
+                      key={domain.key}
+                      href={`/${slug}/practice-questions/${domain.topicSlug}`}
                       className="group rounded-lg border border-zinc-200 bg-white p-5 transition-all hover:border-emerald-300 hover:shadow cursor-pointer dark:border-zinc-800 dark:bg-zinc-900"
                     >
                       {domainContent}
@@ -618,8 +656,8 @@ export default async function CertificationPage({ params }: PageProps) {
 
                 return (
                   <div
-                    key={domain.slug}
-                    className="group rounded-lg border border-zinc-200 bg-white p-5 transition-all opacity-75 dark:border-zinc-800 dark:bg-zinc-900"
+                    key={domain.key}
+                    className="group rounded-lg border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-900"
                   >
                     {domainContent}
                   </div>
@@ -628,6 +666,11 @@ export default async function CertificationPage({ params }: PageProps) {
             </div>
           </div>
         </section>
+
+        {/* Official Study Resources */}
+        {sources && (
+          <OfficialStudyResources certName={cert.name} sources={sources} />
+        )}
 
         {/* Exam Tips Snippet */}
         {examTips && (
