@@ -891,7 +891,7 @@ export default async function CertificationPage({ params }: PageProps) {
             <div className="mt-8 grid gap-8 lg:grid-cols-2">
               <div>
                 <h3 className="font-semibold text-zinc-900 dark:text-zinc-100">
-                  Recommended Prerequisites
+                  Prerequisites &amp; Recommended Experience
                 </h3>
                 <ul className="mt-4 space-y-3">
                   {cert.prerequisites.map((prereq, index) => (

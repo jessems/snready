@@ -12,14 +12,41 @@ import {
 } from "@/lib/data";
 import { generateBreadcrumbJsonLd } from "@/lib/breadcrumbs";
 import { getCanonicalUrl } from "@/lib/seo";
-import examPrepData from "@/data/exam-prep.json";
+import certificationSources from "@/data/coverage/certification-sources.json";
 import type { UserExperience } from "@/types";
 
 interface Props {
   params: Promise<{ slug: string }>;
 }
 
-type ExamPrepCert = keyof typeof examPrepData;
+interface OfficialCertSources {
+  slug: string;
+  blueprint: {
+    kb: string;
+    url: string;
+    version: string;
+    updated: string;
+  };
+  examRegistrationUrl: string;
+  credentialPathUrl: string;
+  domains: Array<{ name: string; weight: number; subtopics: string[] }>;
+  courses: {
+    recommended: string[];
+    additionalRecommended: string[];
+  };
+  courseNotes?: Record<string, string>;
+  docs: Array<{ area: string; url: string }>;
+}
+
+type PrepCourse = { name: string; url: string; note: string | null; viaCredentialPath: boolean };
+
+const officialSourcesBySlug = new Map(
+  Object.values(
+    certificationSources.certifications as unknown as Record<string, OfficialCertSources>
+  ).map((c) => [c.slug, c])
+);
+const courseUrls = certificationSources.courseUrls as Record<string, string>;
+const courseCompletionPolicy = certificationSources.courseCompletionPolicy;
 
 export async function generateStaticParams() {
   // Generate for ALL certifications, not just ones with prep data
@@ -35,7 +62,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   const title = `${certification.name} Exam Prep: Courses, Docs & Blueprint | SNReady`;
-  const description = `Official ${certification.name} exam blueprint, required Now Learning courses, and documentation. Everything you need to prepare for ${certification.fullName}.`;
+  const description = `Official ${certification.name} exam blueprint, recommended ServiceNow courses, and documentation. Everything you need to prepare for ${certification.fullName}.`;
 
   return {
     title,
@@ -156,24 +183,35 @@ function ExperienceCard({ experience }: { experience: UserExperience }) {
   );
 }
 
-// Generate fallback prep data from certification domains
-function generateFallbackPrepData(certification: NonNullable<ReturnType<typeof getCertificationBySlug>>) {
+// Build prep data from the official sources (blueprint, exam page, credential path)
+// in data/coverage/certification-sources.json. Courses are recommended, never required.
+function buildPrepData(certification: NonNullable<ReturnType<typeof getCertificationBySlug>>) {
+  const official = officialSourcesBySlug.get(certification.slug);
+  const fallbackUrl = certification.blueprintUrl ?? "https://learning.servicenow.com/";
+  const toCourse = (name: string): PrepCourse => ({
+    name,
+    url: courseUrls[name] ?? official?.credentialPathUrl ?? fallbackUrl,
+    note: official?.courseNotes?.[name] ?? null,
+    viaCredentialPath: !courseUrls[name],
+  });
   return {
     officialResources: {
-      examPage: certification.blueprintUrl ?? "https://learning.servicenow.com/",
-      blueprintUrl: certification.blueprintUrl ?? "https://learning.servicenow.com/",
+      examPage: official?.examRegistrationUrl ?? fallbackUrl,
+      blueprintUrl: official?.blueprint.url ?? fallbackUrl,
+      credentialPathUrl: official?.credentialPathUrl ?? null,
       studyGuideUrl: certification.deltaExam?.studyGuideUrl || null,
     },
-    requiredCourses: [] as Array<{ name: string; url: string; duration: string; description: string; domains: string[] }>,
-    recommendedCourses: [] as Array<{ name: string; url: string; duration: string; description: string; domains: string[] }>,
-    documentationSections: [] as Array<{ name: string; url: string; domains: string[] }>,
+    recommendedCourses: (official?.courses.recommended ?? []).map(toCourse),
+    additionalCourses: (official?.courses.additionalRecommended ?? []).map(toCourse),
+    documentationSections: (official?.docs ?? []).map((d) => ({ name: d.area, url: d.url })),
     examBlueprint: {
-      source: "ServiceNow Official Exam Blueprint",
-      lastUpdated: certification.lastUpdated || "2025-01",
-      domains: certification.domains.map((d) => ({
+      source: official
+        ? `Official blueprint ${official.blueprint.kb} v${official.blueprint.version}, updated ${official.blueprint.updated}`
+        : "ServiceNow Official Exam Blueprint",
+      domains: (official?.domains ?? []).map((d) => ({
         name: d.name,
-        percentage: d.percentage,
-        objectives: [d.description],
+        percentage: d.weight,
+        objectives: d.subtopics,
       })),
     },
   };
@@ -187,10 +225,7 @@ export default async function ExamPrepPage({ params }: Props) {
     notFound();
   }
 
-  // Use existing prep data or generate fallback from certification domains
-  const prepData = slug in examPrepData
-    ? examPrepData[slug as ExamPrepCert]
-    : generateFallbackPrepData(certification);
+  const prepData = buildPrepData(certification);
   const totalQuestions = getTotalQuestionCount(slug);
   const isReady = isCertificationReady(slug);
 
@@ -222,7 +257,9 @@ export default async function ExamPrepPage({ params }: Props) {
         name: `What courses do I need for ${certification.name}?`,
         acceptedAnswer: {
           "@type": "Answer",
-          text: `Required courses: ${prepData.requiredCourses.map((c) => c.name).join(", ")}. Recommended: ${prepData.recommendedCourses.map((c) => c.name).join(", ")}.`,
+          text: prepData.recommendedCourses.length > 0
+            ? `ServiceNow recommends these courses for ${certification.name}: ${prepData.recommendedCourses.map((c) => c.name).join(", ")}. ${courseCompletionPolicy}`
+            : `See the official ${certification.name} exam page for recommended preparation. ${courseCompletionPolicy}`,
         },
       },
       {
@@ -332,9 +369,14 @@ export default async function ExamPrepPage({ params }: Props) {
             <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-100">
               Exam Blueprint
             </h2>
-            <span className="text-sm text-zinc-500">
-              {prepData.examBlueprint.source}
-            </span>
+            <a
+              href={prepData.officialResources.blueprintUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-zinc-500 hover:text-emerald-600"
+            >
+              {prepData.examBlueprint.source} ↗
+            </a>
           </div>
 
           {prepData.examBlueprint.domains.length === 0 ? (
@@ -470,16 +512,17 @@ export default async function ExamPrepPage({ params }: Props) {
           </section>
         )}
 
-        {/* Required Courses */}
+        {/* Recommended Courses */}
         <section className="mt-10">
           <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-100">
-            Required Courses
+            Recommended Courses
           </h2>
           <p className="mt-2 text-zinc-600 dark:text-zinc-400">
-            Official Now Learning courses that cover the exam content.
+            Courses the official blueprint recommends. ServiceNow: &ldquo;
+            {courseCompletionPolicy}&rdquo;
           </p>
 
-          {prepData.requiredCourses.length === 0 ? (
+          {prepData.recommendedCourses.length === 0 ? (
             <div className="mt-6 rounded-lg border border-dashed border-zinc-300 bg-zinc-50 p-6 text-center dark:border-zinc-600 dark:bg-zinc-900">
               <p className="text-zinc-600 dark:text-zinc-400">
                 Course information coming soon. Visit the{" "}
@@ -491,12 +534,12 @@ export default async function ExamPrepPage({ params }: Props) {
                 >
                   official exam page
                 </a>{" "}
-                for the latest requirements.
+                for recommended preparation.
               </p>
             </div>
           ) : (
-          <div className="mt-6 space-y-4">
-            {prepData.requiredCourses.map((course) => (
+          <div className="mt-6 space-y-3">
+            {prepData.recommendedCourses.map((course) => (
               <a
                 key={course.name}
                 href={course.url}
@@ -508,23 +551,18 @@ export default async function ExamPrepPage({ params }: Props) {
                   <div>
                     <div className="flex items-center gap-2">
                       <span className="rounded bg-emerald-600 px-2 py-0.5 text-xs font-semibold text-white">
-                        REQUIRED
+                        RECOMMENDED
                       </span>
-                      <span className="text-sm text-zinc-500">{course.duration}</span>
+                      {course.viaCredentialPath && (
+                        <span className="text-xs text-zinc-500">via credential path</span>
+                      )}
                     </div>
                     <div className="mt-1 font-semibold text-zinc-900 dark:text-zinc-100">
                       {course.name}
                     </div>
-                    <div className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
-                      {course.description}
-                    </div>
-                    {course.domains.length > 0 && (
-                      <div className="mt-2 flex flex-wrap gap-1">
-                        {course.domains.map((d) => (
-                          <span key={d} className="rounded bg-zinc-200 px-2 py-0.5 text-xs text-zinc-600 dark:bg-zinc-700 dark:text-zinc-400">
-                            {d}
-                          </span>
-                        ))}
+                    {course.note && (
+                      <div className="mt-1 text-sm text-amber-700 dark:text-amber-300">
+                        {course.note}
                       </div>
                     )}
                   </div>
@@ -535,13 +573,16 @@ export default async function ExamPrepPage({ params }: Props) {
           </div>
           )}
 
-          {prepData.recommendedCourses.length > 0 && (
+          {prepData.additionalCourses.length > 0 && (
             <>
               <h3 className="mt-8 text-lg font-semibold text-zinc-900 dark:text-zinc-100">
-                Recommended Courses
+                Additional Courses
               </h3>
-              <div className="mt-4 space-y-4">
-                {prepData.recommendedCourses.map((course) => (
+              <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
+                Optional extra preparation listed in the blueprint.
+              </p>
+              <div className="mt-4 space-y-3">
+                {prepData.additionalCourses.map((course) => (
                   <a
                     key={course.name}
                     href={course.url}
@@ -553,15 +594,14 @@ export default async function ExamPrepPage({ params }: Props) {
                       <div>
                         <div className="flex items-center gap-2">
                           <span className="rounded bg-zinc-200 px-2 py-0.5 text-xs font-medium text-zinc-600 dark:bg-zinc-700 dark:text-zinc-400">
-                            RECOMMENDED
+                            OPTIONAL
                           </span>
-                          <span className="text-sm text-zinc-500">{course.duration}</span>
+                          {course.viaCredentialPath && (
+                            <span className="text-xs text-zinc-500">via credential path</span>
+                          )}
                         </div>
                         <div className="mt-1 font-semibold text-zinc-900 dark:text-zinc-100">
                           {course.name}
-                        </div>
-                        <div className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
-                          {course.description}
                         </div>
                       </div>
                       <span className="text-zinc-400">↗</span>
@@ -579,7 +619,7 @@ export default async function ExamPrepPage({ params }: Props) {
             Official Documentation
           </h2>
           <p className="mt-2 text-zinc-600 dark:text-zinc-400">
-            ServiceNow docs pages that map to the exam domains.
+            ServiceNow product documentation (Australia release) for the main exam areas.
           </p>
 
           {prepData.documentationSections.length === 0 ? (
@@ -611,9 +651,6 @@ export default async function ExamPrepPage({ params }: Props) {
                   <span className="text-blue-600 dark:text-blue-400">📄</span>
                   <div>
                     <div className="font-medium text-zinc-900 dark:text-zinc-100">{doc.name}</div>
-                    {doc.domains.length > 0 && (
-                      <div className="text-xs text-zinc-500">{doc.domains.join(", ")}</div>
-                    )}
                   </div>
                 </div>
                 <span className="text-zinc-400">↗</span>

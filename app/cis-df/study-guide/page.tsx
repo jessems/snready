@@ -147,7 +147,7 @@ const faqData = [
   {
     question: "What are the prerequisites for the CIS-DF exam?",
     answer:
-      "You must hold a valid ServiceNow CSA (Certified System Administrator) certification before registering for CIS-DF. ServiceNow also recommends familiarity with CMDB concepts and the Common Service Data Model, typically gained through hands-on experience or the relevant NowLearning courses.",
+      "CIS-DF has no mandatory prerequisite certification. The official exam page lists CSA certification and two or more years of CMDB experience as recommended experience. ServiceNow recommends the courses in the CIS-DF credential path, but course completion is not required. CIS-DF itself is now required before you can register for CIS-ITSM, CIS-Discovery, CIS-SM, CIS-HAM, CIS-SAM, CIS-SIR and CIS-VR.",
   },
   {
     question: "What is the most important CIS-DF domain to study?",
