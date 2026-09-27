@@ -1,17 +1,22 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import QuestionCard from "@/components/QuestionCard";
 import { CheckoutButton } from "@/components/CheckoutButton";
 import { LoginModal } from "@/components/LoginModal";
 import { useAccess } from "@/components/AccessProvider";
 import { trackPracticeStartOnce } from "@/lib/analytics";
+import { fetchPremiumQuestions, type PremiumQuestionsResult } from "@/lib/premium-questions";
 import type { Question } from "@/types";
 
 interface QuestionsWithPaywallProps {
   freeQuestions: Question[];
-  premiumQuestions: Question[];
+  // Only the count is rendered statically; premium question content is fetched
+  // from /api/questions after the access check so it never ships in the export.
+  premiumQuestionCount: number;
   certification: string;
+  certificationSlug: string;
+  topic?: string;
   examCost?: number;
   freeQuestionCount?: number;
   featureHighlights?: string[];
@@ -19,14 +24,37 @@ interface QuestionsWithPaywallProps {
 
 export function QuestionsWithPaywall({
   freeQuestions,
-  premiumQuestions,
+  premiumQuestionCount,
   certification,
+  certificationSlug,
+  topic,
   examCost,
   freeQuestionCount,
   featureHighlights = [],
 }: QuestionsWithPaywallProps) {
-  const { authenticated, hasAccess, hasAccessTo, loading } = useAccess();
+  const { authenticated, hasAccessTo, loading } = useAccess();
   const [showLoginModal, setShowLoginModal] = useState(false);
+  const [attempt, setAttempt] = useState(0);
+  const [premiumResult, setPremiumResult] = useState<{ key: string; result: PremiumQuestionsResult } | null>(null);
+
+  const userHasAccess = !loading && hasAccessTo(certification);
+  const requestKey = userHasAccess && premiumQuestionCount > 0
+    ? `${certificationSlug}|${topic || ""}|${attempt}`
+    : null;
+
+  useEffect(() => {
+    if (!requestKey) return;
+    const controller = new AbortController();
+    fetchPremiumQuestions({ certification: certificationSlug, topic, signal: controller.signal })
+      .then((result) => setPremiumResult({ key: requestKey, result }))
+      .catch(() => {
+        // Aborted because the component unmounted or the request key changed.
+      });
+    return () => controller.abort();
+  }, [requestKey, certificationSlug, topic]);
+
+  const currentPremium = premiumResult && premiumResult.key === requestKey ? premiumResult.result : null;
+  const totalQuestionCount = freeQuestions.length + premiumQuestionCount;
 
   const handlePurchase = () => {
     setShowLoginModal(false);
@@ -37,7 +65,7 @@ export function QuestionsWithPaywall({
     trackPracticeStartOnce({
       certification,
       freeQuestionCount: freeQuestionCount ?? freeQuestions.length,
-      totalQuestionCount: freeQuestions.length + premiumQuestions.length,
+      totalQuestionCount,
     });
   };
 
@@ -55,17 +83,13 @@ export function QuestionsWithPaywall({
           />
         ))}
 
-        {premiumQuestions.length > 0 && (
-          <div className="animate-pulse rounded-xl border border-zinc-200 bg-zinc-50 p-8 text-center dark:border-zinc-700 dark:bg-zinc-900">
-            <div className="h-6 w-48 bg-zinc-200 rounded mx-auto dark:bg-zinc-700" />
-          </div>
-        )}
+        {premiumQuestionCount > 0 && <PremiumLoadingPlaceholder />}
       </div>
     );
   }
 
-  // If user has access to this certification, show all questions
-  if (hasAccessTo(certification)) {
+  // If user has access to this certification, show free questions and load premium ones
+  if (userHasAccess) {
     return (
       <div className="space-y-6">
         {freeQuestions.map((question, index) => (
@@ -75,13 +99,60 @@ export function QuestionsWithPaywall({
             questionNumber={index + 1}
           />
         ))}
-        {premiumQuestions.map((question, index) => (
+
+        {premiumQuestionCount > 0 && !currentPremium && (
+          <PremiumLoadingPlaceholder label={`Loading ${premiumQuestionCount} premium questions…`} />
+        )}
+
+        {currentPremium && !currentPremium.ok && (
+          <div
+            role="alert"
+            className="rounded-xl border border-amber-200 bg-amber-50 p-6 text-center dark:border-amber-800 dark:bg-amber-950"
+          >
+            <h3 className="font-semibold text-amber-900 dark:text-amber-100">
+              We couldn&apos;t load your premium questions
+            </h3>
+            <p className="mt-2 text-sm text-amber-800 dark:text-amber-200">
+              {currentPremium.code === "not_authenticated"
+                ? "Your session has expired. Log in again to continue."
+                : currentPremium.code === "no_access"
+                  ? `We couldn't confirm your ${certification} purchase. Try logging in again, or contact support if this keeps happening.`
+                  : "Please check your connection and try again."}
+            </p>
+            <div className="mt-4 flex flex-wrap justify-center gap-3">
+              <button
+                type="button"
+                onClick={() => setAttempt((value) => value + 1)}
+                className="rounded-lg bg-emerald-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-emerald-700"
+              >
+                Try again
+              </button>
+              {(currentPremium.code === "not_authenticated" || currentPremium.code === "no_access") && (
+                <button
+                  type="button"
+                  onClick={() => setShowLoginModal(true)}
+                  className="rounded-lg border border-emerald-600 px-4 py-2 text-sm font-semibold text-emerald-600 transition-colors hover:bg-emerald-50 dark:hover:bg-emerald-900/30"
+                >
+                  Log in
+                </button>
+              )}
+            </div>
+          </div>
+        )}
+
+        {currentPremium && currentPremium.ok && currentPremium.questions.map((question, index) => (
           <QuestionCard
             key={question.id}
             question={question}
             questionNumber={freeQuestions.length + index + 1}
           />
         ))}
+
+        <LoginModal
+          isOpen={showLoginModal}
+          onClose={() => setShowLoginModal(false)}
+          onPurchase={handlePurchase}
+        />
       </div>
     );
   }
@@ -94,7 +165,7 @@ export function QuestionsWithPaywall({
         <>
           <div className="flex items-center gap-2">
             <span className="text-sm font-medium text-emerald-600">Free Questions</span>
-            <span className="text-xs text-zinc-400">({freeQuestions.length} of {freeQuestions.length + premiumQuestions.length})</span>
+            <span className="text-xs text-zinc-400">({freeQuestions.length} of {totalQuestionCount})</span>
           </div>
           {freeQuestions.map((question, index) => (
             <QuestionCard
@@ -108,33 +179,32 @@ export function QuestionsWithPaywall({
       )}
 
       {/* Paywall */}
-      {premiumQuestions.length > 0 && (
+      {premiumQuestionCount > 0 && (
         <div className="relative">
-          {/* Blurred preview of premium questions */}
-          <div className="space-y-6 blur-sm select-none pointer-events-none">
-            {premiumQuestions.slice(0, 2).map((question, index) => (
+          {/* Blurred placeholder cards. Deliberately contains no premium question text. */}
+          <div className="space-y-6 blur-sm select-none pointer-events-none" aria-hidden="true">
+            {[0, 1].map((index) => (
               <div
-                key={question.id}
+                key={index}
                 className="rounded-xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900"
               >
                 <div className="flex items-center gap-3">
                   <span className="flex h-7 w-7 items-center justify-center rounded-full bg-zinc-100 text-xs font-semibold text-zinc-400">
                     {freeQuestions.length + index + 1}
                   </span>
-                  <span className="rounded bg-zinc-100 px-2 py-0.5 text-xs font-medium text-zinc-400">
-                    {question.cognitiveLevel}
-                  </span>
+                  <span className="h-4 w-20 rounded bg-zinc-100 dark:bg-zinc-800" />
                 </div>
-                <p className="mt-4 text-base font-medium text-zinc-400">
-                  {question.question.slice(0, 80)}...
-                </p>
                 <div className="mt-4 space-y-2">
-                  {question.options.slice(0, 3).map((opt) => (
-                    <div key={opt.id} className="flex items-start gap-3 rounded-lg border border-zinc-100 p-3">
+                  <div className="h-4 w-full rounded bg-zinc-200 dark:bg-zinc-700" />
+                  <div className="h-4 w-2/3 rounded bg-zinc-200 dark:bg-zinc-700" />
+                </div>
+                <div className="mt-4 space-y-2">
+                  {["a", "b", "c"].map((optionId) => (
+                    <div key={optionId} className="flex items-start gap-3 rounded-lg border border-zinc-100 p-3 dark:border-zinc-800">
                       <span className="mt-0.5 flex h-6 w-6 items-center justify-center rounded-full border border-zinc-200 text-xs text-zinc-300">
-                        {opt.id.toUpperCase()}
+                        {optionId.toUpperCase()}
                       </span>
-                      <span className="text-sm text-zinc-300">{opt.text.slice(0, 50)}...</span>
+                      <span className="mt-1 h-3 w-1/2 rounded bg-zinc-100 dark:bg-zinc-800" />
                     </div>
                   ))}
                 </div>
@@ -152,7 +222,7 @@ export function QuestionsWithPaywall({
               </div>
               
               <h3 className="mt-4 text-xl font-bold text-zinc-900 dark:text-zinc-100">
-                Unlock {premiumQuestions.length} More Questions
+                Unlock {premiumQuestionCount} More Questions
               </h3>
               <p className="mt-2 text-zinc-600 dark:text-zinc-400">
                 Get full access to all {certification} practice questions, timed mock exams, and detailed explanations.
@@ -216,6 +286,19 @@ export function QuestionsWithPaywall({
         onClose={() => setShowLoginModal(false)}
         onPurchase={handlePurchase}
       />
+    </div>
+  );
+}
+
+function PremiumLoadingPlaceholder({ label }: { label?: string }) {
+  return (
+    <div
+      role="status"
+      aria-live="polite"
+      className="animate-pulse rounded-xl border border-zinc-200 bg-zinc-50 p-8 text-center dark:border-zinc-700 dark:bg-zinc-900"
+    >
+      <div className="h-6 w-48 bg-zinc-200 rounded mx-auto dark:bg-zinc-700" />
+      {label && <p className="mt-3 text-sm text-zinc-500 dark:text-zinc-400">{label}</p>}
     </div>
   );
 }

@@ -3,8 +3,10 @@
  * Generates Udemy-compatible CSV exports for all certifications.
  * Run: npx tsx scripts/generate-udemy-exports.ts
  * 
- * Outputs CSV files to public/exports/{cert}-questions-udemy.csv
- * These are then served as static files and linked from the admin page.
+ * Outputs CSV files to public/admin/exports/{cert}-questions-udemy.csv
+ * These contain every question and answer, so they live under /admin, where
+ * functions/admin/_middleware.ts requires an admin session. Never write them
+ * anywhere else under public/: that is served to everyone.
  */
 
 import { promises as fs } from "fs";
@@ -74,7 +76,7 @@ function buildExplanation(question: Question): string {
 
 async function generateExports() {
   const questionsDir = path.join(process.cwd(), "data", "questions");
-  const outputDir = path.join(process.cwd(), "public", "exports");
+  const outputDir = path.join(process.cwd(), "public", "admin", "exports");
   
   // Ensure output directory exists
   await fs.mkdir(outputDir, { recursive: true });

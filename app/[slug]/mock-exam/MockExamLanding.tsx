@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
-import type { Certification, Question } from "@/types";
+import type { Certification } from "@/types";
 import type { MockExamConfig, MockExamSession, MockExamHistoryEntry, MockExamResult } from "@/types/mockExam";
 import {
   getInProgressSessions,
@@ -19,6 +19,7 @@ import MockExam from "@/components/MockExam";
 import MockExamResults from "@/components/MockExamResults";
 import { useAccess } from "@/components/AccessProvider";
 import { CheckoutButton } from "@/components/CheckoutButton";
+import { fetchPremiumQuestions } from "@/lib/premium-questions";
 
 interface MockExamLandingProps {
   certification: Certification;
@@ -40,6 +41,7 @@ export default function MockExamLanding({
   const [inProgressSessions, setInProgressSessions] = useState<MockExamSession[]>([]);
   const [history, setHistory] = useState<MockExamHistoryEntry[]>([]);
   const [isStarting, setIsStarting] = useState(false);
+  const [startError, setStartError] = useState<string | null>(null);
 
   // Load sessions and history on mount
   useEffect(() => {
@@ -49,25 +51,36 @@ export default function MockExamLanding({
 
   const handleStartExam = useCallback(async () => {
     setIsStarting(true);
+    setStartError(null);
 
     try {
-      // Dynamically load all questions
-      const { getAllQuestionsForCertification } = await import("@/lib/data");
-      const allQuestions = await getAllQuestionsForCertification(examConfig.certSlug);
+      // Questions are served by /api/questions after the paid-access check;
+      // they are not bundled into the static site.
+      const result = await fetchPremiumQuestions({ certification: examConfig.certSlug, scope: "all" });
+      if (!result.ok) {
+        setStartError(
+          result.code === "not_authenticated"
+            ? "Your session has expired. Please log in again to start the exam."
+            : result.code === "no_access"
+              ? `We couldn't confirm your ${certification.name} purchase. Please log in again or contact support.`
+              : "We couldn't load the exam questions. Please check your connection and try again."
+        );
+        return;
+      }
 
       // Create new session
-      const newSession = createMockExamSession(examConfig, allQuestions);
+      const newSession = createMockExamSession(examConfig, result.questions);
       saveSession(newSession);
 
       setCurrentSession(newSession);
       setViewMode("exam");
     } catch (error) {
       console.error("Failed to start exam:", error);
-      alert("Failed to start exam. Please try again.");
+      setStartError("We couldn't start the exam. Please try again.");
     } finally {
       setIsStarting(false);
     }
-  }, [examConfig]);
+  }, [examConfig, certification.name]);
 
   const handleResumeSession = useCallback((sessionId: string) => {
     const session = loadSession(sessionId);
@@ -236,35 +249,42 @@ export default function MockExamLanding({
           {accessLoading ? (
             <div className="h-14 w-48 animate-pulse rounded-lg bg-zinc-200 dark:bg-zinc-700" />
           ) : hasAccessTo(certification.name) ? (
-            <button
-              onClick={handleStartExam}
-              disabled={isStarting}
-              className="w-full rounded-lg bg-emerald-600 px-6 py-4 text-lg font-semibold text-white transition-colors hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto"
-            >
-              {isStarting ? (
-                <span className="flex items-center justify-center gap-2">
-                  <svg className="h-5 w-5 animate-spin" viewBox="0 0 24 24">
-                    <circle
-                      className="opacity-25"
-                      cx="12"
-                      cy="12"
-                      r="10"
-                      stroke="currentColor"
-                      strokeWidth="4"
-                      fill="none"
-                    />
-                    <path
-                      className="opacity-75"
-                      fill="currentColor"
-                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                    />
-                  </svg>
-                  Starting Exam...
-                </span>
-              ) : (
-                "Start Mock Exam"
+            <>
+              <button
+                onClick={handleStartExam}
+                disabled={isStarting}
+                className="w-full rounded-lg bg-emerald-600 px-6 py-4 text-lg font-semibold text-white transition-colors hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto"
+              >
+                {isStarting ? (
+                  <span className="flex items-center justify-center gap-2">
+                    <svg className="h-5 w-5 animate-spin" viewBox="0 0 24 24">
+                      <circle
+                        className="opacity-25"
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="currentColor"
+                        strokeWidth="4"
+                        fill="none"
+                      />
+                      <path
+                        className="opacity-75"
+                        fill="currentColor"
+                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                      />
+                    </svg>
+                    Starting Exam...
+                  </span>
+                ) : (
+                  "Start Mock Exam"
+                )}
+              </button>
+              {startError && (
+                <p role="alert" className="mt-3 text-sm text-red-600 dark:text-red-400">
+                  {startError}
+                </p>
               )}
-            </button>
+            </>
           ) : (
             <div className="rounded-lg border border-emerald-200 bg-emerald-50 p-6 dark:border-emerald-800 dark:bg-emerald-950">
               <div className="flex items-start gap-4">
