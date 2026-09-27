@@ -392,14 +392,14 @@ export default function Home() {
           </div>
           <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {[
-              { name: "Incident Management", slug: "incident-management", icon: "🚨" },
-              { name: "Problem Management", slug: "problem-management", icon: "🔍" },
-              { name: "Change Management", slug: "change-management", icon: "🔄" },
-              { name: "User Administration", slug: "user-administration", icon: "👤" },
-              { name: "Reporting", slug: "reporting-dashboards", icon: "📊" },
-              { name: "Service Catalog", slug: "self-service-automation", icon: "🛒" },
-              { name: "Database Admin", slug: "database-administration", icon: "🗄️" },
-              { name: "UI Navigation", slug: "ui-navigation", icon: "🧭" },
+              { name: "Platform Navigation", slug: "ui-navigation", icon: "🧭" },
+              { name: "Instance Configuration", slug: "instance-configuration", icon: "🛠️" },
+              { name: "Lists, Forms & Collaboration", slug: "lists-forms-collaboration", icon: "📋" },
+              { name: "Dashboards & Analytics", slug: "reporting-dashboards", icon: "📊" },
+              { name: "Self Service & Automation", slug: "self-service-automation", icon: "🛒" },
+              { name: "Data Schema & Imports", slug: "database-administration", icon: "🗄️" },
+              { name: "Access Control & Security", slug: "user-administration", icon: "🔐" },
+              { name: "Data Migration & Integration", slug: "data-migration-integration", icon: "🔄" },
             ].map((topic) => (
               <Link
                 key={topic.slug}

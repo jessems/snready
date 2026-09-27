@@ -3322,21 +3322,21 @@ We have **100+ practice questions for all 20 certifications**, generated from of
   },
   {
     slug: "servicenow-csa-practice-test-200-questions-2026",
-    title: "ServiceNow CSA Practice Test: 200 Questions to Pass the Exam (2026)",
-    description: "The most comprehensive free CSA practice test available. 200 exam-quality questions across all 8 domains. See where you stand before spending $210.",
+    title: "ServiceNow CSA Practice Test: 270+ Questions to Pass the Exam (2026)",
+    description: "The most comprehensive free CSA practice test available. 270+ exam-quality questions mapped to all 6 domains of the January 2026 blueprint. See where you stand before spending $210.",
     publishedAt: "2026-03-31",
     author: "SNReady Team",
     tags: ["CSA", "practice test", "exam prep", "free questions"],
     featured: true,
     readingTime: 14,
     content: `
-## Why 200 Questions Matters
+## Why 270+ Questions Matters
 
 Most ServiceNow CSA practice tests give you 40-60 questions. That's not enough to find your blind spots.
 
-The real CSA exam has 60 questions covering 8 domains. If you only practice with 50 questions, you might never see a question on view rules, coalesce fields, or delegated administration — all of which appear on the real exam.
+The real CSA exam has 60 questions covering 6 domains. If you only practice with 50 questions, you might never see a question on coalesce fields, update sets, or ACL evaluation, all of which are covered by the current blueprint.
 
-We built 200 questions because that's what it takes to genuinely prepare. You'll see every topic multiple times, in different formats, from different angles.
+We built 270+ questions because that's what it takes to genuinely prepare. You'll see every topic multiple times, in different formats, from different angles.
 
 ## What the Real CSA Exam Looks Like
 
@@ -3355,18 +3355,16 @@ Before you practice, know what you're preparing for:
 
 ## Domain Breakdown: Where to Focus
 
-Our 200 questions mirror the official exam blueprint:
+Our question bank follows the official CSA exam blueprint (January 2026):
 
 | Domain | Exam Weight | Our Questions | Focus Areas |
 |--------|------------|---------------|-------------|
-| User Interface & Navigation | 15% | 30 | Lists, filters, forms, views, Next Experience, favorites |
-| User Administration & Security | 15% | 30 | ACLs, roles, groups, delegated admin, security settings |
-| Database Administration | 12% | 24 | Table inheritance, import sets, transform maps, coalesce, field types |
-| Self-Service & Automation | 15% | 30 | Service Catalog, Flow Designer, Knowledge Base, Record Producers |
-| Incident Management | 12% | 24 | Lifecycle, priority matrix, SLAs, Major Incidents, assignment rules |
-| Problem Management | 8% | 16 | Known Errors, root cause analysis, proactive vs reactive |
-| Change Management | 10% | 20 | Standard/Normal/Emergency, CAB, conflict detection, rollback |
-| Reporting & Dashboards | 13% | 26 | Report types, PA vs reports, scheduled reports, drill-down |
+| Platform Overview and Navigation | 7% | 19 | Next Experience Unified Navigation, favorites, history, instances, cloning |
+| Instance Configuration | 10% | 27 | Applications and plugins, system properties, Theme Builder, user interfaces |
+| Configuring Applications for Collaboration | 20% | 54 | Lists, filters, forms, templates, task management, Visual Task Boards, notifications, dashboards |
+| Self Service & Automation | 20% | 55 | Knowledge Management, Service Catalog, Workflow Studio, Virtual Agent |
+| Database Management and Platform Security | 30% | 80 | Data schema, import sets, transform maps, coalesce, CMDB/CSDM, ACLs, Security Center |
+| Data Migration and Integration | 13% | 36 | UI policies, business rules, update sets, scripting basics |
 
 ## Question Types You'll Face
 
@@ -3391,7 +3389,7 @@ The real exam uses several question formats. Our practice test includes all of t
 These test whether you can identify the incorrect statement among plausible options. Don't skip the "NOT" in the question.
 
 ### 4. Multi-Select "Choose 3" (15%)
-*"What are the three types of change in ServiceNow's Change Management? (Choose 3)"*
+*"Which table extension models does the ServiceNow AI Platform offer? (Choose three.)"*
 These require knowing multiple correct answers — partial credit is typically not given.
 
 ### 5. Scenario-Based (15%)
@@ -3402,32 +3400,30 @@ These test your ability to apply knowledge to real situations.
 
 Based on hundreds of Reddit posts and exam feedback, here are the areas where candidates struggle most:
 
-### 🔴 Import Sets & Transform Maps (Database Administration)
+### 🔴 Import Sets & Transform Maps (Database Management and Platform Security)
 This is the #1 topic people underestimate. Know:
 - The complete import process: Data Source → Import Set → Transform Map → Target Table
 - What coalesce fields do (determine insert vs update)
 - How to handle reference field mappings
 - What happens when transforms fail
 
-### 🔴 ACL Evaluation Order (User Administration)
-ACLs use AND logic when multiple rules match. If you have a table-level ACL and a field-level ACL, BOTH must pass. This surprises people who expect "most specific wins."
+### 🔴 ACL Evaluation Order (Database Management and Platform Security)
+A user must pass every condition in an ACL (roles, data condition, script). To reach a field, a user has to pass both the table ACL and the field ACL; failing the table ACL blocks every field, even if a field ACL would pass. Deny-Unless ACLs are evaluated before Allow-If ACLs.
 
-### 🔴 Flow Designer vs Workflow (Self-Service)
-Flow Designer is ServiceNow's current automation tool. Know:
+### 🔴 Workflow Studio flows (Self Service & Automation)
+Workflow Studio (formerly Flow Designer) is ServiceNow's current automation tool. Know:
 - Triggers (record-based, scheduled, application)
 - Actions vs Subflows
 - It's no-code/low-code (no scripting required for most actions)
 
-### 🟡 Change Types (Change Management)
-Know the three types cold:
-- **Standard**: Pre-approved, low-risk, uses templates
-- **Normal**: Requires assessment and CAB approval
-- **Emergency**: Fast-tracked for critical fixes
+### 🟡 Update Sets (Data Migration and Integration)
+- Update sets capture configuration, not task or process data
+- Move them along one path: dev → test → production
+- Preview a retrieved update set and resolve problems before committing
 
-### 🟡 Problem vs Incident (Problem Management)
-- Incident = restore service ASAP
-- Problem = find root cause
-- Known Error = root cause identified, workaround documented
+### 🟡 UI Policies vs Data Policies (Data Migration and Integration)
+- UI policies change form behavior in the browser
+- Data policies enforce mandatory and read-only rules on all data, including imports and web services
 
 ## How to Use Our Practice Test
 
@@ -3439,14 +3435,14 @@ Know the three types cold:
 
 ### Strategy 2: Domain-by-Domain Deep Dive
 If you know your weak areas, go directly to that domain:
-- [UI & Navigation Questions](/csa/practice-questions/ui-navigation)
-- [User Administration Questions](/csa/practice-questions/user-administration)
-- [Database Administration Questions](/csa/practice-questions/database-administration)
-- [Self-Service & Automation Questions](/csa/practice-questions/self-service-automation)
-- [Incident Management Questions](/csa/practice-questions/incident-management)
-- [Problem Management Questions](/csa/practice-questions/problem-management)
-- [Change Management Questions](/csa/practice-questions/change-management)
-- [Reporting & Dashboards Questions](/csa/practice-questions/reporting-dashboards)
+- [Platform Overview & Navigation Questions](/csa/practice-questions/ui-navigation)
+- [Instance Configuration Questions](/csa/practice-questions/instance-configuration)
+- [Lists, Forms & Collaboration Questions](/csa/practice-questions/lists-forms-collaboration)
+- [Visualizations, Dashboards & Analytics Questions](/csa/practice-questions/reporting-dashboards)
+- [Self Service & Automation Questions](/csa/practice-questions/self-service-automation)
+- [Data Schema, Importing Data & CMDB Questions](/csa/practice-questions/database-administration)
+- [Access Control & Platform Security Questions](/csa/practice-questions/user-administration)
+- [Data Migration & Integration Questions](/csa/practice-questions/data-migration-integration)
 
 ### Strategy 3: Spaced Repetition
 1. Take all free questions first
@@ -3468,21 +3464,21 @@ About 35% of the real exam is multi-select. If you only practice single-choice, 
 ### ❌ Memorizing answers instead of understanding
 Our questions have detailed explanations for every option — correct AND wrong. Read the wrong-answer explanations. They teach you why common mistakes are wrong.
 
-### ❌ Ignoring Problem Management because it's only 8%
-That's still 5 questions. Five easy questions if you know the material. Five lost points if you don't.
+### ❌ Ignoring Platform Overview because it's only 7%
+That's still about 4 questions. Four easy questions if you know the material. Four lost points if you don't.
 
 ### ❌ Not timing yourself
 90 minutes for 60 questions is 1.5 minutes per question. That's tight when multi-select questions need you to evaluate 5-6 options. Practice under time pressure.
 
 ## Ready to Start?
 
-We have **200 CSA questions** — the most comprehensive practice test available for ServiceNow CSA. Start with the free questions, see your score, then unlock the full bank.
+We have **270+ CSA questions** — the most comprehensive practice test available for ServiceNow CSA. Start with the free questions, see your score, then unlock the full bank.
 
 | Action | Link |
 |--------|------|
 | Start free CSA questions | [Free CSA Practice Questions](/csa/free-questions) |
 | Take a timed mock exam | [CSA Mock Exam](/csa/mock-exam) |
-| See all 8 domain topics | [CSA Study Topics](/csa) |
+| See all 6 exam domains | [CSA Study Topics](/csa) |
 | Create a study schedule | [Study Plan Generator](/study-plan) |
 | Not sure CSA is right for you? | [Certification Quiz](/quiz) |
 
@@ -3803,7 +3799,7 @@ Take a mock exam first. Identify your weakest 2-3 domains. Spend focused study t
 | Difficulty | Entry-level | Intermediate |
 | Study Time | 3-4 weeks | 4-6 weeks |
 | Pass Rate | Higher | Lower |
-| Practice Questions | [200 questions](/csa/free-questions) | [200 questions](/cad/free-questions) |
+| Practice Questions | [270+ questions](/csa/free-questions) | [200 questions](/cad/free-questions) |
 
 If you're deciding between the two, read our [CSA vs CAD comparison](/blog/csa-vs-cad-real-talk).
 

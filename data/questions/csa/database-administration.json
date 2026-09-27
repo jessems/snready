@@ -51,7 +51,7 @@
         ]
       },
       "references": [
-        "ServiceNow Data Model"
+        "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1"
       ],
       "isFree": true,
       "source": {
@@ -68,11 +68,11 @@
       },
       "labels": {
         "certification": "csa",
-        "domain": "Database Administration",
+        "domain": "Database Management and Platform Security",
         "domainSlug": "database-administration",
-        "domainPercentage": 12,
+        "domainPercentage": 30,
         "subtopics": [
-          "Tables and table relationships"
+          "Data Schema"
         ],
         "tags": [
           "tables",
@@ -137,7 +137,7 @@
         ]
       },
       "references": [
-        "ServiceNow sys_id"
+        "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1"
       ],
       "isFree": true,
       "source": {
@@ -154,11 +154,11 @@
       },
       "labels": {
         "certification": "csa",
-        "domain": "Database Administration",
+        "domain": "Database Management and Platform Security",
         "domainSlug": "database-administration",
-        "domainPercentage": 12,
+        "domainPercentage": 30,
         "subtopics": [
-          "Tables and table relationships"
+          "Data Schema"
         ],
         "tags": [
           "sys_id",
@@ -171,6 +171,2973 @@
         "version": "1.0",
         "release": "Xanadu",
         "reviewed": false
+      }
+    },
+    {
+      "id": "csa-db-201",
+      "certification": "csa",
+      "topic": "database-administration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "In ServiceNow table extension terminology, what is a base class?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A parent class that is not an extension of another table"
+        },
+        {
+          "id": "b",
+          "text": "Any table that has at least one child class"
+        },
+        {
+          "id": "c",
+          "text": "A table created by an administrator with the u_ prefix"
+        },
+        {
+          "id": "d",
+          "text": "The table with the most records in the instance"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "A table that extends another table is a child class, and the table it extends is the parent class. A parent class that isn't an extension of another table is a base class, such as Task [task] or Configuration Item [cmdb_ci]. See https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/table-extension-and-classes.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "A table with children is a parent class, but it's only a base class if it doesn't extend anything itself.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/table-extension-and-classes.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The u_ prefix marks a custom global table; it has nothing to do with base classes.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/table-extension-and-classes.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Record count doesn't define a base class.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/table-extension-and-classes.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/table-extension-and-classes.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "table-extension-and-classes",
+          "section": "Table extension and classes",
+          "url": "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/table-extension-and-classes.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/platform-administration/table-administration-and-data-management/table-extension-and-classes.md",
+        "excerpt": "A parent class that is not an extension of another table is called a base class."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Database Management and Platform Security",
+        "domainSlug": "database-administration",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Data Schema"
+        ],
+        "tags": [
+          "tables",
+          "extension"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-db-202",
+      "certification": "csa",
+      "topic": "database-administration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "When can administrators extend a table from another table?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Only during table creation"
+        },
+        {
+          "id": "b",
+          "text": "At any time by editing the Extends table field"
+        },
+        {
+          "id": "c",
+          "text": "Only after the table has records"
+        },
+        {
+          "id": "d",
+          "text": "Only with a dictionary override"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "Table extension lets child tables share fields and records with a parent table. Administrators and application developers can only extend tables during table creation. See https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/table-extension-and-classes.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "The extends relationship can't be added to an existing table later.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/table-extension-and-classes.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Records aren't required, and extension must happen at creation.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/table-extension-and-classes.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Dictionary overrides change field behavior on child tables; they don't create extensions.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/table-extension-and-classes.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/table-extension-and-classes.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "table-extension-and-classes",
+          "section": "Table extension and classes",
+          "url": "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/table-extension-and-classes.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/platform-administration/table-administration-and-data-management/table-extension-and-classes.md",
+        "excerpt": "Administrators and application developers can only extend tables during table creation."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Database Management and Platform Security",
+        "domainSlug": "database-administration",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Data Schema"
+        ],
+        "tags": [
+          "tables",
+          "extension"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-db-203",
+      "certification": "csa",
+      "topic": "database-administration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_select",
+      "question": "Which tools can administrators use to see the relationships between table classes? (Choose three.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Schema map"
+        },
+        {
+          "id": "b",
+          "text": "System dictionary"
+        },
+        {
+          "id": "c",
+          "text": "Tables module"
+        },
+        {
+          "id": "d",
+          "text": "Update set preview"
+        },
+        {
+          "id": "e",
+          "text": "Transform map"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b",
+        "c"
+      ],
+      "explanation": {
+        "correct": "Administrators can use the schema map, the system dictionary, and the Tables module to see the relationships between classes. See https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/table-extension-and-classes.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "d",
+            "explanation": "Update set preview checks for update set conflicts.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/table-extension-and-classes.html"
+          },
+          {
+            "choiceId": "e",
+            "explanation": "Transform maps define import field mappings.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/table-extension-and-classes.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/table-extension-and-classes.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "table-extension-and-classes",
+          "section": "Table extension and classes",
+          "url": "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/table-extension-and-classes.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/platform-administration/table-administration-and-data-management/table-extension-and-classes.md",
+        "excerpt": "Schema map … System dictionary … Tables module"
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Database Management and Platform Security",
+        "domainSlug": "database-administration",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Data Schema"
+        ],
+        "tags": [
+          "tables",
+          "schema map"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-db-204",
+      "certification": "csa",
+      "topic": "database-administration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_select",
+      "question": "Which of these are required system fields added automatically to every table? (Choose three.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "sys_id"
+        },
+        {
+          "id": "b",
+          "text": "sys_created_on"
+        },
+        {
+          "id": "c",
+          "text": "sys_mod_count"
+        },
+        {
+          "id": "d",
+          "text": "sys_domain_path"
+        },
+        {
+          "id": "e",
+          "text": "u_active"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b",
+        "c"
+      ],
+      "explanation": {
+        "correct": "Required system fields added to all tables include Class [sys_class_name], Created [sys_created_on], Created by, Sys_id [sys_id], Updates [sys_mod_count], Updated by, and Updated [sys_updated_on]. You can't delete or modify them. See https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/r_GlobalDefaultFields.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "d",
+            "explanation": "sys_domain_path relates to domain separation and isn't in the list of required system fields.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/r_GlobalDefaultFields.html"
+          },
+          {
+            "choiceId": "e",
+            "explanation": "u_ fields are custom fields that administrators create.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/r_GlobalDefaultFields.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/r_GlobalDefaultFields.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "r_GlobalDefaultFields",
+          "section": "Global default fields",
+          "url": "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/r_GlobalDefaultFields.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/platform-administration/table-administration-and-data-management/r_GlobalDefaultFields.md",
+        "excerpt": "Sys_id [sys_id] … Created [sys_created_on] … Updates [sys_mod_count]"
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Database Management and Platform Security",
+        "domainSlug": "database-administration",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Data Schema"
+        ],
+        "tags": [
+          "system fields"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-db-205",
+      "certification": "csa",
+      "topic": "database-administration",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What does the Updates [sys_mod_count] system field store?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The number of updates to the record since it was created"
+        },
+        {
+          "id": "b",
+          "text": "The number of users watching the record"
+        },
+        {
+          "id": "c",
+          "text": "The number of update sets containing the record"
+        },
+        {
+          "id": "d",
+          "text": "The number of child records"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "Updates [sys_mod_count] is an integer field that counts the number of updates to a record since it was created. See https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/r_GlobalDefaultFields.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Watchers are stored in a watch list field.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/r_GlobalDefaultFields.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "sys_mod_count isn't related to update sets.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/r_GlobalDefaultFields.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Child records aren't counted in this field.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/r_GlobalDefaultFields.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/r_GlobalDefaultFields.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "r_GlobalDefaultFields",
+          "section": "Global default fields",
+          "url": "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/r_GlobalDefaultFields.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/platform-administration/table-administration-and-data-management/r_GlobalDefaultFields.md",
+        "excerpt": "A numeric field that counts the number of updates for this record since record creation."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Database Management and Platform Security",
+        "domainSlug": "database-administration",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Data Schema"
+        ],
+        "tags": [
+          "system fields"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-db-206",
+      "certification": "csa",
+      "topic": "database-administration",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "An administrator wants the Priority field to default to 5 on Incident, without changing its default on Task or Change. What should they configure?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A dictionary override on the Incident table"
+        },
+        {
+          "id": "b",
+          "text": "A change to the dictionary entry on the Task table"
+        },
+        {
+          "id": "c",
+          "text": "A client script on the Task table"
+        },
+        {
+          "id": "d",
+          "text": "A new Priority field on the Incident table"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "Dictionary overrides let a field on an extended table be defined differently from the parent table field. For example, an override can change a Task field's default value on Incident without affecting Task or Change. Overridable aspects include reference qualifiers, attributes, default values, calculations, dependencies, display values, and mandatory and read-only status. See https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/c_DictionaryOverrides.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Changing the Task dictionary entry would affect all child tables.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/c_DictionaryOverrides.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "A client script on Task is not the tool for per-table field defaults.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/c_DictionaryOverrides.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Duplicate fields cause confusion and don't override the inherited field.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/c_DictionaryOverrides.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/c_DictionaryOverrides.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "c_DictionaryOverrides",
+          "section": "Dictionary overrides",
+          "url": "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/c_DictionaryOverrides.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/platform-administration/table-administration-and-data-management/c_DictionaryOverrides.md",
+        "excerpt": "Dictionary overrides provide the ability to define a field on an extended table differently from the field on the parent table."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Database Management and Platform Security",
+        "domainSlug": "database-administration",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Data Schema"
+        ],
+        "tags": [
+          "dictionary override"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-db-207",
+      "certification": "csa",
+      "topic": "database-administration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_select",
+      "question": "Which aspects of an inherited field can a dictionary override change? (Choose three.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Default values"
+        },
+        {
+          "id": "b",
+          "text": "Reference qualifiers"
+        },
+        {
+          "id": "c",
+          "text": "Mandatory and read-only status"
+        },
+        {
+          "id": "d",
+          "text": "The field's column name"
+        },
+        {
+          "id": "e",
+          "text": "The field's data type"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b",
+        "c"
+      ],
+      "explanation": {
+        "correct": "Administrators can override reference qualifiers, dictionary attributes, default values, calculations, field dependencies, default column display values, and mandatory and read-only status. See https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/c_DictionaryOverrides.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "d",
+            "explanation": "The column name isn't in the list of overridable aspects.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/c_DictionaryOverrides.html"
+          },
+          {
+            "choiceId": "e",
+            "explanation": "The data type isn't in the list of overridable aspects.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/c_DictionaryOverrides.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/c_DictionaryOverrides.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "c_DictionaryOverrides",
+          "section": "Dictionary overrides",
+          "url": "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/c_DictionaryOverrides.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/platform-administration/table-administration-and-data-management/c_DictionaryOverrides.md",
+        "excerpt": "Reference qualifiers … Default values … Mandatory and read-only status"
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Database Management and Platform Security",
+        "domainSlug": "database-administration",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Data Schema"
+        ],
+        "tags": [
+          "dictionary override"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-db-208",
+      "certification": "csa",
+      "topic": "database-administration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "An administrator creates a custom table named Laptops in the global application. What prefix does the system add to the table name?",
+      "options": [
+        {
+          "id": "a",
+          "text": "u_"
+        },
+        {
+          "id": "b",
+          "text": "x_"
+        },
+        {
+          "id": "c",
+          "text": "sys_"
+        },
+        {
+          "id": "d",
+          "text": "sn_"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "For a table in the global application, the name is prefixed with u_. Tables in a scoped application get a namespace identifier prefix. The prefix can't be modified. See https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/t_CreateATable.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Scoped tables get a namespace identifier; x_ is typical for custom scoped apps, but global tables use u_.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/t_CreateATable.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "sys_ is used for system tables.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/t_CreateATable.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "sn_ is used by ServiceNow-provided scoped apps.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/t_CreateATable.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/t_CreateATable.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "t_CreateATable",
+          "section": "Create a table",
+          "url": "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/t_CreateATable.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/platform-administration/table-administration-and-data-management/t_CreateATable.md",
+        "excerpt": "For a table in the global application, the name is prefixed with the string u_."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Database Management and Platform Security",
+        "domainSlug": "database-administration",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Data Schema"
+        ],
+        "tags": [
+          "create table",
+          "prefix"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-db-209",
+      "certification": "csa",
+      "topic": "database-administration",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "The Watch list field on Incident lets users select multiple User records. What kind of field is it?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Glide list"
+        },
+        {
+          "id": "b",
+          "text": "Reference field"
+        },
+        {
+          "id": "c",
+          "text": "Document ID field"
+        },
+        {
+          "id": "d",
+          "text": "Many-to-many relationship"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "Glide lists let a user select multiple records on the table the glide list defines, such as the Watch list field on Incident selecting records from sys_user. Reference fields select one record. Document ID fields can point to a record on any table. See https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/table-relationships.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "A reference field selects a single record, like the Caller field.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/table-relationships.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Document ID fields point to a record on any table.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/table-relationships.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Many-to-many relationships are shown as related lists, not as a single field.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/table-relationships.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/table-relationships.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "table-relationships",
+          "section": "Table relationships",
+          "url": "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/table-relationships.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/platform-administration/table-administration-and-data-management/table-relationships.md",
+        "excerpt": "the Watch list field on the Incident [incident] table allows the user to select records on the User [sys_user] table."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Database Management and Platform Security",
+        "domainSlug": "database-administration",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Data Schema"
+        ],
+        "tags": [
+          "relationships",
+          "glide list"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-db-210",
+      "certification": "csa",
+      "topic": "database-administration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "How can two tables be joined virtually so you can report on data stored in more than one table?",
+      "options": [
+        {
+          "id": "a",
+          "text": "With a database view"
+        },
+        {
+          "id": "b",
+          "text": "With a dictionary override"
+        },
+        {
+          "id": "c",
+          "text": "With a UI policy"
+        },
+        {
+          "id": "d",
+          "text": "With a transform map"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "Two tables can be joined virtually in a database view to enable reporting on data stored across more than one table. See https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/table-relationships.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Dictionary overrides change how an inherited field behaves.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/table-relationships.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "UI policies change form behavior.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/table-relationships.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Transform maps move data from import sets to target tables.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/table-relationships.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/table-relationships.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "table-relationships",
+          "section": "Table relationships",
+          "url": "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/table-relationships.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/platform-administration/table-administration-and-data-management/table-relationships.md",
+        "excerpt": "Two tables can be joined virtually in a database view to enable reporting on data that might be stored over more than one table."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Database Management and Platform Security",
+        "domainSlug": "database-administration",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Data Schema"
+        ],
+        "tags": [
+          "relationships",
+          "database view"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-db-211",
+      "certification": "csa",
+      "topic": "database-administration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which table stores custom many-to-many relationship definitions?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Many to Many Definitions [sys_m2m]"
+        },
+        {
+          "id": "b",
+          "text": "Dictionary [sys_dictionary]"
+        },
+        {
+          "id": "c",
+          "text": "Relationships [sys_relationship]"
+        },
+        {
+          "id": "d",
+          "text": "CI Relationship [cmdb_rel_ci]"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "The Many to Many Definitions [sys_m2m] table lets administrators create custom many-to-many relationships. Many-to-many tables don't count toward your custom table allotment. See https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/t_CreateAManyToManyRelationship.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "sys_dictionary stores table and column definitions.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/t_CreateAManyToManyRelationship.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "This is not where many-to-many definitions are created in this procedure.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/t_CreateAManyToManyRelationship.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "cmdb_rel_ci stores relationships between CIs.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/t_CreateAManyToManyRelationship.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/t_CreateAManyToManyRelationship.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "t_CreateAManyToManyRelationship",
+          "section": "Create a many-to-many table relationship",
+          "url": "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/t_CreateAManyToManyRelationship.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/platform-administration/table-administration-and-data-management/t_CreateAManyToManyRelationship.md",
+        "excerpt": "The Many to Many Definitions [sys_m2m] table allows administrators to create custom many-to-many relationships."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Database Management and Platform Security",
+        "domainSlug": "database-administration",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Data Schema"
+        ],
+        "tags": [
+          "many-to-many"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-db-212",
+      "certification": "csa",
+      "topic": "database-administration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "In the schema map, which color shows tables that the selected table extends (Extending)?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Blue"
+        },
+        {
+          "id": "b",
+          "text": "Green"
+        },
+        {
+          "id": "c",
+          "text": "Red"
+        },
+        {
+          "id": "d",
+          "text": "Orange"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "Schema map colors: Referenced by is red, Referencing is orange, Extended by is green, and Extending is blue. The selected table is shown in yellow. See https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/c_SchemaMapForTables.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Green shows Extended by.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/c_SchemaMapForTables.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Red shows Referenced by.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/c_SchemaMapForTables.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Orange shows Referencing.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/c_SchemaMapForTables.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/c_SchemaMapForTables.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "c_SchemaMapForTables",
+          "section": "Viewing table references and extensions",
+          "url": "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/c_SchemaMapForTables.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/platform-administration/table-administration-and-data-management/c_SchemaMapForTables.md",
+        "excerpt": "|Extending|Blue|"
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Database Management and Platform Security",
+        "domainSlug": "database-administration",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Data Schema"
+        ],
+        "tags": [
+          "schema map"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-db-213",
+      "certification": "csa",
+      "topic": "database-administration",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_select",
+      "question": "Why does ServiceNow warn administrators to be careful when changing system dictionary entries? (Choose two.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Dictionary changes automatically apply to all extended tables unless a dictionary override is defined"
+        },
+        {
+          "id": "b",
+          "text": "Changes to sys_ tables can cause system-wide issues, such as not being able to use update sets"
+        },
+        {
+          "id": "c",
+          "text": "Dictionary changes are only saved in the user's session"
+        },
+        {
+          "id": "d",
+          "text": "Dictionary changes delete all records in the table"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b"
+      ],
+      "explanation": {
+        "correct": "Dictionary changes are difficult to reverse and apply to all extended tables unless a dictionary override is defined. Changes to system tables (starting with sys_) can cause system-wide issues, such as not being able to use update sets. See https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/c_SystemDictionary.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "c",
+            "explanation": "Dictionary changes are persistent and system-wide.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/c_SystemDictionary.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Changing a dictionary entry doesn't delete records.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/c_SystemDictionary.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/c_SystemDictionary.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "c_SystemDictionary",
+          "section": "System dictionary",
+          "url": "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/c_SystemDictionary.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/platform-administration/table-administration-and-data-management/c_SystemDictionary.md",
+        "excerpt": "dictionary changes automatically apply to all extended tables unless a dictionary override is defined … can create system-wide issues such as the inability to use update sets"
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Database Management and Platform Security",
+        "domainSlug": "database-administration",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Data Schema"
+        ],
+        "tags": [
+          "system dictionary"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-db-214",
+      "certification": "csa",
+      "topic": "database-administration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What is the role of the import set table in the import process?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It is a staging area for records imported from a data source before they are transformed"
+        },
+        {
+          "id": "b",
+          "text": "It is the final destination table for imported records"
+        },
+        {
+          "id": "c",
+          "text": "It stores transform map scripts"
+        },
+        {
+          "id": "d",
+          "text": "It stores user preferences for imports"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "The import set table is a staging area for imported records. A transform map then defines how fields in the import set table relate to fields in the target table. See https://www.servicenow.com/docs/r/australia/integrate-applications/system-import-sets/c_ImportSetsKeyConcepts.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "The target table is the destination; the import set table is only staging.",
+            "reference": "https://www.servicenow.com/docs/r/australia/integrate-applications/system-import-sets/c_ImportSetsKeyConcepts.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Transform map scripts are stored with the transform map.",
+            "reference": "https://www.servicenow.com/docs/r/australia/integrate-applications/system-import-sets/c_ImportSetsKeyConcepts.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "User preferences aren't stored in import set tables.",
+            "reference": "https://www.servicenow.com/docs/r/australia/integrate-applications/system-import-sets/c_ImportSetsKeyConcepts.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/integrate-applications/system-import-sets/c_ImportSetsKeyConcepts.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "c_ImportSetsKeyConcepts",
+          "section": "Import sets key concepts",
+          "url": "https://www.servicenow.com/docs/r/australia/integrate-applications/system-import-sets/c_ImportSetsKeyConcepts.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/integrate-applications/system-import-sets/c_ImportSetsKeyConcepts.md",
+        "excerpt": "The import sets table acts as a staging area for records imported from a data source."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Database Management and Platform Security",
+        "domainSlug": "database-administration",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Importing Data"
+        ],
+        "tags": [
+          "import sets"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-db-215",
+      "certification": "csa",
+      "topic": "database-administration",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "An administrator needs another column in an import set table. What is the recommended approach?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Add the column to the input data, then use Test Load 20 Records or Load All Records to generate it"
+        },
+        {
+          "id": "b",
+          "text": "Add the column manually to the import set table in the dictionary"
+        },
+        {
+          "id": "c",
+          "text": "Add the column to the transform map only"
+        },
+        {
+          "id": "d",
+          "text": "Create a dictionary override on the import set table"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "Import set table columns are generated automatically and shouldn't be added manually, because that can affect scheduled cleanup and leave orphaned records. Add the column to the input data and reload to generate it. See https://www.servicenow.com/docs/r/australia/integrate-applications/system-import-sets/c_ImportSetsKeyConcepts.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Manually adding columns is specifically discouraged.",
+            "reference": "https://www.servicenow.com/docs/r/australia/integrate-applications/system-import-sets/c_ImportSetsKeyConcepts.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Transform maps map existing columns; they don't create import set columns.",
+            "reference": "https://www.servicenow.com/docs/r/australia/integrate-applications/system-import-sets/c_ImportSetsKeyConcepts.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Dictionary overrides don't create columns.",
+            "reference": "https://www.servicenow.com/docs/r/australia/integrate-applications/system-import-sets/c_ImportSetsKeyConcepts.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/integrate-applications/system-import-sets/c_ImportSetsKeyConcepts.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "c_ImportSetsKeyConcepts",
+          "section": "Import sets key concepts",
+          "url": "https://www.servicenow.com/docs/r/australia/integrate-applications/system-import-sets/c_ImportSetsKeyConcepts.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/integrate-applications/system-import-sets/c_ImportSetsKeyConcepts.md",
+        "excerpt": "first add the column to the input data, then select Test Load 20 Records or Load All Records to auto generate the columns in the import set table."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Database Management and Platform Security",
+        "domainSlug": "database-administration",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Importing Data"
+        ],
+        "tags": [
+          "import sets"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-db-216",
+      "certification": "csa",
+      "topic": "database-administration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What does a data source record define in System Import Sets?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Where to get the data to import, such as a file, a JDBC database, or an LDAP organizational unit"
+        },
+        {
+          "id": "b",
+          "text": "How import set fields map to target fields"
+        },
+        {
+          "id": "c",
+          "text": "Which users can view the imported records"
+        },
+        {
+          "id": "d",
+          "text": "When a transform map is deleted"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "A data source defines where to get the data to import. Types include File, JDBC, LDAP, OIDC, REST (Integration Hub), Data Stream, and Custom (Load by Script). See https://www.servicenow.com/docs/r/australia/integrate-applications/system-import-sets/c_ImportSetsKeyConcepts.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Field mapping is defined by transform maps.",
+            "reference": "https://www.servicenow.com/docs/r/australia/integrate-applications/system-import-sets/c_ImportSetsKeyConcepts.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Access is controlled by ACLs.",
+            "reference": "https://www.servicenow.com/docs/r/australia/integrate-applications/system-import-sets/c_ImportSetsKeyConcepts.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Data sources don't manage transform map lifecycles.",
+            "reference": "https://www.servicenow.com/docs/r/australia/integrate-applications/system-import-sets/c_ImportSetsKeyConcepts.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/integrate-applications/system-import-sets/c_ImportSetsKeyConcepts.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "c_ImportSetsKeyConcepts",
+          "section": "Import sets key concepts",
+          "url": "https://www.servicenow.com/docs/r/australia/integrate-applications/system-import-sets/c_ImportSetsKeyConcepts.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/integrate-applications/system-import-sets/c_ImportSetsKeyConcepts.md",
+        "excerpt": "A data source may point to a file, a JDBC-compatible database, or an LDAP organizational unit."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Database Management and Platform Security",
+        "domainSlug": "database-administration",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Importing Data"
+        ],
+        "tags": [
+          "data source"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-db-217",
+      "certification": "csa",
+      "topic": "database-administration",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "A transform map for user imports has Coalesce selected on the Email field map. During transformation an import row's email matches an existing user record. What happens?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The existing user record is updated"
+        },
+        {
+          "id": "b",
+          "text": "A duplicate user record is created"
+        },
+        {
+          "id": "c",
+          "text": "The row is skipped with an error"
+        },
+        {
+          "id": "d",
+          "text": "All users with that email are deleted"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "With coalesce, the instance checks for an existing target record with the same value in the coalesce field. If it finds one, it updates that record. If not, it creates a new record. See https://www.servicenow.com/docs/r/australia/integrate-applications/system-import-sets/c_ImportSetCoalesce.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Coalesce prevents duplicates by updating matching records.",
+            "reference": "https://www.servicenow.com/docs/r/australia/integrate-applications/system-import-sets/c_ImportSetCoalesce.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "A match updates the record; it doesn't cause an error.",
+            "reference": "https://www.servicenow.com/docs/r/australia/integrate-applications/system-import-sets/c_ImportSetCoalesce.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Coalesce never deletes records.",
+            "reference": "https://www.servicenow.com/docs/r/australia/integrate-applications/system-import-sets/c_ImportSetCoalesce.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/integrate-applications/system-import-sets/c_ImportSetCoalesce.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "c_ImportSetCoalesce",
+          "section": "Updating records using coalesce",
+          "url": "https://www.servicenow.com/docs/r/australia/integrate-applications/system-import-sets/c_ImportSetCoalesce.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/integrate-applications/system-import-sets/c_ImportSetCoalesce.md",
+        "excerpt": "If an existing record with a matching value in the target table is found, that record is updated."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Database Management and Platform Security",
+        "domainSlug": "database-administration",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Importing Data"
+        ],
+        "tags": [
+          "coalesce",
+          "transform map"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-db-218",
+      "certification": "csa",
+      "topic": "database-administration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What happens during a transform if no coalesce field is defined on the transform map?",
+      "options": [
+        {
+          "id": "a",
+          "text": "All imported rows are treated as new records and no existing records are updated"
+        },
+        {
+          "id": "b",
+          "text": "Existing records with matching sys_ids are updated"
+        },
+        {
+          "id": "c",
+          "text": "The transform fails"
+        },
+        {
+          "id": "d",
+          "text": "Only the first row is imported"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "If no coalesce is defined, all imported rows are treated as new records and no existing records are updated. See https://www.servicenow.com/docs/r/australia/integrate-applications/system-import-sets/c_ImportSetCoalesce.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Without coalesce, no matching is done.",
+            "reference": "https://www.servicenow.com/docs/r/australia/integrate-applications/system-import-sets/c_ImportSetCoalesce.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The transform still runs; it just inserts.",
+            "reference": "https://www.servicenow.com/docs/r/australia/integrate-applications/system-import-sets/c_ImportSetCoalesce.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "All rows are processed.",
+            "reference": "https://www.servicenow.com/docs/r/australia/integrate-applications/system-import-sets/c_ImportSetCoalesce.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/integrate-applications/system-import-sets/c_ImportSetCoalesce.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "c_ImportSetCoalesce",
+          "section": "Updating records using coalesce",
+          "url": "https://www.servicenow.com/docs/r/australia/integrate-applications/system-import-sets/c_ImportSetCoalesce.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/integrate-applications/system-import-sets/c_ImportSetCoalesce.md",
+        "excerpt": "If no coalesce is defined, all imported rows are treated as new records."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Database Management and Platform Security",
+        "domainSlug": "database-administration",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Importing Data"
+        ],
+        "tags": [
+          "coalesce"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-db-219",
+      "certification": "csa",
+      "topic": "database-administration",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "A transform map coalesces on both First name and Last name. When is an existing target record updated?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Only when all coalesce field values match"
+        },
+        {
+          "id": "b",
+          "text": "When either field matches"
+        },
+        {
+          "id": "c",
+          "text": "When neither field matches"
+        },
+        {
+          "id": "d",
+          "text": "Always, for the most recently updated record"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "With multiple-field coalesce, all coalesce field values between the target and staging tables must match for the target record to be updated. For OR-style matching, use a conditional coalesce script. See https://www.servicenow.com/docs/r/australia/integrate-applications/system-import-sets/c_ImportSetCoalesce.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Either-field matching needs a conditional coalesce script.",
+            "reference": "https://www.servicenow.com/docs/r/australia/integrate-applications/system-import-sets/c_ImportSetCoalesce.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "A non-match inserts a new record.",
+            "reference": "https://www.servicenow.com/docs/r/australia/integrate-applications/system-import-sets/c_ImportSetCoalesce.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Updates depend on matching coalesce values.",
+            "reference": "https://www.servicenow.com/docs/r/australia/integrate-applications/system-import-sets/c_ImportSetCoalesce.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/integrate-applications/system-import-sets/c_ImportSetCoalesce.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "c_ImportSetCoalesce",
+          "section": "Updating records using coalesce",
+          "url": "https://www.servicenow.com/docs/r/australia/integrate-applications/system-import-sets/c_ImportSetCoalesce.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/integrate-applications/system-import-sets/c_ImportSetCoalesce.md",
+        "excerpt": "All coalesce field values between the target and staging tables must match to coalesce with multiple fields."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Database Management and Platform Security",
+        "domainSlug": "database-administration",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Importing Data"
+        ],
+        "tags": [
+          "coalesce"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-db-220",
+      "certification": "csa",
+      "topic": "database-administration",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "Why should you coalesce only on fields with unique values?",
+      "options": [
+        {
+          "id": "a",
+          "text": "If more than one target record matches, only the first matching record is updated"
+        },
+        {
+          "id": "b",
+          "text": "Non-unique fields can't be used in field maps"
+        },
+        {
+          "id": "c",
+          "text": "The import fails if duplicates exist"
+        },
+        {
+          "id": "d",
+          "text": "Coalesce fields are automatically made unique"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "Choose coalesce fields only if they have unique values. If more than one record in the target table matches, only the first matching record is updated. See https://www.servicenow.com/docs/r/australia/integrate-applications/system-import-sets/c_ImportSetCoalesce.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Any field can be mapped; uniqueness matters for correct matching.",
+            "reference": "https://www.servicenow.com/docs/r/australia/integrate-applications/system-import-sets/c_ImportSetCoalesce.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The import doesn't fail; it updates the first match.",
+            "reference": "https://www.servicenow.com/docs/r/australia/integrate-applications/system-import-sets/c_ImportSetCoalesce.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Coalesce doesn't change field uniqueness.",
+            "reference": "https://www.servicenow.com/docs/r/australia/integrate-applications/system-import-sets/c_ImportSetCoalesce.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/integrate-applications/system-import-sets/c_ImportSetCoalesce.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "c_ImportSetCoalesce",
+          "section": "Updating records using coalesce",
+          "url": "https://www.servicenow.com/docs/r/australia/integrate-applications/system-import-sets/c_ImportSetCoalesce.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/integrate-applications/system-import-sets/c_ImportSetCoalesce.md",
+        "excerpt": "If more than one record in the target table matches the specified coalesce options, only the first matching record in the target table is updated."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Database Management and Platform Security",
+        "domainSlug": "database-administration",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Importing Data"
+        ],
+        "tags": [
+          "coalesce"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-db-221",
+      "certification": "csa",
+      "topic": "database-administration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "In a transform map, which transformation event script runs at the start of an import run, before any data rows are read?",
+      "options": [
+        {
+          "id": "a",
+          "text": "onStart"
+        },
+        {
+          "id": "b",
+          "text": "onBefore"
+        },
+        {
+          "id": "c",
+          "text": "onAfter"
+        },
+        {
+          "id": "d",
+          "text": "onComplete"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "The onStart event script runs at the start of an import run, before any data rows are read. onBefore and onAfter run for each row, and onComplete runs at the end. See https://www.servicenow.com/docs/r/australia/integrate-applications/system-import-sets/r_MapWithTransformationEventScripts.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "onBefore runs before each row is transformed.",
+            "reference": "https://www.servicenow.com/docs/r/australia/integrate-applications/system-import-sets/r_MapWithTransformationEventScripts.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "onAfter runs after each row is transformed.",
+            "reference": "https://www.servicenow.com/docs/r/australia/integrate-applications/system-import-sets/r_MapWithTransformationEventScripts.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "onComplete runs at the end of the transform.",
+            "reference": "https://www.servicenow.com/docs/r/australia/integrate-applications/system-import-sets/r_MapWithTransformationEventScripts.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/integrate-applications/system-import-sets/r_MapWithTransformationEventScripts.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "r_MapWithTransformationEventScripts",
+          "section": "Map with transformation event scripts",
+          "url": "https://www.servicenow.com/docs/r/australia/integrate-applications/system-import-sets/r_MapWithTransformationEventScripts.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/integrate-applications/system-import-sets/r_MapWithTransformationEventScripts.md",
+        "excerpt": "The onStart event script is processed at the start of an import run, before any data rows are read."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Database Management and Platform Security",
+        "domainSlug": "database-administration",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Importing Data"
+        ],
+        "tags": [
+          "transform scripts"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-db-222",
+      "certification": "csa",
+      "topic": "database-administration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "By default, what does the scheduled Import Set Deleter job delete?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Import sets and their related import set rows created more than seven days ago"
+        },
+        {
+          "id": "b",
+          "text": "All target table records created by imports"
+        },
+        {
+          "id": "c",
+          "text": "Transform maps that haven't been used in seven days"
+        },
+        {
+          "id": "d",
+          "text": "Data sources older than 30 days"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "The Import Set Deleter under System Import Sets > Import Set Tables > Scheduled Cleanup deletes import sets and their related import set rows created more than seven days ago by default. See https://www.servicenow.com/docs/r/australia/integrate-applications/system-import-sets/delete-import-sets.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Target table records aren't deleted by the cleanup job.",
+            "reference": "https://www.servicenow.com/docs/r/australia/integrate-applications/system-import-sets/delete-import-sets.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Transform maps aren't deleted.",
+            "reference": "https://www.servicenow.com/docs/r/australia/integrate-applications/system-import-sets/delete-import-sets.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Data sources aren't deleted by this job.",
+            "reference": "https://www.servicenow.com/docs/r/australia/integrate-applications/system-import-sets/delete-import-sets.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/integrate-applications/system-import-sets/delete-import-sets.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "delete-import-sets",
+          "section": "Delete import sets",
+          "url": "https://www.servicenow.com/docs/r/australia/integrate-applications/system-import-sets/delete-import-sets.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/integrate-applications/system-import-sets/delete-import-sets.md",
+        "excerpt": "Defaults to deleting import sets and their related import set rows that were created more than seven days ago."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Database Management and Platform Security",
+        "domainSlug": "database-administration",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Importing Data"
+        ],
+        "tags": [
+          "import set cleanup"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-db-223",
+      "certification": "csa",
+      "topic": "database-administration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which user do import sets run as, and what limitation does this cause?",
+      "options": [
+        {
+          "id": "a",
+          "text": "They run as user System and can't add data to encrypted fields"
+        },
+        {
+          "id": "b",
+          "text": "They run as the logged-in user and can't import more than 20 rows"
+        },
+        {
+          "id": "c",
+          "text": "They run as admin and bypass all data validation"
+        },
+        {
+          "id": "d",
+          "text": "They run as guest and can't write to task tables"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "Import sets run as user System and therefore can't add data to encrypted fields. See https://www.servicenow.com/docs/r/australia/integrate-applications/system-import-sets/c_ImportSetsKeyConcepts.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Import sets don't run as the logged-in user; 20 rows is only the Test Load option.",
+            "reference": "https://www.servicenow.com/docs/r/australia/integrate-applications/system-import-sets/c_ImportSetsKeyConcepts.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "This is not how import sets are documented.",
+            "reference": "https://www.servicenow.com/docs/r/australia/integrate-applications/system-import-sets/c_ImportSetsKeyConcepts.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Import sets don't run as guest.",
+            "reference": "https://www.servicenow.com/docs/r/australia/integrate-applications/system-import-sets/c_ImportSetsKeyConcepts.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/integrate-applications/system-import-sets/c_ImportSetsKeyConcepts.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "c_ImportSetsKeyConcepts",
+          "section": "Import sets key concepts",
+          "url": "https://www.servicenow.com/docs/r/australia/integrate-applications/system-import-sets/c_ImportSetsKeyConcepts.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/integrate-applications/system-import-sets/c_ImportSetsKeyConcepts.md",
+        "excerpt": "Import sets run as user System and therefore cannot add data to encrypted fields."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Database Management and Platform Security",
+        "domainSlug": "database-administration",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Importing Data"
+        ],
+        "tags": [
+          "import sets"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-db-224",
+      "certification": "csa",
+      "topic": "database-administration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which table stores the basic attributes of all IT configuration items?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Configuration Item [cmdb_ci]"
+        },
+        {
+          "id": "b",
+          "text": "CI Relationship [cmdb_rel_ci]"
+        },
+        {
+          "id": "c",
+          "text": "Task [task]"
+        },
+        {
+          "id": "d",
+          "text": "Asset [alm_asset]"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "The core Configuration Item [cmdb_ci] class stores the basic attributes of all CIs, and its descending classes are IT CIs. The CI Relationship [cmdb_rel_ci] class defines relationships between CIs, and the Base Configuration Item [cmdb] class is the core table for non-IT CIs. See https://www.servicenow.com/docs/r/australia/servicenow-platform/configuration-management-database-cmdb/c_ConfigurationManagementDatabase.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "cmdb_rel_ci stores relationships, not CI attributes.",
+            "reference": "https://www.servicenow.com/docs/r/australia/servicenow-platform/configuration-management-database-cmdb/c_ConfigurationManagementDatabase.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Task is the base for work records such as incidents.",
+            "reference": "https://www.servicenow.com/docs/r/australia/servicenow-platform/configuration-management-database-cmdb/c_ConfigurationManagementDatabase.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Assets are tracked in asset tables; this question is about CI attributes.",
+            "reference": "https://www.servicenow.com/docs/r/australia/servicenow-platform/configuration-management-database-cmdb/c_ConfigurationManagementDatabase.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/servicenow-platform/configuration-management-database-cmdb/c_ConfigurationManagementDatabase.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "c_ConfigurationManagementDatabase",
+          "section": "CMDB schema model",
+          "url": "https://www.servicenow.com/docs/r/australia/servicenow-platform/configuration-management-database-cmdb/c_ConfigurationManagementDatabase.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/servicenow-platform/configuration-management-database-cmdb/c_ConfigurationManagementDatabase.md",
+        "excerpt": "The core Configuration Item [cmdb_ci] class, which stores the basic attributes of all the CIs."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Database Management and Platform Security",
+        "domainSlug": "database-administration",
+        "domainPercentage": 30,
+        "subtopics": [
+          "CMDB and CSDM"
+        ],
+        "tags": [
+          "cmdb",
+          "tables"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-db-225",
+      "certification": "csa",
+      "topic": "database-administration",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "In the CMDB relationship [Server1] [Managed by] [Server2], which is the parent CI?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Server2"
+        },
+        {
+          "id": "b",
+          "text": "Server1"
+        },
+        {
+          "id": "c",
+          "text": "Managed by"
+        },
+        {
+          "id": "d",
+          "text": "Neither; CMDB relationships have no parent"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "A CMDB relationship consists of a parent CI, a child CI, and a relationship type. In [Server1] [Managed by] [Server2], Server1 is the child, Server2 is the parent, and Managed by is the relationship type. See https://www.servicenow.com/docs/r/australia/servicenow-platform/configuration-management-database-cmdb/c_CIRelationships.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Server1 is the child CI in this example.",
+            "reference": "https://www.servicenow.com/docs/r/australia/servicenow-platform/configuration-management-database-cmdb/c_CIRelationships.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Managed by is the relationship type.",
+            "reference": "https://www.servicenow.com/docs/r/australia/servicenow-platform/configuration-management-database-cmdb/c_CIRelationships.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Every CMDB relationship has a parent and a child.",
+            "reference": "https://www.servicenow.com/docs/r/australia/servicenow-platform/configuration-management-database-cmdb/c_CIRelationships.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/servicenow-platform/configuration-management-database-cmdb/c_CIRelationships.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "c_CIRelationships",
+          "section": "CI relationships in the CMDB",
+          "url": "https://www.servicenow.com/docs/r/australia/servicenow-platform/configuration-management-database-cmdb/c_CIRelationships.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/servicenow-platform/configuration-management-database-cmdb/c_CIRelationships.md",
+        "excerpt": "Server2 is the parent CI"
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Database Management and Platform Security",
+        "domainSlug": "database-administration",
+        "domainPercentage": 30,
+        "subtopics": [
+          "CMDB and CSDM"
+        ],
+        "tags": [
+          "cmdb",
+          "relationships"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-db-226",
+      "certification": "csa",
+      "topic": "database-administration",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What is the main purpose of the CMDB Identification and Reconciliation Engine (IRE)?",
+      "options": [
+        {
+          "id": "a",
+          "text": "To provide a central framework for identifying and reconciling CI data from different sources, preventing duplicate CIs"
+        },
+        {
+          "id": "b",
+          "text": "To create reports on incident volumes"
+        },
+        {
+          "id": "c",
+          "text": "To schedule Discovery"
+        },
+        {
+          "id": "d",
+          "text": "To encrypt CI attributes"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "Identification and Reconciliation provides a central framework for identifying and reconciling data from different sources. It helps keep the CMDB accurate when multiple data sources create and update CI records, and can also be applied to Import Sets to prevent duplicate CIs. See https://www.servicenow.com/docs/r/australia/servicenow-platform/configuration-management-database-cmdb/c_CMDBIdentifyandReconcile.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Incident reporting is done with reports and dashboards.",
+            "reference": "https://www.servicenow.com/docs/r/australia/servicenow-platform/configuration-management-database-cmdb/c_CMDBIdentifyandReconcile.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Discovery schedules are configured in Discovery.",
+            "reference": "https://www.servicenow.com/docs/r/australia/servicenow-platform/configuration-management-database-cmdb/c_CMDBIdentifyandReconcile.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "IRE doesn't encrypt data.",
+            "reference": "https://www.servicenow.com/docs/r/australia/servicenow-platform/configuration-management-database-cmdb/c_CMDBIdentifyandReconcile.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/servicenow-platform/configuration-management-database-cmdb/c_CMDBIdentifyandReconcile.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "c_CMDBIdentifyandReconcile",
+          "section": "CMDB Identification and Reconciliation (IRE)",
+          "url": "https://www.servicenow.com/docs/r/australia/servicenow-platform/configuration-management-database-cmdb/c_CMDBIdentifyandReconcile.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/servicenow-platform/configuration-management-database-cmdb/c_CMDBIdentifyandReconcile.md",
+        "excerpt": "The Identification and Reconciliation module provides a centralized framework for identifying and reconciling data from different data sources."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Database Management and Platform Security",
+        "domainSlug": "database-administration",
+        "domainPercentage": 30,
+        "subtopics": [
+          "CMDB and CSDM"
+        ],
+        "tags": [
+          "cmdb",
+          "ire"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-db-227",
+      "certification": "csa",
+      "topic": "database-administration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_select",
+      "question": "Which health indicators does CMDB Health evaluate and aggregate into health scores? (Choose three.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Duplicate CIs"
+        },
+        {
+          "id": "b",
+          "text": "Required CI fields"
+        },
+        {
+          "id": "c",
+          "text": "Audits"
+        },
+        {
+          "id": "d",
+          "text": "Number of open incidents per user"
+        },
+        {
+          "id": "e",
+          "text": "Update set conflicts"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b",
+        "c"
+      ],
+      "explanation": {
+        "correct": "Health indicators such as duplicate CIs, required CI fields, and audits are evaluated and aggregated into health scores at the class, health group, and service levels. See https://www.servicenow.com/docs/r/australia/servicenow-platform/configuration-management-database-cmdb/c_CMDBHealth.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "d",
+            "explanation": "Incidents per user is not a CMDB health indicator.",
+            "reference": "https://www.servicenow.com/docs/r/australia/servicenow-platform/configuration-management-database-cmdb/c_CMDBHealth.html"
+          },
+          {
+            "choiceId": "e",
+            "explanation": "Update set conflicts aren't CMDB health indicators.",
+            "reference": "https://www.servicenow.com/docs/r/australia/servicenow-platform/configuration-management-database-cmdb/c_CMDBHealth.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/servicenow-platform/configuration-management-database-cmdb/c_CMDBHealth.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "c_CMDBHealth",
+          "section": "CMDB Health",
+          "url": "https://www.servicenow.com/docs/r/australia/servicenow-platform/configuration-management-database-cmdb/c_CMDBHealth.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/servicenow-platform/configuration-management-database-cmdb/c_CMDBHealth.md",
+        "excerpt": "Health indicators such as duplicate CIs, required CI fields, and audits are evaluated and aggregated into health scores"
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Database Management and Platform Security",
+        "domainSlug": "database-administration",
+        "domainPercentage": 30,
+        "subtopics": [
+          "CMDB and CSDM"
+        ],
+        "tags": [
+          "cmdb health"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-db-228",
+      "certification": "csa",
+      "topic": "database-administration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What is the Common Service Data Model (CSDM)?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The data model standard for all products that use the CMDB, with guidelines for where CIs and relationships belong"
+        },
+        {
+          "id": "b",
+          "text": "A reporting dashboard for incident trends"
+        },
+        {
+          "id": "c",
+          "text": "A replacement for the CMDB"
+        },
+        {
+          "id": "d",
+          "text": "A security framework for ACLs"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "The CSDM is the data model admins should follow when they set up ServiceNow products. Its standards for defining CIs and relationships make sure data lives in the right CMDB tables. The CSDM is the data model standard for all products that use the CMDB. See https://www.servicenow.com/docs/r/australia/servicenow-platform/common-service-data-model-csdm/csdm-landing-page.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "CSDM is a data model, not a dashboard.",
+            "reference": "https://www.servicenow.com/docs/r/australia/servicenow-platform/common-service-data-model-csdm/csdm-landing-page.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "CSDM guides how the CMDB is used; it doesn't replace it.",
+            "reference": "https://www.servicenow.com/docs/r/australia/servicenow-platform/common-service-data-model-csdm/csdm-landing-page.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "CSDM isn't a security framework.",
+            "reference": "https://www.servicenow.com/docs/r/australia/servicenow-platform/common-service-data-model-csdm/csdm-landing-page.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/servicenow-platform/common-service-data-model-csdm/csdm-landing-page.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "csdm-landing-page",
+          "section": "Common Service Data Model",
+          "url": "https://www.servicenow.com/docs/r/australia/servicenow-platform/common-service-data-model-csdm/csdm-landing-page.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/servicenow-platform/common-service-data-model-csdm/csdm-landing-page.md",
+        "excerpt": "The CSDM is the data model standard for all products that use the Configuration Management Database (CMDB)."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Database Management and Platform Security",
+        "domainSlug": "database-administration",
+        "domainPercentage": 30,
+        "subtopics": [
+          "CMDB and CSDM"
+        ],
+        "tags": [
+          "csdm"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-db-229",
+      "certification": "csa",
+      "topic": "database-administration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which CSDM domain contains base referential data, such as business processes and contracts, that the other domains reference?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Foundation"
+        },
+        {
+          "id": "b",
+          "text": "Service Consumption"
+        },
+        {
+          "id": "c",
+          "text": "Build & Integration"
+        },
+        {
+          "id": "d",
+          "text": "Ideation & Strategy"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "Tables in the Foundation domain hold base data that objects in the other CSDM domains reference. Foundation tables aren't used in CMDB relationships; they hold critical referential data. You must populate foundational data before using ServiceNow products. See https://www.servicenow.com/docs/r/australia/servicenow-platform/common-service-data-model-csdm/foundation-domain.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Service Consumption holds the catalog of service and business offerings.",
+            "reference": "https://www.servicenow.com/docs/r/australia/servicenow-platform/common-service-data-model-csdm/foundation-domain.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Build & Integration holds data for building or integrating what was designed.",
+            "reference": "https://www.servicenow.com/docs/r/australia/servicenow-platform/common-service-data-model-csdm/foundation-domain.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Ideation & Strategy holds ideas and concepts.",
+            "reference": "https://www.servicenow.com/docs/r/australia/servicenow-platform/common-service-data-model-csdm/foundation-domain.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/servicenow-platform/common-service-data-model-csdm/foundation-domain.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "foundation-domain",
+          "section": "Foundation domain in the CSDM model",
+          "url": "https://www.servicenow.com/docs/r/australia/servicenow-platform/common-service-data-model-csdm/foundation-domain.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/servicenow-platform/common-service-data-model-csdm/foundation-domain.md",
+        "excerpt": "Tables in the Foundation domain contain base data that is referenced from or to objects in the other CSDM domains."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Database Management and Platform Security",
+        "domainSlug": "database-administration",
+        "domainPercentage": 30,
+        "subtopics": [
+          "CMDB and CSDM"
+        ],
+        "tags": [
+          "csdm",
+          "foundation"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-db-230",
+      "certification": "csa",
+      "topic": "database-administration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "In the CSDM, what are the three base service types?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Business, Technical, and Application"
+        },
+        {
+          "id": "b",
+          "text": "Hardware, Software, and Network"
+        },
+        {
+          "id": "c",
+          "text": "Incident, Problem, and Change"
+        },
+        {
+          "id": "d",
+          "text": "Standard, Normal, and Emergency"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "ServiceNow provides three base service types in the CSDM: Business, Technical, and Application. You can extend them to match the service types your organization uses. See https://www.servicenow.com/docs/r/australia/servicenow-platform/common-service-data-model-csdm/csdm-term-definitions.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "These are CI categories, not CSDM service types.",
+            "reference": "https://www.servicenow.com/docs/r/australia/servicenow-platform/common-service-data-model-csdm/csdm-term-definitions.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "These are ITSM processes.",
+            "reference": "https://www.servicenow.com/docs/r/australia/servicenow-platform/common-service-data-model-csdm/csdm-term-definitions.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "These are change types.",
+            "reference": "https://www.servicenow.com/docs/r/australia/servicenow-platform/common-service-data-model-csdm/csdm-term-definitions.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/servicenow-platform/common-service-data-model-csdm/csdm-term-definitions.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "csdm-term-definitions",
+          "section": "CSDM terms",
+          "url": "https://www.servicenow.com/docs/r/australia/servicenow-platform/common-service-data-model-csdm/csdm-term-definitions.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/servicenow-platform/common-service-data-model-csdm/csdm-term-definitions.md",
+        "excerpt": "ServiceNow provides three base service types: … Business … Technical … Application"
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Database Management and Platform Security",
+        "domainSlug": "database-administration",
+        "domainPercentage": 30,
+        "subtopics": [
+          "CMDB and CSDM"
+        ],
+        "tags": [
+          "csdm",
+          "services"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-db-231",
+      "certification": "csa",
+      "topic": "database-administration",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "According to the CSDM terms, how are assets and CIs related?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Many, but not all, assets are CIs, and many, but not all, CIs are assets"
+        },
+        {
+          "id": "b",
+          "text": "Every asset is a CI and every CI is an asset"
+        },
+        {
+          "id": "c",
+          "text": "Assets and CIs are never the same item"
+        },
+        {
+          "id": "d",
+          "text": "Assets are a child class of CIs"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "An asset is an item whose financial value is tracked. The CSDM terms note that many, but not all, assets are CIs, and many, but not all, CIs are assets. See https://www.servicenow.com/docs/r/australia/servicenow-platform/common-service-data-model-csdm/csdm-term-definitions.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "The CSDM definitions state the overlap is partial.",
+            "reference": "https://www.servicenow.com/docs/r/australia/servicenow-platform/common-service-data-model-csdm/csdm-term-definitions.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Assets and CIs often overlap.",
+            "reference": "https://www.servicenow.com/docs/r/australia/servicenow-platform/common-service-data-model-csdm/csdm-term-definitions.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The relationship is overlap, not a class hierarchy.",
+            "reference": "https://www.servicenow.com/docs/r/australia/servicenow-platform/common-service-data-model-csdm/csdm-term-definitions.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/servicenow-platform/common-service-data-model-csdm/csdm-term-definitions.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "csdm-term-definitions",
+          "section": "CSDM terms",
+          "url": "https://www.servicenow.com/docs/r/australia/servicenow-platform/common-service-data-model-csdm/csdm-term-definitions.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/servicenow-platform/common-service-data-model-csdm/csdm-term-definitions.md",
+        "excerpt": "Many, but not all, assets are CIs and many, but not all, CIs are assets."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Database Management and Platform Security",
+        "domainSlug": "database-administration",
+        "domainPercentage": 30,
+        "subtopics": [
+          "CMDB and CSDM"
+        ],
+        "tags": [
+          "csdm",
+          "assets"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-db-232",
+      "certification": "csa",
+      "topic": "database-administration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which CMDB class is the core table for non-IT configuration items?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Base Configuration Item [cmdb]"
+        },
+        {
+          "id": "b",
+          "text": "Configuration Item [cmdb_ci]"
+        },
+        {
+          "id": "c",
+          "text": "CI Relationship [cmdb_rel_ci]"
+        },
+        {
+          "id": "d",
+          "text": "Computer [cmdb_ci_computer]"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "The Base Configuration Item [cmdb] class is the core CMDB table for non-IT CIs; its descending classes are non-IT CIs. The Configuration Item [cmdb_ci] class stores the basic attributes of all IT CIs. See https://www.servicenow.com/docs/r/australia/servicenow-platform/configuration-management-database-cmdb/c_ConfigurationManagementDatabase.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "cmdb_ci is the core class for IT CIs.",
+            "reference": "https://www.servicenow.com/docs/r/australia/servicenow-platform/configuration-management-database-cmdb/c_ConfigurationManagementDatabase.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "cmdb_rel_ci defines relationships between CIs.",
+            "reference": "https://www.servicenow.com/docs/r/australia/servicenow-platform/configuration-management-database-cmdb/c_ConfigurationManagementDatabase.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Computer is an IT CI class that extends cmdb_ci.",
+            "reference": "https://www.servicenow.com/docs/r/australia/servicenow-platform/configuration-management-database-cmdb/c_ConfigurationManagementDatabase.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/servicenow-platform/configuration-management-database-cmdb/c_ConfigurationManagementDatabase.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "c_ConfigurationManagementDatabase",
+          "section": "CMDB schema model",
+          "url": "https://www.servicenow.com/docs/r/australia/servicenow-platform/configuration-management-database-cmdb/c_ConfigurationManagementDatabase.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/servicenow-platform/configuration-management-database-cmdb/c_ConfigurationManagementDatabase.md",
+        "excerpt": "The Base Configuration Item [cmdb] class, which is the core CMDB table for non IT CIs"
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Database Management and Platform Security",
+        "domainSlug": "database-administration",
+        "domainPercentage": 30,
+        "subtopics": [
+          "CMDB and CSDM"
+        ],
+        "tags": [
+          "cmdb",
+          "tables"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-db-233",
+      "certification": "csa",
+      "topic": "database-administration",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_select",
+      "question": "How can relationships between CIs get into the CMDB? (Choose two.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Many relationships can be loaded automatically through Discovery"
+        },
+        {
+          "id": "b",
+          "text": "An administrator can create or edit relationships from the CI form, for example with the CI relationship editor"
+        },
+        {
+          "id": "c",
+          "text": "Relationships are only created by importing a spreadsheet"
+        },
+        {
+          "id": "d",
+          "text": "Relationships are created automatically whenever an incident is opened"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b"
+      ],
+      "explanation": {
+        "correct": "CI relationships can be discovered automatically; with Discovery, many relationships are loaded during the discovery process. You can also add, create, or edit relationships from the CI form with the CI relationship editor, or with Unified Map in CMDB Workspace. See https://www.servicenow.com/docs/r/australia/servicenow-platform/configuration-management-database-cmdb/c_CIRelationships.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "c",
+            "explanation": "Imports are one source, but not the only one.",
+            "reference": "https://www.servicenow.com/docs/r/australia/servicenow-platform/configuration-management-database-cmdb/c_CIRelationships.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Opening an incident doesn't create CI relationships.",
+            "reference": "https://www.servicenow.com/docs/r/australia/servicenow-platform/configuration-management-database-cmdb/c_CIRelationships.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/servicenow-platform/configuration-management-database-cmdb/c_CIRelationships.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "c_CIRelationships",
+          "section": "CI relationships in the CMDB",
+          "url": "https://www.servicenow.com/docs/r/australia/servicenow-platform/configuration-management-database-cmdb/c_CIRelationships.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/servicenow-platform/configuration-management-database-cmdb/c_CIRelationships.md",
+        "excerpt": "If you use Discovery, many relationships can be automatically loaded into the system through the discovery process. … by launching the CI relationship editor from the CI form"
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Database Management and Platform Security",
+        "domainSlug": "database-administration",
+        "domainPercentage": 30,
+        "subtopics": [
+          "CMDB and CSDM"
+        ],
+        "tags": [
+          "cmdb",
+          "relationships"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-db-234",
+      "certification": "csa",
+      "topic": "database-administration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_select",
+      "question": "Which table extension models does the ServiceNow AI Platform offer? (Choose three.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Table per class"
+        },
+        {
+          "id": "b",
+          "text": "Table per hierarchy"
+        },
+        {
+          "id": "c",
+          "text": "Table per partition"
+        },
+        {
+          "id": "d",
+          "text": "Table per field"
+        },
+        {
+          "id": "e",
+          "text": "Table per scope"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b",
+        "c"
+      ],
+      "explanation": {
+        "correct": "The platform offers three extension models: table per class, table per hierarchy, and table per partition. The model determines how many database tables are created, how fields are derived from parent classes, and how records are replicated from child classes. See https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/table-extension-and-classes.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "d",
+            "explanation": "Table per field is not an extension model.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/table-extension-and-classes.html"
+          },
+          {
+            "choiceId": "e",
+            "explanation": "Table per scope is not an extension model.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/table-extension-and-classes.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/table-extension-and-classes.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "table-extension-and-classes",
+          "section": "Table extension and classes",
+          "url": "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/table-extension-and-classes.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/platform-administration/table-administration-and-data-management/table-extension-and-classes.md",
+        "excerpt": "Table per class … Table per hierarchy … Table per partition"
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Database Management and Platform Security",
+        "domainSlug": "database-administration",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Data Schema"
+        ],
+        "tags": [
+          "tables",
+          "extension models"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-db-235",
+      "certification": "csa",
+      "topic": "database-administration",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What does the Class [sys_class_name] system field indicate on an extensible table?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Which child table contains the record"
+        },
+        {
+          "id": "b",
+          "text": "The CSS class used to render the form"
+        },
+        {
+          "id": "c",
+          "text": "The user role required to read the record"
+        },
+        {
+          "id": "d",
+          "text": "The application scope of the table"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "On an extensible table, Class [sys_class_name] is a field that indicates which child table contains the record. See https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/r_GlobalDefaultFields.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "It has nothing to do with CSS styling.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/r_GlobalDefaultFields.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Roles are set in ACLs, not in this field.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/r_GlobalDefaultFields.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Scope isn't stored in sys_class_name.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/r_GlobalDefaultFields.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/r_GlobalDefaultFields.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "r_GlobalDefaultFields",
+          "section": "Global default fields",
+          "url": "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/r_GlobalDefaultFields.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/platform-administration/table-administration-and-data-management/r_GlobalDefaultFields.md",
+        "excerpt": "If the table is extensible, a string field that indicates which child table contains the record."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Database Management and Platform Security",
+        "domainSlug": "database-administration",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Data Schema"
+        ],
+        "tags": [
+          "system fields",
+          "sys_class_name"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-db-236",
+      "certification": "csa",
+      "topic": "database-administration",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "An incident import sets the Caller field, and the import ends up updating the sys_user table. What is this called?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A foreign record insert"
+        },
+        {
+          "id": "b",
+          "text": "A coalesce collision"
+        },
+        {
+          "id": "c",
+          "text": "A transform rollback"
+        },
+        {
+          "id": "d",
+          "text": "An onComplete event"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "A foreign record insert happens when an import changes a table that isn't the import's target table. It happens when a reference field is updated; for example, setting the caller on an incident actually updates the sys_user table. See https://www.servicenow.com/docs/r/australia/integrate-applications/system-import-sets/c_ImportSetsKeyConcepts.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Coalesce matches rows to existing target records; this isn't a collision.",
+            "reference": "https://www.servicenow.com/docs/r/australia/integrate-applications/system-import-sets/c_ImportSetsKeyConcepts.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Nothing is rolled back here.",
+            "reference": "https://www.servicenow.com/docs/r/australia/integrate-applications/system-import-sets/c_ImportSetsKeyConcepts.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "onComplete is a transform script event that runs at the end of an import.",
+            "reference": "https://www.servicenow.com/docs/r/australia/integrate-applications/system-import-sets/c_ImportSetsKeyConcepts.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/integrate-applications/system-import-sets/c_ImportSetsKeyConcepts.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "c_ImportSetsKeyConcepts",
+          "section": "Import sets key concepts",
+          "url": "https://www.servicenow.com/docs/r/australia/integrate-applications/system-import-sets/c_ImportSetsKeyConcepts.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/integrate-applications/system-import-sets/c_ImportSetsKeyConcepts.md",
+        "excerpt": "when updating a value for the caller on an incident, the import is actually updating the sys_user table."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Database Management and Platform Security",
+        "domainSlug": "database-administration",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Importing Data"
+        ],
+        "tags": [
+          "import sets",
+          "foreign record insert"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
       }
     },
     {
@@ -222,9 +3189,9 @@
         ]
       },
       "references": [
-        "ServiceNow Reference Fields"
+        "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1"
       ],
-      "isFree": true,
+      "isFree": false,
       "source": {
         "type": "course",
         "course": {
@@ -239,11 +3206,11 @@
       },
       "labels": {
         "certification": "csa",
-        "domain": "Database Administration",
+        "domain": "Database Management and Platform Security",
         "domainSlug": "database-administration",
-        "domainPercentage": 12,
+        "domainPercentage": 30,
         "subtopics": [
-          "Reference fields"
+          "Data Schema"
         ],
         "tags": [
           "reference field",
@@ -307,9 +3274,9 @@
         ]
       },
       "references": [
-        "ServiceNow Table Extension"
+        "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1"
       ],
-      "isFree": true,
+      "isFree": false,
       "source": {
         "type": "course",
         "course": {
@@ -324,11 +3291,11 @@
       },
       "labels": {
         "certification": "csa",
-        "domain": "Database Administration",
+        "domain": "Database Management and Platform Security",
         "domainSlug": "database-administration",
-        "domainPercentage": 12,
+        "domainPercentage": 30,
         "subtopics": [
-          "Table inheritance"
+          "Data Schema"
         ],
         "tags": [
           "table extension",
@@ -392,7 +3359,7 @@
         ]
       },
       "references": [
-        "ServiceNow Task Table"
+        "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1"
       ],
       "isFree": false,
       "source": {
@@ -409,102 +3376,17 @@
       },
       "labels": {
         "certification": "csa",
-        "domain": "Database Administration",
+        "domain": "Database Management and Platform Security",
         "domainSlug": "database-administration",
-        "domainPercentage": 12,
+        "domainPercentage": 30,
         "subtopics": [
-          "Table inheritance"
+          "Data Schema"
         ],
         "tags": [
           "task table",
           "incident",
           "problem",
           "change"
-        ]
-      },
-      "meta": {
-        "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
-      }
-    },
-    {
-      "id": "csa-db-006",
-      "certification": "csa",
-      "topic": "database-administration",
-      "cognitiveLevel": "knowledge",
-      "type": "multiple_choice",
-      "question": "What is a base table in ServiceNow?",
-      "options": [
-        {
-          "id": "a",
-          "text": "A table that has been deleted"
-        },
-        {
-          "id": "b",
-          "text": "A table that serves as a foundation for other tables but isn't an extension itself"
-        },
-        {
-          "id": "c",
-          "text": "A temporary table for testing"
-        },
-        {
-          "id": "d",
-          "text": "A table that cannot have child tables"
-        }
-      ],
-      "correctAnswers": [
-        "b"
-      ],
-      "explanation": {
-        "correct": "A base table serves as a foundation for other tables but isn't an extension itself. A parent table without a parent is a base class. It can also be a parent and/or core table. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1",
-        "wrongAnswers": [
-          {
-            "choiceId": "a",
-            "explanation": "Base tables are active tables, not deleted ones.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1"
-          },
-          {
-            "choiceId": "c",
-            "explanation": "Base tables are permanent production tables, not temporary.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1"
-          },
-          {
-            "choiceId": "d",
-            "explanation": "Base tables can have child tables; that's often their purpose.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1"
-          }
-        ]
-      },
-      "references": [
-        "ServiceNow Base Tables"
-      ],
-      "isFree": false,
-      "source": {
-        "type": "course",
-        "course": {
-          "courseSlug": "servicenow-administration-fundamentals-xanadu",
-          "moduleTitle": "SNAF Module 4: Manage data",
-          "lessonSlug": "01-manage-data",
-          "lessonTitle": "Manage data",
-          "url": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1"
-        },
-        "path": "sn-course-scraper/scraped-courses/servicenow-administration-fundamentals-xanadu/01-manage-data.md",
-        "excerpt": "Base table serves as a foundation for other tables, but isn't an extension itself."
-      },
-      "labels": {
-        "certification": "csa",
-        "domain": "Database Administration",
-        "domainSlug": "database-administration",
-        "domainPercentage": 12,
-        "subtopics": [
-          "Table inheritance"
-        ],
-        "tags": [
-          "base table",
-          "foundation",
-          "table hierarchy"
         ]
       },
       "meta": {
@@ -563,7 +3445,7 @@
         ]
       },
       "references": [
-        "ServiceNow Schema Map"
+        "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1"
       ],
       "isFree": false,
       "source": {
@@ -580,11 +3462,11 @@
       },
       "labels": {
         "certification": "csa",
-        "domain": "Database Administration",
+        "domain": "Database Management and Platform Security",
         "domainSlug": "database-administration",
-        "domainPercentage": 12,
+        "domainPercentage": 30,
         "subtopics": [
-          "Tables and table relationships"
+          "Data Schema"
         ],
         "tags": [
           "schema map",
@@ -648,7 +3530,7 @@
         ]
       },
       "references": [
-        "ServiceNow Field Names"
+        "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1"
       ],
       "isFree": false,
       "source": {
@@ -665,269 +3547,16 @@
       },
       "labels": {
         "certification": "csa",
-        "domain": "Database Administration",
+        "domain": "Database Management and Platform Security",
         "domainSlug": "database-administration",
-        "domainPercentage": 12,
+        "domainPercentage": 30,
         "subtopics": [
-          "Fields and field types"
+          "Data Schema"
         ],
         "tags": [
           "field name",
           "field label",
           "data dictionary"
-        ]
-      },
-      "meta": {
-        "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
-      }
-    },
-    {
-      "id": "csa-db-009",
-      "certification": "csa",
-      "topic": "database-administration",
-      "cognitiveLevel": "knowledge",
-      "type": "multiple_choice",
-      "question": "What type of field allows selecting multiple records from a table?",
-      "options": [
-        {
-          "id": "a",
-          "text": "Reference field"
-        },
-        {
-          "id": "b",
-          "text": "Choice field"
-        },
-        {
-          "id": "c",
-          "text": "GlideList field"
-        },
-        {
-          "id": "d",
-          "text": "String field"
-        }
-      ],
-      "correctAnswers": [
-        "c"
-      ],
-      "explanation": {
-        "correct": "GlideList allows selecting multiple records from a table. For example, the Watch List field on the Incident table can link to multiple User table records. Reference fields only allow selecting one record. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1",
-        "wrongAnswers": [
-          {
-            "choiceId": "a",
-            "explanation": "Reference fields allow selecting only one record from a specific table.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1"
-          },
-          {
-            "choiceId": "b",
-            "explanation": "Choice fields provide predefined value options, not table record selections.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1"
-          },
-          {
-            "choiceId": "d",
-            "explanation": "String fields hold text values, not record references.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1"
-          }
-        ]
-      },
-      "references": [
-        "ServiceNow GlideList"
-      ],
-      "isFree": false,
-      "source": {
-        "type": "course",
-        "course": {
-          "courseSlug": "servicenow-administration-fundamentals-xanadu",
-          "moduleTitle": "SNAF Module 4: Manage data",
-          "lessonSlug": "01-manage-data",
-          "lessonTitle": "Manage data",
-          "url": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1"
-        },
-        "path": "sn-course-scraper/scraped-courses/servicenow-administration-fundamentals-xanadu/01-manage-data.md",
-        "excerpt": "GlideList allows selecting multiple records from a table. Example, Watch List field on the Incident table can link to multiple User table records."
-      },
-      "labels": {
-        "certification": "csa",
-        "domain": "Database Administration",
-        "domainSlug": "database-administration",
-        "domainPercentage": 12,
-        "subtopics": [
-          "Fields and field types",
-          "Reference fields"
-        ],
-        "tags": [
-          "GlideList",
-          "multiple select",
-          "watch list"
-        ]
-      },
-      "meta": {
-        "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
-      }
-    },
-    {
-      "id": "csa-db-010",
-      "certification": "csa",
-      "topic": "database-administration",
-      "cognitiveLevel": "understanding",
-      "type": "multiple_choice",
-      "question": "What is the difference between scoped apps and global apps?",
-      "options": [
-        {
-          "id": "a",
-          "text": "Scoped apps are free; global apps require licensing"
-        },
-        {
-          "id": "b",
-          "text": "Scoped apps are sandboxed with restricted API; global apps have access to all parts of the system"
-        },
-        {
-          "id": "c",
-          "text": "Global apps are more secure than scoped apps"
-        },
-        {
-          "id": "d",
-          "text": "There is no difference"
-        }
-      ],
-      "correctAnswers": [
-        "b"
-      ],
-      "explanation": {
-        "correct": "Scoped apps are sandboxed from the system at large and utilize a restricted API to minimize or prevent damage outside their scope. Global apps have access to all parts of the system and can cause damage/impact beyond their intent. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1",
-        "wrongAnswers": [
-          {
-            "choiceId": "a",
-            "explanation": "The difference is about access scope, not licensing costs.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1"
-          },
-          {
-            "choiceId": "c",
-            "explanation": "Scoped apps are more secure because they have restricted access.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1"
-          },
-          {
-            "choiceId": "d",
-            "explanation": "There is a significant difference in system access and security.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1"
-          }
-        ]
-      },
-      "references": [
-        "ServiceNow Application Scopes"
-      ],
-      "isFree": false,
-      "source": {
-        "type": "course",
-        "course": {
-          "courseSlug": "servicenow-administration-fundamentals-xanadu",
-          "moduleTitle": "SNAF Module 4: Manage data",
-          "lessonSlug": "01-manage-data",
-          "lessonTitle": "Manage data",
-          "url": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1"
-        },
-        "path": "sn-course-scraper/scraped-courses/servicenow-administration-fundamentals-xanadu/01-manage-data.md",
-        "excerpt": "Scoped apps are sandboxed from the system at large and utilize a restricted API to minimize or prevent damage to anything outside of their scope."
-      },
-      "labels": {
-        "certification": "csa",
-        "domain": "Database Administration",
-        "domainSlug": "database-administration",
-        "domainPercentage": 12,
-        "subtopics": [
-          "Tables and table relationships"
-        ],
-        "tags": [
-          "scoped apps",
-          "global apps",
-          "sandbox",
-          "security"
-        ]
-      },
-      "meta": {
-        "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
-      }
-    },
-    {
-      "id": "csa-db-011",
-      "certification": "csa",
-      "topic": "database-administration",
-      "cognitiveLevel": "application",
-      "type": "multiple_select",
-      "question": "In the schema map, what do tables with blue bars indicate? (Choose two)",
-      "options": [
-        {
-          "id": "a",
-          "text": "Tables that extend the focused table"
-        },
-        {
-          "id": "b",
-          "text": "Tables that are referenced by the focused table"
-        },
-        {
-          "id": "c",
-          "text": "Child tables of the focused table"
-        },
-        {
-          "id": "d",
-          "text": "Deleted tables"
-        }
-      ],
-      "correctAnswers": [
-        "a",
-        "c"
-      ],
-      "explanation": {
-        "correct": "In the schema map, tables with blue bars are tables that extend the focused table (child tables). Tables with red bars are tables that are referenced by the focused table. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1",
-        "wrongAnswers": [
-          {
-            "choiceId": "b",
-            "explanation": "Referenced tables are shown with red bars, not blue.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1"
-          },
-          {
-            "choiceId": "d",
-            "explanation": "Deleted tables don't appear in the schema map.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1"
-          }
-        ]
-      },
-      "references": [
-        "ServiceNow Schema Map"
-      ],
-      "isFree": false,
-      "source": {
-        "type": "course",
-        "course": {
-          "courseSlug": "servicenow-administration-fundamentals-xanadu",
-          "moduleTitle": "SNAF Module 4: Manage data",
-          "lessonSlug": "01-manage-data",
-          "lessonTitle": "Manage data",
-          "url": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1"
-        },
-        "path": "sn-course-scraper/scraped-courses/servicenow-administration-fundamentals-xanadu/01-manage-data.md",
-        "excerpt": "Tables with blue bars, including problem and change phase, are tables that extend the task table."
-      },
-      "labels": {
-        "certification": "csa",
-        "domain": "Database Administration",
-        "domainSlug": "database-administration",
-        "domainPercentage": 12,
-        "subtopics": [
-          "Tables and table relationships"
-        ],
-        "tags": [
-          "schema map",
-          "blue bars",
-          "table extension"
         ]
       },
       "meta": {
@@ -986,7 +3615,7 @@
         ]
       },
       "references": [
-        "ServiceNow Document ID Fields"
+        "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1"
       ],
       "isFree": false,
       "source": {
@@ -1003,11 +3632,11 @@
       },
       "labels": {
         "certification": "csa",
-        "domain": "Database Administration",
+        "domain": "Database Management and Platform Security",
         "domainSlug": "database-administration",
-        "domainPercentage": 12,
+        "domainPercentage": 30,
         "subtopics": [
-          "Fields and field types"
+          "Data Schema"
         ],
         "tags": [
           "document ID",
@@ -1023,160 +3652,12 @@
       }
     },
     {
-      "id": "csa-db-013",
-      "certification": "csa",
-      "topic": "database-administration",
-      "cognitiveLevel": "knowledge",
-      "type": "multiple_choice",
-      "question": "What is the unique identifier for every record in ServiceNow?",
-      "options": [
-        {
-          "id": "a",
-          "text": "A record number (e.g., INC0010001)"
-        },
-        {
-          "id": "b",
-          "text": "A 32-character sys_id"
-        },
-        {
-          "id": "c",
-          "text": "A combination of table name and row number"
-        },
-        {
-          "id": "d",
-          "text": "An auto-generated UUID"
-        }
-      ],
-      "correctAnswers": [
-        "b"
-      ],
-      "explanation": {
-        "correct": "Every record in ServiceNow has a unique 32-character ID called a sys_id. Record numbers can auto-increment and their format can be changed, but the sys_id is the true unique identifier.",
-        "wrongAnswers": [
-          {
-            "choiceId": "a",
-            "explanation": "Record numbers like INC0010001 are display values that can be reformatted; the sys_id is the true unique identifier."
-          },
-          {
-            "choiceId": "c",
-            "explanation": "ServiceNow uses a 32-character sys_id, not a table name/row number combination."
-          },
-          {
-            "choiceId": "d",
-            "explanation": "While similar in concept, ServiceNow specifically uses a 32-character sys_id, not a standard UUID format."
-          }
-        ]
-      },
-      "isFree": false,
-      "source": {
-        "type": "course",
-        "course": {
-          "courseSlug": "servicenow-administration-fundamentals-xanadu",
-          "lessonTitle": "Manage data"
-        }
-      },
-      "labels": {
-        "certification": "csa",
-        "domain": "Database Administration",
-        "domainSlug": "database-administration",
-        "domainPercentage": 12,
-        "subtopics": [
-          "sys_id"
-        ],
-        "tags": [
-          "sys_id",
-          "unique identifier",
-          "records"
-        ]
-      },
-      "meta": {
-        "generatedAt": "2026-03-16T02:00:00Z",
-        "version": "1.1",
-        "release": "Xanadu",
-        "reviewed": false
-      }
-    },
-    {
-      "id": "csa-db-014",
-      "certification": "csa",
-      "topic": "database-administration",
-      "cognitiveLevel": "comprehension",
-      "type": "multiple_choice",
-      "question": "What is the difference between a base table and a core table in ServiceNow?",
-      "options": [
-        {
-          "id": "a",
-          "text": "A base table is always a core table, but a core table is not always a base table"
-        },
-        {
-          "id": "b",
-          "text": "A base table serves as a foundation for extensions and is not itself an extension, while a core table comes with ServiceNow from the start"
-        },
-        {
-          "id": "c",
-          "text": "Base tables cannot have child tables, while core tables can"
-        },
-        {
-          "id": "d",
-          "text": "There is no difference; the terms are interchangeable"
-        }
-      ],
-      "correctAnswers": [
-        "b"
-      ],
-      "explanation": {
-        "correct": "A core table comes with ServiceNow (existing from the start) and can be a parent, child, or base table. A base table serves as a foundation for other tables but isn't itself an extension. A table can be both core and base.",
-        "wrongAnswers": [
-          {
-            "choiceId": "a",
-            "explanation": "A base table is not always a core table \u2014 custom tables can also be base tables."
-          },
-          {
-            "choiceId": "c",
-            "explanation": "Base tables can and often do have child tables \u2014 that's their primary purpose."
-          },
-          {
-            "choiceId": "d",
-            "explanation": "The terms have distinct meanings: core refers to origin (built-in), base refers to hierarchy (foundation)."
-          }
-        ]
-      },
-      "isFree": false,
-      "source": {
-        "type": "course",
-        "course": {
-          "courseSlug": "servicenow-administration-fundamentals-xanadu",
-          "lessonTitle": "Manage data"
-        }
-      },
-      "labels": {
-        "certification": "csa",
-        "domain": "Database Administration",
-        "domainSlug": "database-administration",
-        "domainPercentage": 12,
-        "subtopics": [
-          "Table types"
-        ],
-        "tags": [
-          "base table",
-          "core table",
-          "table hierarchy"
-        ]
-      },
-      "meta": {
-        "generatedAt": "2026-03-16T02:00:00Z",
-        "version": "1.1",
-        "release": "Xanadu",
-        "reviewed": false
-      }
-    },
-    {
       "id": "csa-db-015",
       "certification": "csa",
       "topic": "database-administration",
       "cognitiveLevel": "knowledge",
       "type": "multiple_select",
-      "question": "Which of the following are types of field relationships in ServiceNow? (Choose 2)",
+      "question": "Which of the following are types of field relationships in ServiceNow? (Choose two.)",
       "options": [
         {
           "id": "a",
@@ -1200,21 +3681,30 @@
         "b"
       ],
       "explanation": {
-        "correct": "ServiceNow supports one-to-many relationships (using reference fields like Caller on Incident linking to User) and many-to-many relationships (connecting two or more tables so related records are visible in both, like students and classes).",
+        "correct": "ServiceNow supports one-to-many relationships (using reference fields like Caller on Incident linking to User) and many-to-many relationships (connecting two or more tables so related records are visible in both, like students and classes). See https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/table-relationships.html",
         "wrongAnswers": [
           {
             "choiceId": "c",
-            "explanation": "One-to-one-to-many is not a standard relationship type in ServiceNow."
+            "explanation": "One-to-one-to-many is not a standard relationship type in ServiceNow.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/table-relationships.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Circular reference is not a defined relationship type in ServiceNow's data model."
+            "explanation": "Circular reference is not a defined relationship type in ServiceNow's data model.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/table-relationships.html"
           }
         ]
       },
       "isFree": false,
       "source": {
-        "type": "course",
+        "type": "both",
+        "documentation": {
+          "docSlug": "table-relationships",
+          "section": "Table relationships",
+          "url": "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/table-relationships.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/platform-administration/table-administration-and-data-management/table-relationships.md",
+        "excerpt": "You can create relationships between tables by extending tables, referencing records in another table, creating many-to-many relationships, and joining tables in a database view.",
         "course": {
           "courseSlug": "servicenow-administration-fundamentals-xanadu",
           "lessonTitle": "Manage data"
@@ -1222,11 +3712,11 @@
       },
       "labels": {
         "certification": "csa",
-        "domain": "Database Administration",
+        "domain": "Database Management and Platform Security",
         "domainSlug": "database-administration",
-        "domainPercentage": 12,
+        "domainPercentage": 30,
         "subtopics": [
-          "Table relationships"
+          "Data Schema"
         ],
         "tags": [
           "one-to-many",
@@ -1236,668 +3726,14 @@
       },
       "meta": {
         "generatedAt": "2026-03-16T02:00:00Z",
-        "version": "1.1",
-        "release": "Xanadu",
-        "reviewed": false
-      }
-    },
-    {
-      "id": "csa-db-016",
-      "certification": "csa",
-      "topic": "database-administration",
-      "cognitiveLevel": "application",
-      "type": "multiple_choice",
-      "question": "What is the purpose of coalescing during a data import in ServiceNow?",
-      "options": [
-        {
-          "id": "a",
-          "text": "To merge multiple import set tables into one"
-        },
-        {
-          "id": "b",
-          "text": "To prevent duplicate records by using fields as unique keys"
-        },
-        {
-          "id": "c",
-          "text": "To convert data types during transformation"
-        },
-        {
-          "id": "d",
-          "text": "To automatically map fields between source and target tables"
-        }
-      ],
-      "correctAnswers": [
-        "b"
-      ],
-      "explanation": {
-        "correct": "Coalesce prevents duplicate records during data import. It makes a field act as a unique key \u2014 if a match is found, the existing record is updated; if unmatched, a new record is created. Without coalescing, all imported rows are treated as new records.",
-        "wrongAnswers": [
-          {
-            "choiceId": "a",
-            "explanation": "Coalescing is about preventing duplicates in the target table, not merging import set tables."
-          },
-          {
-            "choiceId": "c",
-            "explanation": "Data type conversion is handled by the transform map, not coalescing."
-          },
-          {
-            "choiceId": "d",
-            "explanation": "Automatic field mapping is done by the mapping utility, not coalescing."
-          }
-        ]
-      },
-      "isFree": false,
-      "source": {
-        "type": "course",
-        "course": {
-          "courseSlug": "servicenow-administration-fundamentals-xanadu",
-          "lessonTitle": "Import data"
-        }
-      },
-      "labels": {
-        "certification": "csa",
-        "domain": "Database Administration",
-        "domainSlug": "database-administration",
-        "domainPercentage": 12,
-        "subtopics": [
-          "Import sets and coalescing"
-        ],
-        "tags": [
-          "coalesce",
-          "import sets",
-          "data import",
-          "duplicates"
-        ]
-      },
-      "meta": {
-        "generatedAt": "2026-03-16T02:00:00Z",
-        "version": "1.1",
-        "release": "Xanadu",
-        "reviewed": false
-      }
-    },
-    {
-      "id": "csa-db-017",
-      "certification": "csa",
-      "topic": "database-administration",
-      "cognitiveLevel": "knowledge",
-      "type": "multiple_choice",
-      "question": "What do update sets capture in ServiceNow?",
-      "options": [
-        {
-          "id": "a",
-          "text": "Both configuration changes and data records like incidents"
-        },
-        {
-          "id": "b",
-          "text": "Only data records created during the update set period"
-        },
-        {
-          "id": "c",
-          "text": "Configuration and customization changes, but NOT data records"
-        },
-        {
-          "id": "d",
-          "text": "Only changes made by administrators with elevated privileges"
-        }
-      ],
-      "correctAnswers": [
-        "c"
-      ],
-      "explanation": {
-        "correct": "Update sets capture customization or configuration changes like report definitions, but not actual data records. New incidents or change records are not included. To move data records, use the Export XML function.",
-        "wrongAnswers": [
-          {
-            "choiceId": "a",
-            "explanation": "Update sets do NOT capture data records like incidents or change requests \u2014 only configuration changes."
-          },
-          {
-            "choiceId": "b",
-            "explanation": "Update sets capture configuration changes, not data records."
-          },
-          {
-            "choiceId": "d",
-            "explanation": "Update sets capture all configuration changes regardless of whether elevated privileges were used."
-          }
-        ]
-      },
-      "isFree": false,
-      "source": {
-        "type": "course",
-        "course": {
-          "courseSlug": "servicenow-administration-fundamentals-xanadu",
-          "lessonTitle": "Migration and integration"
-        }
-      },
-      "labels": {
-        "certification": "csa",
-        "domain": "Database Administration",
-        "domainSlug": "database-administration",
-        "domainPercentage": 12,
-        "subtopics": [
-          "Update sets"
-        ],
-        "tags": [
-          "update sets",
-          "configuration",
-          "migration"
-        ]
-      },
-      "meta": {
-        "generatedAt": "2026-03-16T02:00:00Z",
-        "version": "1.1",
-        "release": "Xanadu",
-        "reviewed": false
-      }
-    },
-    {
-      "id": "csa-db-018",
-      "certification": "csa",
-      "topic": "database-administration",
-      "cognitiveLevel": "comprehension",
-      "type": "multiple_choice",
-      "question": "What is the difference between global scope and application scope in ServiceNow?",
-      "options": [
-        {
-          "id": "a",
-          "text": "Global scope is for production only; application scope is for development"
-        },
-        {
-          "id": "b",
-          "text": "Global scope has access to all parts of the system; scoped apps are sandboxed with restricted API access"
-        },
-        {
-          "id": "c",
-          "text": "Application scope provides more permissions than global scope"
-        },
-        {
-          "id": "d",
-          "text": "There is no functional difference between the two"
-        }
-      ],
-      "correctAnswers": [
-        "b"
-      ],
-      "explanation": {
-        "correct": "Scoped apps are sandboxed from the system at large and use a restricted API to minimize damage outside their scope. Global apps are the default scope and have access to all parts of the system, which means they can potentially cause impact beyond their intent.",
-        "wrongAnswers": [
-          {
-            "choiceId": "a",
-            "explanation": "Both scopes can be used in any instance type, not limited to production or development."
-          },
-          {
-            "choiceId": "c",
-            "explanation": "Global scope has broader access; application scope is intentionally restricted."
-          },
-          {
-            "choiceId": "d",
-            "explanation": "There is a significant functional difference in access and security between the two."
-          }
-        ]
-      },
-      "isFree": false,
-      "source": {
-        "type": "course",
-        "course": {
-          "courseSlug": "servicenow-administration-fundamentals-xanadu",
-          "lessonTitle": "Manage data"
-        }
-      },
-      "labels": {
-        "certification": "csa",
-        "domain": "Database Administration",
-        "domainSlug": "database-administration",
-        "domainPercentage": 12,
-        "subtopics": [
-          "Application scoping"
-        ],
-        "tags": [
-          "global scope",
-          "application scope",
-          "sandboxing"
-        ]
-      },
-      "meta": {
-        "generatedAt": "2026-03-16T02:00:00Z",
-        "version": "1.1",
-        "release": "Xanadu",
-        "reviewed": false
-      }
-    },
-    {
-      "id": "csa-db-019",
-      "cognitiveLevel": "application",
-      "type": "multiple_choice",
-      "question": "An administrator needs to import 5,000 user records from a CSV file. After the import, several records have incorrect department values. Which step in the import process most likely caused this issue?",
-      "options": [
-        {
-          "id": "a",
-          "text": "The Transform Map field mapping for Department used an incorrect coalesce field"
-        },
-        {
-          "id": "b",
-          "text": "The CSV file was too large to process"
-        },
-        {
-          "id": "c",
-          "text": "The import set table was not created"
-        },
-        {
-          "id": "d",
-          "text": "The user running the import lacked the admin role"
-        }
-      ],
-      "correctAnswers": [
-        "a"
-      ],
-      "explanation": {
-        "correct": "When reference field mappings (like Department) use incorrect coalesce fields in the Transform Map, records may map to wrong values or create duplicates. The coalesce field determines how imported values match existing reference records.",
-        "wrongAnswers": [
-          {
-            "choiceId": "b",
-            "explanation": "ServiceNow handles large CSV imports; 5,000 records is well within limits."
-          },
-          {
-            "choiceId": "c",
-            "explanation": "If the import set table wasn't created, the import would fail entirely, not produce incorrect values."
-          },
-          {
-            "choiceId": "d",
-            "explanation": "The import_admin or admin role is needed to run imports, but role issues would prevent the import, not cause incorrect mappings."
-          }
-        ]
-      },
-      "certification": "csa",
-      "topic": "database-administration",
-      "references": [],
-      "isFree": false,
-      "source": {
-        "type": "generated",
-        "course": {
-          "courseSlug": "servicenow-administration-fundamentals-xanadu",
-          "moduleTitle": "CSA Expansion",
-          "lessonSlug": "database-administration",
-          "lessonTitle": "CSA database-administration expansion questions",
-          "url": ""
-        },
-        "path": "",
-        "excerpt": ""
-      },
-      "labels": {
-        "certification": "csa",
-        "domain": "database-administration",
-        "domainSlug": "database-administration",
-        "subtopics": [],
-        "tags": []
-      },
-      "meta": {
-        "generatedAt": "2026-03-31T02:09:00Z",
         "version": "2.0",
-        "release": "Xanadu",
-        "reviewed": false
-      }
-    },
-    {
-      "id": "csa-db-020",
-      "cognitiveLevel": "knowledge",
-      "type": "multiple_choice",
-      "question": "Which two field types in ServiceNow store references to records in other tables? (Choose 2)",
-      "options": [
-        {
-          "id": "a",
-          "text": "Reference field"
-        },
-        {
-          "id": "b",
-          "text": "Glide List field"
-        },
-        {
-          "id": "c",
-          "text": "String field"
-        },
-        {
-          "id": "d",
-          "text": "Integer field"
-        }
-      ],
-      "correctAnswers": [
-        "a",
-        "b"
-      ],
-      "explanation": {
-        "correct": "Reference fields store a single reference (sys_id) to a record in another table. Glide List fields store multiple references (comma-separated sys_ids) to records in another table.",
-        "wrongAnswers": [
-          {
-            "choiceId": "c",
-            "explanation": "String fields store plain text values, not record references."
-          },
-          {
-            "choiceId": "d",
-            "explanation": "Integer fields store numeric values, not references to other records."
-          }
-        ]
+        "release": "Australia",
+        "reviewed": false,
+        "reworkedAt": "2026-09-27T00:00:00Z"
       },
-      "certification": "csa",
-      "topic": "database-administration",
-      "references": [],
-      "isFree": false,
-      "source": {
-        "type": "generated",
-        "course": {
-          "courseSlug": "servicenow-administration-fundamentals-xanadu",
-          "moduleTitle": "CSA Expansion",
-          "lessonSlug": "database-administration",
-          "lessonTitle": "CSA database-administration expansion questions",
-          "url": ""
-        },
-        "path": "",
-        "excerpt": ""
-      },
-      "labels": {
-        "certification": "csa",
-        "domain": "database-administration",
-        "domainSlug": "database-administration",
-        "subtopics": [],
-        "tags": []
-      },
-      "meta": {
-        "generatedAt": "2026-03-31T02:09:00Z",
-        "version": "2.0",
-        "release": "Xanadu",
-        "reviewed": false
-      }
-    },
-    {
-      "id": "csa-db-021",
-      "cognitiveLevel": "understanding",
-      "type": "multiple_choice",
-      "question": "What is the purpose of a 'coalesce' field in a Transform Map?",
-      "options": [
-        {
-          "id": "a",
-          "text": "It determines whether to update an existing record or insert a new one during import"
-        },
-        {
-          "id": "b",
-          "text": "It combines multiple source columns into one target field"
-        },
-        {
-          "id": "c",
-          "text": "It encrypts sensitive data during import"
-        },
-        {
-          "id": "d",
-          "text": "It validates data format before insertion"
-        }
-      ],
-      "correctAnswers": [
-        "a"
-      ],
-      "explanation": {
-        "correct": "A coalesce field acts as a unique identifier during data import. If a record with a matching coalesce value exists, it's updated; if not, a new record is inserted. This prevents duplicate records during imports.",
-        "wrongAnswers": [
-          {
-            "choiceId": "b",
-            "explanation": "Combining columns is done through field mapping scripts, not coalescing."
-          },
-          {
-            "choiceId": "c",
-            "explanation": "Data encryption is handled by encryption contexts, not coalesce fields."
-          },
-          {
-            "choiceId": "d",
-            "explanation": "Data validation can be done through transform scripts, not the coalesce setting itself."
-          }
-        ]
-      },
-      "certification": "csa",
-      "topic": "database-administration",
-      "references": [],
-      "isFree": false,
-      "source": {
-        "type": "generated",
-        "course": {
-          "courseSlug": "servicenow-administration-fundamentals-xanadu",
-          "moduleTitle": "CSA Expansion",
-          "lessonSlug": "database-administration",
-          "lessonTitle": "CSA database-administration expansion questions",
-          "url": ""
-        },
-        "path": "",
-        "excerpt": ""
-      },
-      "labels": {
-        "certification": "csa",
-        "domain": "database-administration",
-        "domainSlug": "database-administration",
-        "subtopics": [],
-        "tags": []
-      },
-      "meta": {
-        "generatedAt": "2026-03-31T02:09:00Z",
-        "version": "2.0",
-        "release": "Xanadu",
-        "reviewed": false
-      }
-    },
-    {
-      "id": "csa-db-022",
-      "cognitiveLevel": "application",
-      "type": "multiple_choice",
-      "question": "An administrator wants to create a field that automatically calculates the number of days between the Opened date and the Resolved date on an incident. Which field type is most appropriate?",
-      "options": [
-        {
-          "id": "a",
-          "text": "Duration field with a calculated default value"
-        },
-        {
-          "id": "b",
-          "text": "Integer field with a Business Rule to calculate the value"
-        },
-        {
-          "id": "c",
-          "text": "Formula field that references the two date fields"
-        },
-        {
-          "id": "d",
-          "text": "String field with a UI Policy to display the calculation"
-        }
-      ],
-      "correctAnswers": [
-        "b"
-      ],
-      "explanation": {
-        "correct": "An Integer field populated by a Business Rule (before insert/update) that calculates the day difference between opened_at and resolved_at is the most reliable approach. Business Rules ensure the value is always accurate when the record is saved.",
-        "wrongAnswers": [
-          {
-            "choiceId": "a",
-            "explanation": "Duration fields store time spans but calculated default values only run on record creation, not on updates."
-          },
-          {
-            "choiceId": "c",
-            "explanation": "ServiceNow doesn't have a 'Formula field' type in the standard platform."
-          },
-          {
-            "choiceId": "d",
-            "explanation": "UI Policies control form display behavior; they don't calculate and store values in the database."
-          }
-        ]
-      },
-      "certification": "csa",
-      "topic": "database-administration",
-      "references": [],
-      "isFree": false,
-      "source": {
-        "type": "generated",
-        "course": {
-          "courseSlug": "servicenow-administration-fundamentals-xanadu",
-          "moduleTitle": "CSA Expansion",
-          "lessonSlug": "database-administration",
-          "lessonTitle": "CSA database-administration expansion questions",
-          "url": ""
-        },
-        "path": "",
-        "excerpt": ""
-      },
-      "labels": {
-        "certification": "csa",
-        "domain": "database-administration",
-        "domainSlug": "database-administration",
-        "subtopics": [],
-        "tags": []
-      },
-      "meta": {
-        "generatedAt": "2026-03-31T02:09:00Z",
-        "version": "2.0",
-        "release": "Xanadu",
-        "reviewed": false
-      }
-    },
-    {
-      "id": "csa-db-023",
-      "cognitiveLevel": "knowledge",
-      "type": "multiple_choice",
-      "question": "What is the maximum number of rows that can be displayed in a single list view by default in ServiceNow?",
-      "options": [
-        {
-          "id": "a",
-          "text": "20"
-        },
-        {
-          "id": "b",
-          "text": "100"
-        },
-        {
-          "id": "c",
-          "text": "500"
-        },
-        {
-          "id": "d",
-          "text": "Unlimited"
-        }
-      ],
-      "correctAnswers": [
-        "a"
-      ],
-      "explanation": {
-        "correct": "By default, ServiceNow displays 20 rows per page in list views. This can be changed by the user (up to the system maximum) or by an administrator through the glide.ui.per_page system property.",
-        "wrongAnswers": [
-          {
-            "choiceId": "b",
-            "explanation": "100 rows can be configured but is not the default setting."
-          },
-          {
-            "choiceId": "c",
-            "explanation": "500 is not the default; displaying this many rows would impact performance."
-          },
-          {
-            "choiceId": "d",
-            "explanation": "Lists always paginate; there is no unlimited display option by default."
-          }
-        ]
-      },
-      "certification": "csa",
-      "topic": "database-administration",
-      "references": [],
-      "isFree": false,
-      "source": {
-        "type": "generated",
-        "course": {
-          "courseSlug": "servicenow-administration-fundamentals-xanadu",
-          "moduleTitle": "CSA Expansion",
-          "lessonSlug": "database-administration",
-          "lessonTitle": "CSA database-administration expansion questions",
-          "url": ""
-        },
-        "path": "",
-        "excerpt": ""
-      },
-      "labels": {
-        "certification": "csa",
-        "domain": "database-administration",
-        "domainSlug": "database-administration",
-        "subtopics": [],
-        "tags": []
-      },
-      "meta": {
-        "generatedAt": "2026-03-31T02:09:00Z",
-        "version": "2.0",
-        "release": "Xanadu",
-        "reviewed": false
-      }
-    },
-    {
-      "id": "csa-db-024",
-      "cognitiveLevel": "understanding",
-      "type": "multiple_choice",
-      "question": "Which statement about table inheritance in ServiceNow is correct?",
-      "options": [
-        {
-          "id": "a",
-          "text": "Child tables inherit all fields and business logic from their parent table"
-        },
-        {
-          "id": "b",
-          "text": "Child tables share the same physical database table but cannot have additional fields"
-        },
-        {
-          "id": "c",
-          "text": "Parent table records are automatically duplicated in child tables"
-        },
-        {
-          "id": "d",
-          "text": "Table inheritance only works with the Task table"
-        }
-      ],
-      "correctAnswers": [
-        "a"
-      ],
-      "explanation": {
-        "correct": "In ServiceNow's table inheritance model, child tables (extensions) inherit all parent fields, ACLs, business rules, and other configurations. Child tables can also define additional fields specific to their needs.",
-        "wrongAnswers": [
-          {
-            "choiceId": "b",
-            "explanation": "Child tables CAN have additional fields beyond what the parent defines."
-          },
-          {
-            "choiceId": "c",
-            "explanation": "Records exist in one table; they are not duplicated across parent and child tables."
-          },
-          {
-            "choiceId": "d",
-            "explanation": "While Task is the most common example, any table can be extended to create inheritance hierarchies."
-          }
-        ]
-      },
-      "certification": "csa",
-      "topic": "database-administration",
-      "references": [],
-      "isFree": false,
-      "source": {
-        "type": "generated",
-        "course": {
-          "courseSlug": "servicenow-administration-fundamentals-xanadu",
-          "moduleTitle": "CSA Expansion",
-          "lessonSlug": "database-administration",
-          "lessonTitle": "CSA database-administration expansion questions",
-          "url": ""
-        },
-        "path": "",
-        "excerpt": ""
-      },
-      "labels": {
-        "certification": "csa",
-        "domain": "database-administration",
-        "domainSlug": "database-administration",
-        "subtopics": [],
-        "tags": []
-      },
-      "meta": {
-        "generatedAt": "2026-03-31T02:09:00Z",
-        "version": "2.0",
-        "release": "Xanadu",
-        "reviewed": false
-      }
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/table-relationships.html"
+      ]
     }
   ]
 }

@@ -51,7 +51,7 @@
         ]
       },
       "references": [
-        "ServiceNow Access Control Documentation"
+        "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1"
       ],
       "isFree": true,
       "source": {
@@ -68,11 +68,11 @@
       },
       "labels": {
         "certification": "csa",
-        "domain": "User Administration & Security",
-        "domainSlug": "user-administration",
-        "domainPercentage": 15,
+        "domain": "Database Management and Platform Security",
+        "domainSlug": "database-administration",
+        "domainPercentage": 30,
         "subtopics": [
-          "Access Control Lists (ACLs)"
+          "Application/Access Control"
         ],
         "tags": [
           "ACL",
@@ -89,20 +89,518 @@
       }
     },
     {
-      "id": "csa-ua-002",
+      "id": "csa-ua-201",
+      "certification": "csa",
+      "topic": "user-administration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_select",
+      "question": "Which elements does every access control list (ACL) specify? (Choose three.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "The decision type, rule type, and operation"
+        },
+        {
+          "id": "b",
+          "text": "The object being secured"
+        },
+        {
+          "id": "c",
+          "text": "The conditions required to access the object"
+        },
+        {
+          "id": "d",
+          "text": "The update set it was created in"
+        },
+        {
+          "id": "e",
+          "text": "The form view it applies to"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b",
+        "c"
+      ],
+      "explanation": {
+        "correct": "Every ACL specifies the decision type, rule type, and operation that define it; the object being secured; and the conditions required to access the object. See https://www.servicenow.com/docs/r/australia/platform-security/access-control/exploring-access-control-list.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "d",
+            "explanation": "Update sets capture changes but aren't part of an ACL's definition.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-security/access-control/exploring-access-control-list.html"
+          },
+          {
+            "choiceId": "e",
+            "explanation": "ACLs secure objects and operations, not form views.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-security/access-control/exploring-access-control-list.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/platform-security/access-control/exploring-access-control-list.html"
+      ],
+      "isFree": true,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "exploring-access-control-list",
+          "section": "Explore Access Control Lists",
+          "url": "https://www.servicenow.com/docs/r/australia/platform-security/access-control/exploring-access-control-list.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/platform-security/access-control/exploring-access-control-list.md",
+        "excerpt": "The decision type, rule type and operation which defines the ACL … The object being secured … The conditions required to access the object"
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Database Management and Platform Security",
+        "domainSlug": "database-administration",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Application/Access Control"
+        ],
+        "tags": [
+          "acl"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-ua-202",
+      "certification": "csa",
+      "topic": "user-administration",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "An ACL on the Incident table requires the itil role and also has the data condition [Incident state] [is not] [Closed]. A user with itil tries to update a closed incident. What happens?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Access is denied, because a user must pass all conditions in an access control"
+        },
+        {
+          "id": "b",
+          "text": "Access is granted, because the user has the required role"
+        },
+        {
+          "id": "c",
+          "text": "Access is granted only for read"
+        },
+        {
+          "id": "d",
+          "text": "The data condition is ignored when a role is listed"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "To gain access to an object and operation, a user must pass all the conditions listed in an access control, such as the required roles, security attributes, data conditions, and script. See https://www.servicenow.com/docs/r/australia/platform-security/access-control/exploring-access-control-list.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "The role alone isn't enough; every condition must pass.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-security/access-control/exploring-access-control-list.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "This ACL governs updates; read access depends on read ACLs.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-security/access-control/exploring-access-control-list.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Data conditions are always evaluated along with roles.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-security/access-control/exploring-access-control-list.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/platform-security/access-control/exploring-access-control-list.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "exploring-access-control-list",
+          "section": "Explore Access Control Lists",
+          "url": "https://www.servicenow.com/docs/r/australia/platform-security/access-control/exploring-access-control-list.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/platform-security/access-control/exploring-access-control-list.md",
+        "excerpt": "To gain access to an object and operation, a user must pass all conditions listed in an access control."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Database Management and Platform Security",
+        "domainSlug": "database-administration",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Application/Access Control"
+        ],
+        "tags": [
+          "acl",
+          "conditions"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-ua-203",
       "certification": "csa",
       "topic": "user-administration",
       "cognitiveLevel": "knowledge",
       "type": "multiple_choice",
-      "question": "What role is required to modify Access Control Lists (ACLs) in ServiceNow?",
+      "question": "What does the ACL engine do by default when an ACL is empty or invalid, such as having no role, security attribute, or data condition?",
       "options": [
         {
           "id": "a",
-          "text": "admin"
+          "text": "It completely denies access"
         },
         {
           "id": "b",
+          "text": "It grants access to all authenticated users"
+        },
+        {
+          "id": "c",
+          "text": "It grants access to admins only"
+        },
+        {
+          "id": "d",
+          "text": "It ignores the ACL"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "By default, the ACL engine completely denies access if an ACL is empty or invalid. Empty ACLs are ACLs without a defined role, security attribute, or data condition. See https://www.servicenow.com/docs/r/australia/platform-security/access-control/exploring-access-control-list.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Empty ACLs deny access; they don't grant it.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-security/access-control/exploring-access-control-list.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The deny-by-default behavior isn't limited to non-admins in this description.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-security/access-control/exploring-access-control-list.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Empty ACLs are enforced as a deny.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-security/access-control/exploring-access-control-list.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/platform-security/access-control/exploring-access-control-list.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "exploring-access-control-list",
+          "section": "Explore Access Control Lists",
+          "url": "https://www.servicenow.com/docs/r/australia/platform-security/access-control/exploring-access-control-list.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/platform-security/access-control/exploring-access-control-list.md",
+        "excerpt": "By default the ACL engine completely denies access if an ACL is empty or invalid."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Database Management and Platform Security",
+        "domainSlug": "database-administration",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Application/Access Control"
+        ],
+        "tags": [
+          "acl",
+          "deny by default"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-ua-204",
+      "certification": "csa",
+      "topic": "user-administration",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "For the same object, there is an Allow-If ACL and a Deny-Unless ACL. Which is evaluated first?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The Deny-Unless ACL, which takes priority over Allow-If ACLs"
+        },
+        {
+          "id": "b",
+          "text": "The Allow-If ACL"
+        },
+        {
+          "id": "c",
+          "text": "Whichever ACL was created most recently"
+        },
+        {
+          "id": "d",
+          "text": "Both are evaluated in alphabetical order"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "Deny-Unless ACLs take priority over Allow-If ACLs in ACL evaluation because they are evaluated first. Deny-Unless restricts access unless conditions pass; Allow-If allows access if conditions pass. See https://www.servicenow.com/docs/r/australia/platform-security/access-control/acl-denial-behavior.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Allow-If is evaluated after Deny-Unless.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-security/access-control/acl-denial-behavior.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Creation date doesn't affect ACL evaluation order.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-security/access-control/acl-denial-behavior.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "ACL evaluation isn't alphabetical.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-security/access-control/acl-denial-behavior.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/platform-security/access-control/acl-denial-behavior.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "acl-denial-behavior",
+          "section": "Deny-Unless ACL",
+          "url": "https://www.servicenow.com/docs/r/australia/platform-security/access-control/acl-denial-behavior.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/platform-security/access-control/acl-denial-behavior.md",
+        "excerpt": "Deny-Unless ACLs will take priority against Allow-If ACLs in ACL Evaluation, as it will be evaluated first."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Database Management and Platform Security",
+        "domainSlug": "database-administration",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Application/Access Control"
+        ],
+        "tags": [
+          "acl",
+          "deny-unless"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-ua-205",
+      "certification": "csa",
+      "topic": "user-administration",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "A user passes the field ACL for incident.short_description but fails every table ACL for the Incident table. What can they access?",
+      "options": [
+        {
+          "id": "a",
+          "text": "No fields on the Incident table"
+        },
+        {
+          "id": "b",
+          "text": "Only the short_description field"
+        },
+        {
+          "id": "c",
+          "text": "All fields except short_description"
+        },
+        {
+          "id": "d",
+          "text": "All fields, because field ACLs override table ACLs"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "A user must pass both table and field ACLs to access a record object. If they fail the table ACL, they are denied access to all fields in the table, even if they pass a field ACL. See https://www.servicenow.com/docs/r/australia/platform-security/access-control/acl-rule-types.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Failing the table ACL blocks all fields.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-security/access-control/acl-rule-types.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Failing the table ACL blocks all fields, including this one.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-security/access-control/acl-rule-types.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Field ACLs don't override table ACLs.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-security/access-control/acl-rule-types.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/platform-security/access-control/acl-rule-types.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "acl-rule-types",
+          "section": "ACL types",
+          "url": "https://www.servicenow.com/docs/r/australia/platform-security/access-control/acl-rule-types.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/platform-security/access-control/acl-rule-types.md",
+        "excerpt": "If a user fails a table ACL, the user is denied access to all fields in the table, even if the user passes a field ACL."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Database Management and Platform Security",
+        "domainSlug": "database-administration",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Application/Access Control"
+        ],
+        "tags": [
+          "acl",
+          "table and field"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-ua-206",
+      "certification": "csa",
+      "topic": "user-administration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "ACLs exist on the Task table. How do they affect the Incident table, which extends Task?",
+      "options": [
+        {
+          "id": "a",
+          "text": "ACLs for parent tables apply to any table that extends the parent table"
+        },
+        {
+          "id": "b",
+          "text": "They don't apply; each table needs its own ACLs"
+        },
+        {
+          "id": "c",
+          "text": "They apply only to fields added on the Incident table"
+        },
+        {
+          "id": "d",
+          "text": "They apply only if the admin enables inheritance per ACL"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "If other tables extend a table, it's a parent table. ACLs for parent tables apply to any table that extends them, and ACLs for fields on a parent table apply to tables that extend it. See https://www.servicenow.com/docs/r/australia/platform-security/access-control/acl-rule-types.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Child tables are covered by parent table ACLs.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-security/access-control/acl-rule-types.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Parent ACLs apply to inherited fields and records.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-security/access-control/acl-rule-types.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Inheritance is automatic, not a per-ACL option.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-security/access-control/acl-rule-types.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/platform-security/access-control/acl-rule-types.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "acl-rule-types",
+          "section": "ACL types",
+          "url": "https://www.servicenow.com/docs/r/australia/platform-security/access-control/acl-rule-types.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/platform-security/access-control/acl-rule-types.md",
+        "excerpt": "ACLs for parent tables apply to any table that extends the parent table."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Database Management and Platform Security",
+        "domainSlug": "database-administration",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Application/Access Control"
+        ],
+        "tags": [
+          "acl",
+          "inheritance"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-ua-207",
+      "certification": "csa",
+      "topic": "user-administration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which role must you elevate to before you can create an ACL?",
+      "options": [
+        {
+          "id": "a",
           "text": "security_admin"
+        },
+        {
+          "id": "b",
+          "text": "admin"
         },
         {
           "id": "c",
@@ -110,242 +608,1464 @@
         },
         {
           "id": "d",
-          "text": "itil"
+          "text": "user_admin"
         }
       ],
       "correctAnswers": [
-        "b"
+        "a"
       ],
       "explanation": {
-        "correct": "The security_admin role is required to modify Access Control Lists. Even users with the admin role must also be granted security_admin to manage ACLs. In the base system, only the default system administrator has this role. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1",
+        "correct": "To create ACLs, you must elevate privileges to the security_admin role. Then navigate to System Security > Access Control (ACL) and select New. See https://www.servicenow.com/docs/r/australia/platform-security/access-control/t_CreateAnACLRule.html",
         "wrongAnswers": [
           {
-            "choiceId": "a",
-            "explanation": "The admin role alone cannot modify ACLs. Admins must also have security_admin for ACL management.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1"
+            "choiceId": "b",
+            "explanation": "Admin alone isn't enough; you must elevate to security_admin.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-security/access-control/t_CreateAnACLRule.html"
           },
           {
             "choiceId": "c",
-            "explanation": "There is no standard role called 'acl_admin' in ServiceNow.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1"
+            "explanation": "acl_admin isn't the role named in the procedure.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-security/access-control/t_CreateAnACLRule.html"
           },
           {
             "choiceId": "d",
-            "explanation": "The itil role grants access to ITSM modules, not security administration.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1"
+            "explanation": "user_admin manages users and groups.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-security/access-control/t_CreateAnACLRule.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Security Administration"
+        "https://www.servicenow.com/docs/r/australia/platform-security/access-control/t_CreateAnACLRule.html"
       ],
-      "isFree": true,
+      "isFree": false,
       "source": {
-        "type": "course",
-        "course": {
-          "courseSlug": "servicenow-administration-fundamentals-xanadu",
-          "moduleTitle": "SNAF Module 4: Manage data",
-          "lessonSlug": "02-application-and-access-control",
-          "lessonTitle": "Application and access control",
-          "url": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1"
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "t_CreateAnACLRule",
+          "section": "Configure an ACL",
+          "url": "https://www.servicenow.com/docs/r/australia/platform-security/access-control/t_CreateAnACLRule.html"
         },
-        "path": "sn-course-scraper/scraped-courses/servicenow-administration-fundamentals-xanadu/02-application-and-access-control.md",
-        "excerpt": "In the base system, only the default system administrator has the security admin role. Others with the admin role must also be granted the security admin role to manage ACLs."
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/platform-security/access-control/t_CreateAnACLRule.md",
+        "excerpt": "To create ACLs, you must elevate privileges to the security_admin role."
       },
       "labels": {
         "certification": "csa",
-        "domain": "User Administration & Security",
-        "domainSlug": "user-administration",
-        "domainPercentage": 15,
+        "domain": "Database Management and Platform Security",
+        "domainSlug": "database-administration",
+        "domainPercentage": 30,
         "subtopics": [
-          "Roles and role hierarchies",
-          "Access Control Lists (ACLs)"
+          "Application/Access Control"
         ],
         "tags": [
-          "security_admin",
-          "ACL",
+          "acl",
+          "security_admin"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-ua-208",
+      "certification": "csa",
+      "topic": "user-administration",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "An administrator needs to secure both read and write operations on a custom table. How many ACLs are needed at minimum?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Two, because an ACL can only secure one operation"
+        },
+        {
+          "id": "b",
+          "text": "One ACL with both operations selected"
+        },
+        {
+          "id": "c",
+          "text": "One table ACL, which covers all operations automatically"
+        },
+        {
+          "id": "d",
+          "text": "None, because tables are open by default"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "Each ACL secures one operation. To secure multiple operations, create a separate ACL for each. See https://www.servicenow.com/docs/r/australia/platform-security/access-control/t_CreateAnACLRule.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "An ACL can't secure more than one operation.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-security/access-control/t_CreateAnACLRule.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "A table ACL secures only the operation it defines.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-security/access-control/t_CreateAnACLRule.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The platform denies by default; ACLs grant access.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-security/access-control/t_CreateAnACLRule.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/platform-security/access-control/t_CreateAnACLRule.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "t_CreateAnACLRule",
+          "section": "Configure an ACL",
+          "url": "https://www.servicenow.com/docs/r/australia/platform-security/access-control/t_CreateAnACLRule.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/platform-security/access-control/t_CreateAnACLRule.md",
+        "excerpt": "An ACL can only secure one operation. To secure multiple operations, create a separate ACL for each."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Database Management and Platform Security",
+        "domainSlug": "database-administration",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Application/Access Control"
+        ],
+        "tags": [
+          "acl",
+          "operations"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-ua-209",
+      "certification": "csa",
+      "topic": "user-administration",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What is the effect of selecting Admin overrides on an ACL?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Users with the admin role automatically pass the permissions check for that ACL"
+        },
+        {
+          "id": "b",
+          "text": "Only admins can pass the ACL"
+        },
+        {
+          "id": "c",
+          "text": "The ACL is ignored for all users"
+        },
+        {
+          "id": "d",
+          "text": "Admins must meet the ACL's script conditions"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "With Admin overrides selected, users with the admin role automatically pass the permissions check regardless of script or role restrictions. The nobody role, which only ServiceNow personnel can assign, takes precedence over admin override. See https://www.servicenow.com/docs/r/australia/platform-security/access-control/t_CreateAnACLRule.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Admin overrides doesn't restrict the ACL to admins.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-security/access-control/t_CreateAnACLRule.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The ACL still applies to non-admin users.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-security/access-control/t_CreateAnACLRule.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "That describes clearing the check box.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-security/access-control/t_CreateAnACLRule.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/platform-security/access-control/t_CreateAnACLRule.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "t_CreateAnACLRule",
+          "section": "Configure an ACL",
+          "url": "https://www.servicenow.com/docs/r/australia/platform-security/access-control/t_CreateAnACLRule.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/platform-security/access-control/t_CreateAnACLRule.md",
+        "excerpt": "Select this check box to have users with the admin role automatically pass the permissions check for this ACL."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Database Management and Platform Security",
+        "domainSlug": "database-administration",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Application/Access Control"
+        ],
+        "tags": [
+          "acl",
+          "admin overrides"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-ua-210",
+      "certification": "csa",
+      "topic": "user-administration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_select",
+      "question": "Which statements about elevated privilege roles are correct? (Choose two.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "You don't have elevated privilege roles when you log in; you must manually elevate"
+        },
+        {
+          "id": "b",
+          "text": "An elevated role lasts only for the current session; timeout or logout removes it"
+        },
+        {
+          "id": "c",
+          "text": "Elevated roles are automatically granted to all admins at login"
+        },
+        {
+          "id": "d",
+          "text": "Elevated roles never expire once activated"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b"
+      ],
+      "explanation": {
+        "correct": "By default you don't have elevated privilege roles when you log in and must manually elevate. An elevated role lasts only for your user session; session timeout or logout removes it. In the base system, security_admin is the only elevated privilege role. See https://www.servicenow.com/docs/r/australia/platform-security/c_ElevatedPrivilege.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "c",
+            "explanation": "Elevation is always manual.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-security/c_ElevatedPrivilege.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Elevation ends with the session.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-security/c_ElevatedPrivilege.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/platform-security/c_ElevatedPrivilege.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "c_ElevatedPrivilege",
+          "section": "Elevated privilege roles",
+          "url": "https://www.servicenow.com/docs/r/australia/platform-security/c_ElevatedPrivilege.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/platform-security/c_ElevatedPrivilege.md",
+        "excerpt": "By default, you do not have elevated privilege roles upon login. … An elevated privilege role lasts only for the duration of your user session."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Database Management and Platform Security",
+        "domainSlug": "database-administration",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Application/Access Control"
+        ],
+        "tags": [
+          "elevated roles"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-ua-211",
+      "certification": "csa",
+      "topic": "user-administration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "In the base system, which role is the only role with elevated privileges?",
+      "options": [
+        {
+          "id": "a",
+          "text": "security_admin"
+        },
+        {
+          "id": "b",
+          "text": "admin"
+        },
+        {
+          "id": "c",
+          "text": "impersonator"
+        },
+        {
+          "id": "d",
+          "text": "itil_admin"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "In the base system, security_admin is the only role with elevated privileges. It's automatically assigned to the default System Administrator user and provides access to ACLs and High Security Settings. See https://www.servicenow.com/docs/r/australia/platform-security/c_ElevatedPrivilege.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Elevated privilege on the admin role isn't supported.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-security/c_ElevatedPrivilege.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "impersonator allows impersonating users; it isn't elevated by default.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-security/c_ElevatedPrivilege.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "itil_admin isn't an elevated role.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-security/c_ElevatedPrivilege.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/platform-security/c_ElevatedPrivilege.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "c_ElevatedPrivilege",
+          "section": "Elevated privilege roles",
+          "url": "https://www.servicenow.com/docs/r/australia/platform-security/c_ElevatedPrivilege.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/platform-security/c_ElevatedPrivilege.md",
+        "excerpt": "In the base system, the security_admin role is the only role that has elevated privileges."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Database Management and Platform Security",
+        "domainSlug": "database-administration",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Application/Access Control"
+        ],
+        "tags": [
+          "security_admin"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-ua-212",
+      "certification": "csa",
+      "topic": "user-administration",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "Why is assigning roles to groups preferred over assigning them to individual users?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Group members inherit the role, and a user who switches groups automatically gets the new group's roles"
+        },
+        {
+          "id": "b",
+          "text": "It is the only way to grant roles"
+        },
+        {
+          "id": "c",
+          "text": "Roles assigned to groups never expire, but user roles do"
+        },
+        {
+          "id": "d",
+          "text": "Group roles bypass ACLs"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "When you assign roles to groups instead of individual users, group members inherit the role. When a user switches groups, the new group's role is assigned automatically. See https://www.servicenow.com/docs/r/australia/platform-administration/user-administration/t_AssignRoleToGroup.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Roles can also be assigned directly to users.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/user-administration/t_AssignRoleToGroup.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Expiry doesn't depend on group vs user assignment.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/user-administration/t_AssignRoleToGroup.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Roles never bypass ACLs; ACLs evaluate roles.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/user-administration/t_AssignRoleToGroup.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/platform-administration/user-administration/t_AssignRoleToGroup.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "t_AssignRoleToGroup",
+          "section": "Assign a role to a group",
+          "url": "https://www.servicenow.com/docs/r/australia/platform-administration/user-administration/t_AssignRoleToGroup.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/platform-administration/user-administration/t_AssignRoleToGroup.md",
+        "excerpt": "When you assign roles to groups rather than to individual users, members of the group inherit the role."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Database Management and Platform Security",
+        "domainSlug": "database-administration",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Application/Access Control"
+        ],
+        "tags": [
           "roles",
-          "security"
+          "groups"
         ]
       },
       "meta": {
-        "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
       }
     },
     {
-      "id": "csa-ua-003",
+      "id": "csa-ua-213",
       "certification": "csa",
       "topic": "user-administration",
       "cognitiveLevel": "understanding",
       "type": "multiple_choice",
-      "question": "What happens when elevated privileges are activated in ServiceNow?",
+      "question": "An administrator impersonates a user and updates a record. How is the update recorded?",
       "options": [
         {
           "id": "a",
-          "text": "They remain active until manually deactivated"
+          "text": "As if the impersonated user made it"
         },
         {
           "id": "b",
-          "text": "They last only for the current session and end with logout, timeout, or impersonation"
+          "text": "As made by the administrator"
         },
         {
           "id": "c",
-          "text": "They are permanently assigned to the user"
+          "text": "As made by the System user"
         },
         {
           "id": "d",
-          "text": "They are shared with all members of the user's group"
+          "text": "It isn't recorded"
         }
       ],
       "correctAnswers": [
-        "b"
+        "a"
       ],
       "explanation": {
-        "correct": "Elevated roles last only for your session. They end with logout, session time out, or user impersonation. An upward arrow next to your avatar indicates activated elevated privileges. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1",
+        "correct": "During impersonation, the administrator accesses the system exactly as the impersonated user, and all actions are recorded as if the impersonated user performed them. Impersonate Begin and Impersonate End events are logged in the system log. See https://www.servicenow.com/docs/r/australia/platform-administration/user-administration/c_ImpersonateAUser.html",
         "wrongAnswers": [
           {
-            "choiceId": "a",
-            "explanation": "Elevated privileges automatically end when the session ends, they don't require manual deactivation.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1"
+            "choiceId": "b",
+            "explanation": "Actions are attributed to the impersonated user.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/user-administration/c_ImpersonateAUser.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Elevated privileges are temporary by design for security purposes.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1"
+            "explanation": "The System user isn't used for impersonation.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/user-administration/c_ImpersonateAUser.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Elevated privileges apply only to the individual user who activated them.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1"
+            "explanation": "Actions are recorded.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/user-administration/c_ImpersonateAUser.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Elevated Privileges"
+        "https://www.servicenow.com/docs/r/australia/platform-administration/user-administration/c_ImpersonateAUser.html"
       ],
-      "isFree": true,
+      "isFree": false,
       "source": {
-        "type": "course",
-        "course": {
-          "courseSlug": "servicenow-administration-fundamentals-xanadu",
-          "moduleTitle": "SNAF Module 4: Manage data",
-          "lessonSlug": "02-application-and-access-control",
-          "lessonTitle": "Application and access control",
-          "url": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1"
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "c_ImpersonateAUser",
+          "section": "Impersonating users",
+          "url": "https://www.servicenow.com/docs/r/australia/platform-administration/user-administration/c_ImpersonateAUser.html"
         },
-        "path": "sn-course-scraper/scraped-courses/servicenow-administration-fundamentals-xanadu/02-application-and-access-control.md",
-        "excerpt": "Elevated roles allow modification of the access control list. These roles last only for your session. They end with logout, session time out, or user impersonation."
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/platform-administration/user-administration/c_ImpersonateAUser.md",
+        "excerpt": "All actions performed by the administrator during impersonation are recorded as if they were executed by the impersonated user."
       },
       "labels": {
         "certification": "csa",
-        "domain": "User Administration & Security",
-        "domainSlug": "user-administration",
-        "domainPercentage": 15,
+        "domain": "Database Management and Platform Security",
+        "domainSlug": "database-administration",
+        "domainPercentage": 30,
         "subtopics": [
-          "Roles and role hierarchies",
-          "Security rules"
+          "Application/Access Control"
         ],
         "tags": [
-          "elevated privileges",
-          "session",
-          "security"
+          "impersonation"
         ]
       },
       "meta": {
-        "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
       }
     },
     {
-      "id": "csa-ua-004",
+      "id": "csa-ua-214",
+      "certification": "csa",
+      "topic": "user-administration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "What is the maximum duration of a time-limited role assignment for a user?",
+      "options": [
+        {
+          "id": "a",
+          "text": "5 days"
+        },
+        {
+          "id": "b",
+          "text": "24 hours"
+        },
+        {
+          "id": "c",
+          "text": "30 days"
+        },
+        {
+          "id": "d",
+          "text": "There is no limit"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "Time-limited roles give users a role for a defined period and remove it automatically. Supported roles include admin, snc_read_only, impersonator, and snc_required_script_writer_permission. A user can have up to four concurrent time-limited roles, each lasting up to 5 days. See https://www.servicenow.com/docs/r/australia/platform-administration/user-administration/time-limited-role-overview.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "The documented limit is 5 days.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/user-administration/time-limited-role-overview.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The documented limit is 5 days.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/user-administration/time-limited-role-overview.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "A maximum is documented.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/user-administration/time-limited-role-overview.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/platform-administration/user-administration/time-limited-role-overview.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "time-limited-role-overview",
+          "section": "Time-limited role",
+          "url": "https://www.servicenow.com/docs/r/australia/platform-administration/user-administration/time-limited-role-overview.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/platform-administration/user-administration/time-limited-role-overview.md",
+        "excerpt": "Time-limited role can be maximum of 5 days per user."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Database Management and Platform Security",
+        "domainSlug": "database-administration",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Application/Access Control"
+        ],
+        "tags": [
+          "roles",
+          "time-limited"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-ua-215",
       "certification": "csa",
       "topic": "user-administration",
       "cognitiveLevel": "understanding",
       "type": "multiple_choice",
-      "question": "In what order does ServiceNow evaluate Access Control rules?",
+      "question": "What does ServiceNow recommend when a specialized role, such as business_rule_admin, is available?",
       "options": [
         {
           "id": "a",
-          "text": "Allow rules first, then deny rules"
+          "text": "Avoid granting the admin role and grant the more specialized role"
         },
         {
           "id": "b",
-          "text": "Field access first, then table access"
+          "text": "Always grant admin so the user has full access"
         },
         {
           "id": "c",
-          "text": "Deny rules first, then allow rules"
+          "text": "Rename the role to match the job title"
         },
         {
           "id": "d",
-          "text": "Alphabetically by rule name"
+          "text": "Grant both roles to be safe"
         }
       ],
       "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "Special administrative roles grant specific administrative rights without the full privileges of admin. The guidance is to avoid granting admin when more specialized roles are available. Roles can't be renamed. See https://www.servicenow.com/docs/r/australia/platform-administration/user-administration/r_SpecialAdministrativeRoles.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Least privilege favors the specialized role.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/user-administration/r_SpecialAdministrativeRoles.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "You can't rename roles in the ServiceNow AI Platform.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/user-administration/r_SpecialAdministrativeRoles.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Granting admin as well defeats the purpose of the specialized role.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/user-administration/r_SpecialAdministrativeRoles.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/platform-administration/user-administration/r_SpecialAdministrativeRoles.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "r_SpecialAdministrativeRoles",
+          "section": "Special administrative roles",
+          "url": "https://www.servicenow.com/docs/r/australia/platform-administration/user-administration/r_SpecialAdministrativeRoles.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/platform-administration/user-administration/r_SpecialAdministrativeRoles.md",
+        "excerpt": "Avoid granting an admin role when more specialized roles are available."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Database Management and Platform Security",
+        "domainSlug": "database-administration",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Application/Access Control"
+        ],
+        "tags": [
+          "roles",
+          "least privilege"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-ua-216",
+      "certification": "csa",
+      "topic": "user-administration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "In Security Center, what does the hardening compliance score represent?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A percentage showing how closely your security settings match the recommended settings"
+        },
+        {
+          "id": "b",
+          "text": "The number of security incidents this month"
+        },
+        {
+          "id": "c",
+          "text": "The number of users with the admin role"
+        },
+        {
+          "id": "d",
+          "text": "The percentage of ACLs with scripts"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "The hardening compliance score is a percentage that shows how closely your security settings align with the recommended settings. Security Center shows the current score and its history on the instance. See https://www.servicenow.com/docs/r/australia/platform-security/security-center/homepage.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Security incidents aren't what the score measures.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-security/security-center/homepage.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Admin counts are not the hardening score.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-security/security-center/homepage.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The score isn't based on ACL scripts.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-security/security-center/homepage.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/platform-security/security-center/homepage.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "homepage",
+          "section": "Security configuration console",
+          "url": "https://www.servicenow.com/docs/r/australia/platform-security/security-center/homepage.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/platform-security/security-center/homepage.md",
+        "excerpt": "The hardening compliance score is a percentage that shows how closely your security settings align with the recommended settings."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Database Management and Platform Security",
+        "domainSlug": "database-administration",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Security Center"
+        ],
+        "tags": [
+          "security center",
+          "hardening"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-ua-217",
+      "certification": "csa",
+      "topic": "user-administration",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "Which Security Center tool scans the instance against a set of security checks to find misconfiguration and lets you build suites of checks for different use cases?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Security scanner"
+        },
+        {
+          "id": "b",
+          "text": "Customer Actions"
+        },
+        {
+          "id": "c",
+          "text": "Security hardening"
+        },
+        {
+          "id": "d",
+          "text": "My Security Tasks"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "The Security scanner scans the instance against security checks to identify misconfiguration and makes it easier to create different suites of checks for different use cases. Customer Actions implements important security updates, and Security hardening shows the compliance score and settings. See https://www.servicenow.com/docs/r/australia/platform-security/security-center/homepage.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Customer Actions helps implement important security updates.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-security/security-center/homepage.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Security hardening shows the compliance score and hardening settings.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-security/security-center/homepage.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "My Security Tasks lists security tasks assigned to you.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-security/security-center/homepage.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/platform-security/security-center/homepage.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "homepage",
+          "section": "Security configuration console",
+          "url": "https://www.servicenow.com/docs/r/australia/platform-security/security-center/homepage.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/platform-security/security-center/homepage.md",
+        "excerpt": "Scan your instance against a set of security checks to identify misconfiguration."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Database Management and Platform Security",
+        "domainSlug": "database-administration",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Security Center"
+        ],
+        "tags": [
+          "security center",
+          "scanner"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-ua-218",
+      "certification": "csa",
+      "topic": "user-administration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_select",
+      "question": "Which sections are on the Security Center landing page? (Choose three.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Posture"
+        },
+        {
+          "id": "b",
+          "text": "Access management"
+        },
+        {
+          "id": "c",
+          "text": "Monitoring"
+        },
+        {
+          "id": "d",
+          "text": "Update Set Preview"
+        },
+        {
+          "id": "e",
+          "text": "Transform Maps"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b",
         "c"
       ],
       "explanation": {
-        "correct": "The system checks deny rules first. If any deny rules conditions are unmet, access is blocked. Allow rules are evaluated only when no deny rules apply or if you meet all deny rule criteria. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1",
+        "correct": "The Security Center landing page includes an instance summary, My Security Tasks, Posture, Access management, Machine identity, Other configuration tools, and Monitoring. See https://www.servicenow.com/docs/r/australia/platform-security/security-center/sec-center-landing.html",
         "wrongAnswers": [
           {
-            "choiceId": "a",
-            "explanation": "Deny rules take precedence and are checked before allow rules.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1"
-          },
-          {
-            "choiceId": "b",
-            "explanation": "Table access is checked first, then field access. The order is table-level before field-level.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1"
-          },
-          {
             "choiceId": "d",
-            "explanation": "ACL evaluation follows a specific security logic, not alphabetical order.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1"
+            "explanation": "Update set preview is part of update set management.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-security/security-center/sec-center-landing.html"
+          },
+          {
+            "choiceId": "e",
+            "explanation": "Transform maps are part of System Import Sets.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-security/security-center/sec-center-landing.html"
           }
         ]
       },
       "references": [
-        "ServiceNow ACL Evaluation Order"
+        "https://www.servicenow.com/docs/r/australia/platform-security/security-center/sec-center-landing.html"
       ],
-      "isFree": true,
+      "isFree": false,
       "source": {
-        "type": "course",
-        "course": {
-          "courseSlug": "servicenow-administration-fundamentals-xanadu",
-          "moduleTitle": "SNAF Module 4: Manage data",
-          "lessonSlug": "02-application-and-access-control",
-          "lessonTitle": "Application and access control",
-          "url": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1"
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "sec-center-landing",
+          "section": "Security Center landing page",
+          "url": "https://www.servicenow.com/docs/r/australia/platform-security/security-center/sec-center-landing.html"
         },
-        "path": "sn-course-scraper/scraped-courses/servicenow-administration-fundamentals-xanadu/02-application-and-access-control.md",
-        "excerpt": "The system checks deny rules first. If any deny rules conditions are unmet, access is blocked, requiring all matching deny rule conditions to be satisfied for access to proceed."
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/platform-security/security-center/sec-center-landing.md",
+        "excerpt": "Use information in the Posture section … View access issues and misconfiguration on your instance … Monitor and detect potential security threats on your instance"
       },
       "labels": {
         "certification": "csa",
-        "domain": "User Administration & Security",
-        "domainSlug": "user-administration",
-        "domainPercentage": 15,
+        "domain": "Database Management and Platform Security",
+        "domainSlug": "database-administration",
+        "domainPercentage": 30,
         "subtopics": [
-          "Access Control Lists (ACLs)",
-          "Security rules"
+          "Security Center"
         ],
         "tags": [
-          "ACL",
-          "deny rules",
-          "allow rules",
-          "evaluation order"
+          "security center"
         ]
       },
       "meta": {
-        "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-ua-219",
+      "certification": "csa",
+      "topic": "user-administration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which Security Posture Console best practice helps prevent unwanted access by enforcing a default deny posture, including for ServiceNow personnel, who must then explicitly request access?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Activate the ServiceNow Access Control plugin"
+        },
+        {
+          "id": "b",
+          "text": "Disable browser SQL messages"
+        },
+        {
+          "id": "c",
+          "text": "Enable table auditing"
+        },
+        {
+          "id": "d",
+          "text": "Configure SPF for email"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "The ServiceNow Access Control plugin controls which employees can access your instance, and when, by enforcing a default deny posture for all users except those you specify, including ServiceNow employees. Personnel must then request access on an ad-hoc, temporary basis. See https://www.servicenow.com/docs/r/australia/platform-security/security-center/best-practices.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Disabling SQL messages hides error details from attackers.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-security/security-center/best-practices.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Table auditing tracks record changes.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-security/security-center/best-practices.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "SPF lets your email systems accept mail from the instance.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-security/security-center/best-practices.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/platform-security/security-center/best-practices.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "best-practices",
+          "section": "Best Practices",
+          "url": "https://www.servicenow.com/docs/r/australia/platform-security/security-center/best-practices.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/platform-security/security-center/best-practices.md",
+        "excerpt": "After ServiceNow Access Control is activated, personnel must explicitly request access from you on an ad-hoc and temporary basis."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Database Management and Platform Security",
+        "domainSlug": "database-administration",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Security Center"
+        ],
+        "tags": [
+          "security center",
+          "best practices"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-ua-220",
+      "certification": "csa",
+      "topic": "user-administration",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "Under the ServiceNow Shared Responsibility Model, which statement is correct?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The customer, as data controller, decides access rights to its instance and data; ServiceNow, as data processor, secures the platform infrastructure"
+        },
+        {
+          "id": "b",
+          "text": "ServiceNow decides who in the customer's organization can access each record"
+        },
+        {
+          "id": "c",
+          "text": "The customer is responsible for securing ServiceNow data center hardware"
+        },
+        {
+          "id": "d",
+          "text": "ServiceNow configures every customer ACL"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "ServiceNow describes security as a partnership in which each party has specific responsibilities. As data controller, the customer decides access rights to its instance and data and uses in-instance security controls to implement its policies. As data processor, ServiceNow secures the platform infrastructure and provides tools for security management and monitoring. See https://www.servicenow.com/content/dam/servicenow-assets/public/en-us/doc-type/resource-center/ebook/ebk-how-servicenow-delivers-safe-and-secure-cloud-services.pdf",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Access rights within the instance are the customer's responsibility.",
+            "reference": "https://www.servicenow.com/content/dam/servicenow-assets/public/en-us/doc-type/resource-center/ebook/ebk-how-servicenow-delivers-safe-and-secure-cloud-services.pdf"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Infrastructure security is ServiceNow's responsibility, with its colocation and cloud providers.",
+            "reference": "https://www.servicenow.com/content/dam/servicenow-assets/public/en-us/doc-type/resource-center/ebook/ebk-how-servicenow-delivers-safe-and-secure-cloud-services.pdf"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Customers configure access controls in their own instances.",
+            "reference": "https://www.servicenow.com/content/dam/servicenow-assets/public/en-us/doc-type/resource-center/ebook/ebk-how-servicenow-delivers-safe-and-secure-cloud-services.pdf"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/content/dam/servicenow-assets/public/en-us/doc-type/resource-center/ebook/ebk-how-servicenow-delivers-safe-and-secure-cloud-services.pdf"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "ebk-how-servicenow-delivers-safe-and-secure-cloud-services",
+          "section": "Securing the ServiceNow AI Platform (ServiceNow ebook)",
+          "url": "https://www.servicenow.com/content/dam/servicenow-assets/public/en-us/doc-type/resource-center/ebook/ebk-how-servicenow-delivers-safe-and-secure-cloud-services.pdf"
+        },
+        "path": "https://www.servicenow.com/content/dam/servicenow-assets/public/en-us/doc-type/resource-center/ebook/ebk-how-servicenow-delivers-safe-and-secure-cloud-services.pdf",
+        "excerpt": "As the data controller, the customer determines access rights to their instance and the data it contains."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Database Management and Platform Security",
+        "domainSlug": "database-administration",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Shared Responsibility Model"
+        ],
+        "tags": [
+          "shared responsibility"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-ua-221",
+      "certification": "csa",
+      "topic": "user-administration",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Where does ServiceNow's Security Center Best Practices list point customers to understand their shared role in keeping their instances secure?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The Shared Responsibility Model, which defines the partnership between ServiceNow and the customer"
+        },
+        {
+          "id": "b",
+          "text": "The CSDM Foundation domain"
+        },
+        {
+          "id": "c",
+          "text": "The Knowledge Management workflow"
+        },
+        {
+          "id": "d",
+          "text": "The Service Catalog user criteria"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "The Best Practices list includes 'Review the Shared Security Model', which tells customers to review the Shared Responsibility Model to understand their role. The model defines a partnership between ServiceNow and the customer in which each has specific responsibilities. See https://www.servicenow.com/docs/r/australia/platform-security/security-center/best-practices.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "CSDM is a data model for the CMDB.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-security/security-center/best-practices.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Knowledge workflows govern article publishing.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-security/security-center/best-practices.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "User criteria control catalog access.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-security/security-center/best-practices.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/platform-security/security-center/best-practices.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "best-practices",
+          "section": "Best Practices",
+          "url": "https://www.servicenow.com/docs/r/australia/platform-security/security-center/best-practices.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/platform-security/security-center/best-practices.md",
+        "excerpt": "The Shared Responsibility Model defines the partnership between and the customer, both with specific responsibilities."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Database Management and Platform Security",
+        "domainSlug": "database-administration",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Shared Responsibility Model"
+        ],
+        "tags": [
+          "shared responsibility",
+          "security center"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-ua-222",
+      "certification": "csa",
+      "topic": "user-administration",
+      "cognitiveLevel": "application",
+      "type": "multiple_select",
+      "question": "Which of these is a customer responsibility, rather than ServiceNow's, when securing an instance? (Choose two.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "Changing the default passwords on built-in accounts such as admin"
+        },
+        {
+          "id": "b",
+          "text": "Deciding which users get which roles and data access in the instance"
+        },
+        {
+          "id": "c",
+          "text": "Physically securing the data center hosting the instance"
+        },
+        {
+          "id": "d",
+          "text": "Patching the hypervisors in ServiceNow's cloud"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b"
+      ],
+      "explanation": {
+        "correct": "Customers, as data controllers, determine access rights to their instance and data. The Security Center Best Practices also tell customers to change the default passwords on built-in accounts such as admin, ITIL, and employee. Infrastructure security belongs to ServiceNow and its providers. See https://www.servicenow.com/docs/r/australia/platform-security/security-center/best-practices.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "c",
+            "explanation": "Physical data center security belongs to ServiceNow and its colocation providers.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-security/security-center/best-practices.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Platform infrastructure is secured by ServiceNow as data processor.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-security/security-center/best-practices.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/platform-security/security-center/best-practices.html",
+        "https://www.servicenow.com/content/dam/servicenow-assets/public/en-us/doc-type/resource-center/ebook/ebk-how-servicenow-delivers-safe-and-secure-cloud-services.pdf"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "best-practices",
+          "section": "Best Practices",
+          "url": "https://www.servicenow.com/docs/r/australia/platform-security/security-center/best-practices.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/platform-security/security-center/best-practices.md",
+        "excerpt": "Change the passwords on your instance's built-in user accounts, such as admin, ITIL, and employee."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Database Management and Platform Security",
+        "domainSlug": "database-administration",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Shared Responsibility Model"
+        ],
+        "tags": [
+          "shared responsibility"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-ua-223",
+      "certification": "csa",
+      "topic": "user-administration",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "An administrator needs an ACL on the Incident table that applies only to incidents with Critical priority. Which ACL field should they use?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Applies To"
+        },
+        {
+          "id": "b",
+          "text": "Admin overrides"
+        },
+        {
+          "id": "c",
+          "text": "Description"
+        },
+        {
+          "id": "d",
+          "text": "Protection Policy"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "The Applies To field adds a filter condition for the table in the Name field, so the ACL applies only to matching records. For example, an ACL on incident can apply only to Critical priority incidents. If Applies To is empty, the ACL applies to all records. See https://www.servicenow.com/docs/r/australia/platform-security/access-control/t_CreateAnACLRule.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Admin overrides lets admins pass the ACL automatically.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-security/access-control/t_CreateAnACLRule.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "Description only documents the ACL.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-security/access-control/t_CreateAnACLRule.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "Protection Policy sets the ACL's protection level, not which records it applies to.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-security/access-control/t_CreateAnACLRule.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/platform-security/access-control/t_CreateAnACLRule.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "t_CreateAnACLRule",
+          "section": "Configure an ACL",
+          "url": "https://www.servicenow.com/docs/r/australia/platform-security/access-control/t_CreateAnACLRule.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/platform-security/access-control/t_CreateAnACLRule.md",
+        "excerpt": "For example, you could create an ACL for the incident table that applies only to incidents with the Critical priority."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Database Management and Platform Security",
+        "domainSlug": "database-administration",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Application/Access Control"
+        ],
+        "tags": [
+          "acl",
+          "applies to"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
+      }
+    },
+    {
+      "id": "csa-ua-224",
+      "certification": "csa",
+      "topic": "user-administration",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "What does a user need before they can grant the security_admin role to other users?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The admin role, plus elevation to security_admin"
+        },
+        {
+          "id": "b",
+          "text": "Only the admin role"
+        },
+        {
+          "id": "c",
+          "text": "Only the user_admin role"
+        },
+        {
+          "id": "d",
+          "text": "The itil role and group manager status"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "To grant security_admin, the granting user must have the admin role and must elevate to security_admin first. A user with only the admin role can't grant security_admin, and a user with only user_admin can't grant admin. See https://www.servicenow.com/docs/r/australia/platform-security/c_ElevatedPrivilege.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "Admin alone can't grant security_admin.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-security/c_ElevatedPrivilege.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "user_admin can't grant admin or security_admin.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-security/c_ElevatedPrivilege.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "itil doesn't allow granting privileged roles.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-security/c_ElevatedPrivilege.html"
+          }
+        ]
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/platform-security/c_ElevatedPrivilege.html"
+      ],
+      "isFree": false,
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "c_ElevatedPrivilege",
+          "section": "Elevated privilege roles",
+          "url": "https://www.servicenow.com/docs/r/australia/platform-security/c_ElevatedPrivilege.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/platform-security/c_ElevatedPrivilege.md",
+        "excerpt": "A user with only the admin role cannot grant the security_admin role to other users."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Database Management and Platform Security",
+        "domainSlug": "database-administration",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Application/Access Control"
+        ],
+        "tags": [
+          "security_admin",
+          "roles"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-09-27T00:00:00Z",
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "blueprint": "CSA exam blueprint Jan 2026 (KB0011554)"
       }
     },
     {
@@ -354,7 +2074,7 @@
       "topic": "user-administration",
       "cognitiveLevel": "knowledge",
       "type": "multiple_choice",
-      "question": "What automatically happens when a new table is created in ServiceNow?",
+      "question": "When an administrator creates a new table, what does selecting the Create access controls check box do?",
       "options": [
         {
           "id": "a",
@@ -362,7 +2082,7 @@
         },
         {
           "id": "b",
-          "text": "Access controls are automatically created for the table"
+          "text": "Creates basic security rules (access controls) for the table, using the role entered in the User role field"
         },
         {
           "id": "c",
@@ -377,48 +2097,54 @@
         "b"
       ],
       "explanation": {
-        "correct": "With system created access controls, it is rare to have a table with no access control rules. When a table is created, access controls are automatically created. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1",
+        "correct": "On the table creation form, selecting Create access controls and filling in the User role field creates basic security rules for the new table. See https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/t_CreateATable.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
             "explanation": "ServiceNow automatically creates baseline access controls for new tables.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1"
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/t_CreateATable.html"
           },
           {
             "choiceId": "c",
             "explanation": "Access depends on the automatically created ACLs, not just admin restrictions.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1"
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/t_CreateATable.html"
           },
           {
             "choiceId": "d",
             "explanation": "New tables are not automatically read-only; access is controlled by ACLs.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1"
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/t_CreateATable.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Table Creation"
+        "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/t_CreateATable.html",
+        "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1"
       ],
-      "isFree": true,
+      "isFree": false,
       "source": {
-        "type": "course",
+        "type": "both",
+        "documentation": {
+          "docSlug": "t_CreateATable",
+          "section": "Create a table",
+          "url": "https://www.servicenow.com/docs/r/australia/platform-administration/table-administration-and-data-management/t_CreateATable.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/platform-administration/table-administration-and-data-management/t_CreateATable.md",
+        "excerpt": "Select the check box and then complete the User role field to create basic security rules for the table.",
         "course": {
           "courseSlug": "servicenow-administration-fundamentals-xanadu",
           "moduleTitle": "SNAF Module 4: Manage data",
           "lessonSlug": "02-application-and-access-control",
           "lessonTitle": "Application and access control",
           "url": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1"
-        },
-        "path": "sn-course-scraper/scraped-courses/servicenow-administration-fundamentals-xanadu/02-application-and-access-control.md",
-        "excerpt": "With system created access controls, it is rare to have a table with no access control rules. When a table is created, access controls are automatically created."
+        }
       },
       "labels": {
         "certification": "csa",
-        "domain": "User Administration & Security",
-        "domainSlug": "user-administration",
-        "domainPercentage": 15,
+        "domain": "Database Management and Platform Security",
+        "domainSlug": "database-administration",
+        "domainPercentage": 30,
         "subtopics": [
-          "Access Control Lists (ACLs)"
+          "Application/Access Control"
         ],
         "tags": [
           "table creation",
@@ -428,9 +2154,10 @@
       },
       "meta": {
         "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "reworkedAt": "2026-09-27T00:00:00Z"
       }
     },
     {
@@ -482,7 +2209,7 @@
         ]
       },
       "references": [
-        "ServiceNow ACL Evaluation"
+        "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1"
       ],
       "isFree": false,
       "source": {
@@ -499,12 +2226,11 @@
       },
       "labels": {
         "certification": "csa",
-        "domain": "User Administration & Security",
-        "domainSlug": "user-administration",
-        "domainPercentage": 15,
+        "domain": "Database Management and Platform Security",
+        "domainSlug": "database-administration",
+        "domainPercentage": 30,
         "subtopics": [
-          "Access Control Lists (ACLs)",
-          "Security rules"
+          "Application/Access Control"
         ],
         "tags": [
           "ACL",
@@ -568,7 +2294,7 @@
         ]
       },
       "references": [
-        "ServiceNow UI Indicators"
+        "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1"
       ],
       "isFree": false,
       "source": {
@@ -585,187 +2311,16 @@
       },
       "labels": {
         "certification": "csa",
-        "domain": "User Administration & Security",
-        "domainSlug": "user-administration",
-        "domainPercentage": 15,
+        "domain": "Database Management and Platform Security",
+        "domainSlug": "database-administration",
+        "domainPercentage": 30,
         "subtopics": [
-          "Roles and role hierarchies"
+          "Application/Access Control"
         ],
         "tags": [
           "elevated privileges",
           "UI",
           "avatar"
-        ]
-      },
-      "meta": {
-        "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
-      }
-    },
-    {
-      "id": "csa-ua-008",
-      "certification": "csa",
-      "topic": "user-administration",
-      "cognitiveLevel": "understanding",
-      "type": "multiple_choice",
-      "question": "How do ACL rules for parent tables apply to child tables?",
-      "options": [
-        {
-          "id": "a",
-          "text": "They don't apply - each table needs its own ACLs"
-        },
-        {
-          "id": "b",
-          "text": "ACL rules for parent tables apply to their child tables"
-        },
-        {
-          "id": "c",
-          "text": "Child tables override all parent table ACLs"
-        },
-        {
-          "id": "d",
-          "text": "Only admin-created ACLs are inherited"
-        }
-      ],
-      "correctAnswers": [
-        "b"
-      ],
-      "explanation": {
-        "correct": "ACL rules for parent tables apply to their child tables. This inheritance model means security settings on a parent table like 'task' automatically apply to child tables like 'incident' and 'change_request'. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1",
-        "wrongAnswers": [
-          {
-            "choiceId": "a",
-            "explanation": "ACLs are inherited from parent to child tables in ServiceNow's table hierarchy.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1"
-          },
-          {
-            "choiceId": "c",
-            "explanation": "Child tables don't automatically override parent ACLs; they inherit and can have additional ACLs.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1"
-          },
-          {
-            "choiceId": "d",
-            "explanation": "All ACLs on parent tables are inherited, regardless of who created them.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1"
-          }
-        ]
-      },
-      "references": [
-        "ServiceNow Table Inheritance"
-      ],
-      "isFree": false,
-      "source": {
-        "type": "course",
-        "course": {
-          "courseSlug": "servicenow-administration-fundamentals-xanadu",
-          "moduleTitle": "SNAF Module 4: Manage data",
-          "lessonSlug": "02-application-and-access-control",
-          "lessonTitle": "Application and access control",
-          "url": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1"
-        },
-        "path": "sn-course-scraper/scraped-courses/servicenow-administration-fundamentals-xanadu/02-application-and-access-control.md",
-        "excerpt": "ACL rules for parent tables apply to their child tables."
-      },
-      "labels": {
-        "certification": "csa",
-        "domain": "User Administration & Security",
-        "domainSlug": "user-administration",
-        "domainPercentage": 15,
-        "subtopics": [
-          "Access Control Lists (ACLs)"
-        ],
-        "tags": [
-          "ACL",
-          "inheritance",
-          "parent table",
-          "child table"
-        ]
-      },
-      "meta": {
-        "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
-      }
-    },
-    {
-      "id": "csa-ua-009",
-      "certification": "csa",
-      "topic": "user-administration",
-      "cognitiveLevel": "knowledge",
-      "type": "multiple_choice",
-      "question": "What are the three main security modules typically used by system administrators?",
-      "options": [
-        {
-          "id": "a",
-          "text": "Users, Groups, and Roles"
-        },
-        {
-          "id": "b",
-          "text": "Security, ACL list, and High Security Settings"
-        },
-        {
-          "id": "c",
-          "text": "Authentication, Authorization, and Audit"
-        },
-        {
-          "id": "d",
-          "text": "Login, Password, and Session"
-        }
-      ],
-      "correctAnswers": [
-        "b"
-      ],
-      "explanation": {
-        "correct": "System administrators typically use three security modules: Security, ACL list, and High Security Settings. These modules provide the tools needed to manage access controls and security configurations. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1",
-        "wrongAnswers": [
-          {
-            "choiceId": "a",
-            "explanation": "While Users, Groups, and Roles are important, they are not the three main security modules.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1"
-          },
-          {
-            "choiceId": "c",
-            "explanation": "These are security concepts, not the specific module names in ServiceNow.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1"
-          },
-          {
-            "choiceId": "d",
-            "explanation": "These relate to authentication features, not the main security administration modules.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1"
-          }
-        ]
-      },
-      "references": [
-        "ServiceNow Security Administration"
-      ],
-      "isFree": false,
-      "source": {
-        "type": "course",
-        "course": {
-          "courseSlug": "servicenow-administration-fundamentals-xanadu",
-          "moduleTitle": "SNAF Module 4: Manage data",
-          "lessonSlug": "02-application-and-access-control",
-          "lessonTitle": "Application and access control",
-          "url": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1"
-        },
-        "path": "sn-course-scraper/scraped-courses/servicenow-administration-fundamentals-xanadu/02-application-and-access-control.md",
-        "excerpt": "System administrators typically use three security modules-- security, ACL list, and high security settings."
-      },
-      "labels": {
-        "certification": "csa",
-        "domain": "User Administration & Security",
-        "domainSlug": "user-administration",
-        "domainPercentage": 15,
-        "subtopics": [
-          "Security rules"
-        ],
-        "tags": [
-          "security modules",
-          "ACL",
-          "administration"
         ]
       },
       "meta": {
@@ -824,7 +2379,7 @@
         ]
       },
       "references": [
-        "ServiceNow Impersonation"
+        "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1"
       ],
       "isFree": false,
       "source": {
@@ -841,12 +2396,11 @@
       },
       "labels": {
         "certification": "csa",
-        "domain": "User Administration & Security",
-        "domainSlug": "user-administration",
-        "domainPercentage": 15,
+        "domain": "Database Management and Platform Security",
+        "domainSlug": "database-administration",
+        "domainPercentage": 30,
         "subtopics": [
-          "Impersonation",
-          "Roles and role hierarchies"
+          "Application/Access Control"
         ],
         "tags": [
           "impersonation",
@@ -868,7 +2422,7 @@
       "topic": "user-administration",
       "cognitiveLevel": "application",
       "type": "multiple_select",
-      "question": "Which components does ServiceNow use to ensure security for CRUD operations? (Choose two)",
+      "question": "Which components does ServiceNow use to ensure security for CRUD operations? (Choose two.)",
       "options": [
         {
           "id": "a",
@@ -907,7 +2461,7 @@
         ]
       },
       "references": [
-        "ServiceNow Security Model"
+        "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1"
       ],
       "isFree": false,
       "source": {
@@ -924,176 +2478,17 @@
       },
       "labels": {
         "certification": "csa",
-        "domain": "User Administration & Security",
-        "domainSlug": "user-administration",
-        "domainPercentage": 15,
+        "domain": "Database Management and Platform Security",
+        "domainSlug": "database-administration",
+        "domainPercentage": 30,
         "subtopics": [
-          "User records and profiles",
-          "Roles and role hierarchies"
+          "Application/Access Control"
         ],
         "tags": [
           "CRUD",
           "security",
           "authentication",
           "roles"
-        ]
-      },
-      "meta": {
-        "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
-      }
-    },
-    {
-      "id": "csa-ua-012",
-      "certification": "csa",
-      "topic": "user-administration",
-      "cognitiveLevel": "understanding",
-      "type": "multiple_choice",
-      "question": "What is the purpose of user impersonation in ServiceNow?",
-      "options": [
-        {
-          "id": "a",
-          "text": "To permanently change a user's password"
-        },
-        {
-          "id": "b",
-          "text": "To test the platform from another user's perspective and troubleshoot access issues"
-        },
-        {
-          "id": "c",
-          "text": "To delete another user's account"
-        },
-        {
-          "id": "d",
-          "text": "To merge two user accounts together"
-        }
-      ],
-      "correctAnswers": [
-        "b"
-      ],
-      "explanation": {
-        "correct": "Impersonation allows administrators to test the platform from another user's perspective. This is useful for troubleshooting access issues, verifying that security configurations work correctly, and understanding what a specific user can see and do.",
-        "wrongAnswers": [
-          {
-            "choiceId": "a",
-            "explanation": "Password changes are managed through user administration, not impersonation.",
-            "reference": "Password Management"
-          },
-          {
-            "choiceId": "c",
-            "explanation": "Account deletion is a separate administrative function, not related to impersonation.",
-            "reference": "User Administration"
-          },
-          {
-            "choiceId": "d",
-            "explanation": "Account merging is not a feature of impersonation.",
-            "reference": "User Management"
-          }
-        ]
-      },
-      "references": [
-        "ServiceNow Impersonation"
-      ],
-      "isFree": false,
-      "source": {
-        "type": "documentation",
-        "path": "docs.servicenow.com",
-        "excerpt": "Impersonation allows administrators to test and troubleshoot by viewing the platform as another user would see it."
-      },
-      "labels": {
-        "certification": "csa",
-        "domain": "User Administration & Security",
-        "domainSlug": "user-administration",
-        "domainPercentage": 15,
-        "subtopics": [
-          "Impersonation"
-        ],
-        "tags": [
-          "impersonation",
-          "testing",
-          "troubleshooting"
-        ]
-      },
-      "meta": {
-        "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
-      }
-    },
-    {
-      "id": "csa-ua-013",
-      "certification": "csa",
-      "topic": "user-administration",
-      "cognitiveLevel": "knowledge",
-      "type": "multiple_choice",
-      "question": "What must a user have to access data in ServiceNow?",
-      "options": [
-        {
-          "id": "a",
-          "text": "Only a role"
-        },
-        {
-          "id": "b",
-          "text": "Only ACL access"
-        },
-        {
-          "id": "c",
-          "text": "Both a role AND ACL access"
-        },
-        {
-          "id": "d",
-          "text": "Group membership only"
-        }
-      ],
-      "correctAnswers": [
-        "c"
-      ],
-      "explanation": {
-        "correct": "A user needs BOTH a role AND ACL access to see data. Roles grant access to application modules, while ACLs control record-level access. Both must be satisfied for a user to access specific data.",
-        "wrongAnswers": [
-          {
-            "choiceId": "a",
-            "explanation": "Roles alone grant module access but don't control data access without ACLs.",
-            "reference": "Security Model"
-          },
-          {
-            "choiceId": "b",
-            "explanation": "ACLs control data access but users also need appropriate roles to access modules.",
-            "reference": "Role-Based Access"
-          },
-          {
-            "choiceId": "d",
-            "explanation": "Group membership helps organize users but doesn't directly grant data access without roles and ACLs.",
-            "reference": "Groups"
-          }
-        ]
-      },
-      "references": [
-        "ServiceNow Security Model"
-      ],
-      "isFree": false,
-      "source": {
-        "type": "documentation",
-        "path": "docs.servicenow.com",
-        "excerpt": "A user needs BOTH a role AND ACL access to see data. Roles grant access to application modules, while ACLs control record-level access."
-      },
-      "labels": {
-        "certification": "csa",
-        "domain": "User Administration & Security",
-        "domainSlug": "user-administration",
-        "domainPercentage": 15,
-        "subtopics": [
-          "Roles and role hierarchies",
-          "Access Control Lists (ACLs)"
-        ],
-        "tags": [
-          "roles",
-          "ACL",
-          "data access",
-          "security"
         ]
       },
       "meta": {
@@ -1152,7 +2547,7 @@
         ]
       },
       "references": [
-        "ServiceNow Elevated Privileges"
+        "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1"
       ],
       "isFree": false,
       "source": {
@@ -1169,12 +2564,11 @@
       },
       "labels": {
         "certification": "csa",
-        "domain": "User Administration & Security",
-        "domainSlug": "user-administration",
-        "domainPercentage": 15,
+        "domain": "Database Management and Platform Security",
+        "domainSlug": "database-administration",
+        "domainPercentage": 30,
         "subtopics": [
-          "Roles and role hierarchies",
-          "Access Control Lists (ACLs)"
+          "Application/Access Control"
         ],
         "tags": [
           "elevated privileges",
@@ -1195,7 +2589,7 @@
       "topic": "user-administration",
       "cognitiveLevel": "understanding",
       "type": "multiple_select",
-      "question": "Which statements about the admin role in ServiceNow are true? (Choose two)",
+      "question": "Which statements about the admin role in ServiceNow are true? (Choose two.)",
       "options": [
         {
           "id": "a",
@@ -1234,7 +2628,7 @@
         ]
       },
       "references": [
-        "ServiceNow Admin Role"
+        "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1"
       ],
       "isFree": false,
       "source": {
@@ -1251,11 +2645,11 @@
       },
       "labels": {
         "certification": "csa",
-        "domain": "User Administration & Security",
-        "domainSlug": "user-administration",
-        "domainPercentage": 15,
+        "domain": "Database Management and Platform Security",
+        "domainSlug": "database-administration",
+        "domainPercentage": 30,
         "subtopics": [
-          "Roles and role hierarchies"
+          "Application/Access Control"
         ],
         "tags": [
           "admin",
@@ -1267,374 +2661,6 @@
       "meta": {
         "generatedAt": "2026-02-04T23:00:00Z",
         "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
-      }
-    },
-    {
-      "id": "csa-ua-016",
-      "certification": "csa",
-      "topic": "user-administration",
-      "cognitiveLevel": "comprehension",
-      "type": "multiple_choice",
-      "question": "What is the recommended method for assigning roles to users in ServiceNow?",
-      "options": [
-        {
-          "id": "a",
-          "text": "Assign roles directly to individual user records"
-        },
-        {
-          "id": "b",
-          "text": "Add users to groups and assign roles to the groups"
-        },
-        {
-          "id": "c",
-          "text": "Use update sets to assign roles"
-        },
-        {
-          "id": "d",
-          "text": "Configure roles through the CMDB"
-        }
-      ],
-      "correctAnswers": [
-        "b"
-      ],
-      "explanation": {
-        "correct": "Rather than adding roles to individual users, the recommended approach is to add the user to a group and assign the role to the group. This makes maintenance easier when people transfer to different roles in the organization.",
-        "wrongAnswers": [
-          {
-            "choiceId": "a",
-            "explanation": "While possible, assigning roles directly to users makes maintenance difficult when organizational changes occur."
-          },
-          {
-            "choiceId": "c",
-            "explanation": "Update sets are for migrating configuration changes between instances, not for role assignment."
-          },
-          {
-            "choiceId": "d",
-            "explanation": "The CMDB tracks configuration items, not user roles."
-          }
-        ]
-      },
-      "isFree": false,
-      "source": {
-        "type": "course",
-        "course": {
-          "courseSlug": "servicenow-administration-fundamentals-xanadu",
-          "lessonTitle": "User access and personas"
-        }
-      },
-      "labels": {
-        "certification": "csa",
-        "domain": "User Administration & Security",
-        "domainSlug": "user-administration",
-        "domainPercentage": 15,
-        "subtopics": [
-          "Role assignment best practices"
-        ],
-        "tags": [
-          "roles",
-          "groups",
-          "best practices"
-        ]
-      },
-      "meta": {
-        "generatedAt": "2026-03-16T02:00:00Z",
-        "version": "1.1",
-        "release": "Xanadu",
-        "reviewed": false
-      }
-    },
-    {
-      "id": "csa-ua-017",
-      "certification": "csa",
-      "topic": "user-administration",
-      "cognitiveLevel": "knowledge",
-      "type": "multiple_choice",
-      "question": "What indicates that elevated privileges are activated for an administrator's session?",
-      "options": [
-        {
-          "id": "a",
-          "text": "A lock icon appears in the navigation menu"
-        },
-        {
-          "id": "b",
-          "text": "An upward arrow appears next to the user's avatar"
-        },
-        {
-          "id": "c",
-          "text": "The background color of the instance changes"
-        },
-        {
-          "id": "d",
-          "text": "A notification email is sent to the security team"
-        }
-      ],
-      "correctAnswers": [
-        "b"
-      ],
-      "explanation": {
-        "correct": "An upward arrow next to your avatar indicates activated elevated privileges. These roles last only for your session and end with logout, session timeout, or user impersonation.",
-        "wrongAnswers": [
-          {
-            "choiceId": "a",
-            "explanation": "There is no lock icon for elevated privileges; the indicator is an upward arrow by the avatar."
-          },
-          {
-            "choiceId": "c",
-            "explanation": "The background color does not change for elevated privileges."
-          },
-          {
-            "choiceId": "d",
-            "explanation": "No email notification is sent when elevating privileges."
-          }
-        ]
-      },
-      "isFree": false,
-      "source": {
-        "type": "course",
-        "course": {
-          "courseSlug": "servicenow-administration-fundamentals-xanadu",
-          "lessonTitle": "Application and access control"
-        }
-      },
-      "labels": {
-        "certification": "csa",
-        "domain": "User Administration & Security",
-        "domainSlug": "user-administration",
-        "domainPercentage": 15,
-        "subtopics": [
-          "Elevated privileges"
-        ],
-        "tags": [
-          "elevated privileges",
-          "security",
-          "admin role"
-        ]
-      },
-      "meta": {
-        "generatedAt": "2026-03-16T02:00:00Z",
-        "version": "1.1",
-        "release": "Xanadu",
-        "reviewed": false
-      }
-    },
-    {
-      "id": "csa-ua-018",
-      "certification": "csa",
-      "topic": "user-administration",
-      "cognitiveLevel": "comprehension",
-      "type": "multiple_choice",
-      "question": "In which order does ServiceNow evaluate access control rules?",
-      "options": [
-        {
-          "id": "a",
-          "text": "Allow rules first, then deny rules"
-        },
-        {
-          "id": "b",
-          "text": "Field rules first, then table rules"
-        },
-        {
-          "id": "c",
-          "text": "Deny rules first, then allow rules if deny conditions are met"
-        },
-        {
-          "id": "d",
-          "text": "All rules are evaluated simultaneously"
-        }
-      ],
-      "correctAnswers": [
-        "c"
-      ],
-      "explanation": {
-        "correct": "The system checks deny rules first. If any deny rule conditions are unmet, access is blocked. Allow rules are evaluated only when no deny rules apply or if all deny rule criteria are satisfied.",
-        "wrongAnswers": [
-          {
-            "choiceId": "a",
-            "explanation": "Deny rules are checked before allow rules, not the other way around."
-          },
-          {
-            "choiceId": "b",
-            "explanation": "Access controls check table access first, then field access \u2014 but deny/allow ordering is the key evaluation sequence."
-          },
-          {
-            "choiceId": "d",
-            "explanation": "Rules are evaluated in a specific order: deny rules first, then allow rules."
-          }
-        ]
-      },
-      "isFree": false,
-      "source": {
-        "type": "course",
-        "course": {
-          "courseSlug": "servicenow-administration-fundamentals-xanadu",
-          "lessonTitle": "Application and access control"
-        }
-      },
-      "labels": {
-        "certification": "csa",
-        "domain": "User Administration & Security",
-        "domainSlug": "user-administration",
-        "domainPercentage": 15,
-        "subtopics": [
-          "ACL evaluation order"
-        ],
-        "tags": [
-          "ACL",
-          "deny rules",
-          "allow rules",
-          "access control"
-        ]
-      },
-      "meta": {
-        "generatedAt": "2026-03-16T02:00:00Z",
-        "version": "1.1",
-        "release": "Xanadu",
-        "reviewed": false
-      }
-    },
-    {
-      "id": "csa-ua-019",
-      "certification": "csa",
-      "topic": "user-administration",
-      "cognitiveLevel": "knowledge",
-      "type": "multiple_select",
-      "question": "Which actions can users WITHOUT any assigned roles perform in ServiceNow? (Choose 2)",
-      "options": [
-        {
-          "id": "a",
-          "text": "View a dashboard"
-        },
-        {
-          "id": "b",
-          "text": "Create business rules"
-        },
-        {
-          "id": "c",
-          "text": "Access the service catalog"
-        },
-        {
-          "id": "d",
-          "text": "Manage access control lists"
-        }
-      ],
-      "correctAnswers": [
-        "a",
-        "c"
-      ],
-      "explanation": {
-        "correct": "Users without any assigned roles can still log in and access common actions such as viewing a dashboard, accessing the service catalog, viewing knowledge articles, and taking surveys. These are often referred to as self-service users.",
-        "wrongAnswers": [
-          {
-            "choiceId": "b",
-            "explanation": "Creating business rules requires administrative roles."
-          },
-          {
-            "choiceId": "d",
-            "explanation": "Managing ACLs requires the security_admin role."
-          }
-        ]
-      },
-      "isFree": false,
-      "source": {
-        "type": "course",
-        "course": {
-          "courseSlug": "servicenow-administration-fundamentals-xanadu",
-          "lessonTitle": "User access and personas"
-        }
-      },
-      "labels": {
-        "certification": "csa",
-        "domain": "User Administration & Security",
-        "domainSlug": "user-administration",
-        "domainPercentage": 15,
-        "subtopics": [
-          "Self-service users"
-        ],
-        "tags": [
-          "self-service",
-          "no roles",
-          "user access"
-        ]
-      },
-      "meta": {
-        "generatedAt": "2026-03-16T02:00:00Z",
-        "version": "1.1",
-        "release": "Xanadu",
-        "reviewed": false
-      }
-    },
-    {
-      "id": "csa-ua-020",
-      "certification": "csa",
-      "topic": "user-administration",
-      "cognitiveLevel": "comprehension",
-      "type": "multiple_choice",
-      "question": "Which statement about user impersonation is TRUE?",
-      "options": [
-        {
-          "id": "a",
-          "text": "Any user can impersonate another user"
-        },
-        {
-          "id": "b",
-          "text": "Impersonation allows access to security incidents even if you don't have those roles"
-        },
-        {
-          "id": "c",
-          "text": "Only users with the admin or impersonator role can impersonate other users"
-        },
-        {
-          "id": "d",
-          "text": "Impersonation persists across multiple login sessions"
-        }
-      ],
-      "correctAnswers": [
-        "c"
-      ],
-      "explanation": {
-        "correct": "Only admins and users with the impersonator role can impersonate other users to test their access. When impersonating a user with a specific admin role, you cannot access certain features like security incidents unless you already have those roles.",
-        "wrongAnswers": [
-          {
-            "choiceId": "a",
-            "explanation": "Only users with the admin or impersonator role can impersonate others."
-          },
-          {
-            "choiceId": "b",
-            "explanation": "When impersonating, you cannot access features like security incidents unless you already have those specific roles."
-          },
-          {
-            "choiceId": "d",
-            "explanation": "Impersonation does not persist across login sessions."
-          }
-        ]
-      },
-      "isFree": false,
-      "source": {
-        "type": "course",
-        "course": {
-          "courseSlug": "servicenow-administration-fundamentals-xanadu",
-          "lessonTitle": "User access and personas"
-        }
-      },
-      "labels": {
-        "certification": "csa",
-        "domain": "User Administration & Security",
-        "domainSlug": "user-administration",
-        "domainPercentage": 15,
-        "subtopics": [
-          "User impersonation"
-        ],
-        "tags": [
-          "impersonation",
-          "admin role",
-          "testing access"
-        ]
-      },
-      "meta": {
-        "generatedAt": "2026-03-16T02:00:00Z",
-        "version": "1.1",
         "release": "Xanadu",
         "reviewed": false
       }
@@ -1668,25 +2694,35 @@
         "c"
       ],
       "explanation": {
-        "correct": "The catalog_admin role includes permissions from both user_criteria_admin and catalog roles, providing access to all applications and modules of both roles plus any permissions specific to catalog_admin.",
+        "correct": "The catalog_admin role includes permissions from both user_criteria_admin and catalog roles, providing access to all applications and modules of both roles plus any permissions specific to catalog_admin. See https://www.servicenow.com/docs/r/australia/platform-administration/user-administration/r_BaseSystemRoles.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "catalog_admin includes more than just the catalog role \u2014 it also contains user_criteria_admin permissions."
+            "explanation": "catalog_admin includes more than just the catalog role — it also contains user_criteria_admin permissions.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/user-administration/r_BaseSystemRoles.html"
           },
           {
             "choiceId": "b",
-            "explanation": "catalog_admin includes user criteria access but also catalog and additional permissions."
+            "explanation": "catalog_admin includes user criteria access but also catalog and additional permissions.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/user-administration/r_BaseSystemRoles.html"
           },
           {
             "choiceId": "d",
-            "explanation": "catalog_admin provides access to catalog-related features, not full admin access."
+            "explanation": "catalog_admin provides access to catalog-related features, not full admin access.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/user-administration/r_BaseSystemRoles.html"
           }
         ]
       },
       "isFree": false,
       "source": {
-        "type": "course",
+        "type": "both",
+        "documentation": {
+          "docSlug": "r_BaseSystemRoles",
+          "section": "Base system roles",
+          "url": "https://www.servicenow.com/docs/r/australia/platform-administration/user-administration/r_BaseSystemRoles.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/platform-administration/user-administration/r_BaseSystemRoles.md",
+        "excerpt": "Catalog administrators can manage the Service Catalog application, including catalog categories and items. Contains Roles: user_criteria_admin, catalog_builder_editor, catalog_template_editor, catalog, catalog_lookup_admin",
         "course": {
           "courseSlug": "servicenow-administration-fundamentals-xanadu",
           "lessonTitle": "User access and personas"
@@ -1694,11 +2730,11 @@
       },
       "labels": {
         "certification": "csa",
-        "domain": "User Administration & Security",
-        "domainSlug": "user-administration",
-        "domainPercentage": 15,
+        "domain": "Database Management and Platform Security",
+        "domainSlug": "database-administration",
+        "domainPercentage": 30,
         "subtopics": [
-          "Role inheritance"
+          "Application/Access Control"
         ],
         "tags": [
           "catalog_admin",
@@ -1708,10 +2744,14 @@
       },
       "meta": {
         "generatedAt": "2026-03-16T02:00:00Z",
-        "version": "1.1",
-        "release": "Xanadu",
-        "reviewed": false
-      }
+        "version": "2.0",
+        "release": "Australia",
+        "reviewed": false,
+        "reworkedAt": "2026-09-27T00:00:00Z"
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/platform-administration/user-administration/r_BaseSystemRoles.html"
+      ]
     },
     {
       "id": "csa-ua-022",
@@ -1742,25 +2782,35 @@
         "b"
       ],
       "explanation": {
-        "correct": "ServiceNow Security Center is a built-in tool that helps system administrators manage and improve instance security. It includes hardening checks, security scanning, customer actions, notifications, and compliance scoring.",
+        "correct": "ServiceNow Security Center is a built-in tool that helps system administrators manage and improve instance security. It includes hardening checks, security scanning, customer actions, notifications, and compliance scoring. See https://www.servicenow.com/docs/r/australia/platform-security/security-center/homepage.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Security Center covers much more than passwords \u2014 it includes hardening, scanning, compliance, and metrics."
+            "explanation": "Security Center covers much more than passwords — it includes hardening, scanning, compliance, and metrics.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-security/security-center/homepage.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Security Center focuses on instance security settings, not network infrastructure."
+            "explanation": "Security Center focuses on instance security settings, not network infrastructure.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-security/security-center/homepage.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Encryption key management is not the primary purpose of Security Center."
+            "explanation": "Encryption key management is not the primary purpose of Security Center.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-security/security-center/homepage.html"
           }
         ]
       },
       "isFree": false,
       "source": {
-        "type": "course",
+        "type": "both",
+        "documentation": {
+          "docSlug": "homepage",
+          "section": "Security configuration console",
+          "url": "https://www.servicenow.com/docs/r/australia/platform-security/security-center/homepage.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/platform-security/security-center/homepage.md",
+        "excerpt": "Use the security configuration page to get an overview of the security posture of your instance. View your hardening compliance score, discover graphical trends, analyze the top non-compliant hardening settings, and see the results of your security scans.",
         "course": {
           "courseSlug": "servicenow-administration-fundamentals-xanadu",
           "lessonTitle": "ServiceNow Security Center"
@@ -1768,9 +2818,9 @@
       },
       "labels": {
         "certification": "csa",
-        "domain": "User Administration & Security",
-        "domainSlug": "user-administration",
-        "domainPercentage": 15,
+        "domain": "Database Management and Platform Security",
+        "domainSlug": "database-administration",
+        "domainPercentage": 30,
         "subtopics": [
           "Security Center"
         ],
@@ -1782,387 +2832,24 @@
       },
       "meta": {
         "generatedAt": "2026-03-16T02:00:00Z",
-        "version": "1.1",
-        "release": "Xanadu",
-        "reviewed": false
-      }
-    },
-    {
-      "id": "csa-ua-023",
-      "cognitiveLevel": "application",
-      "type": "multiple_choice",
-      "question": "An administrator needs to prevent users in the 'itil' group from editing the Priority field on Incident records, but they should still be able to view it. Which approach is correct?",
-      "options": [
-        {
-          "id": "a",
-          "text": "Create a write ACL on the incident.priority field that excludes the itil role"
-        },
-        {
-          "id": "b",
-          "text": "Remove the Priority field from the incident form"
-        },
-        {
-          "id": "c",
-          "text": "Create a UI Policy that makes Priority read-only for itil users"
-        },
-        {
-          "id": "d",
-          "text": "Delete the Priority field from the Incident table"
-        }
-      ],
-      "correctAnswers": [
-        "c"
-      ],
-      "explanation": {
-        "correct": "A UI Policy with a condition checking the user's role can make the Priority field read-only for itil users while keeping it visible. This is the standard approach for role-based field-level restrictions on forms.",
-        "wrongAnswers": [
-          {
-            "choiceId": "a",
-            "explanation": "While ACLs can control write access, a field-level write ACL that excludes itil would also affect other operations. UI Policy is more targeted for form-level display control."
-          },
-          {
-            "choiceId": "b",
-            "explanation": "Removing the field prevents viewing it entirely, which contradicts the requirement to keep it visible."
-          },
-          {
-            "choiceId": "d",
-            "explanation": "Deleting a core field like Priority would break system functionality and is never appropriate."
-          }
-        ]
-      },
-      "certification": "csa",
-      "topic": "user-administration",
-      "references": [],
-      "isFree": false,
-      "source": {
-        "type": "generated",
-        "course": {
-          "courseSlug": "servicenow-administration-fundamentals-xanadu",
-          "moduleTitle": "CSA Expansion",
-          "lessonSlug": "user-administration",
-          "lessonTitle": "CSA user-administration expansion questions",
-          "url": ""
-        },
-        "path": "",
-        "excerpt": ""
-      },
-      "labels": {
-        "certification": "csa",
-        "domain": "user-administration",
-        "domainSlug": "user-administration",
-        "subtopics": [],
-        "tags": []
-      },
-      "meta": {
-        "generatedAt": "2026-03-31T02:09:00Z",
         "version": "2.0",
-        "release": "Xanadu",
-        "reviewed": false
-      }
-    },
-    {
-      "id": "csa-ua-024",
-      "cognitiveLevel": "knowledge",
-      "type": "multiple_choice",
-      "question": "Which three elements make up an Access Control List (ACL) rule in ServiceNow? (Choose 3)",
-      "options": [
-        {
-          "id": "a",
-          "text": "The object being secured (table/field)"
-        },
-        {
-          "id": "b",
-          "text": "The operation (read, write, create, delete)"
-        },
-        {
-          "id": "c",
-          "text": "The permissions required (role, condition, script)"
-        },
-        {
-          "id": "d",
-          "text": "The time zone of the user"
-        },
-        {
-          "id": "e",
-          "text": "The browser type being used"
-        }
-      ],
-      "correctAnswers": [
-        "a",
-        "b",
-        "c"
-      ],
-      "explanation": {
-        "correct": "An ACL rule consists of three parts: the object (what is being protected \u2014 a table, field, or record), the operation (what action is being controlled \u2014 read, write, create, or delete), and the permissions (who is allowed \u2014 defined by roles, conditions, and/or scripts).",
-        "wrongAnswers": [
-          {
-            "choiceId": "d",
-            "explanation": "Time zone is a user preference setting, not a component of ACL rules."
-          },
-          {
-            "choiceId": "e",
-            "explanation": "Browser type is not relevant to ACL evaluation."
-          }
-        ]
+        "release": "Australia",
+        "reviewed": false,
+        "reworkedAt": "2026-09-27T00:00:00Z"
       },
-      "certification": "csa",
-      "topic": "user-administration",
-      "references": [],
-      "isFree": false,
-      "source": {
-        "type": "generated",
-        "course": {
-          "courseSlug": "servicenow-administration-fundamentals-xanadu",
-          "moduleTitle": "CSA Expansion",
-          "lessonSlug": "user-administration",
-          "lessonTitle": "CSA user-administration expansion questions",
-          "url": ""
-        },
-        "path": "",
-        "excerpt": ""
-      },
-      "labels": {
-        "certification": "csa",
-        "domain": "user-administration",
-        "domainSlug": "user-administration",
-        "subtopics": [],
-        "tags": []
-      },
-      "meta": {
-        "generatedAt": "2026-03-31T02:09:00Z",
-        "version": "2.0",
-        "release": "Xanadu",
-        "reviewed": false
-      }
-    },
-    {
-      "id": "csa-ua-025",
-      "cognitiveLevel": "understanding",
-      "type": "multiple_choice",
-      "question": "What is the evaluation order when multiple ACL rules apply to the same object and operation?",
-      "options": [
-        {
-          "id": "a",
-          "text": "All matching ACL rules must pass \u2014 they are evaluated with AND logic"
-        },
-        {
-          "id": "b",
-          "text": "Only the first matching ACL rule is evaluated"
-        },
-        {
-          "id": "c",
-          "text": "The most restrictive ACL always wins"
-        },
-        {
-          "id": "d",
-          "text": "ACL rules are evaluated randomly"
-        }
-      ],
-      "correctAnswers": [
-        "a"
-      ],
-      "explanation": {
-        "correct": "When multiple ACL rules match the same object and operation, ALL must pass. ServiceNow uses AND logic \u2014 the user must satisfy every matching ACL rule to be granted access.",
-        "wrongAnswers": [
-          {
-            "choiceId": "b",
-            "explanation": "All matching rules are evaluated, not just the first one."
-          },
-          {
-            "choiceId": "c",
-            "explanation": "It's not about 'most restrictive wins' \u2014 all rules must pass independently."
-          },
-          {
-            "choiceId": "d",
-            "explanation": "ACL evaluation follows a defined order, not random."
-          }
-        ]
-      },
-      "certification": "csa",
-      "topic": "user-administration",
-      "references": [],
-      "isFree": false,
-      "source": {
-        "type": "generated",
-        "course": {
-          "courseSlug": "servicenow-administration-fundamentals-xanadu",
-          "moduleTitle": "CSA Expansion",
-          "lessonSlug": "user-administration",
-          "lessonTitle": "CSA user-administration expansion questions",
-          "url": ""
-        },
-        "path": "",
-        "excerpt": ""
-      },
-      "labels": {
-        "certification": "csa",
-        "domain": "user-administration",
-        "domainSlug": "user-administration",
-        "subtopics": [],
-        "tags": []
-      },
-      "meta": {
-        "generatedAt": "2026-03-31T02:09:00Z",
-        "version": "2.0",
-        "release": "Xanadu",
-        "reviewed": false
-      }
-    },
-    {
-      "id": "csa-ua-026",
-      "cognitiveLevel": "application",
-      "type": "multiple_choice",
-      "question": "A new employee needs access to the Incident table but should NOT be able to delete any records. Which ACL configuration achieves this?",
-      "options": [
-        {
-          "id": "a",
-          "text": "Grant read, write, and create ACLs but do not grant a delete ACL for the user's role"
-        },
-        {
-          "id": "b",
-          "text": "Create a delete ACL that explicitly denies the user's role"
-        },
-        {
-          "id": "c",
-          "text": "Remove the Incident module from the user's application menu"
-        },
-        {
-          "id": "d",
-          "text": "Set the 'active' field to read-only on the incident form"
-        }
-      ],
-      "correctAnswers": [
-        "a"
-      ],
-      "explanation": {
-        "correct": "In ServiceNow, if no ACL grants a specific operation for a role, that operation is denied by default. By granting read/write/create but not creating a delete ACL for the role, delete access is implicitly denied.",
-        "wrongAnswers": [
-          {
-            "choiceId": "b",
-            "explanation": "While explicit deny works, the simpler approach is to not grant delete access at all. ACLs deny by default when no matching rule grants access."
-          },
-          {
-            "choiceId": "c",
-            "explanation": "Removing a module from navigation doesn't prevent access to the table through direct URL, lists, or other means."
-          },
-          {
-            "choiceId": "d",
-            "explanation": "Making the active field read-only doesn't prevent record deletion."
-          }
-        ]
-      },
-      "certification": "csa",
-      "topic": "user-administration",
-      "references": [],
-      "isFree": false,
-      "source": {
-        "type": "generated",
-        "course": {
-          "courseSlug": "servicenow-administration-fundamentals-xanadu",
-          "moduleTitle": "CSA Expansion",
-          "lessonSlug": "user-administration",
-          "lessonTitle": "CSA user-administration expansion questions",
-          "url": ""
-        },
-        "path": "",
-        "excerpt": ""
-      },
-      "labels": {
-        "certification": "csa",
-        "domain": "user-administration",
-        "domainSlug": "user-administration",
-        "subtopics": [],
-        "tags": []
-      },
-      "meta": {
-        "generatedAt": "2026-03-31T02:09:00Z",
-        "version": "2.0",
-        "release": "Xanadu",
-        "reviewed": false
-      }
-    },
-    {
-      "id": "csa-ua-027",
-      "cognitiveLevel": "knowledge",
-      "type": "multiple_choice",
-      "question": "Which user property determines the language displayed in the ServiceNow interface?",
-      "options": [
-        {
-          "id": "a",
-          "text": "The browser's Accept-Language header only"
-        },
-        {
-          "id": "b",
-          "text": "The Language field on the user's System Properties"
-        },
-        {
-          "id": "c",
-          "text": "The Preferred language field on the user record"
-        },
-        {
-          "id": "d",
-          "text": "The instance's system locale setting only"
-        }
-      ],
-      "correctAnswers": [
-        "c"
-      ],
-      "explanation": {
-        "correct": "The Preferred language field on the sys_user record determines the interface language for that user. If not set, the system falls back to the instance default language.",
-        "wrongAnswers": [
-          {
-            "choiceId": "a",
-            "explanation": "The browser language header may influence initial detection but the user record setting takes precedence."
-          },
-          {
-            "choiceId": "b",
-            "explanation": "System Properties control instance-wide settings, not individual user language preferences."
-          },
-          {
-            "choiceId": "d",
-            "explanation": "The system locale is the fallback, but individual user settings override it."
-          }
-        ]
-      },
-      "certification": "csa",
-      "topic": "user-administration",
-      "references": [],
-      "isFree": false,
-      "source": {
-        "type": "generated",
-        "course": {
-          "courseSlug": "servicenow-administration-fundamentals-xanadu",
-          "moduleTitle": "CSA Expansion",
-          "lessonSlug": "user-administration",
-          "lessonTitle": "CSA user-administration expansion questions",
-          "url": ""
-        },
-        "path": "",
-        "excerpt": ""
-      },
-      "labels": {
-        "certification": "csa",
-        "domain": "user-administration",
-        "domainSlug": "user-administration",
-        "subtopics": [],
-        "tags": []
-      },
-      "meta": {
-        "generatedAt": "2026-03-31T02:09:00Z",
-        "version": "2.0",
-        "release": "Xanadu",
-        "reviewed": false
-      }
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/platform-security/security-center/homepage.html"
+      ]
     },
     {
       "id": "csa-ua-028",
       "cognitiveLevel": "understanding",
       "type": "multiple_choice",
-      "question": "What is the purpose of 'delegated administration' in ServiceNow?",
+      "question": "What does role delegation allow in ServiceNow?",
       "options": [
         {
           "id": "a",
-          "text": "Allowing specific users to grant roles that they themselves possess to other users"
+          "text": "Designated users (role delegators) can assign roles they already have to other users within a group"
         },
         {
           "id": "b",
@@ -2181,196 +2868,64 @@
         "a"
       ],
       "explanation": {
-        "correct": "Delegated administration allows designated users (not full admins) to manage group membership and assign specific roles that they themselves hold, reducing the burden on system administrators.",
+        "correct": "Administrators can let users assign roles within groups. These role delegators can only assign roles they already have. The role_delegator role can be granted manually, or automatically to group managers through the Group Manager Change business rule. See https://www.servicenow.com/docs/r/australia/platform-administration/user-administration/c_DelegateRoles.html",
         "wrongAnswers": [
           {
             "choiceId": "b",
-            "explanation": "Delegated administration is a targeted permission, not automatic role assignment to managers."
+            "explanation": "Delegated administration is a targeted permission, not automatic role assignment to managers.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/user-administration/c_DelegateRoles.html"
           },
           {
             "choiceId": "c",
-            "explanation": "System upgrades require full admin access and cannot be delegated this way."
+            "explanation": "System upgrades require full admin access and cannot be delegated this way.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/user-administration/c_DelegateRoles.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Sharing credentials violates security best practices and is not what delegated administration means."
+            "explanation": "Sharing credentials violates security best practices and is not what delegated administration means.",
+            "reference": "https://www.servicenow.com/docs/r/australia/platform-administration/user-administration/c_DelegateRoles.html"
           }
         ]
       },
       "certification": "csa",
       "topic": "user-administration",
-      "references": [],
+      "references": [
+        "https://www.servicenow.com/docs/r/australia/platform-administration/user-administration/c_DelegateRoles.html"
+      ],
       "isFree": false,
       "source": {
-        "type": "generated",
+        "type": "both",
+        "documentation": {
+          "docSlug": "c_DelegateRoles",
+          "section": "Delegating roles",
+          "url": "https://www.servicenow.com/docs/r/australia/platform-administration/user-administration/c_DelegateRoles.html"
+        },
+        "path": "ServiceNow/ServiceNowDocs@australia:markdown/platform-administration/user-administration/c_DelegateRoles.md",
+        "excerpt": "Administrators can grant users the ability to assign roles within groups. However, these users can only assign roles that they already have.",
         "course": {
           "courseSlug": "servicenow-administration-fundamentals-xanadu",
           "moduleTitle": "CSA Expansion",
           "lessonSlug": "user-administration",
           "lessonTitle": "CSA user-administration expansion questions",
           "url": ""
-        },
-        "path": "",
-        "excerpt": ""
-      },
-      "labels": {
-        "certification": "csa",
-        "domain": "user-administration",
-        "domainSlug": "user-administration",
-        "subtopics": [],
-        "tags": []
-      },
-      "meta": {
-        "generatedAt": "2026-03-31T02:09:00Z",
-        "version": "2.0",
-        "release": "Xanadu",
-        "reviewed": false
-      }
-    },
-    {
-      "id": "csa-ua-029",
-      "cognitiveLevel": "application",
-      "type": "multiple_choice",
-      "question": "Which of the following is NOT a valid method to assign a role to a user in ServiceNow?",
-      "options": [
-        {
-          "id": "a",
-          "text": "Adding the role directly to the user's Roles related list"
-        },
-        {
-          "id": "b",
-          "text": "Adding the user to a group that has the role"
-        },
-        {
-          "id": "c",
-          "text": "Inheriting the role through the role hierarchy (contained roles)"
-        },
-        {
-          "id": "d",
-          "text": "Setting the role in the user's email signature"
         }
-      ],
-      "correctAnswers": [
-        "d"
-      ],
-      "explanation": {
-        "correct": "Email signatures have no connection to role assignment in ServiceNow. Roles are assigned directly to users, through group membership, or through role inheritance (contained roles).",
-        "wrongAnswers": [
-          {
-            "choiceId": "a",
-            "explanation": "Direct role assignment via the Roles related list is a standard method."
-          },
-          {
-            "choiceId": "b",
-            "explanation": "Group-based role assignment is the recommended method for managing roles at scale."
-          },
-          {
-            "choiceId": "c",
-            "explanation": "Role inheritance through 'contains' relationships is a valid built-in mechanism."
-          }
-        ]
-      },
-      "certification": "csa",
-      "topic": "user-administration",
-      "references": [],
-      "isFree": false,
-      "source": {
-        "type": "generated",
-        "course": {
-          "courseSlug": "servicenow-administration-fundamentals-xanadu",
-          "moduleTitle": "CSA Expansion",
-          "lessonSlug": "user-administration",
-          "lessonTitle": "CSA user-administration expansion questions",
-          "url": ""
-        },
-        "path": "",
-        "excerpt": ""
       },
       "labels": {
         "certification": "csa",
-        "domain": "user-administration",
-        "domainSlug": "user-administration",
-        "subtopics": [],
+        "domain": "Database Management and Platform Security",
+        "domainSlug": "database-administration",
+        "domainPercentage": 30,
+        "subtopics": [
+          "Application/Access Control"
+        ],
         "tags": []
       },
       "meta": {
         "generatedAt": "2026-03-31T02:09:00Z",
         "version": "2.0",
-        "release": "Xanadu",
-        "reviewed": false
-      }
-    },
-    {
-      "id": "csa-ua-030",
-      "cognitiveLevel": "understanding",
-      "type": "multiple_choice",
-      "question": "What happens when an administrator activates the 'High Security Settings' plugin?",
-      "options": [
-        {
-          "id": "a",
-          "text": "It enforces stricter password policies and session timeout settings"
-        },
-        {
-          "id": "b",
-          "text": "It encrypts all database tables automatically"
-        },
-        {
-          "id": "c",
-          "text": "It requires biometric authentication for all users"
-        },
-        {
-          "id": "d",
-          "text": "It disables all REST API access"
-        }
-      ],
-      "correctAnswers": [
-        "a"
-      ],
-      "explanation": {
-        "correct": "The High Security Settings plugin enforces stricter password complexity requirements, shorter session timeouts, and other hardened security configurations.",
-        "wrongAnswers": [
-          {
-            "choiceId": "b",
-            "explanation": "Database encryption is handled separately through Edge Encryption, not the High Security plugin."
-          },
-          {
-            "choiceId": "c",
-            "explanation": "Biometric authentication is not a feature of the High Security Settings plugin."
-          },
-          {
-            "choiceId": "d",
-            "explanation": "REST API access is controlled separately through ACLs and API policies."
-          }
-        ]
-      },
-      "certification": "csa",
-      "topic": "user-administration",
-      "references": [],
-      "isFree": false,
-      "source": {
-        "type": "generated",
-        "course": {
-          "courseSlug": "servicenow-administration-fundamentals-xanadu",
-          "moduleTitle": "CSA Expansion",
-          "lessonSlug": "user-administration",
-          "lessonTitle": "CSA user-administration expansion questions",
-          "url": ""
-        },
-        "path": "",
-        "excerpt": ""
-      },
-      "labels": {
-        "certification": "csa",
-        "domain": "user-administration",
-        "domainSlug": "user-administration",
-        "subtopics": [],
-        "tags": []
-      },
-      "meta": {
-        "generatedAt": "2026-03-31T02:09:00Z",
-        "version": "2.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "release": "Australia",
+        "reviewed": false,
+        "reworkedAt": "2026-09-27T00:00:00Z"
       }
     }
   ]

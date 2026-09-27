@@ -4,13 +4,13 @@
 import certificationsData from "../../data/certifications.json";
 import csaTopics from "../../data/topics/csa-topics.json";
 import csaUiNavigationQuestions from "../../data/questions/csa/ui-navigation.json";
-import csaUserAdministrationQuestions from "../../data/questions/csa/user-administration.json";
-import csaDatabaseAdministrationQuestions from "../../data/questions/csa/database-administration.json";
-import csaSelfServiceAutomationQuestions from "../../data/questions/csa/self-service-automation.json";
-import csaIncidentManagementQuestions from "../../data/questions/csa/incident-management.json";
-import csaProblemManagementQuestions from "../../data/questions/csa/problem-management.json";
-import csaChangeManagementQuestions from "../../data/questions/csa/change-management.json";
+import csaInstanceConfigurationQuestions from "../../data/questions/csa/instance-configuration.json";
+import csaListsFormsCollaborationQuestions from "../../data/questions/csa/lists-forms-collaboration.json";
 import csaReportingDashboardsQuestions from "../../data/questions/csa/reporting-dashboards.json";
+import csaSelfServiceAutomationQuestions from "../../data/questions/csa/self-service-automation.json";
+import csaDatabaseAdministrationQuestions from "../../data/questions/csa/database-administration.json";
+import csaUserAdministrationQuestions from "../../data/questions/csa/user-administration.json";
+import csaDataMigrationIntegrationQuestions from "../../data/questions/csa/data-migration-integration.json";
 import cisDfTopics from "../../data/topics/cis-df-topics.json";
 import cisDfConfigurationQuestions from "../../data/questions/cis-df/configuration.json";
 import cisDfIngestQuestions from "../../data/questions/cis-df/ingest.json";
@@ -157,13 +157,13 @@ export const QUESTION_BANK: Record<string, QuestionBankCertification> = {
     topics: csaTopics.topics,
     questions: {
       "ui-navigation": csaUiNavigationQuestions.questions,
-      "user-administration": csaUserAdministrationQuestions.questions,
-      "database-administration": csaDatabaseAdministrationQuestions.questions,
-      "self-service-automation": csaSelfServiceAutomationQuestions.questions,
-      "incident-management": csaIncidentManagementQuestions.questions,
-      "problem-management": csaProblemManagementQuestions.questions,
-      "change-management": csaChangeManagementQuestions.questions,
+      "instance-configuration": csaInstanceConfigurationQuestions.questions,
+      "lists-forms-collaboration": csaListsFormsCollaborationQuestions.questions,
       "reporting-dashboards": csaReportingDashboardsQuestions.questions,
+      "self-service-automation": csaSelfServiceAutomationQuestions.questions,
+      "database-administration": csaDatabaseAdministrationQuestions.questions,
+      "user-administration": csaUserAdministrationQuestions.questions,
+      "data-migration-integration": csaDataMigrationIntegrationQuestions.questions,
     },
   },
   "cis-df": {
