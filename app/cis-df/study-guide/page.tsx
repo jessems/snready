@@ -132,12 +132,12 @@ const faqData = [
   {
     question: "How many questions are on the CIS-DF exam?",
     answer:
-      "The CIS-DF exam contains 60 questions. You have 90 minutes to complete the exam, and you need a score of 70% or higher to pass. The exam format includes multiple-choice and multiple-select questions.",
+      "The CIS-DF exam contains 75 questions and you have 90 minutes to complete it (per the official blueprint, KB0012913). SNReady plans for a 70% passing score. The exam format includes multiple-choice and multiple-select questions.",
   },
   {
     question: "What is the passing score for CIS-DF?",
     answer:
-      "You need to score 70% or higher (42 out of 60 questions correct) to pass the CIS-DF exam. The exam is proctored and can be taken online or at a Pearson VUE testing center.",
+      "SNReady plans for a 70% passing score on the 75-question CIS-DF exam. The exam is proctored and can be taken online or at a Pearson VUE testing center.",
   },
   {
     question: "How much does the CIS-DF exam cost?",
@@ -271,12 +271,12 @@ const fourWeekPlan = [
     goal: "Convert knowledge into timed exam performance.",
     focus: "Full mock exams + wrong-answer remediation",
     tasks: [
-      "Take at least two 60-question timed mock exams.",
+      "Take at least two full-length timed mock exams.",
       "Create a miss log grouped by domain and concept, not just by question stem.",
       "Re-study only the weak domains, then retest until full-exam scores are consistently 80%+.",
     ],
     success:
-      "You can complete 60 questions in under 90 minutes, pass by a safe margin, and explain every missed concept.",
+      "You can complete 75 questions in under 90 minutes, pass by a safe margin, and explain every missed concept.",
   },
 ];
 
@@ -695,11 +695,11 @@ export default async function CISDFStudyGuidePage() {
                 <ul className="mt-2 space-y-1 text-sm text-zinc-600 dark:text-zinc-400">
                   <li className="flex items-start gap-2">
                     <span className="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-500" />
-                    60 multiple-choice and multiple-select questions
+                    {cert.examDetails.questionCount} multiple-choice and multiple-select questions
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-500" />
-                    90 minutes to complete
+                    {cert.examDetails.duration} minutes to complete
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-500" />

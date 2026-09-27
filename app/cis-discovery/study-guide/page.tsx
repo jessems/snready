@@ -65,7 +65,7 @@ const faqData = [
   {
     question: "How many questions are on CIS-Discovery?",
     answer:
-      "SNReady lists CIS-Discovery as a 60-question exam with a 90-minute time limit and a 70% passing score for planning purposes. The exam uses multiple-choice and multiple-select questions.",
+      "The official blueprint (KB0011545) lists CIS-Discovery as a 45-question exam with a 90-minute time limit. SNReady plans for a 70% passing score. The exam uses multiple-choice and multiple-select questions.",
   },
   {
     question: "Which CIS-Discovery domains should I study first?",
@@ -169,12 +169,12 @@ const fourWeekPlan = [
     focus: "Engagement Readiness + mixed mocks",
     goal: "Convert platform knowledge into exam-speed implementation judgment.",
     tasks: [
-      "Take at least two 60-question timed CIS-Discovery mock exams.",
+      "Take at least two full-length timed CIS-Discovery mock exams.",
       "Review implementation planning: MID Server sizing, support ownership, schedule windows, network/firewall prerequisites, dashboards, and business outcomes.",
       "Redo weak-domain labs, then retake mixed practice until no domain is below 70% and the overall score is 80%+.",
     ],
     success:
-      "You can complete 60 questions in under 90 minutes, score 80%+, and justify every answer with the ServiceNow artifact or design principle involved.",
+      "You can complete 45 questions in under 90 minutes, score 80%+, and justify every answer with the ServiceNow artifact or design principle involved.",
   },
 ];
 

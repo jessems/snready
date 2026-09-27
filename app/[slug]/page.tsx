@@ -323,7 +323,9 @@ export default async function CertificationPage({ params }: PageProps) {
                     </span>
                   )}
                   <span className="text-sm text-zinc-500">
-                    {cert.release} Release
+                    {cert.blueprint
+                      ? `Blueprint updated ${cert.blueprint.updated}`
+                      : `${cert.release} Release`}
                   </span>
                 </div>
                 <h1 className="mt-4 text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
@@ -921,10 +923,12 @@ export default async function CertificationPage({ params }: PageProps) {
                     <span className="text-emerald-600">•</span>
                     Results available immediately
                   </li>
-                  <li className="flex items-center gap-3">
-                    <span className="text-emerald-600">•</span>
-                    Valid for current release ({cert.release})
-                  </li>
+                  {cert.blueprint && (
+                    <li className="flex items-center gap-3">
+                      <span className="text-emerald-600">•</span>
+                      {`Official blueprint ${cert.blueprint.kb} v${cert.blueprint.version}, updated ${cert.blueprint.updated}`}
+                    </li>
+                  )}
                 </ul>
               </div>
             </div>

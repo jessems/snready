@@ -126,6 +126,8 @@ export default function ExamBlueprintsPage() {
                               {cert.examDetails.questionCount} questions •{" "}
                               {cert.examDetails.duration} min •{" "}
                               {cert.examDetails.passingScore}% to pass
+                              {cert.blueprint &&
+                                ` • ${cert.blueprint.kb} v${cert.blueprint.version}, updated ${cert.blueprint.updated}`}
                             </p>
                           )}
                         </div>
