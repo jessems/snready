@@ -27,11 +27,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   const title = `${cert.name} Dumps & Practice Questions 2026 | SNReady`;
-  const description = `Stop searching for ${cert.name} dumps. SNReady offers ${getTotalQuestionCount(slug)}+ original practice questions with detailed explanations — the ethical way to pass your ${cert.fullName} exam.`;
+  const totalQuestions = getTotalQuestionCount(slug);
+  const description =
+    totalQuestions > 0
+      ? `Stop searching for ${cert.name} dumps. SNReady offers ${totalQuestions}+ original practice questions with detailed explanations — the ethical way to pass your ${cert.fullName} exam.`
+      : `${cert.name} practice questions are coming soon. Skip the dumps and prepare for the ${cert.fullName} exam with official resources.`;
 
   return {
     title,
     description,
+    // No questions yet: keep this page out of the index until there is content.
+    ...(totalQuestions === 0 ? { robots: { index: false, follow: true } } : {}),
     alternates: {
       canonical: getCanonicalUrl(`/${slug}/dumps`),
     },
