@@ -21,9 +21,9 @@ describe("production data access", () => {
     expect(getAllTopicSlugs()).toContainEqual({ certification: "csa", topic: "ui-navigation" });
   });
   it("loads questions and preserves the free-question boundary", async () => {
-    const questions = await getQuestionsForTopic("csa", "ui-navigation");
-    const freeQuestions = await getFreeQuestionsForTopic("csa", "ui-navigation");
-    const freeCount = getFreeQuestionCountForTopic("csa", "ui-navigation");
+    const questions = await getQuestionsForTopic("cad", "business-rules");
+    const freeQuestions = await getFreeQuestionsForTopic("cad", "business-rules");
+    const freeCount = getFreeQuestionCountForTopic("cad", "business-rules");
     expect(questions.length).toBeGreaterThan(0);
     expect(freeQuestions).toHaveLength(freeCount);
     expect(freeQuestions.length).toBeLessThan(questions.length);

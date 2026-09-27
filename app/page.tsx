@@ -4,6 +4,7 @@ import {
   getTotalQuestionCount,
   getTotalFreeQuestionCount,
   getTopicsForCertification,
+  getPricingSummary,
 } from "@/lib/data";
 import CertificationCard from "@/components/CertificationCard";
 
@@ -18,6 +19,8 @@ export default function Home() {
   const totalQuestions = readyCerts.reduce((sum, cert) => sum + getTotalQuestionCount(cert.slug), 0);
   const totalFreeQuestions = readyCerts.reduce((sum, cert) => sum + getTotalFreeQuestionCount(cert.slug), 0);
   const activeCertifications = readyCerts.length;
+  const { paidCount, freeCertifications } = getPricingSummary();
+  const freeCertNames = freeCertifications.map((cert) => cert.name).join(" and ");
 
   // Feature high-demand certifications first; CIS-DF is a current recovery focus.
   const featuredSlugs = ["csa", "cis-df", "cpoa", "cad", "cis-itsm"];
@@ -41,9 +44,9 @@ export default function Home() {
               Certification
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-zinc-600 dark:text-zinc-400">
-              {totalQuestions}+ practice questions across {activeCertifications} certifications. 
+              {totalQuestions}+ practice questions across {activeCertifications} certifications.
               CSA, CAD, CIS-ITSM, CIS-DF, CIS-Discovery, CIS-CSM, and more — generated from official
-              Now Learning content.
+              Now Learning content.{freeCertNames && ` ${freeCertNames} is completely free.`}
             </p>
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
@@ -217,8 +220,23 @@ export default function Home() {
               Simple, Transparent Pricing
             </h2>
             <p className="mt-4 text-lg text-zinc-600 dark:text-zinc-400">
-              Try free questions first. Upgrade when you&apos;re ready.
+              {freeCertNames
+                ? `${freeCertNames} is completely free, mock exams included. For every other certification, try free questions first and upgrade when you're ready.`
+                : "Try free questions first. Upgrade when you're ready."}
             </p>
+            {freeCertifications.length > 0 && (
+              <div className="mt-6 flex flex-wrap justify-center gap-3">
+                {freeCertifications.map((cert) => (
+                  <Link
+                    key={cert.slug}
+                    href={`/${cert.slug}/practice-questions`}
+                    className="inline-flex items-center gap-2 rounded-full bg-emerald-100 px-4 py-2 text-sm font-semibold text-emerald-800 transition-colors hover:bg-emerald-200 dark:bg-emerald-900/50 dark:text-emerald-200"
+                  >
+                    {cert.name}: $0, every question and mock exam free →
+                  </Link>
+                ))}
+              </div>
+            )}
           </div>
 
           <div className="grid gap-6 md:grid-cols-2">
@@ -233,7 +251,8 @@ export default function Home() {
                   <span className="text-zinc-600 dark:text-zinc-400"> / lifetime</span>
                 </div>
                 <p className="mt-4 text-zinc-600 dark:text-zinc-400">
-                  Full access to one certification of your choice
+                  Full access to one paid certification of your choice
+                  {freeCertNames && ` (${freeCertNames} is free)`}
                 </p>
                 <p className="mt-2 text-sm font-medium text-emerald-600 dark:text-emerald-400">
                   Because we want you to succeed ✨
@@ -284,7 +303,11 @@ export default function Home() {
                 <ul className="mt-6 space-y-3 text-left text-zinc-600 dark:text-zinc-400">
                   <li className="flex items-center gap-2">
                     <span className="text-emerald-500">✓</span>
-                    <strong>All {activeCertifications}</strong> certifications included
+                    {freeCertNames ? (
+                      <span><strong>{paidCount} paid certifications</strong> + {freeCertNames} free</span>
+                    ) : (
+                      <span><strong>All {activeCertifications}</strong> certifications included</span>
+                    )}
                   </li>
                   <li className="flex items-center gap-2">
                     <span className="text-emerald-500">✓</span>

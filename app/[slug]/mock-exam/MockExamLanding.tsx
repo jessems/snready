@@ -19,12 +19,18 @@ import MockExam from "@/components/MockExam";
 import MockExamResults from "@/components/MockExamResults";
 import { useAccess } from "@/components/AccessProvider";
 import { CheckoutButton } from "@/components/CheckoutButton";
+import { FreeCertCrossSell } from "@/components/FreeCertCrossSell";
 import { fetchPremiumQuestions } from "@/lib/premium-questions";
+import { trackMockExamComplete, trackMockExamStart } from "@/lib/analytics";
 
 interface MockExamLandingProps {
   certification: Certification;
   examConfig: MockExamConfig;
   totalQuestions: number;
+  /** Free certification (lib/free-certs.ts): anyone can start, no login. */
+  isFree?: boolean;
+  /** Paid certifications included in all access, for the free-cert cross-sell. */
+  paidCertCount?: number;
 }
 
 type ViewMode = "landing" | "exam" | "results";
@@ -33,6 +39,8 @@ export default function MockExamLanding({
   certification,
   examConfig,
   totalQuestions,
+  isFree = false,
+  paidCertCount = 0,
 }: MockExamLandingProps) {
   const { hasAccessTo, loading: accessLoading } = useAccess();
   const [viewMode, setViewMode] = useState<ViewMode>("landing");
@@ -55,7 +63,8 @@ export default function MockExamLanding({
 
     try {
       // Questions are served by /api/questions after the paid-access check;
-      // they are not bundled into the static site.
+      // they are not bundled into the static site. Free certifications are
+      // served to anyone without a session.
       const result = await fetchPremiumQuestions({ certification: examConfig.certSlug, scope: "all" });
       if (!result.ok) {
         setStartError(
@@ -71,6 +80,12 @@ export default function MockExamLanding({
       // Create new session
       const newSession = createMockExamSession(examConfig, result.questions);
       saveSession(newSession);
+      trackMockExamStart({
+        certification: certification.name,
+        accessType: isFree ? "free_certification" : "paid",
+        questionCount: newSession.questionCount,
+        durationMinutes: newSession.durationMinutes,
+      });
 
       setCurrentSession(newSession);
       setViewMode("exam");
@@ -80,7 +95,7 @@ export default function MockExamLanding({
     } finally {
       setIsStarting(false);
     }
-  }, [examConfig, certification.name]);
+  }, [examConfig, certification.name, isFree]);
 
   const handleResumeSession = useCallback((sessionId: string) => {
     const session = loadSession(sessionId);
@@ -148,11 +163,19 @@ export default function MockExamLanding({
 
     setCurrentResult(result);
     setViewMode("results");
+    trackMockExamComplete({
+      certification: completedSession.certName,
+      accessType: isFree ? "free_certification" : "paid",
+      score,
+      passed: result.passed,
+      questionCount: completedSession.questionCount,
+      timeUsedMs,
+    });
 
     // Refresh history
     setHistory(getExamHistory(examConfig.certSlug).slice(0, 10));
     setInProgressSessions(getInProgressSessions(examConfig.certSlug));
-  }, [examConfig.certSlug]);
+  }, [examConfig.certSlug, isFree]);
 
   const handleBackToLanding = useCallback(() => {
     setViewMode("landing");
@@ -172,6 +195,15 @@ export default function MockExamLanding({
     return (
       <div>
         <MockExamResults result={currentResult} />
+        {isFree && paidCertCount > 0 && (
+          <div className="mx-auto max-w-4xl px-4 pb-6">
+            <FreeCertCrossSell
+              certification={certification.name}
+              paidCertCount={paidCertCount}
+              placement="mock_exam_results"
+            />
+          </div>
+        )}
         <div className="mx-auto max-w-4xl px-4 pb-8">
           <button
             onClick={handleBackToLanding}
@@ -204,6 +236,7 @@ export default function MockExamLanding({
         </h2>
         <p className="mt-2 text-zinc-600 dark:text-zinc-400">
           This mock exam simulates real {certification.name} exam conditions.
+          {isFree && " It's free: no login, no payment, take it as often as you like."}
         </p>
 
         <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-4">
@@ -246,9 +279,9 @@ export default function MockExamLanding({
         </div>
 
         <div className="mt-6">
-          {accessLoading ? (
+          {!isFree && accessLoading ? (
             <div className="h-14 w-48 animate-pulse rounded-lg bg-zinc-200 dark:bg-zinc-700" />
-          ) : hasAccessTo(certification.name) ? (
+          ) : isFree || hasAccessTo(certification.name) ? (
             <>
               <button
                 onClick={handleStartExam}
@@ -276,7 +309,7 @@ export default function MockExamLanding({
                     Starting Exam...
                   </span>
                 ) : (
-                  "Start Mock Exam"
+                  isFree ? "Start Free Mock Exam" : "Start Mock Exam"
                 )}
               </button>
               {startError && (

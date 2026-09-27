@@ -5,6 +5,10 @@
  * an access check. Anything under out/ (except the admin-protected out/admin/) is
  * public, so no premium question stem, answer explanation, or long answer option
  * may appear there.
+ *
+ * Free certifications (lib/free-certs.ts, e.g. CSA) are exempt: all of their questions
+ * are public on purpose, so they count as free content, not premium. Every other
+ * certification is still checked.
  */
 
 import { spawnSync } from "node:child_process";
@@ -15,6 +19,7 @@ import {
   getAllQuestionsForCertification,
   getCertificationSlugs,
   getFreeQuestionsForCertification,
+  isCertificationFree,
 } from "@/lib/data";
 import type { Question } from "@/types";
 
@@ -40,6 +45,8 @@ export interface LeakScanResult {
   premiumQuestionCount: number;
   leaks: Array<{ file: string; needles: PremiumNeedle[] }>;
   protectedHits: string[];
+  /** Free certifications whose questions are public on purpose (not scanned as premium). */
+  exemptCertifications: string[];
 }
 
 /** Longest run of plain words (letters, digits, spaces); identical in HTML, JSON and JS strings. */
@@ -100,17 +107,28 @@ export function buildPremiumNeedles(premium: Question[], free: Question[], extra
   return needles;
 }
 
-export async function loadPremiumAndFreeQuestions(): Promise<{ premium: Question[]; free: Question[] }> {
+export async function loadPremiumAndFreeQuestions(): Promise<{
+  premium: Question[];
+  free: Question[];
+  exemptCertifications: string[];
+}> {
   const premium: Question[] = [];
   const free: Question[] = [];
+  const exemptCertifications: string[] = [];
   for (const slug of getCertificationSlugs()) {
     const all = await getAllQuestionsForCertification(slug);
+    if (isCertificationFree(slug)) {
+      // Free certification: every question is public by design.
+      if (all.length > 0) exemptCertifications.push(slug);
+      free.push(...all);
+      continue;
+    }
     const freeQuestions = await getFreeQuestionsForCertification(slug);
     const freeIds = new Set(freeQuestions.map((question) => question.id));
     free.push(...freeQuestions);
     premium.push(...all.filter((question) => !freeIds.has(question.id)));
   }
-  return { premium, free };
+  return { premium, free, exemptCertifications };
 }
 
 function listFiles(dir: string): string[] {
@@ -132,6 +150,7 @@ export function scanDirectoryForNeedles(dir: string, needles: PremiumNeedle[]): 
     premiumQuestionCount: new Set(needles.map((needle) => needle.questionId)).size,
     leaks: [],
     protectedHits: [],
+    exemptCertifications: [],
   };
   if (needles.length === 0 || files.length === 0) return result;
 
@@ -189,7 +208,7 @@ function readTopicCopy(): string[] {
 }
 
 export async function scanBuildOutput(outDir: string = path.join(process.cwd(), "out")): Promise<LeakScanResult> {
-  const { premium, free } = await loadPremiumAndFreeQuestions();
+  const { premium, free, exemptCertifications } = await loadPremiumAndFreeQuestions();
   const needles = buildPremiumNeedles(premium, free, readTopicCopy());
-  return scanDirectoryForNeedles(outDir, needles);
+  return { ...scanDirectoryForNeedles(outDir, needles), exemptCertifications };
 }

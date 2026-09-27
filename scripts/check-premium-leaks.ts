@@ -21,6 +21,10 @@ async function main() {
     `🔍 Premium leak check: ${result.needleCount} snippets from ${result.premiumQuestionCount} premium questions across ${result.scannedFiles} files`
   );
 
+  if (result.exemptCertifications.length > 0) {
+    console.log(`   Exempt (free certifications, public on purpose): ${result.exemptCertifications.join(", ")}`);
+  }
+
   if (result.protectedHits.length > 0) {
     console.log(`   ${result.protectedHits.length} admin-only files contain premium content (protected by functions/admin/_middleware.ts)`);
   }

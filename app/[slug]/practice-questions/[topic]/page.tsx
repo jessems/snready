@@ -8,11 +8,14 @@ import {
   getQuestionsForTopic,
   getAllTopicSlugs,
   getFreeQuestionsForTopic,
+  getPricingSummary,
+  isCertificationFree,
 } from "@/lib/data";
 import { breadcrumbs, generateBreadcrumbJsonLd } from "@/lib/breadcrumbs";
 import TopicIntroduction from "@/components/TopicIntroduction";
 import { CheckoutButton } from "@/components/CheckoutButton";
 import { QuestionsWithPaywall } from "@/components/QuestionsWithPaywall";
+import { FreeCertCrossSell } from "@/components/FreeCertCrossSell";
 
 interface PageProps {
   params: Promise<{ slug: string; topic: string }>;
@@ -36,7 +39,28 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   // CTR-optimized title: includes "Free", action-oriented, year for freshness
   const year = new Date().getFullYear();
-  
+
+  if (isCertificationFree(slug)) {
+    return {
+      title: `Free ${certification.name} ${topic.name} Practice Questions [${year}] — All ${topic.questionCount} Free`,
+      description: `All ${topic.questionCount} ${certification.name} ${topic.name} practice questions are free, with detailed explanations. No signup, no paywall. Prepare for the ServiceNow ${certification.fullName} exam.`,
+      keywords: [
+        `${certification.name} ${topic.name} questions`,
+        `ServiceNow ${topic.name} exam`,
+        `free ${certification.name} practice test`,
+        `free ${certification.name} questions`,
+        `ServiceNow ${certification.name} ${topic.name}`,
+      ],
+      alternates: {
+        canonical: `/${slug}/practice-questions/${topicSlug}`,
+      },
+      openGraph: {
+        title: `Free ${certification.name} ${topic.name} Questions — All ${topic.questionCount} Free`,
+        description: `Every ${certification.name} ${topic.name} practice question free, with detailed explanations. No signup.`,
+      },
+    };
+  }
+
   return {
     title: `Free ${certification.name} ${topic.name} Practice Questions [${year}]`,
     description: `${topic.questionCount}+ free ${topic.name} practice questions for ServiceNow ${certification.name} certification. Detailed explanations, exam-style format. Pass your exam with confidence.`,
@@ -72,6 +96,8 @@ export default async function TopicQuestionsPage({ params }: PageProps) {
   // question content is served by /api/questions after the paid-access check.
   const premiumQuestionCount = Math.max(allQuestions.length - freeQuestions.length, 0);
   const allTopics = getTopicsForCertification(slug);
+  const certIsFree = isCertificationFree(slug);
+  const { paidCount } = getPricingSummary();
 
   // JSON-LD structured data for FAQ (only use free questions for SEO)
   const faqJsonLd = {
@@ -82,7 +108,7 @@ export default async function TopicQuestionsPage({ params }: PageProps) {
       name: q.question,
       acceptedAnswer: {
         "@type": "Answer",
-        text: q.explanation,
+        text: q.explanation?.correct || "",
       },
     })),
   };
@@ -146,7 +172,7 @@ export default async function TopicQuestionsPage({ params }: PageProps) {
                 <div className="mt-4 flex items-center gap-4 text-sm text-zinc-500">
                   <span>{topic.questionCount} total questions</span>
                   <span className="text-emerald-600">
-                    {freeQuestions.length} free questions
+                    {certIsFree ? "All questions free" : `${freeQuestions.length} free questions`}
                   </span>
                 </div>
               </div>
@@ -186,6 +212,7 @@ export default async function TopicQuestionsPage({ params }: PageProps) {
                   certification={certification.name}
                   certificationSlug={slug}
                   topic={topicSlug}
+                  paidCertCount={paidCount}
                 />
               ) : (
                 <div className="rounded-xl border border-zinc-200 bg-white p-6 sm:p-12 text-center dark:border-zinc-800 dark:bg-zinc-900">
@@ -254,31 +281,40 @@ export default async function TopicQuestionsPage({ params }: PageProps) {
               </div>
 
               {/* CTA */}
-              <div className="rounded-xl bg-emerald-600 p-5 text-white dark:bg-emerald-700">
-                <h3 className="font-semibold">Unlock Full Access</h3>
-                <p className="mt-2 text-sm text-emerald-100">
-                  All questions with detailed explanations.
-                </p>
-                <p className="mt-1 text-xs text-emerald-200">
-                  Because we want you to succeed ✨
-                </p>
-                <div className="mt-4 space-y-2">
-                  <CheckoutButton
-                    certification={certification.name}
-                    plan="single"
-                    className="w-full rounded-lg bg-white/20 py-2 text-sm font-medium text-white transition-colors hover:bg-white/30"
-                  >
-                    {certification.name} Lifetime — $9
-                  </CheckoutButton>
-                  <CheckoutButton
-                    certification={certification.name}
-                    plan="all"
-                    className="w-full rounded-lg bg-white py-2 text-sm font-medium text-emerald-600 transition-colors hover:bg-emerald-50"
-                  >
-                    All Certs Lifetime — $49
-                  </CheckoutButton>
+              {certIsFree ? (
+                <FreeCertCrossSell
+                  certification={certification.name}
+                  paidCertCount={paidCount}
+                  placement="topic_sidebar"
+                  variant="compact"
+                />
+              ) : (
+                <div className="rounded-xl bg-emerald-600 p-5 text-white dark:bg-emerald-700">
+                  <h3 className="font-semibold">Unlock Full Access</h3>
+                  <p className="mt-2 text-sm text-emerald-100">
+                    All questions with detailed explanations.
+                  </p>
+                  <p className="mt-1 text-xs text-emerald-200">
+                    Because we want you to succeed ✨
+                  </p>
+                  <div className="mt-4 space-y-2">
+                    <CheckoutButton
+                      certification={certification.name}
+                      plan="single"
+                      className="w-full rounded-lg bg-white/20 py-2 text-sm font-medium text-white transition-colors hover:bg-white/30"
+                    >
+                      {certification.name} Lifetime — $9
+                    </CheckoutButton>
+                    <CheckoutButton
+                      certification={certification.name}
+                      plan="all"
+                      className="w-full rounded-lg bg-white py-2 text-sm font-medium text-emerald-600 transition-colors hover:bg-emerald-50"
+                    >
+                      All Certs Lifetime — $49
+                    </CheckoutButton>
+                  </div>
                 </div>
-              </div>
+              )}
             </aside>
           </div>
         </div>

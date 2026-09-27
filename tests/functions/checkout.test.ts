@@ -58,7 +58,7 @@ describe("checkout Pages Function", () => {
   });
 
   it("fails fast with a clear config error when Stripe env is missing", async () => {
-    const response = await onRequestPost(context({ certification: "csa", plan: "single" }, { STRIPE_SECRET_KEY: "", SITE_URL: "" }));
+    const response = await onRequestPost(context({ certification: "cad", plan: "single" }, { STRIPE_SECRET_KEY: "", SITE_URL: "" }));
     expect(response.status).toBe(503);
     expect(await response.json()).toEqual({
       error: "Checkout is not configured for this deployment",
@@ -71,9 +71,9 @@ describe("checkout Pages Function", () => {
   it("creates a $9 single-cert checkout session with normalized metadata and diagnostics", async () => {
     const accessKv = kvStore();
     const response = await onRequestPost(context({
-      certification: "csa",
+      certification: "cad",
       plan: "single",
-      returnUrl: "/csa/practice-questions",
+      returnUrl: "/cad/practice-questions",
       attribution: {
         gaClientId: "123456789.987654321",
         gaSessionId: "1782533012",
@@ -88,9 +88,9 @@ describe("checkout Pages Function", () => {
     const payload = createCheckoutSession.mock.calls[0][0];
     expect(payload.line_items[0].price_data.unit_amount).toBe(900);
     expect(payload.metadata).toMatchObject({
-      certification: "CSA",
+      certification: "CAD",
       plan: "single",
-      returnUrl: "/csa/practice-questions",
+      returnUrl: "/cad/practice-questions",
       gaClientId: "123456789.987654321",
       gaSessionId: "1782533012",
       firstUtmSource: "google",
@@ -99,7 +99,7 @@ describe("checkout Pages Function", () => {
       lastLandingPage: "/pricing",
     });
     expect(payload.success_url).toBe("https://snready.com/checkout/success?session_id={CHECKOUT_SESSION_ID}");
-    expect(payload.cancel_url).toContain("return_to=%2Fcsa%2Fpractice-questions");
+    expect(payload.cancel_url).toContain("return_to=%2Fcad%2Fpractice-questions");
     expect(accessKv.put).toHaveBeenCalledTimes(1);
     const [diagKey, diagValue] = accessKv.put.mock.calls[0];
     expect(diagKey).toMatch(/^attribution_diagnostics:\d{4}-\d{2}-\d{2}$/);
@@ -116,7 +116,7 @@ describe("checkout Pages Function", () => {
       buckets: {
         source: { google: 1 },
         medium: { "search-referrer": 1 },
-        certification: { csa: 1 },
+        certification: { cad: 1 },
         plan: { single: 1 },
       },
     });
@@ -130,7 +130,7 @@ describe("checkout Pages Function", () => {
       message: "This API key does not have permission to perform the request",
     });
 
-    const response = await onRequestPost(context({ certification: "csa", plan: "single" }));
+    const response = await onRequestPost(context({ certification: "cad", plan: "single" }));
 
     expect(response.status).toBe(502);
     expect(await response.json()).toEqual({
@@ -141,6 +141,35 @@ describe("checkout Pages Function", () => {
       providerStatus: 403,
       providerMessage: "This API key does not have permission to perform the request",
     });
+  });
+
+  it("rejects a single-cert CSA purchase because CSA is free (any casing, default plan, unknown plan)", async () => {
+    const accessKv = kvStore();
+    for (const body of [
+      { certification: "csa", plan: "single" },
+      { certification: "CSA", plan: "single" },
+      { certification: " Csa " },
+      { certification: "csa", plan: "lifetime" },
+    ]) {
+      const response = await onRequestPost(context(body, { SNREADY_ACCESS: accessKv }));
+      expect(response.status, JSON.stringify(body)).toBe(400);
+      expect(await response.json()).toEqual({
+        error: "CSA is free. There is nothing to buy: every CSA practice question and mock exam is open to everyone.",
+        code: "certification_free",
+        certification: "CSA",
+      });
+    }
+    expect(createCheckoutSession).not.toHaveBeenCalled();
+    // No attribution diagnostics are recorded for a rejected checkout.
+    expect(accessKv.put).not.toHaveBeenCalled();
+  });
+
+  it("still sells all access from a CSA page (the $49 plan includes the paid certifications)", async () => {
+    const response = await onRequestPost(context({ certification: "CSA", plan: "all", returnUrl: "/csa/practice-questions" }));
+    expect(response.status).toBe(200);
+    const payload = createCheckoutSession.mock.calls[0][0];
+    expect(payload.line_items[0].price_data.unit_amount).toBe(4900);
+    expect(payload.metadata).toMatchObject({ certification: "CSA", plan: "all" });
   });
 
   it("creates a $49 all-access checkout and ignores unsafe return URLs", async () => {

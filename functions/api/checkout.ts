@@ -1,4 +1,5 @@
 import Stripe from "stripe";
+import { isFreeCertification } from "../../lib/free-certs";
 
 interface Env {
   STRIPE_SECRET_KEY: string;
@@ -267,6 +268,18 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     // Prevent single-cert checkout without specifying which certification
     if (plan === "single" && !certification) {
       return errorResponse(400, "Certification is required for single-cert purchases", "missing_certification");
+    }
+
+    // Free certifications (lib/free-certs.ts, e.g. CSA) are not for sale on their own.
+    // Unknown plan values fall back to "single" below, so treat anything but "all" as single.
+    if (plan !== "all" && isFreeCertification(certification)) {
+      const label = certification!.trim().toUpperCase();
+      return errorResponse(
+        400,
+        `${label} is free. There is nothing to buy: every ${label} practice question and mock exam is open to everyone.`,
+        "certification_free",
+        { certification: label }
+      );
     }
 
     const selectedPlan = PLANS[plan] || PLANS["single"];

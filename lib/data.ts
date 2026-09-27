@@ -21,6 +21,7 @@ import cisFsmTopics from "@/data/topics/cis-fsm-topics.json";
 import cisPaTopics from "@/data/topics/cis-pa-topics.json";
 import cisSmTopics from "@/data/topics/cis-sm-topics.json";
 import { FREE_QUESTIONS_PER_CERT, calculateFreeQuestionsDistribution } from "@/lib/free-questions";
+import { isFreeCertification } from "@/lib/free-certs";
 import type { Certification, CertificationWithReadiness, Topic, Question, ExamDomain, CertificationCategory, ServiceNowRelease, DeltaExamInfo, ExamTips } from "@/types";
 
 // Category display names mapping
@@ -178,7 +179,15 @@ export async function getDeltaQuestions(
   }
 }
 
-export { FREE_QUESTIONS_PER_CERT };
+export { FREE_QUESTIONS_PER_CERT, isFreeCertification };
+
+/**
+ * True when every question for this certification is free (no paywall, no checkout):
+ * certifications listed in lib/free-certs.ts, plus the legacy allQuestionsFree flag.
+ */
+export function isCertificationFree(certSlug: string): boolean {
+  return isFreeCertification(certSlug) || Boolean(getCertificationBySlug(certSlug)?.allQuestionsFree);
+}
 
 function getFreeQuestionsDistribution(certSlug: string): Map<string, number> {
   return calculateFreeQuestionsDistribution(getTopicsForCertification(certSlug));
@@ -186,16 +195,21 @@ function getFreeQuestionsDistribution(certSlug: string): Map<string, number> {
 
 // Get number of free questions for a specific topic
 export function getFreeQuestionCountForTopic(certSlug: string, topicSlug: string): number {
+  if (isCertificationFree(certSlug)) {
+    return getTopicBySlug(certSlug, topicSlug)?.questionCount || 0;
+  }
   const distribution = getFreeQuestionsDistribution(certSlug);
   return distribution.get(topicSlug) || 0;
 }
 
-// Get free questions for a specific topic (respects the 15-total distribution)
+// Get free questions for a specific topic (respects the 15-total distribution,
+// or every question when the certification is free)
 export async function getFreeQuestionsForTopic(
   certSlug: string,
   topicSlug: string
 ): Promise<Question[]> {
   const questions = await getQuestionsForTopic(certSlug, topicSlug);
+  if (isCertificationFree(certSlug)) return questions;
   const freeCount = getFreeQuestionCountForTopic(certSlug, topicSlug);
   return questions.slice(0, freeCount);
 }
@@ -214,22 +228,14 @@ export async function getAllQuestionsForCertification(certSlug: string): Promise
 }
 
 // Get free questions for a certification
-// If allQuestionsFree is set, returns all questions; otherwise returns 15 distributed across topics
+// Free certifications return all questions; otherwise 15 distributed across topics
 export async function getFreeQuestionsForCertification(certSlug: string): Promise<Question[]> {
-  const cert = getCertificationBySlug(certSlug);
-  const topics = getTopicsForCertification(certSlug);
-  const freeQuestions: Question[] = [];
-
-  // If all questions are free for this certification, return all
-  if (cert?.allQuestionsFree) {
-    for (const topic of topics) {
-      const questions = await getQuestionsForTopic(certSlug, topic.slug);
-      freeQuestions.push(...questions);
-    }
-    return freeQuestions;
+  if (isCertificationFree(certSlug)) {
+    return getAllQuestionsForCertification(certSlug);
   }
 
-  // Otherwise use distribution-based free questions (15 total)
+  const topics = getTopicsForCertification(certSlug);
+  const freeQuestions: Question[] = [];
   const distribution = getFreeQuestionsDistribution(certSlug);
   for (const topic of topics) {
     const questions = await getQuestionsForTopic(certSlug, topic.slug);
@@ -253,18 +259,39 @@ export function getTotalQuestionCount(certSlug: string): number {
 }
 
 export function getTotalFreeQuestionCount(certSlug: string): number {
-  const cert = getCertificationBySlug(certSlug);
   const topics = getTopicsForCertification(certSlug);
   if (topics.length === 0) return 0;
-  
-  // If all questions are free for this cert, return total count
-  if (cert?.allQuestionsFree) {
-    return getTotalQuestionCount(certSlug);
-  }
-  
-  // Otherwise return 15 total or total questions if less than 15
+
   const totalQuestions = getTotalQuestionCount(certSlug);
+  // Free certifications: every question is free
+  if (isCertificationFree(certSlug)) return totalQuestions;
+
+  // Otherwise 15 total, or total questions if less than 15
   return Math.min(FREE_QUESTIONS_PER_CERT, totalQuestions);
+}
+
+export interface PricingSummary {
+  /** Certifications with practice questions available. */
+  readyCount: number;
+  /** Ready certifications that are sold ($9 single / included in all access). */
+  paidCount: number;
+  /** Ready certifications that are completely free, e.g. [{ slug: "csa", name: "CSA" }]. */
+  freeCertifications: Array<{ slug: string; name: string }>;
+  totalQuestions: number;
+  totalFreeQuestions: number;
+}
+
+/** Counts used by pricing copy ("19 paid certifications + CSA free", "501 free questions"). */
+export function getPricingSummary(): PricingSummary {
+  const ready = getAllCertifications().filter((cert) => isCertificationReady(cert.slug));
+  const free = ready.filter((cert) => isCertificationFree(cert.slug));
+  return {
+    readyCount: ready.length,
+    paidCount: ready.length - free.length,
+    freeCertifications: free.map((cert) => ({ slug: cert.slug, name: cert.name })),
+    totalQuestions: ready.reduce((sum, cert) => sum + getTotalQuestionCount(cert.slug), 0),
+    totalFreeQuestions: ready.reduce((sum, cert) => sum + getTotalFreeQuestionCount(cert.slug), 0),
+  };
 }
 
 // Category helpers

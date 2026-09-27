@@ -4,6 +4,7 @@ import { GeistMono } from "geist/font/mono";
 import Script from "next/script";
 import Link from "next/link";
 import { BASE_URL } from "@/lib/seo";
+import { getPricingSummary } from "@/lib/data";
 import { Providers } from "@/components/Providers";
 import { Analytics } from "@/components/Analytics";
 import { GA_MEASUREMENT_ID, GOOGLE_ADS_ID } from "@/lib/analytics";
@@ -251,7 +252,7 @@ export default function RootLayout({
                 </h3>
                 <p className="mt-4 text-sm text-zinc-600 dark:text-zinc-400">
                   Practice questions derived from official Now Learning content.
-                  19 certifications, 1300+ questions, $9 lifetime access.
+                  {footerSummary()}
                 </p>
                 <div className="mt-4 space-y-2">
                   <a
@@ -274,4 +275,11 @@ export default function RootLayout({
       </body>
     </html>
   );
+}
+
+function footerSummary(): string {
+  const { readyCount, totalQuestions, freeCertifications } = getPricingSummary();
+  const roundedQuestions = Math.floor(totalQuestions / 100) * 100;
+  const free = freeCertifications.map((cert) => cert.name).join(" and ");
+  return `${readyCount} certifications, ${roundedQuestions.toLocaleString("en-US")}+ questions. ${free ? `${free} free, ` : ""}$9 lifetime access per certification.`;
 }

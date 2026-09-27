@@ -1,5 +1,5 @@
 import { getSessionAccess, hasCertificationAccess } from "../lib/access";
-import { getQuestions, isKnownCertification, isKnownTopic, type QuestionScope } from "../lib/question-bank";
+import { getQuestions, isCertificationFree, isKnownCertification, isKnownTopic, type QuestionScope } from "../lib/question-bank";
 
 interface Env {
   SNREADY_ACCESS: KVNamespace;
@@ -22,8 +22,15 @@ const JSON_HEADERS = {
   Vary: "Cookie",
 };
 
-function jsonResponse(body: Record<string, unknown>, status: number): Response {
-  return new Response(JSON.stringify(body), { status, headers: JSON_HEADERS });
+// Free certifications (lib/free-certs.ts) are public content, already in the static
+// pages, so they can be cached like any other public asset.
+const PUBLIC_JSON_HEADERS = {
+  "Content-Type": "application/json",
+  "Cache-Control": "public, max-age=300",
+};
+
+function jsonResponse(body: Record<string, unknown>, status: number, headers: Record<string, string> = JSON_HEADERS): Response {
+  return new Response(JSON.stringify(body), { status, headers });
 }
 
 function errorResponse(status: number, code: QuestionsErrorCode, error: string): Response {
@@ -31,6 +38,7 @@ function errorResponse(status: number, code: QuestionsErrorCode, error: string):
 }
 
 // Returns premium questions for a certification the signed-in user has purchased.
+// Free certifications (e.g. CSA) are returned to anyone, no session needed.
 // GET /api/questions?cert=cad[&topic=business-rules][&scope=premium|all]
 export const onRequestGet: PagesFunction<Env> = async (context) => {
   const { request, env } = context;
@@ -55,6 +63,22 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
     return errorResponse(400, "invalid_scope", "Scope must be premium or all");
   }
   const scope = scopeParam as QuestionScope;
+
+  if (isCertificationFree(cert)) {
+    const questions = getQuestions(cert, { topic, scope });
+    return jsonResponse(
+      {
+        certification: cert,
+        ...(topic ? { topic } : {}),
+        scope,
+        free: true,
+        count: questions.length,
+        questions,
+      },
+      200,
+      PUBLIC_JSON_HEADERS
+    );
+  }
 
   if (!env.SNREADY_ACCESS) {
     console.error("Premium questions API is missing the SNREADY_ACCESS KV binding");

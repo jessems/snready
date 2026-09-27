@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { isFreeCertification } from "@/lib/free-certs";
 
 interface DumpsAlternativeSectionProps {
   certName: string;
@@ -49,7 +50,7 @@ export function DumpsAlternativeSection({
     {
       label: "Price",
       dumps: "Free",
-      snready: "$9/30 days",
+      snready: isFreeCertification(certSlug) ? "Free, no signup" : "$9 once, lifetime",
     },
   ];
 

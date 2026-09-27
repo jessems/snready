@@ -9,6 +9,7 @@ import {
 } from "@/lib/data";
 import { generateBreadcrumbJsonLd } from "@/lib/breadcrumbs";
 import { getCanonicalUrl } from "@/lib/seo";
+import { isFreeCertification } from "@/lib/free-certs";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -54,6 +55,9 @@ export default async function DumpsPage({ params }: Props) {
 
   const totalQuestions = getTotalQuestionCount(slug);
   const isReady = isCertificationReady(slug);
+  // Free certifications (lib/free-certs.ts) have no price to quote.
+  const isFree = isFreeCertification(slug);
+  const priceCopy = isFree ? "completely free" : "a one-time $9 fee";
 
   const breadcrumbItems = [
     { name: "Home", url: "/" },
@@ -72,7 +76,7 @@ export default async function DumpsPage({ params }: Props) {
         name: `Are there free ${cert.name} dumps available?`,
         acceptedAnswer: {
           "@type": "Answer",
-          text: `While you may find scattered ${cert.name} questions shared in forums, free dumps are unreliable and often outdated. Using real exam dumps also violates ServiceNow's certification agreement. SNReady offers ${totalQuestions}+ original practice questions for a one-time $9 fee — a fraction of the $${cert.examDetails.cost} exam cost.`,
+          text: `While you may find scattered ${cert.name} questions shared in forums, free dumps are unreliable and often outdated. Using real exam dumps also violates ServiceNow's certification agreement. SNReady offers ${totalQuestions}+ original practice questions, ${priceCopy} — a fraction of the $${cert.examDetails.cost} exam cost.`,
         },
       },
       {
@@ -104,7 +108,7 @@ export default async function DumpsPage({ params }: Props) {
         name: `Can I get ${cert.name} questions from ExamTopics?`,
         acceptedAnswer: {
           "@type": "Answer",
-          text: `ExamTopics may have some ${cert.name} questions, but they are crowd-sourced brain dumps — unreliable, potentially outdated, and a violation of ServiceNow's certification terms. SNReady provides original questions with detailed explanations for $9 — the ethical, effective study method.`,
+          text: `ExamTopics may have some ${cert.name} questions, but they are crowd-sourced brain dumps — unreliable, potentially outdated, and a violation of ServiceNow's certification terms. SNReady provides original questions with detailed explanations${isFree ? ", free" : " for $9"} — the ethical, effective study method.`,
         },
       },
     ],
@@ -252,9 +256,13 @@ export default async function DumpsPage({ params }: Props) {
                 4
               </div>
               <div>
-                <h3 className="font-semibold text-zinc-900 dark:text-zinc-100">One-time $9 per certification</h3>
+                <h3 className="font-semibold text-zinc-900 dark:text-zinc-100">
+                  {isFree ? `Every ${cert.name} question is free` : "One-time $9 per certification"}
+                </h3>
                 <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
-                  No subscription. No recurring fees. Pay once and practice as many times as you need. That's less than the cost of a failed exam attempt (${cert.examDetails.cost}).
+                  {isFree
+                    ? `No signup, no paywall. All ${cert.name} questions and timed mock exams are free, so there's no reason to risk a dump.`
+                    : `No subscription. No recurring fees. Pay once and practice as many times as you need. That's less than the cost of a failed exam attempt ($${cert.examDetails.cost}).`}
                 </p>
               </div>
             </div>
@@ -304,7 +312,7 @@ export default async function DumpsPage({ params }: Props) {
             Ready to study the right way?
           </h2>
           <p className="mt-2 text-emerald-700 dark:text-emerald-400">
-            Skip the dumps. Get {totalQuestions}+ original practice questions for {cert.name} — one-time $9, no subscription.
+            Skip the dumps. Get {totalQuestions}+ original practice questions for {cert.name} — {isFree ? "free, no signup" : "one-time $9, no subscription"}.
           </p>
           <div className="mt-4 flex flex-wrap gap-3">
             {isReady ? (

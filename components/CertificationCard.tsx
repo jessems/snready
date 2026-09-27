@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { CertificationWithReadiness } from "@/types";
+import { isFreeCertification } from "@/lib/free-certs";
 
 interface CertificationCardProps {
   certification: CertificationWithReadiness;
@@ -64,7 +65,11 @@ export default function CertificationCard({ certification }: CertificationCardPr
               : "text-zinc-400 dark:text-zinc-600"
           }`}
         >
-          {isReady ? "$9" : `$${certification.examDetails.cost}`}
+          {isReady
+            ? isFreeCertification(certification.slug) || certification.allQuestionsFree
+              ? "Free"
+              : "$9"
+            : `$${certification.examDetails.cost}`}
         </span>
       </div>
 

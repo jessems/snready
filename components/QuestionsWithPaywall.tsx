@@ -5,7 +5,9 @@ import QuestionCard from "@/components/QuestionCard";
 import { CheckoutButton } from "@/components/CheckoutButton";
 import { LoginModal } from "@/components/LoginModal";
 import { useAccess } from "@/components/AccessProvider";
+import { FreeCertCrossSell } from "@/components/FreeCertCrossSell";
 import { trackPracticeStartOnce } from "@/lib/analytics";
+import { isFreeCertification } from "@/lib/free-certs";
 import { fetchPremiumQuestions, type PremiumQuestionsResult } from "@/lib/premium-questions";
 import type { Question } from "@/types";
 
@@ -20,6 +22,8 @@ interface QuestionsWithPaywallProps {
   examCost?: number;
   freeQuestionCount?: number;
   featureHighlights?: string[];
+  // Paid certifications included in all access, for the free-cert cross-sell copy.
+  paidCertCount?: number;
 }
 
 export function QuestionsWithPaywall({
@@ -31,7 +35,86 @@ export function QuestionsWithPaywall({
   examCost,
   freeQuestionCount,
   featureHighlights = [],
+  paidCertCount,
 }: QuestionsWithPaywallProps) {
+  if (isFreeCertification(certificationSlug)) {
+    return (
+      <FreeCertificationQuestions
+        questions={freeQuestions}
+        certification={certification}
+        paidCertCount={paidCertCount}
+        placement={topic ? "topic_questions" : "certification_questions"}
+      />
+    );
+  }
+
+  return (
+    <PaidCertificationQuestions
+      freeQuestions={freeQuestions}
+      premiumQuestionCount={premiumQuestionCount}
+      certification={certification}
+      certificationSlug={certificationSlug}
+      topic={topic}
+      examCost={examCost}
+      freeQuestionCount={freeQuestionCount}
+      featureHighlights={featureHighlights}
+    />
+  );
+}
+
+// Free certifications (lib/free-certs.ts): every question is in the static page,
+// no paywall, no login, and a soft cross-sell to the next certification at the end.
+function FreeCertificationQuestions({
+  questions,
+  certification,
+  paidCertCount,
+  placement,
+}: {
+  questions: Question[];
+  certification: string;
+  paidCertCount?: number;
+  placement: string;
+}) {
+  const handleAnswer = () => {
+    trackPracticeStartOnce({
+      certification,
+      freeQuestionCount: questions.length,
+      totalQuestionCount: questions.length,
+      freeCertification: true,
+    });
+  };
+
+  return (
+    <div className="space-y-6">
+      <div className="flex items-center gap-2">
+        <span className="text-sm font-medium text-emerald-600">All {certification} questions are free</span>
+        <span className="text-xs text-zinc-400">({questions.length} questions, no login needed)</span>
+      </div>
+      {questions.map((question, index) => (
+        <QuestionCard
+          key={question.id}
+          question={question}
+          questionNumber={index + 1}
+          onAnswer={handleAnswer}
+        />
+      ))}
+      {paidCertCount ? (
+        <FreeCertCrossSell certification={certification} paidCertCount={paidCertCount} placement={placement} />
+      ) : null}
+    </div>
+  );
+}
+
+function PaidCertificationQuestions({
+  freeQuestions,
+  premiumQuestionCount,
+  certification,
+  certificationSlug,
+  topic,
+  examCost,
+  freeQuestionCount,
+  featureHighlights = [],
+}: Omit<QuestionsWithPaywallProps, "paidCertCount">) {
   const { authenticated, hasAccessTo, loading } = useAccess();
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [attempt, setAttempt] = useState(0);

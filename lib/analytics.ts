@@ -439,6 +439,8 @@ export function trackPracticeStartOnce(params: {
   certification: string;
   freeQuestionCount: number;
   totalQuestionCount: number;
+  /** True for certifications that are completely free (lib/free-certs.ts). */
+  freeCertification?: boolean;
 }) {
   if (!isBrowser()) return;
 
@@ -457,6 +459,50 @@ export function trackPracticeStartOnce(params: {
     free_question_count: params.freeQuestionCount,
     total_question_count: params.totalQuestionCount,
     practice_start_path: path,
+    ...(params.freeCertification ? { access_type: "free_certification" } : {}),
+  });
+}
+
+/** access_type: "free_certification" (e.g. CSA, no login) or "paid" (purchased access). */
+export type MockExamAccessType = "free_certification" | "paid";
+
+export function trackMockExamStart(params: {
+  certification: string;
+  accessType: MockExamAccessType;
+  questionCount: number;
+  durationMinutes: number;
+}) {
+  trackEvent("mock_exam_start", {
+    certification: params.certification,
+    access_type: params.accessType,
+    question_count: params.questionCount,
+    duration_minutes: params.durationMinutes,
+  });
+}
+
+export function trackMockExamComplete(params: {
+  certification: string;
+  accessType: MockExamAccessType;
+  score: number;
+  passed: boolean;
+  questionCount: number;
+  timeUsedMs: number;
+}) {
+  trackEvent("mock_exam_complete", {
+    certification: params.certification,
+    access_type: params.accessType,
+    score: params.score,
+    passed: params.passed,
+    question_count: params.questionCount,
+    time_used_minutes: Math.round(params.timeUsedMs / 60000),
+  });
+}
+
+export function trackFreeCertCrossSellClick(params: { certification: string; target: string; placement: string }) {
+  trackEvent("free_cert_cross_sell_click", {
+    certification: params.certification,
+    cross_sell_target: params.target,
+    placement: params.placement,
   });
 }
 

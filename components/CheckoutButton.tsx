@@ -9,6 +9,7 @@ import {
   trackCheckoutCreated,
   trackCheckoutFailed,
 } from "@/lib/analytics";
+import { isFreeCertification } from "@/lib/free-certs";
 import { useAccess } from "./AccessProvider";
 
 type PlanType = "single" | "all";
@@ -95,6 +96,12 @@ export function CheckoutButton({
       setLoading(false);
     }
   };
+
+  // Free certifications (lib/free-certs.ts) are never sold on their own.
+  // The checkout API rejects this too; this keeps a stray button off the page.
+  if (plan === "single" && isFreeCertification(certification)) {
+    return null;
+  }
 
   // If user already has access, show different UI
   if (hasAccess) {

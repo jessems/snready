@@ -62,9 +62,32 @@ describe("premium leak scanner", () => {
     expect(scanDirectoryForNeedles(dir, needles).leaks).toEqual([]);
   });
 
+  it("exempts free certifications (CSA) but still scans every other certification's premium questions", async () => {
+    const { premium, free, exemptCertifications } = await loadPremiumAndFreeQuestions();
+    expect(exemptCertifications).toEqual(["csa"]);
+    expect(premium.some((question) => question.certification === "csa")).toBe(false);
+    expect(premium.some((question) => question.certification === "cad")).toBe(true);
+    expect(premium.some((question) => question.certification === "cis-itsm")).toBe(true);
+
+    // The formerly premium tail of a CSA topic may now appear in public pages...
+    const csaTail = free.filter((question) => question.certification === "csa").slice(-5);
+    // ...but CAD premium questions in the same file are still reported.
+    const needles = buildPremiumNeedles(premium, free);
+    const cadNeedle = needles.find((needle) => needle.questionId.startsWith("cad-") && needle.field === "question")!;
+    const cadQuestion = premium.find((question) => question.id === cadNeedle.questionId)!;
+    const dir = fixtureDir({
+      "csa/practice-questions/ui-navigation.html": csaTail.map((question) => `${question.question} ${question.explanation.correct}`).join("\n"),
+      "cad/practice-questions/business-rules.html": `${csaTail[0].question}\n${cadQuestion.question}`,
+    });
+    const result = scanDirectoryForNeedles(dir, needles);
+    expect(result.leaks.map((leak) => leak.file)).toEqual(["cad/practice-questions/business-rules.html"]);
+    expect(result.leaks[0].needles.map((needle) => needle.questionId)).toEqual([cadQuestion.id]);
+  });
+
   it.skipIf(!hasBuildOutput)("finds no premium question content in the built static export (out/)", async () => {
     const result = await scanBuildOutput(outDir);
     expect(result.needleCount).toBeGreaterThan(1000);
+    expect(result.exemptCertifications).toEqual(["csa"]);
     expect(result.leaks.map((leak) => leak.file)).toEqual([]);
   }, 120_000);
 });

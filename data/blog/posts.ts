@@ -248,9 +248,9 @@ Even at the low end, that's a $5K+ salary increase. The exam pays for itself in 
 
 Don't overthink it. Study the material. Practice in a PDI. Test yourself. Pass on the first try.
 
-[Take Free CSA Practice Questions →](/csa/free-questions)
+[Take Free CSA Practice Questions →](/csa/practice-questions)
 
-[Start a Timed CSA Mock Exam →](/csa/timed-exam)
+[Start a Timed CSA Mock Exam →](/csa/mock-exam)
 
 ---
 
@@ -537,7 +537,7 @@ You're preparing for a ServiceNow certification. You want practice questions. Yo
 - Udemy courses with practice tests ($10-50)
 - SkillCertPro ($20-40)
 - Dion Training ($15-30)
-- SNReady ($9 per cert)
+- SNReady (CSA free, $9 per other cert)
 - Random websites with "free ServiceNow questions"
 
 Which one actually helps you pass?
@@ -552,7 +552,7 @@ We tested all of them. Here's what we found.
 | **Udemy** | $10-50 | 100-300/cert | Varies by instructor | Depends | ~75-85% |
 | **SkillCertPro** | $20-40/cert | 400-600/cert | Brief | Occasionally | ~80-85% |
 | **Dion Training** | $15-30 | 150-250/cert | Good | Yes | ~85-90% |
-| **SNReady** | $9/cert | 80-220/cert | Detailed (why right + wrong) | Yes | ~90-95% |
+| **SNReady** | CSA free, $9/other cert | 90-220/cert | Detailed (why right + wrong) | Yes | ~90-95% |
 
 ## ExamTopics: The Free Option
 
@@ -655,7 +655,8 @@ We tested all of them. Here's what we found.
 - Detailed explanations: why the right answer is right AND why each wrong answer is wrong
 - Timed mock exams simulating real exam conditions
 - 20 certifications covered (CSA, CAD, all CIS)
-- $9 per certification (cheapest paid option)
+- CSA is completely free, including timed mock exams
+- $9 per other certification (cheapest paid option)
 - Free questions available for every cert (no credit card)
 - Updated with each ServiceNow release
 
@@ -697,7 +698,7 @@ If you need 600 questions to drill, SkillCertPro has more. If you want to unders
 1. Complete Now Learning courses (free)
 2. Practice in a PDI (free)
 3. Use ExamTopics for question format exposure (free, but verify answers yourself)
-4. Use SNReady's free questions (no credit card needed)
+4. Use SNReady's free CSA practice test and mock exams, plus the free questions for every other cert (no credit card needed)
 
 ### If you have $9-20:
 1. Complete Now Learning courses (free)
@@ -736,7 +737,7 @@ Avoid any practice test platform that:
 
 | Your Priority | Best Choice |
 |--------------|------------|
-| Free only | Now Learning + ExamTopics (verify answers) |
+| Free only | Now Learning + SNReady CSA (fully free) + ExamTopics (verify answers) |
 | Best value | SNReady ($9) |
 | Most questions | SkillCertPro ($20-40) |
 | Best explanations | SNReady ($9) or Dion Training ($15-30) |
@@ -822,7 +823,7 @@ These are the same courses that exam content is based on. You literally get the 
 | **ServiceNow Instructor-Led Training** | $2,000-4,000/course | Live instructor, lab environment |
 | **Udemy courses** | $10-50 (sale) | Third-party, variable quality |
 | **SkillCertPro practice exams** | $20-40 | ~600 practice questions per cert |
-| **SNReady practice tests** | $9/cert | Questions from official content with detailed explanations |
+| **SNReady practice tests** | CSA free, $9/cert for others | Questions from official content with detailed explanations |
 | **Pluralsight** | $30/month | Some ServiceNow courses |
 
 ### Our Honest Assessment
@@ -978,18 +979,18 @@ Let's run the numbers for the most common scenario: getting CSA to enter Service
 
 **Investment:**
 - Exam fee: $210
-- Study materials: $9 (practice questions)
+- Study materials: $0 (SNReady's CSA practice test and mock exams are free)
 - Time: 60 hours × $0 (studying outside work hours)
-- **Total: $219**
+- **Total: $210**
 
 **Return:**
 - Current salary (general IT): $65,000
 - Post-certification salary (ServiceNow admin): $85,000
 - **Annual increase: $20,000**
 
-**ROI: 9,032%** ($20,000 return on $219 investment)
+**ROI: 9,524%** ($20,000 return on $210 investment)
 
-Even if the salary increase is only $10,000, that's still a 4,466% ROI. Even if you fail once and spend $429, it's a 2,231% ROI.
+Even if the salary increase is only $10,000, that's still a 4,762% ROI. Even if you fail once and spend $420, it's a 4,762% ROI.
 
 There are very few investments in your career with this kind of return.
 
@@ -2931,9 +2932,9 @@ The most popular ServiceNow certification. Our CSA questions cover all 8 exam do
 - Data Migration & Integration
 - Collaboration & Reporting
 
-**100 questions** — Mix of free and premium
+**200+ questions** — all free, including timed mock exams
 
-[Start Free CSA Practice Questions →](/csa/free-questions)
+[Start Free CSA Practice Questions →](/csa/practice-questions)
 
 ### CAD — Certified Application Developer
 
@@ -3097,14 +3098,14 @@ Every question includes:
 
 | Feature | Free | Premium ($9) |
 |---------|------|-------------|
-| Questions per cert | 3-5 per domain | Full question bank |
+| Questions per cert | 15 per cert (CSA: every question) | Full question bank |
 | Explanations | ✅ Full | ✅ Full |
-| Timed mock exams | ❌ | ✅ |
+| Timed mock exams | CSA only | ✅ |
 | Domain breakdown | ❌ | ✅ |
 | All 20 certifications | ✅ | ✅ |
-| Price | $0 | $9 one-time |
+| Price | $0 | $9 per cert, or $49 for all 19 paid certs |
 
-**$9 gets you access to all 20 certifications.** That's less than 5% of what you'd pay for one exam attempt.
+**CSA is completely free, and $9 unlocks any other certification for life** (or $49 for all 19 paid certifications). That's less than 5% of what you'd pay for one exam attempt.
 
 ## Start Practicing Now
 
@@ -3112,7 +3113,7 @@ Pick your certification and start with the free questions. No signup required.
 
 [Browse All Certifications →](/)
 
-[Take a Timed Mock Exam →](/csa/timed-exam)
+[Take a Free Timed CSA Mock Exam →](/csa/mock-exam)
 `
   },
   {
@@ -3476,11 +3477,11 @@ That's still 5 questions. Five easy questions if you know the material. Five los
 
 ## Ready to Start?
 
-We have **200 CSA questions** — the most comprehensive practice test available for ServiceNow CSA. Start with the free questions, see your score, then unlock the full bank.
+We have **200 CSA questions** — the most comprehensive practice test available for ServiceNow CSA, and every one of them is free. No signup, no paywall.
 
 | Action | Link |
 |--------|------|
-| Start free CSA questions | [Free CSA Practice Questions](/csa/free-questions) |
+| Start free CSA questions | [Free CSA Practice Questions](/csa/practice-questions) |
 | Take a timed mock exam | [CSA Mock Exam](/csa/mock-exam) |
 | See all 8 domain topics | [CSA Study Topics](/csa) |
 | Create a study schedule | [Study Plan Generator](/study-plan) |
@@ -3923,7 +3924,7 @@ The CSA exam bank expanded by 59 questions across four domains. These weren't fi
 - Flow Designer triggers, actions, and error handling
 - Record producer behavior and use cases
 
-[CSA Free Practice Questions →](/csa/free-questions)
+[CSA Free Practice Questions →](/csa/practice-questions)
 
 ## Why We Added These Specific Topics
 
@@ -3963,9 +3964,9 @@ Follow [@SNReady](https://twitter.com/snready) for release announcements. Or jus
 All new questions are live now on SNReady.com:
 
 - [CPOA Free Practice Questions](/cpoa/free-questions) — includes the 50 new Technology questions
-- [CSA Free Practice Questions](/csa/free-questions) — all 214 questions
+- [CSA Free Practice Questions](/csa/practice-questions) — every question free
 - [Timed CPOA Mock Exam](/cpoa/timed-exam) — simulate real exam conditions
-- [Timed CSA Mock Exam](/csa/timed-exam) — 60 questions, 90 minutes
+- [Timed CSA Mock Exam](/csa/mock-exam) — 60 questions, 90 minutes, free
 
 ---
 *Updated May 2026. All questions based on current ServiceNow Xanadu exam blueprints.*
