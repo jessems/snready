@@ -18,7 +18,7 @@ interface PageProps {
 // Convert URL param to ServiceNowRelease type
 function normalizeRelease(release: string): ServiceNowRelease | null {
   const normalized = release.charAt(0).toUpperCase() + release.slice(1).toLowerCase();
-  const validReleases: ServiceNowRelease[] = ["Vancouver", "Washington", "Xanadu", "Yokohama", "Zurich"];
+  const validReleases: ServiceNowRelease[] = ["Vancouver", "Washington", "Xanadu", "Yokohama", "Zurich", "Australia"];
   return validReleases.includes(normalized as ServiceNowRelease) ? (normalized as ServiceNowRelease) : null;
 }
 

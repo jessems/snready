@@ -22,7 +22,8 @@ export type ServiceNowRelease =
   | "Washington"
   | "Xanadu"
   | "Yokohama"
-  | "Zurich";
+  | "Zurich"
+  | "Australia";
 
 export interface DeltaExamInfo {
   isMainline: boolean; // Only mainline certs have delta exams

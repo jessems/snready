@@ -552,15 +552,18 @@ const releaseOrder: ServiceNowRelease[] = [
   "Xanadu",
   "Yokohama",
   "Zurich",
+  "Australia",
 ];
 
-// Release display metadata
+// Release display metadata (general availability month).
+// "season" holds the GA month name.
 const releaseInfo: Record<ServiceNowRelease, { year: number; season: string }> = {
-  Vancouver: { year: 2023, season: "March" },
-  Washington: { year: 2023, season: "September" },
-  Xanadu: { year: 2024, season: "March" },
-  Yokohama: { year: 2024, season: "September" },
-  Zurich: { year: 2025, season: "March" },
+  Vancouver: { year: 2023, season: "September" },
+  Washington: { year: 2024, season: "March" },
+  Xanadu: { year: 2024, season: "September" },
+  Yokohama: { year: 2025, season: "March" },
+  Zurich: { year: 2025, season: "September" },
+  Australia: { year: 2026, season: "May" },
 };
 
 export function getAllReleases(): ServiceNowRelease[] {

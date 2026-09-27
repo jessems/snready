@@ -75,9 +75,9 @@ const resourceCategories: ResourceCategory[] = [
     resources: [
       {
         name: "ServiceNow Docs (Product Documentation)",
-        url: "https://docs.servicenow.com/",
+        url: "https://www.servicenow.com/docs/",
         description:
-          "Official product documentation for all ServiceNow modules. Updated with each release (currently Xanadu).",
+          "Official product documentation for all ServiceNow modules. Updated with each release (currently Australia).",
         tags: ["Free", "Official", "Essential"],
       },
       {
@@ -89,7 +89,7 @@ const resourceCategories: ResourceCategory[] = [
       },
       {
         name: "Release Notes",
-        url: "https://docs.servicenow.com/bundle/xanadu-release-notes/page/release-notes/family-release-notes.html",
+        url: "https://www.servicenow.com/docs/r/australia/release-notes/family-release-notes.html",
         description:
           "What's new in each ServiceNow release. Critical for delta exams and staying current.",
         tags: ["Free", "Updates"],
@@ -257,7 +257,7 @@ const resourceCategories: ResourceCategory[] = [
       },
       {
         name: "ServiceNow CLI",
-        url: "https://docs.servicenow.com/bundle/xanadu-application-development/page/build/servicenow-cli/concept/servicenow-cli.html",
+        url: "https://www.servicenow.com/docs/r/australia/application-development/servicenow-cli/servicenow-cli.html",
         description:
           "Command-line interface for app development, source control, and deployments.",
         tags: ["Free", "CLI"],
