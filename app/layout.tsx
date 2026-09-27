@@ -191,12 +191,6 @@ export default function RootLayout({
                     Certification Paths
                   </Link>
                   <Link
-                    href="/glossary"
-                    className="block text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
-                  >
-                    Glossary
-                  </Link>
-                  <Link
                     href="/blog"
                     className="block text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
                   >

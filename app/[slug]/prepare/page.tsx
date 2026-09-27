@@ -497,12 +497,6 @@ export default async function ExamPrepPage({ params }: Props) {
                         >
                           Practice ({topic.questionCount} questions)
                         </Link>
-                        <Link
-                          href={`/learn/${topic.slug}`}
-                          className="text-sm text-emerald-600 hover:text-emerald-700"
-                        >
-                          Learn Concepts
-                        </Link>
                       </div>
                     </div>
                   </div>
