@@ -158,11 +158,10 @@ function ExperienceCard({ experience }: { experience: UserExperience }) {
 
 // Generate fallback prep data from certification domains
 function generateFallbackPrepData(certification: NonNullable<ReturnType<typeof getCertificationBySlug>>) {
-  const baseUrl = "https://nowlearning.servicenow.com/lxp/en/credentials";
   return {
     officialResources: {
-      examPage: `${baseUrl}/${certification.slug}`,
-      blueprintUrl: `${baseUrl}/${certification.slug}`,
+      examPage: certification.blueprintUrl ?? "https://learning.servicenow.com/",
+      blueprintUrl: certification.blueprintUrl ?? "https://learning.servicenow.com/",
       studyGuideUrl: certification.deltaExam?.studyGuideUrl || null,
     },
     requiredCourses: [] as Array<{ name: string; url: string; duration: string; description: string; domains: string[] }>,

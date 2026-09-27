@@ -798,12 +798,12 @@ export default async function CISDFStudyGuidePage() {
             <p className="mt-4 text-sm text-zinc-500 dark:text-zinc-400">
               Domain percentages sourced from the{" "}
               <a
-                href="https://nowlearning.servicenow.com/lxp/en/credentials/certified-implementation-specialist-cmdb-mainline-exam-blueprint?id=kb_article_view&sysparm_article=KB0011528"
+                href={cert.blueprintUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="font-medium text-emerald-600 hover:text-emerald-700 dark:text-emerald-400"
               >
-                official CIS-DF exam blueprint on NowLearning →
+                official CIS-DF exam blueprint →
               </a>
             </p>
           </div>
