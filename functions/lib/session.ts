@@ -37,7 +37,7 @@ export function makeClearSessionCookie(): string {
 export async function getAccessData(
   kv: KVNamespace,
   email: string
-): Promise<{ paid: boolean; plan: string; expiresAt: number; sessionId?: string; certification?: string; createdAt?: number } | null> {
+): Promise<{ paid: boolean; plan: string; expiresAt: number; sessionId?: string; certification?: string; certifications?: string[]; createdAt?: number } | null> {
   // Try new prefixed key first
   let raw = await kv.get(`access:${email}`);
   if (!raw) {

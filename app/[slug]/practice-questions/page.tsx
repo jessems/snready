@@ -147,9 +147,10 @@ export default async function PracticeTestPage({ params }: Props) {
     .sort((a, b) => b.percentage - a.percentage)
     .slice(0, 3);
 
-  // Get premium questions (all questions minus the free ones, by ID)
+  // Only the premium question count is rendered into the static page. Premium
+  // question content is served by /api/questions after the paid-access check.
   const freeQuestionIds = new Set(freeQuestions.map(q => q.id));
-  const premiumQuestions = allQuestions.filter(q => !freeQuestionIds.has(q.id));
+  const premiumQuestionCount = allQuestions.filter(q => !freeQuestionIds.has(q.id)).length;
 
   const breadcrumbItems = [
     { name: "Home", url: "/" },
@@ -403,8 +404,9 @@ export default async function PracticeTestPage({ params }: Props) {
 
               <QuestionsWithPaywall
                 freeQuestions={freeQuestions}
-                premiumQuestions={premiumQuestions}
+                premiumQuestionCount={premiumQuestionCount}
                 certification={certification.name}
+                certificationSlug={slug}
                 examCost={certification.examDetails?.cost}
                 freeQuestionCount={freeQuestionCount}
                 featureHighlights={landingContent?.featureHighlights}

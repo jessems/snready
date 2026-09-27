@@ -26,6 +26,20 @@ test.describe("production smoke", () => {
     await expect(page.getByRole("button", { name: /Lifetime All Certs/i }).first()).toBeVisible();
   });
 
+  test("premium question content is not shipped in the static practice pages", async ({ page, request }) => {
+    // cad-business-rules-006 is a premium (paid) question.
+    const premiumStem = "Why are the current and previous objects NOT available in scheduled script executions";
+    for (const path of ["/cad/practice-questions", "/cad/practice-questions/business-rules"]) {
+      const html = await (await request.get(path)).text();
+      expect(html, `${path} HTML/RSC payload`).not.toContain(premiumStem);
+    }
+    await page.goto("/cad/practice-questions/business-rules", { waitUntil: "domcontentloaded" });
+    await expect(page.getByText(/Unlock \d+ More Questions/i)).toBeVisible();
+    await expect(page.locator("body")).not.toContainText(premiumStem);
+    const csv = await request.get("/exports/cad-questions-udemy.csv");
+    expect(await csv.text()).not.toContain(premiumStem);
+  });
+
   for (const privatePath of ["/private-dumps/", "/data/exam-intel/", "/data/exam-intel/dumps/", "/exam-intel/"]) test(`${privatePath} does not expose private exam intelligence content`, async ({ page }) => {
     const response = await page.goto(privatePath, { waitUntil: "domcontentloaded" });
     const body = await page.locator("body").innerText();
@@ -67,6 +81,18 @@ test.describe("production smoke", () => {
         error: "Session ID required",
         code: "missing_session_id",
       });
+    });
+
+    test("premium questions API refuses visitors without a session", async ({ request }) => {
+      const response = await request.get("/api/questions?cert=cad");
+      expect(response.status()).toBe(401);
+      await expect(response.json()).resolves.toMatchObject({ code: "not_authenticated" });
+    });
+
+    test("question bank CSV exports require an admin session", async ({ request }) => {
+      const response = await request.get("/admin/exports/cad-questions-udemy.csv", { maxRedirects: 0 });
+      expect(response.status()).toBe(401);
+      expect(await response.text()).not.toContain("Correct Response");
     });
 
     test("checkout endpoint returns a structured validation error before hitting Stripe", async ({ request }) => {

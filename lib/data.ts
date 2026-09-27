@@ -20,6 +20,7 @@ import cisEmTopics from "@/data/topics/cis-em-topics.json";
 import cisFsmTopics from "@/data/topics/cis-fsm-topics.json";
 import cisPaTopics from "@/data/topics/cis-pa-topics.json";
 import cisSmTopics from "@/data/topics/cis-sm-topics.json";
+import { FREE_QUESTIONS_PER_CERT, calculateFreeQuestionsDistribution } from "@/lib/free-questions";
 import type { Certification, CertificationWithReadiness, Topic, Question, ExamDomain, CertificationCategory, ServiceNowRelease, DeltaExamInfo, ExamTips } from "@/types";
 
 // Category display names mapping
@@ -177,32 +178,15 @@ export async function getDeltaQuestions(
   }
 }
 
-// Free questions: 15 total per certification, distributed across topics
-export const FREE_QUESTIONS_PER_CERT = 15;
+export { FREE_QUESTIONS_PER_CERT };
 
-// Calculate how many free questions each topic gets based on total distribution
-function calculateFreeQuestionsDistribution(certSlug: string): Map<string, number> {
-  const topics = getTopicsForCertification(certSlug);
-  const distribution = new Map<string, number>();
-
-  if (topics.length === 0) return distribution;
-
-  const perTopic = Math.floor(FREE_QUESTIONS_PER_CERT / topics.length);
-  let remainder = FREE_QUESTIONS_PER_CERT % topics.length;
-
-  for (const topic of topics) {
-    // Give each topic the base amount, plus 1 extra for first 'remainder' topics
-    const count = perTopic + (remainder > 0 ? 1 : 0);
-    distribution.set(topic.slug, Math.min(count, topic.questionCount));
-    if (remainder > 0) remainder--;
-  }
-
-  return distribution;
+function getFreeQuestionsDistribution(certSlug: string): Map<string, number> {
+  return calculateFreeQuestionsDistribution(getTopicsForCertification(certSlug));
 }
 
 // Get number of free questions for a specific topic
 export function getFreeQuestionCountForTopic(certSlug: string, topicSlug: string): number {
-  const distribution = calculateFreeQuestionsDistribution(certSlug);
+  const distribution = getFreeQuestionsDistribution(certSlug);
   return distribution.get(topicSlug) || 0;
 }
 
@@ -246,7 +230,7 @@ export async function getFreeQuestionsForCertification(certSlug: string): Promis
   }
 
   // Otherwise use distribution-based free questions (15 total)
-  const distribution = calculateFreeQuestionsDistribution(certSlug);
+  const distribution = getFreeQuestionsDistribution(certSlug);
   for (const topic of topics) {
     const questions = await getQuestionsForTopic(certSlug, topic.slug);
     const freeCount = distribution.get(topic.slug) || 0;

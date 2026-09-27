@@ -68,7 +68,9 @@ export default async function TopicQuestionsPage({ params }: PageProps) {
 
   const allQuestions = await getQuestionsForTopic(slug, topicSlug);
   const freeQuestions = await getFreeQuestionsForTopic(slug, topicSlug);
-  const premiumQuestions = allQuestions.slice(freeQuestions.length);
+  // Only the premium question count is rendered into the static page. Premium
+  // question content is served by /api/questions after the paid-access check.
+  const premiumQuestionCount = Math.max(allQuestions.length - freeQuestions.length, 0);
   const allTopics = getTopicsForCertification(slug);
 
   // JSON-LD structured data for FAQ (only use free questions for SEO)
@@ -180,8 +182,10 @@ export default async function TopicQuestionsPage({ params }: PageProps) {
               {allQuestions.length > 0 ? (
                 <QuestionsWithPaywall
                   freeQuestions={freeQuestions}
-                  premiumQuestions={premiumQuestions}
+                  premiumQuestionCount={premiumQuestionCount}
                   certification={certification.name}
+                  certificationSlug={slug}
+                  topic={topicSlug}
                 />
               ) : (
                 <div className="rounded-xl border border-zinc-200 bg-white p-6 sm:p-12 text-center dark:border-zinc-800 dark:bg-zinc-900">
