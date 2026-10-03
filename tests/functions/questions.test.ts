@@ -178,6 +178,44 @@ describe("premium questions Pages Function", () => {
     expect(body.questions).toHaveLength(all.length);
   });
 
+  it("serves free certifications (CSA) to anyone, without a session or KV lookup", async () => {
+    const kv = kvStore();
+    const response = await call("?cert=csa&scope=all", { kv });
+    expect(response.status).toBe(200);
+    expect(response.headers.get("Cache-Control")).toBe("public, max-age=300");
+    const body = await response.json() as { free: boolean; questions: Array<{ id: string }>; count: number };
+    const all = await getAllQuestionsForCertification("csa");
+    expect(body.free).toBe(true);
+    expect(body.count).toBe(all.length);
+    expect(body.questions.map((question) => question.id)).toEqual(all.map((question) => question.id));
+    expect(kv.get).not.toHaveBeenCalled();
+  });
+
+  it("returns no 'premium' CSA questions, because the static pages already show all of them", async () => {
+    const response = await call("?cert=csa");
+    expect(response.status).toBe(200);
+    expect(await response.json()).toMatchObject({ free: true, count: 0, questions: [] });
+    const topicResponse = await call("?cert=csa&topic=ui-navigation");
+    expect(await topicResponse.json()).toMatchObject({ count: 0 });
+  });
+
+  it("serves the CSA mock exam pool even when the KV binding is missing", async () => {
+    const response = await onRequestGet({
+      request: new Request("https://snready.com/api/questions?cert=csa&scope=all"),
+      env: {},
+    } as unknown as Parameters<typeof onRequestGet>[0]);
+    expect(response.status).toBe(200);
+  });
+
+  it("keeps existing CSA buyers working: a CSA-only purchase still gets CSA, and still no CAD", async () => {
+    const kv = kvStore({
+      "session:token-1": session(),
+      "access:buyer@example.com": access({ certification: "CSA", certifications: ["CSA"] }),
+    });
+    expect((await call("?cert=csa&scope=all", { cookie: COOKIE, kv })).status).toBe(200);
+    expect((await call("?cert=cad", { cookie: COOKIE, kv })).status).toBe(403);
+  });
+
   it("returns 503 when the KV binding is missing", async () => {
     const response = await onRequestGet({
       request: new Request("https://snready.com/api/questions?cert=cad", { headers: { Cookie: COOKIE } }),

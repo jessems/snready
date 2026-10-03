@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { CheckoutButton } from "@/components/CheckoutButton";
+import { isFreeCertification } from "@/lib/free-certs";
 
 type PlanType = "single" | "all";
 
@@ -63,6 +64,9 @@ export default function CancelContent() {
     ? "All Certifications"
     : formatCertificationName(checkoutIntent.certification);
   const primaryPrice = isAllPlan ? "$49" : "$9";
+  // A single-cert checkout for a certification that has since become free (e.g. CSA):
+  // there is nothing to resume, point the visitor at the free questions instead.
+  const isFreeSingle = !isAllPlan && isFreeCertification(checkoutIntent.certification);
 
   const continueHref = checkoutIntent.returnUrl || (checkoutIntent.certification ? `/${checkoutIntent.certification}` : "/certifications");
   const practiceHref = checkoutIntent.certification
@@ -96,7 +100,9 @@ export default function CancelContent() {
         </h1>
 
         <p className="mx-auto mt-4 max-w-2xl text-lg text-zinc-600 dark:text-zinc-400">
-          You left checkout before finishing. Your practice access is still one click away — lifetime access, no subscription, and no renewal surprises.
+          {isFreeSingle
+            ? `Good news: ${certificationName} is now completely free. Every practice question and mock exam is open to everyone, no checkout needed.`
+            : "You left checkout before finishing. Your practice access is still one click away — lifetime access, no subscription, and no renewal surprises."}
         </p>
 
         {checkoutIntent.sessionId && (
@@ -105,6 +111,27 @@ export default function CancelContent() {
           </p>
         )}
 
+        {isFreeSingle ? (
+          <div className="mt-8 rounded-2xl border border-emerald-200 bg-emerald-50 p-6 text-center dark:border-emerald-900 dark:bg-emerald-950/40">
+            <h2 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100">
+              {certificationName} is free
+            </h2>
+            <div className="mt-4 flex flex-col justify-center gap-3 sm:flex-row">
+              <Link
+                href={practiceHref}
+                className="inline-flex items-center justify-center rounded-lg bg-emerald-600 px-6 py-3 font-semibold text-white transition-colors hover:bg-emerald-700"
+              >
+                Start practicing free
+              </Link>
+              <Link
+                href={`/${checkoutIntent.certification}/mock-exam`}
+                className="inline-flex items-center justify-center rounded-lg border border-emerald-600 px-6 py-3 font-semibold text-emerald-700 transition-colors hover:bg-emerald-100 dark:text-emerald-300 dark:hover:bg-emerald-900/40"
+              >
+                Take the free mock exam
+              </Link>
+            </div>
+          </div>
+        ) : (
         <div className="mt-8 grid gap-4 rounded-2xl border border-emerald-200 bg-emerald-50 p-6 text-left dark:border-emerald-900 dark:bg-emerald-950/40 sm:grid-cols-[1fr_auto] sm:items-center">
           <div>
             <h2 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100">
@@ -127,6 +154,7 @@ export default function CancelContent() {
             Resume Checkout — {primaryPrice}
           </CheckoutButton>
         </div>
+        )}
 
         {!isAllPlan && (
           <div className="mt-4 rounded-2xl border border-zinc-200 bg-white p-6 text-left dark:border-zinc-800 dark:bg-zinc-900">

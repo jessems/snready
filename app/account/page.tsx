@@ -4,10 +4,11 @@ import Link from "next/link";
 import { useAccess } from "@/components/AccessProvider";
 import { CheckoutButton } from "@/components/CheckoutButton";
 import { LoginModal } from "@/components/LoginModal";
+import { isFreeCertification } from "@/lib/free-certs";
 import { useState } from "react";
 
 export default function AccountPage() {
-  const { authenticated, hasAccess, email, plan, expiresAt, loading, logout } = useAccess();
+  const { authenticated, hasAccess, email, plan, expiresAt, certifications, loading, logout } = useAccess();
   const [showLoginModal, setShowLoginModal] = useState(false);
 
   if (loading) {
@@ -46,6 +47,8 @@ export default function AccountPage() {
   }
 
   const isAllCerts = plan === "all";
+  const purchasedCerts = Array.from(new Set(certifications.map((cert) => cert.toUpperCase())));
+  const purchasedFreeCerts = purchasedCerts.filter((cert) => isFreeCertification(cert));
   const expiresDate = expiresAt ? new Date(expiresAt) : null;
   const isExpired = !hasAccess && expiresAt != null;
 
@@ -73,9 +76,20 @@ export default function AccountPage() {
                   {isAllCerts ? "All Certifications" : "Single Certification"} — Lifetime
                 </span>
               </div>
+              {!isAllCerts && purchasedCerts.length > 0 && (
+                <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+                  Includes: {purchasedCerts.join(", ")}
+                </p>
+              )}
               <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
                 Your lifetime access never expires.
               </p>
+              {!isAllCerts && purchasedFreeCerts.length > 0 && (
+                <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+                  {purchasedFreeCerts.join(" and ")} {purchasedFreeCerts.length > 1 ? "are" : "is"} now free for everyone.
+                  Thanks for supporting SNReady early. Your purchase stays on your account.
+                </p>
+              )}
             </div>
           ) : (
             <div className="mt-2">

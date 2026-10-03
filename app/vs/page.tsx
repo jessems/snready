@@ -67,14 +67,14 @@ export default function CompetitorComparisonIndex() {
                 <td className="px-6 py-4 text-center">
                   <CheckCircle className="w-5 h-5 text-green-600 mx-auto" />
                 </td>
-                <td className="px-6 py-4 text-center font-semibold text-gray-900">1,350+</td>
+                <td className="px-6 py-4 text-center font-semibold text-gray-900">2,400+</td>
                 <td className="px-6 py-4 text-center">
                   <CheckCircle className="w-5 h-5 text-green-600 mx-auto" />
                 </td>
                 <td className="px-6 py-4 text-center">
                   <CheckCircle className="w-5 h-5 text-green-600 mx-auto" />
                 </td>
-                <td className="px-6 py-4 text-center text-gray-700">$9/cert</td>
+                <td className="px-6 py-4 text-center text-gray-700">CSA free, $9/cert</td>
                 <td className="px-6 py-4 text-center">
                   <div className="flex justify-center gap-0.5">
                     {[1,2,3,4,5].map(i => (
@@ -234,7 +234,7 @@ export default function CompetitorComparisonIndex() {
           Ready to Start Practicing?
         </h2>
         <p className="text-xl text-gray-600 mb-8">
-          Try SNReady free with 35+ questions per certification. No credit card required.
+          Try SNReady free: every CSA question and mock exam is free, plus 15 free questions for every other certification. No credit card required.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link
@@ -281,7 +281,7 @@ export default function CompetitorComparisonIndex() {
                 "name": "How does SNReady compare to ServiceNow Now Learning?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "Now Learning is ServiceNow's official training platform and is essential for learning the material. However, it only provides 10-20 practice questions per course. SNReady offers 1,350+ practice questions with full mock exams to complement your Now Learning studies."
+                  "text": "Now Learning is ServiceNow's official training platform and is essential for learning the material. However, it only provides 10-20 practice questions per course. SNReady offers 2,400+ practice questions with full mock exams to complement your Now Learning studies."
                 }
               }
             ]

@@ -10,6 +10,7 @@ import {
   getTotalQuestionCount,
   getTotalFreeQuestionCount,
   getDeltaQuestions,
+  isCertificationFree,
 } from "@/lib/data";
 import { generateBreadcrumbJsonLd } from "@/lib/breadcrumbs";
 import deltaTipsData from "@/data/delta-tips.json";
@@ -72,6 +73,7 @@ export default async function DeltaExamPage({ params }: PageProps) {
   const topics = getTopicsForCertification(slug);
   const totalQuestions = getTotalQuestionCount(slug);
   const freeQuestions = getTotalFreeQuestionCount(slug);
+  const certIsFree = isCertificationFree(slug);
 
   // Get delta tips for this certification
   const generalTips = deltaTipsData.general;
@@ -210,7 +212,9 @@ export default async function DeltaExamPage({ params }: PageProps) {
                   📚 While you&apos;re here: We have {totalQuestions} {cert.name} practice questions
                 </p>
                 <p className="text-sm text-violet-700 dark:text-violet-300">
-                  {freeQuestions} free questions • Timed mock exams • Detailed explanations
+                  {certIsFree
+                    ? "All free, no signup • Free timed mock exams • Detailed explanations"
+                    : `${freeQuestions} free questions • Timed mock exams • Detailed explanations`}
                 </p>
               </div>
               <Link
@@ -470,7 +474,8 @@ export default async function DeltaExamPage({ params }: PageProps) {
                   {totalQuestions}+ Practice Questions
                 </h3>
                 <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-                  Realistic questions with detailed explanations. {freeQuestions} free to try.
+                  Realistic questions with detailed explanations.{" "}
+                  {certIsFree ? "Every one of them is free." : `${freeQuestions} free to try.`}
                 </p>
               </div>
 

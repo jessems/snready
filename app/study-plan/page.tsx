@@ -287,10 +287,10 @@ export default function StudyPlanPage() {
             {authenticated ? (
               <div className="space-y-3">
                 <CheckoutButton
-                  certification="CSA"
+                  plan="all"
                   className="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-semibold transition-colors"
                 >
-                  Get CSA Access — $9
+                  Get All Access — $49
                 </CheckoutButton>
                 <Link
                   href="/certifications"

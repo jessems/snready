@@ -12,6 +12,8 @@ import {
   getAllQuestionsForCertification,
   getFreeQuestionsForCertification,
   FREE_QUESTIONS_PER_CERT,
+  getPricingSummary,
+  isCertificationFree,
 } from "@/lib/data";
 import { generateBreadcrumbJsonLd } from "@/lib/breadcrumbs";
 import { getCanonicalUrl } from "@/lib/seo";
@@ -108,21 +110,30 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     ? `Practice ${getTotalQuestionCount(slug)}+ ${certification.name} exam questions for the ${certification.release} release. ${FREE_QUESTIONS_PER_CERT} free questions covering Incident, Change, Problem, Request, SLA, and reporting with detailed explanations.`
     : `Practice ${getTotalQuestionCount(slug)}+ ${certification.name} exam questions. ${FREE_QUESTIONS_PER_CERT} free questions with detailed explanations to help you pass your ServiceNow ${certification.fullName} certification.`;
 
+  // Free certifications (lib/free-certs.ts): the whole bank is free.
+  const freeCert = isCertificationFree(slug);
+  const metaTitle = freeCert
+    ? `Free ${certification.name} Practice Questions [${new Date().getFullYear()}] — All ${getTotalQuestionCount(slug)} Free`
+    : title;
+  const metaDescription = freeCert
+    ? `All ${getTotalQuestionCount(slug)} ServiceNow ${certification.name} practice questions free, with detailed explanations and a free timed mock exam. No signup, no paywall.`
+    : description;
+
   return {
-    title,
-    description,
+    title: metaTitle,
+    description: metaDescription,
     alternates: {
       canonical: getCanonicalUrl(`/${slug}/practice-questions`),
     },
     openGraph: {
-      title,
-      description,
+      title: metaTitle,
+      description: metaDescription,
       url: getCanonicalUrl(`/${slug}/practice-questions`),
       images: ['/og-default.png'],
     },
     twitter: {
-      title,
-      description,
+      title: metaTitle,
+      description: metaDescription,
       images: ['/og-default.png'],
     },
   };
@@ -137,6 +148,8 @@ export default async function PracticeTestPage({ params }: Props) {
   const totalQuestions = getTotalQuestionCount(slug);
   const freeQuestionCount = getTotalFreeQuestionCount(slug);
   const isReady = isCertificationReady(slug);
+  const certIsFree = isCertificationFree(slug);
+  const { paidCount } = getPricingSummary();
 
   if (!certification) {
     notFound();
@@ -186,7 +199,9 @@ export default async function PracticeTestPage({ params }: Props) {
         name: `How many free ${certification.name} practice questions are available?`,
         acceptedAnswer: {
           "@type": "Answer",
-          text: `We offer ${freeQuestionCount} free ${certification.name} practice questions covering all exam domains. These questions include detailed explanations to help you understand the concepts.`,
+          text: certIsFree
+            ? `All ${freeQuestionCount} ${certification.name} practice questions are free, covering all exam domains, plus a free timed mock exam. No signup needed. Every question includes a detailed explanation.`
+            : `We offer ${freeQuestionCount} free ${certification.name} practice questions covering all exam domains. These questions include detailed explanations to help you understand the concepts.`,
         },
       },
       {
@@ -249,7 +264,9 @@ export default async function PracticeTestPage({ params }: Props) {
 
           <p className="mt-4 text-lg text-zinc-600 dark:text-zinc-400">
             {isReady
-              ? `${totalQuestions} practice questions across ${topics.length} topics • ${freeQuestionCount} free`
+              ? certIsFree
+                ? `${totalQuestions} practice questions across ${topics.length} topics • all free, no signup`
+                : `${totalQuestions} practice questions across ${topics.length} topics • ${freeQuestionCount} free`
               : `Coming soon - Practice questions for ${certification.name}`
             }
           </p>
@@ -413,6 +430,7 @@ export default async function PracticeTestPage({ params }: Props) {
                 examCost={certification.examDetails?.cost}
                 freeQuestionCount={freeQuestionCount}
                 featureHighlights={landingContent?.featureHighlights}
+                paidCertCount={paidCount}
               />
             </div>
 

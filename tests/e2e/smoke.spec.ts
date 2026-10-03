@@ -19,11 +19,26 @@ test.describe("production smoke", () => {
   });
 
   test("practice question paywall stays visible to visitors without access", async ({ page }) => {
-    await page.goto("/csa/practice-questions/ui-navigation", { waitUntil: "domcontentloaded" });
-    await expect(page.getByText(/Free Questions/i)).toBeVisible();
+    await page.goto("/cad/practice-questions/business-rules", { waitUntil: "domcontentloaded" });
+    await expect(page.getByText(/Free Questions/i).first()).toBeVisible();
     await expect(page.getByText(/Unlock .* More Questions/i)).toBeVisible();
-    await expect(page.getByRole("button", { name: /CSA Lifetime/i }).first()).toBeVisible();
+    await expect(page.getByRole("button", { name: /CAD Lifetime/i }).first()).toBeVisible();
     await expect(page.getByRole("button", { name: /Lifetime All Certs/i }).first()).toBeVisible();
+  });
+
+  test("CSA practice questions are fully free with no paywall or CSA purchase button", async ({ page }) => {
+    await page.goto("/csa/practice-questions/ui-navigation", { waitUntil: "domcontentloaded" });
+    const body = page.locator("body");
+    await expect(page.getByText(/All CSA questions are free/i).first()).toBeVisible();
+    await expect(body).not.toContainText(/Unlock \d+ More Questions/i);
+    await expect(page.getByRole("button", { name: /CSA Lifetime/i })).toHaveCount(0);
+    await expect(body).toContainText(/CSA is free\. Next step/i);
+  });
+
+  test("CSA mock exam can be started by a logged-out visitor", async ({ page }) => {
+    await page.goto("/csa/mock-exam", { waitUntil: "domcontentloaded" });
+    await expect(page.getByRole("button", { name: /Start Free Mock Exam/i })).toBeVisible();
+    await expect(page.locator("body")).not.toContainText(/Unlock|CSA Lifetime/i);
   });
 
   test("premium question content is not shipped in the static practice pages", async ({ page, request }) => {
@@ -87,6 +102,20 @@ test.describe("production smoke", () => {
       const response = await request.get("/api/questions?cert=cad");
       expect(response.status()).toBe(401);
       await expect(response.json()).resolves.toMatchObject({ code: "not_authenticated" });
+    });
+
+    test("CSA questions API is public because CSA is free", async ({ request }) => {
+      const response = await request.get("/api/questions?cert=csa&scope=all");
+      expect(response.status()).toBe(200);
+      const body = await response.json();
+      expect(body.free).toBe(true);
+      expect(body.questions.length).toBeGreaterThan(200);
+    });
+
+    test("checkout refuses to sell CSA on its own", async ({ request }) => {
+      const response = await request.post("/api/checkout", { data: { plan: "single", certification: "csa" } });
+      expect(response.status()).toBe(400);
+      await expect(response.json()).resolves.toMatchObject({ code: "certification_free", certification: "CSA" });
     });
 
     test("question bank CSV exports require an admin session", async ({ request }) => {

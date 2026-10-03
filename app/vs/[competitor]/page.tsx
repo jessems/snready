@@ -158,15 +158,15 @@ export default async function CompetitorComparisonPage({ params }: PageProps) {
               <span className="bg-green-500 text-white text-xs px-2 py-1 rounded-full">Recommended</span>
             </div>
             <div className="text-4xl font-bold text-green-700 mb-2">$9<span className="text-lg font-normal text-green-600">/certification</span></div>
-            <p className="text-green-700 mb-4">One-time purchase, lifetime access</p>
+            <p className="text-green-700 mb-4">One-time purchase, lifetime access. CSA is free.</p>
             <ul className="space-y-2">
               <li className="flex items-center gap-2 text-green-800">
                 <CheckCircle className="w-4 h-4" />
-                <span>60-130 questions per certification</span>
+                <span>90-200+ questions per certification</span>
               </li>
               <li className="flex items-center gap-2 text-green-800">
                 <CheckCircle className="w-4 h-4" />
-                <span>15 free questions to try first</span>
+                <span>CSA completely free, 15 free questions for every other cert</span>
               </li>
               <li className="flex items-center gap-2 text-green-800">
                 <CheckCircle className="w-4 h-4" />
@@ -293,7 +293,7 @@ export default async function CompetitorComparisonPage({ params }: PageProps) {
             Try SNReady Free
           </h2>
           <p className="text-indigo-200 mb-8 text-lg">
-            15 free questions per certification. No credit card required.
+            Every CSA question and mock exam free, plus 15 free questions for every other certification. No credit card required.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

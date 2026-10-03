@@ -1,9 +1,9 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import { CheckoutButton } from "@/components/CheckoutButton";
 import {
   getAllCertifications,
-  getTotalQuestionCount,
-  getTotalFreeQuestionCount,
+  getPricingSummary,
 } from "@/lib/data";
 
 // Simple check and X icons
@@ -38,7 +38,7 @@ function XIcon({ className }: { className?: string }) {
 export const metadata: Metadata = {
   title: "Pricing - ServiceNow Practice Tests | SNReady",
   description:
-    "Get lifetime access to ServiceNow certification practice questions for just $9 per certification. No subscriptions, no renewals. Compare our value vs Udemy, brain dumps, and official training.",
+    "CSA practice tests are free, mock exams included. Every other ServiceNow certification is $9 for lifetime access, or get all 19 paid certifications for $49. No subscriptions, no renewals.",
   keywords: [
     "snready pricing",
     "servicenow practice test cost",
@@ -51,23 +51,20 @@ export const metadata: Metadata = {
     canonical: "/pricing",
   },
   openGraph: {
-    title: "SNReady Pricing - $9 Lifetime Access per Certification",
+    title: "SNReady Pricing - CSA Free, $9 Lifetime Access per Certification",
     description:
-      "Practice for your ServiceNow certification exam without breaking the bank. $9 gets you lifetime access to 60-200+ questions per certification.",
+      "CSA is completely free. Every other ServiceNow certification is $9 for lifetime access to 90-200+ questions, or $49 for all of them.",
   },
 };
 
 export default function PricingPage() {
   const certifications = getAllCertifications();
   const readyCerts = certifications.filter((c) => c.isReady);
-  const totalQuestions = readyCerts.reduce(
-    (sum, cert) => sum + getTotalQuestionCount(cert.slug),
-    0
-  );
-  const totalFreeQuestions = readyCerts.reduce(
-    (sum, cert) => sum + getTotalFreeQuestionCount(cert.slug),
-    0
-  );
+  const { paidCount, freeCertifications, totalQuestions, totalFreeQuestions } = getPricingSummary();
+  const freeCertNames = freeCertifications.map((cert) => cert.name).join(" and ") || "CSA";
+  const freeCertCopy = freeCertifications.length > 0
+    ? `${freeCertNames} is completely free: every question and timed mock exam, no signup.`
+    : "";
 
   // JSON-LD for FAQ schema
   const faqJsonLd = {
@@ -79,7 +76,7 @@ export default function PricingPage() {
         name: "How much does SNReady cost?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "SNReady costs $9 per certification for lifetime access. This is a one-time payment with no subscriptions or renewals. You get access to all questions, explanations, mock exams, and future updates for that certification forever.",
+          text: `${freeCertCopy} Every other certification costs $9 for lifetime access, or $49 for all ${paidCount} paid certifications. It's a one-time payment with no subscriptions or renewals. You get all questions, explanations, mock exams, and future updates for that certification forever.`.trim(),
         },
       },
       {
@@ -87,7 +84,7 @@ export default function PricingPage() {
         name: "Is there a free trial?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: `Yes! Each certification includes 15 free practice questions so you can try before you buy. We currently have ${totalFreeQuestions} free questions across all certifications.`,
+          text: `Yes. ${freeCertCopy} Every other certification includes 15 free practice questions so you can try before you buy. That's ${totalFreeQuestions} free questions in total.`,
         },
       },
       {
@@ -119,7 +116,7 @@ export default function PricingPage() {
         name: "What certifications are available?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: `We currently have practice questions for ${readyCerts.length} ServiceNow certifications including CSA, CAD, and all 17 CIS certifications (CIS-ITSM, CIS-DF, CIS-CSM, CIS-Discovery, and more).`,
+          text: `We currently have practice questions for ${readyCerts.length} ServiceNow certifications including CSA (free), CAD, CPOA, and 17 CIS certifications (CIS-ITSM, CIS-DF, CIS-CSM, CIS-Discovery, and more).`,
         },
       },
       {
@@ -144,14 +141,34 @@ export default function PricingPage() {
       "@type": "Brand",
       name: "SNReady",
     },
-    offers: {
-      "@type": "Offer",
-      price: "9.00",
-      priceCurrency: "USD",
-      availability: "https://schema.org/InStock",
-      priceValidUntil: "2027-12-31",
-      url: "https://snready.com/pricing",
-    },
+    offers: [
+      ...freeCertifications.map((cert) => ({
+        "@type": "Offer",
+        name: `${cert.name} practice test and mock exams`,
+        price: "0",
+        priceCurrency: "USD",
+        availability: "https://schema.org/InStock",
+        url: `https://snready.com/${cert.slug}/practice-questions`,
+      })),
+      {
+        "@type": "Offer",
+        name: "Single certification, lifetime access",
+        price: "9.00",
+        priceCurrency: "USD",
+        availability: "https://schema.org/InStock",
+        priceValidUntil: "2027-12-31",
+        url: "https://snready.com/pricing",
+      },
+      {
+        "@type": "Offer",
+        name: `All access: ${paidCount} paid certifications, lifetime`,
+        price: "49.00",
+        priceCurrency: "USD",
+        availability: "https://schema.org/InStock",
+        priceValidUntil: "2027-12-31",
+        url: "https://snready.com/pricing",
+      },
+    ],
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: "4.8",
@@ -179,16 +196,58 @@ export default function PricingPage() {
             Simple, Honest Pricing
           </h1>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-zinc-600 dark:text-zinc-400">
-            One price. Lifetime access. No subscriptions, no renewals, no
-            surprises.
+            {freeCertNames} is free. Every other certification is one price,
+            lifetime access. No subscriptions, no renewals, no surprises.
           </p>
         </div>
       </section>
 
       {/* Pricing Card */}
       <section className="py-12">
-        <div className="mx-auto max-w-4xl px-4">
-          <div className="mx-auto max-w-md">
+        <div className="mx-auto max-w-6xl px-4">
+          <div className="mx-auto grid max-w-md gap-6 lg:max-w-none lg:grid-cols-3">
+            {freeCertifications.map((cert) => (
+              <div
+                key={cert.slug}
+                className="rounded-2xl border border-zinc-200 bg-white p-8 shadow-sm dark:border-zinc-800 dark:bg-zinc-900"
+              >
+                <div className="text-center">
+                  <h2 className="text-2xl font-semibold text-zinc-900 dark:text-zinc-50">
+                    {cert.name}
+                  </h2>
+                  <div className="mt-4 flex items-baseline justify-center gap-x-2">
+                    <span className="text-5xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
+                      $0
+                    </span>
+                    <span className="text-lg text-zinc-500 dark:text-zinc-400">
+                      free
+                    </span>
+                  </div>
+                  <p className="mt-2 text-emerald-600 font-medium">
+                    No signup, no paywall
+                  </p>
+                </div>
+                <ul className="mt-8 space-y-3">
+                  {[
+                    `Every ${cert.name} practice question`,
+                    "Detailed explanations for every answer",
+                    "Free timed mock exams",
+                    "Delta exam practice questions",
+                  ].map((feature) => (
+                    <li key={feature} className="flex items-start gap-3">
+                      <CheckIcon className="h-5 w-5 flex-shrink-0 text-emerald-500 mt-0.5" />
+                      <span className="text-zinc-700 dark:text-zinc-300">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+                <Link
+                  href={`/${cert.slug}/practice-questions`}
+                  className="mt-8 block w-full rounded-lg border-2 border-emerald-600 py-3 text-center font-semibold text-emerald-700 transition-colors hover:bg-emerald-50 dark:text-emerald-300 dark:hover:bg-zinc-800"
+                >
+                  Start {cert.name} free
+                </Link>
+              </div>
+            ))}
             <div className="rounded-2xl border-2 border-emerald-500 bg-white p-8 shadow-lg dark:bg-zinc-900">
               <div className="text-center">
                 <h2 className="text-2xl font-semibold text-zinc-900 dark:text-zinc-50">
@@ -235,9 +294,47 @@ export default function PricingPage() {
               </Link>
 
               <p className="mt-4 text-center text-sm text-zinc-500 dark:text-zinc-400">
-                {totalFreeQuestions}+ free questions available — try before you
+                {totalFreeQuestions} free questions available — try before you
                 buy
               </p>
+            </div>
+            <div className="rounded-2xl border border-zinc-200 bg-white p-8 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
+              <div className="text-center">
+                <h2 className="text-2xl font-semibold text-zinc-900 dark:text-zinc-50">
+                  All Access
+                </h2>
+                <div className="mt-4 flex items-baseline justify-center gap-x-2">
+                  <span className="text-5xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
+                    $49
+                  </span>
+                  <span className="text-lg text-zinc-500 dark:text-zinc-400">
+                    one-time
+                  </span>
+                </div>
+                <p className="mt-2 text-emerald-600 font-medium">
+                  {paidCount} paid certifications + {freeCertNames} free
+                </p>
+              </div>
+              <ul className="mt-8 space-y-3">
+                {[
+                  `All ${paidCount} paid certifications, lifetime`,
+                  `${totalQuestions.toLocaleString()}+ practice questions`,
+                  "Timed mock exams for every certification",
+                  "Future certifications included",
+                  "7-day money-back guarantee",
+                ].map((feature) => (
+                  <li key={feature} className="flex items-start gap-3">
+                    <CheckIcon className="h-5 w-5 flex-shrink-0 text-emerald-500 mt-0.5" />
+                    <span className="text-zinc-700 dark:text-zinc-300">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+              <CheckoutButton
+                plan="all"
+                className="mt-8 block w-full rounded-lg bg-emerald-600 py-3 text-center font-semibold text-white transition-colors hover:bg-emerald-700"
+              >
+                Get All Access — $49
+              </CheckoutButton>
             </div>
           </div>
         </div>
@@ -390,11 +487,11 @@ export default function PricingPage() {
             {[
               {
                 q: "How much does SNReady cost?",
-                a: "SNReady costs $9 per certification for lifetime access. This is a one-time payment — no subscriptions, no renewals. You get access to all questions, explanations, mock exams, and future updates for that certification forever.",
+                a: `${freeCertCopy} Every other certification costs $9 for lifetime access, or $49 for all ${paidCount} paid certifications. It's a one-time payment — no subscriptions, no renewals. You get all questions, explanations, mock exams, and future updates for that certification forever.`.trim(),
               },
               {
                 q: "Is there a free trial?",
-                a: `Yes! Each certification includes 15 free practice questions so you can evaluate the quality before purchasing. We currently have ${totalFreeQuestions}+ free questions across all certifications.`,
+                a: `Yes. ${freeCertCopy} Every other certification includes 15 free practice questions so you can evaluate the quality before purchasing. That's ${totalFreeQuestions} free questions in total.`,
               },
               {
                 q: "Do I need to pay again when ServiceNow releases a new version?",
@@ -410,7 +507,7 @@ export default function PricingPage() {
               },
               {
                 q: "What certifications do you support?",
-                a: `We currently have practice questions for ${readyCerts.length} ServiceNow certifications: CSA, CAD, and all 17 CIS certifications including CIS-ITSM, CIS-DF, CIS-CSM, CIS-Discovery, CIS-HR, CIS-HAM, CIS-SAM, and more.`,
+                a: `We currently have practice questions for ${readyCerts.length} ServiceNow certifications: CSA (free), CAD, CPOA, and 17 CIS certifications including CIS-ITSM, CIS-DF, CIS-CSM, CIS-Discovery, CIS-HR, CIS-HAM, CIS-SAM, and more.`,
               },
               {
                 q: "How many questions are included?",

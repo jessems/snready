@@ -3,6 +3,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import type { Question } from "@/types";
+import { isFreeCertification } from "@/lib/free-certs";
+import { FREE_QUESTIONS_PER_CERT } from "@/lib/free-questions";
 
 interface SampleQuestionsProps {
   questions: Question[];
@@ -200,7 +202,9 @@ export function SampleQuestions({ questions, certSlug, certName }: SampleQuestio
             </svg>
           </Link>
           <p className="mt-2 text-sm text-zinc-500">
-            15 free questions available
+            {isFreeCertification(certSlug)
+              ? `Every ${certName} question is free. No signup needed.`
+              : `${FREE_QUESTIONS_PER_CERT} free questions available`}
           </p>
         </div>
       </div>

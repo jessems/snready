@@ -15,7 +15,10 @@ import {
   getFreeQuestionsForCertification,
   getFreeQuestionCountForTopic,
   getExamTips,
+  getPricingSummary,
+  isCertificationFree,
 } from "@/lib/data";
+import { FreeCertCrossSell } from "@/components/FreeCertCrossSell";
 import { ExamTipsSnippet } from "@/components/ExamTipsSnippet";
 import { DumpsAlternativeSection } from "@/components/DumpsAlternativeSection";
 import { RelatedResources } from "@/components/RelatedResources";
@@ -68,6 +71,22 @@ export async function generateMetadata({
 
   const year = new Date().getFullYear();
 
+  // Free certifications (lib/free-certs.ts): lead with "Free" and the full bank.
+  if (isCertificationFree(slug) && totalQuestions > 0) {
+    return {
+      title: `Free ServiceNow ${cert.name} Practice Test [${year}]`,
+      description: `Free ServiceNow ${cert.fullName} (${cert.name}) practice test: all ${totalQuestions} questions with detailed explanations plus a free timed mock exam. No signup, no paywall.`,
+      keywords: [...keywords, `free ${cert.name} practice test`, `free ${cert.name} exam questions`],
+      alternates: {
+        canonical: `/${slug}`,
+      },
+      openGraph: {
+        title: `Free ServiceNow ${cert.name} Practice Test [${year}]`,
+        description: `All ${totalQuestions} ${cert.name} practice questions and a timed mock exam, free. No signup.`,
+      },
+    };
+  }
+
   return {
     title: `ServiceNow ${cert.name} Practice Test [${year}] — Free Exam Questions`,
     description,
@@ -94,6 +113,8 @@ export default async function CertificationPage({ params }: PageProps) {
   const totalQuestions = getTotalQuestionCount(slug);
   const freeQuestionCount = getTotalFreeQuestionCount(slug);
   const isReady = isCertificationReady(slug);
+  const certIsFree = isCertificationFree(slug);
+  const { paidCount } = getPricingSummary();
 
   // Load sample questions for the teaser section (5 questions from the free pool)
   const allFreeQuestions = isReady
@@ -130,6 +151,20 @@ export default async function CertificationPage({ params }: PageProps) {
       "@type": "CourseInstance",
       courseMode: "online",
     },
+    // Free certifications: the full practice test and mock exam cost nothing.
+    ...(certIsFree && isReady
+      ? {
+          isAccessibleForFree: true,
+          offers: {
+            "@type": "Offer",
+            price: 0,
+            priceCurrency: "USD",
+            category: "Free",
+            availability: "https://schema.org/InStock",
+            url: `https://snready.com/${slug}/practice-questions`,
+          },
+        }
+      : {}),
   };
 
   // JSON-LD structured data - Breadcrumb schema
@@ -740,59 +775,43 @@ export default async function CertificationPage({ params }: PageProps) {
         {isReady && (
           <section className="py-16 bg-gradient-to-br from-emerald-600 to-green-700 dark:from-emerald-800 dark:to-green-900">
             <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-              {/* If all questions are free for this cert */}
-              {cert.allQuestionsFree ? (
+              {/* Free certification: no paywall, soft cross-sell to the next cert */}
+              {certIsFree ? (
                 <>
                   <div className="text-center">
                     <div className="inline-flex items-center gap-2 rounded-full bg-amber-400 px-4 py-2 text-sm font-bold text-amber-900 mb-4">
-                      🎉 LIMITED TIME: ALL QUESTIONS FREE
+                      100% FREE — NO SIGNUP
                     </div>
                     <h2 className="text-3xl font-bold text-white">
-                      {cert.name} Questions Are Free!
+                      {cert.name} Is Free
                     </h2>
                     <p className="mt-4 text-lg text-emerald-100">
-                      All {totalQuestions}+ practice questions are currently
-                      free — no payment required.
+                      All {totalQuestions} practice questions and the timed mock exam are
+                      free, with detailed explanations. No payment, no login.
                     </p>
                   </div>
 
-                  <div className="mt-10 max-w-md mx-auto">
+                  <div className="mt-10 grid max-w-2xl mx-auto gap-4 sm:grid-cols-2">
                     <Link
                       href={`/${slug}/practice-questions`}
                       className="block w-full rounded-xl bg-white py-4 text-center text-lg font-semibold text-emerald-700 transition-colors hover:bg-emerald-50"
                     >
                       Start Practicing — Free
                     </Link>
+                    <Link
+                      href={`/${slug}/mock-exam`}
+                      className="block w-full rounded-xl border-2 border-white py-4 text-center text-lg font-semibold text-white transition-colors hover:bg-white/10"
+                    >
+                      Take the Free Mock Exam
+                    </Link>
                   </div>
 
-                  {/* Still show lifetime option for other certs */}
-                  <div className="mt-10 pt-8 border-t border-white/20">
-                    <p className="text-center text-emerald-200 mb-6">
-                      Want access to ALL 19 certifications?
-                    </p>
-                    <div className="max-w-sm mx-auto rounded-xl bg-white p-6 text-center">
-                      <h3 className="text-lg font-semibold text-emerald-800">
-                        Lifetime All-Access
-                      </h3>
-                      <div className="mt-2">
-                        <span className="text-3xl font-bold text-emerald-700">
-                          $49
-                        </span>
-                      </div>
-                      <ul className="mt-4 space-y-1 text-sm text-emerald-700">
-                        <li className="font-semibold">
-                          ALL certifications included
-                        </li>
-                        <li>Lifetime access — never expires</li>
-                      </ul>
-                      <CheckoutButton
-                        certification={cert.name}
-                        plan="all"
-                        className="mt-4 w-full rounded-lg bg-emerald-600 py-2 font-semibold text-white transition-colors hover:bg-emerald-700"
-                      >
-                        Get Lifetime Access
-                      </CheckoutButton>
-                    </div>
+                  <div className="mt-10 pt-8 border-t border-white/20 max-w-3xl mx-auto">
+                    <FreeCertCrossSell
+                      certification={cert.name}
+                      paidCertCount={paidCount}
+                      placement="certification_page"
+                    />
                   </div>
                 </>
               ) : (

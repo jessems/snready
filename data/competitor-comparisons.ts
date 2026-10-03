@@ -67,7 +67,7 @@ export const competitorComparisons: CompetitorComparison[] = [
       { name: "Ethics compliant", snready: true, competitor: false },
       { name: "Based on official content", snready: true, competitor: "Brain dumps" },
       { name: "Progress tracking", snready: true, competitor: "Basic" },
-      { name: "Free questions available", snready: "35+ per cert", competitor: "Rate limited" }
+      { name: "Free questions available", snready: "All CSA questions + 15 per other cert", competitor: "Rate limited" }
     ],
     verdict: "ExamTopics might help you pass through memorization, but it's risky. ServiceNow actively monitors for brain dump usage, and your certification can be revoked. SNReady offers original questions that teach real concepts without the ethical or legal risks.",
     whoShouldUse: "If you want to actually learn ServiceNow and have a certification you can be proud of, choose SNReady. If you're just trying to game the exam (risking revocation), ExamTopics exists.",
@@ -106,14 +106,14 @@ export const competitorComparisons: CompetitorComparison[] = [
     features: [
       { name: "Video lessons", snready: false, competitor: true },
       { name: "Hands-on labs", snready: false, competitor: "Some courses" },
-      { name: "Practice questions", snready: "1,350+", competitor: "Varies (50-200)" },
+      { name: "Practice questions", snready: "2,400+", competitor: "Varies (50-200)" },
       { name: "Timed mock exams", snready: true, competitor: false },
       { name: "Exam domain mapping", snready: true, competitor: false },
       { name: "Detailed explanations", snready: true, competitor: "Varies" },
       { name: "Progress tracking", snready: true, competitor: "Video completion only" },
       { name: "Updated for current release", snready: "Xanadu/Yokohama", competitor: "Varies" },
       { name: "Mobile app", snready: "Responsive web", competitor: true },
-      { name: "Free preview", snready: "15 free questions per cert", competitor: "Video previews" }
+      { name: "Free preview", snready: "CSA fully free, 15 free questions per other cert", competitor: "Video previews" }
     ],
     verdict: "Udemy is excellent for learning ServiceNow concepts through video, but it's not designed for exam practice. Use Udemy to learn the material, then use SNReady to practice for the actual exam. They complement each other well.",
     whoShouldUse: "Use Udemy if you're new to ServiceNow and need foundational knowledge. Add SNReady when you're ready to practice for the certification exam.",
@@ -155,7 +155,7 @@ export const competitorComparisons: CompetitorComparison[] = [
       { name: "Timed mock exams", snready: true, competitor: true },
       { name: "Modern interface", snready: true, competitor: false },
       { name: "Progress tracking by domain", snready: true, competitor: false },
-      { name: "Free questions available", snready: "15 per cert", competitor: false },
+      { name: "Free questions available", snready: "All CSA questions + 15 per other cert", competitor: false },
       { name: "Question explanations", snready: "Detailed", competitor: "Brief" }
     ],
     verdict: "SkillCertPro is affordable and has helped people pass, but the question sourcing isn't transparent and some answers are incorrect. SNReady offers verified answers, detailed explanations, and domain-mapped progress tracking.",
@@ -193,13 +193,13 @@ export const competitorComparisons: CompetitorComparison[] = [
     },
     features: [
       { name: "Official content", snready: "Based on official", competitor: true },
-      { name: "Practice questions", snready: "1,350+", competitor: "10-20 per course" },
+      { name: "Practice questions", snready: "2,400+", competitor: "10-20 per course" },
       { name: "Timed mock exams", snready: true, competitor: false },
       { name: "Exam simulation", snready: true, competitor: false },
       { name: "Domain progress tracking", snready: true, competitor: false },
       { name: "Video lessons", snready: false, competitor: true },
       { name: "Hands-on labs", snready: false, competitor: true },
-      { name: "Free", snready: "Freemium", competitor: true }
+      { name: "Free", snready: "CSA free, others freemium", competitor: true }
     ],
     verdict: "Now Learning is essential — you should complete the required courses. But for exam practice, you need more questions and exam simulation. Use Now Learning to learn, then SNReady to practice.",
     whoShouldUse: "Everyone should use Now Learning for the official courses. Add SNReady for dedicated exam practice with full mock exams.",

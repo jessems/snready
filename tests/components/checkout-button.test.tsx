@@ -71,4 +71,13 @@ describe("CheckoutButton", () => {
     expect(JSON.stringify(analytics.trackCheckoutFailed.mock.calls)).not.toContain("student@example.com");
     expect(analytics.trackCheckoutCreated).not.toHaveBeenCalled();
   });
+
+  it("never renders a single-cert buy button for a free certification (CSA), but still offers all access", () => {
+    const { container } = render(<CheckoutButton certification="CSA" plan="single">Buy CSA</CheckoutButton>);
+    expect(container).toBeEmptyDOMElement();
+    expect(screen.queryByRole("button", { name: "Buy CSA" })).not.toBeInTheDocument();
+
+    render(<CheckoutButton certification="CSA" plan="all">All access</CheckoutButton>);
+    expect(screen.getByRole("button", { name: "All access" })).toBeInTheDocument();
+  });
 });

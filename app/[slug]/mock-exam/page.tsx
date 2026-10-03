@@ -5,6 +5,8 @@ import {
   getCertificationBySlug,
   getCertificationSlugs,
   getTotalQuestionCount,
+  getPricingSummary,
+  isCertificationFree,
   isCertificationReady,
 } from "@/lib/data";
 import { getCanonicalUrl } from "@/lib/seo";
@@ -30,8 +32,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return { title: "Certification Not Found" };
   }
 
-  const title = `${certification.name} Timed Mock Exam - Realistic Exam Simulation | SNReady`;
-  const description = `Take a timed ${certification.name} mock exam that simulates real test conditions. ${certification.examDetails?.questionCount || 60} questions, ${certification.examDetails?.duration || 90} minutes, ${certification.examDetails?.passingScore || 70}% to pass. Track your progress and review detailed explanations.`;
+  const isFree = isCertificationFree(slug);
+  const year = new Date().getFullYear();
+  const title = isFree
+    ? `Free ${certification.name} Mock Exam [${year}] — Timed ServiceNow ${certification.name} Practice Test`
+    : `${certification.name} Timed Mock Exam - Realistic Exam Simulation | SNReady`;
+  const description = isFree
+    ? `Take a free timed ${certification.name} mock exam, no signup needed. ${certification.examDetails?.questionCount || 60} questions, ${certification.examDetails?.duration || 90} minutes, ${certification.examDetails?.passingScore || 70}% to pass, with detailed explanations for every answer.`
+    : `Take a timed ${certification.name} mock exam that simulates real test conditions. ${certification.examDetails?.questionCount || 60} questions, ${certification.examDetails?.duration || 90} minutes, ${certification.examDetails?.passingScore || 70}% to pass. Track your progress and review detailed explanations.`;
 
   return {
     title,
@@ -53,6 +61,8 @@ export default async function MockExamPage({ params }: Props) {
   const certification = getCertificationBySlug(slug);
   const isReady = isCertificationReady(slug);
   const totalQuestions = getTotalQuestionCount(slug);
+  const isFree = isCertificationFree(slug);
+  const { paidCount } = getPricingSummary();
 
   if (!certification) {
     notFound();
@@ -86,7 +96,7 @@ export default async function MockExamPage({ params }: Props) {
           </div>
 
           <h1 className="mt-4 text-3xl font-bold text-zinc-900 dark:text-zinc-100">
-            {certification.name} Timed Mock Exam
+            {isFree ? `Free ${certification.name} Timed Mock Exam` : `${certification.name} Timed Mock Exam`}
           </h1>
           <p className="mt-2 text-lg text-zinc-600 dark:text-zinc-400">
             {certification.fullName}
@@ -125,6 +135,8 @@ export default async function MockExamPage({ params }: Props) {
             certification={certification}
             examConfig={examConfig}
             totalQuestions={totalQuestions}
+            isFree={isFree}
+            paidCertCount={paidCount}
           />
         )}
       </div>
