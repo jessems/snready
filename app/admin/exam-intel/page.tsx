@@ -4,7 +4,7 @@ import { readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 
 export const metadata: Metadata = {
-  title: "Exam Intelligence | SNReady Admin",
+  title: "Exam Intelligence - Admin",
   description: "Internal symbolic exam-intelligence dashboard for SNReady question strategy",
   robots: "noindex, nofollow",
 };

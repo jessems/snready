@@ -3,7 +3,7 @@ import Link from "next/link";
 import coverageManifest from "@/data/coverage/coverage-manifest.json";
 
 export const metadata: Metadata = {
-  title: "Coverage Dashboard | SNReady Admin",
+  title: "Coverage Dashboard - Admin",
   description: "View scraping coverage and content status across certifications",
   robots: "noindex, nofollow",
 };

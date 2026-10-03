@@ -36,7 +36,7 @@ function XIcon({ className }: { className?: string }) {
 }
 
 export const metadata: Metadata = {
-  title: "Pricing - ServiceNow Practice Tests | SNReady",
+  title: "Pricing - ServiceNow Practice Tests",
   description:
     "CSA practice tests are free, mock exams included. Every other ServiceNow certification is $9 for lifetime access, or get all 19 paid certifications for $49. No subscriptions, no renewals.",
   keywords: [
@@ -169,12 +169,6 @@ export default function PricingPage() {
         url: "https://snready.com/pricing",
       },
     ],
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "4.8",
-      reviewCount: "50",
-      bestRating: "5",
-    },
   };
 
   return (

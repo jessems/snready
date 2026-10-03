@@ -129,31 +129,31 @@ export default function RootLayout({
                 </h3>
                 <div className="mt-4 space-y-3">
                   <Link
-                    href="/certifications/csa"
+                    href="/csa"
                     className="block text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
                   >
                     CSA
                   </Link>
                   <Link
-                    href="/certifications/cis-df"
+                    href="/cis-df"
                     className="block text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
                   >
                     CIS-DF
                   </Link>
                   <Link
-                    href="/certifications/cad"
+                    href="/cad"
                     className="block text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
                   >
                     CAD
                   </Link>
                   <Link
-                    href="/certifications/cis-itsm"
+                    href="/cis-itsm"
                     className="block text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
                   >
                     CIS-ITSM
                   </Link>
                   <Link
-                    href="/certifications/cta"
+                    href="/cta"
                     className="block text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
                   >
                     CTA

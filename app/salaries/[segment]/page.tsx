@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   if (!segment) {
     return {
-      title: "Salary Data Not Found | SNReady",
+      title: "Salary Data Not Found",
     };
   }
 

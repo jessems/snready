@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const year = new Date().getFullYear();
   const title = isFree
     ? `Free ${certification.name} Mock Exam [${year}] — Timed ServiceNow ${certification.name} Practice Test`
-    : `${certification.name} Timed Mock Exam - Realistic Exam Simulation | SNReady`;
+    : `${certification.name} Timed Mock Exam - Realistic Exam Simulation`;
   const description = isFree
     ? `Take a free timed ${certification.name} mock exam, no signup needed. ${certification.examDetails?.questionCount || 60} questions, ${certification.examDetails?.duration || 90} minutes, ${certification.examDetails?.passingScore || 70}% to pass, with detailed explanations for every answer.`
     : `Take a timed ${certification.name} mock exam that simulates real test conditions. ${certification.examDetails?.questionCount || 60} questions, ${certification.examDetails?.duration || 90} minutes, ${certification.examDetails?.passingScore || 70}% to pass. Track your progress and review detailed explanations.`;

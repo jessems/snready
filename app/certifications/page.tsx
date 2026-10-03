@@ -13,7 +13,7 @@ import CertificationCard from "@/components/CertificationCard";
 import { generateBreadcrumbJsonLd } from "@/lib/breadcrumbs";
 
 export const metadata: Metadata = {
-  title: "All ServiceNow Certifications - Practice Tests & Exam Prep | SNReady",
+  title: "All ServiceNow Certifications - Practice Tests & Exam Prep",
   description:
     "Browse all 25+ ServiceNow certifications. Free practice questions and study materials for CSA, CIS-DF, CAD, CIS-ITSM, and more.",
   keywords: [

@@ -324,13 +324,13 @@ export default async function ComparisonPage({ params }: PageProps) {
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
-                href={`/certifications/${cert1.slug}`}
+                href={`/${cert1.slug}`}
                 className="inline-flex h-12 items-center justify-center rounded-lg bg-white px-8 text-base font-medium text-emerald-600 transition-colors hover:bg-emerald-50"
               >
                 Practice {cert1.name}
               </Link>
               <Link
-                href={`/certifications/${cert2.slug}`}
+                href={`/${cert2.slug}`}
                 className="inline-flex h-12 items-center justify-center rounded-lg border border-white px-8 text-base font-medium text-white transition-colors hover:bg-emerald-500"
               >
                 Practice {cert2.name}

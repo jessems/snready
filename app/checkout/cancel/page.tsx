@@ -3,7 +3,7 @@ import { Metadata } from "next";
 import CancelContent from "./CancelContent";
 
 export const metadata: Metadata = {
-  title: "Checkout Paused | SNReady",
+  title: "Checkout Paused",
   description: "Your payment was cancelled. No charges were made — resume checkout or keep browsing SNReady practice questions.",
 };
 

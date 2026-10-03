@@ -3,7 +3,7 @@ import { Metadata } from "next";
 import VerifyContent from "./VerifyContent";
 
 export const metadata: Metadata = {
-  title: "Verifying Login | SNReady",
+  title: "Verifying Login",
   description: "Verifying your magic link login.",
 };
 

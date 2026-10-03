@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return { title: "Certification Not Found" };
   }
 
-  const title = `${cert.name} Dumps & Practice Questions 2026 | SNReady`;
+  const title = `${cert.name} Dumps & Practice Questions 2026`;
   const totalQuestions = getTotalQuestionCount(slug);
   const description =
     totalQuestions > 0
@@ -185,7 +185,7 @@ export default async function DumpsPage({ params }: Props) {
         {/* Why Dumps Are Risky */}
         <section className="mt-10">
           <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-100">
-            Why "{cert.name} dumps" Searches Lead Nowhere
+            Why &ldquo;{cert.name} dumps&rdquo; Searches Lead Nowhere
           </h2>
           <div className="mt-6 grid gap-4 md:grid-cols-3">
             <div className="rounded-xl border border-red-100 bg-red-50 p-5 dark:border-red-900/50 dark:bg-red-950/20">
@@ -203,7 +203,7 @@ export default async function DumpsPage({ params }: Props) {
                 Outdated & Inaccurate
               </h3>
               <p className="mt-2 text-sm text-red-700 dark:text-red-400">
-                Dumps reflect old exam versions the moment ServiceNow updates the exam. Most free dumps haven't been updated for the current exam version.
+                Dumps reflect old exam versions the moment ServiceNow updates the exam. Most free dumps haven&apos;t been updated for the current exam version.
               </p>
             </div>
             <div className="rounded-xl border border-red-100 bg-red-50 p-5 dark:border-red-900/50 dark:bg-red-950/20">
@@ -212,7 +212,7 @@ export default async function DumpsPage({ params }: Props) {
                 No Learning = No Job Skills
               </h3>
               <p className="mt-2 text-sm text-red-700 dark:text-red-400">
-                Dumps help you memorize answers, not understand ServiceNow. Certified professionals who don't know the material get found out fast.
+                Dumps help you memorize answers, not understand ServiceNow. Certified professionals who don&apos;t know the material get found out fast.
               </p>
             </div>
           </div>

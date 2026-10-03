@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!versionData) return {};
 
   return {
-    title: `ServiceNow ${meta.name} Release Notes: ${versionData.totalEntries} Changes (${meta.year}) | SNReady`,
+    title: `ServiceNow ${meta.name} Release Notes: ${versionData.totalEntries} Changes (${meta.year})`,
     description: `What's new in ServiceNow ${meta.name} (${meta.date}). ${versionData.totalEntries} documented changes across ${versionData.products.length} product areas. Filter by product, impact, and certification.`,
     keywords: [
       `servicenow ${meta.name.toLowerCase()} new features`,

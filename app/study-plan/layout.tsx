@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "ServiceNow Study Plan Generator | Free Week-by-Week Schedule | SNReady",
+  title: "ServiceNow Study Plan Generator | Free Week-by-Week Schedule",
   description:
     "Create a personalized ServiceNow certification study plan. Get a week-by-week schedule for CSA, CAD, CIS-DF, CIS-ITSM, and 15+ certifications based on your timeline and availability.",
   keywords: [
