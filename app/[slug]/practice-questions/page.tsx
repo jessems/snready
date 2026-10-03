@@ -101,7 +101,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const title = landingContent
     ? `${certification.name} Practice Questions - ${certification.release} Exam Prep | SNReady`
     : `${certification.name} Practice Questions - Free ${certification.name} Exam Prep | SNReady`;
-  const description = landingContent
+  const questionTotal = getTotalQuestionCount(slug);
+  const description = questionTotal === 0
+    ? `${certification.name} practice questions are coming soon. See the ServiceNow ${certification.fullName} exam format and official resources.`
+    : landingContent
     ? `Practice ${getTotalQuestionCount(slug)}+ ${certification.name} exam questions for the ${certification.release} release. ${FREE_QUESTIONS_PER_CERT} free questions covering Incident, Change, Problem, Request, SLA, and reporting with detailed explanations.`
     : `Practice ${getTotalQuestionCount(slug)}+ ${certification.name} exam questions. ${FREE_QUESTIONS_PER_CERT} free questions with detailed explanations to help you pass your ServiceNow ${certification.fullName} certification.`;
 

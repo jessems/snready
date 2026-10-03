@@ -51,10 +51,13 @@ export async function generateMetadata({
   ];
 
   // Base description
-  let description = `Prepare for the ServiceNow ${cert.fullName} (${cert.name}) exam with ${totalQuestions}+ practice questions. Free sample questions and study guides.`;
+  let description =
+    totalQuestions > 0
+      ? `Prepare for the ServiceNow ${cert.fullName} (${cert.name}) exam with ${totalQuestions}+ practice questions. Free sample questions and study guides.`
+      : `${cert.name} practice questions are coming soon. See the ServiceNow ${cert.fullName} (${cert.name}) exam format, prerequisites and official resources.`;
 
   // Enhanced SEO for certs with dumps section
-  if (cert.showDumpsSection) {
+  if (cert.showDumpsSection && totalQuestions > 0) {
     description = `Better than ${cert.name} dumps: ${totalQuestions}+ practice questions with detailed explanations. Pass the ServiceNow ${cert.fullName} exam the right way.`;
     keywords.push(
       `${cert.name.toLowerCase()} dump`,
@@ -323,7 +326,9 @@ export default async function CertificationPage({ params }: PageProps) {
                     </span>
                   )}
                   <span className="text-sm text-zinc-500">
-                    {cert.release} Release
+                    {cert.blueprint
+                      ? `Blueprint updated ${cert.blueprint.updated}`
+                      : `${cert.release} Release`}
                   </span>
                 </div>
                 <h1 className="mt-4 text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
@@ -889,7 +894,7 @@ export default async function CertificationPage({ params }: PageProps) {
             <div className="mt-8 grid gap-8 lg:grid-cols-2">
               <div>
                 <h3 className="font-semibold text-zinc-900 dark:text-zinc-100">
-                  Recommended Prerequisites
+                  Prerequisites &amp; Recommended Experience
                 </h3>
                 <ul className="mt-4 space-y-3">
                   {cert.prerequisites.map((prereq, index) => (
@@ -921,10 +926,12 @@ export default async function CertificationPage({ params }: PageProps) {
                     <span className="text-emerald-600">•</span>
                     Results available immediately
                   </li>
-                  <li className="flex items-center gap-3">
-                    <span className="text-emerald-600">•</span>
-                    Valid for current release ({cert.release})
-                  </li>
+                  {cert.blueprint && (
+                    <li className="flex items-center gap-3">
+                      <span className="text-emerald-600">•</span>
+                      {`Official blueprint ${cert.blueprint.kb} v${cert.blueprint.version}, updated ${cert.blueprint.updated}`}
+                    </li>
+                  )}
                 </ul>
               </div>
             </div>

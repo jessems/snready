@@ -172,9 +172,18 @@ function generateManifest() {
       snReadyRecommended: []
     };
     
-    // Process each course tier
+    // Process each course tier.
+    // certification-sources.json uses the official wording: blueprint courses are
+    // "recommended" (course completion is not required). The manifest keeps its
+    // older tier keys so the admin coverage page keeps working: "required" here
+    // means "core blueprint course" for coverage purposes, not an exam requirement.
+    const sourceTierKeys = {
+      required: 'recommended',
+      officiallyRecommended: 'additionalRecommended',
+      snReadyRecommended: 'snReadyRecommended',
+    };
     for (const tier of ['required', 'officiallyRecommended', 'snReadyRecommended']) {
-      for (const courseName of certData.courses[tier] || []) {
+      for (const courseName of certData.courses[sourceTierKeys[tier]] || certData.courses[tier] || []) {
         const status = getCourseStatus(courseName, sources.courseSlugMapping || {});
         courseResults[tier].push({
           name: courseName,

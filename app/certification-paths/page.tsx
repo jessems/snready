@@ -84,7 +84,7 @@ const careerPaths: CareerPath[] = [
         name: "CSA",
         fullName: "Certified System Administrator",
         slug: "csa",
-        description: "Required prerequisite. Ensures you understand the platform before scripting.",
+        description: "Recommended first step (not a mandatory prerequisite). Ensures you understand the platform before scripting.",
         examTime: "90 minutes",
         examQuestions: 60,
         passingScore: "70%",
@@ -119,11 +119,21 @@ const careerPaths: CareerPath[] = [
         name: "CSA",
         fullName: "Certified System Administrator",
         slug: "csa",
-        description: "Required prerequisite.",
+        description: "Recommended first step (not a mandatory prerequisite).",
         examTime: "90 minutes",
         examQuestions: 60,
         passingScore: "70%",
         cost: "$210",
+      },
+      {
+        name: "CIS-DF",
+        fullName: "Certified Implementation Specialist - Data Foundations",
+        slug: "cis-df",
+        description: "Required: you must hold CIS-DF before you can register for CIS-ITSM.",
+        examTime: "90 minutes",
+        examQuestions: 75,
+        passingScore: "70%",
+        cost: "$315",
       },
       {
         name: "CIS-ITSM",
@@ -154,7 +164,7 @@ const careerPaths: CareerPath[] = [
         name: "CSA",
         fullName: "Certified System Administrator",
         slug: "csa",
-        description: "Required prerequisite.",
+        description: "Recommended first step (not a mandatory prerequisite).",
         examTime: "90 minutes",
         examQuestions: 60,
         passingScore: "70%",
@@ -166,7 +176,7 @@ const careerPaths: CareerPath[] = [
         slug: "cis-df",
         description: "CMDB structure, CSDM, Discovery, Health monitoring, and data governance.",
         examTime: "90 minutes",
-        examQuestions: 60,
+        examQuestions: 75,
         passingScore: "70%",
         cost: "$315",
       },
@@ -174,9 +184,9 @@ const careerPaths: CareerPath[] = [
         name: "CIS-Discovery",
         fullName: "Certified Implementation Specialist - Discovery",
         slug: "cis-discovery",
-        description: "Deep dive into Discovery, patterns, probes, sensors, and CMDB population.",
+        description: "Deep dive into Discovery, patterns, probes, sensors, and CMDB population. Requires CIS-DF.",
         examTime: "90 minutes",
-        examQuestions: 60,
+        examQuestions: 45,
         passingScore: "70%",
         cost: "$315",
       },
@@ -199,7 +209,7 @@ const careerPaths: CareerPath[] = [
         name: "CSA",
         fullName: "Certified System Administrator",
         slug: "csa",
-        description: "Required prerequisite.",
+        description: "Recommended first step (not a mandatory prerequisite).",
         examTime: "90 minutes",
         examQuestions: 60,
         passingScore: "70%",
@@ -234,7 +244,7 @@ const careerPaths: CareerPath[] = [
         name: "CSA",
         fullName: "Certified System Administrator",
         slug: "csa",
-        description: "Required prerequisite.",
+        description: "Recommended first step (not a mandatory prerequisite).",
         examTime: "90 minutes",
         examQuestions: 60,
         passingScore: "70%",
@@ -269,11 +279,21 @@ const careerPaths: CareerPath[] = [
         name: "CSA",
         fullName: "Certified System Administrator",
         slug: "csa",
-        description: "Required prerequisite.",
+        description: "Recommended first step (not a mandatory prerequisite).",
         examTime: "90 minutes",
         examQuestions: 60,
         passingScore: "70%",
         cost: "$210",
+      },
+      {
+        name: "CIS-DF",
+        fullName: "Certified Implementation Specialist - Data Foundations",
+        slug: "cis-df",
+        description: "Required: you must hold CIS-DF before you can register for CIS-VR or CIS-SIR.",
+        examTime: "90 minutes",
+        examQuestions: 75,
+        passingScore: "70%",
+        cost: "$315",
       },
       {
         name: "CIS-VR",
@@ -281,7 +301,7 @@ const careerPaths: CareerPath[] = [
         slug: "cis-vr",
         description: "Vulnerability management, scanner integrations, remediation workflows, and risk scoring.",
         examTime: "90 minutes",
-        examQuestions: 60,
+        examQuestions: 45,
         passingScore: "70%",
         cost: "$315",
       },
@@ -349,7 +369,7 @@ const careerPaths: CareerPath[] = [
 const faqs = [
   {
     question: "What ServiceNow certification should I get first?",
-    answer: "CSA (Certified System Administrator) is the recommended first certification for everyone. It's the foundation that all other certifications build on, and it's required for most CIS certifications.",
+    answer: "CSA (Certified System Administrator) is the recommended first certification for everyone. It's the foundation that all other certifications build on, and CIS exams assume CSA-level knowledge. The only mandatory prerequisite certification ServiceNow lists today is CIS-DF, which you need before registering for CIS-ITSM, CIS-Discovery, CIS-SM, CIS-HAM, CIS-SAM, CIS-SIR and CIS-VR.",
   },
   {
     question: "How long does it take to get ServiceNow certified?",
@@ -413,7 +433,7 @@ export default function CertificationPathsPage() {
           <p className="mt-2 text-emerald-800 dark:text-emerald-200">
             <strong>New to ServiceNow?</strong> Start with CSA (Certified System Administrator). 
             It's the foundation certification that 95% of ServiceNow professionals have, and it's 
-            required or recommended for almost every other certification.
+            recommended for almost every other certification.
           </p>
           <div className="mt-4">
             <Link

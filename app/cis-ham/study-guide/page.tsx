@@ -129,7 +129,7 @@ const faqData = [
   {
     question: "What are the CIS-HAM prerequisites?",
     answer:
-      "ServiceNow lists CSA, CIS-DF, hardware asset management experience, and understanding of the asset lifecycle as prerequisites or expected background for CIS-HAM candidates.",
+      "You must hold the CIS-DF (Data Foundations) certification before you can register for CIS-HAM. CSA certification, hardware asset management experience, and an understanding of the asset lifecycle are recommended background. The official courses are recommended, not required.",
   },
   {
     question: "What CIS-HAM domain should I study first?",

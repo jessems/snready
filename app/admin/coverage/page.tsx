@@ -83,7 +83,7 @@ function TierBadge({ tier }: { tier: "required" | "officiallyRecommended" | "snR
   };
 
   const labels = {
-    required: "Required",
+    required: "Blueprint (recommended)",
     officiallyRecommended: "SN Recommended",
     snReadyRecommended: "SNReady Pick",
   };

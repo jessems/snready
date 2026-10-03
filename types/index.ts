@@ -22,7 +22,8 @@ export type ServiceNowRelease =
   | "Washington"
   | "Xanadu"
   | "Yokohama"
-  | "Zurich";
+  | "Zurich"
+  | "Australia";
 
 export interface DeltaExamInfo {
   isMainline: boolean; // Only mainline certs have delta exams
@@ -64,7 +65,13 @@ export interface Certification {
   showDumpsSection?: boolean;
   allQuestionsFree?: boolean; // If true, all questions for this cert are free (promotion)
   isReady?: boolean; // Whether questions are available for this certification
-  blueprintUrl?: string; // Link to official ServiceNow exam blueprint on Now Learning
+  blueprintUrl?: string; // Link to the official exam blueprint (ServiceNow University KB article)
+  blueprint?: {
+    kb: string; // KB article number, e.g. "KB0011554"
+    version: string; // KB article version, e.g. "11.0"
+    updated: string; // "Updated" month shown on the blueprint, e.g. "January 2026"
+  };
+  examRegistrationUrl?: string; // Official exam registration page on learning.servicenow.com
 }
 
 export interface ExamDomain {

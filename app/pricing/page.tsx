@@ -95,7 +95,7 @@ export default function PricingPage() {
         name: "Do I need to pay again when ServiceNow releases a new version?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "No. Your $9 payment gives you lifetime access including all future updates. When ServiceNow releases new versions (like Xanadu, Yokohama, etc.), we update the questions and you get access automatically.",
+          text: "No. Your $9 payment gives you lifetime access including all future updates. When ServiceNow releases new versions or updates an exam blueprint, we update the questions and you get access automatically.",
         },
       },
       {
@@ -214,7 +214,7 @@ export default function PricingPage() {
                   "Full mock exams with timer",
                   "Personalized study plan generator",
                   "Domain-based study mode",
-                  "Covers latest ServiceNow release (Xanadu)",
+                  "Aligned with the latest official exam blueprints",
                   "Free updates when new versions release",
                   "7-day money-back guarantee",
                 ].map((feature) => (
@@ -398,7 +398,7 @@ export default function PricingPage() {
               },
               {
                 q: "Do I need to pay again when ServiceNow releases a new version?",
-                a: "No. Your $9 payment gives you lifetime access including all future updates. When ServiceNow releases new versions (like Xanadu, Yokohama, etc.), we update the questions and you get access automatically at no additional cost.",
+                a: "No. Your $9 payment gives you lifetime access including all future updates. When ServiceNow releases new versions or updates an exam blueprint, we update the questions and you get access automatically at no additional cost.",
               },
               {
                 q: "How is SNReady different from Udemy courses?",

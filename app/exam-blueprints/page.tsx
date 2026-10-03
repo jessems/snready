@@ -19,30 +19,10 @@ export const metadata: Metadata = {
   },
 };
 
-// Official ServiceNow exam blueprint URLs
-const blueprintUrls: Record<string, string> = {
-  csa: "https://nowlearning.servicenow.com/lxp/en/credentials/certified-system-administrator-mainline-exam-blueprint?id=kb_article_view&sysparm_article=KB0011554",
-  cad: "https://nowlearning.servicenow.com/lxp/en/credentials/certified-application-developer-mainline-exam-blueprint?id=kb_article_view&sysparm_article=KB0011498",
-  cta: "https://nowlearning.servicenow.com/lxp/en/credentials/certified-technical-architect-mainline-exam-blueprint?id=kb_article_view&sysparm_article=KB0011505",
-  cpoa: "https://nowlearning.servicenow.com/lxp/en/credentials/certified-platform-owner-associate-exam-blueprint",
-  "cis-df": "https://nowlearning.servicenow.com/lxp/en/credentials/certified-implementation-specialist-cmdb-mainline-exam-blueprint?id=kb_article_view&sysparm_article=KB0011528",
-  "cis-itsm": "https://nowlearning.servicenow.com/lxp/en/credentials/certified-implementation-specialist-itsm-mainline-exam-blueprint?id=kb_article_view&sysparm_article=KB0011507",
-  "cis-csm": "https://nowlearning.servicenow.com/lxp/en/credentials/certified-implementation-specialist-customer-service-management?id=kb_article_view&sysparm_article=KB0011529",
-  "cis-fsm": "https://nowlearning.servicenow.com/lxp/en/credentials/certified-implementation-specialist-field-service-management-mainline?id=kb_article_view&sysparm_article=KB0011561",
-  "cis-hr": "https://nowlearning.servicenow.com/lxp/en/credentials/certified-implementation-specialist-human-resources-mainline-exam-blueprint?id=kb_article_view&sysparm_article=KB0011654",
-  "cis-discovery": "https://nowlearning.servicenow.com/lxp/en/credentials/certified-implementation-specialist-discovery-mainline-exam-blueprint?id=kb_article_view&sysparm_article=KB0011545",
-  "cis-sm": "https://nowlearning.servicenow.com/lxp/en/credentials/certified-implementation-specialist-service-mapping-mainline-exam?id=kb_article_view&sysparm_article=KB0011541",
-  "cis-em": "https://nowlearning.servicenow.com/lxp/en/credentials/certified-implementation-specialist-event-management-mainline-exam?id=kb_article_view&sysparm_article=KB0011546",
-  "cis-vr": "https://nowlearning.servicenow.com/lxp/en/credentials/certified-implementation-specialist-vulnerability-response-mainline-exam?id=kb_article_view&sysparm_article=KB0011555",
-  "cis-sir": "https://nowlearning.servicenow.com/lxp/en/credentials/certified-implementation-specialist-security-incident-response?id=kb_article_view&sysparm_article=KB0011556",
-  "cis-rc": "https://nowlearning.servicenow.com/lxp/en/credentials/certified-implementation-specialist-risk-and-compliance-mainline?id=kb_article_view&sysparm_article=KB0011540",
-  "cis-tprm": "https://nowlearning.servicenow.com/lxp/en/credentials/cis-third-party-risk-management-mainline-exam-blueprint",
-  "cis-sam": "https://nowlearning.servicenow.com/lxp/en/credentials/certified-implementation-specialist-software-asset-management?id=kb_article_view&sysparm_article=KB0011533",
-  "cis-ham": "https://nowlearning.servicenow.com/lxp/en/credentials/certified-implementation-specialist-hardware-asset-management?id=kb_article_view&sysparm_article=KB0011534",
-  "cis-spm": "https://nowlearning.servicenow.com/lxp/en/credentials/certified-implementation-specialist-strategic-portfolio-management?id=kb_article_view&sysparm_article=KB0011542",
-  "cis-sp": "https://nowlearning.servicenow.com/lxp/en/credentials/certified-implementation-specialist-service-provider-mainline?id=kb_article_view&sysparm_article=KB0011569",
-  "cis-pa": "https://nowlearning.servicenow.com/lxp/en/credentials/certified-implementation-specialist-performance-analytics-mainline?id=kb_article_view&sysparm_article=KB0011543",
-};
+// Official blueprint URLs come from data/certifications.json (blueprintUrl),
+// so this page and the certification pages always link the same KB article.
+// CTA has no exam blueprint; it links the CTA program enrollment page instead.
+const programLinkSlugs = new Set(["cta"]);
 
 // Category labels for grouping
 const categoryLabels: Record<string, string> = {
@@ -126,7 +106,7 @@ export default function ExamBlueprintsPage() {
                 </h2>
                 <div className="space-y-4">
                   {certs.map((cert) => {
-                    const blueprintUrl = blueprintUrls[cert.slug];
+                    const blueprintUrl = cert.blueprintUrl;
                     return (
                       <div
                         key={cert.slug}
@@ -146,6 +126,8 @@ export default function ExamBlueprintsPage() {
                               {cert.examDetails.questionCount} questions •{" "}
                               {cert.examDetails.duration} min •{" "}
                               {cert.examDetails.passingScore}% to pass
+                              {cert.blueprint &&
+                                ` • ${cert.blueprint.kb} v${cert.blueprint.version}, updated ${cert.blueprint.updated}`}
                             </p>
                           )}
                         </div>
@@ -163,7 +145,9 @@ export default function ExamBlueprintsPage() {
                               rel="noopener noreferrer"
                               className="inline-flex items-center gap-1 rounded-lg bg-emerald-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-emerald-700"
                             >
-                              View Blueprint
+                              {programLinkSlugs.has(cert.slug)
+                                ? "View Program"
+                                : "View Blueprint"}
                               <svg
                                 className="h-4 w-4"
                                 fill="none"
@@ -207,9 +191,10 @@ export default function ExamBlueprintsPage() {
                   to understand exactly what topics you need to master.
                 </p>
                 <p className="mt-2 text-sm text-amber-800 dark:text-amber-200">
-                  Note: You&apos;ll need a Now Learning account (free) to access
-                  the blueprints. Blueprint content is updated with each
-                  ServiceNow release.
+                  Blueprints are published in the ServiceNow University
+                  knowledge base (learning.servicenow.com). ServiceNow revises
+                  them periodically, so check the &quot;Updated&quot; date and
+                  version on each one.
                 </p>
               </div>
             </div>

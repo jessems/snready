@@ -8,7 +8,8 @@ export interface ComparisonPair {
 
 /**
  * Meaningful comparison pairs for SEO
- * These are hand-curated pairs that users commonly search for
+ * These are hand-curated pairs that users commonly search for.
+ * Both slugs must exist in data/certifications.json, otherwise the page 404s.
  */
 export const comparisonPairs: ComparisonPair[] = [
   // Career progression paths
@@ -26,25 +27,14 @@ export const comparisonPairs: ComparisonPair[] = [
 
   // ITOM suite comparisons
   { cert1: "cis-discovery", cert2: "cis-sm", reason: "ITOM Discovery vs Service Mapping" },
-  { cert1: "cis-em", cert2: "cis-cpg", reason: "ITOM Event Management vs Cloud Provisioning" },
   { cert1: "cis-discovery", cert2: "cis-em", reason: "ITOM Discovery vs Event Management" },
   { cert1: "cis-sm", cert2: "cis-em", reason: "ITOM Service Mapping vs Event Management" },
 
   // SecOps comparisons
   { cert1: "cis-vr", cert2: "cis-sir", reason: "SecOps VR vs SIR" },
 
-  // GRC suite comparisons
-  { cert1: "cis-rci", cert2: "cis-vrm", reason: "GRC Risk Compliance vs Vendor Risk" },
-  { cert1: "cis-rci", cert2: "cis-tprm", reason: "GRC Risk Compliance vs Third Party Risk" },
-  { cert1: "cis-vrm", cert2: "cis-tprm", reason: "GRC Vendor Risk vs Third Party Risk" },
-
   // ITAM comparisons
   { cert1: "cis-sam", cert2: "cis-ham", reason: "ITAM Software vs Hardware Asset" },
-
-  // SPM suite comparisons
-  { cert1: "cis-spm", cert2: "cis-ppm", reason: "SPM Strategic vs Project Portfolio" },
-  { cert1: "cis-spm", cert2: "cis-apm", reason: "SPM Strategic vs Application Portfolio" },
-  { cert1: "cis-ppm", cert2: "cis-apm", reason: "SPM Project vs Application Portfolio" },
 
   // Customer Service comparisons
   { cert1: "cis-csm", cert2: "cis-fsm", reason: "Customer Service vs Field Service" },
@@ -53,9 +43,6 @@ export const comparisonPairs: ComparisonPair[] = [
   { cert1: "cis-itsm", cert2: "cis-csm", reason: "ITSM vs Customer Service" },
   { cert1: "cis-itsm", cert2: "cis-hr", reason: "ITSM vs HR Service Delivery" },
   { cert1: "cis-csm", cert2: "cis-hr", reason: "Customer Service vs HR" },
-
-  // Developer vs Specialist
-  { cert1: "cad", cert2: "cas-pa", reason: "Developer vs Process Automation Specialist" },
 
   // Platform strategy comparisons
   { cert1: "cpoa", cert2: "cis-itsm", reason: "Platform Owner vs ITSM Implementer" },
