@@ -11,7 +11,7 @@ const VERSION_DATES: Record<string, string> = {
 };
 
 export const metadata: Metadata = {
-  title: "ServiceNow Version Diff — What Changed Between Releases | SNReady",
+  title: "ServiceNow Version Diff — What Changed Between Releases",
   description:
     "Compare ServiceNow releases side by side. 1,073 documented changes across Washington DC, Xanadu, Yokohama, and Zurich. Filter by product, certification, and impact.",
   keywords: [

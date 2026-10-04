@@ -73,7 +73,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   const date = VERSION_DATES[version] || "";
   return {
-    title: `${productData.name} Changes in ServiceNow ${versionName} (${date}) | SNReady`,
+    title: `${productData.name} Changes in ServiceNow ${versionName} (${date})`,
     description: `${productData.entryCount} ${productData.name} changes in ServiceNow ${versionName}. New features, updates, and deprecations.`,
     openGraph: {
       title: `${productData.name} in ServiceNow ${versionName} — ${productData.entryCount} Changes`,
@@ -182,7 +182,7 @@ export default async function ProductPage({ params }: PageProps) {
               {[...relatedCerts].map((cert) => (
                 <Link
                   key={cert}
-                  href={`/certifications/${cert.toLowerCase()}`}
+                  href={`/${cert.toLowerCase()}`}
                   className="rounded-full border border-emerald-200 bg-emerald-50 px-2.5 py-0.5 text-xs font-medium text-emerald-700 hover:bg-emerald-100 dark:border-emerald-800 dark:bg-emerald-950 dark:text-emerald-300"
                 >
                   {cert}

@@ -203,7 +203,7 @@ export default function CompetitorComparisonIndex() {
             
             <div className="bg-white rounded-xl p-6 shadow-md">
               <BookOpen className="w-10 h-10 text-blue-600 mb-4" />
-              <h3 className="font-bold text-gray-900 mb-2">Learn, Don't Memorize</h3>
+              <h3 className="font-bold text-gray-900 mb-2">Learn, Don&apos;t Memorize</h3>
               <p className="text-gray-600 text-sm">
                 Detailed explanations teach you why answers are correct. Build real knowledge.
               </p>

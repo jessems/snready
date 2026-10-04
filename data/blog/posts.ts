@@ -512,7 +512,7 @@ If you've deployed Discovery in a real environment, you have a massive advantage
 
 [Practice CIS-Discovery Questions →](/cis-discovery/practice-questions)
 
-[Take a Timed CIS-Discovery Mock Exam →](/cis-discovery/timed-exam)
+[Take a Timed CIS-Discovery Mock Exam →](/cis-discovery/mock-exam)
 
 ---
 
@@ -2554,7 +2554,7 @@ Give yourself 4-6 weeks. Use the free Now Learning courses. Build in your PDI. T
 
 [Practice CAD Questions →](/cad/practice-questions)
 
-[Take a Timed CAD Mock Exam →](/cad/timed-exam)
+[Take a Timed CAD Mock Exam →](/cad/mock-exam)
 `
   },
   {
@@ -2653,7 +2653,7 @@ Core operational knowledge:
 - Complete CSM Essentials on Now Learning (free)
 - Study the CSM data model thoroughly — draw it out
 - Set up CSM in your PDI and create accounts, contacts, consumers
-- **Practice:** [Free CIS-CSM Practice Questions →](/cis-csm/free-questions)
+- **Practice:** [Free CIS-CSM Practice Questions →](/cis-csm/practice-questions)
 
 ### Week 2: Deep Configuration
 
@@ -2673,7 +2673,7 @@ Core operational knowledge:
 
 ### Week 4: Review + Practice Exams
 
-- Take [timed mock exams](/cis-csm/timed-exam) under real conditions
+- Take [timed mock exams](/cis-csm/mock-exam) under real conditions
 - Review weak domains based on mock exam results
 - Re-read Knowledge Management sections
 - Focus on best practices documentation
@@ -2724,9 +2724,9 @@ How do you create an incident from a case? How does case resolution flow when th
 
 ## Ready to Start?
 
-[Try Free CIS-CSM Practice Questions →](/cis-csm/free-questions)
+[Try Free CIS-CSM Practice Questions →](/cis-csm/practice-questions)
 
-[Take a Timed CIS-CSM Mock Exam →](/cis-csm/timed-exam)
+[Take a Timed CIS-CSM Mock Exam →](/cis-csm/mock-exam)
 `
   },
   {
@@ -2826,7 +2826,7 @@ Security is critical in HR — employee data is among the most sensitive in any 
 - Study the HR data model — draw out table relationships
 - Set up HRSD plugin in your PDI
 - Create HR profiles, categories, and basic services
-- **Practice:** [Free CIS-HR Practice Questions →](/cis-hr/free-questions)
+- **Practice:** [Free CIS-HR Practice Questions →](/cis-hr/practice-questions)
 
 ### Week 2: Lifecycle Events & Journeys
 
@@ -2846,7 +2846,7 @@ Security is critical in HR — employee data is among the most sensitive in any 
 
 ### Week 4: Review & Mock Exams
 
-- Take [timed mock exams](/cis-hr/timed-exam) under real conditions
+- Take [timed mock exams](/cis-hr/mock-exam) under real conditions
 - Review weak areas based on results
 - Re-read lifecycle event configurations
 - **Target:** 80%+ consistently on practice tests
@@ -2897,9 +2897,9 @@ Universal Request allows employees to submit requests without knowing which depa
 
 ## Start Practicing
 
-[Try Free CIS-HR Practice Questions →](/cis-hr/free-questions)
+[Try Free CIS-HR Practice Questions →](/cis-hr/practice-questions)
 
-[Take a Timed CIS-HR Mock Exam →](/cis-hr/timed-exam)
+[Take a Timed CIS-HR Mock Exam →](/cis-hr/mock-exam)
 `
   },
   {
@@ -2947,7 +2947,7 @@ For developers building on the ServiceNow platform:
 
 **130 questions** — The largest question bank on the site
 
-[Start Free CAD Practice Questions →](/cad/free-questions)
+[Start Free CAD Practice Questions →](/cad/practice-questions)
 
 ## Implementation Specialist Certifications
 
@@ -2955,73 +2955,73 @@ For developers building on the ServiceNow platform:
 
 Covers incident, problem, change, and request management:
 
-[Start Free CIS-ITSM Questions →](/cis-itsm/free-questions)
+[Start Free CIS-ITSM Questions →](/cis-itsm/practice-questions)
 
 ### CIS-Discovery
 
 Network discovery, pattern design, and CMDB integration:
 
-[Start Free CIS-Discovery Questions →](/cis-discovery/free-questions)
+[Start Free CIS-Discovery Questions →](/cis-discovery/practice-questions)
 
 ### CIS-CSM — Customer Service Management
 
 Case management, customer portals, and CSM configuration:
 
-[Start Free CIS-CSM Questions →](/cis-csm/free-questions)
+[Start Free CIS-CSM Questions →](/cis-csm/practice-questions)
 
 ### CIS-HR — HR Service Delivery
 
 Lifecycle events, HR case management, and employee experience:
 
-[Start Free CIS-HR Questions →](/cis-hr/free-questions)
+[Start Free CIS-HR Questions →](/cis-hr/practice-questions)
 
 ### CIS-SAM — Software Asset Management
 
 Software licensing, compliance, and asset lifecycle:
 
-[Start Free CIS-SAM Questions →](/cis-sam/free-questions)
+[Start Free CIS-SAM Questions →](/cis-sam/practice-questions)
 
 ### CIS-HAM — Hardware Asset Management
 
 Hardware lifecycle, stockrooms, and asset tracking:
 
-[Start Free CIS-HAM Questions →](/cis-ham/free-questions)
+[Start Free CIS-HAM Questions →](/cis-ham/practice-questions)
 
 ### CIS-PA — Performance Analytics
 
 Dashboards, indicators, and data collection:
 
-[Start Free CIS-PA Questions →](/cis-pa/free-questions)
+[Start Free CIS-PA Questions →](/cis-pa/practice-questions)
 
 ### CIS-SM — Service Mapping
 
 Service maps, patterns, and dependency views:
 
-[Start Free CIS-SM Questions →](/cis-sm/free-questions)
+[Start Free CIS-SM Questions →](/cis-sm/practice-questions)
 
 ### CIS-EM — Event Management
 
 Event processing, alert management, and integrations:
 
-[Start Free CIS-EM Questions →](/cis-em/free-questions)
+[Start Free CIS-EM Questions →](/cis-em/practice-questions)
 
 ### CIS-VR — Vulnerability Response
 
 Vulnerability management, prioritization, and remediation:
 
-[Start Free CIS-VR Questions →](/cis-vr/free-questions)
+[Start Free CIS-VR Questions →](/cis-vr/practice-questions)
 
 ### CIS-SIR — Security Incident Response
 
 Security incidents, threat intelligence, and response playbooks:
 
-[Start Free CIS-SIR Questions →](/cis-sir/free-questions)
+[Start Free CIS-SIR Questions →](/cis-sir/practice-questions)
 
 ### CIS-RC — Risk & Compliance
 
 GRC framework, risk management, and compliance:
 
-[Start Free CIS-RC Questions →](/cis-rc/free-questions)
+[Start Free CIS-RC Questions →](/cis-rc/practice-questions)
 
 ### CIS-DF — Data Foundations (CMDB)
 
@@ -3029,37 +3029,37 @@ CMDB configuration, CSDM, data governance, and health:
 
 **213 questions** — Our deepest question bank
 
-[Start Free CIS-DF Questions →](/cis-df/free-questions)
+[Start Free CIS-DF Questions →](/cis-df/practice-questions)
 
 ### CIS-FSM — Field Service Management
 
 Work orders, scheduling, and dispatch:
 
-[Start Free CIS-FSM Questions →](/cis-fsm/free-questions)
+[Start Free CIS-FSM Questions →](/cis-fsm/practice-questions)
 
 ### CIS-SP — Security Platform
 
 Security operations platform configuration:
 
-[Start Free CIS-SP Questions →](/cis-sp/free-questions)
+[Start Free CIS-SP Questions →](/cis-sp/practice-questions)
 
 ### CIS-SPM — Strategic Portfolio Management
 
 Project and portfolio management:
 
-[Start Free CIS-SPM Questions →](/cis-spm/free-questions)
+[Start Free CIS-SPM Questions →](/cis-spm/practice-questions)
 
 ### CIS-TPRM — Third-Party Risk Management
 
 Vendor risk assessment and management:
 
-[Start Free CIS-TPRM Questions →](/cis-tprm/free-questions)
+[Start Free CIS-TPRM Questions →](/cis-tprm/practice-questions)
 
 ### CPOA — Certified Platform Owner Advisor
 
 Platform governance and strategy:
 
-[Start Free CPOA Questions →](/cpoa/free-questions)
+[Start Free CPOA Questions →](/cpoa/practice-questions)
 
 ## Why Free Practice Questions Matter
 
@@ -3598,7 +3598,7 @@ Often overlooked, but free points if you study:
 ## How to Use These 160 Questions
 
 ### Step 1: Take the Free Assessment
-Start with our [free CIS-ITSM questions](/cis-itsm/free-questions) — 29 questions across all domains. This gives you a baseline score without any commitment.
+Start with our [free CIS-ITSM questions](/cis-itsm/practice-questions) — 29 questions across all domains. This gives you a baseline score without any commitment.
 
 ### Step 2: Identify Weak Domains
 Look at which domains you scored lowest on. Typically:
@@ -3654,7 +3654,7 @@ We have **160 CIS-ITSM questions** — the most comprehensive practice test avai
 
 | Action | Link |
 |--------|------|
-| Start free CIS-ITSM questions | [Free CIS-ITSM Practice Questions](/cis-itsm/free-questions) |
+| Start free CIS-ITSM questions | [Free CIS-ITSM Practice Questions](/cis-itsm/practice-questions) |
 | Take a timed mock exam | [CIS-ITSM Mock Exam](/cis-itsm/mock-exam) |
 | See all 7 domain topics | [CIS-ITSM Study Topics](/cis-itsm) |
 | Create a study schedule | [Study Plan Generator](/study-plan) |
@@ -3694,13 +3694,13 @@ Our CAD question bank is distributed across all 7 exam domains:
 
 | Domain | Questions | What's Tested |
 |--------|-----------|---------------|
-| [Application Development](/cad/application-development) | 53 | Scoped apps, update sets, tables, app scope, Studio |
-| [Scripting & APIs](/cad/scripting-apis) | 34 | GlideRecord, GlideSystem, GlideAjax, server vs client |
-| [Business Rules](/cad/business-rules) | 24 | Before/after/async/display, abort actions, current/previous |
-| [Client Scripts](/cad/client-scripts) | 21 | onLoad, onChange, onSubmit, g_form, g_user |
-| [UI Policies & Actions](/cad/ui-policies-actions) | 21 | Visibility, mandatory, read-only, reverse if false |
-| [Integration & REST APIs](/cad/integration-rest) | 21 | Table API, RESTMessageV2, auth methods, HTTP methods |
-| [Script Includes](/cad/script-includes) | 20 | AbstractAjaxProcessor, client-callable, reusability |
+| [Application Development](/cad/practice-questions) | 53 | Scoped apps, update sets, tables, app scope, Studio |
+| [Scripting & APIs](/cad/practice-questions) | 34 | GlideRecord, GlideSystem, GlideAjax, server vs client |
+| [Business Rules](/cad/practice-questions) | 24 | Before/after/async/display, abort actions, current/previous |
+| [Client Scripts](/cad/practice-questions) | 21 | onLoad, onChange, onSubmit, g_form, g_user |
+| [UI Policies & Actions](/cad/practice-questions) | 21 | Visibility, mandatory, read-only, reverse if false |
+| [Integration & REST APIs](/cad/practice-questions) | 21 | Table API, RESTMessageV2, auth methods, HTTP methods |
+| [Script Includes](/cad/practice-questions) | 20 | AbstractAjaxProcessor, client-callable, reusability |
 
 ## The 5 Question Types You'll Face
 
@@ -3778,12 +3778,12 @@ Know sysparm_fields, sysparm_query, sysparm_display_value, and sysparm_limit.
 ## How to Use These 200 Questions
 
 ### Strategy 1: Domain-by-Domain Study (Recommended)
-1. Start with [Scripting & APIs](/cad/scripting-apis) — it's the foundation
-2. Move to [Business Rules](/cad/business-rules) — build on scripting knowledge
-3. Then [Client Scripts](/cad/client-scripts) and [UI Policies](/cad/ui-policies-actions)
-4. [Script Includes](/cad/script-includes) — ties server-side concepts together
-5. [REST APIs](/cad/integration-rest) — integration patterns
-6. Finish with [Application Development](/cad/application-development) — the big picture
+1. Start with [Scripting & APIs](/cad/practice-questions) — it's the foundation
+2. Move to [Business Rules](/cad/practice-questions) — build on scripting knowledge
+3. Then [Client Scripts](/cad/practice-questions) and [UI Policies](/cad/practice-questions)
+4. [Script Includes](/cad/practice-questions) — ties server-side concepts together
+5. [REST APIs](/cad/practice-questions) — integration patterns
+6. Finish with [Application Development](/cad/practice-questions) — the big picture
 
 ### Strategy 2: Mock Exam Mode
 Use our [Timed Mock Exam](/cad/mock-exam) to simulate real conditions:
@@ -3804,7 +3804,7 @@ Take a mock exam first. Identify your weakest 2-3 domains. Spend focused study t
 | Difficulty | Entry-level | Intermediate |
 | Study Time | 3-4 weeks | 4-6 weeks |
 | Pass Rate | Higher | Lower |
-| Practice Questions | [200 questions](/csa/free-questions) | [200 questions](/cad/free-questions) |
+| Practice Questions | [200 questions](/csa/practice-questions) | [200 questions](/cad/practice-questions) |
 
 If you're deciding between the two, read our [CSA vs CAD comparison](/blog/csa-vs-cad-real-talk).
 
@@ -3815,7 +3815,7 @@ If you're deciding between the two, read our [CSA vs CAD comparison](/blog/csa-v
 | [Application Development Fundamentals](https://nowlearning.servicenow.com) | Official course | Free |
 | [Scripting in ServiceNow Fundamentals](https://nowlearning.servicenow.com) | Official course | Free |
 | [Personal Developer Instance](https://developer.servicenow.com) | Hands-on practice | Free |
-| [SNReady CAD Practice Questions](/cad/free-questions) | 200 practice questions | Free / Premium |
+| [SNReady CAD Practice Questions](/cad/practice-questions) | 200 practice questions | Free / Premium |
 | [ServiceNow Docs](https://docs.servicenow.com) | Reference | Free |
 | [Study Plan Generator](/study-plan) | Personalized schedule | Free |
 
@@ -3823,7 +3823,7 @@ If you're deciding between the two, read our [CSA vs CAD comparison](/blog/csa-v
 
 | What You Need | Where to Find It |
 |--------------|-----------------|
-| 200 CAD practice questions | [Start practicing →](/cad/free-questions) |
+| 200 CAD practice questions | [Start practicing →](/cad/practice-questions) |
 | Full mock exam simulation | [Take mock exam →](/cad/mock-exam) |
 | Personalized study plan | [Generate plan →](/study-plan) |
 | Not sure which cert to take? | [Certification Quiz](/quiz) |
@@ -3887,7 +3887,7 @@ The CPOA (Certified Process Optimization Administrator) exam focuses on platform
 
 These questions were written from official ServiceNow documentation and validated against current CPOA exam blueprints. Every question includes full explanations for all answer choices — not just the correct one.
 
-[Practice CPOA Questions →](/cpoa/free-questions)
+[Practice CPOA Questions →](/cpoa/practice-questions)
 
 ## CSA: 214 Questions (Up from 155)
 
@@ -3963,9 +3963,9 @@ Follow [@SNReady](https://twitter.com/snready) for release announcements. Or jus
 
 All new questions are live now on SNReady.com:
 
-- [CPOA Free Practice Questions](/cpoa/free-questions) — includes the 50 new Technology questions
+- [CPOA Free Practice Questions](/cpoa/practice-questions) — includes the 50 new Technology questions
 - [CSA Free Practice Questions](/csa/practice-questions) — every question free
-- [Timed CPOA Mock Exam](/cpoa/timed-exam) — simulate real exam conditions
+- [Timed CPOA Mock Exam](/cpoa/mock-exam) — simulate real exam conditions
 - [Timed CSA Mock Exam](/csa/mock-exam) — 60 questions, 90 minutes, free
 
 ---

@@ -2,7 +2,7 @@ import Quiz from "@/components/Quiz";
 import { csaQuestions } from "@/data/csa-questions";
 
 export const metadata = {
-  title: "CSA Practice Quiz - SNReady",
+  title: "CSA Practice Quiz",
   description: "ServiceNow Certified System Administrator practice quiz",
 };
 

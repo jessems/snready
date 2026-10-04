@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Free ServiceNow Resources - PDI, Docs, Training | SNReady",
+  title: "Free ServiceNow Resources - PDI, Docs, Training",
   description:
     "Curated list of free ServiceNow resources: Personal Developer Instances (PDI), official documentation, Now Learning courses, community forums, and certification study materials.",
   keywords: [

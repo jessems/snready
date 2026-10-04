@@ -8,7 +8,7 @@ import { generateBreadcrumbJsonLd } from "@/lib/breadcrumbs";
 import { getCanonicalUrl } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "ServiceNow Practice Questions | SNReady",
+  title: "ServiceNow Practice Questions",
   description:
     "ServiceNow certification practice questions for CSA, CIS-DF, CAD, CIS-ITSM with detailed explanations and free questions.",
   alternates: {

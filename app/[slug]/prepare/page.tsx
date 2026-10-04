@@ -61,7 +61,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return { title: "Certification Not Found" };
   }
 
-  const title = `${certification.name} Exam Prep: Courses, Docs & Blueprint | SNReady`;
+  const title = `${certification.name} Exam Prep: Courses, Docs & Blueprint`;
   const description = `Official ${certification.name} exam blueprint, recommended ServiceNow courses, and documentation. Everything you need to prepare for ${certification.fullName}.`;
 
   return {

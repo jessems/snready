@@ -7,6 +7,7 @@ import {
   getReleaseInfo,
   getDaysUntilDeltaDeadline,
   isDeltaWindowOpen,
+  getAllDeltaSlugs,
 } from "@/lib/data";
 import type { ServiceNowRelease, Certification } from "@/types";
 import { generateBreadcrumbJsonLd } from "@/lib/breadcrumbs";
@@ -76,6 +77,11 @@ export default async function ReleasePage({ params }: PageProps) {
   }
 
   // Group certifications by category
+  const deltaCerts = new Set(
+    getAllDeltaSlugs()
+      .filter((slug) => slug.release === release.toLowerCase())
+      .map((slug) => slug.certification)
+  );
   const certsByCategory = certs.reduce((acc, cert) => {
     if (!acc[cert.category]) {
       acc[cert.category] = [];
@@ -105,7 +111,7 @@ export default async function ReleasePage({ params }: PageProps) {
       "@type": "ListItem",
       position: index + 1,
       name: cert.fullName,
-      url: `https://snready.com/certifications/${cert.slug}`,
+      url: `https://snready.com/${cert.slug}`,
     })),
   };
 
@@ -249,13 +255,15 @@ export default async function ReleasePage({ params }: PageProps) {
                           </div>
                           <div className="mt-4 flex gap-2">
                             <Link
-                              href={`/${cert.slug}/delta/${release.toLowerCase()}`}
+                              href={deltaCerts.has(cert.slug)
+                                ? `/${cert.slug}/delta/${release.toLowerCase()}`
+                                : `/${cert.slug}/practice-questions`}
                               className="inline-flex items-center rounded-md bg-blue-50 px-3 py-1.5 text-xs font-medium text-blue-700 transition-colors hover:bg-blue-100 dark:bg-blue-950 dark:text-blue-300"
                             >
-                              Delta Exam
+                              {deltaCerts.has(cert.slug) ? "Delta Exam" : "Practice Questions"}
                             </Link>
                             <Link
-                              href={`/certifications/${cert.slug}`}
+                              href={`/${cert.slug}`}
                               className="inline-flex items-center rounded-md bg-zinc-100 px-3 py-1.5 text-xs font-medium text-zinc-700 transition-colors hover:bg-zinc-200 dark:bg-zinc-800 dark:text-zinc-300"
                             >
                               Full Prep
