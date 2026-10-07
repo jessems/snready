@@ -13,6 +13,9 @@ export const metadata: Metadata = {
     "best servicenow practice tests",
     "servicenow exam prep comparison"
   ],
+  alternates: {
+    canonical: "/vs",
+  },
   openGraph: {
     title: "SNReady vs Competitors - ServiceNow Practice Test Comparison",
     description: "Compare the best ServiceNow certification practice test platforms side by side.",

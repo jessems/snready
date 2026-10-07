@@ -41,6 +41,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       `servicenow ${meta.name.toLowerCase()} changes`,
       `servicenow ${meta.name.toLowerCase()} deprecated features`,
     ],
+    alternates: {
+      canonical: `/version-diff/${version}`,
+    },
     openGraph: {
       title: `ServiceNow ${meta.name} Release Notes — ${versionData.totalEntries} Changes`,
       description: `${versionData.totalEntries} documented changes across ${versionData.products.length} products in ServiceNow ${meta.name}.`,

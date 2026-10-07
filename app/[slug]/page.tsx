@@ -53,21 +53,10 @@ export async function generateMetadata({
     `${cert.fullName} exam prep`,
   ];
 
-  // Base description
-  let description =
+  const description =
     totalQuestions > 0
       ? `Prepare for the ServiceNow ${cert.fullName} (${cert.name}) exam with ${totalQuestions}+ practice questions. Free sample questions and study guides.`
       : `${cert.name} practice questions are coming soon. See the ServiceNow ${cert.fullName} (${cert.name}) exam format, prerequisites and official resources.`;
-
-  // Enhanced SEO for certs with dumps section
-  if (cert.showDumpsSection && totalQuestions > 0) {
-    description = `Better than ${cert.name} dumps: ${totalQuestions}+ practice questions with detailed explanations. Pass the ServiceNow ${cert.fullName} exam the right way.`;
-    keywords.push(
-      `${cert.name.toLowerCase()} dump`,
-      `${cert.name.toLowerCase()} exam dumps`,
-      `${cert.name.toLowerCase()} dumps`,
-    );
-  }
 
   const year = new Date().getFullYear();
 
