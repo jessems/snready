@@ -37,8 +37,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title,
     description,
-    // No questions yet: keep this page out of the index until there is content.
-    ...(totalQuestions === 0 ? { robots: { index: false, follow: true } } : {}),
+    // Never index: a page built to rank for "dumps" queries reads as exam-dump
+    // targeting to Google's spam systems (see root-cause report, Oct 2026).
+    robots: { index: false, follow: true },
     alternates: {
       canonical: getCanonicalUrl(`/${slug}/dumps`),
     },

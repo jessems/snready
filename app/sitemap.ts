@@ -11,10 +11,15 @@ export const dynamic = "force-static";
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://snready.com";
 
 /**
- * SITEMAP STRATEGY - Expanded
+ * SITEMAP STRATEGY
  *
- * Including all valuable pages to help Google discover content faster.
- * Individual question pages are still excluded (Phase 3).
+ * Only indexable pages belong here: a URL that is noindexed or canonicalised
+ * elsewhere must not be listed. Version-diff product pages and /[cert]/dumps
+ * are noindexed and so are excluded. Individual question pages are excluded.
+ *
+ * lastModified is only set where we know when the content really changed
+ * (blog posts). Google ignores lastmod once it proves inaccurate, and stamping
+ * every URL with the build time made it inaccurate.
  */
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -27,55 +32,46 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticPages: MetadataRoute.Sitemap = [
     {
       url: BASE_URL,
-      lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 1,
     },
     {
       url: `${BASE_URL}/certifications`,
-      lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.9,
     },
     {
       url: `${BASE_URL}/pricing`,
-      lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
       url: `${BASE_URL}/resources`,
-      lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
       url: `${BASE_URL}/exam-blueprints`,
-      lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
       url: `${BASE_URL}/certification-paths`,
-      lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
       url: `${BASE_URL}/compare`,
-      lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.85,
     },
     {
       url: `${BASE_URL}/version-diff`,
-      lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.85,
     },
     {
       url: `${BASE_URL}/salaries`,
-      lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.9,
     },
@@ -84,7 +80,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // === Certification landing pages ===
   const certPages: MetadataRoute.Sitemap = certSlugs.map((slug) => ({
     url: `${BASE_URL}/${slug}`,
-    lastModified: new Date(),
     changeFrequency: "weekly" as const,
     priority: 0.9,
   }));
@@ -93,7 +88,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const practiceQuestionPages: MetadataRoute.Sitemap = certSlugs.map(
     (slug) => ({
       url: `${BASE_URL}/${slug}/practice-questions`,
-      lastModified: new Date(),
       changeFrequency: "weekly" as const,
       priority: 0.85,
     })
@@ -103,7 +97,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const topicPages: MetadataRoute.Sitemap = topicSlugs.map(
     ({ certification, topic }) => ({
       url: `${BASE_URL}/${certification}/practice-questions/${topic}`,
-      lastModified: new Date(),
       changeFrequency: "weekly" as const,
       priority: 0.8,
     })
@@ -112,7 +105,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // === Mock exam pages (conversion pages) ===
   const mockExamPages: MetadataRoute.Sitemap = certSlugs.map((slug) => ({
     url: `${BASE_URL}/${slug}/mock-exam`,
-    lastModified: new Date(),
     changeFrequency: "weekly" as const,
     priority: 0.85,
   }));
@@ -120,16 +112,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // === Compare pages ===
   const comparePages: MetadataRoute.Sitemap = comparisonSlugs.map((slug) => ({
     url: `${BASE_URL}/compare/${slug}`,
-    lastModified: new Date(),
     changeFrequency: "monthly" as const,
     priority: 0.7,
   }));
 
   // === Blog pages ===
+  const blogDates = blogPosts.map((post) => new Date(post.updatedAt || post.publishedAt).getTime());
+  const latestBlogDate = blogDates.length ? new Date(Math.max(...blogDates)) : undefined;
   const blogPages: MetadataRoute.Sitemap = [
     {
       url: `${BASE_URL}/blog`,
-      lastModified: new Date(),
+      lastModified: latestBlogDate,
       changeFrequency: "weekly" as const,
       priority: 0.8,
     },
@@ -146,13 +139,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const competitorPages: MetadataRoute.Sitemap = [
     {
       url: `${BASE_URL}/vs`,
-      lastModified: new Date(),
       changeFrequency: "monthly" as const,
       priority: 0.85,
     },
     ...competitorSlugs.map((slug) => ({
       url: `${BASE_URL}/vs/${slug}`,
-      lastModified: new Date(),
       changeFrequency: "monthly" as const,
       priority: 0.8,
     })),
@@ -162,7 +153,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const deltaSlugs = getAllDeltaSlugs();
   const deltaPages: MetadataRoute.Sitemap = deltaSlugs.map(({ certification, release }) => ({
     url: `${BASE_URL}/${certification}/delta/${release}`,
-    lastModified: new Date(),
     changeFrequency: "monthly" as const,
     priority: 0.85,
   }));
@@ -170,7 +160,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // === Salary segment pages (role + country specific) ===
   const salarySegmentPages: MetadataRoute.Sitemap = ALL_SEGMENTS.map((segment) => ({
     url: `${BASE_URL}/salaries/${segment.slug}`,
-    lastModified: new Date(),
     changeFrequency: "weekly" as const,
     priority: 0.85,
   }));
@@ -182,21 +171,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Version Diff pages
   const releaseSummary = getReleaseSummary();
   const versionDiffPages: MetadataRoute.Sitemap = [];
-  for (const [versionSlug, versionData] of Object.entries(releaseSummary.versions)) {
+  for (const versionSlug of Object.keys(releaseSummary.versions)) {
     versionDiffPages.push({
       url: `${BASE_URL}/version-diff/${versionSlug}`,
-      lastModified: new Date(),
       changeFrequency: "monthly" as const,
       priority: 0.8,
     });
-    for (const product of versionData.products) {
-      versionDiffPages.push({
-        url: `${BASE_URL}/version-diff/${versionSlug}/${product.slug}`,
-        lastModified: new Date(),
-        changeFrequency: "monthly" as const,
-        priority: 0.6,
-      });
-    }
   }
 
   return [

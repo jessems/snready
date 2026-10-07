@@ -22,6 +22,9 @@ export const metadata: Metadata = {
     "servicenow deprecated features",
     "servicenow xanadu vs yokohama",
   ],
+  alternates: {
+    canonical: "/version-diff",
+  },
   openGraph: {
     title: "ServiceNow Version Diff — What Changed Between Releases",
     description:

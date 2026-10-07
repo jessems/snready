@@ -32,6 +32,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       `${competitor.name.toLowerCase()} alternative`,
       `${competitor.name.toLowerCase()} review`
     ],
+    alternates: {
+      canonical: `/vs/${competitorSlug}`,
+    },
     openGraph: {
       title: `SNReady vs ${competitor.name} - Which is Better?`,
       description: `Detailed comparison of SNReady and ${competitor.name} for ServiceNow certification practice.`,

@@ -75,6 +75,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: `${productData.name} Changes in ServiceNow ${versionName} (${date})`,
     description: `${productData.entryCount} ${productData.name} changes in ServiceNow ${versionName}. New features, updates, and deprecations.`,
+    // Thin template pages generated from release-note data: keep them crawlable
+    // for link discovery but out of the index (see root-cause report, Oct 2026).
+    robots: { index: false, follow: true },
+    alternates: {
+      canonical: `/version-diff/${version}/${product}`,
+    },
     openGraph: {
       title: `${productData.name} in ServiceNow ${versionName} — ${productData.entryCount} Changes`,
       url: `https://snready.com/version-diff/${version}/${product}`,

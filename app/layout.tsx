@@ -20,9 +20,6 @@ export const metadata: Metadata = {
     default: "SNReady - ServiceNow Certification Exam Prep",
     template: "%s | SNReady",
   },
-  alternates: {
-    canonical: "/",
-  },
   description:
     "Pass your ServiceNow certification exams with confidence. Free practice tests, exam questions, and study guides for CSA, CAD, CIS-ITSM, and more.",
   keywords: [

@@ -13,6 +13,9 @@ export const metadata: Metadata = {
     "servicenow architect salary",
     "servicenow compensation",
   ],
+  alternates: {
+    canonical: "/salaries",
+  },
   openGraph: {
     title: "ServiceNow Salaries 2026 | Real Compensation Data",
     description:

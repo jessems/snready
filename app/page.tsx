@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import {
   getAllCertifications,
@@ -7,6 +8,12 @@ import {
   getPricingSummary,
 } from "@/lib/data";
 import CertificationCard from "@/components/CertificationCard";
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "/",
+  },
+};
 
 export default function Home() {
   const certifications = getAllCertifications();
