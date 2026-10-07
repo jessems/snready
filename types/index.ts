@@ -171,6 +171,17 @@ export interface QuestionMetadata {
   reviewed: boolean;               // manual review flag
 }
 
+/**
+ * Identity assigned by the question pipeline (docs/question-pipeline.md §4).
+ * Questions sharing a familyKey look alike (same template); questions sharing a
+ * knowledgeKey test the same fact. Hand-written questions have no identity.
+ */
+export interface QuestionIdentity {
+  instanceId: string;
+  familyKey: string;
+  knowledgeKeys: string[];
+}
+
 export interface Question {
   id: string;                      // "csa-incident-management-0001"
   certification: string;           // "csa" (denormalized for querying)
@@ -188,6 +199,7 @@ export interface Question {
   source: QuestionSource;
   labels: QuestionLabels;
   meta: QuestionMetadata;
+  identity?: QuestionIdentity;
 }
 
 // Question File format (canonical wrapper for JSON files)

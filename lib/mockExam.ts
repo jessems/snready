@@ -6,6 +6,7 @@ import type {
   MockExamHistoryEntry,
 } from "@/types/mockExam";
 import type { Question } from "@/types";
+import { selectDiverse, sequenceQuestions } from "@/lib/question-sequencing";
 
 const STORAGE_KEY_PREFIX = "snready_mock_exam_";
 const HISTORY_KEY = "snready_mock_exam_history";
@@ -52,8 +53,8 @@ export function createMockExamSession(
   config: MockExamConfig,
   allQuestions: Question[]
 ): MockExamSession {
-  const shuffled = shuffleArray(allQuestions);
-  const selected = shuffled.slice(0, config.questionCount);
+  // Diverse pick, then space out siblings of the same template or fact.
+  const selected = sequenceQuestions(selectDiverse(shuffleArray(allQuestions), config.questionCount));
   const questions = selected.map(toMockExamQuestion);
 
   // Shuffle options within each question too
