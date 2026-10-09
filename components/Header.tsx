@@ -1,314 +1,52 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { useAccess } from "./AccessProvider";
 import { LoginModal } from "./LoginModal";
-import certificationsData from "@/data/certifications.json";
 
-// Admin emails that can access /admin routes
-const ADMIN_EMAILS = ["jessems@gmail.com"];
+const navigation = [
+  ["/certifications", "Certifications"],
+  ["/practice-questions", "Practice"],
+  ["/study-guide", "Study guides"],
+  ["/resources", "Resources"],
+  ["/pricing", "Pricing"],
+] as const;
 
 export default function Header() {
+  const pathname = usePathname();
   const { authenticated, email, logout, loading } = useAccess();
-  const [showLoginModal, setShowLoginModal] = useState(false);
-  const [showDropdown, setShowDropdown] = useState(false);
-  const [showMobileMenu, setShowMobileMenu] = useState(false);
-  const [showPracticeDropdown, setShowPracticeDropdown] = useState(false);
-  
-  const isAdmin = email && ADMIN_EMAILS.includes(email.toLowerCase());
+  const [loginOpen, setLoginOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [accountOpen, setAccountOpen] = useState(false);
+  const isAdmin = email?.toLowerCase() === "jessems@gmail.com";
 
-  // Sort certifications alphabetically by fullName
-  const sortedCertifications = [...certificationsData.certifications].sort((a, b) =>
-    a.fullName.localeCompare(b.fullName)
-  );
-
-  return (
-    <>
-      <nav className="border-b border-zinc-200 dark:border-zinc-800">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <div className="flex h-16 items-center justify-between">
-            <Link href="/" className="flex items-center gap-2">
-              <span className="text-xl font-bold text-emerald-600">
-                SNReady
-              </span>
-            </Link>
-            
-            <div className="flex items-center gap-4 sm:gap-6">
-              {/* Mobile Menu Button */}
-              <button
-                onClick={() => setShowMobileMenu(!showMobileMenu)}
-                className="sm:hidden p-2 text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
-                aria-label="Menu"
-              >
-                {showMobileMenu ? (
-                  <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                ) : (
-                  <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                  </svg>
-                )}
-              </button>
-
-              {/* Navigation Links - Hidden on mobile */}
-              <div className="hidden sm:flex sm:items-center sm:gap-6">
-                {/* Practice Questions Dropdown */}
-                <div className="relative">
-                  <button
-                    onClick={() => setShowPracticeDropdown(!showPracticeDropdown)}
-                    className="text-sm font-medium text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100 flex items-center gap-1"
-                  >
-                    Practice Questions
-                    <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                    </svg>
-                  </button>
-                  {showPracticeDropdown && (
-                    <>
-                      <div
-                        className="fixed inset-0 z-10"
-                        onClick={() => setShowPracticeDropdown(false)}
-                      />
-                      <div className="absolute left-0 mt-2 w-80 max-h-[28rem] overflow-y-auto rounded-xl border border-zinc-200 bg-white py-2 shadow-xl z-20 dark:border-zinc-700 dark:bg-zinc-900">
-                        <div className="px-3 pb-2 mb-2 border-b border-zinc-100 dark:border-zinc-800">
-                          <p className="text-xs font-medium text-zinc-400 uppercase tracking-wider">Select certification</p>
-                        </div>
-                        <div className="space-y-0.5 px-2">
-                          {sortedCertifications.map((cert) => (
-                            <Link
-                              key={cert.slug}
-                              href={`/${cert.slug}`}
-                              onClick={() => setShowPracticeDropdown(false)}
-                              className="flex items-center gap-3 px-2 py-2.5 rounded-lg hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-colors group"
-                            >
-                              <span className="inline-flex items-center justify-center min-w-[4.5rem] flex-shrink-0 px-2 py-1 text-sm font-bold text-emerald-700 bg-emerald-50 rounded-md whitespace-nowrap group-hover:bg-emerald-100 dark:text-emerald-300 dark:bg-emerald-900/40 dark:group-hover:bg-emerald-900/60">
-                                {cert.name}
-                              </span>
-                              <span className="text-sm text-zinc-600 dark:text-zinc-400 leading-tight truncate">
-                                {cert.fullName}
-                              </span>
-                            </Link>
-                          ))}
-                        </div>
-                        <div className="border-t border-zinc-100 mt-2 pt-2 px-2 dark:border-zinc-800">
-                          <Link
-                            href="/certifications"
-                            onClick={() => setShowPracticeDropdown(false)}
-                            className="flex items-center justify-center gap-1 px-3 py-2 text-sm font-medium text-emerald-600 hover:bg-emerald-50 rounded-lg transition-colors dark:text-emerald-400 dark:hover:bg-emerald-900/20"
-                          >
-                            View all certifications
-                            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                            </svg>
-                          </Link>
-                        </div>
-                      </div>
-                    </>
-                  )}
-                </div>
-
-                {/* Blog Link */}
-                <Link
-                  href="/blog"
-                  className="text-sm font-medium text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
-                >
-                  Blog
-                </Link>
-
-                {/* Compare Link */}
-                <Link
-                  href="/vs"
-                  className="text-sm font-medium text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
-                >
-                  Compare
-                </Link>
-
-                {/* Pricing Link */}
-                <Link
-                  href="/pricing"
-                  className="text-sm font-medium text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
-                >
-                  Pricing
-                </Link>
-
-                {/* Resources Link */}
-                <Link
-                  href="/resources"
-                  className="text-sm font-medium text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
-                >
-                  Resources
-                </Link>
-
-                {/* Certification Paths Link */}
-                <Link
-                  href="/certification-paths"
-                  className="text-sm font-medium text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
-                >
-                  Paths
-                </Link>
-
-                {/* Salaries Link */}
-                <Link
-                  href="/salaries"
-                  className="text-sm font-medium text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
-                >
-                  💰 Salaries
-                </Link>
-              </div>
-
-              {/* Auth Section */}
-              {loading ? (
-                <div className="w-16 h-8 bg-zinc-100 rounded-lg animate-pulse dark:bg-zinc-800" />
-              ) : authenticated ? (
-                <div className="relative">
-                  <button
-                    onClick={() => setShowDropdown(!showDropdown)}
-                    className="flex items-center gap-2 rounded-lg border border-zinc-200 px-3 py-1.5 text-sm font-medium text-zinc-700 hover:bg-zinc-50 transition-colors dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-800"
-                  >
-                    <div className="w-6 h-6 rounded-full bg-emerald-100 flex items-center justify-center dark:bg-emerald-900">
-                      <span className="text-xs font-semibold text-emerald-700 dark:text-emerald-300">
-                        {email?.charAt(0).toUpperCase() || "U"}
-                      </span>
-                    </div>
-                    <span className="hidden sm:inline">Account</span>
-                    <svg className="h-4 w-4 text-zinc-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                    </svg>
-                  </button>
-
-                  {showDropdown && (
-                    <>
-                      <div
-                        className="fixed inset-0 z-10"
-                        onClick={() => setShowDropdown(false)}
-                      />
-                      <div className="absolute right-0 mt-2 w-56 rounded-lg border border-zinc-200 bg-white py-1 shadow-lg z-20 dark:border-zinc-700 dark:bg-zinc-900">
-                        <div className="px-4 py-2 border-b border-zinc-100 dark:border-zinc-800">
-                          <p className="text-xs text-zinc-500 dark:text-zinc-400">Logged in as</p>
-                          <p className="text-sm font-medium text-zinc-900 truncate dark:text-zinc-100">{email}</p>
-                        </div>
-                        <Link
-                          href="/account"
-                          className="block px-4 py-2 text-sm text-zinc-700 hover:bg-zinc-50 dark:text-zinc-300 dark:hover:bg-zinc-800"
-                          onClick={() => setShowDropdown(false)}
-                        >
-                          Account
-                        </Link>
-                        <Link
-                          href="/certifications"
-                          className="block px-4 py-2 text-sm text-zinc-700 hover:bg-zinc-50 dark:text-zinc-300 dark:hover:bg-zinc-800"
-                          onClick={() => setShowDropdown(false)}
-                        >
-                          My Certifications
-                        </Link>
-                        {isAdmin && (
-                          <Link
-                            href="/admin/coverage"
-                            className="block px-4 py-2 text-sm text-zinc-700 hover:bg-zinc-50 dark:text-zinc-300 dark:hover:bg-zinc-800"
-                            onClick={() => setShowDropdown(false)}
-                          >
-                            📊 Admin Dashboard
-                          </Link>
-                        )}
-                        <button
-                          onClick={() => {
-                            logout();
-                            setShowDropdown(false);
-                          }}
-                          className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50 dark:text-red-400 dark:hover:bg-red-900/20"
-                        >
-                          Log out
-                        </button>
-                      </div>
-                    </>
-                  )}
-                </div>
-              ) : (
-                <button
-                  onClick={() => setShowLoginModal(true)}
-                  className="rounded-lg border border-zinc-200 px-4 py-1.5 text-sm font-medium text-zinc-700 hover:bg-zinc-50 transition-colors dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-800"
-                >
-                  Log in
-                </button>
-              )}
-            </div>
-          </div>
+  return <>
+    <header className="site-header" onKeyDown={event => { if (event.key === "Escape") { setMenuOpen(false); setAccountOpen(false); } }}>
+      <div className="site-header-inner">
+        <Link href="/" className="brand-wordmark" aria-label="SNReady home">snready<span aria-hidden="true" /></Link>
+        <nav className="site-desktop-nav" aria-label="Main navigation">
+          {navigation.map(([href, label]) => <Link key={href} href={href} aria-current={pathname === href ? "page" : undefined}>{label}</Link>)}
+        </nav>
+        <div className="site-header-actions">
+          <button className="site-menu-toggle" aria-expanded={menuOpen} aria-controls="site-mobile-navigation" onClick={() => { setMenuOpen(!menuOpen); setAccountOpen(false); }}>{menuOpen ? "Close" : "Menu"}</button>
+          {authenticated ? <div className="site-account">
+            <button className="site-outline-button" aria-expanded={accountOpen} aria-controls="site-account-menu" onClick={() => { setAccountOpen(!accountOpen); setMenuOpen(false); }}>Account</button>
+            {accountOpen && <div className="site-account-menu" id="site-account-menu">
+              <p>{email}</p>
+              <Link href="/account" onClick={() => setAccountOpen(false)}>Your account</Link>
+              <Link href="/certifications" onClick={() => setAccountOpen(false)}>Your certifications</Link>
+              {isAdmin && <Link href="/admin/coverage" onClick={() => setAccountOpen(false)}>Admin dashboard</Link>}
+              <button onClick={() => { void logout(); setAccountOpen(false); }}>Sign out</button>
+            </div>}
+          </div> : <button className="site-outline-button" disabled={loading} onClick={() => setLoginOpen(true)}>{loading ? "Loading…" : "Sign in"}</button>}
         </div>
-      </nav>
-
-      {/* Mobile Menu */}
-      {showMobileMenu && (
-        <div className="sm:hidden border-b border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950">
-          <div className="px-4 py-3 space-y-1">
-            <div className="pb-3 mb-3 border-b border-zinc-100 dark:border-zinc-800">
-              <p className="text-xs font-medium text-zinc-400 uppercase tracking-wider mb-3">Practice Questions</p>
-              <div className="max-h-72 overflow-y-auto space-y-1">
-                {sortedCertifications.map((cert) => (
-                  <Link
-                    key={cert.slug}
-                    href={`/${cert.slug}`}
-                    onClick={() => setShowMobileMenu(false)}
-                    className="flex items-center gap-3 py-2"
-                  >
-                    <span className="inline-flex items-center justify-center min-w-[4.5rem] flex-shrink-0 px-2 py-1 text-sm font-bold text-emerald-700 bg-emerald-50 rounded-md whitespace-nowrap dark:text-emerald-300 dark:bg-emerald-900/40">
-                      {cert.name}
-                    </span>
-                    <span className="text-sm text-zinc-600 dark:text-zinc-400 leading-tight truncate">
-                      {cert.fullName}
-                    </span>
-                  </Link>
-                ))}
-              </div>
-            </div>
-            <Link
-              href="/certifications"
-              onClick={() => setShowMobileMenu(false)}
-              className="block py-2 text-sm font-medium text-emerald-600 dark:text-emerald-400"
-            >
-              View all certifications →
-            </Link>
-            <Link
-              href="/blog"
-              onClick={() => setShowMobileMenu(false)}
-              className="block py-2 text-sm font-medium text-zinc-600 dark:text-zinc-400"
-            >
-              Blog
-            </Link>
-            <Link
-              href="/pricing"
-              onClick={() => setShowMobileMenu(false)}
-              className="block py-2 text-sm font-medium text-zinc-600 dark:text-zinc-400"
-            >
-              Pricing
-            </Link>
-            <Link
-              href="/resources"
-              onClick={() => setShowMobileMenu(false)}
-              className="block py-2 text-sm font-medium text-zinc-600 dark:text-zinc-400"
-            >
-              Resources
-            </Link>
-            <Link
-              href="/salaries"
-              onClick={() => setShowMobileMenu(false)}
-              className="block py-2 text-sm font-medium text-zinc-600 dark:text-zinc-400"
-            >
-              💰 Salaries
-            </Link>
-          </div>
-        </div>
-      )}
-
-      <LoginModal
-        isOpen={showLoginModal}
-        onClose={() => setShowLoginModal(false)}
-        onPurchase={() => {
-          setShowLoginModal(false);
-          window.location.href = "/csa";
-        }}
-      />
-    </>
-  );
+      </div>
+      {menuOpen && <nav className="site-mobile-nav" id="site-mobile-navigation" aria-label="Mobile navigation">
+        {[...navigation, ["/blog", "Blog"], ["/compare", "Compare certifications"], ["/certification-paths", "Career paths"], ["/salaries", "Salaries"]].map(([href, label]) => <Link key={href} href={href} aria-current={pathname === href ? "page" : undefined} onClick={() => setMenuOpen(false)}>{label}</Link>)}
+      </nav>}
+    </header>
+    <LoginModal isOpen={loginOpen} onClose={() => setLoginOpen(false)} onPurchase={() => { setLoginOpen(false); window.location.href = "/certifications"; }} />
+  </>;
 }

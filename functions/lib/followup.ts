@@ -1,3 +1,5 @@
+import { INDIVIDUAL_GUARANTEE_DAYS } from "../../lib/purchase-guarantee";
+
 export interface FollowupEnv {
   SNREADY_ACCESS: KVNamespace;
   RESEND_API_KEY: string;
@@ -76,7 +78,8 @@ function describePurchase(plan: string, certification: string, certifications?: 
 function buildFollowupEmail(record: PurchaseFollowupRecord, siteUrl: string): { subject: string; html: string; text: string } {
   const certDescription = describePurchase(record.plan, record.certification, record.certifications);
   const escapedCertDescription = escapeHtml(certDescription);
-  const subject = "One question: did SNReady help you pass?";
+  const individual = record.plan === "single";
+  const subject = individual ? "Did you pass your exam?" : "One question: did SNReady help you pass?";
   const loginUrl = `${siteUrl.replace(/\/$/, "")}/login`;
   const feedbackUrl = record.feedbackToken
     ? `${siteUrl.replace(/\/$/, "")}/feedback?token=${encodeURIComponent(record.feedbackToken)}`
@@ -100,6 +103,15 @@ function buildFollowupEmail(record: PurchaseFollowupRecord, siteUrl: string): { 
   `;
 
   const text = `SNReady\n\nHey — checking in after your SNReady purchase for ${certDescription}.\n\nThe only result that really matters is whether the questions helped on exam day. Did you pass—and what should we improve for the next candidate?\n\nShare your result (about 30 seconds): ${feedbackUrl}\n\nOr reply with just “passed”, “not yet”, or “not this time”. We will only feature comments if you explicitly allow it.\n\nDo not send me customer follow-ups: ${unsubscribeUrl}`;
+
+  if (individual) {
+    const guarantee = 'Did you pass? If you didn’t pass, simply reply “no” to this email and we’ll refund your individual certification purchase in full. Or reach out anytime to ask for a refund. No questions asked.';
+    return {
+      subject,
+      html: `<div style="font-family:Arial,sans-serif;max-width:620px;margin:auto;padding:24px;color:#172d46"><h1>SNReady</h1><p>It’s been 15 days since your purchase for <strong>${escapedCertDescription}</strong>.</p><p>${guarantee}</p><p>No form or proof required. Just reply to this email.</p><p style="font-size:14px">If you’d like to share more, <a href="${feedbackUrl}">leave optional feedback</a>.</p><p style="font-size:12px"><a href="${unsubscribeUrl}">Do not send me customer follow-ups</a>.</p></div>`,
+      text: `SNReady\n\nIt’s been 15 days since your purchase for ${certDescription}.\n\n${guarantee}\n\nNo form or proof required. Just reply to this email.\n\nOptional feedback: ${feedbackUrl}\n\nDo not send me customer follow-ups: ${unsubscribeUrl}`,
+    };
+  }
 
   return { subject, html, text };
 }
@@ -162,7 +174,7 @@ export async function enqueuePurchaseFollowup(
 
   const normalizedEmail = normalizeEmail(purchase.email);
   const purchasedAt = purchase.purchasedAt || Date.now();
-  const dueAt = purchase.dueAt ?? purchasedAt + getFollowupDelayDays(env) * DAY_MS;
+  const dueAt = purchase.dueAt ?? purchasedAt + (purchase.plan === "single" ? INDIVIDUAL_GUARANTEE_DAYS : getFollowupDelayDays(env)) * DAY_MS;
   const feedbackToken = crypto.randomUUID();
   const record: PurchaseFollowupRecord = {
     sessionId: purchase.sessionId,

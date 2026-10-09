@@ -52,7 +52,7 @@ export default function SalariesClient() {
         // Invalid stored data, ignore
       }
     }
-    
+
     // Fetch live stats for hero
     fetch('/api/salaries/stats')
       .then(res => res.json() as Promise<SalaryStatsResponse>)
@@ -103,7 +103,7 @@ export default function SalariesClient() {
 
     const totalComp = data.baseSalary || (data.hourlyRate || 0) * 2080;
     const roleStats = stats.byRole?.find((r) => r.role === data.role) || stats.overall;
-    
+
     let percentile = 50;
     if (roleStats) {
       if (totalComp <= roleStats.p25) percentile = 25;
@@ -121,12 +121,12 @@ export default function SalariesClient() {
       sampleSize: roleStats?.count || stats.overall.count,
       comparisonGroup: `${data.role}s with ${data.yoeServiceNow} experience`,
     };
-    
+
     localStorage.setItem(
       STORAGE_KEY,
       JSON.stringify({ submission: data, result })
     );
-    
+
     setPercentileResult(result);
     setHasSubmitted(true);
   };
@@ -138,14 +138,7 @@ export default function SalariesClient() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
       {/* Hero Section */}
-      <div className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
-        {/* Background decoration */}
-        <div className="absolute inset-0 opacity-30">
-          <div className="absolute top-0 -left-4 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl animate-pulse" />
-          <div className="absolute top-0 -right-4 w-72 h-72 bg-cyan-500 rounded-full mix-blend-multiply filter blur-3xl animate-pulse delay-1000" />
-          <div className="absolute -bottom-8 left-20 w-72 h-72 bg-indigo-500 rounded-full mix-blend-multiply filter blur-3xl animate-pulse delay-500" />
-        </div>
-        
+      <div className="salary-hero">
         <div className="relative container mx-auto px-4 py-16 md:py-24">
           <div className="max-w-4xl">
             {/* Badge */}
@@ -160,9 +153,9 @@ export default function SalariesClient() {
                 Real Data. Real People.
               </span>
             </h1>
-            
+
             <p className="text-lg md:text-xl text-slate-300 max-w-2xl mb-8">
-              Stop guessing what you're worth. See exactly what admins, developers, 
+              Stop guessing what you&apos;re worth. See exactly what admins, developers,
               architects, and consultants earn — straight from the source.
             </p>
 
@@ -173,9 +166,7 @@ export default function SalariesClient() {
                 className="px-6 py-3 bg-white text-slate-900 rounded-xl font-semibold hover:bg-blue-50 transition shadow-lg shadow-black/20 flex items-center gap-2"
               >
                 <span>Add Your Salary</span>
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                </svg>
+
               </button>
               <button
                 onClick={() => {
@@ -208,12 +199,6 @@ export default function SalariesClient() {
           </div>
         </div>
 
-        {/* Wave separator */}
-        <div className="absolute bottom-0 left-0 right-0">
-          <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full">
-            <path d="M0 120L60 105C120 90 240 60 360 45C480 30 600 30 720 37.5C840 45 960 60 1080 67.5C1200 75 1320 75 1380 75L1440 75V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" fill="rgb(248 250 252)"/>
-          </svg>
-        </div>
       </div>
 
       <div className="container mx-auto px-4 py-8">
@@ -276,11 +261,11 @@ export default function SalariesClient() {
                   <h3 className="font-semibold text-slate-900">100% Anonymous</h3>
                   <p className="text-sm text-slate-600">
                     Your individual data is never shown. We only display aggregates.
-                    Company names are generalized (e.g., "Big 4 Partner").
+                    Company names are generalized (e.g., &quot;Big 4 Partner&quot;).
                   </p>
                 </div>
               </div>
-              
+
               <SalaryForm
                 onSubmit={handleSubmit}
                 onComplete={handleFormComplete}
@@ -295,7 +280,7 @@ export default function SalariesClient() {
               result={percentileResult}
               currency={submittedData?.currency || "USD"}
             />
-            
+
             <div className="text-center">
               <button
                 onClick={() => setView("landing")}
@@ -323,7 +308,7 @@ export default function SalariesClient() {
                 {percentileResult.percentile >= 75 && (
                   <div className="p-4 bg-green-50 rounded-xl border border-green-100">
                     <p className="text-green-800">
-                      <strong>Top quartile!</strong> You're earning more than 75% of your peers.
+                      <strong>Top quartile!</strong> You&apos;re earning more than 75% of your peers.
                       Consider mentoring or consulting to maximize your expertise.
                     </p>
                   </div>
@@ -331,7 +316,7 @@ export default function SalariesClient() {
                 <div className="p-4 bg-blue-50 rounded-xl border border-blue-100">
                   <p className="text-blue-800">
                     <strong>Want to level up?</strong> Professionals with 2+ certifications
-                    earn 18% more on average. 
+                    earn 18% more on average.
                     <a href="/certifications" className="underline ml-1 hover:text-blue-600">
                       Explore certifications →
                     </a>
@@ -363,7 +348,7 @@ export default function SalariesClient() {
               </div>
               <h3 className="text-lg font-semibold text-slate-900 mb-2">Community Verified</h3>
               <p className="text-slate-600">
-                Every data point comes from an anonymous self-reported submission. 
+                Every data point comes from an anonymous self-reported submission.
                 We verify quality through outlier detection and cross-reference with benchmarks.
               </p>
             </div>
@@ -376,8 +361,8 @@ export default function SalariesClient() {
               </div>
               <h3 className="text-lg font-semibold text-slate-900 mb-2">Privacy First</h3>
               <p className="text-slate-600">
-                Company names are never displayed—only aggregated categories like 
-                "Partner/Consultancy" or "End-user."
+                Company names are never displayed—only aggregated categories like
+                &quot;Partner/Consultancy&quot; or &quot;End-user.&quot;
               </p>
             </div>
           </div>
@@ -388,12 +373,12 @@ export default function SalariesClient() {
               ServiceNow Salary FAQ
             </h3>
             <p className="text-sm text-slate-500 mb-6">
-              Data sourced from Glassdoor, ZipRecruiter, Indeed, Salary.com, and community salary threads. 
+              Data sourced from Glassdoor, ZipRecruiter, Indeed, Salary.com, and community salary threads.
               <button onClick={() => setView("form")} className="text-blue-600 underline ml-1 hover:text-blue-700">
                 Submit yours
               </button> to improve accuracy.
             </p>
-            
+
             <div className="space-y-4">
               <details className="group bg-white rounded-xl p-4 shadow-sm">
                 <summary className="cursor-pointer font-semibold text-slate-900 flex items-center justify-between">
@@ -403,13 +388,13 @@ export default function SalariesClient() {
                   </svg>
                 </summary>
                 <p className="mt-3 text-slate-600 leading-relaxed">
-                  The median ServiceNow developer salary is <strong>$123,000</strong> in the United States, 
-                  according to Glassdoor and ZipRecruiter data. The middle 50% earn between $100,000 (25th percentile) 
-                  and $150,000 (75th percentile). Senior developers and those with multiple certifications 
+                  The median ServiceNow developer salary is <strong>$123,000</strong> in the United States,
+                  according to Glassdoor and ZipRecruiter data. The middle 50% earn between $100,000 (25th percentile)
+                  and $150,000 (75th percentile). Senior developers and those with multiple certifications
                   often exceed $185,000.
                 </p>
               </details>
-              
+
               <details className="group bg-white rounded-xl p-4 shadow-sm">
                 <summary className="cursor-pointer font-semibold text-slate-900 flex items-center justify-between">
                   What is the average ServiceNow administrator salary?
@@ -418,12 +403,12 @@ export default function SalariesClient() {
                   </svg>
                 </summary>
                 <p className="mt-3 text-slate-600 leading-relaxed">
-                  ServiceNow administrators earn a median of <strong>$95,000</strong> in the US. Entry-level admins 
-                  with just CSA certification typically start around $65,000-$80,000, while experienced admins 
+                  ServiceNow administrators earn a median of <strong>$95,000</strong> in the US. Entry-level admins
+                  with just CSA certification typically start around $65,000-$80,000, while experienced admins
                   (5+ years) report salaries of $120,000-$150,000.
                 </p>
               </details>
-              
+
               <details className="group bg-white rounded-xl p-4 shadow-sm">
                 <summary className="cursor-pointer font-semibold text-slate-900 flex items-center justify-between">
                   How much do ServiceNow consultants charge per hour?
@@ -433,11 +418,11 @@ export default function SalariesClient() {
                 </summary>
                 <p className="mt-3 text-slate-600 leading-relaxed">
                   Based on community data, independent ServiceNow consultants typically charge <strong>$65-$125/hour</strong>,
-                  with the median around $85/hour. Highly specialized architects and CTAs command <strong>$125-$175+/hour</strong>. 
+                  with the median around $85/hour. Highly specialized architects and CTAs command <strong>$125-$175+/hour</strong>.
                   W2 contractors through agencies typically see $90-$120/hour bill rates with 60-70% take-home.
                 </p>
               </details>
-              
+
               <details className="group bg-white rounded-xl p-4 shadow-sm">
                 <summary className="cursor-pointer font-semibold text-slate-900 flex items-center justify-between">
                   Does ServiceNow certification increase salary?
@@ -447,7 +432,7 @@ export default function SalariesClient() {
                 </summary>
                 <p className="mt-3 text-slate-600 leading-relaxed">
                   Yes. Industry data shows that certified professionals earn <strong>15-25% more</strong> than
-                  non-certified peers in similar roles. The CSA is table stakes for most positions. 
+                  non-certified peers in similar roles. The CSA is table stakes for most positions.
                   Adding CAD or a CIS certification typically correlates with $10-20K higher offers.
                   CTA holders report the highest premiums, often $50K+ above developer averages.
                 </p>

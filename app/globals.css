@@ -1,31 +1,341 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap");
 @import "tailwindcss";
 
+/* The study-room palette is shared by every route, including the study tools. */
+@custom-variant dark (&:where(.dark, .dark *));
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: light;
+  --background: #f7f8fa;
+  --foreground: #172d46;
+  --ink: #172d46;
+  --paper: #f7f8fa;
+  --yellow: #f6e64a;
+  --line: #ccd3da;
+  --text-primary: #172d46;
+  --text-secondary: #53657a;
+  --text-muted: #53657a;
+  --accent: #172d46;
+  --accent-light: #f6e64a;
+  --bg-primary: #f7f8fa;
+  --bg-secondary: #ffffff;
+  --bg-elevated: #edf1f6;
+  --border: #ccd3da;
+  --border-dark: #53657a;
 }
-
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: "DM Sans", var(--font-geist-sans), sans-serif;
   --font-mono: var(--font-geist-mono);
+  --color-zinc-50: #f7f8fa;
+  --color-zinc-100: #edf1f6;
+  --color-zinc-200: #ccd3da;
+  --color-zinc-300: #aebac8;
+  --color-zinc-400: #64758a;
+  --color-zinc-500: #53657a;
+  --color-zinc-600: #42556c;
+  --color-zinc-700: #2e455e;
+  --color-zinc-800: #21374f;
+  --color-zinc-900: #172d46;
+  --color-zinc-950: #102237;
+  --color-gray-50: #f7f8fa;
+  --color-gray-100: #edf1f6;
+  --color-gray-200: #ccd3da;
+  --color-gray-300: #aebac8;
+  --color-gray-400: #64758a;
+  --color-gray-500: #53657a;
+  --color-gray-600: #42556c;
+  --color-gray-700: #2e455e;
+  --color-gray-800: #21374f;
+  --color-gray-900: #172d46;
+  --color-gray-950: #102237;
+  --color-slate-50: #f7f8fa;
+  --color-slate-100: #edf1f6;
+  --color-slate-200: #ccd3da;
+  --color-slate-300: #aebac8;
+  --color-slate-400: #64758a;
+  --color-slate-500: #53657a;
+  --color-slate-600: #42556c;
+  --color-slate-700: #2e455e;
+  --color-slate-800: #21374f;
+  --color-slate-900: #172d46;
+  --color-slate-950: #102237;
+  --color-neutral-50: #f7f8fa;
+  --color-neutral-100: #edf1f6;
+  --color-neutral-200: #ccd3da;
+  --color-neutral-300: #aebac8;
+  --color-neutral-400: #64758a;
+  --color-neutral-500: #53657a;
+  --color-neutral-600: #42556c;
+  --color-neutral-700: #2e455e;
+  --color-neutral-800: #21374f;
+  --color-neutral-900: #172d46;
+  --color-neutral-950: #102237;
+  --color-stone-50: #f7f8fa;
+  --color-stone-100: #edf1f6;
+  --color-stone-200: #ccd3da;
+  --color-stone-300: #aebac8;
+  --color-stone-400: #64758a;
+  --color-stone-500: #53657a;
+  --color-stone-600: #42556c;
+  --color-stone-700: #2e455e;
+  --color-stone-800: #21374f;
+  --color-stone-900: #172d46;
+  --color-stone-950: #102237;
+  --color-emerald-50: #edf1f6;
+  --color-emerald-100: #f5ed9f;
+  --color-emerald-200: #ccd3da;
+  --color-emerald-300: #93a8be;
+  --color-emerald-400: #526f8e;
+  --color-emerald-500: #294865;
+  --color-emerald-600: #172d46;
+  --color-emerald-700: #102237;
+  --color-emerald-800: #172d46;
+  --color-emerald-900: #172d46;
+  --color-emerald-950: #102237;
+  --color-blue-50: #edf1f6;
+  --color-blue-100: #f5ed9f;
+  --color-blue-200: #ccd3da;
+  --color-blue-300: #93a8be;
+  --color-blue-400: #526f8e;
+  --color-blue-500: #294865;
+  --color-blue-600: #172d46;
+  --color-blue-700: #102237;
+  --color-blue-800: #172d46;
+  --color-blue-900: #172d46;
+  --color-blue-950: #102237;
+  --color-sky-50: #edf1f6;
+  --color-sky-100: #f5ed9f;
+  --color-sky-200: #ccd3da;
+  --color-sky-300: #93a8be;
+  --color-sky-400: #526f8e;
+  --color-sky-500: #294865;
+  --color-sky-600: #172d46;
+  --color-sky-700: #102237;
+  --color-sky-800: #172d46;
+  --color-sky-900: #172d46;
+  --color-sky-950: #102237;
+  --color-indigo-50: #edf1f6;
+  --color-indigo-100: #f5ed9f;
+  --color-indigo-200: #ccd3da;
+  --color-indigo-300: #93a8be;
+  --color-indigo-400: #526f8e;
+  --color-indigo-500: #294865;
+  --color-indigo-600: #172d46;
+  --color-indigo-700: #102237;
+  --color-indigo-800: #172d46;
+  --color-indigo-900: #172d46;
+  --color-indigo-950: #102237;
+  --color-violet-50: #edf1f6;
+  --color-violet-100: #f5ed9f;
+  --color-violet-200: #ccd3da;
+  --color-violet-300: #93a8be;
+  --color-violet-400: #526f8e;
+  --color-violet-500: #294865;
+  --color-violet-600: #172d46;
+  --color-violet-700: #102237;
+  --color-violet-800: #172d46;
+  --color-violet-900: #172d46;
+  --color-violet-950: #102237;
+  --color-purple-50: #edf1f6;
+  --color-purple-100: #f5ed9f;
+  --color-purple-200: #ccd3da;
+  --color-purple-300: #93a8be;
+  --color-purple-400: #526f8e;
+  --color-purple-500: #294865;
+  --color-purple-600: #172d46;
+  --color-purple-700: #102237;
+  --color-purple-800: #172d46;
+  --color-purple-900: #172d46;
+  --color-purple-950: #102237;
+  --color-cyan-50: #edf1f6;
+  --color-cyan-100: #f5ed9f;
+  --color-cyan-200: #ccd3da;
+  --color-cyan-300: #93a8be;
+  --color-cyan-400: #526f8e;
+  --color-cyan-500: #294865;
+  --color-cyan-600: #172d46;
+  --color-cyan-700: #102237;
+  --color-cyan-800: #172d46;
+  --color-cyan-900: #172d46;
+  --color-cyan-950: #102237;
+  --color-teal-50: #edf1f6;
+  --color-teal-100: #f5ed9f;
+  --color-teal-200: #ccd3da;
+  --color-teal-300: #93a8be;
+  --color-teal-400: #526f8e;
+  --color-teal-500: #294865;
+  --color-teal-600: #172d46;
+  --color-teal-700: #102237;
+  --color-teal-800: #172d46;
+  --color-teal-900: #172d46;
+  --color-teal-950: #102237;
+  --color-fuchsia-50: #edf1f6;
+  --color-fuchsia-100: #f5ed9f;
+  --color-fuchsia-200: #ccd3da;
+  --color-fuchsia-300: #93a8be;
+  --color-fuchsia-400: #526f8e;
+  --color-fuchsia-500: #294865;
+  --color-fuchsia-600: #172d46;
+  --color-fuchsia-700: #102237;
+  --color-fuchsia-800: #172d46;
+  --color-fuchsia-900: #172d46;
+  --color-fuchsia-950: #102237;
+  --color-pink-50: #edf1f6;
+  --color-pink-100: #f5ed9f;
+  --color-pink-200: #ccd3da;
+  --color-pink-300: #93a8be;
+  --color-pink-400: #526f8e;
+  --color-pink-500: #294865;
+  --color-pink-600: #172d46;
+  --color-pink-700: #102237;
+  --color-pink-800: #172d46;
+  --color-pink-900: #172d46;
+  --color-pink-950: #102237;
+  --radius-xs: 0px;
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
+  --radius-2xl: 0px;
+  --radius-3xl: 0px;
+  --radius-4xl: 0px;
+  --shadow-sm: 0 2px 0 #ccd3da;
+  --shadow-md: 4px 4px 0 #ccd3da;
+  --shadow-lg: 6px 6px 0 #ccd3da;
+  --shadow-xl: 8px 8px 0 #ccd3da;
+  --shadow-2xl: 10px 10px 0 #ccd3da;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@layer base {
+  html { scroll-behavior: smooth; }
+  body { background: var(--paper); color: var(--ink); font-family: "DM Sans", sans-serif; }
+  h1, h2, h3, h4 { font-family: "Space Grotesk", sans-serif; font-weight: 500; letter-spacing: -.035em; }
+  h1 { line-height: 1.08; }
+  h2, h3, h4 { line-height: 1.2; }
+  p { line-height: 1.65; }
+  button, input, select, textarea { font-family: inherit; }
+  button, a, input, select, textarea { outline-offset: 4px; }
+  :focus-visible { outline: 2px solid #526f8e; }
+  ::selection { background: var(--yellow); color: var(--ink); }
 }
 
-html {
-  overflow-x: hidden;
-}
+/* Narrative introductions have a flat paper surface; overlays and data charts
+   retain their own gradients because those encode information or obscure content. */
+main section[class*="bg-gradient"] { background-image: none; background-color: var(--paper); }
+main section[class*="bg-gradient"].text-white { background-color: var(--ink); }
+main > div.min-h-screen[class*="bg-gradient"] { background-image: none; background-color: var(--paper); }
+main section:first-of-type { border-bottom-color: var(--line); }
+main > div > section:first-of-type:not(.pricing) h1,
+main > section:first-of-type h1 { font-weight: 500; }
+main :is(.rounded-xl, .rounded-2xl, .rounded-3xl) { border-radius: 0; }
+main :is(a, button)[class*="bg-emerald-6"],
+main :is(a, button)[class*="bg-blue-6"] { background-image: none; background-color: var(--ink); color: white; border: 1px solid var(--ink); }
+main :is(a, button)[class*="bg-emerald-6"]:hover,
+main :is(a, button)[class*="bg-blue-6"]:hover { background-color: #294865; }
+main [class*="prose"] { color: var(--ink); }
+main [class*="prose"] a { text-decoration-color: var(--ink); }
+main table { border-collapse: collapse; }
+main th { font-weight: 600; color: var(--ink); }
+main td, main th { border-color: var(--line); }
+main .text-4xl, main .text-5xl, main .text-6xl { font-weight: 500; }
+main [class*="shadow-emerald"], main [class*="shadow-blue"] { --tw-shadow-color: #ccd3da; }
+main .animate-ping { animation: none; }
+.subtle-gradient { background: var(--paper); }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-  overflow-x: hidden;
+.brand-wordmark { display: inline-flex; align-items: baseline; color: var(--ink); font-family: "Space Grotesk", sans-serif; font-size: 30px; font-weight: 700; letter-spacing: -1.6px; white-space: nowrap; }
+.brand-wordmark > span { display: inline-block; width: 10px; height: 10px; margin-left: 4px; background: var(--yellow); }
+.site-header { position: relative; z-index: 30; background: var(--paper); }
+.site-header-inner { min-height: 98px; margin: 0 auto; max-width: 1320px; padding: 20px 32px; border-bottom: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; gap: 32px; }
+.site-desktop-nav { display: flex; align-items: center; gap: 26px; font-size: 14px; font-weight: 600; }
+.site-desktop-nav a { padding: 8px 0; border-bottom: 2px solid transparent; }
+.site-desktop-nav a:hover, .site-desktop-nav a[aria-current="page"] { border-bottom-color: var(--ink); }
+.site-header-actions { display: flex; align-items: center; gap: 12px; }
+.site-outline-button, .site-menu-toggle { background: transparent; border: 1px solid var(--ink); padding: 12px 18px; font-size: 14px; font-weight: 600; cursor: pointer; }
+.site-outline-button:hover, .site-menu-toggle:hover { background: var(--yellow); }
+.site-outline-button:disabled { opacity: .65; cursor: wait; }
+.site-account { position: relative; }
+.site-account-menu { position: absolute; right: 0; top: calc(100% + 10px); width: min(280px, 85vw); background: white; border: 1px solid var(--ink); padding: 8px; box-shadow: 5px 5px 0 var(--yellow); }
+.site-account-menu p { padding: 12px; font-size: 12px; overflow-wrap: anywhere; color: #53657a; border-bottom: 1px solid var(--line); }
+.site-account-menu :is(a, button) { display: block; width: 100%; text-align: left; padding: 12px; font-size: 14px; }
+.site-account-menu :is(a, button):hover { background: var(--paper); }
+.site-menu-toggle, .site-mobile-nav { display: none; }
+.site-footer { background: var(--paper); color: var(--ink); padding: 54px 32px 28px; border-top: 1px solid var(--ink); }
+.site-footer-grid { max-width: 1256px; margin: auto; display: grid; grid-template-columns: 1.7fr 1fr 1fr 1fr; gap: 48px; }
+.site-footer-grid p { max-width: 290px; margin-top: 16px; color: #53657a; font-size: 14px; }
+.site-footer-grid h2 { font-family: "DM Sans", sans-serif; font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 20px; }
+.site-footer-grid nav { display: grid; gap: 12px; font-size: 14px; }
+.site-footer a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.site-footer-note { max-width: 1256px; margin: 36px auto 0; padding-top: 24px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; gap: 20px; color: #53657a; font-size: 12px; }
+.cert-index-card { display: flex; flex-direction: column; padding: 26px; border: 1px solid var(--line); background: white; color: var(--ink); min-height: 250px; transition: background .15s; }
+.cert-index-card:hover { background: #edf1f6; border-color: var(--ink); }
+.cert-index-free { background: var(--yellow); }
+.cert-index-free:hover { background: #efe04a; }
+.cert-index-card h3 { font-size: 30px; margin: 24px 0 8px; }
+.cert-index-card p { font-size: 15px; margin-bottom: 20px; }
+.cert-index-meta { display: flex; justify-content: space-between; gap: 12px; color: #53657a; font-size: 12px; text-transform: uppercase; letter-spacing: .5px; }
+.cert-index-details { display: flex; flex-wrap: wrap; gap: 8px 16px; color: #53657a; font-size: 13px; }
+.cert-index-bottom { margin-top: auto; padding-top: 20px; display: flex; justify-content: space-between; gap: 12px; font-size: 13px; }
+.cert-index-bottom span:last-child { text-decoration: underline; text-underline-offset: 4px; }
+.cert-index-coming { background: transparent; }
+@media (max-width: 1000px) {
+  .site-desktop-nav { gap: 16px; }
+  .site-header-inner { gap: 20px; }
+  .site-footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
 }
+@media (max-width: 800px) {
+  .site-desktop-nav { display: none; }
+  .site-menu-toggle { display: inline-block; }
+  .site-mobile-nav { display: grid; padding: 16px 24px 24px; gap: 0; border-bottom: 1px solid var(--line); }
+  .site-mobile-nav a { padding: 12px 0; border-bottom: 1px solid var(--line); font-size: 15px; }
+  .site-header-inner { min-height: 78px; padding: 16px 24px; }
+}
+@media (max-width: 480px) {
+  .site-header-inner { gap: 12px; padding: 16px; }
+  .brand-wordmark { font-size: 26px; }
+  .site-outline-button, .site-menu-toggle { padding: 10px 12px; }
+  .site-footer { padding: 40px 20px 24px; }
+  .site-footer-grid { gap: 30px 24px; }
+  .site-footer-grid > div:first-child { grid-column: 1/-1; }
+  .site-footer-note { flex-direction: column; }
+  .cert-index-card { padding: 22px; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition-duration: 0s !important; animation-duration: 0s !important; } }
+/* Consistent headings and editorial calls to action across older page templates. */
+main :is(h1, h2, h3, h4) { font-family: "Space Grotesk", sans-serif; font-weight: 500; }
+main div.text-white[class*="from-emerald"],
+main div.text-white[class*="from-slate-900"] { background-image: none; background-color: var(--ink); }
+main a[class*="hover:-translate"] { transform: none; }
+main a[class*="bg-gradient"][class*="text-white"],
+main button[class*="bg-gradient"][class*="text-white"] { background-image: none; background-color: var(--ink); }
+/* Page introductions use the same left-aligned rhythm as the study room. */
+main:not(:has(.study-room)) h1::before {
+  content: ""; display: block; width: 40px; height: 6px;
+  background: var(--yellow); margin-bottom: 24px;
+}
+main div.text-center:has(> h1) { text-align: left; }
+main div.text-center:has(> h1) > p { margin-inline: 0; }
+main div.text-center:has(> h1) > .flex { justify-content: flex-start; }
+.salary-hero { position: relative; background: var(--ink); color: white; border-bottom: 1px solid var(--ink); }
+.salary-hero > .container { max-width: 1152px; }
+.salary-hero h1 span { color: var(--yellow); background: none; -webkit-text-fill-color: var(--yellow); }
+.salary-hero .text-slate-400, .salary-hero .text-blue-200 { color: #c2ccda; }
+.salary-hero button { box-shadow: none; }
+.salary-hero button:first-child { background: var(--yellow); color: var(--ink); }
+main .card { border: 1px solid var(--ink); background: white; }
+.btn-primary { border: 1px solid var(--ink); background: var(--ink); color: white; font-size: 14px; font-weight: 600; cursor: pointer; }
+.btn-secondary { border: 1px solid var(--line); background: white; color: var(--ink); font-size: 14px; font-weight: 600; cursor: pointer; }
+.btn-primary:hover { background: #294865; }
+.btn-secondary:hover { border-color: var(--ink); background: var(--paper); }
+main a.inline-flex.h-12 { min-height: 3rem; height: auto; padding-block: 12px; text-align: center; }
+.guaranteed-purchase { display: flex; flex-direction: column; flex: 1; min-width: 0; }
+.guaranteed-purchase > button { width: 100%; }
+.purchase-guarantee { margin-top: 24px; padding: 20px; border: 1px solid var(--line); border-top: 4px solid var(--yellow); color: var(--ink); background: var(--paper); text-align: left; }
+.purchase-guarantee strong { display: block; font-family: "Space Grotesk", sans-serif; font-size: 20px; font-weight: 500; letter-spacing: -.5px; }
+.purchase-guarantee p { margin: 10px 0; font-size: 14px; line-height: 1.6; }
+.purchase-guarantee small { display: block; font-size: 12px; line-height: 1.5; color: #53657a; }
+.purchase-guarantee-compact { padding: 14px 0 0; margin-top: 14px; background: transparent; border: 0; border-top: 2px solid var(--yellow); }
+.purchase-guarantee-compact strong { font-size: 16px; letter-spacing: -.25px; }
+.study-room .pricing .purchase-guarantee { color: white; }
+.study-room .pricing .purchase-guarantee p { color: #c2ccda; }
+.study-room .pricing .purchase-guarantee small { color: #c2ccda; }
