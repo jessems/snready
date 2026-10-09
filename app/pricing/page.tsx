@@ -1,3 +1,5 @@
+import PurchaseGuarantee from "@/components/PurchaseGuarantee";
+import { INDIVIDUAL_GUARANTEE_COPY, INDIVIDUAL_GUARANTEE_SCOPE } from "@/lib/purchase-guarantee";
 import { Metadata } from "next";
 import Link from "next/link";
 import { CheckoutButton } from "@/components/CheckoutButton";
@@ -124,7 +126,7 @@ export default function PricingPage() {
         name: "Can I get a refund?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "We offer a 7-day money-back guarantee. If you're not satisfied with the quality of questions, contact us within 7 days of purchase for a full refund.",
+          text: `${INDIVIDUAL_GUARANTEE_COPY} ${INDIVIDUAL_GUARANTEE_SCOPE}`,
         },
       },
     ],
@@ -269,7 +271,7 @@ export default function PricingPage() {
                   "Domain-based study mode",
                   "Aligned with the latest official exam blueprints",
                   "Free updates when new versions release",
-                  "7-day money-back guarantee",
+                  "Pass your exam or your money back",
                 ].map((feature) => (
                   <li key={feature} className="flex items-start gap-3">
                     <CheckIcon className="h-5 w-5 flex-shrink-0 text-emerald-500 mt-0.5" />
@@ -287,6 +289,7 @@ export default function PricingPage() {
                 Browse Certifications
               </Link>
 
+              <PurchaseGuarantee />
               <p className="mt-4 text-center text-sm text-zinc-500 dark:text-zinc-400">
                 {totalFreeQuestions} free questions available — try before you
                 buy
@@ -315,7 +318,6 @@ export default function PricingPage() {
                   `${totalQuestions.toLocaleString()}+ practice questions`,
                   "Timed mock exams for every certification",
                   "Future certifications included",
-                  "7-day money-back guarantee",
                 ].map((feature) => (
                   <li key={feature} className="flex items-start gap-3">
                     <CheckIcon className="h-5 w-5 flex-shrink-0 text-emerald-500 mt-0.5" />
@@ -509,7 +511,7 @@ export default function PricingPage() {
               },
               {
                 q: "Can I get a refund?",
-                a: "Yes. We offer a 7-day money-back guarantee. If you're not satisfied with the quality of questions, contact us within 7 days of purchase for a full refund, no questions asked.",
+                a: `${INDIVIDUAL_GUARANTEE_COPY} ${INDIVIDUAL_GUARANTEE_SCOPE}`,
               },
             ].map((faq) => (
               <div key={faq.q}>

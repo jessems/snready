@@ -2,9 +2,8 @@ import type { Metadata } from "next";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import Script from "next/script";
-import Link from "next/link";
+import SiteFooter from "@/components/SiteFooter";
 import { BASE_URL } from "@/lib/seo";
-import { getPricingSummary } from "@/lib/data";
 import { Providers } from "@/components/Providers";
 import { Analytics } from "@/components/Analytics";
 import { GA_MEASUREMENT_ID, GOOGLE_ADS_ID } from "@/lib/analytics";
@@ -119,161 +118,8 @@ export default function RootLayout({
             {children}
           </main>
         </Providers>
-        <footer className="border-t border-zinc-200 py-12 dark:border-zinc-800">
-          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
-              {/* Certifications */}
-              <div>
-                <h3 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
-                  Certifications
-                </h3>
-                <div className="mt-4 space-y-3">
-                  <Link
-                    href="/csa"
-                    className="block text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
-                  >
-                    CSA
-                  </Link>
-                  <Link
-                    href="/cis-df"
-                    className="block text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
-                  >
-                    CIS-DF
-                  </Link>
-                  <Link
-                    href="/cad"
-                    className="block text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
-                  >
-                    CAD
-                  </Link>
-                  <Link
-                    href="/cis-itsm"
-                    className="block text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
-                  >
-                    CIS-ITSM
-                  </Link>
-                  <Link
-                    href="/cta"
-                    className="block text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
-                  >
-                    CTA
-                  </Link>
-                  <Link
-                    href="/certifications"
-                    className="block text-sm text-emerald-600 hover:text-emerald-700 dark:text-emerald-400 dark:hover:text-emerald-300"
-                  >
-                    All Certifications
-                  </Link>
-                </div>
-              </div>
-
-              {/* Resources */}
-              <div>
-                <h3 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
-                  Resources
-                </h3>
-                <div className="mt-4 space-y-3">
-                  <Link
-                    href="/pricing"
-                    className="block text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
-                  >
-                    Pricing
-                  </Link>
-                  <Link
-                    href="/resources"
-                    className="block text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
-                  >
-                    Free SN Resources
-                  </Link>
-                  <Link
-                    href="/certification-paths"
-                    className="block text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
-                  >
-                    Certification Paths
-                  </Link>
-                  <Link
-                    href="/blog"
-                    className="block text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
-                  >
-                    Blog
-                  </Link>
-                  <Link
-                    href="/compare"
-                    className="block text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
-                  >
-                    Compare Certifications
-                  </Link>
-                  <Link
-                    href="/version-diff"
-                    className="block text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
-                  >
-                    Version Diff
-                  </Link>
-                </div>
-              </div>
-
-              {/* Popular Comparisons */}
-              <div>
-                <h3 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
-                  Popular Comparisons
-                </h3>
-                <div className="mt-4 space-y-3">
-                  <Link
-                    href="/compare/csa-vs-cad"
-                    className="block text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
-                  >
-                    CSA vs CAD
-                  </Link>
-                  <Link
-                    href="/compare/csa-vs-cis-itsm"
-                    className="block text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
-                  >
-                    CSA vs CIS-ITSM
-                  </Link>
-                  <Link
-                    href="/compare/cis-discovery-vs-cis-sm"
-                    className="block text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
-                  >
-                    CIS-Discovery vs CIS-SM
-                  </Link>
-                </div>
-              </div>
-
-              {/* About */}
-              <div>
-                <h3 className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
-                  SNReady
-                </h3>
-                <p className="mt-4 text-sm text-zinc-600 dark:text-zinc-400">
-                  Practice questions derived from official Now Learning content.
-                  {footerSummary()}
-                </p>
-                <div className="mt-4 space-y-2">
-                  <a
-                    href="mailto:jesse@snready.com"
-                    className="block text-sm text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
-                  >
-                    Contact
-                  </a>
-                </div>
-              </div>
-            </div>
-            
-            <div className="mt-8 border-t border-zinc-200 pt-8 text-center dark:border-zinc-700">
-              <p className="text-sm text-zinc-500">
-                SNReady - Your path to ServiceNow certification success
-              </p>
-            </div>
-          </div>
-        </footer>
+        <SiteFooter />
       </body>
     </html>
   );
-}
-
-function footerSummary(): string {
-  const { readyCount, totalQuestions, freeCertifications } = getPricingSummary();
-  const roundedQuestions = Math.floor(totalQuestions / 100) * 100;
-  const free = freeCertifications.map((cert) => cert.name).join(" and ");
-  return `${readyCount} certifications, ${roundedQuestions.toLocaleString("en-US")}+ questions. ${free ? `${free} free, ` : ""}$9 lifetime access per certification.`;
 }

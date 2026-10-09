@@ -2,11 +2,13 @@
 
 SNReady sends an automated, one-time outcome check-in after a completed Stripe checkout. The buyer can report whether they took and passed the exam, rate how helpful the practice questions were, and optionally provide a comment with separate permission to feature it.
 
+Individual certification purchases receive a check-in 15 days after purchase. Buyers who did not pass can reply “no” for a full refund, with no questions, form, or proof required. Buyers can also reach out anytime to ask for a refund. The $49 All Access plan is excluded and retains its existing outcome survey. Refund requests arrive at the configured reply-to inbox and must be processed in Stripe by the operator; inbound replies do not automatically issue refunds.
+
 ## How it works
 
 1. `checkout.session.completed` in `functions/api/webhook.ts` grants access and enqueues a follow-up record in the existing `SNREADY_ACCESS` KV namespace.
 2. `/api/session` also enqueues the same follow-up after checkout success, so buyers are still scheduled if the Stripe webhook is delayed. The Stripe session ID is the idempotency key, so duplicate scheduling is safe.
-3. A Cloudflare Pages scheduled function or a protected `POST /api/followups/run` call processes due follow-ups daily.
+3. A scheduler must call the protected `POST /api/followups/run` endpoint daily to process due follow-ups.
 4. The processor finds due records from KV, honors email-level suppression, sends through Resend, marks successful records as `sent`, and deletes their due index key.
 5. The email links to `/feedback` with a purchase-bound random token. Responses do not expose or store the buyer's email in the response object.
 
@@ -26,11 +28,11 @@ Cloudflare Pages environment variables/secrets:
 - `RESEND_API_KEY` — existing Resend API key used to send email.
 - `SITE_URL` — existing site URL, used for the practice/login link.
 - `FOLLOWUP_RUN_SECRET` — required shared secret for `POST /api/followups/run`.
-- `FOLLOWUP_DELAY_DAYS` — optional number of days after purchase before sending; defaults to `21`.
+- `FOLLOWUP_DELAY_DAYS` — optional delay for All Access outcome surveys; defaults to `21`. New individual purchases use a fixed `15` days. Explicit historical backfill due dates remain unchanged.
 - `FOLLOWUP_FROM_EMAIL` — optional sender; defaults to `SNReady <jesse@snready.com>`.
 - `FOLLOWUP_REPLY_TO` — optional reply-to; defaults to `jesse@snready.com`.
 
-Schedule a daily Cloudflare Pages Functions cron trigger for the deployment. The `onScheduled` handler in `functions/api/followups/run.ts` processes up to 100 due emails per run with a 14-day lookback. The protected HTTP endpoint is also available for manual runs or for schedulers that call URLs.
+Configure a daily scheduler to call the protected HTTP endpoint. Verify the production scheduler separately; queuing purchases alone does not send the emails. The endpoint also supports manual runs.
 
 ## Manual run
 

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import PurchaseGuarantee from "./PurchaseGuarantee";
 import {
   captureAttribution,
   getPlanValue,
@@ -112,7 +113,7 @@ export function CheckoutButton({
     );
   }
 
-  return (
+  const button = (
     <button
       type="button"
       onClick={handleCheckout}
@@ -122,4 +123,5 @@ export function CheckoutButton({
       {loading ? "Loading..." : children}
     </button>
   );
+  return plan === "single" ? <div className="guaranteed-purchase">{button}<PurchaseGuarantee compact /></div> : button;
 }
