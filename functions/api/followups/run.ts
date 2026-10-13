@@ -58,17 +58,3 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
 export const onRequestGet: PagesFunction<Env> = async () => {
   return jsonResponse({ error: "Use POST" }, 405);
 };
-
-export const onScheduled: PagesFunction<Env> = async ({ env }) => {
-  try {
-    const result = await processDueFollowups(env, {
-      limit: 100,
-      lookbackDays: 14,
-    });
-    console.log("Purchase follow-up scheduled run complete", JSON.stringify(result));
-    return jsonResponse({ success: true, ...result });
-  } catch (error) {
-    console.error("Purchase follow-up scheduled run failed", error);
-    throw error;
-  }
-};
