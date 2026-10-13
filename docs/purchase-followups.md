@@ -8,7 +8,7 @@ Individual certification purchases receive a check-in 15 days after purchase. Bu
 
 1. `checkout.session.completed` in `functions/api/webhook.ts` grants access and enqueues a follow-up record in the existing `SNREADY_ACCESS` KV namespace.
 2. `/api/session` also enqueues the same follow-up after checkout success, so buyers are still scheduled if the Stripe webhook is delayed. The Stripe session ID is the idempotency key, so duplicate scheduling is safe.
-3. A scheduler must call the protected `POST /api/followups/run` endpoint daily to process due follow-ups.
+3. The GitHub Actions workflow `.github/workflows/followups.yml` calls the protected `POST /api/followups/run` endpoint daily at 07:15 UTC to process due follow-ups. Cloudflare Pages does not run scheduled (cron) handlers, so this workflow is the only scheduler.
 4. The processor finds due records from KV, honors email-level suppression, sends through Resend, marks successful records as `sent`, and deletes their due index key.
 5. The email links to `/feedback` with a purchase-bound random token. Responses do not expose or store the buyer's email in the response object.
 
@@ -32,7 +32,21 @@ Cloudflare Pages environment variables/secrets:
 - `FOLLOWUP_FROM_EMAIL` — optional sender; defaults to `SNReady <jesse@snready.com>`.
 - `FOLLOWUP_REPLY_TO` — optional reply-to; defaults to `jesse@snready.com`.
 
-Configure a daily scheduler to call the protected HTTP endpoint. Verify the production scheduler separately; queuing purchases alone does not send the emails. The endpoint also supports manual runs.
+GitHub repository secret:
+
+- `FOLLOWUP_RUN_SECRET` — must match the Cloudflare Pages `FOLLOWUP_RUN_SECRET` value. The workflow fails if it is missing.
+
+## Scheduler
+
+`.github/workflows/followups.yml` runs daily at 07:15 UTC with `dryRun=false&limit=100&lookbackDays=2`, so only follow-ups due in the last two days are sent; older due records are not picked up automatically. The job fails on a non-2xx response or if any send fails, and logs only aggregate counts (no email addresses).
+
+To do a manual dry run, open Actions → "Purchase follow-ups" → "Run workflow" (`dryRun` defaults to checked, `lookbackDays` to `2`), or:
+
+```bash
+gh workflow run followups.yml -f dryRun=true -f lookbackDays=2
+```
+
+Uncheck `dryRun` (or pass `-f dryRun=false`) to send.
 
 ## Manual run
 

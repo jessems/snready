@@ -1,0 +1,76 @@
+name: Purchase follow-ups
+
+on:
+  schedule:
+    - cron: '15 7 * * *'
+  workflow_dispatch:
+    inputs:
+      dryRun:
+        description: 'Dry run (count due follow-ups without sending)'
+        type: boolean
+        default: true
+      lookbackDays:
+        description: 'Days of due-date index to scan'
+        type: string
+        default: '2'
+
+concurrency:
+  group: purchase-followups
+  cancel-in-progress: false
+
+permissions: {}
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Run due follow-ups
+        env:
+          FOLLOWUP_RUN_SECRET: ${{ secrets.FOLLOWUP_RUN_SECRET }}
+          EVENT_NAME: ${{ github.event_name }}
+          INPUT_DRY_RUN: ${{ inputs.dryRun }}
+          INPUT_LOOKBACK_DAYS: ${{ inputs.lookbackDays }}
+        run: |
+          set -euo pipefail
+
+          if [ -z "$FOLLOWUP_RUN_SECRET" ]; then
+            echo "::error::Repository secret FOLLOWUP_RUN_SECRET is not set. It must match the FOLLOWUP_RUN_SECRET Cloudflare Pages env var."
+            exit 1
+          fi
+
+          if [ "$EVENT_NAME" = "schedule" ]; then
+            DRY_RUN=false
+            LOOKBACK_DAYS=2
+          else
+            DRY_RUN="${INPUT_DRY_RUN:-true}"
+            LOOKBACK_DAYS="${INPUT_LOOKBACK_DAYS:-2}"
+          fi
+
+          if ! [[ "$LOOKBACK_DAYS" =~ ^[0-9]+$ ]]; then
+            echo "::error::lookbackDays must be a non-negative integer, got '$LOOKBACK_DAYS'"
+            exit 1
+          fi
+
+          echo "dryRun=$DRY_RUN lookbackDays=$LOOKBACK_DAYS limit=100"
+
+          RESPONSE=$(curl --silent --show-error --fail-with-body --max-time 120 -X POST \
+            "https://snready.com/api/followups/run?dryRun=$DRY_RUN&limit=100&lookbackDays=$LOOKBACK_DAYS" \
+            -H "Authorization: Bearer $FOLLOWUP_RUN_SECRET") || {
+            echo "::error::Follow-up run request failed"
+            echo "$RESPONSE" | jq -c '{error, details}' 2>/dev/null || true
+            exit 1
+          }
+
+          echo "$RESPONSE" | jq '{success, dryRun, checkedDateKeys: (.checkedDateKeys | length), due, sent, failed, skipped, errors: (.errors | length)}'
+
+          if [ "$(echo "$RESPONSE" | jq -r '.success')" != "true" ]; then
+            echo "::error::Follow-up run did not report success"
+            exit 1
+          fi
+
+          FAILED=$(echo "$RESPONSE" | jq -r '.failed // 0')
+          if [ "$FAILED" != "0" ]; then
+            echo "::error::$FAILED follow-up send(s) failed. Check Cloudflare Pages logs and KV records with status 'failed'."
+            exit 1
+          fi
