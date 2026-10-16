@@ -123,25 +123,10 @@ export default async function ProductPage({ params }: PageProps) {
     { name: productData.name, url: `https://snready.com/version-diff/${version}/${product}` },
   ]);
 
-  const faqJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: `What changed in ${productData.name} in ServiceNow ${versionName}?`,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: `ServiceNow ${versionName} (${date}) introduced ${productData.entryCount} changes to ${productData.name}, including ${typeCounts.new} new features, ${typeCounts.changed} behavioral changes, and ${typeCounts.deprecated} deprecations.`,
-        },
-      },
-    ],
-  };
 
   return (
     <div className="min-h-screen bg-white dark:bg-zinc-950">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
 
       {/* Hero */}
       <section className="border-b border-zinc-200 bg-gradient-to-b from-zinc-50 to-white dark:border-zinc-800 dark:from-zinc-900 dark:to-zinc-950">

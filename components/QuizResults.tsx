@@ -58,7 +58,7 @@ export default function QuizResults({
               passed ? "bg-[var(--success)]" : "bg-[var(--error)]"
             }`}
           />
-          {passed ? "Passed" : "Not Passed"} (70% required)
+          {passed ? "Passed" : "Not Passed"} (70% practice target)
         </span>
       </div>
 

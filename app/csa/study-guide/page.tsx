@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { getCertificationBySlug, getTotalQuestionCount } from "@/lib/data";
 import { generateBreadcrumbJsonLd } from "@/lib/breadcrumbs";
+import { CUT_SCORE_LABEL, EXAM_DELIVERY_SHORT } from "@/lib/site-facts";
 
 export const metadata: Metadata = {
   title:
@@ -73,49 +74,6 @@ const domainFocus: Record<string, string[]> = {
     "When Performance Analytics is different from standard reporting",
   ],
 };
-
-const faqData = [
-  {
-    question: "What is the ServiceNow CSA exam?",
-    answer:
-      "The ServiceNow Certified System Administrator (CSA) exam validates foundational platform administration skills: navigation, users and roles, data model basics, self-service, automation, core ITSM processes, and reporting.",
-  },
-  {
-    question: "How many questions are on the CSA exam?",
-    answer:
-      "The CSA exam contains 60 questions. SNReady lists 90 minutes as the exam duration and a 70% passing score for planning purposes.",
-  },
-  {
-    question: "What is the passing score for CSA?",
-    answer:
-      "Plan around a 70% passing score. For readiness, do not schedule the real exam until you can score at least 80% on timed mixed-domain practice exams.",
-  },
-  {
-    question: "How long should I study for the ServiceNow CSA exam?",
-    answer:
-      "Most new administrators should plan 4 weeks of structured study, with daily hands-on practice in a Personal Developer Instance. Candidates with daily ServiceNow admin experience may compress the schedule.",
-  },
-  {
-    question: "Which CSA domains should I study first?",
-    answer:
-      "Start with the 15% domains: User Interface & Navigation, User Administration & Security, and Self-Service & Automation. Then cover Reporting & Dashboards, Database Administration, Incident, Change, and Problem Management according to their blueprint weights.",
-  },
-  {
-    question: "Do I need hands-on ServiceNow experience for CSA?",
-    answer:
-      "Yes. CSA questions often look simple but test platform behavior. Use a Personal Developer Instance to practice lists, forms, groups, roles, ACLs, table inheritance, catalog items, flows, incidents, changes, and reports.",
-  },
-  {
-    question: "Is CSA harder than it looks?",
-    answer:
-      "CSA is an entry-level certification, but it is broad. The common failure pattern is memorizing definitions without understanding where features live in the UI or how records, roles, flows, and ITSM processes behave together.",
-  },
-  {
-    question: "What should I do the week before the CSA exam?",
-    answer:
-      "Take two timed mock exams, review every wrong answer by domain, repeat weak-topic drills, and verify that you can complete core admin tasks in a PDI without following step-by-step instructions.",
-  },
-];
 
 const howToSteps = [
   {
@@ -391,18 +349,6 @@ export default function CSAStudyGuidePage() {
     { name: "Study Guide", url: "/csa/study-guide" },
   ]);
 
-  const faqJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faqData.map((item) => ({
-      "@type": "Question",
-      name: item.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: item.answer,
-      },
-    })),
-  };
 
   const howToJsonLd = {
     "@context": "https://schema.org",
@@ -441,10 +387,6 @@ export default function CSAStudyGuidePage() {
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(howToJsonLd) }}
@@ -509,8 +451,8 @@ export default function CSAStudyGuidePage() {
                   value: `${cert.examDetails.duration} min`,
                 },
                 {
-                  label: "Pass Score",
-                  value: `${cert.examDetails.passingScore}%`,
+                  label: "Cut score",
+                  value: CUT_SCORE_LABEL,
                 },
                 { label: "Practice Qs", value: `${totalQuestions}+` },
               ].map((stat) => (
@@ -575,8 +517,8 @@ export default function CSAStudyGuidePage() {
                 <ul className="mt-2 space-y-1 text-sm text-zinc-600 dark:text-zinc-400">
                   <li>60 multiple-choice and multiple-select questions</li>
                   <li>90 minutes to complete</li>
-                  <li>Plan for a 70% passing score</li>
-                  <li>Online proctored or test-center delivery</li>
+                  <li>Cut score not published; aim for 80%+ on timed practice</li>
+                  <li>{EXAM_DELIVERY_SHORT}</li>
                 </ul>
               </div>
             </div>

@@ -74,7 +74,7 @@ export default function MockExamResults({ result }: MockExamResultsProps) {
               </div>
               <div className="mt-1 text-sm text-zinc-500">Your Score</div>
               <div className="mt-1 text-xs text-zinc-400">
-                Pass: {result.passingScore}%
+                Practice target: {result.passingScore}%
               </div>
             </div>
 

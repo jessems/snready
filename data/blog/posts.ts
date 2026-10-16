@@ -16,8 +16,9 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "how-to-pass-servicenow-csa-first-time",
     title: "How to Pass the ServiceNow CSA Exam on Your First Try (2026 Guide)",
-    description: "A no-nonsense, step-by-step guide to passing the ServiceNow Certified System Administrator exam on your first attempt. Save $210 by not retaking it.",
+    description: "A no-nonsense, step-by-step guide to passing the ServiceNow Certified System Administrator exam on your first attempt. Save the $150 retake fee and the wait.",
     publishedAt: "2026-03-25",
+    updatedAt: "2026-10-16",
     author: "SNReady Team",
     tags: ["CSA", "exam prep", "study guide", "certifications"],
     featured: true,
@@ -25,7 +26,7 @@ export const blogPosts: BlogPost[] = [
     content: `
 ## The Stakes Are Real
 
-Failing the CSA exam costs you $210. Not a "try again" fee — the full exam price again. That's $420 total for one certification if you fail once.
+Failing the CSA exam costs you a $150 retake fee on top of the $300 exam fee. That's $450 total for one certification if you fail once — plus a mandatory waiting period before you can try again.
 
 This guide exists so you don't waste that money.
 
@@ -35,10 +36,10 @@ We've analyzed hundreds of Reddit posts, talked to certified professionals, and 
 
 **The exam:**
 - 60 questions, 90 minutes
-- ~70% passing score (42 correct answers)
+- ServiceNow doesn't publish the cut score (and says it isn't always 70%) — aim for 80%+ on practice exams
 - Multiple choice and multi-select
-- Online proctored or test center
-- $210 per attempt
+- Registered and paid for in ServiceNow University, scheduled through Pearson VUE
+- $300 exam fee, $150 per retake (USD, excluding tax)
 
 **The domains:**
 
@@ -240,7 +241,7 @@ If you can't check all of these, you're not ready. Study more — it's cheaper t
 
 ## The Math That Makes This Worth It
 
-**Investment:** $210 exam + 40-80 hours study + $0-9 practice questions
+**Investment:** $300 exam + 40-80 hours study + $0-9 practice questions
 
 **Return:** ServiceNow CSA roles start at $75K-95K (US). General IT support is $50K-70K.
 
@@ -254,7 +255,7 @@ Don't overthink it. Study the material. Practice in a PDI. Test yourself. Pass o
 
 ---
 
-*Updated March 2026. Based on the current Xanadu exam blueprint.*
+*Updated October 2026. Based on the current CSA exam blueprint.*
 `
   },
   {
@@ -262,6 +263,7 @@ Don't overthink it. Study the material. Practice in a PDI. Test yourself. Pass o
     title: "CIS-Discovery Exam 2026: What You Actually Need to Know",
     description: "The complete guide to passing the ServiceNow CIS-Discovery certification. Covers all 4 exam domains, pattern design, CMDB integration, and the gotchas that catch experienced admins.",
     publishedAt: "2026-03-25",
+    updatedAt: "2026-10-16",
     author: "SNReady Team",
     tags: ["CIS-Discovery", "certifications", "study-guide", "CMDB", "exam-prep"],
     readingTime: 12,
@@ -297,7 +299,7 @@ This is the most technical domain. It covers how Discovery identifies and classi
 
 ### Patterns vs Probes/Sensors
 
-**Horizontal patterns** are the modern approach (Xanadu):
+**Horizontal patterns** are the modern approach:
 - Written in ServiceNow Pattern Language (SNPL)
 - Visual pattern designer
 - Reusable steps
@@ -463,6 +465,7 @@ The exam asks about:
 ## Study Strategy
 
 ### Week 1-2: Fundamentals
+- Make sure you've passed **CIS-DF** (Data Foundations) — it's required before you can take CIS-Discovery
 - Complete **Discovery Fundamentals** on Now Learning
 - Understand the complete Discovery flow (scan → classify → explore → update CMDB)
 - Get comfortable with MID Server concepts
@@ -516,7 +519,7 @@ If you've deployed Discovery in a real environment, you have a massive advantage
 
 ---
 
-*Updated March 2026. Covers the Xanadu exam blueprint.*
+*Updated October 2026. Covers the current CIS-Discovery exam blueprint.*
 `
   },
   {
@@ -759,6 +762,7 @@ No single platform is perfect. But the combination of official Now Learning cour
     title: "ServiceNow Certification Cost in 2026: Complete Breakdown (Exam Fees, Training, Hidden Costs)",
     description: "Every cost involved in ServiceNow certification — exam fees, training options, maintenance, and how to minimize your investment while maximizing career ROI.",
     publishedAt: "2026-03-19",
+    updatedAt: "2026-10-16",
     author: "SNReady Team",
     tags: ["certifications", "career", "cost", "CSA", "CAD"],
     featured: true,
@@ -766,7 +770,7 @@ No single platform is perfect. But the combination of official Now Learning cour
     content: `
 ## The Short Answer
 
-ServiceNow certification costs between **$210 and $315 per exam**, depending on the certification level. But the exam fee is just part of the picture.
+ServiceNow certification costs between **$300 and $450 per exam** (USD, excluding tax), depending on the certification level. But the exam fee is just part of the picture.
 
 Here's the full breakdown of what you'll actually spend — and where you can save.
 
@@ -776,23 +780,23 @@ ServiceNow has three tiers of certification, each with different pricing:
 
 | Certification Level | Exam Fee | Examples |
 |---------------------|----------|----------|
-| **Certified System Administrator (CSA)** | $210 | CSA |
-| **Certified Application Developer (CAD)** | $210 | CAD |
-| **Certified Implementation Specialist (CIS)** | $315 | CIS-ITSM, CIS-CSM, CIS-Discovery, CIS-HR |
-| **Certified Technical Architect (CTA)** | $3,000+ | CTA (multi-part assessment) |
-| **Delta/Maintenance Exams** | $150 | Version upgrade exams |
+| **Certified System Administrator (CSA)** | $300 | CSA |
+| **Certified Application Developer (CAD)** | $300 | CAD |
+| **Certified Implementation Specialist (CIS)** | $450 | CIS-ITSM, CIS-CSM, CIS-Discovery, CIS-HR |
+| **Certified Technical Architect (CTA)** | Check ServiceNow University | CTA (multi-part assessment) |
+| **Delta/Maintenance Exams** | Check ServiceNow University | Version upgrade exams |
 
-**Important:** These are 2026 prices. ServiceNow adjusts pricing periodically. Always check the [official certification page](https://nowlearning.servicenow.com/lxp) for current fees.
+**Important:** These are 2026 prices (USD, excluding tax). ServiceNow adjusts pricing periodically. Always check [ServiceNow University](https://nowlearning.servicenow.com/lxp) for current fees.
 
 ### The CTA Exception
 
 CTA (Certified Technical Architect) is in a league of its own. It's not a standard multiple-choice exam — it's a multi-stage assessment:
 
-1. **Knowledge exam** (~$300)
-2. **Design portfolio review** (~$500)
-3. **Live board presentation** (~$2,000+)
+1. **Knowledge exam**
+2. **Design portfolio review**
+3. **Live board presentation**
 
-Total CTA cost is typically $3,000-4,000, and that's before travel if the board presentation is in-person. Most people don't attempt CTA until they have 5+ years of ServiceNow experience.
+Check ServiceNow University for current CTA fees — and budget for travel if the board presentation is in-person. Most people don't attempt CTA until they have 5+ years of ServiceNow experience.
 
 For this article, we'll focus on the certifications most people actually get: CSA, CAD, and CIS.
 
@@ -819,8 +823,8 @@ These are the same courses that exam content is based on. You literally get the 
 
 | Resource | Cost | What You Get |
 |----------|------|------------|
-| **ServiceNow On-Demand courses** | Free | Self-paced official training |
-| **ServiceNow Instructor-Led Training** | $2,000-4,000/course | Live instructor, lab environment |
+| **ServiceNow On-Demand courses** | Free | Self-paced official training (exam bought separately) |
+| **ServiceNow Instructor-Led Training** | $1,900 (2-day) / $2,700 (3-day) | Live instructor, lab environment, exam attempt included |
 | **Udemy courses** | $10-50 (sale) | Third-party, variable quality |
 | **SkillCertPro practice exams** | $20-40 | ~600 practice questions per cert |
 | **SNReady practice tests** | CSA free, $9/cert for others | Questions from official content with detailed explanations |
@@ -835,7 +839,7 @@ Paid resources help if:
 - You want curated practice questions (vs. random internet finds)
 - You're short on time and want efficiency
 
-But if budget is a concern, the free path is 100% viable. Many people pass CSA spending only the $210 exam fee.
+But if budget is a concern, the free path is 100% viable. Many people pass CSA spending only the $300 exam fee.
 
 ## The Hidden Costs Nobody Mentions
 
@@ -853,12 +857,13 @@ If you value your time at $50/hour (conservative for IT), CSA costs $2,000-4,000
 
 ### 2. Retake Fees
 
-If you fail, you pay the full exam fee again. No discount. No retake voucher.
+If you fail, you pay a retake fee — and you have to wait before trying again.
 
-- CSA retake: $210
-- CIS retake: $315
+- CSA, CAD, or CPOA retake: $150
+- CIS retake: $225
+- **Waiting periods:** 3 days before your 2nd attempt, 30 days before your 3rd, and 6 months before any later attempt
 
-**This is why practice exams matter.** Spending $9-40 on practice questions that prevent a failed attempt saves you $210-315.
+**This is why practice exams matter.** Spending $9-40 on practice questions that prevent a failed attempt saves you $150-225 — and weeks of waiting.
 
 From Reddit:
 > "I failed CSA the first time. That's $420 total for one certification. Should have spent more time preparing."
@@ -867,20 +872,21 @@ From Reddit:
 
 ServiceNow certifications expire with each major release. To maintain your cert, you need to pass a **delta exam** when a new version drops.
 
-- **Delta exam fee:** ~$150
+- **Delta exam fee:** Check ServiceNow University for the current fee
 - **Frequency:** Roughly once per year (when major releases ship)
 - **Content:** Tests only what's new/changed in the release
 
-If you have 3 certifications, that's $450/year in maintenance. Over 5 years, that's $2,250 just to keep them current.
+If you hold several certifications, maintenance adds up every year — factor it into your budget.
 
 **Pro tip:** Some employers pay for maintenance exams. Always ask.
 
 ### 4. Exam Scheduling and Proctoring
 
-ServiceNow uses **Kryterion** for exam proctoring. You have two options:
+Since late 2025, ServiceNow exams are delivered by **Pearson VUE** (Kryterion/Webassessor is gone). The process:
 
-- **Online proctored:** Take from home with webcam monitoring. Free (included in exam fee).
-- **Test center:** Take at a Kryterion testing center. May have additional facility fees in some locations.
+- **Eligibility:** Exam vouchers no longer exist. You unlock eligibility by completing the required course on ServiceNow University.
+- **Register and pay:** In ServiceNow University.
+- **Schedule:** Through Pearson VUE, which you access with SSO. Check the delivery options available to you when you schedule.
 
 Online proctoring is convenient but strict: clear desk, no second monitor, no phone, no one else in the room. Some people prefer the test center environment.
 
@@ -894,8 +900,8 @@ Here's what a typical certification journey looks like:
 | Now Learning courses | $0 |
 | PDI for practice | $0 |
 | Practice questions | $0-9 |
-| CSA exam fee | $210 |
-| **Total** | **$210-219** |
+| CSA exam fee | $300 |
+| **Total** | **$300-309** |
 
 ### Scenario 2: Standard Path (CSA + CAD)
 | Item | Cost |
@@ -903,29 +909,28 @@ Here's what a typical certification journey looks like:
 | Now Learning courses | $0 |
 | PDI for practice | $0 |
 | Practice questions (2 certs) | $18-80 |
-| CSA exam fee | $210 |
-| CAD exam fee | $210 |
-| **Total** | **$438-500** |
+| CSA exam fee | $300 |
+| CAD exam fee | $300 |
+| **Total** | **$618-680** |
 
 ### Scenario 3: Specialist Path (CSA + CAD + 2 CIS)
 | Item | Cost |
 |------|------|
 | Training (mix of free + paid) | $0-200 |
 | Practice questions (4 certs) | $36-160 |
-| CSA exam fee | $210 |
-| CAD exam fee | $210 |
-| CIS exam fees (2×) | $630 |
-| **Total** | **$1,086-1,410** |
+| CSA exam fee | $300 |
+| CAD exam fee | $300 |
+| CIS exam fees (2×) | $900 |
+| **Total** | **$1,536-1,860** |
 
 ### Scenario 4: All-In (multiple CIS + maintenance)
 | Item | Cost |
 |------|------|
-| CSA + CAD exams | $420 |
-| 4 CIS exams | $1,260 |
+| CSA + CAD exams | $600 |
+| 4 CIS exams | $1,800 |
 | Practice questions | $54-240 |
-| Annual maintenance (6 certs) | $900/year |
-| **Total Year 1** | **$2,634-2,820** |
-| **Annual maintenance** | **$900/year** |
+| **Total Year 1 (exams + practice)** | **$2,454-2,640** |
+| **Annual maintenance (6 certs)** | **Check ServiceNow University for delta fees** |
 
 ## How to Minimize Costs
 
@@ -937,7 +942,7 @@ Only pay for additional resources if you've gone through the free material and s
 
 ### 2. Pass on the First Attempt
 
-This sounds obvious, but it's the single biggest cost savings. A failed attempt doubles your exam cost.
+This sounds obvious, but it's the single biggest cost savings. A failed attempt adds a retake fee ($150 for CSA/CAD, $225 for CIS) plus a waiting period.
 
 Invest in practice exams before scheduling. If you're not consistently scoring 80%+ on practice tests, you're not ready. Wait another week.
 
@@ -956,7 +961,7 @@ Some even offer bonuses for passing ($500-2,000 per cert is common at consulting
 ### 4. Start with CSA
 
 CSA has the best ROI of any ServiceNow certification:
-- Lowest exam fee ($210)
+- Lowest exam fee ($300)
 - Most job postings require it
 - Largest salary impact (from non-certified to certified)
 
@@ -964,7 +969,7 @@ Don't jump to expensive CIS certs until you need them for your specific role.
 
 ### 5. Be Strategic About CIS Certs
 
-Each CIS cert costs $315. Don't collect them randomly.
+Each CIS exam costs $450. Don't collect them randomly.
 
 Pick the CIS certification that:
 - Matches your current project work
@@ -978,19 +983,19 @@ One relevant CIS cert > three random CIS certs.
 Let's run the numbers for the most common scenario: getting CSA to enter ServiceNow.
 
 **Investment:**
-- Exam fee: $210
+- Exam fee: $300
 - Study materials: $0 (SNReady's CSA practice test and mock exams are free)
 - Time: 60 hours × $0 (studying outside work hours)
-- **Total: $210**
+- **Total: $300**
 
 **Return:**
 - Current salary (general IT): $65,000
 - Post-certification salary (ServiceNow admin): $85,000
 - **Annual increase: $20,000**
 
-**ROI: 9,524%** ($20,000 return on $210 investment)
+**ROI: 6,667%** ($20,000 return on $300 investment)
 
-Even if the salary increase is only $10,000, that's still a 4,762% ROI. Even if you fail once and spend $420, it's a 4,762% ROI.
+Even if the salary increase is only $10,000, that's still a 3,333% ROI. Even if you fail once and spend $450 ($300 + $150 retake), it's a 4,444% ROI.
 
 There are very few investments in your career with this kind of return.
 
@@ -998,12 +1003,12 @@ There are very few investments in your career with this kind of return.
 
 | What | Cost |
 |------|------|
-| CSA exam | $210 |
-| CAD exam | $210 |
-| CIS exam | $315 |
-| Training | Free (Now Learning) |
+| CSA exam | $300 |
+| CAD exam | $300 |
+| CIS exam | $450 |
+| Training | Free (on-demand courses) |
 | Practice environment | Free (PDI) |
-| Annual maintenance | ~$150/cert |
+| Annual maintenance | Check ServiceNow University |
 
 ServiceNow certification is one of the cheapest ways to increase your earning potential in IT. The official training is free, the exams are reasonably priced, and the salary impact is significant.
 
@@ -1017,7 +1022,7 @@ The biggest cost isn't money — it's the time you invest in studying. Make that
 
 ---
 
-*Prices verified March 2026. ServiceNow may adjust fees — always check the official Now Learning portal for current pricing.*
+*Prices updated October 2026 (USD, excluding tax). ServiceNow may adjust fees — always check ServiceNow University for current pricing.*
 `
   },
   {
@@ -1504,6 +1509,7 @@ Our practice questions are derived from official ServiceNow course content — t
     title: "Why ServiceNow Brain Dumps Will Fail You (And What Actually Works)",
     description: "Brain dump sites like ExamTopics promise easy CSA certification. Here's why they backfire — and the approach that actually prepares you for real ServiceNow work.",
     publishedAt: "2026-02-23",
+    updatedAt: "2026-10-16",
     author: "SNReady Team",
     tags: ["CSA", "exam prep", "study strategy"],
     featured: true,
@@ -1609,7 +1615,7 @@ Here's what the CSA exam is actually like:
 - Multiple choice and multi-select
 - Scenario-based questions (not just definitions)
 - You can flag questions and return to them
-- 70% to pass (42/60)
+- ServiceNow doesn't publish the cut score (and says it isn't always 70%) — aim for 80%+ on practice exams
 
 The scenario-based questions are where brain dumps fail hardest. ServiceNow doesn't ask "What is a UI Policy?" They ask:
 
@@ -1973,6 +1979,7 @@ That's how you prepare for scenario questions — by building mental models, not
     title: "Is ServiceNow Certification Worth It in 2026? A Realistic Analysis",
     description: "Cutting through the hype. When ServiceNow certification pays off, when it doesn't, and how to make the investment worthwhile.",
     publishedAt: "2026-02-26",
+    updatedAt: "2026-10-16",
     author: "SNReady Team",
     tags: ["career", "certifications", "salary"],
     readingTime: 9,
@@ -1992,12 +1999,12 @@ You're in IT but not ServiceNow. You want in.
 **Certification: Worth it.**
 
 Here's the math:
-- CSA exam: $210
+- CSA exam: $300
 - Study time: 40-80 hours
 - Entry ServiceNow roles: $80K-100K
 - General IT support roles: $50K-70K
 
-That's a $20K-30K salary jump for a $210 exam. Even if you include $500 in study materials and 2 months of evening study, the ROI is exceptional.
+That's a $20K-30K salary jump for a $300 exam. Even if you include $500 in study materials and 2 months of evening study, the ROI is exceptional.
 
 **Catch:** You still need to get hired. Certification opens doors but doesn't guarantee entry. You'll also need:
 - A PDI with some configuration work to show
@@ -2072,7 +2079,7 @@ Some companies pay for everything: training, exams, study time.
 Let's be concrete:
 
 **CSA Certification Costs:**
-- Exam: $210
+- Exam: $300
 - Study materials: $0-500 (can be free via Now Learning)
 - Time: 40-80 hours
 
@@ -2084,12 +2091,12 @@ Let's be concrete:
 **Payback period:** 1-3 months if you're getting a new job. Infinite if you're already employed and don't need it.
 
 **CAD Additional Value:**
-- Exam: $210
+- Exam: $300
 - Study time: 60-100 additional hours
 - Developer role premium: $20K-40K over admin roles
 
 **CIS Certifications:**
-- Exam: $315 each
+- Exam: $450 each
 - Specialization premium: Varies ($10K-20K for in-demand specialties)
 - Diminishing returns after 2-3 CIS certs
 
@@ -2140,7 +2147,7 @@ It's not worth it when:
 - You're cramming brain dumps without learning
 - You're over-certifying for your actual role
 
-The investment is modest ($200-300 per cert). The time is more significant (40-100 hours per cert). Choose certifications that open doors you actually want to walk through.
+The investment is modest ($300-450 per exam). The time is more significant (40-100 hours per cert). Choose certifications that open doors you actually want to walk through.
 
 [Start Your CSA Prep →](/csa)
 `
@@ -2150,6 +2157,7 @@ The investment is modest ($200-300 per cert). The time is more significant (40-1
     title: "CIS-ITSM: The Implementation Exam That Trips Up CSA Holders",
     description: "You passed CSA. You work with ITSM daily. You should breeze through CIS-ITSM, right? Here's why that assumption gets people.",
     publishedAt: "2026-02-27",
+    updatedAt: "2026-10-16",
     author: "SNReady Team",
     tags: ["CIS-ITSM", "exam prep", "ITSM"],
     readingTime: 8,
@@ -2299,12 +2307,12 @@ This requires diagnostic thinking, not just knowledge.
 ## The Exam Itself
 
 - 60 questions, 90 minutes
-- 70% to pass (42/60)
+- ServiceNow doesn't publish the cut score (and says it isn't always 70%) — aim for 80%+ on practice exams
 - Multi-select exists (choose 2, choose all that apply)
 - Scenario-based questions are common
 - Questions assume CSA knowledge (they won't explain what an ACL is)
 
-**Prerequisite:** CSA is required. You can't register for CIS-ITSM without it.
+**Prerequisites:** CSA is required, and you also need to pass **CIS-DF** (Data Foundations) before you can take CIS-ITSM. The free first CIS-DF attempt was a promotion that ended in June 2026, so budget for that exam too.
 
 ## Preparation Timeline
 
@@ -2331,6 +2339,7 @@ If you use ITSM daily but don't configure it, you need to shift your mindset. Th
     title: "ServiceNow CAD Exam 2026: Complete Study Guide",
     description: "Everything you need to pass the ServiceNow Certified Application Developer exam — topics breakdown, study strategy, scripting tips, and practice resources.",
     publishedAt: "2026-03-24",
+    updatedAt: "2026-10-16",
     author: "SNReady Team",
     tags: ["CAD", "certifications", "study-guide", "scripting", "exam-prep"],
     featured: true,
@@ -2341,10 +2350,10 @@ If you use ITSM daily but don't configure it, you need to shift your mindset. Th
 The **Certified Application Developer (CAD)** exam proves you can build applications on the ServiceNow platform. Unlike the CSA (which focuses on administration), the CAD tests your ability to write code, build integrations, and create custom applications.
 
 **Quick Facts:**
-- **Exam fee:** $210
+- **Exam fee:** $300 (USD, excluding tax; retakes $150)
 - **Questions:** ~60 multiple choice
 - **Duration:** 90 minutes
-- **Passing score:** ~70% (ServiceNow doesn't publish the exact cutoff)
+- **Passing score:** ServiceNow doesn't publish the cut score (and says it isn't always 70%) — aim for 80%+ on practice exams
 - **Prerequisite:** CSA certification (recommended, not strictly required)
 - **Maintenance:** Delta exam with each new release
 
@@ -2562,6 +2571,7 @@ Give yourself 4-6 weeks. Use the free Now Learning courses. Build in your PDI. T
     title: "CIS-CSM Exam Guide 2026: How to Pass ServiceNow Customer Service Management",
     description: "Complete CIS-CSM study guide covering all 5 exam domains, study timeline, resources, and practice questions. Pass your Customer Service Management certification first try.",
     publishedAt: "2026-03-26",
+    updatedAt: "2026-10-16",
     author: "SNReady Team",
     tags: ["CIS-CSM", "study guide", "certifications", "customer service management"],
     readingTime: 12,
@@ -2584,9 +2594,9 @@ Unlike the CSA, this is an **implementation** exam. You're not just administerin
 |--------|------|
 | **Questions** | 60 multiple choice |
 | **Duration** | 90 minutes |
-| **Passing score** | ~70% (42/60) |
-| **Cost** | $315 |
-| **Delivery** | Kryterion online or test center |
+| **Passing score** | Not published (ServiceNow says it isn't always 70%) — aim for 80%+ on practice exams |
+| **Cost** | $450 (USD, excluding tax; retakes $225) |
+| **Delivery** | Pearson VUE (register and pay in ServiceNow University) |
 | **Prerequisite** | CSA certification |
 | **Maintenance** | Delta exam with each major release |
 
@@ -2711,7 +2721,7 @@ How do you create an incident from a case? How does case resolution flow when th
 
 ### Paid
 
-- **ServiceNow official training** — CSM Implementation course (~$2,000-3,000)
+- **ServiceNow official training** — CSM Implementation instructor-led course ($1,900 for a 2-day course, $2,700 for a 3-day course, exam attempt included)
 - **SNReady Premium** — Full question bank with explanations ($9)
 
 ## Exam Day Tips
@@ -2734,6 +2744,7 @@ How do you create an incident from a case? How does case resolution flow when th
     title: "CIS-HR Exam Guide 2026: How to Pass ServiceNow HR Service Delivery",
     description: "Complete CIS-HR study guide with all 4 exam domains explained, study strategies, key topics, and practice questions for the HR Service Delivery certification.",
     publishedAt: "2026-03-26",
+    updatedAt: "2026-10-16",
     author: "SNReady Team",
     tags: ["CIS-HR", "study guide", "certifications", "HR service delivery"],
     readingTime: 11,
@@ -2758,9 +2769,9 @@ CIS-HR is ideal if you:
 |--------|------|
 | **Questions** | 60 multiple choice |
 | **Duration** | 90 minutes |
-| **Passing score** | ~70% (42/60) |
-| **Cost** | $315 |
-| **Delivery** | Kryterion online or test center |
+| **Passing score** | Not published (ServiceNow says it isn't always 70%) — aim for 80%+ on practice exams |
+| **Cost** | $450 (USD, excluding tax; retakes $225) |
+| **Delivery** | Pearson VUE (register and pay in ServiceNow University) |
 | **Prerequisite** | CSA certification |
 | **Maintenance** | Delta exam per major release |
 
@@ -2884,7 +2895,7 @@ Universal Request allows employees to submit requests without knowing which depa
 
 ### Paid
 
-- **ServiceNow instructor-led training** (~$2,000-3,000)
+- **ServiceNow instructor-led training** ($1,900 for a 2-day course, $2,700 for a 3-day course, exam attempt included)
 - **SNReady Premium** — Full question bank with detailed explanations ($9)
 
 ## Exam Day Strategy
@@ -2907,6 +2918,7 @@ Universal Request allows employees to submit requests without knowing which depa
     title: "Free ServiceNow Practice Questions 2026: Every Certification Covered",
     description: "Access free ServiceNow practice questions for all 20 certifications — CSA, CAD, CIS-ITSM, CIS-Discovery, and more. No signup required. Start practicing now.",
     publishedAt: "2026-03-26",
+    updatedAt: "2026-10-16",
     author: "SNReady Team",
     tags: ["free practice questions", "certifications", "CSA", "CAD", "CIS-ITSM", "study resources"],
     featured: true,
@@ -3069,7 +3081,7 @@ ServiceNow exams use specific question styles — single-select, multi-select ("
 
 ### 2. They Reveal Knowledge Gaps
 
-You don't know what you don't know until you test yourself. Free practice questions help you identify weak domains *before* you spend $210-$315 on the real exam.
+You don't know what you don't know until you test yourself. Free practice questions help you identify weak domains *before* you spend $300-$450 on the real exam.
 
 ### 3. They Build Confidence
 
@@ -3121,6 +3133,7 @@ Pick your certification and start with the free questions. No signup required.
     title: "All 28 ServiceNow Certifications Explained (2026 Complete Guide)",
     description: "Every ServiceNow certification in one place: requirements, costs, difficulty, career impact, and which ones to get first. Updated for 2026.",
     publishedAt: "2026-03-30",
+    updatedAt: "2026-10-16",
     author: "SNReady Team",
     tags: ["certifications", "career", "study guide", "CSA", "CAD", "CIS"],
     featured: true,
@@ -3137,7 +3150,7 @@ This guide covers every certification, who it's for, what it costs, and — most
 ### Level 1: Foundational
 | Certification | Full Name | Cost | Questions | Time |
 |---|---|---|---|---|
-| **[CSA](/csa)** | Certified System Administrator | $210 | 60 | 90 min |
+| **[CSA](/csa)** | Certified System Administrator | $300 | 60 | 90 min |
 
 CSA is the starting point for everyone. Period. Even if you want to be a developer or architect, you need CSA first. It's the prerequisite for almost everything else.
 
@@ -3151,7 +3164,7 @@ CSA is the starting point for everyone. Period. Even if you want to be a develop
 
 | Certification | Full Name | Cost | Questions | Time |
 |---|---|---|---|---|
-| **[CAD](/cad)** | Certified Application Developer | $210 | 60 | 90 min |
+| **[CAD](/cad)** | Certified Application Developer | $300 | 60 | 90 min |
 
 CAD is the developer certification. If you write scripts, build apps, or work with APIs on ServiceNow, this is your cert.
 
@@ -3254,23 +3267,26 @@ ServiceNow also offers CTA (Certified Technical Architect) and CMA (Certified Ma
 
 | Item | Cost |
 |---|---|
-| Exam attempt | $210 |
-| Failed attempt | +$210 (full price retake) |
-| Now Learning courses | Free |
+| Exam attempt (CSA/CAD) | $300 |
+| Exam attempt (CIS) | $450 |
+| Failed attempt | +$150 retake (CSA/CAD), +$225 (CIS) |
+| On-demand courses | Free |
 | Developer instance | Free |
-| Total if you pass first time | **$210** |
-| Total if you fail once | **$420** |
+| Total if you pass CSA first time | **$300** |
+| Total if you fail CSA once | **$450** |
 
-**That's why practice tests matter.** A $9 investment in practice questions can save you $210 on a retake.
+Prices are USD and exclude tax. Exam vouchers no longer exist: you unlock eligibility by completing the required course on ServiceNow University, register and pay there, and schedule through Pearson VUE. Retakes also come with waiting periods: 3 days before your 2nd attempt, 30 days before your 3rd, and 6 months before any later attempt.
+
+**That's why practice tests matter.** A $9 investment in practice questions can save you $150 on a retake — and the wait.
 
 ## Delta Exams: Staying Current
 
-ServiceNow releases a new version every 6 months (Vancouver, Washington DC, Xanadu, Yokohama, Zurich...). Your certification stays current for the release you passed on plus the next one. After that, you need to pass a delta exam.
+ServiceNow releases a new version every 6 months (Vancouver, Washington DC, Xanadu, Yokohama, Zurich, Australia...). Your certification stays current for the release you passed on plus the next one. After that, you need to pass a delta exam.
 
 Delta exams are:
 - Shorter (30-40 questions)
 - Focus only on new features in the latest release
-- Free (included with your certification)
+- Check ServiceNow University for current delta exam requirements and any fees
 - Must be completed within the maintenance window
 
 **Don't let your cert lapse.** Delta exams are much easier than the full exam.
@@ -3283,12 +3299,12 @@ Based on community feedback and our data:
 |---|---|---|
 | CSA | 2-4 weeks | None |
 | CAD | 3-6 weeks | CSA |
-| CIS-ITSM | 2-4 weeks | CSA |
+| CIS-ITSM | 2-4 weeks | CSA + CIS-DF |
 | CIS-DF | 3-5 weeks | CSA |
-| CIS-Discovery | 2-4 weeks | CSA |
+| CIS-Discovery | 2-4 weeks | CSA + CIS-DF |
 | CIS-CSM | 2-4 weeks | CSA |
 | CIS-HR | 2-3 weeks | CSA |
-| Other CIS | 2-4 weeks | CSA |
+| Other CIS | 2-4 weeks | CSA (CIS-HAM, CIS-SAM, CIS-SM, CIS-VR, CIS-SIR also need CIS-DF) |
 
 These assume 1-2 hours/day of study. Double it if you're starting from scratch.
 
@@ -3303,7 +3319,7 @@ Based on our [salary database of 200+ entries](/salaries):
 | ServiceNow Consultant (CIS-*) | $120,000 - $160,000 |
 | ServiceNow Architect (CTA) | $160,000 - $200,000+ |
 
-Each additional certification typically adds $5,000-$15,000 to your market value. The ROI on a $210 exam is enormous.
+Each additional certification typically adds $5,000-$15,000 to your market value. The ROI on a $300 exam is enormous.
 
 → [See full salary data](/salaries)
 
@@ -3324,8 +3340,9 @@ We have **100+ practice questions for all 20 certifications**, generated from of
   {
     slug: "servicenow-csa-practice-test-200-questions-2026",
     title: "ServiceNow CSA Practice Test: 200 Questions to Pass the Exam (2026)",
-    description: "The most comprehensive free CSA practice test available. 200 exam-quality questions across all 8 domains. See where you stand before spending $210.",
+    description: "The most comprehensive free CSA practice test available. 200 exam-quality questions across all 8 domains. See where you stand before spending $300.",
     publishedAt: "2026-03-31",
+    updatedAt: "2026-10-16",
     author: "SNReady Team",
     tags: ["CSA", "practice test", "exam prep", "free questions"],
     featured: true,
@@ -3347,10 +3364,10 @@ Before you practice, know what you're preparing for:
 |--------|---------|
 | **Total questions** | 60 |
 | **Time limit** | 90 minutes |
-| **Passing score** | ~70% (42 correct) |
+| **Passing score** | Not published (ServiceNow says it isn't always 70%) — aim for 80%+ on practice exams |
 | **Question types** | Single choice, multi-select ("choose 2"), negative ("which is NOT") |
-| **Cost per attempt** | $210 |
-| **Format** | Online proctored or test center |
+| **Cost** | $300 exam, $150 retake (USD, excluding tax) |
+| **Format** | Registered in ServiceNow University, scheduled through Pearson VUE |
 
 **The exam is not conceptual.** You won't see "What is an incident?" You'll see "Which field on the incident form determines the SLA calculation when the caller is a VIP?" Specificity matters.
 
@@ -3495,6 +3512,7 @@ Every question includes full explanations. No brain dumps. No memorization. Just
     title: "CIS-ITSM Practice Test: 160 Questions to Pass the ServiceNow ITSM Exam (2026)",
     description: "The most comprehensive CIS-ITSM practice test available. 160 questions covering all 7 exam domains with detailed explanations. Free sample included.",
     publishedAt: "2026-04-01",
+    updatedAt: "2026-10-16",
     author: "SNReady Team",
     tags: ["CIS-ITSM", "practice test", "exam prep", "ITSM"],
     featured: true,
@@ -3506,7 +3524,7 @@ You passed CSA. You've been working with Incident, Change, and Problem Managemen
 
 Wrong. The CIS-ITSM exam has a **higher failure rate than most people expect** because it tests implementation knowledge, not just daily usage. You need to know *why* things are configured a certain way, not just *how* to use them.
 
-The exam has **60 questions in 90 minutes**. You need roughly **70% to pass**. That means you can miss about 18 questions — sounds generous until you realize multi-select questions are all-or-nothing.
+The exam has **60 questions in 90 minutes**. ServiceNow doesn't publish the cut score (and says it isn't always 70%), so aim for 80%+ on practice exams. That leaves less room than it sounds — multi-select questions are all-or-nothing.
 
 ## What the CIS-ITSM Exam Actually Tests
 
@@ -3668,6 +3686,7 @@ Every question includes full explanations. No brain dumps. No memorization. Just
     title: "ServiceNow CAD Practice Test: 200 Questions to Pass the Application Developer Exam (2026)",
     description: "200 CAD practice questions covering all 7 exam domains. Scripting, business rules, client scripts, REST APIs, and more — with full explanations.",
     publishedAt: "2026-04-02",
+    updatedAt: "2026-10-16",
     author: "SNReady Team",
     tags: ["CAD", "practice test", "exam prep", "application developer"],
     featured: true,
@@ -3679,10 +3698,10 @@ The Certified Application Developer (CAD) exam is the coding exam in the Service
 
 **The exam at a glance:**
 - 60 questions, 90 minutes
-- ~70% passing score (42 correct)
+- ServiceNow doesn't publish the cut score (and says it isn't always 70%) — aim for 80%+ on practice exams
 - Multiple choice and multi-select
 - Heavy on scripting scenarios
-- $210 per attempt
+- $300 exam fee, $150 per retake (USD, excluding tax)
 
 Unlike the CSA (which tests admin knowledge), the CAD tests your ability to write and debug code. You need to understand GlideRecord, GlideAjax, business rule timing, client-side vs server-side execution, and REST API patterns.
 
@@ -3836,6 +3855,7 @@ Every question includes detailed explanations for both correct and incorrect ans
     title: "Biggest Question Bank Update: 50 New CPOA Questions + CSA Now at 214 Questions",
     description: "SNReady just dropped its largest content update. 50 new CPOA Technology questions covering MID Server upgrades, Hermes Messaging, and Instance Data Replication — plus CSA expanded to 214 questions.",
     publishedAt: "2026-05-04",
+    updatedAt: "2026-10-16",
     author: "SNReady Team",
     tags: ["CPOA", "CSA", "practice questions", "MID Server", "Hermes", "certifications", "study guide"],
     featured: true,
@@ -3969,7 +3989,7 @@ All new questions are live now on SNReady.com:
 - [Timed CSA Mock Exam](/csa/mock-exam) — 60 questions, 90 minutes, free
 
 ---
-*Updated May 2026. All questions based on current ServiceNow Xanadu exam blueprints.*
+*Updated October 2026. All questions based on current ServiceNow exam blueprints.*
 `
   },
 ];

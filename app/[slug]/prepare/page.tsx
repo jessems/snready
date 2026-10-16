@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { CUT_SCORE_LABEL, formatExamCost } from "@/lib/site-facts";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
@@ -247,31 +248,6 @@ export default async function ExamPrepPage({ params }: Props) {
     { name: "Exam Prep", url: `/${slug}/prepare` },
   ];
 
-  // FAQ Schema for SEO
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: `What courses do I need for ${certification.name}?`,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: prepData.recommendedCourses.length > 0
-            ? `ServiceNow recommends these courses for ${certification.name}: ${prepData.recommendedCourses.map((c) => c.name).join(", ")}. ${courseCompletionPolicy}`
-            : `See the official ${certification.name} exam page for recommended preparation. ${courseCompletionPolicy}`,
-        },
-      },
-      {
-        "@type": "Question",
-        name: `What is on the ${certification.name} exam?`,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: `The ${certification.name} exam covers ${prepData.examBlueprint.domains.length} domains: ${prepData.examBlueprint.domains.map((d) => `${d.name} (${d.percentage}%)`).join(", ")}.`,
-        },
-      },
-    ],
-  };
 
   return (
     <>
@@ -280,10 +256,6 @@ export default async function ExamPrepPage({ params }: Props) {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(generateBreadcrumbJsonLd(breadcrumbItems)),
         }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
       <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
@@ -332,7 +304,7 @@ export default async function ExamPrepPage({ params }: Props) {
                 href={`/${slug}/practice-questions`}
                 className="inline-flex items-center gap-2 rounded-lg border border-emerald-600 px-4 py-2 text-sm font-medium text-emerald-600 hover:bg-emerald-50 dark:hover:bg-emerald-950"
               >
-                Practice Questions ({totalQuestions}+)
+                Practice Questions ({totalQuestions})
               </Link>
             )}
           </div>
@@ -353,11 +325,11 @@ export default async function ExamPrepPage({ params }: Props) {
               <div className="text-sm text-zinc-500">Duration</div>
             </div>
             <div>
-              <div className="text-2xl font-bold text-emerald-600">{certification.examDetails.passingScore}%</div>
-              <div className="text-sm text-zinc-500">Passing Score</div>
+              <div className="text-2xl font-bold text-emerald-600">{CUT_SCORE_LABEL}</div>
+              <div className="text-sm text-zinc-500">Cut Score</div>
             </div>
             <div>
-              <div className="text-2xl font-bold text-emerald-600">${certification.examDetails.cost}</div>
+              <div className="text-2xl font-bold text-emerald-600">{formatExamCost(certification)}</div>
               <div className="text-sm text-zinc-500">Exam Fee</div>
             </div>
           </div>
@@ -790,7 +762,7 @@ export default async function ExamPrepPage({ params }: Props) {
             <div className="text-center">
               <h2 className="text-2xl font-bold">Ready to Practice?</h2>
               <p className="mt-2 text-emerald-100">
-                Test your knowledge with {totalQuestions}+ practice questions
+                Test your knowledge with {totalQuestions} practice questions
               </p>
               <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:justify-center">
                 <Link

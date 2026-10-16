@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { getCertificationBySlug, getTotalQuestionCount } from "@/lib/data";
 import { generateBreadcrumbJsonLd } from "@/lib/breadcrumbs";
+import { CUT_SCORE_LABEL, EXAM_DELIVERY_SHORT } from "@/lib/site-facts";
 
 export const metadata: Metadata = {
   title:
@@ -65,50 +66,6 @@ const domainFocus: Record<string, string[]> = {
     "When TPRM should share risk context with broader IRM, vendor, contract, or compliance processes",
   ],
 };
-
-const faqData = [
-  {
-    question: "What is the ServiceNow CIS-TPRM exam?",
-    answer:
-      "The ServiceNow Certified Implementation Specialist - Third-Party Risk Management exam validates that you can implement TPRM fundamentals, core configuration, assessment configuration, the third-party portal, supporting processes, and related application integrations.",
-  },
-  {
-    question: "How many questions are on the CIS-TPRM exam?",
-    answer:
-      "SNReady lists the CIS-TPRM exam as 60 multiple-choice and multiple-select questions with 90 minutes to complete and a planning passing score of 70%.",
-  },
-  {
-    question: "Which CIS-TPRM domain should I study first?",
-    answer:
-      "Start with Assessment Configuration because it is the largest domain at 33%, then study TPRM Fundamentals at 23%. Together they represent 56% of the exam and explain how third parties, engagements, assessments, evidence, scoring, and due diligence decisions fit together.",
-  },
-  {
-    question:
-      "Is CIS-TPRM more about risk process or ServiceNow configuration?",
-    answer:
-      "It is both. The exam expects risk-program vocabulary, but questions usually test implementation judgment: which record, template, portal task, scoring rule, contact, role, workflow, or integration should support a real due diligence scenario.",
-  },
-  {
-    question: "How long should I study for CIS-TPRM?",
-    answer:
-      "Most candidates with CSA-level platform knowledge and some IRM or vendor-risk exposure should plan four focused weeks. If you have not configured assessments, questionnaires, portal contacts, or third-party engagements hands-on, add extra lab time before scheduling.",
-  },
-  {
-    question: "What hands-on practice helps most for CIS-TPRM?",
-    answer:
-      "Use a ServiceNow training instance or PDI to trace one third party from risk profile and engagement creation through due diligence, questionnaire assignment, portal response, evidence review, scoring, findings, remediation, and reporting.",
-  },
-  {
-    question: "When am I ready to schedule CIS-TPRM?",
-    answer:
-      "Schedule after you can score 80% or higher on two timed mixed-domain mock exams, explain every missed question as a TPRM implementation decision, and complete the core assessment/portal/remediation workflow without step-by-step notes.",
-  },
-  {
-    question: "What is the biggest CIS-TPRM mistake?",
-    answer:
-      "The biggest mistake is memorizing risk terms without understanding the workflow. CIS-TPRM questions often ask how a due diligence requirement becomes a configured questionnaire, assigned portal task, scored response, risk decision, and follow-up process.",
-  },
-];
 
 const howToSteps = [
   {
@@ -400,18 +357,6 @@ export default function CISTPRMStudyGuidePage() {
     { name: "Study Guide", url: "/cis-tprm/study-guide" },
   ]);
 
-  const faqJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faqData.map((item) => ({
-      "@type": "Question",
-      name: item.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: item.answer,
-      },
-    })),
-  };
 
   const howToJsonLd = {
     "@context": "https://schema.org",
@@ -450,10 +395,6 @@ export default function CISTPRMStudyGuidePage() {
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(howToJsonLd) }}
@@ -520,8 +461,8 @@ export default function CISTPRMStudyGuidePage() {
                   value: `${cert.examDetails.duration} min`,
                 },
                 {
-                  label: "Pass Score",
-                  value: `${cert.examDetails.passingScore}%`,
+                  label: "Cut score",
+                  value: CUT_SCORE_LABEL,
                 },
                 { label: "Practice Qs", value: `${totalQuestions}+` },
               ].map((stat) => (
@@ -587,8 +528,8 @@ export default function CISTPRMStudyGuidePage() {
                 <ul className="mt-2 space-y-1 text-sm text-zinc-600 dark:text-zinc-400">
                   <li>60 multiple-choice and multiple-select questions</li>
                   <li>90 minutes to complete</li>
-                  <li>Plan for a 70% passing score</li>
-                  <li>Online proctored or test-center delivery</li>
+                  <li>Cut score not published; aim for 80%+ on timed practice</li>
+                  <li>{EXAM_DELIVERY_SHORT}</li>
                 </ul>
               </div>
             </div>

@@ -111,7 +111,7 @@ export const competitorComparisons: CompetitorComparison[] = [
       { name: "Exam domain mapping", snready: true, competitor: false },
       { name: "Detailed explanations", snready: true, competitor: "Varies" },
       { name: "Progress tracking", snready: true, competitor: "Video completion only" },
-      { name: "Updated for current release", snready: "Xanadu/Yokohama", competitor: "Varies" },
+      { name: "Updated for current release", snready: "Mapped to current exam blueprints", competitor: "Varies" },
       { name: "Mobile app", snready: "Responsive web", competitor: true },
       { name: "Free preview", snready: "CSA fully free, 15 free questions per other cert", competitor: "Video previews" }
     ],
@@ -171,7 +171,7 @@ export const competitorComparisons: CompetitorComparison[] = [
     pricing: {
       model: "Free with ServiceNow account",
       cost: "Free",
-      details: "Courses are free. Certification exams cost $210-315."
+      details: "Courses are free. Certification exams cost $300 (CSA, CAD) or $450 (CIS), booked in ServiceNow University."
     },
     pros: [
       "Official source material",

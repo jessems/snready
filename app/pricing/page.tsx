@@ -6,7 +6,14 @@ import { CheckoutButton } from "@/components/CheckoutButton";
 import {
   getAllCertifications,
   getPricingSummary,
+  getTotalQuestionCount,
 } from "@/lib/data";
+
+// Practice-question range per ready certification, computed from the question data.
+const readyQuestionCounts = getAllCertifications()
+  .filter((c) => c.isReady)
+  .map((c) => getTotalQuestionCount(c.slug));
+const QUESTION_RANGE = `${Math.min(...readyQuestionCounts)}-${Math.max(...readyQuestionCounts)}`;
 
 // Simple check and X icons
 function CheckIcon({ className }: { className?: string }) {
@@ -54,8 +61,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "SNReady Pricing - CSA Free, $9 Lifetime Access per Certification",
-    description:
-      "CSA is completely free. Every other ServiceNow certification is $9 for lifetime access to 90-200+ questions, or $49 for all of them.",
+    description: `CSA is completely free. Every other ServiceNow certification is $9 for lifetime access to ${QUESTION_RANGE} questions, or $49 for all of them.`,
   },
 };
 
@@ -264,7 +270,7 @@ export default function PricingPage() {
 
               <ul className="mt-8 space-y-3">
                 {[
-                  "60-200+ practice questions per certification",
+                  `${QUESTION_RANGE} practice questions per certification`,
                   "Detailed explanations for every answer",
                   "Full mock exams with timer",
                   "Personalized study plan generator",
@@ -507,7 +513,7 @@ export default function PricingPage() {
               },
               {
                 q: "How many questions are included?",
-                a: `Each certification includes 60-200+ practice questions covering all exam domains. In total, we have ${totalQuestions}+ questions across all certifications.`,
+                a: `Each certification includes ${QUESTION_RANGE} practice questions covering all exam domains. In total, we have ${totalQuestions}+ questions across all certifications.`,
               },
               {
                 q: "Can I get a refund?",

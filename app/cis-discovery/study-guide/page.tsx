@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { getCertificationBySlug, getTotalQuestionCount } from "@/lib/data";
 import { generateBreadcrumbJsonLd } from "@/lib/breadcrumbs";
+import { CUT_SCORE_LABEL } from "@/lib/site-facts";
 
 export const metadata: Metadata = {
   title:
@@ -65,7 +66,7 @@ const faqData = [
   {
     question: "How many questions are on CIS-Discovery?",
     answer:
-      "The official blueprint (KB0011545) lists CIS-Discovery as a 45-question exam with a 90-minute time limit. SNReady plans for a 70% passing score. The exam uses multiple-choice and multiple-select questions.",
+      "The official blueprint (KB0011545) lists CIS-Discovery as a 45-question exam with a 90-minute time limit. ServiceNow does not publish the cut score (the official blueprint says it is not always 70%), so aim for 80%+ on timed practice. The exam uses multiple-choice and multiple-select questions.",
   },
   {
     question: "Which CIS-Discovery domains should I study first?",
@@ -375,18 +376,6 @@ export default async function CISDiscoveryStudyGuidePage() {
     { name: "Study Guide", url: "/cis-discovery/study-guide" },
   ]);
 
-  const faqJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faqData.map((item) => ({
-      "@type": "Question",
-      name: item.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: item.answer,
-      },
-    })),
-  };
 
   const howToJsonLd = {
     "@context": "https://schema.org",
@@ -425,10 +414,6 @@ export default async function CISDiscoveryStudyGuidePage() {
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(howToJsonLd) }}
@@ -493,8 +478,8 @@ export default async function CISDiscoveryStudyGuidePage() {
                   value: `${cert.examDetails.duration} min`,
                 },
                 {
-                  label: "Pass Score",
-                  value: `${cert.examDetails.passingScore}%`,
+                  label: "Cut score",
+                  value: CUT_SCORE_LABEL,
                 },
                 { label: "Practice Qs", value: `${totalQuestions}+` },
               ].map((stat) => (
@@ -569,7 +554,7 @@ export default async function CISDiscoveryStudyGuidePage() {
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-500" />
-                    {cert.examDetails.passingScore}% passing score
+                    Cut score not published; aim for 80%+ on timed practice
                   </li>
                 </ul>
               </div>

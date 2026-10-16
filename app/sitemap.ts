@@ -2,9 +2,10 @@ import { MetadataRoute } from "next";
 import { getCertificationSlugs, getAllTopicSlugs, getAllDeltaSlugs } from "@/lib/data";
 import { getAllPosts } from "@/data/blog/posts";
 import { getAllComparisonSlugs } from "@/lib/comparisons";
-import { getAllCompetitorSlugs } from "@/data/competitor-comparisons";
-import { ALL_SEGMENTS } from "@/lib/salaries/segments";
 import { getReleaseSummary } from "@/lib/release-notes";
+import { getAllCourses } from "@/lib/courses";
+import { isIndexablePath } from "@/lib/seo-indexing";
+import { LAST_REVIEWED_ISO } from "@/lib/site-facts";
 
 export const dynamic = "force-static";
 
@@ -14,12 +15,13 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://snready.com";
  * SITEMAP STRATEGY
  *
  * Only indexable pages belong here: a URL that is noindexed or canonicalised
- * elsewhere must not be listed. Version-diff product pages and /[cert]/dumps
- * are noindexed and so are excluded. Individual question pages are excluded.
+ * elsewhere must not be listed. Every candidate URL is filtered through
+ * isIndexablePath (lib/seo-indexing.ts), the same rule page metadata uses for
+ * the robots meta tag. Individual question pages are excluded.
  *
- * lastModified is only set where we know when the content really changed
- * (blog posts). Google ignores lastmod once it proves inaccurate, and stamping
- * every URL with the build time made it inaccurate.
+ * lastModified is a real content date, never the build time: blog posts and
+ * courses use their own dates; every other page uses LAST_REVIEWED_ISO, the
+ * date its facts were last reviewed by hand (lib/site-facts.ts).
  */
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -69,11 +71,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: `${BASE_URL}/version-diff`,
       changeFrequency: "monthly",
       priority: 0.85,
-    },
-    {
-      url: `${BASE_URL}/salaries`,
-      changeFrequency: "weekly",
-      priority: 0.9,
     },
   ];
 
@@ -134,21 +131,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })),
   ];
 
-  // === Competitor comparison pages (vs) ===
-  const competitorSlugs = getAllCompetitorSlugs();
-  const competitorPages: MetadataRoute.Sitemap = [
-    {
-      url: `${BASE_URL}/vs`,
-      changeFrequency: "monthly" as const,
-      priority: 0.85,
-    },
-    ...competitorSlugs.map((slug) => ({
-      url: `${BASE_URL}/vs/${slug}`,
-      changeFrequency: "monthly" as const,
-      priority: 0.8,
-    })),
-  ];
-
   // === Delta exam pages ===
   const deltaSlugs = getAllDeltaSlugs();
   const deltaPages: MetadataRoute.Sitemap = deltaSlugs.map(({ certification, release }) => ({
@@ -157,16 +139,23 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.85,
   }));
 
-  // === Salary segment pages (role + country specific) ===
-  const salarySegmentPages: MetadataRoute.Sitemap = ALL_SEGMENTS.map((segment) => ({
-    url: `${BASE_URL}/salaries/${segment.slug}`,
-    changeFrequency: "weekly" as const,
-    priority: 0.85,
-  }));
-
-  // === Future: Individual question pages (Phase 3) ===
-  // const questionIds = await getAllQuestionIds();
-  // const individualQuestionPages = questionIds.map(...)
+  // === Courses ===
+  const courses = getAllCourses();
+  const courseDates = courses.map((course) => new Date(course.updated).getTime());
+  const coursePages: MetadataRoute.Sitemap = [
+    {
+      url: `${BASE_URL}/courses`,
+      lastModified: courseDates.length ? new Date(Math.max(...courseDates)) : undefined,
+      changeFrequency: "monthly" as const,
+      priority: 0.85,
+    },
+    ...courses.map((course) => ({
+      url: `${BASE_URL}/courses/${course.slug}`,
+      lastModified: new Date(course.updated),
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    })),
+  ];
 
   // Version Diff pages
   const releaseSummary = getReleaseSummary();
@@ -179,6 +168,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     });
   }
 
+  const lastReviewed = new Date(LAST_REVIEWED_ISO);
   return [
     ...staticPages,
     ...certPages,
@@ -187,9 +177,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...mockExamPages,
     ...comparePages,
     ...blogPages,
-    ...competitorPages,
+    ...coursePages,
     ...deltaPages,
-    ...salarySegmentPages,
     ...versionDiffPages,
-  ];
+  ]
+    .filter((entry) => isIndexablePath(entry.url.slice(BASE_URL.length) || "/"))
+    .map((entry) => ({ ...entry, lastModified: entry.lastModified ?? lastReviewed }));
 }

@@ -38,6 +38,13 @@ export const breadcrumbs = {
     ];
   },
 
+  courses(): BreadcrumbItem[] {
+    return [
+      { name: "Home", url: "/" },
+      { name: "Courses", url: "/courses" },
+    ];
+  },
+
   category(categoryName: string, categorySlug: string): BreadcrumbItem[] {
     return [
       { name: "Home", url: "/" },

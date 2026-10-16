@@ -17,6 +17,13 @@ import {
 } from "@/lib/data";
 import { generateBreadcrumbJsonLd } from "@/lib/breadcrumbs";
 import { getCanonicalUrl } from "@/lib/seo";
+import {
+  CUT_SCORE_LABEL,
+  CUT_SCORE_NOTE,
+  LAST_REVIEWED_ISO,
+  LAST_REVIEWED_LABEL,
+  formatExamCost,
+} from "@/lib/site-facts";
 import { CheckoutButton } from "@/components/CheckoutButton";
 import { QuestionsWithPaywall } from "@/components/QuestionsWithPaywall";
 
@@ -42,14 +49,14 @@ const CERT_LANDING_CONTENT: Record<
     heroDescription:
       "Practice the same decision patterns the real CIS-ITSM exam uses: incident vs. problem, CAB vs. ECAB, request fulfillment design, SLA behavior, and reporting tradeoffs.",
     trustPoints: [
-      "__TOTAL__ scenario-style questions mapped across all 7 exam topics",
+      "__TOTAL__ scenario-style questions mapped across all __TOPICS__ exam topics",
       `${FREE_QUESTIONS_PER_CERT} free questions before you pay anything`,
       "Detailed explanations designed around official ServiceNow concepts",
     ],
     featureHighlights: [
       "Incident Management and Change Management each represent 20% of the exam",
       "Focus on implementation decisions, not just vocabulary recall",
-      "One-time $9 access is far cheaper than a $315 exam retake",
+      "One-time $9 access is far cheaper than a $225 CIS exam retake",
     ],
     roleFit: [
       "Consultants implementing core ITSM workflows",
@@ -64,7 +71,7 @@ const CERT_LANDING_CONTENT: Record<
     heroDescription:
       "Practice the implementation decisions the CIS-Discovery exam emphasizes: Pattern Designer logic, MID Server and credential setup, Discovery status troubleshooting, CMDB integration, and rollout readiness.",
     trustPoints: [
-      "__TOTAL__ scenario-style questions mapped across all 4 exam domains",
+      "__TOTAL__ scenario-style questions mapped across all __DOMAINS__ exam domains",
       `${FREE_QUESTIONS_PER_CERT} free questions before you pay anything`,
       "US$9 once for lifetime access to the full bank, mock exams, and detailed explanations",
     ],
@@ -78,7 +85,7 @@ const CERT_LANDING_CONTENT: Record<
       "Practitioners who need focused practice before a scheduled exam",
     ],
     urgencyNote:
-      "Start with the 15 free questions to check whether Discovery scenarios feel familiar. Upgrade only if you want the full bank, mock exams, and explanations for one lifetime purchase.",
+      `Start with the ${FREE_QUESTIONS_PER_CERT} free questions to check whether Discovery scenarios feel familiar. Upgrade only if you want the full bank, mock exams, and explanations for one lifetime purchase.`,
   },
 };
 
@@ -101,14 +108,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const landingContent = CERT_LANDING_CONTENT[slug];
   const title = landingContent
-    ? `${certification.name} Practice Questions - ${certification.release} Exam Prep`
+    ? `${certification.name} Practice Questions - Current Exam Blueprint`
     : `${certification.name} Practice Questions - Free ${certification.name} Exam Prep`;
   const questionTotal = getTotalQuestionCount(slug);
   const description = questionTotal === 0
     ? `${certification.name} practice questions are coming soon. See the ServiceNow ${certification.fullName} exam format and official resources.`
     : landingContent
-    ? `Practice ${getTotalQuestionCount(slug)}+ ${certification.name} exam questions for the ${certification.release} release. ${FREE_QUESTIONS_PER_CERT} free questions covering Incident, Change, Problem, Request, SLA, and reporting with detailed explanations.`
-    : `Practice ${getTotalQuestionCount(slug)}+ ${certification.name} exam questions. ${FREE_QUESTIONS_PER_CERT} free questions with detailed explanations to help you pass your ServiceNow ${certification.fullName} certification.`;
+    ? `Practice ${getTotalQuestionCount(slug)} ${certification.name} exam questions mapped to the current exam blueprint. ${FREE_QUESTIONS_PER_CERT} free questions covering Incident, Change, Problem, Request, SLA, and reporting with detailed explanations.`
+    : `Practice ${getTotalQuestionCount(slug)} ${certification.name} exam questions. ${FREE_QUESTIONS_PER_CERT} free questions with detailed explanations to help you pass your ServiceNow ${certification.fullName} certification.`;
 
   // Free certifications (lib/free-certs.ts): the whole bank is free.
   const freeCert = isCertificationFree(slug);
@@ -190,38 +197,6 @@ export default async function PracticeTestPage({ params }: Props) {
     },
   };
 
-  const faqData = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: `How many free ${certification.name} practice questions are available?`,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: certIsFree
-            ? `All ${freeQuestionCount} ${certification.name} practice questions are free, covering all exam domains, plus a free timed mock exam. No signup needed. Every question includes a detailed explanation.`
-            : `We offer ${freeQuestionCount} free ${certification.name} practice questions covering all exam domains. These questions include detailed explanations to help you understand the concepts.`,
-        },
-      },
-      {
-        "@type": "Question",
-        name: `How many questions are on the actual ${certification.name} exam?`,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: `The ${certification.name} exam contains ${certification.examDetails?.questionCount || '60'} questions. You have ${certification.examDetails?.duration || '90'} minutes to complete it with a passing score of ${certification.examDetails?.passingScore || '70'}%.`,
-        },
-      },
-      {
-        "@type": "Question",
-        name: `Are these questions similar to the real ${certification.name} exam?`,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: `Yes, our practice questions are designed to match the format, difficulty, and content areas of the actual ${certification.name} certification exam. Each question includes references to official ServiceNow documentation.`,
-        },
-      },
-    ],
-  };
 
   return (
     <>
@@ -235,12 +210,6 @@ export default async function PracticeTestPage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(courseSchema),
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(faqData),
         }}
       />
 
@@ -270,6 +239,10 @@ export default async function PracticeTestPage({ params }: Props) {
               : `Coming soon - Practice questions for ${certification.name}`
             }
           </p>
+          <p className="mt-2 text-sm text-zinc-500">
+            Last reviewed:{" "}
+            <time dateTime={LAST_REVIEWED_ISO}>{LAST_REVIEWED_LABEL}</time>
+          </p>
         </div>
 
         {isReady ? (
@@ -294,19 +267,19 @@ export default async function PracticeTestPage({ params }: Props) {
                 </div>
                 <div className="text-center">
                   <div className="text-2xl font-bold text-emerald-600">
-                    {certification.examDetails?.passingScore || '70'}%
+                    {CUT_SCORE_LABEL}
                   </div>
-                  <div className="text-sm text-zinc-600 dark:text-zinc-400">Passing Score</div>
+                  <div className="text-sm text-zinc-600 dark:text-zinc-400">Cut Score</div>
                 </div>
                 <div className="text-center">
                   <div className="text-2xl font-bold text-emerald-600">
-                    ${certification.examDetails?.cost || '500'}
+                    {formatExamCost(certification)}
                   </div>
                   <div className="text-sm text-zinc-600 dark:text-zinc-400">Exam Cost</div>
                 </div>
                 <div className="text-center">
                   <div className="text-2xl font-bold text-emerald-600">
-                    {totalQuestions}+
+                    {totalQuestions}
                   </div>
                   <div className="text-sm text-zinc-600 dark:text-zinc-400">Practice Questions</div>
                 </div>
@@ -317,6 +290,7 @@ export default async function PracticeTestPage({ params }: Props) {
                   <div className="text-sm text-zinc-600 dark:text-zinc-400">Free Questions</div>
                 </div>
               </div>
+              <p className="mt-4 text-sm text-zinc-500">{CUT_SCORE_NOTE}</p>
             </div>
 
             {landingContent && (
@@ -337,7 +311,10 @@ export default async function PracticeTestPage({ params }: Props) {
                         key={point}
                         className="rounded-xl border border-white/70 bg-white/90 p-4 text-sm font-medium text-zinc-700 shadow-sm dark:border-zinc-800 dark:bg-zinc-900/80 dark:text-zinc-200"
                       >
-                        {point.replace("__TOTAL__", String(allQuestions.length))}
+                        {point
+                          .replace("__TOTAL__", String(allQuestions.length))
+                          .replace("__TOPICS__", String(topics.length))
+                          .replace("__DOMAINS__", String(domains.length))}
                       </li>
                     ))}
                   </ul>
@@ -427,7 +404,7 @@ export default async function PracticeTestPage({ params }: Props) {
                 premiumQuestionCount={premiumQuestionCount}
                 certification={certification.name}
                 certificationSlug={slug}
-                examCost={certification.examDetails?.cost}
+                examCost={certification.examDetails?.cost ?? undefined}
                 freeQuestionCount={freeQuestionCount}
                 featureHighlights={landingContent?.featureHighlights}
                 paidCertCount={paidCount}
@@ -556,7 +533,7 @@ export default async function PracticeTestPage({ params }: Props) {
                     CSA - Certified System Administrator
                   </h3>
                   <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-                    100+ practice questions across all domains
+                    {getTotalQuestionCount("csa")} practice questions across all domains
                   </p>
                   <span className="mt-2 inline-block text-sm font-medium text-emerald-600">
                     Available Now →

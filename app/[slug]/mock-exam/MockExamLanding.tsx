@@ -256,7 +256,7 @@ export default function MockExamLanding({
             <div className="text-2xl font-bold text-emerald-600">
               {examConfig.passingScore}%
             </div>
-            <div className="mt-1 text-sm text-zinc-500">To Pass</div>
+            <div className="mt-1 text-sm text-zinc-500">SNReady pass target</div>
           </div>
           <div className="rounded-lg bg-zinc-50 p-4 text-center dark:bg-zinc-800">
             <div className="text-2xl font-bold text-zinc-700 dark:text-zinc-300">

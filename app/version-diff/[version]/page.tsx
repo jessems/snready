@@ -78,40 +78,12 @@ export default async function VersionPage({ params }: PageProps) {
     { name: meta.name, url: `https://snready.com/version-diff/${version}` },
   ]);
 
-  const faqJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: `What's new in ServiceNow ${meta.name}?`,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: `ServiceNow ${meta.name} (${meta.date}) introduced ${versionData.totalEntries} changes across ${versionData.products.length} product areas. Key areas include ${versionData.products.sort((a, b) => b.entryCount - a.entryCount).slice(0, 5).map((p) => p.name).join(", ")}.`,
-        },
-      },
-      {
-        "@type": "Question",
-        name: `What was deprecated in ServiceNow ${meta.name}?`,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: typeCounts.deprecated > 0
-            ? `${typeCounts.deprecated} features were deprecated in ${meta.name}. Use the filter tool to see all deprecations by product area.`
-            : `The ${meta.name} release notes do not highlight specific deprecations in the N-1 upgrade path.`,
-        },
-      },
-    ],
-  };
 
   return (
     <div className="min-h-screen bg-white dark:bg-zinc-950">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
 
       {/* Hero */}

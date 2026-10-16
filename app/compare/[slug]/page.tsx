@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { robotsForPath } from "@/lib/seo-indexing";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getCertificationBySlug, getCategoryDisplayName } from "@/lib/data";
@@ -45,6 +46,7 @@ export async function generateMetadata({
       `${cert1.name} or ${cert2.name}`,
       "ServiceNow certification comparison",
     ],
+    robots: robotsForPath(`/compare/${slug}`),
     alternates: {
       canonical: `/compare/${slug}`,
     },
@@ -82,55 +84,12 @@ export default async function ComparisonPage({ params }: PageProps) {
     breadcrumbs.comparison(cert1.name, cert2.name, slug)
   );
 
-  // JSON-LD structured data - FAQ schema
-  const faqJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: `What is the difference between ${cert1.name} and ${cert2.name}?`,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: `${cert1.name} (${cert1.fullName}) focuses on ${cert1.description.slice(0, 150)}. ${cert2.name} (${cert2.fullName}) focuses on ${cert2.description.slice(0, 150)}. The ${cert1.name} exam has ${cert1.examDetails.questionCount} questions while ${cert2.name} has ${cert2.examDetails.questionCount} questions.`,
-        },
-      },
-      {
-        "@type": "Question",
-        name: `Should I get ${cert1.name} or ${cert2.name} certification?`,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: recommendation,
-        },
-      },
-      {
-        "@type": "Question",
-        name: `Which is harder: ${cert1.name} or ${cert2.name}?`,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: `${cert1.name} requires a ${cert1.examDetails.passingScore}% score on ${cert1.examDetails.questionCount} questions in ${cert1.examDetails.duration} minutes. ${cert2.name} requires a ${cert2.examDetails.passingScore}% score on ${cert2.examDetails.questionCount} questions in ${cert2.examDetails.duration} minutes. Difficulty varies based on your background and experience.`,
-        },
-      },
-      {
-        "@type": "Question",
-        name: `How much do ${cert1.name} and ${cert2.name} exams cost?`,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: `The ${cert1.name} exam costs $${cert1.examDetails.cost} USD and the ${cert2.name} exam costs $${cert2.examDetails.cost} USD.`,
-        },
-      },
-    ],
-  };
 
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
 
       <div className="min-h-screen">

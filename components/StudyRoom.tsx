@@ -29,6 +29,7 @@ export default function StudyRoom({ courses, summary }: Props) {
     <div className="actions">
     <Link className="button" href="#certifications">Find your certification</Link>
     <Link className="text-link" href="/csa">Start with CSA</Link>
+    <Link className="text-link" href="/courses">Architecture courses</Link>
     </div>
     <p className="small-note">{summary.freeCertifications.map(c => c.name).join(" and ")} free. Pay once for other certifications.</p>
     </div>

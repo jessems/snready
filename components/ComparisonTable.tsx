@@ -1,4 +1,5 @@
 import type { Certification } from "@/types";
+import { CUT_SCORE_LABEL, formatExamCost } from "@/lib/site-facts";
 
 interface ComparisonTableProps {
   cert1: Certification;
@@ -18,14 +19,14 @@ export default function ComparisonTable({ cert1, cert2 }: ComparisonTableProps) 
       value2: `${cert2.examDetails.duration} minutes`,
     },
     {
-      label: "Passing Score",
-      value1: `${cert1.examDetails.passingScore}%`,
-      value2: `${cert2.examDetails.passingScore}%`,
+      label: "Cut Score",
+      value1: CUT_SCORE_LABEL,
+      value2: CUT_SCORE_LABEL,
     },
     {
       label: "Exam Cost",
-      value1: `$${cert1.examDetails.cost}`,
-      value2: `$${cert2.examDetails.cost}`,
+      value1: formatExamCost(cert1),
+      value2: formatExamCost(cert2),
     },
     {
       label: "Level",
@@ -38,9 +39,9 @@ export default function ComparisonTable({ cert1, cert2 }: ComparisonTableProps) 
       value2: cert2.examDetails.format,
     },
     {
-      label: "Release",
-      value1: cert1.release,
-      value2: cert2.release,
+      label: "Blueprint Updated",
+      value1: cert1.blueprint?.updated ?? "See Now Learning",
+      value2: cert2.blueprint?.updated ?? "See Now Learning",
     },
     {
       label: "Prerequisites",
