@@ -1,5 +1,8 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import { AuthorByline } from "@/components/AuthorByline";
+import { authorJsonLd } from "@/lib/author";
+import { getAllCourses } from "@/lib/courses";
 
 const canonicalPath = "/courses/service-mapping";
 
@@ -322,6 +325,7 @@ function TroubleshootingVisual() {
 }
 
 export default function ServiceMappingCoursePage() {
+  const reviewed = getAllCourses().find((course) => course.slug === "service-mapping")?.updated ?? "2026-07-05";
   const courseSchema = {
     "@context": "https://schema.org",
     "@type": "Course",
@@ -333,6 +337,8 @@ export default function ServiceMappingCoursePage() {
       name: "SNReady",
       sameAs: "https://snready.com",
     },
+    author: authorJsonLd(),
+    dateModified: reviewed,
   };
 
   return (
@@ -345,6 +351,7 @@ export default function ServiceMappingCoursePage() {
           <div className="max-w-4xl">
             <p className="text-sm font-semibold uppercase tracking-[0.28em] text-cyan-300">ServiceNow architecture course</p>
             <h1 className="mt-5 text-4xl font-black tracking-tight md:text-6xl">ServiceNow Service Mapping, explained for architects</h1>
+            <AuthorByline reviewed={reviewed} variant="onDark" className="mt-4" />
             <p className="mt-6 text-xl leading-9 text-slate-200 md:text-2xl">
               Learn how Service Mapping turns infrastructure data into service context: what it is, how it works, how to design a mapping strategy, and how to avoid the traps that make maps untrusted.
             </p>
@@ -678,6 +685,17 @@ export default function ServiceMappingCoursePage() {
               </p>
             </div>
           </section>
+
+          <section className="border-t border-slate-200 py-10 dark:border-slate-800">
+
+            <p className="text-lg leading-8 text-slate-700 dark:text-slate-300">
+
+              Studying for CIS-Data Foundations? The <Link href="/cis-df" className="font-semibold text-cyan-700 underline dark:text-cyan-300">CIS-Data Foundations exam overview</Link> covers how mapped services, IRE, CMDB Health and CSDM fit the exam blueprint, with <Link href="/cis-df/practice-questions" className="font-semibold text-cyan-700 underline dark:text-cyan-300">CIS-DF practice questions</Link>.
+
+            </p>
+
+          </section>
+
 
           <section className="border-t border-slate-200 py-14 dark:border-slate-800">
             <h2 className="text-2xl font-bold text-slate-950 dark:text-white">Sources and further reading</h2>

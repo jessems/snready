@@ -5,6 +5,9 @@ import { getAllPosts, getPostBySlug } from "@/data/blog/posts";
 import { MarkdownContent } from "@/components/MarkdownContent";
 import { getBlogRelatedCerts } from "@/lib/internal-links";
 import { getCertificationBySlug } from "@/lib/data";
+import { AuthorByline } from "@/components/AuthorByline";
+import { BLOG_GUIDE_BODIES } from "@/components/blog-guides";
+import { AUTHOR, authorJsonLd } from "@/lib/author";
 import {
   RoleSalaryChart,
   USvsUKChart,
@@ -72,7 +75,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       type: "article",
       publishedTime: post.publishedAt,
       modifiedTime: post.updatedAt || post.publishedAt,
-      authors: [post.author],
+      authors: [AUTHOR.name],
       tags: post.tags,
     },
     twitter: {
@@ -98,6 +101,9 @@ export default async function BlogPostPage({ params }: Props) {
     .filter((p) => p.tags.some((tag) => post.tags.includes(tag)))
     .slice(0, 3);
 
+  const GuideBody = BLOG_GUIDE_BODIES[slug];
+  const reviewed = post.updatedAt || post.publishedAt;
+
   // JSON-LD for article
   const articleSchema = {
     "@context": "https://schema.org",
@@ -106,10 +112,7 @@ export default async function BlogPostPage({ params }: Props) {
     description: post.description,
     datePublished: post.publishedAt,
     dateModified: post.updatedAt || post.publishedAt,
-    author: {
-      "@type": "Organization",
-      name: post.author,
-    },
+    author: authorJsonLd(),
     publisher: {
       "@type": "Organization",
       name: "SNReady",
@@ -169,9 +172,10 @@ export default async function BlogPostPage({ params }: Props) {
           </p>
 
           {/* Meta */}
-          <div className="mt-6 flex items-center gap-4 border-b border-zinc-200 pb-6 text-sm text-zinc-500 dark:border-zinc-800 dark:text-zinc-400">
-            <span>{post.author}</span>
+          <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-1 border-b border-zinc-200 pb-6 text-sm text-zinc-500 dark:border-zinc-800 dark:text-zinc-400">
+            <AuthorByline reviewed={reviewed} />
             <span>•</span>
+            <span>Published</span>
             <time dateTime={post.publishedAt}>
               {new Date(post.publishedAt).toLocaleDateString("en-US", {
                 year: "numeric",
@@ -190,7 +194,9 @@ export default async function BlogPostPage({ params }: Props) {
 
         {/* Content */}
         <div className="prose prose-zinc dark:prose-invert max-w-none prose-headings:font-semibold prose-a:text-emerald-600 prose-a:no-underline hover:prose-a:underline prose-code:text-emerald-600 dark:prose-a:text-emerald-400 dark:prose-code:text-emerald-400">
-          {slug === "servicenow-salaries-2026-real-data" ? (
+          {GuideBody ? (
+            <GuideBody />
+          ) : slug === "servicenow-salaries-2026-real-data" ? (
             <SalaryPostContent content={post.content} />
           ) : (
             <MarkdownContent content={post.content} />

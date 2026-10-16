@@ -21,12 +21,14 @@ export const PRACTICE_PASS_TARGET = 70;
 // major changes explained" (18 Jan 2026):
 // https://www.servicenow.com/community/training-and-certifications/2026-exam-vouchers-courses-exams-amp-retakes-major-changes/ba-p/3464930
 // Exams moved from Kryterion/Webassessor to Pearson VUE; they are registered
-// and paid for in ServiceNow University; exam vouchers no longer exist.
+// and paid for in ServiceNow University; exam vouchers no longer exist. The
+// source does not say whether delivery is online or at a test centre, so
+// neither is claimed here.
 export const EXAM_DELIVERY_SOURCE_URL =
   "https://www.servicenow.com/community/training-and-certifications/2026-exam-vouchers-courses-exams-amp-retakes-major-changes/ba-p/3464930";
 export const EXAM_DELIVERY =
-  "Registered and paid for in ServiceNow University, scheduled and delivered through Pearson VUE (online or at a test centre)";
-export const EXAM_DELIVERY_SHORT = "Pearson VUE, online or test centre";
+  "Registered and paid for in ServiceNow University, scheduled through Pearson VUE";
+export const EXAM_DELIVERY_SHORT = "Pearson VUE via ServiceNow University";
 
 /**
  * Exam fee in USD, or null when we have no source for it. Fees come from

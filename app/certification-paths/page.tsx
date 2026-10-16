@@ -1,579 +1,339 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import { AuthorByline } from "@/components/AuthorByline";
+import { BlueprintChart, Callout, Card, GuideSection, In, Misconception, Scenario, SourcesList, Src, Toc } from "@/components/guide/GuideParts";
+import { getBlueprint, getCisDfPrerequisiteCerts } from "@/lib/cert-sources";
+import { getCertificationBySlug, isCertificationFree, isCertificationReady } from "@/lib/data";
+import { authorJsonLd } from "@/lib/author";
+import { LAST_REVIEWED_ISO } from "@/lib/site-facts";
+import type { SourceKey } from "@/lib/sources";
 
 export const metadata: Metadata = {
-  title: "ServiceNow Certification Paths & Career Roadmap 2026",
-  description: "Navigate your ServiceNow career with our certification roadmap. From CSA to CTA, discover the right path for administrators, developers, and specialists.",
+  title: "ServiceNow Certification Paths 2026: Which Exam Comes Next",
+  description:
+    "How ServiceNow certifications fit together in 2026: CSA, CAD and CPOA on the platform side, CIS-Data Foundations as the required gate for seven CIS exams, every blueprint with its heaviest domain, and sourced fees and retake rules.",
   keywords: [
     "ServiceNow certification path",
-    "ServiceNow career roadmap",
+    "ServiceNow certification list",
     "ServiceNow certification order",
     "which ServiceNow certification first",
-    "ServiceNow certification guide",
-    "ServiceNow admin certification path",
-    "ServiceNow developer certification path",
+    "CIS-DF prerequisite",
   ],
   alternates: {
     canonical: "/certification-paths",
   },
   openGraph: {
-    title: "ServiceNow Certification Paths & Career Roadmap | SNReady",
-    description: "Navigate your ServiceNow career with our certification roadmap",
+    title: "ServiceNow Certification Paths 2026",
+    description: "Which ServiceNow certification comes next, with the official blueprints and the CIS-DF prerequisite rule.",
+    url: "/certification-paths",
+    type: "article",
   },
 };
 
-interface CertificationNode {
-  name: string;
-  fullName: string;
-  slug: string;
-  description: string;
-  examTime: string;
-  examQuestions: number;
-  passingScore: string;
-  cost: string;
+// Tracks are our grouping; prerequisite rules come from cert-sources.csv
+// (blueprints and exam registration pages) and the 2026 Community summary.
+const PLATFORM_CERTS = ["csa", "cad", "cpoa"];
+const OTHER_CIS = ["cis-csm", "cis-fsm", "cis-hr", "cis-em", "cis-rc", "cis-tprm", "cis-spm", "cis-sp", "cis-pa"];
+
+/** cert-sources.csv code ("CIS-Discovery") → site slug ("cis-discovery"). */
+function codeToSlug(code: string): string {
+  return code.toLowerCase();
 }
 
-interface CareerPath {
-  name: string;
-  emoji: string;
-  description: string;
-  idealFor: string[];
-  certifications: CertificationNode[];
-  salary: string;
-  timeToComplete: string;
+function PathMapDiagram({ gated }: { gated: string[] }) {
+  const gatedNames = gated.map((slug) => getCertificationBySlug(slug)?.name ?? slug.toUpperCase());
+  const other = OTHER_CIS.map((slug) => getCertificationBySlug(slug)?.name ?? slug.toUpperCase());
+  return (
+    <figure className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-950">
+      <svg viewBox="0 0 760 430" role="img" aria-labelledby="paths-map-title" className="h-auto w-full">
+        <title id="paths-map-title">ServiceNow certification map: platform exams, the CIS-DF gate, and other CIS exams</title>
+        <defs>
+          <marker id="paths-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0 0 L10 5 L0 10 z" className="fill-emerald-600" />
+          </marker>
+        </defs>
+        <text x="20" y="28" className="fill-zinc-500 text-[12px] font-bold uppercase tracking-widest">Platform</text>
+        {[["CSA", "Administration"], ["CAD", "Application development"], ["CPOA", "Platform ownership"]].map(([name, role], i) => (
+          <g key={name}>
+            <rect x={20 + i * 160} y="40" width="145" height="58" rx="12" className="fill-sky-50 stroke-sky-400 dark:fill-sky-950/40" />
+            <text x={92 + i * 160} y="66" textAnchor="middle" className="fill-sky-950 text-[14px] font-bold dark:fill-sky-100">{name}</text>
+            <text x={92 + i * 160} y="85" textAnchor="middle" className="fill-sky-800 text-[11px] dark:fill-sky-300">{role}</text>
+          </g>
+        ))}
+        <text x="20" y="140" className="fill-zinc-500 text-[12px] font-bold uppercase tracking-widest">Data foundations gate</text>
+        <rect x="20" y="152" width="200" height="64" rx="12" className="fill-emerald-100 stroke-emerald-600 dark:fill-emerald-950/50" strokeWidth="2" />
+        <text x="120" y="180" textAnchor="middle" className="fill-emerald-950 text-[14px] font-bold dark:fill-emerald-100">CIS-DF</text>
+        <text x="120" y="199" textAnchor="middle" className="fill-emerald-800 text-[11px] dark:fill-emerald-300">CMDB and CSDM</text>
+        {gatedNames.map((name, i) => {
+          const col = i % 4;
+          const row = Math.floor(i / 4);
+          const x = 290 + col * 118;
+          const y = 140 + row * 62;
+          return (
+            <g key={name}>
+              <line x1="220" y1="184" x2={x - 4} y2={y + 22} className="stroke-emerald-600" strokeWidth="1.5" markerEnd="url(#paths-arrow)" />
+              <rect x={x} y={y} width="108" height="44" rx="10" className="fill-white stroke-emerald-400 dark:fill-zinc-900" />
+              <text x={x + 54} y={y + 27} textAnchor="middle" className="fill-zinc-900 text-[12px] font-semibold dark:fill-zinc-100">{name}</text>
+            </g>
+          );
+        })}
+        <text x="20" y="300" className="fill-zinc-500 text-[12px] font-bold uppercase tracking-widest">Other CIS exams (no CIS-DF prerequisite in our source data)</text>
+        {other.map((name, i) => {
+          const col = i % 5;
+          const row = Math.floor(i / 5);
+          return (
+            <g key={name}>
+              <rect x={20 + col * 146} y={312 + row * 56} width="134" height="42" rx="10" className="fill-zinc-50 stroke-zinc-300 dark:fill-zinc-900 dark:stroke-zinc-700" />
+              <text x={87 + col * 146} y={338 + row * 56} textAnchor="middle" className="fill-zinc-800 text-[12px] font-semibold dark:fill-zinc-200">{name}</text>
+            </g>
+          );
+        })}
+      </svg>
+      <figcaption className="mt-3 text-sm text-zinc-500 dark:text-zinc-400">
+        Arrows show mandatory prerequisites only, from the CIS blueprints and exam registration pages recorded in our source data and the <Src k="examChanges2026">2026 Community summary</Src>. Everything else is a recommended order, not a rule.
+      </figcaption>
+    </figure>
+  );
 }
-
-const careerPaths: CareerPath[] = [
-  {
-    name: "Administrator Track",
-    emoji: "⚙️",
-    description: "The most common entry point into ServiceNow. Administrators configure the platform, manage users, and support day-to-day operations.",
-    idealFor: [
-      "IT professionals looking to enter ServiceNow",
-      "Help desk or support staff wanting to level up",
-      "ITSM professionals from other platforms (Jira, Zendesk)",
-      "Anyone new to ServiceNow",
-    ],
-    certifications: [
-      {
-        name: "CSA",
-        fullName: "Certified System Administrator",
-        slug: "csa",
-        description: "Foundation certification. Covers platform basics, tables, forms, lists, users, security, reporting, and ITSM modules.",
-        examTime: "90 minutes",
-        examQuestions: 60,
-        passingScore: "Not published",
-        cost: "$300",
-      },
-    ],
-    salary: "$80K - $120K",
-    timeToComplete: "2-4 weeks",
-  },
-  {
-    name: "Developer Track",
-    emoji: "💻",
-    description: "For those who want to build custom applications and write scripts on the ServiceNow platform.",
-    idealFor: [
-      "Software developers wanting to specialize in ServiceNow",
-      "CSA holders looking to move into development",
-      "Full-stack developers interested in enterprise platforms",
-      "Anyone comfortable with JavaScript",
-    ],
-    certifications: [
-      {
-        name: "CSA",
-        fullName: "Certified System Administrator",
-        slug: "csa",
-        description: "Recommended first step (not a mandatory prerequisite). Ensures you understand the platform before scripting.",
-        examTime: "90 minutes",
-        examQuestions: 60,
-        passingScore: "Not published",
-        cost: "$300",
-      },
-      {
-        name: "CAD",
-        fullName: "Certified Application Developer",
-        slug: "cad",
-        description: "Tests JavaScript skills, GlideRecord, Business Rules, Client Scripts, REST APIs, and scoped applications.",
-        examTime: "90 minutes",
-        examQuestions: 60,
-        passingScore: "Not published",
-        cost: "$300",
-      },
-    ],
-    salary: "$100K - $160K",
-    timeToComplete: "4-8 weeks",
-  },
-  {
-    name: "ITSM Specialist Track",
-    emoji: "🎫",
-    description: "Deepen your expertise in IT Service Management — Incident, Problem, Change, and Request Management.",
-    idealFor: [
-      "ITSM administrators who configure these modules daily",
-      "Consultants implementing ITSM for clients",
-      "IT managers overseeing service desk operations",
-      "CSA holders specializing in ITSM",
-    ],
-    certifications: [
-      {
-        name: "CSA",
-        fullName: "Certified System Administrator",
-        slug: "csa",
-        description: "Recommended first step (not a mandatory prerequisite).",
-        examTime: "90 minutes",
-        examQuestions: 60,
-        passingScore: "Not published",
-        cost: "$300",
-      },
-      {
-        name: "CIS-DF",
-        fullName: "Certified Implementation Specialist - Data Foundations",
-        slug: "cis-df",
-        description: "Required: you must hold CIS-DF before you can register for CIS-ITSM.",
-        examTime: "90 minutes",
-        examQuestions: 75,
-        passingScore: "Not published",
-        cost: "$450",
-      },
-      {
-        name: "CIS-ITSM",
-        fullName: "Certified Implementation Specialist - ITSM",
-        slug: "cis-itsm",
-        description: "Implementation-level knowledge of Incident, Problem, Change, Request, and SLA configuration.",
-        examTime: "90 minutes",
-        examQuestions: 60,
-        passingScore: "Not published",
-        cost: "$450",
-      },
-    ],
-    salary: "$90K - $140K",
-    timeToComplete: "4-8 weeks",
-  },
-  {
-    name: "CMDB & Data Specialist Track",
-    emoji: "🗄️",
-    description: "Specialize in the Configuration Management Database — the foundation of ServiceNow's power.",
-    idealFor: [
-      "Data architects and managers",
-      "CMDB administrators",
-      "Discovery and Service Mapping specialists",
-      "Anyone implementing CSDM",
-    ],
-    certifications: [
-      {
-        name: "CSA",
-        fullName: "Certified System Administrator",
-        slug: "csa",
-        description: "Recommended first step (not a mandatory prerequisite).",
-        examTime: "90 minutes",
-        examQuestions: 60,
-        passingScore: "Not published",
-        cost: "$300",
-      },
-      {
-        name: "CIS-DF",
-        fullName: "Certified Implementation Specialist - Data Foundations",
-        slug: "cis-df",
-        description: "CMDB structure, CSDM, Discovery, Health monitoring, and data governance.",
-        examTime: "90 minutes",
-        examQuestions: 75,
-        passingScore: "Not published",
-        cost: "$450",
-      },
-      {
-        name: "CIS-Discovery",
-        fullName: "Certified Implementation Specialist - Discovery",
-        slug: "cis-discovery",
-        description: "Deep dive into Discovery, patterns, probes, sensors, and CMDB population. Requires CIS-DF.",
-        examTime: "90 minutes",
-        examQuestions: 45,
-        passingScore: "Not published",
-        cost: "$450",
-      },
-    ],
-    salary: "$100K - $150K",
-    timeToComplete: "8-12 weeks",
-  },
-  {
-    name: "Customer Service Track",
-    emoji: "🎧",
-    description: "Specialize in ServiceNow's Customer Service Management (CSM) for customer-facing operations.",
-    idealFor: [
-      "Customer service managers",
-      "CSM implementation consultants",
-      "B2B support specialists",
-      "Contact center administrators",
-    ],
-    certifications: [
-      {
-        name: "CSA",
-        fullName: "Certified System Administrator",
-        slug: "csa",
-        description: "Recommended first step (not a mandatory prerequisite).",
-        examTime: "90 minutes",
-        examQuestions: 60,
-        passingScore: "Not published",
-        cost: "$300",
-      },
-      {
-        name: "CIS-CSM",
-        fullName: "Certified Implementation Specialist - CSM",
-        slug: "cis-csm",
-        description: "Customer Service Management configuration, cases, accounts, contacts, portals, and CSM workspaces.",
-        examTime: "90 minutes",
-        examQuestions: 60,
-        passingScore: "Not published",
-        cost: "$450",
-      },
-    ],
-    salary: "$95K - $145K",
-    timeToComplete: "4-8 weeks",
-  },
-  {
-    name: "HR Service Delivery Track",
-    emoji: "👥",
-    description: "Specialize in HR Service Delivery for employee experiences and HR case management.",
-    idealFor: [
-      "HR technology managers",
-      "HRSD implementation consultants",
-      "Employee experience specialists",
-      "HR system administrators",
-    ],
-    certifications: [
-      {
-        name: "CSA",
-        fullName: "Certified System Administrator",
-        slug: "csa",
-        description: "Recommended first step (not a mandatory prerequisite).",
-        examTime: "90 minutes",
-        examQuestions: 60,
-        passingScore: "Not published",
-        cost: "$300",
-      },
-      {
-        name: "CIS-HR",
-        fullName: "Certified Implementation Specialist - HR",
-        slug: "cis-hr",
-        description: "HR Service Delivery configuration, HR cases, employee journeys, and HR portal.",
-        examTime: "90 minutes",
-        examQuestions: 60,
-        passingScore: "Not published",
-        cost: "$450",
-      },
-    ],
-    salary: "$95K - $145K",
-    timeToComplete: "4-8 weeks",
-  },
-  {
-    name: "Security Operations Track",
-    emoji: "🔐",
-    description: "Focus on ServiceNow's Security Operations suite — vulnerability response and security incident response.",
-    idealFor: [
-      "Security operations center (SOC) analysts",
-      "Security engineers",
-      "Vulnerability management specialists",
-      "Security consultants",
-    ],
-    certifications: [
-      {
-        name: "CSA",
-        fullName: "Certified System Administrator",
-        slug: "csa",
-        description: "Recommended first step (not a mandatory prerequisite).",
-        examTime: "90 minutes",
-        examQuestions: 60,
-        passingScore: "Not published",
-        cost: "$300",
-      },
-      {
-        name: "CIS-DF",
-        fullName: "Certified Implementation Specialist - Data Foundations",
-        slug: "cis-df",
-        description: "Required: you must hold CIS-DF before you can register for CIS-VR or CIS-SIR.",
-        examTime: "90 minutes",
-        examQuestions: 75,
-        passingScore: "Not published",
-        cost: "$450",
-      },
-      {
-        name: "CIS-VR",
-        fullName: "Certified Implementation Specialist - Vulnerability Response",
-        slug: "cis-vr",
-        description: "Vulnerability management, scanner integrations, remediation workflows, and risk scoring.",
-        examTime: "90 minutes",
-        examQuestions: 45,
-        passingScore: "Not published",
-        cost: "$450",
-      },
-      {
-        name: "CIS-SIR",
-        fullName: "Certified Implementation Specialist - Security Incident Response",
-        slug: "cis-sir",
-        description: "Security incident management, playbooks, threat intelligence, and SIEM integrations.",
-        examTime: "90 minutes",
-        examQuestions: 60,
-        passingScore: "Not published",
-        cost: "$450",
-      },
-    ],
-    salary: "$110K - $170K",
-    timeToComplete: "8-12 weeks",
-  },
-  {
-    name: "Technical Architect Track",
-    emoji: "🏗️",
-    description: "The pinnacle of ServiceNow certification. Technical Architects design complex solutions across the platform.",
-    idealFor: [
-      "Senior developers with 3+ years experience",
-      "Solution architects wanting ServiceNow recognition",
-      "Technical leads overseeing large implementations",
-      "Those pursuing CTA certification",
-    ],
-    certifications: [
-      {
-        name: "CSA",
-        fullName: "Certified System Administrator",
-        slug: "csa",
-        description: "Required prerequisite.",
-        examTime: "90 minutes",
-        examQuestions: 60,
-        passingScore: "Not published",
-        cost: "$300",
-      },
-      {
-        name: "CAD",
-        fullName: "Certified Application Developer",
-        slug: "cad",
-        description: "Required prerequisite.",
-        examTime: "90 minutes",
-        examQuestions: 60,
-        passingScore: "Not published",
-        cost: "$300",
-      },
-      {
-        name: "CTA",
-        fullName: "Certified Technical Architect",
-        slug: "cta",
-        description: "Multi-day exam including design challenge, live presentation, and Q&A. The most prestigious ServiceNow certification.",
-        examTime: "Multi-day",
-        examQuestions: 0,
-        passingScore: "Panel evaluation",
-        cost: "See ServiceNow University",
-      },
-    ],
-    salary: "$150K - $250K+",
-    timeToComplete: "1-3 years",
-  },
-];
-
-const faqs = [
-  {
-    question: "What ServiceNow certification should I get first?",
-    answer: "CSA (Certified System Administrator) is the recommended first certification for everyone. It's the foundation that all other certifications build on, and CIS exams assume CSA-level knowledge. The only mandatory prerequisite certification ServiceNow lists today is CIS-DF, which you need before registering for CIS-ITSM, CIS-Discovery, CIS-SM, CIS-HAM, CIS-SAM, CIS-SIR and CIS-VR.",
-  },
-  {
-    question: "How long does it take to get ServiceNow certified?",
-    answer: "CSA typically takes 2-4 weeks of study for someone new to ServiceNow. CAD adds another 4-6 weeks. CIS certifications usually take 4-8 weeks each after CSA.",
-  },
-  {
-    question: "Can I take CIS certifications without CSA?",
-    answer: "Technically yes, but it's not recommended. CSA teaches foundational concepts that CIS exams assume you know. Without CSA knowledge, you'll struggle with CIS questions.",
-  },
-  {
-    question: "Is CAD required before CIS certifications?",
-    answer: "No. CAD is for developers. CIS certifications are for implementation specialists. You can go directly from CSA to CIS certifications if you're focused on implementation rather than development.",
-  },
-  {
-    question: "What's the best certification path for career growth?",
-    answer: "For most people: CSA → (optional CAD if technical) → 1-2 CIS specializations relevant to your role. This gives you breadth (CSA), optional depth in development (CAD), and specialization (CIS).",
-  },
-  {
-    question: "Are ServiceNow certifications worth the cost?",
-    answer: "Yes, for career growth. CSA alone can increase salary by $20K-30K. The ROI on the $300 exam fee is typically recovered within 1-2 months of a new role.",
-  },
-];
 
 export default function CertificationPathsPage() {
-  const faqSchema = {
+  const gated = getCisDfPrerequisiteCerts().map(codeToSlug);
+  const allSlugs = [...PLATFORM_CERTS, "cis-df", ...gated, ...OTHER_CIS];
+  const rows = allSlugs
+    .map((slug) => {
+      const cert = getCertificationBySlug(slug);
+      const blueprint = getBlueprint(slug);
+      if (!cert || !blueprint || blueprint.domains.length === 0) return null;
+      const top = [...blueprint.domains].sort((a, b) => b.weight - a.weight)[0];
+      return { slug, cert, blueprint, top, gated: gated.includes(slug) };
+    })
+    .filter((row): row is NonNullable<typeof row> => row !== null);
+  const dfBlueprint = getBlueprint("cis-df");
+
+  const articleJsonLd = {
     "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faqs.map(faq => ({
-      "@type": "Question",
-      name: faq.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: faq.answer,
-      },
-    })),
+    "@type": "Article",
+    headline: "ServiceNow Certification Paths 2026: Which Exam Comes Next",
+    dateModified: LAST_REVIEWED_ISO,
+    author: authorJsonLd(),
+    publisher: { "@type": "Organization", name: "SNReady", url: "https://snready.com" },
   };
+
+  const sourceKeys: SourceKey[] = [
+    "examChanges2026", "voucherEligibilityThread", "cutScoreThread",
+    "csaBlueprint", "cadBlueprint", "cpoaBlueprint", "cisDfBlueprint",
+    "docsCmdb", "docsIre", "docsCsdm", "docsAppScope", "docsDomainSeparation",
+  ];
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
-      
-      <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
-        {/* Hero */}
-        <div className="mb-12 text-center">
-          <h1 className="text-4xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 sm:text-5xl">
-            ServiceNow Certification Paths
-          </h1>
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-zinc-600 dark:text-zinc-400">
-            Navigate your ServiceNow career with the right certifications. Find your path from entry-level to architect.
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
+
+      <section className="border-b border-zinc-200 bg-gradient-to-b from-emerald-50 to-white py-14 dark:border-zinc-800 dark:from-zinc-900 dark:to-zinc-950">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-emerald-600">Certification paths</p>
+          <h1 className="mt-3 text-4xl font-bold tracking-tight text-zinc-950 sm:text-5xl dark:text-white">ServiceNow certification paths in 2026</h1>
+          <p className="mt-5 text-xl leading-8 text-zinc-600 dark:text-zinc-300">
+            Which exam comes next depends on the layer of the platform you work in. This page maps the certifications to those layers, shows the one hard rule that now shapes the whole CIS track, and lists every blueprint so you can see what each exam really tests.
           </p>
+          <AuthorByline reviewed={LAST_REVIEWED_ISO} className="mt-5" />
+        </div>
+      </section>
+
+      <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <div className="py-10">
+          <Toc
+            items={[
+              ["#map", "The map: platform, gate, specialisms"],
+              ["#layers", "How the certifications fit the platform"],
+              ["#blueprints", "Every blueprint at a glance"],
+              ["#scenarios", "Paths for real roles"],
+              ["#misconceptions", "Common misconceptions"],
+              ["#logistics", "Fees, booking and retakes"],
+              ["#practice", "Start practising"],
+              ["#sources", "Sources"],
+            ]}
+          />
         </div>
 
-        {/* Quick Start */}
-        <div className="mb-12 rounded-2xl border border-emerald-200 bg-emerald-50 p-6 dark:border-emerald-800 dark:bg-emerald-950">
-          <h2 className="flex items-center gap-2 text-xl font-semibold text-emerald-900 dark:text-emerald-100">
-            <span>🚀</span> Quick Start: Where Should You Begin?
-          </h2>
-          <p className="mt-2 text-emerald-800 dark:text-emerald-200">
-            <strong>New to ServiceNow?</strong> Start with CSA (Certified System Administrator). 
-            It&apos;s the foundation certification that 95% of ServiceNow professionals have, and it&apos;s 
-            recommended for almost every other certification.
+        <GuideSection id="map" eyebrow="The map" title="Platform exams, the CIS-DF gate, and the specialisms">
+          <p>
+            ServiceNow&apos;s certifications fall into three groups. The <strong>platform exams</strong> (CSA, CAD and CPOA) test how the platform itself is administered, extended and owned. <strong>CIS-Data Foundations</strong> tests the CMDB and CSDM. The <strong>other CIS exams</strong> test the implementation of specific products.
           </p>
-          <div className="mt-4">
-            <Link
-              href="/csa"
-              className="inline-flex items-center gap-2 rounded-lg bg-emerald-600 px-4 py-2 text-sm font-medium text-white hover:bg-emerald-700"
-            >
-              Start CSA Prep →
-            </Link>
+          <PathMapDiagram gated={gated} />
+          <p>
+            The rule that matters most in 2026: several CIS certifications now require CIS-DF as a mandatory prerequisite, and you must pass CIS-DF before attempting them (<Src k="examChanges2026">ServiceNow Community, Jan 2026</Src>). Our blueprint data lists those exams as {gated.map((slug) => getCertificationBySlug(slug)?.name ?? slug).join(", ")}. If any of them is your goal, CIS-DF is your next exam.
+          </p>
+        </GuideSection>
+
+        <GuideSection id="layers" eyebrow="Mental model" title="How the certifications fit the platform">
+          <p>
+            A useful way to choose is to ask which layer of the platform you spend your week in. Each certification&apos;s blueprint concentrates on one of them.
+          </p>
+          <div className="grid gap-4 md:grid-cols-2">
+            <Card title="Configure the platform: CSA">
+              <p>
+                The CSA blueprint&apos;s largest domain is Database Management and Platform Security at 30%, covering data schema, access control, importing data, CMDB and CSDM (<Src k="csaBlueprint">CSA blueprint</Src>). Read the <In href="/csa">CSA exam overview</In>.
+              </p>
+            </Card>
+            <Card title="Build on the platform: CAD">
+              <p>
+                CAD weights application design, UI, security and automation at 20% each (<Src k="cadBlueprint">CAD blueprint</Src>), all built around application scope, which restricts access to an app&apos;s files and data (<Src k="docsAppScope">Application scope</Src>). Read the <In href="/cad">CAD exam overview</In>.
+              </p>
+            </Card>
+            <Card title="Govern the data: CIS-DF">
+              <p>
+                CIS-DF gives Govern 35% (<Src k="cisDfBlueprint">CIS-DF blueprint</Src>). It is about which sources may write to the CMDB, which IRE controls (<Src k="docsIre">IRE</Src>), and the CSDM model products share (<Src k="docsCsdm">CSDM</Src>). Read the <In href="/cis-df">CIS-Data Foundations exam overview</In>.
+              </p>
+            </Card>
+            <Card title="Own the platform: CPOA">
+              <p>
+                CPOA spreads across Strategy, People, Process, Technology, Data and ServiceNow Governance, with Technology the largest at 22.9% (<Src k="cpoaBlueprint">CPOA blueprint</Src>). Read the <In href="/cpoa">CPOA exam overview</In>.
+              </p>
+            </Card>
           </div>
-        </div>
+          <p>
+            Why does CIS-DF sit under so many specialisms? Because ITSM, asset management, Discovery, Service Mapping and the security products all depend on CMDB data. The CMDB is where configuration items and their relationships live, populated by Discovery, integrations, imports or by hand (<Src k="docsCmdb">CMDB</Src>). A specialist who can&apos;t reason about that data will struggle with the products built on it.
+          </p>
+          {dfBlueprint && <BlueprintChart blueprint={dfBlueprint} sourceKey="cisDfBlueprint" showObjectives={false} />}
+        </GuideSection>
 
-        {/* Career Paths */}
-        <div className="space-y-8">
-          {careerPaths.map((path) => (
-            <div
-              key={path.name}
-              className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-900"
-            >
-              <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-                <div>
-                  <h2 className="flex items-center gap-2 text-2xl font-bold text-zinc-900 dark:text-zinc-100">
-                    <span>{path.emoji}</span> {path.name}
-                  </h2>
-                  <p className="mt-1 text-zinc-600 dark:text-zinc-400">
-                    {path.description}
-                  </p>
-                </div>
-                <div className="flex flex-shrink-0 gap-4 text-sm">
-                  <div className="text-center">
-                    <div className="font-semibold text-emerald-600 dark:text-emerald-400">
-                      {path.salary}
-                    </div>
-                    <div className="text-zinc-500">Salary Range</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="font-semibold text-zinc-700 dark:text-zinc-300">
-                      {path.timeToComplete}
-                    </div>
-                    <div className="text-zinc-500">Study Time</div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Ideal For */}
-              <div className="mt-4">
-                <div className="text-sm font-medium text-zinc-700 dark:text-zinc-300">
-                  Ideal for:
-                </div>
-                <ul className="mt-1 flex flex-wrap gap-2">
-                  {path.idealFor.map((item) => (
-                    <li
-                      key={item}
-                      className="inline-flex items-center rounded-full bg-zinc-100 px-3 py-1 text-sm text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300"
-                    >
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Certification Flow */}
-              <div className="mt-6">
-                <div className="text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-3">
-                  Certification Progression:
-                </div>
-                <div className="flex flex-wrap items-center gap-2">
-                  {path.certifications.map((cert, index) => (
-                    <div key={cert.name} className="flex items-center gap-2">
-                      <Link
-                        href={`/${cert.slug}`}
-                        className="group flex flex-col rounded-lg border border-zinc-200 bg-zinc-50 p-3 transition-all hover:border-emerald-300 hover:bg-emerald-50 dark:border-zinc-700 dark:bg-zinc-800 dark:hover:border-emerald-700 dark:hover:bg-emerald-950"
-                      >
-                        <div className="flex items-center gap-2">
-                          <span className="font-bold text-zinc-900 group-hover:text-emerald-700 dark:text-zinc-100 dark:group-hover:text-emerald-400">
-                            {cert.name}
-                          </span>
-                          <span className="text-xs text-zinc-500">
-                            {cert.cost}
-                          </span>
-                        </div>
-                        <span className="text-xs text-zinc-500 dark:text-zinc-400">
-                          {cert.fullName}
-                        </span>
+        <GuideSection id="blueprints" eyebrow="Reference" title="Every blueprint at a glance">
+          <p>
+            Each row links to the official blueprint on Now Learning (sign-in required) and to our overview where we have one. &ldquo;Heaviest domain&rdquo; is the single largest weight in that blueprint.
+          </p>
+          <div className="overflow-x-auto rounded-2xl border border-zinc-200 dark:border-zinc-800">
+            <table className="min-w-full text-left text-sm">
+              <thead className="bg-zinc-50 text-zinc-600 dark:bg-zinc-900 dark:text-zinc-400">
+                <tr>
+                  <th className="px-4 py-3 font-semibold">Certification</th>
+                  <th className="px-4 py-3 font-semibold">Blueprint</th>
+                  <th className="px-4 py-3 font-semibold">Heaviest domain</th>
+                  <th className="px-4 py-3 font-semibold">CIS-DF first?</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-zinc-200 text-zinc-700 dark:divide-zinc-800 dark:text-zinc-300">
+                {rows.map((row) => (
+                  <tr key={row.slug}>
+                    <td className="px-4 py-3">
+                      <Link href={`/${row.slug}`} className="font-semibold text-emerald-700 underline decoration-emerald-300 underline-offset-2 dark:text-emerald-300">
+                        {row.cert.name}
                       </Link>
-                      {index < path.certifications.length - 1 && (
-                        <span className="text-2xl text-zinc-400">→</span>
-                      )}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* FAQ Section */}
-        <div className="mt-16">
-          <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-100">
-            Frequently Asked Questions
-          </h2>
-          <div className="mt-6 space-y-6">
-            {faqs.map((faq) => (
-              <div
-                key={faq.question}
-                className="rounded-lg border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-900"
-              >
-                <h3 className="font-semibold text-zinc-900 dark:text-zinc-100">
-                  {faq.question}
-                </h3>
-                <p className="mt-2 text-zinc-600 dark:text-zinc-400">
-                  {faq.answer}
-                </p>
-              </div>
-            ))}
+                      <span className="block text-xs text-zinc-500">{row.cert.fullName}</span>
+                    </td>
+                    <td className="px-4 py-3">
+                      <a href={row.blueprint.url} target="_blank" rel="noopener noreferrer" className="underline decoration-zinc-300 underline-offset-2 hover:text-emerald-700">
+                        {row.blueprint.kb}
+                      </a>
+                      <span className="block text-xs text-zinc-500">updated {row.blueprint.updated}</span>
+                    </td>
+                    <td className="px-4 py-3">{row.top.name} ({row.top.weight}%)</td>
+                    <td className="px-4 py-3">{row.gated ? <span className="font-semibold text-emerald-700 dark:text-emerald-300">Required</span> : "No"}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
-        </div>
-
-        {/* CTA */}
-        <div className="mt-16 text-center">
-          <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-100">
-            Ready to Start?
-          </h2>
-          <p className="mt-2 text-zinc-600 dark:text-zinc-400">
-            Begin your ServiceNow certification journey with free practice questions.
+          <p className="text-sm text-zinc-500 dark:text-zinc-400">
+            Blueprint numbers, dates and weights come from our transcription of the official blueprints (data/cert-sources). The Certified Technical Architect programme isn&apos;t listed because we don&apos;t have a sourced blueprint for it.
           </p>
-          <div className="mt-6 flex flex-wrap justify-center gap-4">
-            <Link
-              href="/csa/practice-questions"
-              className="rounded-lg bg-emerald-600 px-6 py-3 text-white hover:bg-emerald-700"
-            >
-              CSA Practice Questions
-            </Link>
-            <Link
-              href="/certifications"
-              className="rounded-lg border border-zinc-300 bg-white px-6 py-3 text-zinc-700 hover:bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-300 dark:hover:bg-zinc-700"
-            >
-              Browse All Certifications
-            </Link>
+        </GuideSection>
+
+        <GuideSection id="scenarios" eyebrow="Worked paths" title="Paths for real roles">
+          <p>
+            These are illustrative roles, not rules. Fees are the 2026 figures from the <Src k="examChanges2026">Community summary</Src>: $300 for CSA or CAD and $450 for each CIS exam, excluding tax, assuming a first-time pass.
+          </p>
+          <div className="space-y-6">
+            <Scenario
+              industry="Healthcare"
+              title="A hospital service-desk administrator who will own incident and change"
+              situation="The administrator configures forms and catalog items today and is being asked to lead an ITSM redesign."
+              reasoning={<>CSA builds the platform foundation; CIS-ITSM is the product exam, and it requires CIS-DF first (<Src k="examChanges2026">source</Src>). Path: CSA → CIS-DF → CIS-ITSM, $1,200 in exam fees. See the <In href="/cis-itsm">CIS-ITSM overview</In>.</>}
+              examAngle="Planning CIS-DF in, not discovering the prerequisite at registration."
+            />
+            <Scenario
+              industry="Banking"
+              title="A developer building internal tools on the platform"
+              situation="The developer writes scripts and builds small applications for operations teams."
+              reasoning={<>CAD&apos;s blueprint is about scoped application design, UI, security and automation (<Src k="cadBlueprint">source</Src>). CSA first gives the platform vocabulary. Path: CSA → CAD, $600 in exam fees.</>}
+              examAngle="Choosing the developer track when the job is building, not configuring."
+            />
+            <Scenario
+              industry="Telecom"
+              title="An operations engineer responsible for the CMDB and service maps"
+              situation="The team runs Discovery and wants trustworthy application service maps for incident impact."
+              reasoning={<>CIS-Discovery and CIS-SM both require CIS-DF (<Src k="examChanges2026">source</Src>), and both rely on the CMDB data CIS-DF governs. Path: CSA → CIS-DF → CIS-Discovery and/or CIS-SM. Our <In href="/courses/service-mapping">Service Mapping course for architects</In> covers the design side.</>}
+              examAngle="Seeing CIS-DF as the foundation of the ITOM track."
+            />
+            <Scenario
+              industry="Shared services"
+              title="A platform owner running ServiceNow for several business units"
+              situation="The role is about roadmap, demand, upgrades, licensing and value, and possibly separating business units' data."
+              reasoning={<>CPOA&apos;s blueprint covers exactly that spread (<Src k="cpoaBlueprint">source</Src>), and domain separation is how a service provider splits data and processes into domains (<Src k="docsDomainSeparation">source</Src>). Path: CSA → CPOA.</>}
+              examAngle="Choosing the operating-model exam over another product exam."
+            />
+            <Scenario
+              industry="Retail"
+              title="A customer service lead implementing case management"
+              situation="The lead is moving customer support onto Customer Service Management."
+              reasoning={<>CIS-CSM is the product exam, and our blueprint data lists no CIS-DF prerequisite for it. Path: CSA → CIS-CSM, $750 in exam fees. See the <In href="/cis-csm">CIS-CSM overview</In>.</>}
+              examAngle="Knowing which CIS exams are gated and which aren't."
+            />
           </div>
-        </div>
+        </GuideSection>
+
+        <GuideSection id="misconceptions" eyebrow="Misconceptions" title="Common path misconceptions">
+          <div className="grid gap-4 md:grid-cols-2">
+            <Misconception myth="&ldquo;CIS-DF is only for CMDB specialists.&rdquo;">
+              It is a mandatory prerequisite for CIS-ITSM, CIS-HAM, CIS-SAM, CIS-Discovery, CIS-SM, CIS-VR and CIS-SIR (<Src k="examChanges2026">source</Src>).
+            </Misconception>
+            <Misconception myth="&ldquo;A course gives you a free voucher.&rdquo;">
+              Vouchers no longer exist. On-demand courses are free but don&apos;t include an attempt; instructor-led training includes one (<Src k="examChanges2026">source</Src>).
+            </Misconception>
+            <Misconception myth="&ldquo;Every exam needs 70%.&rdquo;">
+              ServiceNow doesn&apos;t publish cut scores; each exam is scored against a predetermined, unshared cut score (<Src k="cutScoreThread">source</Src>).
+            </Misconception>
+            <Misconception myth="&ldquo;You can retake straight away.&rdquo;">
+              Waits are 3 days, then 30 days, then 6 months between attempts (<Src k="examChanges2026">source</Src>).
+            </Misconception>
+          </div>
+        </GuideSection>
+
+        <GuideSection id="logistics" eyebrow="Logistics" title="Fees, booking and retakes">
+          <ul className="list-disc space-y-3 pl-6">
+            <li>Register and pay in ServiceNow University; schedule through Pearson VUE with SSO (<Src k="examChanges2026">source</Src>).</li>
+            <li>Exam fees: CSA, CAD and CAS $300; every CIS exam $450. Retakes: CSA, CAD and CPOA $150; CIS $225. All USD excluding tax (<Src k="examChanges2026">source</Src>).</li>
+            <li>Instructor-led training: $1,900 (2 days) or $2,700 (3 days), first attempt included. On-demand courses: free, exam bought separately (<Src k="examChanges2026">source</Src>).</li>
+            <li>Partner employers can provide learning credits (<Src k="voucherEligibilityThread">source</Src>).</li>
+            <li>Take the exam within 90 days of registering; payments are non-refundable (<Src k="examChanges2026">source</Src>).</li>
+          </ul>
+          <Callout title="Budgeting a path">
+            <p>
+              Add up the exams on your path, then add one retake per exam as a contingency. The <In href="/blog/servicenow-certification-cost-2026">ServiceNow certification cost guide</In> has worked examples.
+            </p>
+          </Callout>
+        </GuideSection>
+
+        <GuideSection id="practice" eyebrow="Practice" title="Start practising for your next exam">
+          <p>
+            Pick the next exam on your path and try its questions. Every CSA question is free.
+          </p>
+          <ul className="grid gap-3 sm:grid-cols-2">
+            {["csa", "cis-df", "cad", "cpoa", "cis-itsm", "cis-csm"].filter((slug) => isCertificationReady(slug)).map((slug) => {
+              const cert = getCertificationBySlug(slug);
+              if (!cert) return null;
+              return (
+                <li key={slug}>
+                  <Link href={`/${slug}/practice-questions`} className="block rounded-xl border border-zinc-200 bg-white p-4 font-semibold text-zinc-900 hover:border-emerald-300 hover:text-emerald-700 dark:border-zinc-700 dark:bg-zinc-950 dark:text-zinc-100">
+                    {isCertificationFree(slug) ? `Free ${cert.name} practice questions` : `${cert.name} practice questions`}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </GuideSection>
+
+        <SourcesList keys={sourceKeys} />
       </div>
     </>
   );

@@ -22,13 +22,15 @@ import { FreeCertCrossSell } from "@/components/FreeCertCrossSell";
 import { ExamTipsSnippet } from "@/components/ExamTipsSnippet";
 import { RelatedResources } from "@/components/RelatedResources";
 import { breadcrumbs, generateBreadcrumbJsonLd } from "@/lib/breadcrumbs";
+import { AuthorByline } from "@/components/AuthorByline";
+import { HUB_DEEP_DIVES } from "@/components/hub";
+import { authorJsonLd } from "@/lib/author";
 import {
   CUT_SCORE_LABEL,
   CUT_SCORE_NOTE,
   EXAM_DELIVERY,
   EXAM_DELIVERY_SOURCE_URL,
   LAST_REVIEWED_ISO,
-  LAST_REVIEWED_LABEL,
   formatExamCost,
 } from "@/lib/site-facts";
 
@@ -133,6 +135,12 @@ export default async function CertificationPage({ params }: PageProps) {
   // Exam tips
   const examTips = getExamTips(slug);
 
+  // Long-form sourced deep dive (csa, cad, cis-df, cpoa). It replaces the
+  // templated domain, tips and prerequisite sections, which carry unsourced
+  // repo data (stale domain lists, anonymous testimonials).
+  const deepDive = HUB_DEEP_DIVES[slug];
+  const showFormatStats = !deepDive || deepDive.formatSourced;
+
   // JSON-LD structured data - Course schema
   const courseJsonLd = {
     "@context": "https://schema.org",
@@ -143,6 +151,8 @@ export default async function CertificationPage({ params }: PageProps) {
       "@type": "Organization",
       name: "SNReady",
     },
+    author: authorJsonLd(),
+    dateModified: LAST_REVIEWED_ISO,
     educationalLevel: cert.level,
     hasCourseInstance: {
       "@type": "CourseInstance",
@@ -257,12 +267,9 @@ export default async function CertificationPage({ params }: PageProps) {
                   {cert.name} - {cert.fullName}
                 </h1>
                 <p className="mt-4 max-w-2xl text-lg text-zinc-600 dark:text-zinc-400">
-                  {cert.description}
+                  {deepDive ? deepDive.intro : cert.description}
                 </p>
-                <p className="mt-3 text-sm text-zinc-500">
-                  Last reviewed:{" "}
-                  <time dateTime={LAST_REVIEWED_ISO}>{LAST_REVIEWED_LABEL}</time>
-                </p>
+                <AuthorByline reviewed={LAST_REVIEWED_ISO} className="mt-3" />
               </div>
               <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
                 {isReady ? (
@@ -352,13 +359,13 @@ export default async function CertificationPage({ params }: PageProps) {
             <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-6">
               <div>
                 <div className="text-2xl font-bold text-emerald-600">
-                  {cert.examDetails.questionCount}
+                  {showFormatStats ? cert.examDetails.questionCount : "See blueprint"}
                 </div>
                 <div className="text-sm text-zinc-500">Exam Questions</div>
               </div>
               <div>
                 <div className="text-2xl font-bold text-emerald-600">
-                  {cert.examDetails.duration} min
+                  {showFormatStats ? `${cert.examDetails.duration} min` : "See blueprint"}
                 </div>
                 <div className="text-sm text-zinc-500">Duration</div>
               </div>
@@ -444,7 +451,11 @@ export default async function CertificationPage({ params }: PageProps) {
           </div>
         </section>
 
+        {/* Sourced long-form deep dive */}
+        {deepDive && <deepDive.Component />}
+
         {/* Exam Domains */}
+        {!deepDive && (
         <section className="py-16">
           <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
@@ -561,8 +572,10 @@ export default async function CertificationPage({ params }: PageProps) {
           </div>
         </section>
 
+        )}
+
         {/* Exam Tips Snippet */}
-        {examTips && (
+        {examTips && !deepDive && (
           <section className="py-8">
             <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
               <ExamTipsSnippet
@@ -797,6 +810,7 @@ export default async function CertificationPage({ params }: PageProps) {
         )}
 
         {/* Prerequisites */}
+        {!deepDive && (
         <section className="py-16">
           <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
             <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-50">
@@ -844,6 +858,8 @@ export default async function CertificationPage({ params }: PageProps) {
             </div>
           </div>
         </section>
+
+        )}
 
         {/* Related Resources */}
         {isReady && <RelatedResources certSlug={slug} certName={cert.name} />}
