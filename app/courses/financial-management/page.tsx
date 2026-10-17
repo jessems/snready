@@ -1,5 +1,8 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import { TeamByline } from "@/components/TeamByline";
+import { authorJsonLd } from "@/lib/author";
+import { getAllCourses } from "@/lib/courses";
 
 const canonicalPath = "/courses/financial-management";
 
@@ -335,6 +338,7 @@ function TroubleshootingVisual() {
 }
 
 export default function FinancialManagementCoursePage() {
+  const reviewed = getAllCourses().find((course) => course.slug === "financial-management")?.updated ?? "2026-07-05";
   const courseSchema = {
     "@context": "https://schema.org",
     "@type": "Course",
@@ -346,6 +350,8 @@ export default function FinancialManagementCoursePage() {
       name: "SNReady",
       sameAs: "https://snready.com",
     },
+    author: authorJsonLd(),
+    dateModified: reviewed,
   };
 
   return (
@@ -358,6 +364,7 @@ export default function FinancialManagementCoursePage() {
           <div className="max-w-4xl">
             <p className="text-sm font-semibold uppercase tracking-[0.28em] text-emerald-300">ServiceNow architecture course</p>
             <h1 className="mt-5 text-4xl font-black tracking-tight md:text-6xl">ServiceNow Financial Management, explained for architects</h1>
+            <TeamByline reviewed={reviewed} variant="onDark" className="mt-4" />
             <p className="mt-6 text-xl leading-9 text-slate-200 md:text-2xl">
               Learn how to design credible cost models, allocation rules, TCO views, and showback practices that connect IT spend to applications, services, portfolios, and business decisions.
             </p>
@@ -604,6 +611,17 @@ export default function FinancialManagementCoursePage() {
               </ul>
             </div>
           </Section>
+
+          <section className="border-t border-slate-200 py-10 dark:border-slate-800">
+
+            <p className="text-lg leading-8 text-slate-700 dark:text-slate-300">
+
+              Preparing for the Certified Platform Owner Associate exam? The <Link href="/cpoa" className="font-semibold text-emerald-700 underline dark:text-emerald-300">CPOA exam overview</Link> covers the platform-owner operating model behind value and governance conversations, with <Link href="/cpoa/practice-questions" className="font-semibold text-emerald-700 underline dark:text-emerald-300">CPOA practice questions</Link>.
+
+            </p>
+
+          </section>
+
 
           <section className="border-t border-slate-200 py-14 dark:border-slate-800">
             <h2 className="text-3xl font-bold tracking-tight text-slate-950 dark:text-white">Sources and further reading</h2>

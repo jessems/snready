@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { StudyCluster } from "@/components/guide/StudyCluster";
 import Link from "next/link";
 import { getCertificationBySlug, getTotalQuestionCount } from "@/lib/data";
 import { generateBreadcrumbJsonLd } from "@/lib/breadcrumbs";
@@ -1372,6 +1373,10 @@ export default async function CISDFStudyGuidePage() {
             </div>
           </div>
         </section>
+        {/* Per-cert study cluster: hub, practice, study guide, course, blog guide */}
+        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
+          <StudyCluster certSlug="cis-df" currentPath="/cis-df/study-guide" />
+        </div>
       </div>
     </>
   );

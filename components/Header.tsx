@@ -45,7 +45,7 @@ export default function Header() {
         </div>
       </div>
       {menuOpen && <nav className="site-mobile-nav" id="site-mobile-navigation" aria-label="Mobile navigation">
-        {[...navigation, ["/blog", "Blog"], ["/compare", "Compare certifications"], ["/certification-paths", "Career paths"], ["/salaries", "Salaries"]].map(([href, label]) => <Link key={href} href={href} aria-current={pathname === href ? "page" : undefined} onClick={() => setMenuOpen(false)}>{label}</Link>)}
+        {[...navigation, ["/blog", "Blog"], ["/compare", "Compare certifications"], ["/certification-paths", "Career paths"], ["/about", "About"]].map(([href, label]) => <Link key={href} href={href} aria-current={pathname === href ? "page" : undefined} onClick={() => setMenuOpen(false)}>{label}</Link>)}
       </nav>}
     </header>
     <LoginModal isOpen={loginOpen} onClose={() => setLoginOpen(false)} onPurchase={() => { setLoginOpen(false); window.location.href = "/certifications"; }} />

@@ -1,4 +1,6 @@
 import { Metadata } from "next";
+import { StudyCluster } from "@/components/guide/StudyCluster";
+import { hasCertCluster } from "@/lib/cert-clusters";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
@@ -556,6 +558,12 @@ export default async function PracticeTestPage({ params }: Props) {
               </div>
             </div>
           </>
+        )}
+        {/* Per-cert study cluster: hub, practice, study guide, course, blog guide */}
+        {hasCertCluster(slug) && (
+          <div className="mx-auto max-w-6xl px-4 pb-16 sm:px-6 lg:px-8">
+            <StudyCluster certSlug={slug} currentPath={`/${slug}/practice-questions`} />
+          </div>
         )}
       </div>
     </>
