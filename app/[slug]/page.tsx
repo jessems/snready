@@ -22,7 +22,7 @@ import { FreeCertCrossSell } from "@/components/FreeCertCrossSell";
 import { ExamTipsSnippet } from "@/components/ExamTipsSnippet";
 import { RelatedResources } from "@/components/RelatedResources";
 import { breadcrumbs, generateBreadcrumbJsonLd } from "@/lib/breadcrumbs";
-import { AuthorByline } from "@/components/AuthorByline";
+import { TeamByline } from "@/components/TeamByline";
 import { HUB_DEEP_DIVES } from "@/components/hub";
 import { authorJsonLd } from "@/lib/author";
 import {
@@ -269,7 +269,7 @@ export default async function CertificationPage({ params }: PageProps) {
                 <p className="mt-4 max-w-2xl text-lg text-zinc-600 dark:text-zinc-400">
                   {deepDive ? deepDive.intro : cert.description}
                 </p>
-                <AuthorByline reviewed={LAST_REVIEWED_ISO} className="mt-3" />
+                <TeamByline reviewed={LAST_REVIEWED_ISO} className="mt-3" />
               </div>
               <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
                 {isReady ? (

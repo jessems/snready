@@ -1,31 +1,20 @@
-// The person behind SNReady, shown in bylines, on /about, and as the
-// schema.org `author` of hubs, blog posts and courses.
-//
-// Only facts Jesse has confirmed belong here: name, role, country, and that
-// Jesse has taken ServiceNow certification exams.
-// TODO(Jesse): list exact ServiceNow certifications + Credly/LinkedIn links
+// SNReady is published as an organization, not a person. This is the byline
+// shown on hubs, blog posts and courses, and the schema.org `author` of them.
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://snready.com";
 
-export const AUTHOR = {
-  name: "Jesse Szepieniec",
-  jobTitle: "ServiceNow consultant",
-  countryCode: "CH",
-  countryName: "Switzerland",
+export const SNREADY_TEAM = {
+  name: "SNReady",
+  bylineName: "the SNReady team",
   path: "/about",
 } as const;
 
-/** schema.org Person for JSON-LD `author` fields. */
+/** schema.org Organization for JSON-LD `author` fields. */
 export function authorJsonLd() {
   return {
-    "@type": "Person",
-    name: AUTHOR.name,
-    jobTitle: AUTHOR.jobTitle,
-    address: {
-      "@type": "PostalAddress",
-      addressCountry: AUTHOR.countryCode,
-    },
-    url: `${BASE_URL}${AUTHOR.path}`,
+    "@type": "Organization",
+    name: SNREADY_TEAM.name,
+    url: `${BASE_URL}${SNREADY_TEAM.path}`,
   };
 }
 

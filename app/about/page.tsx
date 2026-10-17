@@ -1,19 +1,19 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { AUTHOR, authorJsonLd } from "@/lib/author";
+import { authorJsonLd } from "@/lib/author";
 import { LAST_REVIEWED_ISO } from "@/lib/site-facts";
-import { AuthorByline } from "@/components/AuthorByline";
+import { TeamByline } from "@/components/TeamByline";
 
 export const metadata: Metadata = {
-  title: "About SNReady and Jesse Szepieniec",
+  title: { absolute: "About SNReady" },
   description:
-    "Who runs SNReady, how the ServiceNow practice questions are written and reviewed, and what SNReady is not: not affiliated with ServiceNow, and not real exam questions.",
+    "How the ServiceNow practice questions are written and reviewed, and what SNReady is not: not affiliated with ServiceNow, and not real exam questions.",
   alternates: { canonical: "/about" },
   openGraph: {
-    title: "About SNReady",
-    description: "Who is behind SNReady and how the practice questions are written and reviewed.",
+    title: { absolute: "About SNReady" },
+    description: "How the SNReady practice questions are written and reviewed.",
     url: "/about",
-    type: "profile",
+    type: "website",
   },
 };
 
@@ -32,24 +32,17 @@ export default function AboutPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutJsonLd) }} />
       <article className="mx-auto max-w-3xl px-4 py-14 sm:px-6 lg:px-8">
         <p className="text-sm font-semibold uppercase tracking-[0.2em] text-emerald-600">About</p>
-        <h1 className="mt-3 text-4xl font-bold tracking-tight text-zinc-950 dark:text-white">Who is behind SNReady</h1>
-        <AuthorByline reviewed={LAST_REVIEWED_ISO} className="mt-4" />
+        <h1 className="mt-3 text-4xl font-bold tracking-tight text-zinc-950 dark:text-white">About SNReady</h1>
+        <TeamByline reviewed={LAST_REVIEWED_ISO} className="mt-4" />
 
-        <section id="jesse" className="mt-10 space-y-5 text-lg leading-8 text-zinc-700 dark:text-zinc-300">
-          <h2 className="text-2xl font-bold text-zinc-950 dark:text-white">{AUTHOR.name}</h2>
+        <section id="who-we-are" className="mt-10 space-y-5 text-lg leading-8 text-zinc-700 dark:text-zinc-300">
+          <h2 className="text-2xl font-bold text-zinc-950 dark:text-white">The SNReady team</h2>
           <p>
-            SNReady is built and maintained by {AUTHOR.name}, a {AUTHOR.jobTitle} based in {AUTHOR.countryName}. Jesse has taken ServiceNow certification exams. SNReady aims to explain <em>why</em> an answer is right and tie it back to ServiceNow&apos;s own documentation.
+            SNReady is an independent study resource for ServiceNow certification exams. SNReady aims to explain <em>why</em> an answer is right and tie it back to ServiceNow&apos;s own documentation.
           </p>
           <p>
-            The long-form guides on this site (the certification overviews, the <Link href="/certification-paths" className="text-emerald-700 underline dark:text-emerald-300">certification paths</Link> page and the <Link href="/courses" className="text-emerald-700 underline dark:text-emerald-300">architecture courses</Link>) are reviewed by Jesse and show the date they were last reviewed.
+            The long-form guides on this site (the certification overviews, the <Link href="/certification-paths" className="text-emerald-700 underline dark:text-emerald-300">certification paths</Link> page and the <Link href="/courses" className="text-emerald-700 underline dark:text-emerald-300">architecture courses</Link>) are reviewed by the SNReady team and show the date they were last reviewed.
           </p>
-          {/* TODO(Jesse): list exact ServiceNow certifications + Credly/LinkedIn links */}
-          <div className="rounded-2xl border-2 border-dashed border-amber-400 bg-amber-50 p-5 text-base leading-7 text-amber-900 dark:border-amber-600 dark:bg-amber-950/30 dark:text-amber-200">
-            <p className="font-semibold">Placeholder: certifications and profiles</p>
-            <p className="mt-1">
-              Jesse&apos;s ServiceNow certifications, Credly badges and LinkedIn profile will be listed here once verified. Until then we don&apos;t claim any specific certification.
-            </p>
-          </div>
         </section>
 
         <section id="how-questions-are-made" className="mt-14 space-y-5 text-lg leading-8 text-zinc-700 dark:text-zinc-300">
@@ -63,10 +56,6 @@ export default function AboutPage() {
             </li>
             <li>
               <strong>Review before publishing.</strong> Drafts are reviewed against the documentation before they are published, and our question standard requires every explanation to link to an official ServiceNow source. Older questions don&apos;t all meet that standard yet; we are adding documentation citations question by question.
-            </li>
-            <li>
-              <strong>Corrections from you.</strong> If an answer looks wrong or out of date, email{" "}
-              <a href="mailto:jesse@snready.com" className="text-emerald-700 underline dark:text-emerald-300">jesse@snready.com</a>. Reported questions are re-checked against the current documentation.
             </li>
           </ol>
         </section>

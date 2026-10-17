@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { AuthorByline } from "@/components/AuthorByline";
+import { TeamByline } from "@/components/TeamByline";
 import { BlueprintChart, Callout, Card, GuideSection, In, Misconception, Scenario, SourcesList, Src, Toc } from "@/components/guide/GuideParts";
 import { getBlueprint, getCisDfPrerequisiteCerts } from "@/lib/cert-sources";
 import { getCertificationBySlug, isCertificationFree, isCertificationReady } from "@/lib/data";
@@ -136,7 +136,7 @@ export default function CertificationPathsPage() {
           <p className="mt-5 text-xl leading-8 text-zinc-600 dark:text-zinc-300">
             Which exam comes next depends on the layer of the platform you work in. This page maps the certifications to those layers, shows the one hard rule that now shapes the whole CIS track, and lists every blueprint so you can see what each exam really tests.
           </p>
-          <AuthorByline reviewed={LAST_REVIEWED_ISO} className="mt-5" />
+          <TeamByline reviewed={LAST_REVIEWED_ISO} className="mt-5" />
         </div>
       </section>
 

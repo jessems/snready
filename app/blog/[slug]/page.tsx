@@ -5,9 +5,9 @@ import { getAllPosts, getPostBySlug } from "@/data/blog/posts";
 import { MarkdownContent } from "@/components/MarkdownContent";
 import { getBlogRelatedCerts } from "@/lib/internal-links";
 import { getCertificationBySlug } from "@/lib/data";
-import { AuthorByline } from "@/components/AuthorByline";
+import { TeamByline } from "@/components/TeamByline";
 import { BLOG_GUIDE_BODIES } from "@/components/blog-guides";
-import { AUTHOR, authorJsonLd } from "@/lib/author";
+import { SNREADY_TEAM, authorJsonLd } from "@/lib/author";
 import {
   RoleSalaryChart,
   USvsUKChart,
@@ -75,7 +75,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       type: "article",
       publishedTime: post.publishedAt,
       modifiedTime: post.updatedAt || post.publishedAt,
-      authors: [AUTHOR.name],
+      authors: [SNREADY_TEAM.name],
       tags: post.tags,
     },
     twitter: {
@@ -173,7 +173,7 @@ export default async function BlogPostPage({ params }: Props) {
 
           {/* Meta */}
           <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-1 border-b border-zinc-200 pb-6 text-sm text-zinc-500 dark:border-zinc-800 dark:text-zinc-400">
-            <AuthorByline reviewed={reviewed} />
+            <TeamByline reviewed={reviewed} />
             <span>•</span>
             <span>Published</span>
             <time dateTime={post.publishedAt}>

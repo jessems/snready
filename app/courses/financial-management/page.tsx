@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { AuthorByline } from "@/components/AuthorByline";
+import { TeamByline } from "@/components/TeamByline";
 import { authorJsonLd } from "@/lib/author";
 import { getAllCourses } from "@/lib/courses";
 
@@ -364,7 +364,7 @@ export default function FinancialManagementCoursePage() {
           <div className="max-w-4xl">
             <p className="text-sm font-semibold uppercase tracking-[0.28em] text-emerald-300">ServiceNow architecture course</p>
             <h1 className="mt-5 text-4xl font-black tracking-tight md:text-6xl">ServiceNow Financial Management, explained for architects</h1>
-            <AuthorByline reviewed={reviewed} variant="onDark" className="mt-4" />
+            <TeamByline reviewed={reviewed} variant="onDark" className="mt-4" />
             <p className="mt-6 text-xl leading-9 text-slate-200 md:text-2xl">
               Learn how to design credible cost models, allocation rules, TCO views, and showback practices that connect IT spend to applications, services, portfolios, and business decisions.
             </p>

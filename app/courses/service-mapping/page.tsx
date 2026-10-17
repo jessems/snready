@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { AuthorByline } from "@/components/AuthorByline";
+import { TeamByline } from "@/components/TeamByline";
 import { authorJsonLd } from "@/lib/author";
 import { getAllCourses } from "@/lib/courses";
 
@@ -351,7 +351,7 @@ export default function ServiceMappingCoursePage() {
           <div className="max-w-4xl">
             <p className="text-sm font-semibold uppercase tracking-[0.28em] text-cyan-300">ServiceNow architecture course</p>
             <h1 className="mt-5 text-4xl font-black tracking-tight md:text-6xl">ServiceNow Service Mapping, explained for architects</h1>
-            <AuthorByline reviewed={reviewed} variant="onDark" className="mt-4" />
+            <TeamByline reviewed={reviewed} variant="onDark" className="mt-4" />
             <p className="mt-6 text-xl leading-9 text-slate-200 md:text-2xl">
               Learn how Service Mapping turns infrastructure data into service context: what it is, how it works, how to design a mapping strategy, and how to avoid the traps that make maps untrusted.
             </p>
