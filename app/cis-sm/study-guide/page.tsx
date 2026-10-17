@@ -2,12 +2,12 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { getCertificationBySlug, getTotalQuestionCount } from "@/lib/data";
 import { generateBreadcrumbJsonLd } from "@/lib/breadcrumbs";
+import { CUT_SCORE_LABEL } from "@/lib/site-facts";
 
 export const metadata: Metadata = {
   title:
     "How to Pass CIS-SM — Complete ServiceNow Service Mapping Study Guide [2026]",
-  description:
-    "Complete CIS-SM study guide for the ServiceNow Certified Implementation Specialist - Service Mapping exam. Includes official domain weights, a 4-week study calendar, Service Mapping labs, scenario drills, common mistakes, readiness checklist, and 121+ practice questions.",
+  description: `Complete CIS-SM study guide for the ServiceNow Certified Implementation Specialist - Service Mapping exam. Includes official domain weights, a 4-week study calendar, Service Mapping labs, scenario drills, common mistakes, readiness checklist, and ${getTotalQuestionCount("cis-sm")} practice questions.`,
   keywords: [
     "CIS-SM study guide",
     "ServiceNow Service Mapping certification",
@@ -75,7 +75,7 @@ const faqData = [
   {
     question: "How many questions are on CIS-SM?",
     answer:
-      "SNReady lists CIS-SM as a 60-question exam with a 90-minute time limit and a 70% passing score for planning purposes. The exam uses multiple-choice and multiple-select questions.",
+      "SNReady lists CIS-SM as a 60-question exam with a 90-minute time limit. ServiceNow does not publish the cut score (the official blueprint says it is not always 70%), so aim for 80%+ on timed practice. The exam uses multiple-choice and multiple-select questions.",
   },
   {
     question: "Which CIS-SM domains should I study first?",
@@ -398,18 +398,6 @@ export default async function CISSMStudyGuidePage() {
     { name: "Study Guide", url: "/cis-sm/study-guide" },
   ]);
 
-  const faqJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faqData.map((item) => ({
-      "@type": "Question",
-      name: item.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: item.answer,
-      },
-    })),
-  };
 
   const howToJsonLd = {
     "@context": "https://schema.org",
@@ -448,10 +436,6 @@ export default async function CISSMStudyGuidePage() {
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(howToJsonLd) }}
@@ -517,8 +501,8 @@ export default async function CISSMStudyGuidePage() {
                   value: `${cert.examDetails.duration} min`,
                 },
                 {
-                  label: "Pass Score",
-                  value: `${cert.examDetails.passingScore}%`,
+                  label: "Cut score",
+                  value: CUT_SCORE_LABEL,
                 },
                 { label: "Practice Qs", value: `${totalQuestions}+` },
               ].map((stat) => (
@@ -594,7 +578,7 @@ export default async function CISSMStudyGuidePage() {
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-500" />
-                    {cert.examDetails.passingScore}% passing score
+                    Cut score not published; aim for 80%+ on timed practice
                   </li>
                 </ul>
               </div>

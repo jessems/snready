@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { getCertificationBySlug, getTotalQuestionCount } from "@/lib/data";
 import { generateBreadcrumbJsonLd } from "@/lib/breadcrumbs";
+import { CUT_SCORE_LABEL } from "@/lib/site-facts";
 
 export const metadata: Metadata = {
   title:
@@ -72,60 +73,6 @@ const domainFocus: Record<string, string[]> = {
     "ATF test design, application security, and cross-scope privileges",
   ],
 };
-
-const faqData = [
-  {
-    question: "What is the ServiceNow CAD exam?",
-    answer:
-      "The ServiceNow Certified Application Developer (CAD) exam validates that you can design, build, script, secure, integrate, test, and deploy custom applications on the Now Platform.",
-  },
-  {
-    question: "How many questions are on the CAD exam?",
-    answer:
-      "SNReady lists the CAD exam as 60 multiple-choice and multiple-select questions with a 90-minute time limit and a 70% passing score for planning purposes.",
-  },
-  {
-    question: "Which CAD domain should I study first?",
-    answer:
-      "Start with Scripting & APIs because it is the largest CAD domain at 25% and it supports the rest of the exam. Then study Business Rules and Integration & REST APIs at 15% each before reinforcing client-side and application lifecycle topics.",
-  },
-  {
-    question: "Do I need to know JavaScript for CAD?",
-    answer:
-      "Yes. CAD is a developer certification. You do not need advanced frontend-framework knowledge, but you should be comfortable reading and writing JavaScript in ServiceNow scripting contexts such as Business Rules, Client Scripts, Script Includes, and REST integrations.",
-  },
-  {
-    question: "How long should I study for the CAD exam?",
-    answer:
-      "Most candidates with CSA-level knowledge should plan 4 weeks of focused CAD preparation. If you have not built ServiceNow apps or used GlideRecord regularly, extend the plan and spend extra time in a Personal Developer Instance.",
-  },
-  {
-    question: "Is CAD harder than CSA?",
-    answer:
-      "For most candidates, CAD is harder than CSA because it expects implementation judgment and scripting fluency. CSA tests broad administration knowledge; CAD asks you to choose the right development artifact, API, execution timing, and deployment approach.",
-  },
-  {
-    question: "What hands-on practice matters most for CAD?",
-    answer:
-      "Build a small scoped app in a Personal Developer Instance with a custom table, roles, ACLs, Business Rules, Client Scripts or UI Policies, Script Includes, GlideAjax, an import/transform path, a REST call, update-set movement, and at least one ATF test.",
-  },
-  {
-    question: "When am I ready to schedule the CAD exam?",
-    answer:
-      "Schedule the exam after you can score 80% or higher on two timed mixed-domain mock exams, explain every missed question by execution context, and complete core app-development tasks without following step-by-step instructions.",
-  },
-  {
-    question:
-      "What is the fastest way to improve CAD scenario-question accuracy?",
-    answer:
-      "Build a decision matrix for common ServiceNow developer artifacts. For every missed question, label the requirement as data validation, form behavior, server automation, reusable logic, integration, security, or deployment. Then map it to the correct tool and execution context instead of memorizing isolated definitions.",
-  },
-  {
-    question: "Which CAD topics should I drill the week before the exam?",
-    answer:
-      "In the final week, drill GlideRecord and GlideAjax patterns, Business Rule timing, UI Policy versus Client Script decisions, Script Include reuse, REST/import scenarios, ACL and cross-scope behavior, update sets or app repository movement, and ATF validation. These topics appear as mixed implementation scenarios rather than standalone vocabulary.",
-  },
-];
 
 const howToSteps = [
   {
@@ -464,18 +411,6 @@ export default function CADStudyGuidePage() {
     { name: "Study Guide", url: "/cad/study-guide" },
   ]);
 
-  const faqJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faqData.map((item) => ({
-      "@type": "Question",
-      name: item.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: item.answer,
-      },
-    })),
-  };
 
   const howToJsonLd = {
     "@context": "https://schema.org",
@@ -514,10 +449,6 @@ export default function CADStudyGuidePage() {
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(howToJsonLd) }}
@@ -582,8 +513,8 @@ export default function CADStudyGuidePage() {
                   value: `${cert.examDetails.duration} min`,
                 },
                 {
-                  label: "Pass Score",
-                  value: `${cert.examDetails.passingScore}%`,
+                  label: "Cut score",
+                  value: CUT_SCORE_LABEL,
                 },
                 { label: "Practice Qs", value: `${totalQuestions}+` },
               ].map((stat) => (
@@ -648,7 +579,7 @@ export default function CADStudyGuidePage() {
                 <ul className="mt-2 space-y-1 text-sm text-zinc-600 dark:text-zinc-400">
                   <li>60 multiple-choice and multiple-select questions</li>
                   <li>90 minutes to complete</li>
-                  <li>Plan for a 70% passing score</li>
+                  <li>Cut score not published; aim for 80%+ on timed practice</li>
                   <li>
                     Heavy emphasis on scripting and implementation judgment
                   </li>

@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { CUT_SCORE_LABEL, formatExamCost, getExamCost } from "@/lib/site-facts";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
@@ -31,7 +32,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const totalQuestions = getTotalQuestionCount(slug);
   const description =
     totalQuestions > 0
-      ? `Stop searching for ${cert.name} dumps. SNReady offers ${totalQuestions}+ original practice questions with detailed explanations — the ethical way to pass your ${cert.fullName} exam.`
+      ? `Stop searching for ${cert.name} dumps. SNReady offers ${totalQuestions} original practice questions with detailed explanations — the ethical way to pass your ${cert.fullName} exam.`
       : `${cert.name} practice questions are coming soon. Skip the dumps and prepare for the ${cert.fullName} exam with official resources.`;
 
   return {
@@ -64,7 +65,6 @@ export default async function DumpsPage({ params }: Props) {
   const isReady = isCertificationReady(slug);
   // Free certifications (lib/free-certs.ts) have no price to quote.
   const isFree = isFreeCertification(slug);
-  const priceCopy = isFree ? "completely free" : "a one-time $9 fee";
 
   const breadcrumbItems = [
     { name: "Home", url: "/" },
@@ -73,53 +73,6 @@ export default async function DumpsPage({ params }: Props) {
     { name: `${cert.name} Dumps`, url: `/${slug}/dumps` },
   ];
 
-  // FAQ schema targeting common dumps search queries
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: `Are there free ${cert.name} dumps available?`,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: `While you may find scattered ${cert.name} questions shared in forums, free dumps are unreliable and often outdated. Using real exam dumps also violates ServiceNow's certification agreement. SNReady offers ${totalQuestions}+ original practice questions, ${priceCopy} — a fraction of the $${cert.examDetails.cost} exam cost.`,
-        },
-      },
-      {
-        "@type": "Question",
-        name: `What is the best alternative to ${cert.name} dumps?`,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: `The best alternative to dumps is practicing with high-quality original questions that test your understanding of ServiceNow concepts. SNReady's questions are generated from official ServiceNow training materials, not leaked exams, so you learn the material while you practice.`,
-        },
-      },
-      {
-        "@type": "Question",
-        name: `Is using ${cert.name} dumps dangerous?`,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: `Yes. ServiceNow actively monitors for certification exam dump usage. If detected, your certification can be permanently revoked. Beyond the legal risk, dumps don't help you learn — they just help you memorize answers you won't understand on the job.`,
-        },
-      },
-      {
-        "@type": "Question",
-        name: `How many practice questions do I need to pass ${cert.name}?`,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: `Most candidates who pass use 200-500+ practice questions across all exam domains. SNReady currently has ${totalQuestions}+ questions for ${cert.name}, organized by topic so you can focus on weak areas.`,
-        },
-      },
-      {
-        "@type": "Question",
-        name: `Can I get ${cert.name} questions from ExamTopics?`,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: `ExamTopics may have some ${cert.name} questions, but they are crowd-sourced brain dumps — unreliable, potentially outdated, and a violation of ServiceNow's certification terms. SNReady provides original questions with detailed explanations${isFree ? ", free" : " for $9"} — the ethical, effective study method.`,
-        },
-      },
-    ],
-  };
 
   return (
     <>
@@ -128,10 +81,6 @@ export default async function DumpsPage({ params }: Props) {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(generateBreadcrumbJsonLd(breadcrumbItems)),
         }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
       <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
@@ -155,7 +104,7 @@ export default async function DumpsPage({ params }: Props) {
             Skip the {cert.name} Dumps — Pass with Practice Instead
           </h1>
           <p className="mt-3 text-xl text-emerald-100">
-            SNReady has {totalQuestions}+ original practice questions for {cert.fullName}.
+            SNReady has {totalQuestions} original practice questions for {cert.fullName}.
             Learn the material. Pass the exam. Keep your certification.
           </p>
           <div className="mt-6 flex flex-wrap gap-4">
@@ -164,7 +113,7 @@ export default async function DumpsPage({ params }: Props) {
                 href={`/${slug}/practice-questions`}
                 className="inline-flex items-center gap-2 rounded-lg bg-white px-6 py-3 text-base font-semibold text-emerald-700 hover:bg-emerald-50"
               >
-                Practice Questions ({totalQuestions}+) →
+                Practice Questions ({totalQuestions}) →
               </Link>
             ) : (
               <Link
@@ -269,7 +218,7 @@ export default async function DumpsPage({ params }: Props) {
                 <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
                   {isFree
                     ? `No signup, no paywall. All ${cert.name} questions and timed mock exams are free, so there's no reason to risk a dump.`
-                    : `No subscription. No recurring fees. Pay once and practice as many times as you need. That's less than the cost of a failed exam attempt ($${cert.examDetails.cost}).`}
+                    : `No subscription. No recurring fees. Pay once and practice as many times as you need. ${getExamCost(cert) !== null ? `That's less than the cost of a failed exam attempt ($${getExamCost(cert)}).` : ""}`}
                 </p>
               </div>
             </div>
@@ -280,7 +229,7 @@ export default async function DumpsPage({ params }: Props) {
                 href={`/${slug}/practice-questions`}
                 className="inline-flex items-center gap-2 rounded-lg bg-emerald-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-emerald-700"
               >
-                Start Practicing {cert.name} ({totalQuestions}+ questions) →
+                Start Practicing {cert.name} ({totalQuestions} questions) →
               </Link>
             ) : (
               <Link
@@ -300,15 +249,15 @@ export default async function DumpsPage({ params }: Props) {
             <div className="mt-1 text-sm text-zinc-500">Exam Questions</div>
           </div>
           <div className="rounded-xl border border-zinc-200 bg-white p-5 dark:border-zinc-700 dark:bg-zinc-900">
-            <div className="text-2xl font-bold text-emerald-600">{cert.examDetails.passingScore}%</div>
-            <div className="mt-1 text-sm text-zinc-500">Passing Score</div>
+            <div className="text-2xl font-bold text-emerald-600">{CUT_SCORE_LABEL}</div>
+            <div className="mt-1 text-sm text-zinc-500">Cut Score</div>
           </div>
           <div className="rounded-xl border border-zinc-200 bg-white p-5 dark:border-zinc-700 dark:bg-zinc-900">
             <div className="text-2xl font-bold text-emerald-600">{cert.examDetails.duration} min</div>
             <div className="mt-1 text-sm text-zinc-500">Exam Duration</div>
           </div>
           <div className="rounded-xl border border-zinc-200 bg-white p-5 dark:border-zinc-700 dark:bg-zinc-900">
-            <div className="text-2xl font-bold text-emerald-600">${cert.examDetails.cost}</div>
+            <div className="text-2xl font-bold text-emerald-600">{formatExamCost(cert)}</div>
             <div className="mt-1 text-sm text-zinc-500">Exam Fee</div>
           </div>
         </section>
@@ -319,7 +268,7 @@ export default async function DumpsPage({ params }: Props) {
             Ready to study the right way?
           </h2>
           <p className="mt-2 text-emerald-700 dark:text-emerald-400">
-            Skip the dumps. Get {totalQuestions}+ original practice questions for {cert.name} — {isFree ? "free, no signup" : "one-time $9, no subscription"}.
+            Skip the dumps. Get {totalQuestions} original practice questions for {cert.name} — {isFree ? "free, no signup" : "one-time $9, no subscription"}.
           </p>
           <div className="mt-4 flex flex-wrap gap-3">
             {isReady ? (
@@ -327,7 +276,7 @@ export default async function DumpsPage({ params }: Props) {
                 href={`/${slug}/practice-questions`}
                 className="inline-flex items-center gap-2 rounded-lg bg-emerald-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-emerald-700"
               >
-                Start Practice Test ({totalQuestions}+ Questions) →
+                Start Practice Test ({totalQuestions} Questions) →
               </Link>
             ) : (
               <Link

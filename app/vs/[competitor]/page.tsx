@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { robotsForPath } from "@/lib/seo-indexing";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { competitorComparisons, getCompetitorBySlug, getAllCompetitorSlugs } from "@/data/competitor-comparisons";
@@ -32,6 +33,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       `${competitor.name.toLowerCase()} alternative`,
       `${competitor.name.toLowerCase()} review`
     ],
+    robots: robotsForPath(`/vs/${competitorSlug}`),
     alternates: {
       canonical: `/vs/${competitorSlug}`,
     },

@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { getCertificationBySlug, getTotalQuestionCount } from "@/lib/data";
 import { generateBreadcrumbJsonLd } from "@/lib/breadcrumbs";
+import { CUT_SCORE_LABEL } from "@/lib/site-facts";
 
 export const metadata: Metadata = {
   title:
@@ -112,39 +113,6 @@ const SAMPLE_QUESTIONS = [
     answer: "Depreciation and total cost of ownership",
     explanation:
       "Financial Management is only 5% of the blueprint, but it still appears on the exam. Know hardware contract financials, expense lines, depreciation, fixed assets, and total cost of ownership.",
-  },
-];
-
-const faqData = [
-  {
-    question: "What is the CIS-HAM certification?",
-    answer:
-      "CIS-HAM is the ServiceNow Certified Implementation Specialist - Hardware Asset Management certification. It validates your ability to implement Hardware Asset Management, including hardware asset lifecycle processes, data integrity, inventory, procurement, operational integration, and financial management.",
-  },
-  {
-    question: "How many questions are on the CIS-HAM exam?",
-    answer:
-      "The CIS-HAM exam has 60 multiple-choice and multiple-select questions. Candidates have 90 minutes and need a 70% or higher score to pass.",
-  },
-  {
-    question: "What are the CIS-HAM prerequisites?",
-    answer:
-      "You must hold the CIS-DF (Data Foundations) certification before you can register for CIS-HAM. CSA certification, hardware asset management experience, and an understanding of the asset lifecycle are recommended background. The official courses are recommended, not required.",
-  },
-  {
-    question: "What CIS-HAM domain should I study first?",
-    answer:
-      "Start with Practical Asset Management because it is the largest domain at 30%, then Data Integrity & Sources at 27%. Together they represent 57% of the exam and cover the most scenario-heavy implementation decisions.",
-  },
-  {
-    question: "How long should I study for CIS-HAM?",
-    answer:
-      "Most CSA/CIS-DF-level candidates should budget 4 weeks: one week for ITAM foundations, one week for data integrity, one week for practical asset processes and operational integration, and one week for timed mock exams and remediation.",
-  },
-  {
-    question: "Is CIS-HAM mostly memorization or scenario based?",
-    answer:
-      "Expect a mix. You need table, lifecycle, workspace, and model-normalization vocabulary, but the hardest questions usually ask what an implementer should configure, validate, or troubleshoot in a realistic asset-management scenario.",
   },
 ];
 
@@ -340,18 +308,6 @@ export default function CISHAMStudyGuidePage() {
     { name: "Study Guide", url: "/cis-ham/study-guide" },
   ]);
 
-  const faqJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faqData.map((item) => ({
-      "@type": "Question",
-      name: item.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: item.answer,
-      },
-    })),
-  };
 
   const howToJsonLd = {
     "@context": "https://schema.org",
@@ -390,10 +346,6 @@ export default function CISHAMStudyGuidePage() {
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(howToJsonLd) }}
@@ -455,8 +407,8 @@ export default function CISHAMStudyGuidePage() {
                   value: `${cert.examDetails.duration} min`,
                 },
                 {
-                  label: "Pass Score",
-                  value: `${cert.examDetails.passingScore}%`,
+                  label: "Cut score",
+                  value: CUT_SCORE_LABEL,
                 },
                 { label: "Practice Qs", value: `${totalQuestions}+` },
               ].map((stat) => (
@@ -521,8 +473,8 @@ export default function CISHAMStudyGuidePage() {
                 <ul className="mt-3 space-y-2 text-sm text-zinc-600 dark:text-zinc-400">
                   <li>60 multiple-choice and multiple-select questions</li>
                   <li>90 minutes to complete the exam</li>
-                  <li>70% passing score</li>
-                  <li>Blueprint release tracked in SNReady: {cert.release}</li>
+                  <li>Cut score not published; aim for 80%+ on timed practice</li>
+                  <li>Blueprint updated {cert.blueprint?.updated ?? "(see ServiceNow University)"}</li>
                 </ul>
               </div>
             </div>

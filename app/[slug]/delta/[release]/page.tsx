@@ -1,4 +1,6 @@
 import { Metadata } from "next";
+import { robotsForPath } from "@/lib/seo-indexing";
+import { CUT_SCORE_LABEL, LAST_REVIEWED_ISO, LAST_REVIEWED_LABEL } from "@/lib/site-facts";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
@@ -49,6 +51,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       "ServiceNow delta exam tips",
       "delta exam study guide",
     ],
+    robots: robotsForPath(`/${slug}/delta/${releaseParam}`),
     alternates: {
       canonical: `/${slug}/delta/${releaseParam}`,
     },
@@ -89,55 +92,12 @@ export default async function DeltaExamPage({ params }: PageProps) {
     { name: `${release} Delta Exam`, url: `/${slug}/delta/${releaseParam}` },
   ]);
 
-  // FAQ Schema
-  const faqJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: `How many questions are on the ${cert.name} delta exam?`,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: `The ${cert.name} delta exam has ${generalTips.format.questions} questions. You have ${generalTips.format.duration} minutes to complete it.`,
-        },
-      },
-      {
-        "@type": "Question",
-        name: `Is the ${cert.name} delta exam open book?`,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Yes, all ServiceNow delta exams are open book and non-proctored. You can use the study guide, release notes, and docs.servicenow.com during the exam.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: `What is the passing score for the ${cert.name} delta exam?`,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: `The passing score is ${generalTips.format.passingScore}%. You get ${generalTips.format.retakes} attempts included with your maintenance fee.`,
-        },
-      },
-      {
-        "@type": "Question",
-        name: `What topics are covered on the ${cert.name} ${release} delta exam?`,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: certTips?.zurichTopics?.join(", ") || `The exam covers new features and changes introduced in the ${release} release for ${cert.name}.`,
-        },
-      },
-    ],
-  };
 
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
 
       <div className="min-h-screen">
@@ -180,6 +140,16 @@ export default async function DeltaExamPage({ params }: PageProps) {
               Everything you need to pass the {cert.fullName} delta exam for the {release} release.
               Tips from Reddit, key topics, and practice questions.
             </p>
+            {!isOpen && cert.deltaExam.deltaWindow && new Date(cert.deltaExam.deltaWindow.closes) < new Date() && (
+              <p className="mt-4 rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800 dark:border-amber-900 dark:bg-amber-950/40 dark:text-amber-200">
+                The {release} delta exam window ran from {cert.deltaExam.deltaWindow.opens} to{" "}
+                {cert.deltaExam.deltaWindow.closes} and is now closed. Check Now Learning for the next delta exam.
+              </p>
+            )}
+            <p className="mt-3 text-sm text-zinc-500">
+              Last reviewed:{" "}
+              <time dateTime={LAST_REVIEWED_ISO}>{LAST_REVIEWED_LABEL}</time>
+            </p>
 
             {/* Quick Stats */}
             <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
@@ -192,8 +162,8 @@ export default async function DeltaExamPage({ params }: PageProps) {
                 <div className="text-sm text-zinc-500">Est. Time</div>
               </div>
               <div className="rounded-lg bg-white p-4 shadow-sm ring-1 ring-zinc-200 dark:bg-zinc-900 dark:ring-zinc-800">
-                <div className="text-2xl font-bold text-blue-600">{generalTips.format.passingScore}%</div>
-                <div className="text-sm text-zinc-500">Pass Score</div>
+                <div className="text-2xl font-bold text-blue-600">{CUT_SCORE_LABEL}</div>
+                <div className="text-sm text-zinc-500">Cut Score</div>
               </div>
               <div className="rounded-lg bg-white p-4 shadow-sm ring-1 ring-zinc-200 dark:bg-zinc-900 dark:ring-zinc-800">
                 <div className="text-2xl font-bold text-emerald-600">Open</div>
@@ -622,12 +592,12 @@ export default async function DeltaExamPage({ params }: PageProps) {
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <a
-                href="https://www.webassessor.com/SERVICE_NOW"
+                href="https://learning.servicenow.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex h-12 items-center justify-center rounded-lg bg-white px-8 text-base font-medium text-blue-600 transition-colors hover:bg-blue-50"
               >
-                Take Delta Exam →
+                Go to ServiceNow University →
               </a>
               <Link
                 href={`/${slug}/practice-questions`}

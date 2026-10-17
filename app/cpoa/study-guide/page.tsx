@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { getCertificationBySlug, getTotalQuestionCount } from "@/lib/data";
 import { generateBreadcrumbJsonLd } from "@/lib/breadcrumbs";
+import { CUT_SCORE_LABEL } from "@/lib/site-facts";
 
 export const metadata: Metadata = {
   title:
@@ -74,7 +75,7 @@ const faqData = [
   {
     question: "How many questions are on the CPOA exam?",
     answer:
-      "SNReady lists the CPOA exam as 70 multiple-choice and multiple-select questions with a 90-minute time limit and a 70% passing score for planning purposes.",
+      "SNReady lists the CPOA exam as 70 multiple-choice and multiple-select questions with a 90-minute time limit. ServiceNow does not publish the cut score (the official blueprint says it is not always 70%), so aim for 80%+ on timed practice.",
   },
   {
     question: "Which CPOA domain should I study first?",
@@ -417,18 +418,6 @@ export default async function CPOAStudyGuidePage() {
     { name: "Study Guide", url: "/cpoa/study-guide" },
   ]);
 
-  const faqJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faqData.map((item) => ({
-      "@type": "Question",
-      name: item.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: item.answer,
-      },
-    })),
-  };
 
   const howToJsonLd = {
     "@context": "https://schema.org",
@@ -466,10 +455,6 @@ export default async function CPOAStudyGuidePage() {
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(howToJsonLd) }}
@@ -535,8 +520,8 @@ export default async function CPOAStudyGuidePage() {
                   value: `${cert.examDetails.duration} min`,
                 },
                 {
-                  label: "Pass Score",
-                  value: `${cert.examDetails.passingScore}%`,
+                  label: "Cut score",
+                  value: CUT_SCORE_LABEL,
                 },
                 { label: "Practice Qs", value: `${totalQuestions}+` },
               ].map((stat) => (
@@ -607,8 +592,7 @@ export default async function CPOAStudyGuidePage() {
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-500" />
-                    {cert.examDetails.duration} minutes with a{" "}
-                    {cert.examDetails.passingScore}% planning pass score
+                    {cert.examDetails.duration} minutes; cut score not published
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-500" />

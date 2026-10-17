@@ -9,6 +9,7 @@ import {
   getTotalQuestionCount,
 } from "@/lib/data";
 import { breadcrumbs, generateBreadcrumbJsonLd } from "@/lib/breadcrumbs";
+import { formatExamCost, getExamCost } from "@/lib/site-facts";
 import type { CertificationCategory } from "@/types";
 
 interface PageProps {
@@ -59,6 +60,12 @@ export default async function CategoryPage({ params }: PageProps) {
   if (certs.length === 0) {
     notFound();
   }
+
+  const knownCosts = certs
+    .map((c) => getExamCost(c))
+    .filter((cost): cost is number => cost !== null);
+  const startingCost =
+    knownCosts.length > 0 ? `$${Math.min(...knownCosts)}` : formatExamCost(certs[0]);
 
   // Calculate totals
   const totalQuestions = certs.reduce(
@@ -185,7 +192,7 @@ export default async function CategoryPage({ params }: PageProps) {
               </div>
               <div>
                 <div className="text-2xl font-bold text-emerald-600">
-                  ${Math.min(...certs.map((c) => c.examDetails.cost))}
+                  {startingCost}
                 </div>
                 <div className="text-sm text-zinc-500">Starting Cost</div>
               </div>
@@ -223,7 +230,9 @@ export default async function CategoryPage({ params }: PageProps) {
                       {cert.level}
                     </span>
                     <span className="text-xs text-zinc-500">
-                      {cert.release}
+                      {cert.blueprint?.updated
+                        ? `Blueprint updated ${cert.blueprint.updated}`
+                        : "Current release"}
                     </span>
                   </div>
 
@@ -239,7 +248,7 @@ export default async function CategoryPage({ params }: PageProps) {
                   <div className="mt-4 flex items-center gap-4 border-t border-zinc-100 pt-4 text-xs text-zinc-500 dark:border-zinc-800">
                     <span>{cert.examDetails.questionCount} questions</span>
                     <span>{cert.examDetails.duration} min</span>
-                    <span>${cert.examDetails.cost}</span>
+                    <span>{formatExamCost(cert)}</span>
                   </div>
 
                   <div className="mt-4 text-sm font-medium text-emerald-600 group-hover:text-emerald-700">

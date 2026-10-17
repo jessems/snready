@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { robotsForPath } from "@/lib/seo-indexing";
 import SalariesClient from "./SalariesClient";
 
 export const metadata: Metadata = {
@@ -13,6 +14,7 @@ export const metadata: Metadata = {
     "servicenow architect salary",
     "servicenow compensation",
   ],
+  robots: robotsForPath("/salaries"),
   alternates: {
     canonical: "/salaries",
   },

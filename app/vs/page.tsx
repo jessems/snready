@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { robotsForPath } from "@/lib/seo-indexing";
 import Link from "next/link";
 import { competitorComparisons } from "@/data/competitor-comparisons";
 import { CheckCircle, XCircle, Star, ArrowRight, Shield, BookOpen, Timer, Target } from "lucide-react";
@@ -13,6 +14,7 @@ export const metadata: Metadata = {
     "best servicenow practice tests",
     "servicenow exam prep comparison"
   ],
+  robots: robotsForPath("/vs"),
   alternates: {
     canonical: "/vs",
   },

@@ -6,6 +6,7 @@ import {
 } from "@/lib/data";
 import { generateBreadcrumbJsonLd } from "@/lib/breadcrumbs";
 import { getCanonicalUrl } from "@/lib/seo";
+import { CUT_SCORE_LABEL } from "@/lib/site-facts";
 
 export const metadata: Metadata = {
   title: "ServiceNow Practice Questions",
@@ -113,7 +114,7 @@ export default function PracticeTestsIndexPage() {
                     <span>•</span>
                     <span>{cert.examDetails?.duration || "90 min"}</span>
                     <span>•</span>
-                    <span>{cert.examDetails?.passingScore || "70%"} to pass</span>
+                    <span>Cut score: {CUT_SCORE_LABEL.toLowerCase()}</span>
                   </div>
 
                   <div className="mt-4 flex items-center justify-between">

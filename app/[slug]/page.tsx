@@ -20,9 +20,17 @@ import {
 } from "@/lib/data";
 import { FreeCertCrossSell } from "@/components/FreeCertCrossSell";
 import { ExamTipsSnippet } from "@/components/ExamTipsSnippet";
-import { DumpsAlternativeSection } from "@/components/DumpsAlternativeSection";
 import { RelatedResources } from "@/components/RelatedResources";
 import { breadcrumbs, generateBreadcrumbJsonLd } from "@/lib/breadcrumbs";
+import {
+  CUT_SCORE_LABEL,
+  CUT_SCORE_NOTE,
+  EXAM_DELIVERY,
+  EXAM_DELIVERY_SOURCE_URL,
+  LAST_REVIEWED_ISO,
+  LAST_REVIEWED_LABEL,
+  formatExamCost,
+} from "@/lib/site-facts";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -55,7 +63,7 @@ export async function generateMetadata({
 
   const description =
     totalQuestions > 0
-      ? `Prepare for the ServiceNow ${cert.fullName} (${cert.name}) exam with ${totalQuestions}+ practice questions. Free sample questions and study guides.`
+      ? `Prepare for the ServiceNow ${cert.fullName} (${cert.name}) exam with ${totalQuestions} practice questions. Free sample questions and study guides.`
       : `${cert.name} practice questions are coming soon. See the ServiceNow ${cert.fullName} (${cert.name}) exam format, prerequisites and official resources.`;
 
   const year = new Date().getFullYear();
@@ -161,112 +169,6 @@ export default async function CertificationPage({ params }: PageProps) {
     breadcrumbs.certification(cert.name, slug),
   );
 
-  // JSON-LD structured data - FAQ schema for exam details
-  const faqJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: `How many questions are on the ${cert.name} exam?`,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: `The ServiceNow ${cert.name} (${cert.fullName}) exam contains ${cert.examDetails.questionCount} questions. You have ${cert.examDetails.duration} minutes to complete the exam.`,
-        },
-      },
-      {
-        "@type": "Question",
-        name: `What is the passing score for the ${cert.name} exam?`,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: `You need to score ${cert.examDetails.passingScore}% or higher to pass the ServiceNow ${cert.name} certification exam.`,
-        },
-      },
-      {
-        "@type": "Question",
-        name: `How long is the ${cert.name} certification exam?`,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: `The ${cert.name} exam duration is ${cert.examDetails.duration} minutes. The exam format is ${cert.examDetails.format.toLowerCase()}.`,
-        },
-      },
-      {
-        "@type": "Question",
-        name: `How much does the ${cert.name} exam cost?`,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: `The ServiceNow ${cert.name} certification exam costs $${cert.examDetails.cost} USD. The exam can be taken online or at a testing center.`,
-        },
-      },
-      {
-        "@type": "Question",
-        name: `What are the prerequisites for the ${cert.name} certification?`,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text:
-            cert.prerequisites.length > 0
-              ? `Prerequisites for the ${cert.name} exam include: ${cert.prerequisites.join(", ")}.`
-              : `The ${cert.name} certification has no formal prerequisites, though ServiceNow recommends hands-on experience with the platform.`,
-        },
-      },
-      {
-        "@type": "Question",
-        name: `Is the ${cert.name} exam hard?`,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: `The difficulty of the ${cert.name} exam depends on your hands-on experience with ServiceNow. Most candidates find that practical experience with the platform, combined with focused study using practice tests, is the best way to pass. We recommend taking multiple practice exams to identify weak areas before scheduling the real exam.`,
-        },
-      },
-      {
-        "@type": "Question",
-        name: `How long should I study for the ${cert.name} exam?`,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: `Most candidates spend 2-4 weeks preparing for the ${cert.name} exam, studying for 1-2 hours per day. If you have significant ServiceNow experience, you may need less time. We recommend taking our practice test first to gauge your current level and focus your study time on weaker domains.`,
-        },
-      },
-      {
-        "@type": "Question",
-        name: `What is the ${cert.name} exam format?`,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: `The ${cert.name} exam consists of ${cert.examDetails.questionCount} questions in ${cert.examDetails.format.toLowerCase()} format. You have ${cert.examDetails.duration} minutes to complete it, and you need ${cert.examDetails.passingScore}% to pass. The exam is available online via remote proctoring or at a Pearson VUE testing center.`,
-        },
-      },
-      {
-        "@type": "Question",
-        name: `Can I take the ${cert.name} exam online?`,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: `Yes, the ${cert.name} exam can be taken online through ServiceNow's remote proctoring partner or in person at a Pearson VUE testing center. Online exams are remotely proctored and require a stable internet connection, a webcam, and a quiet private room.`,
-        },
-      },
-      {
-        "@type": "Question",
-        name: `Is ${cert.name} worth it?`,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: `The ${cert.name} certification validates your expertise in ${cert.fullName} and is valued by employers using ServiceNow. It demonstrates platform proficiency and is often a requirement for advanced roles. According to ServiceNow data, certified professionals frequently report improved career prospects and earning potential.`,
-        },
-      },
-      {
-        "@type": "Question",
-        name: `How is the ${cert.name} exam different from the CSA exam?`,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: `The CSA (Certified System Administrator) is a foundational exam covering platform administration basics. The ${cert.name} (${cert.fullName}) goes deeper into ${cert.level === "entry" ? "advanced administration topics" : "specialized " + cert.category + " skills"}, making it ideal for professionals who want to specialize or advance in specific areas of the ServiceNow platform.`,
-        },
-      },
-      {
-        "@type": "Question",
-        name: `How many times can I retake the ${cert.name} exam?`,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: `ServiceNow generally allows up to 3 exam attempts per 12-month period for most certifications. After a failed attempt, there's a mandatory waiting period before retaking. Check the specific retake policy on the ServiceNow certification portal before scheduling your exam.`,
-        },
-      },
-    ],
-  };
 
   return (
     <>
@@ -277,10 +179,6 @@ export default async function CertificationPage({ params }: PageProps) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
 
       <div className="min-h-screen">
@@ -349,17 +247,21 @@ export default async function CertificationPage({ params }: PageProps) {
                       Coming Soon
                     </span>
                   )}
-                  <span className="text-sm text-zinc-500">
-                    {cert.blueprint
-                      ? `Blueprint updated ${cert.blueprint.updated}`
-                      : `${cert.release} Release`}
-                  </span>
+                  {cert.blueprint && (
+                    <span className="text-sm text-zinc-500">
+                      {`Blueprint updated ${cert.blueprint.updated}`}
+                    </span>
+                  )}
                 </div>
                 <h1 className="mt-4 text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
                   {cert.name} - {cert.fullName}
                 </h1>
                 <p className="mt-4 max-w-2xl text-lg text-zinc-600 dark:text-zinc-400">
                   {cert.description}
+                </p>
+                <p className="mt-3 text-sm text-zinc-500">
+                  Last reviewed:{" "}
+                  <time dateTime={LAST_REVIEWED_ISO}>{LAST_REVIEWED_LABEL}</time>
                 </p>
               </div>
               <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
@@ -418,16 +320,6 @@ export default async function CertificationPage({ params }: PageProps) {
           </div>
         </section>
 
-        {/* Dumps Alternative Section */}
-        {cert.showDumpsSection && isReady && (
-          <DumpsAlternativeSection
-            certName={cert.name}
-            certSlug={slug}
-            examCost={cert.examDetails.cost}
-            questionCount={totalQuestions}
-            release={cert.release}
-          />
-        )}
 
         {/* CIS-DF Study Guide Promo */}
         {slug === "cis-df" && (
@@ -472,13 +364,13 @@ export default async function CertificationPage({ params }: PageProps) {
               </div>
               <div>
                 <div className="text-2xl font-bold text-emerald-600">
-                  {cert.examDetails.passingScore}%
+                  {CUT_SCORE_LABEL}
                 </div>
-                <div className="text-sm text-zinc-500">Passing Score</div>
+                <div className="text-sm text-zinc-500">Cut Score</div>
               </div>
               <div>
                 <div className="text-2xl font-bold text-emerald-600">
-                  ${cert.examDetails.cost}
+                  {formatExamCost(cert)}
                 </div>
                 <div className="text-sm text-zinc-500">Exam Cost</div>
               </div>
@@ -486,7 +378,7 @@ export default async function CertificationPage({ params }: PageProps) {
                 <div
                   className={`text-2xl font-bold ${isReady ? "text-emerald-600" : "text-zinc-400 dark:text-zinc-500"}`}
                 >
-                  {isReady ? `${totalQuestions}+` : "—"}
+                  {isReady ? totalQuestions : "—"}
                 </div>
                 <div className="text-sm text-zinc-500">Practice Questions</div>
               </div>
@@ -499,6 +391,17 @@ export default async function CertificationPage({ params }: PageProps) {
                 <div className="text-sm text-zinc-500">Free Questions</div>
               </div>
             </div>
+            <p className="mt-4 text-sm text-zinc-500">
+              {CUT_SCORE_NOTE} Exams are {EXAM_DELIVERY.charAt(0).toLowerCase() + EXAM_DELIVERY.slice(1)}{" "}
+              (<a
+                href={EXAM_DELIVERY_SOURCE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-emerald-600"
+              >
+                source
+              </a>).
+            </p>
             {/* Official Blueprint Link */}
             {cert.blueprintUrl && (
               <div className="mt-6 pt-6 border-t border-zinc-200 dark:border-zinc-800">
@@ -810,7 +713,7 @@ export default async function CertificationPage({ params }: PageProps) {
                       Get Full {cert.name} Access
                     </h2>
                     <p className="mt-4 text-lg text-emerald-100">
-                      Unlock all {totalQuestions}+ practice questions with
+                      Unlock all {totalQuestions} practice questions with
                       detailed explanations
                     </p>
                   </div>
@@ -928,11 +831,7 @@ export default async function CertificationPage({ params }: PageProps) {
                   </li>
                   <li className="flex items-center gap-3">
                     <span className="text-emerald-600">•</span>
-                    Proctored online or at testing center
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <span className="text-emerald-600">•</span>
-                    Results available immediately
+                    {EXAM_DELIVERY}
                   </li>
                   {cert.blueprint && (
                     <li className="flex items-center gap-3">

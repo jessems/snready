@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { getAllCertifications } from "@/lib/data";
+import { CUT_SCORE_LABEL } from "@/lib/site-facts";
 
 export const metadata: Metadata = {
   title: "ServiceNow Exam Blueprints - Official Certification Guides",
@@ -125,7 +126,7 @@ export default function ExamBlueprintsPage() {
                             <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">
                               {cert.examDetails.questionCount} questions •{" "}
                               {cert.examDetails.duration} min •{" "}
-                              {cert.examDetails.passingScore}% to pass
+                              cut score {CUT_SCORE_LABEL.toLowerCase()}
                               {cert.blueprint &&
                                 ` • ${cert.blueprint.kb} v${cert.blueprint.version}, updated ${cert.blueprint.updated}`}
                             </p>

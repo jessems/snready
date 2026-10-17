@@ -54,7 +54,7 @@ export interface Certification {
     questionCount: number;
     duration: number; // in minutes
     passingScore: number; // percentage
-    cost: number; // USD
+    cost: number | null; // USD; null when we have no source for the fee
     format: string;
   };
   prerequisites: string[];

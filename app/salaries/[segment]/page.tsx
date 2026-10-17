@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { robotsForPath } from "@/lib/seo-indexing";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import {
@@ -43,6 +44,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       url: `https://snready.com/salaries/${segment.slug}`,
       type: "website",
     },
+    robots: robotsForPath(`/salaries/${segment.slug}`),
     alternates: {
       canonical: `https://snready.com/salaries/${segment.slug}`,
     },

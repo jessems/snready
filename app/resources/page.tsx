@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import { getAllCertifications } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "Free ServiceNow Resources - PDI, Docs, Training",
@@ -175,14 +176,14 @@ const resourceCategories: ResourceCategory[] = [
         name: "SNReady Practice Tests",
         url: "/certifications",
         description:
-          "Practice questions derived from official Now Learning content. 19 certifications covered.",
+          `Practice questions derived from official Now Learning content. ${getAllCertifications().filter((c) => c.isReady).length} certifications covered.`,
         tags: ["Free Trial", "Practice"],
       },
       {
         name: "ServiceNow Certification FAQ",
         url: "https://nowlearning.servicenow.com/lxp?id=kb_article_view&sys_kb_id=a6f8f5b91b6fe01003cc67a8bd4bcb0a",
         description:
-          "Official FAQ about certification process, retakes, vouchers, and delta exams.",
+          "Official FAQ about the certification process, retakes, and delta exams. Exams are now booked in ServiceNow University and delivered by Pearson VUE; exam vouchers no longer exist.",
         tags: ["Free", "Official"],
       },
     ],

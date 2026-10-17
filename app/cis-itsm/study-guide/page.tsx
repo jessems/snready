@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { getCertificationBySlug, getTotalQuestionCount } from "@/lib/data";
 import { generateBreadcrumbJsonLd } from "@/lib/breadcrumbs";
+import { CUT_SCORE_LABEL } from "@/lib/site-facts";
 
 export const metadata: Metadata = {
   title: "How to Pass CIS-ITSM — Complete ServiceNow ITSM Study Guide [2026]",
@@ -78,7 +79,7 @@ const faqData = [
   {
     question: "How many questions are on the CIS-ITSM exam?",
     answer:
-      "SNReady lists CIS-ITSM as 60 multiple-choice and multiple-select questions with a 90-minute time limit and a 70% passing score for planning purposes.",
+      "SNReady lists CIS-ITSM as 60 multiple-choice and multiple-select questions with a 90-minute time limit. ServiceNow does not publish the cut score (the official blueprint says it is not always 70%), so aim for 80%+ on timed practice.",
   },
   {
     question: "Which CIS-ITSM domains should I study first?",
@@ -357,18 +358,6 @@ export default async function CISITSMStudyGuidePage() {
     { name: "Study Guide", url: "/cis-itsm/study-guide" },
   ]);
 
-  const faqJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faqData.map((item) => ({
-      "@type": "Question",
-      name: item.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: item.answer,
-      },
-    })),
-  };
 
   const howToJsonLd = {
     "@context": "https://schema.org",
@@ -406,10 +395,6 @@ export default async function CISITSMStudyGuidePage() {
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(howToJsonLd) }}
@@ -475,8 +460,8 @@ export default async function CISITSMStudyGuidePage() {
                   value: `${cert.examDetails.duration} min`,
                 },
                 {
-                  label: "Pass Score",
-                  value: `${cert.examDetails.passingScore}%`,
+                  label: "Cut score",
+                  value: CUT_SCORE_LABEL,
                 },
                 { label: "Practice Qs", value: `${totalQuestions}+` },
               ].map((stat) => (
@@ -543,7 +528,7 @@ export default async function CISITSMStudyGuidePage() {
                 <ul className="mt-2 space-y-1 text-sm text-zinc-600 dark:text-zinc-400">
                   <li>{cert.examDetails.questionCount} questions</li>
                   <li>{cert.examDetails.duration} minutes</li>
-                  <li>{cert.examDetails.passingScore}% planning pass score</li>
+                  <li>Cut score not published; aim for 80%+ on timed practice</li>
                   <li>{cert.examDetails.format}</li>
                 </ul>
               </div>

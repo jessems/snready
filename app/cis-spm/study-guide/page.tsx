@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { getCertificationBySlug, getTotalQuestionCount } from "@/lib/data";
 import { generateBreadcrumbJsonLd } from "@/lib/breadcrumbs";
+import { CUT_SCORE_LABEL } from "@/lib/site-facts";
 
 export const metadata: Metadata = {
   title:
@@ -80,49 +81,6 @@ const domainFocus: Record<string, string[]> = {
     "Benefits of connecting strategic demand, delivery work, operational risk, and change control",
   ],
 };
-
-const faqData = [
-  {
-    question: "What is the CIS-SPM exam?",
-    answer:
-      "The ServiceNow Certified Implementation Specialist - Strategic Portfolio Management exam validates that you can implement SPM processes for ideas, demands, projects, resources, timecards, financials, portfolio planning, analytics, and cross-application integration.",
-  },
-  {
-    question: "How many questions are on the CIS-SPM exam?",
-    answer:
-      "SNReady lists CIS-SPM as a 60-question exam with a 90-minute time limit and 70% passing score for study planning. The format is multiple choice and multiple select.",
-  },
-  {
-    question: "Which CIS-SPM domain should I study first?",
-    answer:
-      "Start with Project Management because it is the largest domain at 30%. Then study Resource Management at 23% and Idea and Demand at 18%. Together, those three domains represent 71% of the exam.",
-  },
-  {
-    question: "How long should I study for CIS-SPM?",
-    answer:
-      "Most candidates should plan four focused weeks if they already understand ServiceNow administration and project or portfolio concepts. Add extra time if resource planning, financial planning, or Portfolio Planning Workspace are new to you.",
-  },
-  {
-    question: "Do I need hands-on SPM implementation experience?",
-    answer:
-      "Yes. CIS-SPM is implementation focused. You should be able to trace work from idea intake through demand assessment, project planning, resource allocation, time capture, financial tracking, and portfolio reporting.",
-  },
-  {
-    question: "What makes CIS-SPM difficult?",
-    answer:
-      "The difficult part is not isolated vocabulary. The exam asks you to choose the right SPM object or process for a scenario, especially when project schedule, resource capacity, financial data, and portfolio priorities conflict.",
-  },
-  {
-    question: "When am I ready to book the CIS-SPM exam?",
-    answer:
-      "Book the exam after you score 80% or higher on two timed mixed-domain mock exams, can explain every missed question by SPM lifecycle stage, and can complete the hands-on labs without step-by-step notes.",
-  },
-  {
-    question: "What should I drill during the final week?",
-    answer:
-      "Drill project and resource scenarios first, then idea-to-demand conversion, SPM financial rollups, timecard actuals, Portfolio Planning Workspace scenarios, and dashboard or integration questions. Review misses by decision type, not by memorized stem.",
-  },
-];
 
 const howToSteps = [
   {
@@ -418,18 +376,6 @@ export default function CISSPMStudyGuidePage() {
     { name: "Study Guide", url: "/cis-spm/study-guide" },
   ]);
 
-  const faqJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faqData.map((item) => ({
-      "@type": "Question",
-      name: item.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: item.answer,
-      },
-    })),
-  };
 
   const howToJsonLd = {
     "@context": "https://schema.org",
@@ -468,10 +414,6 @@ export default function CISSPMStudyGuidePage() {
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(howToJsonLd) }}
@@ -535,8 +477,8 @@ export default function CISSPMStudyGuidePage() {
                   value: `${cert.examDetails.duration} min`,
                 },
                 {
-                  label: "Pass Score",
-                  value: `${cert.examDetails.passingScore}%`,
+                  label: "Cut score",
+                  value: CUT_SCORE_LABEL,
                 },
                 { label: "Practice Qs", value: `${totalQuestions}+` },
               ].map((stat) => (

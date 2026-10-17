@@ -42,7 +42,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   return {
     title: `ServiceNow ${release} Release - Delta Exams & Certifications`,
-    description: `All ServiceNow ${release} release certifications and delta exams. ${certs.length} certifications updated for ${release} (${releaseInfo.season} ${releaseInfo.year}). Practice questions and study guides.`,
+    description: `All ServiceNow ${release} release certifications and delta exams. ${certs.length} certifications SNReady lists under ${release} (${releaseInfo.season} ${releaseInfo.year}); check each blueprint for the release it covers. Practice questions and study guides.`,
     keywords: [
       `ServiceNow ${release}`,
       `${release} release`,
@@ -56,7 +56,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     },
     openGraph: {
       title: `ServiceNow ${release} Release | SNReady`,
-      description: `All ${certs.length} ServiceNow certifications for the ${release} release. Delta exams, practice questions, and study guides.`,
+      description: `${certs.length} ServiceNow certifications SNReady lists under the ${release} release. Delta exams, practice questions, and study guides.`,
     },
   };
 }
@@ -105,7 +105,7 @@ export default async function ReleasePage({ params }: PageProps) {
     "@context": "https://schema.org",
     "@type": "ItemList",
     name: `ServiceNow ${release} Release Certifications`,
-    description: `All certifications updated for the ServiceNow ${release} release`,
+    description: `ServiceNow certifications SNReady lists under the ${release} release`,
     numberOfItems: certs.length,
     itemListElement: certs.map((cert, index) => ({
       "@type": "ListItem",
@@ -144,7 +144,7 @@ export default async function ReleasePage({ params }: PageProps) {
                   {release} Release
                 </h1>
                 <p className="mt-4 max-w-2xl text-lg text-zinc-600 dark:text-zinc-400">
-                  {certs.length} ServiceNow certifications are updated for the {release} release.
+                  {certs.length} ServiceNow certifications SNReady lists under the {release} release. Check each exam blueprint in ServiceNow University for the release it currently covers.
                   Complete your delta exams to maintain your certifications.
                 </p>
               </div>
@@ -205,7 +205,7 @@ export default async function ReleasePage({ params }: PageProps) {
               {release} Certifications
             </h2>
             <p className="mt-2 text-zinc-600 dark:text-zinc-400">
-              All certifications updated to the {release} release.
+              Certifications SNReady lists under the {release} release.
             </p>
 
             <div className="mt-8 space-y-12">

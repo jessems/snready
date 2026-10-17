@@ -12,6 +12,8 @@ import {
   isCertificationFree,
 } from "@/lib/data";
 import { breadcrumbs, generateBreadcrumbJsonLd } from "@/lib/breadcrumbs";
+import { robotsForPath } from "@/lib/seo-indexing";
+import { LAST_REVIEWED_ISO, LAST_REVIEWED_LABEL } from "@/lib/site-facts";
 import TopicIntroduction from "@/components/TopicIntroduction";
 import { CheckoutButton } from "@/components/CheckoutButton";
 import { QuestionsWithPaywall } from "@/components/QuestionsWithPaywall";
@@ -37,6 +39,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     return { title: "Topic Not Found" };
   }
 
+  const robots = robotsForPath(`/${slug}/practice-questions/${topicSlug}`);
+
   // CTR-optimized title: includes "Free", action-oriented, year for freshness
   const year = new Date().getFullYear();
 
@@ -51,6 +55,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         `free ${certification.name} questions`,
         `ServiceNow ${certification.name} ${topic.name}`,
       ],
+      robots,
       alternates: {
         canonical: `/${slug}/practice-questions/${topicSlug}`,
       },
@@ -63,7 +68,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   return {
     title: `Free ${certification.name} ${topic.name} Practice Questions [${year}]`,
-    description: `${topic.questionCount}+ free ${topic.name} practice questions for ServiceNow ${certification.name} certification. Detailed explanations, exam-style format. Pass your exam with confidence.`,
+    description: `${topic.questionCount} ${topic.name} practice questions for the ServiceNow ${certification.name} certification, with free sample questions. Detailed explanations, exam-style format. Pass your exam with confidence.`,
     keywords: [
       `${certification.name} ${topic.name} questions`,
       `ServiceNow ${topic.name} exam`,
@@ -71,12 +76,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       `free ${certification.name} questions`,
       `ServiceNow ${certification.name} ${topic.name}`,
     ],
+    robots,
     alternates: {
       canonical: `/${slug}/practice-questions/${topicSlug}`,
     },
     openGraph: {
       title: `Free ${certification.name} ${topic.name} Questions — Pass Your Exam`,
-      description: `${topic.questionCount}+ practice questions with detailed explanations. Prepare for your ServiceNow ${certification.name} certification exam.`,
+      description: `${topic.questionCount} practice questions with detailed explanations. Prepare for your ServiceNow ${certification.name} certification exam.`,
     },
   };
 }
@@ -99,19 +105,6 @@ export default async function TopicQuestionsPage({ params }: PageProps) {
   const certIsFree = isCertificationFree(slug);
   const { paidCount } = getPricingSummary();
 
-  // JSON-LD structured data for FAQ (only use free questions for SEO)
-  const faqJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: freeQuestions.slice(0, 5).map((q) => ({
-      "@type": "Question",
-      name: q.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: q.explanation?.correct || "",
-      },
-    })),
-  };
 
   // JSON-LD structured data - Breadcrumb schema
   const breadcrumbJsonLd = generateBreadcrumbJsonLd(
@@ -120,10 +113,6 @@ export default async function TopicQuestionsPage({ params }: PageProps) {
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
@@ -175,6 +164,10 @@ export default async function TopicQuestionsPage({ params }: PageProps) {
                     {certIsFree ? "All questions free" : `${freeQuestions.length} free questions`}
                   </span>
                 </div>
+                <p className="mt-2 text-sm text-zinc-500">
+                  Last reviewed:{" "}
+                  <time dateTime={LAST_REVIEWED_ISO}>{LAST_REVIEWED_LABEL}</time>
+                </p>
               </div>
               <div className="flex flex-col gap-2">
                 <Link

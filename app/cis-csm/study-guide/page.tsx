@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { getCertificationBySlug, getTotalQuestionCount } from "@/lib/data";
 import { generateBreadcrumbJsonLd } from "@/lib/breadcrumbs";
+import { CUT_SCORE_LABEL, EXAM_DELIVERY_SHORT } from "@/lib/site-facts";
 
 export const metadata: Metadata = {
   title: "How to Pass CIS-CSM — Complete ServiceNow CSM Study Guide [2026]",
@@ -57,49 +58,6 @@ const domainFocus: Record<string, string[]> = {
     "SLA behavior, reports, dashboards, and analytics for service health and backlog visibility",
   ],
 };
-
-const faqData = [
-  {
-    question: "What is the ServiceNow CIS-CSM exam?",
-    answer:
-      "The ServiceNow Certified Implementation Specialist - Customer Service Management exam validates that you can implement CSM solutions: customer data models, CSM configuration, case management, workspace and portal experiences, analytics, knowledge, and implementation best practices.",
-  },
-  {
-    question: "How many questions are on the CIS-CSM exam?",
-    answer:
-      "SNReady lists the CIS-CSM exam as 60 multiple-choice and multiple-select questions with 90 minutes to complete the exam and a planning passing score of 70%.",
-  },
-  {
-    question: "Which CIS-CSM domains should I study first?",
-    answer:
-      "Start with CSM Configuration because it is the highest-weight domain at 38%, then study the CSM Foundational Data Model at 27%. Together those two domains represent 65% of the exam and shape how the remaining case, workspace, knowledge, and analytics questions behave.",
-  },
-  {
-    question: "How long should I study for CIS-CSM?",
-    answer:
-      "Most candidates with CSA-level platform knowledge and some CSM exposure should plan 4 weeks of structured preparation. Candidates without hands-on case, account/contact, entitlement, and workspace experience should spend additional time in a Personal Developer Instance or training instance.",
-  },
-  {
-    question: "Do I need hands-on CSM implementation experience?",
-    answer:
-      "Yes. CIS-CSM is an implementation-specialist exam. You should be able to configure or inspect accounts, contacts, consumers, products, entitlements, case types, routing, workspace behavior, portals, knowledge, SLAs, and reports—not just define the terms.",
-  },
-  {
-    question: "Is CIS-CSM mostly case management?",
-    answer:
-      "No. Case Management is important, but the highest-weight areas are CSM Configuration and the CSM Foundational Data Model. Many scenario questions depend on choosing the right customer data model and configuration pattern before a case is even created.",
-  },
-  {
-    question: "What score should I reach before scheduling CIS-CSM?",
-    answer:
-      "Use 80% or higher on two timed mixed-domain mock exams as a safer readiness target. Also require no domain below 70%, because weak foundational-data-model or configuration knowledge can sink otherwise strong case-management performance.",
-  },
-  {
-    question: "What should I do during the final week before CIS-CSM?",
-    answer:
-      "Take two timed mock exams, review every missed question by domain, rebuild weak configuration decisions in a PDI, and rehearse scenario explanations for routing, entitlement, account/contact modeling, major cases, workspace, portals, knowledge, and SLAs.",
-  },
-];
 
 const howToSteps = [
   {
@@ -383,18 +341,6 @@ export default function CISCSMStudyGuidePage() {
     { name: "Study Guide", url: "/cis-csm/study-guide" },
   ]);
 
-  const faqJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faqData.map((item) => ({
-      "@type": "Question",
-      name: item.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: item.answer,
-      },
-    })),
-  };
 
   const howToJsonLd = {
     "@context": "https://schema.org",
@@ -433,10 +379,6 @@ export default function CISCSMStudyGuidePage() {
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(howToJsonLd) }}
@@ -502,8 +444,8 @@ export default function CISCSMStudyGuidePage() {
                   value: `${cert.examDetails.duration} min`,
                 },
                 {
-                  label: "Pass Score",
-                  value: `${cert.examDetails.passingScore}%`,
+                  label: "Cut score",
+                  value: CUT_SCORE_LABEL,
                 },
                 { label: "Practice Qs", value: `${totalQuestions}+` },
               ].map((stat) => (
@@ -569,8 +511,8 @@ export default function CISCSMStudyGuidePage() {
                 <ul className="mt-2 space-y-1 text-sm text-zinc-600 dark:text-zinc-400">
                   <li>60 multiple-choice and multiple-select questions</li>
                   <li>90 minutes to complete</li>
-                  <li>Plan for a 70% passing score</li>
-                  <li>Online proctored or test-center delivery</li>
+                  <li>Cut score not published; aim for 80%+ on timed practice</li>
+                  <li>{EXAM_DELIVERY_SHORT}</li>
                 </ul>
               </div>
             </div>

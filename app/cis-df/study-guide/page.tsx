@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { getCertificationBySlug, getTotalQuestionCount } from "@/lib/data";
 import { generateBreadcrumbJsonLd } from "@/lib/breadcrumbs";
+import { CUT_SCORE_LABEL, EXAM_DELIVERY_SHORT } from "@/lib/site-facts";
 
 export const metadata: Metadata = {
   title: "How to Pass CIS-DF (Data Foundations) — Complete Study Guide [2026]",
@@ -119,75 +120,6 @@ const SAMPLE_QUESTIONS = [
     explanation:
       "CSDM provides a standardized, consistent data model for representing services across the Now Platform. It ensures that all ServiceNow applications use the same underlying data structures and relationships, enabling better reporting, automation, and cross-module insights.",
     weight: 11,
-  },
-];
-
-// FAQ structured data
-const faqData = [
-  {
-    question: "What is the CIS-DF exam and what does it certify?",
-    answer:
-      "The CIS-DF (Certified Implementation Specialist - Data Foundations) is a ServiceNow professional certification that validates your expertise in CMDB (Configuration Management Database) and the Common Service Data Model (CSDM). It tests your ability to build, govern, and maintain trusted configuration data — a foundational skill for any ServiceNow implementation specialist.",
-  },
-  {
-    question: "How many questions are on the CIS-DF exam?",
-    answer:
-      "The CIS-DF exam contains 75 questions and you have 90 minutes to complete it (per the official blueprint, KB0012913). SNReady plans for a 70% passing score. The exam format includes multiple-choice and multiple-select questions.",
-  },
-  {
-    question: "What is the passing score for CIS-DF?",
-    answer:
-      "SNReady plans for a 70% passing score on the 75-question CIS-DF exam. The exam is proctored and can be taken online or at a Pearson VUE testing center.",
-  },
-  {
-    question: "How much does the CIS-DF exam cost?",
-    answer:
-      "The CIS-DF exam is provided at no additional cost beyond the standard exam registration. However, you must hold a valid CSA (Certified System Administrator) certification as a prerequisite before you can register for CIS-DF.",
-  },
-  {
-    question: "What are the prerequisites for the CIS-DF exam?",
-    answer:
-      "CIS-DF has no mandatory prerequisite certification. The official exam page lists CSA certification and two or more years of CMDB experience as recommended experience. ServiceNow recommends the courses in the CIS-DF credential path, but course completion is not required. CIS-DF itself is now required before you can register for CIS-ITSM, CIS-Discovery, CIS-SM, CIS-HAM, CIS-SAM, CIS-SIR and CIS-VR.",
-  },
-  {
-    question: "What is the most important CIS-DF domain to study?",
-    answer:
-      "Govern (35% of the exam) is by far the most heavily weighted domain. It covers health KPIs, governance processes, lifecycle controls, and data quality — essentially how to maintain trusted data over time. Ingest (19%) and Insight (20%) are the next most important. Configuration (15%) and CSDM Fundamentals (11%) round out the exam.",
-  },
-  {
-    question: "How hard is the CIS-DF exam compared to CSA?",
-    answer:
-      "CIS-DF is generally considered more challenging than CSA because it assumes hands-on ServiceNow experience and tests deep conceptual knowledge of data architecture. The CSDM model and CMDB governance concepts can be unfamiliar even to experienced admins. Most candidates find the Govern domain (35%) the toughest because it requires understanding not just what to do, but why — data quality decisions in production environments.",
-  },
-  {
-    question: "How long should I study for the CIS-DF exam?",
-    answer:
-      "Most candidates with CSA-level ServiceNow experience spend 3-5 weeks preparing for CIS-DF, studying 1-2 hours per day. If you're new to CMDB and CSDM concepts, budget extra time for the Govern domain. We recommend starting with a practice test to identify your weakest domains, then focusing study time there.",
-  },
-  {
-    question: "What does Reddit say is the best way to prepare for CIS-DF?",
-    answer:
-      "Across ServiceNow Reddit discussions, experienced practitioners repeatedly recommend three things: follow the official NowLearning learning path and exam blueprint, study the CSDM material instead of memorizing isolated table names, and use a personal developer instance for CMDB Health, relationships, Discovery/MID Server, and dashboard practice. Community advice also warns against relying on dumps because implementation-specialist exams test scenario judgment, not just definitions.",
-  },
-  {
-    question: "How should I structure a 4-week CIS-DF study plan?",
-    answer:
-      "Week 1 should cover CSDM fundamentals and baseline practice. Week 2 should focus heavily on Govern because it is 35% of the exam. Week 3 should cover Ingest, Insight, and Configuration with hands-on PDI labs. Week 4 should be timed mock exams, wrong-answer review, and targeted remediation until you score 80% or higher consistently.",
-  },
-  {
-    question: "What hands-on labs should I do before taking CIS-DF?",
-    answer:
-      "At minimum, use a ServiceNow personal developer instance to inspect CMDB class hierarchy, create a small CI relationship model, review CMDB Health, compare identification and reconciliation behavior, open Query Builder or dashboard views, and trace how business services connect to service instances and supporting CIs.",
-  },
-  {
-    question: "Is there a delta exam for CIS-DF?",
-    answer:
-      "Yes. ServiceNow releases delta exams after each major release (e.g., Zurich). The delta exam covers only what changed in the new release and is a prerequisite for maintaining your certification. Delta exams typically have 10 questions, are 20 minutes long, and must be completed within the designated exam window.",
-  },
-  {
-    question: "What jobs can you get with a CIS-DF certification?",
-    answer:
-      "CIS-DF is a prerequisite for all CIS specialty certifications (CIS-ITSM, CIS-HAM, CIS-SAM, CIS-Discovery, CIS-SM, CIS-SIR, CIS-VR), making it essential for roles like ServiceNow Technical Consultant, Implementation Specialist, CMDB Administrator, and Solution Architect. Employers often require it for mid-to-senior positions focused on ServiceNow data architecture and ITSM implementations.",
   },
 ];
 
@@ -408,18 +340,6 @@ export default async function CISDFStudyGuidePage() {
     { name: "Study Guide", url: "/cis-df/study-guide" },
   ]);
 
-  const faqJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faqData.map((item) => ({
-      "@type": "Question",
-      name: item.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: item.answer,
-      },
-    })),
-  };
 
   const howToJsonLd = {
     "@context": "https://schema.org",
@@ -534,10 +454,6 @@ export default async function CISDFStudyGuidePage() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-      />
-      <script
-        type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(howToJsonLd) }}
       />
       <script
@@ -609,7 +525,7 @@ export default async function CISDFStudyGuidePage() {
               {[
                 { label: "Questions", value: "60" },
                 { label: "Duration", value: "90 min" },
-                { label: "Pass Score", value: "70%" },
+                { label: "Cut score", value: CUT_SCORE_LABEL },
                 { label: "Practice Qs", value: `${totalQuestions}+` },
               ].map((stat) => (
                 <div
@@ -703,7 +619,7 @@ export default async function CISDFStudyGuidePage() {
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-500" />
-                    Online proctored or Pearson VUE testing center
+                    {EXAM_DELIVERY_SHORT}
                   </li>
                 </ul>
               </div>

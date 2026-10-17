@@ -1,4 +1,6 @@
 import { Metadata } from "next";
+import { PRACTICE_PASS_TARGET } from "@/lib/site-facts";
+import { robotsForPath } from "@/lib/seo-indexing";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
@@ -38,12 +40,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     ? `Free ${certification.name} Mock Exam [${year}] — Timed ServiceNow ${certification.name} Practice Test`
     : `${certification.name} Timed Mock Exam - Realistic Exam Simulation`;
   const description = isFree
-    ? `Take a free timed ${certification.name} mock exam, no signup needed. ${certification.examDetails?.questionCount || 60} questions, ${certification.examDetails?.duration || 90} minutes, ${certification.examDetails?.passingScore || 70}% to pass, with detailed explanations for every answer.`
-    : `Take a timed ${certification.name} mock exam that simulates real test conditions. ${certification.examDetails?.questionCount || 60} questions, ${certification.examDetails?.duration || 90} minutes, ${certification.examDetails?.passingScore || 70}% to pass. Track your progress and review detailed explanations.`;
+    ? `Take a free timed ${certification.name} mock exam, no signup needed. ${certification.examDetails?.questionCount || 60} questions, ${certification.examDetails?.duration || 90} minutes, with detailed explanations for every answer.`
+    : `Take a timed ${certification.name} mock exam that simulates real test conditions. ${certification.examDetails?.questionCount || 60} questions, ${certification.examDetails?.duration || 90} minutes. Track your progress and review detailed explanations.`;
 
   return {
     title,
     description,
+    robots: robotsForPath(`/${slug}/mock-exam`),
     alternates: {
       canonical: getCanonicalUrl(`/${slug}/mock-exam`),
     },
@@ -73,7 +76,7 @@ export default async function MockExamPage({ params }: Props) {
     certName: certification.name,
     questionCount: certification.examDetails?.questionCount || 60,
     durationMinutes: certification.examDetails?.duration || 90,
-    passingScore: certification.examDetails?.passingScore || 70,
+    passingScore: PRACTICE_PASS_TARGET,
   };
 
   const hasEnoughQuestions = totalQuestions >= examConfig.questionCount;

@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { getReleaseSummary } from "@/lib/release-notes";
 import { generateBreadcrumbJsonLd } from "@/lib/breadcrumbs";
+import { getPricingSummary } from "@/lib/data";
 
 const VERSION_DATES: Record<string, string> = {
   "washington-dc": "March 2024",
@@ -38,6 +39,7 @@ export default function VersionDiffIndexPage() {
   const summary = getReleaseSummary();
   const versions = Object.values(summary.versions);
   const totalChanges = versions.reduce((sum, v) => sum + v.totalEntries, 0);
+  const { readyCount, totalQuestions } = getPricingSummary();
 
   const breadcrumbJsonLd = generateBreadcrumbJsonLd([
     { name: "Home", url: "https://snready.com" },
@@ -53,7 +55,7 @@ export default function VersionDiffIndexPage() {
         name: "What is the latest ServiceNow release?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Zurich is the latest ServiceNow release (September 2025), with 341 documented changes across 33 product areas including major updates to Now Assist, ITSM, and AI Platform capabilities.",
+          text: "Zurich (September 2025) is the latest ServiceNow release covered by SNReady's Version Diff, with 341 documented changes across 33 product areas including major updates to Now Assist, ITSM, and AI Platform capabilities.",
         },
       },
       {
@@ -261,9 +263,9 @@ export default function VersionDiffIndexPage() {
                   href="/certifications"
                   className="text-emerald-600 hover:underline dark:text-emerald-400"
                 >
-                  1,380+ practice questions
+                  {totalQuestions.toLocaleString("en-US")} practice questions
                 </Link>{" "}
-                across 20 certifications.
+                across {readyCount} certifications.
               </p>
             </div>
           </div>
