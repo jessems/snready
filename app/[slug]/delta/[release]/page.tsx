@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { robotsForPath } from "@/lib/seo-indexing";
+import { robotsForDeltaPage } from "@/lib/seo-indexing";
 import { CUT_SCORE_LABEL, LAST_REVIEWED_ISO, LAST_REVIEWED_LABEL } from "@/lib/site-facts";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -11,15 +11,23 @@ import {
   getTopicsForCertification,
   getTotalQuestionCount,
   getTotalFreeQuestionCount,
-  getDeltaQuestions,
+  getPublicDeltaQuestions,
+  getDeltaReleases,
+  getReleaseInfo,
   isCertificationFree,
 } from "@/lib/data";
 import { generateBreadcrumbJsonLd } from "@/lib/breadcrumbs";
 import deltaTipsData from "@/data/delta-tips.json";
 import QuestionCard from "@/components/QuestionCard";
+import type { Certification, ServiceNowRelease } from "@/types";
 
 interface PageProps {
   params: Promise<{ slug: string; release: string }>;
+}
+
+// The release a delta URL refers to, if this certification has a delta page for it.
+function findDeltaRelease(cert: Certification, releaseParam: string): ServiceNowRelease | undefined {
+  return getDeltaReleases(cert).find((r) => r.toLowerCase() === releaseParam.toLowerCase());
 }
 
 export async function generateStaticParams() {
@@ -38,6 +46,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 
   const release = releaseParam.charAt(0).toUpperCase() + releaseParam.slice(1);
+  const deltaQuestions = await getPublicDeltaQuestions(slug, releaseParam);
 
   return {
     title: `${cert.name} ${release} Delta Exam - Tips, Study Guide & Practice Questions`,
@@ -51,7 +60,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       "ServiceNow delta exam tips",
       "delta exam study guide",
     ],
-    robots: robotsForPath(`/${slug}/delta/${releaseParam}`),
+    robots: robotsForDeltaPage(slug, releaseParam, deltaQuestions.length),
     alternates: {
       canonical: `/${slug}/delta/${releaseParam}`,
     },
@@ -70,9 +79,19 @@ export default async function DeltaExamPage({ params }: PageProps) {
     notFound();
   }
 
+  const deltaRelease = findDeltaRelease(cert, releaseParam);
+  if (!deltaRelease) {
+    notFound();
+  }
+
   const release = releaseParam.charAt(0).toUpperCase() + releaseParam.slice(1);
-  const daysLeft = getDaysUntilDeltaDeadline(cert);
-  const isOpen = isDeltaWindowOpen(cert);
+  const releaseKey = releaseParam.toLowerCase();
+  // deltaExam.deltaWindow belongs to currentRelease; later releases have no announced window yet.
+  const isUpcomingRelease = deltaRelease !== cert.deltaExam.currentRelease;
+  const deltaWindow = isUpcomingRelease ? undefined : cert.deltaExam.deltaWindow;
+  const daysLeft = deltaWindow ? getDaysUntilDeltaDeadline(cert) : null;
+  const isOpen = deltaWindow ? isDeltaWindowOpen(cert) : false;
+  const expectedDeltaWindow = getReleaseInfo(deltaRelease).expectedDeltaWindow;
   const topics = getTopicsForCertification(slug);
   const totalQuestions = getTotalQuestionCount(slug);
   const freeQuestions = getTotalFreeQuestionCount(slug);
@@ -81,9 +100,13 @@ export default async function DeltaExamPage({ params }: PageProps) {
   // Get delta tips for this certification
   const generalTips = deltaTipsData.general;
   const certTips = deltaTipsData.certifications[slug as keyof typeof deltaTipsData.certifications];
+  const releaseTopics: string[] | undefined =
+    certTips?.releaseTopics?.[releaseKey as keyof typeof certTips.releaseTopics];
+  // Reddit insights and difficulty ratings were collected for the releases we have topics for.
+  const hasReleaseTips = Boolean(releaseTopics && releaseTopics.length > 0);
 
-  // Get delta-specific practice questions
-  const deltaQuestions = await getDeltaQuestions(slug, releaseParam);
+  // Delta practice questions that are public (premium ones never reach the page)
+  const deltaQuestions = await getPublicDeltaQuestions(slug, releaseParam);
 
   // Breadcrumb JSON-LD
   const breadcrumbJsonLd = generateBreadcrumbJsonLd([
@@ -140,10 +163,10 @@ export default async function DeltaExamPage({ params }: PageProps) {
               Everything you need to pass the {cert.fullName} delta exam for the {release} release.
               Tips from Reddit, key topics, and practice questions.
             </p>
-            {!isOpen && cert.deltaExam.deltaWindow && new Date(cert.deltaExam.deltaWindow.closes) < new Date() && (
+            {!isOpen && deltaWindow && new Date(deltaWindow.closes) < new Date() && (
               <p className="mt-4 rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800 dark:border-amber-900 dark:bg-amber-950/40 dark:text-amber-200">
-                The {release} delta exam window ran from {cert.deltaExam.deltaWindow.opens} to{" "}
-                {cert.deltaExam.deltaWindow.closes} and is now closed. Check Now Learning for the next delta exam.
+                The {release} delta exam window ran from {deltaWindow.opens} to{" "}
+                {deltaWindow.closes} and is now closed. Check Now Learning for the next delta exam.
               </p>
             )}
             <p className="mt-3 text-sm text-zinc-500">
@@ -198,7 +221,7 @@ export default async function DeltaExamPage({ params }: PageProps) {
         </section>
 
         {/* Reddit Tips Section */}
-        {certTips?.redditInsights && certTips.redditInsights.length > 0 && (
+        {certTips?.redditInsights && hasReleaseTips && certTips.redditInsights.length > 0 && (
           <section className="border-b border-zinc-200 bg-orange-50 py-10 dark:border-zinc-800 dark:bg-zinc-900">
             <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
               <div className="flex items-center gap-2">
@@ -234,9 +257,9 @@ export default async function DeltaExamPage({ params }: PageProps) {
               Focus your study on these areas — they&apos;re most likely to appear on the delta exam.
             </p>
 
-            {certTips?.zurichTopics && certTips.zurichTopics.length > 0 ? (
+            {releaseTopics && releaseTopics.length > 0 ? (
               <ul className="mt-6 grid gap-3 sm:grid-cols-2">
-                {certTips.zurichTopics.map((topic, index) => (
+                {releaseTopics.map((topic, index) => (
                   <li
                     key={index}
                     className="flex items-start gap-3 rounded-lg bg-zinc-50 p-4 dark:bg-zinc-900"
@@ -288,7 +311,7 @@ export default async function DeltaExamPage({ params }: PageProps) {
         </section>
 
         {/* Free Delta Practice Questions */}
-        {deltaQuestions.length > 0 && (
+        {deltaQuestions.length > 0 ? (
           <section className="border-b border-zinc-200 bg-gradient-to-b from-blue-50 to-white py-12 dark:border-zinc-800 dark:from-blue-950/20 dark:to-zinc-950">
             <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
               <div className="flex items-center justify-between">
@@ -316,6 +339,25 @@ export default async function DeltaExamPage({ params }: PageProps) {
               </div>
             </div>
           </section>
+        ) : (
+          // Upcoming release without questions yet; past releases just omit the section
+          isUpcomingRelease && (
+            <section className="border-b border-zinc-200 bg-gradient-to-b from-blue-50 to-white py-12 dark:border-zinc-800 dark:from-blue-950/20 dark:to-zinc-950">
+              <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+                <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-50">
+                  {release} Delta Practice Questions
+                </h2>
+                <p
+                  data-testid="delta-questions-placeholder"
+                  className="mt-4 rounded-lg border border-blue-200 bg-blue-50 p-4 text-blue-900 dark:border-blue-900 dark:bg-blue-950/40 dark:text-blue-100"
+                >
+                  {expectedDeltaWindow
+                    ? `${release} delta practice questions are coming before the expected ${expectedDeltaWindow} window; official dates not yet announced.`
+                    : `${release} delta practice questions are coming soon; official dates not yet announced.`}
+                </p>
+              </div>
+            </section>
+          )
         )}
 
         {/* Strategy Section */}
@@ -354,7 +396,7 @@ export default async function DeltaExamPage({ params }: PageProps) {
             </div>
 
             {/* Difficulty Badge */}
-            {certTips?.difficulty && (
+            {certTips?.difficulty && hasReleaseTips && (
               <div className="mt-8">
                 <span className="text-sm text-zinc-500">Community Difficulty Rating:</span>
                 <div className="mt-2 flex items-center gap-2">

@@ -9,6 +9,9 @@
  * Free certifications (lib/free-certs.ts, e.g. CSA) are exempt: all of their questions
  * are public on purpose, so they count as free content, not premium. Every other
  * certification is still checked.
+ *
+ * Delta question banks (data/questions/{cert}/delta-{release}.json) are included too:
+ * for paid certifications, delta questions without isFree: true are premium.
  */
 
 import { spawnSync } from "node:child_process";
@@ -107,6 +110,39 @@ export function buildPremiumNeedles(premium: Question[], free: Question[], extra
   return needles;
 }
 
+/** Every delta question bank on disk: data/questions/{cert}/delta-*.json. */
+export function loadDeltaQuestionBanks(
+  questionsDir: string = path.join(process.cwd(), "data", "questions")
+): Array<{ certification: string; file: string; questions: Question[] }> {
+  const banks: Array<{ certification: string; file: string; questions: Question[] }> = [];
+  for (const certification of fs.readdirSync(questionsDir).sort()) {
+    const certDir = path.join(questionsDir, certification);
+    if (!fs.statSync(certDir).isDirectory()) continue;
+    for (const file of fs.readdirSync(certDir).sort()) {
+      if (!file.startsWith("delta-") || !file.endsWith(".json")) continue;
+      const data = JSON.parse(fs.readFileSync(path.join(certDir, file), "utf8"));
+      banks.push({ certification, file: `${certification}/${file}`, questions: data.questions || [] });
+    }
+  }
+  return banks;
+}
+
+/** Splits delta questions into premium/free: free certs are all free, otherwise only isFree: true is. */
+export function classifyDeltaQuestions(
+  banks: Array<{ certification: string; questions: Question[] }>,
+  isFreeCert: (certification: string) => boolean = isCertificationFree
+): { premium: Question[]; free: Question[] } {
+  const premium: Question[] = [];
+  const free: Question[] = [];
+  for (const { certification, questions } of banks) {
+    for (const question of questions) {
+      if (isFreeCert(certification) || question.isFree === true) free.push(question);
+      else premium.push(question);
+    }
+  }
+  return { premium, free };
+}
+
 export async function loadPremiumAndFreeQuestions(): Promise<{
   premium: Question[];
   free: Question[];
@@ -128,6 +164,9 @@ export async function loadPremiumAndFreeQuestions(): Promise<{
     free.push(...freeQuestions);
     premium.push(...all.filter((question) => !freeIds.has(question.id)));
   }
+  const delta = classifyDeltaQuestions(loadDeltaQuestionBanks());
+  premium.push(...delta.premium);
+  free.push(...delta.free);
   return { premium, free, exemptCertifications };
 }
 

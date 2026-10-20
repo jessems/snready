@@ -179,6 +179,20 @@ export async function getDeltaQuestions(
   }
 }
 
+/**
+ * Delta questions that may be shown on the public delta page: all of them for
+ * free certifications, otherwise only those flagged isFree. Anything else stays
+ * out of the static HTML/RSC output.
+ */
+export async function getPublicDeltaQuestions(
+  certSlug: string,
+  release: string
+): Promise<Question[]> {
+  const questions = await getDeltaQuestions(certSlug, release);
+  if (isCertificationFree(certSlug)) return questions;
+  return questions.filter((question) => question.isFree === true);
+}
+
 export { FREE_QUESTIONS_PER_CERT, isFreeCertification };
 
 /**
@@ -580,24 +594,36 @@ const releaseOrder: ServiceNowRelease[] = [
   "Yokohama",
   "Zurich",
   "Australia",
+  "Brazil",
 ];
 
 // Release display metadata (general availability month).
-// "season" holds the GA month name.
-const releaseInfo: Record<ServiceNowRelease, { year: number; season: string }> = {
+// "season" holds the GA month name, or the quarter when only that is announced.
+// earlyAccess is the ISO date early access opened, where known.
+// expectedDeltaWindow is our estimate for a delta window not yet announced
+// (Australia has no delta exam window).
+interface ReleaseInfo {
+  year: number;
+  season: string;
+  earlyAccess?: string;
+  expectedDeltaWindow?: string;
+}
+
+const releaseInfo: Record<ServiceNowRelease, ReleaseInfo> = {
   Vancouver: { year: 2023, season: "September" },
   Washington: { year: 2024, season: "March" },
   Xanadu: { year: 2024, season: "September" },
   Yokohama: { year: 2025, season: "March" },
   Zurich: { year: 2025, season: "September" },
   Australia: { year: 2026, season: "May" },
+  Brazil: { year: 2026, season: "Q4", earlyAccess: "2026-09-24", expectedDeltaWindow: "January 2027" },
 };
 
 export function getAllReleases(): ServiceNowRelease[] {
   return releaseOrder;
 }
 
-export function getReleaseInfo(release: ServiceNowRelease): { year: number; season: string } {
+export function getReleaseInfo(release: ServiceNowRelease): ReleaseInfo {
   return releaseInfo[release];
 }
 
@@ -659,15 +685,22 @@ export function isDeltaWindowOpen(cert: Certification): boolean {
   return now >= opens && now <= closes;
 }
 
-// Generate all delta page slugs for static generation
+// Releases that have a delta page for this certification (oldest first).
+// Falls back to currentRelease when deltaExam.releases is not set.
+export function getDeltaReleases(cert: Certification): ServiceNowRelease[] {
+  if (!cert.deltaExam) return [];
+  return cert.deltaExam.releases?.length ? cert.deltaExam.releases : [cert.deltaExam.currentRelease];
+}
+
+// Generate all delta page slugs for static generation (one per cert per release)
 export function getAllDeltaSlugs(): { certification: string; release: string }[] {
   const slugs: { certification: string; release: string }[] = [];
 
   for (const cert of getMainlineCertifications()) {
-    if (cert.deltaExam?.currentRelease) {
+    for (const release of getDeltaReleases(cert)) {
       slugs.push({
         certification: cert.slug,
-        release: cert.deltaExam.currentRelease.toLowerCase(),
+        release: release.toLowerCase(),
       });
     }
   }
@@ -683,8 +716,8 @@ export function getDeltaExamInfo(
   const cert = getCertificationBySlug(certSlug);
   if (!cert || !cert.deltaExam) return null;
 
-  // Check if the release matches
-  if (cert.deltaExam.currentRelease.toLowerCase() !== release.toLowerCase()) {
+  // Check if the release has a delta page
+  if (!getDeltaReleases(cert).some((r) => r.toLowerCase() === release.toLowerCase())) {
     return null;
   }
 

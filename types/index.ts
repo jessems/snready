@@ -23,12 +23,16 @@ export type ServiceNowRelease =
   | "Xanadu"
   | "Yokohama"
   | "Zurich"
-  | "Australia";
+  | "Australia"
+  | "Brazil";
 
 export interface DeltaExamInfo {
   isMainline: boolean; // Only mainline certs have delta exams
   currentRelease: ServiceNowRelease;
   previousRelease?: ServiceNowRelease;
+  // Every release with a delta page (/{cert}/delta/{release}), oldest first.
+  // Defaults to [currentRelease] when omitted.
+  releases?: ServiceNowRelease[];
   deltaExamDetails?: {
     questionCount: number; // Typically 7-10 questions
     duration: number; // Typically 20 minutes
@@ -39,7 +43,7 @@ export interface DeltaExamInfo {
   deltaWindow?: {
     opens: string; // ISO date string
     closes: string; // ISO date string (typically 90 days)
-  };
+  }; // Window for currentRelease only; other releases have no known window yet
   studyGuideUrl?: string;
 }
 
