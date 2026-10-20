@@ -29,10 +29,21 @@ async function main() {
     console.log(`   ${result.protectedHits.length} admin-only files contain premium content (protected by functions/admin/_middleware.ts)`);
   }
 
-  if (result.leaks.length === 0) {
+  if (result.deltaDuplicates.length > 0) {
+    console.error(
+      `❌ ${result.deltaDuplicates.length} delta questions duplicate paid practice questions (delta questions are always public):`
+    );
+    for (const dup of result.deltaDuplicates.slice(0, 50)) {
+      console.error(`   ${dup.deltaFile}: ${dup.deltaQuestionId} has the same question text as paid question ${dup.premiumQuestionId}`);
+    }
+    console.error("   Rewrite the delta question or remove it; paid practice questions must not appear on delta pages.");
+  }
+
+  if (result.leaks.length === 0 && result.deltaDuplicates.length === 0) {
     console.log("✅ No premium question content found in public build output");
     return;
   }
+  if (result.leaks.length === 0) process.exit(1);
 
   console.error(`❌ Premium question content found in ${result.leaks.length} public files:`);
   for (const leak of result.leaks.slice(0, 50)) {

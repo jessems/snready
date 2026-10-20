@@ -2,9 +2,9 @@ import { render } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import DeltaExamPage, { generateMetadata } from "@/app/[slug]/delta/[release]/page";
 import sitemap from "@/app/sitemap";
-import { getAllDeltaSlugs, getCertificationBySlug, getDeltaReleases, getPublicDeltaQuestions } from "@/lib/data";
+import { FREE_DELTA, getAllDeltaSlugs, getCertificationBySlug, getDeltaReleases, getPublicDeltaQuestions } from "@/lib/data";
 import { isIndexableDeltaPage, robotsForDeltaPage } from "@/lib/seo-indexing";
-import { classifyDeltaQuestions } from "@/scripts/premium-leaks";
+import { findDeltaDuplicatesOfPaid, loadPremiumAndFreeQuestions } from "@/scripts/premium-leaks";
 import type { Question } from "@/types";
 
 vi.mock("next/navigation", () => ({
@@ -17,7 +17,8 @@ vi.mock("next/navigation", () => ({
 }));
 
 const FREE_STEM = "Which free Zurich delta fixture question is safe to publish on the public page";
-const PREMIUM_STEM = "Which premium Zurich delta fixture question must never reach the static export";
+// Flagged isFree: false in the fixture; delta questions are free regardless (FREE_DELTA).
+const FLAGGED_STEM = "Which Zurich delta fixture question is flagged premium but still public";
 
 function fixtureQuestion(id: string, stem: string, isFree: boolean): Question {
   return {
@@ -37,9 +38,9 @@ function fixtureQuestion(id: string, stem: string, isFree: boolean): Question {
   } as unknown as Question;
 }
 
-// A paid certification's delta bank with one free and one premium question.
+// A paid certification's delta bank with one isFree and one isFree: false question.
 vi.mock("@/data/questions/cad/delta-zurich.json", () => ({
-  questions: [fixtureQuestion("cad-delta-fixture-free", FREE_STEM, true), fixtureQuestion("cad-delta-fixture-premium", PREMIUM_STEM, false)],
+  questions: [fixtureQuestion("cad-delta-fixture-free", FREE_STEM, true), fixtureQuestion("cad-delta-fixture-flagged", FLAGGED_STEM, false)],
 }));
 
 // Delta URLs as they were before multi-release support; these must not change.
@@ -72,30 +73,45 @@ describe("getAllDeltaSlugs (multiple releases per cert)", () => {
   });
 });
 
-describe("delta page isFree filtering (paid certifications)", () => {
-  it("returns only isFree questions for a paid cert and every question for CSA", async () => {
+describe("FREE_DELTA policy: delta questions are always free", () => {
+  it("is enabled", () => {
+    expect(FREE_DELTA).toBe(true);
+  });
+
+  it("returns every delta question on paid and free certs, ignoring isFree", async () => {
     const cad = await getPublicDeltaQuestions("cad", "zurich");
-    expect(cad.map((q) => q.id)).toEqual(["cad-delta-fixture-free"]);
+    expect(cad.map((q) => q.id)).toEqual(["cad-delta-fixture-free", "cad-delta-fixture-flagged"]);
 
     const csa = await getPublicDeltaQuestions("csa", "zurich");
-    expect(csa.length).toBeGreaterThan(0);
-    expect(csa.some((q) => q.isFree === false)).toBe(true); // CSA is fully free
+    expect(csa.length).toBe(12);
   });
 
-  it("never renders premium delta questions into the page output", async () => {
+  it("renders delta questions flagged premium on the page", async () => {
     const { container } = render(await DeltaExamPage(params("cad", "zurich")));
     expect(container.innerHTML).toContain(FREE_STEM);
-    expect(container.innerHTML).not.toContain(PREMIUM_STEM);
+    expect(container.innerHTML).toContain(FLAGGED_STEM);
   });
 
-  it("treats paid-cert delta questions without isFree as premium in the leak check", () => {
+  it("leak check flags a delta question that duplicates a paid practice question", async () => {
+    const { premium } = await loadPremiumAndFreeQuestions();
+    const paid = premium.find((q) => q.certification === "cad")!;
+    // Same stem with different casing/punctuation still counts as a duplicate
+    const copied = fixtureQuestion("cad-delta-copy", `  ${paid.question.toUpperCase()}!! `, true);
+    const duplicates = findDeltaDuplicatesOfPaid(
+      [{ file: "cad/delta-zurich.json", questions: [fixtureQuestion("cad-delta-ok", FREE_STEM, true), copied] }],
+      premium
+    );
+    expect(duplicates).toEqual([
+      { deltaFile: "cad/delta-zurich.json", deltaQuestionId: "cad-delta-copy", premiumQuestionId: paid.id },
+    ]);
+  });
+
+  it("leak check does not flag normal delta content", async () => {
+    const { premium } = await loadPremiumAndFreeQuestions();
     const banks = [
-      { certification: "cad", questions: [fixtureQuestion("a", FREE_STEM, true), fixtureQuestion("b", PREMIUM_STEM, false)] },
-      { certification: "csa", questions: [fixtureQuestion("c", "CSA question", false)] },
+      { file: "cad/delta-zurich.json", questions: [fixtureQuestion("a", FREE_STEM, true), fixtureQuestion("b", FLAGGED_STEM, false)] },
     ];
-    const { premium, free } = classifyDeltaQuestions(banks);
-    expect(premium.map((q) => q.id)).toEqual(["b"]);
-    expect(free.map((q) => q.id)).toEqual(["a", "c"]);
+    expect(findDeltaDuplicatesOfPaid(banks, premium)).toEqual([]);
   });
 });
 

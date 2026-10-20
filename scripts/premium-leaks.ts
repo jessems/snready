@@ -10,8 +10,9 @@
  * are public on purpose, so they count as free content, not premium. Every other
  * certification is still checked.
  *
- * Delta question banks (data/questions/{cert}/delta-{release}.json) are included too:
- * for paid certifications, delta questions without isFree: true are premium.
+ * Delta questions (data/questions/{cert}/delta-{release}.json) are never premium: they
+ * are always free on every certification (FREE_DELTA in lib/free-certs.ts). To keep paid
+ * practice questions protected, the check fails if a delta question duplicates one.
  */
 
 import { spawnSync } from "node:child_process";
@@ -50,6 +51,14 @@ export interface LeakScanResult {
   protectedHits: string[];
   /** Free certifications whose questions are public on purpose (not scanned as premium). */
   exemptCertifications: string[];
+  /** Delta questions whose text duplicates a paid practice question (would publish it). */
+  deltaDuplicates: DeltaDuplicate[];
+}
+
+export interface DeltaDuplicate {
+  deltaFile: string;
+  deltaQuestionId: string;
+  premiumQuestionId: string;
 }
 
 /** Longest run of plain words (letters, digits, spaces); identical in HTML, JSON and JS strings. */
@@ -127,20 +136,32 @@ export function loadDeltaQuestionBanks(
   return banks;
 }
 
-/** Splits delta questions into premium/free: free certs are all free, otherwise only isFree: true is. */
-export function classifyDeltaQuestions(
-  banks: Array<{ certification: string; questions: Question[] }>,
-  isFreeCert: (certification: string) => boolean = isCertificationFree
-): { premium: Question[]; free: Question[] } {
-  const premium: Question[] = [];
-  const free: Question[] = [];
-  for (const { certification, questions } of banks) {
+/** Question text compared case-insensitively, ignoring punctuation and whitespace differences. */
+export function normalizeQuestionText(text: string | undefined): string {
+  return (text || "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+}
+
+/**
+ * Delta questions are public, so one whose question text matches a paid (premium)
+ * practice question would publish that paid question.
+ */
+export function findDeltaDuplicatesOfPaid(
+  banks: Array<{ file: string; questions: Question[] }>,
+  premium: Question[]
+): DeltaDuplicate[] {
+  const premiumByText = new Map<string, string>();
+  for (const question of premium) {
+    const text = normalizeQuestionText(question.question);
+    if (text && !premiumByText.has(text)) premiumByText.set(text, question.id);
+  }
+  const duplicates: DeltaDuplicate[] = [];
+  for (const { file, questions } of banks) {
     for (const question of questions) {
-      if (isFreeCert(certification) || question.isFree === true) free.push(question);
-      else premium.push(question);
+      const premiumQuestionId = premiumByText.get(normalizeQuestionText(question.question));
+      if (premiumQuestionId) duplicates.push({ deltaFile: file, deltaQuestionId: question.id, premiumQuestionId });
     }
   }
-  return { premium, free };
+  return duplicates;
 }
 
 export async function loadPremiumAndFreeQuestions(): Promise<{
@@ -164,9 +185,6 @@ export async function loadPremiumAndFreeQuestions(): Promise<{
     free.push(...freeQuestions);
     premium.push(...all.filter((question) => !freeIds.has(question.id)));
   }
-  const delta = classifyDeltaQuestions(loadDeltaQuestionBanks());
-  premium.push(...delta.premium);
-  free.push(...delta.free);
   return { premium, free, exemptCertifications };
 }
 
@@ -190,6 +208,7 @@ export function scanDirectoryForNeedles(dir: string, needles: PremiumNeedle[]): 
     leaks: [],
     protectedHits: [],
     exemptCertifications: [],
+    deltaDuplicates: [],
   };
   if (needles.length === 0 || files.length === 0) return result;
 
@@ -249,5 +268,6 @@ function readTopicCopy(): string[] {
 export async function scanBuildOutput(outDir: string = path.join(process.cwd(), "out")): Promise<LeakScanResult> {
   const { premium, free, exemptCertifications } = await loadPremiumAndFreeQuestions();
   const needles = buildPremiumNeedles(premium, free, readTopicCopy());
-  return { ...scanDirectoryForNeedles(outDir, needles), exemptCertifications };
+  const deltaDuplicates = findDeltaDuplicatesOfPaid(loadDeltaQuestionBanks(), premium);
+  return { ...scanDirectoryForNeedles(outDir, needles), exemptCertifications, deltaDuplicates };
 }

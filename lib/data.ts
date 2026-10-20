@@ -21,7 +21,7 @@ import cisFsmTopics from "@/data/topics/cis-fsm-topics.json";
 import cisPaTopics from "@/data/topics/cis-pa-topics.json";
 import cisSmTopics from "@/data/topics/cis-sm-topics.json";
 import { FREE_QUESTIONS_PER_CERT, calculateFreeQuestionsDistribution } from "@/lib/free-questions";
-import { isFreeCertification } from "@/lib/free-certs";
+import { FREE_DELTA, isFreeCertification } from "@/lib/free-certs";
 import type { Certification, CertificationWithReadiness, Topic, Question, ExamDomain, CertificationCategory, ServiceNowRelease, DeltaExamInfo, ExamTips } from "@/types";
 
 // Category display names mapping
@@ -180,20 +180,18 @@ export async function getDeltaQuestions(
 }
 
 /**
- * Delta questions that may be shown on the public delta page: all of them for
- * free certifications, otherwise only those flagged isFree. Anything else stays
- * out of the static HTML/RSC output.
+ * Delta questions shown on the public delta page. Under the FREE_DELTA policy
+ * (lib/free-certs.ts) that is every delta question on every certification,
+ * regardless of any isFree flag.
  */
 export async function getPublicDeltaQuestions(
   certSlug: string,
   release: string
 ): Promise<Question[]> {
-  const questions = await getDeltaQuestions(certSlug, release);
-  if (isCertificationFree(certSlug)) return questions;
-  return questions.filter((question) => question.isFree === true);
+  return getDeltaQuestions(certSlug, release);
 }
 
-export { FREE_QUESTIONS_PER_CERT, isFreeCertification };
+export { FREE_DELTA, FREE_QUESTIONS_PER_CERT, isFreeCertification };
 
 /**
  * True when every question for this certification is free (no paywall, no checkout):

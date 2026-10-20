@@ -105,7 +105,7 @@ export default async function DeltaExamPage({ params }: PageProps) {
   // Reddit insights and difficulty ratings were collected for the releases we have topics for.
   const hasReleaseTips = Boolean(releaseTopics && releaseTopics.length > 0);
 
-  // Delta practice questions that are public (premium ones never reach the page)
+  // Every delta practice question is free on every cert (FREE_DELTA policy)
   const deltaQuestions = await getPublicDeltaQuestions(slug, releaseParam);
 
   // Breadcrumb JSON-LD
