@@ -2435,7 +2435,7 @@ The exam will deliberately blur the line. Remember: Incidents restore service. P
 Green (0-50%), Yellow (50-75%), Red (75-100%), Grey (paused). The exam treats these as fundamental knowledge.
 
 ### ❌ Skipping the Delta content
-ServiceNow updates the exam with each release. Our delta questions cover Zurich-specific changes that older study materials miss entirely.
+ServiceNow updates the exam with each release. Our delta questions cover Brazil-specific changes that older study materials miss entirely.
 
 ### ❌ Relying on brain dumps
 Memorized answers don't help when the exam rephrases questions. Understanding *why* an answer is correct lets you handle any variation.

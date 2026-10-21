@@ -25,6 +25,18 @@ interface PageProps {
   params: Promise<{ slug: string; release: string }>;
 }
 
+// Per-cert entry in data/delta-tips.json. releaseTopics is keyed by lowercase
+// release; Reddit insights and difficulty were collected for one release, so
+// they only show on pages that have topics for their release.
+interface DeltaCertTips {
+  releaseTopics?: Partial<Record<string, string[]>>;
+  redditInsights?: string[];
+  difficulty?: "easy" | "medium" | "hard";
+  estimatedTime?: number;
+  triageOrder?: string[];
+  prerequisite?: string;
+}
+
 // The release a delta URL refers to, if this certification has a delta page for it.
 function findDeltaRelease(cert: Certification, releaseParam: string): ServiceNowRelease | undefined {
   return getDeltaReleases(cert).find((r) => r.toLowerCase() === releaseParam.toLowerCase());
@@ -86,9 +98,10 @@ export default async function DeltaExamPage({ params }: PageProps) {
 
   const release = releaseParam.charAt(0).toUpperCase() + releaseParam.slice(1);
   const releaseKey = releaseParam.toLowerCase();
-  // deltaExam.deltaWindow belongs to currentRelease; later releases have no announced window yet.
-  const isUpcomingRelease = deltaRelease !== cert.deltaExam.currentRelease;
-  const deltaWindow = isUpcomingRelease ? undefined : cert.deltaExam.deltaWindow;
+  // deltaExam.deltaWindow belongs to currentRelease; other releases have no announced window.
+  const deltaWindow = deltaRelease === cert.deltaExam.currentRelease ? cert.deltaExam.deltaWindow : undefined;
+  // No window yet, or one that has not closed: the release is still ahead of candidates.
+  const isUpcomingRelease = !deltaWindow || new Date(deltaWindow.closes) >= new Date();
   const daysLeft = deltaWindow ? getDaysUntilDeltaDeadline(cert) : null;
   const isOpen = deltaWindow ? isDeltaWindowOpen(cert) : false;
   const expectedDeltaWindow = getReleaseInfo(deltaRelease).expectedDeltaWindow;
@@ -99,9 +112,8 @@ export default async function DeltaExamPage({ params }: PageProps) {
 
   // Get delta tips for this certification
   const generalTips = deltaTipsData.general;
-  const certTips = deltaTipsData.certifications[slug as keyof typeof deltaTipsData.certifications];
-  const releaseTopics: string[] | undefined =
-    certTips?.releaseTopics?.[releaseKey as keyof typeof certTips.releaseTopics];
+  const certTips = (deltaTipsData.certifications as Record<string, DeltaCertTips>)[slug];
+  const releaseTopics = certTips?.releaseTopics?.[releaseKey];
   // Reddit insights and difficulty ratings were collected for the releases we have topics for.
   const hasReleaseTips = Boolean(releaseTopics && releaseTopics.length > 0);
 
@@ -278,13 +290,13 @@ export default async function DeltaExamPage({ params }: PageProps) {
             )}
 
             {/* CIS-DF Triage Order */}
-            {certTips && 'triageOrder' in certTips && certTips.triageOrder && (
+            {certTips?.triageOrder && (
               <div className="mt-8 rounded-lg border border-amber-200 bg-amber-50 p-6 dark:border-amber-800 dark:bg-amber-950">
                 <h3 className="flex items-center gap-2 font-semibold text-amber-800 dark:text-amber-200">
                   <span className="text-xl">⚠️</span> CMDB Triage Order (Memorize This!)
                 </h3>
                 <ol className="mt-4 space-y-2">
-                  {(certTips.triageOrder as string[]).map((step, index) => (
+                  {certTips.triageOrder.map((step, index) => (
                     <li key={index} className="flex items-center gap-3 text-amber-900 dark:text-amber-100">
                       <span className="flex h-8 w-8 items-center justify-center rounded-full bg-amber-200 font-bold text-amber-800 dark:bg-amber-800 dark:text-amber-100">
                         {index + 1}
@@ -297,13 +309,13 @@ export default async function DeltaExamPage({ params }: PageProps) {
             )}
 
             {/* Prerequisite Warning */}
-            {certTips && 'prerequisite' in certTips && (certTips as { prerequisite?: string }).prerequisite && (
+            {certTips?.prerequisite && (
               <div className="mt-6 rounded-lg border border-red-200 bg-red-50 p-4 dark:border-red-800 dark:bg-red-950">
                 <p className="font-semibold text-red-800 dark:text-red-200">
-                  ⚠️ Prerequisite Required: {(certTips as { prerequisite: string }).prerequisite}
+                  ⚠️ Prerequisite Required: {certTips.prerequisite}
                 </p>
                 <p className="mt-1 text-sm text-red-700 dark:text-red-300">
-                  You must hold the {(certTips as { prerequisite: string }).prerequisite} certification before taking this delta exam.
+                  You must hold the {certTips.prerequisite} certification before taking this delta exam.
                 </p>
               </div>
             )}
@@ -340,7 +352,7 @@ export default async function DeltaExamPage({ params }: PageProps) {
             </div>
           </section>
         ) : (
-          // Upcoming release without questions yet; past releases just omit the section
+          // Upcoming release without questions yet; releases whose window closed just omit the section
           isUpcomingRelease && (
             <section className="border-b border-zinc-200 bg-gradient-to-b from-blue-50 to-white py-12 dark:border-zinc-800 dark:from-blue-950/20 dark:to-zinc-950">
               <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">

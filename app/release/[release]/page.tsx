@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import {
   getCertificationsByRelease,
   getActiveReleases,
+  getAllReleases,
   getReleaseInfo,
   getDaysUntilDeltaDeadline,
   isDeltaWindowOpen,
@@ -19,8 +20,7 @@ interface PageProps {
 // Convert URL param to ServiceNowRelease type
 function normalizeRelease(release: string): ServiceNowRelease | null {
   const normalized = release.charAt(0).toUpperCase() + release.slice(1).toLowerCase();
-  const validReleases: ServiceNowRelease[] = ["Vancouver", "Washington", "Xanadu", "Yokohama", "Zurich", "Australia"];
-  return validReleases.includes(normalized as ServiceNowRelease) ? (normalized as ServiceNowRelease) : null;
+  return getAllReleases().includes(normalized as ServiceNowRelease) ? (normalized as ServiceNowRelease) : null;
 }
 
 export async function generateStaticParams() {
