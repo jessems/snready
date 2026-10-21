@@ -172,7 +172,7 @@ export default async function DeltaExamPage({ params }: PageProps) {
               {cert.name} {release} Delta Exam
             </h1>
             <p className="mt-4 text-lg text-zinc-600 dark:text-zinc-400">
-              Everything you need to pass the {cert.fullName} delta exam for the {release} release.
+              Prepare for the {cert.fullName} delta exam for the {release} release.
               Tips from Reddit, key topics, and practice questions.
             </p>
             {!isOpen && deltaWindow && new Date(deltaWindow.closes) < new Date() && (
@@ -265,9 +265,14 @@ export default async function DeltaExamPage({ params }: PageProps) {
             <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-50">
               Key Topics for {release}
             </h2>
-            <p className="mt-2 text-zinc-600 dark:text-zinc-400">
-              Focus your study on these areas — they&apos;re most likely to appear on the delta exam.
-            </p>
+            {hasReleaseTips && (
+              <p className="mt-2 text-zinc-600 dark:text-zinc-400">
+                These key topics are based on the official {release} release notes.
+                {isUpcomingRelease
+                  ? ` ServiceNow has not yet published its official ${release} delta exam study guide, so treat this list as a starting point rather than a confirmed exam scope.`
+                  : " Check them against ServiceNow's official delta exam study guide."}
+              </p>
+            )}
 
             {releaseTopics && releaseTopics.length > 0 ? (
               <ul className="mt-6 grid gap-3 sm:grid-cols-2">
@@ -285,7 +290,9 @@ export default async function DeltaExamPage({ params }: PageProps) {
               </ul>
             ) : (
               <p className="mt-4 text-zinc-500">
-                Check the official study guide for {release}-specific topics.
+                {isUpcomingRelease
+                  ? `Key topics for ${release} will be added from the official release notes; ServiceNow has not yet published its official ${release} delta exam study guide.`
+                  : `Check the official study guide for ${release}-specific topics.`}
               </p>
             )}
 
@@ -566,7 +573,9 @@ export default async function DeltaExamPage({ params }: PageProps) {
                   <h3 className="font-semibold text-zinc-900 dark:text-zinc-100">
                     Official Study Guide
                   </h3>
-                  <p className="text-sm text-zinc-500">NowLearning</p>
+                  <p className="text-sm text-zinc-500">
+                    {isUpcomingRelease ? `NowLearning (not yet published for ${release})` : "NowLearning"}
+                  </p>
                 </div>
               </a>
 
@@ -637,7 +646,9 @@ export default async function DeltaExamPage({ params }: PageProps) {
               Ready for the {cert.name} {release} Delta?
             </h2>
             <p className="mt-4 text-blue-100">
-              Remember: It&apos;s open book. Have your study guide and release notes ready.
+              {isUpcomingRelease
+                ? "Remember: It's open book. Have the release notes ready, plus the official study guide once ServiceNow publishes it."
+                : "Remember: It's open book. Have your study guide and release notes ready."}
               {daysLeft !== null && daysLeft > 0 && (
                 <span className="block mt-2 font-semibold">
                   {daysLeft} days left until the deadline!
