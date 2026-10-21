@@ -81,7 +81,16 @@ for (const cert of certs) {
   if (fs.existsSync(questionDir)) {
     for (const fileName of fs.readdirSync(questionDir).filter((name) => name.endsWith(".json"))) {
       const slug = fileName.replace(/\.json$/, "");
-      if (slug.startsWith("_") || slug.startsWith("delta-")) continue;
+      if (slug.startsWith("delta-")) {
+        // Delta questions are always free on every cert (FREE_DELTA in lib/free-certs.ts)
+        const deltaPath = `data/questions/${certSlug}/${fileName}`;
+        const deltaData = readJson<{ questions?: Array<{ id?: string; isFree?: boolean }> }>(deltaPath);
+        for (const q of deltaData?.questions ?? []) {
+          if (q.isFree !== true) fail(`${deltaPath} ${q.id}: delta questions must be isFree: true (FREE_DELTA policy)`);
+        }
+        continue;
+      }
+      if (slug.startsWith("_")) continue;
       if (!topicSlugs.has(slug)) fail(`data/questions/${certSlug}/${fileName}: question file has no matching topic entry`);
     }
   }

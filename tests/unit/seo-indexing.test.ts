@@ -3,11 +3,13 @@ import {
   INDEXABLE_COMPARE_SLUGS,
   INDEXABLE_DELTA_PAGES,
   INDEXABLE_TOPIC_PAGES,
+  isIndexableDeltaPage,
   isIndexablePath,
+  robotsForDeltaPage,
   robotsForPath,
 } from "@/lib/seo-indexing";
 import { getAllComparisonSlugs } from "@/lib/comparisons";
-import { getAllDeltaSlugs, getAllTopicSlugs } from "@/lib/data";
+import { getAllDeltaSlugs, getAllTopicSlugs, getPublicDeltaQuestions } from "@/lib/data";
 import sitemap from "@/app/sitemap";
 
 describe("isIndexablePath (lib/seo-indexing.ts)", () => {
@@ -33,6 +35,8 @@ describe("isIndexablePath (lib/seo-indexing.ts)", () => {
     "/csa/dumps",
     "/csa/practice-questions/incident-management",
     "/cad/delta/zurich",
+    "/csa/delta/brazil",
+    "/cad/delta/brazil",
     "/compare/csa-vs-cad",
     "/salaries",
     "/salaries/developer",
@@ -54,6 +58,28 @@ describe("isIndexablePath (lib/seo-indexing.ts)", () => {
   });
 });
 
+describe("isIndexableDeltaPage (lib/seo-indexing.ts)", () => {
+  it("indexes an allowlisted delta page only when it has questions", () => {
+    expect(isIndexableDeltaPage("csa", "zurich", 12)).toBe(true);
+    expect(robotsForDeltaPage("csa", "zurich", 12)).toEqual({ index: true, follow: true });
+    expect(isIndexableDeltaPage("csa", "zurich", 0)).toBe(false);
+    expect(robotsForDeltaPage("csa", "zurich", 0)).toEqual({ index: false, follow: true });
+  });
+
+  it("noindexes delta pages that are not allowlisted, even with questions", () => {
+    expect(isIndexableDeltaPage("cad", "zurich", 6)).toBe(false);
+    expect(isIndexableDeltaPage("csa", "brazil", 5)).toBe(false);
+  });
+
+  it("noindexes every delta page that has no questions yet (Brazil)", async () => {
+    for (const { certification, release } of getAllDeltaSlugs().filter((d) => d.release === "brazil")) {
+      const questions = await getPublicDeltaQuestions(certification, release);
+      expect(questions).toEqual([]);
+      expect(isIndexableDeltaPage(certification, release, questions.length)).toBe(false);
+    }
+  });
+});
+
 describe("sitemap", () => {
   it("lists only indexable URLs, each with a lastmod", async () => {
     const entries = await sitemap();
@@ -66,5 +92,7 @@ describe("sitemap", () => {
     expect(urls).toContain(`${base}/courses`);
     expect(urls).toContain(`${base}/courses/service-mapping`);
     expect(urls.some((u) => u.endsWith("/mock-exam"))).toBe(false);
+    expect(urls).toContain(`${base}/csa/delta/zurich`);
+    expect(urls.some((u) => u.includes("/delta/brazil"))).toBe(false);
   });
 });

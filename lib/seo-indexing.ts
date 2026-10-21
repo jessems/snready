@@ -21,7 +21,10 @@ export const INDEXABLE_TOPIC_PAGES = new Set([
   "csa/ui-navigation",
 ]);
 
-/** Delta pages (`/{cert}/delta/{release}`) that stay indexed. */
+/**
+ * Delta pages (`/{cert}/delta/{release}`) that stay indexed, provided they show
+ * at least one practice question (see isIndexableDeltaPage).
+ */
 export const INDEXABLE_DELTA_PAGES = new Set(["csa/zurich"]);
 
 /** Human-readable list of the noindexed URL patterns, for docs and reports. */
@@ -29,7 +32,7 @@ export const NOINDEX_PATTERNS = [
   "/{cert}/mock-exam",
   "/{cert}/dumps",
   "/{cert}/practice-questions/{topic} (except cad/ui-policies-actions, cis-df/csdm-fundamentals, csa/ui-navigation)",
-  "/{cert}/delta/{release} (except /csa/delta/zurich)",
+  "/{cert}/delta/{release} (except /csa/delta/zurich; always when it has no questions)",
   "/compare/{slug} (except csa-vs-cis-itsm, csa-vs-cis-csm, cis-itsm-vs-cis-csm)",
   "/salaries and /salaries/{segment}",
   "/vs and /vs/{competitor}",
@@ -67,6 +70,15 @@ export function isIndexablePath(path: string): boolean {
   return true;
 }
 
+/**
+ * Whether a delta page may be indexed: it must be allowlisted (isIndexablePath)
+ * and actually render practice questions. A delta page with no questions yet
+ * (e.g. a newly announced release) is a placeholder and stays noindexed.
+ */
+export function isIndexableDeltaPage(cert: string, release: string, questionCount: number): boolean {
+  return questionCount > 0 && isIndexablePath(`/${cert}/delta/${release}`);
+}
+
 const INDEX_FOLLOW: Metadata["robots"] = { index: true, follow: true };
 const NOINDEX_FOLLOW: Metadata["robots"] = { index: false, follow: true };
 
@@ -77,4 +89,9 @@ const NOINDEX_FOLLOW: Metadata["robots"] = { index: false, follow: true };
  */
 export function robotsForPath(path: string): Metadata["robots"] {
   return isIndexablePath(path) ? INDEX_FOLLOW : NOINDEX_FOLLOW;
+}
+
+/** robots metadata for a delta page; see isIndexableDeltaPage. */
+export function robotsForDeltaPage(cert: string, release: string, questionCount: number): Metadata["robots"] {
+  return isIndexableDeltaPage(cert, release, questionCount) ? INDEX_FOLLOW : NOINDEX_FOLLOW;
 }

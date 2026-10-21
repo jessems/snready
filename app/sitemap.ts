@@ -1,10 +1,10 @@
 import { MetadataRoute } from "next";
-import { getCertificationSlugs, getAllTopicSlugs, getAllDeltaSlugs } from "@/lib/data";
+import { getCertificationSlugs, getAllTopicSlugs, getAllDeltaSlugs, getPublicDeltaQuestions } from "@/lib/data";
 import { getAllPosts } from "@/data/blog/posts";
 import { getAllComparisonSlugs } from "@/lib/comparisons";
 import { getReleaseSummary } from "@/lib/release-notes";
 import { getAllCourses } from "@/lib/courses";
-import { isIndexablePath } from "@/lib/seo-indexing";
+import { isIndexableDeltaPage, isIndexablePath } from "@/lib/seo-indexing";
 import { LAST_REVIEWED_ISO } from "@/lib/site-facts";
 
 export const dynamic = "force-static";
@@ -17,7 +17,8 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://snready.com";
  * Only indexable pages belong here: a URL that is noindexed or canonicalised
  * elsewhere must not be listed. Every candidate URL is filtered through
  * isIndexablePath (lib/seo-indexing.ts), the same rule page metadata uses for
- * the robots meta tag. Individual question pages are excluded.
+ * the robots meta tag. Delta pages also need at least one question
+ * (isIndexableDeltaPage). Individual question pages are excluded.
  *
  * lastModified is a real content date, never the build time: blog posts and
  * courses use their own dates; every other page uses LAST_REVIEWED_ISO, the
@@ -136,13 +137,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })),
   ];
 
-  // === Delta exam pages ===
-  const deltaSlugs = getAllDeltaSlugs();
-  const deltaPages: MetadataRoute.Sitemap = deltaSlugs.map(({ certification, release }) => ({
-    url: `${BASE_URL}/${certification}/delta/${release}`,
-    changeFrequency: "monthly" as const,
-    priority: 0.85,
-  }));
+  // === Delta exam pages (only those with questions; empty ones are noindexed) ===
+  const deltaPages: MetadataRoute.Sitemap = [];
+  for (const { certification, release } of getAllDeltaSlugs()) {
+    const questions = await getPublicDeltaQuestions(certification, release);
+    if (!isIndexableDeltaPage(certification, release, questions.length)) continue;
+    deltaPages.push({
+      url: `${BASE_URL}/${certification}/delta/${release}`,
+      changeFrequency: "monthly" as const,
+      priority: 0.85,
+    });
+  }
 
   // === Courses ===
   const courses = getAllCourses();

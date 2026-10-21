@@ -166,6 +166,11 @@ function validateQuestionFile(filePath: string, data: unknown): string[] {
         errors.push(`${prefix}.explanation.correct: required string`);
       }
     }
+
+    // Delta questions are always free (FREE_DELTA in lib/free-certs.ts)
+    if (path.basename(filePath).startsWith("delta-") && question.isFree !== true) {
+      errors.push(`${prefix}.isFree: delta questions must be isFree: true (FREE_DELTA policy)`);
+    }
   });
 
   return errors;

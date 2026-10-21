@@ -22,3 +22,11 @@ export function isFreeCertification(certification: string | null | undefined): b
 export function freeCertificationLabels(): string[] {
   return FREE_CERTIFICATIONS.map((slug) => slug.toUpperCase());
 }
+
+// Delta practice questions (data/questions/{cert}/delta-{release}.json) are always free,
+// on every certification, now and in the future, regardless of any isFree flag in the
+// data. Delta pages show every delta question, and delta files must not mark any
+// question premium (npm run validate / test:data fail if one does). Paid practice
+// questions stay protected: the premium leak check fails if a delta question
+// duplicates one.
+export const FREE_DELTA = true;
