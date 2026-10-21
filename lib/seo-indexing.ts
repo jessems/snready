@@ -25,14 +25,19 @@ export const INDEXABLE_TOPIC_PAGES = new Set([
  * Delta pages (`/{cert}/delta/{release}`) that stay indexed, provided they show
  * at least one practice question (see isIndexableDeltaPage).
  */
-export const INDEXABLE_DELTA_PAGES = new Set(["csa/zurich"]);
+export const INDEXABLE_DELTA_PAGES = new Set([
+  "csa/brazil",
+  "cad/brazil",
+  "cis-df/brazil",
+  "cis-itsm/brazil",
+]);
 
 /** Human-readable list of the noindexed URL patterns, for docs and reports. */
 export const NOINDEX_PATTERNS = [
   "/{cert}/mock-exam",
   "/{cert}/dumps",
   "/{cert}/practice-questions/{topic} (except cad/ui-policies-actions, cis-df/csdm-fundamentals, csa/ui-navigation)",
-  "/{cert}/delta/{release} (except /csa/delta/zurich; always when it has no questions)",
+  "/{cert}/delta/{release} (except csa, cad, cis-df and cis-itsm brazil; always when it has no questions)",
   "/compare/{slug} (except csa-vs-cis-itsm, csa-vs-cis-csm, cis-itsm-vs-cis-csm)",
   "/salaries and /salaries/{segment}",
   "/vs and /vs/{competitor}",

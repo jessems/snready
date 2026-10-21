@@ -84,7 +84,7 @@ const rules: Array<{ artifactId: string; signals: Array<{ name: string; pattern:
     { name: "numeric-setting", pattern: /\b\d+\s*(?:days?|hours?|minutes?|percent|%)\b/i, weight: 2 },
   ] },
   { artifactId: "release_feature_lookup", signals: [
-    { name: "release", pattern: /\b(release|zurich|yokohama|xanadu|washington|vancouver|utah|tokyo|added|introduced|new feature|enhancement)\b/i, weight: 4 },
+    { name: "release", pattern: /\b(release|brazil|australia|zurich|yokohama|xanadu|washington|vancouver|utah|tokyo|added|introduced|new feature|enhancement)\b/i, weight: 4 },
   ] },
   { artifactId: "property_behavior_lookup", signals: [
     { name: "property-setting", pattern: /\b(property|properties|system setting|setting|configuration option|enable|disable|toggle|behavior|controls how)\b/i, weight: 3 },

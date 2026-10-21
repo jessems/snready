@@ -1,0 +1,1846 @@
+{
+  "certification": "csa",
+  "topic": "delta-brazil",
+  "questions": [
+    {
+      "id": "csa-delta-brazil-001",
+      "certification": "csa",
+      "topic": "delta-brazil",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "Starting with the Brazil release, an administrator wants to use the Basic Auth Restriction page to limit Basic Authentication on the instance without unexpectedly blocking legitimate integrations. What is the recommended sequence?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Run the tracking period first to identify users relying on Basic Auth, then enable enforcement"
+        },
+        {
+          "id": "b",
+          "text": "Enable enforcement first, then review the blocked requests to build the allowlist"
+        },
+        {
+          "id": "c",
+          "text": "Deactivate Basic Authentication globally with a system property, then re-enable it per user"
+        },
+        {
+          "id": "d",
+          "text": "Assign the admin role to every integration user before enabling enforcement"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "The Basic Auth Restriction page limits Basic Authentication access to a defined allowlist. The release notes direct you to run the tracking period first to identify users currently relying on Basic Auth, and then enable enforcement to block Basic Auth requests that don't match the allowlist. See: https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-authentication-release-notes.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "This option reverses the documented order: the release notes say to run the tracking period first and enable enforcement afterward.",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-authentication-release-notes.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The release notes describe an allowlist-based Basic Auth Restriction page with a tracking period, not a global deactivation property.",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-authentication-release-notes.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The release notes do not mention granting the admin role; they describe a tracking period followed by enforcement against an allowlist.",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-authentication-release-notes.html"
+          }
+        ]
+      },
+      "references": [
+        "Brazil delta release notes - Authentication"
+      ],
+      "isFree": true,
+      "difficulty": "medium",
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "delta-zurich-brazil",
+          "section": "Authentication - New features",
+          "url": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-authentication-release-notes.html"
+        },
+        "path": "servicenow.com/docs/r/delta-zurich-brazil",
+        "excerpt": "Run the tracking period first to identify users currently relying on Basic Auth, then enable enforcement to block Basic Auth requests that don't match the allowlist."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Platform Security",
+        "domainSlug": "delta-brazil",
+        "domainPercentage": 100,
+        "subtopics": [
+          "Authentication",
+          "Basic Authentication"
+        ],
+        "tags": [
+          "brazil",
+          "delta",
+          "authentication",
+          "basic-auth"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-10-21T00:00:00.000Z",
+        "version": "1.0",
+        "release": "Brazil",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-delta-brazil-002",
+      "certification": "csa",
+      "topic": "delta-brazil",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "Starting with the Brazil release, how does the instance alert administrators when SAML SP signing or encryption keystores are approaching or past their expiry date?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It displays two separate home page banners, one for signing and one for encryption certificates, each linking to a customer action in Security Center"
+        },
+        {
+          "id": "b",
+          "text": "It sends a single email notification to all users with the admin role"
+        },
+        {
+          "id": "c",
+          "text": "It automatically renews the expiring keystores and logs the change in the system log"
+        },
+        {
+          "id": "d",
+          "text": "It disables SAML single sign-on until the certificates are replaced"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "The release notes state that administrators receive banner alerts on the home page when SAML SP signing or encryption keystores are approaching or past expiry. Two separate banners are shown, one for signing certificates and one for encryption certificates, each linking to a dedicated customer action in Security Center. See: https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-authentication-release-notes.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "The release notes describe home page banner alerts, not an email notification to admins.",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-authentication-release-notes.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The release notes describe alerts about expiring keystores; they do not describe automatic renewal.",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-authentication-release-notes.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The release notes describe alerting so you can act before SSO is disrupted, not disabling SSO.",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-authentication-release-notes.html"
+          }
+        ]
+      },
+      "references": [
+        "Brazil delta release notes - Authentication"
+      ],
+      "isFree": true,
+      "difficulty": "medium",
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "delta-zurich-brazil",
+          "section": "Authentication - New features",
+          "url": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-authentication-release-notes.html"
+        },
+        "path": "servicenow.com/docs/r/delta-zurich-brazil",
+        "excerpt": "The instance displays two separate banners — one for signing certificates and one for encryption certificates — each linking to a dedicated customer action in Security Center."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Platform Security",
+        "domainSlug": "delta-brazil",
+        "domainPercentage": 100,
+        "subtopics": [
+          "Authentication",
+          "SAML"
+        ],
+        "tags": [
+          "brazil",
+          "delta",
+          "authentication",
+          "saml",
+          "certificates"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-10-21T00:00:00.000Z",
+        "version": "1.0",
+        "release": "Brazil",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-delta-brazil-003",
+      "certification": "csa",
+      "topic": "delta-brazil",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "According to the Brazil release notes for Clone Admin Console, which role is required to request, cancel, or schedule clones?",
+      "options": [
+        {
+          "id": "a",
+          "text": "clone_admin"
+        },
+        {
+          "id": "b",
+          "text": "clone_manager"
+        },
+        {
+          "id": "c",
+          "text": "instance_clone_user"
+        },
+        {
+          "id": "d",
+          "text": "oauth_admin"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "The Brazil additional requirements for Clone Admin Console state that the clone_admin role is required to request, cancel, or schedule clones. See: https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-cloneadminconsole-release-notes.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "The release notes name clone_admin, not clone_manager, as the role required to request, cancel, or schedule clones.",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-cloneadminconsole-release-notes.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The release notes name clone_admin, not instance_clone_user, as the required role.",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-cloneadminconsole-release-notes.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The release notes name oauth_admin only for the target instance during initial OAuth setup; clone_admin is the role required to request, cancel, or schedule clones.",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-cloneadminconsole-release-notes.html"
+          }
+        ]
+      },
+      "references": [
+        "Brazil delta release notes - Clone Admin Console"
+      ],
+      "isFree": true,
+      "difficulty": "easy",
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "delta-zurich-brazil",
+          "section": "Clone Admin Console - Additional requirements",
+          "url": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-cloneadminconsole-release-notes.html"
+        },
+        "path": "servicenow.com/docs/r/delta-zurich-brazil",
+        "excerpt": "The clone_admin role is required to request, cancel, or schedule clones."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Instance Management",
+        "domainSlug": "delta-brazil",
+        "domainPercentage": 100,
+        "subtopics": [
+          "Clone Admin Console",
+          "Roles"
+        ],
+        "tags": [
+          "brazil",
+          "delta",
+          "clone",
+          "roles"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-10-21T00:00:00.000Z",
+        "version": "1.0",
+        "release": "Brazil",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-delta-brazil-004",
+      "certification": "csa",
+      "topic": "delta-brazil",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "An administrator is setting up OAuth 2.0 authentication for clone targets in Clone Admin Console. According to the Brazil release notes, when is the oauth_admin role required on the target instance?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Only during the initial OAuth setup"
+        },
+        {
+          "id": "b",
+          "text": "For every clone request submitted to that target"
+        },
+        {
+          "id": "c",
+          "text": "Whenever a clone is canceled or rescheduled"
+        },
+        {
+          "id": "d",
+          "text": "It is never required; only clone_admin is needed on the target"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "The release notes state that the oauth_admin role is required on the target instance during initial OAuth setup only. After the one-time target instance registration, tokens are generated automatically for each clone request, so local admin credentials are not needed on every request. See: https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-cloneadminconsole-release-notes.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "The release notes say oauth_admin is needed on the target during initial OAuth setup only; one-time registration enables automatic token generation for each clone request.",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-cloneadminconsole-release-notes.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The release notes tie the oauth_admin requirement to initial OAuth setup only, not to canceling or rescheduling clones.",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-cloneadminconsole-release-notes.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The release notes explicitly state that the oauth_admin role is required on the target instance during initial OAuth setup.",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-cloneadminconsole-release-notes.html"
+          }
+        ]
+      },
+      "references": [
+        "Brazil delta release notes - Clone Admin Console"
+      ],
+      "isFree": true,
+      "difficulty": "hard",
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "delta-zurich-brazil",
+          "section": "Clone Admin Console - Additional requirements",
+          "url": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-cloneadminconsole-release-notes.html"
+        },
+        "path": "servicenow.com/docs/r/delta-zurich-brazil",
+        "excerpt": "The oauth_admin role is required on the target instance during initial OAuth setup only."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Instance Management",
+        "domainSlug": "delta-brazil",
+        "domainPercentage": 100,
+        "subtopics": [
+          "Clone Admin Console",
+          "OAuth 2.0"
+        ],
+        "tags": [
+          "brazil",
+          "delta",
+          "clone",
+          "oauth",
+          "roles"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-10-21T00:00:00.000Z",
+        "version": "1.0",
+        "release": "Brazil",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-delta-brazil-005",
+      "certification": "csa",
+      "topic": "delta-brazil",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "In Clone Admin Console, the Clone Home menu item has been renamed. What is its new name?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Clone Activity"
+        },
+        {
+          "id": "b",
+          "text": "Clone Overview"
+        },
+        {
+          "id": "c",
+          "text": "Clone Dashboard"
+        },
+        {
+          "id": "d",
+          "text": "Clone Requests"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "The release notes state that the Clone Home menu item has been renamed to Clone Activity to better describe the page's purpose and improve navigation clarity. See: https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-cloneadminconsole-release-notes.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "The release notes name Clone Activity, not Clone Overview, as the new name of Clone Home.",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-cloneadminconsole-release-notes.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The release notes name Clone Activity, not Clone Dashboard, as the new name of Clone Home.",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-cloneadminconsole-release-notes.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The release notes name Clone Activity, not Clone Requests, as the new name of Clone Home.",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-cloneadminconsole-release-notes.html"
+          }
+        ]
+      },
+      "references": [
+        "Brazil delta release notes - Clone Admin Console"
+      ],
+      "isFree": true,
+      "difficulty": "easy",
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "delta-zurich-brazil",
+          "section": "Clone Admin Console - Changes",
+          "url": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-cloneadminconsole-release-notes.html"
+        },
+        "path": "servicenow.com/docs/r/delta-zurich-brazil",
+        "excerpt": "The Clone Home menu item has been renamed to Clone Activity to be more descriptive of the page's purpose and improve navigation clarity."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Instance Management",
+        "domainSlug": "delta-brazil",
+        "domainPercentage": 100,
+        "subtopics": [
+          "Clone Admin Console",
+          "Navigation"
+        ],
+        "tags": [
+          "brazil",
+          "delta",
+          "clone",
+          "navigation"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-10-21T00:00:00.000Z",
+        "version": "1.0",
+        "release": "Brazil",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-delta-brazil-006",
+      "certification": "csa",
+      "topic": "delta-brazil",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Starting with the Australia release, which role can be granted so administrators can perform basic Data Management tasks without the full admin role?",
+      "options": [
+        {
+          "id": "a",
+          "text": "data_mgmt_tools_admin"
+        },
+        {
+          "id": "b",
+          "text": "archive_admin"
+        },
+        {
+          "id": "c",
+          "text": "data_policy_admin"
+        },
+        {
+          "id": "d",
+          "text": "table_cleanup_admin"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "The release notes describe a granular admin role for Data Management: administrators can perform basic Data Management tasks when granted the data_mgmt_tools_admin role instead of the full admin role. See: https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-datamanagement-release-notes.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "The release notes name data_mgmt_tools_admin, not archive_admin, as the granular Data Management role.",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-datamanagement-release-notes.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The release notes name data_mgmt_tools_admin, not data_policy_admin, as the granular Data Management role.",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-datamanagement-release-notes.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The release notes name data_mgmt_tools_admin, not table_cleanup_admin, as the granular Data Management role.",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-datamanagement-release-notes.html"
+          }
+        ]
+      },
+      "references": [
+        "Brazil delta release notes - Data Management"
+      ],
+      "isFree": true,
+      "difficulty": "medium",
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "delta-zurich-brazil",
+          "section": "Data Management - New features",
+          "url": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-datamanagement-release-notes.html"
+        },
+        "path": "servicenow.com/docs/r/delta-zurich-brazil",
+        "excerpt": "Enable administrators to perform basic Data Management tasks by granting the data_mgmt_tools_admin role instead of the full admin role."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Data Management",
+        "domainSlug": "delta-brazil",
+        "domainPercentage": 100,
+        "subtopics": [
+          "Data Management",
+          "Granular admin roles"
+        ],
+        "tags": [
+          "brazil",
+          "delta",
+          "data-management",
+          "roles"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-10-21T00:00:00.000Z",
+        "version": "1.0",
+        "release": "Australia",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-delta-brazil-007",
+      "certification": "csa",
+      "topic": "delta-brazil",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_select",
+      "question": "In the Australia release, a new Read Only Option was added to the dictionary tables (sys_dictionary and sys_dictionary_override). Which two statements about the documented options are correct? (Choose two.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "With Strict Read Only, the field can't be changed in the UI or by client scripts such as g_form.setValue()"
+        },
+        {
+          "id": "b",
+          "text": "With Display Read Only, the field appears read-only but can still be updated through APIs"
+        },
+        {
+          "id": "c",
+          "text": "With Display Read Only, the field can't be updated by any API"
+        },
+        {
+          "id": "d",
+          "text": "The existing read_only field remains fully editable in the UI"
+        },
+        {
+          "id": "e",
+          "text": "With Strict Read Only, client scripts can still override the read-only setting"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b"
+      ],
+      "explanation": {
+        "correct": "The release notes explain that with Display Read Only the field appears read-only but can still be updated through APIs, and with Strict Read Only the field can't be changed in the UI or by client scripts such as g_form.setValue(). The existing read_only field is now locked and cannot be edited in the UI. See: https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-tablebuilder-release-notes.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "c",
+            "explanation": "This option reverses the documented behavior: a Display Read Only field can still be updated through APIs.",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-tablebuilder-release-notes.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The release notes state that the existing read_only field is now locked and cannot be edited in the UI.",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-tablebuilder-release-notes.html"
+          },
+          {
+            "choiceId": "e",
+            "explanation": "This option reverses the documented behavior: Strict Read Only fields can't be changed by client scripts such as g_form.setValue().",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-tablebuilder-release-notes.html"
+          }
+        ]
+      },
+      "references": [
+        "Brazil delta release notes - Table Builder"
+      ],
+      "isFree": true,
+      "difficulty": "hard",
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "delta-zurich-brazil",
+          "section": "Table Builder - Changes",
+          "url": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-tablebuilder-release-notes.html"
+        },
+        "path": "servicenow.com/docs/r/delta-zurich-brazil",
+        "excerpt": "With Display Read Only , the field appears read-only but can still be updated through APIs. With Strict Read Only , the field can't be changed in the UI or by client scripts such as [ g_form.setValue() ]."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Database Administration",
+        "domainSlug": "delta-brazil",
+        "domainPercentage": 100,
+        "subtopics": [
+          "Dictionary",
+          "Read-only fields"
+        ],
+        "tags": [
+          "brazil",
+          "delta",
+          "read-only",
+          "dictionary",
+          "table-builder"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-10-21T00:00:00.000Z",
+        "version": "1.0",
+        "release": "Australia",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-delta-brazil-008",
+      "certification": "csa",
+      "topic": "delta-brazil",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "Starting with the Australia release, where can an administrator access the ATF troubleshooting agent to troubleshoot failed tests during an upgrade of a non-production instance?",
+      "options": [
+        {
+          "id": "a",
+          "text": "From the Conduct post-testing step in the post-upgrade activities"
+        },
+        {
+          "id": "b",
+          "text": "From the Pre-upgrade checklist in the Upgrade Console"
+        },
+        {
+          "id": "c",
+          "text": "From the Test Suite Results list in Studio"
+        },
+        {
+          "id": "d",
+          "text": "From the Clone Activity page in Clone Admin Console"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "The release notes state that you can troubleshoot failed tests by accessing the ATF troubleshooting agent from the Conduct post-testing step in the post-upgrade activities of a non-production instance. See: https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-upgradeconsole-release-notes.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "The release notes place the ATF troubleshooting agent in the Conduct post-testing step of the post-upgrade activities, not in a pre-upgrade step.",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-upgradeconsole-release-notes.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The release notes describe access from the Conduct post-testing step of the Upgrade Console post-upgrade activities, not from Studio.",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-upgradeconsole-release-notes.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The release notes describe access from the Upgrade Console post-upgrade activities, not from Clone Admin Console.",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-upgradeconsole-release-notes.html"
+          }
+        ]
+      },
+      "references": [
+        "Brazil delta release notes - Upgrade Console"
+      ],
+      "isFree": true,
+      "difficulty": "medium",
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "delta-zurich-brazil",
+          "section": "Upgrade Console - New features",
+          "url": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-upgradeconsole-release-notes.html"
+        },
+        "path": "servicenow.com/docs/r/delta-zurich-brazil",
+        "excerpt": "You can now troubleshoot failed tests by accessing the ATF troubleshooting agent from the Conduct post-testing step in the post-upgrade activities of a non-production instance."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Instance Management",
+        "domainSlug": "delta-brazil",
+        "domainPercentage": 100,
+        "subtopics": [
+          "Upgrade Console",
+          "Automated Test Framework"
+        ],
+        "tags": [
+          "brazil",
+          "delta",
+          "upgrade",
+          "atf"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-10-21T00:00:00.000Z",
+        "version": "1.0",
+        "release": "Australia",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-delta-brazil-009",
+      "certification": "csa",
+      "topic": "delta-brazil",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "Starting with the Australia release, what is a key benefit of using a declarative action to apply a UI interaction in Configurable Workspace?",
+      "options": [
+        {
+          "id": "a",
+          "text": "You can extend a page without taking ownership of it"
+        },
+        {
+          "id": "b",
+          "text": "The UI interaction is automatically applied to every workspace on the instance"
+        },
+        {
+          "id": "c",
+          "text": "Client scripts are no longer evaluated on that page"
+        },
+        {
+          "id": "d",
+          "text": "The page is automatically converted to a Core UI form"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "The release notes explain that a UI interaction combines logic, script, and configurable UI and can be applied from any page event or declarative action. When you use a declarative action to apply a UI interaction, you can extend a page without taking ownership. See: https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurableworkspace-release-notes.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "The release notes describe applying a UI interaction from a page event or declarative action, not automatic application to every workspace.",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurableworkspace-release-notes.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The release notes do not say client scripts stop being evaluated; the documented benefit is extending a page without taking ownership.",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurableworkspace-release-notes.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The release notes do not describe any conversion to Core UI; the documented benefit is extending a page without taking ownership.",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurableworkspace-release-notes.html"
+          }
+        ]
+      },
+      "references": [
+        "Brazil delta release notes - Configurable Workspace"
+      ],
+      "isFree": true,
+      "difficulty": "medium",
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "delta-zurich-brazil",
+          "section": "Configurable Workspace - New features",
+          "url": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurableworkspace-release-notes.html"
+        },
+        "path": "servicenow.com/docs/r/delta-zurich-brazil",
+        "excerpt": "When you use a declarative action to apply a UI interaction, you can extend a page without taking ownership."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "User Interface",
+        "domainSlug": "delta-brazil",
+        "domainPercentage": 100,
+        "subtopics": [
+          "Configurable Workspace",
+          "Declarative actions",
+          "UI interactions"
+        ],
+        "tags": [
+          "brazil",
+          "delta",
+          "workspace",
+          "declarative-actions",
+          "ui-builder"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-10-21T00:00:00.000Z",
+        "version": "1.0",
+        "release": "Australia",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-delta-brazil-010",
+      "certification": "csa",
+      "topic": "delta-brazil",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which accessibility capability do the Australia release notes describe for Employee Center administrators?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Configuring widget heading levels (H1–H6) to meet organizational standards"
+        },
+        {
+          "id": "b",
+          "text": "Automatically translating all widgets into the user's browser language"
+        },
+        {
+          "id": "c",
+          "text": "Converting every page to a high-contrast theme for all users"
+        },
+        {
+          "id": "d",
+          "text": "Disabling keyboard navigation on portal pages"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "The release notes state that admins can configure widget heading levels (H1–H6) to meet organizational standards and support technologies, and that clear heading hierarchies improve navigation for screen reader and keyboard users. See: https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-employeecenter-release-notes.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "The release notes describe configurable widget heading levels, not automatic translation.",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-employeecenter-release-notes.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The release notes describe configurable widget heading levels, not a forced high-contrast theme.",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-employeecenter-release-notes.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The release notes say clear heading hierarchies improve navigation for keyboard users; they do not describe disabling keyboard navigation.",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-employeecenter-release-notes.html"
+          }
+        ]
+      },
+      "references": [
+        "Brazil delta release notes - Employee Center"
+      ],
+      "isFree": true,
+      "difficulty": "easy",
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "delta-zurich-brazil",
+          "section": "Employee Center - Accessibility information",
+          "url": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-employeecenter-release-notes.html"
+        },
+        "path": "servicenow.com/docs/r/delta-zurich-brazil",
+        "excerpt": "Improve accessibility by allowing admins to configure widget heading levels (H1–H6) to meet organizational standards and support technologies."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Self-Service",
+        "domainSlug": "delta-brazil",
+        "domainPercentage": 100,
+        "subtopics": [
+          "Employee Center",
+          "Accessibility"
+        ],
+        "tags": [
+          "brazil",
+          "delta",
+          "employee-center",
+          "accessibility"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-10-21T00:00:00.000Z",
+        "version": "1.0",
+        "release": "Australia",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-delta-brazil-011",
+      "certification": "csa",
+      "topic": "delta-brazil",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Starting with the Brazil release, what is the status of the User Registration Request plugin (com.snc.user_registration)?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It is being prepared for future deprecation: hidden and not activated on new instances, but still supported"
+        },
+        {
+          "id": "b",
+          "text": "It is removed from all instances during the upgrade"
+        },
+        {
+          "id": "c",
+          "text": "It is activated by default on all new instances"
+        },
+        {
+          "id": "d",
+          "text": "It is replaced by a mandatory Store application that must be installed before upgrading"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "The release notes state that starting with the Brazil release, the User Registration Request plugin (com.snc.user_registration) is being prepared for future deprecation. It will be hidden and no longer activated on new instances but will continue to be supported. See: https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-identity-release-notes.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "The release notes say the plugin will continue to be supported; they do not describe removal during upgrade.",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-identity-release-notes.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "This option reverses the documented behavior: the plugin will no longer be activated on new instances.",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-identity-release-notes.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The release notes do not describe a mandatory replacement application; the plugin is hidden but continues to be supported.",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-identity-release-notes.html"
+          }
+        ]
+      },
+      "references": [
+        "Brazil delta release notes - Identity"
+      ],
+      "isFree": true,
+      "difficulty": "medium",
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "delta-zurich-brazil",
+          "section": "Identity - Deprecations",
+          "url": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-identity-release-notes.html"
+        },
+        "path": "servicenow.com/docs/r/delta-zurich-brazil",
+        "excerpt": "Starting with the Brazil release, User Registration Request plugin (com.snc.user_registration) is being prepared for future deprecation. It will be hidden and no longer activated on new instances but will continue to be supported."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "User Administration",
+        "domainSlug": "delta-brazil",
+        "domainPercentage": 100,
+        "subtopics": [
+          "Identity",
+          "Plugins",
+          "Deprecations"
+        ],
+        "tags": [
+          "brazil",
+          "delta",
+          "identity",
+          "deprecation",
+          "plugins"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-10-21T00:00:00.000Z",
+        "version": "1.0",
+        "release": "Brazil",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-delta-brazil-012",
+      "certification": "csa",
+      "topic": "delta-brazil",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "Starting with the Brazil release, what change affects the Conditional Script Writer group used by the Scripting Governance Tool?",
+      "options": [
+        {
+          "id": "a",
+          "text": "It can no longer be selected as the assignment group on task-based records in the base system configuration"
+        },
+        {
+          "id": "b",
+          "text": "It is automatically added as the assignment group on all incidents"
+        },
+        {
+          "id": "c",
+          "text": "It is deleted from the instance during upgrade"
+        },
+        {
+          "id": "d",
+          "text": "It now grants the admin role to its members"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "The release notes state that the Conditional Script Writer group can no longer be selected as the assignment group on any task or incident through the user interface with the base system configuration, so this permission-only group is no longer used as an operational assignment target. See: https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-identity-release-notes.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "This option reverses the documented behavior: the group can no longer be selected as an assignment group.",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-identity-release-notes.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The release notes restrict selecting the group as an assignment group; they do not describe deleting it.",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-identity-release-notes.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The release notes describe it as a permission-only group that can't be used for assignment; they say nothing about granting the admin role.",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-identity-release-notes.html"
+          }
+        ]
+      },
+      "references": [
+        "Brazil delta release notes - Identity"
+      ],
+      "isFree": true,
+      "difficulty": "hard",
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "delta-zurich-brazil",
+          "section": "Identity - Changes",
+          "url": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-identity-release-notes.html"
+        },
+        "path": "servicenow.com/docs/r/delta-zurich-brazil",
+        "excerpt": "Prevent the Conditional Script Writer group from being selected as the assignment group on task-based records, so the permission-only group is no longer used for operational assignment target."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "User Administration",
+        "domainSlug": "delta-brazil",
+        "domainPercentage": 100,
+        "subtopics": [
+          "Identity",
+          "Scripting Governance Tool",
+          "Groups"
+        ],
+        "tags": [
+          "brazil",
+          "delta",
+          "identity",
+          "scripting-governance",
+          "groups"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-10-21T00:00:00.000Z",
+        "version": "1.0",
+        "release": "Brazil",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-delta-brazil-013",
+      "certification": "csa",
+      "topic": "delta-brazil",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Which legacy user interfaces are deprecated starting with the Australia release, with the Next Experience recommended instead?",
+      "options": [
+        {
+          "id": "a",
+          "text": "UI11 and UI15"
+        },
+        {
+          "id": "b",
+          "text": "UI16 and Service Portal"
+        },
+        {
+          "id": "c",
+          "text": "Core UI and Workspace"
+        },
+        {
+          "id": "d",
+          "text": "Employee Center and Service Portal"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "The release notes state that starting with the Australia release, the legacy user interfaces commonly referred to as UI11 and UI15 are deprecated. They no longer receive enhancements or defect fixes and will no longer be supported; the Next Experience is recommended. See: https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-nextexperience-release-notes.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "The release notes name UI11 and UI15, not UI16 and Service Portal, as the deprecated legacy interfaces.",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-nextexperience-release-notes.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The release notes name UI11 and UI15, not Core UI and Workspace, as the deprecated legacy interfaces.",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-nextexperience-release-notes.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The release notes name UI11 and UI15, not Employee Center and Service Portal, as the deprecated legacy interfaces.",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-nextexperience-release-notes.html"
+          }
+        ]
+      },
+      "references": [
+        "Brazil delta release notes - Next Experience"
+      ],
+      "isFree": true,
+      "difficulty": "easy",
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "delta-zurich-brazil",
+          "section": "Next Experience - Deprecations",
+          "url": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-nextexperience-release-notes.html"
+        },
+        "path": "servicenow.com/docs/r/delta-zurich-brazil",
+        "excerpt": "Starting with the Australia release, the legacy user interfaces commonly referred to as UI11 and UI15 are deprecated."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "User Interface",
+        "domainSlug": "delta-brazil",
+        "domainPercentage": 100,
+        "subtopics": [
+          "Next Experience",
+          "Legacy UI",
+          "Deprecations"
+        ],
+        "tags": [
+          "brazil",
+          "delta",
+          "next-experience",
+          "ui16",
+          "deprecation"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-10-21T00:00:00.000Z",
+        "version": "1.0",
+        "release": "Australia",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-delta-brazil-014",
+      "certification": "csa",
+      "topic": "delta-brazil",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "Starting with the Australia release, an administrator wants to create a new application menu and modules without leaving the Next Experience UI. Which statement is supported by the release notes?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Application menus and modules can be created and edited directly from the Next Experience UI, including Record, List, Dashboard, and Custom page modules"
+        },
+        {
+          "id": "b",
+          "text": "Application menus can only be created in UI Builder"
+        },
+        {
+          "id": "c",
+          "text": "Modules must be created with a background script in Next Experience"
+        },
+        {
+          "id": "d",
+          "text": "Only List modules can be configured from the Next Experience UI"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "The release notes describe Next Experience all menu editing: create and edit application menus and modules directly from the Next Experience UI. Admins can configure Record, List, Dashboard, and Custom page modules from a centralized, platform-native interface. See: https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-nextexperience-release-notes.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "The release notes describe creating application menus directly from the Next Experience UI, not only in UI Builder.",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-nextexperience-release-notes.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The release notes describe a platform-native interface for menus and modules, not background scripts.",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-nextexperience-release-notes.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The release notes list Record, List, Dashboard, and Custom page modules, not only List modules.",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-nextexperience-release-notes.html"
+          }
+        ]
+      },
+      "references": [
+        "Brazil delta release notes - Next Experience"
+      ],
+      "isFree": true,
+      "difficulty": "medium",
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "delta-zurich-brazil",
+          "section": "Next Experience - New features",
+          "url": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-nextexperience-release-notes.html"
+        },
+        "path": "servicenow.com/docs/r/delta-zurich-brazil",
+        "excerpt": "Create and edit application menus and modules directly from the Next Experience UI. Admins can configure Record, List, Dashboard, and Custom page modules from a centralized, platform-native interface."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "User Interface",
+        "domainSlug": "delta-brazil",
+        "domainPercentage": 100,
+        "subtopics": [
+          "Next Experience",
+          "Application menus",
+          "Modules"
+        ],
+        "tags": [
+          "brazil",
+          "delta",
+          "next-experience",
+          "navigation",
+          "modules"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-10-21T00:00:00.000Z",
+        "version": "1.0",
+        "release": "Australia",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-delta-brazil-015",
+      "certification": "csa",
+      "topic": "delta-brazil",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "Starting with the Brazil release, where can an administrator view the original email associated with a bounced email address?",
+      "options": [
+        {
+          "id": "a",
+          "text": "From the Bounce Email Address Logs record"
+        },
+        {
+          "id": "b",
+          "text": "Only in the outbound mail server logs outside the instance"
+        },
+        {
+          "id": "c",
+          "text": "From the Email Digest record of the recipient"
+        },
+        {
+          "id": "d",
+          "text": "From the Notification Agent conversation history"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "The release notes state that the original email associated with a bounced email address can now be viewed from the Bounce Email Address Logs record. See: https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-notifications-release-notes.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "The release notes say the original email can be viewed from the Bounce Email Address Logs record in the instance.",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-notifications-release-notes.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The release notes name the Bounce Email Address Logs record, not an email digest record.",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-notifications-release-notes.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The release notes name the Bounce Email Address Logs record, not the Notification Agent.",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-notifications-release-notes.html"
+          }
+        ]
+      },
+      "references": [
+        "Brazil delta release notes - Notifications"
+      ],
+      "isFree": true,
+      "difficulty": "medium",
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "delta-zurich-brazil",
+          "section": "Notifications - Changes",
+          "url": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-notifications-release-notes.html"
+        },
+        "path": "servicenow.com/docs/r/delta-zurich-brazil",
+        "excerpt": "The original email associated with a bounced email address can now be viewed from the Bounce Email Address Logs record."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Notifications",
+        "domainSlug": "delta-brazil",
+        "domainPercentage": 100,
+        "subtopics": [
+          "Notifications",
+          "Email",
+          "Bounced emails"
+        ],
+        "tags": [
+          "brazil",
+          "delta",
+          "notifications",
+          "email",
+          "bounce"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-10-21T00:00:00.000Z",
+        "version": "1.0",
+        "release": "Brazil",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-delta-brazil-016",
+      "certification": "csa",
+      "topic": "delta-brazil",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "Starting with the Brazil release, Service Portal supports identifier-first login (IFL). How is the authentication path determined?",
+      "options": [
+        {
+          "id": "a",
+          "text": "By the username or email entered, evaluated against configured IFL policies"
+        },
+        {
+          "id": "b",
+          "text": "By the user's browser language and time zone"
+        },
+        {
+          "id": "c",
+          "text": "By the sys_id of the portal record only"
+        },
+        {
+          "id": "d",
+          "text": "By the role with the highest privilege assigned to the user"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "The release notes state that with identifier-first login in Service Portal, the authentication path is determined by the username or email entered and is evaluated against configured IFL policies. See: https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-serviceportal-release-notes.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "The release notes say the path is determined by the username or email entered, not browser language or time zone.",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-serviceportal-release-notes.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The release notes say the path is determined by the username or email entered and evaluated against IFL policies, not by the portal sys_id alone.",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-serviceportal-release-notes.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The release notes say the path is determined by the username or email entered, not by the user's roles.",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-serviceportal-release-notes.html"
+          }
+        ]
+      },
+      "references": [
+        "Brazil delta release notes - Service Portal"
+      ],
+      "isFree": true,
+      "difficulty": "medium",
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "delta-zurich-brazil",
+          "section": "Service Portal - New features",
+          "url": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-serviceportal-release-notes.html"
+        },
+        "path": "servicenow.com/docs/r/delta-zurich-brazil",
+        "excerpt": "Use an identifier-first login (IFL) authentication method in Service Portal where the authentication path is determined by the username or email entered, and evaluated against configured IFL policies."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Self-Service",
+        "domainSlug": "delta-brazil",
+        "domainPercentage": 100,
+        "subtopics": [
+          "Service Portal",
+          "Authentication",
+          "Identifier-first login"
+        ],
+        "tags": [
+          "brazil",
+          "delta",
+          "service-portal",
+          "authentication",
+          "ifl"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-10-21T00:00:00.000Z",
+        "version": "1.0",
+        "release": "Brazil",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-delta-brazil-017",
+      "certification": "csa",
+      "topic": "delta-brazil",
+      "cognitiveLevel": "application",
+      "type": "multiple_choice",
+      "question": "Starting with the Brazil release, an administrator wants to share a Platform Analytics dashboard with all authenticated users without managing individual user, group, or role assignments. What should the administrator do?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Assign the dashboard to the dashboard_user role, which ships with the base system"
+        },
+        {
+          "id": "b",
+          "text": "Publish the dashboard as a public report"
+        },
+        {
+          "id": "c",
+          "text": "Add every user to a new group and share with that group"
+        },
+        {
+          "id": "d",
+          "text": "Grant the pa_admin role to all users"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "The release notes state that administrators can share a Platform Analytics dashboard with all authenticated users by assigning it to the dashboard_user role, which ships with the base system. Any user who holds at least one role automatically receives read access, replacing the need to manage individual user, group, or role assignments. See: https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-platformanalyticsexperience-release-notes.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "The release notes describe sharing via the dashboard_user role; elsewhere they note that report publishing has been replaced and public Core UI reports are unpublished on upgrade.",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-platformanalyticsexperience-release-notes.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The documented approach replaces the need to manage individual user, group, or role assignments for organization-wide dashboards.",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-platformanalyticsexperience-release-notes.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The release notes name the dashboard_user role for this purpose, not granting pa_admin to all users.",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-platformanalyticsexperience-release-notes.html"
+          }
+        ]
+      },
+      "references": [
+        "Brazil delta release notes - Platform Analytics experience"
+      ],
+      "isFree": true,
+      "difficulty": "hard",
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "delta-zurich-brazil",
+          "section": "Platform Analytics experience - New features",
+          "url": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-platformanalyticsexperience-release-notes.html"
+        },
+        "path": "servicenow.com/docs/r/delta-zurich-brazil",
+        "excerpt": "Administrators can share a Platform Analytics dashboard with all authenticated users by assigning it to the dashboard_user role, which ships with the base system."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Reporting and Analytics",
+        "domainSlug": "delta-brazil",
+        "domainPercentage": 100,
+        "subtopics": [
+          "Platform Analytics",
+          "Dashboards",
+          "Sharing"
+        ],
+        "tags": [
+          "brazil",
+          "delta",
+          "platform-analytics",
+          "dashboards",
+          "roles"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-10-21T00:00:00.000Z",
+        "version": "1.0",
+        "release": "Brazil",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-delta-brazil-018",
+      "certification": "csa",
+      "topic": "delta-brazil",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_select",
+      "question": "Starting with the Brazil release, read-only users can use Explore mode on inline dashboards or in the Visualization Designer. Which two statements describe Explore mode? (Choose two.)",
+      "options": [
+        {
+          "id": "a",
+          "text": "The Save action is not available while Explore mode is active"
+        },
+        {
+          "id": "b",
+          "text": "Users can temporarily reconfigure a visualization in-session without saving changes"
+        },
+        {
+          "id": "c",
+          "text": "Changes are saved as a personal copy of the dashboard"
+        },
+        {
+          "id": "d",
+          "text": "Users must be granted edit access to the dashboard first"
+        },
+        {
+          "id": "e",
+          "text": "Changes are automatically shared with the dashboard owner"
+        }
+      ],
+      "correctAnswers": [
+        "a",
+        "b"
+      ],
+      "explanation": {
+        "correct": "The release notes state that read-only users can temporarily reconfigure a visualization in-session without saving changes. When Explore mode is active, an informational alert indicates that changes aren't persisted and the Save action is not available, so consumers can explore data without edit access. See: https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-platformanalyticsexperience-release-notes.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "c",
+            "explanation": "The release notes say changes aren't persisted in Explore mode; they do not describe saving a personal copy.",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-platformanalyticsexperience-release-notes.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "This option reverses the documented behavior: Explore mode lets consumers explore data without requiring edit access.",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-platformanalyticsexperience-release-notes.html"
+          },
+          {
+            "choiceId": "e",
+            "explanation": "The release notes say changes aren't persisted; they do not describe sharing changes with the owner.",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-platformanalyticsexperience-release-notes.html"
+          }
+        ]
+      },
+      "references": [
+        "Brazil delta release notes - Platform Analytics experience"
+      ],
+      "isFree": true,
+      "difficulty": "medium",
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "delta-zurich-brazil",
+          "section": "Platform Analytics experience - New features",
+          "url": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-platformanalyticsexperience-release-notes.html"
+        },
+        "path": "servicenow.com/docs/r/delta-zurich-brazil",
+        "excerpt": "Read-only users can temporarily reconfigure a visualization in-session — on inline dashboards or in the Visualization Designer — without saving changes."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Reporting and Analytics",
+        "domainSlug": "delta-brazil",
+        "domainPercentage": 100,
+        "subtopics": [
+          "Platform Analytics",
+          "Explore mode"
+        ],
+        "tags": [
+          "brazil",
+          "delta",
+          "platform-analytics",
+          "explore-mode",
+          "visualizations"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-10-21T00:00:00.000Z",
+        "version": "1.0",
+        "release": "Brazil",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-delta-brazil-019",
+      "certification": "csa",
+      "topic": "delta-brazil",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Starting with the Australia release, what happens to public Core UI reports on upgrade, and where can report administrators find them?",
+      "options": [
+        {
+          "id": "a",
+          "text": "They are unpublished; administrators can find them in the Reports Public [sys_report_public] table"
+        },
+        {
+          "id": "b",
+          "text": "They are deleted; administrators must recreate them from backups"
+        },
+        {
+          "id": "c",
+          "text": "They remain public and are copied to the Analytics Hub"
+        },
+        {
+          "id": "d",
+          "text": "They are converted to scheduled exports in the sys_report table"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "The release notes state that on upgrade, all public Core UI reports are unpublished to enhance security control. Report administrators can find the unpublished reports on the Reports Public [sys_report_public] table and make them available through the Sharing UI in the Report Designer. See: https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-platformanalyticsexperience-release-notes.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "The release notes say the reports are unpublished, not deleted, and can be found in the Reports Public table.",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-platformanalyticsexperience-release-notes.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "This option contradicts the release notes: public Core UI reports are unpublished, and the Analytics Hub isn't available after upgrading.",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-platformanalyticsexperience-release-notes.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The release notes say the reports are unpublished and listed in the Reports Public [sys_report_public] table, not converted to scheduled exports.",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-platformanalyticsexperience-release-notes.html"
+          }
+        ]
+      },
+      "references": [
+        "Brazil delta release notes - Platform Analytics experience"
+      ],
+      "isFree": true,
+      "difficulty": "medium",
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "delta-zurich-brazil",
+          "section": "Platform Analytics experience - Changes",
+          "url": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-platformanalyticsexperience-release-notes.html"
+        },
+        "path": "servicenow.com/docs/r/delta-zurich-brazil",
+        "excerpt": "On upgrade, all public Core UI reports are unpublished to enhance security control. Report administrators can find the unpublished reports on the Reports Public [sys_report_public] table."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Reporting and Analytics",
+        "domainSlug": "delta-brazil",
+        "domainPercentage": 100,
+        "subtopics": [
+          "Platform Analytics",
+          "Reports",
+          "Upgrade"
+        ],
+        "tags": [
+          "brazil",
+          "delta",
+          "platform-analytics",
+          "reports",
+          "upgrade"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-10-21T00:00:00.000Z",
+        "version": "1.0",
+        "release": "Australia",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-delta-brazil-020",
+      "certification": "csa",
+      "topic": "delta-brazil",
+      "cognitiveLevel": "knowledge",
+      "type": "multiple_choice",
+      "question": "Starting with the Brazil release, which system property controls whether choice fields display None or --None-- for empty options?",
+      "options": [
+        {
+          "id": "a",
+          "text": "glide.ui.choice.display_none"
+        },
+        {
+          "id": "b",
+          "text": "glide.ui.html.editor.textpatterns"
+        },
+        {
+          "id": "c",
+          "text": "glide.choice.empty_label"
+        },
+        {
+          "id": "d",
+          "text": "glide.ui.list.show_none"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "The release notes state that choice fields can be configured to display either None or --None-- for empty options using the glide.ui.choice.display_none system property. See: https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-servicenowaiplatformcorefeature-release-notes.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "The release notes name glide.ui.html.editor.textpatterns as the property for turning HTML editor text patterns on or off, not for choice field empty options.",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-servicenowaiplatformcorefeature-release-notes.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The release notes name glide.ui.choice.display_none, not glide.choice.empty_label, for this setting.",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-servicenowaiplatformcorefeature-release-notes.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "The release notes name glide.ui.choice.display_none, not glide.ui.list.show_none, for this setting.",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-servicenowaiplatformcorefeature-release-notes.html"
+          }
+        ]
+      },
+      "references": [
+        "Brazil delta release notes - ServiceNow AI Platform core feature"
+      ],
+      "isFree": true,
+      "difficulty": "medium",
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "delta-zurich-brazil",
+          "section": "ServiceNow AI Platform core feature - Changes",
+          "url": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-servicenowaiplatformcorefeature-release-notes.html"
+        },
+        "path": "servicenow.com/docs/r/delta-zurich-brazil",
+        "excerpt": "Configure choice fields to display either None or --None-- for empty options using the glide.ui.choice.display_none system property."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Platform Configuration",
+        "domainSlug": "delta-brazil",
+        "domainPercentage": 100,
+        "subtopics": [
+          "System properties",
+          "Choice fields"
+        ],
+        "tags": [
+          "brazil",
+          "delta",
+          "system-properties",
+          "choice-fields"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-10-21T00:00:00.000Z",
+        "version": "1.0",
+        "release": "Brazil",
+        "reviewed": false
+      }
+    },
+    {
+      "id": "csa-delta-brazil-021",
+      "certification": "csa",
+      "topic": "delta-brazil",
+      "cognitiveLevel": "understanding",
+      "type": "multiple_choice",
+      "question": "Starting with the Brazil release, a user has only a catalog-related role and no request management role. What changes for this user regarding the catalog team's ACL records on tables such as Request [sc_request] and Requested Item [sc_req_item]?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The user can no longer use those ACL records to access request management tables or features"
+        },
+        {
+          "id": "b",
+          "text": "The user automatically receives a request management role during upgrade"
+        },
+        {
+          "id": "c",
+          "text": "Those ACL records now have an empty required roles list"
+        },
+        {
+          "id": "d",
+          "text": "The catalog admin role now grants full access to all request management tables"
+        }
+      ],
+      "correctAnswers": [
+        "a"
+      ],
+      "explanation": {
+        "correct": "The release notes state that ACL records on request management tables and fields no longer grant access based on the catalog role or catalog admin role. Users with only a catalog-related role and no request management role can no longer use these ACL records to access request management tables or features, although another ACL record on the same table might still grant access through a different role. See: https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-servicecatalog-release-notes.html",
+        "wrongAnswers": [
+          {
+            "choiceId": "b",
+            "explanation": "The release notes do not describe any automatic role assignment during upgrade.",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-servicecatalog-release-notes.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "The release notes state that each ACL record retains at least one request management role, so the list is never empty.",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-servicecatalog-release-notes.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "This option reverses the documented behavior: these ACL records no longer grant access based on the catalog admin role.",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-servicecatalog-release-notes.html"
+          }
+        ]
+      },
+      "references": [
+        "Brazil delta release notes - Service Catalog"
+      ],
+      "isFree": true,
+      "difficulty": "hard",
+      "source": {
+        "type": "documentation",
+        "documentation": {
+          "docSlug": "delta-zurich-brazil",
+          "section": "Service Catalog - Deprecations",
+          "url": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-servicecatalog-release-notes.html"
+        },
+        "path": "servicenow.com/docs/r/delta-zurich-brazil",
+        "excerpt": "Users who have only a catalog-related role and no request management role can no longer use these ACL records to access request management tables or features."
+      },
+      "labels": {
+        "certification": "csa",
+        "domain": "Service Catalog",
+        "domainSlug": "delta-brazil",
+        "domainPercentage": 100,
+        "subtopics": [
+          "Request management",
+          "ACLs",
+          "Roles"
+        ],
+        "tags": [
+          "brazil",
+          "delta",
+          "service-catalog",
+          "acl",
+          "roles"
+        ]
+      },
+      "meta": {
+        "generatedAt": "2026-10-21T00:00:00.000Z",
+        "version": "1.0",
+        "release": "Brazil",
+        "reviewed": false
+      }
+    }
+  ]
+}

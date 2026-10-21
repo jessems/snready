@@ -18,7 +18,10 @@ describe("isIndexablePath (lib/seo-indexing.ts)", () => {
     "/csa",
     "/csa/practice-questions",
     "/csa/practice-questions/ui-navigation",
-    "/csa/delta/zurich",
+    "/csa/delta/brazil",
+    "/cad/delta/brazil",
+    "/cis-df/delta/brazil",
+    "/cis-itsm/delta/brazil",
     "/compare",
     "/compare/csa-vs-cis-itsm",
     "/blog/some-post",
@@ -34,9 +37,9 @@ describe("isIndexablePath (lib/seo-indexing.ts)", () => {
     "/csa/mock-exam",
     "/csa/dumps",
     "/csa/practice-questions/incident-management",
-    "/cad/delta/zurich",
-    "/csa/delta/brazil",
-    "/cad/delta/brazil",
+    "/csa/delta/zurich",
+    "/cta/delta/brazil",
+    "/cis-csm/delta/brazil",
     "/compare/csa-vs-cad",
     "/salaries",
     "/salaries/developer",
@@ -60,23 +63,26 @@ describe("isIndexablePath (lib/seo-indexing.ts)", () => {
 
 describe("isIndexableDeltaPage (lib/seo-indexing.ts)", () => {
   it("indexes an allowlisted delta page only when it has questions", () => {
-    expect(isIndexableDeltaPage("csa", "zurich", 12)).toBe(true);
-    expect(robotsForDeltaPage("csa", "zurich", 12)).toEqual({ index: true, follow: true });
-    expect(isIndexableDeltaPage("csa", "zurich", 0)).toBe(false);
-    expect(robotsForDeltaPage("csa", "zurich", 0)).toEqual({ index: false, follow: true });
+    expect(isIndexableDeltaPage("csa", "brazil", 20)).toBe(true);
+    expect(robotsForDeltaPage("csa", "brazil", 20)).toEqual({ index: true, follow: true });
+    expect(isIndexableDeltaPage("csa", "brazil", 0)).toBe(false);
+    expect(robotsForDeltaPage("csa", "brazil", 0)).toEqual({ index: false, follow: true });
   });
 
   it("noindexes delta pages that are not allowlisted, even with questions", () => {
-    expect(isIndexableDeltaPage("cad", "zurich", 6)).toBe(false);
-    expect(isIndexableDeltaPage("csa", "brazil", 5)).toBe(false);
+    expect(isIndexableDeltaPage("cta", "brazil", 5)).toBe(false);
+    expect(isIndexableDeltaPage("csa", "zurich", 12)).toBe(false);
   });
 
-  it("noindexes every delta page that has no questions yet (Brazil)", async () => {
-    for (const { certification, release } of getAllDeltaSlugs().filter((d) => d.release === "brazil")) {
+  it("indexes exactly the Brazil delta pages that have questions", async () => {
+    const withQuestions: string[] = [];
+    for (const { certification, release } of getAllDeltaSlugs()) {
       const questions = await getPublicDeltaQuestions(certification, release);
-      expect(questions).toEqual([]);
-      expect(isIndexableDeltaPage(certification, release, questions.length)).toBe(false);
+      const indexable = isIndexableDeltaPage(certification, release, questions.length);
+      if (questions.length > 0) withQuestions.push(`${certification}/${release}`);
+      expect(indexable).toBe(questions.length > 0);
     }
+    expect(withQuestions.sort()).toEqual([...INDEXABLE_DELTA_PAGES].sort());
   });
 });
 
@@ -92,7 +98,11 @@ describe("sitemap", () => {
     expect(urls).toContain(`${base}/courses`);
     expect(urls).toContain(`${base}/courses/service-mapping`);
     expect(urls.some((u) => u.endsWith("/mock-exam"))).toBe(false);
-    expect(urls).toContain(`${base}/csa/delta/zurich`);
-    expect(urls.some((u) => u.includes("/delta/brazil"))).toBe(false);
+    for (const key of INDEXABLE_DELTA_PAGES) {
+      const [cert, release] = key.split("/");
+      expect(urls).toContain(`${base}/${cert}/delta/${release}`);
+    }
+    expect(urls.some((u) => u.includes("/delta/zurich"))).toBe(false);
+    expect(urls).not.toContain(`${base}/cta/delta/brazil`);
   });
 });
