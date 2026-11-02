@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import type { MockExamResult } from "@/types/mockExam";
 import { formatDuration } from "@/lib/mockExam";
+import { letterForOptionId, optionLetter } from "@/lib/option-order";
 
 interface MockExamResultsProps {
   result: MockExamResult;
@@ -232,7 +233,7 @@ export default function MockExamResults({ result }: MockExamResultsProps) {
                     <div className="mt-4 space-y-4 pl-9">
                       {/* Options */}
                       <div className="space-y-2">
-                        {qr.options.map((opt) => {
+                        {qr.options.map((opt, optIndex) => {
                           const isCorrect = qr.correctAnswers.includes(opt.id);
                           const wasSelected = qr.userAnswers.includes(opt.id);
                           const isWrong = wasSelected && !isCorrect;
@@ -269,7 +270,7 @@ export default function MockExamResults({ result }: MockExamResultsProps) {
                                       : "border-zinc-300 text-zinc-500 dark:border-zinc-600"
                                 }`}
                               >
-                                {opt.id.toUpperCase()}
+                                {optionLetter(optIndex)}
                               </span>
                               <div className="flex-1">
                                 <span className={textColor}>{opt.text}</span>
@@ -304,12 +305,14 @@ export default function MockExamResults({ result }: MockExamResultsProps) {
                                 <h5 className="text-xs font-medium uppercase text-blue-700 dark:text-blue-300">
                                   Why other options are wrong:
                                 </h5>
-                                {qr.explanation.wrongAnswers.map((wa) => (
+                                {[...qr.explanation.wrongAnswers]
+                                  .sort((x, y) => letterForOptionId(qr.options, x.choiceId).localeCompare(letterForOptionId(qr.options, y.choiceId)))
+                                  .map((wa) => (
                                   <p
                                     key={wa.choiceId}
                                     className="text-sm text-blue-700 dark:text-blue-300"
                                   >
-                                    <strong>{wa.choiceId.toUpperCase()}:</strong>{" "}
+                                    <strong>{letterForOptionId(qr.options, wa.choiceId)}:</strong>{" "}
                                     {wa.explanation}
                                   </p>
                                 ))}

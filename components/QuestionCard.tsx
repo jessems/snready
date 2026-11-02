@@ -1,13 +1,23 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 import type { Question } from "@/types";
+import { letterForOptionId, optionLetter, orderOptionsForQuestion } from "@/lib/option-order";
+import {
+  correctExplanationText,
+  docLinkLabel,
+  getQuestionReferences,
+  splitTextWithUrls,
+} from "@/lib/doc-links";
 
 interface QuestionCardProps {
   question: Question;
   questionNumber: number;
   showAnswer?: boolean;
   onAnswer?: (questionId: string, selectedAnswers: string[]) => void;
+  // Render the answer and explanation in the initial HTML inside a collapsed
+  // <details>. Only pass this for free questions.
+  explanationInHtml?: boolean;
 }
 
 export default function QuestionCard({
@@ -15,7 +25,14 @@ export default function QuestionCard({
   questionNumber,
   showAnswer = false,
   onAnswer,
+  explanationInHtml = false,
 }: QuestionCardProps) {
+  // Display order is deterministic per question id (see lib/option-order.ts);
+  // answers are still keyed by option id.
+  const options = useMemo(
+    () => orderOptionsForQuestion(question.id, question.options),
+    [question.id, question.options]
+  );
   const [selectedAnswers, setSelectedAnswers] = useState<string[]>([]);
   const [revealed, setRevealed] = useState(showAnswer);
 
@@ -63,8 +80,8 @@ export default function QuestionCard({
       const optionKeys: Record<string, number> = { a: 0, b: 1, c: 2, d: 3, "1": 0, "2": 1, "3": 2, "4": 3 };
       if (key in optionKeys) {
         const optionIndex = optionKeys[key];
-        if (question.options[optionIndex]) {
-          handleOptionClick(question.options[optionIndex].id);
+        if (options[optionIndex]) {
+          handleOptionClick(options[optionIndex].id);
         }
         return;
       }
@@ -78,7 +95,7 @@ export default function QuestionCard({
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [revealed, question.options, selectedAnswers.length, handleReveal, handleOptionClick]);
+  }, [revealed, options, selectedAnswers.length, handleReveal, handleOptionClick]);
 
   const getOptionClasses = (optionId: string) => {
     const base =
@@ -153,7 +170,7 @@ export default function QuestionCard({
 
       {/* Options */}
       <div className="mt-6 space-y-3">
-        {question.options.map((option) => (
+        {options.map((option, index) => (
           <div
             key={option.id}
             className={getOptionClasses(option.id)}
@@ -166,7 +183,7 @@ export default function QuestionCard({
                   : "border-zinc-300 text-zinc-500 dark:border-zinc-600"
               }`}
             >
-              {option.id.toUpperCase()}
+              {optionLetter(index)}
             </span>
             <span className="text-sm sm:text-base text-zinc-700 dark:text-zinc-300 leading-relaxed">
               {option.text}
@@ -215,9 +232,7 @@ export default function QuestionCard({
 
           {/* Main explanation */}
           <p className="mt-3 text-sm text-zinc-600 dark:text-zinc-400">
-            {typeof question.explanation === "string"
-              ? question.explanation
-              : question.explanation.correct}
+            <LinkedText text={correctExplanationText(question)} />
           </p>
 
           {/* Wrong answer explanations for selected wrong answers */}
@@ -235,30 +250,120 @@ export default function QuestionCard({
                   >
                     <p className="text-sm text-zinc-600 dark:text-zinc-400">
                       <span className="font-medium">
-                        Why {wrongId.toUpperCase()} is wrong:{" "}
+                        Why {letterForOptionId(options, wrongId)} is wrong:{" "}
                       </span>
                       {wrongExplanation.explanation}
                     </p>
                     {wrongExplanation.reference && (
                       <p className="mt-1 text-xs text-zinc-500">
-                        Reference: {wrongExplanation.reference}
+                        Reference: <LinkedText text={wrongExplanation.reference} />
                       </p>
                     )}
                   </div>
                 );
               })}
 
-          {question.references && question.references.length > 0 && (
-            <div className="mt-3">
-              <span className="text-xs font-medium text-zinc-500">
-                References:{" "}
-              </span>
-              <span className="text-xs text-zinc-500">
-                {question.references.join(", ")}
-              </span>
-            </div>
-          )}
+          <QuestionReferenceList question={question} />
         </div>
+      )}
+
+      {/* Static answer + explanation for free questions, collapsed until opened.
+          Replaced by the interactive explanation above once the answer is checked. */}
+      {explanationInHtml && !revealed && (
+        <details className="group mt-6 rounded-lg border border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-800">
+          <summary className="cursor-pointer select-none px-4 py-3 text-sm font-medium text-zinc-700 hover:text-emerald-700 dark:text-zinc-300 dark:hover:text-emerald-400">
+            Show answer and explanation
+          </summary>
+          <div className="border-t border-zinc-200 px-4 pb-4 dark:border-zinc-700">
+            <p className="mt-3 text-sm font-medium text-zinc-900 dark:text-zinc-100">
+              Correct answer:{" "}
+              {options
+                .map((option, index) => ({ option, index }))
+                .filter(({ option }) => question.correctAnswers.includes(option.id))
+                .map(({ option, index }) => `${optionLetter(index)}. ${option.text}`)
+                .join("; ")}
+            </p>
+            <p className="mt-3 text-sm text-zinc-600 dark:text-zinc-400">
+              <LinkedText text={correctExplanationText(question)} />
+            </p>
+            {typeof question.explanation !== "string" &&
+              (question.explanation.wrongAnswers?.length ?? 0) > 0 && (
+                <ul className="mt-3 space-y-2">
+                  {options
+                    .map((option, index) => ({ option, index, wrong: getWrongAnswerExplanation(option.id) }))
+                    .filter(({ option, wrong }) => wrong && !question.correctAnswers.includes(option.id))
+                    .map(({ option, index, wrong }) => (
+                      <li
+                        key={option.id}
+                        className="border-l-2 border-zinc-300 pl-3 text-sm text-zinc-600 dark:border-zinc-600 dark:text-zinc-400"
+                      >
+                        <span className="font-medium">Why {optionLetter(index)} is wrong: </span>
+                        {wrong!.explanation}
+                      </li>
+                    ))}
+                </ul>
+              )}
+            <QuestionReferenceList question={question} />
+          </div>
+        </details>
+      )}
+    </div>
+  );
+}
+
+const linkClassName =
+  "text-emerald-700 underline decoration-emerald-300 underline-offset-2 hover:text-emerald-800 dark:text-emerald-400 dark:decoration-emerald-700 dark:hover:text-emerald-300";
+
+// Text with any URLs rendered as real links (labelled by site, not the raw URL).
+function LinkedText({ text }: { text: string }) {
+  return (
+    <>
+      {splitTextWithUrls(text).map((segment, index) =>
+        segment.type === "link" ? (
+          <a
+            key={index}
+            href={segment.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={linkClassName}
+          >
+            {docLinkLabel(segment.href)}
+          </a>
+        ) : (
+          <span key={index}>{segment.text}</span>
+        )
+      )}
+    </>
+  );
+}
+
+function QuestionReferenceList({ question }: { question: Question }) {
+  const { links, notes } = getQuestionReferences(question);
+  if (links.length === 0 && notes.length === 0) return null;
+  // Several links can share a label (e.g. two course lessons); number the repeats.
+  const labelCounts = new Map<string, number>();
+  const labels = links.map(({ href, title }) => {
+    const label = title ?? docLinkLabel(href);
+    const count = (labelCounts.get(label) ?? 0) + 1;
+    labelCounts.set(label, count);
+    return count > 1 ? `${label} (${count})` : label;
+  });
+  return (
+    <div className="mt-3 text-xs text-zinc-500">
+      <span className="font-medium">References: </span>
+      {links.map(({ href }, index) => (
+        <span key={href}>
+          {index > 0 && ", "}
+          <a href={href} target="_blank" rel="noopener noreferrer" className={linkClassName}>
+            {labels[index]}
+          </a>
+        </span>
+      ))}
+      {notes.length > 0 && (
+        <span>
+          {links.length > 0 && ", "}
+          {notes.join(", ")}
+        </span>
       )}
     </div>
   );
