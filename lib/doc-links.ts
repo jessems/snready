@@ -244,7 +244,7 @@ export interface ExplanationWithSources {
 }
 
 // Splits an explanation into display text and a deduplicated, labelled list of sources:
-// the trailing "See <url>" reference, then references/reference/source(s) fields, then
+// the trailing "See <url>" reference, then sources/references/reference/source fields, then
 // wrong-answer reference URLs.
 export function getExplanationWithSources(question: ExplanationSourceInput): ExplanationWithSources {
   const { body, urls } = stripTrailingReferences(correctExplanationText(question));
@@ -274,10 +274,11 @@ export function getExplanationWithSources(question: ExplanationSourceInput): Exp
   };
 
   for (const url of urls) add(url);
+  // Precomputed sources (withExplanationSources, mock-exam questions) keep their order.
+  collectUrlFields(question.sources, add);
   collectUrlFields(question.references, add);
   collectUrlFields(question.reference, add);
   collectUrlFields(question.source, add);
-  collectUrlFields(question.sources, add);
   if (question.explanation && typeof question.explanation === "object") {
     for (const wrong of question.explanation.wrongAnswers ?? []) {
       collectUrlFields((wrong as { reference?: unknown })?.reference, add);
@@ -293,4 +294,28 @@ export function getExplanationWithSources(question: ExplanationSourceInput): Exp
     return { href, label: count > 1 ? `${label} (${count})` : label };
   });
   return { body, sources };
+}
+
+// Question data for client components: the trailing "See <url>" is cut from the explanation
+// text and the sources travel as a separate field, so the raw reference text never ends up
+// in the serialized page payload. getExplanationWithSources on the result gives the same
+// body and sources as on the original.
+export function withExplanationSources<T extends ExplanationSourceInput>(
+  question: T
+): T & { sources: SourceLink[] } {
+  const { body, sources } = getExplanationWithSources(question);
+  const { explanation } = question;
+  let stripped = explanation;
+  if (typeof explanation === "string") stripped = body;
+  else if (explanation && typeof explanation.correct === "string") stripped = { ...explanation, correct: body };
+  return { ...question, explanation: stripped, sources };
+}
+
+// Whether a URL is already listed in a Sources block (host case, "www." and trailing
+// slashes ignored).
+export function isListedSource(href: string, sources: readonly SourceLink[]): boolean {
+  const clean = trimUrl(href);
+  if (!isHttpUrl(clean)) return false;
+  const key = dedupeKey(clean);
+  return sources.some((source) => dedupeKey(source.href) === key);
 }

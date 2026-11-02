@@ -28,6 +28,7 @@ import {
 } from "@/lib/site-facts";
 import { CheckoutButton } from "@/components/CheckoutButton";
 import { QuestionsWithPaywall } from "@/components/QuestionsWithPaywall";
+import { withExplanationSources } from "@/lib/doc-links";
 import { QuestionListingStatus } from "@/components/QuestionListingStatus";
 
 interface Props {
@@ -401,7 +402,7 @@ export default async function PracticeTestPage({ params }: Props) {
               </div>
 
               <QuestionsWithPaywall
-                freeQuestions={freeQuestions}
+                freeQuestions={freeQuestions.map(withExplanationSources)}
                 premiumQuestionCount={premiumQuestionCount}
                 certification={certification.name}
                 certificationSlug={slug}

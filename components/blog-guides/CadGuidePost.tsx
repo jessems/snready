@@ -4,6 +4,7 @@
 import { BlueprintChart, Callout, Card, GuideSection, In, Misconception, Scenario, SourcesList, Src, Toc } from "@/components/guide/GuideParts";
 import { StudyCluster } from "@/components/guide/StudyCluster";
 import { SampleQuestions } from "@/components/SampleQuestions";
+import { withExplanationSources } from "@/lib/doc-links";
 import { getBlueprint } from "@/lib/cert-sources";
 import { getFreeQuestionsForCertification } from "@/lib/data";
 import type { SourceKey } from "@/lib/sources";
@@ -249,7 +250,7 @@ export async function CadGuidePost() {
           Three free questions from our CAD bank are below. The rest, organised by blueprint area, are on the <In href="/cad#practice-questions">CAD practice questions page</In>.
         </p>
       </GuideSection>
-      {sample.length > 0 && <SampleQuestions questions={sample} certSlug="cad" certName="CAD" />}
+      {sample.length > 0 && <SampleQuestions questions={sample.map(withExplanationSources)} certSlug="cad" certName="CAD" />}
       <div className="mt-10">
         <StudyCluster certSlug="cad" currentPath="/blog/servicenow-cad-exam-complete-guide-2026" />
       </div>

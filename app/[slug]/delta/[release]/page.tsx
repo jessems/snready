@@ -20,6 +20,7 @@ import {
 import { generateBreadcrumbJsonLd } from "@/lib/breadcrumbs";
 import deltaTipsData from "@/data/delta-tips.json";
 import QuestionCard from "@/components/QuestionCard";
+import { withExplanationSources } from "@/lib/doc-links";
 import type { Certification, ServiceNowRelease } from "@/types";
 
 interface PageProps {
@@ -343,7 +344,7 @@ export default async function DeltaExamPage({ params }: PageProps) {
                 {deltaQuestions.map((question, index) => (
                   <QuestionCard
                     key={question.id}
-                    question={question}
+                    question={withExplanationSources(question)}
                     questionNumber={index + 1}
                   />
                 ))}

@@ -5,6 +5,7 @@ import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 import QuestionCard from "@/components/QuestionCard";
 import { orderOptionsForQuestion, optionLetter } from "@/lib/option-order";
+import { withExplanationSources } from "@/lib/doc-links";
 import type { Question } from "@/types";
 
 function makeQuestion(overrides: Partial<Question> = {}): Question {
@@ -118,5 +119,64 @@ describe("QuestionCard static explanation", () => {
     expect(container.querySelector("details")).toBeNull();
     const hrefs = screen.getAllByRole("link").map((link) => link.getAttribute("href"));
     expect(hrefs).toContain("https://www.servicenow.com/docs/bundle/lists.html");
+  });
+});
+
+describe("QuestionCard wrong-answer references", () => {
+  async function answerWrong(q: Question, choiceId: string) {
+    const user = userEvent.setup();
+    const view = render(<QuestionCard question={q} questionNumber={1} />);
+    await user.click(screen.getByText(q.options.find((option) => option.id === choiceId)!.text));
+    await user.click(screen.getByRole("button", { name: /Check Answer/i }));
+    return view;
+  }
+
+  it("drops the per-option Reference link when the Sources block already lists that URL", async () => {
+    // Same page as the Sources entry, differing only in host case and a trailing slash.
+    const q = makeQuestion({
+      explanation: {
+        correct: "A list shows records from a table. See https://www.servicenow.com/docs/bundle/lists.html",
+        wrongAnswers: [
+          { choiceId: "a", explanation: "A single record is shown on a form.", reference: "https://WWW.ServiceNow.com/docs/bundle/forms.html/" },
+          { choiceId: "c", explanation: "Lists show all configured fields.", reference: "" },
+          { choiceId: "d", explanation: "Properties live elsewhere.", reference: "" },
+        ],
+      },
+    });
+    const { container } = await answerWrong(q, "a");
+    expect(container.textContent).toContain("A single record is shown on a form.");
+    expect(container.textContent).not.toContain("Reference:");
+    const hrefs = screen.getAllByRole("link").map((link) => link.getAttribute("href"));
+    expect(hrefs.filter((href) => href?.toLowerCase().includes("forms.html"))).toHaveLength(1);
+  });
+
+  it("keeps the Reference when its URL is not in the Sources list", async () => {
+    const q = makeQuestion({
+      explanation: {
+        correct: "A list shows records from a table, unlike https://example.org/forms which shows one.",
+        wrongAnswers: [
+          { choiceId: "a", explanation: "A single record is shown on a form.", reference: "https://example.org/forms" },
+          { choiceId: "c", explanation: "Lists show all configured fields.", reference: "ServiceNow Docs - Lists" },
+          { choiceId: "d", explanation: "Properties live elsewhere.", reference: "" },
+        ],
+      },
+    });
+    // The URL is linked inline in the explanation, so it is not in Sources.
+    const first = await answerWrong(q, "a");
+    expect(first.container.textContent).toContain("Reference: example.org/forms");
+    first.unmount();
+    // Plain-text references are never in Sources.
+    const second = await answerWrong(q, "c");
+    expect(second.container.textContent).toContain("Reference: ServiceNow Docs - Lists");
+  });
+
+  it("works the same on server-prepared questions (sources passed separately)", async () => {
+    const prepared = withExplanationSources(question);
+    expect(prepared.explanation.correct).toBe("A list shows records from a table.");
+    const { container } = await answerWrong(prepared, "a");
+    expect(container.textContent).not.toContain("See: https://");
+    expect(container.textContent).not.toContain("Reference:");
+    expect(container.textContent).toContain("ServiceNow Docs: Lists");
+    expect(container.textContent).toContain("ServiceNow Docs: Forms");
   });
 });

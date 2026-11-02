@@ -7,6 +7,7 @@
 import { BlueprintChart, Callout, Card, GuideSection, In, Misconception, Scenario, SourcesList, Src, Toc } from "@/components/guide/GuideParts";
 import { StudyCluster } from "@/components/guide/StudyCluster";
 import { SampleQuestions } from "@/components/SampleQuestions";
+import { withExplanationSources } from "@/lib/doc-links";
 import { getBlueprint } from "@/lib/cert-sources";
 import { getFreeQuestionsForCertification } from "@/lib/data";
 import type { SourceKey } from "@/lib/sources";
@@ -290,7 +291,7 @@ export async function CsaGuidePost() {
           Here are three questions from our free CSA bank. Every CSA question on SNReady is free; the full set is on the <In href="/csa#practice-questions">CSA practice questions page</In>.
         </p>
       </GuideSection>
-      {sample.length > 0 && <SampleQuestions questions={sample} certSlug="csa" certName="CSA" />}
+      {sample.length > 0 && <SampleQuestions questions={sample.map(withExplanationSources)} certSlug="csa" certName="CSA" />}
       <div className="mt-10">
         <StudyCluster certSlug="csa" currentPath="/blog/how-to-pass-servicenow-csa-first-time" />
       </div>
