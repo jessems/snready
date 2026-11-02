@@ -1,6 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { onRequestPost as sendMagicLink } from "@/functions/api/auth/send-magic-link";
 import { onRequest as adminMiddleware } from "@/functions/admin/_middleware";
+import { onRequestGet as authSession } from "@/functions/api/auth/session";
 
 function kvStore(initial: Record<string, string> = {}) {
   const store = new Map(Object.entries(initial));
@@ -48,7 +49,7 @@ describe("magic link auth", () => {
 
     const resendPayload = JSON.parse((globalThis.fetch as ReturnType<typeof vi.fn>).mock.calls[0][1]?.body as string);
     expect(resendPayload.from).toBe("SNReady <jesse@snready.com>");
-    expect(resendPayload.reply_to).toBe("jesse@snready.com");
+    expect(resendPayload.reply_to).toBe("support@snready.com");
     const link = resendPayload.text.match(/https:\/\/\S+/)?.[0];
     expect(link).toBeTruthy();
     const url = new URL(link);
@@ -231,5 +232,26 @@ describe("admin middleware", () => {
     expect(response.status).toBe(200);
     expect(await response.text()).toBe("ok");
     expect(next).toHaveBeenCalled();
+  });
+});
+
+describe("auth session admin flag", () => {
+  const sessionFor = (email: string, adminEmails?: string) => authSession({
+    request: new Request("https://snready.com/api/auth/session", {
+      headers: { Cookie: "snready_session=session-token" },
+    }),
+    env: {
+      SNREADY_ACCESS: kvStore({
+        "session:session-token": JSON.stringify({ email, createdAt: Date.now(), expiresAt: Date.now() + 60_000 }),
+      }),
+      ADMIN_EMAILS: adminEmails,
+    },
+  } as unknown as Parameters<typeof authSession>[0]);
+
+  it("reports isAdmin from the server-side admin list so the client bundle never contains it", async () => {
+    const admin = await (await sessionFor("owner@example.com", "owner@example.com")).json() as { isAdmin: boolean };
+    const user = await (await sessionFor("someone@example.com", "owner@example.com")).json() as { isAdmin: boolean };
+    expect(admin.isAdmin).toBe(true);
+    expect(user.isAdmin).toBe(false);
   });
 });

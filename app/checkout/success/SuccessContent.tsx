@@ -6,6 +6,7 @@ import { useSearchParams } from "next/navigation";
 import { verifySession } from "@/lib/access";
 import { trackPurchaseOnce } from "@/lib/analytics";
 import { useAccess } from "@/components/AccessProvider";
+import LegalLinks from "@/components/LegalLinks";
 
 type PlanType = "single" | "all";
 
@@ -261,6 +262,7 @@ export default function SuccessContent() {
             )}
           </ul>
         </div>
+        <LegalLinks className="mt-10 text-center" />
       </div>
     </div>
   );

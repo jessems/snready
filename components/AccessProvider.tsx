@@ -7,6 +7,7 @@ interface AccessContextType {
   authenticated: boolean;
   hasAccess: boolean;
   email: string | null;
+  isAdmin: boolean;
   plan: string | null;
   expiresAt: number | null;
   certifications: string[];
@@ -22,6 +23,7 @@ export function AccessProvider({ children }: { children: ReactNode }) {
   const [authenticated, setAuthenticated] = useState(false);
   const [hasAccess, setHasAccess] = useState(false);
   const [email, setEmail] = useState<string | null>(null);
+  const [isAdmin, setIsAdmin] = useState(false);
   const [plan, setPlan] = useState<string | null>(null);
   const [expiresAt, setExpiresAt] = useState<number | null>(null);
   const [certifications, setCertifications] = useState<string[]>([]);
@@ -30,6 +32,7 @@ export function AccessProvider({ children }: { children: ReactNode }) {
   const applySession = useCallback((session: Awaited<ReturnType<typeof getAuthSession>>) => {
     setAuthenticated(session.authenticated);
     setEmail(session.email || null);
+    setIsAdmin(session.isAdmin === true);
     setHasAccess(session.access.hasAccess);
     setPlan(session.access.plan || null);
     setExpiresAt(session.access.expiresAt || null);
@@ -42,6 +45,7 @@ export function AccessProvider({ children }: { children: ReactNode }) {
     } catch {
       setAuthenticated(false);
       setEmail(null);
+      setIsAdmin(false);
       setHasAccess(false);
       setPlan(null);
       setExpiresAt(null);
@@ -54,6 +58,7 @@ export function AccessProvider({ children }: { children: ReactNode }) {
     getAuthSession().then(applySession).catch(() => {
       setAuthenticated(false);
       setEmail(null);
+      setIsAdmin(false);
       setHasAccess(false);
       setPlan(null);
       setExpiresAt(null);
@@ -68,6 +73,7 @@ export function AccessProvider({ children }: { children: ReactNode }) {
     setAuthenticated(false);
     setHasAccess(false);
     setEmail(null);
+    setIsAdmin(false);
     setPlan(null);
     setExpiresAt(null);
     setCertifications([]);
@@ -80,7 +86,7 @@ export function AccessProvider({ children }: { children: ReactNode }) {
   }, [hasAccess, plan, certifications]);
 
   return (
-    <AccessContext.Provider value={{ authenticated, hasAccess, email, plan, expiresAt, certifications, loading, logout, refresh, hasAccessTo }}>
+    <AccessContext.Provider value={{ authenticated, hasAccess, email, isAdmin, plan, expiresAt, certifications, loading, logout, refresh, hasAccessTo }}>
       {children}
     </AccessContext.Provider>
   );

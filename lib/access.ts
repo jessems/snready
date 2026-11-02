@@ -5,6 +5,7 @@ type PlanType = "single" | "all";
 export interface AuthSession {
   authenticated: boolean;
   email?: string;
+  isAdmin?: boolean;
   access: {
     hasAccess: boolean;
     plan?: PlanType;
@@ -30,6 +31,7 @@ export async function getAuthSession(): Promise<AuthSession> {
       return {
         authenticated: true,
         email: data.email,
+        isAdmin: data.isAdmin === true,
         access: data.access || { hasAccess: false },
       };
     }

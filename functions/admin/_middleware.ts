@@ -1,21 +1,11 @@
 /// <reference types="@cloudflare/workers-types" />
 
 import { getSessionToken } from "../lib/session";
+import { getAdminEmails } from "../lib/admin";
 
 interface Env {
   SNREADY_ACCESS: KVNamespace;
   ADMIN_EMAILS?: string;
-}
-
-// Only these emails can access /admin/* routes. ADMIN_EMAILS can be a comma-separated Pages env var.
-const DEFAULT_ADMIN_EMAILS = ["jessems@gmail.com"];
-
-function getAdminEmails(env: Env): string[] {
-  const configured = env.ADMIN_EMAILS
-    ?.split(",")
-    .map((email) => email.trim().toLowerCase())
-    .filter(Boolean);
-  return configured?.length ? configured : DEFAULT_ADMIN_EMAILS;
 }
 
 export const onRequest: PagesFunction<Env> = async (context) => {

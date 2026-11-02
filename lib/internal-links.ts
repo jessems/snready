@@ -11,7 +11,6 @@ export const certToBlogPosts: Record<string, string[]> = {
     "csa-vs-cad-real-talk",
     "all-servicenow-certifications-complete-guide-2026",
     "why-servicenow-brain-dumps-will-fail-you",
-    "servicenow-practice-test-comparison-2026",
     "free-servicenow-practice-questions-2026",
   ],
   cad: [

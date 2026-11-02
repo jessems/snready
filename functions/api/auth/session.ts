@@ -1,7 +1,9 @@
 import { getSessionToken, getAccessData } from "../../lib/session";
+import { isAdminEmail } from "../../lib/admin";
 
 interface Env {
   SNREADY_ACCESS: KVNamespace;
+  ADMIN_EMAILS?: string;
 }
 
 export const onRequestGet: PagesFunction<Env> = async (context) => {
@@ -60,6 +62,7 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
     JSON.stringify({
       authenticated: true,
       email: session.email,
+      isAdmin: isAdminEmail(env, session.email),
       access,
     }),
     { headers: { "Content-Type": "application/json" } }
