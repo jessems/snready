@@ -3,7 +3,7 @@ import { getPricingSummary } from "@/lib/data";
 
 const groups = [
   { title: "Study", links: [["/csa", "CSA"], ["/cad", "CAD"], ["/cis-df", "Data Foundations"], ["/cis-itsm", "IT Service Management"], ["/certifications", "All certifications"]] },
-  { title: "Find your way", links: [["/study-guide", "Study guides"], ["/study-plan", "Build a study plan"], ["/certification-paths", "Career paths"], ["/compare", "Compare certifications"]] },
+  { title: "Find your way", links: [["/certifications", "Study guides"], ["/study-plan", "Build a study plan"], ["/certification-paths", "Career paths"], ["/compare", "Compare certifications"]] },
   { title: "Reference", links: [["/resources", "Free resources"], ["/blog", "From the blog"], ["/version-diff", "Release changes"], ["/courses", "Courses"], ["/pricing", "Pricing"], ["/about", "About SNReady"], ["mailto:jesse@snready.com", "Contact"]] },
 ];
 

@@ -3,8 +3,10 @@ import {
   INDEXABLE_COMPARE_SLUGS,
   INDEXABLE_DELTA_PAGES,
   INDEXABLE_TOPIC_PAGES,
+  isIndexableCertPage,
   isIndexableDeltaPage,
   isIndexablePath,
+  robotsForCertPage,
   robotsForDeltaPage,
   robotsForPath,
 } from "@/lib/seo-indexing";
@@ -35,7 +37,6 @@ describe("isIndexablePath (lib/seo-indexing.ts)", () => {
 
   it.each([
     "/csa/mock-exam",
-    "/csa/dumps",
     "/csa/practice-questions/incident-management",
     "/csa/delta/zurich",
     "/cta/delta/brazil",
@@ -58,6 +59,21 @@ describe("isIndexablePath (lib/seo-indexing.ts)", () => {
     for (const key of INDEXABLE_TOPIC_PAGES) expect(topics.has(key)).toBe(true);
     const deltas = new Set(getAllDeltaSlugs().map((d) => `${d.certification}/${d.release}`));
     for (const key of INDEXABLE_DELTA_PAGES) expect(deltas.has(key)).toBe(true);
+  });
+});
+
+describe("isIndexableCertPage (lib/seo-indexing.ts)", () => {
+  it("noindexes landing, hub and prep pages of a cert with no questions", () => {
+    for (const page of ["", "practice-questions", "prepare"]) {
+      expect(isIndexableCertPage("cta", page, 0)).toBe(false);
+      expect(robotsForCertPage("cta", page, 0)).toEqual({ index: false, follow: true });
+      expect(isIndexableCertPage("csa", page, 216)).toBe(true);
+      expect(robotsForCertPage("csa", page, 216)).toEqual({ index: true, follow: true });
+    }
+  });
+
+  it("still applies the path rules", () => {
+    expect(isIndexableCertPage("csa", "mock-exam", 216)).toBe(false);
   });
 });
 
@@ -104,5 +120,29 @@ describe("sitemap", () => {
     }
     expect(urls.some((u) => u.includes("/delta/zurich"))).toBe(false);
     expect(urls).not.toContain(`${base}/cta/delta/brazil`);
+  });
+
+  it("leaves out the pages of certs with no questions", async () => {
+    const urls = (await sitemap()).map((e) => e.url);
+    const base = "https://snready.com";
+    for (const page of ["", "/practice-questions", "/prepare"]) {
+      expect(urls).not.toContain(`${base}/cta${page}`);
+      expect(urls).toContain(`${base}/csa${page}`);
+    }
+  });
+
+  it("lists the practice questions index and every study guide, with no duplicates", async () => {
+    const urls = (await sitemap()).map((e) => e.url);
+    const base = "https://snready.com";
+    expect(urls).toContain(`${base}/practice-questions`);
+    for (const slug of ["csa", "cad", "cpoa", "cis-df", "cis-csm", "cis-discovery", "cis-ham", "cis-itsm", "cis-sam", "cis-sm", "cis-spm", "cis-tprm"]) {
+      expect(urls).toContain(`${base}/${slug}/study-guide`);
+    }
+    expect(new Set(urls).size).toBe(urls.length);
+  });
+
+  it("dates delta pages by their questions, never before the last review", async () => {
+    const entry = (await sitemap()).find((e) => e.url.endsWith("/csa/delta/brazil"));
+    expect(entry?.lastModified).toEqual(new Date("2026-10-21T00:00:00.000Z"));
   });
 });

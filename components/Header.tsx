@@ -9,7 +9,6 @@ import { LoginModal } from "./LoginModal";
 const navigation = [
   ["/certifications", "Certifications"],
   ["/practice-questions", "Practice"],
-  ["/study-guide", "Study guides"],
   ["/courses", "Courses"],
   ["/resources", "Resources"],
   ["/pricing", "Pricing"],

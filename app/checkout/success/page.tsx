@@ -5,6 +5,7 @@ import SuccessContent from "./SuccessContent";
 export const metadata: Metadata = {
   title: "Payment Successful",
   description: "Thank you for your purchase! Your access is now active.",
+  robots: { index: false, follow: true },
 };
 
 function LoadingState() {

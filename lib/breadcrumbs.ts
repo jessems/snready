@@ -33,7 +33,7 @@ export const breadcrumbs = {
   certification(certName: string, certSlug: string): BreadcrumbItem[] {
     return [
       { name: "Home", url: "/" },
-      { name: "Certifications", url: "/#certifications" },
+      { name: "Certifications", url: "/certifications" },
       { name: certName, url: `/${certSlug}` },
     ];
   },
@@ -42,14 +42,6 @@ export const breadcrumbs = {
     return [
       { name: "Home", url: "/" },
       { name: "Courses", url: "/courses" },
-    ];
-  },
-
-  category(categoryName: string, categorySlug: string): BreadcrumbItem[] {
-    return [
-      { name: "Home", url: "/" },
-      { name: "Certifications", url: "/#certifications" },
-      { name: categoryName, url: `/certifications/category/${categorySlug}` },
     ];
   },
 

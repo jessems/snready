@@ -5,6 +5,7 @@ import CancelContent from "./CancelContent";
 export const metadata: Metadata = {
   title: "Checkout Paused",
   description: "Your payment was cancelled. No charges were made — resume checkout or keep browsing SNReady practice questions.",
+  robots: { index: false, follow: true },
 };
 
 function LoadingState() {

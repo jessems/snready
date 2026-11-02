@@ -13,6 +13,7 @@ import {
 } from "@/lib/data";
 import { generateBreadcrumbJsonLd } from "@/lib/breadcrumbs";
 import { getCanonicalUrl } from "@/lib/seo";
+import { robotsForCertPage } from "@/lib/seo-indexing";
 import certificationSources from "@/data/coverage/certification-sources.json";
 import type { UserExperience } from "@/types";
 
@@ -68,6 +69,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title,
     description,
+    robots: robotsForCertPage(slug, "prepare", getTotalQuestionCount(slug)),
     alternates: {
       canonical: getCanonicalUrl(`/${slug}/prepare`),
     },
@@ -243,7 +245,7 @@ export default async function ExamPrepPage({ params }: Props) {
 
   const breadcrumbItems = [
     { name: "Home", url: "/" },
-    { name: "Certifications", url: "/#certifications" },
+    { name: "Certifications", url: "/certifications" },
     { name: certification.name, url: `/${slug}` },
     { name: "Exam Prep", url: `/${slug}/prepare` },
   ];

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
+  // Interactive tool: useful for visitors, nothing for search to index.
+  robots: { index: false, follow: true },
   title: "ServiceNow Study Plan Generator | Free Week-by-Week Schedule",
   description:
     "Create a personalized ServiceNow certification study plan. Get a week-by-week schedule for CSA, CAD, CIS-DF, CIS-ITSM, and 15+ certifications based on your timeline and availability.",

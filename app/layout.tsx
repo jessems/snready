@@ -62,11 +62,6 @@ export default function RootLayout({
     "@type": "WebSite",
     name: "SNReady",
     url: "https://snready.com",
-    potentialAction: {
-      "@type": "SearchAction",
-      target: "https://snready.com/#certifications?q={search_term_string}",
-      "query-input": "required name=search_term_string"
-    }
   };
 
   const organizationSchema = {
@@ -74,6 +69,7 @@ export default function RootLayout({
     "@type": "Organization",
     name: "SNReady",
     url: "https://snready.com",
+    logo: "https://snready.com/logo.png",
   };
 
   return (
