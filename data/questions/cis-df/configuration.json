@@ -6,53 +6,52 @@
       "id": "cis-df-configuration-001",
       "certification": "cis-df",
       "topic": "configuration",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "In the CSDM Foundation domain, what is the primary purpose of the lifecycle stage and stage status attributes introduced in CSDM 4?",
+      "question": "A CMDB manager finds that teams record asset and CI status in different fields, so reports disagree about which items are in use or retired. Which Foundation domain feature does CSDM provide to fix this?",
       "options": [
         {
           "id": "a",
-          "text": "To replace all existing CI attributes with a single status field"
+          "text": "Value streams owned by the chief strategist"
         },
         {
           "id": "b",
-          "text": "To provide standardized, non-customizable lifecycle tracking for assets and CIs"
+          "text": "Life cycle stage and life cycle stage status pairs"
         },
         {
           "id": "c",
-          "text": "To allow customers to create unlimited custom status values"
+          "text": "CMDB groups built from saved Query Builder queries"
         },
         {
           "id": "d",
-          "text": "To sync status values automatically between different ServiceNow instances"
+          "text": "Product model classes stored in the cmdb_model table"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "The lifecycle stage and stage status attributes were introduced in CSDM 4 to solve the problem of having nine different state/status attributes that didn't sync well, and over 50% of customers customizing them. The new attributes are standardized and non-customizable to ensure ServiceNow can develop consistent functionality around them. See: https://docs.servicenow.com/bundle/zurich-servicenow-platform/page/product/configuration-management/concept/csdm-lifecycle.html",
+        "correct": "The Foundation domain defines life-cycle value pairs (Life cycle stage and Life cycle stage status) that track the life cycles of products, assets, contracts, CIs, locations and other objects. Using these standard values consistently lets reporting reflect the actual states of CIs, such as usage, availability and end of support. See https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/foundation-domain.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "The lifecycle attributes don't replace all existing attributes - the nine legacy state/status fields still exist. The new attributes work alongside them.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=62ebf27e53f26ed0c2245a01a0490e19&child_id=ad3299774787ae98c00af235126d4368&spa=1"
+            "explanation": "A value stream is the set of actions that add value to a customer from initial request to realization of value. It describes how value is delivered, not the status of individual assets or CIs.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/foundation-domain.html"
           },
           {
             "choiceId": "c",
-            "explanation": "The opposite is true - lifecycle stage and stage status values cannot be customized. ServiceNow provides the out-of-box choices and reviews customer requests for additions.",
-            "reference": "https://docs.servicenow.com/bundle/zurich-servicenow-platform/page/product/configuration-management/concept/csdm-lifecycle.html"
+            "explanation": "A CMDB group is a collection of CIs based on saved Query Builder queries, encoded queries or manual entries, used to act on many CIs at once. It does not give CIs a standard status.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/foundation-domain.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Instance synchronization is not the purpose of lifecycle attributes. They are designed to standardize status tracking within a single instance.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=62ebf27e53f26ed0c2245a01a0490e19&child_id=ad3299774787ae98c00af235126d4368&spa=1"
+            "explanation": "Product models in cmdb_model (and its product model classes) describe a specific version or configuration of a product and are referenced by CIs through Model ID. They do not track where each CI is in its life cycle.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/foundation-domain.html"
           }
         ]
       },
       "references": [
-        "CSDM 5 White Paper",
-        "ServiceNow CMDB Documentation"
+        "https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/foundation-domain.html"
       ],
       "isFree": true,
       "source": {
@@ -82,68 +81,69 @@
         "tags": [
           "lifecycle",
           "CSDM",
-          "stage status",
-          "CMDB"
+          "life cycle stage status",
+          "Foundation domain"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T00:00:00Z",
-        "version": "1.0",
-        "release": "Zurich",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "cis-df-configuration-002",
       "certification": "cis-df",
       "topic": "configuration",
-      "cognitiveLevel": "understanding",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "Why is the Business Process CI class placed in the Foundation domain rather than other CSDM domains?",
+      "question": "A process owner at a bank is recording the credit check process as a sub-process of the customer onboarding process. How should this hierarchy be captured in the CSDM Foundation domain?",
       "options": [
         {
           "id": "a",
-          "text": "Because business processes are always created before any other CIs"
+          "text": "Add both processes as members of one CMDB group"
         },
         {
           "id": "b",
-          "text": "Because it can reference objects outside the CMDB, such as locations and users"
+          "text": "Set the Parent attribute on the credit check process"
         },
         {
           "id": "c",
-          "text": "Because it is the most commonly used CI class in ServiceNow"
+          "text": "Align both processes with one shared value stream"
         },
         {
           "id": "d",
-          "text": "Because business processes do not have relationships with other CIs"
+          "text": "Relate both processes through one shared contract record"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "The Business Process CI is unique because it can reference multiple elements throughout the entire platform that are not in the CMDB, including locations, documentation, and users critical to the process. This cross-platform referencing capability is why it belongs in the Foundation domain. See: https://docs.servicenow.com/bundle/zurich-servicenow-platform/page/product/configuration-management/concept/csdm-foundation-domain.html",
+        "correct": "Business processes are stored in the cmdb_ci_business_process table, and in a parent-child relationship a business process can be identified by using its parent attribute as a reference to a parent business process. Setting Parent on the credit check process to customer onboarding records the hierarchy. See https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/foundation-domain.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "The timing of creation is not the reason. Business processes can be created at any point in the implementation.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=62ebf27e53f26ed0c2245a01a0490e19&child_id=ad3299774787ae98c00af235126d4368&spa=1"
+            "explanation": "A CMDB group is a collection of CIs used to apply an action to all members at once. It does not express that one process is a child of another.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/foundation-domain.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Frequency of use does not determine domain placement. The Foundation domain is about referential data that supports other domains.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=62ebf27e53f26ed0c2245a01a0490e19&child_id=ad3299774787ae98c00af235126d4368&spa=1"
+            "explanation": "A value stream is aligned with your organization's business processes, but it describes the actions that add value to a customer. It is not how a parent-child link between two processes is recorded.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/foundation-domain.html"
           },
           {
             "choiceId": "d",
-            "explanation": "The opposite is true - business processes have extensive relationships, including to non-CMDB objects, which is exactly why they're in Foundation.",
-            "reference": "https://docs.servicenow.com/bundle/zurich-servicenow-platform/page/product/configuration-management/reference/cmdb-csdm-business-process.html"
+            "explanation": "A contract is a binding agreement between two parties, stored in [ast_contract], and is not a CI. In Service Level Management, contracts group together SLAs for a single vendor or customer and the related CIs, locations, groups and users, not business process hierarchies.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/foundation-domain.html"
           }
         ]
       },
       "references": [
-        "CSDM 5 White Paper",
-        "Business Continuity Management"
+        "https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/foundation-domain.html"
       ],
       "isFree": true,
       "source": {
@@ -165,7 +165,7 @@
         "domainPercentage": 15,
         "subtopics": [
           "CMDB schema",
-          "CMDB relationships"
+          "business process"
         ],
         "course": "common-service-data-model-csdm-fundamentals",
         "module": "CSDM Presentations",
@@ -173,68 +173,70 @@
         "tags": [
           "business process",
           "Foundation domain",
-          "CMDB",
-          "CI classes"
+          "parent",
+          "CMDB"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T00:00:00Z",
-        "version": "1.0",
-        "release": "Zurich",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "cis-df-configuration-003",
       "certification": "cis-df",
       "topic": "configuration",
-      "cognitiveLevel": "understanding",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What is the key difference between lifecycle stages for tangible (physical) CIs versus intangible (logical) CIs in CSDM?",
+      "question": "A configuration manager compares the life cycle stage choices for a laptop CI with those for a software license, which is an intangible/logical item. Which stages exist for tangible/physical CIs but not for intangible/logical entities?",
       "options": [
         {
           "id": "a",
-          "text": "Tangible CIs have more stages because they require physical disposal at end of life"
+          "text": "Defective and Missing"
         },
         {
           "id": "b",
-          "text": "Intangible CIs have more stages to track software licensing"
+          "text": "Ideation and End of Life"
         },
         {
           "id": "c",
-          "text": "Both types share identical lifecycle stages and statuses"
+          "text": "Deploy and End of Operation"
         },
         {
           "id": "d",
-          "text": "Only tangible CIs can use the operational stage"
+          "text": "Purchase and Inventory"
         }
       ],
       "correctAnswers": [
         "a"
       ],
       "explanation": {
-        "correct": "Tangible/physical CIs (like servers and hardware) include an 'End of Life' stage because they require physical disposal, while intangible/logical CIs (like business services and applications) don't need disposal stages since you don't physically dispose of logical objects. See: https://docs.servicenow.com/bundle/zurich-servicenow-platform/page/product/configuration-management/concept/csdm-lifecycle.html",
+        "correct": "The tangible/physical life cycle includes a Defective stage (devices that have failed and need repair or replacement) and a Missing stage (Lost or Stolen). The intangible/logical life cycle has Ideation, Purchase, Inventory, Design, Deploy, Operational, End of Operation and End of Life, but no Defective or Missing stage. See https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/csdm-lifecycle-df-tangible-physical.html",
         "wrongAnswers": [
           {
             "choiceId": "b",
-            "explanation": "Software licensing is tracked through SAM (Software Asset Management), not through additional lifecycle stages for logical CIs.",
-            "reference": "https://docs.servicenow.com/bundle/zurich-it-asset-management/page/product/software-asset-management2/concept/c_SoftwareAssetManagement.html"
+            "explanation": "Both life cycles include Ideation and End of Life. For intangible items, End of Life holds the Retired and Obsolete statuses.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/csdm-lifecycle-df-intangible-logical.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Different CI types have different lifecycle stage choices. Physical CIs have stages like 'End of Life' that logical CIs don't have.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=62ebf27e53f26ed0c2245a01a0490e19&child_id=ad3299774787ae98c00af235126d4368&spa=1"
+            "explanation": "Both life cycles include Deploy (with a Test status for software) and End of Operation (with an On Hold status).",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/csdm-lifecycle-df-intangible-logical.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Both tangible and intangible CIs can use the operational stage. The difference is in stages like End of Life for physical disposal.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=62ebf27e53f26ed0c2245a01a0490e19&child_id=ad3299774787ae98c00af235126d4368&spa=1"
+            "explanation": "Both life cycles include Purchase (On Order, Preallocated) and Inventory. For software, Inventory means licenses are available for assignment.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/csdm-lifecycle-df-intangible-logical.html"
           }
         ]
       },
       "references": [
-        "CSDM 5 White Paper",
-        "CMDB Lifecycle Documentation"
+        "https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/csdm-lifecycle-df-tangible-physical.html",
+        "https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/csdm-lifecycle-df-intangible-logical.html"
       ],
       "isFree": true,
       "source": {
@@ -271,9 +273,11 @@
       },
       "meta": {
         "generatedAt": "2026-02-04T00:00:00Z",
-        "version": "1.0",
-        "release": "Zurich",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {

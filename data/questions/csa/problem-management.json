@@ -188,52 +188,54 @@
       "id": "csa-pm-003",
       "certification": "csa",
       "topic": "problem-management",
-      "cognitiveLevel": "understanding",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What is the difference between reactive and proactive problem detection?",
+      "question": "While assessing a new problem, a problem coordinator finds an existing problem that already covers the same issue. What should the coordinator do with the new problem?",
       "options": [
         {
           "id": "a",
-          "text": "Reactive requires approval; proactive does not"
+          "text": "Click Confirm to start root cause analysis on it"
         },
         {
           "id": "b",
-          "text": "Reactive is triggered by incidents; proactive identifies problems through trend analysis before incidents occur"
+          "text": "Click Mark Duplicate of the existing problem"
         },
         {
           "id": "c",
-          "text": "Reactive is automated; proactive is manual"
+          "text": "Click Cancel because it is not a valid problem"
         },
         {
           "id": "d",
-          "text": "There is no difference between them"
+          "text": "Click Accept Risk to close it without a fix"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "If a problem is detected reactively, one or more incidents have already taken place, prompting an investigation. Proactive problem detection identifies problems through trend analysis or other means before incidents occur. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=0ea249d947dc9a5089c7acc9126d4364&spa=1",
+        "correct": "In the Assess state, the documented action when there is an existing problem with a similar issue is Mark Duplicate. Marking the problem as a duplicate of an existing problem closes it, and its related records are moved to the existing problem. See https://www.servicenow.com/docs/r/it-service-management/problem-management/assess-a-problem.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Approval requirements don't define reactive vs proactive detection.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=0ea249d947dc9a5089c7acc9126d4364&spa=1"
+            "explanation": "Confirm is for a problem that is valid and requires a resolution. It moves the problem to Root Cause Analysis, which would duplicate the work already happening on the existing problem.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/problem-management/assess-a-problem.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Both reactive and proactive can be automated or manual.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=0ea249d947dc9a5089c7acc9126d4364&spa=1"
+            "explanation": "Cancel is the documented action when the problem is not a valid problem. Here the issue is real but already covered by another problem.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/problem-management/exploring-problem-management.html"
           },
           {
             "choiceId": "d",
-            "explanation": "There is a clear difference in timing - reactive is after incidents, proactive is before.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=0ea249d947dc9a5089c7acc9126d4364&spa=1"
+            "explanation": "Accept Risk is used during root cause analysis when there is no permanent resolution to the problem. It is not the way to handle a problem that duplicates another.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/problem-management/investigate-root-cause.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Problem Detection"
+        "https://www.servicenow.com/docs/r/it-service-management/problem-management/assess-a-problem.html",
+        "https://www.servicenow.com/docs/r/it-service-management/problem-management/exploring-problem-management.html",
+        "https://www.servicenow.com/docs/r/it-service-management/problem-management/investigate-root-cause.html"
       ],
       "isFree": true,
       "source": {
@@ -254,36 +256,38 @@
         "domainSlug": "problem-management",
         "domainPercentage": 8,
         "subtopics": [
-          "Problem vs Incident"
+          "Problem states"
         ],
         "tags": [
-          "reactive",
-          "proactive",
-          "problem detection"
+          "assess",
+          "mark duplicate",
+          "duplicate problem"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "csa-pm-004",
       "certification": "csa",
       "topic": "problem-management",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "Which role is required to reopen a problem record in ServiceNow?",
+      "question": "A problem was closed with the resolution code Fix Applied, but the same incidents have started again. With default Problem Management properties, which role can re-analyze this completed problem?",
       "options": [
         {
           "id": "a",
-          "text": "problem_admin"
+          "text": "problem_task_analyst"
         },
         {
           "id": "b",
-          "text": "problem_task_analyst"
+          "text": "problem_coordinator"
         },
         {
           "id": "c",
@@ -291,34 +295,36 @@
         },
         {
           "id": "d",
-          "text": "itil"
+          "text": "sn_problem_read"
         }
       ],
       "correctAnswers": [
         "c"
       ],
       "explanation": {
-        "correct": "The problem_manager role is required to reopen a problem record. This user can create and update problems, problem tasks, and related records, administer problem properties, and is the only role that can reopen a problem record. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=0ea249d947dc9a5089c7acc9126d4364&spa=1",
+        "correct": "The property Who can Re-analyze a Completed Problem? (problem.closed.role.reanalyze_from_completed) has the default value problem_manager. Re-analyze reopens the problem and changes its state to Root Cause Analysis. The problem_manager role is responsible for the overall problem management process. See https://www.servicenow.com/docs/r/it-service-management/problem-management/problem-mgmt-properties.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "problem_admin can create, update, and delete problems but cannot reopen them.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=0ea249d947dc9a5089c7acc9126d4364&spa=1"
+            "explanation": "problem_task_analyst works on a problem task and manages it through its life cycle. It is not the default role allowed to re-analyze a completed problem.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/problem-management/installed-with-madrid-best-prac.html"
           },
           {
             "choiceId": "b",
-            "explanation": "problem_task_analyst can only create and update problem tasks, not reopen problems.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=0ea249d947dc9a5089c7acc9126d4364&spa=1"
+            "explanation": "problem_coordinator works on a problem or problem task, but the default value of the re-analyze property is problem_manager, which contains problem_coordinator rather than the other way round.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/problem-management/problem-mgmt-properties.html"
           },
           {
             "choiceId": "d",
-            "explanation": "The itil role is a general ITSM role and doesn't specifically grant problem reopen capability.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=0ea249d947dc9a5089c7acc9126d4364&spa=1"
+            "explanation": "sn_problem_read gives read access to the Problem Management application and related records, so it cannot re-analyze a problem.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/problem-management/prob-roles-instld-itsm-roles.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Problem Management Roles"
+        "https://www.servicenow.com/docs/r/it-service-management/problem-management/problem-mgmt-properties.html",
+        "https://www.servicenow.com/docs/r/it-service-management/problem-management/installed-with-madrid-best-prac.html",
+        "https://www.servicenow.com/docs/r/it-service-management/problem-management/prob-roles-instld-itsm-roles.html"
       ],
       "isFree": false,
       "source": {
@@ -339,71 +345,78 @@
         "domainSlug": "problem-management",
         "domainPercentage": 8,
         "subtopics": [
-          "Problem states"
+          "Problem states",
+          "Roles"
         ],
         "tags": [
           "problem_manager",
-          "roles",
-          "reopen problem"
+          "re-analyze",
+          "reopen problem",
+          "problem properties"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "csa-pm-005",
       "certification": "csa",
       "topic": "problem-management",
-      "cognitiveLevel": "understanding",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What are the three main stages of the problem lifecycle?",
+      "question": "A problem coordinator assesses a new problem, decides it is valid and needs a resolution, and clicks Confirm. What happens to the problem state?",
       "options": [
         {
           "id": "a",
-          "text": "Create, Assign, Close"
+          "text": "It moves to the Fix in Progress state"
         },
         {
           "id": "b",
-          "text": "Detection and Logging, Investigation and Diagnosis, Resolution and Closure"
+          "text": "It moves to the Root Cause Analysis state"
         },
         {
           "id": "c",
-          "text": "New, In Progress, Resolved"
+          "text": "It stays in the Assess state until a task is assigned"
         },
         {
           "id": "d",
-          "text": "Submit, Review, Approve"
+          "text": "It moves to the Known Error state"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "The lifecycle for managing problems starts with detecting and logging them, then moving into investigation and diagnosis, and finally concluding with resolution and closure. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=0ea249d947dc9a5089c7acc9126d4364&spa=1",
+        "correct": "When a problem is valid and requires a resolution, the coordinator clicks Confirm during assessment. After that confirmation, the problem enters the Root Cause Analysis state. The state model runs New, Assess, Root Cause Analysis, Fix in Progress, Resolved, and Closed. See https://www.servicenow.com/docs/r/it-service-management/problem-management/assess-a-problem.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "These are actions, not the formal problem lifecycle stages.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=0ea249d947dc9a5089c7acc9126d4364&spa=1"
+            "explanation": "Fix in Progress comes later: during root cause analysis, clicking Fix changes the state to Fix in Progress so a change request can apply the permanent fix.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/problem-management/investigate-root-cause.html"
           },
           {
             "choiceId": "c",
-            "explanation": "These are incident states, not the problem lifecycle stages.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=0ea249d947dc9a5089c7acc9126d4364&spa=1"
+            "explanation": "Confirm moves the problem out of Assess directly. The documentation states that the confirmation moves the problem to the Root Cause Analysis state, with no task needed first.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/problem-management/exploring-problem-management.html"
           },
           {
             "choiceId": "d",
-            "explanation": "These relate more to approval processes, not problem lifecycle.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=0ea249d947dc9a5089c7acc9126d4364&spa=1"
+            "explanation": "Known Error is one of the legacy states for existing customers (Open, Pending Change, Known Error, Closed or Resolved). The Madrid state model uses New, Assess, Root Cause Analysis, Fix in Progress, Resolved, and Closed.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/problem-management/problem-form.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Problem Lifecycle"
+        "https://www.servicenow.com/docs/r/it-service-management/problem-management/assess-a-problem.html",
+        "https://www.servicenow.com/docs/r/it-service-management/problem-management/investigate-root-cause.html",
+        "https://www.servicenow.com/docs/r/it-service-management/problem-management/exploring-problem-management.html",
+        "https://www.servicenow.com/docs/r/it-service-management/problem-management/problem-form.html"
       ],
       "isFree": false,
       "source": {
@@ -427,16 +440,19 @@
           "Problem states"
         ],
         "tags": [
-          "problem lifecycle",
-          "detection",
-          "resolution"
+          "problem state model",
+          "assess",
+          "confirm",
+          "root cause analysis"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -534,50 +550,51 @@
       "topic": "problem-management",
       "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "Multiple users report the same network connectivity issue. What should the service desk do?",
+      "question": "A problem is already open for a recurring network connectivity issue, and the service desk logs several new incidents describing the same issue. How should these incidents be handled?",
       "options": [
         {
           "id": "a",
-          "text": "Create separate incidents and wait for them to resolve themselves"
+          "text": "Create a separate problem for each new incident"
         },
         {
           "id": "b",
-          "text": "Create incidents and a problem record to investigate the root cause"
+          "text": "Add the incidents to the existing problem record"
         },
         {
           "id": "c",
-          "text": "Ignore the reports until a manager intervenes"
+          "text": "Create a problem task for each of the new incidents"
         },
         {
           "id": "d",
-          "text": "Submit a change request immediately"
+          "text": "Raise a change request from each of the incidents"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "A problem can arise when the same or similar incidents occur repeatedly. Creating a problem record allows investigation of the root cause while incidents handle the immediate user impact. The problem investigation aims to prevent future occurrences. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=0ea249d947dc9a5089c7acc9126d4364&spa=1",
+        "correct": "ServiceNow recommends adding multiple incidents to a problem to avoid creating multiple problems for incidents that have the same issue. On the problem, the Incidents related list has an Add button, and the selected incidents then appear under the Incidents tab. See https://www.servicenow.com/docs/r/it-service-management/problem-management/add-multiple-incidents-to-problem.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Recurring incidents indicate a potential underlying problem that should be investigated.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=0ea249d947dc9a5089c7acc9126d4364&spa=1"
+            "explanation": "Separate problems are what adding incidents to one problem is meant to avoid when the incidents have the same issue.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/problem-management/add-multiple-incidents-to-problem.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Service desk should actively manage and escalate recurring issues.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=0ea249d947dc9a5089c7acc9126d4364&spa=1"
+            "explanation": "A problem task is created to initiate root cause analysis, for example by assigning a Root Cause Analysis task to a team. It is not used to link each incident.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/problem-management/exploring-problem-management.html"
           },
           {
             "choiceId": "d",
-            "explanation": "A change request should follow after the root cause is identified, not before.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=0ea249d947dc9a5089c7acc9126d4364&spa=1"
+            "explanation": "A change request is raised from the problem once the root cause can be fixed. It is not how new incidents with the same issue are grouped.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/problem-management/exploring-problem-management.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Problem Creation"
+        "https://www.servicenow.com/docs/r/it-service-management/problem-management/add-multiple-incidents-to-problem.html",
+        "https://www.servicenow.com/docs/r/it-service-management/problem-management/exploring-problem-management.html"
       ],
       "isFree": false,
       "source": {
@@ -598,20 +615,21 @@
         "domainSlug": "problem-management",
         "domainPercentage": 8,
         "subtopics": [
-          "Related incidents",
-          "Problem vs Incident"
+          "Related incidents"
         ],
         "tags": [
-          "recurring incidents",
-          "problem creation",
-          "root cause"
+          "related incidents",
+          "add incidents",
+          "recurring incidents"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -620,23 +638,23 @@
       "topic": "problem-management",
       "cognitiveLevel": "knowledge",
       "type": "multiple_select",
-      "question": "What tabs are available on the Problem form for documenting investigation details? (Choose two)",
+      "question": "A problem coordinator opens the Analysis Information section of a problem form to document what the investigation found. Which two of these fields are in that section? (Choose two)",
       "options": [
         {
           "id": "a",
-          "text": "Analysis Information"
+          "text": "Workaround"
         },
         {
           "id": "b",
-          "text": "Service Level Agreements"
+          "text": "Fix notes"
         },
         {
           "id": "c",
-          "text": "Resolution Information"
+          "text": "Cause notes"
         },
         {
           "id": "d",
-          "text": "Approval History"
+          "text": "Resolved by"
         }
       ],
       "correctAnswers": [
@@ -644,22 +662,22 @@
         "c"
       ],
       "explanation": {
-        "correct": "The form has tabs including Analysis Information (for root cause and workarounds), Resolution Information (for permanent fix details), and Other Information (for reporter details). The Notes tab is also available for work notes. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=0ea249d947dc9a5089c7acc9126d4364&spa=1",
+        "correct": "The problem form documentation lists two fields under Analysis Information: Workaround, the method used to overcome the problem (which can be shared with Communicate Workaround), and Cause notes, which record what caused the problem. See https://www.servicenow.com/docs/r/it-service-management/problem-management/problem-form.html",
         "wrongAnswers": [
           {
             "choiceId": "b",
-            "explanation": "SLA tracking is more relevant to incidents than problems.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=0ea249d947dc9a5089c7acc9126d4364&spa=1"
+            "explanation": "Fix notes, describing how the problem was fixed, are under the Resolution Information section, not Analysis Information.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/problem-management/problem-form.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Approval History is used in Change Management, not Problem forms.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=0ea249d947dc9a5089c7acc9126d4364&spa=1"
+            "explanation": "Resolved by is a read-only field under Resolution Information that shows the user who resolved the issue.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/problem-management/problem-form.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Problem Form"
+        "https://www.servicenow.com/docs/r/it-service-management/problem-management/problem-form.html"
       ],
       "isFree": false,
       "source": {
@@ -680,63 +698,70 @@
         "domainSlug": "problem-management",
         "domainPercentage": 8,
         "subtopics": [
-          "Root cause analysis"
+          "Root cause analysis",
+          "Problem form"
         ],
         "tags": [
           "problem form",
-          "analysis",
-          "resolution"
+          "analysis information",
+          "workaround",
+          "cause notes"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "csa-pm-009",
       "certification": "csa",
       "topic": "problem-management",
-      "cognitiveLevel": "comprehension",
+      "cognitiveLevel": "understanding",
       "type": "multiple_choice",
-      "question": "How does the CMDB support problem management processes?",
+      "question": "A problem coordinator sets the Configuration item field on a new problem to a database server CI from the CMDB. According to the problem form, what does the class of that CI identify?",
       "options": [
         {
           "id": "a",
-          "text": "By automatically resolving problems when CIs are updated"
+          "text": "The priority, such as Critical or Planning"
         },
         {
           "id": "b",
-          "text": "By providing insights for troubleshooting through CI relationships and dependencies"
+          "text": "The type of problem, such as database"
         },
         {
           "id": "c",
-          "text": "By creating problem records whenever a CI is added"
+          "text": "The state, such as Assess or Fix in Progress"
         },
         {
           "id": "d",
-          "text": "By generating root cause analysis reports automatically"
+          "text": "The resolution code, such as Risk Accepted"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "The CMDB stores information about all components of an information system. Every service management process involves the CMDB. If there's an issue and you need to find the root cause, the CMDB provides valuable insights for troubleshooting through CI relationships.",
+        "correct": "On the problem form, the Configuration item field holds the CI that the problem applies to, and the CI class of the selected configuration item identifies the type of problem, for example, hardware, network, or database. See https://www.servicenow.com/docs/r/it-service-management/problem-management/problem-form.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "The CMDB provides information for troubleshooting but doesn't automatically resolve problems."
+            "explanation": "Priority is read-only and is set according to the Impact and Urgency values, not by the CI class.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/problem-management/problem-form.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Adding a CI doesn't automatically create problem records."
+            "explanation": "State is a read-only field whose value changes as the problem proceeds from one state to another. The CI class does not set it.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/problem-management/problem-form.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Root cause analysis requires human investigation; the CMDB provides data to support it."
+            "explanation": "Resolution code indicates whether the problem is resolved, a fix is applied, a duplicate is available, or the coordinator accepts the risk. The CI class does not set it.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/problem-management/problem-form.html"
           }
         ]
       },
@@ -754,21 +779,27 @@
         "domainSlug": "problem-management",
         "domainPercentage": 8,
         "subtopics": [
-          "CMDB in problem management"
+          "CMDB in problem management",
+          "Problem form"
         ],
         "tags": [
           "CMDB",
-          "problem management",
-          "root cause",
-          "troubleshooting"
+          "configuration item",
+          "CI class",
+          "problem form"
         ]
       },
       "meta": {
         "generatedAt": "2026-03-16T02:00:00Z",
         "version": "1.1",
-        "release": "Xanadu",
-        "reviewed": false
-      }
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/it-service-management/problem-management/problem-form.html"
+      ]
     },
     {
       "id": "csa-pm-010",
@@ -859,7 +890,7 @@
       "topic": "problem-management",
       "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "A database server failure causes an HR requisition system to stop working. Which CMDB feature would best help identify all affected services?",
+      "question": "A problem coordinator suspects that a failed database server is behind outages of an HR application. Which feature graphically shows the server along with the application and business services it supports?",
       "options": [
         {
           "id": "a",
@@ -867,34 +898,37 @@
         },
         {
           "id": "b",
-          "text": "Schema Map"
+          "text": "Schema map"
         },
         {
           "id": "c",
-          "text": "Dependency View map"
+          "text": "Dependency Views"
         },
         {
           "id": "d",
-          "text": "Tables and Columns module"
+          "text": "Tables & Columns"
         }
       ],
       "correctAnswers": [
         "c"
       ],
       "explanation": {
-        "correct": "The Dependency View map shows upstream and downstream dependencies between configuration items. It would show that losing the database server affects the application, which in turn disrupts services like the HR requisition system.",
+        "correct": "Dependency Views graphically displays an infrastructure view for a CI and the application or business services that it is part of and that it supports. The map can show both upstream and downstream dependencies for the root CI, and gives access to related incidents, problems, and changes. Note that from Brazil, Dependency Views is being prepared for future deprecation, with Unified Map as the newer experience. See https://www.servicenow.com/docs/r/servicenow-platform/dependency-views/c_BusinesssServiceManagementMaps.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "CI Class Manager shows the class hierarchy and metadata, not runtime dependencies."
+            "explanation": "CI Class Manager is used to view, create, or edit CI class definitions and class settings, not to map one CI to the services it supports.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/configuration-management-database-cmdb/ci-class-manager-landing-page.html"
           },
           {
             "choiceId": "b",
-            "explanation": "Schema Map shows table relationships in the database, not CI dependencies."
+            "explanation": "A schema map shows parts of the database schema for a selected table. It does not show how a specific server supports business services.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/t_GenerateASchemaMap.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Tables and Columns module shows database structure, not service dependencies."
+            "explanation": "Tables & Columns, under System Definition, is where you select a table to view its schema. It works with tables, not with CI relationships.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/t_GenerateASchemaMap.html"
           }
         ]
       },
@@ -912,21 +946,30 @@
         "domainSlug": "problem-management",
         "domainPercentage": 8,
         "subtopics": [
-          "Impact analysis"
+          "Impact analysis",
+          "CMDB in problem management"
         ],
         "tags": [
-          "dependency view",
+          "dependency views",
           "impact analysis",
           "CMDB",
-          "service dependencies"
+          "CI relationships"
         ]
       },
       "meta": {
         "generatedAt": "2026-03-16T02:00:00Z",
         "version": "1.1",
-        "release": "Xanadu",
-        "reviewed": false
-      }
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/servicenow-platform/dependency-views/c_BusinesssServiceManagementMaps.html",
+        "https://www.servicenow.com/docs/r/servicenow-platform/dependency-views/c_NextGenBSMMaps.html",
+        "https://www.servicenow.com/docs/r/servicenow-platform/configuration-management-database-cmdb/ci-class-manager-landing-page.html",
+        "https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/t_GenerateASchemaMap.html"
+      ]
     },
     {
       "id": "csa-pm-012",
@@ -1014,50 +1057,56 @@
     },
     {
       "id": "csa-pm-013",
-      "cognitiveLevel": "understanding",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What is the difference between a 'Known Error' and a 'Problem' in ServiceNow?",
+      "question": "A problem coordinator creates a known error article from a problem and leaves the Attachment link check box cleared. How does the content of the article appear on the problem?",
       "options": [
         {
           "id": "a",
-          "text": "A Known Error is a Problem where the root cause has been identified and a workaround documented"
+          "text": "As an attachment on the problem record"
         },
         {
           "id": "b",
-          "text": "Known Errors are more severe than Problems"
+          "text": "As content in the problem work notes"
         },
         {
           "id": "c",
-          "text": "Problems track incidents; Known Errors track change requests"
+          "text": "As text copied into the Workaround field"
         },
         {
           "id": "d",
-          "text": "There is no difference; they are the same record type"
+          "text": "As a result in the Related Search field"
         }
       ],
       "correctAnswers": [
-        "a"
+        "b"
       ],
       "explanation": {
-        "correct": "A Problem becomes a Known Error when root cause analysis is complete and either a workaround or permanent fix has been identified. Known Errors are documented so that if the issue recurs, the service desk can apply the workaround immediately.",
+        "correct": "On the known error article form, the Attachment link check box controls how the article shows on the problem. If it is selected, the article appears as an attachment in the problem record. If it is not selected, the content of the article appears in the work note of the problem. See https://www.servicenow.com/docs/r/it-service-management/problem-management/known-error-article-form.html",
         "wrongAnswers": [
           {
-            "choiceId": "b",
-            "explanation": "Severity is not the distinction; Known Errors represent investigated Problems with identified root causes."
+            "choiceId": "a",
+            "explanation": "The article appears as an attachment only when the Attachment link check box is selected.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/problem-management/known-error-article-form.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Both Problems and Known Errors exist on the Problem table; they don't track different record types."
+            "explanation": "The Workaround field on the problem describes the method used to overcome the problem. Clearing Attachment link sends the article content to the work notes, not to this field.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/problem-management/problem-form.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Known Error is a specific state/phase of a Problem record, indicating root cause has been identified."
+            "explanation": "Related Search shows knowledge articles found when the problem statement is updated. Clearing Attachment link puts the article content in the work notes.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/problem-management/problem-form.html"
           }
         ]
       },
       "certification": "csa",
       "topic": "problem-management",
-      "references": [],
+      "references": [
+        "https://www.servicenow.com/docs/r/it-service-management/problem-management/known-error-article-form.html",
+        "https://www.servicenow.com/docs/r/it-service-management/problem-management/problem-form.html"
+      ],
       "isFree": false,
       "source": {
         "type": "generated",
@@ -1075,62 +1124,75 @@
         "certification": "csa",
         "domain": "problem-management",
         "domainSlug": "problem-management",
-        "subtopics": [],
-        "tags": []
+        "subtopics": [
+          "Known errors"
+        ],
+        "tags": [
+          "known error article",
+          "attachment link",
+          "work notes"
+        ]
       },
       "meta": {
         "generatedAt": "2026-03-31T02:09:00Z",
-        "version": "2.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "csa-pm-014",
       "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "An administrator notices that 15 incidents over the past month all relate to the same printer failing. What is the FIRST step in the Problem Management process?",
+      "question": "A problem coordinator sees that 15 incidents in the past month all involve the same failing printer, and no problem exists for them yet. Which step of the Problem Management workflow should come first?",
       "options": [
         {
           "id": "a",
-          "text": "Create a Problem record and associate the related incidents"
+          "text": "Raise a change request to replace the printer"
         },
         {
           "id": "b",
-          "text": "Close all 15 incidents as duplicates"
+          "text": "Create a problem to find the underlying cause"
         },
         {
           "id": "c",
-          "text": "Order a replacement printer immediately"
+          "text": "Publish a known error article for the printer"
         },
         {
           "id": "d",
-          "text": "Create a Change Request to replace the printer"
+          "text": "Accept the risk that it cannot be fixed now"
         }
       ],
       "correctAnswers": [
-        "a"
+        "b"
       ],
       "explanation": {
-        "correct": "The first step is creating a Problem record and linking the related incidents. This begins formal root cause analysis and provides a single tracking point for the recurring issue. Solutions (change requests, replacements) come after root cause analysis.",
+        "correct": "The Problem Management workflow starts with problem creation: you can create a problem to identify and permanently fix the underlying root cause when you have recurring incidents or after a major incident. Assessment, root cause analysis, communicating the outcome, and fixing follow. See https://www.servicenow.com/docs/r/it-service-management/problem-management/exploring-problem-management.html",
         "wrongAnswers": [
           {
-            "choiceId": "b",
-            "explanation": "Closing incidents as duplicates loses individual tracking and doesn't address the underlying problem."
+            "choiceId": "a",
+            "explanation": "A change request comes after root cause analysis: if the root cause can be fixed, a change request is created from the problem and assigned to the relevant team.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/problem-management/exploring-problem-management.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Ordering a replacement before root cause analysis may not solve the actual problem (could be a network or driver issue, not hardware)."
+            "explanation": "In the workflow, a known error article is created when communicating the outcome, after the fix or workaround of the problem has been identified. That comes later than problem creation.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/problem-management/exploring-problem-management.html"
           },
           {
             "choiceId": "d",
-            "explanation": "A Change Request may eventually be needed, but root cause analysis through the Problem must come first."
+            "explanation": "Accepting the risk is an option during root cause analysis when there is no permanent fix or not enough budget. It needs an existing problem.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/problem-management/exploring-problem-management.html"
           }
         ]
       },
       "certification": "csa",
       "topic": "problem-management",
-      "references": [],
+      "references": [
+        "https://www.servicenow.com/docs/r/it-service-management/problem-management/exploring-problem-management.html"
+      ],
       "isFree": false,
       "source": {
         "type": "generated",
@@ -1148,62 +1210,79 @@
         "certification": "csa",
         "domain": "problem-management",
         "domainSlug": "problem-management",
-        "subtopics": [],
-        "tags": []
+        "subtopics": [
+          "Problem vs Incident",
+          "Related incidents"
+        ],
+        "tags": [
+          "recurring incidents",
+          "problem creation",
+          "workflow"
+        ]
       },
       "meta": {
         "generatedAt": "2026-03-31T02:09:00Z",
-        "version": "2.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "csa-pm-015",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "Which activity is part of 'proactive' Problem Management?",
+      "question": "During root cause analysis, the team acknowledges a problem but has no permanent resolution for it, so the coordinator clicks Accept Risk. With default properties, what happens to the problem?",
       "options": [
         {
           "id": "a",
-          "text": "Analyzing incident trends to identify potential problems before they cause major outages"
+          "text": "It moves to Resolved with the code Risk Accepted"
         },
         {
           "id": "b",
-          "text": "Creating Problem records only after a Major Incident occurs"
+          "text": "It moves to Closed with the code Risk Accepted"
         },
         {
           "id": "c",
-          "text": "Closing all open Problems at the end of each quarter"
+          "text": "It moves to Fix in Progress until a change is raised"
         },
         {
           "id": "d",
-          "text": "Assigning every incident to the Problem Management team"
+          "text": "It moves to Closed with the code Canceled"
         }
       ],
       "correctAnswers": [
-        "a"
+        "b"
       ],
       "explanation": {
-        "correct": "Proactive Problem Management involves analyzing trends, reviewing recurring incidents, and identifying patterns that indicate underlying problems \u2014 before they escalate into major outages. This is preventive rather than reactive.",
+        "correct": "Clicking Accept Risk sends the problem directly to the Closed or Resolved state with the resolution code Risk accepted. Which state it enters depends on the property Accept Risk moves the Problem to Closed state instead of Resolved state (problem.acceptrisk.move_to_closed), and the default value of that property is true. So the problem is closed. See https://www.servicenow.com/docs/r/it-service-management/problem-management/investigate-root-cause.html",
         "wrongAnswers": [
           {
-            "choiceId": "b",
-            "explanation": "Creating Problems only after Major Incidents is reactive, not proactive."
+            "choiceId": "a",
+            "explanation": "Resolved is used only if problem.acceptrisk.move_to_closed is set to false. Its default value is true, so the problem goes to Closed.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/problem-management/problem-mgmt-properties.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Closing Problems on a schedule without resolution is poor practice and not proactive management."
+            "explanation": "Fix in Progress is the state set by clicking Fix when the problem can be resolved. Accept Risk is for when there is no permanent resolution.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/problem-management/investigate-root-cause.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Not every incident needs Problem Management involvement; proactive analysis focuses on patterns and trends."
+            "explanation": "Canceled is the resolution code recorded when a problem is canceled. Accepting the risk records the code Risk accepted.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/problem-management/quick-start-tests-pm.html"
           }
         ]
       },
       "certification": "csa",
       "topic": "problem-management",
-      "references": [],
+      "references": [
+        "https://www.servicenow.com/docs/r/it-service-management/problem-management/investigate-root-cause.html",
+        "https://www.servicenow.com/docs/r/it-service-management/problem-management/problem-mgmt-properties.html",
+        "https://www.servicenow.com/docs/r/it-service-management/problem-management/assess-a-problem.html",
+        "https://www.servicenow.com/docs/r/it-service-management/problem-management/quick-start-tests-pm.html"
+      ],
       "isFree": false,
       "source": {
         "type": "generated",
@@ -1221,14 +1300,23 @@
         "certification": "csa",
         "domain": "problem-management",
         "domainSlug": "problem-management",
-        "subtopics": [],
-        "tags": []
+        "subtopics": [
+          "Problem states"
+        ],
+        "tags": [
+          "accept risk",
+          "problem properties",
+          "risk accepted",
+          "problem state model"
+        ]
       },
       "meta": {
         "generatedAt": "2026-03-31T02:09:00Z",
-        "version": "2.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {

@@ -6,53 +6,55 @@
       "id": "cis-itsm-incident-management-001",
       "certification": "cis-itsm",
       "topic": "incident-management",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What is the primary objective of Incident Management in ServiceNow?",
+      "question": "Staff at a branch office cannot connect to the VPN, and a service desk agent logs an incident for them. What is the agent's main goal under Incident Management?",
       "options": [
         {
           "id": "a",
-          "text": "To identify the root cause of all service disruptions"
+          "text": "Identify the underlying cause of the repeated VPN failures"
         },
         {
           "id": "b",
-          "text": "To restore normal service operation as quickly as possible"
+          "text": "Restore normal service while minimizing business impact"
         },
         {
           "id": "c",
-          "text": "To implement permanent fixes for all reported issues"
+          "text": "Plan and authorize a controlled change to the VPN gateway"
         },
         {
           "id": "d",
-          "text": "To prevent all future incidents from occurring"
+          "text": "Fulfill a catalog request for a replacement VPN service"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "The primary goal of Incident Management is to restore normal service operation as quickly as possible, minimizing the adverse impact on business operations. This may involve applying temporary workarounds rather than permanent fixes. Root cause analysis is the responsibility of Problem Management.",
+        "correct": "ServiceNow describes Incident Management as restoring normal service operation while minimizing impact to business operations and maintaining quality. The agent's job is to get the branch connected again as quickly as possible. Finding the cause behind related incidents, controlling changes, and fulfilling requests are handled by Problem, Change, and Request Management. See https://www.servicenow.com/docs/r/it-service-management/incident-management/c_IncidentManagement.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Identifying root causes is the responsibility of Problem Management, not Incident Management",
-            "reference": "ITSM Fundamentals course"
+            "explanation": "Identifying the cause of errors that are reported as occurrences of related incidents is the purpose of Problem Management, not the goal of working this incident.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/problem-management/c_ProblemManagement.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Incident Management focuses on service restoration, often using temporary workarounds. Permanent fixes are handled through Problem and Change Management",
-            "reference": "ITSM Fundamentals course"
+            "explanation": "Change Management provides a systematic approach to control the life cycle of all changes. Authorizing a change is not the objective of handling the outage itself.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/change-management/c_ITILChangeManagement.html"
           },
           {
             "choiceId": "d",
-            "explanation": "While reducing incidents is desirable, the primary focus of Incident Management is restoration, not prevention",
-            "reference": "ITSM Fundamentals course"
+            "explanation": "Request Management lets employees submit requests for services, products, or information. A broken VPN connection is a service disruption, not a catalog request.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/request-management/c_RequestManagement.html"
           }
         ]
       },
       "references": [
-        "ITSM Fundamentals",
-        "ITIL Foundation"
+        "https://www.servicenow.com/docs/r/it-service-management/incident-management/c_IncidentManagement.html",
+        "https://www.servicenow.com/docs/r/it-service-management/problem-management/c_ProblemManagement.html",
+        "https://www.servicenow.com/docs/r/it-service-management/change-management/c_ITILChangeManagement.html",
+        "https://www.servicenow.com/docs/r/it-service-management/request-management/c_RequestManagement.html"
       ],
       "isFree": true,
       "source": {
@@ -71,24 +73,26 @@
         ],
         "tags": [
           "incident",
-          "restoration",
-          "objectives"
+          "service restoration",
+          "ITSM processes"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-06T05:56:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "cis-itsm-incident-management-002",
       "certification": "cis-itsm",
       "topic": "incident-management",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "Which incident state indicates that the service issue has been fixed but is waiting for user confirmation?",
+      "question": "An agent applies a fix for a caller's broken printer driver and documents the resolution notes. The caller has not yet confirmed the fix works. Which incident state fits the incident at this point?",
       "options": [
         {
           "id": "a",
@@ -104,34 +108,35 @@
         },
         {
           "id": "d",
-          "text": "In Progress"
+          "text": "Canceled"
         }
       ],
       "correctAnswers": [
         "c"
       ],
       "explanation": {
-        "correct": "The Resolved state indicates that the service issue has been fixed, but the system is waiting for the user to confirm that the service has been restored. After confirmation or a timeout period (default 7 days), the incident moves to Closed.",
+        "correct": "In the incident life cycle, Resolved means a satisfactory fix is provided for the incident. An incident is marked Closed only after it has been in the Resolved state for a specific duration and it is confirmed that the incident is satisfactorily resolved. With the fix applied but not yet confirmed, Resolved is the right state. See https://www.servicenow.com/docs/r/it-service-management/incident-management/c_IncidentManagementStateModel.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Closed means the incident is no longer active and has been fully completed",
-            "reference": "ITSM Fundamentals course"
+            "explanation": "Closed comes after the incident has been in Resolved for a specific duration and the resolution is confirmed, so it is too early to close.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/incident-management/c_IncidentManagementStateModel.html"
           },
           {
             "choiceId": "b",
-            "explanation": "On Hold means the investigation is temporarily paused to gather additional information",
-            "reference": "ITSM Fundamentals course"
+            "explanation": "On Hold means responsibility shifts temporarily to another entity to provide information, evidence, or a resolution. Here the fix has already been provided.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/incident-management/c_IncidentManagementStateModel.html"
           },
           {
             "choiceId": "d",
-            "explanation": "In Progress indicates the incident has been assigned and is under active investigation",
-            "reference": "ITSM Fundamentals course"
+            "explanation": "Canceled is for an incident that was triaged but found to be a duplicate, unnecessary, or not an incident at all.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/incident-management/c_IncidentManagementStateModel.html"
           }
         ]
       },
       "references": [
-        "ITSM Fundamentals"
+        "https://www.servicenow.com/docs/r/it-service-management/incident-management/c_IncidentManagementStateModel.html",
+        "https://www.servicenow.com/docs/r/it-service-management/incident-management/resolve-and-close-an-incident.html"
       ],
       "isFree": true,
       "source": {
@@ -150,67 +155,69 @@
         ],
         "tags": [
           "incident",
-          "state",
+          "states",
           "resolved"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-06T05:56:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "cis-itsm-incident-management-003",
       "certification": "cis-itsm",
       "topic": "incident-management",
-      "cognitiveLevel": "understanding",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "When does the SLA clock for incident resolution end?",
+      "question": "An admin builds a resolution SLA definition for incidents. The task SLA must complete when the incident reaches Resolved, whether or not it has already breached. Which SLA condition should check for State is Resolved?",
       "options": [
         {
           "id": "a",
-          "text": "When the incident is assigned to a group"
+          "text": "Pause condition"
         },
         {
           "id": "b",
-          "text": "When the incident state is set to Closed"
+          "text": "Stop condition"
         },
         {
           "id": "c",
-          "text": "When the incident state is set to Resolved"
+          "text": "Cancel condition"
         },
         {
           "id": "d",
-          "text": "When the Assigned To field is populated"
+          "text": "Reset condition"
         }
       ],
       "correctAnswers": [
-        "c"
+        "b"
       ],
       "explanation": {
-        "correct": "The SLA clock for resolution ends when the state is set to Resolved. The response SLA ends when the Assigned To field is completed and state is In Progress, but the resolution SLA continues until Resolved.",
+        "correct": "The stop condition defines when the SLA completes: if all of the specified stop conditions match, the task SLA completes regardless of whether it is breached. Setting the stop condition to State is Resolved ends the resolution SLA when the incident is resolved. See https://www.servicenow.com/docs/r/it-service-management/service-level-management/c_SLAConditions.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Assignment to a group does not stop the resolution SLA clock",
-            "reference": "ITSM Fundamentals course"
+            "explanation": "A pause condition only suspends the increase of elapsed time. The SLA resumes later and does not complete.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/service-level-management/c_SLAConditions.html"
           },
           {
-            "choiceId": "b",
-            "explanation": "The resolution SLA ends at Resolved, not Closed. Closed is a final state after user confirmation",
-            "reference": "ITSM Fundamentals course"
+            "choiceId": "c",
+            "explanation": "A cancel condition defines when an attached SLA is canceled. It cancels the task SLA instead of completing it.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/service-level-management/c_SLAConditions.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Populating the Assigned To field ends the response SLA, not the resolution SLA",
-            "reference": "ITSM Fundamentals course"
+            "explanation": "A reset condition completes the running SLA and attaches a new one when the start condition matches. It is meant for re-starting the SLA, not for ending it at resolution.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/service-level-management/c_SLAConditions.html"
           }
         ]
       },
       "references": [
-        "ITSM Fundamentals"
+        "https://www.servicenow.com/docs/r/it-service-management/service-level-management/c_SLAConditions.html"
       ],
       "isFree": true,
       "source": {
@@ -224,20 +231,22 @@
         "domainSlug": "incident-management",
         "domainPercentage": 20,
         "subtopics": [
-          "SLA Management",
-          "Incident SLAs"
+          "Incident SLAs",
+          "SLA conditions"
         ],
         "tags": [
           "incident",
           "sla",
-          "resolution"
+          "stop condition"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-06T05:56:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {

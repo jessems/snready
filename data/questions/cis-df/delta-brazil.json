@@ -6,9 +6,9 @@
       "id": "cis-df-delta-brazil-001",
       "certification": "cis-df",
       "topic": "delta-brazil",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "Starting with the Australia release, CMDB tables that previously required the itil role are now also accessible to which role?",
+      "question": "After an upgrade to Australia, a CMDB manager wants analysts to work in CMDB tables that used to require the itil role, without giving them itil. Which role does the Australia release make sufficient for those tables?",
       "options": [
         {
           "id": "a",
@@ -20,38 +20,38 @@
         },
         {
           "id": "c",
-          "text": "cmdb_read"
+          "text": "sn_cmdb_user"
         },
         {
           "id": "d",
-          "text": "itil_admin"
+          "text": "app_service_admin"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "Access to CMDB tables is no longer restricted to elevated roles: tables that required the itil role are now also accessible to the sn_cmdb_editor role. See: https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurationmanagementdatabasecmdb-release-notes.html",
+        "correct": "In the Australia release, access to CMDB tables is no longer restricted to users with elevated privileges: CMDB tables that required the itil role are now also accessible to the sn_cmdb_editor user role, so analysts can do the work with a role trimmed to CMDB features. See https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurationmanagementdatabasecmdb-release-notes.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "The release notes pair sn_cmdb_admin with tables that required the admin or itil_admin roles, not the itil role.",
+            "explanation": "The Australia notes pair sn_cmdb_admin with tables that required the admin or itil_admin roles, not with tables that required the itil role.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurationmanagementdatabasecmdb-release-notes.html"
           },
           {
             "choiceId": "c",
-            "explanation": "The release notes do not name cmdb_read for this change; they name sn_cmdb_editor.",
+            "explanation": "As of Zurich the itil role contains sn_cmdb_user, and the notes say functions that were accessible to itil users now require the sn_cmdb_editor user role, so sn_cmdb_user is not enough; Australia opens itil-only CMDB tables to sn_cmdb_editor.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurationmanagementdatabasecmdb-release-notes.html"
           },
           {
             "choiceId": "d",
-            "explanation": "itil_admin is one of the elevated roles that was previously required, not the new trimmed role.",
+            "explanation": "app_service_admin still contained the itil role until Brazil removed it, so granting it in Australia would give analysts itil; the Australia change opens itil-only CMDB tables to sn_cmdb_editor.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurationmanagementdatabasecmdb-release-notes.html"
           }
         ]
       },
       "references": [
-        "Brazil delta release notes - Configuration Management Database (CMDB)"
+        "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurationmanagementdatabasecmdb-release-notes.html"
       ],
       "isFree": true,
       "difficulty": "medium",
@@ -83,9 +83,11 @@
       },
       "meta": {
         "generatedAt": "2026-10-21T00:00:00.000Z",
-        "version": "1.0",
-        "release": "Australia",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -94,50 +96,50 @@
       "topic": "delta-brazil",
       "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "An instance is upgrading directly from Yokohama to the Australia release. What must an administrator do so that roles such as CMDB Admin and CMDB Editor are configured correctly?",
+      "question": "An administrator is upgrading an instance directly from Yokohama to Australia. What must the administrator do so that user roles such as CMDB Admin and CMDB Editor are configured correctly?",
       "options": [
         {
           "id": "a",
-          "text": "Run the \"Remove CMDB Roles from ITIL roles and Add CUD access to sn_cmdb_admin/sn_cmdb_editor roles\" scheduled job"
+          "text": "Run the scheduled job that removes CMDB roles from ITIL roles"
         },
         {
           "id": "b",
-          "text": "Manually add the itil role to the sn_cmdb_admin role"
+          "text": "Add the itil role to the sn_cmdb_admin and sn_cmdb_editor roles"
         },
         {
           "id": "c",
-          "text": "Activate the CMDB Workspace store app, which reassigns the roles automatically"
+          "text": "Download the latest CMDB Workspace store app from the Store"
         },
         {
           "id": "d",
-          "text": "Re-run the CMDB Health dashboard jobs after the upgrade"
+          "text": "Apply the cmdb_ci composite index guidance in KB2588894 first"
         }
       ],
       "correctAnswers": [
         "a"
       ],
       "explanation": {
-        "correct": "When upgrading from Xanadu or Yokohama directly to Australia, the release notes require running the \"Remove CMDB Roles from ITIL roles and Add CUD access to sn_cmdb_admin/sn_cmdb_editor roles\" scheduled job to correctly configure roles such as CMDB Admin and CMDB Editor. See: https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurationmanagementdatabasecmdb-release-notes.html",
+        "correct": "The Australia upgrade information says that if you're upgrading from Xanadu or Yokohama directly to Australia, you must run the 'Remove CMDB Roles from ITIL roles and Add CUD access to sn_cmdb_admin/sn_cmdb_editor roles' scheduled job to correctly configure user roles such as CMDB Admin and CMDB Editor. See https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurationmanagementdatabasecmdb-release-notes.html",
         "wrongAnswers": [
           {
             "choiceId": "b",
-            "explanation": "The release notes do not call for adding itil to sn_cmdb_admin; the documented step is running a specific scheduled job.",
+            "explanation": "The scheduled job does the opposite: it updates the itil role to no longer contain sn_cmdb_editor (and itil_admin to no longer contain sn_cmdb_admin) and gives the CMDB roles create, update, and delete access to cmdb_ci.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurationmanagementdatabasecmdb-release-notes.html"
           },
           {
             "choiceId": "c",
-            "explanation": "The release notes do not describe CMDB Workspace as reassigning roles; the documented step is a scheduled job.",
+            "explanation": "Downloading a newer CMDB Workspace store app is how you get the latest workspace features; the release notes do not say it configures the CMDB Admin and CMDB Editor roles.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurationmanagementdatabasecmdb-release-notes.html"
           },
           {
             "choiceId": "d",
-            "explanation": "The release notes do not mention CMDB Health dashboard jobs for this task; they name a specific role-configuration scheduled job.",
+            "explanation": "KB2588894 covers the increased Australia upgrade time caused by the cmdb_ci composite index addition, not the configuration of CMDB roles.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurationmanagementdatabasecmdb-release-notes.html"
           }
         ]
       },
       "references": [
-        "Brazil delta release notes - Configuration Management Database (CMDB)"
+        "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurationmanagementdatabasecmdb-release-notes.html"
       ],
       "isFree": true,
       "difficulty": "hard",
@@ -170,61 +172,63 @@
       },
       "meta": {
         "generatedAt": "2026-10-21T00:00:00.000Z",
-        "version": "1.0",
-        "release": "Australia",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "cis-df-delta-brazil-003",
       "certification": "cis-df",
       "topic": "delta-brazil",
-      "cognitiveLevel": "understanding",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "Starting with the Brazil release, how is Dynamic IRE handled on zBooted instances compared with upgraded instances that use Static IRE?",
+      "question": "A company has a newly zBooted Brazil instance and also upgrades an existing instance that uses Static IRE to Brazil. How does the Brazil release handle Dynamic IRE on the two instances?",
       "options": [
         {
           "id": "a",
-          "text": "Dynamic IRE is enabled by default on zBooted instances; upgraded instances using Static IRE can switch to Dynamic IRE"
+          "text": "On by default when zBooted; upgraded one can switch to it"
         },
         {
           "id": "b",
-          "text": "Dynamic IRE is enabled by default on upgraded instances; zBooted instances must activate it manually"
+          "text": "On by default when upgraded; zBooted one must activate it"
         },
         {
           "id": "c",
-          "text": "Dynamic IRE is disabled on all instances until a plugin is activated"
+          "text": "Off on both until an administrator activates a plugin"
         },
         {
           "id": "d",
-          "text": "Upgraded instances are automatically and permanently converted from Static IRE to Dynamic IRE"
+          "text": "On by default on both, with Static IRE converted for good"
         }
       ],
       "correctAnswers": [
         "a"
       ],
       "explanation": {
-        "correct": "In Brazil, Dynamic IRE is enabled by default on zBooted instances, while upgraded instances that use Static IRE can switch to Dynamic IRE. See: https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurationmanagementdatabasecmdb-release-notes.html",
+        "correct": "The Brazil upgrade information states that Dynamic IRE is now enabled by default on zBooted instances, while on upgraded instances that are using Static IRE you can switch into using Dynamic IRE. See https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurationmanagementdatabasecmdb-release-notes.html",
         "wrongAnswers": [
           {
             "choiceId": "b",
-            "explanation": "This reverses the documented behavior: zBooted instances get Dynamic IRE by default, and upgraded Static IRE instances can switch.",
+            "explanation": "This reverses the documented behavior: Dynamic IRE is enabled by default on zBooted instances, and upgraded Static IRE instances are the ones that can switch.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurationmanagementdatabasecmdb-release-notes.html"
           },
           {
             "choiceId": "c",
-            "explanation": "The release notes state Dynamic IRE is enabled by default on zBooted instances, so it is not disabled everywhere.",
+            "explanation": "Dynamic IRE is enabled by default on zBooted Brazil instances, so it is not off everywhere pending a plugin activation.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurationmanagementdatabasecmdb-release-notes.html"
           },
           {
             "choiceId": "d",
-            "explanation": "The release notes say upgraded instances using Static IRE can switch to Dynamic IRE, not that they are converted automatically.",
+            "explanation": "Upgraded instances that use Static IRE are not converted automatically; the release notes say you can switch into using Dynamic IRE.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurationmanagementdatabasecmdb-release-notes.html"
           }
         ]
       },
       "references": [
-        "Brazil delta release notes - Configuration Management Database (CMDB)"
+        "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurationmanagementdatabasecmdb-release-notes.html"
       ],
       "isFree": true,
       "difficulty": "medium",
@@ -236,7 +240,7 @@
           "url": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurationmanagementdatabasecmdb-release-notes.html"
         },
         "path": "servicenow.com/docs/r/delta-zurich-brazil",
-        "excerpt": "Dynamic IRE is now enabled by default on zBooted instances, while on upgraded instances that are using Static IRE, you can switch into using Dynamic IRE."
+        "excerpt": "Dynamic IRE is now enabled by default on zBooted instances, while on upgraded instances that are using Static IRE you can switch into using Dynamic IRE."
       },
       "labels": {
         "certification": "cis-df",
@@ -256,9 +260,11 @@
       },
       "meta": {
         "generatedAt": "2026-10-21T00:00:00.000Z",
-        "version": "1.0",
+        "version": "1.1",
         "release": "Brazil",
-        "reviewed": false
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -267,50 +273,51 @@
       "topic": "delta-brazil",
       "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "According to the Australia release notes, IRE can create de-duplication tasks for duplicate related items detected in a lookup table during lookup-based identification. Which system property controls which of these duplicates do or don't require remediation?",
+      "question": "After upgrading to Australia, a CMDB admin sets glide.identification_engine.lookup_match.create_duplicate_task_ci.enabled to true. During lookup-based identification, two serial number records are identical but each references a different CI. What does IRE do?",
       "options": [
         {
           "id": "a",
-          "text": "glide.identification_engine.lookup_match.create_duplicate_task_ci.enabled"
+          "text": "Matches the older CI and creates a de-duplication task"
         },
         {
           "id": "b",
-          "text": "glide.cmdb.query.or_execution_mode"
+          "text": "Matches the older CI but creates no de-duplication task"
         },
         {
           "id": "c",
-          "text": "glide.identification_engine.skip_duplicates"
+          "text": "Matches the newer CI and creates a de-duplication task"
         },
         {
           "id": "d",
-          "text": "glide.cmdb.dedup.lookup_tables.enabled"
+          "text": "Rejects the payload and logs an identification error"
         }
       ],
       "correctAnswers": [
         "a"
       ],
       "explanation": {
-        "correct": "To sort which lookup-table duplicates do or don't require remediation, configure the glide.identification_engine.lookup_match.create_duplicate_task_ci.enabled system property. See: https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurationmanagementdatabasecmdb-release-notes.html",
+        "correct": "Australia added the option to have IRE create de-duplication tasks for duplicate related items in a lookup table, controlled by glide.identification_engine.lookup_match.create_duplicate_task_ci.enabled. When it is true, IRE selects the older CI for the matching process and generates a de-duplication task to remediate the duplication. See https://www.servicenow.com/docs/r/servicenow-platform/configuration-management-database-cmdb/id-detect-dup-ci.html",
         "wrongAnswers": [
           {
             "choiceId": "b",
-            "explanation": "The release notes tie glide.cmdb.query.or_execution_mode to OR operators in CMDB Query Builder V2 mode, not to lookup-table duplicates.",
-            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurationmanagementdatabasecmdb-release-notes.html"
+            "explanation": "That is the false (default) behavior: IRE selects the older CI as a match but doesn't create a de-duplication task. With the property set to true, a task is generated.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/configuration-management-database-cmdb/id-detect-dup-ci.html"
           },
           {
             "choiceId": "c",
-            "explanation": "This property is not named in the release notes; the documented property is glide.identification_engine.lookup_match.create_duplicate_task_ci.enabled.",
-            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurationmanagementdatabasecmdb-release-notes.html"
+            "explanation": "In this situation IRE selects the record with the older referenced CI as the match, not the newer one.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/configuration-management-database-cmdb/id-detect-dup-ci.html"
           },
           {
             "choiceId": "d",
-            "explanation": "This property is not named in the release notes; the documented property is glide.identification_engine.lookup_match.create_duplicate_task_ci.enabled.",
-            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurationmanagementdatabasecmdb-release-notes.html"
+            "explanation": "IRE does not reject the payload; it selects the record with the older referenced CI as a match in the identification process.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/configuration-management-database-cmdb/id-detect-dup-ci.html"
           }
         ]
       },
       "references": [
-        "Brazil delta release notes - Configuration Management Database (CMDB)"
+        "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurationmanagementdatabasecmdb-release-notes.html",
+        "https://www.servicenow.com/docs/r/servicenow-platform/configuration-management-database-cmdb/id-detect-dup-ci.html"
       ],
       "isFree": true,
       "difficulty": "hard",
@@ -322,7 +329,7 @@
           "url": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurationmanagementdatabasecmdb-release-notes.html"
         },
         "path": "servicenow.com/docs/r/delta-zurich-brazil",
-        "excerpt": "Sort which duplicates do or don't require remediation by configuring the system property glide.identification_engine.lookup_match.create_duplicate_task_ci.enabled ."
+        "excerpt": "Configure IRE to create de-duplication tasks for duplicate related items in a lookup table, detected during a lookup-based identification."
       },
       "labels": {
         "certification": "cis-df",
@@ -344,9 +351,11 @@
       },
       "meta": {
         "generatedAt": "2026-10-21T00:00:00.000Z",
-        "version": "1.0",
-        "release": "Australia",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -355,15 +364,15 @@
       "topic": "delta-brazil",
       "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "According to the Australia release notes, in CMDB Query Builder, a query uses OR operators and should run in V2 engine mode. Which system property must explicitly enable this?",
+      "question": "After upgrading to Australia, a CMDB admin wants saved CMDB Query Builder queries that contain OR operators to run in V2 engine mode. Which system property controls the engine mode for these queries?",
       "options": [
         {
           "id": "a",
-          "text": "glide.cmdb.query.v2_engine.enabled"
+          "text": "glide.cmdb.query.execution_mode"
         },
         {
           "id": "b",
-          "text": "glide.identification_engine.lookup_match.create_duplicate_task_ci.enabled"
+          "text": "glide.cmdb.query.max_results_limit"
         },
         {
           "id": "c",
@@ -371,34 +380,36 @@
         },
         {
           "id": "d",
-          "text": "glide.cmdb.query_builder.allow_or"
+          "text": "glide.cmdb.query.query_time_limit_in_sec"
         }
       ],
       "correctAnswers": [
         "c"
       ],
       "explanation": {
-        "correct": "Query structures not supported in V2 engine mode include OR operators unless explicitly enabled by the glide.cmdb.query.or_execution_mode system property. See: https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurationmanagementdatabasecmdb-release-notes.html",
+        "correct": "The Australia release notes say OR operators can't run in V2 engine mode unless explicitly enabled by the glide.cmdb.query.or_execution_mode system property. That property sets the system-wide default engine mode for queries that contain at least one logical OR condition, and it has precedence over glide.cmdb.query.execution_mode. See https://www.servicenow.com/docs/r/servicenow-platform/configuration-management-database-cmdb/query-builder-engine-execution-mode.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "This property is not named in the release notes; OR support in V2 mode is controlled by glide.cmdb.query.or_execution_mode.",
-            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurationmanagementdatabasecmdb-release-notes.html"
+            "explanation": "glide.cmdb.query.execution_mode sets the default engine when a query's mode isn't set, but for queries with OR conditions glide.cmdb.query.or_execution_mode has precedence over it.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/configuration-management-database-cmdb/query-builder-engine-execution-mode.html"
           },
           {
             "choiceId": "b",
-            "explanation": "The release notes tie this property to lookup-table duplicate tasks in IRE, not CMDB Query Builder.",
-            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurationmanagementdatabasecmdb-release-notes.html"
+            "explanation": "glide.cmdb.query.max_results_limit limits the number of results for a scheduled query or Load All Results; it does not choose the engine mode.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/configuration-management-database-cmdb/cmdb-querybldr-sysproprties.html"
           },
           {
             "choiceId": "d",
-            "explanation": "This property is not named in the release notes; the documented property is glide.cmdb.query.or_execution_mode.",
-            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurationmanagementdatabasecmdb-release-notes.html"
+            "explanation": "glide.cmdb.query.query_time_limit_in_sec is the time limit for running an entire query; it does not choose the engine mode.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/configuration-management-database-cmdb/cmdb-querybldr-sysproprties.html"
           }
         ]
       },
       "references": [
-        "Brazil delta release notes - Configuration Management Database (CMDB)"
+        "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurationmanagementdatabasecmdb-release-notes.html",
+        "https://www.servicenow.com/docs/r/servicenow-platform/configuration-management-database-cmdb/query-builder-engine-execution-mode.html",
+        "https://www.servicenow.com/docs/r/servicenow-platform/configuration-management-database-cmdb/cmdb-querybldr-sysproprties.html"
       ],
       "isFree": true,
       "difficulty": "hard",
@@ -430,18 +441,20 @@
       },
       "meta": {
         "generatedAt": "2026-10-21T00:00:00.000Z",
-        "version": "1.0",
-        "release": "Australia",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "cis-df-delta-brazil-006",
       "certification": "cis-df",
       "topic": "delta-brazil",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_select",
-      "question": "According to the Australia release notes, which of the following tables now support domain separation on domain-separated instances? (Choose two.)",
+      "question": "An administrator at a service provider has a domain-separated instance, upgrades it to Australia, and wants to know which CMDB tables gained domain separation support in that release. Which two tables are listed? (Choose two.)",
       "options": [
         {
           "id": "a",
@@ -453,11 +466,11 @@
         },
         {
           "id": "c",
-          "text": "Software Instance [cmdb_software_instance]"
+          "text": "Client Access [samp_client_access]"
         },
         {
           "id": "d",
-          "text": "CI Relationship [cmdb_rel_ci]"
+          "text": "Serial Number [cmdb_serial_number]"
         }
       ],
       "correctAnswers": [
@@ -465,22 +478,22 @@
         "c"
       ],
       "explanation": {
-        "correct": "Key Value [cmdb_key_value] and Software Instance [cmdb_software_instance] are among the tables that now support domain separation, along with Printer Instance, Client Access, and Oracle Options. See: https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurationmanagementdatabasecmdb-release-notes.html",
+        "correct": "Under 'Domain separation for key CMDB tables', the Australia release notes list Key Value [cmdb_key_value], Printer Instance [cmdb_print_queue_instance], Software Instance [cmdb_software_instance], Client Access [samp_client_access], and Oracle Options [samp_oracle_options] as tables that now support domain separation. See https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurationmanagementdatabasecmdb-release-notes.html",
         "wrongAnswers": [
           {
             "choiceId": "b",
-            "explanation": "cmdb_ci is not in the release notes' list of tables that gained domain separation support.",
+            "explanation": "Configuration Item [cmdb_ci] is not one of the five tables in the Australia list of tables that now support domain separation (Key Value, Printer Instance, Software Instance, Client Access, Oracle Options).",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurationmanagementdatabasecmdb-release-notes.html"
           },
           {
             "choiceId": "d",
-            "explanation": "cmdb_rel_ci is not in the release notes' list of tables that gained domain separation support.",
+            "explanation": "Serial Number [cmdb_serial_number] is not one of the five tables in the Australia list of tables that now support domain separation (Key Value, Printer Instance, Software Instance, Client Access, Oracle Options).",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurationmanagementdatabasecmdb-release-notes.html"
           }
         ]
       },
       "references": [
-        "Brazil delta release notes - Configuration Management Database (CMDB)"
+        "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurationmanagementdatabasecmdb-release-notes.html"
       ],
       "isFree": true,
       "difficulty": "medium",
@@ -492,7 +505,7 @@
           "url": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurationmanagementdatabasecmdb-release-notes.html"
         },
         "path": "servicenow.com/docs/r/delta-zurich-brazil",
-        "excerpt": "The following tables now support domain separation on instances which are configured with domain separation: Key Value [cmdb_key_value] Printer Instance [cmdb_print_queue_instance] Software Instance [cmdb_software_instance] Client Access [samp_client_access] Oracle Options [samp_oracle_options]"
+        "excerpt": "The following tables now support domain separation on instances which are configured with domain separation: Key Value [cmdb_key_value] ... Client Access [samp_client_access]"
       },
       "labels": {
         "certification": "cis-df",
@@ -511,61 +524,63 @@
       },
       "meta": {
         "generatedAt": "2026-10-21T00:00:00.000Z",
-        "version": "1.0",
-        "release": "Australia",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "cis-df-delta-brazil-007",
       "certification": "cis-df",
       "topic": "delta-brazil",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "In the Australia release, the Multisource Report Builder was removed. What do the release notes recommend for generating reports on multisource data?",
+      "question": "After the Australia upgrade, a CMDB analyst finds that the Multisource Report Builder is gone. Which tool do the release notes point to for generating reports on multisource data?",
       "options": [
         {
           "id": "a",
-          "text": "CMDB Health dashboard"
+          "text": "CMDB Health dashboard in CMDB Workspace"
         },
         {
           "id": "b",
-          "text": "CMDB 360 in CMDB Workspace or Service Graph Workspace"
+          "text": "CMDB 360 in CMDB Workspace"
         },
         {
           "id": "c",
-          "text": "CMDB Query Builder saved queries"
+          "text": "Saved queries in CMDB Query Builder"
         },
         {
           "id": "d",
-          "text": "Data Foundations advisor"
+          "text": "Dashboards in CMDB success advisor"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "With the Multisource Report Builder removed, use CMDB 360 in CMDB Workspace or in Service Graph Workspace to generate reports for multisource data. See: https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurationmanagementdatabasecmdb-release-notes.html",
+        "correct": "The Australia deprecation notes say the Multisource Report Builder has been removed and to use CMDB 360 in CMDB Workspace or in Service Graph Workspace to generate reports for multisource data. See https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurationmanagementdatabasecmdb-release-notes.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "The release notes recommend CMDB 360, not the CMDB Health dashboard, as the replacement.",
+            "explanation": "The release notes do not name the CMDB Health dashboard as the replacement for multisource reports; they direct you to CMDB 360.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurationmanagementdatabasecmdb-release-notes.html"
           },
           {
             "choiceId": "c",
-            "explanation": "The release notes recommend CMDB 360, not CMDB Query Builder, for multisource reports.",
+            "explanation": "CMDB Query Builder saved queries are not the documented replacement; the notes name CMDB 360 for multisource data reports.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurationmanagementdatabasecmdb-release-notes.html"
           },
           {
             "choiceId": "d",
-            "explanation": "The release notes recommend CMDB 360, not the Data Foundations advisor, for multisource reports.",
+            "explanation": "CMDB success advisor dashboards target Data Foundations, HAM, and SAM data-quality outcomes; they are not the documented tool for multisource data reports.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurationmanagementdatabasecmdb-release-notes.html"
           }
         ]
       },
       "references": [
-        "Brazil delta release notes - Configuration Management Database (CMDB)"
+        "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurationmanagementdatabasecmdb-release-notes.html"
       ],
       "isFree": true,
       "difficulty": "easy",
@@ -597,61 +612,63 @@
       },
       "meta": {
         "generatedAt": "2026-10-21T00:00:00.000Z",
-        "version": "1.0",
-        "release": "Australia",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "cis-df-delta-brazil-008",
       "certification": "cis-df",
       "topic": "delta-brazil",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What happens to Service Graph Workspace in the Brazil release?",
+      "question": "A CMDB team that adopted Service Graph Workspace in Australia is planning its Brazil upgrade. What do the Brazil release notes say about Service Graph Workspace?",
       "options": [
         {
           "id": "a",
-          "text": "It replaces CMDB Workspace, which is removed"
+          "text": "It replaces CMDB Workspace, which is removed in this release"
         },
         {
           "id": "b",
-          "text": "It is deprecated, and CMDB Workspace takes on its features"
+          "text": "It is deprecated, and CMDB Workspace gets its features"
         },
         {
           "id": "c",
-          "text": "It becomes the only workspace for CMDB 360"
+          "text": "It takes over CMDB 360 reporting from CMDB Workspace"
         },
         {
           "id": "d",
-          "text": "It is moved into the Data Catalog application"
+          "text": "It moves into the Data Catalog store application"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "In Brazil, Service Graph Workspace is deprecated and CMDB Workspace has the Service Graph Workspace features. See: https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurationmanagementdatabasecmdb-release-notes.html",
+        "correct": "Under 'CMDB Workspace merged with Service Graph Workspace features', the Brazil release notes state that Service Graph Workspace is deprecated as of this release and that CMDB Workspace will have Service Graph Workspace features. See https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurationmanagementdatabasecmdb-release-notes.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "This reverses the documented change: Service Graph Workspace is deprecated and its features move into CMDB Workspace.",
+            "explanation": "The direction is the reverse: Service Graph Workspace is deprecated and CMDB Workspace takes on its features. The Brazil release still includes an installation of CMDB Workspace.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurationmanagementdatabasecmdb-release-notes.html"
           },
           {
             "choiceId": "c",
-            "explanation": "The release notes state Service Graph Workspace is deprecated as of Brazil.",
+            "explanation": "CMDB 360 is documented in CMDB Workspace (the Australia notes direct multisource reporting to CMDB 360 in CMDB Workspace), and in Brazil Service Graph Workspace is deprecated rather than gaining features.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurationmanagementdatabasecmdb-release-notes.html"
           },
           {
             "choiceId": "d",
-            "explanation": "The release notes say CMDB Workspace takes on the features, not Data Catalog.",
+            "explanation": "The Brazil notes merge Service Graph Workspace features into CMDB Workspace; they say nothing about moving it into Data Catalog.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurationmanagementdatabasecmdb-release-notes.html"
           }
         ]
       },
       "references": [
-        "Brazil delta release notes - Configuration Management Database (CMDB)"
+        "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurationmanagementdatabasecmdb-release-notes.html"
       ],
       "isFree": true,
       "difficulty": "easy",
@@ -663,7 +680,7 @@
           "url": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurationmanagementdatabasecmdb-release-notes.html"
         },
         "path": "servicenow.com/docs/r/delta-zurich-brazil",
-        "excerpt": "CMDB Workspace merged with Service Graph Workspace features Service Graph Workspace is deprecated as of this release. CMDB Workspace will have Service Graph Workspace features."
+        "excerpt": "Service Graph Workspace is deprecated as of this release. CMDB Workspace will have Service Graph Workspace features."
       },
       "labels": {
         "certification": "cis-df",
@@ -683,61 +700,63 @@
       },
       "meta": {
         "generatedAt": "2026-10-21T00:00:00.000Z",
-        "version": "1.0",
+        "version": "1.1",
         "release": "Brazil",
-        "reviewed": false
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "cis-df-delta-brazil-009",
       "certification": "cis-df",
       "topic": "delta-brazil",
-      "cognitiveLevel": "understanding",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "In the Brazil release, an administrator needs to give a user create, read, update, and delete access to Service Instance records without granting the broader itil role. Which role should be granted?",
+      "question": "In Brazil, an administrator gives a service owner the app_service_owner role instead of the broader itil role. What does that user get from app_service_owner?",
       "options": [
         {
           "id": "a",
-          "text": "app_service_user"
+          "text": "View access but no edits to Service Instance records"
         },
         {
           "id": "b",
-          "text": "app_service_owner"
+          "text": "CRUD on Service Instance records plus app_service_user"
         },
         {
           "id": "c",
-          "text": "sn_cmdb_editor"
+          "text": "Create, update, and delete access to the entire cmdb_ci class"
         },
         {
           "id": "d",
-          "text": "app_service_viewer"
+          "text": "Access to the incidents and changes linked to each CI"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "The app_service_owner role grants create, read, update, and delete access to Service Instance records without granting the itil role, and it includes the app_service_user role. See: https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurationmanagementdatabasecmdb-release-notes.html",
+        "correct": "The Brazil release notes say to use the app_service_owner role to grant create, read, update, and delete access to Service Instance records without granting the broader itil role, and that the app_service_owner role also includes the app_service_user role. See https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurationmanagementdatabasecmdb-release-notes.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "The release notes describe app_service_user as contained in app_service_owner; they assign the CRUD access described here to app_service_owner.",
+            "explanation": "app_service_owner grants create, read, update, and delete access to Service Instance records, so it is not limited to viewing them.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurationmanagementdatabasecmdb-release-notes.html"
           },
           {
             "choiceId": "c",
-            "explanation": "The release notes name app_service_owner for CRUD access to Service Instance records.",
+            "explanation": "Full create, update, and delete access to the Configuration Item [cmdb_ci] class is what the sn_cmdb_admin and sn_cmdb_editor roles receive, not app_service_owner.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurationmanagementdatabasecmdb-release-notes.html"
           },
           {
             "choiceId": "d",
-            "explanation": "This role is not named in the release notes; the documented role is app_service_owner.",
+            "explanation": "The Brazil notes state that viewing related items for a CI, such as linked incidents or changes, still requires the itil role.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurationmanagementdatabasecmdb-release-notes.html"
           }
         ]
       },
       "references": [
-        "Brazil delta release notes - Configuration Management Database (CMDB)"
+        "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurationmanagementdatabasecmdb-release-notes.html"
       ],
       "isFree": true,
       "difficulty": "medium",
@@ -769,18 +788,20 @@
       },
       "meta": {
         "generatedAt": "2026-10-21T00:00:00.000Z",
-        "version": "1.0",
+        "version": "1.1",
         "release": "Brazil",
-        "reviewed": false
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "cis-df-delta-brazil-010",
       "certification": "cis-df",
       "topic": "delta-brazil",
-      "cognitiveLevel": "understanding",
+      "cognitiveLevel": "application",
       "type": "multiple_select",
-      "question": "In the Brazil release, the itil role is removed from the app_service_admin role. Which roles replace it within app_service_admin? (Choose two.)",
+      "question": "After upgrading to Brazil, an administrator reviews the app_service_admin role and sees that it no longer contains the itil role. Which two roles replace itil within app_service_admin? (Choose two.)",
       "options": [
         {
           "id": "a",
@@ -808,27 +829,27 @@
         "c"
       ],
       "explanation": {
-        "correct": "The sn_cmdb_editor and app_service_user roles replace the itil role within app_service_admin. Viewing related items for a CI, such as linked incidents or changes, still requires the itil role. See: https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurationmanagementdatabasecmdb-release-notes.html",
+        "correct": "Under 'Itil role removed from app_service_admin', the Brazil release notes state that the sn_cmdb_editor and app_service_user roles replace the itil role within the app_service_admin role. See https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurationmanagementdatabasecmdb-release-notes.html",
         "wrongAnswers": [
           {
             "choiceId": "b",
-            "explanation": "The release notes name sn_cmdb_editor, not sn_cmdb_admin, as a replacement for itil within app_service_admin.",
+            "explanation": "sn_cmdb_admin is not one of the roles named as replacing itil inside app_service_admin; the notes name sn_cmdb_editor and app_service_user.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurationmanagementdatabasecmdb-release-notes.html"
           },
           {
             "choiceId": "d",
-            "explanation": "The release notes name sn_cmdb_editor and app_service_user as the replacements, not itil_admin.",
+            "explanation": "itil_admin is not named as a replacement; the notes name sn_cmdb_editor and app_service_user.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurationmanagementdatabasecmdb-release-notes.html"
           },
           {
             "choiceId": "e",
-            "explanation": "The release notes name sn_cmdb_editor and app_service_user as the replacements, not app_service_owner.",
+            "explanation": "app_service_owner is the separate Brazil role for Service Instance CRUD access (it includes app_service_user); it is not one of the roles that replace itil within app_service_admin.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurationmanagementdatabasecmdb-release-notes.html"
           }
         ]
       },
       "references": [
-        "Brazil delta release notes - Configuration Management Database (CMDB)"
+        "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurationmanagementdatabasecmdb-release-notes.html"
       ],
       "isFree": true,
       "difficulty": "hard",
@@ -861,61 +882,63 @@
       },
       "meta": {
         "generatedAt": "2026-10-21T00:00:00.000Z",
-        "version": "1.0",
+        "version": "1.1",
         "release": "Brazil",
-        "reviewed": false
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "cis-df-delta-brazil-011",
       "certification": "cis-df",
       "topic": "delta-brazil",
-      "cognitiveLevel": "understanding",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "Starting with the Brazil release, what happens when you reset a CMDB certification task?",
+      "question": "In Brazil, a CI data owner wants to restart the certification process for a CMDB certification task, so they reset the task. What happens to the task's results and comments?",
       "options": [
         {
           "id": "a",
-          "text": "All certification results return to a 'Review not completed' state and any added comments are removed"
+          "text": "Results go to 'Review not completed'; comments are removed"
         },
         {
           "id": "b",
-          "text": "The task is closed and a new task is generated with the same CIs"
+          "text": "The task closes and a new task is created for the same CIs"
         },
         {
           "id": "c",
-          "text": "Certification results are kept but the percent complete number resets to zero"
+          "text": "Results are kept and the percent complete number returns to zero"
         },
         {
           "id": "d",
-          "text": "Comments are kept and only failed certification results are reset"
+          "text": "Comments are kept and failed results go back for review"
         }
       ],
       "correctAnswers": [
         "a"
       ],
       "explanation": {
-        "correct": "Resetting a certification task restarts the certification process: all certification results return to 'Review not completed' and any added comments are removed. See: https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurationmanagementdatabasecmdb-release-notes.html",
+        "correct": "The Brazil release notes describe resetting a certification task to restart the certification process: reset sets all certification results for the task to a 'Review not completed' state and removes any comments that were added. See https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurationmanagementdatabasecmdb-release-notes.html",
         "wrongAnswers": [
           {
             "choiceId": "b",
-            "explanation": "The release notes describe resetting the existing task, not closing it and creating another.",
+            "explanation": "Reset restarts the certification process for the same task; the notes do not describe closing it and generating a new task.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurationmanagementdatabasecmdb-release-notes.html"
           },
           {
             "choiceId": "c",
-            "explanation": "The release notes say reset sets all certification results to 'Review not completed', so results are not kept.",
+            "explanation": "Reset does not keep the results; it sets all certification results for the task to 'Review not completed'.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurationmanagementdatabasecmdb-release-notes.html"
           },
           {
             "choiceId": "d",
-            "explanation": "The release notes say reset removes added comments and resets all results, not only failed ones.",
+            "explanation": "Reset removes any comments that were added and resets all certification results, not just failed ones.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurationmanagementdatabasecmdb-release-notes.html"
           }
         ]
       },
       "references": [
-        "Brazil delta release notes - Configuration Management Database (CMDB)"
+        "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurationmanagementdatabasecmdb-release-notes.html"
       ],
       "isFree": true,
       "difficulty": "medium",
@@ -947,61 +970,63 @@
       },
       "meta": {
         "generatedAt": "2026-10-21T00:00:00.000Z",
-        "version": "1.0",
+        "version": "1.1",
         "release": "Brazil",
-        "reviewed": false
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "cis-df-delta-brazil-012",
       "certification": "cis-df",
       "topic": "delta-brazil",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "Starting with the Brazil release, CMDB Baseline is being prepared for future deprecation. What does this mean, and what provides the latest experience for this functionality?",
+      "question": "An administrator setting up a new Brazil instance reads that CMDB Baseline is being prepared for future deprecation. What does that mean, and what provides the latest experience for this functionality?",
       "options": [
         {
           "id": "a",
-          "text": "It is removed immediately; use CMDB 360 instead"
+          "text": "Removed at upgrade; CMDB 360 provides the latest experience"
         },
         {
           "id": "b",
-          "text": "It is hidden and no longer activated on new instances but is still supported; Unified Map provides the latest experience"
+          "text": "Hidden on new instances but supported; Unified Map replaces it"
         },
         {
           "id": "c",
-          "text": "It stays active on new instances but loses support; the Dependency Views plugin replaces it"
+          "text": "Activated on new instances but unsupported; Dependency Views replace it"
         },
         {
           "id": "d",
-          "text": "It is moved to a store app; CMDB Query Builder provides the latest experience"
+          "text": "Moved to a Store app; CMDB Query Builder provides the latest experience"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "Starting with Brazil, CMDB Baseline is hidden and no longer activated on new instances but continues to be supported. Unified Map provides the latest experience for this functionality. See: https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurationmanagementdatabasecmdb-release-notes.html",
+        "correct": "The Brazil deprecation notes state that CMDB Baseline will be hidden and no longer activated on new instances but will continue to be supported, and that Unified Map provides the latest experience for this functionality. See https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurationmanagementdatabasecmdb-release-notes.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "The release notes say CMDB Baseline continues to be supported, and they name Unified Map, not CMDB 360, as the latest experience.",
+            "explanation": "CMDB Baseline is not removed; it continues to be supported. The CMDB release notes also list no CMDB removals, and the documented successor is Unified Map.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurationmanagementdatabasecmdb-release-notes.html"
           },
           {
             "choiceId": "c",
-            "explanation": "This reverses the documented behavior: it is no longer activated on new instances but remains supported.",
+            "explanation": "It is the reverse: CMDB Baseline will no longer be activated on new instances but will continue to be supported. Dependency Views are listed in the same deprecation entry, not as the replacement.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurationmanagementdatabasecmdb-release-notes.html"
           },
           {
             "choiceId": "d",
-            "explanation": "The release notes name Unified Map as the latest experience and do not describe a move to a store app.",
+            "explanation": "The notes do not move CMDB Baseline to a Store app, and they name Unified Map, not CMDB Query Builder, as the latest experience.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurationmanagementdatabasecmdb-release-notes.html"
           }
         ]
       },
       "references": [
-        "Brazil delta release notes - Configuration Management Database (CMDB)"
+        "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurationmanagementdatabasecmdb-release-notes.html"
       ],
       "isFree": true,
       "difficulty": "medium",
@@ -1033,22 +1058,24 @@
       },
       "meta": {
         "generatedAt": "2026-10-21T00:00:00.000Z",
-        "version": "1.0",
+        "version": "1.1",
         "release": "Brazil",
-        "reviewed": false
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "cis-df-delta-brazil-013",
       "certification": "cis-df",
       "topic": "delta-brazil",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "When configuring MID Server routing for Data Catalog metadata collectors, where does a connection run by default?",
+      "question": "Starting with the Australia release, a Data Catalog administrator creates a metadata collector connection and leaves the routing choice unchanged. Where does the connection run?",
       "options": [
         {
           "id": "a",
-          "text": "On the MID Server with the most available capacity"
+          "text": "On the MID Server with the most free capacity"
         },
         {
           "id": "b",
@@ -1056,38 +1083,39 @@
         },
         {
           "id": "c",
-          "text": "On a MID Server chosen by the collector owner at each run"
+          "text": "On a MID Server the collector owner picks per run"
         },
         {
           "id": "d",
-          "text": "On the data source host itself"
+          "text": "On the data source host through a local agent"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "A connection can run in the ServiceNow hosted cloud infrastructure (the default) or through a MID Server. When it runs on a MID Server, three routing models control how a MID Server is assigned to the collection job. See: https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-datacatalog-release-notes.html",
+        "correct": "The 'MID Server routing for metadata collectors' feature (listed for Australia and Brazil) lets you choose whether a connection runs in the ServiceNow hosted cloud infrastructure, which is the default, or through a MID Server to reach your data sources. See https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-datacatalog-release-notes.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "The release notes state the default is the ServiceNow hosted cloud infrastructure, not a MID Server.",
-            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-datacatalog-release-notes.html"
+            "explanation": "MID Server routing applies only when a collector is configured to run on a MID Server, and even then the default Auto-select model picks any available MID Server; the default connection runs in the hosted cloud.",
+            "reference": "https://www.servicenow.com/docs/r/integrate-applications/mid-server-for-metadata-collectors-dc.html"
           },
           {
             "choiceId": "c",
-            "explanation": "The release notes state the default is the ServiceNow hosted cloud infrastructure; MID Server use is optional.",
-            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-datacatalog-release-notes.html"
+            "explanation": "When a MID Server is used, a routing model set by an administrator applies to all runs; the collector owner does not pick a MID Server for each run, and the default is the hosted cloud.",
+            "reference": "https://www.servicenow.com/docs/r/integrate-applications/mid-server-for-metadata-collectors-dc.html"
           },
           {
             "choiceId": "d",
-            "explanation": "The release notes offer only the hosted cloud infrastructure (the default) or a MID Server.",
+            "explanation": "The documented options are the ServiceNow hosted cloud (default) or a MID Server; running on the data source host is not one of them.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-datacatalog-release-notes.html"
           }
         ]
       },
       "references": [
-        "Brazil delta release notes - Data Catalog"
+        "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-datacatalog-release-notes.html",
+        "https://www.servicenow.com/docs/r/integrate-applications/mid-server-for-metadata-collectors-dc.html"
       ],
       "isFree": true,
       "difficulty": "medium",
@@ -1120,18 +1148,20 @@
       },
       "meta": {
         "generatedAt": "2026-10-21T00:00:00.000Z",
-        "version": "1.0",
+        "version": "1.1",
         "release": "Brazil",
-        "reviewed": false
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "cis-df-delta-brazil-014",
       "certification": "cis-df",
       "topic": "delta-brazil",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "Which service can a Data Catalog metadata collector use to classify harvested columns?",
+      "question": "Starting with the Australia release, a data owner wants a Snowflake metadata collector in Data Catalog to classify the columns it harvests. Which service does the collector use for this?",
       "options": [
         {
           "id": "a",
@@ -1139,42 +1169,43 @@
         },
         {
           "id": "b",
-          "text": "Data Classification Engine plugin"
+          "text": "Data Quality API"
         },
         {
           "id": "c",
-          "text": "Platform Analytics"
+          "text": "Zero Copy Connectors"
         },
         {
           "id": "d",
-          "text": "Instance Data Replication"
+          "text": "Platform Analytics"
         }
       ],
       "correctAnswers": [
         "a"
       ],
       "explanation": {
-        "correct": "A metadata collector can be enabled to classify harvested columns using ServiceNow Vault. Supported collector types include Snowflake, Amazon Redshift, Databricks, Oracle, PostgreSQL, Teradata, MySQL, Microsoft SQL Server, and SAP HANA. See: https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-datacatalog-release-notes.html",
+        "correct": "The 'Data classification with Vault' feature (Australia and Brazil) lets you enable a metadata collector to classify harvested columns using ServiceNow Vault; Snowflake is one of the collector types that support Vault classification. See https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-datacatalog-release-notes.html",
         "wrongAnswers": [
           {
             "choiceId": "b",
-            "explanation": "The release notes name ServiceNow Vault for column classification; this plugin is not mentioned.",
+            "explanation": "The Data Quality API is how external data quality tools submit rule results to Data Catalog; it does not classify harvested columns.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-datacatalog-release-notes.html"
           },
           {
             "choiceId": "c",
-            "explanation": "The release notes name ServiceNow Vault, not Platform Analytics, for column classification.",
-            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-datacatalog-release-notes.html"
+            "explanation": "Zero Copy Connectors access data from external systems in place without replication (a Data products feature); they do not classify harvested columns.",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-dataproducts-release-notes.html"
           },
           {
             "choiceId": "d",
-            "explanation": "The release notes name ServiceNow Vault, not Instance Data Replication, for column classification.",
+            "explanation": "Platform Analytics artifacts are something the ServiceNow metadata collector can harvest; Platform Analytics is not the classification service for harvested columns.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-datacatalog-release-notes.html"
           }
         ]
       },
       "references": [
-        "Brazil delta release notes - Data Catalog"
+        "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-datacatalog-release-notes.html",
+        "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-dataproducts-release-notes.html"
       ],
       "isFree": true,
       "difficulty": "medium",
@@ -1207,18 +1238,20 @@
       },
       "meta": {
         "generatedAt": "2026-10-21T00:00:00.000Z",
-        "version": "1.0",
+        "version": "1.1",
         "release": "Brazil",
-        "reviewed": false
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "cis-df-delta-brazil-015",
       "certification": "cis-df",
       "topic": "delta-brazil",
-      "cognitiveLevel": "understanding",
+      "cognitiveLevel": "application",
       "type": "multiple_select",
-      "question": "According to the Australia release notes, which operations do data interfaces support for combining multiple sources? (Choose two.)",
+      "question": "A data engineer on Australia is building a data interface that combines several source tables. Which two operations do data interfaces support for multi-source composition? (Choose two.)",
       "options": [
         {
           "id": "a",
@@ -1242,22 +1275,22 @@
         "b"
       ],
       "explanation": {
-        "correct": "Data interfaces support multi-source composition through UNION and JOIN operations, and they keep the schema stable so downstream consumers are protected when source systems change. See: https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-dataproducts-release-notes.html",
+        "correct": "The Australia Data products release notes state that data interfaces support multi-source composition through UNION and JOIN operations, and the highlights say governed data interfaces can be created from single tables, JOIN operations, or UNION operations using the Data Workbench wizard. See https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-dataproducts-release-notes.html",
         "wrongAnswers": [
           {
             "choiceId": "c",
-            "explanation": "The release notes name UNION and JOIN, not PIVOT, for multi-source composition.",
+            "explanation": "PIVOT is not listed; the release notes name only UNION and JOIN operations for multi-source composition.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-dataproducts-release-notes.html"
           },
           {
             "choiceId": "d",
-            "explanation": "The release notes name UNION and JOIN, not MERGE, for multi-source composition.",
+            "explanation": "MERGE is not listed; data interfaces are created from single tables, JOIN operations, or UNION operations.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-dataproducts-release-notes.html"
           }
         ]
       },
       "references": [
-        "Brazil delta release notes - Data products"
+        "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-dataproducts-release-notes.html"
       ],
       "isFree": true,
       "difficulty": "medium",
@@ -1269,7 +1302,7 @@
           "url": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-dataproducts-release-notes.html"
         },
         "path": "servicenow.com/docs/r/delta-zurich-brazil",
-        "excerpt": "Data interfaces support multi-source composition through UNION and JOIN operations and maintain schema stability so that downstream consumers are protected from breaking changes when underlying source systems change."
+        "excerpt": "Data interfaces support multi-source composition through UNION and JOIN operations"
       },
       "labels": {
         "certification": "cis-df",
@@ -1288,61 +1321,63 @@
       },
       "meta": {
         "generatedAt": "2026-10-21T00:00:00.000Z",
-        "version": "1.0",
-        "release": "Australia",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "cis-df-delta-brazil-016",
       "certification": "cis-df",
       "topic": "delta-brazil",
-      "cognitiveLevel": "understanding",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "According to the Australia release notes, an administrator edits a published data interface to add columns and swap a source table. What happens to existing consumers?",
+      "question": "On Australia, an administrator edits a published data interface to add columns and swap a source table. What happens to the consumers already using that interface?",
       "options": [
         {
           "id": "a",
-          "text": "They are disconnected and must request access again"
+          "text": "They are disconnected and must request access to it again"
         },
         {
           "id": "b",
-          "text": "They keep using the interface and must reconnect to pick up the structural changes"
+          "text": "They keep using it and must reconnect to get the changes"
         },
         {
           "id": "c",
-          "text": "They receive the structural changes automatically with no action"
+          "text": "They receive the structural changes with no action"
         },
         {
           "id": "d",
-          "text": "The edit is blocked until all consumers disconnect"
+          "text": "The edit is blocked until every consumer disconnects"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "A published data interface can be modified (add columns, swap source tables, change the combination method, update mappings, or adjust join conditions). Existing consumers continue to use the interface and must reconnect to pick up structural changes. See: https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-dataproducts-release-notes.html",
+        "correct": "The Australia change 'Edit a published data interface' lets you add columns, swap source tables, change the combination method, update column mappings, or adjust join conditions; existing consumers continue to use the interface and must reconnect to pick up structural changes. See https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-dataproducts-release-notes.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "The release notes say existing consumers continue to use the interface; they are not disconnected.",
+            "explanation": "Existing consumers are not disconnected; they continue to use the interface.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-dataproducts-release-notes.html"
           },
           {
             "choiceId": "c",
-            "explanation": "The release notes say consumers must reconnect to pick up structural changes.",
+            "explanation": "Consumers do not get structural changes automatically; they must reconnect to pick them up.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-dataproducts-release-notes.html"
           },
           {
             "choiceId": "d",
-            "explanation": "The release notes describe editing a published interface while consumers continue to use it, not blocking the edit.",
+            "explanation": "The edit is allowed on a published interface while consumers continue to use it; nothing blocks it until consumers disconnect.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-dataproducts-release-notes.html"
           }
         ]
       },
       "references": [
-        "Brazil delta release notes - Data products"
+        "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-dataproducts-release-notes.html"
       ],
       "isFree": true,
       "difficulty": "hard",
@@ -1373,18 +1408,20 @@
       },
       "meta": {
         "generatedAt": "2026-10-21T00:00:00.000Z",
-        "version": "1.0",
-        "release": "Australia",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "cis-df-delta-brazil-017",
       "certification": "cis-df",
       "topic": "delta-brazil",
-      "cognitiveLevel": "understanding",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "Starting with the Australia release, Service Graph Connector Integration for Claroty CTD is being prepared for future deprecation. What does this mean for customers?",
+      "question": "A customer that uses Service Graph Connector Integration for Claroty CTD upgrades to Australia, where the app is being prepared for future deprecation. What does that mean for the app?",
       "options": [
         {
           "id": "a",
@@ -1392,42 +1429,42 @@
         },
         {
           "id": "b",
-          "text": "It is hidden and no longer available for installation but continues to be supported"
+          "text": "It is hidden from installation but still supported"
         },
         {
           "id": "c",
-          "text": "It remains installable but is no longer supported"
+          "text": "It stays installable but is no longer supported"
         },
         {
           "id": "d",
-          "text": "It is replaced automatically by a new connector"
+          "text": "It is replaced automatically by a newer connector"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "Being prepared for future deprecation means the application is hidden and no longer available for installation, but it continues to be supported. See: https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-servicegraphconnectorintegrationforclarotyctd-release-notes.html",
+        "correct": "Starting with the Australia release, the Service Graph Connector Integration for Claroty CTD application is being prepared for future deprecation: the app is hidden and can no longer be installed, but it is still supported. The Brazil notes repeat the same status. See https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-servicegraphconnectorintegrationforclarotyctd-release-notes.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "The release notes say the application continues to be supported; they do not describe automatic uninstallation.",
+            "explanation": "The release notes do not uninstall the app; existing customers continue to be supported.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-servicegraphconnectorintegrationforclarotyctd-release-notes.html"
           },
           {
             "choiceId": "c",
-            "explanation": "This reverses the documented behavior: it is no longer available for installation but is still supported.",
+            "explanation": "It is the reverse: the app is no longer available for installation but continues to be supported.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-servicegraphconnectorintegrationforclarotyctd-release-notes.html"
           },
           {
             "choiceId": "d",
-            "explanation": "The release notes do not describe an automatic replacement.",
+            "explanation": "The release notes describe hiding the app while it continues to be supported; they do not describe an automatic replacement.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-servicegraphconnectorintegrationforclarotyctd-release-notes.html"
           }
         ]
       },
       "references": [
-        "Brazil delta release notes - Service Graph Connector Integration for Claroty CTD"
+        "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-servicegraphconnectorintegrationforclarotyctd-release-notes.html"
       ],
       "isFree": true,
       "difficulty": "medium",
@@ -1460,9 +1497,11 @@
       },
       "meta": {
         "generatedAt": "2026-10-21T00:00:00.000Z",
-        "version": "1.0",
-        "release": "Australia",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -1471,50 +1510,50 @@
       "topic": "delta-brazil",
       "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "Starting with the Australia release, the mssql-jdbc.7.4.1.jre8 jar file is no longer part of the MID Server distribution. What must an administrator with an MSSQL JDBC data source integration do?",
+      "question": "After upgrading to Australia, an administrator's JDBC data source for MSSQL fails because the mssql-jdbc.7.4.1.jre8 jar file is no longer part of the MID Server distribution. What should the administrator do?",
       "options": [
         {
           "id": "a",
-          "text": "Nothing; the MID Server downloads the jar automatically"
+          "text": "Nothing; the MID Server downloads the jar file itself"
         },
         {
           "id": "b",
-          "text": "Install this jar file or the vendor-recommended jar file"
+          "text": "Install that jar file or the vendor-recommended jar"
         },
         {
           "id": "c",
-          "text": "Switch the data source to a file-based import"
+          "text": "Turn on parallel export sets for the data source"
         },
         {
           "id": "d",
-          "text": "Re-create the data source as a REST integration"
+          "text": "Configure a connection alias for the JDBC source"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "Because the mssql-jdbc.7.4.1.jre8 jar is no longer shipped with the MID Server, JDBC data source integrations that use it (any MSSQL connections) need this jar or the vendor-recommended jar installed, as described in KB0862383. See: https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-importandexport-release-notes.html",
+        "correct": "The Australia Import and Export change says that if you have a JDBC data source integration that uses this jar file (that is, any MSSQL connections), install this jar file or the vendor recommended jar file according to KB0862383. See https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-importandexport-release-notes.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "The release notes say you must install the jar file yourself; they do not describe an automatic download.",
+            "explanation": "The jar file is no longer part of the MID Server distribution, and the notes tell you to install it or the vendor recommended jar; they do not say the MID Server fetches it.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-importandexport-release-notes.html"
           },
           {
             "choiceId": "c",
-            "explanation": "The release notes call for installing the jar file, not changing the import method.",
+            "explanation": "Parallel export sets are a separate Australia feature for exporting data with multiple small attachments in parallel; they do not supply the missing JDBC driver.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-importandexport-release-notes.html"
           },
           {
             "choiceId": "d",
-            "explanation": "The release notes call for installing the jar file, not re-creating the integration.",
+            "explanation": "A connection alias is a separate Australia feature that lets you reuse connection settings across JDBC data sources; it does not supply the missing jar file.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-importandexport-release-notes.html"
           }
         ]
       },
       "references": [
-        "Brazil delta release notes - Import and Export"
+        "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-importandexport-release-notes.html"
       ],
       "isFree": true,
       "difficulty": "hard",
@@ -1547,30 +1586,32 @@
       },
       "meta": {
         "generatedAt": "2026-10-21T00:00:00.000Z",
-        "version": "1.0",
-        "release": "Australia",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "cis-df-delta-brazil-019",
       "certification": "cis-df",
       "topic": "delta-brazil",
-      "cognitiveLevel": "understanding",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "According to the Australia release notes, what does Integration Hub Stream Producer do?",
+      "question": "An integration architect on Australia needs external applications to receive inserts, updates, and deletes from selected ServiceNow tables in real time through Kafka. What does Integration Hub Stream Producer do?",
       "options": [
         {
           "id": "a",
-          "text": "Imports Kafka messages into ServiceNow import sets on a schedule"
+          "text": "Imports Kafka messages into import sets on a schedule"
         },
         {
           "id": "b",
-          "text": "Uses change data capture to stream inserts, updates, and deletes on selected ServiceNow tables to Kafka topics"
+          "text": "Streams table changes captured by CDC to Kafka topics"
         },
         {
           "id": "c",
-          "text": "Replicates ServiceNow tables to another instance through Instance Data Replication"
+          "text": "Replicates Kafka messages between clusters via Stream Connect"
         },
         {
           "id": "d",
@@ -1581,27 +1622,27 @@
         "b"
       ],
       "explanation": {
-        "correct": "Stream Producer uses change data capture (CDC) to capture inserts, updates, and deletes on selected tables, formats them as messages, and sends them to a Kafka topic for real-time synchronization with external applications. See: https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-integrationhub-release-notes.html",
+        "correct": "Australia introduced Stream Producer, which automatically streams changes from ServiceNow tables to Kafka topics. It uses change data capture (CDC) technology to capture inserts, updates, and deletes on selected tables, formats them as messages, and sends them to a Kafka topic for real-time data synchronization with external applications. See https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-integrationhub-release-notes.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "This reverses the direction: Stream Producer sends changes from ServiceNow tables to Kafka topics.",
+            "explanation": "Stream Producer sends data out of ServiceNow to Kafka topics; it does not import Kafka messages into import sets.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-integrationhub-release-notes.html"
           },
           {
             "choiceId": "c",
-            "explanation": "The release notes describe sending changes to Kafka topics, not Instance Data Replication.",
+            "explanation": "Stream Connect message replication (with OAUTHBEARER authentication added in Australia) is a separate capability; Stream Producer streams ServiceNow table changes to a Kafka topic.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-integrationhub-release-notes.html"
           },
           {
             "choiceId": "d",
-            "explanation": "The release notes describe CDC-based, real-time streaming, not nightly batch files.",
+            "explanation": "Stream Producer captures changes with CDC and sends them as messages for real-time synchronization, not as nightly batch files.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-integrationhub-release-notes.html"
           }
         ]
       },
       "references": [
-        "Brazil delta release notes - Integration Hub"
+        "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-integrationhub-release-notes.html"
       ],
       "isFree": true,
       "difficulty": "medium",
@@ -1613,7 +1654,7 @@
           "url": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-integrationhub-release-notes.html"
         },
         "path": "servicenow.com/docs/r/delta-zurich-brazil",
-        "excerpt": "Stream Producer uses change data capture (CDC) technology to capture inserts, updates, and deletes on selected tables. The captured changes are formatted as messages and sent to a Kafka topic, enabling real-time data synchronization with external applications."
+        "excerpt": "Stream Producer uses change data capture (CDC) technology to capture inserts, updates, and deletes on selected tables."
       },
       "labels": {
         "certification": "cis-df",
@@ -1634,9 +1675,11 @@
       },
       "meta": {
         "generatedAt": "2026-10-21T00:00:00.000Z",
-        "version": "1.0",
-        "release": "Australia",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     }
   ]

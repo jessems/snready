@@ -6,52 +6,52 @@
       "id": "csa-cm-001",
       "certification": "csa",
       "topic": "change-management",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What are the three types of changes in ServiceNow?",
+      "question": "A security team must deploy an urgent out-of-band patch today to stop an active exploit on a production server. Which change type fits this request?",
       "options": [
         {
           "id": "a",
-          "text": "Small, Medium, and Large"
+          "text": "A standard change"
         },
         {
           "id": "b",
-          "text": "Standard, Normal, and Emergency"
+          "text": "An emergency change"
         },
         {
           "id": "c",
-          "text": "Internal, External, and Mixed"
+          "text": "A normal change"
         },
         {
           "id": "d",
-          "text": "Planned, Unplanned, and Scheduled"
+          "text": "An unauthorized change"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "There are three types of changes in ServiceNow: Standard (pre-approved, commonly implemented), Normal (requires comprehensive assessments and CAB authorization), and Emergency (must be implemented swiftly, requires ECAB approval). See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=ecb20dd947dc9a5089c7acc9126d4383&spa=1",
+        "correct": "Change Management supports three ITIL change types: standard, emergency, and normal. An emergency change is a high-priority change implemented immediately to resolve a major incident or apply a security patch. It bypasses group and peer review and goes directly to the Authorize state for CAB approval. See https://www.servicenow.com/docs/r/it-service-management/change-management/change-types.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "ServiceNow categorizes changes by type, not size.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=ecb20dd947dc9a5089c7acc9126d4383&spa=1"
+            "explanation": "A standard change is a pre-authorized, low-risk change that is frequently implemented and has a proven history of success. An urgent, one-off patch for an active exploit does not match that description.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/change-management/change-types.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Internal/External is not the classification used for change types.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=ecb20dd947dc9a5089c7acc9126d4383&spa=1"
+            "explanation": "A normal change follows a prescriptive process with two levels of approval before implementation. That is too slow for a patch that must be implemented immediately.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/change-management/change-types.html"
           },
           {
             "choiceId": "d",
-            "explanation": "These are not the official change type classifications in ServiceNow.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=ecb20dd947dc9a5089c7acc9126d4383&spa=1"
+            "explanation": "Unauthorized change requests are created when unplanned CI change activity is detected, not raised for a planned urgent fix. The docs list the three change types as standard, emergency, and normal.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/change-management/change-types.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Change Management"
+        "https://www.servicenow.com/docs/r/it-service-management/change-management/change-types.html"
       ],
       "isFree": true,
       "source": {
@@ -76,16 +76,17 @@
         ],
         "tags": [
           "change types",
-          "standard",
-          "normal",
-          "emergency"
+          "emergency change",
+          "security patch"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -182,52 +183,53 @@
       "id": "csa-cm-003",
       "certification": "csa",
       "topic": "change-management",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "understanding",
       "type": "multiple_choice",
-      "question": "What does CAB stand for in Change Management?",
+      "question": "A change requester's change request matches the agenda filter criteria of next week's CAB meeting in the CAB workbench. What happens for the requester?",
       "options": [
         {
           "id": "a",
-          "text": "Change Administration Board"
+          "text": "The request is approved when the meeting starts"
         },
         {
           "id": "b",
-          "text": "Change Advisory Board"
+          "text": "The requester is notified of the meeting"
         },
         {
           "id": "c",
-          "text": "Configuration Advisory Board"
+          "text": "The request moves straight to the Scheduled state"
         },
         {
           "id": "d",
-          "text": "Central Approval Bureau"
+          "text": "The requester must confirm before it is listed"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "CAB stands for Change Advisory Board. Normal changes require comprehensive assessments and authorizations including peer or technical approval, Change Management, and Change Advisory Board authorization. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=ecb20dd947dc9a5089c7acc9126d4383&spa=1",
+        "correct": "In the CAB workbench, the CAB manager defines filter criteria that determine which change requests are included in a CAB meeting. If a change request is included in an agenda, the change requester is notified of the CAB meeting in which it is discussed. The requester can attend to present the reasons for the change and explain its intended outcomes and potential risks. See https://www.servicenow.com/docs/r/it-service-management/change-management/cab-workbench.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "The correct term is Advisory, not Administration.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=ecb20dd947dc9a5089c7acc9126d4383&spa=1"
+            "explanation": "Being on the agenda does not approve anything. The CAB workbench is used to approve or reject a change request based on the decision taken in the CAB meeting.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/change-management/cab-workbench.html"
           },
           {
             "choiceId": "c",
-            "explanation": "CAB relates to Change Management, not Configuration.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=ecb20dd947dc9a5089c7acc9126d4383&spa=1"
+            "explanation": "A change request moves to the Scheduled state when its approval is granted, not when it is added to a CAB agenda.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/change-management/t_ProcessAChangeRequest.html"
           },
           {
             "choiceId": "d",
-            "explanation": "This is not the correct expansion of CAB.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=ecb20dd947dc9a5089c7acc9126d4383&spa=1"
+            "explanation": "Inclusion is driven by the agenda filter criteria. The docs say the requester is notified; they do not need to confirm before the request is listed.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/change-management/cab-workbench.html"
           }
         ]
       },
       "references": [
-        "ServiceNow CAB"
+        "https://www.servicenow.com/docs/r/it-service-management/change-management/cab-workbench.html",
+        "https://www.servicenow.com/docs/r/it-service-management/change-management/t_ProcessAChangeRequest.html"
       ],
       "isFree": true,
       "source": {
@@ -248,19 +250,23 @@
         "domainSlug": "change-management",
         "domainPercentage": 10,
         "subtopics": [
-          "Change Advisory Board (CAB)"
+          "Change Advisory Board (CAB)",
+          "CAB Workbench"
         ],
         "tags": [
           "CAB",
-          "change advisory board",
-          "approval"
+          "CAB workbench",
+          "agenda",
+          "notification"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -446,52 +452,53 @@
       "id": "csa-cm-006",
       "certification": "csa",
       "topic": "change-management",
-      "cognitiveLevel": "understanding",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "Why is it best practice to create emergency changes from an incident?",
+      "question": "During a major incident, the on-call engineer confirms that restoring service needs an immediate configuration change to a business service. What should the engineer do from the incident record?",
       "options": [
         {
           "id": "a",
-          "text": "To reduce paperwork"
+          "text": "Create a problem record from the incident"
         },
         {
           "id": "b",
-          "text": "To minimize the risk of unauthorized changes by associating with a documented incident"
+          "text": "Create an emergency change from the incident"
         },
         {
           "id": "c",
-          "text": "To speed up the approval process automatically"
+          "text": "Create a service request from the incident"
         },
         {
           "id": "d",
-          "text": "Emergency changes cannot be created any other way"
+          "text": "Create a normal change request from the incident"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "Emergency changes do not follow the complete lifecycle of a normal change, which can potentially lead to unauthorized changes. To minimize this risk, it is best practice to create emergency changes if they are associated with an incident. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=ecb20dd947dc9a5089c7acc9126d4383&spa=1",
+        "correct": "When the issue behind an incident requires a change to the infrastructure or a business service, a change record is created from the incident. The incident form offers Create Normal, Standard, or Emergency Change. An emergency change is the type implemented immediately to resolve a major incident, and it goes directly to the Authorize state for CAB approval. The Create Emergency Change script copies fields such as short description, description, CI, and priority from the incident. See https://www.servicenow.com/docs/r/it-service-management/incident-management/t_PromoteAnIncident.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "The main reason is to minimize unauthorized changes, not reduce paperwork.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=ecb20dd947dc9a5089c7acc9126d4383&spa=1"
+            "explanation": "A problem is generated from an incident when the cause is an error or widespread issue. It does not carry out the change needed to restore service.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/incident-management/t_PromoteAnIncident.html"
           },
           {
             "choiceId": "c",
-            "explanation": "ECAB approval is still required; linking to incidents doesn't bypass approvals.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=ecb20dd947dc9a5089c7acc9126d4383&spa=1"
+            "explanation": "A request is created from an incident when the resolution for the user is to request hardware or software, not to change a business service.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/incident-management/t_PromoteAnIncident.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Emergency changes can be created independently, but linking is best practice.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=ecb20dd947dc9a5089c7acc9126d4383&spa=1"
+            "explanation": "A normal change needs two levels of approval before implementation. The docs reserve the emergency type for changes implemented immediately to resolve a major incident.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/change-management/change-types.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Emergency Changes"
+        "https://www.servicenow.com/docs/r/it-service-management/incident-management/t_PromoteAnIncident.html",
+        "https://www.servicenow.com/docs/r/it-service-management/change-management/change-types.html"
       ],
       "isFree": false,
       "source": {
@@ -512,71 +519,74 @@
         "domainSlug": "change-management",
         "domainPercentage": 10,
         "subtopics": [
-          "Change types (Standard, Normal, Emergency)"
+          "Change types (Standard, Normal, Emergency)",
+          "Creating changes from incidents"
         ],
         "tags": [
           "emergency change",
           "incident",
-          "best practices"
+          "create change from incident"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "csa-cm-007",
       "certification": "csa",
       "topic": "change-management",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What are the four types of change tasks in ServiceNow?",
+      "question": "A change coordinator adds a change task whose planned start and end dates must fall within the parent change request's planned dates. Which change task type is this?",
       "options": [
         {
           "id": "a",
-          "text": "Create, Update, Delete, and Archive"
+          "text": "Planning type, which prepares the change"
         },
         {
           "id": "b",
-          "text": "Planning, Implementation, Testing, and Review"
+          "text": "Implementation type, which carries it out"
         },
         {
           "id": "c",
-          "text": "Assess, Authorize, Implement, and Close"
+          "text": "Testing type, which verifies the change works"
         },
         {
           "id": "d",
-          "text": "Request, Approve, Execute, and Verify"
+          "text": "Review type, for post-implementation review"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "ServiceNow offers four types of change tasks: Planning, Implementation, Testing, and Review tasks. Each task has states including pending, open, in progress, closed, and canceled. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=ecb20dd947dc9a5089c7acc9126d4383&spa=1",
+        "correct": "Change tasks have four types: Planning, Implementation, Testing, and Review. For the Implementation type, which covers tasks that carry out the change, the Planned start date and Planned end date must fall within the planned dates of the change request. See https://www.servicenow.com/docs/r/it-service-management/change-management/create-a-change-task.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "These are database operations, not change task types.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=ecb20dd947dc9a5089c7acc9126d4383&spa=1"
+            "explanation": "Planning tasks plan and prepare the change before implementation. The docs apply the planned-date restriction only to the Implementation type.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/change-management/create-a-change-task.html"
           },
           {
             "choiceId": "c",
-            "explanation": "These are change states, not task types.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=ecb20dd947dc9a5089c7acc9126d4383&spa=1"
+            "explanation": "Testing tasks verify that the change works as expected. The docs do not apply the planned-date restriction to them.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/change-management/create-a-change-task.html"
           },
           {
             "choiceId": "d",
-            "explanation": "These are not the official change task type names.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=ecb20dd947dc9a5089c7acc9126d4383&spa=1"
+            "explanation": "Review tasks are for post-implementation review. The planned-date restriction applies to Implementation tasks.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/change-management/create-a-change-task.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Change Tasks"
+        "https://www.servicenow.com/docs/r/it-service-management/change-management/create-a-change-task.html"
       ],
       "isFree": false,
       "source": {
@@ -601,17 +611,17 @@
         ],
         "tags": [
           "change tasks",
-          "planning",
           "implementation",
-          "testing",
-          "review"
+          "planned dates"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -797,23 +807,23 @@
       "topic": "change-management",
       "cognitiveLevel": "understanding",
       "type": "multiple_select",
-      "question": "Which methods are available for determining the risk of a change? (Choose two)",
+      "question": "An administrator documents how the risk of a change request can be calculated in Change Management. Which two methods do the docs describe? (Choose two.)",
       "options": [
         {
           "id": "a",
-          "text": "Risk conditions using predefined properties"
+          "text": "Risk Calculator rules on predefined conditions"
         },
         {
           "id": "b",
-          "text": "Manager's personal judgment only"
+          "text": "CAB members voting on risk during a meeting"
         },
         {
           "id": "c",
-          "text": "Risk assessments using end-user provided information"
+          "text": "Risk assessment answers given by the end user"
         },
         {
           "id": "d",
-          "text": "Random risk assignment"
+          "text": "Conflict detection results for the planned dates"
         }
       ],
       "correctAnswers": [
@@ -821,22 +831,23 @@
         "c"
       ],
       "explanation": {
-        "correct": "There are two methods for determining change risk: risk conditions (using predefined properties and conditions to calculate a risk value) and risk assessments (relying on information provided by the end user). Both can be used independently or combined, with the highest risk value chosen. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=ecb20dd947dc9a5089c7acc9126d4383&spa=1",
+        "correct": "There are two methods to calculate the risk of a change. The Change Risk Calculator, active in the base system by default, uses predefined properties and conditions to calculate a risk value. Change Management - Risk Assessment, which is optional, uses information provided by the end user to assess a risk value. The two can be used individually or together. See https://www.servicenow.com/docs/r/it-service-management/change-management/c_RskAsmtCalc.html",
         "wrongAnswers": [
           {
             "choiceId": "b",
-            "explanation": "Risk should be calculated systematically, not based solely on personal judgment.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=ecb20dd947dc9a5089c7acc9126d4383&spa=1"
+            "explanation": "The docs name only the Risk Calculator and Risk Assessment as risk calculation methods. CAB meetings review and authorize change requests; they are not a risk calculation method.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/change-management/c_RskAsmtCalc.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Risk assignment is never random; it follows defined methods.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=ecb20dd947dc9a5089c7acc9126d4383&spa=1"
+            "explanation": "Conflict detection helps you schedule change requests for the least impact to stakeholders. It is described separately from risk assessment and calculation and does not set the risk value.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/change-management/change-risk-assess-detect-conflict.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Risk Assessment"
+        "https://www.servicenow.com/docs/r/it-service-management/change-management/c_RskAsmtCalc.html",
+        "https://www.servicenow.com/docs/r/it-service-management/change-management/change-risk-assess-detect-conflict.html"
       ],
       "isFree": false,
       "source": {
@@ -861,15 +872,17 @@
         ],
         "tags": [
           "risk",
-          "risk conditions",
+          "risk calculator",
           "risk assessment"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -878,42 +891,45 @@
       "topic": "change-management",
       "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "An update set has been marked as 'Complete' but additional changes are needed. What is the recommended approach?",
+      "question": "A developer marked the 'Patch Fixes' update set as Complete, then found two more fixes that must go to the same target instance. What do the docs recommend?",
       "options": [
         {
           "id": "a",
-          "text": "Revert the update set back to 'In Progress' and make the changes"
+          "text": "Set it back to In progress and add the fixes"
         },
         {
           "id": "b",
-          "text": "Create a new update set and commit them in the order they were created"
+          "text": "Create another update set and commit both in order"
         },
         {
           "id": "c",
-          "text": "Delete the completed update set and start over"
+          "text": "Delete the completed set and rebuild all changes"
         },
         {
           "id": "d",
-          "text": "Merge the changes directly into the default update set"
+          "text": "Keep working, since Complete sets still track changes"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "Once an update set is marked as complete, don't revert it back to in-progress. Instead, start a new update set and commit them in the order they were created. Use naming conventions like 'Performance Enhancements' and 'Performance Enhancements 2' to keep them organized.",
+        "correct": "Once an update set is complete, do not change it back to In progress. Instead, create another update set for the rest of the changes and commit them in the order they were created. See https://www.servicenow.com/docs/r/application-development/system-update-sets/t_CompleteUpdateSets.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Best practice is to NOT revert a completed update set back to in-progress."
+            "explanation": "The docs say that once an update set is complete, you should not change it back to In progress.",
+            "reference": "https://www.servicenow.com/docs/r/application-development/system-update-sets/t_CompleteUpdateSets.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Deleting a completed update set loses the captured changes. Create a new one instead."
+            "explanation": "To revert a customization, the docs say to back out the update set rather than delete it. An update set can be deleted only when it contains no sys_update_xml entries.",
+            "reference": "https://www.servicenow.com/docs/r/application-development/system-update-sets/delete-update-set-cautions.html"
           },
           {
             "choiceId": "d",
-            "explanation": "The default update set should not be used for moving customizations between instances."
+            "explanation": "After an update set is marked Complete, additional customizations aren't tracked in it.",
+            "reference": "https://www.servicenow.com/docs/r/application-development/system-update-sets/t_CompleteUpdateSets.html"
           }
         ]
       },
@@ -936,58 +952,67 @@
         "tags": [
           "update sets",
           "complete",
-          "best practices"
+          "in progress"
         ]
       },
       "meta": {
         "generatedAt": "2026-03-16T02:00:00Z",
         "version": "1.1",
-        "release": "Xanadu",
-        "reviewed": false
-      }
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/application-development/system-update-sets/t_CompleteUpdateSets.html",
+        "https://www.servicenow.com/docs/r/application-development/system-update-sets/delete-update-set-cautions.html"
+      ]
     },
     {
       "id": "csa-cm-012",
       "certification": "csa",
       "topic": "change-management",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "understanding",
       "type": "multiple_choice",
-      "question": "How many instances does a ServiceNow customer receive at minimum?",
+      "question": "A security administrator notices that the glide.installation.production property is set to false on the company's production instance. What is the documented effect?",
       "options": [
         {
           "id": "a",
-          "text": "One (production only)"
+          "text": "It is still handled as production, so nothing changes"
         },
         {
           "id": "b",
-          "text": "Two (production and non-production)"
+          "text": "It is handled as non-production, permitting zboot"
         },
         {
           "id": "c",
-          "text": "Three (production, staging, and development)"
+          "text": "It affects functional behavior, not security"
         },
         {
           "id": "d",
-          "text": "Four (production, test, development, and QA)"
+          "text": "It is expected, as the property's default is false"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "Customers receive at least two instances: production and non-production. They can add more for tasks like testing, development, or quality assurance.",
+        "correct": "If glide.installation.production is not set to the recommended value of true, the instance is not treated as a production instance, permitting zboot and other potentially dangerous scripts. The docs say to set the property to true on a production instance, because allowing a production instance to be evaluated as non-production can lead to information disclosure or denial of service. See https://www.servicenow.com/docs/r/platform-security/instance-security-hardening-settings/sc-production-instance-behavior.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Customers receive at least two instances, not one."
+            "explanation": "The docs say an instance with this property not set to true is not treated as a production instance.",
+            "reference": "https://www.servicenow.com/docs/r/platform-security/instance-security-hardening-settings/sc-production-instance-behavior.html"
           },
           {
             "choiceId": "c",
-            "explanation": "The minimum is two instances. Additional instances can be added but are not included by default."
+            "explanation": "The docs rate the setting as a security risk (severity 6.3, CVSS Medium) and list its functional impact as None.",
+            "reference": "https://www.servicenow.com/docs/r/platform-security/instance-security-hardening-settings/sc-production-instance-behavior.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Four instances are not the minimum; the minimum is two."
+            "explanation": "The docs list the default value of glide.installation.production as true, and the recommended value is also true. A value of false is not the default.",
+            "reference": "https://www.servicenow.com/docs/r/platform-security/instance-security-hardening-settings/sc-production-instance-behavior.html"
           }
         ]
       },
@@ -1005,63 +1030,73 @@
         "domainSlug": "change-management",
         "domainPercentage": 10,
         "subtopics": [
-          "Instance architecture"
+          "Instance architecture",
+          "Production instance"
         ],
         "tags": [
-          "instances",
-          "production",
-          "non-production"
+          "production instance",
+          "system property",
+          "zboot",
+          "hardening"
         ]
       },
       "meta": {
         "generatedAt": "2026-03-16T02:00:00Z",
         "version": "1.1",
-        "release": "Xanadu",
-        "reviewed": false
-      }
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/platform-security/instance-security-hardening-settings/sc-production-instance-behavior.html"
+      ]
     },
     {
       "id": "csa-cm-013",
       "certification": "csa",
       "topic": "change-management",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "understanding",
       "type": "multiple_choice",
-      "question": "What architecture does ServiceNow use for its instances?",
+      "question": "A small company runs its service desk as a tenant on a service provider's domain-separated instance shared with other customers. Which statement describes this multiple-tenant setup?",
       "options": [
         {
           "id": "a",
-          "text": "Multi-instance multi-tenant"
+          "text": "The company decides when the instance is upgraded"
         },
         {
           "id": "b",
-          "text": "Single-instance multi-tenant"
+          "text": "The provider decides when to upgrade and add services"
         },
         {
           "id": "c",
-          "text": "Multi-instance single-tenant"
+          "text": "The company has higher upfront costs than a single tenant"
         },
         {
           "id": "d",
-          "text": "Single-instance single-tenant"
+          "text": "The company must hire staff to administer the instance"
         }
       ],
       "correctAnswers": [
-        "c"
+        "b"
       ],
       "explanation": {
-        "correct": "ServiceNow uses a multi-instance single-tenant architecture, meaning each instance has its own isolated database. Each instance is hosted at a ServiceNow data center with a unique URL.",
+        "correct": "A multi-tenant architecture is a single instance serving multiple tenants. On a multiple-tenant instance, someone else owns the instance, possibly a service provider with multiple customers. They upgrade when they want and put new services on the instance when they want, and a centralized staff administers configurations, integrations, and upgrades. See https://www.servicenow.com/docs/r/platform-security/bp-dom-sep-how-it-works.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "ServiceNow is single-tenant (each customer has isolated instances), not multi-tenant."
+            "explanation": "Choosing your own upgrade timing describes a single-tenant instance: 'You can upgrade when you want.'",
+            "reference": "https://www.servicenow.com/docs/r/platform-security/bp-dom-sep-how-it-works.html"
           },
           {
-            "choiceId": "b",
-            "explanation": "ServiceNow provides multiple instances per customer (multi-instance) with single tenancy."
+            "choiceId": "c",
+            "explanation": "Domain tenants have lower upfront costs. Higher upfront costs and administrative overhead are listed for a single-tenant instance.",
+            "reference": "https://www.servicenow.com/docs/r/platform-security/bp-dom-sep-how-it-works.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Customers receive multiple instances (at least 2), so it is multi-instance."
+            "explanation": "Domain tenants do not have to employ a staff to administer the environment, because a centralized staff does this.",
+            "reference": "https://www.servicenow.com/docs/r/platform-security/bp-dom-sep-how-it-works.html"
           }
         ]
       },
@@ -1079,20 +1114,26 @@
         "domainSlug": "change-management",
         "domainPercentage": 10,
         "subtopics": [
-          "Platform architecture"
+          "Platform architecture",
+          "Domain separation tenancy"
         ],
         "tags": [
-          "multi-instance",
+          "multi-tenant",
           "single-tenant",
-          "architecture"
+          "domain separation"
         ]
       },
       "meta": {
         "generatedAt": "2026-03-16T02:00:00Z",
         "version": "1.1",
-        "release": "Xanadu",
-        "reviewed": false
-      }
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/platform-security/bp-dom-sep-how-it-works.html"
+      ]
     },
     {
       "id": "csa-cm-014",
@@ -1183,42 +1224,45 @@
       "topic": "change-management",
       "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "When merging multiple update sets, how does ServiceNow handle conflicts where the same object was modified?",
+      "question": "An administrator merges three update sets from the same application, and two of them contain changes to the same business rule. What does the merge do with that business rule?",
       "options": [
         {
           "id": "a",
-          "text": "It rejects the merge entirely"
+          "text": "It blocks the merge until the overlap is resolved"
         },
         {
           "id": "b",
-          "text": "It keeps the latest change to the object"
+          "text": "It moves the most recent change into the new set"
         },
         {
           "id": "c",
-          "text": "It prompts the admin to choose which version to keep"
+          "text": "It asks the administrator which version to keep"
         },
         {
           "id": "d",
-          "text": "It creates a new version combining both changes"
+          "text": "It combines both versions into one merged record"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "When merging update sets, the latest change to an object is kept. This is why it's important to commit update sets in the order they were created.",
+        "correct": "When you merge update sets, the most recent change for each object is moved from the original sets to the new set, and changes that aren't merged remain in the original sets. The system decides which record is most recent by comparing the Updated field of the records, not the sys_updated_on value in the payload. See https://www.servicenow.com/docs/r/application-development/system-update-sets/t_MergeUpdateSets.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "The merge is not rejected; the system handles conflicts by keeping the latest change."
+            "explanation": "The documented procedure is to select Merge and confirm. The most recent change for each object is then moved, and a message shows how many updates were moved and how many were skipped.",
+            "reference": "https://www.servicenow.com/docs/r/application-development/system-update-sets/t_MergeUpdateSets.html"
           },
           {
             "choiceId": "c",
-            "explanation": "The system automatically keeps the latest change rather than prompting for selection."
+            "explanation": "The system chooses the most recent record itself by comparing the Updated field. The administrator then checks the original sets to verify that the correct changes were moved.",
+            "reference": "https://www.servicenow.com/docs/r/application-development/system-update-sets/t_MergeUpdateSets.html"
           },
           {
             "choiceId": "d",
-            "explanation": "ServiceNow doesn't merge the content of both changes; it keeps the latest one."
+            "explanation": "Only the most recent change for each object moves to the new set. Older changes are not combined; they remain in the original sets.",
+            "reference": "https://www.servicenow.com/docs/r/application-development/system-update-sets/t_MergeUpdateSets.html"
           }
         ]
       },
@@ -1241,90 +1285,20 @@
         "tags": [
           "update sets",
           "merge",
-          "conflicts"
+          "most recent change"
         ]
       },
       "meta": {
         "generatedAt": "2026-03-16T02:00:00Z",
         "version": "1.1",
-        "release": "Xanadu",
-        "reviewed": false
-      }
-    },
-    {
-      "id": "csa-cm-016",
-      "cognitiveLevel": "knowledge",
-      "type": "multiple_choice",
-      "question": "What are the three types of change in ServiceNow's Change Management? (Choose 3)",
-      "options": [
-        {
-          "id": "a",
-          "text": "Standard"
-        },
-        {
-          "id": "b",
-          "text": "Normal"
-        },
-        {
-          "id": "c",
-          "text": "Emergency"
-        },
-        {
-          "id": "d",
-          "text": "Cosmetic"
-        },
-        {
-          "id": "e",
-          "text": "Routine"
-        }
-      ],
-      "correctAnswers": [
-        "a",
-        "b",
-        "c"
-      ],
-      "explanation": {
-        "correct": "ServiceNow supports three change types: Standard (pre-approved, low-risk, repeatable), Normal (requires assessment and approval through the full change process), and Emergency (fast-tracked for urgent fixes to critical issues).",
-        "wrongAnswers": [
-          {
-            "choiceId": "d",
-            "explanation": "Cosmetic is not a standard change type in ServiceNow."
-          },
-          {
-            "choiceId": "e",
-            "explanation": "Routine is not a defined change type; Standard changes cover pre-approved routine activities."
-          }
-        ]
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       },
-      "certification": "csa",
-      "topic": "change-management",
-      "references": [],
-      "isFree": false,
-      "source": {
-        "type": "generated",
-        "course": {
-          "courseSlug": "servicenow-administration-fundamentals-xanadu",
-          "moduleTitle": "CSA Expansion",
-          "lessonSlug": "change-management",
-          "lessonTitle": "CSA change-management expansion questions",
-          "url": ""
-        },
-        "path": "",
-        "excerpt": ""
-      },
-      "labels": {
-        "certification": "csa",
-        "domain": "change-management",
-        "domainSlug": "change-management",
-        "subtopics": [],
-        "tags": []
-      },
-      "meta": {
-        "generatedAt": "2026-03-31T02:09:00Z",
-        "version": "2.0",
-        "release": "Xanadu",
-        "reviewed": false
-      }
+      "references": [
+        "https://www.servicenow.com/docs/r/application-development/system-update-sets/t_MergeUpdateSets.html"
+      ]
     },
     {
       "id": "csa-cm-017",
@@ -1586,50 +1560,56 @@
     },
     {
       "id": "csa-cm-020",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "understanding",
       "type": "multiple_choice",
-      "question": "Which statement about Standard changes is NOT correct?",
+      "question": "A network team wants its routine switch firmware procedure offered in the standard change catalog. How does a change become available in that catalog?",
       "options": [
         {
           "id": "a",
-          "text": "Standard changes are pre-approved and don't require CAB review each time"
+          "text": "It is added as an ordinary service catalog item"
         },
         {
           "id": "b",
-          "text": "Standard changes use templates for consistent implementation"
+          "text": "Its template is proposed and then approved"
         },
         {
           "id": "c",
-          "text": "Standard changes require a new risk assessment for every request"
+          "text": "It completes one successful normal change first"
         },
         {
           "id": "d",
-          "text": "Standard changes are low-risk, well-understood procedures"
+          "text": "It is submitted as an emergency change for the CAB"
         }
       ],
       "correctAnswers": [
-        "c"
+        "b"
       ],
       "explanation": {
-        "correct": "Standard changes are pre-approved precisely because their risk has already been assessed and accepted. They do NOT require a new risk assessment each time \u2014 that would defeat the purpose of pre-approval.",
+        "correct": "The standard change catalog contains the changes that Change Management has approved as standard changes. Change Management uses a proposal process to control which changes become available in the catalog, and the catalog lets you request, review, and approve standard change templates. See https://www.servicenow.com/docs/r/it-service-management/change-management/c_StandardChangeCatalogPlugin.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Correct \u2014 Standard changes are pre-approved and skip CAB review."
+            "explanation": "Standard changes are offered through standard change templates. A proposal process controls which changes become available in the standard change catalog.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/change-management/c_StandardChangeCatalogPlugin.html"
           },
           {
-            "choiceId": "b",
-            "explanation": "Correct \u2014 Standard changes use templates to ensure consistency."
+            "choiceId": "c",
+            "explanation": "The docs do not make a change standard after one successful normal change. Inclusion in the catalog is controlled by the proposal process.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/change-management/c_StandardChangeCatalogPlugin.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Correct \u2014 Standard changes are by definition low-risk and well-understood."
+            "explanation": "An emergency change is for a high-priority change implemented immediately, such as a fix for a major incident. It is not the route for adding a template to the standard change catalog.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/change-management/change-types.html"
           }
         ]
       },
       "certification": "csa",
       "topic": "change-management",
-      "references": [],
+      "references": [
+        "https://www.servicenow.com/docs/r/it-service-management/change-management/c_StandardChangeCatalogPlugin.html",
+        "https://www.servicenow.com/docs/r/it-service-management/change-management/change-types.html"
+      ],
       "isFree": false,
       "source": {
         "type": "generated",
@@ -1647,66 +1627,79 @@
         "certification": "csa",
         "domain": "change-management",
         "domainSlug": "change-management",
-        "subtopics": [],
-        "tags": []
+        "subtopics": [
+          "Change types (Standard, Normal, Emergency)",
+          "Standard change catalog"
+        ],
+        "tags": [
+          "standard change",
+          "standard change catalog",
+          "template",
+          "proposal"
+        ]
       },
       "meta": {
         "generatedAt": "2026-03-31T02:09:00Z",
-        "version": "2.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "csa-cm-021",
       "certification": "csa",
       "topic": "change-management",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "Which type of change model in ServiceNow is designed specifically to record change requests from an external system without any associated approvals?",
+      "question": "A vendor will perform a platform upgrade that it controls, and the change manager only needs to record the change, with no approval workflow. Which change model fits this?",
       "options": [
         {
           "id": "a",
-          "text": "Cloud Infrastructure model"
+          "text": "Normal change model"
         },
         {
           "id": "b",
-          "text": "Change Registration model"
+          "text": "Emergency change model"
         },
         {
           "id": "c",
-          "text": "Unauthorized Change model"
+          "text": "Change Registration model"
         },
         {
           "id": "d",
-          "text": "Multimodal Change model"
+          "text": "Unauthorized change model"
         }
       ],
       "correctAnswers": [
-        "b"
+        "c"
       ],
       "explanation": {
-        "correct": "The Change Registration model is designed to record change requests from an external system without associated approvals, as part of ServiceNow's multimodal change framework. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=ecb20dd947dc9a5089c7acc9126d4383&spa=1",
+        "correct": "Change Registration captures changes controlled by external teams or vendors, such as platform upgrades or vendor-managed changes, and the model has no approval workflow. Its configuration covers who can register external changes and who is notified when one is registered. See https://www.servicenow.com/docs/r/it-service-management/configure-change-registration-model-scm.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "The Cloud Infrastructure model is designed for commissioning or decommissioning Cloud Infrastructure services, not external system integration.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=ecb20dd947dc9a5089c7acc9126d4383&spa=1"
+            "explanation": "Normal change requests follow a prescriptive process that requires two levels of approval before implementation.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/change-management/change-types.html"
           },
           {
-            "choiceId": "c",
-            "explanation": "The Unauthorized Change model is triggered by unauthorized change events, not external system integration.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=ecb20dd947dc9a5089c7acc9126d4383&spa=1"
+            "choiceId": "b",
+            "explanation": "The Emergency model has an Authorize state, a business approval gate with approvers configured for each risk level.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/configure-emergency-change-model-scm.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Multimodal Change is a framework for customizing change workflows, not specifically for external system integration.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=ecb20dd947dc9a5089c7acc9126d4383&spa=1"
+            "explanation": "An emergency unauthorized change request is created automatically when Service Mapping detects unauthorized change activity on a CI. It is not used to record a planned vendor change.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/change-management/unauthorized-change-request.html"
           }
         ]
       },
       "references": [
-        "ITSM Fundamentals - Change Management Creation and Scope"
+        "https://www.servicenow.com/docs/r/it-service-management/configure-change-registration-model-scm.html",
+        "https://www.servicenow.com/docs/r/it-service-management/change-management/change-types.html",
+        "https://www.servicenow.com/docs/r/it-service-management/configure-emergency-change-model-scm.html",
+        "https://www.servicenow.com/docs/r/it-service-management/change-management/unauthorized-change-request.html"
       ],
       "isFree": true,
       "source": {
@@ -1727,20 +1720,21 @@
         "domainSlug": "change-management",
         "domainPercentage": 10,
         "subtopics": [
-          "Change models",
-          "Multimodal Change"
+          "Change models"
         ],
         "tags": [
-          "change-management",
-          "change-models",
-          "multimodal"
+          "change models",
+          "change registration",
+          "external changes"
         ]
       },
       "meta": {
         "generatedAt": "2026-05-05T00:00:00.000Z",
-        "version": "2.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -1750,23 +1744,23 @@
       "cognitiveLevel": "knowledge",
       "type": "multiple_select",
       "selectCount": 2,
-      "question": "Which Change Advisory Board (CAB) Workbench features enable collaboration among CAB members? (Choose two.)",
+      "question": "During a CAB meeting, the CAB manager works in the CAB workbench. Which two tasks does the CAB workbench support? (Choose two.)",
       "options": [
         {
           "id": "a",
-          "text": "Scheduling in-person meetings"
+          "text": "Approve or reject a change request"
         },
         {
           "id": "b",
-          "text": "Creating change task records"
+          "text": "Hide agenda items from the change requesters"
         },
         {
           "id": "c",
-          "text": "Conference call scheduling"
+          "text": "Record and share the meeting notes"
         },
         {
           "id": "d",
-          "text": "Automatic risk recalculation"
+          "text": "Approve agenda changes before the meeting starts"
         }
       ],
       "correctAnswers": [
@@ -1774,22 +1768,22 @@
         "c"
       ],
       "explanation": {
-        "correct": "The CAB Workbench allows members to schedule in-person meetings and conference calls, facilitating collaboration among Change Advisory Board members. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=65b24dd947dc9a5089c7acc9126d4383&spa=1",
+        "correct": "The CAB workbench helps manage CAB meetings. Among other things, you can approve or reject a change request based on the decision taken in the CAB meeting, and you can record meeting notes from a specific CAB meeting and share them with the other attendees. See https://www.servicenow.com/docs/r/it-service-management/change-management/cab-workbench.html",
         "wrongAnswers": [
           {
             "choiceId": "b",
-            "explanation": "Creating change task records is done through the Change Request form, not the CAB Workbench specifically.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=65b24dd947dc9a5089c7acc9126d4383&spa=1"
+            "explanation": "The workbench does the opposite: if a change request is included in an agenda, the change requester is notified of the CAB meeting in which it is discussed, and can attend to present the change.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/change-management/cab-workbench.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Automatic risk recalculation is a feature of the risk calculation related link, not the CAB Workbench collaboration features.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=65b24dd947dc9a5089c7acc9126d4383&spa=1"
+            "explanation": "The workbench is used to approve or reject a change request based on the decision taken in the CAB meeting, not ahead of the meeting.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/change-management/cab-workbench.html"
           }
         ]
       },
       "references": [
-        "ITSM Fundamentals - Change Management Approval"
+        "https://www.servicenow.com/docs/r/it-service-management/change-management/cab-workbench.html"
       ],
       "isFree": true,
       "source": {
@@ -1814,68 +1808,70 @@
           "Change Advisory Board (CAB)"
         ],
         "tags": [
-          "change-management",
-          "cab",
-          "collaboration"
+          "CAB workbench",
+          "approval",
+          "meeting notes"
         ]
       },
       "meta": {
         "generatedAt": "2026-05-05T00:00:00.000Z",
-        "version": "2.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "csa-cm-023",
       "certification": "csa",
       "topic": "change-management",
-      "cognitiveLevel": "understanding",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What distinguishes risk conditions from risk assessments in Change Management risk calculation?",
+      "question": "A change manager has both the Change Risk Calculator and Change Management - Risk Assessment active. For one change request, the calculator returns Moderate and the assessment returns High. Which risk value is selected?",
       "options": [
         {
           "id": "a",
-          "text": "Risk conditions use predefined properties and conditions; risk assessments rely on user-provided information"
+          "text": "Moderate, the Risk Calculator result"
         },
         {
           "id": "b",
-          "text": "Risk conditions calculate risk automatically; risk assessments require manual calculation"
+          "text": "High, the higher of the two results"
         },
         {
           "id": "c",
-          "text": "Risk conditions apply only to emergency changes; risk assessments apply to normal changes"
+          "text": "Moderate, the lower of the two results"
         },
         {
           "id": "d",
-          "text": "Risk conditions are used before change creation; risk assessments are used after closure"
+          "text": "High, since the assessment takes priority"
         }
       ],
       "correctAnswers": [
-        "a"
+        "b"
       ],
       "explanation": {
-        "correct": "Risk conditions utilize predefined properties and conditions to calculate a risk value, while risk assessments rely on information provided by the end user to assess a risk value. Both methods can be used independently or in combination, with the highest risk value being chosen. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=ecb20dd947dc9a5089c7acc9126d4383&spa=1",
+        "correct": "The two risk methods can be used individually or together. If they are used together, the highest risk value from both methods is always selected, so High is used here. See https://www.servicenow.com/docs/r/it-service-management/change-management/c_RskAsmtCalc.html",
         "wrongAnswers": [
           {
-            "choiceId": "b",
-            "explanation": "Both risk conditions and risk assessments require some form of calculation; the difference is in the data source (predefined vs user-provided), not automatic vs manual.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=ecb20dd947dc9a5089c7acc9126d4383&spa=1"
+            "choiceId": "a",
+            "explanation": "The Risk Calculator result does not take priority. When both methods are used, the highest value from both is selected.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/change-management/c_RskAsmtCalc.html"
           },
           {
             "choiceId": "c",
-            "explanation": "The risk calculation methods apply to all change types, not specifically emergency or normal changes.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=ecb20dd947dc9a5089c7acc9126d4383&spa=1"
+            "explanation": "The docs say the highest risk value is selected, not the lowest.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/change-management/c_RskAsmtCalc.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Risk calculation occurs during the assessment phase of a change, not before creation or after closure.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=ecb20dd947dc9a5089c7acc9126d4383&spa=1"
+            "explanation": "High is selected because it is the higher value, not because the assessment takes priority. If the calculator returned the higher value, that value would be used.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/change-management/c_RskAsmtCalc.html"
           }
         ]
       },
       "references": [
-        "ITSM Fundamentals - Change Management Creation and Scope"
+        "https://www.servicenow.com/docs/r/it-service-management/change-management/c_RskAsmtCalc.html"
       ],
       "isFree": true,
       "source": {
@@ -1899,69 +1895,72 @@
           "Risk assessment"
         ],
         "tags": [
-          "change-management",
           "risk",
-          "risk-conditions",
-          "risk-assessment"
+          "risk calculator",
+          "risk assessment",
+          "highest risk"
         ]
       },
       "meta": {
         "generatedAt": "2026-05-05T00:00:00.000Z",
-        "version": "2.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "csa-cm-024",
       "certification": "csa",
       "topic": "change-management",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "In Change Management, what is required to automatically update a change's Schedule tab with actual start and end dates after implementation?",
+      "question": "Implementation work on a normal change is finished and the change is now in the Review state. A manager then asks the change owner to cancel the change request. What happens?",
       "options": [
         {
           "id": "a",
-          "text": "The change must be in the 'Authorized' state before implementation"
+          "text": "It is canceled and the reason goes to work notes"
         },
         {
           "id": "b",
-          "text": "The change implementer must manually enter the dates after implementation"
+          "text": "Cancel isn't available while it is in Review"
         },
         {
           "id": "c",
-          "text": "The scheduled implementation window must be reached, triggering automatic date capture"
+          "text": "It must be reverted to New and then canceled"
         },
         {
           "id": "d",
-          "text": "A change task of type 'Implementation' must be created and closed"
+          "text": "It can be canceled once the close code is set"
         }
       ],
       "correctAnswers": [
-        "c"
+        "b"
       ],
       "explanation": {
-        "correct": "Once the scheduled implementation window occurs and the change is implemented, the Schedule tab automatically updates with the actual start and end dates. This provides accurate data for reporting and analysis. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=ecb20dd947dc9a5089c7acc9126d4383&spa=1",
+        "correct": "The Cancel option for a change request in the Review state is disabled. This prevents cancelling the request when the work is complete and waiting for review. A change can be canceled at any point when it is no longer required, except from a Closed state. You cannot cancel a change request in the Review state. See https://www.servicenow.com/docs/r/it-service-management/change-management/c_ChangeStateModel.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "The 'Authorized' state means CAB has approved the change and it's waiting for the scheduled window. Automatic date capture happens when the scheduled window is reached, regardless of prior state.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=ecb20dd947dc9a5089c7acc9126d4383&spa=1"
+            "explanation": "This is how Cancel Change works in states where it is allowed: the reason is added to the Work Notes field. In the Review state, the Cancel option is disabled.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/change-management/t_ProcessAChangeRequest.html"
           },
           {
-            "choiceId": "b",
-            "explanation": "The Schedule tab automatically captures actual dates when the scheduled implementation window is reached - no manual entry is required.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=ecb20dd947dc9a5089c7acc9126d4383&spa=1"
+            "choiceId": "c",
+            "explanation": "Revert to New moves a normal change from the Assess state, or an emergency change from Authorize, back to New. It is not available from Review.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/change-management/c_ChangeStateModel.html"
           },
           {
             "choiceId": "d",
-            "explanation": "While change tasks track implementation work, the Schedule tab's automatic date capture is tied to the scheduled window, not task closure.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=ecb20dd947dc9a5089c7acc9126d4383&spa=1"
+            "explanation": "The close code and close notes are entered to close the change request. Cancel remains disabled in the Review state.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/change-management/t_ProcessAChangeRequest.html"
           }
         ]
       },
       "references": [
-        "ITSM Fundamentals - Change Management Creation and Scope"
+        "https://www.servicenow.com/docs/r/it-service-management/change-management/c_ChangeStateModel.html",
+        "https://www.servicenow.com/docs/r/it-service-management/change-management/t_ProcessAChangeRequest.html"
       ],
       "isFree": true,
       "source": {
@@ -1982,19 +1981,21 @@
         "domainSlug": "change-management",
         "domainPercentage": 10,
         "subtopics": [
-          "Change schedule"
+          "Change states"
         ],
         "tags": [
-          "change-management",
-          "schedule",
-          "reporting"
+          "review state",
+          "cancel",
+          "change states"
         ]
       },
       "meta": {
         "generatedAt": "2026-05-05T00:00:00.000Z",
-        "version": "2.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -2003,50 +2004,51 @@
       "topic": "change-management",
       "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "A change request has been rejected by CAB. What must happen before the change can be submitted for approval again?",
+      "question": "An emergency change request is rejected because the approvers decide it should have been a normal change. What can the requester now do?",
       "options": [
         {
           "id": "a",
-          "text": "The change must be canceled and a new change request created"
+          "text": "Nothing; it is closed and a new request is needed"
         },
         {
           "id": "b",
-          "text": "Comments explaining the rejection must be provided, and the change reverts to the New state"
+          "text": "Change its type to Normal and resubmit it"
         },
         {
           "id": "c",
-          "text": "The change automatically returns to the Assess state for revision"
+          "text": "Wait in Authorize for the CAB to reverse it"
         },
         {
           "id": "d",
-          "text": "Emergency changes require no comments; normal changes require supervisor sign-off"
+          "text": "Use Revert to New from the Review state"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "When a change is rejected, comments are necessary to explain why, and the change reverts to its New state. The requester then needs to address the feedback before resubmitting for CAB approval. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=65b24dd947dc9a5089c7acc9126d4383&spa=1",
+        "correct": "If a normal or emergency change request is rejected, its state is set to New. Because it is in New, the type can be changed again. For example, if an emergency change is rejected because it should be normal, you can change the Type to Normal and resubmit the change request. See https://www.servicenow.com/docs/r/it-service-management/change-management/c_ChangeStateModel.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "A rejected change does not need to be canceled and recreated. It reverts to the New state where the requester can address feedback and resubmit.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=65b24dd947dc9a5089c7acc9126d4383&spa=1"
+            "explanation": "A rejected change request goes to the New state, not Closed, so the same record can be edited and resubmitted.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/change-management/t_ProcessAChangeRequest.html"
           },
           {
             "choiceId": "c",
-            "explanation": "The change does not automatically return to Assess state. It returns to the New state for the requester to address rejection comments.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=65b24dd947dc9a5089c7acc9126d4383&spa=1"
+            "explanation": "Rejection moves the change request to the New state. It does not stay in Authorize.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/change-management/t_ProcessAChangeRequest.html"
           },
           {
             "choiceId": "d",
-            "explanation": "All rejected changes require comments explaining the rejection, regardless of change type. This is a standard part of the approval workflow.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=65b24dd947dc9a5089c7acc9126d4383&spa=1"
+            "explanation": "Revert to New is used from Assess (normal) or Authorize (emergency) when approval has been requested. A rejected change is already in New.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/change-management/c_ChangeStateModel.html"
           }
         ]
       },
       "references": [
-        "ITSM Fundamentals - Change Management Approval"
+        "https://www.servicenow.com/docs/r/it-service-management/change-management/c_ChangeStateModel.html",
+        "https://www.servicenow.com/docs/r/it-service-management/change-management/t_ProcessAChangeRequest.html"
       ],
       "isFree": true,
       "source": {
@@ -2067,71 +2069,75 @@
         "domainSlug": "change-management",
         "domainPercentage": 10,
         "subtopics": [
+          "Change states",
           "Change Advisory Board (CAB)"
         ],
         "tags": [
-          "change-management",
-          "cab",
-          "approval"
+          "rejection",
+          "change type",
+          "new state",
+          "resubmit"
         ]
       },
       "meta": {
         "generatedAt": "2026-05-05T00:00:00.000Z",
-        "version": "2.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "csa-cm-026",
       "certification": "csa",
       "topic": "change-management",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What distinguishes the Emergency Change Advisory Board (ECAB) from the regular CAB?",
+      "question": "In Service Operations Workspace, a CAB manager sets up a CAB definition for a board that will review only emergency changes. Which field sets this?",
       "options": [
         {
           "id": "a",
-          "text": "ECAB is a subset of CAB that operates under stricter timelines and focuses on minimizing potential risks"
+          "text": "The Rolling Meeting Window field"
         },
         {
           "id": "b",
-          "text": "ECAB has authority over all emergency changes; CAB only handles normal and standard changes"
+          "text": "The CAB Type field set to Emergency"
         },
         {
           "id": "c",
-          "text": "ECAB requires three approvers while CAB requires only one"
+          "text": "The Complete Preapproved Changes option"
         },
         {
           "id": "d",
-          "text": "ECAB operates during business hours; CAB operates 24/7"
+          "text": "The Notification lead time field"
         }
       ],
       "correctAnswers": [
-        "a"
+        "b"
       ],
       "explanation": {
-        "correct": "The ECAB is a subset of the CAB specifically responsible for handling emergency changes. Unlike the regular CAB, the ECAB operates under stricter timelines and focuses primarily on minimizing potential risks due to the expedited nature of emergency changes. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=65b24dd947dc9a5089c7acc9126d4383&spa=1",
+        "correct": "On the CAB Definition form, the CAB Type field sets the type of CAB meeting the definition is used for: Normal or Emergency. The CAB type determines the urgency and the required level of scrutiny for the change. See https://www.servicenow.com/docs/r/it-service-management/service-operations-workspace/cm-create-cab-definition-sow.html",
         "wrongAnswers": [
           {
-            "choiceId": "b",
-            "explanation": "Both CAB and ECAB can handle various change types. The ECAB specifically handles emergency changes, but this is about the subset of CAB members focused on urgency, not exclusive authority.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=65b24dd947dc9a5089c7acc9126d4383&spa=1"
+            "choiceId": "a",
+            "explanation": "Rolling Meeting Window is the number of days for which CAB meetings are created.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/service-operations-workspace/cm-create-cab-definition-sow.html"
           },
           {
             "choiceId": "c",
-            "explanation": "The number of approvers is not what distinguishes ECAB from CAB. The ECAB is distinguished by being a subset focused on emergency changes with stricter timelines.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=65b24dd947dc9a5089c7acc9126d4383&spa=1"
+            "explanation": "Complete Preapproved Changes marks pre-approved change requests as Complete in the CAB meeting agenda so that approvers do not have to review them.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/service-operations-workspace/cm-create-cab-definition-sow.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Operating hours are not what distinguishes ECAB from CAB. ECAB is available on-call for emergency situations rather than having fixed operating hours.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=65b24dd947dc9a5089c7acc9126d4383&spa=1"
+            "explanation": "Notification lead time is the advance notification about agenda items to be discussed. It does not set the board type.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/service-operations-workspace/cm-create-cab-definition-sow.html"
           }
         ]
       },
       "references": [
-        "ITSM Fundamentals - Change Management Approval"
+        "https://www.servicenow.com/docs/r/it-service-management/service-operations-workspace/cm-create-cab-definition-sow.html"
       ],
       "isFree": true,
       "source": {
@@ -2156,43 +2162,44 @@
           "Emergency changes"
         ],
         "tags": [
-          "change-management",
-          "ecab",
-          "cab",
+          "CAB definition",
+          "CAB type",
           "emergency"
         ]
       },
       "meta": {
         "generatedAt": "2026-05-05T00:00:00.000Z",
-        "version": "2.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "csa-cm-027",
       "certification": "csa",
       "topic": "change-management",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "understanding",
       "type": "multiple_select",
       "selectCount": 2,
-      "question": "Which scheduling conflicts can the Change Management conflict detection feature identify? (Choose two.)",
+      "question": "A change manager knows conflict detection flags a CI that is already booked by another change. Which two other situations are documented conflict reasons? (Choose two.)",
       "options": [
         {
           "id": "a",
-          "text": "A CI is already scheduled at the given date and time"
+          "text": "The CI's assignee is booked at that same time"
         },
         {
           "id": "b",
-          "text": "The assigned user has exceeded their maximum change quota for the quarter"
+          "text": "A child CI is outside every blackout window"
         },
         {
           "id": "c",
-          "text": "The parent CI of the change is within a blackout window"
+          "text": "A parent CI is outside its maintenance window"
         },
         {
           "id": "d",
-          "text": "The change model is not approved by the change manager"
+          "text": "The CI is inside its defined maintenance window"
         }
       ],
       "correctAnswers": [
@@ -2200,22 +2207,22 @@
         "c"
       ],
       "explanation": {
-        "correct": "Conflict detection identifies scheduling conflicts including when a CI is already scheduled at the given date and time, and when a parent or child CI falls within a blackout window. These conflicts can be reviewed in the conflict calendar. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=ecb20dd947dc9a5089c7acc9126d4383&spa=1",
+        "correct": "Conflict detection identifies conflicts for several reasons, including when the CI is assigned to a person already scheduled at the given date and time, and when a parent or child of the CI is not in the maintenance window. Other reasons are a CI or its parent or child already being scheduled, or being in a blackout window. See https://www.servicenow.com/docs/r/it-service-management/change-management/c_ConflictDetection.html",
         "wrongAnswers": [
           {
             "choiceId": "b",
-            "explanation": "User change quotas are not detected by the conflict detection feature. Conflict detection focuses on CI scheduling conflicts, blackout windows, and resource availability.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=ecb20dd947dc9a5089c7acc9126d4383&spa=1"
+            "explanation": "The documented reason is that the CI, or a parent or child of the CI, is in a blackout window. Being outside blackout windows is not a conflict.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/change-management/c_ConflictDetection.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Change model approval status is not a scheduling conflict detected by the conflict detection feature. This is a separate approval workflow concern.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=ecb20dd947dc9a5089c7acc9126d4383&spa=1"
+            "explanation": "The documented reason is that the CI is not in the maintenance window. A CI inside its maintenance window is not a conflict.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/change-management/c_ConflictDetection.html"
           }
         ]
       },
       "references": [
-        "ITSM Fundamentals - Change Management Creation and Scope"
+        "https://www.servicenow.com/docs/r/it-service-management/change-management/c_ConflictDetection.html"
       ],
       "isFree": true,
       "source": {
@@ -2236,73 +2243,73 @@
         "domainSlug": "change-management",
         "domainPercentage": 10,
         "subtopics": [
-          "Conflict detection",
-          "Change schedule"
+          "Conflict detection"
         ],
         "tags": [
-          "change-management",
-          "conflict-detection",
-          "ci",
-          "blackout"
+          "conflict detection",
+          "maintenance window",
+          "assigned to"
         ]
       },
       "meta": {
         "generatedAt": "2026-05-05T00:00:00.000Z",
-        "version": "2.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "csa-cm-028",
       "certification": "csa",
       "topic": "change-management",
-      "cognitiveLevel": "understanding",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "Which ITIL role enables a user to create, update, and close changes and configuration items, and is most suitable for a support group responsible for implementing changes?",
+      "question": "With ITSM Roles - Change Management active, an auditor must view all change requests and the CAB workbench without being able to edit change records. Which role fits best?",
       "options": [
         {
           "id": "a",
-          "text": "change_manager"
+          "text": "sn_change_write"
         },
         {
           "id": "b",
-          "text": "itil"
+          "text": "sn_change_read"
         },
         {
           "id": "c",
-          "text": "itil_admin"
+          "text": "sn_change_admin"
         },
         {
           "id": "d",
-          "text": "change_coordinator"
+          "text": "sn_incident_read"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "The ITIL role is crucial for anyone in a support group responsible for implementing changes. This role enables users to create, update, and close changes and configuration items. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=ecb20dd947dc9a5089c7acc9126d4383&spa=1",
+        "correct": "The Change read [sn_change_read] role gives read access to the Change Management application and related records. A user with sn_change_read can view all change requests as well as the CAB workbench. See https://www.servicenow.com/docs/r/it-service-management/change-management/installed-with-cm-itsm-roles.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "The change_manager role oversees schedules, change approval policies, and standard change proposals - it is not the role for day-to-day change implementation by support groups.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=ecb20dd947dc9a5089c7acc9126d4383&spa=1"
+            "explanation": "Change write [sn_change_write] gives write access to Change Management records, which is more than the auditor should have.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/change-management/installed-with-cm-itsm-roles.html"
           },
           {
             "choiceId": "c",
-            "explanation": "The itil_admin role can create, update, close, and delete changes and associated records, and is most suitable for a team lead, not a support group implementing changes.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=ecb20dd947dc9a5089c7acc9126d4383&spa=1"
+            "explanation": "Change admin [sn_change_admin] gives configuration and authorization access for Change Management system properties and contains sn_change_write.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/change-management/installed-with-cm-itsm-roles.html"
           },
           {
             "choiceId": "d",
-            "explanation": "change_coordinator is not a standard ITIL role in ServiceNow Change Management. The standard roles are itil, itil_admin, and change_manager.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=ecb20dd947dc9a5089c7acc9126d4383&spa=1"
+            "explanation": "sn_incident_read gives read access to Incident Management records and the major incident workbench, not to change requests.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/change-management/installed-with-cm-itsm-roles.html"
           }
         ]
       },
       "references": [
-        "ITSM Fundamentals - Change Management Creation and Scope"
+        "https://www.servicenow.com/docs/r/it-service-management/change-management/installed-with-cm-itsm-roles.html"
       ],
       "isFree": true,
       "source": {
@@ -2326,17 +2333,18 @@
           "Roles and role hierarchies"
         ],
         "tags": [
-          "change-management",
           "roles",
-          "itil",
-          "security"
+          "sn_change_read",
+          "CAB workbench"
         ]
       },
       "meta": {
         "generatedAt": "2026-05-05T00:00:00.000Z",
-        "version": "2.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     }
   ]

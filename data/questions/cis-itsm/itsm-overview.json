@@ -6,53 +6,56 @@
       "id": "cis-itsm-itsm-overview-001",
       "certification": "cis-itsm",
       "topic": "itsm-overview",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "Which of the following best describes a 'service' in the context of IT Service Management?",
+      "question": "A service owner manages an Email service and wants a Gold tier and a Standard tier, each with its own availability guarantee and pricing. In Service Portfolio Management, how should each tier be represented?",
       "options": [
         {
           "id": "a",
-          "text": "A software application installed on user devices"
+          "text": "A service offering of the Email service"
         },
         {
           "id": "b",
-          "text": "A capability provided by IT to meet a business need"
+          "text": "A service commitment with no parent offering"
         },
         {
           "id": "c",
-          "text": "A hardware component in the data center"
+          "text": "An SLA definition for Email incidents"
         },
         {
           "id": "d",
-          "text": "A support ticket submitted by an end user"
+          "text": "A requested item for the Email catalog item"
         }
       ],
       "correctAnswers": [
-        "b"
+        "a"
       ],
       "explanation": {
-        "correct": "A service is defined as a capability provided by an IT organization to meet a particular business need. Examples include email, network access, software applications, and cloud storage. This aligns with ITIL best practices for service-oriented IT delivery.",
+        "correct": "A service offering derives from a service, tailoring the parent service to a specific business need. Each offering consists of a set of service commitments, which define the unique availability guarantees, scope, and pricing for that offering. The CSDM terms for Service Portfolio Management define a service offering as a stratification of a service into capability, availability, pricing, and packaging options, for example ITSM Standard and ITSM Pro. So Gold and Standard should be two service offerings of the Email service, each with its own commitments. See https://www.servicenow.com/docs/r/it-service-management/service-portfolio-management/define-SPM2-service-commitments.html",
         "wrongAnswers": [
           {
-            "choiceId": "a",
-            "explanation": "A software application may be part of delivering a service, but a service is a broader capability meeting business needs",
-            "reference": "ITSM Fundamentals"
+            "choiceId": "b",
+            "explanation": "Service commitments belong to service offerings. To create service commitments, each service needs at least one associated service offering.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/service-portfolio-management/define-SPM2-service-commitments.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Hardware components are assets or CIs that support services, but are not services themselves",
-            "reference": "ITSM Fundamentals"
+            "explanation": "An SLA definition sets an amount of time for a task to reach a certain condition. It tracks work on records and does not define a tier of a service.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/service-level-management/c_ConfigureSLAs.html"
           },
           {
             "choiceId": "d",
-            "explanation": "A support ticket is a request or incident, which is a different ITSM concept from a service",
-            "reference": "ITSM Fundamentals"
+            "explanation": "A requested item is created for each catalog item a user orders on a request. It records one order and does not define a service tier.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/service-catalog/c_RequestingAServiceCatalogItem.html"
           }
         ]
       },
       "references": [
-        "ITSM Fundamentals",
-        "ITIL Foundation"
+        "https://www.servicenow.com/docs/r/it-service-management/service-portfolio-management/define-SPM2-service-commitments.html",
+        "https://www.servicenow.com/docs/r/it-service-management/service-portfolio-management/SPM2-csdm.html",
+        "https://www.servicenow.com/docs/r/it-service-management/service-portfolio-management/SPM2-landing-page.html",
+        "https://www.servicenow.com/docs/r/it-service-management/service-level-management/c_ConfigureSLAs.html",
+        "https://www.servicenow.com/docs/r/servicenow-platform/service-catalog/c_RequestingAServiceCatalogItem.html"
       ],
       "isFree": true,
       "source": {
@@ -66,73 +69,75 @@
         "domainSlug": "itsm-overview",
         "domainPercentage": 10,
         "subtopics": [
-          "ITSM Terminology",
-          "Service Definition"
+          "Service Portfolio Management",
+          "Services and service offerings"
         ],
         "tags": [
           "service",
-          "definition",
-          "terminology"
+          "service offering",
+          "service commitment"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-07T02:15:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "cis-itsm-itsm-overview-002",
       "certification": "cis-itsm",
       "topic": "itsm-overview",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "understanding",
       "type": "multiple_choice",
-      "question": "What is the relationship between the CMDB and CSDM in ServiceNow?",
+      "question": "Before rolling out new ITSM features, a CMDB manager is told to align the instance with the CSDM. How does the CSDM relate to the CMDB?",
       "options": [
         {
           "id": "a",
-          "text": "CSDM replaces the CMDB in newer ServiceNow releases"
+          "text": "It replaces the CMDB as the place where configuration items are stored"
         },
         {
           "id": "b",
-          "text": "CSDM is a framework that enhances how data is modeled in the CMDB"
+          "text": "It prescribes how CIs and their relationships are modeled in the CMDB"
         },
         {
           "id": "c",
-          "text": "CMDB is a subset of CSDM that stores only hardware assets"
+          "text": "It is a separate database that stores business service records"
         },
         {
           "id": "d",
-          "text": "CSDM and CMDB are separate products that cannot be used together"
+          "text": "It is a CMDB plugin that scans the network to find infrastructure items"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "CSDM (Common Service Data Model) is a best-practice framework for CMDB data modeling and management. It enhances the CMDB by providing standardized terms, definitions, and relationships that link business and technical aspects. CSDM is not code to install but guidelines for modeling data within the CMDB.",
+        "correct": "The Common Service Data Model (CSDM) is the data model standard for all products that use the CMDB. It gives clear, prescriptive guidelines for service modeling within the CMDB, and its standards for defining CIs and the relationships between them help make sure your data resides in the appropriate CMDB tables. See https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/csdm-landing-page.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "CSDM does not replace the CMDB. It is a framework that works with and enhances the CMDB",
-            "reference": "ITSM Fundamentals"
+            "explanation": "The CSDM does not replace the CMDB. It is the data model standard for products that use the CMDB, and the data still resides in CMDB tables.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/csdm-landing-page.html"
           },
           {
             "choiceId": "c",
-            "explanation": "The CMDB stores all configuration items including software, services, and relationships, not just hardware",
-            "reference": "ITSM Fundamentals"
+            "explanation": "The CSDM is not a separate database. It provides guidelines for using base-system tables and relationships within the CMDB, so service data stays in CMDB tables.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/csdm-landing-page.html"
           },
           {
             "choiceId": "d",
-            "explanation": "CSDM is specifically designed to work with the CMDB, not as a separate product",
-            "reference": "ITSM Fundamentals"
+            "explanation": "Scanning and identifying infrastructure components to keep the CMDB up to date is what Discovery does. The CSDM is a data model, not a discovery tool.",
+            "reference": "https://www.servicenow.com/docs/r/it-operations-management/discovery/r-discovery.html"
           }
         ]
       },
       "references": [
-        "ITSM Fundamentals",
-        "ServiceNow Documentation"
+        "https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/csdm-landing-page.html",
+        "https://www.servicenow.com/docs/r/it-operations-management/discovery/r-discovery.html"
       ],
       "isFree": true,
       "source": {
@@ -147,20 +152,21 @@
         "domainPercentage": 10,
         "subtopics": [
           "CMDB",
-          "CSDM",
-          "Data Modeling"
+          "CSDM"
         ],
         "tags": [
           "cmdb",
           "csdm",
-          "framework"
+          "data model"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-07T02:15:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
