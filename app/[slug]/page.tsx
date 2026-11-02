@@ -25,6 +25,7 @@ import { breadcrumbs, generateBreadcrumbJsonLd } from "@/lib/breadcrumbs";
 import { TeamByline } from "@/components/TeamByline";
 import { HUB_DEEP_DIVES } from "@/components/hub";
 import { authorJsonLd } from "@/lib/author";
+import { robotsForCertPage } from "@/lib/seo-indexing";
 import {
   CUT_SCORE_LABEL,
   CUT_SCORE_NOTE,
@@ -90,6 +91,8 @@ export async function generateMetadata({
     title: `ServiceNow ${cert.name} Practice Test [${year}] — Free Exam Questions`,
     description,
     keywords,
+    // "Coming soon" certs (no questions yet) stay out of the index.
+    robots: robotsForCertPage(slug, "", totalQuestions),
     alternates: {
       canonical: `/${slug}`,
     },

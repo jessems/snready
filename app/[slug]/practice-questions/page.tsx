@@ -19,6 +19,7 @@ import {
 } from "@/lib/data";
 import { generateBreadcrumbJsonLd } from "@/lib/breadcrumbs";
 import { getCanonicalUrl } from "@/lib/seo";
+import { robotsForCertPage } from "@/lib/seo-indexing";
 import {
   CUT_SCORE_LABEL,
   CUT_SCORE_NOTE,
@@ -40,6 +41,8 @@ const CERT_LANDING_CONTENT: Record<
   {
     heroEyebrow: string;
     heroDescription: string;
+    /** What the free questions cover, completing the meta description sentence. */
+    metaCoverage: string;
     trustPoints: string[];
     featureHighlights: string[];
     roleFit: string[];
@@ -50,6 +53,7 @@ const CERT_LANDING_CONTENT: Record<
     heroEyebrow: "Built for implementation specialists — not dump memorization.",
     heroDescription:
       "Practice the same decision patterns the real CIS-ITSM exam uses: incident vs. problem, CAB vs. ECAB, request fulfillment design, SLA behavior, and reporting tradeoffs.",
+    metaCoverage: "Incident, Change, Problem, Request, SLA, and reporting",
     trustPoints: [
       "__TOTAL__ scenario-style questions mapped across all __TOPICS__ exam topics",
       `${FREE_QUESTIONS_PER_CERT} free questions before you pay anything`,
@@ -72,6 +76,7 @@ const CERT_LANDING_CONTENT: Record<
     heroEyebrow: "Built for Discovery implementation practice — not dump memorization.",
     heroDescription:
       "Practice the implementation decisions the CIS-Discovery exam emphasizes: Pattern Designer logic, MID Server and credential setup, Discovery status troubleshooting, CMDB integration, and rollout readiness.",
+    metaCoverage: "pattern design, Discovery configuration, the CMDB, and engagement readiness",
     trustPoints: [
       "__TOTAL__ scenario-style questions mapped across all __DOMAINS__ exam domains",
       `${FREE_QUESTIONS_PER_CERT} free questions before you pay anything`,
@@ -116,7 +121,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const description = questionTotal === 0
     ? `${certification.name} practice questions are coming soon. See the ServiceNow ${certification.fullName} exam format and official resources.`
     : landingContent
-    ? `Practice ${getTotalQuestionCount(slug)} ${certification.name} exam questions mapped to the current exam blueprint. ${FREE_QUESTIONS_PER_CERT} free questions covering Incident, Change, Problem, Request, SLA, and reporting with detailed explanations.`
+    ? `Practice ${getTotalQuestionCount(slug)} ${certification.name} exam questions mapped to the current exam blueprint. ${FREE_QUESTIONS_PER_CERT} free questions covering ${landingContent.metaCoverage}, with detailed explanations.`
     : `Practice ${getTotalQuestionCount(slug)} ${certification.name} exam questions. ${FREE_QUESTIONS_PER_CERT} free questions with detailed explanations to help you pass your ServiceNow ${certification.fullName} certification.`;
 
   // Free certifications (lib/free-certs.ts): the whole bank is free.
@@ -131,6 +136,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: metaTitle,
     description: metaDescription,
+    robots: robotsForCertPage(slug, "practice-questions", questionTotal),
     alternates: {
       canonical: getCanonicalUrl(`/${slug}/practice-questions`),
     },

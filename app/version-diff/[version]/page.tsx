@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { getReleaseSummary } from "@/lib/release-notes";
+import { getReleaseSummary, hasProductPages } from "@/lib/release-notes";
 import { generateBreadcrumbJsonLd } from "@/lib/breadcrumbs";
 import VersionDiffClient from "@/components/VersionDiffClient";
 
@@ -155,11 +155,11 @@ export default async function VersionPage({ params }: PageProps) {
           versions={{ [version]: versionData }}
           products={summary.products}
           certs={certs}
-          versionSlug={version}
+          versionSlug={hasProductPages(version) ? version : undefined}
         />
 
-        {/* Browse by Product */}
-        <div className="mt-14 border-t border-zinc-200 pt-10 dark:border-zinc-800">
+        {/* Browse by Product (only releases that still have product pages) */}
+        {hasProductPages(version) && <div className="mt-14 border-t border-zinc-200 pt-10 dark:border-zinc-800">
           <h2 className="text-lg font-bold text-zinc-900 dark:text-zinc-100 mb-4">
             Browse by Product Area
           </h2>
@@ -179,7 +179,7 @@ export default async function VersionPage({ params }: PageProps) {
                 </Link>
               ))}
           </div>
-        </div>
+        </div>}
 
         {/* SEO Content */}
         <div className="mt-14 border-t border-zinc-200 pt-10 dark:border-zinc-800">

@@ -1,10 +1,12 @@
+import fs from "node:fs";
+import path from "node:path";
 import { MetadataRoute } from "next";
-import { getCertificationSlugs, getAllTopicSlugs, getAllDeltaSlugs, getPublicDeltaQuestions } from "@/lib/data";
+import { getCertificationSlugs, getAllTopicSlugs, getAllDeltaSlugs, getPublicDeltaQuestions, getTotalQuestionCount } from "@/lib/data";
 import { getAllPosts } from "@/data/blog/posts";
 import { getAllComparisonSlugs } from "@/lib/comparisons";
 import { getReleaseSummary } from "@/lib/release-notes";
 import { getAllCourses } from "@/lib/courses";
-import { isIndexableDeltaPage, isIndexablePath } from "@/lib/seo-indexing";
+import { isIndexableCertPage, isIndexableDeltaPage, isIndexablePath } from "@/lib/seo-indexing";
 import { LAST_REVIEWED_ISO } from "@/lib/site-facts";
 
 export const dynamic = "force-static";
@@ -17,13 +19,25 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://snready.com";
  * Only indexable pages belong here: a URL that is noindexed or canonicalised
  * elsewhere must not be listed. Every candidate URL is filtered through
  * isIndexablePath (lib/seo-indexing.ts), the same rule page metadata uses for
- * the robots meta tag. Delta pages also need at least one question
+ * the robots meta tag. Cert pages need the cert to have questions
+ * (isIndexableCertPage) and delta pages need at least one question
  * (isIndexableDeltaPage). Individual question pages are excluded.
+ * scripts/check-sitemap.ts verifies the exported HTML after every build: each
+ * listed URL must exist, be indexable and canonicalise to itself.
  *
  * lastModified is a real content date, never the build time: blog posts and
- * courses use their own dates; every other page uses LAST_REVIEWED_ISO, the
- * date its facts were last reviewed by hand (lib/site-facts.ts).
+ * courses use their own dates, delta pages the date their questions were
+ * written; every other page uses LAST_REVIEWED_ISO, the date its facts were
+ * last reviewed by hand (lib/site-facts.ts).
  */
+
+/** Certs with a hand-written study guide (app/{cert}/study-guide/page.tsx). */
+function getStudyGuideSlugs(): string[] {
+  const appDir = path.join(process.cwd(), "app");
+  return getCertificationSlugs().filter((slug) =>
+    fs.existsSync(path.join(appDir, slug, "study-guide", "page.tsx"))
+  );
+}
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const certSlugs = getCertificationSlugs();
@@ -64,6 +78,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.6,
     },
     {
+      url: `${BASE_URL}/practice-questions`,
+      changeFrequency: "weekly",
+      priority: 0.85,
+    },
+    {
       url: `${BASE_URL}/certification-paths`,
       changeFrequency: "monthly",
       priority: 0.9,
@@ -80,21 +99,30 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ];
 
-  // === Certification landing pages ===
-  const certPages: MetadataRoute.Sitemap = certSlugs.map((slug) => ({
-    url: `${BASE_URL}/${slug}`,
-    changeFrequency: "weekly" as const,
-    priority: 0.9,
-  }));
+  // === Certification landing, practice question and prep pages ===
+  // Certs without questions yet ("coming soon") are noindexed and left out.
+  const certPages: MetadataRoute.Sitemap = [];
+  const practiceQuestionPages: MetadataRoute.Sitemap = [];
+  const preparePages: MetadataRoute.Sitemap = [];
+  for (const slug of certSlugs) {
+    const questionCount = getTotalQuestionCount(slug);
+    if (isIndexableCertPage(slug, "", questionCount)) {
+      certPages.push({ url: `${BASE_URL}/${slug}`, changeFrequency: "weekly", priority: 0.9 });
+    }
+    if (isIndexableCertPage(slug, "practice-questions", questionCount)) {
+      practiceQuestionPages.push({ url: `${BASE_URL}/${slug}/practice-questions`, changeFrequency: "weekly", priority: 0.85 });
+    }
+    if (isIndexableCertPage(slug, "prepare", questionCount)) {
+      preparePages.push({ url: `${BASE_URL}/${slug}/prepare`, changeFrequency: "monthly", priority: 0.7 });
+    }
+  }
 
-  // === Practice question pages (per cert) ===
-  const practiceQuestionPages: MetadataRoute.Sitemap = certSlugs.map(
-    (slug) => ({
-      url: `${BASE_URL}/${slug}/practice-questions`,
-      changeFrequency: "weekly" as const,
-      priority: 0.85,
-    })
-  );
+  // === Study guides (hand-written long-form, one per cert where it exists) ===
+  const studyGuidePages: MetadataRoute.Sitemap = getStudyGuideSlugs().map((slug) => ({
+    url: `${BASE_URL}/${slug}/study-guide`,
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
+  }));
 
   // === Topic pages (long-tail keywords) ===
   const topicPages: MetadataRoute.Sitemap = topicSlugs.map(
@@ -142,8 +170,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   for (const { certification, release } of getAllDeltaSlugs()) {
     const questions = await getPublicDeltaQuestions(certification, release);
     if (!isIndexableDeltaPage(certification, release, questions.length)) continue;
+    // The page changed when its newest questions were written, if after the last review.
+    const written = questions.map((q) => Date.parse(q.meta?.generatedAt ?? "")).filter(Number.isFinite);
+    const newest = Math.max(Date.parse(LAST_REVIEWED_ISO), ...written);
     deltaPages.push({
       url: `${BASE_URL}/${certification}/delta/${release}`,
+      lastModified: new Date(newest),
       changeFrequency: "monthly" as const,
       priority: 0.85,
     });
@@ -183,6 +215,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...staticPages,
     ...certPages,
     ...practiceQuestionPages,
+    ...preparePages,
+    ...studyGuidePages,
     ...topicPages,
     ...mockExamPages,
     ...comparePages,

@@ -34,8 +34,8 @@ export const INDEXABLE_DELTA_PAGES = new Set([
 
 /** Human-readable list of the noindexed URL patterns, for docs and reports. */
 export const NOINDEX_PATTERNS = [
+  "/{cert}, /{cert}/practice-questions and /{cert}/prepare when the cert has no questions yet (e.g. cta)",
   "/{cert}/mock-exam",
-  "/{cert}/dumps",
   "/{cert}/practice-questions/{topic} (except cad/ui-policies-actions, cis-df/csdm-fundamentals, csa/ui-navigation)",
   "/{cert}/delta/{release} (except csa, cad, cis-df and cis-itsm brazil; always when it has no questions)",
   "/compare/{slug} (except csa-vs-cis-itsm, csa-vs-cis-csm, cis-itsm-vs-cis-csm)",
@@ -50,7 +50,6 @@ const SECTION_ROOTS = new Set([
   "certifications",
   "compare",
   "courses",
-  "release",
   "salaries",
   "version-diff",
   "vs",
@@ -67,7 +66,7 @@ export function isIndexablePath(path: string): boolean {
   if (!first || SECTION_ROOTS.has(first)) return true;
 
   // /{cert}/...
-  if (second === "mock-exam" || second === "dumps") return false;
+  if (second === "mock-exam") return false;
   if (second === "practice-questions" && third && !fourth) {
     return INDEXABLE_TOPIC_PAGES.has(`${first}/${third}`);
   }
@@ -82,6 +81,20 @@ export function isIndexablePath(path: string): boolean {
  */
 export function isIndexableDeltaPage(cert: string, release: string, questionCount: number): boolean {
   return questionCount > 0 && isIndexablePath(`/${cert}/delta/${release}`);
+}
+
+/** Cert pages that only make sense once the cert has practice questions. */
+const CERT_CONTENT_PAGES = new Set(["", "practice-questions", "prepare"]);
+
+/**
+ * Whether a cert page (`/{cert}`, `/{cert}/practice-questions` or
+ * `/{cert}/prepare`) may be indexed. A cert with no questions yet (e.g. cta)
+ * is a "coming soon" placeholder and stays noindexed until questions ship.
+ * `page` is the path below the cert slug ("" for the landing page).
+ */
+export function isIndexableCertPage(cert: string, page: string, questionCount: number): boolean {
+  if (questionCount === 0 && CERT_CONTENT_PAGES.has(page)) return false;
+  return isIndexablePath(page ? `/${cert}/${page}` : `/${cert}`);
 }
 
 const INDEX_FOLLOW: Metadata["robots"] = { index: true, follow: true };
@@ -99,4 +112,9 @@ export function robotsForPath(path: string): Metadata["robots"] {
 /** robots metadata for a delta page; see isIndexableDeltaPage. */
 export function robotsForDeltaPage(cert: string, release: string, questionCount: number): Metadata["robots"] {
   return isIndexableDeltaPage(cert, release, questionCount) ? INDEX_FOLLOW : NOINDEX_FOLLOW;
+}
+
+/** robots metadata for a cert page; see isIndexableCertPage. */
+export function robotsForCertPage(cert: string, page: string, questionCount: number): Metadata["robots"] {
+  return isIndexableCertPage(cert, page, questionCount) ? INDEX_FOLLOW : NOINDEX_FOLLOW;
 }

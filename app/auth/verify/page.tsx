@@ -5,6 +5,7 @@ import VerifyContent from "./VerifyContent";
 export const metadata: Metadata = {
   title: "Verifying Login",
   description: "Verifying your magic link login.",
+  robots: { index: false, follow: true },
 };
 
 function LoadingState() {

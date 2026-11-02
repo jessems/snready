@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { getReleaseSummary } from "@/lib/release-notes";
+import { getReleaseSummary, hasProductPages } from "@/lib/release-notes";
 import { generateBreadcrumbJsonLd } from "@/lib/breadcrumbs";
 
 interface PageProps {
@@ -55,6 +55,7 @@ export async function generateStaticParams() {
   const summary = getReleaseSummary();
   const params: { version: string; product: string }[] = [];
   for (const [versionSlug, versionData] of Object.entries(summary.versions)) {
+    if (!hasProductPages(versionSlug)) continue;
     for (const product of versionData.products) {
       params.push({ version: versionSlug, product: product.slug });
     }
@@ -109,7 +110,7 @@ export default async function ProductPage({ params }: PageProps) {
   productData.entries.forEach((e) => e.certRelevance.forEach((c) => relatedCerts.add(c)));
 
   const otherVersions = Object.entries(summary.versions)
-    .filter(([slug]) => slug !== version)
+    .filter(([slug]) => slug !== version && hasProductPages(slug))
     .map(([slug, v]) => {
       const p = v.products.find((p) => p.slug === product);
       return p ? { slug, name: VERSION_NAMES[slug], count: p.entryCount } : null;

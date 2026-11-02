@@ -32,6 +32,17 @@ export interface ReleaseSummary {
 
 const data = summaryData as unknown as ReleaseSummary;
 
+/**
+ * Releases that still get per-product pages (/version-diff/{version}/{product}).
+ * Older releases keep only their overview page; their product URLs 301 to it
+ * (public/_redirects).
+ */
+export const PRODUCT_PAGE_VERSIONS: ReadonlySet<string> = new Set(["yokohama", "zurich"]);
+
+export function hasProductPages(version: string): boolean {
+  return PRODUCT_PAGE_VERSIONS.has(version);
+}
+
 export function getReleaseSummary(): ReleaseSummary {
   return data;
 }
