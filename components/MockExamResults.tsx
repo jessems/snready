@@ -5,6 +5,8 @@ import Link from "next/link";
 import type { MockExamResult } from "@/types/mockExam";
 import { formatDuration } from "@/lib/mockExam";
 import { letterForOptionId, optionLetter } from "@/lib/option-order";
+import { getExplanationWithSources } from "@/lib/doc-links";
+import { LinkedText, SourceList } from "@/components/ExplanationSources";
 
 interface MockExamResultsProps {
   result: MockExamResult;
@@ -178,6 +180,11 @@ export default function MockExamResults({ result }: MockExamResultsProps) {
                 (r) => r.questionId === qr.questionId
               );
               const isExpanded = reviewIndex === originalIndex;
+              // Sessions saved before sources were stored still get the URLs from the explanation text.
+              const explanationParts = getExplanationWithSources({
+                explanation: qr.explanation,
+                sources: qr.sources,
+              });
 
               return (
                 <div key={qr.questionId} className="p-4">
@@ -297,7 +304,7 @@ export default function MockExamResults({ result }: MockExamResultsProps) {
                             Explanation
                           </h4>
                           <p className="text-sm text-blue-800 dark:text-blue-200">
-                            {qr.explanation.correct}
+                            <LinkedText text={explanationParts.body} />
                           </p>
                           {qr.explanation.wrongAnswers &&
                             qr.explanation.wrongAnswers.length > 0 && (
@@ -313,11 +320,12 @@ export default function MockExamResults({ result }: MockExamResultsProps) {
                                     className="text-sm text-blue-700 dark:text-blue-300"
                                   >
                                     <strong>{letterForOptionId(qr.options, wa.choiceId)}:</strong>{" "}
-                                    {wa.explanation}
+                                    <LinkedText text={wa.explanation} />
                                   </p>
                                 ))}
                               </div>
                             )}
+                          <SourceList sources={explanationParts.sources} />
                         </div>
                       )}
                     </div>

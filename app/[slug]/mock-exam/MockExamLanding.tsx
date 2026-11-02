@@ -132,6 +132,7 @@ export default function MockExamLanding({
         correctAnswers: q.correctAnswers,
         isCorrect,
         explanation: q.explanation,
+        sources: q.sources,
         topic: q.topic,
         domain: q.domain,
       };

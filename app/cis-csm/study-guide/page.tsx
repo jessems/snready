@@ -3,6 +3,7 @@ import Link from "next/link";
 import { getCertificationBySlug, getTotalQuestionCount } from "@/lib/data";
 import { generateBreadcrumbJsonLd } from "@/lib/breadcrumbs";
 import { CUT_SCORE_LABEL, EXAM_DELIVERY_SHORT } from "@/lib/site-facts";
+import { Explanation } from "@/components/ExplanationSources";
 
 export const metadata: Metadata = {
   title: "How to Pass CIS-CSM — Complete ServiceNow CSM Study Guide",
@@ -856,9 +857,10 @@ export default function CISCSMStudyGuidePage() {
                       <div className="text-xs font-medium uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
                         Explanation
                       </div>
-                      <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
-                        {q.explanation}
-                      </p>
+                      <Explanation
+                        question={{ explanation: q.explanation }}
+                        textClassName="mt-1 text-sm text-zinc-600 dark:text-zinc-400"
+                      />
                     </div>
                   </div>
                 </div>
