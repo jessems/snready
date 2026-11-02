@@ -6,6 +6,7 @@ import type {
   MockExamHistoryEntry,
 } from "@/types/mockExam";
 import type { Question } from "@/types";
+import { shuffleOptions } from "@/lib/option-order";
 
 const STORAGE_KEY_PREFIX = "snready_mock_exam_";
 const HISTORY_KEY = "snready_mock_exam_history";
@@ -56,9 +57,10 @@ export function createMockExamSession(
   const selected = shuffled.slice(0, config.questionCount);
   const questions = selected.map(toMockExamQuestion);
 
-  // Shuffle options within each question too
+  // Shuffle options within each question too ("All of the above" stays last).
+  // Options are displayed with positional letters; answers stay keyed by option id.
   for (const q of questions) {
-    q.options = shuffleArray(q.options);
+    q.options = shuffleOptions(q.options);
   }
 
   const session: MockExamSession = {

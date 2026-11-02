@@ -95,6 +95,7 @@ function FreeCertificationQuestions({
           key={question.id}
           question={question}
           questionNumber={index + 1}
+          explanationInHtml
           onAnswer={handleAnswer}
         />
       ))}
@@ -162,6 +163,7 @@ function PaidCertificationQuestions({
             key={question.id}
             question={question}
             questionNumber={index + 1}
+            explanationInHtml
             onAnswer={handleFreeAnswer}
           />
         ))}
@@ -180,6 +182,7 @@ function PaidCertificationQuestions({
             key={question.id}
             question={question}
             questionNumber={index + 1}
+            explanationInHtml
           />
         ))}
 
@@ -255,6 +258,7 @@ function PaidCertificationQuestions({
               key={question.id}
               question={question}
               questionNumber={index + 1}
+              explanationInHtml
               onAnswer={handleFreeAnswer}
             />
           ))}

@@ -299,7 +299,7 @@ export default function MockExam({ initialSession, onComplete }: MockExamProps) 
                       }`}
                       title={`Press ${shortcutKey} to select`}
                     >
-                      {option.id.toUpperCase()}
+                      {shortcutKey}
                     </span>
                     <span
                       className={`pt-0.5 ${

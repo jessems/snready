@@ -5,6 +5,7 @@ import Link from "next/link";
 import type { Question } from "@/types";
 import { isFreeCertification } from "@/lib/free-certs";
 import { FREE_QUESTIONS_PER_CERT } from "@/lib/free-questions";
+import { letterForOptionId, optionLetter, orderOptionsForQuestion } from "@/lib/option-order";
 
 interface SampleQuestionsProps {
   questions: Question[];
@@ -104,7 +105,7 @@ export function SampleQuestions({ questions, certSlug, certName }: SampleQuestio
 
                     {/* Options */}
                     <div className="mt-4 space-y-2">
-                      {question.options.map((option) => {
+                      {orderOptionsForQuestion(question.id, question.options).map((option, optionIndex) => {
                         const isSelected = (selectedAnswers[question.id] || []).includes(option.id);
                         const isCorrectOption = question.correctAnswers.includes(option.id);
 
@@ -136,7 +137,7 @@ export function SampleQuestions({ questions, certSlug, certName }: SampleQuestio
                                     ? 'border-emerald-500 bg-emerald-500 text-white'
                                     : 'border-zinc-300 text-zinc-500 dark:border-zinc-600'
                             }`}>
-                              {option.id.toUpperCase()}
+                              {optionLetter(optionIndex)}
                             </span>
                             <span className="text-sm text-zinc-700 dark:text-zinc-300">
                               {option.text}
@@ -173,7 +174,10 @@ export function SampleQuestions({ questions, certSlug, certName }: SampleQuestio
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                               </svg>
                               <span className="font-medium text-red-800 dark:text-red-200">
-                                Incorrect - The correct answer is {question.correctAnswers.map(a => a.toUpperCase()).join(', ')}
+                                Incorrect - The correct answer is {question.correctAnswers
+                                  .map(a => letterForOptionId(orderOptionsForQuestion(question.id, question.options), a))
+                                  .sort()
+                                  .join(', ')}
                               </span>
                             </>
                           )}
