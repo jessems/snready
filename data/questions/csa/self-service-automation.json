@@ -6,52 +6,52 @@
       "id": "csa-ss-001",
       "certification": "csa",
       "topic": "self-service-automation",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What is a catalog item in ServiceNow?",
+      "question": "A catalog administrator is adding a docking station to the catalog. Employees order the docking station by itself, but its power cable only makes sense together with the dock. How should these be modeled?",
       "options": [
         {
           "id": "a",
-          "text": "A database table"
+          "text": "Make both the docking station and the cable separate catalog items"
         },
         {
           "id": "b",
-          "text": "Anything that can be ordered on its own, like a laptop or service"
+          "text": "Make the docking station a catalog item and the cable part of it"
         },
         {
           "id": "c",
-          "text": "A type of user role"
+          "text": "Make the cable a catalog item and the docking station a content item"
         },
         {
           "id": "d",
-          "text": "A workflow template"
+          "text": "Make both of them content items within a single order guide"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "A catalog item is anything that can be ordered on its own, like a laptop or a service. The Service Catalog allows users to view and order various items, such as goods, services, and information from their organizations departments. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=d82da79047b35ad4ca332a81736d433f&spa=1",
+        "correct": "The docs define a catalog item as a good or service that can be ordered by itself; something that only makes sense as part of a greater whole belongs to an item rather than being an item on its own. The dock is ordered on its own, so it is the catalog item, and the cable is part of it. See https://www.servicenow.com/docs/r/servicenow-platform/service-catalog/c_IntroductionToCatalogItems.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Database tables are separate from catalog items.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=d82da79047b35ad4ca332a81736d433f&spa=1"
+            "explanation": "The cable only makes sense with the dock, so per the docs it is part of an item, not a stand-alone catalog item that users order by itself.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/service-catalog/c_IntroductionToCatalogItems.html"
           },
           {
             "choiceId": "c",
-            "explanation": "User roles manage access, not service ordering.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=d82da79047b35ad4ca332a81736d433f&spa=1"
+            "explanation": "Content items provide information instead of goods or services, so the orderable dock cannot be one, and the cable is not orderable on its own.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/service-catalog/c_IntroductionToCatalogItems.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Workflows automate processes; catalog items are orderable services/goods.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=d82da79047b35ad4ca332a81736d433f&spa=1"
+            "explanation": "Order guides group multiple catalog items in one request, and content items only provide information, so neither fits an orderable dock and its cable.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/service-catalog/c_IntroductionToCatalogItems.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Service Catalog"
+        "https://www.servicenow.com/docs/r/servicenow-platform/service-catalog/c_IntroductionToCatalogItems.html"
       ],
       "isFree": true,
       "source": {
@@ -77,66 +77,69 @@
         "tags": [
           "catalog item",
           "service catalog",
-          "ordering"
+          "content item"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "csa-ss-002",
       "certification": "csa",
       "topic": "self-service-automation",
-      "cognitiveLevel": "understanding",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What is the purpose of variables in the Service Catalog?",
+      "question": "Customers ordering a PC from the catalog must be able to choose extra memory, and the price should change based on their choice. What should the catalog administrator add to the PC catalog item?",
       "options": [
         {
           "id": "a",
-          "text": "To track inventory levels"
+          "text": "A content item describing the memory options"
         },
         {
           "id": "b",
-          "text": "To define item options for end users and customize items to customer needs"
+          "text": "A variable that captures the memory choice"
         },
         {
           "id": "c",
-          "text": "To create user accounts"
+          "text": "A record producer for memory upgrades"
         },
         {
           "id": "d",
-          "text": "To send email notifications"
+          "text": "A separate catalog item for each memory size"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "Service Catalog variables customize items to customer needs, like offering different operating systems for computers. They define the structure of catalog item forms using questions that may affect prices. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=d82da79047b35ad4ca332a81736d433f&spa=1",
+        "correct": "Service catalog variables capture the choices a customer makes when ordering an item and shape the item form. The docs use this exact example: a Memory variable offering memory options at extra cost for a PC item, and variables can be defined to affect the item price. See https://www.servicenow.com/docs/r/servicenow-platform/service-catalog/c_ServiceCatalogVariables.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Inventory tracking is a separate function from variables.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=d82da79047b35ad4ca332a81736d433f&spa=1"
+            "explanation": "A content item provides information instead of goods or services; it cannot capture the customer's memory choice or adjust the price of the PC.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/service-catalog/c_IntroductionToCatalogItems.html"
           },
           {
             "choiceId": "c",
-            "explanation": "User account creation is handled in User Administration.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=d82da79047b35ad4ca332a81736d433f&spa=1"
+            "explanation": "A record producer creates task-based records such as incidents from the catalog; it is not used to collect ordering options on a PC item.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/service-catalog/c_RecordProducer.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Notifications are configured separately from catalog variables.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=d82da79047b35ad4ca332a81736d433f&spa=1"
+            "explanation": "Extra memory only makes sense as part of the PC, so per the docs it belongs to that item rather than being a separate orderable catalog item.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/service-catalog/c_IntroductionToCatalogItems.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Catalog Variables"
+        "https://www.servicenow.com/docs/r/servicenow-platform/service-catalog/c_ServiceCatalogVariables.html",
+        "https://www.servicenow.com/docs/r/servicenow-platform/service-catalog/c_IntroductionToCatalogItems.html"
       ],
       "isFree": true,
       "source": {
@@ -161,67 +164,69 @@
         ],
         "tags": [
           "variables",
-          "customization",
-          "service catalog"
+          "service catalog",
+          "pricing"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "csa-ss-003",
       "certification": "csa",
       "topic": "self-service-automation",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What is a Variable Set in ServiceNow?",
+      "question": "A catalog administrator maintains 10 server catalog items that all ask the same five questions. A sixth question must now appear on all 10 items. What setup lets future changes like this be made only once?",
       "options": [
         {
           "id": "a",
-          "text": "A collection of user roles"
+          "text": "Add the new question to each item one by one"
         },
         {
           "id": "b",
-          "text": "A container that groups variables together, saving time and reducing errors"
+          "text": "Move the shared questions into a variable set"
         },
         {
           "id": "c",
-          "text": "A type of report"
+          "text": "Group the 10 server items together in an order guide"
         },
         {
           "id": "d",
-          "text": "A backup mechanism"
+          "text": "Convert the 10 server items into a record producer"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "Instead of adding variables to each item separately, Variable Sets group them, saving time and reducing errors. Updates to a Variable Set apply to all associated items. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=d82da79047b35ad4ca332a81736d433f&spa=1",
+        "correct": "Variable sets are reusable collections of variables that can be attached to multiple catalog items and order guides. The docs use this server example: associating the same variables item by item is repetitive and error-prone, whereas a change made to the set is reflected in every item that uses it. See https://www.servicenow.com/docs/r/servicenow-platform/service-catalog/c_ServiceCatalogVariableSets.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Roles are managed separately and are not related to Variable Sets.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=d82da79047b35ad4ca332a81736d433f&spa=1"
+            "explanation": "Adding the question to each item individually is the repetitive, error-prone approach the docs describe; every later change would again need 10 edits.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/service-catalog/c_ServiceCatalogVariableSets.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Reports are created in the reporting module, not Variable Sets.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=d82da79047b35ad4ca332a81736d433f&spa=1"
+            "explanation": "An order guide submits one request that generates several items; it does not share variable definitions across the forms of separate catalog items.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/service-catalog/c_ServiceCatalogOrderGuides.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Backup mechanisms are system-level functions, not Variable Sets.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=d82da79047b35ad4ca332a81736d433f&spa=1"
+            "explanation": "A record producer creates task-based records such as incidents instead of requested items, so it is not a way to share questions across server items.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/service-catalog/c_RecordProducer.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Variable Sets"
+        "https://www.servicenow.com/docs/r/servicenow-platform/service-catalog/c_ServiceCatalogVariableSets.html"
       ],
       "isFree": true,
       "source": {
@@ -246,67 +251,70 @@
         ],
         "tags": [
           "variable set",
-          "grouping",
-          "efficiency"
+          "catalog item",
+          "reuse"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "csa-ss-004",
       "certification": "csa",
       "topic": "self-service-automation",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What is a Record Producer in ServiceNow?",
+      "question": "Employees find the standard incident form confusing, so the service desk team wants them to report issues from the service catalog through a simpler, catalog-style form that still creates incident records. What should the administrator build?",
       "options": [
         {
           "id": "a",
-          "text": "A backup tool for records"
+          "text": "A new order guide"
         },
         {
           "id": "b",
-          "text": "A catalog item that creates task-based records more easily than using a standard form"
+          "text": "A record producer"
         },
         {
           "id": "c",
-          "text": "A type of workflow"
+          "text": "A new content item"
         },
         {
           "id": "d",
-          "text": "A reporting dashboard"
+          "text": "A standard catalog item"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "A Record Producer in ServiceNow is a catalog item that lets users create task-based records, like incidents, more easily than using a standard form. It appears similar to other catalog items but generates task records instead. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=d82da79047b35ad4ca332a81736d433f&spa=1",
+        "correct": "A record producer is a type of catalog item that lets end users create task-based records, such as incidents, from the service catalog. The docs recommend it as a better end-user experience than the regular task form: it looks like a catalog item but generates a task record instead of a requested item. See https://www.servicenow.com/docs/r/servicenow-platform/service-catalog/c_RecordProducer.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Record Producers create records, not backup them.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=d82da79047b35ad4ca332a81736d433f&spa=1"
+            "explanation": "An order guide submits a single catalog request that generates several catalog items; it does not create an incident record from a simple form.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/service-catalog/c_ServiceCatalogOrderGuides.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Workflows are separate from Record Producers.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=d82da79047b35ad4ca332a81736d433f&spa=1"
+            "explanation": "Content items provide information instead of goods or services, so submitting one would not create an incident record for the service desk.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/service-catalog/c_IntroductionToCatalogItems.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Dashboards are for reporting, not record creation.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=d82da79047b35ad4ca332a81736d433f&spa=1"
+            "explanation": "A standard catalog item is ordered through a request and requested item; the docs note a record producer is what generates a task record like an incident.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/service-catalog/c_RecordProducer.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Record Producers"
+        "https://www.servicenow.com/docs/r/servicenow-platform/service-catalog/c_RecordProducer.html",
+        "https://www.servicenow.com/docs/r/servicenow-platform/service-catalog/c_IntroductionToCatalogItems.html"
       ],
       "isFree": true,
       "source": {
@@ -331,67 +339,69 @@
         ],
         "tags": [
           "record producer",
-          "catalog item",
-          "task creation"
+          "incident",
+          "catalog item"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "csa-ss-005",
       "certification": "csa",
       "topic": "self-service-automation",
-      "cognitiveLevel": "understanding",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What is an Order Guide used for?",
+      "question": "When a new employee is hired, the manager should submit one catalog request that orders business cards, a computer, and a cell phone based on the employee's location and job title. What should the catalog administrator create?",
       "options": [
         {
           "id": "a",
-          "text": "To create user manuals"
+          "text": "A record producer"
         },
         {
           "id": "b",
-          "text": "To let users request multiple related items at once"
+          "text": "An order guide"
         },
         {
           "id": "c",
-          "text": "To track shipping information"
+          "text": "A variable set"
         },
         {
           "id": "d",
-          "text": "To manage inventory"
+          "text": "A content item"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "Order Guides let users request multiple related items at once and help them decide what they need, with variables arranged by order number. Items must be complete with variables and a delivery flow before being added to an Order Guide. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=d82da79047b35ad4ca332a81736d433f&spa=1",
+        "correct": "An order guide submits a single service catalog request that generates several items. The docs give a New Employee Hire guide as the example: the customer enters details such as location and job title, rule conditions decide which items to order, and cascading variables pass common information to those items. See https://www.servicenow.com/docs/r/servicenow-platform/service-catalog/c_ServiceCatalogOrderGuides.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "User manuals are documentation, not Order Guides.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=d82da79047b35ad4ca332a81736d433f&spa=1"
+            "explanation": "A record producer creates a task-based record such as an incident from the catalog; it does not order several catalog items in one request.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/service-catalog/c_RecordProducer.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Shipping is handled separately from Order Guides.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=d82da79047b35ad4ca332a81736d433f&spa=1"
+            "explanation": "A variable set is a reusable group of variables attached to items; it collects answers but does not order multiple catalog items together.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/service-catalog/c_ServiceCatalogVariableSets.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Inventory management is a different function.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=d82da79047b35ad4ca332a81736d433f&spa=1"
+            "explanation": "Content items provide information instead of goods or services, so one cannot order business cards, a computer, and a phone for the new hire.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/service-catalog/c_IntroductionToCatalogItems.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Order Guides"
+        "https://www.servicenow.com/docs/r/servicenow-platform/service-catalog/c_ServiceCatalogOrderGuides.html"
       ],
       "isFree": true,
       "source": {
@@ -416,67 +426,69 @@
         ],
         "tags": [
           "order guide",
-          "multiple items",
-          "bundled requests"
+          "new hire",
+          "multiple items"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "csa-ss-006",
       "certification": "csa",
       "topic": "self-service-automation",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What does the Catalog Builder allow administrators to do?",
+      "question": "A catalog administrator wants Facilities owners to create and maintain their own catalog items through a guided, visual experience, limited to approved catalogs, categories, and variable types. Which approach fits?",
       "options": [
         {
           "id": "a",
-          "text": "Build physical products"
+          "text": "Order guides with cascading variables"
         },
         {
           "id": "b",
-          "text": "Create or edit catalog items visually with guidelines and restrictions"
+          "text": "Catalog Builder with item templates"
         },
         {
           "id": "c",
-          "text": "Manage user passwords"
+          "text": "Variable sets with catalog UI policies"
         },
         {
           "id": "d",
-          "text": "Configure network settings"
+          "text": "Workflow Studio with fulfillment flows"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "Create or edit catalog items and record producers visually with guidelines and restrictions using the Catalog Builder. This tool lets you delegate catalog management and design templates for catalog items. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=d82da79047b35ad4ca332a81736d433f&spa=1",
+        "correct": "Catalog Builder provides a visual, guided experience for creating and editing catalog items and record producers, so catalog maintenance can be delegated. Administrators create templates that pre-set values and restrict catalogs, categories, variable types, and portal settings for items built from them. See https://www.servicenow.com/docs/r/servicenow-platform/service-catalog/catalog-builder.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Catalog Builder is for digital catalog configuration, not physical products.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=d82da79047b35ad4ca332a81736d433f&spa=1"
+            "explanation": "Order guides submit one request that generates several items and pass shared answers through cascading variables; they are not an authoring tool for items.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/service-catalog/c_ServiceCatalogOrderGuides.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Password management is in User Administration.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=d82da79047b35ad4ca332a81736d433f&spa=1"
+            "explanation": "Variable sets group reusable variables for items; they do not give business owners a guided, restricted way to create and maintain catalog items.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/service-catalog/c_ServiceCatalogVariableSets.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Network settings are system-level configurations.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=d82da79047b35ad4ca332a81736d433f&spa=1"
+            "explanation": "Workflow Studio flows define fulfillment processes such as approvals and tasks after an item is ordered; they do not author the catalog items themselves.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/service-catalog/request-fulfillment.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Catalog Builder"
+        "https://www.servicenow.com/docs/r/servicenow-platform/service-catalog/catalog-builder.html"
       ],
       "isFree": false,
       "source": {
@@ -501,67 +513,70 @@
         ],
         "tags": [
           "catalog builder",
-          "visual editor",
-          "templates"
+          "templates",
+          "delegation"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "csa-ss-007",
       "certification": "csa",
       "topic": "self-service-automation",
-      "cognitiveLevel": "understanding",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What happens if no user criteria is set on a knowledge base's 'can read' related list?",
+      "question": "A knowledge manager creates a knowledge base but adds no Can Read or Can Contribute user criteria. The glide.knowman.block_access_with_no_user_criteria property is still at its default value. Who can read the articles?",
       "options": [
         {
           "id": "a",
-          "text": "Only administrators can access it"
+          "text": "Any user, including unauthenticated users"
         },
         {
           "id": "b",
-          "text": "The knowledge base becomes open to the public"
+          "text": "Knowledge admins and the base owner or manager"
         },
         {
           "id": "c",
-          "text": "The knowledge base is disabled"
+          "text": "Any user who has at least one role assigned"
         },
         {
           "id": "d",
-          "text": "Only the knowledge manager can view articles"
+          "text": "Any user who has the snc_internal role assigned"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "If there is no user criteria on the can read related list, then the knowledge base becomes open to the public. User criteria must be set to restrict access to specific users or groups. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=9e8c67dc47735ad4ca332a81736d43ad&spa=1",
+        "correct": "When no read criteria apply, the docs say access depends on glide.knowman.block_access_with_no_user_criteria, whose default value is true. With true, no one can read except users with special knowledge privileges (knowledge admins and the base's owner and manager) and users with contribute access, which no one else has here. See https://www.servicenow.com/docs/r/servicenow-platform/knowledge-management/user-access-knowledge.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Without criteria, access is open to all, not restricted to admins.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=9e8c67dc47735ad4ca332a81736d43ad&spa=1"
+            "explanation": "Every user, including unauthenticated users, gets read access only when the property is set to false; at its default of true, access is blocked.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/knowledge-management/user-access-knowledge.html"
           },
           {
             "choiceId": "c",
-            "explanation": "The knowledge base remains active, just publicly accessible.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=9e8c67dc47735ad4ca332a81736d43ad&spa=1"
+            "explanation": "Users with at least one role can contribute only when the property is false; at the default of true, regular users get neither contribute nor read access.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/knowledge-management/user-access-knowledge.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Without restrictions, all users can view, not just managers.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=9e8c67dc47735ad4ca332a81736d43ad&spa=1"
+            "explanation": "The snc_internal Can Read criterion is added automatically only when the Explicit Roles plugin is active; here no Can Read criteria exist, so at the default of true regular users get no read access.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/knowledge-management/user-access-knowledge.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Knowledge User Criteria"
+        "https://www.servicenow.com/docs/r/servicenow-platform/knowledge-management/user-access-knowledge.html",
+        "https://www.servicenow.com/docs/r/servicenow-platform/knowledge-management/r_KnowledgeProperties.html"
       ],
       "isFree": false,
       "source": {
@@ -592,9 +607,11 @@
       },
       "meta": {
         "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -853,52 +870,53 @@
       "id": "csa-ss-011",
       "certification": "csa",
       "topic": "self-service-automation",
-      "cognitiveLevel": "understanding",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "In the Service Catalog request structure, what does each catalog item within a request have?",
+      "question": "A user submits one catalog request containing a laptop and a desk. The laptop's flow creates imaging and delivery tasks, while the desk's flow creates only a delivery task. Where are these catalog tasks attached?",
       "options": [
         {
           "id": "a",
-          "text": "Only one task maximum"
+          "text": "They attach directly to the parent request"
         },
         {
           "id": "b",
-          "text": "Multiple tasks that are specific to that item"
+          "text": "Each one belongs to the requested item it fulfills"
         },
         {
           "id": "c",
-          "text": "No tasks, only approvals"
+          "text": "They attach to the catalog item definition records"
         },
         {
           "id": "d",
-          "text": "Shared tasks with all other items"
+          "text": "One shared task covers both of the requested items"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "In a Service Catalog request, each item can have several tasks. Even if tasks have similar names, they are specific to each item because the steps for each may vary. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=d82da79047b35ad4ca332a81736d433f&spa=1",
+        "correct": "Each catalog item in a request creates its own discrete requested item. The Create Catalog Task action creates a Catalog Task [sc_task] record associated with a requested item [sc_req_item], the item the task fulfills, so the laptop's tasks sit under its requested item and the desk's under its own. See https://www.servicenow.com/docs/r/build-workflows/workflow-studio/create-catalog-task-flow-designer.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Items can have multiple tasks, not just one.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=d82da79047b35ad4ca332a81736d433f&spa=1"
+            "explanation": "The Create Catalog Task action links each task to a requested item record, not directly to the parent request that groups the items together.",
+            "reference": "https://www.servicenow.com/docs/r/build-workflows/workflow-studio/create-catalog-task-flow-designer.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Items typically have tasks for fulfillment in addition to approvals.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=d82da79047b35ad4ca332a81736d433f&spa=1"
+            "explanation": "Catalog item definitions describe what can be ordered; tasks are created at fulfillment time and associated with a specific requested item record.",
+            "reference": "https://www.servicenow.com/docs/r/build-workflows/workflow-studio/create-catalog-task-flow-designer.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Tasks are specific to each item, not shared across items.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=d82da79047b35ad4ca332a81736d433f&spa=1"
+            "explanation": "Each catalog item in the request produces its own requested item, and each task references the single requested item it fulfills, so tasks are not shared.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/service-catalog/c_RequestingAServiceCatalogItem.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Request Structure"
+        "https://www.servicenow.com/docs/r/build-workflows/workflow-studio/create-catalog-task-flow-designer.html",
+        "https://www.servicenow.com/docs/r/servicenow-platform/service-catalog/c_RequestingAServiceCatalogItem.html"
       ],
       "isFree": false,
       "source": {
@@ -923,15 +941,17 @@
         ],
         "tags": [
           "request structure",
-          "tasks",
-          "catalog items"
+          "catalog task",
+          "requested item"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -1272,80 +1292,6 @@
       }
     },
     {
-      "id": "csa-ss-016",
-      "certification": "csa",
-      "topic": "self-service-automation",
-      "cognitiveLevel": "knowledge",
-      "type": "multiple_choice",
-      "question": "What is a Record Producer in ServiceNow?",
-      "options": [
-        {
-          "id": "a",
-          "text": "A tool for generating reports from service catalog data"
-        },
-        {
-          "id": "b",
-          "text": "A catalog item that creates task-based records like incidents through a simplified interface"
-        },
-        {
-          "id": "c",
-          "text": "A script that automatically generates records on a schedule"
-        },
-        {
-          "id": "d",
-          "text": "A dashboard widget for monitoring record creation rates"
-        }
-      ],
-      "correctAnswers": [
-        "b"
-      ],
-      "explanation": {
-        "correct": "A Record Producer is a catalog item that lets users create task-based records (like incidents) more easily than using a standard form. It appears similar to other catalog items but generates task records instead.",
-        "wrongAnswers": [
-          {
-            "choiceId": "a",
-            "explanation": "Record Producers create records, not reports."
-          },
-          {
-            "choiceId": "c",
-            "explanation": "Record Producers are user-facing catalog items, not automated scripts."
-          },
-          {
-            "choiceId": "d",
-            "explanation": "Record Producers are not dashboard widgets."
-          }
-        ]
-      },
-      "isFree": false,
-      "source": {
-        "type": "course",
-        "course": {
-          "courseSlug": "servicenow-administration-fundamentals-xanadu",
-          "lessonTitle": "Service Catalog"
-        }
-      },
-      "labels": {
-        "certification": "csa",
-        "domain": "Self-Service & Automation",
-        "domainSlug": "self-service-automation",
-        "domainPercentage": 15,
-        "subtopics": [
-          "Record producers"
-        ],
-        "tags": [
-          "record producer",
-          "service catalog",
-          "task records"
-        ]
-      },
-      "meta": {
-        "generatedAt": "2026-03-16T02:00:00Z",
-        "version": "1.1",
-        "release": "Xanadu",
-        "reviewed": false
-      }
-    },
-    {
       "id": "csa-ss-017",
       "certification": "csa",
       "topic": "self-service-automation",
@@ -1425,42 +1371,45 @@
       "topic": "self-service-automation",
       "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What determines the display order of variables on a catalog item form?",
+      "question": "An administrator needs a new Justification variable to appear between the Requested for variable (Order 100) and the Laptop model variable (Order 200) on a catalog item form. What should the administrator do?",
       "options": [
         {
           "id": "a",
-          "text": "The alphabetical order of variable names"
+          "text": "Set its Order value to 50"
         },
         {
           "id": "b",
-          "text": "The order field value \u2014 lower numbers show first"
+          "text": "Set its Order value to 150"
         },
         {
           "id": "c",
-          "text": "The date each variable was created"
+          "text": "Set its Order value to 250"
         },
         {
           "id": "d",
-          "text": "The variable type determines the order"
+          "text": "Create it after Laptop model"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "The order field sets the display sequence for variables on a catalog item form. Lower numbers show first.",
+        "correct": "The Order field on a variable sets where it is placed on the catalog item form: variables are arranged top to bottom from the lowest to the highest Order value. A value of 150 falls between 100 and 200, so Justification displays below Requested for and above Laptop model. See https://www.servicenow.com/docs/r/servicenow-platform/service-catalog/t_CreateAVariableForACatalogItem.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Variables are ordered by the Order field value, not alphabetically."
+            "explanation": "An Order value of 50 is lower than 100, so the variable would appear above Requested for at the top of the form, not between the two variables.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/service-catalog/t_CreateAVariableForACatalogItem.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Creation date does not determine display order."
+            "explanation": "An Order value of 250 is higher than 200, so the variable would appear below Laptop model rather than between Requested for and Laptop model.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/service-catalog/t_CreateAVariableForACatalogItem.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Variable type does not determine the order; the Order field does."
+            "explanation": "Placement on the form is driven by the Order field value, not by when the variable was created, so creation sequence does not position it.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/service-catalog/t_CreateAVariableForACatalogItem.html"
           }
         ]
       },
@@ -1483,15 +1432,20 @@
         "tags": [
           "variable order",
           "catalog item",
-          "display sequence"
+          "order field"
         ]
       },
       "meta": {
         "generatedAt": "2026-03-16T02:00:00Z",
         "version": "1.1",
-        "release": "Xanadu",
-        "reviewed": false
-      }
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/servicenow-platform/service-catalog/t_CreateAVariableForACatalogItem.html"
+      ]
     },
     {
       "id": "csa-ss-019",
@@ -1714,80 +1668,6 @@
       }
     },
     {
-      "id": "csa-ss-022",
-      "certification": "csa",
-      "topic": "self-service-automation",
-      "cognitiveLevel": "comprehension",
-      "type": "multiple_choice",
-      "question": "What happens if no user criteria are set on a knowledge base's 'can read' related list?",
-      "options": [
-        {
-          "id": "a",
-          "text": "Only administrators can read the articles"
-        },
-        {
-          "id": "b",
-          "text": "The knowledge base becomes open to the public"
-        },
-        {
-          "id": "c",
-          "text": "Only users with the knowledge role can read articles"
-        },
-        {
-          "id": "d",
-          "text": "The knowledge base is hidden from all users"
-        }
-      ],
-      "correctAnswers": [
-        "b"
-      ],
-      "explanation": {
-        "correct": "If there is no user criteria on the 'can read' related list, then the knowledge base becomes open to the public. To restrict access, administrators must add appropriate user criteria.",
-        "wrongAnswers": [
-          {
-            "choiceId": "a",
-            "explanation": "Without user criteria, access is not restricted to administrators \u2014 it's open to everyone."
-          },
-          {
-            "choiceId": "c",
-            "explanation": "The knowledge role is not required when no user criteria are set."
-          },
-          {
-            "choiceId": "d",
-            "explanation": "Without criteria, the knowledge base is visible to all, not hidden."
-          }
-        ]
-      },
-      "isFree": false,
-      "source": {
-        "type": "course",
-        "course": {
-          "courseSlug": "servicenow-administration-fundamentals-xanadu",
-          "lessonTitle": "Configure Self Service"
-        }
-      },
-      "labels": {
-        "certification": "csa",
-        "domain": "Self-Service & Automation",
-        "domainSlug": "self-service-automation",
-        "domainPercentage": 15,
-        "subtopics": [
-          "Knowledge base access"
-        ],
-        "tags": [
-          "knowledge base",
-          "can read",
-          "public access"
-        ]
-      },
-      "meta": {
-        "generatedAt": "2026-03-16T02:00:00Z",
-        "version": "1.1",
-        "release": "Xanadu",
-        "reviewed": false
-      }
-    },
-    {
       "id": "csa-ss-023",
       "cognitiveLevel": "application",
       "type": "multiple_choice",
@@ -1862,50 +1742,55 @@
     },
     {
       "id": "csa-ss-024",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "In the Service Catalog, what is the difference between a 'Record Producer' and a 'Catalog Item'?",
+      "question": "An administrator publishes a record producer named Report a broken printer that targets the Incident table. After an employee submits it from the service catalog, what record does it generate?",
       "options": [
         {
           "id": "a",
-          "text": "A Record Producer creates a record in a specific table; a Catalog Item creates a Requested Item (RITM) with a fulfillment workflow"
+          "text": "An incident record in the target table"
         },
         {
           "id": "b",
-          "text": "They are the same thing with different names"
+          "text": "A request containing one requested item"
         },
         {
           "id": "c",
-          "text": "A Record Producer is for hardware; a Catalog Item is for software"
+          "text": "A requested item that links to an incident"
         },
         {
           "id": "d",
-          "text": "Record Producers can only be used by administrators"
+          "text": "A catalog task for the fulfillment group"
         }
       ],
       "correctAnswers": [
         "a"
       ],
       "explanation": {
-        "correct": "Record Producers create records directly in a specified target table (e.g., Incident, Change Request). Catalog Items follow the request fulfillment process, creating a Request with Requested Items (RITMs) and optional tasks.",
+        "correct": "A record producer looks like a catalog item but generates a task-based record, such as an incident, instead of a requested item. The docs add that record producers should be used to create task-based records only, and that requested items should be created through regular catalog items so standard catalog processes run. See https://www.servicenow.com/docs/r/servicenow-platform/service-catalog/c_RecordProducer.html",
         "wrongAnswers": [
           {
             "choiceId": "b",
-            "explanation": "They serve different purposes \u2014 Record Producers bypass the request process, while Catalog Items use it."
+            "explanation": "A request with requested items is what an ordinary catalog item produces; a record producer creates a record in its target table instead.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/service-catalog/c_RecordProducer.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Both can be used for any type of service; the distinction is about the fulfillment process, not content type."
+            "explanation": "Record producers generate a task record such as an incident instead of a requested item, and the docs advise against creating requested items from them.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/service-catalog/c_RecordProducer.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Record Producers can be made available to any user with the appropriate catalog access."
+            "explanation": "Catalog tasks are created for a requested item during request fulfillment; a record producer writes directly to its target table such as Incident.",
+            "reference": "https://www.servicenow.com/docs/r/build-workflows/workflow-studio/create-catalog-task-flow-designer.html"
           }
         ]
       },
       "certification": "csa",
       "topic": "self-service-automation",
-      "references": [],
+      "references": [
+        "https://www.servicenow.com/docs/r/servicenow-platform/service-catalog/c_RecordProducer.html"
+      ],
       "isFree": false,
       "source": {
         "type": "generated",
@@ -1924,13 +1809,19 @@
         "domain": "self-service-automation",
         "domainSlug": "self-service-automation",
         "subtopics": [],
-        "tags": []
+        "tags": [
+          "record producer",
+          "requested item",
+          "incident"
+        ]
       },
       "meta": {
         "generatedAt": "2026-03-31T02:09:00Z",
-        "version": "2.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -2078,50 +1969,56 @@
     },
     {
       "id": "csa-ss-027",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What is the purpose of the 'Knowledge Base' in ServiceNow self-service?",
+      "question": "The HR and IT teams each want their own set of knowledge articles with their own managers, their own category structure, and separate control over who can read and contribute. What should the knowledge administrator set up?",
       "options": [
         {
           "id": "a",
-          "text": "To provide searchable articles that help users resolve issues without creating tickets"
+          "text": "A separate knowledge base for each team"
         },
         {
           "id": "b",
-          "text": "To store system configuration documentation only"
+          "text": "One article template for each of the teams"
         },
         {
           "id": "c",
-          "text": "To replace the Service Catalog entirely"
+          "text": "One shared base with a category per team"
         },
         {
           "id": "d",
-          "text": "To manage user passwords"
+          "text": "A knowledge subscription for each team"
         }
       ],
       "correctAnswers": [
         "a"
       ],
       "explanation": {
-        "correct": "Knowledge Bases contain articles organized by category that enable self-service. Users can search for solutions to common issues, reducing ticket volume through 'shift left' \u2014 resolving issues at the lowest cost tier.",
+        "correct": "Knowledge Management supports multiple knowledge bases for different groups in an organization. Each knowledge base can be assigned its own managers, has its own category hierarchy, and gets its own read and contribute permissions through user criteria, so a base per team meets every requirement. See https://www.servicenow.com/docs/r/servicenow-platform/knowledge-management/exploring-knowledge-management.html",
         "wrongAnswers": [
           {
             "choiceId": "b",
-            "explanation": "Knowledge Bases serve end users and IT staff, not just system configuration documentation."
+            "explanation": "Article templates give knowledge articles a consistent structure; they do not assign separate managers or control who can read and contribute.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/knowledge-management/exploring-knowledge-management.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Knowledge Bases complement the Service Catalog; they serve different purposes."
+            "explanation": "Categories organize articles within a base, but managers and contribute access are defined per knowledge base, so one shared base cannot separate them.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/knowledge-management/user-access-knowledge.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Password management is handled through user administration, not Knowledge Bases."
+            "explanation": "Knowledge subscriptions let users follow relevant articles; they do not create separate managers, categories, or access controls for each team.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/knowledge-management/exploring-knowledge-management.html"
           }
         ]
       },
       "certification": "csa",
       "topic": "self-service-automation",
-      "references": [],
+      "references": [
+        "https://www.servicenow.com/docs/r/servicenow-platform/knowledge-management/exploring-knowledge-management.html",
+        "https://www.servicenow.com/docs/r/servicenow-platform/knowledge-management/user-access-knowledge.html"
+      ],
       "isFree": false,
       "source": {
         "type": "generated",
@@ -2140,13 +2037,19 @@
         "domain": "self-service-automation",
         "domainSlug": "self-service-automation",
         "subtopics": [],
-        "tags": []
+        "tags": [
+          "knowledge base",
+          "knowledge management",
+          "user criteria"
+        ]
       },
       "meta": {
         "generatedAt": "2026-03-31T02:09:00Z",
-        "version": "2.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {

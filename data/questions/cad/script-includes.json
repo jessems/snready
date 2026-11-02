@@ -6,52 +6,52 @@
       "id": "cad-script-includes-001",
       "certification": "cad",
       "topic": "script-includes",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What is the primary purpose of a Script Include in ServiceNow?",
+      "question": "A developer has copied the same server-side date calculation into several business rules. They want to store it once as a reusable function that other server scripts can call. What should they create?",
       "options": [
         {
           "id": "a",
-          "text": "To execute client-side scripts automatically when a form loads"
+          "text": "An onLoad client script on each form that needs it"
         },
         {
           "id": "b",
-          "text": "To store reusable JavaScript for execution on the server"
+          "text": "A script include that server scripts can call"
         },
         {
           "id": "c",
-          "text": "To define UI Policies that dynamically control form field behavior"
+          "text": "A UI policy that runs the logic when the form changes"
         },
         {
           "id": "d",
-          "text": "To create scheduled automation jobs that run at defined intervals"
+          "text": "A global business rule holding the shared function"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "A Script Include stores reusable JavaScript for server-side execution. Script Includes follow a 'write once, use many' pattern \u2014 they are written once and can be called from anywhere server-side JavaScript is accepted. They must be explicitly called to run and do not have automatic triggers. See: https://docs.servicenow.com/bundle/yokohama-api-reference/page/script/script-includes/concept/c_ScriptIncludes.html",
+        "correct": "Script includes store JavaScript that runs on the server; you create them to hold functions and classes for use by server scripts. Each one defines a single class or function that other scripts call, which fits shared logic used by several business rules. See https://www.servicenow.com/docs/r/api-reference/scripts/c_ScriptIncludes.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Client-side scripts that execute on form load are Client Scripts (onLoad type), not Script Includes. Script Includes execute on the server side.",
-            "reference": "https://docs.servicenow.com/bundle/yokohama-api-reference/page/script/client-scripts/concept/c_ClientScripts.html"
+            "explanation": "Client scripts run JavaScript in the web browser on form events such as load. They cannot serve as a shared function for server-side business rules.",
+            "reference": "https://www.servicenow.com/docs/r/api-reference/scripts/client-scripts.html"
           },
           {
             "choiceId": "c",
-            "explanation": "UI Policies are a separate no-code mechanism for controlling form field visibility, mandatory status, and read-only state. They are not Script Includes.",
-            "reference": "https://docs.servicenow.com/bundle/yokohama-platform-administration/page/administer/form-administration/concept/c_UIPolicies.html"
+            "explanation": "UI policies change form behavior, such as making fields mandatory, read-only, or hidden, on the client. They do not provide reusable server-side functions.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/t_CreateAUIPolicy.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Scheduled Jobs are used to run automation at defined time intervals. Script Includes do not run on a schedule \u2014 they must be explicitly called from other scripts or processes.",
-            "reference": "https://docs.servicenow.com/bundle/yokohama-platform-administration/page/administer/time/concept/c_ScheduledJobs.html"
+            "explanation": "The docs recommend script includes instead of global business rules for this, because script includes are only loaded on request when code calls them.",
+            "reference": "https://www.servicenow.com/docs/r/api-reference/scripts/c_ScriptIncludes.html"
           }
         ]
       },
       "references": [
-        "https://docs.servicenow.com/bundle/yokohama-api-reference/page/script/script-includes/concept/c_ScriptIncludes.html"
+        "https://www.servicenow.com/docs/r/api-reference/scripts/c_ScriptIncludes.html"
       ],
       "isFree": true,
       "source": {
@@ -75,9 +75,11 @@
       },
       "meta": {
         "generatedAt": "2026-02-05T20:28:03.000Z",
-        "version": "1.0",
-        "release": "Yokohama",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -109,27 +111,27 @@
         "b"
       ],
       "explanation": {
-        "correct": "The 'current' object is only available in scripts that are associated with a specific table (such as Business Rules). Since the Script Include form has no table field or condition builder, there is no record context, and therefore the current object does not exist within a Script Include. Developers must use GlideRecord to access specific records instead. See: https://docs.servicenow.com/bundle/yokohama-api-reference/page/script/script-includes/concept/c_ScriptIncludes.html",
+        "correct": "The 'current' object is only available in scripts that are associated with a specific table (such as Business Rules). Since the Script Include form has no table field or condition builder, there is no record context, and therefore the current object does not exist within a Script Include. Developers must use GlideRecord to access specific records instead. See: https://www.servicenow.com/docs/r/api-reference/scripts/c_ScriptIncludes.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
             "explanation": "Script Includes execute on the server side, not the client side. The reason current is unavailable is the lack of a table association, not the execution context.",
-            "reference": "https://docs.servicenow.com/bundle/yokohama-api-reference/page/script/script-includes/concept/c_ScriptIncludes.html"
+            "reference": "https://www.servicenow.com/docs/r/api-reference/scripts/c_ScriptIncludes.html"
           },
           {
             "choiceId": "c",
             "explanation": "The current object has not been deprecated. It remains fully functional in scripts that are associated with a table, such as Business Rules, and is available across all ServiceNow releases.",
-            "reference": "https://docs.servicenow.com/bundle/yokohama-api-reference/page/script/general-scripting/concept/c_UsingGlideRecordToQueryTables.html"
+            "reference": "https://www.servicenow.com/docs/r/api-reference/server-api-reference/c_GlideRecordScopedAPI.html"
           },
           {
             "choiceId": "d",
             "explanation": "The previous object is also unavailable in Script Includes for the same reason \u2014 there is no table association. The previous object is available in Business Rules alongside current.",
-            "reference": "https://docs.servicenow.com/bundle/yokohama-api-reference/page/script/business-rules/concept/c_BusinessRules.html"
+            "reference": "https://www.servicenow.com/docs/r/api-reference/business-rules-classic/c_BusinessRules.html"
           }
         ]
       },
       "references": [
-        "https://docs.servicenow.com/bundle/yokohama-api-reference/page/script/script-includes/concept/c_ScriptIncludes.html"
+        "https://www.servicenow.com/docs/r/api-reference/scripts/c_ScriptIncludes.html"
       ],
       "isFree": true,
       "source": {

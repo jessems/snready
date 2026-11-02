@@ -6,52 +6,53 @@
       "id": "csa-im-001",
       "certification": "csa",
       "topic": "incident-management",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What is the primary goal of Incident Management in ServiceNow?",
+      "question": "A sales team cannot send email because the mail service is down, and an agent picks up their incident. What is the agent's main objective under Incident Management?",
       "options": [
         {
           "id": "a",
-          "text": "To identify the root cause of issues"
+          "text": "Find the underlying root cause of the recurring outage"
         },
         {
           "id": "b",
-          "text": "To restore normal service operation as quickly as possible"
+          "text": "Restore normal service while minimizing business impact"
         },
         {
           "id": "c",
-          "text": "To prevent incidents from occurring"
+          "text": "Plan and approve a controlled change to the mail servers"
         },
         {
           "id": "d",
-          "text": "To document all IT changes"
+          "text": "Log the issue as a catalog request for later fulfillment"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "The primary goal of Incident Management is to restore normal service operation as quickly as possible while minimizing the impact on business operations.",
+        "correct": "ServiceNow describes Incident Management as restoring normal service operation while minimizing the impact on business operations and maintaining quality. The agent's job on this incident is to get the sales team sending email again as quickly as possible. Root cause analysis, change control and request fulfillment are each handled by separate ITSM processes. See https://www.servicenow.com/docs/r/it-service-management/incident-management/c_IncidentManagement.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Root cause analysis is the focus of Problem Management, not Incident Management.",
-            "reference": "ITIL Problem Management"
+            "explanation": "Identifying the cause of errors behind related incidents is the purpose of Problem Management. The incident itself focuses on restoring the service.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/problem-management/c_ProblemManagement.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Preventing incidents is related to proactive Problem Management and continuous improvement.",
-            "reference": "ITIL Continual Improvement"
+            "explanation": "Controlling the life cycle of changes with minimum disruption is the role of Change Management, not the objective of working an incident.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/change-management/c_ITILChangeManagement.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Documenting IT changes is handled by Change Management.",
-            "reference": "ITIL Change Management"
+            "explanation": "Request Management handles requests for services, products or information. A service outage is an incident, not a catalog request to be fulfilled.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/request-management/c_RequestManagement.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Incident Management Documentation"
+        "https://www.servicenow.com/docs/r/it-service-management/incident-management/c_IncidentManagement.html",
+        "https://www.servicenow.com/docs/r/it-service-management/incident-management/incident-management-process.html"
       ],
       "isFree": true,
       "source": {
@@ -75,9 +76,11 @@
       },
       "meta": {
         "generatedAt": "2026-02-04T00:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -162,52 +165,53 @@
       "id": "csa-im-003",
       "certification": "csa",
       "topic": "incident-management",
-      "cognitiveLevel": "understanding",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "Which incident state indicates that work has started but is not yet complete?",
+      "question": "An agent has placed an incident On Hold with the On hold reason Awaiting Caller. The next day, the caller updates the incident with the requested details. What happens to the incident?",
       "options": [
         {
           "id": "a",
-          "text": "New"
+          "text": "It stays On Hold until the agent manually changes the state"
         },
         {
           "id": "b",
-          "text": "In Progress"
+          "text": "The On hold reason is cleared and the state moves to In Progress"
         },
         {
           "id": "c",
-          "text": "On Hold"
+          "text": "It returns to the New state so the service desk can triage it again"
         },
         {
           "id": "d",
-          "text": "Resolved"
+          "text": "It is resolved automatically with a No response from caller code"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "The 'In Progress' state indicates that an agent has begun working on the incident but has not yet resolved it.",
+        "correct": "In the incident life cycle, On Hold means responsibility has temporarily shifted to someone else, such as the caller, to provide information. When the caller updates an incident that is on hold, the platform clears the On hold reason and sets the state back to In Progress, the state for an incident that is assigned and being investigated. The assigned agent and the watch list are notified so work can resume. See https://www.servicenow.com/docs/r/it-service-management/incident-management/c_IncidentManagementStateModel.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "'New' means no work has started on the incident yet.",
-            "reference": "Incident States"
+            "explanation": "The incident does not wait for the agent: when the caller updates it, the platform clears the On hold reason and changes the state to In Progress on its own.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/incident-management/c_IncidentManagementStateModel.html"
           },
           {
             "choiceId": "c",
-            "explanation": "'On Hold' means work is paused, typically awaiting external input or information.",
-            "reference": "Incident States"
+            "explanation": "New is for an incident that is logged but not yet investigated. A caller update to an on-hold incident sends it to In Progress, not back to New for triage.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/incident-management/c_IncidentManagementStateModel.html"
           },
           {
             "choiceId": "d",
-            "explanation": "'Resolved' means a solution has been applied and the incident is waiting for closure confirmation.",
-            "reference": "Incident States"
+            "explanation": "The No response from caller resolution happens when the caller does not respond after all reminder attempts. Here the caller did respond, so the incident resumes.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/incident-management/resolve-and-close-an-incident.html"
           }
         ]
       },
       "references": [
-        "Incident States"
+        "https://www.servicenow.com/docs/r/it-service-management/incident-management/c_IncidentManagementStateModel.html",
+        "https://www.servicenow.com/docs/r/it-service-management/incident-management/resolve-and-close-an-incident.html"
       ],
       "isFree": true,
       "source": {
@@ -226,66 +230,72 @@
         ],
         "tags": [
           "incident states",
+          "on hold",
+          "in progress",
           "lifecycle"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T00:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "csa-im-004",
       "certification": "csa",
       "topic": "incident-management",
-      "cognitiveLevel": "understanding",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What is the difference between closing and resolving an incident?",
+      "question": "An agent applies a fix and sets an incident to Resolved. A team lead asks why the incident has not moved to Closed yet. Which statement explains the difference between the two states?",
       "options": [
         {
           "id": "a",
-          "text": "There is no difference; they are the same action"
+          "text": "Resolved and Closed are two names for the same final state"
         },
         {
           "id": "b",
-          "text": "Resolved means a solution was applied; Closed means the caller confirmed resolution"
+          "text": "Resolved means a fix is in place; Closed follows confirmation"
         },
         {
           "id": "c",
-          "text": "Closed is temporary; Resolved is permanent"
+          "text": "Resolved incidents are locked, but Closed ones can be reopened"
         },
         {
           "id": "d",
-          "text": "Only managers can close; anyone can resolve"
+          "text": "Closed is an interim state that an incident passes before Resolved"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "An incident is marked as 'Resolved' when the IT team has applied a solution. It moves to 'Closed' after the caller confirms the resolution is satisfactory or after a configured waiting period. This two-stage approach ensures customer satisfaction.",
+        "correct": "An incident is Resolved when a satisfactory fix has been provided. It becomes Closed after it has been in the Resolved state for a set time and it is confirmed that the issue is satisfactorily resolved. The caller can close it, or a scheduled job can auto-close it after the configured number of days (7 business days by default). See https://www.servicenow.com/docs/r/it-service-management/incident-management/c_IncidentManagementStateModel.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Resolved and Closed are distinct states with different purposes in the incident lifecycle.",
-            "reference": "Incident Closure Process"
+            "explanation": "The incident life cycle lists Resolved and Closed as separate states with different meanings, so they are not two names for one state.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/incident-management/c_IncidentManagementStateModel.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Both states are part of the normal incident closure flow; neither is temporary in a special way.",
-            "reference": "Incident Closure Process"
+            "explanation": "A Resolved incident is not locked. If the caller rejects the resolution, the incident goes back to In Progress and is not auto-closed.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/incident-management/configure-incident-auto-close.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Permissions are role-based but both states can be set by appropriate ITIL users.",
-            "reference": "ServiceNow Roles"
+            "explanation": "The order is reversed. An incident is Closed after it has been in the Resolved state for a set time, so Closed comes after Resolved.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/incident-management/c_IncidentManagementStateModel.html"
           }
         ]
       },
       "references": [
-        "Incident Closure Process"
+        "https://www.servicenow.com/docs/r/it-service-management/incident-management/c_IncidentManagementStateModel.html",
+        "https://www.servicenow.com/docs/r/it-service-management/incident-management/configure-incident-auto-close.html",
+        "https://www.servicenow.com/docs/r/it-service-management/incident-management/resolve-and-close-an-incident.html"
       ],
       "isFree": true,
       "source": {
@@ -310,61 +320,64 @@
       },
       "meta": {
         "generatedAt": "2026-02-04T00:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "csa-im-005",
       "certification": "csa",
       "topic": "incident-management",
-      "cognitiveLevel": "understanding",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What ServiceNow feature automatically assigns incidents to appropriate groups based on criteria?",
+      "question": "An administrator wants every new incident in the Network category to go to the Network assignment group automatically, with no scripting. Which feature should they configure?",
       "options": [
         {
           "id": "a",
-          "text": "Data Policies"
+          "text": "A data policy on the Incident table"
         },
         {
           "id": "b",
-          "text": "Assignment Rules"
+          "text": "An assignment rule for the Incident table"
         },
         {
           "id": "c",
-          "text": "Business Rules"
+          "text": "An inactivity monitor on the Incident table"
         },
         {
           "id": "d",
-          "text": "UI Policies"
+          "text": "A UI policy on the Incident form"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "Assignment Rules automatically assign incidents to specific users or groups based on matching conditions like category, configuration item, or location.",
+        "correct": "Assignment rules set the Assigned to and Assignment group fields automatically when a record matches a set of conditions. You choose the table, define conditions such as Category is Network, and pick the group in the Assign to section; no script is needed. The product docs use this exact example of Network category incidents. See https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/t_AssignmentModuleRule.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Data Policies enforce data quality by making fields mandatory or read-only, not for assignment.",
-            "reference": "Data Policies"
+            "explanation": "Data policies enforce data consistency by making fields mandatory or read-only for all data entry. They do not choose an assignment group.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/c_DataPolicy.html"
           },
           {
             "choiceId": "c",
-            "explanation": "While Business Rules can perform assignments, Assignment Rules are specifically designed for this purpose and are easier to configure.",
-            "reference": "Assignment Rules vs Business Rules"
+            "explanation": "An inactivity monitor fires an event when a task has not been updated for a set time. It reminds people about stale tasks and does not route new ones.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/time-configuration/t_SetAnInactivityMonitor.html"
           },
           {
             "choiceId": "d",
-            "explanation": "UI Policies control form behavior like showing/hiding fields, not record assignment.",
-            "reference": "UI Policies"
+            "explanation": "UI policies change form behavior, such as making fields read-only, mandatory or hidden. They do not set an assignment based on the category.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/t_CreateAUIPolicy.html"
           }
         ]
       },
       "references": [
-        "Assignment Rules"
+        "https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/t_AssignmentModuleRule.html",
+        "https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/c_AssignmentRulesModule.html"
       ],
       "isFree": false,
       "source": {
@@ -387,9 +400,11 @@
       },
       "meta": {
         "generatedAt": "2026-02-04T00:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -398,50 +413,52 @@
       "topic": "incident-management",
       "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "In the context of Major Incident Management, what is the purpose of a Major Incident task?",
+      "question": "During a major incident, the network team that owns the incident needs the database team to fail over a cluster. How should the major incident manager request and track this work?",
       "options": [
         {
           "id": "a",
-          "text": "To track individual work items during major incident resolution"
+          "text": "Create an incident task assigned to the database team"
         },
         {
           "id": "b",
-          "text": "To automatically escalate to management"
+          "text": "Propose the incident as a major incident candidate"
         },
         {
           "id": "c",
-          "text": "To create a Problem record"
+          "text": "Create a problem record assigned to the database team"
         },
         {
           "id": "d",
-          "text": "To notify all users of the outage"
+          "text": "Add the database team to a communication plan"
         }
       ],
       "correctAnswers": [
         "a"
       ],
       "explanation": {
-        "correct": "Major Incident tasks are child records of the Major Incident that track specific work items and activities during the resolution process. They help coordinate multiple team members working on different aspects of the major incident simultaneously.",
+        "correct": "Incident tasks exist so that work can be requested from, and communicated to, assignment groups other than the one initially assigned to the incident. Each task has its own Assignment group, state, priority and work notes, so the database team's failover work is tracked separately while the network team keeps ownership of the major incident. See https://www.servicenow.com/docs/r/it-service-management/incident-management/create-incident-task.html",
         "wrongAnswers": [
           {
             "choiceId": "b",
-            "explanation": "Escalation is handled through SLAs and notifications, not through Major Incident tasks.",
-            "reference": "Major Incident Management"
+            "explanation": "Proposing an incident as a major incident candidate is how a potential major incident is identified. This incident is already a major incident, and proposing it assigns no work.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/incident-management/major-incident-management.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Problem records are created separately, often after major incident resolution for root cause analysis.",
-            "reference": "Problem Management"
+            "explanation": "Problem Management identifies the cause of errors behind related incidents. A problem record is for root cause analysis, not for requesting an urgent recovery action.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/problem-management/c_ProblemManagement.html"
           },
           {
             "choiceId": "d",
-            "explanation": "User notifications are typically handled through broadcasts or service status pages, not Major Incident tasks.",
-            "reference": "Service Communication"
+            "explanation": "Communication plans control who is informed about a major incident and how often. They keep stakeholders updated but do not assign recovery work to a team.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/incident-management/major-incident-management-process.html"
           }
         ]
       },
       "references": [
-        "Major Incident Management"
+        "https://www.servicenow.com/docs/r/it-service-management/incident-management/create-incident-task.html",
+        "https://www.servicenow.com/docs/r/it-service-management/incident-management/major-incident-management.html",
+        "https://www.servicenow.com/docs/r/it-service-management/incident-management/major-incident-management-process.html"
       ],
       "isFree": false,
       "source": {
@@ -459,14 +476,16 @@
         ],
         "tags": [
           "major incident",
-          "tasks"
+          "incident tasks"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T00:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -543,52 +562,53 @@
       "id": "csa-im-008",
       "certification": "csa",
       "topic": "incident-management",
-      "cognitiveLevel": "understanding",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What table stores incident records in ServiceNow?",
+      "question": "A report developer needs a list report that shows incident records only, with no problem or change records mixed in. Which table should the report use as its source?",
       "options": [
         {
           "id": "a",
-          "text": "task"
+          "text": "Task [task] parent table"
         },
         {
           "id": "b",
-          "text": "incident"
+          "text": "Incident [incident] table"
         },
         {
           "id": "c",
-          "text": "sc_request"
+          "text": "Problem [problem] table"
         },
         {
           "id": "d",
-          "text": "ticket"
+          "text": "Change [change_request] table"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "Incident records are stored in the 'incident' table. This table extends the 'task' table, inheriting common fields.",
+        "correct": "Incident [incident] is the table for incident records. It extends the Task [task] table and inherits Task's standard fields. The platform shows each table in the Task hierarchy as its own logical table, so choosing Incident returns incident records only. Choosing Task would also return problems, changes and other task types. See https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/c_TaskTable.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "The 'task' table is the parent table that incident extends, but incidents are stored in the 'incident' table specifically.",
-            "reference": "Table Hierarchy"
+            "explanation": "Task is the parent table extended by Incident, Problem, Change and others, so a Task report would also include problem and change records.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/t_TableHierarchyAndTheExtModel.html"
           },
           {
             "choiceId": "c",
-            "explanation": "The 'sc_request' table is for service catalog requests, not incidents.",
-            "reference": "Service Catalog Tables"
+            "explanation": "Problem [problem] is a separate table that extends Task and holds problem records, so it would not return any incidents.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/c_TaskTable.html"
           },
           {
             "choiceId": "d",
-            "explanation": "'ticket' is not a standard ServiceNow table.",
-            "reference": "ServiceNow Tables"
+            "explanation": "Change [change_request] is a separate Task child table that holds change records, not incidents, so it does not fit the requirement.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/t_TableHierarchyAndTheExtModel.html"
           }
         ]
       },
       "references": [
-        "Incident Table"
+        "https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/c_TaskTable.html",
+        "https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/t_TableHierarchyAndTheExtModel.html"
       ],
       "isFree": false,
       "source": {
@@ -607,14 +627,17 @@
         "tags": [
           "tables",
           "data model",
-          "incident table"
+          "incident table",
+          "task table"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T00:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -699,53 +722,52 @@
       "id": "csa-im-010",
       "certification": "csa",
       "topic": "incident-management",
-      "cognitiveLevel": "understanding",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What is the purpose of the 'Configuration Item' field on an incident?",
+      "question": "An agent logs an incident because a specific mail server has stopped responding. Which Incident form field should the agent use to record the affected server?",
       "options": [
         {
           "id": "a",
-          "text": "To track the cost of the incident"
+          "text": "Service offering"
         },
         {
           "id": "b",
-          "text": "To identify the affected service or hardware"
+          "text": "Configuration item"
         },
         {
           "id": "c",
-          "text": "To assign the incident to a technician"
+          "text": "Category and Subcategory"
         },
         {
           "id": "d",
-          "text": "To categorize the incident type"
+          "text": "Assignment group"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "The Configuration Item (CI) field links the incident to a specific item in the CMDB (Configuration Management Database), identifying the affected hardware, software, or service. This helps with impact analysis and routing incidents to the correct support team.",
+        "correct": "The Configuration item field records the affected CI, such as a specific server. Once it is set, the agent can open the dependency view to see what is impacted and whether other CIs or services have issues. By default, a business rule can also fill in the Assignment group from the CI's support group. See https://www.servicenow.com/docs/r/it-service-management/incident-management/create-an-incident.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Cost tracking is handled through other mechanisms, not the CI field.",
-            "reference": "Cost Management"
+            "explanation": "Service offering describes the service commitments and level of service for a business service. It does not identify an individual server.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/incident-management/create-an-incident.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Assignment is handled by Assignment Rules and the Assigned to/Assignment group fields.",
-            "reference": "Assignment Rules"
+            "explanation": "Category and Subcategory describe the type of issue being reported. They do not point to the specific server that is affected.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/incident-management/create-an-incident.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Categorization is handled by the Category and Subcategory fields, not the CI field.",
-            "reference": "Incident Categorization"
+            "explanation": "Assignment group is the group that will work the incident. It can be populated from the CI, but it does not record the affected item.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/incident-management/create-an-incident.html"
           }
         ]
       },
       "references": [
-        "Configuration Items",
-        "CMDB"
+        "https://www.servicenow.com/docs/r/it-service-management/incident-management/create-an-incident.html"
       ],
       "isFree": false,
       "source": {
@@ -764,14 +786,17 @@
         "tags": [
           "configuration item",
           "CMDB",
-          "CI"
+          "CI",
+          "incident form"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T00:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -858,51 +883,51 @@
       "topic": "incident-management",
       "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What is an SLA (Service Level Agreement) breach in the context of incidents?",
+      "question": "A service desk manager notices that a P1 incident is still open after its task SLA has run 6 hours in its schedule with no pauses. The SLA definition has a 4-hour duration and a Resolution target. What is true?",
       "options": [
         {
           "id": "a",
-          "text": "When a customer cancels their contract"
+          "text": "Its Business Elapsed Percentage is still below 100 percent"
         },
         {
           "id": "b",
-          "text": "When an incident exceeds its agreed response or resolution time"
+          "text": "The task SLA is breached because its breach time has passed"
         },
         {
           "id": "c",
-          "text": "When too many incidents are created in a day"
+          "text": "The SLA timer is paused until the caller adds information"
         },
         {
           "id": "d",
-          "text": "When an incident is assigned to the wrong group"
+          "text": "The Response target was missed rather than the Resolution one"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "An SLA breach occurs when an incident exceeds the agreed-upon response time or resolution time defined in the Service Level Agreement. ServiceNow tracks SLA timers and can trigger escalations or notifications when breaches are imminent or occur.",
+        "correct": "An SLA definition's Duration is the time allowed to provide the service, and the task SLA's Breach time is when that time runs out, adjusted for pauses. With 6 hours elapsed against a 4-hour Resolution SLA and no pauses, the breach time has passed while the incident is still open, so the SLA is breached. See https://www.servicenow.com/docs/r/it-service-management/service-level-management/r_TaskSLATable.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Contract cancellation is a business matter, not an SLA breach in the ServiceNow context.",
-            "reference": "SLA Definition"
+            "explanation": "Business Elapsed Percentage is the share of the SLA used within the schedule. 6 of 4 hours is 150 percent, well above 100 percent.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/service-level-management/r_TaskSLATable.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Volume of incidents is a capacity concern, not an SLA breach.",
-            "reference": "SLA Metrics"
+            "explanation": "The scenario states that no pause time applies. Pauses only happen when the SLA definition's pause conditions are met.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/service-level-management/service-level-management-concepts.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Incorrect assignment affects resolution time but is not itself an SLA breach.",
-            "reference": "Assignment vs SLA"
+            "explanation": "The SLA target set on this task SLA is Resolution, so the breach relates to resolving the incident, not to the first response.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/service-level-management/service-level-management-concepts.html"
           }
         ]
       },
       "references": [
-        "Service Level Agreements",
-        "SLA Management"
+        "https://www.servicenow.com/docs/r/it-service-management/service-level-management/r_TaskSLATable.html",
+        "https://www.servicenow.com/docs/r/it-service-management/service-level-management/service-level-management-concepts.html"
       ],
       "isFree": false,
       "source": {
@@ -921,15 +946,17 @@
         "tags": [
           "SLA",
           "breach",
-          "response time",
+          "task SLA",
           "resolution time"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T00:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -1158,44 +1185,47 @@
       "id": "csa-im-016",
       "certification": "csa",
       "topic": "incident-management",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "understanding",
       "type": "multiple_choice",
-      "question": "What information does the Now Assist Admin Console provide?",
+      "question": "An administrator opens the AI Admin Hub console, where Now Assist generative AI features are set up. Which task is this console designed for?",
       "options": [
         {
           "id": "a",
-          "text": "Only incident management analytics"
+          "text": "Reviewing incident trend reports for the service desk"
         },
         {
           "id": "b",
-          "text": "AI features management and configuration across the ServiceNow platform"
+          "text": "Installing AI plugins and activating and configuring skills"
         },
         {
           "id": "c",
-          "text": "User administration and role management"
+          "text": "Creating user groups and assigning roles to the group members"
         },
         {
           "id": "d",
-          "text": "CMDB health monitoring only"
+          "text": "Monitoring CMDB health scores for configuration items"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "The Now Assist Admin Console lets administrators use and manage AI features across the ServiceNow platform, including capabilities like predictive intelligence for incident management.",
+        "correct": "The AI Admin Hub console gives administrators one place to set up, configure and monitor generative AI applications and features. Its workflow covers installing plugins, optionally turning on the Now Assist panel, activating and configuring skills, reviewing account settings, and monitoring skill performance. See https://www.servicenow.com/docs/r/intelligent-experiences/configuring-now-assist.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Now Assist covers AI features across the platform, not just incident analytics."
+            "explanation": "Incident status and service level reporting is done with Incident Management dashboards and reports, not with the generative AI admin console.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/incident-management/c_IncidentManagement.html"
           },
           {
             "choiceId": "c",
-            "explanation": "User administration is handled through User Administration modules, not Now Assist."
+            "explanation": "Groups are created and given roles in User Administration > Groups by a user with the user_admin role, not in the AI admin console.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/user-administration/t_CreateAGroup.html"
           },
           {
             "choiceId": "d",
-            "explanation": "CMDB health monitoring has its own dedicated tools separate from Now Assist."
+            "explanation": "CMDB health is reviewed in the CMDB Health Dashboard, which shows completeness, correctness and compliance KPIs for CIs.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/configuration-management-database-cmdb/c_MonitorCMDBHealth.html"
           }
         ]
       },
@@ -1218,15 +1248,21 @@
         "tags": [
           "now assist",
           "AI",
-          "admin console"
+          "admin console",
+          "AI Admin Hub"
         ]
       },
       "meta": {
         "generatedAt": "2026-03-16T02:00:00Z",
         "version": "1.1",
-        "release": "Xanadu",
-        "reviewed": false
-      }
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/intelligent-experiences/configuring-now-assist.html"
+      ]
     },
     {
       "id": "csa-im-017",
@@ -1521,50 +1557,56 @@
     },
     {
       "id": "csa-inc-021",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What is the purpose of an 'Assignment Rule' in Incident Management?",
+      "question": "An administrator has two active assignment rules on the Incident table. Both match a new, unassigned Network incident: Rule A has order 100 and Rule B has order 200. What happens?",
       "options": [
         {
           "id": "a",
-          "text": "To automatically assign incidents to specific groups or users based on defined conditions"
+          "text": "Rule A runs and sets the assignment; Rule B does not run"
         },
         {
           "id": "b",
-          "text": "To restrict which users can view incidents"
+          "text": "Both rules run, and Rule B's assignment overwrites Rule A"
         },
         {
           "id": "c",
-          "text": "To set the priority of incoming incidents"
+          "text": "Neither rule runs because the matching conditions conflict"
         },
         {
           "id": "d",
-          "text": "To define SLA targets for incident resolution"
+          "text": "The most recently created of the two rules is the one that runs"
         }
       ],
       "correctAnswers": [
         "a"
       ],
       "explanation": {
-        "correct": "Assignment Rules automatically route incidents to the appropriate assignment group or individual based on conditions like category, configuration item, or location, ensuring efficient ticket routing.",
+        "correct": "An assignment rule sets the Assigned to and Assignment group fields automatically when its conditions match a saved, unassigned task. When several rules match, the one with the lowest order value runs and the others do not. Rule A (order 100) assigns the incident, and Rule B (order 200) is skipped. See https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/c_AssignmentRulesModule.html",
         "wrongAnswers": [
           {
             "choiceId": "b",
-            "explanation": "Viewing restrictions are controlled by ACLs, not Assignment Rules."
+            "explanation": "Assignment rules cannot overwrite an existing assignment, and only the first matching rule by order runs. Rule B never replaces Rule A.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/c_AssignmentRulesModule.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Priority is determined by the Priority Lookup matrix (Impact \u00d7 Urgency), not Assignment Rules."
+            "explanation": "Matching more than one rule is not an error. The rule with the lowest order value runs, so the incident is still assigned.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/c_AssignmentRulesModule.html"
           },
           {
             "choiceId": "d",
-            "explanation": "SLA targets are defined in SLA Definitions, not Assignment Rules."
+            "explanation": "Precedence comes from the Execution Order value, not the creation date. A lower order value takes priority over a higher one.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/t_AssignmentModuleRule.html"
           }
         ]
       },
       "certification": "csa",
       "topic": "incident-management",
-      "references": [],
+      "references": [
+        "https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/c_AssignmentRulesModule.html",
+        "https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/t_AssignmentModuleRule.html"
+      ],
       "isFree": false,
       "source": {
         "type": "generated",
@@ -1583,13 +1625,19 @@
         "domain": "incident-management",
         "domainSlug": "incident-management",
         "subtopics": [],
-        "tags": []
+        "tags": [
+          "assignment rules",
+          "execution order",
+          "routing"
+        ]
       },
       "meta": {
         "generatedAt": "2026-03-31T02:09:00Z",
-        "version": "2.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {

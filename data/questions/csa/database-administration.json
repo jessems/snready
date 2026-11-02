@@ -92,52 +92,53 @@
       "id": "csa-db-002",
       "certification": "csa",
       "topic": "database-administration",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What is a sys_id in ServiceNow?",
+      "question": "An administrator troubleshooting an integration needs the sys_id of an incident that is open in the form view, and does not want to write a script. What should they do?",
       "options": [
         {
           "id": "a",
-          "text": "A user's login name"
+          "text": "Copy the value shown in the record's Number field"
         },
         {
           "id": "b",
-          "text": "A unique 32-character ID that identifies each record"
+          "text": "Use Copy URL from the header and read the sys_id= value"
         },
         {
           "id": "c",
-          "text": "The table name"
+          "text": "Add the Sys ID field to the form layout and copy it"
         },
         {
           "id": "d",
-          "text": "A field label"
+          "text": "Open the table's Dictionary entry and copy the record ID"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "Records have a unique 32-character ID called a sys_id. This identifier is automatically generated and uniquely identifies each record in the database. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1",
+        "correct": "Every record is identified by a sys_id, a unique 32-character GUID. The docs explain that you can get it without scripting by right-clicking the form header bar, selecting Copy URL, and reading the value that follows the sys_id= parameter in the copied URL. See https://www.servicenow.com/docs/r/platform-administration/c_UniqueRecordIdentifier.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "User login names are stored in the user_name field, not sys_id.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1"
+            "explanation": "The Number field is a readable record number such as INC0010001, not the 32-character GUID that the platform uses as the sys_id.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/c_UniqueRecordIdentifier.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Table names are separate from record identifiers.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1"
+            "explanation": "The docs state that the sys_id is not meant to appear as a field on a form or a column in a list, so adding it to the layout is not the supported way.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/c_UniqueRecordIdentifier.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Field labels are display names, not unique record identifiers.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1"
+            "explanation": "Dictionary entries define tables and their fields (columns); they do not hold the sys_id of an individual incident record.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/r_DictionaryEntryForm.html"
           }
         ]
       },
       "references": [
-        "ServiceNow sys_id"
+        "https://www.servicenow.com/docs/r/platform-administration/c_UniqueRecordIdentifier.html",
+        "https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/r_DictionaryEntryForm.html"
       ],
       "isFree": true,
       "source": {
@@ -163,14 +164,17 @@
         "tags": [
           "sys_id",
           "unique identifier",
-          "records"
+          "records",
+          "copy URL"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -262,52 +266,52 @@
       "id": "csa-db-004",
       "certification": "csa",
       "topic": "database-administration",
-      "cognitiveLevel": "understanding",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What happens when a table extends another table in ServiceNow?",
+      "question": "An administrator creates a new table that extends the Task [task] table to track facilities work. What should they expect for the new table?",
       "options": [
         {
           "id": "a",
-          "text": "The parent table is deleted"
+          "text": "It receives a copy of every existing Task record"
         },
         {
           "id": "b",
-          "text": "The child table inherits all fields from its parent table along with its unique fields"
+          "text": "It inherits the Task fields and can add fields of its own"
         },
         {
           "id": "c",
-          "text": "Both tables become identical"
+          "text": "The Task table gains every field added to the new table"
         },
         {
           "id": "d",
-          "text": "The parent table can no longer be used"
+          "text": "Its records are stored in a database table apart from Task"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "An extended table inherits all fields from its parent table along with its unique fields. When extending a table, all fields and properties from the parent table are inherited, while unique fields can be added to the child table. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1",
+        "correct": "A table that extends another becomes a child class. Task uses the table per hierarchy model, where child classes derive their fields from the parent (Incident derives fields from Task) and each child only has Dictionary entries for the fields unique to it. So the new table gets the Task fields plus any fields it adds. See https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/table-extension-and-classes.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "The parent table remains intact; extension creates a relationship.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1"
+            "explanation": "Extending a table does not copy existing parent records into the child. With table per hierarchy the parent class stores all records belonging to the hierarchy.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/table-extension-and-classes.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Child tables have additional unique fields beyond inherited ones.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1"
+            "explanation": "Inheritance flows from parent to child. Fields added to the child are Dictionary entries unique to that child class and are not added to Task.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/table-extension-and-classes.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Parent tables remain fully functional after extension.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1"
+            "explanation": "Under the table per hierarchy model used by Task, child classes do not get separate database tables; one parent database table stores the records.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/table-extension-and-classes.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Table Extension"
+        "https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/table-extension-and-classes.html"
       ],
       "isFree": true,
       "source": {
@@ -333,66 +337,69 @@
         "tags": [
           "table extension",
           "inheritance",
-          "child table"
+          "child class",
+          "task table"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "csa-db-005",
       "certification": "csa",
       "topic": "database-administration",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "Which of the following are examples of tables that extend the Task table?",
+      "question": "An administrator builds a report on the Task [task] table and sees that it returns records that were created in other tables. Which records can appear because their tables extend Task?",
       "options": [
         {
           "id": "a",
-          "text": "User and Group"
+          "text": "Lease and Warranty contract records"
         },
         {
           "id": "b",
-          "text": "Incident, Problem, and Change Request"
+          "text": "Incident, Problem, and Change Request records"
         },
         {
           "id": "c",
-          "text": "Location and Department"
+          "text": "Application, Computer, and Database CI records"
         },
         {
           "id": "d",
-          "text": "Knowledge and Article"
+          "text": "Hardware and Base Configuration Item records"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "Examples of parent tables in ServiceNow include the Task and Configuration Item tables, which are extended to create child classes like change, request, incident, and problem. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1",
+        "correct": "In the base system, Task is extended by Incident, Problem, and Change Request. Task uses the table per hierarchy model, so the Task table contains all records from its child classes, which is why those records show up in a report built on Task. See https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/table-extension-and-classes.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "User and Group are separate tables, not extensions of Task.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1"
+            "explanation": "The docs give Lease [ast_lease] and Warranty [ast_warranty] as tables whose records are replicated in Contract [ast_contract], not as extensions of Task.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/table-extension-and-classes.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Location and Department are reference tables, not Task extensions.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1"
+            "explanation": "Application, Computer, and Database are listed as extensions of the Configuration Item [cmdb_ci] table, not the Task table.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/table-extension-and-classes.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Knowledge tables extend different parent tables.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1"
+            "explanation": "Hardware and Base Configuration Item belong to the CMDB hierarchy (cmdb, cmdb_ci, cmdb_ci_hardware), which is separate from Task.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/table-extension-and-classes.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Task Table"
+        "https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/table-extension-and-classes.html"
       ],
       "isFree": false,
       "source": {
@@ -419,66 +426,69 @@
           "task table",
           "incident",
           "problem",
-          "change"
+          "change",
+          "table extension"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "csa-db-006",
       "certification": "csa",
       "topic": "database-administration",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What is a base table in ServiceNow?",
+      "question": "An administrator creates a custom table that does not extend any other table, then creates two new tables that extend it. How is the first custom table classified?",
       "options": [
         {
           "id": "a",
-          "text": "A table that has been deleted"
+          "text": "As a child class, since other tables extend it"
         },
         {
           "id": "b",
-          "text": "A table that serves as a foundation for other tables but isn't an extension itself"
+          "text": "As a base class, since it extends no other table"
         },
         {
           "id": "c",
-          "text": "A temporary table for testing"
+          "text": "As a storage partition of the two new tables"
         },
         {
           "id": "d",
-          "text": "A table that cannot have child tables"
+          "text": "As a child class of the Configuration Item table"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "A base table serves as a foundation for other tables but isn't an extension itself. A parent table without a parent is a base class. It can also be a parent and/or core table. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1",
+        "correct": "The docs define a table that extends another as a child class and the table it extends as a parent class. A parent class that is not itself an extension of another table is called a base class, so the first custom table is a parent and a base class. See https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/table-extension-and-classes.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Base tables are active tables, not deleted ones.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1"
+            "explanation": "A child class is a table that extends another table. Being extended by other tables makes this table a parent class, not a child class.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/table-extension-and-classes.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Base tables are permanent production tables, not temporary.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1"
+            "explanation": "Partitions are storage tables the system adds under the table per partition model when a database table reaches a storage limit; they are not new extending tables.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/table-extension-and-classes.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Base tables can have child tables; that's often their purpose.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1"
+            "explanation": "The scenario states the custom table extends no other table, so it cannot be a child class of Configuration Item [cmdb_ci].",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/table-extension-and-classes.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Base Tables"
+        "https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/table-extension-and-classes.html"
       ],
       "isFree": false,
       "source": {
@@ -502,16 +512,18 @@
           "Table inheritance"
         ],
         "tags": [
-          "base table",
-          "foundation",
+          "base class",
+          "parent class",
           "table hierarchy"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -603,52 +615,52 @@
       "id": "csa-db-008",
       "certification": "csa",
       "topic": "database-administration",
-      "cognitiveLevel": "understanding",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What is the difference between a field name and a field label?",
+      "question": "An administrator adds a new field to the Incident table in the global application and enters Activity Description as the column label. Which column name does the platform generate by default?",
       "options": [
         {
           "id": "a",
-          "text": "They are always identical"
+          "text": "activity_description"
         },
         {
           "id": "b",
-          "text": "Field names are unique and may differ from labels, which are display names"
+          "text": "u_activity_description"
         },
         {
           "id": "c",
-          "text": "Field labels are used in scripts; field names are for display"
+          "text": "Activity_Description"
         },
         {
           "id": "d",
-          "text": "There is no difference"
+          "text": "u__activity_description"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "Field names are unique and may differ from labels. For instance, 'city' is the field name in the sys_user table for the label 'Location'. Labels are display names shown to users. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1",
+        "correct": "The column label is the display text shown on list headers and form fields, while the column name is the field name. When a new field is created, the name is generated from the label; for a field in a global application it is prefixed with u_ to mark it as custom, so Activity Description becomes u_activity_description. See https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/r_DictionaryEntryForm.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Field names and labels often differ, as shown with city/Location example.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1"
+            "explanation": "A name without a prefix is used for a field on a table in the same scoped application; a field in a global application gets the u_ prefix.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/r_DictionaryEntryForm.html"
           },
           {
             "choiceId": "c",
-            "explanation": "It's the opposite - field names are used in scripts, labels are for display.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1"
+            "explanation": "Column names can contain only lowercase alphanumeric ASCII characters and underscores, so uppercase letters from the label are not kept.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/r_DictionaryEntryForm.html"
           },
           {
             "choiceId": "d",
-            "explanation": "There is a clear difference between technical names and display labels.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1"
+            "explanation": "Consecutive (double) underscores are not allowed in a column name; the platform changes them to a single underscore when the entry is saved.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/r_DictionaryEntryForm.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Field Names"
+        "https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/r_DictionaryEntryForm.html"
       ],
       "isFree": false,
       "source": {
@@ -674,14 +686,17 @@
         "tags": [
           "field name",
           "field label",
+          "column name",
           "data dictionary"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -774,52 +789,53 @@
       "id": "csa-db-010",
       "certification": "csa",
       "topic": "database-administration",
-      "cognitiveLevel": "understanding",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What is the difference between scoped apps and global apps?",
+      "question": "A developer creates a conference room booking application in its own application scope. By default, which applications can access and change its tables and business logic?",
       "options": [
         {
           "id": "a",
-          "text": "Scoped apps are free; global apps require licensing"
+          "text": "Any global application, with no extra configuration"
         },
         {
           "id": "b",
-          "text": "Scoped apps are sandboxed with restricted API; global apps have access to all parts of the system"
+          "text": "The booking app, unless others are granted access"
         },
         {
           "id": "c",
-          "text": "Global apps are more secure than scoped apps"
+          "text": "Global apps, while it can view but not change them"
         },
         {
           "id": "d",
-          "text": "There is no difference"
+          "text": "Every app, since it shares the global namespace"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "Scoped apps are sandboxed from the system at large and utilize a restricted API to minimize or prevent damage outside their scope. Global apps have access to all parts of the system and can cause damage/impact beyond their intent. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1",
+        "correct": "Application scoping protects an application by restricting access to its files and data. In the docs' conference room booking example, the scoped app can access and change its own tables and business logic by default, but other applications cannot unless they are given explicit permission. See https://www.servicenow.com/docs/r/application-development/c_ApplicationScope.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "The difference is about access scope, not licensing costs.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1"
+            "explanation": "By default, other application scopes can only read a new scoped app's tables; create, update, and delete access is disabled unless explicitly granted, so global apps cannot change them without extra configuration.",
+            "reference": "https://www.servicenow.com/docs/r/application-development/c_DefaultRuntimeAccessPermissions.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Scoped apps are more secure because they have restricted access.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1"
+            "explanation": "The owning scoped application is not limited to viewing: by default it can access and change its own tables and business logic, and global apps need explicit permission.",
+            "reference": "https://www.servicenow.com/docs/r/application-development/c_ApplicationScope.html"
           },
           {
             "choiceId": "d",
-            "explanation": "There is a significant difference in system access and security.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1"
+            "explanation": "Custom applications get a private scope with a unique namespace identifier, so they do not share the global namespace with other apps.",
+            "reference": "https://www.servicenow.com/docs/r/application-development/c_ApplicationScope.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Application Scopes"
+        "https://www.servicenow.com/docs/r/application-development/c_ApplicationScope.html",
+        "https://www.servicenow.com/docs/r/application-development/c_DefaultRuntimeAccessPermissions.html"
       ],
       "isFree": false,
       "source": {
@@ -843,17 +859,19 @@
           "Tables and table relationships"
         ],
         "tags": [
+          "application scope",
           "scoped apps",
-          "global apps",
-          "sandbox",
-          "security"
+          "access",
+          "namespace"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -1320,44 +1338,47 @@
       "id": "csa-db-017",
       "certification": "csa",
       "topic": "database-administration",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What do update sets capture in ServiceNow?",
+      "question": "On a development instance, an administrator builds a new catalog item with variables while testers submit several orders for it. The update set is then committed to production. What arrives in production?",
       "options": [
         {
           "id": "a",
-          "text": "Both configuration changes and data records like incidents"
+          "text": "The catalog item, its variables, and the submitted orders"
         },
         {
           "id": "b",
-          "text": "Only data records created during the update set period"
+          "text": "The submitted orders, but not the catalog item definition"
         },
         {
           "id": "c",
-          "text": "Configuration and customization changes, but NOT data records"
+          "text": "The catalog item and its variables, but not the orders"
         },
         {
           "id": "d",
-          "text": "Only changes made by administrators with elevated privileges"
+          "text": "The catalog item and the catalog tasks from the test orders"
         }
       ],
       "correctAnswers": [
         "c"
       ],
       "explanation": {
-        "correct": "Update sets capture customization or configuration changes like report definitions, but not actual data records. New incidents or change records are not included. To move data records, use the Export XML function.",
+        "correct": "Update sets capture configuration details but exclude task or process data. The docs use this exact case: an update set records catalog item definitions, variables, and variable choices, but not submitted orders or catalog tasks, so only the configuration reaches production. See https://www.servicenow.com/docs/r/application-development/system-update-sets/customizations-tracked-update-sets.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Update sets do NOT capture data records like incidents or change requests \u2014 only configuration changes."
+            "explanation": "Submitted orders are process data. Update sets capture configuration such as the catalog item and its variables, not the orders.",
+            "reference": "https://www.servicenow.com/docs/r/application-development/system-update-sets/customizations-tracked-update-sets.html"
           },
           {
             "choiceId": "b",
-            "explanation": "Update sets capture configuration changes, not data records."
+            "explanation": "This reverses the behavior: the catalog item definition is configuration and is captured, while the submitted orders are not.",
+            "reference": "https://www.servicenow.com/docs/r/application-development/system-update-sets/customizations-tracked-update-sets.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Update sets capture all configuration changes regardless of whether elevated privileges were used."
+            "explanation": "Catalog tasks created by the test orders are task data, which update sets exclude; only the item definition and variables are captured.",
+            "reference": "https://www.servicenow.com/docs/r/application-development/system-update-sets/customizations-tracked-update-sets.html"
           }
         ]
       },
@@ -1380,58 +1401,67 @@
         "tags": [
           "update sets",
           "configuration",
-          "migration"
+          "migration",
+          "catalog item"
         ]
       },
       "meta": {
         "generatedAt": "2026-03-16T02:00:00Z",
         "version": "1.1",
-        "release": "Xanadu",
-        "reviewed": false
-      }
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/application-development/system-update-sets/customizations-tracked-update-sets.html"
+      ]
     },
     {
       "id": "csa-db-018",
       "certification": "csa",
       "topic": "database-administration",
-      "cognitiveLevel": "comprehension",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What is the difference between global scope and application scope in ServiceNow?",
+      "question": "On one instance, a developer creates a custom application in the global scope, and another developer creates a second global application with the same name. What risk does the global scope introduce here?",
       "options": [
         {
           "id": "a",
-          "text": "Global scope is for production only; application scope is for development"
+          "text": "Each app gets its own unique namespace prefix"
         },
         {
           "id": "b",
-          "text": "Global scope has access to all parts of the system; scoped apps are sandboxed with restricted API access"
+          "text": "Naming conflicts and data collisions can occur"
         },
         {
           "id": "c",
-          "text": "Application scope provides more permissions than global scope"
+          "text": "Both apps become eligible for the ServiceNow Store"
         },
         {
           "id": "d",
-          "text": "There is no functional difference between the two"
+          "text": "Each app's tables are hidden from other global apps"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "Scoped apps are sandboxed from the system at large and use a restricted API to minimize damage outside their scope. Global apps are the default scope and have access to all parts of the system, which means they can potentially cause impact beyond their intent.",
+        "correct": "Global applications do not append a unique namespace identifier to the application name. Because all global applications share the same scope, they bypass scope protections, and the docs warn that creating several global applications with the same name can cause naming conflicts and data collisions. See https://www.servicenow.com/docs/r/application-development/c_GlobalScope.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Both scopes can be used in any instance type, not limited to production or development."
+            "explanation": "A unique namespace identifier is what scoped apps get; applications in the global scope do not append a namespace identifier to their name.",
+            "reference": "https://www.servicenow.com/docs/r/application-development/c_GlobalScope.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Global scope has broader access; application scope is intentionally restricted."
+            "explanation": "Global scope applications can be uploaded to the application repository, but they are not eligible for the ServiceNow Store.",
+            "reference": "https://www.servicenow.com/docs/r/application-development/c_GlobalScope.html"
           },
           {
             "choiceId": "d",
-            "explanation": "There is a significant functional difference in access and security between the two."
+            "explanation": "Global applications allow other global applications to read records, run API requests, and create configuration records on their tables.",
+            "reference": "https://www.servicenow.com/docs/r/application-development/c_GlobalScope.html"
           }
         ]
       },
@@ -1454,15 +1484,20 @@
         "tags": [
           "global scope",
           "application scope",
-          "sandboxing"
+          "naming conflicts"
         ]
       },
       "meta": {
         "generatedAt": "2026-03-16T02:00:00Z",
         "version": "1.1",
-        "release": "Xanadu",
-        "reviewed": false
-      }
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/application-development/c_GlobalScope.html"
+      ]
     },
     {
       "id": "csa-db-019",
@@ -1609,50 +1644,55 @@
     },
     {
       "id": "csa-db-021",
-      "cognitiveLevel": "understanding",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What is the purpose of a 'coalesce' field in a Transform Map?",
+      "question": "An administrator's user import transform map has the Coalesce checkbox selected on both the email and user_name field maps. When does an import row update an existing user record?",
       "options": [
         {
           "id": "a",
-          "text": "It determines whether to update an existing record or insert a new one during import"
+          "text": "When a target record matches the row on all coalesce fields"
         },
         {
           "id": "b",
-          "text": "It combines multiple source columns into one target field"
+          "text": "When a target record matches the row on either coalesce field"
         },
         {
           "id": "c",
-          "text": "It encrypts sensitive data during import"
+          "text": "When Coalesce empty fields is also selected on both maps"
         },
         {
           "id": "d",
-          "text": "It validates data format before insertion"
+          "text": "When each row supplies the target record's sys_id value"
         }
       ],
       "correctAnswers": [
         "a"
       ],
       "explanation": {
-        "correct": "A coalesce field acts as a unique identifier during data import. If a record with a matching coalesce value exists, it's updated; if not, a new record is inserted. This prevents duplicate records during imports.",
+        "correct": "With multiple-field coalesce, the target record is updated only if it has the same values in all coalesce fields as the staging table record; every coalesce field must match. If no matching record is found, the transform creates a new record instead. See https://www.servicenow.com/docs/r/integrate-applications/system-import-sets/c_ImportSetCoalesce.html",
         "wrongAnswers": [
           {
             "choiceId": "b",
-            "explanation": "Combining columns is done through field mapping scripts, not coalescing."
+            "explanation": "Matching on any one of several fields is an OR condition, which needs a conditional coalesce script. Standard multiple-field coalesce requires all fields to match.",
+            "reference": "https://www.servicenow.com/docs/r/integrate-applications/system-import-sets/c_ImportSetCoalesce.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Data encryption is handled by encryption contexts, not coalesce fields."
+            "explanation": "Coalesce empty fields only makes an empty value count as a match; it is not required for coalescing on multiple fields.",
+            "reference": "https://www.servicenow.com/docs/r/integrate-applications/system-import-sets/c_ImportSetCoalesce.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Data validation can be done through transform scripts, not the coalesce setting itself."
+            "explanation": "Returning a sys_id is how conditional coalesce scripts work. Checkbox coalescing compares the coalesce field values, not a sys_id from the row.",
+            "reference": "https://www.servicenow.com/docs/r/integrate-applications/system-import-sets/c_ImportSetCoalesce.html"
           }
         ]
       },
       "certification": "csa",
       "topic": "database-administration",
-      "references": [],
+      "references": [
+        "https://www.servicenow.com/docs/r/integrate-applications/system-import-sets/c_ImportSetCoalesce.html"
+      ],
       "isFree": false,
       "source": {
         "type": "generated",
@@ -1671,13 +1711,20 @@
         "domain": "database-administration",
         "domainSlug": "database-administration",
         "subtopics": [],
-        "tags": []
+        "tags": [
+          "coalesce",
+          "transform map",
+          "import sets",
+          "multiple-field coalesce"
+        ]
       },
       "meta": {
         "generatedAt": "2026-03-31T02:09:00Z",
-        "version": "2.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {

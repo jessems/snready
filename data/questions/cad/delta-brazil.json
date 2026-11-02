@@ -179,52 +179,53 @@
       "id": "cad-delta-brazil-003",
       "certification": "cad",
       "topic": "delta-brazil",
-      "cognitiveLevel": "understanding",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "With the Brazil automatic update set sources feature for Developer Sandboxes, what happens when a new sandbox is created?",
+      "question": "A developer finishes work in a newly created Developer Sandbox on Brazil and wants to move a completed update set to the base instance. What is already in place to support this?",
       "options": [
         {
           "id": "a",
-          "text": "Update sets are automatically committed from the sandbox to production every 24 hours"
+          "text": "A scheduled job that commits sandbox update sets every 24 hours"
         },
         {
           "id": "b",
-          "text": "An update set source pointing to the sandbox is created on the base instance, and one pointing to production is created on the sandbox"
+          "text": "An update set source on each instance that points to the other"
         },
         {
           "id": "c",
-          "text": "A single shared update set is created and locked for all sandboxes on the instance"
+          "text": "A single locked update set shared by every sandbox on the base"
         },
         {
           "id": "d",
-          "text": "The developer must manually create update set sources on both instances before transferring changes"
+          "text": "Nothing yet; sources must be created by hand on both instances"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "When a sandbox is created, an update set source pointing to the sandbox is automatically created on the base instance, and an update set source pointing to production is automatically created on the sandbox. When the sandbox is retired, both sources are removed automatically. See: https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-developersandboxes-release-notes.html",
+        "correct": "Brazil adds automatic update set sources for Developer Sandboxes. When a sandbox is created, a source pointing to the sandbox is created on the base instance and a source pointing to production is created on the sandbox, so completed update sets can be retrieved, previewed and committed in either direction. Both sources are removed when the sandbox is retired. See https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-developersandboxes-release-notes.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "The release notes describe automatic creation of update set sources, not automatic commits on a schedule.",
-            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-developersandboxes-release-notes.html"
+            "explanation": "The sources are used with the standard retrieve, preview and commit process; the docs describe no scheduled automatic commit of sandbox update sets.",
+            "reference": "https://www.servicenow.com/docs/r/application-development/developer-sandboxes/dsb-update-sets.html"
           },
           {
             "choiceId": "c",
-            "explanation": "The release notes describe two update set sources being created, not a shared locked update set.",
-            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-developersandboxes-release-notes.html"
+            "explanation": "Each sandbox gets its own source on the base instance (named Sandbox: [sandbox name]); there is no shared, locked update set for all sandboxes.",
+            "reference": "https://www.servicenow.com/docs/r/application-development/developer-sandboxes/dsb-update-sets.html"
           },
           {
             "choiceId": "d",
-            "explanation": "This option reverses the documented behavior: the update set sources are created automatically, without manual configuration.",
+            "explanation": "The feature removes this manual step: sources are created automatically on both the sandbox and the base instance without manual configuration.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-developersandboxes-release-notes.html"
           }
         ]
       },
       "references": [
-        "Brazil delta release notes - Developer Sandboxes"
+        "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-developersandboxes-release-notes.html",
+        "https://www.servicenow.com/docs/r/application-development/developer-sandboxes/dsb-update-sets.html"
       ],
       "isFree": true,
       "difficulty": "medium",
@@ -256,61 +257,64 @@
       },
       "meta": {
         "generatedAt": "2026-10-21T00:00:00.000Z",
-        "version": "1.0",
+        "version": "1.1",
         "release": "Brazil",
-        "reviewed": false
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "cad-delta-brazil-004",
       "certification": "cad",
       "topic": "delta-brazil",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "Starting with the Australia release, which new role has the privilege to write checks on the scan_check table in Instance Scan?",
+      "question": "A platform team wants a developer to create custom Instance Scan checks in the scan_check table without granting full admin. Which role, added between Zurich and Brazil, fits this need?",
       "options": [
         {
           "id": "a",
-          "text": "scan_admin"
+          "text": "The admin role, which grants full instance access"
         },
         {
           "id": "b",
-          "text": "scan_check_writer"
+          "text": "The scan_check_writer role, which includes scan_user"
         },
         {
           "id": "c",
-          "text": "scan_user"
+          "text": "The scan_user role, which runs scans and reads checks"
         },
         {
           "id": "d",
-          "text": "instance_scan_author"
+          "text": "The snc_required_script_writer_permission role"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "Instance Scan introduced the scan_check_writer role, which has the privilege to write checks on the scan_check table. See: https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-instancescan-release-notes.html",
+        "correct": "The release notes introduce the scan_check_writer role, which has the privilege to write checks on the scan_check table. The Instance Scan docs add that this role includes scan_user and provides permission to create new checks, so the developer can author checks without full admin. See https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-instancescan-release-notes.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "The release notes name scan_check_writer, not scan_admin, as the new role for writing checks.",
+            "explanation": "The team explicitly wants to avoid full admin; the dedicated scan_check_writer role was introduced to grant check-writing privileges on scan_check.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-instancescan-release-notes.html"
           },
           {
             "choiceId": "c",
-            "explanation": "The release notes name scan_check_writer, not scan_user, as the new role for writing checks.",
-            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-instancescan-release-notes.html"
+            "explanation": "scan_user can run scans, read and execute checks, and view findings, but the docs give permission to create new checks to scan_check_writer.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/instance-scan/hs-getting-started.html"
           },
           {
             "choiceId": "d",
-            "explanation": "This role is not named in the release notes; the new role is scan_check_writer.",
-            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-instancescan-release-notes.html"
+            "explanation": "That role is granted through the Scripting Governance Tool's Conditional Script Writer group for scripting permissions, not for writing Instance Scan checks.",
+            "reference": "https://www.servicenow.com/docs/r/platform-security/use-sgt.html"
           }
         ]
       },
       "references": [
-        "Brazil delta release notes - Instance Scan"
+        "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-instancescan-release-notes.html",
+        "https://www.servicenow.com/docs/r/platform-administration/instance-scan/hs-getting-started.html"
       ],
       "isFree": true,
       "difficulty": "easy",
@@ -342,9 +346,11 @@
       },
       "meta": {
         "generatedAt": "2026-10-21T00:00:00.000Z",
-        "version": "1.0",
-        "release": "Australia",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -697,52 +703,52 @@
       "id": "cad-delta-brazil-009",
       "certification": "cad",
       "topic": "delta-brazil",
-      "cognitiveLevel": "understanding",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "Starting with the Brazil release, how does ServiceNow Studio display update sets and changes linked to source control?",
+      "question": "A team on Brazil tracks some application changes in update sets and others through source control, and wants to review both in ServiceNow Studio. Where will they find them?",
       "options": [
         {
           "id": "a",
-          "text": "Update sets appear on the Deployment tab while source control changes appear only in the Git CLI"
+          "text": "On the Deployment tab, while source control changes are kept only in Git"
         },
         {
           "id": "b",
-          "text": "Both display in the Changes tab, with support for using update sets and source control simultaneously"
+          "text": "In the Changes tab, which tracks both and allows using them together"
         },
         {
           "id": "c",
-          "text": "Source control replaces update sets, which can no longer be used in ServiceNow Studio"
+          "text": "In a Source Control tab only, because update sets are turned off"
         },
         {
           "id": "d",
-          "text": "Each is shown in a separate color-coded tab grouped by scope"
+          "text": "In separate color-coded tabs, each grouped by application scope"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "In the Brazil release, update sets and changes linked to source control both display in the Changes tab of ServiceNow Studio, with clear tracking paths for both options and support for simultaneous update set and source control use. See: https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-servicenowstudio-release-notes.html",
+        "correct": "In Brazil, update sets and changes linked to source control both display in the Changes tab of ServiceNow Studio. The release notes describe clear tracking paths for both options and support for using update sets and source control simultaneously, so the team does not have to pick one method. See https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-servicenowstudio-release-notes.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "The release notes state both update sets and source control changes display in the Changes tab.",
+            "explanation": "The release notes place both update sets and source-control-linked changes in the Changes tab; Studio does not leave source control changes visible only in Git.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-servicenowstudio-release-notes.html"
           },
           {
             "choiceId": "c",
-            "explanation": "This option contradicts the release notes, which describe support for simultaneous update set and source control use.",
+            "explanation": "Update sets are not turned off; the release notes explicitly support using update sets and source control at the same time.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-servicenowstudio-release-notes.html"
           },
           {
             "choiceId": "d",
-            "explanation": "The release notes state both display in the Changes tab; they also note integrated tabs are no longer color-coded or grouped by scope.",
+            "explanation": "Both kinds of change appear together in one Changes tab with clear tracking paths, not in separate color-coded tabs per scope.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-servicenowstudio-release-notes.html"
           }
         ]
       },
       "references": [
-        "Brazil delta release notes - ServiceNow Studio"
+        "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-servicenowstudio-release-notes.html"
       ],
       "isFree": true,
       "difficulty": "medium",
@@ -775,9 +781,11 @@
       },
       "meta": {
         "generatedAt": "2026-10-21T00:00:00.000Z",
-        "version": "1.0",
+        "version": "1.1",
         "release": "Brazil",
-        "reviewed": false
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -1219,52 +1227,53 @@
       "id": "cad-delta-brazil-015",
       "certification": "cad",
       "topic": "delta-brazil",
-      "cognitiveLevel": "understanding",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What does the Brazil ReleaseOps feature for creating a deployment request allow a team to do?",
+      "question": "A team's assessments on deployment requests take days, and they don't want to wait for a release to be created or selected before starting them. Which Brazil ReleaseOps capability helps?",
       "options": [
         {
           "id": "a",
-          "text": "Skip all deployment assessments for hotfixes"
+          "text": "Skipping assessments for deployment requests flagged as hotfixes"
         },
         {
           "id": "b",
-          "text": "Begin assessing deployment requests before creating or selecting a release"
+          "text": "Creating the deployment request against a pipeline before a release"
         },
         {
           "id": "c",
-          "text": "Deploy to on-premise and regulated environments"
+          "text": "Moving the deployment request to production without any release"
         },
         {
           "id": "d",
-          "text": "Merge multiple releases into a single deployment request automatically"
+          "text": "Merging several releases into a single deployment request automatically"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "In Brazil, ReleaseOps lets you begin assessing deployment requests before having to create or select a release. Because some assessments take much longer than a release, starting them early speeds up time to deployment. See: https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-releaseops-release-notes.html",
+        "correct": "Brazil lets teams begin assessing deployment requests before creating or selecting a release. A deployment request for a scheduled release can be associated with either a release or the pipeline the release will use, so long-running assessments start early and time to deployment shrinks. See https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-releaseops-release-notes.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "The release notes describe starting assessments earlier, not skipping them.",
+            "explanation": "The Brazil change starts assessments earlier; the release notes do not describe skipping assessments, which still run on the deployment request.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-releaseops-release-notes.html"
           },
           {
             "choiceId": "c",
-            "explanation": "The release notes state ReleaseOps is not supported in regulated environments or on-premise.",
-            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-releaseops-release-notes.html"
+            "explanation": "The docs state the deployment request must eventually be associated with a release to move to production, even if assessment starts earlier.",
+            "reference": "https://www.servicenow.com/docs/r/application-development/releaseops/create-a-new-deployment-request.html"
           },
           {
             "choiceId": "d",
-            "explanation": "The release notes do not describe merging releases; the feature lets assessments start before a release is created or selected.",
+            "explanation": "Releases contain one or more deployment requests, not the other way around, and merging releases is not how assessments start earlier.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-releaseops-release-notes.html"
           }
         ]
       },
       "references": [
-        "Brazil delta release notes - ReleaseOps"
+        "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-releaseops-release-notes.html",
+        "https://www.servicenow.com/docs/r/application-development/releaseops/create-a-new-deployment-request.html"
       ],
       "isFree": true,
       "difficulty": "medium",
@@ -1296,9 +1305,11 @@
       },
       "meta": {
         "generatedAt": "2026-10-21T00:00:00.000Z",
-        "version": "1.0",
+        "version": "1.1",
         "release": "Brazil",
-        "reviewed": false
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -1391,52 +1402,53 @@
       "id": "cad-delta-brazil-017",
       "certification": "cad",
       "topic": "delta-brazil",
-      "cognitiveLevel": "understanding",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "According to the Australia release notes, in UI Builder, what do event-driven UI Interactions replace?",
+      "question": "A developer upgrading from Zurich to Brazil has several UI Builder pages that each wire the same Declarative Action (a UXF Client Action) to open a modal. Which UI Builder capability replaces this per-page wiring?",
       "options": [
         {
           "id": "a",
-          "text": "Client scripts on Core UI forms"
+          "text": "Page variants with audience targeting on each page"
         },
         {
           "id": "b",
-          "text": "Declarative Actions using UXF Client Actions that required manual wiring on each page"
+          "text": "Event-driven UI interactions reused across pages"
         },
         {
           "id": "c",
-          "text": "Data resources bound to page controllers"
+          "text": "Client scripts attached to the underlying Core UI forms"
         },
         {
           "id": "d",
-          "text": "Page variants used for audience targeting"
+          "text": "Data resources bound to each page's controller"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "Previously, Declarative Actions using UXF Client Actions required manual wiring on each page, which led to complexity and upgrade risks. UI Interactions replace this with reusable, declarative event mapping, and can be applied across multiple events and pages. See: https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-uibuilder-release-notes.html",
+        "correct": "The release notes explain that Declarative Actions using UXF Client Actions required manual wiring on each page, which added complexity and upgrade risk. Event-driven UI interactions replace this with reusable, declarative event mapping: define an interaction once and apply it across multiple events and pages, without extra scripting. See https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-uibuilder-release-notes.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "The release notes do not describe UI Interactions as replacing client scripts; they replace manually wired Declarative Actions using UXF Client Actions.",
+            "explanation": "Page variants are not the documented replacement; the release notes name UI interactions as the replacement for per-page Declarative Action wiring.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-uibuilder-release-notes.html"
           },
           {
             "choiceId": "c",
-            "explanation": "The release notes do not describe UI Interactions as replacing data resources or controllers.",
-            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-uibuilder-release-notes.html"
+            "explanation": "Client scripts are not the documented replacement; the docs describe connecting UI Builder events to reusable UI interactions without additional scripting.",
+            "reference": "https://www.servicenow.com/docs/r/application-development/ui-builder/uib-ui-interactions.html"
           },
           {
             "choiceId": "d",
-            "explanation": "The release notes do not mention page variants in connection with UI Interactions.",
+            "explanation": "Data resources do not centralize event behavior; the release notes say UI interactions replace Declarative Actions with reusable event mapping.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-uibuilder-release-notes.html"
           }
         ]
       },
       "references": [
-        "Brazil delta release notes - UI Builder"
+        "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-uibuilder-release-notes.html",
+        "https://www.servicenow.com/docs/r/application-development/ui-builder/uib-ui-interactions.html"
       ],
       "isFree": true,
       "difficulty": "medium",
@@ -1468,9 +1480,11 @@
       },
       "meta": {
         "generatedAt": "2026-10-21T00:00:00.000Z",
-        "version": "1.0",
-        "release": "Australia",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -1650,52 +1664,53 @@
       "id": "cad-delta-brazil-020",
       "certification": "cad",
       "topic": "delta-brazil",
-      "cognitiveLevel": "understanding",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "According to the Australia release notes, how does Build Agent handle checkpoints and update sets?",
+      "question": "After upgrading to Brazil, a developer starts a Build Agent conversation and notices that no update set exists for the very first checkpoint. Which statement explains this?",
       "options": [
         {
           "id": "a",
-          "text": "Checkpoint 0 creates the base update set, and each later checkpoint creates its own update set"
+          "text": "Checkpoint 0 creates the base update set, and later checkpoints add more"
         },
         {
           "id": "b",
-          "text": "Checkpoint 0 no longer creates an update set, and Checkpoint 1 is the base update set for all subsequent changes"
+          "text": "Checkpoint 0 creates no update set; Checkpoint 1 is the base update set"
         },
         {
           "id": "c",
-          "text": "Checkpoints no longer use update sets; all changes go directly to source control"
+          "text": "Checkpoints skip update sets and commit straight to source control"
         },
         {
           "id": "d",
-          "text": "Every prompt creates a new update set named with the conversation ID"
+          "text": "Each prompt creates an update set named after the conversation ID"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "Build Agent handles checkpoints and update sets differently: Checkpoint 0 no longer creates an update set, and Checkpoint 1 is the base update set for all subsequent changes. See: https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-buildagentandautonomousengineer-release-notes.html",
+        "correct": "The release notes say Build Agent now handles checkpoints and update sets differently: Checkpoint 0 no longer creates an update set, and Checkpoint 1 is the base update set for all subsequent changes. Update sets also use human-readable naming, and each checkpoint links to its update set. See https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-buildagentandautonomousengineer-release-notes.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "This option reverses the documented behavior: Checkpoint 0 no longer creates an update set, and Checkpoint 1 is the base update set.",
+            "explanation": "This describes the old behavior; the release notes state Checkpoint 0 no longer creates an update set and Checkpoint 1 is now the base.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-buildagentandautonomousengineer-release-notes.html"
           },
           {
             "choiceId": "c",
-            "explanation": "The release notes state that Checkpoint 1 is the base update set, so update sets are still used.",
-            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-buildagentandautonomousengineer-release-notes.html"
+            "explanation": "Build Agent still tracks its changes in update sets; the docs say changes from each checkpoint are captured together in a single update set.",
+            "reference": "https://www.servicenow.com/docs/r/application-development/ba-update-sets.html"
           },
           {
             "choiceId": "d",
-            "explanation": "The release notes state that Checkpoint 0 no longer creates an update set and Checkpoint 1 is the base update set for all subsequent changes; they do not describe a new update set per prompt.",
-            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-buildagentandautonomousengineer-release-notes.html"
+            "explanation": "Update sets are tied to checkpoints and use human-readable names (for example application-name build agent install 1), not conversation IDs.",
+            "reference": "https://www.servicenow.com/docs/r/application-development/ba-update-sets.html"
           }
         ]
       },
       "references": [
-        "Brazil delta release notes - Build Agent and Autonomous Engineer"
+        "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-buildagentandautonomousengineer-release-notes.html",
+        "https://www.servicenow.com/docs/r/application-development/ba-update-sets.html"
       ],
       "isFree": true,
       "difficulty": "hard",
@@ -1727,9 +1742,11 @@
       },
       "meta": {
         "generatedAt": "2026-10-21T00:00:00.000Z",
-        "version": "1.0",
-        "release": "Australia",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -1742,7 +1759,7 @@
       "options": [
         {
           "id": "a",
-          "text": "Nothing; the behavior is on by default for upgraded instances"
+          "text": "Nothing; strict denial is already on by default after an upgrade"
         },
         {
           "id": "b",
@@ -1750,38 +1767,39 @@
         },
         {
           "id": "c",
-          "text": "Run the QueryRangeACLAuditor tool"
+          "text": "Run the QueryRangeACLAuditor tool to regenerate the query ACLs"
         },
         {
           "id": "d",
-          "text": "Remove all ACLs that reference a mix of valid and invalid roles"
+          "text": "Delete every ACL whose roles are a mix of valid and invalid role names"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "Strict denial when none of the roles referenced in an ACL exist on the instance is on by default for new instances. On upgraded instances, use the glide.security.acl_with_invalid_roles_strict_deny property to turn it on. The behavior does not apply to ACLs with a mix of valid and invalid roles. See: https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-accessmanagement-release-notes.html",
+        "correct": "Brazil enforces strict denial when none of the roles referenced in an ACL exist on the instance. This is on by default only for new instances; on an upgraded instance the administrator turns on the glide.security.acl_with_invalid_roles_strict_deny property, after which ACLs with only non-existent roles deny access and log an error. See https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-accessmanagement-release-notes.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "The release notes state the behavior is on by default only for new instances; upgraded instances must turn on the property.",
+            "explanation": "The release notes say the behavior is on by default for new instances, and upgraded instances must turn it on with the system property.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-accessmanagement-release-notes.html"
           },
           {
             "choiceId": "c",
-            "explanation": "The release notes associate QueryRangeACLAuditor with generating query ACLs, not with strict denial for invalid roles.",
+            "explanation": "QueryRangeACLAuditor generates query ACLs, and Australia's preconfigured query ACLs reduce the need for it; it does not control strict denial.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-accessmanagement-release-notes.html"
           },
           {
             "choiceId": "d",
-            "explanation": "The release notes state the strict denial behavior does not apply to ACLs with a mix of valid and invalid roles; removing them is not the documented step.",
-            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-accessmanagement-release-notes.html"
+            "explanation": "ACLs with a mix of valid and invalid roles are not affected by strict denial, so deleting them neither enables nor is required for the behavior.",
+            "reference": "https://www.servicenow.com/docs/r/platform-security/instance-security-hardening-settings/sc-enforce-deny-acls-referencing-deleted-roles.html"
           }
         ]
       },
       "references": [
-        "Brazil delta release notes - Access Management"
+        "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-accessmanagement-release-notes.html",
+        "https://www.servicenow.com/docs/r/platform-security/instance-security-hardening-settings/sc-enforce-deny-acls-referencing-deleted-roles.html"
       ],
       "isFree": true,
       "difficulty": "hard",
@@ -1813,9 +1831,11 @@
       },
       "meta": {
         "generatedAt": "2026-10-21T00:00:00.000Z",
-        "version": "1.0",
+        "version": "1.1",
         "release": "Brazil",
-        "reviewed": false
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     }
   ]

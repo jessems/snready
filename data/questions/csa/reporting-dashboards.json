@@ -6,52 +6,54 @@
       "id": "csa-rd-001",
       "certification": "csa",
       "topic": "reporting-dashboards",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "Where can users access the Visualization Designer in ServiceNow?",
+      "question": "On a new Brazil instance, an analyst wants to build a bar chart of open incidents by assignment group in the Visualization Designer and keep it in the library for reuse. What should the analyst do?",
       "options": [
         {
           "id": "a",
-          "text": "All > User Administration > Visualizations"
+          "text": "Create a Core UI report and place it on a dashboard"
         },
         {
           "id": "b",
-          "text": "All > Platform Analytics > Library > Data Visualizations"
+          "text": "Create a visualization from the Data Visualizations library"
         },
         {
           "id": "c",
-          "text": "All > System Security > Charts"
+          "text": "Open the Indicators library and create an automated indicator"
         },
         {
           "id": "d",
-          "text": "All > Incident > Reports"
+          "text": "Open the Migration Center and migrate an existing report"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "If you need custom charts, go to All > Platform Analytics > Library > Data Visualizations, or use the Column Context menus and lists to create charts directly from the data. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=116f675847b35ad4ca332a81736d438d&spa=1",
+        "correct": "On net new Brazil instances, Reporting is replaced by Data Visualizations. The analyst navigates to All > Platform Analytics > Library > Data Visualizations, selects Create data visualization, and picks the visualization type (here a bar). Users with the itil, report_user, admin, or viz_creator role can build visualizations in the Visualization Designer, and anything created there is saved to the Library, so it can be reused. See https://www.servicenow.com/docs/r/now-intelligence/create-dv-donut-ac.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "User Administration handles users and roles, not visualizations.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=116f675847b35ad4ca332a81736d438d&spa=1"
+            "explanation": "On net new Brazil instances Core UI Reporting is replaced by Data Visualizations, and Core UI reports cannot be placed on a Platform Analytics dashboard.",
+            "reference": "https://www.servicenow.com/docs/r/now-intelligence/reporting/reporting-landing-page.html"
           },
           {
             "choiceId": "c",
-            "explanation": "System Security manages access controls, not reporting.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=116f675847b35ad4ca332a81736d438d&spa=1"
+            "explanation": "The Indicators library creates KPIs (automated, formula, manual, or external) that act as data sources. Creating one does not build a chart in the Visualization Designer.",
+            "reference": "https://www.servicenow.com/docs/r/now-intelligence/create-indicator-from-library.html"
           },
           {
             "choiceId": "d",
-            "explanation": "While Incident has reports, the Visualization Designer is in Platform Analytics.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=116f675847b35ad4ca332a81736d438d&spa=1"
+            "explanation": "The Migration Center moves existing Core UI dashboards, reports, filters, and widgets into Platform Analytics. It does not create a new chart from scratch.",
+            "reference": "https://www.servicenow.com/docs/r/now-intelligence/data-migration.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Platform Analytics"
+        "https://www.servicenow.com/docs/r/now-intelligence/create-dv-donut-ac.html",
+        "https://www.servicenow.com/docs/r/now-intelligence/analytics-center-data-visualizations.html",
+        "https://www.servicenow.com/docs/r/now-intelligence/reporting/reporting-landing-page.html"
       ],
       "isFree": true,
       "source": {
@@ -77,66 +79,70 @@
         "tags": [
           "visualization designer",
           "platform analytics",
-          "navigation"
+          "data visualizations library"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "csa-rd-002",
       "certification": "csa",
       "topic": "reporting-dashboards",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What is the recommended best practice when creating a new visualization in ServiceNow?",
+      "question": "An analyst wants a new visualization that reuses most settings of an existing library visualization, without changing the original that several dashboards already display. What should the analyst do?",
       "options": [
         {
           "id": "a",
-          "text": "Always create visualizations from scratch"
+          "text": "Edit the original visualization and save it to the library"
         },
         {
           "id": "b",
-          "text": "Duplicate an existing visualization and edit your copy"
+          "text": "Duplicate the existing visualization and edit the copy"
         },
         {
           "id": "c",
-          "text": "Import visualizations from external tools"
+          "text": "Certify the existing visualization and then edit it"
         },
         {
           "id": "d",
-          "text": "Use only the default system visualizations"
+          "text": "Add the existing visualization to another dashboard"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "It's often easier to build charts starting from a filtered list or existing visualization, where configuration options are pre-provided. It's best practice to duplicate an existing visualization, and then edit your copy to fit your needs. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=116f675847b35ad4ca332a81736d438d&spa=1",
+        "correct": "Duplicating a visualization (More actions menu > Duplicate in the Visualization Designer) lets you use aspects of the source in a copy. The copy gets a new name with the suffix - Copy, keeps every other setting, and is saved automatically. The analyst can then change the copy freely, while the original and the dashboards that show it stay untouched. See https://www.servicenow.com/docs/r/now-intelligence/duplicate-dv-ac.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Starting from scratch is less efficient; duplicating saves time.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=116f675847b35ad4ca332a81736d438d&spa=1"
+            "explanation": "Saving edits to a library visualization affects every dashboard that shows it, which is exactly what the analyst wants to avoid here.",
+            "reference": "https://www.servicenow.com/docs/r/now-intelligence/edit-dv-ac-center.html"
           },
           {
             "choiceId": "c",
-            "explanation": "ServiceNow has built-in visualization tools; importing external tools adds complexity.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=116f675847b35ad4ca332a81736d438d&spa=1"
+            "explanation": "Certifying only marks a visualization as company-approved for reuse. It does not create a separate copy, so later edits would still change the original.",
+            "reference": "https://www.servicenow.com/docs/r/now-intelligence/certify-dv-ac.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Custom visualizations are often needed to meet specific business requirements.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=116f675847b35ad4ca332a81736d438d&spa=1"
+            "explanation": "Adding the visualization to another dashboard places the same library visualization there. It does not produce an independent copy that can be edited separately.",
+            "reference": "https://www.servicenow.com/docs/r/now-intelligence/edit-dv-ac-center.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Visualization Best Practices"
+        "https://www.servicenow.com/docs/r/now-intelligence/duplicate-dv-ac.html",
+        "https://www.servicenow.com/docs/r/now-intelligence/edit-dv-ac-center.html",
+        "https://www.servicenow.com/docs/r/now-intelligence/certify-dv-ac.html"
       ],
       "isFree": true,
       "source": {
@@ -160,16 +166,18 @@
           "Charts and graphs"
         ],
         "tags": [
-          "visualization",
-          "best practices",
-          "efficiency"
+          "visualization designer",
+          "duplicate",
+          "data visualizations"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -178,50 +186,51 @@
       "topic": "reporting-dashboards",
       "cognitiveLevel": "understanding",
       "type": "multiple_choice",
-      "question": "What is the key difference between one-time reporting and Performance Analytics?",
+      "question": "When configuring a data visualization, a user can choose either a Table or an Indicator data source. What is the key difference between the two?",
       "options": [
         {
           "id": "a",
-          "text": "One-time reporting is more accurate"
+          "text": "Table sources need admin rights; indicators suit any viewer"
         },
         {
           "id": "b",
-          "text": "Performance Analytics shows trends over time; one-time reporting shows where you are today"
+          "text": "Tables hold current data; indicators track values over time"
         },
         {
           "id": "c",
-          "text": "One-time reporting requires more licenses"
+          "text": "Table sources need a subscription; indicators come in the base system"
         },
         {
           "id": "d",
-          "text": "Performance Analytics only works with incident data"
+          "text": "Table sources draw charts; indicators display a single score"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "One-time reporting shows 'where are we today?' while Performance Analytics reveals trends over time. PA captures regular snapshots to show accurate historical trends, helping to review indicators, monitor metrics, and improve decisions. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=116f675847b35ad4ca332a81736d438d&spa=1",
+        "correct": "A Table data source is the set of records that make up the current state of your data. An Indicator (KPI) records changes to table data over a period of time and is used to find trends and forecast. The docs put it simply: tables contain current data, and to see trends over time you need an indicator, which is calculated from table values collected over time. See https://www.servicenow.com/docs/r/now-intelligence/indicator-vs-table-data-source-selection.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Both provide accurate data; they serve different purposes.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=116f675847b35ad4ca332a81736d438d&spa=1"
+            "explanation": "Table sources do not require admin rights. Any user with access to the data can create a data visualization from it, and table data is governed by access controls.",
+            "reference": "https://www.servicenow.com/docs/r/now-intelligence/analytics-center-data-visualizations.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Performance Analytics typically requires additional licensing, not one-time reporting.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=116f675847b35ad4ca332a81736d438d&spa=1"
+            "explanation": "Both Table and Indicator data sources are available in the base system. Separate subscriptions apply to sources such as MetricBase or Health Log Analytics.",
+            "reference": "https://www.servicenow.com/docs/r/now-intelligence/data-sources-visualizations.html"
           },
           {
             "choiceId": "d",
-            "explanation": "PA works with data across the platform, not just incidents.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=116f675847b35ad4ca332a81736d438d&spa=1"
+            "explanation": "Indicator data sources work with many visualization types, such as pie and donut charts and time series, not only single scores.",
+            "reference": "https://www.servicenow.com/docs/r/now-intelligence/create-dv-donut-ac.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Performance Analytics"
+        "https://www.servicenow.com/docs/r/now-intelligence/indicator-vs-table-data-source-selection.html",
+        "https://www.servicenow.com/docs/r/now-intelligence/data-sources-visualizations.html"
       ],
       "isFree": true,
       "source": {
@@ -246,15 +255,18 @@
         ],
         "tags": [
           "performance analytics",
-          "reporting",
+          "indicators",
+          "data sources",
           "trends"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -344,52 +356,53 @@
       "id": "csa-rd-005",
       "certification": "csa",
       "topic": "reporting-dashboards",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What are the two types of dashboards in ServiceNow?",
+      "question": "A team lead without the ui_builder_admin role wants a Platform Analytics dashboard of data visualizations and filters that colleagues can later duplicate and export. Which kind of dashboard fits?",
       "options": [
         {
           "id": "a",
-          "text": "Public and private"
+          "text": "A technical dashboard built in UI Builder"
         },
         {
           "id": "b",
-          "text": "Responsive and non-responsive"
+          "text": "A dashboard created with the inline editor"
         },
         {
           "id": "c",
-          "text": "Static and dynamic"
+          "text": "A Core UI responsive dashboard with widgets"
         },
         {
           "id": "d",
-          "text": "Basic and advanced"
+          "text": "A Usage Insights dashboard for the team"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "Dashboards can be responsive or non-responsive. Non-responsive dashboards have limits on who can create, view, and edit them. Responsive dashboards adapt to different screen sizes. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=116f675847b35ad4ca332a81736d438d&spa=1",
+        "correct": "Platform Analytics distinguishes dashboards created inline from technical dashboards. An inline dashboard can be created with any role and holds data visualizations, filters, headings, images, simple lists, and rich text. It can be duplicated and exported. A technical dashboard needs the ui_builder_admin role and cannot be duplicated or exported, so the inline editor fits this team lead. See https://www.servicenow.com/docs/r/now-intelligence/technical-vs-in-line-dashboards.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "While dashboards have sharing options, the types are responsive vs non-responsive.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=116f675847b35ad4ca332a81736d438d&spa=1"
+            "explanation": "Technical dashboards can only be created with the ui_builder_admin role, and they cannot be duplicated or exported, so this option fails the requirements.",
+            "reference": "https://www.servicenow.com/docs/r/now-intelligence/technical-vs-in-line-dashboards.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Static and dynamic describe data updates, not dashboard architecture types.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=116f675847b35ad4ca332a81736d438d&spa=1"
+            "explanation": "Core UI responsive dashboards show Core UI reports and widgets and are in maintenance mode. They are not Platform Analytics dashboards of data visualizations.",
+            "reference": "https://www.servicenow.com/docs/r/now-intelligence/performance-analytics/dashboards-landing-page.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Basic and advanced are not the official dashboard type classifications.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=116f675847b35ad4ca332a81736d438d&spa=1"
+            "explanation": "Usage Insights provides dashboard views for monitoring how users engage with applications. It is not a dashboard type for building your own analytics.",
+            "reference": "https://www.servicenow.com/docs/r/now-intelligence/usage-insights/user-exp-analytics-dashboard.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Dashboards"
+        "https://www.servicenow.com/docs/r/now-intelligence/technical-vs-in-line-dashboards.html",
+        "https://www.servicenow.com/docs/r/now-intelligence/performance-analytics/dashboards-landing-page.html"
       ],
       "isFree": true,
       "source": {
@@ -414,67 +427,71 @@
         ],
         "tags": [
           "dashboards",
-          "responsive",
-          "configuration"
+          "platform analytics",
+          "inline dashboard",
+          "technical dashboard"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "csa-rd-006",
       "certification": "csa",
       "topic": "reporting-dashboards",
-      "cognitiveLevel": "understanding",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What is the purpose of the 'Data' configuration option in the Visualization Designer?",
+      "question": "In the Visualization Designer, a user is building a pie chart of incidents and wants it to count only open incidents using the predefined Incidents.Open condition. Where is this configured?",
       "options": [
         {
           "id": "a",
-          "text": "To set the visualization's color scheme"
+          "text": "In the Header and border section"
         },
         {
           "id": "b",
-          "text": "To choose where your data comes from - a predefined data source or a ServiceNow table"
+          "text": "In the data source filters"
         },
         {
           "id": "c",
-          "text": "To export the visualization to PDF"
+          "text": "In the Presentation section"
         },
         {
           "id": "d",
-          "text": "To schedule automatic refreshes"
+          "text": "In the Data update section"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "The Data configuration option lets you choose where your data comes from - either a predefined data source or a ServiceNow table. This is fundamental to building any visualization. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=116f675847b35ad4ca332a81736d438d&spa=1",
+        "correct": "Which records a visualization includes is set on its data source. When you choose a Table source, you can filter it by custom or predefined conditions, and configured report sources appear in the Predefined conditions list. The docs bubble visualization example picks the Incident [incident] table and adds the predefined condition Incidents.Open in the Filters section, so the visualization only shows active incidents. See https://www.servicenow.com/docs/r/now-intelligence/create-dv-donut-ac.html and https://www.servicenow.com/docs/r/now-intelligence/dv-example-bubble.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Color scheme is set in the Presentation configuration option.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=116f675847b35ad4ca332a81736d438d&spa=1"
+            "explanation": "Header and border covers the title, description, border, and header options such as refresh and export. None of these settings changes which records are counted.",
+            "reference": "https://www.servicenow.com/docs/r/now-intelligence/create-dv-donut-ac.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Exporting is a separate action, not a configuration option.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=116f675847b35ad4ca332a81736d438d&spa=1"
+            "explanation": "Presentation controls display and color settings such as the legend, data labels, and color type. It does not filter the underlying records.",
+            "reference": "https://www.servicenow.com/docs/r/now-intelligence/create-dv-donut-ac.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Scheduling is handled through different settings.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=116f675847b35ad4ca332a81736d438d&spa=1"
+            "explanation": "Data update holds options like Follow filters, which makes the visualization respond to interactive dashboard filters. It is not a fixed condition on the source.",
+            "reference": "https://www.servicenow.com/docs/r/now-intelligence/dv-example-bubble.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Visualization Designer"
+        "https://www.servicenow.com/docs/r/now-intelligence/create-dv-donut-ac.html",
+        "https://www.servicenow.com/docs/r/now-intelligence/dv-example-bubble.html"
       ],
       "isFree": false,
       "source": {
@@ -500,14 +517,16 @@
         "tags": [
           "visualization designer",
           "data source",
-          "configuration"
+          "filters"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -516,50 +535,51 @@
       "topic": "reporting-dashboards",
       "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "How can a user add a visualization to a dashboard in ServiceNow?",
+      "question": "A user has just saved a new data visualization in the Visualization Designer and wants it on the Incidents Overview dashboard, which they can edit. What should they do?",
       "options": [
         {
           "id": "a",
-          "text": "Only by creating the dashboard first"
+          "text": "Export the visualization and upload it to the dashboard"
         },
         {
           "id": "b",
-          "text": "Only by using the import function"
+          "text": "Recreate the chart as a Core UI report on the dashboard"
         },
         {
           "id": "c",
-          "text": "By creating a dashboard first and adding the visualization, or by saving the visualization and selecting 'Add to Dashboard'"
+          "text": "Use Add to Dashboard > Add to existing dashboard"
         },
         {
           "id": "d",
-          "text": "Visualizations cannot be added to dashboards"
+          "text": "Certify the visualization so dashboards pick it up"
         }
       ],
       "correctAnswers": [
         "c"
       ],
       "explanation": {
-        "correct": "To add a visualization to a dashboard, either create a dashboard first and add the visualization as an element, or save the visualization and select 'Add to Dashboard' for a new or existing dashboard. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=116f675847b35ad4ca332a81736d438d&spa=1",
+        "correct": "After saving, the user expands Add to Dashboard and chooses Add to existing dashboard. They pick Incidents Overview in the Select dashboard field and select Add to dashboard. The dashboard opens in the inline editor with the visualization as its last element. The user needs access to the data, ownership of the visualization or a share of it, and the right to edit the dashboard. See https://www.servicenow.com/docs/r/now-intelligence/add-dv-new-db.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "You can also add from the visualization side using 'Add to Dashboard'.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=116f675847b35ad4ca332a81736d438d&spa=1"
+            "explanation": "Visualizations reach a dashboard through Add to Dashboard or the dashboard's Add new element menu. Exporting and uploading is not how elements are added.",
+            "reference": "https://www.servicenow.com/docs/r/now-intelligence/add-dv-new-db.html"
           },
           {
             "choiceId": "b",
-            "explanation": "Import is not required; native options allow adding visualizations to dashboards.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=116f675847b35ad4ca332a81736d438d&spa=1"
+            "explanation": "Core UI reports cannot be placed on a Platform Analytics dashboard. Data visualizations must be added there instead.",
+            "reference": "https://www.servicenow.com/docs/r/now-intelligence/editing-dv-in-line-db.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Adding visualizations to dashboards is a core feature of Platform Analytics.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=116f675847b35ad4ca332a81736d438d&spa=1"
+            "explanation": "Certification only marks a visualization as company-approved for reuse. It does not place the visualization on any dashboard.",
+            "reference": "https://www.servicenow.com/docs/r/now-intelligence/certify-dv-ac.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Dashboard Management"
+        "https://www.servicenow.com/docs/r/now-intelligence/add-dv-new-db.html",
+        "https://www.servicenow.com/docs/r/now-intelligence/editing-dv-in-line-db.html"
       ],
       "isFree": false,
       "source": {
@@ -585,15 +605,17 @@
         ],
         "tags": [
           "dashboards",
-          "visualization",
+          "visualization designer",
           "add to dashboard"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -686,52 +708,52 @@
       "id": "csa-rd-009",
       "certification": "csa",
       "topic": "reporting-dashboards",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What does the 'Type' configuration option in the Visualization Designer allow you to do?",
+      "question": "A manager wants a visualization showing how the number of open incidents changes over time, with the emphasis on the overall trend. Which visualization type do the docs suggest as the default choice?",
       "options": [
         {
           "id": "a",
-          "text": "Select the data table to use"
+          "text": "Pie visualization"
         },
         {
           "id": "b",
-          "text": "Choose from over 20 chart types for your visualization"
+          "text": "Line visualization"
         },
         {
           "id": "c",
-          "text": "Set user permissions"
+          "text": "Dial visualization"
         },
         {
           "id": "d",
-          "text": "Configure email recipients"
+          "text": "Pivot table visualization"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "The Type configuration option lets you pick from over 20 chart types for your visualization, including bar charts, pie charts, speedometers, and more. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=116f675847b35ad4ca332a81736d438d&spa=1",
+        "correct": "When you create a data visualization, you select the type that suits the data. Time series types show data over time, and the line type connects data points with straight lines to emphasize the trend. The docs call line visualizations the default choice for a time series and recommend a line when you are unsure. See https://www.servicenow.com/docs/r/now-intelligence/data-visualization-type-overview.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Data source selection is done in the 'Data' configuration option.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=116f675847b35ad4ca332a81736d438d&spa=1"
+            "explanation": "Pie visualizations compare parts of a whole whose segments total 100%. They do not show how a value changes over time.",
+            "reference": "https://www.servicenow.com/docs/r/now-intelligence/data-visualization-type-overview.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Permissions are managed through sharing and roles, not the Type option.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=116f675847b35ad4ca332a81736d438d&spa=1"
+            "explanation": "A dial shows where a single value lies between a minimum and a maximum. It does not show change over time.",
+            "reference": "https://www.servicenow.com/docs/r/now-intelligence/data-visualization-type-overview.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Email recipients are configured for scheduled reports, not visualization type.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=116f675847b35ad4ca332a81736d438d&spa=1"
+            "explanation": "A pivot table is a multidimensional view that aggregates fields across rows and columns. It is not the suggested way to show a trend over time.",
+            "reference": "https://www.servicenow.com/docs/r/now-intelligence/data-visualization-type-overview.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Visualization Designer"
+        "https://www.servicenow.com/docs/r/now-intelligence/data-visualization-type-overview.html"
       ],
       "isFree": false,
       "source": {
@@ -757,67 +779,70 @@
         ],
         "tags": [
           "visualization designer",
-          "chart types",
-          "configuration"
+          "visualization types",
+          "time series"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "csa-rd-010",
       "certification": "csa",
       "topic": "reporting-dashboards",
-      "cognitiveLevel": "understanding",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What does the 'Presentation' configuration option in the Visualization Designer control?",
+      "question": "A user's bar visualization is finished, but they want the legend shown below the chart and a different color scheme. Which configuration section of the Visualization Designer should they use?",
       "options": [
         {
           "id": "a",
-          "text": "Which users can view the visualization"
+          "text": "Header and border"
         },
         {
           "id": "b",
-          "text": "The data grouping and calculations"
+          "text": "Data source"
         },
         {
           "id": "c",
-          "text": "Appearance customization including color, titles, and legend adjustments"
+          "text": "Presentation"
         },
         {
           "id": "d",
-          "text": "The scheduling of report generation"
+          "text": "Chart interaction"
         }
       ],
       "correctAnswers": [
         "c"
       ],
       "explanation": {
-        "correct": "The Presentation configuration option allows you to customize the appearance, including color, titles, and legend adjustments. This controls how the visualization looks to users. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=116f675847b35ad4ca332a81736d438d&spa=1",
+        "correct": "Under Presentation you set display and color information for the visualization. This includes Show legend and Legend position (Above, Below, Right, or Left), data labels, and Colors with a color type setting. Moving the legend below the chart and changing the color scheme both happen here. The chart title is set in Header and border instead. See https://www.servicenow.com/docs/r/now-intelligence/create-dv-bar-ac.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "User access is controlled through sharing options and permissions.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=116f675847b35ad4ca332a81736d438d&spa=1"
+            "explanation": "Header and border covers the chart title, description, border, and header options. Legend placement and color type are not set there.",
+            "reference": "https://www.servicenow.com/docs/r/now-intelligence/create-dv-donut-ac.html"
           },
           {
             "choiceId": "b",
-            "explanation": "Data grouping and calculations are set in the 'Group By and Sorting' option.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=116f675847b35ad4ca332a81736d438d&spa=1"
+            "explanation": "The data source decides which table or indicator data the chart shows and how it is filtered. It does not control the legend or colors.",
+            "reference": "https://www.servicenow.com/docs/r/now-intelligence/create-dv-donut-ac.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Scheduling is a separate function for automated report distribution.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=116f675847b35ad4ca332a81736d438d&spa=1"
+            "explanation": "Chart interaction controls what happens when viewers select a data point, such as drilling down. It does not change the legend or colors.",
+            "reference": "https://www.servicenow.com/docs/r/now-intelligence/dv-example-bubble.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Visualization Designer"
+        "https://www.servicenow.com/docs/r/now-intelligence/create-dv-bar-ac.html",
+        "https://www.servicenow.com/docs/r/now-intelligence/create-dv-donut-ac.html"
       ],
       "isFree": false,
       "source": {
@@ -843,15 +868,17 @@
         "tags": [
           "visualization designer",
           "presentation",
-          "appearance",
-          "customization"
+          "legend",
+          "colors"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -943,52 +970,52 @@
       "id": "csa-rd-012",
       "certification": "csa",
       "topic": "reporting-dashboards",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "Where can users access Analytics Center in ServiceNow?",
+      "question": "An analytics admin wants one role-specific page that shows recent data collection jobs with errors and gives quick access to bookmarked dashboards and visualizations. Which page should they open?",
       "options": [
         {
           "id": "a",
-          "text": "All > System Definition > Analytics"
+          "text": "The Usage Insights application"
         },
         {
           "id": "b",
-          "text": "All > Platform Analytics > Analytics Center"
+          "text": "The Platform Analytics overview page"
         },
         {
           "id": "c",
-          "text": "All > Reports > Center"
+          "text": "The Data Visualizations library"
         },
         {
           "id": "d",
-          "text": "All > System Administration > Analytics"
+          "text": "The Platform Analytics Migration Center"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "To access data visualizations and dashboards, go to All > Platform Analytics > Analytics Center. You can choose to create a new dashboard or a new visualization from there. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=116f675847b35ad4ca332a81736d438d&spa=1",
+        "correct": "The Platform Analytics overview (All > Platform Analytics > Analytics Overview, formerly Analytics Center) gives a role-specific view of dashboards, data visualizations, indicators, filters, and scheduled exports. For admins it shows scorecards such as the latest data collection jobs with errors, plus a Quick access list with Bookmarked, Created by me, and Certified tabs. See https://www.servicenow.com/docs/r/now-intelligence/analytics-center.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "System Definition is for system records and scripts, not analytics.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=116f675847b35ad4ca332a81736d438d&spa=1"
+            "explanation": "Usage Insights provides dashboards about how users engage with registered web and mobile applications. It does not track data collection job errors.",
+            "reference": "https://www.servicenow.com/docs/r/now-intelligence/usage-insights/user-exp-analytics-dashboard.html"
           },
           {
             "choiceId": "c",
-            "explanation": "This path doesn't exist; Analytics Center is under Platform Analytics.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=116f675847b35ad4ca332a81736d438d&spa=1"
+            "explanation": "The Data Visualizations library lists visualizations you own or that are shared with you. It does not show data collection job scorecards or bookmarked dashboards.",
+            "reference": "https://www.servicenow.com/docs/r/now-intelligence/analytics-center-data-visualizations.html"
           },
           {
             "choiceId": "d",
-            "explanation": "System Administration handles system settings, not analytics.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=116f675847b35ad4ca332a81736d438d&spa=1"
+            "explanation": "The Migration Center moves Core UI dashboards, reports, and widgets into Platform Analytics. It is not an overview page for monitoring analytics.",
+            "reference": "https://www.servicenow.com/docs/r/now-intelligence/data-migration.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Analytics Center"
+        "https://www.servicenow.com/docs/r/now-intelligence/analytics-center.html"
       ],
       "isFree": false,
       "source": {
@@ -1012,16 +1039,18 @@
           "Dashboards"
         ],
         "tags": [
-          "analytics center",
           "platform analytics",
+          "analytics overview",
           "navigation"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -1181,195 +1210,50 @@
       }
     },
     {
-      "id": "csa-rd-015",
-      "certification": "csa",
-      "topic": "reporting-dashboards",
-      "cognitiveLevel": "comprehension",
-      "type": "multiple_choice",
-      "question": "What is the recommended best practice when creating a new visualization?",
-      "options": [
-        {
-          "id": "a",
-          "text": "Always start from scratch for maximum customization"
-        },
-        {
-          "id": "b",
-          "text": "Duplicate an existing visualization and edit the copy to fit your needs"
-        },
-        {
-          "id": "c",
-          "text": "Import visualization templates from the ServiceNow Store"
-        },
-        {
-          "id": "d",
-          "text": "Use only the default visualizations provided by ServiceNow"
-        }
-      ],
-      "correctAnswers": [
-        "b"
-      ],
-      "explanation": {
-        "correct": "It's best practice to duplicate an existing visualization, then edit your copy to fit your needs. It's often easier to build charts starting from a filtered list or existing visualization where configuration options are pre-provided.",
-        "wrongAnswers": [
-          {
-            "choiceId": "a",
-            "explanation": "Starting from scratch is more time-consuming; duplicating an existing visualization is recommended."
-          },
-          {
-            "choiceId": "c",
-            "explanation": "While templates exist, the recommended approach is to duplicate existing visualizations."
-          },
-          {
-            "choiceId": "d",
-            "explanation": "Customization is encouraged; you're not limited to default visualizations."
-          }
-        ]
-      },
-      "isFree": false,
-      "source": {
-        "type": "course",
-        "course": {
-          "courseSlug": "servicenow-administration-fundamentals-xanadu",
-          "lessonTitle": "Platform Analytics experience"
-        }
-      },
-      "labels": {
-        "certification": "csa",
-        "domain": "Reporting & Dashboards",
-        "domainSlug": "reporting-dashboards",
-        "domainPercentage": 13,
-        "subtopics": [
-          "Visualization best practices"
-        ],
-        "tags": [
-          "visualization",
-          "best practices",
-          "duplicate"
-        ]
-      },
-      "meta": {
-        "generatedAt": "2026-03-16T02:00:00Z",
-        "version": "1.1",
-        "release": "Xanadu",
-        "reviewed": false
-      }
-    },
-    {
-      "id": "csa-rd-016",
-      "certification": "csa",
-      "topic": "reporting-dashboards",
-      "cognitiveLevel": "knowledge",
-      "type": "multiple_choice",
-      "question": "What is the key difference between one-time reporting and Performance Analytics?",
-      "options": [
-        {
-          "id": "a",
-          "text": "One-time reporting is more accurate than Performance Analytics"
-        },
-        {
-          "id": "b",
-          "text": "One-time reporting shows current state; Performance Analytics reveals trends over time"
-        },
-        {
-          "id": "c",
-          "text": "Performance Analytics only works with incident data"
-        },
-        {
-          "id": "d",
-          "text": "One-time reporting requires a separate license"
-        }
-      ],
-      "correctAnswers": [
-        "b"
-      ],
-      "explanation": {
-        "correct": "One-time reporting shows 'where are we today?' while Performance Analytics reveals trends over time. PA captures regular snapshots to show accurate historical trends, helping to review indicators, monitor metrics, and improve decisions.",
-        "wrongAnswers": [
-          {
-            "choiceId": "a",
-            "explanation": "Both provide accurate data; the difference is point-in-time vs. trending over time."
-          },
-          {
-            "choiceId": "c",
-            "explanation": "Performance Analytics works with any ServiceNow data, not just incidents."
-          },
-          {
-            "choiceId": "d",
-            "explanation": "One-time reporting is included in the base platform."
-          }
-        ]
-      },
-      "isFree": false,
-      "source": {
-        "type": "course",
-        "course": {
-          "courseSlug": "servicenow-administration-fundamentals-xanadu",
-          "lessonTitle": "Platform Analytics experience"
-        }
-      },
-      "labels": {
-        "certification": "csa",
-        "domain": "Reporting & Dashboards",
-        "domainSlug": "reporting-dashboards",
-        "domainPercentage": 13,
-        "subtopics": [
-          "Performance Analytics vs reporting"
-        ],
-        "tags": [
-          "performance analytics",
-          "reporting",
-          "trends"
-        ]
-      },
-      "meta": {
-        "generatedAt": "2026-03-16T02:00:00Z",
-        "version": "1.1",
-        "release": "Xanadu",
-        "reviewed": false
-      }
-    },
-    {
       "id": "csa-rd-017",
       "certification": "csa",
       "topic": "reporting-dashboards",
       "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "How do you add a visualization to a dashboard in ServiceNow?",
+      "question": "A user selects Add to Dashboard > Add to existing dashboard for a visualization, but a dashboard they own and can edit is missing from the Select dashboard list. What is the most likely reason?",
       "options": [
         {
           "id": "a",
-          "text": "Drag and drop from the visualization library only"
+          "text": "The visualization has not been certified yet"
         },
         {
           "id": "b",
-          "text": "Either create a dashboard first and add visualizations, or save a visualization and select 'Add to Dashboard'"
+          "text": "The target dashboard is a technical dashboard"
         },
         {
           "id": "c",
-          "text": "Visualizations are automatically added to the default dashboard"
+          "text": "The visualization uses an Indicator data source"
         },
         {
           "id": "d",
-          "text": "Export the visualization and import it into the dashboard"
+          "text": "The dashboard already contains a filter element"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "You can either create a dashboard first and add the visualization as an element, or save the visualization and select 'Add to Dashboard' for a new or existing dashboard.",
+        "correct": "When adding a visualization to an existing dashboard, the Select dashboard list shows only dashboards you can edit, and technical dashboards are not available. Because the user owns and can edit this dashboard, the remaining explanation is that it is a technical dashboard. Technical dashboards are built in UI Builder by users with the ui_builder_admin role. See https://www.servicenow.com/docs/r/now-intelligence/add-dv-new-db.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "While drag and drop is available, you can also use 'Add to Dashboard' from a saved visualization."
+            "explanation": "Certification is an optional marker of company approval. It is not a prerequisite for adding a visualization to a dashboard.",
+            "reference": "https://www.servicenow.com/docs/r/now-intelligence/certify-dv-ac.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Visualizations are not automatically added to any dashboard."
+            "explanation": "Indicator is a base-system data source supported by many visualization types. The data source does not limit which dashboards appear in the list.",
+            "reference": "https://www.servicenow.com/docs/r/now-intelligence/data-sources-visualizations.html"
           },
           {
             "choiceId": "d",
-            "explanation": "There is no export/import process needed \u2014 you can add directly."
+            "explanation": "Inline dashboards are designed to hold filters alongside data visualizations, so an existing filter does not hide the dashboard from the list.",
+            "reference": "https://www.servicenow.com/docs/r/now-intelligence/technical-vs-in-line-dashboards.html"
           }
         ]
       },
@@ -1390,17 +1274,24 @@
           "Dashboard management"
         ],
         "tags": [
-          "dashboard",
-          "add visualization",
-          "analytics"
+          "dashboards",
+          "add to dashboard",
+          "technical dashboard",
+          "troubleshooting"
         ]
       },
       "meta": {
         "generatedAt": "2026-03-16T02:00:00Z",
         "version": "1.1",
-        "release": "Xanadu",
-        "reviewed": false
-      }
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/now-intelligence/add-dv-new-db.html",
+        "https://www.servicenow.com/docs/r/now-intelligence/technical-vs-in-line-dashboards.html"
+      ]
     },
     {
       "id": "csa-rd-018",
@@ -1541,80 +1432,6 @@
           "speedometer",
           "bubble",
           "semi-donut"
-        ]
-      },
-      "meta": {
-        "generatedAt": "2026-03-16T02:00:00Z",
-        "version": "1.1",
-        "release": "Xanadu",
-        "reviewed": false
-      }
-    },
-    {
-      "id": "csa-rd-020",
-      "certification": "csa",
-      "topic": "reporting-dashboards",
-      "cognitiveLevel": "comprehension",
-      "type": "multiple_choice",
-      "question": "What are the two types of dashboards in ServiceNow?",
-      "options": [
-        {
-          "id": "a",
-          "text": "Static and dynamic"
-        },
-        {
-          "id": "b",
-          "text": "Responsive and non-responsive"
-        },
-        {
-          "id": "c",
-          "text": "Personal and shared"
-        },
-        {
-          "id": "d",
-          "text": "Basic and advanced"
-        }
-      ],
-      "correctAnswers": [
-        "b"
-      ],
-      "explanation": {
-        "correct": "Dashboards can be responsive or non-responsive. Non-responsive dashboards have limits on who can create, view, and edit them.",
-        "wrongAnswers": [
-          {
-            "choiceId": "a",
-            "explanation": "The classification is responsive vs non-responsive, not static vs dynamic."
-          },
-          {
-            "choiceId": "c",
-            "explanation": "While dashboards can be shared, the types are responsive and non-responsive."
-          },
-          {
-            "choiceId": "d",
-            "explanation": "The types are responsive and non-responsive, not basic and advanced."
-          }
-        ]
-      },
-      "isFree": false,
-      "source": {
-        "type": "course",
-        "course": {
-          "courseSlug": "servicenow-administration-fundamentals-xanadu",
-          "lessonTitle": "Platform Analytics experience"
-        }
-      },
-      "labels": {
-        "certification": "csa",
-        "domain": "Reporting & Dashboards",
-        "domainSlug": "reporting-dashboards",
-        "domainPercentage": 13,
-        "subtopics": [
-          "Dashboard types"
-        ],
-        "tags": [
-          "dashboard",
-          "responsive",
-          "non-responsive"
         ]
       },
       "meta": {
@@ -1769,50 +1586,56 @@
     },
     {
       "id": "csa-rd-023",
-      "cognitiveLevel": "understanding",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What is the difference between a 'Report' and a 'Performance Analytics (PA) Dashboard' in ServiceNow?",
+      "question": "An admin has just created an automated indicator for open incidents, and a manager wants its trend over the past several months right away. No scores have been collected yet. What should the admin do first?",
       "options": [
         {
           "id": "a",
-          "text": "Reports show current data snapshots; PA Dashboards show trends over time using collected indicator data"
+          "text": "Run a historical data collection job for it"
         },
         {
           "id": "b",
-          "text": "Reports are for managers; PA Dashboards are for administrators only"
+          "text": "Switch the visualization to a Table data source"
         },
         {
           "id": "c",
-          "text": "They show the same data in different formats"
+          "text": "Enable Follow filters on the trend visualization"
         },
         {
           "id": "d",
-          "text": "Reports are deprecated in favor of PA Dashboards"
+          "text": "Certify the trend visualization in the library"
         }
       ],
       "correctAnswers": [
         "a"
       ],
       "explanation": {
-        "correct": "Standard Reports query live data for point-in-time snapshots. Performance Analytics collects and stores indicator data over time, enabling trend analysis, comparisons, and historical insights that standard reports cannot provide.",
+        "correct": "Performance Analytics shows trends from indicator scores that data collection jobs gather. When you collect data for the first time, as with a new indicator, the docs say to run a historical data collection job once. That job generates scores and snapshots for existing records, so months of trend data become available right away. A scheduled data collection job then keeps collecting scores. See https://www.servicenow.com/docs/r/now-intelligence/performance-analytics/c_ClctData.html",
         "wrongAnswers": [
           {
             "choiceId": "b",
-            "explanation": "Both Reports and PA Dashboards can be shared with any user who has appropriate access."
+            "explanation": "Tables contain current data. To view trends over time you need an indicator, whose values are collected over time, so a table source cannot supply the history.",
+            "reference": "https://www.servicenow.com/docs/r/now-intelligence/indicator-vs-table-data-source-selection.html"
           },
           {
             "choiceId": "c",
-            "explanation": "They serve different purposes \u2014 PA provides historical trends while Reports provide current-state views."
+            "explanation": "Follow filters only makes a visualization respond to interactive dashboard filters on the same table. It does not generate any indicator scores.",
+            "reference": "https://www.servicenow.com/docs/r/now-intelligence/dv-example-bubble.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Standard Reports remain fully supported and are complementary to PA."
+            "explanation": "Certifying marks a visualization as company-approved for reuse. It has no effect on whether the indicator has collected scores.",
+            "reference": "https://www.servicenow.com/docs/r/now-intelligence/certify-dv-ac.html"
           }
         ]
       },
       "certification": "csa",
       "topic": "reporting-dashboards",
-      "references": [],
+      "references": [
+        "https://www.servicenow.com/docs/r/now-intelligence/performance-analytics/c_ClctData.html",
+        "https://www.servicenow.com/docs/r/now-intelligence/indicator-vs-table-data-source-selection.html"
+      ],
       "isFree": false,
       "source": {
         "type": "generated",
@@ -1831,13 +1654,20 @@
         "domain": "reporting-dashboards",
         "domainSlug": "reporting-dashboards",
         "subtopics": [],
-        "tags": []
+        "tags": [
+          "performance analytics",
+          "indicators",
+          "data collection",
+          "trends"
+        ]
       },
       "meta": {
         "generatedAt": "2026-03-31T02:09:00Z",
-        "version": "2.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {

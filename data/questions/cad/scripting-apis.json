@@ -3,133 +3,57 @@
   "topic": "scripting-apis",
   "questions": [
     {
-      "id": "cad-scripting-apis-001",
-      "certification": "cad",
-      "topic": "scripting-apis",
-      "cognitiveLevel": "knowledge",
-      "type": "multiple_choice",
-      "question": "Where do client-side scripts execute in ServiceNow?",
-      "options": [
-        {
-          "id": "a",
-          "text": "On the ServiceNow application server"
-        },
-        {
-          "id": "b",
-          "text": "In the user's web browser"
-        },
-        {
-          "id": "c",
-          "text": "On the MID Server"
-        },
-        {
-          "id": "d",
-          "text": "In the ServiceNow database layer"
-        }
-      ],
-      "correctAnswers": [
-        "b"
-      ],
-      "explanation": {
-        "correct": "Client-side scripts execute in the user's web browser. They generally handle UI modifications such as hiding fields, making fields mandatory, or responding to user interactions on the form. See: https://docs.servicenow.com/bundle/yokohama-application-development/page/script/general-scripting/concept/c_ScriptingOverview.html",
-        "wrongAnswers": [
-          {
-            "choiceId": "a",
-            "explanation": "Server-side scripts, not client-side scripts, execute on the ServiceNow application server. Examples include business rules and script includes.",
-            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/general-scripting/concept/c_ScriptingOverview.html"
-          },
-          {
-            "choiceId": "c",
-            "explanation": "The MID Server is a separate component that executes scripts in a local network environment for tasks like Discovery and integrations, not standard client-side scripts.",
-            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/product/mid-server/concept/mid-server-landing.html"
-          },
-          {
-            "choiceId": "d",
-            "explanation": "The database layer stores data but does not execute JavaScript. Script execution occurs either in the browser (client-side) or the application server (server-side).",
-            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/general-scripting/concept/c_ScriptingOverview.html"
-          }
-        ]
-      },
-      "references": [
-        "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/general-scripting/concept/c_ScriptingOverview.html"
-      ],
-      "isFree": true,
-      "source": {
-        "type": "course",
-        "path": "scripting-in-servicenow-fundamentals/04-ssnf-scripting-overview.md",
-        "excerpt": "When I have client-side scripts, which generally revolve around doing something with the UI itself... that is a client-side script that executes in your browser."
-      },
-      "labels": {
-        "certification": "cad",
-        "domain": "Scripting & APIs",
-        "domainSlug": "scripting-apis",
-        "domainPercentage": 25,
-        "subtopics": [
-          "Server-side scripting patterns"
-        ],
-        "tags": [
-          "client-side",
-          "script-execution",
-          "browser"
-        ]
-      },
-      "meta": {
-        "generatedAt": "2026-02-05T20:26:37.000Z",
-        "version": "1.0",
-        "release": "Yokohama",
-        "reviewed": false
-      }
-    },
-    {
       "id": "cad-scripting-apis-002",
       "certification": "cad",
       "topic": "scripting-apis",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "Which prefix is used to access GlideSystem methods in server-side scripts?",
+      "question": "In an after business rule, a developer must check whether the current user has the itil role before updating related records. Which call correctly uses the GlideSystem API in this server-side script?",
       "options": [
         {
           "id": "a",
-          "text": "g_system"
+          "text": "g_system.hasRole('itil')"
         },
         {
           "id": "b",
-          "text": "glide"
+          "text": "glide.hasRole('itil')"
         },
         {
           "id": "c",
-          "text": "gs"
+          "text": "gs.hasRole('itil')"
         },
         {
           "id": "d",
-          "text": "g_form"
+          "text": "g_user.hasRole('itil')"
         }
       ],
       "correctAnswers": [
         "c"
       ],
       "explanation": {
-        "correct": "GlideSystem methods are accessed using the 'gs' prefix in server-side scripts (e.g., gs.addInfoMessage(), gs.hasRole()). This is the standard shorthand for the GlideSystem class in ServiceNow. See: https://docs.servicenow.com/bundle/yokohama-application-development/page/app-store/dev_portal/API_reference/glideSystem/concept/c_GlideSystemScopedAPI.html",
+        "correct": "The GlideSystem API is referred to by the variable name gs in any server-side JavaScript and provides methods for information about the system and the current logged-in user. Its hasRole() method determines whether the current user has the specified role, so gs.hasRole('itil') works in a business rule. See https://www.servicenow.com/docs/r/api-reference/server-api-reference/c_GlideSystemAPI.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "g_system is not a valid ServiceNow API prefix. The correct prefix for GlideSystem is 'gs'.",
-            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/app-store/dev_portal/API_reference/glideSystem/concept/c_GlideSystemScopedAPI.html"
+            "explanation": "g_system is not how GlideSystem is exposed. The docs state that server-side scripts reach GlideSystem through the gs variable.",
+            "reference": "https://www.servicenow.com/docs/r/api-reference/server-api-reference/c_GlideSystemAPI.html"
           },
           {
             "choiceId": "b",
-            "explanation": "While 'Glide' appears in many ServiceNow class names, the GlideSystem API is specifically accessed via the 'gs' shorthand, not 'glide'.",
-            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/app-store/dev_portal/API_reference/glideSystem/concept/c_GlideSystemScopedAPI.html"
+            "explanation": "glide is not a variable for the GlideSystem API. Many class names start with Glide, but server-side scripts call GlideSystem methods through gs.",
+            "reference": "https://www.servicenow.com/docs/r/api-reference/server-api-reference/c_GlideSystemAPI.html"
           },
           {
             "choiceId": "d",
-            "explanation": "g_form is the client-side GlideForm API used to interact with forms in the browser. It is not related to the server-side GlideSystem API.",
-            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/client-scripting/concept/c_GlideFormAPI.html"
+            "explanation": "g_user is the client-side GlideUser object. The docs say it is only available in client scripts and cannot be used in business rules or server-side UI actions.",
+            "reference": "https://www.servicenow.com/docs/r/api-reference/c_GlideUserAPI.html"
           }
         ]
       },
       "references": [
-        "https://docs.servicenow.com/bundle/yokohama-application-development/page/app-store/dev_portal/API_reference/glideSystem/concept/c_GlideSystemScopedAPI.html"
+        "https://www.servicenow.com/docs/r/api-reference/server-api-reference/c_GlideSystemAPI.html",
+        "https://www.servicenow.com/docs/r/api-reference/server-api-reference/c_GlideSystemScopedAPI.html",
+        "https://www.servicenow.com/docs/r/api-reference/c_GlideUserAPI.html"
       ],
       "isFree": true,
       "source": {
@@ -154,26 +78,28 @@
       },
       "meta": {
         "generatedAt": "2026-02-05T20:26:37.000Z",
-        "version": "1.0",
-        "release": "Yokohama",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "cad-scripting-apis-003",
       "certification": "cad",
       "topic": "scripting-apis",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "Which GlideSystem method returns the first and last name of the currently logged-in user concatenated together?",
+      "question": "A developer writes a server-side script that must greet the logged-in user by display name, for example \"Abel Tuter\" rather than the login \"abel.tuter\". Which call returns that value?",
       "options": [
         {
           "id": "a",
-          "text": "gs.getUserName()"
+          "text": "gs.getUser().getEmail()"
         },
         {
           "id": "b",
-          "text": "gs.getUserID()"
+          "text": "gs.getUser().getID()"
         },
         {
           "id": "c",
@@ -181,34 +107,35 @@
         },
         {
           "id": "d",
-          "text": "gs.getUser()"
+          "text": "gs.getUser().getName()"
         }
       ],
       "correctAnswers": [
         "c"
       ],
       "explanation": {
-        "correct": "gs.getUserDisplayName() returns the currently logged-in user's first and last name concatenated together, providing a human-friendly display of the user's identity without requiring separate calls for first and last name. See: https://docs.servicenow.com/bundle/yokohama-application-development/page/app-store/dev_portal/API_reference/glideSystem/concept/c_GlideSystemScopedAPI.html",
+        "correct": "GlideSystem getUserDisplayName() gets the display name of the current user. The docs say it returns the name field, for example Abel Tuter as opposed to abel.tuter, which is exactly the friendly name the greeting needs. See https://www.servicenow.com/docs/r/api-reference/server-api-reference/c_GlideSystemScopedAPI.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "gs.getUserName() returns the login name (username) used to authenticate, not the concatenated first and last name.",
-            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/app-store/dev_portal/API_reference/glideSystem/concept/c_GlideSystemScopedAPI.html"
+            "explanation": "GlideUser getEmail() returns the user's email address, not the display name, so the greeting would show an address instead of a name.",
+            "reference": "https://www.servicenow.com/docs/r/api-reference/server-api-reference/c_GlideUserScopedAPI.html"
           },
           {
             "choiceId": "b",
-            "explanation": "gs.getUserID() returns the Sys ID (a 32-character unique identifier) of the currently logged-in user record, not their display name.",
-            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/app-store/dev_portal/API_reference/glideSystem/concept/c_GlideSystemScopedAPI.html"
+            "explanation": "GlideUser getID() returns the current user's sys_id, a record identifier, rather than a human-readable name.",
+            "reference": "https://www.servicenow.com/docs/r/api-reference/server-api-reference/c_GlideUserScopedAPI.html"
           },
           {
             "choiceId": "d",
-            "explanation": "gs.getUser() returns the user object, which can then be used with additional utility methods to retrieve specific user properties. By itself, it does not return the display name string.",
-            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/app-store/dev_portal/API_reference/glideSystem/concept/c_GlideSystemScopedAPI.html"
+            "explanation": "GlideUser getName() returns the user ID, or login name, of the current user, such as abel.tuter, not the display name.",
+            "reference": "https://www.servicenow.com/docs/r/api-reference/server-api-reference/c_GlideUserScopedAPI.html"
           }
         ]
       },
       "references": [
-        "https://docs.servicenow.com/bundle/yokohama-application-development/page/app-store/dev_portal/API_reference/glideSystem/concept/c_GlideSystemScopedAPI.html"
+        "https://www.servicenow.com/docs/r/api-reference/server-api-reference/c_GlideSystemScopedAPI.html",
+        "https://www.servicenow.com/docs/r/api-reference/server-api-reference/c_GlideUserScopedAPI.html"
       ],
       "isFree": true,
       "source": {
@@ -232,61 +159,63 @@
       },
       "meta": {
         "generatedAt": "2026-02-05T20:26:37.000Z",
-        "version": "1.0",
-        "release": "Yokohama",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "cad-scripting-apis-004",
       "certification": "cad",
       "topic": "scripting-apis",
-      "cognitiveLevel": "understanding",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "A developer needs to implement a new requirement on the ServiceNow platform. According to ServiceNow customization best practices, what approach should they evaluate first?",
+      "question": "A developer must make a field mandatory and hide another field on the Incident form when the state changes. Following ServiceNow guidance on customization versus configuration, what should they do first?",
       "options": [
         {
           "id": "a",
-          "text": "Write a comprehensive server-side script to handle all logic"
+          "text": "Write a server-side script that handles all the new logic"
         },
         {
           "id": "b",
-          "text": "Determine whether a no-code or low-code solution can meet the requirement"
+          "text": "Use built-in configuration tools before customizing code"
         },
         {
           "id": "c",
-          "text": "Create a custom scoped application with script includes"
+          "text": "Build a new scoped application to hold the new logic"
         },
         {
           "id": "d",
-          "text": "Modify the baseline business rule to add the required functionality"
+          "text": "Modify the baseline business rule to add the new behavior"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "ServiceNow customization best practices recommend first determining whether a no-code solution (configuration via the UI) can be used. If not, evaluate a low-code solution (minimal scripting). Only if neither approach works should developers resort to more complex scripting, as custom scripts can complicate upgrades between family releases. See: https://docs.servicenow.com/bundle/yokohama-application-development/page/script/general-scripting/concept/c_ScriptingOverview.html",
+        "correct": "ServiceNow guidance is to configure as much as you can before customizing. Configuration uses built-in tools to change behavior without altering baseline code, while customization such as scripting can add technical debt and complicate upgrades. Form changes like these fit configuration first. See https://www.servicenow.com/docs/r/servicenow-platform/service-catalog/customization-vs-configuration-concepts.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Writing a comprehensive script should be a last resort, not the first approach. Scripts can complicate upgrades and may need rework when ServiceNow releases family updates.",
-            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/general-scripting/concept/c_ScriptingOverview.html"
+            "explanation": "Client and server scripts are listed as customization, which can introduce technical debt and complicate upgrades. The docs say to maximize configuration before customizing.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/service-catalog/customization-vs-configuration-concepts.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Creating a scoped application with custom scripts is a valid approach for complex requirements, but it should only be considered after evaluating no-code and low-code alternatives first.",
-            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/build/applications/concept/c_ApplicationDevelopment.html"
+            "explanation": "The docs reserve new applications for needs outside the original intent of an existing app. Changing Incident form behavior stays within ITSM, so a new app is not the first step.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/service-catalog/customization-vs-configuration-concepts.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Modifying baseline records directly is generally discouraged as it creates upgrade conflicts. ServiceNow recommends evaluating no-code and low-code solutions before modifying any baseline configurations.",
-            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/general-scripting/concept/c_ScriptingOverview.html"
+            "explanation": "Changing baseline code is customization; such changes are flagged during upgrades and must be reviewed manually. The guidance is to prefer configuration first.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/service-catalog/customization-vs-configuration-concepts.html"
           }
         ]
       },
       "references": [
-        "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/general-scripting/concept/c_ScriptingOverview.html"
+        "https://www.servicenow.com/docs/r/servicenow-platform/service-catalog/customization-vs-configuration-concepts.html"
       ],
       "isFree": true,
       "source": {
@@ -305,15 +234,17 @@
         "tags": [
           "best-practices",
           "customization",
-          "no-code",
+          "configuration",
           "upgrade"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-05T20:26:37.000Z",
-        "version": "1.0",
-        "release": "Yokohama",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {

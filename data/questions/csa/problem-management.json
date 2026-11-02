@@ -6,52 +6,55 @@
       "id": "csa-pm-001",
       "certification": "csa",
       "topic": "problem-management",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What is the primary goal of Problem Management?",
+      "question": "Email outages keep returning even though the service desk restores service for users each time. An IT manager opens a problem record. What is Problem Management's goal in this situation?",
       "options": [
         {
           "id": "a",
-          "text": "To restore service as quickly as possible"
+          "text": "Restore normal service for each affected user quickly"
         },
         {
           "id": "b",
-          "text": "To identify and resolve the underlying cause of one or more incidents"
+          "text": "Identify and resolve the underlying cause of outages"
         },
         {
           "id": "c",
-          "text": "To approve and implement changes"
+          "text": "Control the life cycle of the changes needed for a fix"
         },
         {
           "id": "d",
-          "text": "To fulfill service requests"
+          "text": "Fulfill the catalog requests that affected users submit"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "Problem Management refers to the process of identifying and resolving the underlying cause of one or more incidents. It involves investigating the root cause and implementing long-term solutions or workarounds to prevent similar incidents from occurring in the future. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=0ea249d947dc9a5089c7acc9126d4364&spa=1",
+        "correct": "ServiceNow describes Problem Management as having a single goal: identifying and resolving the underlying issues that cause incidents. It is a methodical process in which finding and resolving the root cause matters more than time to resolution, which is exactly what recurring email outages call for once service has been restored each time. See https://www.servicenow.com/docs/r/it-service-management/problem-management/understanding-state-mgmt-transitions.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Restoring service quickly is the goal of Incident Management, not Problem Management.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=0ea249d947dc9a5089c7acc9126d4364&spa=1"
+            "explanation": "Restoring normal service while minimizing impact is the purpose of Incident Management, which the service desk is already doing for each outage.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/incident-management/c_IncidentManagement.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Approving and implementing changes is the responsibility of Change Management.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=0ea249d947dc9a5089c7acc9126d4364&spa=1"
+            "explanation": "Controlling the life cycle of changes is Change Management. A change request may later be raised to apply the fix, but that is not the problem's goal.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/change-management/c_ITILChangeManagement.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Fulfilling service requests is handled by Request Management.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=0ea249d947dc9a5089c7acc9126d4364&spa=1"
+            "explanation": "Submitting and fulfilling requests for services and products through a self-service portal is Request Management, not Problem Management.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/request-management/c_RequestManagement.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Problem Management"
+        "https://www.servicenow.com/docs/r/it-service-management/problem-management/understanding-state-mgmt-transitions.html",
+        "https://www.servicenow.com/docs/r/it-service-management/incident-management/c_IncidentManagement.html",
+        "https://www.servicenow.com/docs/r/it-service-management/change-management/c_ITILChangeManagement.html",
+        "https://www.servicenow.com/docs/r/it-service-management/request-management/c_RequestManagement.html"
       ],
       "isFree": true,
       "source": {
@@ -83,61 +86,66 @@
       },
       "meta": {
         "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "csa-pm-002",
       "certification": "csa",
       "topic": "problem-management",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What is the Known Error Database (KEDB)?",
+      "question": "A problem manager wants the root cause and workaround of a known problem to be searchable so agents can deflect new incidents. They click Create Known Error Article on the problem. Where is the article kept?",
       "options": [
         {
           "id": "a",
-          "text": "A list of all incidents in the system"
+          "text": "As a work note on each incident related to the problem"
         },
         {
           "id": "b",
-          "text": "A repository of problem records designated as known issues"
+          "text": "In a knowledge base maintained in Knowledge Management"
         },
         {
           "id": "c",
-          "text": "A database of user credentials"
+          "text": "As an attribute on the affected CI record in the CMDB"
         },
         {
           "id": "d",
-          "text": "A collection of change requests"
+          "text": "In a change request raised from the problem record"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "The known error database is a repository of problem records that a company has designated as known issues. These problems can be active (root cause still under investigation) or closed (investigation complete with workaround). See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=0ea249d947dc9a5089c7acc9126d4364&spa=1",
+        "correct": "Known error articles document the root cause and workaround of a problem to help deflect incidents. When an article is created from a problem, it is saved in the knowledge base and maintained in the Knowledge Management application, where the knowledge base's workflows control publishing and retirement. See https://www.servicenow.com/docs/r/it-service-management/problem-management/create-known-error-from-problem.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "The incident table stores incidents, not the KEDB.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=0ea249d947dc9a5089c7acc9126d4364&spa=1"
+            "explanation": "Copying text into the work notes of related incidents is what Communicate Workaround does; it notifies existing incidents but does not create a searchable article.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/problem-management/sync-btwn-inci-prob.html"
           },
           {
             "choiceId": "c",
-            "explanation": "User credentials are managed in User Administration, not the KEDB.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=0ea249d947dc9a5089c7acc9126d4364&spa=1"
+            "explanation": "The CMDB associates the problem with affected configuration items, but known error content is not stored on the CI; the article lives in a knowledge base.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/problem-management/c_ProblemManagementProcess.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Change requests are stored in the change_request table, not the KEDB.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=0ea249d947dc9a5089c7acc9126d4364&spa=1"
+            "explanation": "A change request from a problem is used to implement the fix to the root cause. It does not store the known error documentation for agents to search.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/problem-management/exploring-problem-management.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Known Error Database"
+        "https://www.servicenow.com/docs/r/it-service-management/problem-management/create-known-error-from-problem.html",
+        "https://www.servicenow.com/docs/r/it-service-management/problem-management/sync-btwn-inci-prob.html",
+        "https://www.servicenow.com/docs/r/it-service-management/problem-management/c_ProblemManagementProcess.html",
+        "https://www.servicenow.com/docs/r/it-service-management/problem-management/exploring-problem-management.html"
       ],
       "isFree": true,
       "source": {
@@ -161,16 +169,19 @@
           "Known errors"
         ],
         "tags": [
-          "known error database",
-          "KEDB",
-          "workarounds"
+          "known error",
+          "known error article",
+          "knowledge management",
+          "KEDB"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -432,52 +443,54 @@
       "id": "csa-pm-006",
       "certification": "csa",
       "topic": "problem-management",
-      "cognitiveLevel": "understanding",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What is the purpose of a workaround in Problem Management?",
+      "question": "No permanent fix exists yet for a problem, but the team has found a way for users to keep working. The coordinator fills in the Workaround field and clicks Communicate Workaround. What is the purpose of the workaround?",
       "options": [
         {
           "id": "a",
-          "text": "To permanently fix the root cause"
+          "text": "To record the permanent fix that removes the root cause"
         },
         {
           "id": "b",
-          "text": "To provide a temporary solution while investigating the permanent fix"
+          "text": "To lessen the impact until an actual resolution exists"
         },
         {
           "id": "c",
-          "text": "To close all related incidents"
+          "text": "To resolve and close every related incident in one step"
         },
         {
           "id": "d",
-          "text": "To assign the problem to a different team"
+          "text": "To publish a known error article to the knowledge base"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "A workaround provides a temporary solution or mitigation that allows service to continue while the root cause is being investigated. Known errors can have documented workarounds that are used instead of a permanent solution. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=0ea249d947dc9a5089c7acc9126d4364&spa=1",
+        "correct": "ServiceNow defines a workaround as a temporary way to restore service failures and lessen the impact of a problem for which an actual resolution is not yet available. Communicating it notifies the related incidents that a workaround is available, so agents and users can keep working while root cause analysis and the permanent fix continue. See https://www.servicenow.com/docs/r/it-service-management/problem-management/communicate-workaround.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Workarounds are temporary; permanent fixes are separate implementations.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=0ea249d947dc9a5089c7acc9126d4364&spa=1"
+            "explanation": "A workaround is temporary by definition. The permanent fix is documented separately and is usually applied through a change request before the problem is resolved.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/problem-management/exploring-problem-management.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Workarounds help resolve symptoms but don't automatically close incidents.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=0ea249d947dc9a5089c7acc9126d4364&spa=1"
+            "explanation": "Communicate Workaround copies the workaround to the related incidents' work notes and comments and sends notifications; it does not change their state to Resolved.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/problem-management/sync-btwn-inci-prob.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Reassignment is an administrative action, not the purpose of workarounds.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=0ea249d947dc9a5089c7acc9126d4364&spa=1"
+            "explanation": "Known error articles are created with the separate Create Known Error Article related link. The legacy docs note that communicating a workaround does not create a knowledge article.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/problem-management/communicate-workaround.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Workarounds"
+        "https://www.servicenow.com/docs/r/it-service-management/problem-management/communicate-workaround.html",
+        "https://www.servicenow.com/docs/r/it-service-management/problem-management/sync-btwn-inci-prob.html",
+        "https://www.servicenow.com/docs/r/it-service-management/problem-management/exploring-problem-management.html"
       ],
       "isFree": false,
       "source": {
@@ -503,14 +516,16 @@
         "tags": [
           "workaround",
           "temporary solution",
-          "known error"
+          "communicate workaround"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -759,44 +774,47 @@
       "id": "csa-pm-010",
       "certification": "csa",
       "topic": "problem-management",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What does ServiceNow Service Mapping use to identify dependencies between applications and hosts?",
+      "question": "An administrator needs a map of how the applications and hosts behind an online ordering service connect, so the impact of a failing component is visible. Which approach does Service Mapping use?",
       "options": [
         {
           "id": "a",
-          "text": "A bottom-up scanning approach starting from network devices"
+          "text": "Horizontal discovery that lists each device independently"
         },
         {
           "id": "b",
-          "text": "A top-down approach that maps interconnected applications and hosts delivering a service"
+          "text": "Top-down mapping of connections between devices and apps"
         },
         {
           "id": "c",
-          "text": "Manual entry by administrators for each CI relationship"
+          "text": "Manual entry of each CI relationship by an administrator"
         },
         {
           "id": "d",
-          "text": "Import sets from external monitoring tools"
+          "text": "Correlating third-party monitoring alerts with known CIs"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "Service Mapping identifies and maps dependencies between interconnected applications and hosts that deliver a service using a top-down approach. This helps visualize the impact of issues within a service, enhancing CMDB awareness of service connections.",
+        "correct": "Service Mapping maps dependencies based on the connections between devices and applications, which ServiceNow calls top-down mapping. The resulting application service maps show infrastructure objects and the connections between them, so a faulty object appears together with the devices and applications it affects. See https://www.servicenow.com/docs/r/it-operations-management/itom-visibility/itom-visibility-landing-page.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Discovery uses a horizontal method that inventories devices independently. Service Mapping uses a top-down approach."
+            "explanation": "Horizontal discovery is what Discovery performs. It finds devices and applications but connections between them are not included, so it cannot show service impact.",
+            "reference": "https://www.servicenow.com/docs/r/it-operations-management/itom-visibility/itom-visibility-landing-page.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Service Mapping automatically discovers and maps dependencies rather than requiring manual entry."
+            "explanation": "Service Mapping builds maps automatically, mainly with discovery patterns, and can also use tags and traffic connections; it does not rely on manual relationship entry.",
+            "reference": "https://www.servicenow.com/docs/r/it-operations-management/itom-visibility/itom-visibility-landing-page.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Service Mapping works within ServiceNow, not through imported data from external tools."
+            "explanation": "Correlating alerts from third-party monitoring tools with configuration items is ITOM AIOps, which consumes ITOM Visibility data rather than building service maps.",
+            "reference": "https://www.servicenow.com/docs/r/it-operations-management/itom-visibility/itom-visibility-landing-page.html"
           }
         ]
       },
@@ -825,9 +843,15 @@
       "meta": {
         "generatedAt": "2026-03-16T02:00:00Z",
         "version": "1.1",
-        "release": "Xanadu",
-        "reviewed": false
-      }
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/it-operations-management/itom-visibility/itom-visibility-landing-page.html",
+        "https://www.servicenow.com/docs/r/it-operations-management/service-mapping/service-mapping-get-started.html"
+      ]
     },
     {
       "id": "csa-pm-011",
@@ -908,44 +932,47 @@
       "id": "csa-pm-012",
       "certification": "csa",
       "topic": "problem-management",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What is the difference between Discovery and Service Mapping in ServiceNow?",
+      "question": "Discovery has populated the CMDB with servers and applications, but an administrator still cannot see which of them depend on each other to deliver the payroll service. What explains this?",
       "options": [
         {
           "id": "a",
-          "text": "Discovery maps service dependencies; Service Mapping inventories devices"
+          "text": "Discovery stores connections, but they are hidden by default"
         },
         {
           "id": "b",
-          "text": "Discovery inventories devices independently (horizontal); Service Mapping maps service dependencies (top-down)"
+          "text": "Discovery omits connections; Service Mapping maps them"
         },
         {
           "id": "c",
-          "text": "Discovery is for cloud resources; Service Mapping is for on-premise only"
+          "text": "Discovery finds network devices only, not the applications"
         },
         {
           "id": "d",
-          "text": "They are the same feature with different names"
+          "text": "Service Mapping replaces Discovery and ignores its CI results"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "Discovery employs a horizontal method that inventories devices as independent objects without detailing their interconnections. Service Mapping uses a top-down approach to identify and map dependencies between interconnected applications and hosts delivering a service.",
+        "correct": "Discovery performs horizontal discovery: it identifies computers, servers, network devices and the applications running on them, but connections between devices and applications are not included. Service Mapping fills that gap with top-down mapping that maps dependencies based on those connections, and it builds on the results of horizontal discovery. See https://www.servicenow.com/docs/r/it-operations-management/itom-visibility/itom-visibility-landing-page.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "This reverses the descriptions \u2014 Discovery inventories devices, Service Mapping maps dependencies."
+            "explanation": "The docs state that connections between devices and applications are not included in horizontal discovery, so there is nothing hidden to reveal.",
+            "reference": "https://www.servicenow.com/docs/r/it-operations-management/itom-visibility/itom-visibility-landing-page.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Both Discovery and Service Mapping work with cloud and on-premise resources."
+            "explanation": "Discovery can find IP-enabled devices and the applications that run on them, as well as cloud resources and TLS certificates, not just network gear.",
+            "reference": "https://www.servicenow.com/docs/r/it-operations-management/itom-visibility/itom-visibility-landing-page.html"
           },
           {
             "choiceId": "d",
-            "explanation": "They serve different purposes: Discovery for device inventory, Service Mapping for dependency visualization."
+            "explanation": "Service Mapping relies on Discovery and the MID Server and uses the results of horizontal discovery performed by Discovery, rather than replacing it.",
+            "reference": "https://www.servicenow.com/docs/r/it-operations-management/service-mapping/service-mapping-get-started.html"
           }
         ]
       },
@@ -975,9 +1002,15 @@
       "meta": {
         "generatedAt": "2026-03-16T02:00:00Z",
         "version": "1.1",
-        "release": "Xanadu",
-        "reviewed": false
-      }
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/it-operations-management/itom-visibility/itom-visibility-landing-page.html",
+        "https://www.servicenow.com/docs/r/it-operations-management/service-mapping/service-mapping-get-started.html"
+      ]
     },
     {
       "id": "csa-pm-013",
@@ -1200,50 +1233,55 @@
     },
     {
       "id": "csa-pm-016",
-      "cognitiveLevel": "understanding",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What happens to associated incidents when a Problem record's state changes to 'Resolved'?",
+      "question": "A service desk agent has an incident On Hold with the reason Awaiting Problem. Its linked problem is then resolved with the resolution code Fix Applied, using the Madrid problem state model. What happens to the incident?",
       "options": [
         {
           "id": "a",
-          "text": "Nothing automatically \u2014 incidents must be resolved individually or through a configured business rule"
+          "text": "It stays On Hold until an agent resolves it manually"
         },
         {
           "id": "b",
-          "text": "All associated incidents are automatically deleted"
+          "text": "It moves to In Progress so the assignee can verify the fix"
         },
         {
           "id": "c",
-          "text": "Associated incidents are automatically resolved with the same resolution"
+          "text": "It is set to Resolved with the code Resolved by problem"
         },
         {
           "id": "d",
-          "text": "Associated incidents are moved to the 'Pending' state"
+          "text": "It receives the fix in work notes but stays On Hold"
         }
       ],
       "correctAnswers": [
-        "a"
+        "c"
       ],
       "explanation": {
-        "correct": "By default, resolving a Problem does not automatically resolve associated incidents. Organizations may configure business rules or flows to auto-resolve child incidents, but this requires explicit setup.",
+        "correct": "With the Problem Management Best Practice - Madrid - State Model plugin, an incident that is On Hold with the reason Awaiting Problem is updated automatically when its problem is resolved or closed with Fix Applied. The incident state changes to Resolved, its resolution code becomes Resolved by problem, and the caller and assignee are emailed. See https://www.servicenow.com/docs/r/it-service-management/problem-management/sync-btwn-inci-prob.html",
         "wrongAnswers": [
           {
-            "choiceId": "b",
-            "explanation": "Incidents are never deleted when a Problem is resolved; they must be resolved through their own process."
+            "choiceId": "a",
+            "explanation": "Manual resolution is not needed here. For incidents awaiting a problem, resolving the problem with Fix Applied sets the incident to Resolved automatically.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/problem-management/sync-btwn-inci-prob.html"
           },
           {
-            "choiceId": "c",
-            "explanation": "Auto-resolution of incidents is not a default behavior; it requires configuration."
+            "choiceId": "b",
+            "explanation": "The documented outcome for an On Hold, Awaiting Problem incident is the Resolved state, not In Progress, when the problem is resolved with Fix Applied.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/problem-management/sync-btwn-inci-prob.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Pending state changes don't happen automatically from Problem resolution."
+            "explanation": "Copying the fix to work notes without changing state describes the Communicate Fix related link. Resolving the problem with Fix Applied also resolves the waiting incident.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/problem-management/sync-btwn-inci-prob.html"
           }
         ]
       },
       "certification": "csa",
       "topic": "problem-management",
-      "references": [],
+      "references": [
+        "https://www.servicenow.com/docs/r/it-service-management/problem-management/sync-btwn-inci-prob.html"
+      ],
       "isFree": false,
       "source": {
         "type": "generated",
@@ -1261,14 +1299,24 @@
         "certification": "csa",
         "domain": "problem-management",
         "domainSlug": "problem-management",
-        "subtopics": [],
-        "tags": []
+        "subtopics": [
+          "Problem states",
+          "Problem vs Incident"
+        ],
+        "tags": [
+          "problem resolution",
+          "incident synchronization",
+          "state model",
+          "awaiting problem"
+        ]
       },
       "meta": {
         "generatedAt": "2026-03-31T02:09:00Z",
-        "version": "2.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     }
   ]

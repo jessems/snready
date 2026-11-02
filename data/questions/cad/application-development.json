@@ -6,52 +6,53 @@
       "id": "cad-application-development-001",
       "certification": "cad",
       "topic": "application-development",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "Where can ServiceNow developers find vetted partner applications that include vendor support and quality assurance?",
+      "question": "Before starting a custom build, a developer wants to check whether ServiceNow or a certified partner has already published an application that meets the requirement. Where should they look?",
       "options": [
         {
           "id": "a",
-          "text": "The Developer Share on developer.servicenow.com"
+          "text": "The company's private application repository"
         },
         {
           "id": "b",
-          "text": "The ServiceNow Store on store.servicenow.com"
+          "text": "The ServiceNow Store public marketplace"
         },
         {
           "id": "c",
-          "text": "The ServiceNow documentation site at docs.servicenow.com"
+          "text": "An update set exported from another instance"
         },
         {
           "id": "d",
-          "text": "The Plugins module within the ServiceNow instance"
+          "text": "The parent instance in team development"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "The ServiceNow Store at store.servicenow.com hosts partner applications that follow a vendor license agreement, include support, and are quality tested by ServiceNow before being published. See https://docs.servicenow.com/bundle/yokohama-application-development/page/build/servicenow-store/concept/servicenow-store.html",
+        "correct": "The ServiceNow Store is the public marketplace where ServiceNow and certified partners publish applications, and publishing to the Store makes an app available to all ServiceNow customers. Store apps are installed and updated through the Application Manager, so checking the Store first can avoid building something that already exists. See https://www.servicenow.com/docs/r/application-development/store-private-application-repositories.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "The Developer Share on developer.servicenow.com is a community-driven repository where individuals share content for free, but it does not come with guaranteed support or quality assurance.",
-            "reference": "https://developer.servicenow.com/dev.do#!/share"
+            "explanation": "A private application repository is your company's internal repository for its own published scoped apps, shared only with company instances, so it will not list partner offerings.",
+            "reference": "https://www.servicenow.com/docs/r/application-development/store-private-application-repositories.html"
           },
           {
             "choiceId": "c",
-            "explanation": "docs.servicenow.com is the official documentation site for ServiceNow product documentation, not a marketplace for partner applications.",
-            "reference": "https://docs.servicenow.com"
+            "explanation": "Publishing to an update set saves a version of an application for compliance or backup and is usable only by instances with access to that file; it is not a catalog of partner apps.",
+            "reference": "https://www.servicenow.com/docs/r/application-development/c_SharingApplications.html"
           },
           {
             "choiceId": "d",
-            "explanation": "The Plugins module allows activation of ServiceNow-provided platform plugins, not third-party partner applications from the store.",
-            "reference": "https://docs.servicenow.com/bundle/yokohama-platform-administration/page/administer/plugins/concept/c_PluginManagement.html"
+            "explanation": "Pushing to team development instances moves a developer's changes to the parent instance; it does not offer applications published by ServiceNow or certified partners.",
+            "reference": "https://www.servicenow.com/docs/r/application-development/c_SharingApplications.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Docs - ServiceNow Store"
+        "https://www.servicenow.com/docs/r/application-development/store-private-application-repositories.html",
+        "https://www.servicenow.com/docs/r/application-development/c_SharingApplications.html"
       ],
       "isFree": true,
       "source": {
@@ -70,66 +71,70 @@
         "tags": [
           "servicenow-store",
           "partner-applications",
-          "application-marketplace"
+          "application-sharing"
         ]
       },
       "meta": {
         "generatedAt": "2025-07-14T18:30:00.000Z",
-        "version": "1.0",
-        "release": "Yokohama",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "cad-application-development-002",
       "certification": "cad",
       "topic": "application-development",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What is the system name of the table where custom application records are stored in ServiceNow?",
+      "question": "A developer writes a server-side script to list the custom applications that are being developed on the current instance. Which GlideRecord query targets the table that stores those application records?",
       "options": [
         {
           "id": "a",
-          "text": "sys_scope"
+          "text": "new GlideRecord('sys_store_app')"
         },
         {
           "id": "b",
-          "text": "sys_app"
+          "text": "new GlideRecord('sys_app')"
         },
         {
           "id": "c",
-          "text": "sys_application"
+          "text": "new GlideRecord('sys_app_application')"
         },
         {
           "id": "d",
-          "text": "sys_custom_app"
+          "text": "new GlideRecord('sys_update_set')"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "Custom application records are stored on the sys_app table (Custom Apps table). When you create an application in ServiceNow Studio, the application record is created on this table. See https://docs.servicenow.com/bundle/yokohama-application-development/page/build/applications/concept/c_ApplicationDevelopment.html",
+        "correct": "Applications developed on an instance are held in the Custom Applications table, whose name is sys_app. The docs note that apps built and moved with update sets live in sys_app, and only apps converted for the application repository move to the ServiceNow Store table, after which they can no longer be developed on that instance. See https://www.servicenow.com/docs/r/application-development/application-repository-self-hosted/convert-custom-app-to-update-app-repo.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "sys_scope is the Application Scope table, which stores scope records but is not the primary table for custom application records created through Studio.",
-            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/build/applications/concept/c_ApplicationScope.html"
+            "explanation": "sys_store_app is the ServiceNow Store table used for apps installed from the application repository; the docs say apps moved there can no longer be developed on that instance.",
+            "reference": "https://www.servicenow.com/docs/r/application-development/application-repository-self-hosted/convert-custom-app-to-update-app-repo.html"
           },
           {
             "choiceId": "c",
-            "explanation": "sys_application is the Application Menus table used for navigation modules, not the table for custom application records.",
-            "reference": "https://docs.servicenow.com/bundle/yokohama-platform-user-interface/page/administer/navigation-and-ui/concept/c_NavigationAndModules.html"
+            "explanation": "sys_app_application stores application menus shown in the application navigator, not the custom application records themselves, so querying it lists menus instead.",
+            "reference": "https://www.servicenow.com/docs/r/application-development/servicenow-sdk/app-menu-api-now-ts.html"
           },
           {
             "choiceId": "d",
-            "explanation": "sys_custom_app is not a valid ServiceNow system table. Custom applications are stored on the sys_app table.",
-            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/build/applications/concept/c_ApplicationDevelopment.html"
+            "explanation": "sys_update_set is the Update Sets table, which groups configuration changes for moving between instances; it does not hold the custom application records.",
+            "reference": "https://www.servicenow.com/docs/r/api-reference/rest-apis/cicd-update-set-api.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Docs - Custom Application Development"
+        "https://www.servicenow.com/docs/r/application-development/application-repository-self-hosted/convert-custom-app-to-update-app-repo.html",
+        "https://www.servicenow.com/docs/r/application-development/servicenow-sdk/app-menu-api-now-ts.html",
+        "https://www.servicenow.com/docs/r/api-reference/rest-apis/cicd-update-set-api.html"
       ],
       "isFree": true,
       "source": {
@@ -153,9 +158,11 @@
       },
       "meta": {
         "generatedAt": "2025-07-14T18:30:00.000Z",
-        "version": "1.0",
-        "release": "Yokohama",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
