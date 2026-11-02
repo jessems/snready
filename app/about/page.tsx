@@ -7,11 +7,11 @@ import { TeamByline } from "@/components/TeamByline";
 export const metadata: Metadata = {
   title: { absolute: "About SNReady" },
   description:
-    "How the ServiceNow practice questions are written and reviewed, and what SNReady is not: not affiliated with ServiceNow, and not real exam questions.",
+    "Who makes SNReady, how the ServiceNow practice questions are written and checked, and what SNReady is not: not affiliated with ServiceNow, and not copied from ServiceNow exams.",
   alternates: { canonical: "/about" },
   openGraph: {
     title: { absolute: "About SNReady" },
-    description: "How the SNReady practice questions are written and reviewed.",
+    description: "Who makes SNReady and how the practice questions are written and checked.",
     url: "/about",
     type: "website",
   },
@@ -46,25 +46,29 @@ export default function AboutPage() {
         </section>
 
         <section id="how-questions-are-made" className="mt-14 space-y-5 text-lg leading-8 text-zinc-700 dark:text-zinc-300">
-          <h2 className="text-2xl font-bold text-zinc-950 dark:text-white">How the questions are written and reviewed</h2>
+          <h2 className="text-2xl font-bold text-zinc-950 dark:text-white">How the questions are written and checked</h2>
           <ol className="list-decimal space-y-4 pl-6">
             <li>
-              <strong>Start from the official scope.</strong> Each certification&apos;s topics follow the domains and objectives in ServiceNow&apos;s published exam blueprint for that exam, and the facts come from ServiceNow&apos;s product documentation and Now Learning material.
+              <strong>Start from the official scope.</strong> Each certification&apos;s topics follow the domains and objectives in ServiceNow&apos;s published exam blueprint for that exam, and the facts come from ServiceNow&apos;s product documentation and release notes (many older questions also drew on ServiceNow training material).
             </li>
             <li>
               <strong>AI-assisted drafting.</strong> Questions and explanations are drafted with the help of AI models, working from those blueprints and documentation pages. We say this plainly because it matters for how you should use them.
             </li>
             <li>
-              <strong>Review before publishing.</strong> Drafts are reviewed against the documentation before they are published, and our question standard requires every explanation to link to an official ServiceNow source. Older questions don&apos;t all meet that standard yet; we are adding documentation citations question by question.
+              <strong>Checks, and review in progress.</strong> Every question passes automated checks before it is published, and our standard requires every explanation to link to an official ServiceNow source. Individual human review of each question is still in progress, and older questions don&apos;t all meet the citation standard yet.
             </li>
           </ol>
+          <p>
+            The full method, the current review status and how to report a mistake are on{" "}
+            <Link href="/how-questions-are-made" className="text-emerald-700 underline dark:text-emerald-300">How SNReady questions are made</Link>.
+          </p>
         </section>
 
         <section id="what-snready-is-not" className="mt-14 space-y-5 text-lg leading-8 text-zinc-700 dark:text-zinc-300">
           <h2 className="text-2xl font-bold text-zinc-950 dark:text-white">What SNReady is not</h2>
           <ul className="list-disc space-y-3 pl-6">
             <li>
-              <strong>Not real exam questions.</strong> SNReady questions are original practice questions. They are not copied from, and do not reproduce, ServiceNow certification exams, and we don&apos;t sell exam dumps.
+              <strong>Not copied from the exam.</strong> SNReady questions are original practice questions. They are not copied from, and do not reproduce, ServiceNow certification exams.
             </li>
             <li>
               <strong>Not affiliated with ServiceNow.</strong> SNReady is an independent study resource. ServiceNow, Now Learning and the certification names are trademarks of ServiceNow, Inc.

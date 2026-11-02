@@ -165,7 +165,7 @@ export function CsaDeepDive() {
 
       <GuideSection id="csa-scenarios" eyebrow="Worked scenarios" title="Industry scenarios, solved at the right layer">
         <p>
-          These are illustrative situations, not real exam questions. Each shows the reasoning an administrator should apply and the distinction the exam is probing.
+          These are illustrative situations written by SNReady, not taken from the exam. Each shows the reasoning an administrator should apply and the distinction the exam is probing.
         </p>
         <div className="space-y-6">
           <Scenario

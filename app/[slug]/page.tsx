@@ -58,7 +58,6 @@ export async function generateMetadata({
   // Base keywords
   const keywords = [
     `${cert.name} practice test`,
-    `${cert.name} exam questions`,
     `ServiceNow ${cert.name} certification`,
     `${cert.name} study guide`,
     `${cert.fullName} exam prep`,
@@ -69,26 +68,30 @@ export async function generateMetadata({
       ? `Prepare for the ServiceNow ${cert.fullName} (${cert.name}) exam with ${totalQuestions} practice questions. Free sample questions and study guides.`
       : `${cert.name} practice questions are coming soon. See the ServiceNow ${cert.fullName} (${cert.name}) exam format, prerequisites and official resources.`;
 
-  const year = new Date().getFullYear();
+  // The landing page is the exam guide; the practice-questions hub targets
+  // "practice questions" queries, so the two titles don't compete.
+  const title = totalQuestions > 0
+    ? `${cert.fullName} (${cert.name}): Exam Guide & Practice Questions`
+    : `${cert.fullName} (${cert.name}): Exam Guide, Practice Questions Coming Soon`;
 
-  // Free certifications (lib/free-certs.ts): lead with "Free" and the full bank.
+  // Free certifications (lib/free-certs.ts): say the full bank is free.
   if (isCertificationFree(slug) && totalQuestions > 0) {
     return {
-      title: `Free ServiceNow ${cert.name} Practice Test [${year}]`,
-      description: `Free ServiceNow ${cert.fullName} (${cert.name}) practice test: all ${totalQuestions} questions with detailed explanations plus a free timed mock exam. No signup, no paywall.`,
-      keywords: [...keywords, `free ${cert.name} practice test`, `free ${cert.name} exam questions`],
+      title,
+      description: `ServiceNow ${cert.fullName} (${cert.name}) exam guide with all ${totalQuestions} practice questions free, detailed explanations and a free timed mock exam. No signup, no paywall.`,
+      keywords: [...keywords, `free ${cert.name} practice test`],
       alternates: {
         canonical: `/${slug}`,
       },
       openGraph: {
-        title: `Free ServiceNow ${cert.name} Practice Test [${year}]`,
-        description: `All ${totalQuestions} ${cert.name} practice questions and a timed mock exam, free. No signup.`,
+        title,
+        description: `${cert.name} exam guide with all ${totalQuestions} practice questions and a timed mock exam, free. No signup.`,
       },
     };
   }
 
   return {
-    title: `ServiceNow ${cert.name} Practice Test [${year}] — Free Exam Questions`,
+    title,
     description,
     keywords,
     // "Coming soon" certs (no questions yet) stay out of the index.
@@ -97,8 +100,10 @@ export async function generateMetadata({
       canonical: `/${slug}`,
     },
     openGraph: {
-      title: `${cert.name} Certification Exam Prep | SNReady`,
-      description: `Pass the ServiceNow ${cert.name} exam with our comprehensive practice tests and study materials.`,
+      title,
+      description: totalQuestions > 0
+        ? `Exam format, official resources and ${totalQuestions} original practice questions for the ServiceNow ${cert.name} exam.`
+        : `Exam format and official resources for the ServiceNow ${cert.name} exam. Practice questions are coming soon.`,
     },
   };
 }
@@ -364,7 +369,7 @@ export default async function CertificationPage({ params }: PageProps) {
                 <div className="text-2xl font-bold text-emerald-600">
                   {showFormatStats ? cert.examDetails.questionCount : "See blueprint"}
                 </div>
-                <div className="text-sm text-zinc-500">Exam Questions</div>
+                <div className="text-sm text-zinc-500">Questions on the exam</div>
               </div>
               <div>
                 <div className="text-2xl font-bold text-emerald-600">

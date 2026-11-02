@@ -395,6 +395,35 @@ export default function ResourcesPage() {
         </div>
       </section>
 
+      {/* SNReady reference pages moved out of the global nav */}
+      <section className="py-12">
+        <div className="mx-auto max-w-4xl px-4">
+          <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-50">
+            More from SNReady
+          </h2>
+          <ul className="mt-4 grid gap-3 sm:grid-cols-2">
+            {[
+              ["/exam-blueprints", "Official exam blueprints", "Links to ServiceNow's published blueprint for each exam"],
+              ["/how-questions-are-made", "How SNReady questions are made", "How the practice questions are drafted, checked and updated"],
+              ["/compare", "Compare certifications", "Side-by-side comparisons of ServiceNow certifications"],
+              ["/version-diff", "Release changes", "What changed between ServiceNow releases"],
+              ["/salaries", "ServiceNow salaries", "Salary data for ServiceNow roles"],
+              ["/vs", "SNReady vs other practice tests", "How SNReady compares with other study options"],
+            ].map(([href, label, description]) => (
+              <li key={href}>
+                <Link
+                  href={href}
+                  className="block rounded-lg border border-zinc-200 p-4 transition-colors hover:border-emerald-300 hover:bg-emerald-50 dark:border-zinc-700 dark:hover:border-emerald-700 dark:hover:bg-emerald-950"
+                >
+                  <span className="font-medium text-zinc-900 dark:text-zinc-100">{label}</span>
+                  <span className="mt-1 block text-sm text-zinc-600 dark:text-zinc-400">{description}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
       {/* Practice Tests CTA */}
       <section className="py-12 bg-zinc-50 dark:bg-zinc-900/50">
         <div className="mx-auto max-w-4xl px-4 text-center">
@@ -402,7 +431,10 @@ export default function ResourcesPage() {
             Ready to Test Your Knowledge?
           </h2>
           <p className="mt-2 text-zinc-600 dark:text-zinc-400">
-            Practice with questions derived from official Now Learning content.
+            Practice with original questions written against ServiceNow documentation.{" "}
+            <Link href="/how-questions-are-made" className="text-emerald-600 underline hover:text-emerald-700 dark:text-emerald-400">
+              How they are made
+            </Link>
           </p>
           <div className="mt-6 flex flex-col sm:flex-row justify-center gap-4">
             <Link

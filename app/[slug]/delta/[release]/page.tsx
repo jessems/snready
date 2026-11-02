@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { robotsForDeltaPage } from "@/lib/seo-indexing";
-import { CUT_SCORE_LABEL, LAST_REVIEWED_ISO, LAST_REVIEWED_LABEL } from "@/lib/site-facts";
+import { CUT_SCORE_LABEL } from "@/lib/site-facts";
+import { QuestionListingStatus } from "@/components/QuestionListingStatus";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
@@ -62,7 +63,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   return {
     title: `${cert.name} ${release} Delta Exam - Tips, Study Guide & Practice Questions`,
-    description: `Pass your ServiceNow ${cert.name} ${release} delta exam. Reddit tips, key topics, study strategies, and practice questions. Open book exam with 10 questions.`,
+    description: `Prepare for the ServiceNow ${cert.name} ${release} delta exam: Reddit tips, key topics, study strategies, and practice questions. Open book exam with 10 questions.`,
     keywords: [
       `${cert.name} delta exam`,
       `${cert.name} ${release} delta`,
@@ -181,10 +182,7 @@ export default async function DeltaExamPage({ params }: PageProps) {
                 {deltaWindow.closes} and is now closed. Check Now Learning for the next delta exam.
               </p>
             )}
-            <p className="mt-3 text-sm text-zinc-500">
-              Last reviewed:{" "}
-              <time dateTime={LAST_REVIEWED_ISO}>{LAST_REVIEWED_LABEL}</time>
-            </p>
+            {deltaQuestions.length > 0 && <QuestionListingStatus questions={deltaQuestions} className="mt-3" />}
 
             {/* Quick Stats */}
             <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-4">

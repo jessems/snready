@@ -7,7 +7,7 @@ import { getAllComparisonSlugs } from "@/lib/comparisons";
 import { getReleaseSummary } from "@/lib/release-notes";
 import { getAllCourses } from "@/lib/courses";
 import { isIndexableCertPage, isIndexableDeltaPage, isIndexablePath } from "@/lib/seo-indexing";
-import { LAST_REVIEWED_ISO } from "@/lib/site-facts";
+import { LAST_REVIEWED_ISO, METHODOLOGY_UPDATED_ISO } from "@/lib/site-facts";
 
 export const dynamic = "force-static";
 
@@ -81,6 +81,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: `${BASE_URL}/practice-questions`,
       changeFrequency: "weekly",
       priority: 0.85,
+    },
+    {
+      url: `${BASE_URL}/how-questions-are-made`,
+      lastModified: new Date(METHODOLOGY_UPDATED_ISO),
+      changeFrequency: "monthly",
+      priority: 0.6,
     },
     {
       url: `${BASE_URL}/certification-paths`,

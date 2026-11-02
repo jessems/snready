@@ -23,12 +23,11 @@ import { robotsForCertPage } from "@/lib/seo-indexing";
 import {
   CUT_SCORE_LABEL,
   CUT_SCORE_NOTE,
-  LAST_REVIEWED_ISO,
-  LAST_REVIEWED_LABEL,
   formatExamCost,
 } from "@/lib/site-facts";
 import { CheckoutButton } from "@/components/CheckoutButton";
 import { QuestionsWithPaywall } from "@/components/QuestionsWithPaywall";
+import { QuestionListingStatus } from "@/components/QuestionListingStatus";
 
 interface Props {
   params: Promise<{
@@ -50,9 +49,9 @@ const CERT_LANDING_CONTENT: Record<
   }
 > = {
   "cis-itsm": {
-    heroEyebrow: "Built for implementation specialists — not dump memorization.",
+    heroEyebrow: "Built for implementation specialists: practice decisions, not memorization.",
     heroDescription:
-      "Practice the same decision patterns the real CIS-ITSM exam uses: incident vs. problem, CAB vs. ECAB, request fulfillment design, SLA behavior, and reporting tradeoffs.",
+      "Practice the decision patterns the CIS-ITSM exam blueprint covers: incident vs. problem, CAB vs. ECAB, request fulfillment design, SLA behavior, and reporting tradeoffs.",
     metaCoverage: "Incident, Change, Problem, Request, SLA, and reporting",
     trustPoints: [
       "__TOTAL__ scenario-style questions mapped across all __TOPICS__ exam topics",
@@ -73,7 +72,7 @@ const CERT_LANDING_CONTENT: Record<
       "If you're already booking the exam, use the free set to validate weak spots first — then unlock the full bank only if the scenarios feel shaky.",
   },
   "cis-discovery": {
-    heroEyebrow: "Built for Discovery implementation practice — not dump memorization.",
+    heroEyebrow: "Built for Discovery implementation practice: decisions, not memorization.",
     heroDescription:
       "Practice the implementation decisions the CIS-Discovery exam emphasizes: Pattern Designer logic, MID Server and credential setup, Discovery status troubleshooting, CMDB integration, and rollout readiness.",
     metaCoverage: "pattern design, Discovery configuration, the CMDB, and engagement readiness",
@@ -114,22 +113,24 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   const landingContent = CERT_LANDING_CONTENT[slug];
-  const title = landingContent
-    ? `${certification.name} Practice Questions - Current Exam Blueprint`
-    : `${certification.name} Practice Questions - Free ${certification.name} Exam Prep`;
   const questionTotal = getTotalQuestionCount(slug);
+  const title = questionTotal === 0
+    ? `${certification.name} Practice Questions (Coming Soon)`
+    : landingContent
+    ? `${certification.name} Practice Questions Mapped to the Exam Blueprint`
+    : `${certification.name} Practice Questions with Explanations`;
   const description = questionTotal === 0
     ? `${certification.name} practice questions are coming soon. See the ServiceNow ${certification.fullName} exam format and official resources.`
     : landingContent
-    ? `Practice ${getTotalQuestionCount(slug)} ${certification.name} exam questions mapped to the current exam blueprint. ${FREE_QUESTIONS_PER_CERT} free questions covering ${landingContent.metaCoverage}, with detailed explanations.`
-    : `Practice ${getTotalQuestionCount(slug)} ${certification.name} exam questions. ${FREE_QUESTIONS_PER_CERT} free questions with detailed explanations to help you pass your ServiceNow ${certification.fullName} certification.`;
+    ? `${getTotalQuestionCount(slug)} original ${certification.name} practice questions mapped to the current exam blueprint. ${FREE_QUESTIONS_PER_CERT} free questions covering ${landingContent.metaCoverage}, with detailed explanations.`
+    : `${getTotalQuestionCount(slug)} original practice questions for the ServiceNow ${certification.fullName} (${certification.name}) exam, organized by topic. ${FREE_QUESTIONS_PER_CERT} free questions with detailed explanations.`;
 
   // Free certifications (lib/free-certs.ts): the whole bank is free.
   const freeCert = isCertificationFree(slug);
-  const metaTitle = freeCert
-    ? `Free ${certification.name} Practice Questions [${new Date().getFullYear()}] — All ${getTotalQuestionCount(slug)} Free`
+  const metaTitle = freeCert && questionTotal > 0
+    ? `${certification.name} Practice Questions — All ${getTotalQuestionCount(slug)} Free`
     : title;
-  const metaDescription = freeCert
+  const metaDescription = freeCert && questionTotal > 0
     ? `All ${getTotalQuestionCount(slug)} ServiceNow ${certification.name} practice questions free, with detailed explanations and a free timed mock exam. No signup, no paywall.`
     : description;
 
@@ -193,7 +194,7 @@ export default async function PracticeTestPage({ params }: Props) {
     "@context": "https://schema.org",
     "@type": "Course",
     name: `${certification.name} Practice Questions`,
-    description: `Comprehensive practice questions for the ${certification.name} certification exam. Includes ${totalQuestions}+ realistic questions with detailed explanations.`,
+    description: `${totalQuestions} original practice questions with explanations for the ServiceNow ${certification.fullName} (${certification.name}) exam, written against ServiceNow product documentation.`,
     provider: {
       "@type": "Organization",
       name: "SNReady",
@@ -247,10 +248,15 @@ export default async function PracticeTestPage({ params }: Props) {
               : `Coming soon - Practice questions for ${certification.name}`
             }
           </p>
-          <p className="mt-2 text-sm text-zinc-500">
-            Last reviewed:{" "}
-            <time dateTime={LAST_REVIEWED_ISO}>{LAST_REVIEWED_LABEL}</time>
-          </p>
+          {isReady ? (
+            <QuestionListingStatus questions={allQuestions} className="mt-2" />
+          ) : (
+            <p className="mt-2 text-sm text-zinc-500">
+              <Link href="/how-questions-are-made" className="underline underline-offset-2 hover:text-emerald-600">
+                How SNReady questions are made
+              </Link>
+            </p>
+          )}
         </div>
 
         {isReady ? (
@@ -265,7 +271,7 @@ export default async function PracticeTestPage({ params }: Props) {
                   <div className="text-2xl font-bold text-emerald-600">
                     {certification.examDetails?.questionCount || '60'}
                   </div>
-                  <div className="text-sm text-zinc-600 dark:text-zinc-400">Exam Questions</div>
+                  <div className="text-sm text-zinc-600 dark:text-zinc-400">Questions on the exam</div>
                 </div>
                 <div className="text-center">
                   <div className="text-2xl font-bold text-emerald-600">

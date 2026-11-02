@@ -79,6 +79,12 @@ function FeedbackForm() {
     }
   };
 
+  // Without a purchase follow-up token this page explains how to report an
+  // error in a question (linked from /how-questions-are-made).
+  if (!token) {
+    return <ReportQuestionError />;
+  }
+
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -299,6 +305,32 @@ function FeedbackForm() {
           </button>
         </div>
       </div>
+    </div>
+  );
+}
+
+function ReportQuestionError() {
+  return (
+    <div className="mx-auto max-w-2xl px-4 py-14">
+      <h1 className="text-3xl font-bold text-zinc-900 dark:text-zinc-50">Report an error in a question</h1>
+      <p className="mt-4 text-zinc-700 dark:text-zinc-300">
+        If a question, answer or explanation looks wrong or out of date, please tell us. Use the{" "}
+        <strong>Contact</strong> link at the bottom of any page to email the SNReady team, and include:
+      </p>
+      <ul className="mt-4 list-disc space-y-2 pl-6 text-zinc-700 dark:text-zinc-300">
+        <li>the certification and topic (or the page URL)</li>
+        <li>the first few words of the question</li>
+        <li>what you think is wrong and the answer you believe is correct</li>
+        <li>a link to the ServiceNow documentation or release notes that support it, if you have one</li>
+      </ul>
+      <p className="mt-4 text-zinc-700 dark:text-zinc-300">
+        We check each report against the documentation and fix or remove the question if it is wrong.
+      </p>
+      <p className="mt-6">
+        <Link href="/how-questions-are-made" className="text-emerald-700 underline dark:text-emerald-300">
+          How SNReady questions are made
+        </Link>
+      </p>
     </div>
   );
 }

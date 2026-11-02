@@ -2,9 +2,9 @@ import Link from "next/link";
 import { getPricingSummary } from "@/lib/data";
 
 const groups = [
-  { title: "Study", links: [["/csa", "CSA"], ["/cad", "CAD"], ["/cis-df", "Data Foundations"], ["/cis-itsm", "IT Service Management"], ["/certifications", "All certifications"]] },
-  { title: "Find your way", links: [["/certifications", "Study guides"], ["/study-plan", "Build a study plan"], ["/certification-paths", "Career paths"], ["/compare", "Compare certifications"]] },
-  { title: "Reference", links: [["/resources", "Free resources"], ["/blog", "From the blog"], ["/version-diff", "Release changes"], ["/courses", "Courses"], ["/pricing", "Pricing"], ["/about", "About SNReady"], ["mailto:jesse@snready.com", "Contact"]] },
+  { title: "Study", links: [["/csa", "CSA"], ["/cad", "CAD"], ["/cis-df", "Data Foundations"], ["/cis-itsm", "IT Service Management"], ["/certifications", "All certifications"], ["/practice-questions", "Practice questions"]] },
+  { title: "Find your way", links: [["/certifications", "Study guides"], ["/study-plan", "Build a study plan"], ["/certification-paths", "Career paths"], ["/courses", "Courses"], ["/exam-blueprints", "Exam blueprints"]] },
+  { title: "Reference", links: [["/blog", "From the blog"], ["/pricing", "Pricing"], ["/about", "About SNReady"], ["/how-questions-are-made", "How questions are made"], ["/resources", "More resources"], ["mailto:jesse@snready.com", "Contact"]] },
 ];
 
 export default function SiteFooter() {
