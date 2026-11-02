@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CheckoutButton } from "@/components/CheckoutButton";
 import { QuestionsWithPaywall } from "@/components/QuestionsWithPaywall";
+import { withExplanationSources } from "@/lib/doc-links";
 import { QuestionListingStatus } from "@/components/QuestionListingStatus";
 import {
   getCertificationBySlug,
@@ -703,7 +704,7 @@ export default async function CertificationPage({ params }: PageProps) {
               </div>
               <QuestionListingStatus questions={allQuestions} className="mb-6" />
               <QuestionsWithPaywall
-                freeQuestions={freeQuestions}
+                freeQuestions={freeQuestions.map(withExplanationSources)}
                 premiumQuestionCount={premiumQuestionCount}
                 certification={cert.name}
                 certificationSlug={slug}

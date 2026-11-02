@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback, useMemo } from "react";
 import type { Question } from "@/types";
 import { letterForOptionId, optionLetter, orderOptionsForQuestion } from "@/lib/option-order";
 import { LinkedText, SourceList } from "@/components/ExplanationSources";
-import { getExplanationWithSources } from "@/lib/doc-links";
+import { getExplanationWithSources, isListedSource } from "@/lib/doc-links";
 
 interface QuestionCardProps {
   question: Question;
@@ -252,7 +252,8 @@ export default function QuestionCard({
                       </span>
                       <LinkedText text={wrongExplanation.explanation} />
                     </p>
-                    {wrongExplanation.reference && (
+                    {/* Skip the per-option link when the Sources block below already lists it. */}
+                    {wrongExplanation.reference && !isListedSource(wrongExplanation.reference, explanation.sources) && (
                       <p className="mt-1 text-xs text-zinc-500">
                         Reference: <LinkedText text={wrongExplanation.reference} />
                       </p>

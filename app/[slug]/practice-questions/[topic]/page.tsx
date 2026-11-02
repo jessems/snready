@@ -16,6 +16,7 @@ import { robotsForPath } from "@/lib/seo-indexing";
 import TopicIntroduction from "@/components/TopicIntroduction";
 import { CheckoutButton } from "@/components/CheckoutButton";
 import { QuestionsWithPaywall } from "@/components/QuestionsWithPaywall";
+import { withExplanationSources } from "@/lib/doc-links";
 import { QuestionListingStatus } from "@/components/QuestionListingStatus";
 import { FreeCertCrossSell } from "@/components/FreeCertCrossSell";
 
@@ -194,7 +195,7 @@ export default async function TopicQuestionsPage({ params }: PageProps) {
 
               {allQuestions.length > 0 ? (
                 <QuestionsWithPaywall
-                  freeQuestions={freeQuestions}
+                  freeQuestions={freeQuestions.map(withExplanationSources)}
                   premiumQuestionCount={premiumQuestionCount}
                   certification={certification.name}
                   certificationSlug={slug}

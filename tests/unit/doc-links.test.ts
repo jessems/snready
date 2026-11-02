@@ -3,9 +3,12 @@ import {
   docLinkLabel,
   getExplanationWithSources,
   isHttpUrl,
+  isListedSource,
   splitTextWithUrls,
   stripTrailingReferences,
+  withExplanationSources,
 } from "@/lib/doc-links";
+import { getAllDeltaSlugs, getCertificationSlugs, getFreeQuestionsForCertification, getPublicDeltaQuestions } from "@/lib/data";
 import type { Question } from "@/types";
 
 describe("splitTextWithUrls", () => {
@@ -201,5 +204,76 @@ describe("getExplanationWithSources", () => {
       sources: [],
     });
     expect(getExplanationWithSources({})).toEqual({ body: "", sources: [] });
+  });
+});
+
+describe("withExplanationSources", () => {
+  const question = {
+    id: "q1",
+    explanation: {
+      correct: "Lists show records. See https://www.servicenow.com/docs/r/lists.html",
+      wrongAnswers: [{ choiceId: "a", explanation: "Forms show one record.", reference: "https://www.servicenow.com/docs/r/forms.html" }],
+    },
+    references: ["https://docs.servicenow.com/other.html"],
+  };
+
+  it("strips the trailing reference from the explanation and carries the sources separately", () => {
+    const prepared = withExplanationSources(question);
+    expect(prepared.explanation.correct).toBe("Lists show records.");
+    expect(prepared.explanation.wrongAnswers).toEqual(question.explanation.wrongAnswers);
+    expect(prepared.sources).toEqual(getExplanationWithSources(question).sources);
+    expect(prepared.sources.map((source) => source.href)).toEqual([
+      "https://www.servicenow.com/docs/r/lists.html",
+      "https://docs.servicenow.com/other.html",
+      "https://www.servicenow.com/docs/r/forms.html",
+    ]);
+    expect(JSON.stringify(prepared)).not.toMatch(/See https?:\/\//);
+    expect(question.explanation.correct).toContain("See https://"); // input not mutated
+  });
+
+  it("gives the same body and sources when rendered again on the client", () => {
+    expect(getExplanationWithSources(withExplanationSources(question))).toEqual(getExplanationWithSources(question));
+    const numbered = {
+      explanation: "Courses. See https://learning.servicenow.com/lxp?course_id=1",
+      references: ["https://learning.servicenow.com/lxp?course_id=2"],
+    };
+    expect(getExplanationWithSources(withExplanationSources(numbered))).toEqual(getExplanationWithSources(numbered));
+  });
+
+  it("strips a plain-string explanation", () => {
+    expect(withExplanationSources({ explanation: "Plain. Source: https://example.org/a" })).toEqual({
+      explanation: "Plain.",
+      sources: [{ href: "https://example.org/a", label: "example.org/a" }],
+    });
+  });
+
+  it("leaves no \"See https://\" in any free or delta question sent to the client", async () => {
+    const questions = [
+      ...(await Promise.all(getCertificationSlugs().map((slug) => getFreeQuestionsForCertification(slug)))).flat(),
+      ...(await Promise.all(getAllDeltaSlugs().map(({ certification, release }) => getPublicDeltaQuestions(certification, release)))).flat(),
+    ];
+    expect(questions.some((q) => JSON.stringify(q).includes("See https://"))).toBe(true);
+    for (const q of questions) {
+      const prepared = withExplanationSources(q);
+      expect(JSON.stringify(prepared), q.id).not.toMatch(/See:? https?:\/\//i);
+      expect(getExplanationWithSources(prepared), q.id).toEqual(getExplanationWithSources(q));
+    }
+  });
+});
+
+describe("isListedSource", () => {
+  const sources = [{ href: "https://www.servicenow.com/docs/r/lists.html", label: "ServiceNow Docs: Lists" }];
+
+  it("matches the same page regardless of host case, www. and trailing slash", () => {
+    expect(isListedSource("https://www.servicenow.com/docs/r/lists.html", sources)).toBe(true);
+    expect(isListedSource("https://WWW.ServiceNow.com/docs/r/lists.html/", sources)).toBe(true);
+    expect(isListedSource("https://servicenow.com/docs/r/lists.html", sources)).toBe(true);
+  });
+
+  it("does not match other pages or non-URL references", () => {
+    expect(isListedSource("https://www.servicenow.com/docs/r/forms.html", sources)).toBe(false);
+    expect(isListedSource("https://www.servicenow.com/docs/r/LISTS.html", sources)).toBe(false);
+    expect(isListedSource("ServiceNow Docs - Lists", sources)).toBe(false);
+    expect(isListedSource("https://www.servicenow.com/docs/r/lists.html", [])).toBe(false);
   });
 });
