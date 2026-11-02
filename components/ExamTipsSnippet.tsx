@@ -68,7 +68,7 @@ export function ExamTipsSnippet({ tips, certSlug, certName }: ExamTipsSnippetPro
     <section className="rounded-xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900">
       <div className="flex items-center justify-between">
         <h2 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
-          💡 Real Exam Insights
+          💡 What test-takers report
         </h2>
         <Link
           href={`/${certSlug}/prepare#real-experiences`}

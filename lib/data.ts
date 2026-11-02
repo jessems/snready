@@ -38,6 +38,7 @@ const categoryDisplayNames: Record<CertificationCategory, string> = {
   grc: "Governance, Risk & Compliance",
   itam: "IT Asset Management",
   spm: "Strategic Portfolio Management",
+  analytics: "Analytics",
   "service-provider": "Service Provider",
   specialist: "Application Specialist",
   micro: "Micro-Certifications",
@@ -69,6 +70,8 @@ const categoryDescriptions: Record<CertificationCategory, string> = {
     "IT Asset Management certifications covering software and hardware asset lifecycle management. Validates expertise in license compliance, procurement, and asset optimization.",
   spm:
     "Strategic Portfolio Management certifications covering project portfolio management, agile development, and application portfolio management on ServiceNow.",
+  analytics:
+    "Analytics certifications covering Platform Analytics on ServiceNow: indicators, dashboards and reporting.",
   "service-provider":
     "Certifications for managed service providers and telecommunications companies implementing ServiceNow for multi-tenant operations and service delivery.",
   specialist:
@@ -354,6 +357,7 @@ const categoryOrder: CertificationCategory[] = [
   "grc",
   "itam",
   "spm",
+  "analytics",
   "service-provider",
   "specialist",
   "micro",

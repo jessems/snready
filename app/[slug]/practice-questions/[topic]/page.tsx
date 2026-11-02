@@ -13,10 +13,10 @@ import {
 } from "@/lib/data";
 import { breadcrumbs, generateBreadcrumbJsonLd } from "@/lib/breadcrumbs";
 import { robotsForPath } from "@/lib/seo-indexing";
-import { LAST_REVIEWED_ISO, LAST_REVIEWED_LABEL } from "@/lib/site-facts";
 import TopicIntroduction from "@/components/TopicIntroduction";
 import { CheckoutButton } from "@/components/CheckoutButton";
 import { QuestionsWithPaywall } from "@/components/QuestionsWithPaywall";
+import { QuestionListingStatus } from "@/components/QuestionListingStatus";
 import { FreeCertCrossSell } from "@/components/FreeCertCrossSell";
 
 interface PageProps {
@@ -41,12 +41,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   const robots = robotsForPath(`/${slug}/practice-questions/${topicSlug}`);
 
-  // CTR-optimized title: includes "Free", action-oriented, year for freshness
-  const year = new Date().getFullYear();
-
   if (isCertificationFree(slug)) {
     return {
-      title: `Free ${certification.name} ${topic.name} Practice Questions [${year}] — All ${topic.questionCount} Free`,
+      title: `${certification.name} ${topic.name} Practice Questions — All ${topic.questionCount} Free`,
       description: `All ${topic.questionCount} ${certification.name} ${topic.name} practice questions are free, with detailed explanations. No signup, no paywall. Prepare for the ServiceNow ${certification.fullName} exam.`,
       keywords: [
         `${certification.name} ${topic.name} questions`,
@@ -67,8 +64,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 
   return {
-    title: `Free ${certification.name} ${topic.name} Practice Questions [${year}]`,
-    description: `${topic.questionCount} ${topic.name} practice questions for the ServiceNow ${certification.name} certification, with free sample questions. Detailed explanations, exam-style format. Pass your exam with confidence.`,
+    title: `${certification.name} ${topic.name} Practice Questions`,
+    description: `${topic.questionCount} original ${topic.name} practice questions for the ServiceNow ${certification.name} certification, with free sample questions and explanations.`,
     keywords: [
       `${certification.name} ${topic.name} questions`,
       `ServiceNow ${topic.name} exam`,
@@ -164,10 +161,7 @@ export default async function TopicQuestionsPage({ params }: PageProps) {
                     {certIsFree ? "All questions free" : `${freeQuestions.length} free questions`}
                   </span>
                 </div>
-                <p className="mt-2 text-sm text-zinc-500">
-                  Last reviewed:{" "}
-                  <time dateTime={LAST_REVIEWED_ISO}>{LAST_REVIEWED_LABEL}</time>
-                </p>
+                <QuestionListingStatus questions={allQuestions} className="mt-2" />
               </div>
               <div className="flex flex-col gap-2">
                 <Link

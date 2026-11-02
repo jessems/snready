@@ -55,7 +55,13 @@ export default function PracticeTestsIndexPage() {
             ServiceNow Practice Questions
           </h1>
           <p className="mt-4 text-lg text-zinc-600 dark:text-zinc-400">
-            Realistic exam questions to help you pass your certification
+            Original practice questions with explanations, organized by certification and topic
+          </p>
+          <p className="mt-2 text-sm text-zinc-500">
+            AI-assisted drafts written against ServiceNow documentation and exam blueprints.{" "}
+            <Link href="/how-questions-are-made" className="underline underline-offset-2 hover:text-emerald-600">
+              How SNReady questions are made
+            </Link>
           </p>
         </div>
 

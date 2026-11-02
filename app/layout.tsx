@@ -20,11 +20,11 @@ export const metadata: Metadata = {
     template: "%s | SNReady",
   },
   description:
-    "Pass your ServiceNow certification exams with confidence. Free practice tests, exam questions, and study guides for CSA, CAD, CIS-ITSM, and more.",
+    "Original ServiceNow certification practice questions with explanations, plus exam guides and study plans for CSA, CAD, CIS-ITSM, and more.",
   keywords: [
     "ServiceNow certification",
     "CSA practice test",
-    "ServiceNow exam questions",
+    "ServiceNow practice questions",
     "CAD certification",
     "CIS-ITSM exam prep",
     "ServiceNow study guide",
@@ -37,14 +37,14 @@ export const metadata: Metadata = {
     siteName: "SNReady",
     title: "SNReady - ServiceNow Certification Exam Prep",
     description:
-      "Pass your ServiceNow certification exams with confidence. Free practice tests and exam questions.",
+      "Original ServiceNow certification practice questions with explanations, plus exam guides and study plans.",
     images: ['/og-default.png'],
   },
   twitter: {
     card: "summary_large_image",
     title: "SNReady - ServiceNow Certification Exam Prep",
     description:
-      "Pass your ServiceNow certification exams with confidence. Free practice tests and exam questions.",
+      "Original ServiceNow certification practice questions with explanations, plus exam guides and study plans.",
   },
   robots: {
     index: true,

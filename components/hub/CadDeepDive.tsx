@@ -158,7 +158,7 @@ export function CadDeepDive() {
       </GuideSection>
 
       <GuideSection id="cad-scenarios" eyebrow="Worked scenarios" title="Industry scenarios, solved like a developer">
-        <p>These are illustrative situations, not real exam questions.</p>
+        <p>These are illustrative situations written by SNReady, not taken from the exam.</p>
         <div className="space-y-6">
           <Scenario
             industry="Insurance"

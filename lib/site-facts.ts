@@ -8,6 +8,9 @@ import type { Certification } from "@/types";
 export const LAST_REVIEWED_ISO = "2026-10-16";
 export const LAST_REVIEWED_LABEL = "16 October 2026";
 
+/** Date /how-questions-are-made (methodology and review status) was last updated. */
+export const METHODOLOGY_UPDATED_ISO = "2026-11-02";
+
 // Source: official exam blueprints (e.g. CSA KB0011554). ServiceNow scores
 // against a predetermined cut score that it does not publish, and it is not
 // always 70%. Never present 70% as the official passing score.
@@ -41,4 +44,21 @@ export function getExamCost(cert: Pick<Certification, "examDetails">): number | 
 export function formatExamCost(cert: Pick<Certification, "examDetails">): string {
   const cost = getExamCost(cert);
   return cost === null ? "See ServiceNow University" : `$${cost}`;
+}
+
+/**
+ * Review status of the practice questions on a listing page. A listing only
+ * carries the "Last reviewed" date when every question on it is marked
+ * `meta.reviewed`; otherwise it shows the newest per-question date from the
+ * data, so unreviewed AI-assisted drafts are never stamped as reviewed.
+ */
+export function getQuestionListingStatus(
+  questions: ReadonlyArray<{ meta?: { reviewed?: boolean; generatedAt?: string } }>,
+): { reviewed: boolean; updatedIso: string | null } {
+  const reviewed = questions.length > 0 && questions.every((q) => q.meta?.reviewed === true);
+  const dates = questions
+    .map((q) => q.meta?.generatedAt?.slice(0, 10))
+    .filter((d): d is string => !!d && /^\d{4}-\d{2}-\d{2}$/.test(d))
+    .sort();
+  return { reviewed, updatedIso: dates.at(-1) ?? null };
 }

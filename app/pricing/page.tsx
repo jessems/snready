@@ -108,15 +108,15 @@ export default function PricingPage() {
         name: "How is SNReady different from Udemy courses?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Unlike Udemy courses that quickly become outdated, SNReady questions are generated directly from official ServiceNow Now Learning content. This means our questions reflect what's actually on the exam. Plus, at $9 vs $50-100+ for Udemy courses, we're significantly cheaper.",
+          text: "SNReady questions are original practice questions written against ServiceNow product documentation and the published exam blueprints, and we update them when a new release changes the exam. They are AI-assisted drafts; our “How SNReady questions are made” page explains how they are checked. At $9 vs $50-100+ for Udemy courses, we're also cheaper.",
         },
       },
       {
         "@type": "Question",
-        name: "Are these brain dumps or exam dumps?",
+        name: "Are these questions copied from the ServiceNow exam?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "No. SNReady does NOT sell brain dumps or leaked exam questions. Our questions are generated from official ServiceNow training materials to help you learn the concepts that will be tested. We believe in helping you actually understand the material, not just memorize answers.",
+          text: "No. SNReady questions are original practice questions written against ServiceNow product documentation and the published exam blueprints. They are not copied from ServiceNow certification exams. The goal is to help you understand the concepts, not memorize answers.",
         },
       },
       {
@@ -144,7 +144,7 @@ export default function PricingPage() {
     "@type": "Product",
     name: "SNReady ServiceNow Practice Tests",
     description:
-      "Practice questions for ServiceNow certification exams generated from official Now Learning content",
+      "Original practice questions written against ServiceNow product documentation",
     brand: {
       "@type": "Brand",
       name: "SNReady",
@@ -362,9 +362,6 @@ export default function PricingPage() {
                   <th className="py-4 px-4 font-semibold text-zinc-500">
                     Udemy Courses
                   </th>
-                  <th className="py-4 px-4 font-semibold text-zinc-500">
-                    Brain Dumps
-                  </th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-zinc-200 dark:divide-zinc-700">
@@ -376,7 +373,6 @@ export default function PricingPage() {
                     $9 lifetime
                   </td>
                   <td className="py-4 px-4 text-zinc-500">$50-100+</td>
-                  <td className="py-4 px-4 text-zinc-500">$20-50</td>
                 </tr>
                 <tr>
                   <td className="py-4 pr-4 text-zinc-700 dark:text-zinc-300">
@@ -384,11 +380,10 @@ export default function PricingPage() {
                   </td>
                   <td className="py-4 px-4">
                     <span className="text-emerald-600">
-                      Official Now Learning
+                      Written against ServiceNow docs
                     </span>
                   </td>
                   <td className="py-4 px-4 text-zinc-500">Varies by creator</td>
-                  <td className="py-4 px-4 text-zinc-500">Leaked exam Qs</td>
                 </tr>
                 <tr>
                   <td className="py-4 pr-4 text-zinc-700 dark:text-zinc-300">
@@ -396,9 +391,6 @@ export default function PricingPage() {
                   </td>
                   <td className="py-4 px-4">
                     <CheckIcon className="h-5 w-5 text-emerald-500" />
-                  </td>
-                  <td className="py-4 px-4">
-                    <XIcon className="h-5 w-5 text-red-400" />
                   </td>
                   <td className="py-4 px-4">
                     <XIcon className="h-5 w-5 text-red-400" />
@@ -414,21 +406,6 @@ export default function PricingPage() {
                   <td className="py-4 px-4">
                     <CheckIcon className="h-5 w-5 text-emerald-500" />
                   </td>
-                  <td className="py-4 px-4">
-                    <XIcon className="h-5 w-5 text-red-400" />
-                  </td>
-                </tr>
-                <tr>
-                  <td className="py-4 pr-4 text-zinc-700 dark:text-zinc-300">
-                    Risk to Certification
-                  </td>
-                  <td className="py-4 px-4">
-                    <span className="text-emerald-600">None</span>
-                  </td>
-                  <td className="py-4 px-4 text-zinc-500">None</td>
-                  <td className="py-4 px-4 text-red-500 font-medium">
-                    Ban risk
-                  </td>
                 </tr>
                 <tr>
                   <td className="py-4 pr-4 text-zinc-700 dark:text-zinc-300">
@@ -439,9 +416,6 @@ export default function PricingPage() {
                   </td>
                   <td className="py-4 px-4">
                     <span className="text-zinc-500">Sometimes</span>
-                  </td>
-                  <td className="py-4 px-4">
-                    <XIcon className="h-5 w-5 text-red-400" />
                   </td>
                 </tr>
                 <tr>
@@ -454,9 +428,6 @@ export default function PricingPage() {
                   <td className="py-4 px-4">
                     <span className="text-zinc-500">Varies</span>
                   </td>
-                  <td className="py-4 px-4">
-                    <XIcon className="h-5 w-5 text-red-400" />
-                  </td>
                 </tr>
                 <tr>
                   <td className="py-4 pr-4 text-zinc-700 dark:text-zinc-300">
@@ -464,9 +435,6 @@ export default function PricingPage() {
                   </td>
                   <td className="py-4 px-4">
                     <CheckIcon className="h-5 w-5 text-emerald-500" />
-                  </td>
-                  <td className="py-4 px-4">
-                    <XIcon className="h-5 w-5 text-red-400" />
                   </td>
                   <td className="py-4 px-4">
                     <XIcon className="h-5 w-5 text-red-400" />
@@ -501,11 +469,11 @@ export default function PricingPage() {
               },
               {
                 q: "How is SNReady different from Udemy courses?",
-                a: "Unlike Udemy courses that quickly become outdated (many are still on Washington or older releases), SNReady questions are generated directly from official ServiceNow Now Learning content and updated for each major release. Plus, at $9 vs $50-100+ for quality Udemy courses, we're significantly more affordable.",
+                a: "SNReady questions are original practice questions written against ServiceNow product documentation and the published exam blueprints, and we update them when a new release changes the exam. They are AI-assisted drafts; our “How SNReady questions are made” page explains how they are checked. Plus, at $9 vs $50-100+ for quality Udemy courses, we're significantly more affordable.",
               },
               {
-                q: "Are these brain dumps or leaked exam questions?",
-                a: "Absolutely not. SNReady does NOT sell brain dumps or leaked exam questions. Using brain dumps violates ServiceNow's certification agreement and can result in permanent certification bans. Our questions are generated from official training materials to help you learn the concepts — not memorize answers to specific questions.",
+                q: "Are these questions copied from the ServiceNow exam?",
+                a: "No. SNReady questions are original practice questions written against ServiceNow product documentation and the published exam blueprints. They are not copied from ServiceNow certification exams, and sharing exam content would violate ServiceNow's certification agreement. The goal is to help you learn the concepts, not memorize answers to specific questions.",
               },
               {
                 q: "What certifications do you support?",

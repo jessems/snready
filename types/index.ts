@@ -12,6 +12,7 @@ export type CertificationCategory =
   | "grc"
   | "itam"
   | "spm"
+  | "analytics"
   | "service-provider"
   | "specialist"
   | "micro";
