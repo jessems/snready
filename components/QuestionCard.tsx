@@ -3,12 +3,8 @@
 import { useState, useEffect, useCallback, useMemo } from "react";
 import type { Question } from "@/types";
 import { letterForOptionId, optionLetter, orderOptionsForQuestion } from "@/lib/option-order";
-import {
-  correctExplanationText,
-  docLinkLabel,
-  getQuestionReferences,
-  splitTextWithUrls,
-} from "@/lib/doc-links";
+import { LinkedText, SourceList } from "@/components/ExplanationSources";
+import { getExplanationWithSources } from "@/lib/doc-links";
 
 interface QuestionCardProps {
   question: Question;
@@ -33,6 +29,8 @@ export default function QuestionCard({
     () => orderOptionsForQuestion(question.id, question.options),
     [question.id, question.options]
   );
+  // Explanation text without its trailing "See <url>", plus every source URL for the question.
+  const explanation = useMemo(() => getExplanationWithSources(question), [question]);
   const [selectedAnswers, setSelectedAnswers] = useState<string[]>([]);
   const [revealed, setRevealed] = useState(showAnswer);
 
@@ -232,7 +230,7 @@ export default function QuestionCard({
 
           {/* Main explanation */}
           <p className="mt-3 text-sm text-zinc-600 dark:text-zinc-400">
-            <LinkedText text={correctExplanationText(question)} />
+            <LinkedText text={explanation.body} />
           </p>
 
           {/* Wrong answer explanations for selected wrong answers */}
@@ -252,7 +250,7 @@ export default function QuestionCard({
                       <span className="font-medium">
                         Why {letterForOptionId(options, wrongId)} is wrong:{" "}
                       </span>
-                      {wrongExplanation.explanation}
+                      <LinkedText text={wrongExplanation.explanation} />
                     </p>
                     {wrongExplanation.reference && (
                       <p className="mt-1 text-xs text-zinc-500">
@@ -263,7 +261,7 @@ export default function QuestionCard({
                 );
               })}
 
-          <QuestionReferenceList question={question} />
+          <SourceList sources={explanation.sources} />
         </div>
       )}
 
@@ -284,7 +282,7 @@ export default function QuestionCard({
                 .join("; ")}
             </p>
             <p className="mt-3 text-sm text-zinc-600 dark:text-zinc-400">
-              <LinkedText text={correctExplanationText(question)} />
+              <LinkedText text={explanation.body} />
             </p>
             {typeof question.explanation !== "string" &&
               (question.explanation.wrongAnswers?.length ?? 0) > 0 && (
@@ -298,72 +296,14 @@ export default function QuestionCard({
                         className="border-l-2 border-zinc-300 pl-3 text-sm text-zinc-600 dark:border-zinc-600 dark:text-zinc-400"
                       >
                         <span className="font-medium">Why {optionLetter(index)} is wrong: </span>
-                        {wrong!.explanation}
+                        <LinkedText text={wrong!.explanation} />
                       </li>
                     ))}
                 </ul>
               )}
-            <QuestionReferenceList question={question} />
+            <SourceList sources={explanation.sources} />
           </div>
         </details>
-      )}
-    </div>
-  );
-}
-
-const linkClassName =
-  "text-emerald-700 underline decoration-emerald-300 underline-offset-2 hover:text-emerald-800 dark:text-emerald-400 dark:decoration-emerald-700 dark:hover:text-emerald-300";
-
-// Text with any URLs rendered as real links (labelled by site, not the raw URL).
-function LinkedText({ text }: { text: string }) {
-  return (
-    <>
-      {splitTextWithUrls(text).map((segment, index) =>
-        segment.type === "link" ? (
-          <a
-            key={index}
-            href={segment.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={linkClassName}
-          >
-            {docLinkLabel(segment.href)}
-          </a>
-        ) : (
-          <span key={index}>{segment.text}</span>
-        )
-      )}
-    </>
-  );
-}
-
-function QuestionReferenceList({ question }: { question: Question }) {
-  const { links, notes } = getQuestionReferences(question);
-  if (links.length === 0 && notes.length === 0) return null;
-  // Several links can share a label (e.g. two course lessons); number the repeats.
-  const labelCounts = new Map<string, number>();
-  const labels = links.map(({ href, title }) => {
-    const label = title ?? docLinkLabel(href);
-    const count = (labelCounts.get(label) ?? 0) + 1;
-    labelCounts.set(label, count);
-    return count > 1 ? `${label} (${count})` : label;
-  });
-  return (
-    <div className="mt-3 text-xs text-zinc-500">
-      <span className="font-medium">References: </span>
-      {links.map(({ href }, index) => (
-        <span key={href}>
-          {index > 0 && ", "}
-          <a href={href} target="_blank" rel="noopener noreferrer" className={linkClassName}>
-            {labels[index]}
-          </a>
-        </span>
-      ))}
-      {notes.length > 0 && (
-        <span>
-          {links.length > 0 && ", "}
-          {notes.join(", ")}
-        </span>
       )}
     </div>
   );

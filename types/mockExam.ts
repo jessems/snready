@@ -19,6 +19,7 @@ export interface MockExamQuestion {
     correct: string;
     wrongAnswers?: { choiceId: string; explanation: string }[];
   };
+  sources?: { href: string; label: string }[]; // explanation sources (see lib/doc-links.ts)
   topic: string;
   domain?: string;
 }
@@ -63,6 +64,7 @@ export interface MockExamResult {
       correct: string;
       wrongAnswers?: { choiceId: string; explanation: string }[];
     };
+    sources?: { href: string; label: string }[];
     topic: string;
     domain?: string;
   }[];

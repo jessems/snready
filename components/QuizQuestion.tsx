@@ -1,6 +1,7 @@
 "use client";
 
 import { Question } from "@/types/quiz";
+import { Explanation } from "@/components/ExplanationSources";
 
 interface QuizQuestionProps {
   question: Question;
@@ -117,9 +118,10 @@ export default function QuizQuestion({
           <p className="text-sm font-medium text-[var(--accent)] mb-1">
             Explanation
           </p>
-          <p className="text-sm text-[var(--text-secondary)]">
-            {question.explanation}
-          </p>
+          <Explanation
+            question={{ explanation: question.explanation }}
+            textClassName="text-sm text-[var(--text-secondary)]"
+          />
         </div>
       )}
     </div>

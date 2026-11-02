@@ -6,6 +6,7 @@ import type { Question } from "@/types";
 import { isFreeCertification } from "@/lib/free-certs";
 import { FREE_QUESTIONS_PER_CERT } from "@/lib/free-questions";
 import { letterForOptionId, optionLetter, orderOptionsForQuestion } from "@/lib/option-order";
+import { Explanation } from "@/components/ExplanationSources";
 
 interface SampleQuestionsProps {
   questions: Question[];
@@ -182,9 +183,10 @@ export function SampleQuestions({ questions, certSlug, certName }: SampleQuestio
                             </>
                           )}
                         </div>
-                        <p className="mt-2 text-sm text-zinc-700 dark:text-zinc-300">
-                          {question.explanation.correct}
-                        </p>
+                        <Explanation
+                          question={question}
+                          textClassName="mt-2 text-sm text-zinc-700 dark:text-zinc-300"
+                        />
                       </div>
                     )}
                   </div>

@@ -93,7 +93,15 @@ describe("QuestionCard static explanation", () => {
     const hrefs = Array.from(details!.querySelectorAll("a")).map((a) => a.getAttribute("href"));
     expect(hrefs).toContain("https://www.servicenow.com/docs/bundle/lists.html");
     expect(hrefs).toContain("https://www.servicenow.com/docs/bundle/forms.html");
-    expect(details!.textContent).toContain("ServiceNow List Documentation");
+    // Trailing "See: <url>" moves out of the text into the Sources block; non-URL references are dropped.
+    expect(details!.textContent).not.toContain("See: https://");
+    expect(details!.textContent).not.toContain("ServiceNow List Documentation");
+    expect(details!.textContent).toContain("Sources");
+    expect(details!.textContent).toContain("ServiceNow Docs: Lists");
+    for (const link of details!.querySelectorAll("a")) {
+      expect(link).toHaveAttribute("target", "_blank");
+      expect(link).toHaveAttribute("rel", "noopener noreferrer");
+    }
   });
 
   it("does not render the answer in the HTML unless enabled", () => {

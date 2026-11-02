@@ -7,6 +7,7 @@ import type {
 } from "@/types/mockExam";
 import type { Question } from "@/types";
 import { shuffleOptions } from "@/lib/option-order";
+import { getExplanationWithSources } from "@/lib/doc-links";
 
 const STORAGE_KEY_PREFIX = "snready_mock_exam_";
 const HISTORY_KEY = "snready_mock_exam_history";
@@ -43,6 +44,7 @@ export function toMockExamQuestion(q: Question): MockExamQuestion {
           })),
         }
       : undefined,
+    sources: getExplanationWithSources(q).sources,
     topic: q.topic,
     domain: q.labels?.domain,
   };
@@ -208,6 +210,7 @@ export function completeSession(session: MockExamSession): MockExamResult {
       correctAnswers: q.correctAnswers,
       isCorrect,
       explanation: q.explanation,
+      sources: q.sources,
       topic: q.topic,
       domain: q.domain,
     };
