@@ -86,46 +86,46 @@
       "id": "cad-ui-policies-actions-002",
       "certification": "cad",
       "topic": "ui-policies-actions",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "In what order do UI policies execute relative to client scripts on a form?",
+      "question": "A child table has a UI policy with Order 500 that shows the Urgency field. Its parent table has a UI policy, inherited by the child table, with the same conditions and Order 100 that hides Urgency. When the conditions are met on the child table's form, what happens?",
       "options": [
         {
           "id": "a",
-          "text": "Before client scripts"
+          "text": "Urgency is shown, because 500 is the higher Order value"
         },
         {
           "id": "b",
-          "text": "At the same time as client scripts"
+          "text": "Urgency is hidden, because the parent policy runs last"
         },
         {
           "id": "c",
-          "text": "After client scripts"
+          "text": "Urgency is shown, because the child policy overrides the parent"
         },
         {
           "id": "d",
-          "text": "The order depends on the Order field value set on each"
+          "text": "Urgency is shown, because the parent policy runs first"
         }
       ],
       "correctAnswers": [
-        "c"
+        "b"
       ],
       "explanation": {
-        "correct": "UI policies always execute after client scripts on a form. This is important to understand because if both a client script and a UI policy affect the same field, the UI policy will take effect last.",
+        "correct": "When a child table has a UI policy inherited from its parent table, the child table's UI policy always runs first, regardless of Order. The documentation uses this exact example: the child policy (Order 500) runs first and shows Urgency, then the parent policy (Order 100) runs and hides it, so Urgency ends up hidden. See https://www.servicenow.com/docs/r/platform-administration/t_CreateAUIPolicy.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "UI policies do not execute before client scripts. Client scripts execute first, then UI policies run afterward.",
+            "explanation": "Order sets the processing sequence within a table, but for inherited UI policies the child table's policies run first and the base table's policies run after them, regardless of Order. The parent policy runs last and hides Urgency.",
             "reference": "https://www.servicenow.com/docs/r/platform-administration/t_CreateAUIPolicy.html"
           },
           {
-            "choiceId": "b",
-            "explanation": "UI policies and client scripts do not execute simultaneously. Client scripts run first, followed by UI policies.",
+            "choiceId": "c",
+            "explanation": "The child policy does not override the parent. It runs first, and the inherited parent policy then runs and hides Urgency.",
             "reference": "https://www.servicenow.com/docs/r/platform-administration/t_CreateAUIPolicy.html"
           },
           {
             "choiceId": "d",
-            "explanation": "While both UI policies and client scripts have an Order field, UI policies as a category always execute after all client scripts have completed, regardless of individual order values.",
+            "explanation": "The parent policy does not run first. When a child table has an inherited UI policy from its parent table, the child table's UI policy always runs first; the parent policy runs after it and hides Urgency.",
             "reference": "https://www.servicenow.com/docs/r/platform-administration/t_CreateAUIPolicy.html"
           }
         ]
@@ -149,15 +149,17 @@
         ],
         "tags": [
           "ui-policy",
-          "client-script",
+          "inheritance",
           "execution-order"
         ]
       },
       "meta": {
         "generatedAt": "2025-07-18T02:30:00.000Z",
-        "version": "1.0",
-        "release": "Yokohama",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {

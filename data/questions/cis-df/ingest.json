@@ -6,53 +6,55 @@
       "id": "cis-df-ingest-001",
       "certification": "cis-df",
       "topic": "ingest",
-      "cognitiveLevel": "understanding",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "In the Build and Integrate domain, what is the purpose of the SDLC Component object?",
+      "question": "A DevOps team wants the CMDB to record each microservice and API it develops as part of a larger business application, before anything is deployed. Which CSDM table should hold these records?",
       "options": [
         {
           "id": "a",
-          "text": "To track software licenses and compliance"
+          "text": "Business application [cmdb_ci_business_app]"
         },
         {
           "id": "b",
-          "text": "To identify individually developed parts of a business application like microservices and APIs"
+          "text": "Agile development component [cmdb_ci_sdlc_component]"
         },
         {
           "id": "c",
-          "text": "To manage user access to development environments"
+          "text": "Mapped application service [cmdb_ci_service_discovered]"
         },
         {
           "id": "d",
-          "text": "To store backup copies of source code"
+          "text": "Application model [cmdb_application_product_model]"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "The SDLC (Software Development Lifecycle) Component identifies individually developed parts of a monolithic business application, such as microservices, APIs, and other components that can be developed and released separately. This provides visibility into what's being built before it becomes a deployed service instance. See: https://docs.servicenow.com/bundle/zurich-servicenow-platform/page/product/configuration-management/concept/csdm-build-integrate.html",
+        "correct": "In the Build & Integration domain, an Agile development component is a CI that represents a unique development effort of code, meaning the individually developed parts of a larger business application. Records live in the Agile Development Component [cmdb_ci_sdlc_component] table, are not operational CIs, and let DevOps visualize the development pipeline. See https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/build-domain.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Software license tracking is handled by Software Asset Management (SAM), not SDLC Components.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=62ebf27e53f26ed0c2245a01a0490e19&child_id=a293d17b4787ae98c00af235126d43c8&spa=1"
+            "explanation": "A business application is a purchased or internally developed application that supports a business capability. It contains the Agile development components rather than representing each developed part.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/design-domain.html"
           },
           {
             "choiceId": "c",
-            "explanation": "User access management is handled through roles and groups, not SDLC Components.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=62ebf27e53f26ed0c2245a01a0490e19&child_id=a293d17b4787ae98c00af235126d43c8&spa=1"
+            "explanation": "Mapped application service is the table for manually created or Service Mapping service instances, which are deployed, operational CIs. A service instance is the deployed instance of an Agile development application component.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/manage-tech-servs-domain.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Source code backup is a DevOps function. SDLC Components track the logical components being developed, not code storage.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=62ebf27e53f26ed0c2245a01a0490e19&child_id=a293d17b4787ae98c00af235126d43c8&spa=1"
+            "explanation": "Application Model is a product model class in the Foundation domain. Product models are not CIs and describe a product version or configuration that CIs reference through Model ID.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/foundation-domain.html"
           }
         ]
       },
       "references": [
-        "CSDM 5 White Paper",
-        "DevOps Change Data Model"
+        "https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/build-domain.html",
+        "https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/design-domain.html",
+        "https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/manage-tech-servs-domain.html",
+        "https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/foundation-domain.html"
       ],
       "isFree": true,
       "source": {
@@ -81,60 +83,65 @@
         "lesson": "06-build-and-integrate-domain",
         "tags": [
           "SDLC",
+          "Agile development component",
           "microservices",
-          "API",
           "DevOps"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T12:00:00Z",
-        "version": "1.0",
-        "release": "Zurich",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "cis-df-ingest-002",
       "certification": "cis-df",
       "topic": "ingest",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What role is required to view and edit the Identification and Reconciliation properties in ServiceNow?",
+      "question": "A CMDB lead wants a team member to adjust Identification and Reconciliation properties such as glide.reconciliation.override.null without granting the admin role. Which role allows viewing and editing these properties?",
       "options": [
         {
           "id": "a",
-          "text": "cmdb_admin"
+          "text": "sn_cmdb_editor"
         },
         {
           "id": "b",
-          "text": "admin"
+          "text": "sn_cmdb_admin"
         },
         {
           "id": "c",
-          "text": "itil"
+          "text": "sm_admin"
         },
         {
           "id": "d",
-          "text": "cmdb_editor"
+          "text": "sn_cmdb_user"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "The admin role is required to view and edit the Identification and Reconciliation properties. This is explicitly stated in the ServiceNow documentation for IRE properties. See: https://www.servicenow.com/docs/r/xanadu/servicenow-platform/configuration-management-database-cmdb/properties-id-reconciliation.html",
+        "correct": "The Identification and Reconciliation properties page states that the sn_cmdb_admin or admin role is required to view and edit these properties, so sn_cmdb_admin is the role to grant when admin is not wanted. See https://www.servicenow.com/docs/r/servicenow-platform/configuration-management-database-cmdb/properties-id-reconciliation.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "cmdb_admin is not the role required for IRE properties. While it provides CMDB administrative capabilities, the documentation specifies the admin role."
+            "explanation": "sn_cmdb_editor is a CMDB role that is given create, update and delete access to the cmdb_ci class, but it is not one of the roles the IRE properties page lists (sn_cmdb_admin or admin).",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/configuration-management-database-cmdb/properties-id-reconciliation.html"
           },
           {
             "choiceId": "c",
-            "explanation": "The itil role provides access to ITSM modules but does not grant access to view or edit IRE system properties."
+            "explanation": "The Brazil release notes list sm_admin, with sn_cmdb_admin or admin, as a role for saving shared Unified Map filter presets. It is not one of the roles the IRE properties page requires (sn_cmdb_admin or admin).",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurationmanagementdatabasecmdb-release-notes.html"
           },
           {
             "choiceId": "d",
-            "explanation": "cmdb_editor is not a standard ServiceNow role. The admin role is explicitly required for IRE property configuration."
+            "explanation": "sn_cmdb_user is the CMDB role that the itil role now contains. It does not grant the access that the IRE properties page requires (sn_cmdb_admin or admin).",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurationmanagementdatabasecmdb-release-notes.html"
           }
         ]
       },
@@ -151,60 +158,68 @@
         "tags": [
           "IRE",
           "properties",
-          "admin role",
+          "sn_cmdb_admin",
           "access control"
         ]
       },
       "meta": {
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       },
       "isFree": true,
-      "references": []
+      "references": [
+        "https://www.servicenow.com/docs/r/servicenow-platform/configuration-management-database-cmdb/properties-id-reconciliation.html",
+        "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-configurationmanagementdatabasecmdb-release-notes.html"
+      ]
     },
     {
       "id": "cis-df-ingest-003",
       "certification": "cis-df",
       "topic": "ingest",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What is the default value of the glide.identification_engine.skip_duplicates.threshold property?",
+      "question": "An administrator reviewing IRE settings sees that glide.identification_engine.skip_duplicates is true and has never changed its threshold property. Up to how many CIs in a duplicate set will IRE still process with the skip-duplicates behavior by default?",
       "options": [
         {
           "id": "a",
-          "text": "3"
+          "text": "3 duplicate CIs"
         },
         {
           "id": "b",
-          "text": "10"
+          "text": "10 duplicate CIs"
         },
         {
           "id": "c",
-          "text": "5"
+          "text": "5 duplicate CIs"
         },
         {
           "id": "d",
-          "text": "20"
+          "text": "20 duplicate CIs"
         }
       ],
       "correctAnswers": [
         "c"
       ],
       "explanation": {
-        "correct": "The default value of glide.identification_engine.skip_duplicates.threshold is 5. This property sets the maximum number of CIs that can be in a set of duplicate CIs before the system stops processing them as duplicates. See: https://www.servicenow.com/docs/r/xanadu/servicenow-platform/configuration-management-database-cmdb/properties-id-reconciliation.html",
+        "correct": "glide.identification_engine.skip_duplicates.threshold sets the maximum number of CIs that can be in a set of duplicate CIs for identification to process them according to glide.identification_engine.skip_duplicates, and its default value is 5. Above the threshold, identification acts as if skip_duplicates were false. See https://www.servicenow.com/docs/r/servicenow-platform/configuration-management-database-cmdb/properties-id-reconciliation.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "3 is not the default value. The threshold defaults to 5 duplicate CIs."
+            "explanation": "3 is not the default. The IRE properties page lists the default value of glide.identification_engine.skip_duplicates.threshold as 5.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/configuration-management-database-cmdb/properties-id-reconciliation.html"
           },
           {
             "choiceId": "b",
-            "explanation": "10 is not the default value. The threshold defaults to 5 duplicate CIs."
+            "explanation": "10 is not the default. The IRE properties page lists the default value of the threshold property as 5.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/configuration-management-database-cmdb/properties-id-reconciliation.html"
           },
           {
             "choiceId": "d",
-            "explanation": "20 is the default value for glide.cache.size.service_cache (the service cache size in MB), not the duplicate threshold."
+            "explanation": "20 is the default of glide.cache.size.service_cache (the IRE service cache size in MB), not of the duplicate threshold, which defaults to 5.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/configuration-management-database-cmdb/properties-id-reconciliation.html"
           }
         ]
       },
@@ -228,12 +243,16 @@
         ]
       },
       "meta": {
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       },
       "isFree": true,
-      "references": []
+      "references": [
+        "https://www.servicenow.com/docs/r/servicenow-platform/configuration-management-database-cmdb/properties-id-reconciliation.html"
+      ]
     },
     {
       "id": "cis-df-ingest-004",

@@ -6,52 +6,53 @@
       "id": "cis-itsm-delta-brazil-001",
       "certification": "cis-itsm",
       "topic": "delta-brazil",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "Starting with the Brazil release, what happens to the ITSM Enhanced Security Features plugin (com.snc.itsm.enhanced_security) when an existing instance is upgraded?",
+      "question": "An administrator is upgrading a Zurich instance to the Brazil release. What happens to the ITSM Enhanced Security Features plugin (com.snc.itsm.enhanced_security) during the upgrade?",
       "options": [
         {
           "id": "a",
-          "text": "It is activated automatically during the upgrade, adding \"deny unless authenticated\" ACL rules to several ITSM tables"
+          "text": "It is activated automatically and adds deny-unless-authenticated ACLs"
         },
         {
           "id": "b",
-          "text": "It remains inactive and must be requested from ServiceNow Support"
+          "text": "It stays inactive until it is requested from ServiceNow Support"
         },
         {
           "id": "c",
-          "text": "It is activated only on newly provisioned instances, as before"
+          "text": "It is activated on new instances, but upgrades leave it inactive"
         },
         {
           "id": "d",
-          "text": "It is removed and its ACL rules are merged into the itil role"
+          "text": "It is removed, and its ACL rules are merged into the existing itil role"
         }
       ],
       "correctAnswers": [
         "a"
       ],
       "explanation": {
-        "correct": "The ITSM Enhanced Security Features plugin is now activated automatically on upgrade to Brazil (previously it was activated only on new instances). Activating it adds \"deny unless authenticated\" ACL rules to several IT Service Management tables. See: https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-changemanagement-release-notes.html",
+        "correct": "The Brazil upgrade information says the ITSM Enhanced Security Features plugin is now activated automatically when you upgrade to Brazil. Before this, it was activated only on new instances. Activating it adds \"deny unless authenticated\" ACL rules to several IT Service Management tables. See https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-changemanagement-release-notes.html",
         "wrongAnswers": [
           {
             "choiceId": "b",
-            "explanation": "The release notes say the plugin is activated automatically on upgrade; Support is only involved if you want to revert to the pre-upgrade behavior.",
+            "explanation": "Support is involved only if you want to go back to the old behavior: \"To revert to the pre-upgrade behavior, contact ServiceNow Support for a list of ACLs to deactivate on specific tables.\" The plugin itself is activated automatically.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-changemanagement-release-notes.html"
           },
           {
             "choiceId": "c",
-            "explanation": "This describes the previous behavior. The release notes say it is now activated automatically on upgrade as well.",
+            "explanation": "This was the behavior before the change (\"Previously, the plugin was activated only on new instances\"). Now the plugin is also activated automatically on upgrade.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-changemanagement-release-notes.html"
           },
           {
             "choiceId": "d",
-            "explanation": "The release notes say the plugin is activated and adds ACL rules; they do not describe removing it or merging rules into the itil role.",
+            "explanation": "The release notes say that activating the plugin adds new ACL rules. They do not say it is removed or merged into the itil role.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-changemanagement-release-notes.html"
           }
         ]
       },
       "references": [
-        "Brazil delta release notes - Change Management"
+        "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-changemanagement-release-notes.html",
+        "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-incidentmanagement-release-notes.html"
       ],
       "isFree": true,
       "difficulty": "medium",
@@ -63,7 +64,7 @@
           "url": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-changemanagement-release-notes.html"
         },
         "path": "servicenow.com/docs/r/delta-zurich-brazil",
-        "excerpt": "The ITSM Enhanced Security Features plugin is now activated automatically when you upgrade to the Brazil release."
+        "excerpt": "The ITSM Enhanced Security Features plugin ( com.snc.itsm.enhanced_security ) is now activated automatically when you upgrade to the Brazil release."
       },
       "labels": {
         "certification": "cis-itsm",
@@ -84,18 +85,20 @@
       },
       "meta": {
         "generatedAt": "2026-10-21T00:00:00.000Z",
-        "version": "1.0",
+        "version": "1.1",
         "release": "Brazil",
-        "reviewed": false
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "cis-itsm-delta-brazil-002",
       "certification": "cis-itsm",
       "topic": "delta-brazil",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "understanding",
       "type": "multiple_select",
-      "question": "In the Australia release, the granular sn_change_admin role can be assigned to let users configure Change Management features and properties. Which roles does sn_change_admin include? (Choose three.)",
+      "question": "After upgrading to Brazil, a change process owner is given the granular sn_change_admin role introduced in the Australia release, so they can configure Change Management features and system properties. Which three roles does sn_change_admin include? (Choose three.)",
       "options": [
         {
           "id": "a",
@@ -111,11 +114,11 @@
         },
         {
           "id": "d",
-          "text": "itil_admin"
+          "text": "sn_incident_admin"
         },
         {
           "id": "e",
-          "text": "sn_change_read_only"
+          "text": "sn_trigger_table_cfg_write"
         }
       ],
       "correctAnswers": [
@@ -124,22 +127,24 @@
         "c"
       ],
       "explanation": {
-        "correct": "The sn_change_admin role grants permission to configure Change Management features and system properties, and it includes the sn_change_writer, change_manager, and sn_change_cab.cab_manager roles. See: https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-changemanagement-release-notes.html",
+        "correct": "The Australia \"Granular admin role\" note says the sn_change_admin role grants permission to configure Change Management features and system properties, and that it includes the sn_change_writer, change_manager, and sn_change_cab.cab_manager roles. See https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-changemanagement-release-notes.html",
         "wrongAnswers": [
           {
             "choiceId": "d",
-            "explanation": "The release notes list sn_change_writer, change_manager, and sn_change_cab.cab_manager as the contained roles; itil_admin is not listed.",
-            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-changemanagement-release-notes.html"
+            "explanation": "sn_incident_admin is the Australia granular admin role for Incident Management (\"Configure all Incident Management features including incident management properties\"). It is not part of sn_change_admin.",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-incidentmanagement-release-notes.html"
           },
           {
             "choiceId": "e",
-            "explanation": "sn_change_read_only is not one of the roles the release notes list as included in sn_change_admin.",
-            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-changemanagement-release-notes.html"
+            "explanation": "sn_trigger_table_cfg_write is one of the roles contained in the Australia On-Call Scheduling granular role sn_on_call_admin (\"It contains sn_trigger_table_cfg_read and sn_trigger_table_cfg_write roles\"). It is not part of sn_change_admin.",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-oncallscheduling-release-notes.html"
           }
         ]
       },
       "references": [
-        "Brazil delta release notes - Change Management"
+        "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-changemanagement-release-notes.html",
+        "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-incidentmanagement-release-notes.html",
+        "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-oncallscheduling-release-notes.html"
       ],
       "isFree": true,
       "difficulty": "medium",
@@ -171,9 +176,11 @@
       },
       "meta": {
         "generatedAt": "2026-10-21T00:00:00.000Z",
-        "version": "1.0",
-        "release": "Australia",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -182,50 +189,50 @@
       "topic": "delta-brazil",
       "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "In the Brazil release, a change request is scheduled inside an active change lockdown period. What does change lockdown conflict detection do with this change request?",
+      "question": "On a Brazil instance, a change manager starts a change lockdown for a critical financial event. A normal change is already scheduled inside the lockdown period. What does conflict detection do with that change request?",
       "options": [
         {
           "id": "a",
-          "text": "Marks it with an Inside Change Lockdown conflict and places it on hold until it is rescheduled outside the lockdown period"
+          "text": "It flags it as an Inside Change Lockdown conflict and puts it on hold"
         },
         {
           "id": "b",
-          "text": "Cancels the change request automatically"
+          "text": "It cancels the change request and notifies the change's assignment group"
         },
         {
           "id": "c",
-          "text": "Converts it to an emergency change so it can bypass the lockdown"
+          "text": "It converts it to an emergency change that can bypass the lockdown"
         },
         {
           "id": "d",
-          "text": "Sends it to the CAB for an override approval while it keeps progressing"
+          "text": "It sends it to the CAB for override approval while work continues"
         }
       ],
       "correctAnswers": [
         "a"
       ],
       "explanation": {
-        "correct": "Change lockdown conflict detection flags change requests that overlap an active lockdown period. Such a change is marked as an Inside Change Lockdown conflict and placed on hold; rescheduling it outside the lockdown clears the conflict so it can continue processing. See: https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-changemanagement-release-notes.html",
+        "correct": "Brazil change lockdown conflict detection automatically flags change requests that overlap an active lockdown period: \"Any change request inside a lockdown is marked as an Inside Change Lockdown conflict and placed on hold.\" Rescheduling it outside the lockdown clears the conflict. See https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-changemanagement-release-notes.html",
         "wrongAnswers": [
           {
             "choiceId": "b",
-            "explanation": "The release notes say the change is placed on hold, not cancelled.",
+            "explanation": "The change is not cancelled. It is placed on hold, and you \"Reschedule it outside the lockdown period to clear the conflict and continue processing.\"",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-changemanagement-release-notes.html"
           },
           {
             "choiceId": "c",
-            "explanation": "The release notes describe placing the change on hold and rescheduling it; they do not describe converting it to an emergency change.",
+            "explanation": "The release notes do not describe any conversion to an emergency change. The documented way to clear the conflict is to reschedule outside the lockdown period.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-changemanagement-release-notes.html"
           },
           {
             "choiceId": "d",
-            "explanation": "The release notes say the change is placed on hold and must be rescheduled outside the lockdown; no CAB override path is described.",
+            "explanation": "The change does not keep progressing. It is placed on hold until it is rescheduled outside the lockdown period. The release notes do not mention a CAB override.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-changemanagement-release-notes.html"
           }
         ]
       },
       "references": [
-        "Brazil delta release notes - Change Management"
+        "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-changemanagement-release-notes.html"
       ],
       "isFree": true,
       "difficulty": "medium",
@@ -257,61 +264,63 @@
       },
       "meta": {
         "generatedAt": "2026-10-21T00:00:00.000Z",
-        "version": "1.0",
+        "version": "1.1",
         "release": "Brazil",
-        "reviewed": false
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "cis-itsm-delta-brazil-004",
       "certification": "cis-itsm",
       "topic": "delta-brazil",
-      "cognitiveLevel": "understanding",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "In the Brazil release, how does Compliance dynamic schema store risk and compliance details on change requests?",
+      "question": "A compliance team at a bank on the Brazil release must record whether each change handles personal data and how long a rollback takes, without changing the Change Request table schema. How does Compliance dynamic schema store these details?",
       "options": [
         {
           "id": "a",
-          "text": "As name and value pairs in a single field, using the platform Dynamic Schema feature, without adding columns to the Change Request table"
+          "text": "As name and value pairs saved in a single field on the change"
         },
         {
           "id": "b",
-          "text": "By adding a new column to the Change Request table for each compliance attribute"
+          "text": "As new columns added to the Change Request table per attribute"
         },
         {
           "id": "c",
-          "text": "In a separate related table with one record per attribute linked to the change request"
+          "text": "As child records in a related table, one record per attribute"
         },
         {
           "id": "d",
-          "text": "In the change request work notes as structured journal entries"
+          "text": "As structured journal entries in the change request work notes"
         }
       ],
       "correctAnswers": [
         "a"
       ],
       "explanation": {
-        "correct": "Compliance dynamic schema stores risk and compliance details without adding columns to the Change Request table; the details are saved as name and value pairs in a single field using the platform Dynamic Schema feature. See: https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-changemanagement-release-notes.html",
+        "correct": "Compliance dynamic schema (Brazil) stores risk and compliance details \"without adding columns to the Change Request table\" and \"saves these details as name and value pairs in a single field using the platform Dynamic Schema feature.\" See https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-changemanagement-release-notes.html",
         "wrongAnswers": [
           {
             "choiceId": "b",
-            "explanation": "This reverses the documented behavior: the feature avoids adding columns to the Change Request table.",
+            "explanation": "The feature exists to avoid this: it stores the details \"without adding columns to the Change Request table.\"",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-changemanagement-release-notes.html"
           },
           {
             "choiceId": "c",
-            "explanation": "The release notes say the details are saved in a single field as name and value pairs, not in a separate related table.",
+            "explanation": "The values are not stored as separate related records. They are saved \"as name and value pairs in a single field\" on the change request.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-changemanagement-release-notes.html"
           },
           {
             "choiceId": "d",
-            "explanation": "The release notes describe storage in a single field via Dynamic Schema, not in work notes.",
+            "explanation": "Work notes are not used. The values are kept in a single dynamic schema field, and scripts can read and update them through the dynamic schema scripting API.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-changemanagement-release-notes.html"
           }
         ]
       },
       "references": [
-        "Brazil delta release notes - Change Management"
+        "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-changemanagement-release-notes.html"
       ],
       "isFree": true,
       "difficulty": "hard",
@@ -343,9 +352,11 @@
       },
       "meta": {
         "generatedAt": "2026-10-21T00:00:00.000Z",
-        "version": "1.0",
+        "version": "1.1",
         "release": "Brazil",
-        "reviewed": false
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -354,50 +365,50 @@
       "topic": "delta-brazil",
       "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "In the Brazil release, an incident is placed in the On Hold state with the reason Awaiting Caller Information and the caller never responds to any of the reminder notifications. What happens once all attempts are exhausted?",
+      "question": "On a newly provisioned Brazil (zboot) instance, an agent has put an incident On Hold with the reason Awaiting Caller Information. The caller ignores every reminder notification. What happens once all attempts are used up?",
       "options": [
         {
           "id": "a",
-          "text": "The incident is automatically resolved with the resolution code Resolved - No response from caller"
+          "text": "It is resolved with the code Resolved - No response from caller"
         },
         {
           "id": "b",
-          "text": "The incident is automatically cancelled and the caller is notified"
+          "text": "It is cancelled automatically, and the caller gets a notification"
         },
         {
           "id": "c",
-          "text": "The incident moves back to In Progress and is reassigned to the assignment group manager"
+          "text": "It returns to In Progress and is reassigned to the group manager"
         },
         {
           "id": "d",
-          "text": "The incident stays On Hold until an agent manually resolves it"
+          "text": "It stays On Hold until an agent resolves the incident manually"
         }
       ],
       "correctAnswers": [
         "a"
       ],
       "explanation": {
-        "correct": "With the auto resolve On-Hold incident feature, if the caller does not respond after all attempts are exhausted, the incident is automatically resolved with the resolution code Resolved - No response from caller and a resolution note indicating no caller response. See: https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-incidentmanagement-release-notes.html",
+        "correct": "The Brazil \"Auto resolve On-hold incident\" feature (zboot instances) sends the caller reminders for a set number of attempts. \"If the caller does not respond after all attempts are exhausted, the incident is automatically resolved with the resolution code Resolved - No response from caller.\" By default there are 3 attempts, 1 business day apart. See https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-incidentmanagement-release-notes.html",
         "wrongAnswers": [
           {
             "choiceId": "b",
-            "explanation": "The release notes say the incident is resolved, not cancelled.",
+            "explanation": "The incident is resolved, not cancelled. The release notes give the resolution code Resolved - No response from caller and a resolution note saying the caller did not respond.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-incidentmanagement-release-notes.html"
           },
           {
             "choiceId": "c",
-            "explanation": "The release notes say the incident moves to In Progress only when the caller responds; with no response it is resolved.",
+            "explanation": "The incident goes back to In Progress only if the caller responds (comments on the Service Portal or replies to the email). Then the assigned agent is notified, not the group manager.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-incidentmanagement-release-notes.html"
           },
           {
             "choiceId": "d",
-            "explanation": "This reverses the documented behavior: the incident is resolved automatically after the attempts are exhausted.",
+            "explanation": "No manual step is needed. The incident is resolved automatically once all attempts are used up.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-incidentmanagement-release-notes.html"
           }
         ]
       },
       "references": [
-        "Brazil delta release notes - Incident Management"
+        "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-incidentmanagement-release-notes.html"
       ],
       "isFree": true,
       "difficulty": "medium",
@@ -429,18 +440,20 @@
       },
       "meta": {
         "generatedAt": "2026-10-21T00:00:00.000Z",
-        "version": "1.0",
+        "version": "1.1",
         "release": "Brazil",
-        "reviewed": false
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "cis-itsm-delta-brazil-006",
       "certification": "cis-itsm",
       "topic": "delta-brazil",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "understanding",
       "type": "multiple_choice",
-      "question": "Starting with the Brazil release, on newly provisioned (zboot) instances, which role replaces the inherited itil role in the incident manager [incident_manager] role?",
+      "question": "A security administrator on a newly provisioned Brazil (zboot) instance is checking what the incident manager [incident_manager] role contains. Which role replaced the inherited itil role in incident_manager?",
       "options": [
         {
           "id": "a",
@@ -452,38 +465,38 @@
         },
         {
           "id": "c",
-          "text": "itil_admin"
+          "text": "sn_mim_admin"
         },
         {
           "id": "d",
-          "text": "sn_mim_admin"
+          "text": "sn_tcm_admin"
         }
       ],
       "correctAnswers": [
         "a"
       ],
       "explanation": {
-        "correct": "The inherited itil role is removed from the incident_manager role and replaced with the incident_write role on zboot instances, restricting access to incident records only. See: https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-incidentmanagement-release-notes.html",
+        "correct": "The Brazil \"Incident manager role changes\" note says: \"The inherited itil role is now removed from the incident manager [incident_manager] role and replaced with the incident_write role.\" This applies only to zboot instances and limits access to incident records. See https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-incidentmanagement-release-notes.html",
         "wrongAnswers": [
           {
             "choiceId": "b",
-            "explanation": "The release notes name incident_write, not sn_incident_admin, as the replacement for itil in incident_manager.",
+            "explanation": "sn_incident_admin is the Australia granular admin role used to configure Incident Management features and properties. It is not what replaced itil in incident_manager.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-incidentmanagement-release-notes.html"
           },
           {
             "choiceId": "c",
-            "explanation": "The release notes name incident_write as the replacement; itil_admin is not mentioned.",
+            "explanation": "sn_mim_admin is the Australia granular admin role for configuring Major Incident Management features and trigger rules.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-incidentmanagement-release-notes.html"
           },
           {
             "choiceId": "d",
-            "explanation": "sn_mim_admin is described as the role for configuring Major Incident Management features, not as the replacement for itil in incident_manager.",
+            "explanation": "sn_tcm_admin is the Australia granular admin role for configuring Task Communications Management features.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-incidentmanagement-release-notes.html"
           }
         ]
       },
       "references": [
-        "Brazil delta release notes - Incident Management"
+        "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-incidentmanagement-release-notes.html"
       ],
       "isFree": true,
       "difficulty": "medium",
@@ -514,61 +527,63 @@
       },
       "meta": {
         "generatedAt": "2026-10-21T00:00:00.000Z",
-        "version": "1.0",
+        "version": "1.1",
         "release": "Brazil",
-        "reviewed": false
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "cis-itsm-delta-brazil-007",
       "certification": "cis-itsm",
       "topic": "delta-brazil",
-      "cognitiveLevel": "understanding",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "Starting with the Brazil release, how is the auto-close period for resolved incidents (glide.ui.autoclose.time) measured?",
+      "question": "A service desk manager on a Brazil instance has set the glide.ui.autoclose.time property to 5. When are resolved incidents now closed automatically?",
       "options": [
         {
           "id": "a",
-          "text": "In business days instead of calendar days"
+          "text": "Five business days after the incident is resolved"
         },
         {
           "id": "b",
-          "text": "In calendar days instead of business days"
+          "text": "Five calendar days after the incident is resolved"
         },
         {
           "id": "c",
-          "text": "In hours since the incident was resolved"
+          "text": "Five hours after the incident is resolved"
         },
         {
           "id": "d",
-          "text": "In the number of reminder notifications sent to the caller"
+          "text": "After five reminder notifications to the caller"
         }
       ],
       "correctAnswers": [
         "a"
       ],
       "explanation": {
-        "correct": "Resolved incidents are now automatically closed after a specific number of business days instead of calendar days, configured with the glide.ui.autoclose.time property (0 disables the feature). See: https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-incidentmanagement-release-notes.html",
+        "correct": "The Brazil \"Auto close resolved incidents behavior changes\" note says: \"The resolved incidents are now automatically closed after a specific number of business days instead of calendar days.\" The number is set in glide.ui.autoclose.time, and 0 turns the feature off. See https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-incidentmanagement-release-notes.html",
         "wrongAnswers": [
           {
             "choiceId": "b",
-            "explanation": "This reverses the documented change: the period moved from calendar days to business days.",
+            "explanation": "Calendar days was the earlier behavior. Brazil counts business days \"instead of calendar days.\"",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-incidentmanagement-release-notes.html"
           },
           {
             "choiceId": "c",
-            "explanation": "The release notes describe the value as a number of business days, not hours.",
+            "explanation": "The property is described as the \"Number of days (integer) after which Resolved incidents are automatically closed\". It is a number of days, not hours.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-incidentmanagement-release-notes.html"
           },
           {
             "choiceId": "d",
-            "explanation": "The release notes describe the value as a number of business days; reminder attempts belong to the separate On-Hold auto resolve feature.",
+            "explanation": "Counting reminders to the caller is part of the On Hold auto-resolve feature (Awaiting Caller Information). The auto-close property counts business days after resolution.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-incidentmanagement-release-notes.html"
           }
         ]
       },
       "references": [
-        "Brazil delta release notes - Incident Management"
+        "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-incidentmanagement-release-notes.html"
       ],
       "isFree": true,
       "difficulty": "medium",
@@ -600,9 +615,11 @@
       },
       "meta": {
         "generatedAt": "2026-10-21T00:00:00.000Z",
-        "version": "1.0",
+        "version": "1.1",
         "release": "Brazil",
-        "reviewed": false
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -611,50 +628,51 @@
       "topic": "delta-brazil",
       "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "Starting with the Australia release, an admin wants to onboard many teams onto on-call rotations in a single guided flow. Which role is required, and where is the feature found?",
+      "question": "After upgrading from Zurich to Brazil, an administrator wants to give a team lead the granular role introduced in Australia for configuring all on-call schedule features, including properties and trigger rules. Which role should they assign?",
       "options": [
         {
           "id": "a",
-          "text": "The rota_admin role, using On-Call Bulk Onboarding in Service Operations Workspace"
+          "text": "On-call administrator [sn_on_call_admin]"
         },
         {
           "id": "b",
-          "text": "The sn_on_call_admin role, using the On-Call Scheduling module in Core UI"
+          "text": "Shift administrator [rota_admin]"
         },
         {
           "id": "c",
-          "text": "The oc_read role, using On-Call Bulk Onboarding in Service Operations Workspace"
+          "text": "Shift manager [rota_manager]"
         },
         {
           "id": "d",
-          "text": "The admin role, using the Service Catalog"
+          "text": "Premium Dashboard user [rota_prem_dashboard_user]"
         }
       ],
       "correctAnswers": [
         "a"
       ],
       "explanation": {
-        "correct": "Admins with the rota_admin role can onboard many teams onto on-call rotations in a single guided flow by selecting On-Call Bulk Onboarding in Service Operations Workspace (SOW). See: https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-oncallscheduling-release-notes.html",
+        "correct": "The Australia \"Granular role for on-call schedule configurations\" note says: \"Configure on-call schedule features using the granular and specific role, sn_on_call_admin.\" The On-Call Scheduling roles page says a user with sn_on_call_admin \"can configure all on-call schedule features including its properties and trigger rules\", and that the role contains rota_admin. See https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-oncallscheduling-release-notes.html",
         "wrongAnswers": [
           {
             "choiceId": "b",
-            "explanation": "The release notes tie the bulk setup wizard to the rota_admin role and to On-Call Bulk Onboarding in SOW.",
-            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-oncallscheduling-release-notes.html"
+            "explanation": "rota_admin is the shift administrator role. It can create, read, update, and delete shifts and can modify shifts and rosters, but it is contained in sn_on_call_admin rather than being the granular configuration role introduced in Australia.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/on-call-scheduling/roles-assigning-oncall.html"
           },
           {
             "choiceId": "c",
-            "explanation": "The release notes describe oc_read as granting read-only access, so it does not fit a setup wizard; the wizard is tied to rota_admin.",
-            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-oncallscheduling-release-notes.html"
+            "explanation": "rota_manager is for the manager of a group. It lets a member manage shifts for that group, and \"The role cannot be used to manage all groups on the instance.\"",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/on-call-scheduling/roles-assigning-oncall.html"
           },
           {
             "choiceId": "d",
-            "explanation": "The release notes name rota_admin and On-Call Bulk Onboarding in SOW, not the Service Catalog.",
-            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-oncallscheduling-release-notes.html"
+            "explanation": "rota_prem_dashboard_user only gives \"Access to the On-Call Premium dashboard\", which shows performance metrics across groups.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/on-call-scheduling/roles-assigning-oncall.html"
           }
         ]
       },
       "references": [
-        "Brazil delta release notes - On-Call Scheduling"
+        "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-oncallscheduling-release-notes.html",
+        "https://www.servicenow.com/docs/r/it-service-management/on-call-scheduling/roles-assigning-oncall.html"
       ],
       "isFree": true,
       "difficulty": "medium",
@@ -662,11 +680,11 @@
         "type": "documentation",
         "documentation": {
           "docSlug": "delta-zurich-brazil",
-          "section": "On-Call Scheduling - New features",
+          "section": "On-Call Scheduling - New features (Australia)",
           "url": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-oncallscheduling-release-notes.html"
         },
         "path": "servicenow.com/docs/r/delta-zurich-brazil",
-        "excerpt": "Admins with the rota_admin role can now onboard many teams onto on-call rotations in a single guided flow."
+        "excerpt": "Configure on-call schedule features using the granular and specific role, sn_on_call_admin. It contains sn_trigger_table_cfg_read and sn_trigger_table_cfg_write roles."
       },
       "labels": {
         "certification": "cis-itsm",
@@ -674,73 +692,77 @@
         "domainSlug": "delta-brazil",
         "domainPercentage": 100,
         "subtopics": [
-          "Bulk onboarding",
-          "Roles"
+          "Roles",
+          "Administration"
         ],
         "tags": [
           "brazil",
           "delta",
-          "rota_admin",
-          "bulk-onboarding"
+          "australia",
+          "sn_on_call_admin",
+          "granular-roles"
         ]
       },
       "meta": {
         "generatedAt": "2026-10-21T00:00:00.000Z",
-        "version": "1.0",
-        "release": "Australia",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "cis-itsm-delta-brazil-009",
       "certification": "cis-itsm",
       "topic": "delta-brazil",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "In the Brazil release, what is the default for the com.snc.on_call_rotation.log_escalations property, and what happens to its value on upgraded instances?",
+      "question": "An administrator is planning the Brazil upgrade and had set com.snc.on_call_rotation.log_escalations to false on the Zurich instance. What do the Brazil release notes say about this property?",
       "options": [
         {
           "id": "a",
-          "text": "It is enabled (true) by default; on upgrade the existing value is left unchanged"
+          "text": "It defaults to true, and the existing value is kept after upgrade"
         },
         {
           "id": "b",
-          "text": "It is enabled (true) by default; on upgrade it is forced to true"
+          "text": "It defaults to true, and the upgrade resets the value to true"
         },
         {
           "id": "c",
-          "text": "It is disabled (false) by default; on upgrade it is forced to false"
+          "text": "It defaults to false, and the upgrade resets the value to false"
         },
         {
           "id": "d",
-          "text": "It is removed; escalations are always logged"
+          "text": "It is removed, and every on-call escalation is now logged automatically"
         }
       ],
       "correctAnswers": [
         "a"
       ],
       "explanation": {
-        "correct": "Escalation logging is true by default: the com.snc.on_call_rotation.log_escalations property is enabled by default, and after upgrade the existing value on the property remains unaffected. See: https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-oncallscheduling-release-notes.html",
+        "correct": "The Brazil \"Escalation logging is true by default\" note says the com.snc.on_call_rotation.log_escalations property, which controls whether on-call escalations are logged, \"is enabled by default. After upgrade, the existing value on this property remains unaffacted\" [sic]. So the false value set on Zurich is kept. See https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-oncallscheduling-release-notes.html",
         "wrongAnswers": [
           {
             "choiceId": "b",
-            "explanation": "The release notes say the existing value remains unaffected after upgrade; it is not overwritten.",
+            "explanation": "The default is true, but the upgrade does not change an existing value: \"After upgrade, the existing value on this property remains unaffacted.\"",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-oncallscheduling-release-notes.html"
           },
           {
             "choiceId": "c",
-            "explanation": "This reverses the documented default: the property is enabled by default.",
+            "explanation": "The property is enabled (true) by default in Brazil, and the upgrade keeps the existing value.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-oncallscheduling-release-notes.html"
           },
           {
             "choiceId": "d",
-            "explanation": "The release notes describe the property as still controlling escalation logging, not as removed.",
-            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-oncallscheduling-release-notes.html"
+            "explanation": "The property still exists. The escalation log page says you can enable or disable logging with com.snc.on_call_rotation.log_escalations.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/on-call-scheduling/view-escalation-logs-oncall.html"
           }
         ]
       },
       "references": [
-        "Brazil delta release notes - On-Call Scheduling"
+        "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-oncallscheduling-release-notes.html",
+        "https://www.servicenow.com/docs/r/it-service-management/on-call-scheduling/view-escalation-logs-oncall.html"
       ],
       "isFree": true,
       "difficulty": "hard",
@@ -772,61 +794,63 @@
       },
       "meta": {
         "generatedAt": "2026-10-21T00:00:00.000Z",
-        "version": "1.0",
+        "version": "1.1",
         "release": "Brazil",
-        "reviewed": false
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "cis-itsm-delta-brazil-010",
       "certification": "cis-itsm",
       "topic": "delta-brazil",
-      "cognitiveLevel": "understanding",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "In the Brazil release, an administrator wants to make sure users who do not meet a catalog item's \"Available for\" user criteria cannot access it, even when they are subscribed to the parent service offering. How should glide.sc.catalog_item.subscription_enforcement be set?",
+      "question": "A catalog manager on a Brazil instance finds that users subscribed to a parent service offering can open a catalog item even though they fail its \"Available for\" user criteria. What should the administrator do to block them?",
       "options": [
         {
           "id": "a",
-          "text": "require_criteria"
+          "text": "Set glide.sc.catalog_item.subscription_enforcement to require_criteria"
         },
         {
           "id": "b",
-          "text": "allow_bypass (the default)"
+          "text": "Keep glide.sc.catalog_item.subscription_enforcement at its default, allow_bypass"
         },
         {
           "id": "c",
-          "text": "enforce_subscription"
+          "text": "Add these users to the Secondary owner field on the catalog item"
         },
         {
           "id": "d",
-          "text": "strict"
+          "text": "Activate the com.glideapp.servicecatalog.ui16_portal plugin"
         }
       ],
       "correctAnswers": [
         "a"
       ],
       "explanation": {
-        "correct": "The glide.sc.catalog_item.subscription_enforcement property has two modes. require_criteria prevents access for users who do not meet the item's criteria even if subscribed to the parent service offering; allow_bypass, the default, preserves the existing behavior. See: https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-servicecatalog-release-notes.html",
+        "correct": "Brazil adds the glide.sc.catalog_item.subscription_enforcement property. The require_criteria mode \"Prevents access to users who don't meet the item's criteria, even if they are subscribed to the parent service offering.\" See https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-servicecatalog-release-notes.html",
         "wrongAnswers": [
           {
             "choiceId": "b",
-            "explanation": "allow_bypass is the default and preserves the existing behavior; it does not enforce the item criteria for subscribed users.",
+            "explanation": "allow_bypass is the default and keeps the existing behavior, so subscribed users would still get access. That is the problem the administrator wants to fix.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-servicecatalog-release-notes.html"
           },
           {
             "choiceId": "c",
-            "explanation": "The release notes list only two modes, require_criteria and allow_bypass.",
+            "explanation": "The Secondary owner field (Australia) lets other users edit catalog items. It does not control who can request them.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-servicecatalog-release-notes.html"
           },
           {
             "choiceId": "d",
-            "explanation": "The release notes list only two modes, require_criteria and allow_bypass.",
+            "explanation": "This plugin moves requesters from the Core UI catalog experience to the Angular portal. It does not enforce user criteria.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-servicecatalog-release-notes.html"
           }
         ]
       },
       "references": [
-        "Brazil delta release notes - Service Catalog"
+        "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-servicecatalog-release-notes.html"
       ],
       "isFree": true,
       "difficulty": "hard",
@@ -858,61 +882,63 @@
       },
       "meta": {
         "generatedAt": "2026-10-21T00:00:00.000Z",
-        "version": "1.0",
+        "version": "1.1",
         "release": "Brazil",
-        "reviewed": false
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "cis-itsm-delta-brazil-011",
       "certification": "cis-itsm",
       "topic": "delta-brazil",
-      "cognitiveLevel": "understanding",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "Starting with the Brazil release, what changed in the ACL records that the catalog team owns on request management tables such as Request [sc_request] and Requested Item [sc_req_item]?",
+      "question": "After upgrading to Brazil, a user whose only role is catalog_admin can no longer open Requested Item [sc_req_item] records through the catalog-owned ACLs. What change in Brazil explains this?",
       "options": [
         {
           "id": "a",
-          "text": "They no longer grant access based on the catalog role or catalog admin role; each retains at least one request management role"
+          "text": "Catalog roles were removed from the request management ACL records"
         },
         {
           "id": "b",
-          "text": "They now grant access to any user with the catalog role, replacing the request management roles"
+          "text": "The request management ACL records on sc_req_item were deleted"
         },
         {
           "id": "c",
-          "text": "They were deleted, leaving the tables open to all authenticated users"
+          "text": "The ACL records now require the admin role as well as catalog_admin"
         },
         {
           "id": "d",
-          "text": "They now require the admin role in addition to the catalog role"
+          "text": "The catalog_admin role was deprecated and removed from the instance"
         }
       ],
       "correctAnswers": [
         "a"
       ],
       "explanation": {
-        "correct": "ACL records on request management tables and fields no longer grant access based on the catalog role or catalog admin role. Each ACL record keeps at least one request management role, so users with only a catalog-related role can no longer use those ACLs to access request management tables. See: https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-servicecatalog-release-notes.html",
+        "correct": "The Brazil Service Catalog deprecation \"Removal of Catalog Roles from request management ACLs\" says ACL records on request management tables such as sc_request and sc_req_item \"no longer grant access based on the catalog role or the catalog admin role.\" Users with only a catalog-related role and no request management role can no longer use these ACLs. See https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-servicecatalog-release-notes.html",
         "wrongAnswers": [
           {
             "choiceId": "b",
-            "explanation": "This reverses the documented change: catalog-related roles were removed from these ACLs.",
+            "explanation": "The ACL records were not deleted. \"Each ACL record retains at least one request management role, so the list is never empty.\"",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-servicecatalog-release-notes.html"
           },
           {
             "choiceId": "c",
-            "explanation": "The release notes say each ACL record retains at least one request management role, so the list is never empty; the records are not deleted.",
+            "explanation": "The ACL records now keep only request management roles in their required roles. The release notes do not add the admin role.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-servicecatalog-release-notes.html"
           },
           {
             "choiceId": "d",
-            "explanation": "The release notes describe removing catalog roles from the required roles, not adding an admin requirement.",
+            "explanation": "The role was not removed. The change \"affects only the ACL records that the catalog team owns\", and catalog roles no longer appear in them.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-servicecatalog-release-notes.html"
           }
         ]
       },
       "references": [
-        "Brazil delta release notes - Service Catalog"
+        "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-servicecatalog-release-notes.html"
       ],
       "isFree": true,
       "difficulty": "hard",
@@ -944,18 +970,20 @@
       },
       "meta": {
         "generatedAt": "2026-10-21T00:00:00.000Z",
-        "version": "1.0",
+        "version": "1.1",
         "release": "Brazil",
-        "reviewed": false
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "cis-itsm-delta-brazil-012",
       "certification": "cis-itsm",
       "topic": "delta-brazil",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "In the Brazil release, what must an administrator on an upgraded instance do to move requesters from the Core UI catalog experience to the Angular portal?",
+      "question": "An administrator on a Brazil instance that was upgraded from Zurich wants requesters to see the Angular portal instead of the Core UI catalog when they request items. What must they do?",
       "options": [
         {
           "id": "a",
@@ -963,7 +991,7 @@
         },
         {
           "id": "b",
-          "text": "Nothing; the plugin is active by default on upgraded instances"
+          "text": "Nothing, because the portal plugin is active by default after upgrade"
         },
         {
           "id": "c",
@@ -971,34 +999,35 @@
         },
         {
           "id": "d",
-          "text": "Install the com.snc.universal_request plugin"
+          "text": "Install the Universal Request plugin (com.snc.universal_request)"
         }
       ],
       "correctAnswers": [
         "a"
       ],
       "explanation": {
-        "correct": "Administrators on upgraded instances must install the com.glideapp.servicecatalog.ui16_portal plugin to move from the Core UI catalog experience to the Angular portal. On new instances, the plugin is active by default. See: https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-servicecatalog-release-notes.html",
+        "correct": "The Brazil \"Migration from Core UI to Angular portal\" note says: \"Administrators on upgraded instances must install the com.glideapp.servicecatalog.ui16_portal plugin to move from the Core UI catalog experience to the Angular portal.\" See https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-servicecatalog-release-notes.html",
         "wrongAnswers": [
           {
             "choiceId": "b",
-            "explanation": "The plugin is active by default only on new instances; upgraded instances must install it.",
+            "explanation": "The plugin is active by default only on new instances (\"On new instances, the plugin is active by default\"). Upgraded instances must install it.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-servicecatalog-release-notes.html"
           },
           {
             "choiceId": "c",
-            "explanation": "The release notes describe that property as controlling subscription access to catalog items, not the portal migration.",
+            "explanation": "This property controls whether service subscriptions can bypass \"Available for\" user criteria. It does not change the catalog experience.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-servicecatalog-release-notes.html"
           },
           {
             "choiceId": "d",
-            "explanation": "The release notes name com.glideapp.servicecatalog.ui16_portal for this migration; com.snc.universal_request is the Universal Request plugin.",
-            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-servicecatalog-release-notes.html"
+            "explanation": "com.snc.universal_request activates Universal Request, which is a separate product. It does not switch the catalog to the Angular portal.",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-universalrequest-release-notes.html"
           }
         ]
       },
       "references": [
-        "Brazil delta release notes - Service Catalog"
+        "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-servicecatalog-release-notes.html",
+        "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-universalrequest-release-notes.html"
       ],
       "isFree": true,
       "difficulty": "medium",
@@ -1030,18 +1059,20 @@
       },
       "meta": {
         "generatedAt": "2026-10-21T00:00:00.000Z",
-        "version": "1.0",
+        "version": "1.1",
         "release": "Brazil",
-        "reviewed": false
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "cis-itsm-delta-brazil-013",
       "certification": "cis-itsm",
       "topic": "delta-brazil",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "In the Australia release, which system property must be set to true so that UI16 module links such as forms and lists redirect to the equivalent Service Operations Workspace experience?",
+      "question": "An administrator on an instance upgraded to Australia wants UI16 module links, such as forms and lists, to redirect to the equivalent Service Operations Workspace experience. Which system property must be set to true?",
       "options": [
         {
           "id": "a",
@@ -1049,42 +1080,43 @@
         },
         {
           "id": "b",
-          "text": "glide.ui.sow.redirect"
+          "text": "glide.knowman.recent_task.display"
         },
         {
           "id": "c",
-          "text": "sn_sow_itsm_admin.ui16_redirect"
+          "text": "change.conflict.useprogressworker"
         },
         {
           "id": "d",
-          "text": "glide.ui16.redirect_to_workspace"
+          "text": "sn_change_cab.com.snc.change_management.cab.use_sow_meeting"
         }
       ],
       "correctAnswers": [
         "a"
       ],
       "explanation": {
-        "correct": "UI16 module link redirection to SOW is supported for all SOW applications when sn_sow_itsm_admin.experience_redirection_enabled.sow is set to true. On upgraded instances, administrators configure the behavior from the SOW Admin Center. See: https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-serviceoperationsworkspaceforitsm-release-notes.html",
+        "correct": "The Australia \"UI16 links to SOW redirection behavior\" note says redirection is supported for all applications in SOW \"when the system property sn_sow_itsm_admin.experience_redirection_enabled.sow is set to true.\" New instances have it in the base system, and on upgraded instances administrators configure it from SOW Admin Center. See https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-serviceoperationsworkspaceforitsm-release-notes.html",
         "wrongAnswers": [
           {
             "choiceId": "b",
-            "explanation": "The release notes name sn_sow_itsm_admin.experience_redirection_enabled.sow as the property, not this one.",
+            "explanation": "glide.knowman.recent_task.display (Zurich) shows the recent task records that a knowledge article was attached to. It does not redirect UI16 links.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-serviceoperationsworkspaceforitsm-release-notes.html"
           },
           {
             "choiceId": "c",
-            "explanation": "The release notes name sn_sow_itsm_admin.experience_redirection_enabled.sow as the property, not this one.",
-            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-serviceoperationsworkspaceforitsm-release-notes.html"
+            "explanation": "change.conflict.useprogressworker chooses between Flow and Progress Workers for change conflict detection.",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-changemanagement-release-notes.html"
           },
           {
             "choiceId": "d",
-            "explanation": "The release notes name sn_sow_itsm_admin.experience_redirection_enabled.sow as the property, not this one.",
-            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-serviceoperationsworkspaceforitsm-release-notes.html"
+            "explanation": "This property controls how CAB meetings are opened from the CAB Meeting workbench. It does not control UI16 link redirection.",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-changemanagement-release-notes.html"
           }
         ]
       },
       "references": [
-        "Brazil delta release notes - Service Operations Workspace for ITSM"
+        "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-serviceoperationsworkspaceforitsm-release-notes.html",
+        "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-changemanagement-release-notes.html"
       ],
       "isFree": true,
       "difficulty": "medium",
@@ -1116,61 +1148,63 @@
       },
       "meta": {
         "generatedAt": "2026-10-21T00:00:00.000Z",
-        "version": "1.0",
-        "release": "Australia",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "cis-itsm-delta-brazil-014",
       "certification": "cis-itsm",
       "topic": "delta-brazil",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "In the Brazil release of Service Operations Workspace for ITSM, where does the Attached knowledge related list appear by default when a knowledge article is attached to an incident?",
+      "question": "A service desk agent on a Brazil instance has attached a knowledge article to an incident in Service Operations Workspace. Where does the Attached knowledge related list appear by default?",
       "options": [
         {
           "id": "a",
-          "text": "On the Related records tab"
+          "text": "On the Related records tab of the incident"
         },
         {
           "id": "b",
-          "text": "On the Overview tab"
+          "text": "On the Overview tab of the incident"
         },
         {
           "id": "c",
-          "text": "In the contextual side panel"
+          "text": "In the contextual side panel of the incident"
         },
         {
           "id": "d",
-          "text": "On the Details tab"
+          "text": "On the Details tab of the incident"
         }
       ],
       "correctAnswers": [
         "a"
       ],
       "explanation": {
-        "correct": "The Attached knowledge related list now appears in the Related records tab by default if any knowledge article is attached to the incident record. See: https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-serviceoperationsworkspaceforitsm-release-notes.html",
+        "correct": "The Brazil \"Default Attached knowledge related list\" change says: \"The attached knowledge related list now appears in the Related records tab by default, if any Knowledge article attached to the incident record.\" See https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-serviceoperationsworkspaceforitsm-release-notes.html",
         "wrongAnswers": [
           {
             "choiceId": "b",
-            "explanation": "The release notes name the Related records tab, not the Overview tab.",
+            "explanation": "The Overview tab holds items such as the Summary section and the AI summary and suggestions card. The release notes put the Attached knowledge list on the Related records tab.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-serviceoperationsworkspaceforitsm-release-notes.html"
           },
           {
             "choiceId": "c",
-            "explanation": "The release notes name the Related records tab, not the contextual side panel.",
+            "explanation": "In these release notes, the contextual side panel is where DEX actions from the Action library run. The Attached knowledge list goes on the Related records tab.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-serviceoperationsworkspaceforitsm-release-notes.html"
           },
           {
             "choiceId": "d",
-            "explanation": "The release notes name the Related records tab, not the Details tab.",
+            "explanation": "The Details tab is where the AI summary card appears when Overview is hidden. The Attached knowledge list goes on the Related records tab by default.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-serviceoperationsworkspaceforitsm-release-notes.html"
           }
         ]
       },
       "references": [
-        "Brazil delta release notes - Service Operations Workspace for ITSM"
+        "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-serviceoperationsworkspaceforitsm-release-notes.html"
       ],
       "isFree": true,
       "difficulty": "easy",
@@ -1182,7 +1216,7 @@
           "url": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-serviceoperationsworkspaceforitsm-release-notes.html"
         },
         "path": "servicenow.com/docs/r/delta-zurich-brazil",
-        "excerpt": "The attached knowledge related list now appears in the Related records tab by default."
+        "excerpt": "The attached knowledge related list now appears in the Related records tab by default, if any Knowledge article attached to the incident record."
       },
       "labels": {
         "certification": "cis-itsm",
@@ -1202,61 +1236,63 @@
       },
       "meta": {
         "generatedAt": "2026-10-21T00:00:00.000Z",
-        "version": "1.0",
+        "version": "1.1",
         "release": "Brazil",
-        "reviewed": false
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "cis-itsm-delta-brazil-015",
       "certification": "cis-itsm",
       "topic": "delta-brazil",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "In the Australia release, how does the Employee Slate for ITSM home page card display service health?",
+      "question": "An IT communications lead on an Australia instance wants to check how the Employee Slate for ITSM home page card shows service health during an incident. How are the items displayed?",
       "options": [
         {
           "id": "a",
-          "text": "Active outages appear first with a red accent, followed by scheduled maintenance with an amber accent"
+          "text": "Active outages first with a red accent, then maintenance in amber"
         },
         {
           "id": "b",
-          "text": "Scheduled maintenance appears first with a red accent, followed by active outages with an amber accent"
+          "text": "Scheduled maintenance first in red, then active outages in amber"
         },
         {
           "id": "c",
-          "text": "Only active outages are shown; scheduled maintenance is listed in the Service Catalog"
+          "text": "Active outages first in amber, then scheduled maintenance in red"
         },
         {
           "id": "d",
-          "text": "Outages and maintenance are shown in a single list sorted by start date with no color distinction"
+          "text": "Outages and maintenance shown in one combined list, sorted by start date"
         }
       ],
       "correctAnswers": [
         "a"
       ],
       "explanation": {
-        "correct": "Active outages and upcoming scheduled maintenance are shown on the Employee Slate for ITSM home page. Active outages appear first with a red accent, followed by scheduled maintenance with an amber accent; when nothing is active, the card shows an \"All systems operational\" state. See: https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-employeeslateforitsm-release-notes.html",
+        "correct": "The Australia \"Viewing outages and maintenance\" note for Employee Slate for ITSM says: \"Active outages appear first with a red accent, followed by scheduled maintenance with an amber accent.\" When nothing is active, the card says \"All systems operational\". See https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-employeeslateforitsm-release-notes.html",
         "wrongAnswers": [
           {
             "choiceId": "b",
-            "explanation": "This reverses the documented order and colors: active outages come first in red, maintenance follows in amber.",
+            "explanation": "This reverses the order and colors. Active outages come first, in red.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-employeeslateforitsm-release-notes.html"
           },
           {
             "choiceId": "c",
-            "explanation": "The release notes say both active outages and scheduled maintenance appear on the home page.",
+            "explanation": "This swaps the colors. Outages use a red accent and scheduled maintenance uses amber.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-employeeslateforitsm-release-notes.html"
           },
           {
             "choiceId": "d",
-            "explanation": "The release notes describe outages first with a red accent and maintenance with an amber accent.",
+            "explanation": "The card does not combine them into one list by date. Active outages are shown first, followed by scheduled maintenance, each with its own accent color.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-employeeslateforitsm-release-notes.html"
           }
         ]
       },
       "references": [
-        "Brazil delta release notes - Employee Slate for ITSM"
+        "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-employeeslateforitsm-release-notes.html"
       ],
       "isFree": true,
       "difficulty": "easy",
@@ -1288,18 +1324,20 @@
       },
       "meta": {
         "generatedAt": "2026-10-21T00:00:00.000Z",
-        "version": "1.0",
-        "release": "Australia",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "cis-itsm-delta-brazil-016",
       "certification": "cis-itsm",
       "topic": "delta-brazil",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "According to the Australia release notes, which plugin must be activated to make Universal Request available?",
+      "question": "An administrator on an Australia instance wants to try the Universal Request Router agentic workflow, which helps employees get support that spans multiple departments. Which plugin makes Universal Request available?",
       "options": [
         {
           "id": "a",
@@ -1311,7 +1349,7 @@
         },
         {
           "id": "c",
-          "text": "com.snc.itsm.roles"
+          "text": "com.snc.on_call_rotation"
         },
         {
           "id": "d",
@@ -1322,27 +1360,30 @@
         "a"
       ],
       "explanation": {
-        "correct": "Universal Request is available with activation of the Universal Request plugin (com.snc.universal_request). See: https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-universalrequest-release-notes.html",
+        "correct": "The Australia activation information says: \"Universal Request is available with activation of the Universal Request plugin (com.snc.universal_request).\" In Australia, the Universal Request Router agentic workflow helps employees with services that need support from multiple departments. See https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-universalrequest-release-notes.html",
         "wrongAnswers": [
           {
             "choiceId": "b",
-            "explanation": "The release notes associate this plugin with migrating the Service Catalog from Core UI to the Angular portal.",
-            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-universalrequest-release-notes.html"
+            "explanation": "This plugin moves upgraded instances from the Core UI catalog experience to the Angular portal. It does not activate Universal Request.",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-servicecatalog-release-notes.html"
           },
           {
             "choiceId": "c",
-            "explanation": "The release notes describe com.snc.itsm.roles as the ITSM Roles plugin, not the Universal Request plugin.",
-            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-universalrequest-release-notes.html"
+            "explanation": "This is the On-Call Scheduling plugin, which is active by default for zBoot customers. It is not Universal Request.",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-oncallscheduling-release-notes.html"
           },
           {
             "choiceId": "d",
-            "explanation": "The release notes describe com.snc.itsm.enhanced_security as the ITSM Enhanced Security Features plugin.",
-            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-universalrequest-release-notes.html"
+            "explanation": "This is the ITSM Enhanced Security Features plugin. It adds \"deny unless authenticated\" ACL rules to ITSM tables.",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-changemanagement-release-notes.html"
           }
         ]
       },
       "references": [
-        "Brazil delta release notes - Universal Request"
+        "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-universalrequest-release-notes.html",
+        "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-servicecatalog-release-notes.html",
+        "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-oncallscheduling-release-notes.html",
+        "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-changemanagement-release-notes.html"
       ],
       "isFree": true,
       "difficulty": "easy",
@@ -1373,61 +1414,65 @@
       },
       "meta": {
         "generatedAt": "2026-10-21T00:00:00.000Z",
-        "version": "1.0",
-        "release": "Australia",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "cis-itsm-delta-brazil-017",
       "certification": "cis-itsm",
       "topic": "delta-brazil",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "According to the Australia release notes, in Simplified IT Service Management, which roles are used to configure Incident Management and Request Management?",
+      "question": "A customer using Simplified IT Service Management on Australia wants to delegate setup work without granting admin. Which roles does Simplified ITSM use to configure Incident Management and Request Management?",
       "options": [
         {
           "id": "a",
-          "text": "sn_incident_admin for Incident Management and sn_request_admin for Request Management"
+          "text": "sn_incident_admin for incidents and sn_request_admin for requests"
         },
         {
           "id": "b",
-          "text": "itil for Incident Management and catalog_admin for Request Management"
+          "text": "itil for incidents and catalog_admin for requests"
         },
         {
           "id": "c",
-          "text": "sn_incident_write for Incident Management and sn_request_write for Request Management"
+          "text": "sn_incident_write for incidents and sn_request_write for requests"
         },
         {
           "id": "d",
-          "text": "admin for both Incident Management and Request Management"
+          "text": "sn_mim_admin for incidents and sn_tcm_admin for requests"
         }
       ],
       "correctAnswers": [
         "a"
       ],
       "explanation": {
-        "correct": "The automated and guided administrator experience lets you configure Incident Management using the sn_incident_admin role and Request Management using the sn_request_admin role. See: https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-simplifieditservicemanagement-release-notes.html",
+        "correct": "The Australia Simplified IT Service Management notes say: \"Configure Incident Management using the sn_incident_admin role and Request Management using the sn_request_admin role.\" See https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-simplifieditservicemanagement-release-notes.html",
         "wrongAnswers": [
           {
             "choiceId": "b",
-            "explanation": "The release notes name sn_incident_admin and sn_request_admin for these configurations.",
-            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-simplifieditservicemanagement-release-notes.html"
+            "explanation": "itil and the catalog roles are not the documented configuration roles. In Brazil, request management ACLs also \"no longer grant access based on the catalog role or the catalog admin role.\"",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-servicecatalog-release-notes.html"
           },
           {
             "choiceId": "c",
-            "explanation": "The release notes name the admin-level roles sn_incident_admin and sn_request_admin, not the write roles.",
-            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-simplifieditservicemanagement-release-notes.html"
+            "explanation": "sn_incident_write and sn_request_write are granular write roles from the ITSM Roles plugin, which other roles inherit for record access. Configuration uses sn_incident_admin and sn_request_admin.",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-incidentmanagement-release-notes.html"
           },
           {
             "choiceId": "d",
-            "explanation": "The release notes name the granular roles sn_incident_admin and sn_request_admin rather than the general admin role.",
-            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-simplifieditservicemanagement-release-notes.html"
+            "explanation": "sn_mim_admin configures Major Incident Management, and sn_tcm_admin configures Task Communications Management. Neither is used to configure Incident or Request Management.",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-incidentmanagement-release-notes.html"
           }
         ]
       },
       "references": [
-        "Brazil delta release notes - Simplified IT Service Management"
+        "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-simplifieditservicemanagement-release-notes.html",
+        "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-incidentmanagement-release-notes.html",
+        "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-servicecatalog-release-notes.html"
       ],
       "isFree": true,
       "difficulty": "medium",
@@ -1459,9 +1504,11 @@
       },
       "meta": {
         "generatedAt": "2026-10-21T00:00:00.000Z",
-        "version": "1.0",
-        "release": "Australia",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -1470,15 +1517,15 @@
       "topic": "delta-brazil",
       "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "The sn_itsm_mcp_server.requester.escalate tool is deprecated and turned off by default. Which tool should a fulfiller use instead to escalate an incident?",
+      "question": "A service desk agent (fulfiller) on a Brazil instance needs to escalate an incident through an AI client connected to the ITSM MCP Server, but sn_itsm_mcp_server.requester.escalate is turned off by default. Which tool should they use?",
       "options": [
         {
           "id": "a",
-          "text": "sn_itsm_mcp_server.incident.modify with the escalate and escalation_reason inputs"
+          "text": "sn_itsm_mcp_server.incident.modify with escalate and escalation_reason"
         },
         {
           "id": "b",
-          "text": "sn_itsm_mcp_server.request.modify with the urgency input"
+          "text": "sn_itsm_mcp_server.request.modify with an urgency and escalation reason"
         },
         {
           "id": "c",
@@ -1486,34 +1533,34 @@
         },
         {
           "id": "d",
-          "text": "task_approval_decision with a reject decision"
+          "text": "task_approval_decision with a reject decision on the incident"
         }
       ],
       "correctAnswers": [
         "a"
       ],
       "explanation": {
-        "correct": "The requester.escalate tool is turned off by default; the release notes direct you to use sn_itsm_mcp_server.incident.modify with the escalate and escalation_reason inputs instead. As a fulfiller, you can use the sn_itsm_mcp_server.incident.modify tool to also escalate incidents. See: https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-itsmmcpserver-release-notes.html",
+        "correct": "The deprecation note says: \"The sn_itsm_mcp_server.requester.escalate tool is turned off by default. Use sn_itsm_mcp_server.incident.modify with the escalate and escalation_reason inputs instead.\" The tool changes also say a fulfiller can use incident.modify to escalate incidents. See https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-itsmmcpserver-release-notes.html",
         "wrongAnswers": [
           {
             "choiceId": "b",
-            "explanation": "The release notes describe request.modify as the tool requesters use to add customer-visible comments to requested items, not for escalation.",
+            "explanation": "sn_itsm_mcp_server.request.modify is the renamed requester.add_comment tool. Requesters use it to add customer-visible comments to requested items, not to escalate incidents.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-itsmmcpserver-release-notes.html"
           },
           {
             "choiceId": "c",
-            "explanation": "The release notes describe incident.get_details as the tool for checking incident status; the replacement for escalation is incident.modify.",
+            "explanation": "sn_itsm_mcp_server.incident.get_details reads incident fields and lets a requester check an incident's status. It does not escalate.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-itsmmcpserver-release-notes.html"
           },
           {
             "choiceId": "d",
-            "explanation": "The release notes describe task_approval_decision as approving or rejecting your oldest pending approval, not escalating incidents.",
+            "explanation": "task_approval_decision approves or rejects your oldest pending approval for a change or requested item. It does not escalate incidents.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-itsmmcpserver-release-notes.html"
           }
         ]
       },
       "references": [
-        "Brazil delta release notes - ITSM MCP Server"
+        "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-itsmmcpserver-release-notes.html"
       ],
       "isFree": true,
       "difficulty": "medium",
@@ -1545,38 +1592,40 @@
       },
       "meta": {
         "generatedAt": "2026-10-21T00:00:00.000Z",
-        "version": "1.0",
+        "version": "1.1",
         "release": "Brazil",
-        "reviewed": false
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "cis-itsm-delta-brazil-019",
       "certification": "cis-itsm",
       "topic": "delta-brazil",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "understanding",
       "type": "multiple_select",
-      "question": "Which plugins must be activated to use the ITSM MCP Server? (Choose three.)",
+      "question": "An administrator on a Brazil instance is getting ready to connect an external AI client to the ITSM MCP Server. Which three plugins must be activated? (Choose three.)",
       "options": [
         {
           "id": "a",
-          "text": "sn_itsm_gen_ai"
+          "text": "Now Assist for ITSM (sn_itsm_gen_ai)"
         },
         {
           "id": "b",
-          "text": "sn_mcp_server"
+          "text": "Model Context Protocol Server (sn_mcp_server)"
         },
         {
           "id": "c",
-          "text": "sn_itsm_mcp_server"
+          "text": "ITSM MCP Server (sn_itsm_mcp_server)"
         },
         {
           "id": "d",
-          "text": "com.snc.itsm.roles"
+          "text": "ITSM Roles (com.snc.itsm.roles)"
         },
         {
           "id": "e",
-          "text": "com.snc.itsm.virtualagent.lite"
+          "text": "ITSM Virtual Agent Lite (com.snc.itsm.virtualagent.lite)"
         }
       ],
       "correctAnswers": [
@@ -1585,22 +1634,24 @@
         "c"
       ],
       "explanation": {
-        "correct": "To use the ITSM MCP Server, activate the Now Assist for ITSM plugin (sn_itsm_gen_ai), the Model Context Protocol Server plugin (sn_mcp_server), and the ITSM MCP Server plugin (sn_itsm_mcp_server). See: https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-itsmmcpserver-release-notes.html",
+        "correct": "The ITSM MCP Server activation information lists the plugins to activate to use ITSM MCP Server: Now Assist for ITSM plugin (sn_itsm_gen_ai), Model Context Protocol Server (sn_mcp_server), and ITSM MCP Server (sn_itsm_mcp_server). Users also need the sn_mcp_server.viewer role as the base role. See https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-itsmmcpserver-release-notes.html",
         "wrongAnswers": [
           {
             "choiceId": "d",
-            "explanation": "The release notes do not list the ITSM Roles plugin among the plugins required for the ITSM MCP Server.",
-            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-itsmmcpserver-release-notes.html"
+            "explanation": "The ITSM Roles plugin provides granular roles such as sn_incident_write. It is not in the list of plugins required for the ITSM MCP Server.",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-incidentmanagement-release-notes.html"
           },
           {
             "choiceId": "e",
-            "explanation": "The release notes do not list this plugin among those required for the ITSM MCP Server.",
-            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-itsmmcpserver-release-notes.html"
+            "explanation": "ITSM Virtual Agent Conversation Topics Lite is being prepared for future deprecation in Brazil, and it is not a prerequisite for the ITSM MCP Server.",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-servicenowottoforitservicemanagementitsm-release-notes.html"
           }
         ]
       },
       "references": [
-        "Brazil delta release notes - ITSM MCP Server"
+        "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-itsmmcpserver-release-notes.html",
+        "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-incidentmanagement-release-notes.html",
+        "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-servicenowottoforitservicemanagementitsm-release-notes.html"
       ],
       "isFree": true,
       "difficulty": "hard",
@@ -1612,7 +1663,7 @@
           "url": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-itsmmcpserver-release-notes.html"
         },
         "path": "servicenow.com/docs/r/delta-zurich-brazil",
-        "excerpt": "Activate these plugins to use ITSM MCP Server: sn_itsm_gen_ai, sn_mcp_server, sn_itsm_mcp_server."
+        "excerpt": "Activate these plugins to use ITSM MCP Server: Now Assist for ITSM plugin (sn_itsm_gen_ai) Model Context Protocol Server (sn_mcp_server) ITSM MCP Server (sn_itsm_mcp_server)"
       },
       "labels": {
         "certification": "cis-itsm",
@@ -1632,61 +1683,65 @@
       },
       "meta": {
         "generatedAt": "2026-10-21T00:00:00.000Z",
-        "version": "1.0",
+        "version": "1.1",
         "release": "Brazil",
-        "reviewed": false
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "cis-itsm-delta-brazil-020",
       "certification": "cis-itsm",
       "topic": "delta-brazil",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "Starting with the Brazil release, which plugin is being prepared for future deprecation?",
+      "question": "An ITSM platform owner is reading the Brazil release notes for ServiceNow Otto for ITSM to plan a chatbot roadmap. Which plugin is being prepared for future deprecation?",
       "options": [
         {
           "id": "a",
-          "text": "ITSM Virtual Agent Conversation Topics Lite (com.snc.itsm.virtualagent.lite)"
+          "text": "ITSM Virtual Agent Lite (com.snc.itsm.virtualagent.lite)"
         },
         {
           "id": "b",
-          "text": "Service Catalog Angular portal (com.glideapp.servicecatalog.ui16_portal)"
+          "text": "Learning Enhanced Automation Platform (sn_itom_leap)"
         },
         {
           "id": "c",
-          "text": "Universal Request (com.snc.universal_request)"
+          "text": "ITSM Enhanced Security Features (com.snc.itsm.enhanced_security)"
         },
         {
           "id": "d",
-          "text": "ITSM Enhanced Security Features (com.snc.itsm.enhanced_security)"
+          "text": "Model Context Protocol Server (sn_mcp_server)"
         }
       ],
       "correctAnswers": [
         "a"
       ],
       "explanation": {
-        "correct": "The Brazil deprecations state that ITSM Virtual Agent Conversation Topics Lite (com.snc.itsm.virtualagent.lite) is being prepared for future deprecation, along with the ITSM Virtual Agent pre-built NLU topics. See: https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-servicenowottoforitservicemanagementitsm-release-notes.html",
+        "correct": "The Brazil deprecations for ServiceNow Otto for ITSM say: \"ITSM Virtual Agent Conversation Topics Lite ( com.snc.itsm.virtualagent.lite ) is being prepared for future deprecation.\" ITSM Virtual Agent pre-built topics are also being prepared for future deprecation. See https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-servicenowottoforitservicemanagementitsm-release-notes.html",
         "wrongAnswers": [
           {
             "choiceId": "b",
-            "explanation": "The release notes describe this plugin as active by default on new instances and required on upgraded instances to move to the Angular portal, not as being deprecated.",
+            "explanation": "LEAP is the replacement, not the item being deprecated. The Suggested steps skill \"is being replaced with Learning Enhanced Automation Platform (LEAP)\", and you install the sn_itom_leap plugin to move to it.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-servicenowottoforitservicemanagementitsm-release-notes.html"
           },
           {
             "choiceId": "c",
-            "explanation": "The release notes describe Universal Request as available through this plugin, not as being deprecated.",
-            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-servicenowottoforitservicemanagementitsm-release-notes.html"
+            "explanation": "This plugin is activated automatically when you upgrade to Brazil. It is not being deprecated.",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-changemanagement-release-notes.html"
           },
           {
             "choiceId": "d",
-            "explanation": "The release notes say this plugin is now activated automatically on upgrade, not deprecated.",
-            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-servicenowottoforitservicemanagementitsm-release-notes.html"
+            "explanation": "sn_mcp_server is one of the plugins you must activate to use the ITSM MCP Server in Brazil. It is not being deprecated.",
+            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-itsmmcpserver-release-notes.html"
           }
         ]
       },
       "references": [
-        "Brazil delta release notes - ServiceNow Otto for IT Service Management (ITSM)"
+        "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-servicenowottoforitservicemanagementitsm-release-notes.html",
+        "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-changemanagement-release-notes.html",
+        "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-itsmmcpserver-release-notes.html"
       ],
       "isFree": true,
       "difficulty": "medium",
@@ -1718,9 +1773,11 @@
       },
       "meta": {
         "generatedAt": "2026-10-21T00:00:00.000Z",
-        "version": "1.0",
+        "version": "1.1",
         "release": "Brazil",
-        "reviewed": false
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     }
   ]

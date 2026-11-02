@@ -273,25 +273,25 @@
       "id": "csa-rd-004",
       "certification": "csa",
       "topic": "reporting-dashboards",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_select",
-      "question": "Which visualization types are available in ServiceNow? (Choose two)",
+      "question": "A service owner wants a visualization that shows where this month's average resolution time sits between a minimum and a maximum expected value. Which two data visualization types are designed for this? (Choose two)",
       "options": [
         {
           "id": "a",
-          "text": "Speedometer and dial"
+          "text": "Dial visualization"
         },
         {
           "id": "b",
-          "text": "Gantt chart"
+          "text": "Pareto bar visualization"
         },
         {
           "id": "c",
-          "text": "Pie and semi-donut"
+          "text": "Gauge visualization"
         },
         {
           "id": "d",
-          "text": "3D surface plot"
+          "text": "Heatmap visualization"
         }
       ],
       "correctAnswers": [
@@ -299,22 +299,22 @@
         "c"
       ],
       "explanation": {
-        "correct": "ServiceNow offers various visualization types including speedometer, dial, single score, pie, semi-donut, bubble, and text analytics. Gantt charts and 3D surface plots are not standard visualization types. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=116f675847b35ad4ca332a81736d438d&spa=1",
+        "correct": "Score visualizations show a single value. Dial visualizations show where a single value lies across a range from minimum to maximum expected values. Gauges do the same and also let you set colored data ranges that help users understand what the value means. See https://www.servicenow.com/docs/r/now-intelligence/data-visualization-type-overview.html",
         "wrongAnswers": [
           {
             "choiceId": "b",
-            "explanation": "Gantt charts are specialized project management visualizations, not standard in the Visualization Designer.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=116f675847b35ad4ca332a81736d438d&spa=1"
+            "explanation": "Pareto bar visualizations help you identify the most important dimension in a large set of dimensions. They show columns in descending order with a cumulative-percentage line, not a single value within a range.",
+            "reference": "https://www.servicenow.com/docs/r/now-intelligence/data-visualization-type-overview.html"
           },
           {
             "choiceId": "d",
-            "explanation": "3D surface plots are not included in ServiceNow's standard visualization options.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=116f675847b35ad4ca332a81736d438d&spa=1"
+            "explanation": "Heatmaps show the relationship between two table fields or indicator breakdowns through changes in color. They do not place a single value between a minimum and a maximum.",
+            "reference": "https://www.servicenow.com/docs/r/now-intelligence/data-visualization-type-overview.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Visualization Types"
+        "https://www.servicenow.com/docs/r/now-intelligence/data-visualization-type-overview.html"
       ],
       "isFree": true,
       "source": {
@@ -335,21 +335,22 @@
         "domainSlug": "reporting-dashboards",
         "domainPercentage": 13,
         "subtopics": [
-          "Charts and graphs",
-          "Report types"
+          "Report types",
+          "Charts and graphs"
         ],
         "tags": [
-          "visualization",
-          "chart types",
-          "pie chart",
-          "dial"
+          "visualization types",
+          "dial",
+          "gauge"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -624,50 +625,52 @@
       "topic": "reporting-dashboards",
       "cognitiveLevel": "understanding",
       "type": "multiple_choice",
-      "question": "What does Performance Analytics capture to show accurate historical trends?",
+      "question": "An analyst looks at last month's score for an automated indicator that has Collect records selected and wants to see which incidents made up that score. What does Performance Analytics store that makes this possible?",
       "options": [
         {
           "id": "a",
-          "text": "User login records"
+          "text": "Indicator scores entered manually each month"
         },
         {
           "id": "b",
-          "text": "Regular snapshots of data"
+          "text": "Snapshots of the records behind each score"
         },
         {
           "id": "c",
-          "text": "Email notifications"
+          "text": "Breakdowns defined on the indicator"
         },
         {
           "id": "d",
-          "text": "System configuration changes"
+          "text": "Scheduled exports of the indicator's dashboard"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "Performance Analytics captures regular snapshots to show accurate historical trends, helping to review indicators, monitor metrics, and improve decisions. Unlike one-time reporting, PA development is ongoing and can be refined over time. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=116f675847b35ad4ca332a81736d438d&spa=1",
+        "correct": "Performance Analytics data collection jobs collect scores and snapshots. A snapshot is the list of records (sys_ids) collected at the same time as the scores for those records, so you can see which records made up a score. Snapshots are made only for automated indicators with Collect records selected. See https://www.servicenow.com/docs/r/now-intelligence/performance-analytics/c_ClctData.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Login records are captured in system logs, not PA snapshots.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=116f675847b35ad4ca332a81736d438d&spa=1"
+            "explanation": "You can set indicator scores manually, and the docs suggest this for indicators measured once a month, quarter, or year. Snapshots, the lists of records behind scores, are made only for automated indicators with Collect records selected.",
+            "reference": "https://www.servicenow.com/docs/r/now-intelligence/performance-analytics/c_ClctData.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Email notifications are part of communication, not PA data collection.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=116f675847b35ad4ca332a81736d438d&spa=1"
+            "explanation": "In a visualization, you can filter indicator scores by breakdowns and elements. The lists of records (sys_ids) collected at the time a score is collected are snapshots, not breakdowns.",
+            "reference": "https://www.servicenow.com/docs/r/now-intelligence/create-dv-bar-ac.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Configuration changes are tracked in update sets, not PA snapshots.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=116f675847b35ad4ca332a81736d438d&spa=1"
+            "explanation": "A scheduled export automates the export and mailing of dashboards and data visualizations. It does not store the records behind an indicator score.",
+            "reference": "https://www.servicenow.com/docs/r/now-intelligence/schedule-export-dboards-data-viz.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Performance Analytics"
+        "https://www.servicenow.com/docs/r/now-intelligence/performance-analytics/c_ClctData.html",
+        "https://www.servicenow.com/docs/r/now-intelligence/create-dv-bar-ac.html",
+        "https://www.servicenow.com/docs/r/now-intelligence/schedule-export-dboards-data-viz.html"
       ],
       "isFree": false,
       "source": {
@@ -688,20 +691,22 @@
         "domainSlug": "reporting-dashboards",
         "domainPercentage": 13,
         "subtopics": [
-          "Performance Analytics"
+          "Performance Analytics",
+          "Data collection"
         ],
         "tags": [
-          "performance analytics",
           "snapshots",
-          "trends",
-          "historical data"
+          "indicator scores",
+          "data collection"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -887,50 +892,50 @@
       "topic": "reporting-dashboards",
       "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "A manager wants to track incident resolution trends over the past year. Which ServiceNow feature should they use?",
+      "question": "A manager wants the scores of an automated resolved-incidents indicator collected every day from now on, without anyone entering data. What should the administrator set up?",
       "options": [
         {
           "id": "a",
-          "text": "List views with filters"
+          "text": "A scheduled data collection job"
         },
         {
           "id": "b",
-          "text": "Performance Analytics"
+          "text": "Monthly manual entry of indicator scores"
         },
         {
           "id": "c",
-          "text": "Knowledge Base articles"
+          "text": "A one-time historical data collection job"
         },
         {
           "id": "d",
-          "text": "Service Catalog"
+          "text": "An import of scores from a spreadsheet"
         }
       ],
       "correctAnswers": [
-        "b"
+        "a"
       ],
       "explanation": {
-        "correct": "Performance Analytics reveals trends over time and captures regular snapshots to show accurate historical trends. For tracking resolution trends over a year, PA provides the trending capabilities needed for this analysis. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=116f675847b35ad4ca332a81736d438d&spa=1",
+        "correct": "For ongoing collection, the docs say that if you need to measure indicators more often than monthly, or want to eliminate any human involvement, you should use a scheduled data collection job. A scheduled job regularly collects indicator scores and snapshots. See https://www.servicenow.com/docs/r/now-intelligence/performance-analytics/c_ClctData.html",
         "wrongAnswers": [
           {
-            "choiceId": "a",
-            "explanation": "List views show current data but don't provide trend analysis over time.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=116f675847b35ad4ca332a81736d438d&spa=1"
+            "choiceId": "b",
+            "explanation": "The docs suggest entering scores manually only when you measure an indicator once a month, quarter, or year. That needs a person to do it, which the manager wants to avoid.",
+            "reference": "https://www.servicenow.com/docs/r/now-intelligence/performance-analytics/c_ClctData.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Knowledge Base stores articles, not analytics or trending data.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=116f675847b35ad4ca332a81736d438d&spa=1"
+            "explanation": "A historical data collection job collects scores and snapshots for existing records right away. It is run once, for example for a new indicator. It does not keep collecting every day.",
+            "reference": "https://www.servicenow.com/docs/r/now-intelligence/performance-analytics/c_ClctData.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Service Catalog is for requesting services, not reporting.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=116f675847b35ad4ca332a81736d438d&spa=1"
+            "explanation": "Importing scores is suggested, like manual entry, for indicators measured once a month, quarter, or year. It is not the hands-off daily method.",
+            "reference": "https://www.servicenow.com/docs/r/now-intelligence/performance-analytics/c_ClctData.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Performance Analytics"
+        "https://www.servicenow.com/docs/r/now-intelligence/performance-analytics/c_ClctData.html"
       ],
       "isFree": false,
       "source": {
@@ -951,19 +956,22 @@
         "domainSlug": "reporting-dashboards",
         "domainPercentage": 13,
         "subtopics": [
-          "Performance Analytics"
+          "Performance Analytics",
+          "Data collection"
         ],
         "tags": [
-          "performance analytics",
-          "trends",
-          "incident management"
+          "data collection job",
+          "indicator scores",
+          "scheduling"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -1057,25 +1065,25 @@
       "id": "csa-rd-013",
       "certification": "csa",
       "topic": "reporting-dashboards",
-      "cognitiveLevel": "understanding",
+      "cognitiveLevel": "application",
       "type": "multiple_select",
-      "question": "What can ServiceNow visualizations be used for? (Choose two)",
+      "question": "A team lead wants to use Export in a Platform Analytics dashboard's More actions menu and attach the file to a meeting invite. Which two file types can that export produce? (Choose two)",
       "options": [
         {
           "id": "a",
-          "text": "Shown as bar charts, pie charts, and other chart types"
+          "text": "PDF document"
         },
         {
           "id": "b",
-          "text": "Directly modifying database records"
+          "text": "Excel spreadsheet"
         },
         {
           "id": "c",
-          "text": "Run manually or automatically scheduled"
+          "text": "PowerPoint deck"
         },
         {
           "id": "d",
-          "text": "Replacing all security controls"
+          "text": "CSV data file"
         }
       ],
       "correctAnswers": [
@@ -1083,22 +1091,23 @@
         "c"
       ],
       "explanation": {
-        "correct": "Visualizations can be shown as bar charts, pie charts, etc., and can be run manually or automatically scheduled. They include conditions for features like incident management and service catalog requests, including KPI reports. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=116f675847b35ad4ca332a81736d438d&spa=1",
+        "correct": "You can export a Platform Analytics experience dashboard to PDF or Microsoft PowerPoint. In the Export dialog, File type offers PDF or PowerPoint. For PowerPoint, each visualization gets its own slide. In a PDF, each visualization gets its own page. See https://www.servicenow.com/docs/r/now-intelligence/export-pae-dashboard-ppt.html",
         "wrongAnswers": [
           {
             "choiceId": "b",
-            "explanation": "Visualizations display data; they don't directly modify database records.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=116f675847b35ad4ca332a81736d438d&spa=1"
+            "explanation": "In the supported export formats table, dashboards support only PowerPoint and PDF. Microsoft Excel is listed only for a List data visualization exported on its own.",
+            "reference": "https://www.servicenow.com/docs/r/now-intelligence/schedule-export-dboards-data-viz.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Security controls are managed separately and are not replaced by visualizations.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=116f675847b35ad4ca332a81736d438d&spa=1"
+            "explanation": "CSV is not a dashboard export format. In the supported formats table, CSV is available only when a List data visualization is exported on its own.",
+            "reference": "https://www.servicenow.com/docs/r/now-intelligence/schedule-export-dboards-data-viz.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Visualizations"
+        "https://www.servicenow.com/docs/r/now-intelligence/export-pae-dashboard-ppt.html",
+        "https://www.servicenow.com/docs/r/now-intelligence/schedule-export-dboards-data-viz.html"
       ],
       "isFree": false,
       "source": {
@@ -1119,33 +1128,35 @@
         "domainSlug": "reporting-dashboards",
         "domainPercentage": 13,
         "subtopics": [
-          "Charts and graphs",
-          "Scheduled reports"
+          "Dashboards",
+          "Exporting"
         ],
         "tags": [
-          "visualizations",
-          "charts",
-          "scheduling"
+          "dashboard export",
+          "PDF",
+          "PowerPoint"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "csa-rd-014",
       "certification": "csa",
       "topic": "reporting-dashboards",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "Where can you access the collection of data visualizations in ServiceNow?",
+      "question": "A user on a net new Brazil instance wants to browse the data visualizations that colleagues have shared with them. Where should they go?",
       "options": [
         {
           "id": "a",
-          "text": "All > System Definition > Visualizations"
+          "text": "All > Platform Analytics > Library > Indicators"
         },
         {
           "id": "b",
@@ -1153,30 +1164,33 @@
         },
         {
           "id": "c",
-          "text": "All > Reports > Chart Builder"
+          "text": "All > Platform Analytics > Library > Dashboards"
         },
         {
           "id": "d",
-          "text": "All > System UI > Visualizations"
+          "text": "All > Platform Analytics Administration > Data Collector > Jobs"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "Navigate to All > Platform Analytics > Library > Data Visualizations to access the collection of visualizations. You can use these to create custom visuals.",
+        "correct": "On net new Brazil instances, Reporting is replaced with Data Visualizations. You access data visualizations at All > Platform Analytics > Library > Data Visualizations. Owners can access and share their visualizations, and users they share them with can access them too. See https://www.servicenow.com/docs/r/now-intelligence/analytics-center-data-visualizations.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "System Definition is for tables and scripts, not visualizations."
+            "explanation": "Platform Analytics > Library > Indicators opens the list of indicators (KPIs), not data visualizations.",
+            "reference": "https://www.servicenow.com/docs/r/now-intelligence/your-kpis.html"
           },
           {
             "choiceId": "c",
-            "explanation": "This is not the correct navigation path for data visualizations."
+            "explanation": "All > Platform Analytics > Library > Dashboards is where you select a dashboard, for example to share it. It lists dashboards, not data visualizations.",
+            "reference": "https://www.servicenow.com/docs/r/now-intelligence/share-db-in-ac.html"
           },
           {
             "choiceId": "d",
-            "explanation": "System UI is for UI components, not analytics visualizations."
+            "explanation": "All > Platform Analytics Administration > Data Collector > Jobs lists Performance Analytics data collection jobs, for example to cancel one. It is not the visualization library.",
+            "reference": "https://www.servicenow.com/docs/r/now-intelligence/performance-analytics/cancel-pa-dc-job.html"
           }
         ]
       },
@@ -1194,20 +1208,30 @@
         "domainSlug": "reporting-dashboards",
         "domainPercentage": 13,
         "subtopics": [
-          "Data visualizations navigation"
+          "Data visualizations",
+          "Navigation"
         ],
         "tags": [
-          "platform analytics",
-          "visualizations",
-          "navigation"
+          "data visualizations library",
+          "navigation",
+          "Platform Analytics"
         ]
       },
       "meta": {
         "generatedAt": "2026-03-16T02:00:00Z",
         "version": "1.1",
-        "release": "Xanadu",
-        "reviewed": false
-      }
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/now-intelligence/analytics-center-data-visualizations.html",
+        "https://www.servicenow.com/docs/r/now-intelligence/reporting/reporting-landing-page.html",
+        "https://www.servicenow.com/docs/r/now-intelligence/your-kpis.html",
+        "https://www.servicenow.com/docs/r/now-intelligence/share-db-in-ac.html",
+        "https://www.servicenow.com/docs/r/now-intelligence/performance-analytics/cancel-pa-dc-job.html"
+      ]
     },
     {
       "id": "csa-rd-017",
@@ -1297,25 +1321,25 @@
       "id": "csa-rd-018",
       "certification": "csa",
       "topic": "reporting-dashboards",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "understanding",
       "type": "multiple_select",
-      "question": "Which configuration options are available in the Visualization Designer? (Choose 2)",
+      "question": "A designer is building a bar visualization in the Visualization Designer. Which two of these settings are configured in its Header and border section? (Choose 2)",
       "options": [
         {
           "id": "a",
-          "text": "Data source selection (predefined or ServiceNow table)"
+          "text": "Chart title"
         },
         {
           "id": "b",
-          "text": "Automatic email scheduling of visualizations"
+          "text": "Legend position"
         },
         {
           "id": "c",
-          "text": "Chart type selection (over 20 types available)"
+          "text": "Show export options"
         },
         {
           "id": "d",
-          "text": "Integration with external BI tools"
+          "text": "Predefined conditions"
         }
       ],
       "correctAnswers": [
@@ -1323,15 +1347,17 @@
         "c"
       ],
       "explanation": {
-        "correct": "In the Visualization Designer, you can choose where your data comes from (predefined data source or ServiceNow table) and pick from over 20 chart types. Other options include Group By/Sorting and Presentation customization.",
+        "correct": "When you create a horizontal or vertical bar visualization, you first configure the Header and border. Its fields include Chart title (the title of the visualization) and Show export options (show or hide the visualization's export types). See https://www.servicenow.com/docs/r/now-intelligence/create-dv-bar-ac.html",
         "wrongAnswers": [
           {
             "choiceId": "b",
-            "explanation": "Email scheduling is configured separately, not directly in the Visualization Designer."
+            "explanation": "Legend position (Above, Below, Right, or Left) is a Legend setting under Presentation, where you provide display and color information.",
+            "reference": "https://www.servicenow.com/docs/r/now-intelligence/create-dv-bar-ac.html"
           },
           {
             "choiceId": "d",
-            "explanation": "The Visualization Designer works within ServiceNow, not with external BI tools."
+            "explanation": "Predefined conditions belong to the data source. When you select a table, you can filter it by custom or preconfigured conditions, and configured report sources appear in the Predefined conditions list.",
+            "reference": "https://www.servicenow.com/docs/r/now-intelligence/create-dv-bar-ac.html"
           }
         ]
       },
@@ -1349,48 +1375,54 @@
         "domainSlug": "reporting-dashboards",
         "domainPercentage": 13,
         "subtopics": [
-          "Visualization Designer options"
+          "Visualization Designer",
+          "Charts and graphs"
         ],
         "tags": [
           "visualization designer",
-          "data source",
-          "chart types"
+          "header and border",
+          "configuration"
         ]
       },
       "meta": {
         "generatedAt": "2026-03-16T02:00:00Z",
         "version": "1.1",
-        "release": "Xanadu",
-        "reviewed": false
-      }
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/now-intelligence/create-dv-bar-ac.html"
+      ]
     },
     {
       "id": "csa-rd-019",
       "certification": "csa",
       "topic": "reporting-dashboards",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "understanding",
       "type": "multiple_select",
-      "question": "Which visualization types are available in ServiceNow? (Choose 3)",
+      "question": "An analyst wants one chart that shows relationships between several incident fields so patterns that aren't obvious stand out. Which three visualization types do the docs group as multidimensional? (Choose 3)",
       "options": [
         {
           "id": "a",
-          "text": "Speedometer"
+          "text": "Pivot table visualization"
         },
         {
           "id": "b",
-          "text": "Bubble chart"
+          "text": "Heatmap visualization"
         },
         {
           "id": "c",
-          "text": "Gantt chart"
+          "text": "Pareto bar visualization"
         },
         {
           "id": "d",
-          "text": "Semi-donut"
+          "text": "Bubble chart visualization"
         },
         {
           "id": "e",
-          "text": "Waterfall chart"
+          "text": "Horizontal bar visualization"
         }
       ],
       "correctAnswers": [
@@ -1399,15 +1431,17 @@
         "d"
       ],
       "explanation": {
-        "correct": "ServiceNow offers various visualization types including speedometer, dial, single score, pie, semi-donut, bubble, and text analytics, among others.",
+        "correct": "Multidimensional visualizations show several variables in one chart and help you find patterns or trends that might not be obvious. The docs list pivot table, heatmap, and bubble chart visualizations in this group. See https://www.servicenow.com/docs/r/now-intelligence/data-visualization-type-overview.html",
         "wrongAnswers": [
           {
             "choiceId": "c",
-            "explanation": "Gantt charts are not listed among the standard ServiceNow visualization types."
+            "explanation": "Pareto bar visualizations are listed under bar visualizations. They help you find the most important dimension, with columns in descending order and a cumulative-percentage line.",
+            "reference": "https://www.servicenow.com/docs/r/now-intelligence/data-visualization-type-overview.html"
           },
           {
             "choiceId": "e",
-            "explanation": "Waterfall charts are not listed among the standard ServiceNow visualization types."
+            "explanation": "Horizontal bar visualizations are bar visualizations. They compare scores across data dimensions, with categories on one axis and values on the other.",
+            "reference": "https://www.servicenow.com/docs/r/now-intelligence/data-visualization-type-overview.html"
           }
         ]
       },
@@ -1425,68 +1459,81 @@
         "domainSlug": "reporting-dashboards",
         "domainPercentage": 13,
         "subtopics": [
-          "Visualization types"
+          "Report types",
+          "Charts and graphs"
         ],
         "tags": [
           "visualization types",
-          "speedometer",
-          "bubble",
-          "semi-donut"
+          "multidimensional",
+          "pivot table"
         ]
       },
       "meta": {
         "generatedAt": "2026-03-16T02:00:00Z",
         "version": "1.1",
-        "release": "Xanadu",
-        "reviewed": false
-      }
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/now-intelligence/data-visualization-type-overview.html"
+      ]
     },
     {
       "id": "csa-rd-021",
       "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "A manager wants a dashboard that shows real-time incident counts by priority, updated every 5 minutes. Which report type should the administrator create?",
+      "question": "A service desk manager's Platform Analytics dashboard has data caching turned on, and its table-based visualizations show counts from earlier in the day. The manager needs the latest incident counts right now. What should they do?",
       "options": [
         {
           "id": "a",
-          "text": "A bar chart report on the Incident table grouped by Priority with auto-refresh enabled on the dashboard"
+          "text": "Refresh the dashboard manually"
         },
         {
           "id": "b",
-          "text": "A scheduled PDF export sent every 5 minutes"
+          "text": "Run a historical data collection job"
         },
         {
           "id": "c",
-          "text": "A static HTML page with hardcoded data"
+          "text": "Schedule an export of the dashboard"
         },
         {
           "id": "d",
-          "text": "A Performance Analytics indicator with real-time collection"
+          "text": "Raise the dashboard tab cache timeout"
         }
       ],
       "correctAnswers": [
         "a"
       ],
       "explanation": {
-        "correct": "A standard report (bar chart grouped by Priority) added to a dashboard with auto-refresh enabled provides near-real-time data. Dashboard auto-refresh intervals can be configured to update at regular intervals.",
+        "correct": "Data caching helps data visualizations load faster by reusing older responses when available. The docs note that users can always get the latest data by refreshing the dashboard manually. See https://www.servicenow.com/docs/r/now-intelligence/data-caching-pa.html",
         "wrongAnswers": [
           {
             "choiceId": "b",
-            "explanation": "PDF exports are static snapshots sent via email; they don't provide a real-time dashboard view."
+            "explanation": "A historical data collection job collects Performance Analytics scores and snapshots for existing records of an indicator. It does not update a cached dashboard of table data.",
+            "reference": "https://www.servicenow.com/docs/r/now-intelligence/performance-analytics/c_ClctData.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Static HTML pages don't connect to live data and require manual updates."
+            "explanation": "A scheduled export automates the export and mailing of dashboards and data visualizations. It does not refresh the cached data the manager sees.",
+            "reference": "https://www.servicenow.com/docs/r/now-intelligence/schedule-export-dboards-data-viz.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Performance Analytics collects data at scheduled intervals (daily by default) and isn't designed for 5-minute real-time counts. Standard reports are more appropriate for this."
+            "explanation": "The tab cache timeout is the number of minutes dashboard tab content stays cached before it is refreshed. Raising it keeps older content longer.",
+            "reference": "https://www.servicenow.com/docs/r/now-intelligence/configure-ac-db-timeout.html"
           }
         ]
       },
       "certification": "csa",
       "topic": "reporting-dashboards",
-      "references": [],
+      "references": [
+        "https://www.servicenow.com/docs/r/now-intelligence/data-caching-pa.html",
+        "https://www.servicenow.com/docs/r/now-intelligence/performance-analytics/c_ClctData.html",
+        "https://www.servicenow.com/docs/r/now-intelligence/schedule-export-dboards-data-viz.html",
+        "https://www.servicenow.com/docs/r/now-intelligence/configure-ac-db-timeout.html"
+      ],
       "isFree": false,
       "source": {
         "type": "generated",
@@ -1504,59 +1551,76 @@
         "certification": "csa",
         "domain": "reporting-dashboards",
         "domainSlug": "reporting-dashboards",
-        "subtopics": [],
-        "tags": []
+        "subtopics": [
+          "Dashboards",
+          "Data caching"
+        ],
+        "tags": [
+          "dashboard",
+          "data caching",
+          "refresh"
+        ]
       },
       "meta": {
         "generatedAt": "2026-03-31T02:09:00Z",
-        "version": "2.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "csa-rd-022",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "Which two report types are available in ServiceNow's Report Designer? (Choose 2)",
+      "question": "An analyst wants to compare open incident counts across twelve assignment groups. Which visualization type does the docs guidance recommend for this kind of nominal data?",
       "options": [
         {
           "id": "a",
-          "text": "Pie chart"
+          "text": "Horizontal bar visualization"
         },
         {
           "id": "b",
-          "text": "Pivot table"
+          "text": "Spline visualization"
         },
         {
           "id": "c",
-          "text": "Gantt chart"
+          "text": "Gauge visualization"
         },
         {
           "id": "d",
-          "text": "3D scatter plot"
+          "text": "Indicator scorecard visualization"
         }
       ],
       "correctAnswers": [
-        "a",
-        "b"
+        "a"
       ],
       "explanation": {
-        "correct": "Pie charts and Pivot tables are both standard report types available in ServiceNow's Report Designer. Other available types include bar charts, line charts, donut charts, and trend reports.",
+        "correct": "Bar visualizations compare scores across data dimensions. The docs advise using horizontal bars for nominal or categorical data, and give incident severity or assignment group as examples. See https://www.servicenow.com/docs/r/now-intelligence/data-visualization-type-overview.html",
         "wrongAnswers": [
           {
+            "choiceId": "b",
+            "explanation": "Spline is a time series visualization. It shows how values change over time using a fitted curve, not a comparison across groups.",
+            "reference": "https://www.servicenow.com/docs/r/now-intelligence/data-visualization-type-overview.html"
+          },
+          {
             "choiceId": "c",
-            "explanation": "Gantt charts are used in Project Management but are not a standard Report Designer type."
+            "explanation": "A gauge shows where a single value lies between a minimum and a maximum expected value. It shows one value, not a comparison across groups.",
+            "reference": "https://www.servicenow.com/docs/r/now-intelligence/data-visualization-type-overview.html"
           },
           {
             "choiceId": "d",
-            "explanation": "3D scatter plots are not available in ServiceNow's reporting tools."
+            "explanation": "The Indicator scorecard visualizes and compares data between multiple Performance Analytics indicators. The docs recommend horizontal bars, not scorecards, for nominal data such as assignment group.",
+            "reference": "https://www.servicenow.com/docs/r/now-intelligence/data-visualization-type-overview.html"
           }
         ]
       },
       "certification": "csa",
       "topic": "reporting-dashboards",
-      "references": [],
+      "references": [
+        "https://www.servicenow.com/docs/r/now-intelligence/data-visualization-type-overview.html"
+      ],
       "isFree": false,
       "source": {
         "type": "generated",
@@ -1574,14 +1638,23 @@
         "certification": "csa",
         "domain": "reporting-dashboards",
         "domainSlug": "reporting-dashboards",
-        "subtopics": [],
-        "tags": []
+        "subtopics": [
+          "Report types",
+          "Charts and graphs"
+        ],
+        "tags": [
+          "visualization types",
+          "bar visualization",
+          "nominal data"
+        ]
       },
       "meta": {
         "generatedAt": "2026-03-31T02:09:00Z",
-        "version": "2.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -1674,48 +1747,53 @@
       "id": "csa-rd-024",
       "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "An administrator creates a report but a user in the 'itil' group cannot see it on their dashboard. What is the most likely cause?",
+      "question": "A team lead shared a Platform Analytics dashboard with the Service Desk group. Members can rearrange its content but cannot save their changes. What is the most likely reason?",
       "options": [
         {
           "id": "a",
-          "text": "The report has not been shared with the user's group or role"
+          "text": "The group was added as a viewer, not an editor"
         },
         {
           "id": "b",
-          "text": "The user's browser doesn't support reports"
+          "text": "The dashboard's visualizations were not shared separately"
         },
         {
           "id": "c",
-          "text": "Reports can only be viewed by the creator"
+          "text": "Members lack the admin or dashboard_admin role"
         },
         {
           "id": "d",
-          "text": "The dashboard auto-refresh is disabled"
+          "text": "The dashboard was shared with a group, not with users"
         }
       ],
       "correctAnswers": [
         "a"
       ],
       "explanation": {
-        "correct": "Reports must be explicitly shared with users, groups, or roles to be visible on their dashboards. By default, a report is only visible to its creator until sharing permissions are configured.",
+        "correct": "When you share a dashboard, you choose Add as viewer or Add as editor. Users who only have viewing rights can make changes to the dashboard's content but can't save them. Add as editor grants editing rights. See https://www.servicenow.com/docs/r/now-intelligence/share-db-in-ac.html",
         "wrongAnswers": [
           {
             "choiceId": "b",
-            "explanation": "ServiceNow reports work in all modern browsers; browser compatibility is not the issue."
+            "explanation": "Data visualizations based on table data are shared automatically with the users you share a dashboard with. Visualizations do not need to be shared separately for the dashboard to be used.",
+            "reference": "https://www.servicenow.com/docs/r/now-intelligence/share-db-in-ac.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Reports CAN be shared with other users through the sharing settings."
+            "explanation": "Users with the admin or dashboard_admin role can share all dashboards, but these roles are not needed to save changes to a shared dashboard. Add as editor grants editing rights to the users, groups, or roles you share with.",
+            "reference": "https://www.servicenow.com/docs/r/now-intelligence/share-db-in-ac.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Auto-refresh affects data currency, not report visibility."
+            "explanation": "You can share a dashboard with users, groups, or roles, and a group can be added as either a viewer or an editor.",
+            "reference": "https://www.servicenow.com/docs/r/now-intelligence/share-db-in-ac.html"
           }
         ]
       },
       "certification": "csa",
       "topic": "reporting-dashboards",
-      "references": [],
+      "references": [
+        "https://www.servicenow.com/docs/r/now-intelligence/share-db-in-ac.html"
+      ],
       "isFree": false,
       "source": {
         "type": "generated",
@@ -1733,62 +1811,79 @@
         "certification": "csa",
         "domain": "reporting-dashboards",
         "domainSlug": "reporting-dashboards",
-        "subtopics": [],
-        "tags": []
+        "subtopics": [
+          "Dashboards",
+          "Sharing"
+        ],
+        "tags": [
+          "dashboard sharing",
+          "viewer",
+          "editor"
+        ]
       },
       "meta": {
         "generatedAt": "2026-03-31T02:09:00Z",
-        "version": "2.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "csa-rd-025",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What is a 'scheduled report' in ServiceNow?",
+      "question": "A manager wants the Incidents Overview dashboard emailed to the service desk group as a PDF every Monday morning, without anyone sending it by hand. What should the analyst set up?",
       "options": [
         {
           "id": "a",
-          "text": "A report that is automatically generated and distributed via email at configured intervals"
+          "text": "A scheduled export from More actions"
         },
         {
           "id": "b",
-          "text": "A report that can only be run during business hours"
+          "text": "A one-time export with Send via email"
         },
         {
           "id": "c",
-          "text": "A report that requires manual approval before each run"
+          "text": "A share of the dashboard with the group"
         },
         {
           "id": "d",
-          "text": "A report that deletes itself after a set period"
+          "text": "A data caching setting on the dashboard"
         }
       ],
       "correctAnswers": [
         "a"
       ],
       "explanation": {
-        "correct": "Scheduled reports run automatically at configured intervals (daily, weekly, monthly) and distribute the results via email to specified recipients as PDF or other formats.",
+        "correct": "Scheduled exports automate the export and mailing of dashboards and data visualizations. From the item's More actions menu, select Schedule. Then choose the file type, set how often the email is sent under Reoccurrence, and add users and groups as recipients. See https://www.servicenow.com/docs/r/now-intelligence/schedule-export-dboards-data-viz.html",
         "wrongAnswers": [
           {
             "choiceId": "b",
-            "explanation": "Scheduled reports can run at any time, not just during business hours."
+            "explanation": "Export with the Send via email delivery method sends the file once, when you select Export. It does not repeat each week.",
+            "reference": "https://www.servicenow.com/docs/r/now-intelligence/export-pae-dashboard-ppt.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Scheduled reports run automatically without requiring approval for each execution."
+            "explanation": "Sharing gives users, groups, or roles rights to view or edit the dashboard. It does not email them an exported file.",
+            "reference": "https://www.servicenow.com/docs/r/now-intelligence/share-db-in-ac.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Reports persist until manually deleted; they don't auto-expire."
+            "explanation": "Data caching reuses older responses so visualizations load faster. It does not send any email.",
+            "reference": "https://www.servicenow.com/docs/r/now-intelligence/data-caching-pa.html"
           }
         ]
       },
       "certification": "csa",
       "topic": "reporting-dashboards",
-      "references": [],
+      "references": [
+        "https://www.servicenow.com/docs/r/now-intelligence/schedule-export-dboards-data-viz.html",
+        "https://www.servicenow.com/docs/r/now-intelligence/export-pae-dashboard-ppt.html",
+        "https://www.servicenow.com/docs/r/now-intelligence/share-db-in-ac.html",
+        "https://www.servicenow.com/docs/r/now-intelligence/data-caching-pa.html"
+      ],
       "isFree": false,
       "source": {
         "type": "generated",
@@ -1806,62 +1901,77 @@
         "certification": "csa",
         "domain": "reporting-dashboards",
         "domainSlug": "reporting-dashboards",
-        "subtopics": [],
-        "tags": []
+        "subtopics": [
+          "Dashboards",
+          "Scheduled exports"
+        ],
+        "tags": [
+          "scheduled export",
+          "email",
+          "dashboard"
+        ]
       },
       "meta": {
         "generatedAt": "2026-03-31T02:09:00Z",
-        "version": "2.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "csa-rd-026",
-      "cognitiveLevel": "understanding",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "Which feature allows users to interact with report data by clicking on chart elements to drill down into the underlying records?",
+      "question": "An analyst wants dashboard viewers who select a segment of a pie visualization of incidents to open a list of the records behind that segment. Which chart interaction action should they configure?",
       "options": [
         {
           "id": "a",
-          "text": "Report drilldown \u2014 clicking a chart segment opens the filtered list of records"
+          "text": "Go to data view action"
         },
         {
           "id": "b",
-          "text": "Report scheduling \u2014 scheduled reports include drill-down links"
+          "text": "Go to URL action"
         },
         {
           "id": "c",
-          "text": "Report export \u2014 exporting to PDF enables interactive drill-down"
+          "text": "Apply as filter action"
         },
         {
           "id": "d",
-          "text": "Report cloning \u2014 creating copies enables different views"
+          "text": "Drill down to chart action"
         }
       ],
       "correctAnswers": [
         "a"
       ],
       "explanation": {
-        "correct": "ServiceNow reports support interactive drilldown \u2014 clicking on a bar, pie slice, or other chart element opens a filtered list showing the individual records that make up that data point.",
+        "correct": "In a visualization's Chart interaction section, you set what happens when a viewer selects a segment. Go to data view opens a view of the data that fits the data type, such as a list view for table data. It is the default interaction for all supported data sources. See https://www.servicenow.com/docs/r/now-intelligence/dv-chart-interactions.html",
         "wrongAnswers": [
           {
             "choiceId": "b",
-            "explanation": "Scheduled reports are static exports; they don't support interactive drill-down."
+            "explanation": "Go to URL opens a URL you specify, on the instance or outside it. It does not open the records behind the selected segment.",
+            "reference": "https://www.servicenow.com/docs/r/now-intelligence/dv-chart-interactions.html"
           },
           {
             "choiceId": "c",
-            "explanation": "PDF exports are static documents without interactive capabilities."
+            "explanation": "Apply as filter filters all applicable data visualizations on the dashboard by the value of the selected segment. It does not open a list of records.",
+            "reference": "https://www.servicenow.com/docs/r/now-intelligence/dv-chart-interactions.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Cloning creates separate report copies; it doesn't enable drill-down."
+            "explanation": "Drill down to chart opens a different data visualization filtered by the selected data. It does not open a record list.",
+            "reference": "https://www.servicenow.com/docs/r/now-intelligence/dv-chart-interactions.html"
           }
         ]
       },
       "certification": "csa",
       "topic": "reporting-dashboards",
-      "references": [],
+      "references": [
+        "https://www.servicenow.com/docs/r/now-intelligence/dv-chart-interactions.html",
+        "https://www.servicenow.com/docs/r/now-intelligence/create-dv-bar-ac.html"
+      ],
       "isFree": false,
       "source": {
         "type": "generated",
@@ -1879,14 +1989,23 @@
         "certification": "csa",
         "domain": "reporting-dashboards",
         "domainSlug": "reporting-dashboards",
-        "subtopics": [],
-        "tags": []
+        "subtopics": [
+          "Charts and graphs",
+          "Interactivity"
+        ],
+        "tags": [
+          "chart interaction",
+          "drilldown",
+          "data view"
+        ]
       },
       "meta": {
         "generatedAt": "2026-03-31T02:09:00Z",
-        "version": "2.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     }
   ]

@@ -95,52 +95,52 @@
       "id": "csa-ui-002",
       "certification": "csa",
       "topic": "ui-navigation",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What is the purpose of views in ServiceNow?",
+      "question": "An agent opens an incident from a link whose URL sets sysparm_view to another view. Yesterday, the agent switched the Incident form to the Mobile view. Which view does the form open in?",
       "options": [
         {
           "id": "a",
-          "text": "To delete records from the database"
+          "text": "The view named in the link's URL"
         },
         {
           "id": "b",
-          "text": "To display lists or forms in different ways for different user types"
+          "text": "The Mobile view saved as a preference"
         },
         {
           "id": "c",
-          "text": "To create new tables automatically"
+          "text": "The Default view for the Incident table"
         },
         {
           "id": "d",
-          "text": "To import data from external sources"
+          "text": "The view their assignment group last used"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "Views allow users to display lists or forms in different ways. System administrators can create views for different user types, such as employee, self-service, and mobile users. The number of records stays the same, but field order may vary. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=5115a7d447335ad4ca332a81736d436e&spa=1",
+        "correct": "When a user switches views, the selected view is saved as a user preference so the user sees the same view by default when the form opens. The documentation states that if a user has a view saved as a preference and opens a URL that specifies another view, the form displays in the view saved in the user preference, not the URL. Setting the sysparm_view_forced parameter to true overrides this behavior. See https://www.servicenow.com/docs/r/platform-user-interface/view-management-overview.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Views don't delete records; they only control how data is displayed.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=5115a7d447335ad4ca332a81736d436e&spa=1"
+            "explanation": "The sysparm_view parameter can be overwritten by a user's stored view preference, so the URL's view is not used unless sysparm_view_forced is set to true.",
+            "reference": "https://www.servicenow.com/docs/r/platform-user-interface/view-management-overview.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Table creation is a separate administrative function.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=5115a7d447335ad4ca332a81736d436e&spa=1"
+            "explanation": "The form does not fall back to the Default view. The agent's saved preference (Mobile) is what the form opens in.",
+            "reference": "https://www.servicenow.com/docs/r/platform-user-interface/view-management-overview.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Data import is handled by Import Sets, not views.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=5115a7d447335ad4ca332a81736d436e&spa=1"
+            "explanation": "The selected view is saved as the individual user's preference. The documentation does not describe group-level view preferences deciding which view opens.",
+            "reference": "https://www.servicenow.com/docs/r/platform-user-interface/view-management-overview.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Views"
+        "https://www.servicenow.com/docs/r/platform-user-interface/view-management-overview.html"
       ],
       "isFree": true,
       "source": {
@@ -165,68 +165,72 @@
         ],
         "tags": [
           "views",
-          "display",
-          "user types",
-          "customization"
+          "user preferences",
+          "sysparm_view"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "csa-ui-003",
       "certification": "csa",
       "topic": "ui-navigation",
-      "cognitiveLevel": "understanding",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What is dot-walking in ServiceNow?",
+      "question": "An administrator wants the Incident list to show the company of the user in the Assigned to field, without adding a new field to the Incident table. What makes this possible?",
       "options": [
         {
           "id": "a",
-          "text": "A method to delete multiple records at once"
+          "text": "A related list of the assigned user's records"
         },
         {
           "id": "b",
-          "text": "Collecting data from related tables via reference fields"
+          "text": "Dot-walking through the Assigned to field"
         },
         {
           "id": "c",
-          "text": "A type of user authentication"
+          "text": "A reference qualifier on the Assigned to field"
         },
         {
           "id": "d",
-          "text": "A workflow execution pattern"
+          "text": "A template that copies the user's company"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "Dot-walking collects data from related tables via reference fields. It works in form layout, but not in form design. It's commonly used in form builder, list views, platform analytics, and Workflow Studio. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=5115a7d447335ad4ca332a81736d436e&spa=1",
+        "correct": "Dot-walking provides access to fields on related tables from a form, list, or script. If the current table contains a reference to another table, any field on the referenced table can be accessed using dot-walking. The documentation's own example, incident.assigned_to.company, references the company of the user assigned to an incident. See https://www.servicenow.com/docs/r/platform-user-interface/c_DotWalking.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Deleting records is done through list editing or bulk delete, not dot-walking.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=5115a7d447335ad4ca332a81736d436e&spa=1"
+            "explanation": "Related lists appear on forms and show records in other tables that are related to the current record. They do not add a column with a referenced user's company to the Incident list.",
+            "reference": "https://www.servicenow.com/docs/r/platform-user-interface/c_UsingForms.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Authentication is managed separately and unrelated to dot-walking.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=5115a7d447335ad4ca332a81736d436e&spa=1"
+            "explanation": "Reference qualifiers filter the data that is returned for a reference field, such as only active users in the Assigned to lookup. They do not display fields from the referenced User record in the list.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/c_ReferenceQualifiers.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Workflow execution follows different patterns; dot-walking is about data relationships.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=5115a7d447335ad4ca332a81736d436e&spa=1"
+            "explanation": "Templates populate fields when records are submitted, so the company would need its own field on Incident. Dot-walking reads the value directly from the referenced User record.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/c_Templates.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Dot-Walking"
+        "https://www.servicenow.com/docs/r/platform-user-interface/c_DotWalking.html",
+        "https://www.servicenow.com/docs/r/platform-user-interface/c_UsingForms.html",
+        "https://www.servicenow.com/docs/r/platform-administration/c_Templates.html",
+        "https://www.servicenow.com/docs/r/platform-administration/c_ReferenceQualifiers.html"
       ],
       "isFree": true,
       "source": {
@@ -258,61 +262,64 @@
       },
       "meta": {
         "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "csa-ui-004",
       "certification": "csa",
       "topic": "ui-navigation",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What are the three parts of a filter condition in ServiceNow?",
+      "question": "In the Incident filter, an agent sees a greater than operator for Priority, but not for Active. What decides which operators the condition builder offers?",
       "options": [
         {
           "id": "a",
-          "text": "Table, Record, and Value"
+          "text": "The type of the field selected"
         },
         {
           "id": "b",
-          "text": "Field, Operator, and Value"
+          "text": "The roles the agent has been given"
         },
         {
           "id": "c",
-          "text": "User, Role, and Permission"
+          "text": "The list view the agent is using"
         },
         {
           "id": "d",
-          "text": "Name, Description, and Category"
+          "text": "The AND or OR grouping in the filter"
         }
       ],
       "correctAnswers": [
-        "b"
+        "a"
       ],
       "explanation": {
-        "correct": "A filter condition has three parts: Field (can include related tables), Operator (varies by field type, like 'greater than' for numbers), and Value (text entry or choice list based on field type). See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=5115a7d447335ad4ca332a81736d436e&spa=1",
+        "correct": "A condition has three parts: field, operator, and value. The operator is a choice list based on the field type. The documentation uses this exact example: on the Incident table, the greater than operator does not apply to the Active field, but it does apply to the Priority field. See https://www.servicenow.com/docs/r/platform-user-interface/c_ConditionBuilder.html",
         "wrongAnswers": [
           {
-            "choiceId": "a",
-            "explanation": "While tables and records are concepts in ServiceNow, they're not the three parts of a filter condition.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=5115a7d447335ad4ca332a81736d436e&spa=1"
+            "choiceId": "b",
+            "explanation": "User access rights shape the Field choice list, not the operators. Operators are based on the field type.",
+            "reference": "https://www.servicenow.com/docs/r/platform-user-interface/c_ConditionBuilder.html"
           },
           {
             "choiceId": "c",
-            "explanation": "User, Role, and Permission relate to security, not filter conditions.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=5115a7d447335ad4ca332a81736d436e&spa=1"
+            "explanation": "The operator choice list is based on the field type. The list view in use does not change it.",
+            "reference": "https://www.servicenow.com/docs/r/platform-user-interface/c_ConditionBuilder.html"
           },
           {
             "choiceId": "d",
-            "explanation": "These are common field types but not the components of a filter condition.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=5115a7d447335ad4ca332a81736d436e&spa=1"
+            "explanation": "AND and OR group condition lines together. They do not decide which operators a field offers.",
+            "reference": "https://www.servicenow.com/docs/r/platform-user-interface/c_Filters.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Filters"
+        "https://www.servicenow.com/docs/r/platform-user-interface/c_ConditionBuilder.html",
+        "https://www.servicenow.com/docs/r/platform-user-interface/c_Filters.html"
       ],
       "isFree": true,
       "source": {
@@ -343,9 +350,11 @@
       },
       "meta": {
         "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -442,50 +451,51 @@
       "topic": "ui-navigation",
       "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "A user has personalized their incident list view. Later, an administrator adds a new column to the default list view. What will happen for that user?",
+      "question": "An agent personalized the columns of their Incident list. Later, an administrator adds the Configuration item column to that list view with Configure > List Layout. What will the agent see?",
       "options": [
         {
           "id": "a",
-          "text": "The user will automatically see the new column"
+          "text": "It appears in their personal list at once"
         },
         {
           "id": "b",
-          "text": "The user will not see the new column until they choose 'reset to column defaults'"
+          "text": "It appears once they reset to column defaults"
         },
         {
           "id": "c",
-          "text": "The user's personalization will be automatically deleted"
+          "text": "Their personal list is replaced by the new layout"
         },
         {
           "id": "d",
-          "text": "The administrator's change will be rejected"
+          "text": "It appears the next time they log in again"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "Any global changes that occur at the system level will not be reflected in a personalized list. If the system administrator configures a list view a user has personalized, they will not see those newly added default changes until they choose reset to column defaults. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=5115a7d447335ad4ca332a81736d436e&spa=1",
+        "correct": "The list layout documentation notes that if you use personal lists and then the list view is configured differently, the changes do not appear until you reset your personal list to column defaults. Resetting is done from the personalize list icon with the Reset to column defaults button. See https://www.servicenow.com/docs/r/platform-administration/list-administration/t_ConfigureTheListLayout.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Personalization overrides system defaults; users must manually reset to see new default columns.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=5115a7d447335ad4ca332a81736d436e&spa=1"
+            "explanation": "A personal list keeps the agent's own column choices. The administrator's new column does not appear until the agent resets to column defaults.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/list-administration/t_ConfigureTheListLayout.html"
           },
           {
             "choiceId": "c",
-            "explanation": "User personalization is preserved; it just overrides the system view.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=5115a7d447335ad4ca332a81736d436e&spa=1"
+            "explanation": "The personal list is not replaced. It stays as the agent set it until the agent resets it to column defaults.",
+            "reference": "https://www.servicenow.com/docs/r/platform-user-interface/c_PersonalLists.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Admin changes are applied to the system default, they just don't override user personalizations.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=5115a7d447335ad4ca332a81736d436e&spa=1"
+            "explanation": "Logging in again does not apply the change. The column appears only after the agent resets the personal list to column defaults.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/list-administration/t_ConfigureTheListLayout.html"
           }
         ]
       },
       "references": [
-        "ServiceNow List Personalization"
+        "https://www.servicenow.com/docs/r/platform-administration/list-administration/t_ConfigureTheListLayout.html",
+        "https://www.servicenow.com/docs/r/platform-user-interface/c_PersonalLists.html"
       ],
       "isFree": false,
       "source": {
@@ -510,67 +520,70 @@
         ],
         "tags": [
           "personalization",
-          "list configuration",
-          "defaults"
+          "list layout",
+          "column defaults"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "csa-ui-007",
       "certification": "csa",
       "topic": "ui-navigation",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "Where is the view name displayed on a list or form?",
+      "question": "An agent has unsaved edits on an existing incident and switches the form to a different view. What happens to the edits?",
       "options": [
         {
           "id": "a",
-          "text": "At the bottom of the page"
+          "text": "They are discarded when the new view loads"
         },
         {
           "id": "b",
-          "text": "In brackets beside the table or form title (unless it's the default view)"
+          "text": "They are held as a draft until the next save"
         },
         {
           "id": "c",
-          "text": "In the Application Navigator"
+          "text": "The form is submitted and the edits saved"
         },
         {
           "id": "d",
-          "text": "In the user profile settings"
+          "text": "A prompt asks the agent to confirm leaving"
         }
       ],
       "correctAnswers": [
-        "b"
+        "c"
       ],
       "explanation": {
-        "correct": "The view name will appear in brackets beside the table or form title, unless it's the default view. This helps users identify which view they are currently using. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=5115a7d447335ad4ca332a81736d436e&spa=1",
+        "correct": "Switching views submits the form, which saves all changes and triggers any onSubmit client scripts that apply. For the same reason, you cannot switch form views on a new form that has not been saved yet. See https://www.servicenow.com/docs/r/platform-user-interface/view-management-overview.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "View names are displayed near the title, not at the bottom of the page.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=5115a7d447335ad4ca332a81736d436e&spa=1"
+            "explanation": "The edits are not discarded. Switching views submits the form and saves all changes.",
+            "reference": "https://www.servicenow.com/docs/r/platform-user-interface/view-management-overview.html"
           },
           {
-            "choiceId": "c",
-            "explanation": "The Application Navigator shows modules and menus, not current view names.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=5115a7d447335ad4ca332a81736d436e&spa=1"
+            "choiceId": "b",
+            "explanation": "No draft is kept. Switching views submits the form immediately, so the changes are saved at that point.",
+            "reference": "https://www.servicenow.com/docs/r/platform-user-interface/view-management-overview.html"
           },
           {
             "choiceId": "d",
-            "explanation": "User profile settings contain user preferences, not current view indicators.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=5115a7d447335ad4ca332a81736d436e&spa=1"
+            "explanation": "The leave-page confirmation applies when you navigate away from a form without saving. Switching views instead submits and saves the form.",
+            "reference": "https://www.servicenow.com/docs/r/platform-user-interface/t_EditingInForms.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Views"
+        "https://www.servicenow.com/docs/r/platform-user-interface/view-management-overview.html",
+        "https://www.servicenow.com/docs/r/platform-user-interface/t_EditingInForms.html"
       ],
       "isFree": false,
       "source": {
@@ -596,15 +609,17 @@
         ],
         "tags": [
           "views",
-          "UI",
-          "navigation"
+          "forms",
+          "switching views"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -699,25 +714,25 @@
       "id": "csa-ui-009",
       "certification": "csa",
       "topic": "ui-navigation",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_select",
-      "question": "Which elements are included on ServiceNow forms? (Choose two)",
+      "question": "A new agent is learning the parts of a classic Incident form. Which two descriptions of form elements are correct? (Choose two)",
       "options": [
         {
           "id": "a",
-          "text": "Fields and sections"
+          "text": "Sections group related information on the form"
         },
         {
           "id": "b",
-          "text": "Import sets"
+          "text": "The form header stores specific data about the record"
         },
         {
           "id": "c",
-          "text": "Related lists"
+          "text": "Related lists show records in other related tables"
         },
         {
           "id": "d",
-          "text": "Scheduled jobs"
+          "text": "Embedded lists save each change as soon as it is made"
         }
       ],
       "correctAnswers": [
@@ -725,22 +740,22 @@
         "c"
       ],
       "explanation": {
-        "correct": "Forms include fields, sections, formatters, UI actions, and related lists. These elements enhance how users navigate and interact with forms. Import sets and scheduled jobs are separate functionalities. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=a7d52b9847335ad4ca332a81736d43a3&spa=1",
+        "correct": "The forms documentation describes sections as grouping related information on the form, and related lists as displaying records in other tables that have relationships to the current record. See https://www.servicenow.com/docs/r/platform-user-interface/c_UsingForms.html",
         "wrongAnswers": [
           {
             "choiceId": "b",
-            "explanation": "Import sets are for data loading, not form elements.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=a7d52b9847335ad4ca332a81736d43a3&spa=1"
+            "explanation": "Fields store specific data about the record. The form header provides navigation tools and actions related to the record.",
+            "reference": "https://www.servicenow.com/docs/r/platform-user-interface/c_UsingForms.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Scheduled jobs run automated tasks, they're not form components.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=a7d52b9847335ad4ca332a81736d43a3&spa=1"
+            "explanation": "Changes to embedded lists are saved when the form is saved, not as each change is made.",
+            "reference": "https://www.servicenow.com/docs/r/platform-user-interface/c_UsingForms.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Form Elements"
+        "https://www.servicenow.com/docs/r/platform-user-interface/c_UsingForms.html"
       ],
       "isFree": false,
       "source": {
@@ -766,16 +781,18 @@
         ],
         "tags": [
           "forms",
-          "fields",
           "sections",
-          "related lists"
+          "related lists",
+          "embedded lists"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -869,52 +886,56 @@
       "id": "csa-ui-011",
       "certification": "csa",
       "topic": "ui-navigation",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What are the three ways to modify a form in ServiceNow?",
+      "question": "An administrator wants an existing related list to appear at the bottom of the Problem form for all users. Which form context menu option should they use?",
       "options": [
         {
           "id": "a",
-          "text": "Import, Export, and Copy"
+          "text": "Configure > List Layout"
         },
         {
           "id": "b",
-          "text": "Form Builder, Form Design, and Form Layout"
+          "text": "Configure > Related Lists"
         },
         {
           "id": "c",
-          "text": "Create, Update, and Delete"
+          "text": "Switch Views to Advanced"
         },
         {
           "id": "d",
-          "text": "View, Edit, and Preview"
+          "text": "Create Favorite on the form"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "There are several ways to modify a form: Form Builder, Form Design, and Form Layout. Each provides different capabilities for form customization. Administrators should avoid adding the same editable field in multiple sections. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=a7d52b9847335ad4ca332a81736d43a3&spa=1",
+        "correct": "To add a related list to a form, select the form context menu icon and then Configure > Related Lists, move the related list from the Available list to the Related list, and save. Related lists appear at the bottom of the form. Form configuration covers both the form layout and the related list layout, which changes which related lists appear at the bottom of the form. See https://www.servicenow.com/docs/r/platform-administration/configure-form-layout.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Import, Export, and Copy are data operations, not form modification methods.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=a7d52b9847335ad4ca332a81736d43a3&spa=1"
+            "explanation": "Configure > List Layout chooses the columns shown in a list view. It does not add related lists to a form.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/list-administration/t_ConfigureTheListLayout.html"
           },
           {
             "choiceId": "c",
-            "explanation": "These are CRUD operations on records, not form configuration tools.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=a7d52b9847335ad4ca332a81736d43a3&spa=1"
+            "explanation": "Switching views changes which existing view you see and saves it as your preference. It does not add a related list to the form.",
+            "reference": "https://www.servicenow.com/docs/r/platform-user-interface/view-management-overview.html"
           },
           {
             "choiceId": "d",
-            "explanation": "These describe user interactions, not form modification methods.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=a7d52b9847335ad4ca332a81736d43a3&spa=1"
+            "explanation": "Create Favorite adds the list or record to your Favorites menu. It does not change the form's related lists.",
+            "reference": "https://www.servicenow.com/docs/r/platform-user-interface/managing-your-favorites.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Form Configuration"
+        "https://www.servicenow.com/docs/r/platform-administration/configure-form-layout.html",
+        "https://www.servicenow.com/docs/r/platform-administration/basic-form-administration.html",
+        "https://www.servicenow.com/docs/r/platform-administration/list-administration/t_ConfigureTheListLayout.html",
+        "https://www.servicenow.com/docs/r/platform-user-interface/view-management-overview.html",
+        "https://www.servicenow.com/docs/r/platform-user-interface/managing-your-favorites.html"
       ],
       "isFree": false,
       "source": {
@@ -938,17 +959,18 @@
           "Forms and form sections"
         ],
         "tags": [
-          "form builder",
-          "form design",
-          "form layout",
-          "configuration"
+          "related lists",
+          "form configuration",
+          "configure"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -1045,50 +1067,50 @@
       "topic": "ui-navigation",
       "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "Why should only certain groups be allowed to create templates?",
+      "question": "An administrator wants a template applied automatically whenever a user creates a new record on the Windows Server [cmdb_ci_win_server] table. How should the template be set up?",
       "options": [
         {
           "id": "a",
-          "text": "To reduce system storage usage"
+          "text": "Give it the table's name, cmdb_ci_win_server"
         },
         {
           "id": "b",
-          "text": "To avoid bypassing processes like mandatory fields and UI policies"
+          "text": "Add every user group to the Groups field on it"
         },
         {
           "id": "c",
-          "text": "To prevent users from seeing each other's data"
+          "text": "Run it from a scheduled job on the table"
         },
         {
           "id": "d",
-          "text": "To improve system performance"
+          "text": "Add a module that opens a form with it"
         }
       ],
       "correctAnswers": [
-        "b"
+        "a"
       ],
       "explanation": {
-        "correct": "Only certain groups should create templates to avoid bypassing processes, like mandatory fields and UI policies, particularly for records using condition based flows or workflows. Templates can potentially skip validation rules if not properly controlled. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=a7d52b9847335ad4ca332a81736d43a3&spa=1",
+        "correct": "To make a template apply automatically to new, user-created records on a table, set the template name to match the name of that table. The documentation uses this exact example: Name set to cmdb_ci_win_server and Table set to Windows Server [cmdb_ci_win_server]. See https://www.servicenow.com/docs/r/platform-administration/c_Templates.html",
         "wrongAnswers": [
           {
-            "choiceId": "a",
-            "explanation": "Storage is not the primary concern with template creation.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=a7d52b9847335ad4ca332a81736d43a3&spa=1"
+            "choiceId": "b",
+            "explanation": "Automatic templates are always global and do not honor the User and Groups fields, so filling in groups does not make a template apply automatically.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/c_Templates.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Data visibility is controlled by ACLs, not template permissions.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=a7d52b9847335ad4ca332a81736d43a3&spa=1"
+            "explanation": "A scheduled job creates new records from a template on a schedule. It does not apply the template to records that users create.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/c_Templates.html"
           },
           {
             "choiceId": "d",
-            "explanation": "System performance is not significantly impacted by template creation.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=a7d52b9847335ad4ca332a81736d43a3&spa=1"
+            "explanation": "A template module opens a form with pre-populated template data when someone selects it. It does not apply to every new record automatically.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/c_Templates.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Template Best Practices"
+        "https://www.servicenow.com/docs/r/platform-administration/c_Templates.html"
       ],
       "isFree": false,
       "source": {
@@ -1113,67 +1135,70 @@
         ],
         "tags": [
           "templates",
-          "best practices",
-          "governance"
+          "automatic templates"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "csa-ui-014",
       "certification": "csa",
       "topic": "ui-navigation",
-      "cognitiveLevel": "understanding",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What happens when a user personalizes a form using the personalize form feature?",
+      "question": "An agent hid several fields on the Incident form with the personalize form icon and now wants the standard form back. What should the agent do?",
       "options": [
         {
           "id": "a",
-          "text": "The changes affect all users on the platform"
+          "text": "Personalize the form again and select Reset"
         },
         {
           "id": "b",
-          "text": "The personalized form will remain each time the user logs in"
+          "text": "Select Reset to column defaults on the form"
         },
         {
           "id": "c",
-          "text": "Mandatory fields can be hidden"
+          "text": "Navigate away and then reopen the incident"
         },
         {
           "id": "d",
-          "text": "The changes are temporary and reset on logout"
+          "text": "Expand any form sections that are collapsed"
         }
       ],
       "correctAnswers": [
-        "b"
+        "a"
       ],
       "explanation": {
-        "correct": "The personalized form will remain each time the user logs in. Only fields configured to display are available in the personalize form menu. Mandatory fields cannot be hidden through personalization. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=a7d52b9847335ad4ca332a81736d43a3&spa=1",
+        "correct": "To restore the default form view after personalizing, personalize the form and click Reset. The hidden fields stay hidden across visits: the documentation notes that if you navigate away, the next time you personalize the form you must reset your customizations to show fields that you hid. See https://www.servicenow.com/docs/r/platform-user-interface/t_PersonalizeAForm.html",
         "wrongAnswers": [
           {
-            "choiceId": "a",
-            "explanation": "Personalization only affects the individual user, not all users.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=a7d52b9847335ad4ca332a81736d43a3&spa=1"
+            "choiceId": "b",
+            "explanation": "Reset to column defaults belongs to the personalize list icon on lists. Forms are restored with the Reset option in the Personalize Form menu.",
+            "reference": "https://www.servicenow.com/docs/r/platform-user-interface/c_PersonalLists.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Mandatory fields cannot be hidden through the personalize form feature.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=a7d52b9847335ad4ca332a81736d43a3&spa=1"
+            "explanation": "Navigating away does not undo the personalization. The documentation says that if you navigate away from the form, the next time you personalize the form you must reset your customizations to show fields that you have hidden.",
+            "reference": "https://www.servicenow.com/docs/r/platform-user-interface/t_PersonalizeAForm.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Personalization persists across sessions for the user.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=a7d52b9847335ad4ca332a81736d43a3&spa=1"
+            "explanation": "Collapsing or expanding a form section is a separate preference that only shows or hides a whole section. Fields hidden with the personalize form icon come back only when the agent personalizes the form and selects Reset.",
+            "reference": "https://www.servicenow.com/docs/r/platform-user-interface/c_UsingForms.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Form Personalization"
+        "https://www.servicenow.com/docs/r/platform-user-interface/t_PersonalizeAForm.html",
+        "https://www.servicenow.com/docs/r/platform-user-interface/c_PersonalLists.html",
+        "https://www.servicenow.com/docs/r/platform-user-interface/c_UsingForms.html"
       ],
       "isFree": false,
       "source": {
@@ -1197,16 +1222,18 @@
           "Forms and form sections"
         ],
         "tags": [
-          "personalization",
-          "forms",
-          "user settings"
+          "personalize form",
+          "reset",
+          "forms"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -1215,46 +1242,46 @@
       "topic": "ui-navigation",
       "cognitiveLevel": "application",
       "type": "multiple_select",
-      "question": "In Form Builder, which elements can administrators configure in the policies and rules section? (Choose two)",
+      "question": "An administrator opens the Policies and rules tab in Table Builder for a custom table. Which two sections on that tab are read-only there, with links to manage them elsewhere on the platform? (Choose two)",
       "options": [
         {
           "id": "a",
-          "text": "UI policies"
+          "text": "UI Policies"
         },
         {
           "id": "b",
-          "text": "Database schemas"
+          "text": "Business Rules"
         },
         {
           "id": "c",
-          "text": "Business rules"
+          "text": "Client Scripts"
         },
         {
           "id": "d",
-          "text": "Network settings"
+          "text": "Transform Maps"
         }
       ],
       "correctAnswers": [
-        "a",
+        "b",
         "c"
       ],
       "explanation": {
-        "correct": "In the Form Builder policies and rules section, administrators can configure UI policies, access control rules, client scripts, business rules, and workspace view rules. Database schemas and network settings are managed elsewhere. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=a7d52b9847335ad4ca332a81736d43a3&spa=1",
+        "correct": "The Policies and rules tab has several sections, but only UI policies can be edited within Table Builder. The other sections, including Business Rules and Client Scripts (as well as Access control rules and Workspace view rules), are read-only and contain links to manage their content in other parts of the platform. See https://www.servicenow.com/docs/r/application-development/form-builder-glide-family-release/form-builder-policies-rules.html",
         "wrongAnswers": [
           {
-            "choiceId": "b",
-            "explanation": "Database schemas are managed through table configuration, not Form Builder.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=a7d52b9847335ad4ca332a81736d43a3&spa=1"
+            "choiceId": "a",
+            "explanation": "UI Policies is the one section you can edit within Table Builder, so it is not read-only.",
+            "reference": "https://www.servicenow.com/docs/r/application-development/form-builder-glide-family-release/form-builder-policies-rules.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Network settings are system-level configurations, not form-related.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=a7d52b9847335ad4ca332a81736d43a3&spa=1"
+            "explanation": "Transform Maps is not a section of the Policies and rules tab. The tab covers UI Policies, Access control rules, Client Scripts, Business Rules, and Workspace view rules.",
+            "reference": "https://www.servicenow.com/docs/r/application-development/form-builder-glide-family-release/form-builder-policies-rules.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Form Builder"
+        "https://www.servicenow.com/docs/r/application-development/form-builder-glide-family-release/form-builder-policies-rules.html"
       ],
       "isFree": false,
       "source": {
@@ -1278,17 +1305,19 @@
           "Forms and form sections"
         ],
         "tags": [
-          "form builder",
+          "table builder",
           "UI policies",
           "business rules",
-          "configuration"
+          "client scripts"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -1297,42 +1326,45 @@
       "topic": "ui-navigation",
       "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What is the purpose of dot-walking in ServiceNow?",
+      "question": "An agent filtering the Incident list wants a condition on the caller's company, but the field menu shows only Incident fields. What should the agent select first?",
       "options": [
         {
           "id": "a",
-          "text": "To navigate between application menus"
+          "text": "Show Related Fields in the field list"
         },
         {
           "id": "b",
-          "text": "To access fields from related tables through reference fields"
+          "text": "Group By on the Caller column heading"
         },
         {
           "id": "c",
-          "text": "To create new database tables"
+          "text": "Configure > List Layout from a heading"
         },
         {
           "id": "d",
-          "text": "To configure user roles and permissions"
+          "text": "Show Matching on a Caller cell value"
         }
       ],
       "correctAnswers": [
-        "b"
+        "a"
       ],
       "explanation": {
-        "correct": "Dot-walking collects data from related tables via reference fields. It allows you to access fields on referenced records, commonly used in form builder, form layout, list views, platform analytics, and Workflow Studio.",
+        "correct": "To dot-walk in a condition builder, you first select Show Related Fields on the fields menu, which lets you add fields from related tables to the query. The documentation uses this exact case: filtering the Incident table by the company of the caller by selecting Company under Caller > User fields, which becomes Caller.Company. See https://www.servicenow.com/docs/r/platform-user-interface/dot-walking-examples.html",
         "wrongAnswers": [
           {
-            "choiceId": "a",
-            "explanation": "Dot-walking is about accessing data across related tables, not navigating menus."
+            "choiceId": "b",
+            "explanation": "Group By aggregates the list by a field and shows a count per group. It does not add fields from the caller's User record to the filter's field menu.",
+            "reference": "https://www.servicenow.com/docs/r/platform-user-interface/c_GroupedLists.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Table creation is done through System Definition > Tables, not dot-walking."
+            "explanation": "Configure > List Layout chooses which columns appear in the list. It does not change the fields offered in the condition builder.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/list-administration/t_ConfigureTheListLayout.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Role configuration is done through User Administration, not dot-walking."
+            "explanation": "Show Matching is a quick filter on the field value you right-click, which here is the caller, not the caller's company. Conditions on related fields need Show Related Fields.",
+            "reference": "https://www.servicenow.com/docs/r/platform-user-interface/c_UsingFiltersAndBreadcrumbs.html"
           }
         ]
       },
@@ -1354,59 +1386,70 @@
         ],
         "tags": [
           "dot-walking",
-          "reference fields",
-          "related tables"
+          "condition builder",
+          "filters"
         ]
       },
       "meta": {
         "generatedAt": "2026-03-16T02:00:00Z",
         "version": "1.1",
-        "release": "Xanadu",
-        "reviewed": false
-      }
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/platform-user-interface/dot-walking-examples.html",
+        "https://www.servicenow.com/docs/r/platform-user-interface/c_GroupedLists.html",
+        "https://www.servicenow.com/docs/r/platform-administration/list-administration/t_ConfigureTheListLayout.html",
+        "https://www.servicenow.com/docs/r/platform-user-interface/c_UsingFiltersAndBreadcrumbs.html"
+      ]
     },
     {
       "id": "csa-ui-017",
       "certification": "csa",
       "topic": "ui-navigation",
-      "cognitiveLevel": "comprehension",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What happens when a system administrator configures a list view that a user has already personalized?",
+      "question": "Several agents have personal lists for a list view. When an administrator removes an inactive field from that admin-configured default view, what happens to their personal lists?",
       "options": [
         {
           "id": "a",
-          "text": "The user's personalized view is automatically updated with the new changes"
+          "text": "They keep the field until agents remove it"
         },
         {
           "id": "b",
-          "text": "The user will NOT see the new default changes until they choose 'Reset to column defaults'"
+          "text": "They reset to follow the default view"
         },
         {
           "id": "c",
-          "text": "The personalized view is deleted and replaced with the new configuration"
+          "text": "They are deleted along with the field"
         },
         {
           "id": "d",
-          "text": "Both views are merged automatically"
+          "text": "They stay as is until agents reset them"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "Any global changes at the system level will not be reflected in a personalized list. The user must choose 'Reset to column defaults' to see newly added default changes.",
+        "correct": "The personal lists documentation states that if an inactive field is removed from an admin-configured default view, any personal lists reset to follow the default view, which removes the inactive field from the personal list. This is an exception to the usual rule that layout changes appear only after a user resets to column defaults. See https://www.servicenow.com/docs/r/platform-user-interface/c_PersonalLists.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Personalized views are independent of system-level changes and are not automatically updated."
+            "explanation": "In this case the agents do not have to act. Removing an inactive field from the default view resets personal lists to follow the default view.",
+            "reference": "https://www.servicenow.com/docs/r/platform-user-interface/c_PersonalLists.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Personalized views persist until the user explicitly resets them."
+            "explanation": "The personal lists are not deleted. They reset to follow the default view, without the inactive field.",
+            "reference": "https://www.servicenow.com/docs/r/platform-user-interface/c_PersonalLists.html"
           },
           {
             "choiceId": "d",
-            "explanation": "There is no automatic merging of personalized and system views."
+            "explanation": "Existing personal lists do change. They reset to follow the default view when the inactive field is removed, without any action from the agents.",
+            "reference": "https://www.servicenow.com/docs/r/platform-user-interface/c_PersonalLists.html"
           }
         ]
       },
@@ -1428,24 +1471,30 @@
         ],
         "tags": [
           "personalize list",
-          "column defaults",
+          "inactive fields",
           "list configuration"
         ]
       },
       "meta": {
         "generatedAt": "2026-03-16T02:00:00Z",
         "version": "1.1",
-        "release": "Xanadu",
-        "reviewed": false
-      }
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/platform-user-interface/c_PersonalLists.html",
+        "https://www.servicenow.com/docs/r/platform-administration/list-administration/t_ConfigureTheListLayout.html"
+      ]
     },
     {
       "id": "csa-ui-018",
       "certification": "csa",
       "topic": "ui-navigation",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_select",
-      "question": "Which of the following are ways to modify a form in ServiceNow? (Choose 3)",
+      "question": "An administrator needs to change which fields appear on the Incident form for all users. Which three tools can they use for this? (Choose 3)",
       "options": [
         {
           "id": "a",
@@ -1453,7 +1502,7 @@
         },
         {
           "id": "b",
-          "text": "Form Design"
+          "text": "Form Designer"
         },
         {
           "id": "c",
@@ -1461,7 +1510,7 @@
         },
         {
           "id": "d",
-          "text": "Form Schema"
+          "text": "List Layout"
         }
       ],
       "correctAnswers": [
@@ -1470,11 +1519,12 @@
         "c"
       ],
       "explanation": {
-        "correct": "There are three ways to modify a form in ServiceNow: Form Builder, Form Design, and Form Layout. Form Schema is not a valid form modification tool.",
+        "correct": "Form Layout changes which fields are visible on a form. Form Designer accomplishes the same tasks as Form Layout in a graphical tool, though since the Australia release it is being prepared for future deprecation. Form Builder has all of the Form Designer and Form Layout options, and the documentation recommends trying it first. See https://www.servicenow.com/docs/r/platform-administration/configure-form-layout.html",
         "wrongAnswers": [
           {
             "choiceId": "d",
-            "explanation": "Form Schema is not a form modification method. Schema Map is used for viewing table relationships, not form editing."
+            "explanation": "List Layout configures which columns appear in a list and creates list views. It does not change the fields on a form.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/list-administration/t_ConfigureTheListLayout.html"
           }
         ]
       },
@@ -1496,16 +1546,24 @@
         ],
         "tags": [
           "form builder",
-          "form design",
+          "form designer",
           "form layout"
         ]
       },
       "meta": {
         "generatedAt": "2026-03-16T02:00:00Z",
         "version": "1.1",
-        "release": "Xanadu",
-        "reviewed": false
-      }
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/platform-administration/configure-form-layout.html",
+        "https://www.servicenow.com/docs/r/platform-administration/c_FormDesign.html",
+        "https://www.servicenow.com/docs/r/application-development/form-builder-glide-family-release/access-form-builder.html",
+        "https://www.servicenow.com/docs/r/platform-administration/list-administration/t_ConfigureTheListLayout.html"
+      ]
     },
     {
       "id": "csa-ui-019",
@@ -1513,42 +1571,45 @@
       "topic": "ui-navigation",
       "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "A user wants to hide certain fields on a form without affecting other users. Which feature should they use?",
+      "question": "An agent wants to hide a few non-mandatory fields on the Incident form for themselves only, leaving colleagues' forms unchanged. What should the agent use?",
       "options": [
         {
           "id": "a",
-          "text": "Form Builder"
+          "text": "Configure > Form Builder"
         },
         {
           "id": "b",
-          "text": "Form Layout"
+          "text": "Configure > Form Layout"
         },
         {
           "id": "c",
-          "text": "Personalize Form"
+          "text": "The personalize form icon"
         },
         {
           "id": "d",
-          "text": "UI Policy"
+          "text": "A UI policy on the Incident table"
         }
       ],
       "correctAnswers": [
         "c"
       ],
       "explanation": {
-        "correct": "Personalize Form allows individual users to hide fields on a form without affecting other users. The personalized form remains each time the user logs in. Mandatory fields cannot be hidden.",
+        "correct": "With form personalization, users can choose which fields appear on a specific form view according to their own preferences. Personal form customizations do not affect what other users see on their forms. Users open the Personalize Form menu from the personalize form icon in the form header and clear the check box for each field they want to hide. See https://www.servicenow.com/docs/r/platform-user-interface/t_PersonalizeAForm.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Form Builder modifies the form for all users, not just the individual."
+            "explanation": "Form Builder configures the form itself, so its changes apply to everyone who uses that form view.",
+            "reference": "https://www.servicenow.com/docs/r/application-development/form-builder-glide-family-release/access-form-builder.html"
           },
           {
             "choiceId": "b",
-            "explanation": "Form Layout changes affect all users viewing that form."
+            "explanation": "Configuring the form layout changes the form for all users. The documentation says to configure the form when changes must be visible to all users.",
+            "reference": "https://www.servicenow.com/docs/r/platform-user-interface/t_PersonalizeAForm.html"
           },
           {
             "choiceId": "d",
-            "explanation": "UI Policies can hide fields but affect all users matching the conditions, not just individual personalization."
+            "explanation": "UI policies change how forms appear, for example hiding fields based on role or input, for every user they apply to. They are not one agent's personal preference.",
+            "reference": "https://www.servicenow.com/docs/r/application-development/form-builder-glide-family-release/form-builder-policies-rules.html"
           }
         ]
       },
@@ -1577,52 +1638,62 @@
       "meta": {
         "generatedAt": "2026-03-16T02:00:00Z",
         "version": "1.1",
-        "release": "Xanadu",
-        "reviewed": false
-      }
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/platform-user-interface/t_PersonalizeAForm.html",
+        "https://www.servicenow.com/docs/r/application-development/form-builder-glide-family-release/access-form-builder.html",
+        "https://www.servicenow.com/docs/r/application-development/form-builder-glide-family-release/form-builder-policies-rules.html"
+      ]
     },
     {
       "id": "csa-ui-021",
       "certification": "csa",
       "topic": "ui-navigation",
-      "cognitiveLevel": "comprehension",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "Which statement about the List Editor is correct?",
+      "question": "An agent must set the same Assignment group on 15 incidents shown in a list. According to the documentation, which approach is the quickest?",
       "options": [
         {
           "id": "a",
-          "text": "It allows editing only one record at a time"
+          "text": "Open each incident form and update it"
         },
         {
           "id": "b",
-          "text": "It is the quickest method to update a field on multiple records"
+          "text": "Select cells and use the list editor"
         },
         {
           "id": "c",
-          "text": "It overrides all security constraints"
+          "text": "Apply a template to each of the incidents"
         },
         {
           "id": "d",
-          "text": "It is enabled for all tables by default"
+          "text": "Personalize the list to show the field"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "The List Editor is the quickest method to update a field on multiple records, supporting both contiguous and noncontiguous editing. If a row cannot be edited due to security constraints, a message is displayed.",
+        "correct": "You can edit multiple records at the same time using the list editor. The documentation states that if you want to update a single field on multiple records to have the same value, the list editor is the quickest method. Select the cells with Shift or Ctrl, open the list editor, enter the value, and save. See https://www.servicenow.com/docs/r/platform-user-interface/t_EditMultRecUsingListEditor.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "The List Editor supports editing multiple records simultaneously."
+            "explanation": "Editing each form works, but the list editor lets you edit field values directly from a list without opening a form, and it is the documented quickest method for this task.",
+            "reference": "https://www.servicenow.com/docs/r/platform-user-interface/t_UseTheListEditor.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Security constraints still apply \u2014 if a row can't be edited, a message indicates the field cannot be edited."
+            "explanation": "Templates populate fields to simplify submitting new records. They are not the documented way to update one field across many existing records.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/c_Templates.html"
           },
           {
             "choiceId": "d",
-            "explanation": "By default, list editing is disabled or restricted for some tables."
+            "explanation": "Personalizing a list changes which columns appear and their order. It does not change any field values.",
+            "reference": "https://www.servicenow.com/docs/r/platform-user-interface/c_PersonalLists.html"
           }
         ]
       },
@@ -1651,9 +1722,17 @@
       "meta": {
         "generatedAt": "2026-03-16T02:00:00Z",
         "version": "1.1",
-        "release": "Xanadu",
-        "reviewed": false
-      }
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/platform-user-interface/t_EditMultRecUsingListEditor.html",
+        "https://www.servicenow.com/docs/r/platform-user-interface/t_UseTheListEditor.html",
+        "https://www.servicenow.com/docs/r/platform-administration/c_Templates.html",
+        "https://www.servicenow.com/docs/r/platform-user-interface/c_PersonalLists.html"
+      ]
     },
     {
       "id": "csa-ui-022",
@@ -1661,42 +1740,45 @@
       "topic": "ui-navigation",
       "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "In Form Builder, how do you add a dot-walked field from a related table to a form?",
+      "question": "In Configure > Form Layout, an administrator wants to add a field from the caller's User record to the Incident form. How are related tables like Caller marked in the Available list?",
       "options": [
         {
           "id": "a",
-          "text": "Right-click the form and select 'Add Related Field'"
+          "text": "Shown in green, followed by a plus (+)"
         },
         {
           "id": "b",
-          "text": "Select 'Add a Related Field' under the desired field, then drag it to the form"
+          "text": "Shown in bold, followed by a right arrow (>)"
         },
         {
           "id": "c",
-          "text": "Navigate to System Definition > Tables and add the field there"
+          "text": "Shown in red, marked with an asterisk (*)"
         },
         {
           "id": "d",
-          "text": "Use the Schema Map to drag fields between tables"
+          "text": "Shown in gray, wrapped in brackets ([ ])"
         }
       ],
       "correctAnswers": [
-        "b"
+        "a"
       ],
       "explanation": {
-        "correct": "In Form Builder, to dot walk, select 'Add a Related Field' under the desired field, then drag it to the form. In the Dot Walk window, select a field from the table or navigate to a related table, then click Add to View.",
+        "correct": "In Form Layout, available items that appear in green followed by a plus (+) sign represent related tables, and you use dot-walking to access their fields. The dot-walking documentation adds that when such a reference field is highlighted, an expand icon appears, and a field added from it shows its full dot-walked name, for example Assigned to.Active. See https://www.servicenow.com/docs/r/platform-administration/configure-form-layout.html",
         "wrongAnswers": [
           {
-            "choiceId": "a",
-            "explanation": "There is no right-click option for adding related fields in Form Builder."
+            "choiceId": "b",
+            "explanation": "Related tables in the Available list are shown in green with a plus (+) sign, not in bold with an arrow.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/configure-form-layout.html"
           },
           {
             "choiceId": "c",
-            "explanation": "System Definition > Tables is for table management, not for adding dot-walked fields to forms."
+            "explanation": "Related tables are shown in green with a plus (+) sign. An asterisk is not how Form Layout marks dot-walkable fields.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/configure-form-layout.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Schema Map is for visualizing relationships, not for adding fields to forms."
+            "explanation": "Related tables are shown in green with a plus (+) sign, not in gray brackets.",
+            "reference": "https://www.servicenow.com/docs/r/platform-user-interface/dot-walking-examples.html"
           }
         ]
       },
@@ -1714,64 +1796,81 @@
         "domainSlug": "ui-navigation",
         "domainPercentage": 15,
         "subtopics": [
-          "Form Builder dot-walking"
+          "Dot-walking",
+          "Form layout"
         ],
         "tags": [
-          "form builder",
-          "dot-walk",
+          "form layout",
+          "dot-walking",
           "related field"
         ]
       },
       "meta": {
         "generatedAt": "2026-03-16T02:00:00Z",
         "version": "1.1",
-        "release": "Xanadu",
-        "reviewed": false
-      }
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/platform-administration/configure-form-layout.html",
+        "https://www.servicenow.com/docs/r/platform-user-interface/dot-walking-examples.html"
+      ]
     },
     {
       "id": "csa-ui-023",
       "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "A user reports that a reference field on a form is not displaying the expected records in its dropdown. Which two actions should an administrator investigate? (Choose 2)",
+      "question": "The Assigned to lookup on a custom form lists every user, including inactive ones. The administrator wants only active users offered in that field. What should they configure?",
       "options": [
         {
           "id": "a",
-          "text": "The reference qualifier on the field restricts which records appear"
+          "text": "A reference qualifier on the field"
         },
         {
           "id": "b",
-          "text": "The form view is set to mobile layout"
+          "text": "An ACL on the User [sys_user] table"
         },
         {
           "id": "c",
-          "text": "The user lacks read access to the referenced table"
+          "text": "A view rule on the custom table"
         },
         {
           "id": "d",
-          "text": "The field label has been changed recently"
+          "text": "A UI policy that hides the field"
         }
       ],
       "correctAnswers": [
-        "a",
-        "c"
+        "a"
       ],
       "explanation": {
-        "correct": "Reference qualifiers filter which records appear in a reference field dropdown. Additionally, if the user doesn't have read access to the referenced table, records won't appear. Both conditions should be checked when troubleshooting missing reference field records.",
+        "correct": "Reference qualifiers filter the data returned for a reference field. Without one, all values in the referenced table appear in the lookup, including inactive users. Creating a reference qualifier returns only the desired values, such as only the active users. See https://www.servicenow.com/docs/r/platform-administration/c_ReferenceQualifiers.html",
         "wrongAnswers": [
           {
             "choiceId": "b",
-            "explanation": "Mobile layout affects form appearance but doesn't filter reference field records."
+            "explanation": "ACLs restrict what data specific users can access. The goal here is to filter the values offered in one reference field, which is what a reference qualifier does.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/c_ReferenceQualifiers.html"
+          },
+          {
+            "choiceId": "c",
+            "explanation": "A view rule decides which view a form or list is displayed in. It does not filter the records offered in a reference field.",
+            "reference": "https://www.servicenow.com/docs/r/platform-user-interface/control-views.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Changing a field label doesn't affect which records appear in the dropdown."
+            "explanation": "Hiding the field removes it from the form, but it does not filter which users the lookup offers.",
+            "reference": "https://www.servicenow.com/docs/r/application-development/form-builder-glide-family-release/form-builder-policies-rules.html"
           }
         ]
       },
       "certification": "csa",
       "topic": "ui-navigation",
-      "references": [],
+      "references": [
+        "https://www.servicenow.com/docs/r/platform-administration/c_ReferenceQualifiers.html",
+        "https://www.servicenow.com/docs/r/platform-user-interface/control-views.html",
+        "https://www.servicenow.com/docs/r/application-development/form-builder-glide-family-release/form-builder-policies-rules.html"
+      ],
       "isFree": false,
       "source": {
         "type": "generated",
@@ -1789,62 +1888,75 @@
         "certification": "csa",
         "domain": "ui-navigation",
         "domainSlug": "ui-navigation",
-        "subtopics": [],
-        "tags": []
+        "subtopics": [
+          "Forms and form sections"
+        ],
+        "tags": [
+          "reference qualifier",
+          "reference fields",
+          "lookup"
+        ]
       },
       "meta": {
         "generatedAt": "2026-03-31T02:09:00Z",
-        "version": "2.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "csa-ui-024",
-      "cognitiveLevel": "understanding",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "Which statement about Next Experience UI is NOT true?",
+      "question": "In Next Experience, an administrator wants to jump straight to the list of System Properties [sys_properties] records from the Unified Navigation. What should they enter, and where?",
       "options": [
         {
           "id": "a",
-          "text": "It uses the Polaris theme by default"
+          "text": "sys_properties.list in the Filter field"
         },
         {
           "id": "b",
-          "text": "It replaces UI16 as the default interface for all users"
+          "text": "sys_properties.do in the Filter field"
         },
         {
           "id": "c",
-          "text": "The Unified Navigation framework supports configurable menus"
+          "text": "sys_properties.list in the Global search field"
         },
         {
           "id": "d",
-          "text": "Workspaces can be accessed from the All menu"
+          "text": "sys_properties.do in the Global search field"
         }
       ],
       "correctAnswers": [
-        "b"
+        "a"
       ],
       "explanation": {
-        "correct": "Next Experience does not automatically replace UI16 for all users. Administrators must configure and enable it, and some legacy interfaces may still use UI16. The transition is managed, not automatic.",
+        "correct": "The Unified Navigation Filter field lets you quickly navigate to a module. For a list view, you enter the table name in the format name.list, for example sys_properties.list. For a form view, you use name.do instead. See https://www.servicenow.com/docs/r/platform-user-interface/using-the-next-experience-global-header.html",
         "wrongAnswers": [
           {
-            "choiceId": "a",
-            "explanation": "Next Experience does use the Polaris theme as its default visual design."
+            "choiceId": "b",
+            "explanation": "The name.do format in the Filter field opens a form view, not the list of records.",
+            "reference": "https://www.servicenow.com/docs/r/platform-user-interface/using-the-next-experience-global-header.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Unified Navigation does support configurable menus and navigation."
+            "explanation": "The Global search field searches for a string across the instance. The name.list shortcut is typed in the Filter field.",
+            "reference": "https://www.servicenow.com/docs/r/platform-user-interface/using-the-next-experience-global-header.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Workspaces are accessible through the All menu in Next Experience."
+            "explanation": "Global search looks for a string across the instance, and name.do is the form format anyway. Neither opens the list.",
+            "reference": "https://www.servicenow.com/docs/r/platform-user-interface/using-the-next-experience-global-header.html"
           }
         ]
       },
       "certification": "csa",
       "topic": "ui-navigation",
-      "references": [],
+      "references": [
+        "https://www.servicenow.com/docs/r/platform-user-interface/using-the-next-experience-global-header.html"
+      ],
       "isFree": false,
       "source": {
         "type": "generated",
@@ -1862,62 +1974,78 @@
         "certification": "csa",
         "domain": "ui-navigation",
         "domainSlug": "ui-navigation",
-        "subtopics": [],
-        "tags": []
+        "subtopics": [
+          "Next Experience navigation"
+        ],
+        "tags": [
+          "unified navigation",
+          "filter",
+          "next experience"
+        ]
       },
       "meta": {
         "generatedAt": "2026-03-31T02:09:00Z",
-        "version": "2.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "csa-ui-025",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "In the List v3 component, what happens when an administrator configures a 'condition' on a list?",
+      "question": "A problem manager working in a List v3 Problem list wants only problems that have three or more related incidents. Which filter feature should they use?",
       "options": [
         {
           "id": "a",
-          "text": "It permanently deletes records that don't match"
+          "text": "Dot-walking with Show Related Fields"
         },
         {
           "id": "b",
-          "text": "It applies a filter that restricts which records are displayed"
+          "text": "Related Lists Conditions in the filter"
         },
         {
           "id": "c",
-          "text": "It changes the table schema"
+          "text": "A reference qualifier on the Problem field"
         },
         {
           "id": "d",
-          "text": "It creates a new view of the table"
+          "text": "A view rule on the Problem table"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "A condition on a list component acts as a filter, restricting which records from the table are displayed. It does not modify data or create new views.",
+        "correct": "Related list conditions let you include a relationship with another table in the filter, and they are supported in List v3. The List v3 filter has a section for current-table conditions and one for related lists conditions. Choosing Incident>Problem with the quantifier Greater Than Or Equal To and a value of 3 returns problems with three or more related incidents. See https://www.servicenow.com/docs/r/platform-user-interface/create-related-list-query.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Conditions filter the display; they never delete records."
+            "explanation": "Dot-walking reaches fields on a table referenced by the current record. It cannot count how many incident records are related to each problem.",
+            "reference": "https://www.servicenow.com/docs/r/platform-user-interface/c_DotWalking.html"
           },
           {
             "choiceId": "c",
-            "explanation": "List conditions don't modify the table schema."
+            "explanation": "A reference qualifier filters the records offered in a reference field's lookup. It does not filter the Problem list.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/c_ReferenceQualifiers.html"
           },
           {
             "choiceId": "d",
-            "explanation": "A condition filters within the current view, it doesn't create a new view."
+            "explanation": "A view rule controls which view a form or list is shown in. It does not decide which records the list contains.",
+            "reference": "https://www.servicenow.com/docs/r/platform-user-interface/control-views.html"
           }
         ]
       },
       "certification": "csa",
       "topic": "ui-navigation",
-      "references": [],
+      "references": [
+        "https://www.servicenow.com/docs/r/platform-user-interface/create-related-list-query.html",
+        "https://www.servicenow.com/docs/r/platform-user-interface/c_DotWalking.html",
+        "https://www.servicenow.com/docs/r/platform-administration/c_ReferenceQualifiers.html",
+        "https://www.servicenow.com/docs/r/platform-user-interface/control-views.html"
+      ],
       "isFree": false,
       "source": {
         "type": "generated",
@@ -1935,62 +2063,79 @@
         "certification": "csa",
         "domain": "ui-navigation",
         "domainSlug": "ui-navigation",
-        "subtopics": [],
-        "tags": []
+        "subtopics": [
+          "Filters and breadcrumbs"
+        ],
+        "tags": [
+          "List v3",
+          "related list conditions",
+          "filters"
+        ]
       },
       "meta": {
         "generatedAt": "2026-03-31T02:09:00Z",
-        "version": "2.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "csa-ui-026",
       "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "An administrator needs to ensure that a specific form layout appears only when the Priority field is set to 1 - Critical. Which feature should they use?",
+      "question": "An administrator wants Incident records with Priority 1 - Critical to open in a special Major view, whatever view each agent has saved as a preference. What should they create?",
       "options": [
         {
           "id": "a",
-          "text": "Form views with a view rule"
+          "text": "A view rule with a Priority condition"
         },
         {
           "id": "b",
-          "text": "UI Policy to hide fields"
+          "text": "A UI policy that runs when Priority is 1"
         },
         {
           "id": "c",
-          "text": "ACL on the form"
+          "text": "A template that sets Priority to 1"
         },
         {
           "id": "d",
-          "text": "Client script to redirect"
+          "text": "Personalized forms for each agent"
         }
       ],
       "correctAnswers": [
         "a"
       ],
       "explanation": {
-        "correct": "View rules allow administrators to automatically switch form views based on conditions like field values. Setting a view rule on the Priority field being Critical will display the specific form layout.",
+        "correct": "A user's chosen view is normally saved as a preference, but a view rule overrides this to force a specified view. Administrators create view rules (System UI > View Rules) with conditions that determine when the system displays a form or list in a specified view. Here, the condition is Priority is 1 - Critical and the view is Major. See https://www.servicenow.com/docs/r/platform-user-interface/view-management-overview.html",
         "wrongAnswers": [
           {
             "choiceId": "b",
-            "explanation": "UI Policies can show/hide individual fields but don't switch entire form layouts."
+            "explanation": "UI policies change how fields behave on a form, for example making them read-only, required, or hidden. They do not choose which view the form opens in.",
+            "reference": "https://www.servicenow.com/docs/r/application-development/form-builder-glide-family-release/form-builder-policies-rules.html"
           },
           {
             "choiceId": "c",
-            "explanation": "ACLs control access permissions, not form layout presentation."
+            "explanation": "A template populates field values on new records. It does not control which view a record is displayed in.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/c_Templates.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Client scripts for redirection are not the standard approach for conditional form layouts."
+            "explanation": "Form personalization changes the fields one user sees on a form view. It cannot force a different view based on a field value.",
+            "reference": "https://www.servicenow.com/docs/r/platform-user-interface/t_PersonalizeAForm.html"
           }
         ]
       },
       "certification": "csa",
       "topic": "ui-navigation",
-      "references": [],
+      "references": [
+        "https://www.servicenow.com/docs/r/platform-user-interface/view-management-overview.html",
+        "https://www.servicenow.com/docs/r/platform-user-interface/control-views.html",
+        "https://www.servicenow.com/docs/r/application-development/form-builder-glide-family-release/form-builder-policies-rules.html",
+        "https://www.servicenow.com/docs/r/platform-administration/c_Templates.html",
+        "https://www.servicenow.com/docs/r/platform-user-interface/t_PersonalizeAForm.html"
+      ],
       "isFree": false,
       "source": {
         "type": "generated",
@@ -2008,59 +2153,76 @@
         "certification": "csa",
         "domain": "ui-navigation",
         "domainSlug": "ui-navigation",
-        "subtopics": [],
-        "tags": []
+        "subtopics": [
+          "Views"
+        ],
+        "tags": [
+          "views",
+          "view rules",
+          "conditions"
+        ]
       },
       "meta": {
         "generatedAt": "2026-03-31T02:09:00Z",
-        "version": "2.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "csa-ui-027",
       "cognitiveLevel": "understanding",
       "type": "multiple_choice",
-      "question": "Which statements about ServiceNow list editing are true? (Choose 2)",
+      "question": "In the Incident list, an agent double-clicks the Category cell, and the editor that opens also shows the Subcategory field. Why?",
       "options": [
         {
           "id": "a",
-          "text": "Double-clicking a cell in a list enables inline editing for that field"
+          "text": "Double click to edit is selected for the list"
         },
         {
           "id": "b",
-          "text": "List editing allows updating multiple records simultaneously using the list header checkbox"
+          "text": "Subcategory is dependent on Category"
         },
         {
           "id": "c",
-          "text": "All field types support inline list editing without restrictions"
+          "text": "The list is set to save data by rows"
         },
         {
           "id": "d",
-          "text": "List editing must be enabled by a system property before it can be used"
+          "text": "Enable list edit is selected for the list"
         }
       ],
       "correctAnswers": [
-        "a",
         "b"
       ],
       "explanation": {
-        "correct": "Double-clicking a cell enables inline editing, and selecting multiple records via the header checkbox allows bulk updates. Both are core list editing capabilities in ServiceNow.",
+        "correct": "When a field has a dependency relationship, such as Category and Subcategory, the list editor opens a composite editor so that all dependent fields can be edited together. You must have permission to edit all of the dependent fields to use the list editor. See https://www.servicenow.com/docs/r/platform-user-interface/t_UseTheListEditor.html",
         "wrongAnswers": [
           {
+            "choiceId": "a",
+            "explanation": "The Double click to edit option only sets whether the list editor opens with a double-click or a single select. It does not add other fields to the editor.",
+            "reference": "https://www.servicenow.com/docs/r/platform-user-interface/c_PersonalLists.html"
+          },
+          {
             "choiceId": "c",
-            "explanation": "Some field types like Journal fields and encrypted fields do not support inline list editing."
+            "explanation": "Saving by rows controls when edits are saved as you move between fields. It does not add dependent fields to the editor.",
+            "reference": "https://www.servicenow.com/docs/r/platform-user-interface/t_UseTheListEditor.html"
           },
           {
             "choiceId": "d",
-            "explanation": "List editing is enabled by default in ServiceNow, though it can be disabled by administrators."
+            "explanation": "The Enable list edit option only allows the list editor to open for the list. The extra Subcategory field appears because a dependency relationship opens a composite editor.",
+            "reference": "https://www.servicenow.com/docs/r/platform-user-interface/c_PersonalLists.html"
           }
         ]
       },
       "certification": "csa",
       "topic": "ui-navigation",
-      "references": [],
+      "references": [
+        "https://www.servicenow.com/docs/r/platform-user-interface/t_UseTheListEditor.html",
+        "https://www.servicenow.com/docs/r/platform-user-interface/c_PersonalLists.html"
+      ],
       "isFree": false,
       "source": {
         "type": "generated",
@@ -2078,62 +2240,76 @@
         "certification": "csa",
         "domain": "ui-navigation",
         "domainSlug": "ui-navigation",
-        "subtopics": [],
-        "tags": []
+        "subtopics": [
+          "List editing"
+        ],
+        "tags": [
+          "list editor",
+          "dependent fields",
+          "composite editor"
+        ]
       },
       "meta": {
         "generatedAt": "2026-03-31T02:09:00Z",
-        "version": "2.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "csa-ui-028",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What is the purpose of the 'Favorites' feature in ServiceNow navigation?",
+      "question": "While viewing a page in Next Experience, an agent selects the star icon in the contextual app pill. Where is that page added?",
       "options": [
         {
           "id": "a",
-          "text": "It bookmarks specific records or modules for quick access from the navigation bar"
+          "text": "To the Favorites menu"
         },
         {
           "id": "b",
-          "text": "It automatically prioritizes frequently used tables"
+          "text": "To the Workspaces menu"
         },
         {
           "id": "c",
-          "text": "It creates shortcuts to external websites"
+          "text": "To the Admin menu"
         },
         {
           "id": "d",
-          "text": "It pins dashboards to the homepage"
+          "text": "To the Notifications menu"
         }
       ],
       "correctAnswers": [
         "a"
       ],
       "explanation": {
-        "correct": "Favorites allow users to bookmark specific records, lists with filters, or application modules for quick access from the favorites icon in the navigation bar.",
+        "correct": "Selecting the star icon in the contextual app pill adds the displayed page as a favorite. Favorites appear in the Favorites menu in the Next Experience Unified Navigation, where you can edit their names, icons, colors, and folder groups. See https://www.servicenow.com/docs/r/platform-user-interface/managing-your-favorites.html",
         "wrongAnswers": [
           {
             "choiceId": "b",
-            "explanation": "Favorites are manually set by users, not automatically determined by usage frequency."
+            "explanation": "The Workspaces menu lists the workspaces you can access. Favorites are not added there.",
+            "reference": "https://www.servicenow.com/docs/r/platform-user-interface/using-the-next-experience-global-header.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Favorites are for internal ServiceNow navigation, not external websites."
+            "explanation": "The Admin menu gives access to items specific to admin functions. Starred pages go to the Favorites menu.",
+            "reference": "https://www.servicenow.com/docs/r/platform-user-interface/using-the-next-experience-global-header.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Dashboard pinning is separate from the Favorites feature."
+            "explanation": "The Notifications menu shows notifications that apply to you. Starring a page adds it to the Favorites menu.",
+            "reference": "https://www.servicenow.com/docs/r/platform-user-interface/using-the-next-experience-global-header.html"
           }
         ]
       },
       "certification": "csa",
       "topic": "ui-navigation",
-      "references": [],
+      "references": [
+        "https://www.servicenow.com/docs/r/platform-user-interface/managing-your-favorites.html",
+        "https://www.servicenow.com/docs/r/platform-user-interface/using-the-next-experience-global-header.html"
+      ],
       "isFree": false,
       "source": {
         "type": "generated",
@@ -2151,62 +2327,76 @@
         "certification": "csa",
         "domain": "ui-navigation",
         "domainSlug": "ui-navigation",
-        "subtopics": [],
-        "tags": []
+        "subtopics": [
+          "Next Experience navigation"
+        ],
+        "tags": [
+          "favorites",
+          "unified navigation",
+          "next experience"
+        ]
       },
       "meta": {
         "generatedAt": "2026-03-31T02:09:00Z",
-        "version": "2.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "csa-ui-029",
       "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "A user needs to see incidents assigned to their group AND with a state of 'In Progress'. Which filter operation should be used?",
+      "question": "A team lead wants the Incident list to show only incidents assigned to their group that are also in the In Progress state. How should the two filter conditions be combined?",
       "options": [
         {
           "id": "a",
-          "text": "Use OR condition between Assignment Group and State"
+          "text": "Join them with an OR connector"
         },
         {
           "id": "b",
-          "text": "Use AND condition between Assignment Group and State"
+          "text": "Join them with an AND connector"
         },
         {
           "id": "c",
-          "text": "Create two separate filtered lists and compare them"
+          "text": "Put State under related list conditions"
         },
         {
           "id": "d",
-          "text": "Use a CONTAINS condition on both fields"
+          "text": "Run each condition as its own filter"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "When both conditions must be true simultaneously (assigned to their group AND in progress), an AND condition is required. This returns only records matching both criteria.",
+        "correct": "Each condition line is grouped with either an AND or OR connector. The filter requires all condition lines linked with an AND connector to be met, so only incidents that match both the assignment group and the In Progress state are listed. See https://www.servicenow.com/docs/r/platform-user-interface/c_Filters.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "OR would return records matching either condition, not both \u2014 showing incidents from other groups or in other states."
+            "explanation": "The filter evaluates each OR line separately, so it would also return incidents that match only one of the two conditions.",
+            "reference": "https://www.servicenow.com/docs/r/platform-user-interface/c_Filters.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Creating separate lists is unnecessary; the filter builder supports multiple conditions natively."
+            "explanation": "Related list conditions add a relationship with another table. State is a field on the Incident table itself.",
+            "reference": "https://www.servicenow.com/docs/r/platform-user-interface/create-related-list-query.html"
           },
           {
             "choiceId": "d",
-            "explanation": "CONTAINS is for text matching within a field value, not for filtering by exact field values like group or state."
+            "explanation": "A filter returns the records that meet its own conditions, so two separate filters each list a different set of records. Joining the lines with AND is what requires both conditions.",
+            "reference": "https://www.servicenow.com/docs/r/platform-user-interface/c_Filters.html"
           }
         ]
       },
       "certification": "csa",
       "topic": "ui-navigation",
-      "references": [],
+      "references": [
+        "https://www.servicenow.com/docs/r/platform-user-interface/c_Filters.html",
+        "https://www.servicenow.com/docs/r/platform-user-interface/create-related-list-query.html"
+      ],
       "isFree": false,
       "source": {
         "type": "generated",
@@ -2225,13 +2415,19 @@
         "domain": "ui-navigation",
         "domainSlug": "ui-navigation",
         "subtopics": [],
-        "tags": []
+        "tags": [
+          "filters",
+          "conditions",
+          "AND"
+        ]
       },
       "meta": {
         "generatedAt": "2026-03-31T02:09:00Z",
-        "version": "2.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -2321,81 +2517,6 @@
       }
     },
     {
-      "id": "csa-ui-navigation-031",
-      "certification": "csa",
-      "topic": "ui-navigation",
-      "cognitiveLevel": "understanding",
-      "type": "multiple_choice",
-      "question": "What enables collecting data from related tables via reference fields in ServiceNow?",
-      "options": [
-        {
-          "id": "a",
-          "text": "Field mapping"
-        },
-        {
-          "id": "b",
-          "text": "Dot-walking"
-        },
-        {
-          "id": "c",
-          "text": "Table joins"
-        },
-        {
-          "id": "d",
-          "text": "Reference linking"
-        }
-      ],
-      "explanation": {
-        "correct": "Dot-walking is ServiceNow's method for accessing data from related tables through reference fields. When you have a reference field pointing to another table, you can 'walk' through the reference using dot notation to access fields in the referenced table. For example, if an incident has a 'caller_id' reference field pointing to the user table, you can access the caller's department using 'caller_id.department'. This is fundamental to ServiceNow's data access patterns and is used extensively in both the UI and scripting.",
-        "wrongAnswers": [
-          {
-            "choiceId": "a",
-            "explanation": ""
-          },
-          {
-            "choiceId": "c",
-            "explanation": ""
-          },
-          {
-            "choiceId": "d",
-            "explanation": ""
-          }
-        ]
-      },
-      "references": [
-        {
-          "title": "ServiceNow Administration Fundamentals - Lists and Filters",
-          "type": "course",
-          "url": "https://nowlearning.servicenow.com"
-        }
-      ],
-      "isFree": true,
-      "correctAnswers": [
-        "b"
-      ],
-      "labels": {
-        "certification": "csa",
-        "domain": "ui-navigation",
-        "domainSlug": "ui-navigation",
-        "subtopics": [
-          "dot-walking",
-          "reference-fields",
-          "data-access"
-        ],
-        "tags": [
-          "dot-walking",
-          "reference-fields",
-          "data-access"
-        ]
-      },
-      "meta": {
-        "generatedAt": "2026-03-31T02:09:00Z",
-        "version": "2.0",
-        "release": "Xanadu",
-        "reviewed": false
-      }
-    },
-    {
       "id": "csa-ui-navigation-032",
       "certification": "csa",
       "topic": "ui-navigation",
@@ -2478,48 +2599,47 @@
       "topic": "ui-navigation",
       "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "A user sees brackets around a list view name like '[Assigned to me]'. What does this indicate?",
+      "question": "An administrator is creating a new Incident form view from Configure > Form Layout. Which view name will the instance accept?",
       "options": [
         {
           "id": "a",
-          "text": "The view is locked by an administrator"
+          "text": "Field Ops"
         },
         {
           "id": "b",
-          "text": "The view is currently being edited"
+          "text": "field-ops"
         },
         {
           "id": "c",
-          "text": "The view is not the default list view"
+          "text": "field_ops"
         },
         {
           "id": "d",
-          "text": "The view has active filters applied"
+          "text": "field.ops"
         }
       ],
       "explanation": {
-        "correct": "Brackets around a list view name indicate that you are not viewing the default list view. ServiceNow shows brackets to make it clear when you've switched from the default view to a different saved view, such as 'Assigned to me', 'Recent', or custom views. The default view typically shows without brackets. This visual indicator helps users understand which view they're currently using and is important for navigation awareness.",
+        "correct": "When creating a view, the documentation says view names should be unique and cannot use special characters or spaces, only the characters A-Z, a-z, 0-9 and _. Only field_ops uses nothing but letters and an underscore. See https://www.servicenow.com/docs/r/platform-user-interface/create-delete-view.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": ""
+            "explanation": "This name contains a space. View names cannot use spaces.",
+            "reference": "https://www.servicenow.com/docs/r/platform-user-interface/create-delete-view.html"
           },
           {
             "choiceId": "b",
-            "explanation": ""
+            "explanation": "The hyphen is a special character. View names may use only A-Z, a-z, 0-9 and _.",
+            "reference": "https://www.servicenow.com/docs/r/platform-user-interface/create-delete-view.html"
           },
           {
             "choiceId": "d",
-            "explanation": ""
+            "explanation": "The period is a special character. View names may use only A-Z, a-z, 0-9 and _.",
+            "reference": "https://www.servicenow.com/docs/r/platform-user-interface/create-delete-view.html"
           }
         ]
       },
       "references": [
-        {
-          "title": "ServiceNow Administration Fundamentals - Lists and Filters",
-          "type": "course",
-          "url": "https://nowlearning.servicenow.com"
-        }
+        "https://www.servicenow.com/docs/r/platform-user-interface/create-delete-view.html"
       ],
       "isFree": false,
       "correctAnswers": [
@@ -2530,93 +2650,22 @@
         "domain": "ui-navigation",
         "domainSlug": "ui-navigation",
         "subtopics": [
-          "list-views",
-          "default-view",
-          "navigation-indicators"
+          "views",
+          "form-layout"
         ],
         "tags": [
-          "list-views",
-          "default-view",
-          "navigation-indicators"
+          "views",
+          "view names",
+          "form layout"
         ]
       },
       "meta": {
         "generatedAt": "2026-03-31T02:09:00Z",
-        "version": "2.0",
-        "release": "Xanadu",
-        "reviewed": false
-      }
-    },
-    {
-      "id": "csa-ui-navigation-034",
-      "certification": "csa",
-      "topic": "ui-navigation",
-      "cognitiveLevel": "understanding",
-      "type": "multiple_select",
-      "question": "Which methods can be used to modify form layouts in ServiceNow? (Choose 2)",
-      "options": [
-        {
-          "id": "a",
-          "text": "Form Designer"
-        },
-        {
-          "id": "b",
-          "text": "List Editor"
-        },
-        {
-          "id": "c",
-          "text": "Form Layout Tool"
-        },
-        {
-          "id": "d",
-          "text": "UI Policy Designer"
-        }
-      ],
-      "explanation": {
-        "correct": "ServiceNow provides two primary methods for modifying form layouts: Form Designer (a drag-and-drop interface for arranging form elements) and Form Layout Tool (for more advanced layout modifications). List Editor is used for customizing list views, not forms. UI Policy Designer creates dynamic form behaviors but doesn't directly modify layouts. Understanding the distinction between these tools is important for form customization tasks.",
-        "wrongAnswers": [
-          {
-            "choiceId": "b",
-            "explanation": ""
-          },
-          {
-            "choiceId": "d",
-            "explanation": ""
-          }
-        ]
-      },
-      "references": [
-        {
-          "title": "ServiceNow Administration Fundamentals - Forms and Configuration",
-          "type": "course",
-          "url": "https://nowlearning.servicenow.com"
-        }
-      ],
-      "isFree": false,
-      "correctAnswers": [
-        "a",
-        "c"
-      ],
-      "labels": {
-        "certification": "csa",
-        "domain": "ui-navigation",
-        "domainSlug": "ui-navigation",
-        "subtopics": [
-          "form-layout",
-          "form-designer",
-          "customization-tools"
-        ],
-        "tags": [
-          "form-layout",
-          "form-designer",
-          "customization-tools"
-        ]
-      },
-      "meta": {
-        "generatedAt": "2026-03-31T02:09:00Z",
-        "version": "2.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -2702,48 +2751,48 @@
       "topic": "ui-navigation",
       "cognitiveLevel": "application",
       "type": "multiple_select",
-      "question": "Which list personalization options are available to users in ServiceNow? (Choose 3)",
+      "question": "An agent opens the personalize list dialog on the Incident list. Which three actions can they take from there? (Choose 3)",
       "options": [
         {
           "id": "a",
-          "text": "Rearrange column order"
+          "text": "Choose which columns appear and their order"
         },
         {
           "id": "b",
-          "text": "Set column widths"
+          "text": "Turn on Compact rows to condense spacing"
         },
         {
           "id": "c",
-          "text": "Create new table fields"
+          "text": "Create a new field on the underlying table"
         },
         {
           "id": "d",
-          "text": "Save custom list views"
+          "text": "Reset the list to its column defaults"
         },
         {
           "id": "e",
-          "text": "Modify table schemas"
+          "text": "Create a new list view for other users"
         }
       ],
       "explanation": {
-        "correct": "Users can personalize lists by rearranging column order (dragging columns to preferred positions), setting column widths (adjusting the display width of columns), and saving custom list views (preserving filter and display preferences). Users cannot create new table fields or modify table schemas - these are administrative functions requiring proper roles and permissions. List personalization focuses on display and organization, not data structure modifications.",
+        "correct": "From the personalize list icon, users select the columns and their order, set display options such as the Compact rows check box, and can select the Reset to column defaults button to return to the default layout. These personal changes don't affect what other users see in their lists. See https://www.servicenow.com/docs/r/platform-user-interface/c_PersonalLists.html",
         "wrongAnswers": [
           {
             "choiceId": "c",
-            "explanation": ""
+            "explanation": "Creating fields on the table is part of Configure > List Layout, not the personalize list icon.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/list-administration/t_ConfigureTheListLayout.html"
           },
           {
             "choiceId": "e",
-            "explanation": ""
+            "explanation": "Views are created through Configure > List Layout (or Form Layout) by administrators. Personal lists change only the user's own list.",
+            "reference": "https://www.servicenow.com/docs/r/platform-user-interface/create-delete-view.html"
           }
         ]
       },
       "references": [
-        {
-          "title": "ServiceNow Administration Fundamentals - Lists and Filters",
-          "type": "course",
-          "url": "https://nowlearning.servicenow.com"
-        }
+        "https://www.servicenow.com/docs/r/platform-user-interface/c_PersonalLists.html",
+        "https://www.servicenow.com/docs/r/platform-administration/list-administration/t_ConfigureTheListLayout.html",
+        "https://www.servicenow.com/docs/r/platform-user-interface/create-delete-view.html"
       ],
       "isFree": false,
       "correctAnswers": [
@@ -2761,16 +2810,18 @@
           "list-views"
         ],
         "tags": [
-          "list-personalization",
-          "user-customization",
-          "list-views"
+          "personalize list",
+          "list personalization",
+          "column defaults"
         ]
       },
       "meta": {
         "generatedAt": "2026-03-31T02:09:00Z",
-        "version": "2.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -2779,48 +2830,48 @@
       "topic": "ui-navigation",
       "cognitiveLevel": "understanding",
       "type": "true_false_compound",
-      "question": "Evaluate these statements about ServiceNow configuration:\nA) Personal list configurations only affect the current user's view\nB) System-level form modifications affect all users\nC) Related lists show records from the same table as the main form",
+      "question": "A team lead asks new agents to evaluate these statements about personal and system-wide changes:\nA) Personalizing a list does not change what other users see in their lists\nB) Configuring a form makes the changes visible to all users\nC) Personalizing a form lets a user hide mandatory fields",
       "options": [
         {
           "id": "a",
-          "text": "A and B are true, C is false"
+          "text": "A and B are true; C is false"
         },
         {
           "id": "b",
-          "text": "A and C are true, B is false"
+          "text": "A and C are true; B is false"
         },
         {
           "id": "c",
-          "text": "B and C are true, A is false"
+          "text": "B and C are true; A is false"
         },
         {
           "id": "d",
-          "text": "All statements are true"
+          "text": "A is true; B and C are false"
         }
       ],
       "explanation": {
-        "correct": "Statement A is TRUE: Personal list configurations (column order, widths, personal views) only affect the individual user's experience. Statement B is TRUE: System-level form modifications (adding fields, changing layouts, UI policies) affect all users unless overridden by role-based configurations. Statement C is FALSE: Related lists typically show records from different tables that are related to the current record via reference fields (e.g., incidents related to a CI, tasks related to a change).",
+        "correct": "A is true: personal list customizations don't affect what other users see in their lists. B is true: to make changes to a form that are visible to all users, you must configure the form. C is false: unlike configuring a form, personalizing a form does not let users hide mandatory fields. See https://www.servicenow.com/docs/r/platform-user-interface/t_PersonalizeAForm.html",
         "wrongAnswers": [
           {
             "choiceId": "b",
-            "explanation": ""
+            "explanation": "C is false, because personalizing a form cannot hide mandatory fields. B is true, because configuring a form is how changes are made visible to all users.",
+            "reference": "https://www.servicenow.com/docs/r/platform-user-interface/t_PersonalizeAForm.html"
           },
           {
             "choiceId": "c",
-            "explanation": ""
+            "explanation": "A is true, because personal list customizations don't affect other users. C is false, because personalization cannot hide mandatory fields.",
+            "reference": "https://www.servicenow.com/docs/r/platform-user-interface/c_PersonalLists.html"
           },
           {
             "choiceId": "d",
-            "explanation": ""
+            "explanation": "B is also true. Configuring a form, unlike personalizing it, makes the changes visible to all users.",
+            "reference": "https://www.servicenow.com/docs/r/platform-user-interface/t_PersonalizeAForm.html"
           }
         ]
       },
       "references": [
-        {
-          "title": "ServiceNow Administration Fundamentals - Forms and Lists Configuration",
-          "type": "course",
-          "url": "https://nowlearning.servicenow.com"
-        }
+        "https://www.servicenow.com/docs/r/platform-user-interface/t_PersonalizeAForm.html",
+        "https://www.servicenow.com/docs/r/platform-user-interface/c_PersonalLists.html"
       ],
       "isFree": true,
       "correctAnswers": [
@@ -2833,19 +2884,21 @@
         "subtopics": [
           "configuration-scope",
           "personal-vs-system",
-          "related-lists"
+          "personalize-form"
         ],
         "tags": [
           "configuration-scope",
           "personal-vs-system",
-          "related-lists"
+          "personalization"
         ]
       },
       "meta": {
         "generatedAt": "2026-03-31T02:09:00Z",
-        "version": "2.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {

@@ -6,52 +6,56 @@
       "id": "cis-itsm-problem-management-001",
       "certification": "cis-itsm",
       "topic": "problem-management",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What is the primary goal of Problem Management?",
+      "question": "Over two weeks, the service desk logs many incidents about the same payroll application crashing. A problem record is opened for them. What is the main goal of Problem Management here?",
       "options": [
         {
           "id": "a",
-          "text": "To restore service as quickly as possible"
+          "text": "Restore each user's access as fast as possible"
         },
         {
           "id": "b",
-          "text": "To identify the root cause and prevent future incidents"
+          "text": "Find the root cause and fix it permanently"
         },
         {
           "id": "c",
-          "text": "To approve and implement changes"
+          "text": "Authorize changes with minimal disruption"
         },
         {
           "id": "d",
-          "text": "To manage the service catalog"
+          "text": "Fulfill requests for services or information"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "Problem Management aims to identify the root cause of incidents, find feasible workarounds, and implement permanent solutions that prevent future occurrences. Unlike Incident Management which focuses on quick restoration, Problem Management focuses on long-term prevention.",
+        "correct": "Problem Management helps identify the cause of errors in the IT infrastructure that are reported as occurrences of related incidents. Root cause investigation aims to analyze, track, and resolve recurring incidents permanently, for example through a change request that applies a permanent fix. See https://www.servicenow.com/docs/r/it-service-management/problem-management/c_ProblemManagement.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Quick service restoration is the goal of Incident Management, not Problem Management",
-            "reference": "ITSM Fundamentals course"
+            "explanation": "Restoring normal service while minimizing business impact is the goal of Incident Management, which handles each user's disruption.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/incident-management/c_IncidentManagement.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Approving and implementing changes is the responsibility of Change Management",
-            "reference": "ITSM Fundamentals course"
+            "explanation": "Controlling the life cycle of changes with minimum disruption to IT services is the purpose of Change Management.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/change-management/c_ITILChangeManagement.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Service Catalog management is separate from Problem Management",
-            "reference": "ITSM Fundamentals course"
+            "explanation": "Submitting and fulfilling requests for services, products, or information is the purpose of Request Management.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/request-management/c_RequestManagement.html"
           }
         ]
       },
       "references": [
-        "ITSM Fundamentals"
+        "https://www.servicenow.com/docs/r/it-service-management/problem-management/c_ProblemManagement.html",
+        "https://www.servicenow.com/docs/r/it-service-management/problem-management/investigate-root-cause.html",
+        "https://www.servicenow.com/docs/r/it-service-management/incident-management/c_IncidentManagement.html",
+        "https://www.servicenow.com/docs/r/it-service-management/change-management/c_ITILChangeManagement.html",
+        "https://www.servicenow.com/docs/r/it-service-management/request-management/c_RequestManagement.html"
       ],
       "isFree": true,
       "source": {
@@ -70,67 +74,70 @@
         ],
         "tags": [
           "problem",
-          "root-cause",
-          "prevention"
+          "root cause",
+          "recurring incidents"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-06T06:10:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "cis-itsm-problem-management-002",
       "certification": "cis-itsm",
       "topic": "problem-management",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What is the Known Error Database (KEDB)?",
+      "question": "A problem coordinator has documented the cause and a workaround on a problem, but no permanent fix exists yet. They want the service desk and end users to find the workaround and deflect incidents. What should they create?",
       "options": [
         {
           "id": "a",
-          "text": "A list of all open incidents"
+          "text": "A problem task of type root cause analysis"
         },
         {
           "id": "b",
-          "text": "A repository of problem records designated as known issues"
+          "text": "A change request linked to the problem record"
         },
         {
           "id": "c",
-          "text": "A database of all configuration items"
+          "text": "A known error article from the problem"
         },
         {
           "id": "d",
-          "text": "A collection of change requests"
+          "text": "An Accept Risk resolution on the problem"
         }
       ],
       "correctAnswers": [
-        "b"
+        "c"
       ],
       "explanation": {
-        "correct": "The Known Error Database is a repository of problem records that a company has designated as known issues. These problems can be active (still under investigation) or closed (with a workaround in use instead of a permanent solution).",
+        "correct": "Known error articles document the root cause and the workaround of the problem to help with deflecting incidents. You create one from the problem with the Create Known Error Article related link. The article is saved in the knowledge base and, depending on access controls, can be searched by users outside the IT team. See https://www.servicenow.com/docs/r/it-service-management/problem-management/create-known-error-from-problem.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Open incidents are tracked in the Incident table, not the KEDB",
-            "reference": "ITSM Fundamentals course"
+            "explanation": "A root cause analysis problem task is used to get help from a subject matter expert during investigation. It does not publish the workaround to others.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/problem-management/investigate-root-cause.html"
           },
           {
-            "choiceId": "c",
-            "explanation": "Configuration items are stored in the CMDB, not the KEDB",
-            "reference": "ITSM Fundamentals course"
+            "choiceId": "b",
+            "explanation": "Creating or linking a change request is how a permanent fix is applied after clicking Fix. No permanent fix exists yet in this case.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/problem-management/investigate-root-cause.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Change requests have their own table; KEDB is for known problems",
-            "reference": "ITSM Fundamentals course"
+            "explanation": "Accept Risk moves the problem to Closed or Resolved with the Risk accepted code when there is no permanent resolution. It does not share the workaround.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/problem-management/investigate-root-cause.html"
           }
         ]
       },
       "references": [
-        "ITSM Fundamentals"
+        "https://www.servicenow.com/docs/r/it-service-management/problem-management/create-known-error-from-problem.html",
+        "https://www.servicenow.com/docs/r/it-service-management/problem-management/investigate-root-cause.html"
       ],
       "isFree": true,
       "source": {
@@ -144,20 +151,22 @@
         "domainSlug": "problem-management",
         "domainPercentage": 15,
         "subtopics": [
-          "Known Error Database",
-          "Problem records"
+          "Known errors",
+          "Workarounds"
         ],
         "tags": [
           "problem",
-          "kedb",
-          "known-error"
+          "known error",
+          "knowledge"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-06T06:10:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {

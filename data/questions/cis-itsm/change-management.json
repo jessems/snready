@@ -6,52 +6,52 @@
       "id": "cis-itsm-change-management-001",
       "certification": "cis-itsm",
       "topic": "change-management",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "Which type of change requires comprehensive assessment and authorization including CAB approval?",
+      "question": "A team plans next month's upgrade of a production database server. It is not in the standard change catalog, nothing is failing, and the work needs a peer review. How should the change be handled?",
       "options": [
         {
           "id": "a",
-          "text": "Standard change"
+          "text": "Standard change that skips peer and CAB approval"
         },
         {
           "id": "b",
-          "text": "Normal change"
+          "text": "Normal change needing peer approval and CAB"
         },
         {
           "id": "c",
-          "text": "Pre-approved change"
+          "text": "Emergency change sent straight to CAB approval"
         },
         {
           "id": "d",
-          "text": "Catalog change"
+          "text": "Standard change with peer approval but no CAB"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "A normal change refers to any change that isn't classified as a standard or emergency change. Such changes require comprehensive assessments and authorizations, including peer/technical approval, Change Management review, and Change Advisory Board authorization.",
+        "correct": "A normal change is any service change that is not a standard or emergency change. It requires assessment, peer or technical approval, and Change Advisory Board (CAB) authorization before implementation. ServiceNow's own example is a scheduled upgrade of a production database server that needs peer review and CAB authorization. See https://www.servicenow.com/docs/r/it-service-management/change-management/change-types.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Standard changes are pre-approved and don't always require CAB approval due to their proven track record",
-            "reference": "ITSM Fundamentals course"
+            "explanation": "Standard changes are pre-approved changes from a catalog of templates. This upgrade is not in the standard change catalog, so it cannot skip approvals.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/change-management/change-types.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Pre-approved changes skip the CAB approval process as they are already authorized",
-            "reference": "ITSM Fundamentals course"
+            "explanation": "Emergency changes are high-priority changes to resolve a major incident or apply an urgent security patch. A planned upgrade with nothing failing does not qualify.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/change-management/change-types.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Catalog change is not a standard ITSM change type classification",
-            "reference": "ITSM Fundamentals course"
+            "explanation": "Standard changes do not require group or peer approval at all, and this work is not a pre-approved standard change.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/change-management/change-types.html"
           }
         ]
       },
       "references": [
-        "ITSM Fundamentals"
+        "https://www.servicenow.com/docs/r/it-service-management/change-management/change-types.html"
       ],
       "isFree": true,
       "source": {
@@ -70,68 +70,69 @@
         ],
         "tags": [
           "change",
-          "normal",
-          "cab",
-          "approval"
+          "normal change",
+          "CAB"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-06T06:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "cis-itsm-change-management-002",
       "certification": "cis-itsm",
       "topic": "change-management",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "understanding",
       "type": "multiple_choice",
-      "question": "What is the primary characteristic of a standard change?",
+      "question": "A change manager is asked to add a monthly certificate renewal to the standard change catalog. Which characteristic makes a change a good fit for the standard change type?",
       "options": [
         {
           "id": "a",
-          "text": "It requires emergency CAB approval"
+          "text": "Repeatable steps with a proven history of success"
         },
         {
           "id": "b",
-          "text": "It has a proven track record of successful outcomes"
+          "text": "An active major incident that needs an immediate fix"
         },
         {
           "id": "c",
-          "text": "It must always be linked to an incident"
+          "text": "High risk that needs a full CAB assessment"
         },
         {
           "id": "d",
-          "text": "It cannot be initiated through the Service Catalog"
+          "text": "A scheduled window outside defined blackout periods"
         }
       ],
       "correctAnswers": [
-        "b"
+        "a"
       ],
       "explanation": {
-        "correct": "Standard changes are commonly implemented changes that have established implementation steps and a track record of successful outcomes. Because of this proven history, they can skip assessment and authorization steps.",
+        "correct": "A standard change is a pre-authorized, low-risk, relatively common change that follows a specified procedure. It is frequently implemented, has repeatable implementation steps, and has a proven history of success. Because it is pre-approved, it skips group or peer approval and CAB authorization. See https://www.servicenow.com/docs/r/it-service-management/change-management/change-types.html",
         "wrongAnswers": [
           {
-            "choiceId": "a",
-            "explanation": "Standard changes don't require CAB approval because they are pre-approved based on their track record",
-            "reference": "ITSM Fundamentals course"
+            "choiceId": "b",
+            "explanation": "Changes made immediately to resolve a major incident are emergency changes, which go directly to CAB authorization.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/change-management/change-types.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Emergency changes should be linked to incidents; standard changes don't have this requirement",
-            "reference": "ITSM Fundamentals course"
+            "explanation": "Standard changes are low risk and do not require CAB authorization. A change that needs a full assessment is a normal change.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/change-management/change-types.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Standard changes can be initiated through the Standard Change Catalog in the Service Catalog",
-            "reference": "ITSM Fundamentals course"
+            "explanation": "Scheduling outside change blackout windows is described for normal changes. It does not make a change standard.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/change-management/change-types.html"
           }
         ]
       },
       "references": [
-        "ITSM Fundamentals"
+        "https://www.servicenow.com/docs/r/it-service-management/change-management/change-types.html"
       ],
       "isFree": true,
       "source": {
@@ -150,15 +151,17 @@
         ],
         "tags": [
           "change",
-          "standard",
+          "standard change",
           "pre-approved"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-06T06:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {

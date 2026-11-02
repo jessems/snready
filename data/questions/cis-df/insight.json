@@ -6,53 +6,54 @@
       "id": "cis-df-insight-001",
       "certification": "cis-df",
       "topic": "insight",
-      "cognitiveLevel": "understanding",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What is the purpose of the Business Service object in the Service Consumption domain?",
+      "question": "A service owner is modeling the HR department's \"Manage HR\" service, which business users order through the request catalog as offerings like \"Manage Onboarding\". Which CSDM record type should represent \"Manage HR\"?",
       "options": [
         {
           "id": "a",
-          "text": "To store the technical configuration of applications"
+          "text": "Technology management service [cmdb_ci_service_technical]"
         },
         {
           "id": "b",
-          "text": "To identify portions of the business that depend on and are impacted by technology"
+          "text": "Business service [cmdb_ci_service_business]"
         },
         {
           "id": "c",
-          "text": "To manage the service catalog item offerings"
+          "text": "Service instance [cmdb_ci_service_auto]"
         },
         {
           "id": "d",
-          "text": "To track incident tickets related to business functions"
+          "text": "Dynamic CI group [cmdb_ci_query_based_service]"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "Business Service represents the business functions that consume and depend on technology (Service Instances). Its primary purpose is enabling impact analysis - if technology has an issue, Business Service identifies what portion of the business is impacted or may not be able to perform its function. See: https://docs.servicenow.com/bundle/zurich-servicenow-platform/page/product/configuration-management/concept/csdm-service-consumption.html",
+        "correct": "In the Service Consumption domain, the Business Service [cmdb_ci_service_business] table holds services such as \"Manage HR\". A business service is associated with business users, can contain business service offerings such as \"Manage Onboarding\", and is ordered through request catalogs. See https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/sell-consume-domain.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Technical configuration is stored in the Service Delivery domain CIs (Service Instances, infrastructure). Business Service is about business functions.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=62ebf27e53f26ed0c2245a01a0490e19&child_id=bd3b49cc4797e2d8c00af235126d439c&spa=1"
+            "explanation": "Technology management services are provider-focused services that the technology organization offers to the business. They are not the consumer-facing service that business users order.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/csdm-conceptual-model.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Service Catalog management uses catalog items and offerings, which are separate from Business Service. Business Service represents the business function itself.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=62ebf27e53f26ed0c2245a01a0490e19&child_id=bd3b49cc4797e2d8c00af235126d439c&spa=1"
+            "explanation": "A service instance is a logical representation of a deployed application stack in the Service Delivery domain. Business service offerings depend on service instances but do not represent the business service.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/manage-tech-servs-domain.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Incident tracking is done in the Incident table. Business Service is used to understand impact when incidents occur.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=62ebf27e53f26ed0c2245a01a0490e19&child_id=bd3b49cc4797e2d8c00af235126d439c&spa=1"
+            "explanation": "A dynamic CI group is a set of CIs returned by a CMDB Groups query, used for things like managing infrastructure CIs or query-based service instances. It is not a business-facing service.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/manage-tech-servs-domain.html"
           }
         ]
       },
       "references": [
-        "CSDM 5 White Paper",
-        "Business Service Documentation"
+        "https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/sell-consume-domain.html",
+        "https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/csdm-conceptual-model.html",
+        "https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/manage-tech-servs-domain.html"
       ],
       "isFree": true,
       "source": {
@@ -81,67 +82,72 @@
         "lesson": "08-service-consumption-domain",
         "tags": [
           "business service",
-          "impact analysis",
-          "service consumption"
+          "business service offering",
+          "Service Consumption",
+          "CSDM"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T12:00:00Z",
-        "version": "1.0",
-        "release": "Zurich",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "cis-df-insight-002",
       "certification": "cis-df",
       "topic": "insight",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What does the service classification attribute indicate on a service record?",
+      "question": "An analyst notices that business service offerings and technology management offerings are both stored in the [service_offering] table. Which field lets a report separate the two kinds of offering?",
       "options": [
         {
           "id": "a",
-          "text": "The priority level of the service"
+          "text": "Filter on the Life cycle stage status field"
         },
         {
           "id": "b",
-          "text": "The type of service table the record belongs to (business service, technical service, etc.)"
+          "text": "Filter on the Service Classification field"
         },
         {
           "id": "c",
-          "text": "The security classification for data protection"
+          "text": "Filter on the Model ID reference field"
         },
         {
           "id": "d",
-          "text": "The department responsible for the service"
+          "text": "Filter on the assigned Support group field"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "Service classification is an attribute that identifies the type of service (business service, technical service, etc.) and is used for filtering, reporting, and metrics. When on a business service table, the classification would be 'business service'. This is a legacy attribute that helps differentiate service types. See: https://docs.servicenow.com/bundle/zurich-servicenow-platform/page/product/configuration-management/concept/csdm-service-classification.html",
+        "correct": "Both offering types live in [service_offering], but their Service Classification differs. Technology management offerings have the Service Classification Technical Service, while business service offerings have the Service Classification Business Service. See https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/manage-tech-servs-domain.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Service priority is tracked separately. Service classification indicates the type/category of the service record.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=62ebf27e53f26ed0c2245a01a0490e19&child_id=bd3b49cc4797e2d8c00af235126d439c&spa=1"
+            "explanation": "Life cycle stage and life cycle stage status track where an object is in its life cycle (for example, operational or retired). They do not say whether an offering is business or technical.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/foundation-domain.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Security classification for data protection is a different concept. Service classification identifies the service type.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=62ebf27e53f26ed0c2245a01a0490e19&child_id=bd3b49cc4797e2d8c00af235126d439c&spa=1"
+            "explanation": "Model ID references the product model, such as a Service Offering Model, that the CI is based on. It is not the attribute the docs use to separate business offerings from technology management offerings.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/foundation-domain.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Department responsibility is tracked through support groups and ownership fields, not service classification.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=62ebf27e53f26ed0c2245a01a0490e19&child_id=bd3b49cc4797e2d8c00af235126d439c&spa=1"
+            "explanation": "Support group is one of the options a technology management offering is stratified by, used for incidents. It shows who supports the offering, not whether the offering is business or technical.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/manage-tech-servs-domain.html"
           }
         ]
       },
       "references": [
-        "CSDM 5 White Paper"
+        "https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/manage-tech-servs-domain.html",
+        "https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/sell-consume-domain.html",
+        "https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/foundation-domain.html"
       ],
       "isFree": true,
       "source": {
@@ -170,68 +176,73 @@
         "lesson": "08-service-consumption-domain",
         "tags": [
           "service classification",
-          "filtering",
+          "service offering",
           "reporting"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T12:00:00Z",
-        "version": "1.0",
-        "release": "Zurich",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "cis-df-insight-003",
       "certification": "cis-df",
       "topic": "insight",
-      "cognitiveLevel": "understanding",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "Which ServiceNow product provides visualization of CSDM data across the entire service lifecycle, including Plan, Build, Run, and Info views?",
+      "question": "A service owner wants one workspace to manage the services, offerings, business applications and service instances they own, with KPIs in the context of the plan-build-run life cycle. Which ServiceNow product fits?",
       "options": [
         {
           "id": "a",
-          "text": "Service Catalog"
+          "text": "Application Services dashboard"
         },
         {
           "id": "b",
-          "text": "Digital Portfolio Management (DPM)"
+          "text": "Digital Portfolio Management"
         },
         {
           "id": "c",
-          "text": "Performance Analytics"
+          "text": "Service Catalog and Service Portal"
         },
         {
           "id": "d",
-          "text": "Discovery"
+          "text": "Discovery and Service Mapping"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "Digital Portfolio Management (DPM) provides visualization of CSDM data across the entire service lifecycle. It shows tabs like Plan, Build, Run, and Info that correspond to CSDM domains. DPM helps visualize why data is placed in specific CSDM tables and what value it provides. See: https://docs.servicenow.com/bundle/zurich-it-business-management/page/product/it-business-management/concept/digital-portfolio-management.html",
+        "correct": "The Digital Portfolio Management (DPM) Workspace lets you manage all your solutions (services, service offerings, business applications and service instances) from a single location. Its portfolios can be analyzed in the context of the plan-build-run life cycle, with Plan, Build and Run tabs and configurable KPIs. See https://www.servicenow.com/docs/r/it-service-management/digital-portfolio-management/dpm-landing.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Service Catalog is for requesting services, not visualizing portfolio and lifecycle data across CSDM domains.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=62ebf27e53f26ed0c2245a01a0490e19&child_id=1c51ab69479baa1cc00af235126d43a1&spa=1"
+            "explanation": "The Application Services dashboard is where you monitor the health of service instances. It does not manage the whole portfolio of services, offerings and business applications.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/csdm-conceptual-model.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Performance Analytics provides KPIs and metrics but doesn't provide the full lifecycle visualization that DPM offers.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=62ebf27e53f26ed0c2245a01a0490e19&child_id=1c51ab69479baa1cc00af235126d43a1&spa=1"
+            "explanation": "Request catalogs and catalog items on the service portal let consumers order business services and offerings. They are not where owners manage their portfolio across plan, build and run.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/sell-consume-domain.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Discovery populates CMDB data but doesn't provide portfolio visualization. DPM visualizes the data Discovery helps populate.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=62ebf27e53f26ed0c2245a01a0490e19&child_id=1c51ab69479baa1cc00af235126d43a1&spa=1"
+            "explanation": "Service Mapping and Discovery populate the Service Delivery domain tables. They load CI data but are not a portfolio workspace for service owners.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/manage-tech-servs-domain.html"
           }
         ]
       },
       "references": [
-        "CSDM 5 White Paper",
-        "DPM Documentation"
+        "https://www.servicenow.com/docs/r/it-service-management/digital-portfolio-management/dpm-landing.html",
+        "https://www.servicenow.com/docs/r/it-service-management/digital-portfolio-management/dpm-views.html",
+        "https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/csdm-conceptual-model.html",
+        "https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/sell-consume-domain.html",
+        "https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/manage-tech-servs-domain.html"
       ],
       "isFree": true,
       "source": {
@@ -267,9 +278,11 @@
       },
       "meta": {
         "generatedAt": "2026-02-04T12:00:00Z",
-        "version": "1.0",
-        "release": "Zurich",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {

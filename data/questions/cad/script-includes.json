@@ -86,47 +86,47 @@
       "id": "cad-script-includes-002",
       "certification": "cad",
       "topic": "script-includes",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "Why is the 'current' object NOT available inside a Script Include?",
+      "question": "A developer builds a script include in a scoped application and wants only scripts in that same application to be able to call it. Which setting on the Script Include form does this?",
       "options": [
         {
           "id": "a",
-          "text": "Script Includes only execute on the client side where current is not defined"
+          "text": "Protection policy set to Protected"
         },
         {
           "id": "b",
-          "text": "Script Includes are not associated with a specific table, so there is no current record context"
+          "text": "Accessible from set to This application scope only"
         },
         {
           "id": "c",
-          "text": "The current object was deprecated and replaced by GlideRecord in the Yokohama release"
+          "text": "Accessible from set to All application scopes"
         },
         {
           "id": "d",
-          "text": "Script Includes can only access records through the previous object"
+          "text": "Glide AJAX enabled and Mobile callable both cleared"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "The 'current' object is only available in scripts that are associated with a specific table (such as Business Rules). Since the Script Include form has no table field or condition builder, there is no record context, and therefore the current object does not exist within a Script Include. Developers must use GlideRecord to access specific records instead. See: https://www.servicenow.com/docs/r/api-reference/scripts/c_ScriptIncludes.html",
+        "correct": "The Accessible from field sets which applications can access the script include. Its This application scope only value means the script include can be accessed only from the current application scope, so scripts in other applications cannot call it. See https://www.servicenow.com/docs/r/api-reference/scripts/c_ScriptIncludes.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Script Includes execute on the server side, not the client side. The reason current is unavailable is the lack of a table association, not the execution context.",
+            "explanation": "Protection policy Protected hides the contents of the Script field from customers who download the script include. It protects the code from being viewed; it does not control which application scopes can call it.",
             "reference": "https://www.servicenow.com/docs/r/api-reference/scripts/c_ScriptIncludes.html"
           },
           {
             "choiceId": "c",
-            "explanation": "The current object has not been deprecated. It remains fully functional in scripts that are associated with a table, such as Business Rules, and is available across all ServiceNow releases.",
-            "reference": "https://www.servicenow.com/docs/r/api-reference/server-api-reference/c_GlideRecordScopedAPI.html"
+            "explanation": "All application scopes is the opposite setting: it lets the script include be accessed from any application scope, including other applications.",
+            "reference": "https://www.servicenow.com/docs/r/api-reference/scripts/c_ScriptIncludes.html"
           },
           {
             "choiceId": "d",
-            "explanation": "The previous object is also unavailable in Script Includes for the same reason \u2014 there is no table association. The previous object is available in Business Rules alongside current.",
-            "reference": "https://www.servicenow.com/docs/r/api-reference/business-rules-classic/c_BusinessRules.html"
+            "explanation": "Glide AJAX enabled makes the script include available to client scripts, list/report filters, reference qualifiers, or URLs, and Mobile callable makes it available to client scripts on mobile devices. Clearing them does not limit which application scopes can call it.",
+            "reference": "https://www.servicenow.com/docs/r/api-reference/scripts/c_ScriptIncludes.html"
           }
         ]
       },
@@ -145,21 +145,21 @@
         "domainSlug": "script-includes",
         "domainPercentage": 12,
         "subtopics": [
-          "Script Include structure and extending classes",
-          "Script Include best practices"
+          "Script Include structure and extending classes"
         ],
         "tags": [
           "script-include",
-          "current-object",
-          "server-side",
-          "gliderecord"
+          "application-scope",
+          "accessible-from"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-05T20:28:03.000Z",
-        "version": "1.0",
-        "release": "Yokohama",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {

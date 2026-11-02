@@ -87,52 +87,53 @@
       "id": "csa-im-002",
       "certification": "csa",
       "topic": "incident-management",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "How is incident Priority calculated in ServiceNow by default?",
+      "question": "A service desk agent tries to raise an incident's Priority directly on the form, but the field is read-only. By default, how is the Priority value set?",
       "options": [
         {
           "id": "a",
-          "text": "Manually set by the caller"
+          "text": "Agent sets Impact and Urgency, and lookup rules derive it"
         },
         {
           "id": "b",
-          "text": "Based on Impact and Urgency"
+          "text": "The caller picks a Priority when submitting from the portal"
         },
         {
           "id": "c",
-          "text": "Based on the assignment group"
+          "text": "The assignment group manager sets it when accepting the work"
         },
         {
           "id": "d",
-          "text": "Based on the category selected"
+          "text": "It is copied from the Priority of the related problem record"
         }
       ],
       "correctAnswers": [
-        "b"
+        "a"
       ],
       "explanation": {
-        "correct": "In ServiceNow, incident Priority is calculated using a Priority Lookup matrix based on Impact and Urgency values. Impact measures the effect on business operations, while Urgency measures how quickly the issue needs to be resolved. This follows ITIL best practices.",
+        "correct": "By default the Priority field is read-only and must be set by selecting the Impact and Urgency values. Priority lookup rules, configured by administrators, determine how impact and urgency combine into the priority of each incident. Priority then identifies how quickly the service desk should address the task. See https://www.servicenow.com/docs/r/it-service-management/incident-management/def-prio-lookup-rules.html",
         "wrongAnswers": [
           {
-            "choiceId": "a",
-            "explanation": "While callers can suggest urgency, Priority is calculated automatically, not manually set by callers.",
-            "reference": "Priority Lookup Rules"
+            "choiceId": "b",
+            "explanation": "Nobody picks Priority directly by default, including the caller. The field is read-only and is derived from the Impact and Urgency values through the priority lookup rules.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/incident-management/def-prio-lookup-rules.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Assignment group does not determine priority; it is determined by Impact and Urgency.",
-            "reference": "Priority Lookup Rules"
+            "explanation": "Assignment group managers do not set Priority. It is derived from Impact and Urgency, and individual incident responders cannot change the priority lookup rules (only data_lookup_admin or admin can).",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/incident-management/def-prio-lookup-rules.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Category is for organizing incidents, not for calculating priority.",
-            "reference": "Incident Categorization"
+            "explanation": "Priority is not inherited from a problem record. The Incident form's Priority field is based on the incident's own Impact and Urgency values.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/incident-management/create-an-incident.html"
           }
         ]
       },
       "references": [
-        "Priority Lookup Rules"
+        "https://www.servicenow.com/docs/r/it-service-management/incident-management/def-prio-lookup-rules.html",
+        "https://www.servicenow.com/docs/r/it-service-management/incident-management/create-an-incident.html"
       ],
       "isFree": true,
       "source": {
@@ -151,14 +152,17 @@
         "tags": [
           "priority",
           "impact",
-          "urgency"
+          "urgency",
+          "priority lookup rules"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T00:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -492,44 +496,48 @@
       "id": "csa-im-007",
       "certification": "csa",
       "topic": "incident-management",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "understanding",
       "type": "multiple_select",
-      "question": "Which of the following are valid incident states in ServiceNow? (Select all that apply)",
+      "question": "A service desk lead is training new agents on the incident state model. Which two statements correctly describe an incident state? (Choose two)",
       "options": [
         {
           "id": "a",
-          "text": "New"
+          "text": "New: the incident is logged but not yet investigated"
         },
         {
           "id": "b",
-          "text": "In Progress"
+          "text": "Closed: set as soon as the agent provides a fix"
         },
         {
           "id": "c",
-          "text": "Pending"
+          "text": "Canceled: triaged and found to be a duplicate"
         },
         {
           "id": "d",
-          "text": "On Hold"
+          "text": "On Hold: waiting in the queue for an agent to pick up"
         }
       ],
       "correctAnswers": [
         "a",
-        "b",
-        "d"
+        "c"
       ],
       "explanation": {
-        "correct": "The default incident states in ServiceNow include New, In Progress, On Hold, Resolved, and Closed. 'On Hold' is used when waiting for external input.",
+        "correct": "In the incident life cycle, New means the incident is logged but not yet investigated. Canceled means the incident was triaged but found to be a duplicate, unnecessary, or not an incident at all. Resolved is the state for a provided fix. Closed follows after the incident has been Resolved for a specific duration and is confirmed. On Hold means responsibility has temporarily shifted to another entity, such as the caller or a vendor. See https://www.servicenow.com/docs/r/it-service-management/incident-management/c_IncidentManagementStateModel.html",
         "wrongAnswers": [
           {
-            "choiceId": "c",
-            "explanation": "'Pending' is not a default incident state in ServiceNow, though organizations can customize states.",
-            "reference": "Incident States"
+            "choiceId": "b",
+            "explanation": "Providing a fix sets the incident to Resolved, not Closed. An incident is marked Closed only after it has been Resolved for a specific duration and it is confirmed to be satisfactorily resolved.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/incident-management/c_IncidentManagementStateModel.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "On Hold does not mean the incident is waiting for an agent. It means responsibility shifts temporarily to another entity (Awaiting Caller, Change, Problem or Vendor) to provide information, evidence or a resolution.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/incident-management/c_IncidentManagementStateModel.html"
           }
         ]
       },
       "references": [
-        "Incident States"
+        "https://www.servicenow.com/docs/r/it-service-management/incident-management/c_IncidentManagementStateModel.html"
       ],
       "isFree": false,
       "source": {
@@ -548,14 +556,18 @@
         ],
         "tags": [
           "incident states",
-          "lifecycle"
+          "lifecycle",
+          "canceled",
+          "new"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T00:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -646,11 +658,11 @@
       "topic": "incident-management",
       "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "When an incident is reopened, which field is typically incremented to track this?",
+      "question": "A service desk manager wants a report showing which incidents were reopened several times after being resolved. Which Incident form field tracks how many times an incident has been reopened?",
       "options": [
         {
           "id": "a",
-          "text": "Priority"
+          "text": "Last reopened by"
         },
         {
           "id": "b",
@@ -658,38 +670,39 @@
         },
         {
           "id": "c",
-          "text": "Escalation level"
+          "text": "Last reopened at"
         },
         {
           "id": "d",
-          "text": "Urgency"
+          "text": "Parent Incident"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "When a resolved or closed incident is reopened, the 'Reopen count' field is incremented. This field helps track incidents that are frequently reopened, which may indicate underlying problems that need to be addressed through Problem Management.",
+        "correct": "The Reopen count field on the Incident form tracks how many times an incident has been reopened, which supports reporting on reopened incidents. Last reopened by and Last reopened at record only who reopened the incident most recently and when. See https://www.servicenow.com/docs/r/it-service-management/incident-management/reopening-incident.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Priority is calculated from Impact and Urgency, not affected by reopening.",
-            "reference": "Priority Calculation"
+            "explanation": "Last reopened by is filled with the name of the person who reopened the incident. It records the most recent reopener, not the number of reopens.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/incident-management/reopening-incident.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Escalation level tracks SLA escalations, not reopen events.",
-            "reference": "SLA Escalation"
+            "explanation": "Last reopened at is filled with the date and time when the incident was reopened. It is a timestamp, not a count.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/incident-management/reopening-incident.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Urgency is a user-input field for priority calculation, not affected by reopening.",
-            "reference": "Urgency Field"
+            "explanation": "Parent Incident holds the number of the incident's parent incident. It relates records and does not track reopens.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/incident-management/create-an-incident.html"
           }
         ]
       },
       "references": [
-        "Incident Reopen Process"
+        "https://www.servicenow.com/docs/r/it-service-management/incident-management/reopening-incident.html",
+        "https://www.servicenow.com/docs/r/it-service-management/incident-management/create-an-incident.html"
       ],
       "isFree": false,
       "source": {
@@ -703,19 +716,23 @@
         "domainSlug": "incident-management",
         "domainPercentage": 12,
         "subtopics": [
-          "Incident lifecycle"
+          "Incident lifecycle",
+          "Reopening incidents"
         ],
         "tags": [
           "reopen",
+          "reopen count",
           "lifecycle",
-          "metrics"
+          "reporting"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T00:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -803,52 +820,52 @@
       "id": "csa-im-011",
       "certification": "csa",
       "topic": "incident-management",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "Which role is typically required to resolve incidents in ServiceNow?",
+      "question": "An administrator must let a team lead view all incidents and the major incident workbench without being able to update incident records. Which role best fits this need?",
       "options": [
         {
           "id": "a",
-          "text": "admin"
+          "text": "sn_incident_write"
         },
         {
           "id": "b",
-          "text": "itil"
+          "text": "sn_incident_read"
         },
         {
           "id": "c",
-          "text": "incident_manager"
+          "text": "sn_incident_admin"
         },
         {
           "id": "d",
-          "text": "approver_user"
+          "text": "incident_manager"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "The 'itil' role provides the standard permissions needed to create, update, and resolve incidents in ServiceNow. The 'itil' role is designed specifically for IT service desk personnel.",
+        "correct": "The Incident read [sn_incident_read] role gives read access to the Incident Management application and related records. A user with sn_incident_read can view all incidents and the major incident workbench. A user with no role sees only the incidents they created or that were created on their behalf. See https://www.servicenow.com/docs/r/it-service-management/incident-management/inci-roles-instld-itsm-roles.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "While 'admin' would also work, it provides excessive permissions beyond what's needed for incident work.",
-            "reference": "ServiceNow Roles"
+            "explanation": "sn_incident_write gives write access to the Incident Management application and related records, which is more than the read-only access needed here.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/incident-management/inci-roles-instld-itsm-roles.html"
           },
           {
             "choiceId": "c",
-            "explanation": "'incident_manager' is for managing the incident process, not the standard role for resolving incidents.",
-            "reference": "Incident Management Roles"
+            "explanation": "sn_incident_admin configures all Incident Management features, including incident management properties. That is administrative access, not read-only access.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/incident-management/inci-roles-instld-itsm-roles.html"
           },
           {
             "choiceId": "d",
-            "explanation": "'approver_user' is for approval workflows, not incident resolution.",
-            "reference": "Approval Roles"
+            "explanation": "incident_manager manages incident properties and major incident trigger rules and contains the itil / sn_incident_write role, so it allows updates.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/incident-management/inci-roles-instld-itsm-roles.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Roles"
+        "https://www.servicenow.com/docs/r/it-service-management/incident-management/inci-roles-instld-itsm-roles.html"
       ],
       "isFree": false,
       "source": {
@@ -866,15 +883,18 @@
         ],
         "tags": [
           "roles",
-          "itil",
+          "sn_incident_read",
+          "sn_incident_write",
           "permissions"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T00:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -965,42 +985,45 @@
       "topic": "incident-management",
       "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "A system administrator wants to automatically set the category, priority, and assignment group for incoming incidents based on their short description. Which feature should they configure?",
+      "question": "An administrator wants new incidents to have their Category and Assignment group predicted by machine learning trained on the instance's past incidents, based on each Short description. What should they set up?",
       "options": [
         {
           "id": "a",
-          "text": "Business Rules"
+          "text": "Assignment rules with conditions on the Category field"
         },
         {
           "id": "b",
-          "text": "Predictive Intelligence"
+          "text": "Predictive Intelligence classification solutions"
         },
         {
           "id": "c",
-          "text": "Flow Designer"
+          "text": "Priority lookup rules for Impact and Urgency values"
         },
         {
           "id": "d",
-          "text": "UI Policies"
+          "text": "A UI policy that makes Category a mandatory field"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "Predictive Intelligence uses machine learning to automatically set the category, priority, and assignment for an incident from its short description, saving time and ensuring proper handling.",
+        "correct": "Predictive Intelligence for Incident Management uses your instance records to build solutions for Incident Management. Its classification solution definitions include Incident Categorization, which predicts the Category field from the Short description, and Incident Assignment, which predicts the Assignment group field from the Short description. See https://www.servicenow.com/docs/r/it-service-management/predictive-intelligence-for-incident.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "While business rules can set field values, Predictive Intelligence specifically uses ML to intelligently categorize based on short description content."
+            "explanation": "Assignment rules set the assigned_to and assignment_group fields when a set of conditions occurs. They are condition-based, do not learn from past records, and do not set the Category.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/c_AssignmentRulesModule.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Flow Designer automates workflows but doesn't use ML for field prediction."
+            "explanation": "Priority lookup rules determine how impact and urgency combine into an incident's priority. They do not predict Category or Assignment group.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/incident-management/def-prio-lookup-rules.html"
           },
           {
             "choiceId": "d",
-            "explanation": "UI Policies control form behavior (show/hide/mandatory), not automatic field population using ML."
+            "explanation": "UI policies change form behavior, for example making a field mandatory or read-only. They do not predict field values from the Short description.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/t_CreateAUIPolicy.html"
           }
         ]
       },
@@ -1023,58 +1046,70 @@
         "tags": [
           "predictive intelligence",
           "machine learning",
+          "classification",
           "auto-categorization"
         ]
       },
       "meta": {
         "generatedAt": "2026-03-16T02:00:00Z",
         "version": "1.1",
-        "release": "Xanadu",
-        "reviewed": false
-      }
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/it-service-management/predictive-intelligence-for-incident.html",
+        "https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/c_AssignmentRulesModule.html",
+        "https://www.servicenow.com/docs/r/it-service-management/incident-management/def-prio-lookup-rules.html",
+        "https://www.servicenow.com/docs/r/platform-administration/t_CreateAUIPolicy.html"
+      ]
     },
     {
       "id": "csa-im-014",
       "certification": "csa",
       "topic": "incident-management",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "Which ServiceNow feature allows agents to have real-time discussions about a specific incident record?",
+      "question": "An agent working a high-priority incident wants to chat in real time with two network engineers about it, with the conversation tied to the incident record. What should the agent do?",
       "options": [
         {
           "id": "a",
-          "text": "Activity Stream comments"
+          "text": "Add both engineers to the incident's Watch list"
         },
         {
           "id": "b",
-          "text": "Sidebar discussions"
+          "text": "Start a Sidebar discussion linked to the incident"
         },
         {
           "id": "c",
-          "text": "Email notifications"
+          "text": "Create an incident task for the network group"
         },
         {
           "id": "d",
-          "text": "Knowledge base articles"
+          "text": "Add both engineers to the incident's Work notes list"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "Sidebar discussions help share information to solve issues quickly. When a sidebar discussion is created, a tile appears in the activity stream. Users with access to the task record can join the discussion.",
+        "correct": "Sidebar is set up so agents can have real-time collaboration with others. An agent can create a Sidebar discussion for a task record such as an incident, linking it by record number and adding participants who have access to the record. See https://www.servicenow.com/docs/r/conversational-interfaces/sidebar/sidebar-discussions-record.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Activity Stream comments are recorded entries, not real-time chat discussions."
+            "explanation": "The Watch list holds users who receive notifications about the incident when comments are added. It sends notifications and does not provide a real-time discussion.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/incident-management/create-an-incident.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Email notifications alert users but don't provide real-time discussion capabilities."
+            "explanation": "An incident task is used to communicate and request work from assignment groups other than the one assigned to the incident. It is a work record, not a chat.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/incident-management/create-incident-task.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Knowledge articles are static reference materials, not discussion tools."
+            "explanation": "The Work notes list holds users who receive notifications when work notes are added. It sends notifications and does not provide a real-time discussion.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/incident-management/create-an-incident.html"
           }
         ]
       },
@@ -1092,7 +1127,8 @@
         "domainSlug": "incident-management",
         "domainPercentage": 12,
         "subtopics": [
-          "Sidebar discussions"
+          "Sidebar discussions",
+          "Collaboration"
         ],
         "tags": [
           "sidebar",
@@ -1103,52 +1139,63 @@
       "meta": {
         "generatedAt": "2026-03-16T02:00:00Z",
         "version": "1.1",
-        "release": "Xanadu",
-        "reviewed": false
-      }
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/conversational-interfaces/sidebar/sidebar-discussions-record.html",
+        "https://www.servicenow.com/docs/r/conversational-interfaces/sidebar/configure-sidebar.html",
+        "https://www.servicenow.com/docs/r/it-service-management/incident-management/create-an-incident.html",
+        "https://www.servicenow.com/docs/r/it-service-management/incident-management/create-incident-task.html"
+      ]
     },
     {
       "id": "csa-im-015",
       "certification": "csa",
       "topic": "incident-management",
-      "cognitiveLevel": "comprehension",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What is the primary purpose of the CMDB Dependency View in relation to incident management?",
+      "question": "A load balancer stops working, and an agent sets the incident's Configuration item to the server that ran out of memory. Where should the agent record the load balancer and the services that depend on it?",
       "options": [
         {
           "id": "a",
-          "text": "To automatically create incidents for failing CIs"
+          "text": "The Affected CIs related list on the incident"
         },
         {
           "id": "b",
-          "text": "To visualize relationships between configuration items and understand impact of issues"
+          "text": "The Watch list field on the incident form"
         },
         {
           "id": "c",
-          "text": "To assign incidents to the correct support group"
+          "text": "The Parent Incident field on the incident form"
         },
         {
           "id": "d",
-          "text": "To generate SLA reports for incident resolution"
+          "text": "The Service Offering field on the incident form"
         }
       ],
       "correctAnswers": [
-        "b"
+        "a"
       ],
       "explanation": {
-        "correct": "The Dependency View map helps visualize relationships between configuration items in your infrastructure, showing upstream and downstream dependencies. Icons indicate if a CI has active or pending issues, helping improve incident management processes.",
+        "correct": "Use the Configuration item field when a single CI is the cause of the incident. Use the Affected CIs related list when multiple CIs are affected. In the docs example, the Configuration item is the server that is out of memory, and the Affected CIs list contains the load balancer, the data center, dependent servers and impacted business services. From the dependency views map, View Affected CIs and Add Affected CI(s) help find and add them. See https://www.servicenow.com/docs/r/it-service-management/incident-management/t_UsingTheBSMMapToLocateAffectedCIs.html",
         "wrongAnswers": [
           {
-            "choiceId": "a",
-            "explanation": "The Dependency View visualizes relationships but doesn't automatically create incidents."
+            "choiceId": "b",
+            "explanation": "The Watch list holds users who receive notifications when comments are added. It does not record configuration items.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/incident-management/create-an-incident.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Assignment is handled through assignment rules, not the Dependency View."
+            "explanation": "Parent Incident holds the number of the parent incident for this incident. It relates incidents, not affected CIs.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/incident-management/create-an-incident.html"
           },
           {
             "choiceId": "d",
-            "explanation": "SLA reports are generated through reporting tools, not the Dependency View."
+            "explanation": "Service Offering identifies a service offering and its service commitments for the incident. It is a single field and does not list the multiple affected CIs.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/incident-management/create-an-incident.html"
           }
         ]
       },
@@ -1166,20 +1213,28 @@
         "domainSlug": "incident-management",
         "domainPercentage": 12,
         "subtopics": [
-          "CMDB and incident management"
+          "CMDB and incident management",
+          "Affected CIs"
         ],
         "tags": [
           "CMDB",
-          "dependency view",
-          "impact analysis"
+          "affected CIs",
+          "dependency views",
+          "configuration item"
         ]
       },
       "meta": {
         "generatedAt": "2026-03-16T02:00:00Z",
         "version": "1.1",
-        "release": "Xanadu",
-        "reviewed": false
-      }
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/it-service-management/incident-management/t_UsingTheBSMMapToLocateAffectedCIs.html",
+        "https://www.servicenow.com/docs/r/it-service-management/incident-management/create-an-incident.html"
+      ]
     },
     {
       "id": "csa-im-016",
@@ -1270,11 +1325,11 @@
       "topic": "incident-management",
       "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "An administrator needs to notify the IT Product Owner whenever a Priority 1 incident is created. Which module should they use?",
+      "question": "An administrator needs an email sent to the IT Product Owner whenever a Priority 1 incident is created, with the conditions, recipients, and content defined in one record. Which module should they use?",
       "options": [
         {
           "id": "a",
-          "text": "System Properties > Email"
+          "text": "Routing and Assignment > Assignment Rule"
         },
         {
           "id": "b",
@@ -1282,30 +1337,33 @@
         },
         {
           "id": "c",
-          "text": "System Policy > Events"
+          "text": "System Policy > Events > Registry"
         },
         {
           "id": "d",
-          "text": "System Logs > Email Log"
+          "text": "System Policy > Rules > Priority Lookup Rules"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "To create a new email notification, navigate to All > System Notification > Email > Notifications. From there, administrators can specify when to send the notification, who receives it, and what content is included.",
+        "correct": "To create an email notification, navigate to All > System Notification > Email > Notifications and select New. The Notification form has tabs for When to send (conditions), Who will receive (recipients) and What it will contain (contents), so one record defines when, who and what. See https://www.servicenow.com/docs/r/platform-administration/t_CreateANotification.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "System Properties > Email is for configuring email settings, not creating notification rules."
+            "explanation": "Assignment rules (All > Routing and Assignment > Assignment Rule) set the assigned_to and assignment_group fields when conditions occur. They do not send email.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/c_AssignmentRulesModule.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Events are triggers but the notification configuration itself is done through System Notification."
+            "explanation": "The event registry (System Policy > Events > Registry) is where events are registered. Registration lets other parts of the system, such as email notifications and Script Actions, see the event and react to it. The email notification itself is not defined there.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/system-events/t_RegisterAnEvent.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Email Log is for viewing sent emails, not creating notifications."
+            "explanation": "Priority lookup rules (System Policy > Rules > Priority Lookup Rules) define how impact and urgency combine into priority. They do not send notifications.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/incident-management/def-prio-lookup-rules.html"
           }
         ]
       },
@@ -1334,21 +1392,30 @@
       "meta": {
         "generatedAt": "2026-03-16T02:00:00Z",
         "version": "1.1",
-        "release": "Xanadu",
-        "reviewed": false
-      }
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/platform-administration/t_CreateANotification.html",
+        "https://www.servicenow.com/docs/r/platform-administration/system-events/t_RegisterAnEvent.html",
+        "https://www.servicenow.com/docs/r/platform-administration/system-events/c_EventRegistry.html",
+        "https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/c_AssignmentRulesModule.html",
+        "https://www.servicenow.com/docs/r/it-service-management/incident-management/def-prio-lookup-rules.html"
+      ]
     },
     {
       "id": "csa-im-018",
       "certification": "csa",
       "topic": "incident-management",
-      "cognitiveLevel": "comprehension",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "Which workspace facilitates IT service management workflows for managing tasks like incidents and requests?",
+      "question": "A Tier 2 agent who works incidents, requests, changes, and problems wants one configurable workspace with a landing page showing outages, service announcements, and assignments. Which should they use?",
       "options": [
         {
           "id": "a",
-          "text": "Employee Center Portal"
+          "text": "Service Portal self-service pages"
         },
         {
           "id": "b",
@@ -1356,30 +1423,33 @@
         },
         {
           "id": "c",
-          "text": "CMDB Workspace"
+          "text": "Service Graph Workspace"
         },
         {
           "id": "d",
-          "text": "Customer Service Portal"
+          "text": "Major incident workbench"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "The Service Operations Workspace facilitates IT service management workflows by managing tasks like incidents and requests. Employee Center Portal is for employee self-service needs.",
+        "correct": "Service Operations Workspace for ITSM is a configurable workspace that provides a unified experience for multiple IT Service Management and IT Operations Management workflows. Tier 2 agents (itil role) focus on incidents, requests, changes, problems and major incidents. A tailored landing page gives an overview of outages, service announcements and assignments. See https://www.servicenow.com/docs/r/it-service-management/service-operations-workspace/explore-sow.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Employee Center Portal is a hub for employee needs across departments, not specifically for ITSM workflows."
+            "explanation": "Service Portal is used to build a self-service portal experience for employees or customers. It is not an agent workspace for working on ITSM records.",
+            "reference": "https://www.servicenow.com/docs/r/platform-user-interface/service-portal/c_ServicePortal.html"
           },
           {
             "choiceId": "c",
-            "explanation": "CMDB Workspace is focused on configuration management, not general ITSM task management."
+            "explanation": "Service Graph Workspace (like CMDB Workspace) is where CMDB Health dashboards, relationship health and CI health are viewed. It is not for working incidents and requests.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/configuration-management-database-cmdb/cmdb-health-exp-cmdb-workspace.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Customer Service Portal is for customer-facing support, not internal ITSM workflows."
+            "explanation": "The major incident workbench is a single-pane view for managing major incidents, opened from a major incident record. It is not the agent's general workspace for incidents, requests, changes and problems.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/incident-management/major-incident-workbench.html"
           }
         ]
       },
@@ -1408,56 +1478,71 @@
       "meta": {
         "generatedAt": "2026-03-16T02:00:00Z",
         "version": "1.1",
-        "release": "Xanadu",
-        "reviewed": false
-      }
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/it-service-management/service-operations-workspace/explore-sow.html",
+        "https://www.servicenow.com/docs/r/platform-user-interface/service-portal/c_ServicePortal.html",
+        "https://www.servicenow.com/docs/r/servicenow-platform/configuration-management-database-cmdb/cmdb-health-exp-cmdb-workspace.html",
+        "https://www.servicenow.com/docs/r/it-service-management/incident-management/major-incident-workbench.html"
+      ]
     },
     {
       "id": "csa-inc-019",
       "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "Multiple users report the same email service outage. An administrator has already created a Major Incident. What should be done with the individual incident tickets?",
+      "question": "Twenty users log separate incidents for the same email outage, and the major incident manager has already promoted a major incident for it. How should the twenty user incidents be handled?",
       "options": [
         {
           "id": "a",
-          "text": "Associate them as child incidents to the Major Incident"
+          "text": "Add them as child incidents of the major incident"
         },
         {
           "id": "b",
-          "text": "Delete all duplicate incidents"
+          "text": "Create an incident task on the major incident for each"
         },
         {
           "id": "c",
-          "text": "Merge them into a single incident record"
+          "text": "Close each one now so only the major incident stays open"
         },
         {
           "id": "d",
-          "text": "Close them as 'Not Reproducible'"
+          "text": "Place each one On Hold with the reason Awaiting Caller"
         }
       ],
       "correctAnswers": [
         "a"
       ],
       "explanation": {
-        "correct": "Child incidents should be associated with the Major Incident (parent). This maintains individual user tracking while consolidating the resolution effort. When the Major Incident is resolved, child incidents can be batch-resolved.",
+        "correct": "Similar incidents are added to a major incident so that the support teams can work on the parent record for a coordinated response process. In the major incident workbench, Find Similar adds the selected incidents, which then appear under the Child Incidents section. See https://www.servicenow.com/docs/r/it-service-management/incident-management/add-similar-inci-mim-workbench.html",
         "wrongAnswers": [
           {
             "choiceId": "b",
-            "explanation": "Deleting incidents removes the audit trail and individual user records needed for reporting and communication."
+            "explanation": "An incident task is for communicating and requesting work from assignment groups other than the one assigned to the incident. It does not represent another user's report of the same outage.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/incident-management/create-incident-task.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Merging loses individual caller information and contact details needed for user notifications."
+            "explanation": "An incident is marked Closed only after it has been Resolved for a specific duration and the resolution is confirmed. These incidents are not resolved yet.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/incident-management/c_IncidentManagementStateModel.html"
           },
           {
             "choiceId": "d",
-            "explanation": "The issue IS reproducible \u2014 it's a confirmed outage. Closing as Not Reproducible would be incorrect."
+            "explanation": "On Hold with Awaiting Caller is for when responsibility shifts to the caller to provide more information. These callers have already reported the outage, and the incidents should be linked to the major incident.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/incident-management/c_IncidentManagementStateModel.html"
           }
         ]
       },
       "certification": "csa",
       "topic": "incident-management",
-      "references": [],
+      "references": [
+        "https://www.servicenow.com/docs/r/it-service-management/incident-management/add-similar-inci-mim-workbench.html",
+        "https://www.servicenow.com/docs/r/it-service-management/incident-management/create-incident-task.html",
+        "https://www.servicenow.com/docs/r/it-service-management/incident-management/c_IncidentManagementStateModel.html"
+      ],
       "isFree": false,
       "source": {
         "type": "generated",
@@ -1475,59 +1560,76 @@
         "certification": "csa",
         "domain": "incident-management",
         "domainSlug": "incident-management",
-        "subtopics": [],
-        "tags": []
+        "subtopics": [
+          "Major incident management",
+          "Parent and child incidents"
+        ],
+        "tags": [
+          "major incident",
+          "child incidents",
+          "parent incident"
+        ]
       },
       "meta": {
         "generatedAt": "2026-03-31T02:09:00Z",
-        "version": "2.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "csa-inc-020",
-      "cognitiveLevel": "understanding",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "Which statements about SLA (Service Level Agreement) tracking on incidents are true? (Choose 2)",
+      "question": "An administrator wants an incident's resolution SLA to stop adding elapsed time while the incident is On Hold, and to continue counting when work resumes. Which SLA definition condition should they configure?",
       "options": [
         {
           "id": "a",
-          "text": "SLAs can trigger notifications when approaching breach time"
+          "text": "Stop condition"
         },
         {
           "id": "b",
-          "text": "SLA timers pause automatically when an incident is in a 'Pending' state"
+          "text": "Pause condition"
         },
         {
           "id": "c",
-          "text": "SLAs can only measure resolution time, not response time"
+          "text": "Cancel condition"
         },
         {
           "id": "d",
-          "text": "SLA definitions cannot use conditions to match specific incident types"
+          "text": "Reset condition"
         }
       ],
       "correctAnswers": [
-        "a",
         "b"
       ],
       "explanation": {
-        "correct": "SLAs support escalation notifications at configured thresholds (e.g., 50%, 75% of target time). SLA timers pause based on configured pause conditions, commonly when incidents are in Pending/Awaiting states, ensuring time isn't counted when the service desk is waiting on the caller.",
+        "correct": "An SLA definition can have up to six conditions: start, cancel, pause, resume, stop and reset. The pause condition defines when the SLA suspends increasing elapsed time. The When to resume setting (or a resume condition) controls when elapsed time continues to increase. See https://www.servicenow.com/docs/r/it-service-management/service-level-management/c_SLAConditions.html",
         "wrongAnswers": [
           {
+            "choiceId": "a",
+            "explanation": "The stop condition defines when the SLA completes. If all stop conditions match, the task SLA completes whether or not it is breached, so it would not continue counting later.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/service-level-management/c_SLAConditions.html"
+          },
+          {
             "choiceId": "c",
-            "explanation": "SLAs can measure multiple stages including response time, resolution time, and any custom stage."
+            "explanation": "The cancel condition defines the conditions under which the SLA will cancel. It does not suspend and later resume the timer.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/service-level-management/c_SLAConditions.html"
           },
           {
             "choiceId": "d",
-            "explanation": "SLA definitions use conditions to target specific priorities, categories, or any incident field values."
+            "explanation": "The reset condition completes the running SLA and attaches a new one. It does not pause elapsed time on the existing SLA.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/service-level-management/c_SLAConditions.html"
           }
         ]
       },
       "certification": "csa",
       "topic": "incident-management",
-      "references": [],
+      "references": [
+        "https://www.servicenow.com/docs/r/it-service-management/service-level-management/c_SLAConditions.html"
+      ],
       "isFree": false,
       "source": {
         "type": "generated",
@@ -1545,14 +1647,23 @@
         "certification": "csa",
         "domain": "incident-management",
         "domainSlug": "incident-management",
-        "subtopics": [],
-        "tags": []
+        "subtopics": [
+          "SLA conditions",
+          "Service level management"
+        ],
+        "tags": [
+          "SLA",
+          "pause condition",
+          "on hold"
+        ]
       },
       "meta": {
         "generatedAt": "2026-03-31T02:09:00Z",
-        "version": "2.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -1644,48 +1755,54 @@
       "id": "csa-inc-022",
       "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "An incident has been resolved but the caller disagrees with the resolution and wants it reopened. What state should the incident be changed to?",
+      "question": "A caller disagrees with the fix on her Resolved incident and selects the Reopen incident link in the resolution email. What happens to the incident's state?",
       "options": [
         {
           "id": "a",
-          "text": "In Progress"
+          "text": "It changes from Resolved to In Progress"
         },
         {
           "id": "b",
-          "text": "New"
+          "text": "It changes from Resolved to New"
         },
         {
           "id": "c",
-          "text": "On Hold"
+          "text": "It changes from Resolved to On Hold"
         },
         {
           "id": "d",
-          "text": "Active \u2014 by creating a new incident referencing the original"
+          "text": "It stays Resolved and a new incident opens"
         }
       ],
       "correctAnswers": [
         "a"
       ],
       "explanation": {
-        "correct": "When a resolved incident is reopened due to caller dissatisfaction, it should be moved back to 'In Progress' to continue the investigation. This maintains the original incident record and tracks the reopen in the activity log.",
+        "correct": "A caller who is not satisfied with a resolution can reopen the incident from the resolution email link or from the Reopen option on the form or portal. Once an incident is reopened, its state changes from Resolved to In Progress. The Last reopened by and Last reopened at fields are filled in at the same time. See https://www.servicenow.com/docs/r/it-service-management/incident-management/reopening-incident.html",
         "wrongAnswers": [
           {
             "choiceId": "b",
-            "explanation": "Setting it to New would lose the context of prior work and investigation."
+            "explanation": "A reopened incident does not go back to New, the state for a logged incident that has not been investigated. The docs state that it changes from Resolved to In Progress.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/incident-management/reopening-incident.html"
           },
           {
             "choiceId": "c",
-            "explanation": "On Hold means waiting for information; reopened incidents need active investigation."
+            "explanation": "Reopening does not place the incident On Hold. A reopened incident moves from Resolved to In Progress so work can continue.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/incident-management/reopening-incident.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Creating a new incident loses the original context and is not the standard process for reopening."
+            "explanation": "A new incident is opened only when someone replies to the resolution email for an incident that is already Closed, and that behavior has to be configured. A Resolved incident is reopened and moves to In Progress.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/incident-management/reopening-incident.html"
           }
         ]
       },
       "certification": "csa",
       "topic": "incident-management",
-      "references": [],
+      "references": [
+        "https://www.servicenow.com/docs/r/it-service-management/incident-management/reopening-incident.html",
+        "https://www.servicenow.com/docs/r/it-service-management/incident-management/c_IncidentManagementStateModel.html"
+      ],
       "isFree": false,
       "source": {
         "type": "generated",
@@ -1703,62 +1820,77 @@
         "certification": "csa",
         "domain": "incident-management",
         "domainSlug": "incident-management",
-        "subtopics": [],
-        "tags": []
+        "subtopics": [
+          "Incident lifecycle",
+          "Reopening incidents"
+        ],
+        "tags": [
+          "reopen",
+          "incident states",
+          "in progress",
+          "resolved"
+        ]
       },
       "meta": {
         "generatedAt": "2026-03-31T02:09:00Z",
-        "version": "2.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "csa-inc-023",
-      "cognitiveLevel": "understanding",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "How does ServiceNow calculate incident Priority by default?",
+      "question": "An agent logs a new incident with Impact set to 1 - High and Urgency set to 3 - Low. Assuming the standard sample priority lookup rules are in place, which Priority does the incident get?",
       "options": [
         {
           "id": "a",
-          "text": "Using a Priority Lookup matrix that combines Impact and Urgency values"
+          "text": "2 - High"
         },
         {
           "id": "b",
-          "text": "The caller manually selects the priority when creating the incident"
+          "text": "3 - Moderate"
         },
         {
           "id": "c",
-          "text": "Based solely on the assignment group's workload"
+          "text": "1 - Critical"
         },
         {
           "id": "d",
-          "text": "Using AI to analyze the short description text"
+          "text": "4 - Low"
         }
       ],
       "correctAnswers": [
-        "a"
+        "b"
       ],
       "explanation": {
-        "correct": "ServiceNow uses a Priority Lookup Rules data lookup that calculates Priority based on the combination of Impact (scope of effect) and Urgency (time sensitivity). For example, Impact: High + Urgency: High = Priority: 1 - Critical.",
+        "correct": "Priority lookup rules determine how impact and urgency values combine into a priority. In the documented sample data lookup rules, Impact 1 - High with Urgency 3 - Low gives Priority 3 - Moderate. A low urgency lowers the priority even when the impact is high. See https://www.servicenow.com/docs/r/it-service-management/incident-management/def-prio-lookup-rules.html",
         "wrongAnswers": [
           {
-            "choiceId": "b",
-            "explanation": "Priority is calculated automatically from Impact and Urgency, not manually selected (by default)."
+            "choiceId": "a",
+            "explanation": "2 - High is the result for Impact 1 - High with Urgency 2 - Medium (or Impact 2 - Medium with Urgency 1 - High), not for Urgency 3 - Low.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/incident-management/def-prio-lookup-rules.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Workload doesn't factor into priority calculation."
+            "explanation": "1 - Critical needs both Impact 1 - High and Urgency 1 - High in the sample priority lookup rules.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/incident-management/def-prio-lookup-rules.html"
           },
           {
             "choiceId": "d",
-            "explanation": "While Now Assist can suggest categories, default priority calculation uses the Impact/Urgency matrix."
+            "explanation": "4 - Low comes from a Low impact combined with Medium or Low urgency (or Medium impact with Low urgency). It does not come from a High impact.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/incident-management/def-prio-lookup-rules.html"
           }
         ]
       },
       "certification": "csa",
       "topic": "incident-management",
-      "references": [],
+      "references": [
+        "https://www.servicenow.com/docs/r/it-service-management/incident-management/def-prio-lookup-rules.html"
+      ],
       "isFree": false,
       "source": {
         "type": "generated",
@@ -1776,62 +1908,77 @@
         "certification": "csa",
         "domain": "incident-management",
         "domainSlug": "incident-management",
-        "subtopics": [],
-        "tags": []
+        "subtopics": [
+          "Priority calculation",
+          "Priority lookup rules"
+        ],
+        "tags": [
+          "priority",
+          "impact",
+          "urgency",
+          "priority lookup rules"
+        ]
       },
       "meta": {
         "generatedAt": "2026-03-31T02:09:00Z",
-        "version": "2.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "csa-inc-024",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What is the purpose of the 'Caller' field on an Incident record?",
+      "question": "A user phones the service desk about a broken laptop, and the agent logs an incident during the call. Which Incident form field identifies the user who reported the issue?",
       "options": [
         {
           "id": "a",
-          "text": "It identifies the user who reported or is affected by the incident"
+          "text": "Caller"
         },
         {
           "id": "b",
-          "text": "It shows which phone line the call came in on"
+          "text": "Assigned to"
         },
         {
           "id": "c",
-          "text": "It determines the assignment group for the incident"
+          "text": "Channel"
         },
         {
           "id": "d",
-          "text": "It sets the SLA target for the incident"
+          "text": "Watch list"
         }
       ],
       "correctAnswers": [
         "a"
       ],
       "explanation": {
-        "correct": "The Caller field identifies the person who reported the incident or is affected by it. This is used for communication, tracking, and may influence routing and SLA calculations based on the caller's VIP status or location.",
+        "correct": "On the Incident form, the Caller field is the user who contacted you with an issue. In this scenario, that is the employee who phoned about the laptop. See https://www.servicenow.com/docs/r/it-service-management/incident-management/create-an-incident.html",
         "wrongAnswers": [
           {
             "choiceId": "b",
-            "explanation": "The Caller field is a reference to a user record, not a phone system field."
+            "explanation": "Assigned to is the user who works on the incident, not the user who reported it.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/incident-management/create-an-incident.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Assignment is typically based on category, CI, or assignment rules, not the caller directly."
+            "explanation": "Channel records the communication method used to create the incident (for example Phone or Email), not which user reported it.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/incident-management/create-an-incident.html"
           },
           {
             "choiceId": "d",
-            "explanation": "SLA targets are based on priority and SLA definitions, not the caller field alone."
+            "explanation": "The Watch list holds users who receive notifications when comments are added. It does not identify the reporting user.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/incident-management/create-an-incident.html"
           }
         ]
       },
       "certification": "csa",
       "topic": "incident-management",
-      "references": [],
+      "references": [
+        "https://www.servicenow.com/docs/r/it-service-management/incident-management/create-an-incident.html"
+      ],
       "isFree": false,
       "source": {
         "type": "generated",
@@ -1849,14 +1996,22 @@
         "certification": "csa",
         "domain": "incident-management",
         "domainSlug": "incident-management",
-        "subtopics": [],
-        "tags": []
+        "subtopics": [
+          "Incident form fields"
+        ],
+        "tags": [
+          "caller",
+          "incident form",
+          "fields"
+        ]
       },
       "meta": {
         "generatedAt": "2026-03-31T02:09:00Z",
-        "version": "2.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     }
   ]

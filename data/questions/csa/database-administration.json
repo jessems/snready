@@ -8,50 +8,50 @@
       "topic": "database-administration",
       "cognitiveLevel": "knowledge",
       "type": "multiple_choice",
-      "question": "How is data organized in ServiceNow?",
+      "question": "An administrator new to ServiceNow is relating database terms to the platform. How do records and fields map onto a table?",
       "options": [
         {
           "id": "a",
-          "text": "Files, folders, and documents"
+          "text": "Each record is a column and each field is a row"
         },
         {
           "id": "b",
-          "text": "Tables, records, fields, and values"
+          "text": "Each record is a row and each field is a column"
         },
         {
           "id": "c",
-          "text": "Sheets, cells, and formulas"
+          "text": "Each record is a table and each field is a row"
         },
         {
           "id": "d",
-          "text": "Objects, classes, and methods"
+          "text": "Each record is a column and each field is a table"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "In ServiceNow, data is organized in a database with tables, records, fields, and values. Tables store records, records contain fields, fields hold individual pieces of data, and values are accessed through fields and records. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1",
+        "correct": "A table is a collection of records in the database. Each record corresponds to a row in the table, and each field on a record corresponds to a column on that table. See https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/c_TableAdministration.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "ServiceNow uses a relational database structure, not a file system.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1"
+            "explanation": "This reverses the model: records are rows and fields are columns, not the other way around.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/c_TableAdministration.html"
           },
           {
             "choiceId": "c",
-            "explanation": "These are spreadsheet concepts, not ServiceNow's data structure.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1"
+            "explanation": "A table is the collection of records; a record is one row in it, and each field is a column.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/c_TableAdministration.html"
           },
           {
             "choiceId": "d",
-            "explanation": "While ServiceNow uses object-oriented concepts, data is stored in tables.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1"
+            "explanation": "A record corresponds to a row, and a field corresponds to a column on the table, not to a table of its own.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/c_TableAdministration.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Data Model"
+        "https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/c_TableAdministration.html"
       ],
       "isFree": true,
       "source": {
@@ -83,9 +83,11 @@
       },
       "meta": {
         "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -183,50 +185,51 @@
       "topic": "database-administration",
       "cognitiveLevel": "understanding",
       "type": "multiple_choice",
-      "question": "What does a reference field store in ServiceNow?",
+      "question": "An incident shows a person's name in the Caller field, which is a reference to the User [sys_user] table. With default settings, what does the field store in the database?",
       "options": [
         {
           "id": "a",
-          "text": "The full content of the referenced record"
+          "text": "The caller's name, copied from the user record"
         },
         {
           "id": "b",
-          "text": "The unique sys_id of a record from another table"
+          "text": "The sys_id of the referenced user record"
         },
         {
           "id": "c",
-          "text": "A copy of the referenced table"
+          "text": "A full copy of the referenced user record"
         },
         {
           "id": "d",
-          "text": "The URL of an external system"
+          "text": "The URL of the referenced user record"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "A reference field stores the unique sys_id of a record from another table, creating a link between them. This link makes fields from the reference table accessible in the form. Reference fields only connect to one table. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1",
+        "correct": "Each reference field stores a sys_id for each referenced record in the database, but the sys_id is not shown; the field shows the display value instead (here, the user's name). Defining a reference field creates a relationship between the two tables and makes the referenced table's fields available to the form. See https://www.servicenow.com/docs/r/platform-administration/c_ReferenceField.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Reference fields store the sys_id, not the full record content.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1"
+            "explanation": "The name is the display value the reference field shows. The value stored in the database is the referenced record's sys_id.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/c_ReferenceField.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Tables are not copied; only a reference link is created.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1"
+            "explanation": "A reference field does not copy the record. It stores the sys_id and makes the other fields of the referenced table available to the form.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/c_ReferenceField.html"
           },
           {
             "choiceId": "d",
-            "explanation": "External URLs are stored differently; reference fields link internal records.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1"
+            "explanation": "The sys_id can be read from a record URL, but the reference field itself stores the sys_id, not a URL.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/c_UniqueRecordIdentifier.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Reference Fields"
+        "https://www.servicenow.com/docs/r/platform-administration/c_ReferenceField.html",
+        "https://www.servicenow.com/docs/r/platform-administration/c_UniqueRecordIdentifier.html"
       ],
       "isFree": true,
       "source": {
@@ -252,14 +255,16 @@
         "tags": [
           "reference field",
           "sys_id",
-          "table relationships"
+          "display value"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -530,52 +535,56 @@
       "id": "csa-db-007",
       "certification": "csa",
       "topic": "database-administration",
-      "cognitiveLevel": "understanding",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What is the purpose of a Schema Map in ServiceNow?",
+      "question": "An administrator wants a visual diagram showing which tables reference the Incident table and which tables Incident extends. What should they use?",
       "options": [
         {
           "id": "a",
-          "text": "To display user permissions"
+          "text": "A database view that joins Incident and Task"
         },
         {
           "id": "b",
-          "text": "To visualize table relationships"
+          "text": "The schema map from Tables & Columns"
         },
         {
           "id": "c",
-          "text": "To track system performance"
+          "text": "A dictionary override on the Incident table"
         },
         {
           "id": "d",
-          "text": "To manage email notifications"
+          "text": "A many-to-many definition in sys_m2m"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "The Schema Map visualizes table relationships. You can use the schema map to identify which columns originate on a table and which columns are inherited from parent tables, plus what tables are referenced. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1",
+        "correct": "The schema map displays the details of tables and their relationships visually, including tables that reference, are referenced by, extend, or are extended by the selected table. Generate it from All > System Definition > Tables & Columns by selecting a table and clicking Schema map. See https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/t_GenerateASchemaMap.html and https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/c_SchemaMapForTables.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "User permissions are managed in the security modules, not schema map.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1"
+            "explanation": "A database view joins two tables virtually to enable reporting on data stored over more than one table. It does not diagram table relationships.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/table-relationships.html"
           },
           {
             "choiceId": "c",
-            "explanation": "System performance is tracked with different tools.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1"
+            "explanation": "A dictionary override defines a field on an extended table differently from the field on the parent table. It does not show table relationships.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/c_DictionaryOverrides.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Notifications are managed in System Notification modules.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1"
+            "explanation": "The Many to Many Definitions [sys_m2m] table is used to create custom many-to-many relationships, not to view a diagram of existing ones.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/t_CreateAManyToManyRelationship.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Schema Map"
+        "https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/c_SchemaMapForTables.html",
+        "https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/t_GenerateASchemaMap.html",
+        "https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/table-relationships.html",
+        "https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/c_DictionaryOverrides.html",
+        "https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/t_CreateAManyToManyRelationship.html"
       ],
       "isFree": false,
       "source": {
@@ -600,15 +609,16 @@
         ],
         "tags": [
           "schema map",
-          "visualization",
-          "relationships"
+          "table relationships"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -703,9 +713,9 @@
       "id": "csa-db-009",
       "certification": "csa",
       "topic": "database-administration",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What type of field allows selecting multiple records from a table?",
+      "question": "An administrator adds a field to a custom task table where users can pick several people from the User table, similar to the Watch list field on Incident. Which field type fits?",
       "options": [
         {
           "id": "a",
@@ -713,42 +723,43 @@
         },
         {
           "id": "b",
-          "text": "Choice field"
+          "text": "Choice list field"
         },
         {
           "id": "c",
-          "text": "GlideList field"
+          "text": "Glide list field"
         },
         {
           "id": "d",
-          "text": "String field"
+          "text": "Document ID field"
         }
       ],
       "correctAnswers": [
         "c"
       ],
       "explanation": {
-        "correct": "GlideList allows selecting multiple records from a table. For example, the Watch List field on the Incident table can link to multiple User table records. Reference fields only allow selecting one record. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1",
+        "correct": "Glide lists allow a user to select multiple records on a table defined by the glide list. The docs give the Watch list field on Incident as the example: it lets the user select records on the User [sys_user] table. See https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/table-relationships.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Reference fields allow selecting only one record from a specific table.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1"
+            "explanation": "A reference field allows a user to select a record on the table defined by the field, such as the Caller field selecting a user, not several records.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/table-relationships.html"
           },
           {
             "choiceId": "b",
-            "explanation": "Choice fields provide predefined value options, not table record selections.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1"
+            "explanation": "A choice list lets the user select from a pre-defined set of choices, not records from the User table.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/c_ChoiceLists.html"
           },
           {
             "choiceId": "d",
-            "explanation": "String fields hold text values, not record references.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1"
+            "explanation": "A Document ID field allows a user to select a record on any table in the instance, not multiple records on one table.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/table-relationships.html"
           }
         ]
       },
       "references": [
-        "ServiceNow GlideList"
+        "https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/table-relationships.html",
+        "https://www.servicenow.com/docs/r/platform-administration/c_ChoiceLists.html"
       ],
       "isFree": false,
       "source": {
@@ -773,16 +784,19 @@
           "Reference fields"
         ],
         "tags": [
-          "GlideList",
-          "multiple select",
-          "watch list"
+          "glide list",
+          "watch list",
+          "field types",
+          "one-to-many"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -878,48 +892,49 @@
       "id": "csa-db-011",
       "certification": "csa",
       "topic": "database-administration",
-      "cognitiveLevel": "application",
+      "cognitiveLevel": "understanding",
       "type": "multiple_select",
-      "question": "In the schema map, what do tables with blue bars indicate? (Choose two)",
+      "question": "An administrator opens a schema map for the Incident table. Which two statements about reading the map are correct? (Choose two)",
       "options": [
         {
           "id": "a",
-          "text": "Tables that extend the focused table"
+          "text": "The selected table is shown in yellow, usually centered"
         },
         {
           "id": "b",
-          "text": "Tables that are referenced by the focused table"
+          "text": "Relationship types can be shown or hidden with check boxes"
         },
         {
           "id": "c",
-          "text": "Child tables of the focused table"
+          "text": "Each related table's bar color shows its field data types"
         },
         {
           "id": "d",
-          "text": "Deleted tables"
+          "text": "The map is a full entity relationship diagram of the tables"
         }
       ],
       "correctAnswers": [
         "a",
-        "c"
+        "b"
       ],
       "explanation": {
-        "correct": "In the schema map, tables with blue bars are tables that extend the focused table (child tables). Tables with red bars are tables that are referenced by the focused table. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1",
+        "correct": "The schema map shows the selected table in yellow, typically centered, with related tables at the sides. The check boxes at the top let you select or clear a relationship type to display or hide tables with that relationship to the selected table. See https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/c_ViewTheSchemaMap.html",
         "wrongAnswers": [
           {
-            "choiceId": "b",
-            "explanation": "Referenced tables are shown with red bars, not blue.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1"
+            "choiceId": "c",
+            "explanation": "Each related table has a colored bar indicating its relationship to the selected table (for example, red for Referenced by, green for Extended by), not field data types.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/c_SchemaMapForTables.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Deleted tables don't appear in the schema map.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1"
+            "explanation": "The docs note that because relationships are shown as single lines for simplicity, the diagrams rendered are not entity relationship diagrams.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/c_ViewTheSchemaMap.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Schema Map"
+        "https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/c_ViewTheSchemaMap.html",
+        "https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/c_SchemaMapForTables.html"
       ],
       "isFree": false,
       "source": {
@@ -944,67 +959,71 @@
         ],
         "tags": [
           "schema map",
-          "blue bars",
-          "table extension"
+          "table relationships"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "csa-db-012",
       "certification": "csa",
       "topic": "database-administration",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What is a Document ID field used for?",
+      "question": "An administrator adds a Document ID field named Model ID to a form so users can pick a record from any table. What else does the field need to work?",
       "options": [
         {
           "id": "a",
-          "text": "To store document attachments"
+          "text": "A reference qualifier that limits it to a single table"
         },
         {
           "id": "b",
-          "text": "To reference one record from any table"
+          "text": "A String table-name field set as its Dependent field"
         },
         {
           "id": "c",
-          "text": "To create PDF exports"
+          "text": "A glide list that stores the selected record sys_ids"
         },
         {
           "id": "d",
-          "text": "To store version history"
+          "text": "A many-to-many definition linking it to each table"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "Document ID fields allow selecting one record from any table, unlike reference fields which only connect to one specific table. Example: Document field in the Translated Text table. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1",
+        "correct": "To reference records from any table, two fields work together: one stores the table reference and another stores the record reference. The procedure creates a String field for the table name, then enters that field's column name in the Document ID field's Dependent field. The selected record's sys_id is stored in the Document ID field and the table name in the table reference field. See https://www.servicenow.com/docs/r/platform-administration/t_CreatingADocumentIDField.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Attachments are stored differently, not through Document ID fields.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1"
+            "explanation": "Reference qualifiers restrict the records available to reference fields. A Document ID field is meant to reach any table, and needs a table name field instead.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/c_ReferenceField.html"
           },
           {
             "choiceId": "c",
-            "explanation": "PDF exports are handled by reporting functions.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1"
+            "explanation": "A glide list lets a user select multiple records on one table. The Document ID field itself stores the sys_id of the selected record.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/table-relationships.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Version history is tracked separately.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=f798635447735ad4ca332a81736d4382&spa=1"
+            "explanation": "Many-to-many relationships make related records visible from both tables in a related list. They are not part of setting up a Document ID field.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/t_CreateAManyToManyRelationship.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Document ID Fields"
+        "https://www.servicenow.com/docs/r/platform-administration/t_CreatingADocumentIDField.html",
+        "https://www.servicenow.com/docs/r/platform-administration/c_ReferenceField.html",
+        "https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/table-relationships.html",
+        "https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/t_CreateAManyToManyRelationship.html"
       ],
       "isFree": false,
       "source": {
@@ -1029,59 +1048,64 @@
         ],
         "tags": [
           "document ID",
-          "any table",
-          "field types"
+          "field types",
+          "dependent field"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "csa-db-013",
       "certification": "csa",
       "topic": "database-administration",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "understanding",
       "type": "multiple_choice",
-      "question": "What is the unique identifier for every record in ServiceNow?",
+      "question": "An administrator exports an incident as XML from one instance and imports it into another. Both instances now show the same sys_id for that record. Why?",
       "options": [
         {
           "id": "a",
-          "text": "A record number (e.g., INC0010001)"
+          "text": "The import reused a sys_id freed by a deleted record"
         },
         {
           "id": "b",
-          "text": "A 32-character sys_id"
+          "text": "A record copied via XML keeps its original sys_id"
         },
         {
           "id": "c",
-          "text": "A combination of table name and row number"
+          "text": "Sys_ids are derived from the incident's Number value"
         },
         {
           "id": "d",
-          "text": "An auto-generated UUID"
+          "text": "The new record kept the temporary sys_id of -1"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "Every record in ServiceNow has a unique 32-character ID called a sys_id. Record numbers can auto-increment and their format can be changed, but the sys_id is the true unique identifier.",
+        "correct": "A unique 32-character GUID called a sys_id identifies each record, and the same sys_id value is never generated twice. Two records share a sys_id only in cases such as a record copied at the database level, or a record copied using an update set or via XML, which keeps the same sys_id. See https://www.servicenow.com/docs/r/platform-administration/c_UniqueRecordIdentifier.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Record numbers like INC0010001 are display values that can be reformatted; the sys_id is the true unique identifier."
+            "explanation": "The same sys_id value is never generated twice, so the platform does not reuse sys_ids from deleted records.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/c_UniqueRecordIdentifier.html"
           },
           {
             "choiceId": "c",
-            "explanation": "ServiceNow uses a 32-character sys_id, not a table name/row number combination."
+            "explanation": "A sys_id is a 32-character GUID, not a value built from the record number.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/c_UniqueRecordIdentifier.html"
           },
           {
             "choiceId": "d",
-            "explanation": "While similar in concept, ServiceNow specifically uses a 32-character sys_id, not a standard UUID format."
+            "explanation": "A new record has a sys_id of -1 only until it is inserted, when it is assigned a new sys_id.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/c_UniqueRecordIdentifier.html"
           }
         ]
       },
@@ -1104,58 +1128,66 @@
         "tags": [
           "sys_id",
           "unique identifier",
-          "records"
+          "XML"
         ]
       },
       "meta": {
         "generatedAt": "2026-03-16T02:00:00Z",
         "version": "1.1",
-        "release": "Xanadu",
-        "reviewed": false
-      }
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/platform-administration/c_UniqueRecordIdentifier.html"
+      ]
     },
     {
       "id": "csa-db-014",
       "certification": "csa",
       "topic": "database-administration",
-      "cognitiveLevel": "comprehension",
+      "cognitiveLevel": "understanding",
       "type": "multiple_choice",
-      "question": "What is the difference between a base table and a core table in ServiceNow?",
+      "question": "Lease [ast_lease] extends Contract [ast_contract], which uses the table per class extension model. When a Lease record is created, what happens in Contract?",
       "options": [
         {
           "id": "a",
-          "text": "A base table is always a core table, but a core table is not always a base table"
+          "text": "Contract stores a replica with the same Sys ID"
         },
         {
           "id": "b",
-          "text": "A base table serves as a foundation for extensions and is not itself an extension, while a core table comes with ServiceNow from the start"
+          "text": "Contract stores a replica with a new Sys ID"
         },
         {
           "id": "c",
-          "text": "Base tables cannot have child tables, while core tables can"
+          "text": "Contract stores nothing; Lease alone has the record"
         },
         {
           "id": "d",
-          "text": "There is no difference; the terms are interchangeable"
+          "text": "Lease stores nothing; Contract holds the one copy"
         }
       ],
       "correctAnswers": [
-        "b"
+        "a"
       ],
       "explanation": {
-        "correct": "A core table comes with ServiceNow (existing from the start) and can be a parent, child, or base table. A base table serves as a foundation for other tables but isn't itself an extension. A table can be both core and base.",
+        "correct": "In the table per class model, the system creates a separate database table for the parent and each child class. The parent class replicates each record stored in its child classes, and replicated records have the same Sys ID value in each table; the Contract table replicates records from the Lease and Warranty tables. See https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/table-extension-and-classes.html",
         "wrongAnswers": [
           {
-            "choiceId": "a",
-            "explanation": "A base table is not always a core table \u2014 custom tables can also be base tables."
+            "choiceId": "b",
+            "explanation": "Replicated records have the same Sys ID value in each table, not a new one.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/table-extension-and-classes.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Base tables can and often do have child tables \u2014 that's their primary purpose."
+            "explanation": "In table per class, the parent class replicates each record stored in its child classes, so Contract does hold a copy.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/table-extension-and-classes.html"
           },
           {
             "choiceId": "d",
-            "explanation": "The terms have distinct meanings: core refers to origin (built-in), base refers to hierarchy (foundation)."
+            "explanation": "Storing all records only in the parent table describes table per hierarchy, where child classes have no separate database tables. Table per class gives each child its own table.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/table-extension-and-classes.html"
           }
         ]
       },
@@ -1173,44 +1205,50 @@
         "domainSlug": "database-administration",
         "domainPercentage": 12,
         "subtopics": [
-          "Table types"
+          "Tables and table relationships"
         ],
         "tags": [
-          "base table",
-          "core table",
-          "table hierarchy"
+          "table extension",
+          "table per class",
+          "extension models",
+          "replication"
         ]
       },
       "meta": {
         "generatedAt": "2026-03-16T02:00:00Z",
         "version": "1.1",
-        "release": "Xanadu",
-        "reviewed": false
-      }
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/table-extension-and-classes.html"
+      ]
     },
     {
       "id": "csa-db-015",
       "certification": "csa",
       "topic": "database-administration",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_select",
-      "question": "Which of the following are types of field relationships in ServiceNow? (Choose 2)",
+      "question": "An administrator needs related records from two tables to appear in a related list on both tables, and also wants to report on two tables joined together. Which two relationship types meet these needs? (Choose two)",
       "options": [
         {
           "id": "a",
-          "text": "One-to-many (Reference field)"
+          "text": "A many-to-many relationship"
         },
         {
           "id": "b",
-          "text": "Many-to-many"
+          "text": "A database view joining them"
         },
         {
           "id": "c",
-          "text": "One-to-one-to-many"
+          "text": "A table extension of one table"
         },
         {
           "id": "d",
-          "text": "Circular reference"
+          "text": "A Document ID field on one table"
         }
       ],
       "correctAnswers": [
@@ -1218,15 +1256,17 @@
         "b"
       ],
       "explanation": {
-        "correct": "ServiceNow supports one-to-many relationships (using reference fields like Caller on Incident linking to User) and many-to-many relationships (connecting two or more tables so related records are visible in both, like students and classes).",
+        "correct": "The docs list the ways tables can be related. A many-to-many relationship gives two tables a bi-directional relationship, so related records are visible from both tables in a related list. A database view joins two tables virtually to enable reporting on data stored over more than one table. See https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/table-relationships.html",
         "wrongAnswers": [
           {
             "choiceId": "c",
-            "explanation": "One-to-one-to-many is not a standard relationship type in ServiceNow."
+            "explanation": "An extension makes the child table include all fields of the parent and add its own; it does not make related records visible from both tables in a related list or join tables for reporting.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/table-relationships.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Circular reference is not a defined relationship type in ServiceNow's data model."
+            "explanation": "A Document ID field is a one-to-many relationship field that lets a user select a record on any table; it does not provide a bi-directional related list or a reporting join.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/table-relationships.html"
           }
         ]
       },
@@ -1247,17 +1287,22 @@
           "Table relationships"
         ],
         "tags": [
-          "one-to-many",
           "many-to-many",
-          "reference field"
+          "database view",
+          "table relationships"
         ]
       },
       "meta": {
         "generatedAt": "2026-03-16T02:00:00Z",
         "version": "1.1",
-        "release": "Xanadu",
-        "reviewed": false
-      }
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/table-relationships.html"
+      ]
     },
     {
       "id": "csa-db-016",
@@ -1265,42 +1310,45 @@
       "topic": "database-administration",
       "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What is the purpose of coalescing during a data import in ServiceNow?",
+      "question": "An administrator imports a user file every week and finds that each run creates duplicate users instead of updating existing ones. What should they configure on the transform map?",
       "options": [
         {
           "id": "a",
-          "text": "To merge multiple import set tables into one"
+          "text": "Set Choice action to ignore on each field map"
         },
         {
           "id": "b",
-          "text": "To prevent duplicate records by using fields as unique keys"
+          "text": "Select Coalesce on a field map with unique values"
         },
         {
           "id": "c",
-          "text": "To convert data types during transformation"
+          "text": "Select Coalesce empty fields on the email field map"
         },
         {
           "id": "d",
-          "text": "To automatically map fields between source and target tables"
+          "text": "Set Referenced value field name on the email map"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "Coalesce prevents duplicate records during data import. It makes a field act as a unique key \u2014 if a match is found, the existing record is updated; if unmatched, a new record is created. Without coalescing, all imported rows are treated as new records.",
+        "correct": "If no coalesce is defined, all imported rows are treated as new records. Selecting Coalesce on a field map makes the import treat that field as a unique key: if an existing target record has a matching value it is updated, otherwise a new record is created. Choose coalesce fields that will have unique values. See https://www.servicenow.com/docs/r/integrate-applications/system-import-sets/c_ImportSetCoalesce.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Coalescing is about preventing duplicates in the target table, not merging import set tables."
+            "explanation": "Choice action only controls what happens when a row contains a reference or choice value that does not exist (create, ignore, or reject). It does not match rows to existing users.",
+            "reference": "https://www.servicenow.com/docs/r/integrate-applications/system-import-sets/t_CreatingAFieldMap.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Data type conversion is handled by the transform map, not coalescing."
+            "explanation": "Coalesce empty fields only lets an empty source value match an empty target value. Without Coalesce itself selected, rows are still treated as new records.",
+            "reference": "https://www.servicenow.com/docs/r/integrate-applications/system-import-sets/t_CreatingAFieldMap.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Automatic field mapping is done by the mapping utility, not coalescing."
+            "explanation": "Referenced value field name tells the transform how to match incoming values for a reference target field. It does not decide whether a row updates an existing user.",
+            "reference": "https://www.servicenow.com/docs/r/integrate-applications/system-import-sets/t_CreatingAFieldMap.html"
           }
         ]
       },
@@ -1322,17 +1370,22 @@
         ],
         "tags": [
           "coalesce",
-          "import sets",
-          "data import",
-          "duplicates"
+          "transform map",
+          "import sets"
         ]
       },
       "meta": {
         "generatedAt": "2026-03-16T02:00:00Z",
         "version": "1.1",
-        "release": "Xanadu",
-        "reviewed": false
-      }
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/integrate-applications/system-import-sets/c_ImportSetCoalesce.html",
+        "https://www.servicenow.com/docs/r/integrate-applications/system-import-sets/t_CreatingAFieldMap.html"
+      ]
     },
     {
       "id": "csa-db-017",
@@ -1503,48 +1556,53 @@
       "id": "csa-db-019",
       "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "An administrator needs to import 5,000 user records from a CSV file. After the import, several records have incorrect department values. Which step in the import process most likely caused this issue?",
+      "question": "An administrator imports users from a CSV whose Department column holds each department's ID instead of its name. Afterward, users point to new department records named after the IDs. What is the most likely cause?",
       "options": [
         {
           "id": "a",
-          "text": "The Transform Map field mapping for Department used an incorrect coalesce field"
+          "text": "Referenced value field name was left blank on the map"
         },
         {
           "id": "b",
-          "text": "The CSV file was too large to process"
+          "text": "Coalesce was not selected on the Department field map"
         },
         {
           "id": "c",
-          "text": "The import set table was not created"
+          "text": "Choice action on the Department map was set to reject"
         },
         {
           "id": "d",
-          "text": "The user running the import lacked the admin role"
+          "text": "Coalesce case sensitive was selected on the user map"
         }
       ],
       "correctAnswers": [
         "a"
       ],
       "explanation": {
-        "correct": "When reference field mappings (like Department) use incorrect coalesce fields in the Transform Map, records may map to wrong values or create duplicates. The coalesce field determines how imported values match existing reference records.",
+        "correct": "For a reference target field, Referenced value field name specifies which column of the referenced table matches the incoming values. If it is blank, the transform map looks for matches in the display value column; when no match is found, it creates a new record in the reference field's table. Setting it to the column that holds the IDs lets the values match existing records. See https://www.servicenow.com/docs/r/integrate-applications/system-import-sets/t_CreatingAFieldMap.html",
         "wrongAnswers": [
           {
             "choiceId": "b",
-            "explanation": "ServiceNow handles large CSV imports; 5,000 records is well within limits."
+            "explanation": "Coalesce makes a field a unique key for matching import rows to existing target (user) records. It does not control how a reference value is matched to department records.",
+            "reference": "https://www.servicenow.com/docs/r/integrate-applications/system-import-sets/t_CreatingAFieldMap.html"
           },
           {
             "choiceId": "c",
-            "explanation": "If the import set table wasn't created, the import would fail entirely, not produce incorrect values."
+            "explanation": "A reject choice action skips the entire row containing the new value, so it would not create new department records.",
+            "reference": "https://www.servicenow.com/docs/r/integrate-applications/system-import-sets/t_CreatingAFieldMap.html"
           },
           {
             "choiceId": "d",
-            "explanation": "The import_admin or admin role is needed to run imports, but role issues would prevent the import, not cause incorrect mappings."
+            "explanation": "Coalesce case sensitive changes how coalesce values match existing target records. It does not affect how reference values are looked up.",
+            "reference": "https://www.servicenow.com/docs/r/integrate-applications/system-import-sets/t_CreatingAFieldMap.html"
           }
         ]
       },
       "certification": "csa",
       "topic": "database-administration",
-      "references": [],
+      "references": [
+        "https://www.servicenow.com/docs/r/integrate-applications/system-import-sets/t_CreatingAFieldMap.html"
+      ],
       "isFree": false,
       "source": {
         "type": "generated",
@@ -1563,36 +1621,43 @@
         "domain": "database-administration",
         "domainSlug": "database-administration",
         "subtopics": [],
-        "tags": []
+        "tags": [
+          "transform map",
+          "field map",
+          "reference field",
+          "import sets"
+        ]
       },
       "meta": {
         "generatedAt": "2026-03-31T02:09:00Z",
-        "version": "2.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "csa-db-020",
-      "cognitiveLevel": "knowledge",
-      "type": "multiple_choice",
-      "question": "Which two field types in ServiceNow store references to records in other tables? (Choose 2)",
+      "cognitiveLevel": "application",
+      "type": "multiple_select",
+      "question": "An administrator is configuring a reference field on a custom table. They want to restrict which records users can select and to control what happens to records that reference a record that is deleted. Which two options apply? (Choose two)",
       "options": [
         {
           "id": "a",
-          "text": "Reference field"
+          "text": "Reference qualifiers"
         },
         {
           "id": "b",
-          "text": "Glide List field"
+          "text": "Cascade delete rules"
         },
         {
           "id": "c",
-          "text": "String field"
+          "text": "Reference decorations"
         },
         {
           "id": "d",
-          "text": "Integer field"
+          "text": "Auto-complete settings"
         }
       ],
       "correctAnswers": [
@@ -1600,21 +1665,25 @@
         "b"
       ],
       "explanation": {
-        "correct": "Reference fields store a single reference (sys_id) to a record in another table. Glide List fields store multiple references (comma-separated sys_ids) to records in another table.",
+        "correct": "The Reference field type page lists the options for reference fields. Reference qualifiers restrict the records that are available for reference fields, and cascade delete rules specify what should happen to records that reference a record that is deleted. See https://www.servicenow.com/docs/r/platform-administration/c_ReferenceField.html",
         "wrongAnswers": [
           {
             "choiceId": "c",
-            "explanation": "String fields store plain text values, not record references."
+            "explanation": "A reference decoration is an icon that appears next to a reference field. It does not restrict records or handle deletions.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/c_ReferenceField.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Integer fields store numeric values, not references to other records."
+            "explanation": "Auto-complete controls suggestions as the user types in the field. It does not restrict which records are available or handle deletions.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/c_ReferenceField.html"
           }
         ]
       },
       "certification": "csa",
       "topic": "database-administration",
-      "references": [],
+      "references": [
+        "https://www.servicenow.com/docs/r/platform-administration/c_ReferenceField.html"
+      ],
       "isFree": false,
       "source": {
         "type": "generated",
@@ -1633,13 +1702,19 @@
         "domain": "database-administration",
         "domainSlug": "database-administration",
         "subtopics": [],
-        "tags": []
+        "tags": [
+          "reference field",
+          "reference qualifier",
+          "cascade delete"
+        ]
       },
       "meta": {
         "generatedAt": "2026-03-31T02:09:00Z",
-        "version": "2.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -1731,48 +1806,53 @@
       "id": "csa-db-022",
       "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "An administrator wants to create a field that automatically calculates the number of days between the Opened date and the Resolved date on an incident. Which field type is most appropriate?",
+      "question": "An administrator wants an Incident field that shows the time between sys_created_on and closed_at, always up to date and without storing the value in the database. Which approach fits?",
       "options": [
         {
           "id": "a",
-          "text": "Duration field with a calculated default value"
+          "text": "A calculated field stored in the database"
         },
         {
           "id": "b",
-          "text": "Integer field with a Business Rule to calculate the value"
+          "text": "A function field using glidefunction:datediff()"
         },
         {
           "id": "c",
-          "text": "Formula field that references the two date fields"
+          "text": "A Duration field set by a before business rule"
         },
         {
           "id": "d",
-          "text": "String field with a UI Policy to display the calculation"
+          "text": "A function field using glidefunction:coalesce()"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "An Integer field populated by a Business Rule (before insert/update) that calculates the day difference between opened_at and resolved_at is the most reliable approach. Business Rules ensure the value is always accurate when the record is saved.",
+        "correct": "A function field displays the results of a database query instead of storing data; its value is calculated at retrieval, so it is always up to date. The datediff() operation takes two date/time fields and returns the difference as a duration, for example glidefunction:datediff(closed_at, sys_created_on). See https://www.servicenow.com/docs/r/platform-administration/platform-support-functions.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Duration fields store time spans but calculated default values only run on record creation, not on updates."
+            "explanation": "The values of calculated fields are stored in the database, which the requirement rules out. Function field values are not stored.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/platform-support-functions.html"
           },
           {
             "choiceId": "c",
-            "explanation": "ServiceNow doesn't have a 'Formula field' type in the standard platform."
+            "explanation": "A business rule would store and maintain the result. The docs recommend function fields when logic is a simple transformation of existing fields, without storing the result.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/platform-support-functions.html"
           },
           {
             "choiceId": "d",
-            "explanation": "UI Policies control form display behavior; they don't calculate and store values in the database."
+            "explanation": "coalesce() returns the first non-empty value from a list of fields; it does not calculate the time between two dates.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/platform-support-functions.html"
           }
         ]
       },
       "certification": "csa",
       "topic": "database-administration",
-      "references": [],
+      "references": [
+        "https://www.servicenow.com/docs/r/platform-administration/platform-support-functions.html"
+      ],
       "isFree": false,
       "source": {
         "type": "generated",
@@ -1791,61 +1871,72 @@
         "domain": "database-administration",
         "domainSlug": "database-administration",
         "subtopics": [],
-        "tags": []
+        "tags": [
+          "function field",
+          "datediff",
+          "calculated field"
+        ]
       },
       "meta": {
         "generatedAt": "2026-03-31T02:09:00Z",
-        "version": "2.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "csa-db-023",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What is the maximum number of rows that can be displayed in a single list view by default in ServiceNow?",
+      "question": "A service desk agent sees 20 records per page in the Incident list and wants more rows on each page. What can the agent do, and what is the effect?",
       "options": [
         {
           "id": "a",
-          "text": "20"
+          "text": "Use Show > rows per page; it affects this list alone"
         },
         {
           "id": "b",
-          "text": "100"
+          "text": "Use Show > rows per page; it affects lists they can access"
         },
         {
           "id": "c",
-          "text": "500"
+          "text": "Ask an admin, because this change requires the admin role"
         },
         {
           "id": "d",
-          "text": "Unlimited"
+          "text": "Switch list views, since each view sets its own number of rows"
         }
       ],
       "correctAnswers": [
-        "a"
+        "b"
       ],
       "explanation": {
-        "correct": "By default, ServiceNow displays 20 rows per page in list views. This can be changed by the user (up to the system maximum) or by an administrator through the glide.ui.per_page system property.",
+        "correct": "The default is 20 rows per page. Any user can right-click the list title and select Show > <Number> rows per page, and the customized number of rows applies to all lists that the user can access. See https://www.servicenow.com/docs/r/platform-user-interface/configure-use-list-functions.html",
         "wrongAnswers": [
           {
-            "choiceId": "b",
-            "explanation": "100 rows can be configured but is not the default setting."
+            "choiceId": "a",
+            "explanation": "The docs state that when you customize the number of rows, it applies to all lists that you can access, not just the current list.",
+            "reference": "https://www.servicenow.com/docs/r/platform-user-interface/configure-use-list-functions.html"
           },
           {
             "choiceId": "c",
-            "explanation": "500 is not the default; displaying this many rows would impact performance."
+            "explanation": "No role is required to customize the number of list rows per page.",
+            "reference": "https://www.servicenow.com/docs/r/platform-user-interface/configure-use-list-functions.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Lists always paginate; there is no unlimited display option by default."
+            "explanation": "A view defines which elements appear when a user opens a list. The row count is set with Show > <Number> rows per page.",
+            "reference": "https://www.servicenow.com/docs/r/platform-user-interface/configure-use-list-functions.html"
           }
         ]
       },
       "certification": "csa",
       "topic": "database-administration",
-      "references": [],
+      "references": [
+        "https://www.servicenow.com/docs/r/platform-user-interface/configure-use-list-functions.html"
+      ],
       "isFree": false,
       "source": {
         "type": "generated",
@@ -1864,61 +1955,74 @@
         "domain": "database-administration",
         "domainSlug": "database-administration",
         "subtopics": [],
-        "tags": []
+        "tags": [
+          "lists",
+          "rows per page",
+          "list personalization"
+        ]
       },
       "meta": {
         "generatedAt": "2026-03-31T02:09:00Z",
-        "version": "2.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "csa-db-024",
       "cognitiveLevel": "understanding",
       "type": "multiple_choice",
-      "question": "Which statement about table inheritance in ServiceNow is correct?",
+      "question": "On the Incident table, an administrator directly edits a field that Incident inherits from the parent Task table, without creating a dictionary override. What is the result?",
       "options": [
         {
           "id": "a",
-          "text": "Child tables inherit all fields and business logic from their parent table"
+          "text": "Only Incident changes; Task is left unaffected"
         },
         {
           "id": "b",
-          "text": "Child tables share the same physical database table but cannot have additional fields"
+          "text": "Task and its other child tables change as well"
         },
         {
           "id": "c",
-          "text": "Parent table records are automatically duplicated in child tables"
+          "text": "The edit is blocked until it is made on Task itself"
         },
         {
           "id": "d",
-          "text": "Table inheritance only works with the Task table"
+          "text": "Incident gets its own separate copy of the field"
         }
       ],
       "correctAnswers": [
-        "a"
+        "b"
       ],
       "explanation": {
-        "correct": "In ServiceNow's table inheritance model, child tables (extensions) inherit all parent fields, ACLs, business rules, and other configurations. Child tables can also define additional fields specific to their needs.",
+        "correct": "If you edit a field on a child table that is present on the parent table, it is also changed in the parent table and all other child tables. To make a field behave differently on one child table only, use a dictionary override. See https://www.servicenow.com/docs/r/platform-administration/c_IntroductionToFields.html",
         "wrongAnswers": [
           {
-            "choiceId": "b",
-            "explanation": "Child tables CAN have additional fields beyond what the parent defines."
+            "choiceId": "a",
+            "explanation": "Changing a field on one extended table without affecting the parent or other children requires a dictionary override. A direct edit to an inherited field is also changed in the parent table and all other child tables.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/c_DictionaryOverrides.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Records exist in one table; they are not duplicated across parent and child tables."
+            "explanation": "The docs describe the edit taking effect from the child table: it is also changed in the parent table and all other child tables.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/c_IntroductionToFields.html"
           },
           {
             "choiceId": "d",
-            "explanation": "While Task is the most common example, any table can be extended to create inheritance hierarchies."
+            "explanation": "Each child class only has Dictionary entries for fields unique to the class; editing an inherited field changes the shared field on the parent and other children.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/table-extension-and-classes.html"
           }
         ]
       },
       "certification": "csa",
       "topic": "database-administration",
-      "references": [],
+      "references": [
+        "https://www.servicenow.com/docs/r/platform-administration/c_IntroductionToFields.html",
+        "https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/c_DictionaryOverrides.html",
+        "https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/table-extension-and-classes.html"
+      ],
       "isFree": false,
       "source": {
         "type": "generated",
@@ -1936,14 +2040,22 @@
         "certification": "csa",
         "domain": "database-administration",
         "domainSlug": "database-administration",
-        "subtopics": [],
-        "tags": []
+        "subtopics": [
+          "Tables and table relationships"
+        ],
+        "tags": [
+          "table extension",
+          "inheritance",
+          "dictionary override"
+        ]
       },
       "meta": {
         "generatedAt": "2026-03-31T02:09:00Z",
-        "version": "2.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     }
   ]

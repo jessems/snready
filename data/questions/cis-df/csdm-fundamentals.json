@@ -6,53 +6,53 @@
       "id": "cis-df-csdm-fundamentals-001",
       "certification": "cis-df",
       "topic": "csdm-fundamentals",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What is the primary purpose of the Common Service Data Model (CSDM)?",
+      "question": "Before a ServiceNow rollout, a new CMDB manager asks what the Common Service Data Model (CSDM) actually is. Which description matches the ServiceNow documentation?",
       "options": [
         {
           "id": "a",
-          "text": "To replace the CMDB with a new database structure"
+          "text": "A replacement database that supersedes the existing CMDB"
         },
         {
           "id": "b",
-          "text": "To provide guidance on where to place data in ServiceNow for maximum value"
+          "text": "A standard data model that guides where CMDB data belongs"
         },
         {
           "id": "c",
-          "text": "To install new applications that manage service data"
+          "text": "A discovery tool that automatically populates CIs in the CMDB"
         },
         {
           "id": "d",
-          "text": "To create custom tables for each customer's unique needs"
+          "text": "A set of custom tables that is built for each customer"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "CSDM is guidance on where to put data inside of ServiceNow to get the most value out of your investment. It is not a SKU or product to purchase, but free guidance on data placement and structure. See: https://docs.servicenow.com/bundle/zurich-servicenow-platform/page/product/configuration-management/concept/csdm-overview.html",
+        "correct": "The CSDM is the data model that admins should follow when they set up ServiceNow products and applications. Its standards for defining CIs and their relationships help make sure your data is in the right CMDB tables, so you get the most value from ServiceNow AI Platform applications. See https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/csdm-landing-page.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "CSDM does not replace the CMDB. It provides guidance on how to use the CMDB and other tables effectively.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=62ebf27e53f26ed0c2245a01a0490e19&child_id=9625b47b4743ae98c00af235126d4335&spa=1"
+            "explanation": "CSDM does not replace the CMDB. The docs describe it as the data model standard for all products that use the CMDB.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/csdm-landing-page.html"
           },
           {
             "choiceId": "c",
-            "explanation": "CSDM is not a product or application to install. It's guidance documentation that can be implemented using existing platform capabilities.",
-            "reference": "https://docs.servicenow.com/bundle/zurich-servicenow-platform/page/product/configuration-management/concept/csdm-overview.html"
+            "explanation": "Discovery and Service Mapping populate CMDB tables. CSDM is the data model that says which tables and relationships the data belongs in.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/manage-tech-servs-domain.html"
           },
           {
             "choiceId": "d",
-            "explanation": "CSDM provides standardized guidance using out-of-box tables, not custom tables. Customization often leads to technical debt.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=62ebf27e53f26ed0c2245a01a0490e19&child_id=9625b47b4743ae98c00af235126d4335&spa=1"
+            "explanation": "CSDM uses shared base-system tables, not per-customer custom tables. Its guiding principles include sharing base-system tables and sharing the data model across products.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/csdm-landing-page.html"
           }
         ]
       },
       "references": [
-        "CSDM 5 White Paper",
-        "ServiceNow CSDM Documentation"
+        "https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/csdm-landing-page.html",
+        "https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/manage-tech-servs-domain.html"
       ],
       "isFree": true,
       "source": {
@@ -80,67 +80,69 @@
         "lesson": "01-executive-overview-why-csdm",
         "tags": [
           "CSDM",
-          "guidance",
-          "data model"
+          "data model",
+          "CMDB"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T12:00:00Z",
-        "version": "1.0",
-        "release": "Zurich",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "cis-df-csdm-fundamentals-002",
       "certification": "cis-df",
       "topic": "csdm-fundamentals",
-      "cognitiveLevel": "understanding",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What is 'technical debt' in the context of CSDM implementation?",
+      "question": "An organization has prepared its Foundation data and populated the base ITSM-related CMDB tables. Next, it plans to identify and populate the network infrastructure CIs and applications its technical teams support. Which CSDM implementation stage is this?",
       "options": [
         {
           "id": "a",
-          "text": "The cost of purchasing ServiceNow licenses"
+          "text": "Crawl stage"
         },
         {
           "id": "b",
-          "text": "The effort required to rework customizations that don't align with CSDM standards"
+          "text": "Walk stage"
         },
         {
           "id": "c",
-          "text": "The time needed to train users on new features"
+          "text": "Run stage"
         },
         {
           "id": "d",
-          "text": "The budget allocated for IT infrastructure upgrades"
+          "text": "Fly stage"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "Technical debt in CSDM context refers to the cost and effort required to rework customizations that don't follow CSDM guidance. When organizations create customizations instead of using out-of-box capabilities, they accumulate technical debt that prevents them from leveraging new platform capabilities. See: https://docs.servicenow.com/bundle/zurich-servicenow-platform/page/product/configuration-management/concept/csdm-technical-debt.html",
+        "correct": "CSDM is implemented in stages that each build on the one before: foundation, crawl, walk, run and fly. In the Walk stage, you identify and populate the network infrastructure CIs and applications that your organization's technical teams support. See https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/csdm-implementation-stages.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "License costs are separate from technical debt. Technical debt is about rework effort from non-standard implementations.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=62ebf27e53f26ed0c2245a01a0490e19&child_id=9625b47b4743ae98c00af235126d4335&spa=1"
+            "explanation": "In the Crawl stage, you work on base-system CMDB tables associated with ITSM. The organization has already done this.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/csdm-implementation-stages.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Training time is not technical debt. Technical debt specifically refers to the effort to correct implementations that deviate from standards.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=62ebf27e53f26ed0c2245a01a0490e19&child_id=9625b47b4743ae98c00af235126d4335&spa=1"
+            "explanation": "In the Run stage, you set up the relationship between a technology and the business that sells and consumes it. That comes after the Walk stage.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/csdm-implementation-stages.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Infrastructure budget is not technical debt. Technical debt is the accumulated cost of taking shortcuts in implementation.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=62ebf27e53f26ed0c2245a01a0490e19&child_id=9625b47b4743ae98c00af235126d4335&spa=1"
+            "explanation": "Fly is the final stage, reached when all or most of the CSDM framework has been implemented.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/csdm-implementation-stages.html"
           }
         ]
       },
       "references": [
-        "CSDM 5 White Paper"
+        "https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/csdm-implementation-stages.html"
       ],
       "isFree": true,
       "source": {
@@ -161,48 +163,50 @@
         "domainSlug": "csdm-fundamentals",
         "domainPercentage": 11,
         "subtopics": [
-          "Technical debt",
+          "CSDM implementation stages",
           "Implementation best practices"
         ],
         "course": "common-service-data-model-csdm-fundamentals",
         "module": "CSDM Presentations",
         "lesson": "01-executive-overview-why-csdm",
         "tags": [
-          "technical debt",
-          "customization",
-          "best practices"
+          "CSDM",
+          "implementation stages",
+          "crawl walk run fly"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T12:00:00Z",
-        "version": "1.0",
-        "release": "Zurich",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "cis-df-csdm-fundamentals-003",
       "certification": "cis-df",
       "topic": "csdm-fundamentals",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "understanding",
       "type": "multiple_select",
-      "question": "Which three pillars are essential for managing data successfully according to CSDM? (Select all that apply)",
+      "question": "A CSDM working group is drafting internal data standards that should follow the principles ServiceNow used to design CSDM. Which three are key principles that guided the design of the CSDM framework? (Choose three.)",
       "options": [
         {
           "id": "a",
-          "text": "Ingest - bringing data into the system"
+          "text": "Use simplified concepts"
         },
         {
           "id": "b",
-          "text": "Govern - managing data lifecycle and structure"
+          "text": "Design for reporting and analytics"
         },
         {
           "id": "c",
-          "text": "Insight - using data for operational and strategic activities"
+          "text": "Prescribe the data relationships"
         },
         {
           "id": "d",
-          "text": "Export - sending data to external systems"
+          "text": "Give each product its own data model"
         }
       ],
       "correctAnswers": [
@@ -211,18 +215,18 @@
         "c"
       ],
       "explanation": {
-        "correct": "The three key pillars for managing data successfully in CSDM are: Ingest (bringing data in from automation or manual sources), Govern (managing the lifecycle and structure of data with CSDM at the center), and Insight (using the data for operational, planning, and strategic activities). See: https://docs.servicenow.com/bundle/zurich-servicenow-platform/page/product/configuration-management/concept/csdm-data-management.html",
+        "correct": "The CSDM landing page lists the principles that guided the framework, including: use simplified concepts (to remove duplicates and confusion over data sources), design for reporting and analytics (a prime objective is consistent analysis) and prescribe the data relationships (tell users which relationships and references link CSDM tables). See https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/csdm-landing-page.html",
         "wrongAnswers": [
           {
             "choiceId": "d",
-            "explanation": "Export is not one of the three core pillars. The pillars are Ingest, Govern, and Insight. While data may be exported, the focus is on bringing data in and using it effectively.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=62ebf27e53f26ed0c2245a01a0490e19&child_id=9625b47b4743ae98c00af235126d4335&spa=1"
+            "explanation": "This contradicts the principle Share the data model across products. CSDM defines a single data model that is shared across products to simplify concepts and collaboration.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/csdm-landing-page.html"
           }
         ]
       },
       "references": [
-        "CSDM 5 White Paper",
-        "CSDM Data Management Documentation"
+        "https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/csdm-landing-page.html",
+        "https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/csdm-implementation-stages.html"
       ],
       "isFree": true,
       "source": {
@@ -243,23 +247,24 @@
         "domainSlug": "csdm-fundamentals",
         "domainPercentage": 11,
         "subtopics": [
-          "Data management pillars"
+          "CSDM design principles"
         ],
         "course": "common-service-data-model-csdm-fundamentals",
         "module": "CSDM Presentations",
         "lesson": "01-executive-overview-why-csdm",
         "tags": [
-          "ingest",
-          "govern",
-          "insight",
-          "data management"
+          "CSDM",
+          "principles",
+          "data model"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T12:00:00Z",
-        "version": "1.0",
-        "release": "Zurich",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {

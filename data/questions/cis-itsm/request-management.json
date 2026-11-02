@@ -6,52 +6,52 @@
       "id": "cis-itsm-request-management-001",
       "certification": "cis-itsm",
       "topic": "request-management",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What are the four stages of the Request Management lifecycle?",
+      "question": "A request fulfilled through an execution flow has one requested item (RITM) with three catalog tasks. Two tasks are Closed Complete and one is Closed Incomplete. How is the RITM closed?",
       "options": [
         {
           "id": "a",
-          "text": "New, In Progress, On Hold, Closed"
+          "text": "Closed Complete, because most tasks completed"
         },
         {
           "id": "b",
-          "text": "Submittal, Approval, Fulfillment, Closure"
+          "text": "Closed Incomplete, because one task is incomplete"
         },
         {
           "id": "c",
-          "text": "Create, Assess, Authorize, Implement"
+          "text": "Closed Skipped, because one task did not finish"
         },
         {
           "id": "d",
-          "text": "Detection, Investigation, Resolution, Review"
+          "text": "It stays open until every task is Closed Complete"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "The Request Management lifecycle consists of four stages: Submittal (users select and submit catalog items), Approval (orders are approved if required), Fulfillment (tasks are completed to fulfill items), and Closure (request is closed when all items are fulfilled).",
+        "correct": "In the request fulfillment execution plan, the RITM's closure state depends on its catalog tasks. If at least one catalog task is closed as Closed Incomplete, the RITM is closed as Closed Incomplete. The same rule then applies from the RITMs to the parent request. See https://www.servicenow.com/docs/r/it-service-management/request-management/state-closure-request.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "These are generic task states, not the Request Management lifecycle",
-            "reference": "ITSM Fundamentals course"
+            "explanation": "A RITM is closed as Closed Complete only if all of its catalog tasks are Closed Complete, not most of them.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/request-management/state-closure-request.html"
           },
           {
             "choiceId": "c",
-            "explanation": "These are Change Management stages, not Request Management",
-            "reference": "ITSM Fundamentals course"
+            "explanation": "A RITM is closed as Closed Skipped only if all of its catalog tasks are Closed Skipped.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/request-management/state-closure-request.html"
           },
           {
             "choiceId": "d",
-            "explanation": "These are Problem Management stages, not Request Management",
-            "reference": "ITSM Fundamentals course"
+            "explanation": "All three tasks are already closed. The rule does not require every task to be Closed Complete: if at least one catalog task is Closed Incomplete, the RITM is closed as Closed Incomplete.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/request-management/state-closure-request.html"
           }
         ]
       },
       "references": [
-        "ITSM Fundamentals"
+        "https://www.servicenow.com/docs/r/it-service-management/request-management/state-closure-request.html"
       ],
       "isFree": true,
       "source": {
@@ -66,71 +66,76 @@
         "domainPercentage": 15,
         "subtopics": [
           "Request lifecycle",
-          "Process stages"
+          "Request closure"
         ],
         "tags": [
           "request",
-          "lifecycle",
-          "fulfillment"
+          "RITM",
+          "catalog task",
+          "closure"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-06T06:15:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "cis-itsm-request-management-002",
       "certification": "cis-itsm",
       "topic": "request-management",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What is the purpose of an Order Guide in the Service Catalog?",
+      "question": "HR wants a New Employee Hire offering in the catalog. The requester enters the new hire's location and job title once, and a single request then orders business cards, a computer, and a cell phone. What should the catalog administrator create?",
       "options": [
         {
           "id": "a",
-          "text": "To provide information instead of goods and services"
+          "text": "A record producer"
         },
         {
           "id": "b",
-          "text": "To create incident records from the Service Catalog"
+          "text": "An order guide"
         },
         {
           "id": "c",
-          "text": "To bundle multiple catalog items into one request"
+          "text": "A content item"
         },
         {
           "id": "d",
-          "text": "To approve catalog requests automatically"
+          "text": "A variable set"
         }
       ],
       "correctAnswers": [
-        "c"
+        "b"
       ],
       "explanation": {
-        "correct": "Order guides allow for the convenient bundling of multiple items, such as when providing new IT equipment, software, and account access to a new employee. They enable users to request multiple related items in a single transaction.",
+        "correct": "An order guide submits a single service catalog request that generates several items. ServiceNow's example is a New Employee Hire order guide where the customer provides the employee's location and job title, and the order guide then orders items such as business cards, a computer, and a cell phone. The information can be passed as cascading variables to the ordered items. See https://www.servicenow.com/docs/r/servicenow-platform/service-catalog/c_ServiceCatalogOrderGuides.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Content items provide information; order guides bundle multiple items",
-            "reference": "ITSM Fundamentals course"
+            "explanation": "Record producers provide alternative ways to add information, such as incidents, through the service catalog. They do not bundle several items into one request.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/service-catalog/c_IntroductionToCatalogItems.html"
           },
           {
-            "choiceId": "b",
-            "explanation": "Record producers create task records like incidents; order guides bundle items",
-            "reference": "ITSM Fundamentals course"
+            "choiceId": "c",
+            "explanation": "Content items are catalog items that provide information instead of goods or services, so they cannot order equipment.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/service-catalog/c_IntroductionToCatalogItems.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Approval is handled by workflows, not order guides",
-            "reference": "ITSM Fundamentals course"
+            "explanation": "A variable set is a reusable collection of variables for catalog items and order guides. It is not an item that orders anything by itself.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/service-catalog/c_ServiceCatalogVariableSets.html"
           }
         ]
       },
       "references": [
-        "ITSM Fundamentals"
+        "https://www.servicenow.com/docs/r/servicenow-platform/service-catalog/c_ServiceCatalogOrderGuides.html",
+        "https://www.servicenow.com/docs/r/servicenow-platform/service-catalog/c_IntroductionToCatalogItems.html",
+        "https://www.servicenow.com/docs/r/servicenow-platform/service-catalog/c_ServiceCatalogVariableSets.html"
       ],
       "isFree": true,
       "source": {
@@ -149,15 +154,17 @@
         ],
         "tags": [
           "request",
-          "order-guide",
-          "catalog"
+          "service catalog",
+          "order guide"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-06T06:15:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {

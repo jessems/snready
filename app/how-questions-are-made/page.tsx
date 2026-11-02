@@ -142,8 +142,8 @@ export default async function HowQuestionsAreMadePage() {
         <section id="changelog" className="mt-14 space-y-5 text-lg leading-8 text-zinc-700 dark:text-zinc-300">
           <h2 className="text-2xl font-bold text-zinc-950 dark:text-white">Question changelog</h2>
           <p>Dated corrections and rewrites to published questions, newest first.</p>
-          {changelogEntries.map((entry) => (
-            <div key={`${entry.date}-${entry.certification}`} className="rounded-2xl border border-zinc-200 p-5 dark:border-zinc-800">
+          {changelogEntries.map((entry, index) => (
+            <div key={`${entry.date}-${entry.certification}-${index}`} className="rounded-2xl border border-zinc-200 p-5 dark:border-zinc-800">
               <h3 className="text-lg font-semibold text-zinc-950 dark:text-white">
                 <time dateTime={entry.date}>{formatChangelogDate(entry.date)}</time> · {entry.certification.toUpperCase()}
               </h3>

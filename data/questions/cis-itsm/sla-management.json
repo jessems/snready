@@ -6,53 +6,53 @@
       "id": "cis-itsm-sla-management-001",
       "certification": "cis-itsm",
       "topic": "sla-management",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What does SLA stand for in ServiceNow ITSM?",
+      "question": "The service desk relies on an external hardware vendor's 4-hour replacement commitment to meet its own targets. An admin creates an SLA definition to track that vendor commitment. Which Type should they select?",
       "options": [
         {
           "id": "a",
-          "text": "System Level Agreement"
+          "text": "Service level agreement"
         },
         {
           "id": "b",
-          "text": "Service Level Agreement"
+          "text": "Operational level agreement"
         },
         {
           "id": "c",
-          "text": "Service License Authorization"
+          "text": "Underpinning contract"
         },
         {
           "id": "d",
-          "text": "Standard Level Acknowledgment"
+          "text": "Service commitment"
         }
       ],
       "correctAnswers": [
-        "b"
+        "c"
       ],
       "explanation": {
-        "correct": "SLA stands for Service Level Agreement. It defines the commitment between a service provider and customer regarding service quality, availability, and response times. In ServiceNow ITSM, SLAs are used to track and manage response and resolution timeframes for incidents, requests, and other task records.",
+        "correct": "The SLA definition Type field sets the type of agreement: SLA, OLA, or Underpinning contract. An underpinning contract is a contract with an external vendor that underpins the service delivered to the customer. The Type is used for reporting purposes only. See https://www.servicenow.com/docs/r/it-service-management/service-level-management/t_CreateAnSLADefinition.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "SLA stands for Service Level Agreement, not System Level Agreement",
-            "reference": "ITSM Fundamentals"
+            "explanation": "An SLA type is a service level agreement between a service provider and an external customer, not an agreement with a supplier.",
+            "reference": "https://www.servicenow.com/docs/r/application-development/servicenow-sdk/fluent-sla-api.html"
           },
           {
-            "choiceId": "c",
-            "explanation": "SLA is Service Level Agreement, relating to service commitments, not licensing",
-            "reference": "ITSM Fundamentals"
+            "choiceId": "b",
+            "explanation": "An OLA is an operational level agreement between internal teams within the same organization. The vendor here is external.",
+            "reference": "https://www.servicenow.com/docs/r/application-development/servicenow-sdk/fluent-sla-api.html"
           },
           {
             "choiceId": "d",
-            "explanation": "The correct term is Service Level Agreement, which defines service quality commitments",
-            "reference": "ITSM Fundamentals"
+            "explanation": "Service Commitment is a separate field on the SLA Definition form that differentiates a normal SLA definition from a service offering SLA definition. It is not a Type value.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/service-level-management/t_CreateAnSLADefinition.html"
           }
         ]
       },
       "references": [
-        "ITSM Fundamentals",
-        "ServiceNow Documentation"
+        "https://www.servicenow.com/docs/r/it-service-management/service-level-management/t_CreateAnSLADefinition.html",
+        "https://www.servicenow.com/docs/r/application-development/servicenow-sdk/fluent-sla-api.html"
       ],
       "isFree": true,
       "source": {
@@ -66,73 +66,74 @@
         "domainSlug": "sla-management",
         "domainPercentage": 10,
         "subtopics": [
-          "SLA Definition",
-          "SLA Basics"
+          "SLA definitions",
+          "Agreement types"
         ],
         "tags": [
           "sla",
-          "definition",
-          "terminology"
+          "ola",
+          "underpinning contract"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-07T02:30:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "cis-itsm-sla-management-002",
       "certification": "cis-itsm",
       "topic": "sla-management",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "understanding",
       "type": "multiple_choice",
-      "question": "What color indicates a breached SLA in the ServiceNow SLA timeline?",
+      "question": "An agent opens an incident and sees that its SLA timer component shows the Breached stage. What does this stage indicate?",
       "options": [
         {
           "id": "a",
-          "text": "Yellow"
+          "text": "The task SLA was canceled before it could complete"
         },
         {
           "id": "b",
-          "text": "Orange"
+          "text": "The time allocated to complete the task SLA is over"
         },
         {
           "id": "c",
-          "text": "Gray"
+          "text": "The task SLA is paused while the incident is on hold"
         },
         {
           "id": "d",
-          "text": "Red"
+          "text": "The task SLA is outside its schedule for the moment"
         }
       ],
       "correctAnswers": [
-        "d"
+        "b"
       ],
       "explanation": {
-        "correct": "Red indicates a breached SLA in the ServiceNow SLA timeline. The color progression is: Green (< 50% elapsed), Yellow (50-75% elapsed), Orange (75-100% elapsed), Red (breached), and Gray (paused). These visual indicators help agents quickly identify SLA status.",
+        "correct": "The SLA timer component visually displays the current status of the task SLA. Its Breached stage is the stage of the timer when the time allocated to complete the task SLA is over, and the tooltip shows when the task breached. See https://www.servicenow.com/docs/r/it-service-management/service-level-management/sla-timer.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Yellow indicates 50-75% of SLA time has elapsed, not a breach",
-            "reference": "CIS-ITSM Topics"
-          },
-          {
-            "choiceId": "b",
-            "explanation": "Orange indicates 75-100% of SLA time has elapsed, meaning breach is imminent but not yet occurred",
-            "reference": "CIS-ITSM Topics"
+            "explanation": "A canceled task SLA appears in the Cancelled stage, with the cancellation time on the tooltip.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/service-level-management/sla-timer.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Gray indicates the SLA is paused, not breached",
-            "reference": "CIS-ITSM Topics"
+            "explanation": "A paused or on-hold task SLA appears in the Paused stage, which keeps the color for the percentage elapsed when it paused.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/service-level-management/sla-timer.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "When the task SLA goes out of schedule, the timer shows the Out of Schedule stage, not Breached.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/service-level-management/sla-timer.html"
           }
         ]
       },
       "references": [
-        "ITSM Fundamentals",
-        "CIS-ITSM Study Guide"
+        "https://www.servicenow.com/docs/r/it-service-management/service-level-management/sla-timer.html"
       ],
       "isFree": true,
       "source": {
@@ -146,20 +147,22 @@
         "domainSlug": "sla-management",
         "domainPercentage": 10,
         "subtopics": [
-          "SLA Timeline",
-          "SLA Indicators"
+          "SLA timer",
+          "SLA stages"
         ],
         "tags": [
           "sla",
-          "timeline",
-          "breach"
+          "breach",
+          "sla timer"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-07T02:30:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {

@@ -6,53 +6,54 @@
       "id": "cis-df-govern-001",
       "certification": "cis-df",
       "topic": "govern",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "In CSDM 5, what was the Service Instance table (cmdb_ci_service_auto) previously labeled as?",
+      "question": "A CMDB administrator reading older CSDM material finds a table name, cmdb_ci_service_auto, that CSDM 5 now labels Service Instance. What was this table called before CSDM 5?",
       "options": [
         {
           "id": "a",
-          "text": "Business Service"
+          "text": "Business service"
         },
         {
           "id": "b",
-          "text": "Application Service"
+          "text": "Application service"
         },
         {
           "id": "c",
-          "text": "Technology Service"
+          "text": "Business application"
         },
         {
           "id": "d",
-          "text": "Technical Service"
+          "text": "Technical service"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "The cmdb_ci_service_auto table was previously labeled Application Service. In CSDM 5, it was relabeled to Service Instance because there are now multiple types of service instances (Application Service, Data Service Instance, Network Service Instance, etc.), not just application services. See: https://docs.servicenow.com/bundle/zurich-servicenow-platform/page/product/configuration-management/concept/csdm-service-instance.html",
+        "correct": "CSDM 5 relabeled the [cmdb_ci_service_auto] table, which was previously called Application service, to Service Instance. A service instance is a logical representation of a deployed application stack. See https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/manage-tech-servs-domain.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Business Service is a separate table in the Service Consumption domain that represents the business functions that depend on technology.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=62ebf27e53f26ed0c2245a01a0490e19&child_id=b7a4117347c7ae98c00af235126d43de&spa=1"
+            "explanation": "Business service is a different table, cmdb_ci_service_business, in the Service Consumption domain. It is the consumer-focused service published to business users.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/csdm-conceptual-model.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Technology Service was relabeled to Technology Management Service in CSDM 5 and is used to identify groups responsible for providing technology.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=62ebf27e53f26ed0c2245a01a0490e19&child_id=b7a4117347c7ae98c00af235126d43de&spa=1"
+            "explanation": "Business application [cmdb_ci_business_app] is a Design & Planning table for purchased or internally developed applications. It consumes service instances but was never the label of cmdb_ci_service_auto.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/design-domain.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Technical Service is not a standard CSDM label. The correct previous label was Application Service.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=62ebf27e53f26ed0c2245a01a0490e19&child_id=b7a4117347c7ae98c00af235126d43de&spa=1"
+            "explanation": "Technical service was the former label of cmdb_ci_service_technical, which is now Technology management service. It was not the label of cmdb_ci_service_auto.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/csdm-conceptual-model.html"
           }
         ]
       },
       "references": [
-        "CSDM 5 White Paper",
-        "Service Instance Documentation"
+        "https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/manage-tech-servs-domain.html",
+        "https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/csdm-conceptual-model.html",
+        "https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/design-domain.html"
       ],
       "isFree": true,
       "source": {
@@ -88,34 +89,36 @@
       },
       "meta": {
         "generatedAt": "2026-02-04T12:00:00Z",
-        "version": "1.0",
-        "release": "Zurich",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "cis-df-govern-002",
       "certification": "cis-df",
       "topic": "govern",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_select",
-      "question": "Which new Service Instance types were added in CSDM 5 in addition to Application Service? (Select all that apply)",
+      "question": "A configuration manager on CSDM 5 wants to model a corporate WAN, a shared data platform, and a data center as service instances. Which three service instance types, added as extensions of cmdb_ci_service_auto, fit these needs? (Choose three.)",
       "options": [
         {
           "id": "a",
-          "text": "Data Service Instance"
+          "text": "Data service instance"
         },
         {
           "id": "b",
-          "text": "Network Service Instance"
+          "text": "Network service instance"
         },
         {
           "id": "c",
-          "text": "Business Service Instance"
+          "text": "Tag-based application service"
         },
         {
           "id": "d",
-          "text": "Facility Service Instance"
+          "text": "Facility service instance"
         }
       ],
       "correctAnswers": [
@@ -124,17 +127,17 @@
         "d"
       ],
       "explanation": {
-        "correct": "CSDM 5 added five new service instance types beyond Application Service: Data Service Instance, Network Service Instance, Connection Service Instance, Facility Service Instance, and Operational Process Service Instance. Business Service Instance is not one of the new types - Business Service remains a separate concept in the Service Consumption domain. See: https://docs.servicenow.com/bundle/zurich-servicenow-platform/page/product/configuration-management/concept/csdm-service-instance-types.html",
+        "correct": "The new types of service instance are extensions of [cmdb_ci_service_auto]: Data service instance, Network service instance, Operational Process service instance, Connection service instance and Facility service instance. Data, Network and Facility service instances fit the data platform, the WAN and the data center. See https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/manage-tech-servs-domain.html",
         "wrongAnswers": [
           {
             "choiceId": "c",
-            "explanation": "Business Service is not a Service Instance type. Business Service exists in the Service Consumption domain and represents business functions that consume technology.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=62ebf27e53f26ed0c2245a01a0490e19&child_id=b7a4117347c7ae98c00af235126d43de&spa=1"
+            "explanation": "Tag-based application services are not one of the new types. The docs say application services still exist as extended tables, and tag-based ones live in the tag-based application service table.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/manage-tech-servs-domain.html"
           }
         ]
       },
       "references": [
-        "CSDM 5 White Paper"
+        "https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/manage-tech-servs-domain.html"
       ],
       "isFree": true,
       "source": {
@@ -170,62 +173,64 @@
       },
       "meta": {
         "generatedAt": "2026-02-04T12:00:00Z",
-        "version": "1.0",
-        "release": "Zurich",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "cis-df-govern-003",
       "certification": "cis-df",
       "topic": "govern",
-      "cognitiveLevel": "understanding",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What is a Dynamic CI Group and why is it valuable in the Service Delivery domain?",
+      "question": "The DetroitRockCity technology management offering manages all web servers in Detroit. The service owner wants one relationship instead of relating each server to the offering by hand. What does CSDM recommend?",
       "options": [
         {
           "id": "a",
-          "text": "A group of users who can modify CI records dynamically"
+          "text": "Relate every Detroit web server directly to the offering"
         },
         {
           "id": "b",
-          "text": "A programmatic way to group CIs based on criteria rather than manual relationships"
+          "text": "Relate the offering to a dynamic CI group of the web servers"
         },
         {
           "id": "c",
-          "text": "A temporary grouping of CIs during maintenance windows"
+          "text": "Nest the web servers in a hierarchy of dynamic CI groups"
         },
         {
           "id": "d",
-          "text": "A dashboard widget that displays CI counts dynamically"
+          "text": "Relate the offering directly to a CMDB group of the web servers"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "Dynamic CI Group uses various methods to programmatically group CIs together based on criteria, eliminating the need to manually relate CIs into collections. This enables capabilities like managing manual metadata and grouping CIs for patch management. See: https://docs.servicenow.com/bundle/zurich-servicenow-platform/page/product/configuration-management/concept/dynamic-ci-groups.html",
+        "correct": "A dynamic CI group is made of the CIs returned by a CMDB Groups query, such as all web servers in Detroit. Instead of manually relating the offering to each infrastructure CI, a single relationship from the DetroitRockCity offering to the dynamic CI group gives the needed visibility. See https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/manage-tech-servs-domain.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Dynamic CI Group is about grouping CIs, not managing user permissions. User groups are handled separately in the platform.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=62ebf27e53f26ed0c2245a01a0490e19&child_id=b7a4117347c7ae98c00af235126d43de&spa=1"
+            "explanation": "This is the manual approach that the docs say to replace. They recommend a dynamic CI group instead of manually creating relationships from technology management offerings to infrastructure CIs.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/manage-tech-servs-domain.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Dynamic CI Groups are persistent groupings based on criteria, not temporary maintenance groupings.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=62ebf27e53f26ed0c2245a01a0490e19&child_id=b7a4117347c7ae98c00af235126d43de&spa=1"
+            "explanation": "Dynamic CI groups contain only CIs and can't contain other CI groups, so a hierarchy of dynamic CI groups is not possible.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/manage-tech-servs-domain.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Dynamic CI Group is a CI class in the CMDB, not a dashboard widget. It's used to logically group CIs.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=62ebf27e53f26ed0c2245a01a0490e19&child_id=b7a4117347c7ae98c00af235126d43de&spa=1"
+            "explanation": "A CMDB group is not itself a CI. In CSDM, the Dynamic CI Group references a CMDB group, and the offering has a Contains::Contained by relationship with the Dynamic CI Group.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/foundation-domain.html"
           }
         ]
       },
       "references": [
-        "CSDM 5 White Paper",
-        "Dynamic CI Group Documentation"
+        "https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/manage-tech-servs-domain.html",
+        "https://www.servicenow.com/docs/r/servicenow-platform/common-service-data-model-csdm/foundation-domain.html"
       ],
       "isFree": true,
       "source": {
@@ -253,16 +258,18 @@
         "module": "CSDM Presentations",
         "lesson": "07-service-delivery-domain",
         "tags": [
-          "dynamic CI group",
-          "CMDB",
-          "patch management"
+          "Dynamic CI Group",
+          "technology management offering",
+          "CMDB group"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T12:00:00Z",
-        "version": "1.0",
-        "release": "Zurich",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {

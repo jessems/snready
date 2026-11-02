@@ -458,50 +458,50 @@
       "topic": "user-administration",
       "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "A user passes a table-level ACL but fails a field-level ACL. What access does the user have?",
+      "question": "An ITIL user passes the table-level read ACL on the Incident table but fails the field-level read ACL on one Incident field. What does the user see when opening an incident?",
       "options": [
         {
           "id": "a",
-          "text": "Full access to the record including all fields"
+          "text": "The full record, including that field"
         },
         {
           "id": "b",
-          "text": "No access to the record at all"
+          "text": "Nothing, because the whole record is denied"
         },
         {
           "id": "c",
-          "text": "Access to the record but not to that specific field"
+          "text": "The record, with that one field hidden"
         },
         {
           "id": "d",
-          "text": "Read-only access to all fields"
+          "text": "The record, with that field shown read-only"
         }
       ],
       "correctAnswers": [
         "c"
       ],
       "explanation": {
-        "correct": "Access controls are checked in order, starting with table access and then field access. Failing a table rule denies access to all. Passing a table rule but failing a field rule denies access to that field only. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1",
+        "correct": "For record ACLs, the matching table-level and field-level ACLs must both evaluate to true for the field, so passing the table ACL lets the user open the record while the failed field read ACL removes that field. The docs state that failing a read ACL prevents the user from seeing the object and, depending on the object, \"hides a field on a form\". See https://www.servicenow.com/docs/r/platform-security/access-control/exploring-access-control-list.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "The user would be denied access to the specific field that failed the ACL check.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1"
+            "explanation": "The failed field-level read ACL still applies: for record ACLs the table-level and field-level ACLs must both evaluate to true, so the field is not shown.",
+            "reference": "https://www.servicenow.com/docs/r/platform-security/access-control/exploring-access-control-list.html"
           },
           {
             "choiceId": "b",
-            "explanation": "Table-level access was granted, so the user can see the record, just not the restricted field.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1"
+            "explanation": "The user passed the table-level read ACL, so the record itself is readable; the failed field ACL only affects that field, which a failed read ACL hides on the form.",
+            "reference": "https://www.servicenow.com/docs/r/platform-security/access-control/exploring-access-control-list.html"
           },
           {
             "choiceId": "d",
-            "explanation": "The field restriction is specific to the failed ACL, not a global read-only state.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1"
+            "explanation": "A read-only field is the documented result of failing a write ACL. Failing a read ACL means the user can't see the object in forms or lists.",
+            "reference": "https://www.servicenow.com/docs/r/platform-security/access-control/exploring-access-control-list.html"
           }
         ]
       },
       "references": [
-        "ServiceNow ACL Evaluation"
+        "https://www.servicenow.com/docs/r/platform-security/access-control/exploring-access-control-list.html"
       ],
       "isFree": false,
       "source": {
@@ -528,151 +528,69 @@
         "tags": [
           "ACL",
           "field-level security",
-          "table access"
+          "table access",
+          "read operation"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
-      }
-    },
-    {
-      "id": "csa-ua-007",
-      "certification": "csa",
-      "topic": "user-administration",
-      "cognitiveLevel": "knowledge",
-      "type": "multiple_choice",
-      "question": "What does an upward arrow next to a user's avatar indicate in ServiceNow?",
-      "options": [
-        {
-          "id": "a",
-          "text": "The user has unread notifications"
-        },
-        {
-          "id": "b",
-          "text": "The user has activated elevated privileges"
-        },
-        {
-          "id": "c",
-          "text": "The user is impersonating another user"
-        },
-        {
-          "id": "d",
-          "text": "The user has pending approvals"
-        }
-      ],
-      "correctAnswers": [
-        "b"
-      ],
-      "explanation": {
-        "correct": "An upward arrow next to your avatar indicates activated elevated privileges. This visual indicator helps administrators know when they have temporary elevated security access. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1",
-        "wrongAnswers": [
-          {
-            "choiceId": "a",
-            "explanation": "Unread notifications are indicated differently, typically with a badge number.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1"
-          },
-          {
-            "choiceId": "c",
-            "explanation": "Impersonation is indicated by a different visual cue showing the impersonated user.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1"
-          },
-          {
-            "choiceId": "d",
-            "explanation": "Pending approvals appear in the approval modules, not as avatar indicators.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1"
-          }
-        ]
-      },
-      "references": [
-        "ServiceNow UI Indicators"
-      ],
-      "isFree": false,
-      "source": {
-        "type": "course",
-        "course": {
-          "courseSlug": "servicenow-administration-fundamentals-xanadu",
-          "moduleTitle": "SNAF Module 4: Manage data",
-          "lessonSlug": "02-application-and-access-control",
-          "lessonTitle": "Application and access control",
-          "url": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1"
-        },
-        "path": "sn-course-scraper/scraped-courses/servicenow-administration-fundamentals-xanadu/02-application-and-access-control.md",
-        "excerpt": "An upward arrow next to your avatar indicates activated elevated privileges."
-      },
-      "labels": {
-        "certification": "csa",
-        "domain": "User Administration & Security",
-        "domainSlug": "user-administration",
-        "domainPercentage": 15,
-        "subtopics": [
-          "Roles and role hierarchies"
-        ],
-        "tags": [
-          "elevated privileges",
-          "UI",
-          "avatar"
-        ]
-      },
-      "meta": {
-        "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "csa-ua-008",
       "certification": "csa",
       "topic": "user-administration",
-      "cognitiveLevel": "understanding",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "How do ACL rules for parent tables apply to child tables?",
+      "question": "An administrator creates a custom table without table-specific ACLs, so its records match just the wild-card (*) table ACLs. With glide.sm.default_mode set to Deny access, who can access those records?",
       "options": [
         {
           "id": "a",
-          "text": "They don't apply - each table needs its own ACLs"
+          "text": "Any authenticated user"
         },
         {
           "id": "b",
-          "text": "ACL rules for parent tables apply to their child tables"
+          "text": "Users with the admin role"
         },
         {
           "id": "c",
-          "text": "Child tables override all parent table ACLs"
+          "text": "No users, admins included"
         },
         {
           "id": "d",
-          "text": "Only admin-created ACLs are inherited"
+          "text": "Users with the table's role"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "ACL rules for parent tables apply to their child tables. This inheritance model means security settings on a parent table like 'task' automatically apply to child tables like 'incident' and 'change_request'. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1",
+        "correct": "The base system has wild-card table rules (*) for the create, read, write, and delete operations. The Security manager default behavior property (glide.sm.default_mode) decides whether users can access objects that only match these wild-card table ACLs: \"When this property is set to Deny access, only administrators can access objects that match the wild-card table ACLs.\" That is why the docs advise creating ACLs when you create a table unless you want to use the wild-card ACLs. See https://www.servicenow.com/docs/r/platform-security/access-control/exploring-access-control-list.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "ACLs are inherited from parent to child tables in ServiceNow's table hierarchy.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1"
+            "explanation": "With glide.sm.default_mode set to Deny access, objects that only match the wild-card table ACLs are restricted to administrators, so ordinary logged-in users are denied.",
+            "reference": "https://www.servicenow.com/docs/r/platform-security/access-control/exploring-access-control-list.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Child tables don't automatically override parent ACLs; they inherit and can have additional ACLs.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1"
+            "explanation": "The property doesn't lock out everyone: when it is set to Deny access, administrators can still access objects that match only the wild-card table ACLs.",
+            "reference": "https://www.servicenow.com/docs/r/platform-security/access-control/exploring-access-control-list.html"
           },
           {
             "choiceId": "d",
-            "explanation": "All ACLs on parent tables are inherited, regardless of who created them.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1"
+            "explanation": "A role created for the table doesn't help here, because no table-specific ACL references it. The records match just the wild-card ACLs, which the Deny access setting restricts to administrators.",
+            "reference": "https://www.servicenow.com/docs/r/platform-security/access-control/exploring-access-control-list.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Table Inheritance"
+        "https://www.servicenow.com/docs/r/platform-security/access-control/exploring-access-control-list.html"
       ],
       "isFree": false,
       "source": {
@@ -697,68 +615,71 @@
         ],
         "tags": [
           "ACL",
-          "inheritance",
-          "parent table",
-          "child table"
+          "wild-card ACL",
+          "glide.sm.default_mode",
+          "table access"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "csa-ua-009",
       "certification": "csa",
       "topic": "user-administration",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What are the three main security modules typically used by system administrators?",
+      "question": "An administrator adds the itil role to an agent who is currently logged in, but the agent still can't open records that the role should allow. What should the agent do?",
       "options": [
         {
           "id": "a",
-          "text": "Users, Groups, and Roles"
+          "text": "Log out and back in to start a new session"
         },
         {
           "id": "b",
-          "text": "Security, ACL list, and High Security Settings"
+          "text": "Elevate to the security_admin role"
         },
         {
           "id": "c",
-          "text": "Authentication, Authorization, and Audit"
+          "text": "Ask to have the role added to a group as well"
         },
         {
           "id": "d",
-          "text": "Login, Password, and Session"
+          "text": "Ask a role delegator to assign the role again"
         }
       ],
       "correctAnswers": [
-        "b"
+        "a"
       ],
       "explanation": {
-        "correct": "System administrators typically use three security modules: Security, ACL list, and High Security Settings. These modules provide the tools needed to manage access controls and security configurations. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1",
+        "correct": "A newly assigned role does not apply to a session that is already running. The docs state: \"Whenever a user is assigned a new role, it only takes effect after logging in with a new session\", and \"If the user is logged in when you update their roles and they’re unable to access records enabled by the new role, they may need to log out and back in again.\" See https://www.servicenow.com/docs/r/platform-administration/user-administration/t_AssignARoleToAUser.html",
         "wrongAnswers": [
           {
-            "choiceId": "a",
-            "explanation": "While Users, Groups, and Roles are important, they are not the three main security modules.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1"
+            "choiceId": "b",
+            "explanation": "security_admin is an elevated role that provides access to ACLs and High Security Settings. Elevating to it doesn't apply a newly assigned itil role to the current session.",
+            "reference": "https://www.servicenow.com/docs/r/platform-security/c_ElevatedPrivilege.html"
           },
           {
             "choiceId": "c",
-            "explanation": "These are security concepts, not the specific module names in ServiceNow.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1"
+            "explanation": "Roles from groups and directly assigned roles behave the same way here. Any newly assigned role only takes effect after the user logs in with a new session.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/user-administration/t_AssignARoleToAUser.html"
           },
           {
             "choiceId": "d",
-            "explanation": "These relate to authentication features, not the main security administration modules.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1"
+            "explanation": "The role is already assigned. Having a role delegator assign it again doesn't change the fact that new roles only take effect in a new session.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/user-administration/t_AssignARoleToAUser.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Security Administration"
+        "https://www.servicenow.com/docs/r/platform-administration/user-administration/t_AssignARoleToAUser.html",
+        "https://www.servicenow.com/docs/r/platform-security/c_ElevatedPrivilege.html"
       ],
       "isFree": false,
       "source": {
@@ -782,68 +703,70 @@
           "Security rules"
         ],
         "tags": [
-          "security modules",
-          "ACL",
-          "administration"
+          "roles",
+          "role assignment",
+          "session"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "csa-ua-010",
       "certification": "csa",
       "topic": "user-administration",
-      "cognitiveLevel": "understanding",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What limitation applies to users with the admin role when impersonating another user?",
+      "question": "An administrator who doesn't have the Security Incident Response roles impersonates a user who is a Security Incident Response admin. What should the administrator expect during the session?",
       "options": [
         {
           "id": "a",
-          "text": "They cannot impersonate any users"
+          "text": "Full access to security incidents, like the impersonated user"
         },
         {
           "id": "b",
-          "text": "They can only impersonate users in their group"
+          "text": "Limited access to security incidents and some modules"
         },
         {
           "id": "c",
-          "text": "They cannot impersonate the security_admin role or elevate privileges during impersonation"
+          "text": "Their own menus and roles stay in effect throughout"
         },
         {
           "id": "d",
-          "text": "They must have manager approval to impersonate"
+          "text": "The ability to change that user's password afterward"
         }
       ],
       "correctAnswers": [
-        "c"
+        "b"
       ],
       "explanation": {
-        "correct": "Admins cannot impersonate the security admin role or elevate privileges during impersonation to access high security functions. This is a security measure to prevent unauthorized access to sensitive security configurations. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1",
+        "correct": "Impersonating a user with an application-specific admin role is restricted. The docs state: \"Impersonating a user with an application-specific admin role, like Human Resources admin or Security Incident Response, limits access to certain features such as security incidents and profile information, unless these roles are already assigned to the impersonating admin. This restriction extends to certain modules and applications in the navigation bar.\" See https://www.servicenow.com/docs/r/platform-administration/user-administration/c_ImpersonateAUser.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Admins can impersonate other users, but with certain restrictions.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1"
+            "explanation": "Access is limited, not full. Features such as security incidents stay restricted unless the impersonating admin already has those roles.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/user-administration/c_ImpersonateAUser.html"
           },
           {
-            "choiceId": "b",
-            "explanation": "Impersonation is not limited to group membership for admins.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1"
+            "choiceId": "c",
+            "explanation": "Impersonation lets the administrator access the system exactly as the impersonated user, including identical menus and modules, so their own menus don't stay in effect.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/user-administration/c_ImpersonateAUser.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Manager approval is not required for admin impersonation by default.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1"
+            "explanation": "The docs state that admins can't change the password of users with application admin roles.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/user-administration/c_ImpersonateAUser.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Impersonation"
+        "https://www.servicenow.com/docs/r/platform-administration/user-administration/c_ImpersonateAUser.html"
       ],
       "isFree": false,
       "source": {
@@ -869,16 +792,17 @@
         ],
         "tags": [
           "impersonation",
-          "admin",
-          "security_admin",
-          "elevated privileges"
+          "application admin roles",
+          "security"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -887,23 +811,23 @@
       "topic": "user-administration",
       "cognitiveLevel": "application",
       "type": "multiple_select",
-      "question": "Which components does ServiceNow use to ensure security for CRUD operations? (Choose two)",
+      "question": "A security administrator is cleaning up ACLs. Under the ACL engine's deny-by-default behavior, which two ACLs are treated as invalid, so access is denied? (Choose two)",
       "options": [
         {
           "id": "a",
-          "text": "User authentication/login managed via users, groups, and roles"
+          "text": "An ACL whose only required role doesn't exist"
         },
         {
           "id": "b",
-          "text": "Automatic data encryption at rest"
+          "text": "An ACL with Applies-to set to Priority 1 records"
         },
         {
           "id": "c",
-          "text": "Application and module access controlled by roles"
+          "text": "An ACL whose script just contains answer=true"
         },
         {
           "id": "d",
-          "text": "Mandatory two-factor authentication"
+          "text": "An ACL that pairs the itil role with a data condition"
         }
       ],
       "correctAnswers": [
@@ -911,22 +835,22 @@
         "c"
       ],
       "explanation": {
-        "correct": "ServiceNow ensures security for CRUD operations with: user authentication/login managed via users, groups and roles; application and module access controlled by roles; and database access managed by system properties and table/field access controls. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1",
+        "correct": "\"By default the ACL engine completely denies access if an ACL is empty or invalid.\" The docs define invalid ACLs as \"ACLs with roles that do not exist\", ACLs with security attributes that do not exist, and \"ACLs with a script that contains 'answer=true' or 'true'\". Access is denied when none of the roles that an ACL references exist on the instance. See https://www.servicenow.com/docs/r/platform-security/access-control/exploring-access-control-list.html",
         "wrongAnswers": [
           {
             "choiceId": "b",
-            "explanation": "While encryption may be available, it's not one of the core CRUD security mechanisms described.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1"
+            "explanation": "Applies-to is a valid way to control which records an ACL applies to (for example, only Priority 1 incidents). It doesn't make the ACL empty or invalid.",
+            "reference": "https://www.servicenow.com/docs/r/platform-security/access-control/exploring-access-control-list.html"
           },
           {
             "choiceId": "d",
-            "explanation": "MFA is an optional security feature, not a core CRUD operation security mechanism.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1"
+            "explanation": "Requiring a role and adding a data condition are normal ACL conditions. A user must pass all of them, but the ACL is valid.",
+            "reference": "https://www.servicenow.com/docs/r/platform-security/access-control/exploring-access-control-list.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Security Model"
+        "https://www.servicenow.com/docs/r/platform-security/access-control/exploring-access-control-list.html"
       ],
       "isFree": false,
       "source": {
@@ -951,69 +875,71 @@
           "Roles and role hierarchies"
         ],
         "tags": [
-          "CRUD",
-          "security",
-          "authentication",
-          "roles"
+          "ACL",
+          "deny by default",
+          "invalid ACL",
+          "security_admin"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "csa-ua-012",
       "certification": "csa",
       "topic": "user-administration",
-      "cognitiveLevel": "understanding",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What is the purpose of user impersonation in ServiceNow?",
+      "question": "While impersonating an ITIL user to reproduce a reported problem, an administrator adds a work note to an incident. How is that update recorded?",
       "options": [
         {
           "id": "a",
-          "text": "To permanently change a user's password"
+          "text": "As performed by the administrator's own account"
         },
         {
           "id": "b",
-          "text": "To test the platform from another user's perspective and troubleshoot access issues"
+          "text": "As performed by the impersonated ITIL user"
         },
         {
           "id": "c",
-          "text": "To delete another user's account"
+          "text": "As performed by the system user, not a person"
         },
         {
           "id": "d",
-          "text": "To merge two user accounts together"
+          "text": "It isn't saved, because impersonation is read-only"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "Impersonation allows administrators to test the platform from another user's perspective. This is useful for troubleshooting access issues, verifying that security configurations work correctly, and understanding what a specific user can see and do.",
+        "correct": "Impersonation, which is primarily used for testing, lets the administrator access the system exactly as the impersonated user. The docs state: \"All actions performed by the administrator during impersonation are recorded as if they were executed by the impersonated user.\" The start and end of the impersonation are logged separately in the system log as Impersonate Begin and Impersonate End events. See https://www.servicenow.com/docs/r/platform-administration/user-administration/c_ImpersonateAUser.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Password changes are managed through user administration, not impersonation.",
-            "reference": "Password Management"
+            "explanation": "Actions taken during impersonation are recorded as if the impersonated user performed them, not under the administrator's account. Only the start and end of impersonation are logged separately, as the Impersonate Begin and Impersonate End events in the system log.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/user-administration/c_ImpersonateAUser.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Account deletion is a separate administrative function, not related to impersonation.",
-            "reference": "User Administration"
+            "explanation": "The docs say impersonated actions are recorded as executed by the impersonated user, not by a system account.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/user-administration/c_ImpersonateAUser.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Account merging is not a feature of impersonation.",
-            "reference": "User Management"
+            "explanation": "Impersonation isn't read-only. The administrator accesses the system exactly as the user, and their actions are recorded as that user's.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/user-administration/c_ImpersonateAUser.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Impersonation"
+        "https://www.servicenow.com/docs/r/platform-administration/user-administration/c_ImpersonateAUser.html"
       ],
       "isFree": false,
       "source": {
@@ -1032,66 +958,69 @@
         "tags": [
           "impersonation",
           "testing",
-          "troubleshooting"
+          "audit"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "csa-ua-013",
       "certification": "csa",
       "topic": "user-administration",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What must a user have to access data in ServiceNow?",
+      "question": "An itil user reports that the System Definition application doesn't appear in her application navigator. What controls whether an application or module is shown to a user?",
       "options": [
         {
           "id": "a",
-          "text": "Only a role"
+          "text": "The roles listed on the application or module"
         },
         {
           "id": "b",
-          "text": "Only ACL access"
+          "text": "Roles added to the table's dictionary entry"
         },
         {
           "id": "c",
-          "text": "Both a role AND ACL access"
+          "text": "Read ACLs on the fields of the module's table"
         },
         {
           "id": "d",
-          "text": "Group membership only"
+          "text": "UI policies on the application menu's form"
         }
       ],
       "correctAnswers": [
-        "c"
+        "a"
       ],
       "explanation": {
-        "correct": "A user needs BOTH a role AND ACL access to see data. Roles grant access to application modules, while ACLs control record-level access. Both must be satisfied for a user to access specific data.",
+        "correct": "\"Applications and modules contain lists of the roles required to view them. For example, to view the System Definition application, the admin role is required. Security rights for applications and modules are still defined using role arrays.\" ACLs secure tables and fields, but navigator visibility comes from these role lists. See https://www.servicenow.com/docs/r/platform-security/access-control/r_ContextualSecurity.html",
         "wrongAnswers": [
           {
-            "choiceId": "a",
-            "explanation": "Roles alone grant module access but don't control data access without ACLs.",
-            "reference": "Security Model"
+            "choiceId": "b",
+            "explanation": "Under the Contextual Security Manager, roles on dictionary entries are no longer tested. Adding them doesn't change any rights.",
+            "reference": "https://www.servicenow.com/docs/r/platform-security/access-control/r_ContextualSecurity.html"
           },
           {
-            "choiceId": "b",
-            "explanation": "ACLs control data access but users also need appropriate roles to access modules.",
-            "reference": "Role-Based Access"
+            "choiceId": "c",
+            "explanation": "ACLs secure table and field data. Application and module visibility is defined with role arrays on the application and module.",
+            "reference": "https://www.servicenow.com/docs/r/platform-security/access-control/r_ContextualSecurity.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Group membership helps organize users but doesn't directly grant data access without roles and ACLs.",
-            "reference": "Groups"
+            "explanation": "UI policies only apply to data entered on a form through the standard browser. They don't control which applications appear in the navigator.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/c_DataPolicy.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Security Model"
+        "https://www.servicenow.com/docs/r/platform-security/access-control/r_ContextualSecurity.html",
+        "https://www.servicenow.com/docs/r/platform-administration/c_DataPolicy.html"
       ],
       "isFree": false,
       "source": {
@@ -1110,16 +1039,17 @@
         ],
         "tags": [
           "roles",
-          "ACL",
-          "data access",
-          "security"
+          "application navigator",
+          "modules"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -1128,50 +1058,52 @@
       "topic": "user-administration",
       "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "A system administrator needs to grant a user temporary elevated access to modify ACLs. What is the recommended approach?",
+      "question": "The System Administrator wants to give a colleague the security_admin role so she can maintain ACLs. What must the System Administrator do to grant it?",
       "options": [
         {
           "id": "a",
-          "text": "Permanently assign the security_admin role to the user"
+          "text": "Elevate to security_admin, then assign it"
         },
         {
           "id": "b",
-          "text": "Have the user activate elevated privileges for their session"
+          "text": "Grant her the admin role, which contains it"
         },
         {
           "id": "c",
-          "text": "Give the user the admin role"
+          "text": "Ask a user_admin to add it to her user record"
         },
         {
           "id": "d",
-          "text": "Disable all ACLs temporarily"
+          "text": "Have her elevate to security_admin on her own"
         }
       ],
       "correctAnswers": [
-        "b"
+        "a"
       ],
       "explanation": {
-        "correct": "Elevated privileges allow temporary access to higher security functions and last only for the current session. This is more secure than permanently assigning roles because access automatically ends with logout, timeout, or impersonation. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1",
+        "correct": "\"To grant the security_admin role to a user, the granting user must also have the admin role and must elevate to the security_admin role before granting the security_admin role to other users. A user with only the admin role cannot grant the security_admin role to other users.\" See https://www.servicenow.com/docs/r/platform-security/c_ElevatedPrivilege.html and https://www.servicenow.com/docs/r/platform-administration/user-administration/t_AssignARoleToAUser.html",
         "wrongAnswers": [
           {
-            "choiceId": "a",
-            "explanation": "Permanently assigning security_admin violates the principle of least privilege for temporary needs.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1"
+            "choiceId": "b",
+            "explanation": "The Security Administrator role is not inherited by the admin role and must be explicitly assigned, so granting admin doesn't grant security_admin.",
+            "reference": "https://www.servicenow.com/docs/r/platform-security/exploring-high-security-settings.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Admin role alone doesn't grant ACL modification - security_admin is still required.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1"
+            "explanation": "The granting user must have the admin role and be elevated to security_admin. A user with only user_admin can't even grant the admin role.",
+            "reference": "https://www.servicenow.com/docs/r/platform-security/c_ElevatedPrivilege.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Disabling ACLs would create significant security risks and is not recommended.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1"
+            "explanation": "To use an elevated role, it must be assigned to you first. She can't elevate to security_admin until someone grants it to her.",
+            "reference": "https://www.servicenow.com/docs/r/platform-security/c_ElevatedPrivilege.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Elevated Privileges"
+        "https://www.servicenow.com/docs/r/platform-security/c_ElevatedPrivilege.html",
+        "https://www.servicenow.com/docs/r/platform-administration/user-administration/t_AssignARoleToAUser.html",
+        "https://www.servicenow.com/docs/r/platform-security/exploring-high-security-settings.html"
       ],
       "isFree": false,
       "source": {
@@ -1196,41 +1128,43 @@
           "Access Control Lists (ACLs)"
         ],
         "tags": [
-          "elevated privileges",
           "security_admin",
-          "temporary access"
+          "elevated privileges",
+          "role assignment"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "csa-ua-015",
       "certification": "csa",
       "topic": "user-administration",
-      "cognitiveLevel": "understanding",
+      "cognitiveLevel": "application",
       "type": "multiple_select",
-      "question": "Which statements about the admin role in ServiceNow are true? (Choose two)",
+      "question": "An IT manager asks for the admin role so she can maintain a few catalog items. Which two statements about the admin role are accurate? (Choose two)",
       "options": [
         {
           "id": "a",
-          "text": "Admins have access to all platform features and can override access controls"
+          "text": "It can override ACL rules and pass all role checks"
         },
         {
           "id": "b",
-          "text": "Admins can automatically modify ACLs without any additional roles"
+          "text": "It can create ACLs without elevating to security_admin"
         },
         {
           "id": "c",
-          "text": "The admin role should be assigned cautiously"
+          "text": "Avoid assigning it when a more targeted role exists"
         },
         {
           "id": "d",
-          "text": "Admins can impersonate security_admin during impersonation sessions"
+          "text": "The admin role contains the security_admin role"
         }
       ],
       "correctAnswers": [
@@ -1238,22 +1172,24 @@
         "c"
       ],
       "explanation": {
-        "correct": "Admins have access to all platform features and can override access controls, so the role should be assigned cautiously. However, admins cannot modify ACLs without security_admin and cannot impersonate security_admin during impersonation. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1",
+        "correct": "The base system roles reference describes admin as having \"access to all system features, functions, and data because administrators can override access control list (ACL) rules and pass all role checks. Avoid assigning this role to your users when more targeted roles are available.\" For this request, catalog_admin is a more targeted role. See https://www.servicenow.com/docs/r/platform-administration/user-administration/r_BaseSystemRoles.html",
         "wrongAnswers": [
           {
             "choiceId": "b",
-            "explanation": "Admins need the security_admin role in addition to admin to modify ACLs.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1"
+            "explanation": "Normal admin users can view and debug ACLs, but to create or update them administrators must elevate to the security_admin role.",
+            "reference": "https://www.servicenow.com/docs/r/platform-security/access-control/exploring-access-control-list.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Admins cannot impersonate security_admin or elevate privileges during impersonation.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1"
+            "explanation": "The Security Administrator role is not inherited by the admin role and must be explicitly assigned.",
+            "reference": "https://www.servicenow.com/docs/r/platform-security/exploring-high-security-settings.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Admin Role"
+        "https://www.servicenow.com/docs/r/platform-administration/user-administration/r_BaseSystemRoles.html",
+        "https://www.servicenow.com/docs/r/platform-security/access-control/exploring-access-control-list.html",
+        "https://www.servicenow.com/docs/r/platform-security/exploring-high-security-settings.html"
       ],
       "isFree": false,
       "source": {
@@ -1277,61 +1213,65 @@
           "Roles and role hierarchies"
         ],
         "tags": [
-          "admin",
-          "roles",
-          "security",
-          "best practices"
+          "admin role",
+          "security_admin",
+          "roles"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "csa-ua-016",
       "certification": "csa",
       "topic": "user-administration",
-      "cognitiveLevel": "comprehension",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What is the recommended method for assigning roles to users in ServiceNow?",
+      "question": "A service desk is onboarding 40 agents who all need the same set of roles. Which approach does ServiceNow recommend to keep user administration simple?",
       "options": [
         {
           "id": "a",
-          "text": "Assign roles directly to individual user records"
+          "text": "Add the roles to each agent's own user record"
         },
         {
           "id": "b",
-          "text": "Add users to groups and assign roles to the groups"
+          "text": "Assign the roles to a group and add the agents"
         },
         {
           "id": "c",
-          "text": "Use update sets to assign roles"
+          "text": "Grant every agent the admin role to cover all"
         },
         {
           "id": "d",
-          "text": "Configure roles through the CMDB"
+          "text": "Make one agent a role delegator for the others"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "Rather than adding roles to individual users, the recommended approach is to add the user to a group and assign the role to the group. This makes maintenance easier when people transfer to different roles in the organization.",
+        "correct": "Users inherit roles from all groups they belong to. The docs advise: \"When possible, simplify user administration by assigning roles to groups. Create groups that contain all the roles necessary for specific personas, and then assign users to those groups.\" See https://www.servicenow.com/docs/r/platform-administration/user-administration/t_AssignARoleToAUser.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "While possible, assigning roles directly to users makes maintenance difficult when organizational changes occur."
+            "explanation": "Roles can be assigned directly to users, but the docs recommend assigning roles to persona groups to simplify user administration.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/user-administration/t_AssignARoleToAUser.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Update sets are for migrating configuration changes between instances, not for role assignment."
+            "explanation": "admin gives access to all system features and data. The docs say to avoid assigning it when more targeted roles are available.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/user-administration/r_BaseSystemRoles.html"
           },
           {
             "choiceId": "d",
-            "explanation": "The CMDB tracks configuration items, not user roles."
+            "explanation": "Role delegators can only assign roles they already have, within groups. This doesn't replace persona groups for granting a standard role set.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/user-administration/c_DelegateRoles.html"
           }
         ]
       },
@@ -1354,58 +1294,68 @@
         "tags": [
           "roles",
           "groups",
-          "best practices"
+          "role assignment"
         ]
       },
       "meta": {
         "generatedAt": "2026-03-16T02:00:00Z",
         "version": "1.1",
-        "release": "Xanadu",
-        "reviewed": false
-      }
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/platform-administration/user-administration/t_AssignARoleToAUser.html",
+        "https://www.servicenow.com/docs/r/platform-administration/user-administration/r_BaseSystemRoles.html",
+        "https://www.servicenow.com/docs/r/platform-administration/user-administration/c_DelegateRoles.html"
+      ]
     },
     {
       "id": "csa-ua-017",
       "certification": "csa",
       "topic": "user-administration",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What indicates that elevated privileges are activated for an administrator's session?",
+      "question": "An administrator creates elevated role A, which contains elevated role B, and assigns both to an analyst. The analyst elevates to role A only. What is true for her session?",
       "options": [
         {
           "id": "a",
-          "text": "A lock icon appears in the navigation menu"
+          "text": "She gets role B's privileges through role A"
         },
         {
           "id": "b",
-          "text": "An upward arrow appears next to the user's avatar"
+          "text": "She must still elevate to role B to use it"
         },
         {
           "id": "c",
-          "text": "The background color of the instance changes"
+          "text": "Role B elevates by itself at her next login"
         },
         {
           "id": "d",
-          "text": "A notification email is sent to the security team"
+          "text": "She keeps both roles after she logs out"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "An upward arrow next to your avatar indicates activated elevated privileges. These roles last only for your session and end with logout, session timeout, or user impersonation.",
+        "correct": "To use an elevated role, \"You must manually elevate to a specific elevated role to get its privileges, even if you are already elevated to a second elevated role that contains the first elevated role. For example, if elevated role A contains elevated role B, even if you elevate to role A, you must still elevate to role B to get its privileges.\" See https://www.servicenow.com/docs/r/platform-security/c_ElevatedPrivilege.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "There is no lock icon for elevated privileges; the indicator is an upward arrow by the avatar."
+            "explanation": "Containment doesn't carry elevated privileges. Each elevated role must be elevated to manually, even when it is contained in a role that is already elevated.",
+            "reference": "https://www.servicenow.com/docs/r/platform-security/c_ElevatedPrivilege.html"
           },
           {
             "choiceId": "c",
-            "explanation": "The background color does not change for elevated privileges."
+            "explanation": "\"By default, you do not have elevated privilege roles upon login. You must manually elevate to the privilege of the role.\"",
+            "reference": "https://www.servicenow.com/docs/r/platform-security/c_ElevatedPrivilege.html"
           },
           {
             "choiceId": "d",
-            "explanation": "No email notification is sent when elevating privileges."
+            "explanation": "An elevated privilege role lasts only for the user session. Session timeout or logout removes the role.",
+            "reference": "https://www.servicenow.com/docs/r/platform-security/c_ElevatedPrivilege.html"
           }
         ]
       },
@@ -1427,40 +1377,45 @@
         ],
         "tags": [
           "elevated privileges",
-          "security",
-          "admin role"
+          "roles",
+          "contained roles"
         ]
       },
       "meta": {
         "generatedAt": "2026-03-16T02:00:00Z",
         "version": "1.1",
-        "release": "Xanadu",
-        "reviewed": false
-      }
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/platform-security/c_ElevatedPrivilege.html"
+      ]
     },
     {
       "id": "csa-ua-019",
       "certification": "csa",
       "topic": "user-administration",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_select",
-      "question": "Which actions can users WITHOUT any assigned roles perform in ServiceNow? (Choose 2)",
+      "question": "A new employee uses the Self-Service application to get help from IT. Which two actions does Self-Service give access to by default? (Choose two)",
       "options": [
         {
           "id": "a",
-          "text": "View a dashboard"
+          "text": "Accessing the Service Catalog"
         },
         {
           "id": "b",
-          "text": "Create business rules"
+          "text": "Creating access control rules"
         },
         {
           "id": "c",
-          "text": "Access the service catalog"
+          "text": "Viewing knowledge articles"
         },
         {
           "id": "d",
-          "text": "Manage access control lists"
+          "text": "Administering users and groups"
         }
       ],
       "correctAnswers": [
@@ -1468,15 +1423,17 @@
         "c"
       ],
       "explanation": {
-        "correct": "Users without any assigned roles can still log in and access common actions such as viewing a dashboard, accessing the service catalog, viewing knowledge articles, and taking surveys. These are often referred to as self-service users.",
+        "correct": "\"By default, the Self-Service application provides access to common actions, such as viewing your homepage, accessing the Service Catalog, viewing knowledge articles, working with incidents, and taking surveys.\" See https://www.servicenow.com/docs/r/servicenow-platform/self-service/r_EmployeeSelfService.html",
         "wrongAnswers": [
           {
             "choiceId": "b",
-            "explanation": "Creating business rules requires administrative roles."
+            "explanation": "Creating or updating ACLs is not a self-service action. Administrators must elevate to the security_admin role to create or update access control rules.",
+            "reference": "https://www.servicenow.com/docs/r/platform-security/access-control/exploring-access-control-list.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Managing ACLs requires the security_admin role."
+            "explanation": "Administering users, groups, locations, skills, and companies is what the user_admin role is for. It is not a default self-service action.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/user-administration/r_BaseSystemRoles.html"
           }
         ]
       },
@@ -1498,59 +1455,70 @@
         ],
         "tags": [
           "self-service",
-          "no roles",
-          "user access"
+          "end users",
+          "service catalog",
+          "knowledge"
         ]
       },
       "meta": {
         "generatedAt": "2026-03-16T02:00:00Z",
         "version": "1.1",
-        "release": "Xanadu",
-        "reviewed": false
-      }
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/servicenow-platform/self-service/r_EmployeeSelfService.html",
+        "https://www.servicenow.com/docs/r/platform-security/access-control/exploring-access-control-list.html",
+        "https://www.servicenow.com/docs/r/platform-administration/user-administration/r_BaseSystemRoles.html"
+      ]
     },
     {
       "id": "csa-ua-020",
       "certification": "csa",
       "topic": "user-administration",
-      "cognitiveLevel": "comprehension",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "Which statement about user impersonation is TRUE?",
+      "question": "A QA lead is given the impersonator role so she can test forms as other users. Which statement describes what the role allows her to do?",
       "options": [
         {
           "id": "a",
-          "text": "Any user can impersonate another user"
+          "text": "Impersonate users, but not users with admin"
         },
         {
           "id": "b",
-          "text": "Impersonation allows access to security incidents even if you don't have those roles"
+          "text": "Impersonate any user, including admin users"
         },
         {
           "id": "c",
-          "text": "Only users with the admin or impersonator role can impersonate other users"
+          "text": "Impersonate only members of her own groups"
         },
         {
           "id": "d",
-          "text": "Impersonation persists across multiple login sessions"
+          "text": "Impersonate users only after elevating first"
         }
       ],
       "correctAnswers": [
-        "c"
+        "a"
       ],
       "explanation": {
-        "correct": "Only admins and users with the impersonator role can impersonate other users to test their access. When impersonating a user with a specific admin role, you cannot access certain features like security incidents unless you already have those roles.",
+        "correct": "The base system roles reference says \"Impersonators can impersonate users\" and warns: \"This role doesn’t enable the impersonation of admin users.\" The impersonate-a-user procedure lists impersonator as the required role. See https://www.servicenow.com/docs/r/platform-administration/user-administration/r_BaseSystemRoles.html and https://www.servicenow.com/docs/r/platform-administration/user-administration/t_ImpersonateAUserInUI16.html",
         "wrongAnswers": [
           {
-            "choiceId": "a",
-            "explanation": "Only users with the admin or impersonator role can impersonate others."
+            "choiceId": "b",
+            "explanation": "The docs warn that the impersonator role doesn't enable the impersonation of admin users.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/user-administration/r_BaseSystemRoles.html"
           },
           {
-            "choiceId": "b",
-            "explanation": "When impersonating, you cannot access features like security incidents unless you already have those specific roles."
+            "choiceId": "c",
+            "explanation": "The role description, \"Impersonators can impersonate users\", sets no group-membership limit. The documented restriction is on admin users.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/user-administration/r_BaseSystemRoles.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Impersonation does not persist across login sessions."
+            "explanation": "impersonator isn't an elevated role. In the base system, security_admin is the only role with elevated privileges. The procedure only requires the impersonator role.",
+            "reference": "https://www.servicenow.com/docs/r/platform-security/c_ElevatedPrivilege.html"
           }
         ]
       },
@@ -1572,16 +1540,23 @@
         ],
         "tags": [
           "impersonation",
-          "admin role",
-          "testing access"
+          "impersonator role",
+          "roles"
         ]
       },
       "meta": {
         "generatedAt": "2026-03-16T02:00:00Z",
         "version": "1.1",
-        "release": "Xanadu",
-        "reviewed": false
-      }
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/platform-administration/user-administration/r_BaseSystemRoles.html",
+        "https://www.servicenow.com/docs/r/platform-administration/user-administration/t_ImpersonateAUserInUI16.html",
+        "https://www.servicenow.com/docs/r/platform-security/c_ElevatedPrivilege.html"
+      ]
     },
     {
       "id": "csa-ua-021",
@@ -1589,42 +1564,45 @@
       "topic": "user-administration",
       "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "A user has the catalog_admin role. What access does this provide?",
+      "question": "An administrator grants a catalog manager the catalog_admin role. What does this base system role allow her to do?",
       "options": [
         {
           "id": "a",
-          "text": "Only access to the Service Catalog application"
+          "text": "Manage catalog categories and items in Service Catalog"
         },
         {
           "id": "b",
-          "text": "Only access to user criteria modules"
+          "text": "Create and publish items only within assigned categories"
         },
         {
           "id": "c",
-          "text": "Access to all Service Catalog and user criteria modules, plus additional catalog_admin permissions"
+          "text": "Administer users, groups, locations, skills, and companies"
         },
         {
           "id": "d",
-          "text": "Full admin access to all platform features"
+          "text": "Delete incidents, problems, changes, and related records"
         }
       ],
       "correctAnswers": [
-        "c"
+        "a"
       ],
       "explanation": {
-        "correct": "The catalog_admin role includes permissions from both user_criteria_admin and catalog roles, providing access to all applications and modules of both roles plus any permissions specific to catalog_admin.",
+        "correct": "\"Catalog administrators can manage the Service Catalog application, including catalog categories and items.\" catalog_admin contains user_criteria_admin, catalog_builder_editor, catalog_template_editor, catalog, and catalog_lookup_admin. See https://www.servicenow.com/docs/r/platform-administration/user-administration/r_BaseSystemRoles.html",
         "wrongAnswers": [
           {
-            "choiceId": "a",
-            "explanation": "catalog_admin includes more than just the catalog role \u2014 it also contains user_criteria_admin permissions."
+            "choiceId": "b",
+            "explanation": "That is the catalog_editor role, whose users \"can create, modify, and publish items within categories that they’re assigned to\".",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/user-administration/r_BaseSystemRoles.html"
           },
           {
-            "choiceId": "b",
-            "explanation": "catalog_admin includes user criteria access but also catalog and additional permissions."
+            "choiceId": "c",
+            "explanation": "That is the user_admin role: \"User administrators can administer users, groups, locations, skills, and companies.\"",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/user-administration/r_BaseSystemRoles.html"
           },
           {
             "choiceId": "d",
-            "explanation": "catalog_admin provides access to catalog-related features, not full admin access."
+            "explanation": "That is the itil_admin role, whose users \"can delete incidents, problems, changes, and other related records\".",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/user-administration/r_BaseSystemRoles.html"
           }
         ]
       },
@@ -1646,16 +1624,21 @@
         ],
         "tags": [
           "catalog_admin",
-          "role inheritance",
-          "permissions"
+          "roles",
+          "service catalog"
         ]
       },
       "meta": {
         "generatedAt": "2026-03-16T02:00:00Z",
         "version": "1.1",
-        "release": "Xanadu",
-        "reviewed": false
-      }
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/platform-administration/user-administration/r_BaseSystemRoles.html"
+      ]
     },
     {
       "id": "csa-ua-022",
@@ -1743,48 +1726,54 @@
       "id": "csa-ua-023",
       "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "An administrator needs to prevent users in the 'itil' group from editing the Priority field on Incident records, but they should still be able to view it. Which approach is correct?",
+      "question": "Users with the itil role must still see the Priority field on incidents but must not be able to change it in forms, lists, or web service calls. What should a security administrator create?",
       "options": [
         {
           "id": "a",
-          "text": "Create a write ACL on the incident.priority field that excludes the itil role"
+          "text": "A write ACL on incident.priority that itil users fail"
         },
         {
           "id": "b",
-          "text": "Remove the Priority field from the incident form"
+          "text": "A read ACL on incident.priority that itil users fail"
         },
         {
           "id": "c",
-          "text": "Create a UI Policy that makes Priority read-only for itil users"
+          "text": "A list_edit ACL on the incident table that itil users fail"
         },
         {
           "id": "d",
-          "text": "Delete the Priority field from the Incident table"
+          "text": "A UI policy that locks the Priority field for itil users"
         }
       ],
       "correctAnswers": [
-        "c"
+        "a"
       ],
       "explanation": {
-        "correct": "A UI Policy with a condition checking the user's role can make the Priority field read-only for itil users while keeping it visible. This is the standard approach for role-based field-level restrictions on forms.",
+        "correct": "Failing a write ACL means the \"User sees a read-only field in forms and lists, and the user can’t update records using API protocols such as web services.\" A field-level write ACL on incident.priority that itil users can't pass keeps the field visible but read-only everywhere. See https://www.servicenow.com/docs/r/platform-security/access-control/exploring-access-control-list.html",
         "wrongAnswers": [
           {
-            "choiceId": "a",
-            "explanation": "While ACLs can control write access, a field-level write ACL that excludes itil would also affect other operations. UI Policy is more targeted for form-level display control."
+            "choiceId": "b",
+            "explanation": "Failing a read ACL means the user can't see the object in forms or lists, so Priority would be hidden instead of read-only.",
+            "reference": "https://www.servicenow.com/docs/r/platform-security/access-control/exploring-access-control-list.html"
           },
           {
-            "choiceId": "b",
-            "explanation": "Removing the field prevents viewing it entirely, which contradicts the requirement to keep it visible."
+            "choiceId": "c",
+            "explanation": "Failing a list_edit ACL only stops users from updating records from a list. Forms and web services would still allow changes.",
+            "reference": "https://www.servicenow.com/docs/r/platform-security/access-control/exploring-access-control-list.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Deleting a core field like Priority would break system functionality and is never appropriate."
+            "explanation": "UI policies only apply to data entered on a form through the standard browser, so lists and web service calls would not be restricted.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/c_DataPolicy.html"
           }
         ]
       },
       "certification": "csa",
       "topic": "user-administration",
-      "references": [],
+      "references": [
+        "https://www.servicenow.com/docs/r/platform-security/access-control/exploring-access-control-list.html",
+        "https://www.servicenow.com/docs/r/platform-administration/c_DataPolicy.html"
+      ],
       "isFree": false,
       "source": {
         "type": "generated",
@@ -1803,40 +1792,46 @@
         "domain": "user-administration",
         "domainSlug": "user-administration",
         "subtopics": [],
-        "tags": []
+        "tags": [
+          "ACL",
+          "write operation",
+          "field-level security"
+        ]
       },
       "meta": {
         "generatedAt": "2026-03-31T02:09:00Z",
-        "version": "2.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "csa-ua-024",
       "cognitiveLevel": "knowledge",
-      "type": "multiple_choice",
-      "question": "Which three elements make up an Access Control List (ACL) rule in ServiceNow? (Choose 3)",
+      "type": "multiple_select",
+      "question": "A new security administrator is reviewing how ACLs are defined. Which three things does every access control list (ACL) specify? (Choose three)",
       "options": [
         {
           "id": "a",
-          "text": "The object being secured (table/field)"
+          "text": "The object being secured, like a table or field"
         },
         {
           "id": "b",
-          "text": "The operation (read, write, create, delete)"
+          "text": "The decision type and the operation, such as read"
         },
         {
           "id": "c",
-          "text": "The permissions required (role, condition, script)"
+          "text": "The conditions, such as roles and data conditions"
         },
         {
           "id": "d",
-          "text": "The time zone of the user"
+          "text": "The update set that captured the ACL record"
         },
         {
           "id": "e",
-          "text": "The browser type being used"
+          "text": "The UI policy applied to the table's form"
         }
       ],
       "correctAnswers": [
@@ -1845,21 +1840,26 @@
         "c"
       ],
       "explanation": {
-        "correct": "An ACL rule consists of three parts: the object (what is being protected \u2014 a table, field, or record), the operation (what action is being controlled \u2014 read, write, create, or delete), and the permissions (who is allowed \u2014 defined by roles, conditions, and/or scripts).",
+        "correct": "\"All access control lists specify: The decision type, rule type and operation which defines the ACL; The object being secured; The conditions required to access the object.\" Conditions can include required roles, security attributes, data conditions, and a script. See https://www.servicenow.com/docs/r/platform-security/access-control/exploring-access-control-list.html",
         "wrongAnswers": [
           {
             "choiceId": "d",
-            "explanation": "Time zone is a user preference setting, not a component of ACL rules."
+            "explanation": "An update set isn't one of the components every ACL specifies. The components are the decision type and operation, the object, and the conditions.",
+            "reference": "https://www.servicenow.com/docs/r/platform-security/access-control/exploring-access-control-list.html"
           },
           {
             "choiceId": "e",
-            "explanation": "Browser type is not relevant to ACL evaluation."
+            "explanation": "UI policies are separate from ACLs and only apply to data entered on a form through the standard browser. They aren't part of an ACL definition.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/c_DataPolicy.html"
           }
         ]
       },
       "certification": "csa",
       "topic": "user-administration",
-      "references": [],
+      "references": [
+        "https://www.servicenow.com/docs/r/platform-security/access-control/exploring-access-control-list.html",
+        "https://www.servicenow.com/docs/r/platform-administration/c_DataPolicy.html"
+      ],
       "isFree": false,
       "source": {
         "type": "generated",
@@ -1878,13 +1878,20 @@
         "domain": "user-administration",
         "domainSlug": "user-administration",
         "subtopics": [],
-        "tags": []
+        "tags": [
+          "ACL",
+          "ACL components",
+          "decision type",
+          "operation"
+        ]
       },
       "meta": {
         "generatedAt": "2026-03-31T02:09:00Z",
-        "version": "2.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -1977,48 +1984,54 @@
       "id": "csa-ua-026",
       "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "A new employee needs access to the Incident table but should NOT be able to delete any records. Which ACL configuration achieves this?",
+      "question": "A service desk team lead must be able to delete duplicate incident records. Which base system role is intended for team leads and grants this?",
       "options": [
         {
           "id": "a",
-          "text": "Grant read, write, and create ACLs but do not grant a delete ACL for the user's role"
+          "text": "The itil role"
         },
         {
           "id": "b",
-          "text": "Create a delete ACL that explicitly denies the user's role"
+          "text": "The itil_admin role"
         },
         {
           "id": "c",
-          "text": "Remove the Incident module from the user's application menu"
+          "text": "The snc_read_only role"
         },
         {
           "id": "d",
-          "text": "Set the 'active' field to read-only on the incident form"
+          "text": "The catalog_admin role"
         }
       ],
       "correctAnswers": [
-        "a"
+        "b"
       ],
       "explanation": {
-        "correct": "In ServiceNow, if no ACL grants a specific operation for a role, that operation is denied by default. By granting read/write/create but not creating a delete ACL for the role, delete access is implicitly denied.",
+        "correct": "\"ITIL administrators can delete incidents, problems, changes, and other related records. This role is intended for team leads.\" The itil role is the base system technician role, used to open, update, and close incidents, problems, and changes. See https://www.servicenow.com/docs/r/platform-administration/user-administration/r_BaseSystemRoles.html",
         "wrongAnswers": [
           {
-            "choiceId": "b",
-            "explanation": "While explicit deny works, the simpler approach is to not grant delete access at all. ACLs deny by default when no matching rule grants access."
+            "choiceId": "a",
+            "explanation": "itil is the base system technician role. Its description covers opening, updating, and closing incidents, problems, and changes. Deleting them is what itil_admin is described as granting.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/user-administration/r_BaseSystemRoles.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Removing a module from navigation doesn't prevent access to the table through direct URL, lists, or other means."
+            "explanation": "Users with snc_read_only can't insert, update, or delete records, whatever other roles they have.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/user-administration/c_ReadOnlyRole.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Making the active field read-only doesn't prevent record deletion."
+            "explanation": "catalog_admin is for managing the Service Catalog application, including catalog categories and items, not for deleting incidents.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/user-administration/r_BaseSystemRoles.html"
           }
         ]
       },
       "certification": "csa",
       "topic": "user-administration",
-      "references": [],
+      "references": [
+        "https://www.servicenow.com/docs/r/platform-administration/user-administration/r_BaseSystemRoles.html",
+        "https://www.servicenow.com/docs/r/platform-administration/user-administration/c_ReadOnlyRole.html"
+      ],
       "isFree": false,
       "source": {
         "type": "generated",
@@ -2037,61 +2050,74 @@
         "domain": "user-administration",
         "domainSlug": "user-administration",
         "subtopics": [],
-        "tags": []
+        "tags": [
+          "itil_admin",
+          "itil",
+          "roles",
+          "delete"
+        ]
       },
       "meta": {
         "generatedAt": "2026-03-31T02:09:00Z",
-        "version": "2.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "csa-ua-027",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "Which user property determines the language displayed in the ServiceNow interface?",
+      "question": "A user in the Paris office opens User Menu > Preferences > Language & Region to switch the interface to French, but there is no Language option. What is the most likely reason?",
       "options": [
         {
           "id": "a",
-          "text": "The browser's Accept-Language header only"
+          "text": "Her Country preference hasn't been set"
         },
         {
           "id": "b",
-          "text": "The Language field on the user's System Properties"
+          "text": "No other language plugin is installed"
         },
         {
           "id": "c",
-          "text": "The Preferred language field on the user record"
+          "text": "Dynamic Translation isn't enabled yet"
         },
         {
           "id": "d",
-          "text": "The instance's system locale setting only"
+          "text": "Her date format is still the default"
         }
       ],
       "correctAnswers": [
-        "c"
+        "b"
       ],
       "explanation": {
-        "correct": "The Preferred language field on the sys_user record determines the interface language for that user. If not set, the system falls back to the instance default language.",
+        "correct": "The Language preference \"Sets the language used for your instance when you have access to more than one language. This preference displays only when another language plugin is installed.\" See https://www.servicenow.com/docs/r/platform-user-interface/next-experience-language-preferences.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "The browser language header may influence initial detection but the user record setting takes precedence."
+            "explanation": "Country sets the country code and, combined with a language, the user locale for currency and number formatting. It doesn't control whether the Language option appears.",
+            "reference": "https://www.servicenow.com/docs/r/platform-user-interface/next-experience-language-preferences.html"
           },
           {
-            "choiceId": "b",
-            "explanation": "System Properties control instance-wide settings, not individual user language preferences."
+            "choiceId": "c",
+            "explanation": "Dynamic Translation provides on-demand machine translation of content such as form fields, chat messages, and knowledge articles. It doesn't add Language to the preferences.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/dynamic-translation/dynamic-translation-overview.html"
           },
           {
             "choiceId": "d",
-            "explanation": "The system locale is the fallback, but individual user settings override it."
+            "explanation": "Date format only sets how dates display, and it updates the Combined date and time format choices. It doesn't affect the Language option.",
+            "reference": "https://www.servicenow.com/docs/r/platform-user-interface/next-experience-language-preferences.html"
           }
         ]
       },
       "certification": "csa",
       "topic": "user-administration",
-      "references": [],
+      "references": [
+        "https://www.servicenow.com/docs/r/platform-user-interface/next-experience-language-preferences.html",
+        "https://www.servicenow.com/docs/r/platform-administration/dynamic-translation/dynamic-translation-overview.html"
+      ],
       "isFree": false,
       "source": {
         "type": "generated",
@@ -2110,13 +2136,19 @@
         "domain": "user-administration",
         "domainSlug": "user-administration",
         "subtopics": [],
-        "tags": []
+        "tags": [
+          "language",
+          "localization",
+          "user preferences"
+        ]
       },
       "meta": {
         "generatedAt": "2026-03-31T02:09:00Z",
-        "version": "2.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -2211,48 +2243,55 @@
       "id": "csa-ua-029",
       "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "Which of the following is NOT a valid method to assign a role to a user in ServiceNow?",
+      "question": "An administrator opens a user record to remove the itil role, but the user received that role from the Service Desk group. What must the administrator do?",
       "options": [
         {
           "id": "a",
-          "text": "Adding the role directly to the user's Roles related list"
+          "text": "Delete the itil row from the user's Roles list"
         },
         {
           "id": "b",
-          "text": "Adding the user to a group that has the role"
+          "text": "Remove the user from the Service Desk group"
         },
         {
           "id": "c",
-          "text": "Inheriting the role through the role hierarchy (contained roles)"
+          "text": "Elevate to security_admin, then delete the row"
         },
         {
           "id": "d",
-          "text": "Setting the role in the user's email signature"
+          "text": "Assign snc_read_only to cancel out the itil role"
         }
       ],
       "correctAnswers": [
-        "d"
+        "b"
       ],
       "explanation": {
-        "correct": "Email signatures have no connection to role assignment in ServiceNow. Roles are assigned directly to users, through group membership, or through role inheritance (contained roles).",
+        "correct": "A user inherits roles from all groups they belong to. The docs state: \"You can't delete roles that are assigned to the group from the user record. You must remove the user from the group record.\" See https://www.servicenow.com/docs/r/platform-administration/user-administration/t_AssignARoleToAUser.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Direct role assignment via the Roles related list is a standard method."
-          },
-          {
-            "choiceId": "b",
-            "explanation": "Group-based role assignment is the recommended method for managing roles at scale."
+            "explanation": "Roles that come from a group can't be deleted from the user record. The user must be removed from the group.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/user-administration/t_AssignARoleToAUser.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Role inheritance through 'contains' relationships is a valid built-in mechanism."
+            "explanation": "security_admin is for ACLs and High Security Settings. The docs don't offer elevation as a way around this; group-assigned roles must be removed through the group record.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/user-administration/t_AssignARoleToAUser.html"
+          },
+          {
+            "choiceId": "d",
+            "explanation": "snc_read_only complements a user's other roles by blocking insert, update, and delete. It doesn't remove the itil role.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/user-administration/c_ReadOnlyRole.html"
           }
         ]
       },
       "certification": "csa",
       "topic": "user-administration",
-      "references": [],
+      "references": [
+        "https://www.servicenow.com/docs/r/platform-administration/user-administration/t_AssignARoleToAUser.html",
+        "https://www.servicenow.com/docs/r/platform-administration/user-administration/c_ReadOnlyRole.html",
+        "https://www.servicenow.com/docs/r/platform-security/c_ElevatedPrivilege.html"
+      ],
       "isFree": false,
       "source": {
         "type": "generated",
@@ -2271,13 +2310,19 @@
         "domain": "user-administration",
         "domainSlug": "user-administration",
         "subtopics": [],
-        "tags": []
+        "tags": [
+          "roles",
+          "groups",
+          "role inheritance"
+        ]
       },
       "meta": {
         "generatedAt": "2026-03-31T02:09:00Z",
-        "version": "2.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
