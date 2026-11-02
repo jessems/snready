@@ -36,7 +36,7 @@ export default function PrivacyPage() {
         intro={<p>This page explains what information SNReady collects when you use snready.com, why, which services handle it, how long it is kept and how to ask us to delete it. It describes what the site actually does today. You can practise free questions without an account and without giving us your email address.</p>}
       >
         <h2>Who we are</h2>
-        <p>SNReady is an independent ServiceNow certification practice site run by the SNReady team. It is not affiliated with ServiceNow. The party responsible for your data is [Business name / address]. For any privacy question or request, email {mail}.</p>
+        <p>SNReady is an independent ServiceNow certification practice site run by the SNReady team. It is not affiliated with ServiceNow. SNReady is the party responsible for your data. For any privacy question or request, email {mail}.</p>
 
         <h2>What we collect and why</h2>
 
@@ -113,7 +113,7 @@ export default function PrivacyPage() {
         <ul>
           <li><strong>Access, correction or deletion.</strong> Email {mail} from the address you used at checkout or sign-in and tell us what you want. Deleting your access record removes your paid access, so we will confirm before doing it.</li>
           <li><strong>Stop follow-up emails.</strong> Use the link in any follow-up email, or email us.</li>
-          <li><strong>Analytics and ad cookies.</strong> You can block or delete cookies in your browser, or use Google&apos;s <a href="https://tools.google.com/dlpage/gaoptout" rel="noopener noreferrer">Analytics opt-out add-on</a>. The site still works without them; only the <code>snready_session</code> cookie is needed to stay signed in.</li>
+          <li><strong>Analytics and ad cookies.</strong> You can block or delete cookies in your browser, or use Google&apos;s <a href="https://tools.google.com/dlpage/gaoptout" rel="noopener noreferrer">Analytics opt-out add-on</a>. The site still works without them; only the <code>snready_session</code> cookie is needed to stay signed in. We don&apos;t show a cookie banner, so these browser controls are how you opt out.</li>
           <li>Depending on where you live you may have further rights, including the right to complain to your local data protection authority.</li>
         </ul>
 

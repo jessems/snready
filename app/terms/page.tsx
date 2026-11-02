@@ -33,7 +33,7 @@ export default function TermsPage() {
       <LegalPage
         eyebrow="Legal"
         title="Terms of service"
-        intro={<p>These terms apply when you use snready.com (&ldquo;SNReady&rdquo;), which is operated by [Business name / address] (&ldquo;we&rdquo;, &ldquo;us&rdquo;). By using the site or buying access, you agree to them. If you don&apos;t agree, please don&apos;t use the site.</p>}
+        intro={<p>These terms apply when you use snready.com (&ldquo;SNReady&rdquo;), which is operated by SNReady (&ldquo;we&rdquo;, &ldquo;us&rdquo;). By using the site or buying access, you agree to them. If you don&apos;t agree, please don&apos;t use the site.</p>}
       >
         <h2>What SNReady is</h2>
         <ul>
@@ -52,7 +52,7 @@ export default function TermsPage() {
         </ul>
 
         <h2>Refunds</h2>
-        <p>Refunds are covered by our <Link href="/refunds">refund policy</Link>. Nothing in these terms limits any rights you have under consumer law.</p>
+        <p>Refunds are covered by our <Link href="/refunds">refund policy</Link>. A refund does not remove your access to the content you bought. Nothing in these terms limits any rights you have under consumer law.</p>
 
         <h2>Your account and acceptable use</h2>
         <p>Your access is for your own personal study. Please don&apos;t:</p>
@@ -77,7 +77,7 @@ export default function TermsPage() {
         <p>We may update these terms. When we do, we will change the date at the top of this page. Changes do not take away access you have already paid for.</p>
 
         <h2>Governing law</h2>
-        <p>[Governing law]</p>
+        <p>These terms are governed by the laws of Switzerland, and the courts of Switzerland have jurisdiction over any dispute about them. This does not take away any mandatory consumer protection you have under the law of the country where you live.</p>
 
         <h2>Contact</h2>
         <p>Questions about these terms: {mail}.</p>

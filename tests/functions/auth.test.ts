@@ -48,7 +48,7 @@ describe("magic link auth", () => {
     expect(await response.json()).toEqual({ success: true, message: "Magic link sent" });
 
     const resendPayload = JSON.parse((globalThis.fetch as ReturnType<typeof vi.fn>).mock.calls[0][1]?.body as string);
-    expect(resendPayload.from).toBe("SNReady <jesse@snready.com>");
+    expect(resendPayload.from).toBe("SNReady <support@snready.com>");
     expect(resendPayload.reply_to).toBe("support@snready.com");
     const link = resendPayload.text.match(/https:\/\/\S+/)?.[0];
     expect(link).toBeTruthy();
@@ -62,7 +62,7 @@ describe("magic link auth", () => {
     const response = await sendMagicLink({
       request: new Request("https://preview.snready.pages.dev/api/auth/send-magic-link", {
         method: "POST",
-        body: JSON.stringify({ email: "jesse@example.com", redirect: "/admin/coverage" }),
+        body: JSON.stringify({ email: "user@example.com", redirect: "/admin/coverage" }),
         headers: { "Content-Type": "application/json" },
       }),
       env: {
@@ -82,7 +82,7 @@ describe("magic link auth", () => {
     const response = await sendMagicLink({
       request: new Request("https://preview.snready.pages.dev/api/auth/send-magic-link", {
         method: "POST",
-        body: JSON.stringify({ email: "jesse@example.com", dryRun: true }),
+        body: JSON.stringify({ email: "user@example.com", dryRun: true }),
         headers: { "Content-Type": "application/json" },
       }),
       env: {
@@ -106,7 +106,7 @@ describe("magic link auth", () => {
     const response = await sendMagicLink({
       request: new Request("https://preview.snready.pages.dev/api/auth/send-magic-link", {
         method: "POST",
-        body: JSON.stringify({ email: "jesse@example.com", redirect: "/admin/coverage" }),
+        body: JSON.stringify({ email: "user@example.com", redirect: "/admin/coverage" }),
         headers: { "Content-Type": "application/json" },
       }),
       env: {
@@ -128,7 +128,7 @@ describe("magic link auth", () => {
     const response = await sendMagicLink({
       request: new Request("https://preview.snready.pages.dev/api/auth/send-magic-link", {
         method: "POST",
-        body: JSON.stringify({ email: "jesse@example.com", redirect: "/admin/coverage" }),
+        body: JSON.stringify({ email: "user@example.com", redirect: "/admin/coverage" }),
         headers: { "Content-Type": "application/json" },
       }),
       env: {
@@ -153,7 +153,7 @@ describe("magic link auth", () => {
     const response = await sendMagicLink({
       request: new Request("https://snready.com/api/auth/send-magic-link", {
         method: "POST",
-        body: JSON.stringify({ email: "jesse@example.com" }),
+        body: JSON.stringify({ email: "user@example.com" }),
         headers: { "Content-Type": "application/json" },
       }),
       env: {
@@ -177,7 +177,7 @@ describe("magic link auth", () => {
     await sendMagicLink({
       request: new Request("https://snready.com/api/auth/send-magic-link", {
         method: "POST",
-        body: JSON.stringify({ email: "jesse@example.com", redirect: "https://evil.example/phish" }),
+        body: JSON.stringify({ email: "user@example.com", redirect: "https://evil.example/phish" }),
         headers: { "Content-Type": "application/json" },
       }),
       env: {

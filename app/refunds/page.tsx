@@ -59,6 +59,9 @@ export default function RefundsPage() {
           <li>If you turned off customer follow-up emails, you won&apos;t get the check-in email, but you can still ask for a refund by email at any time.</li>
         </ul>
 
+        <h2>Your access after a refund</h2>
+        <p>A refund does not remove your access. You keep the questions you bought, including future updates, for as long as SNReady operates.</p>
+
         <h2>How refunds are paid</h2>
         <p>Payments are processed by Stripe, and refunds go back to the card or payment method you used. How long the money takes to appear depends on your bank or card issuer.</p>
 
