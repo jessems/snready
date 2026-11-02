@@ -70,7 +70,7 @@ export default function CancelContent() {
 
   const continueHref = checkoutIntent.returnUrl || (checkoutIntent.certification ? `/${checkoutIntent.certification}` : "/certifications");
   const practiceHref = checkoutIntent.certification
-    ? `/${checkoutIntent.certification}/practice-questions`
+    ? `/${checkoutIntent.certification}#practice-questions`
     : "/practice-questions";
 
   return (

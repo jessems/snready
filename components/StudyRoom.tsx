@@ -152,7 +152,7 @@ function CertificationIndex({ courses }: {
     return <>
     <input className="search" type="search" value={query} onChange={e => setQuery(e.target.value)} placeholder="Search certifications" aria-label="Search certifications"/>
     <div className="filters" aria-label="Certification category">{[["all", "All certifications"], ["core", "Platform essentials"], ["specialist", "Implementation specialists"], ["free", "Free to study"]].map(([value, label]) => <button key={value} className={`filter ${filter === value ? "active" : ""}`} aria-pressed={filter === value} onClick={() => setFilter(value)}>{label}</button>)}</div>
-    <div className="course-grid">{shown.length ? shown.map(c => <Link key={c.slug} className="course" href={`/${c.slug}/practice-questions`}>
+    <div className="course-grid">{shown.length ? shown.map(c => <Link key={c.slug} className="course" href={`/${c.slug}#practice-questions`}>
       <div className="course-top">
         <span>{c.slug.startsWith("cis-") ? "SPECIALIST" : "PLATFORM"}</span>
         <span>{c.free ? "ALL ACCESS FREE" : "TRY FREE · $9 FULL ACCESS"}</span>
@@ -166,7 +166,7 @@ function CertificationIndex({ courses }: {
     </Link>) : <p className="empty">No matching certifications. Try another search.</p>}</div>
     <div className="catalog-bottom">
     <span role="status">Showing {shown.length} of {matches.length} certifications</span>{!query.trim() && filter === "all" && <button className="button outline" onClick={() => setExpanded(!expanded)}>{expanded ? "Show featured certifications" : `Show all ${ready.length} certifications`}</button>}</div>
-    <nav className="small-note" aria-label="Practice questions by certification">Practice questions for every certification: {ready.map((c, i) => <span key={c.slug}>{i > 0 && " · "}<Link href={`/${c.slug}/practice-questions`}>{c.name}</Link></span>)}</nav>
+    <nav className="small-note" aria-label="Practice questions by certification">Practice questions for every certification: {ready.map((c, i) => <span key={c.slug}>{i > 0 && " · "}<Link href={`/${c.slug}#practice-questions`}>{c.name}</Link></span>)}</nav>
     {courses.some(c => !c.ready) && <p className="small-note">Coming next: {courses.filter(c => !c.ready).map(c => <Link key={c.slug} href={`/${c.slug}`}>{c.name} </Link>)}</p>}
   </>;
 }

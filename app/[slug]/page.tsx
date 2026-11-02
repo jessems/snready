@@ -2,7 +2,8 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CheckoutButton } from "@/components/CheckoutButton";
-import { SampleQuestions } from "@/components/SampleQuestions";
+import { QuestionsWithPaywall } from "@/components/QuestionsWithPaywall";
+import { QuestionListingStatus } from "@/components/QuestionListingStatus";
 import {
   getCertificationBySlug,
   getCertificationSlugs,
@@ -13,6 +14,7 @@ import {
   getDaysUntilDeltaDeadline,
   isDeltaWindowOpen,
   getFreeQuestionsForCertification,
+  getAllQuestionsForCertification,
   getFreeQuestionCountForTopic,
   getExamTips,
   getPricingSummary,
@@ -24,6 +26,9 @@ import { RelatedResources } from "@/components/RelatedResources";
 import { breadcrumbs, generateBreadcrumbJsonLd } from "@/lib/breadcrumbs";
 import { TeamByline } from "@/components/TeamByline";
 import { HUB_DEEP_DIVES } from "@/components/hub";
+import { OfficialPrepSources, getOfficialDomainNames } from "@/components/hub/OfficialPrepSources";
+import { HUB_QUESTIONS_ANCHOR } from "@/lib/hubs";
+import { getStudyGuideSlugs } from "@/lib/study-guides";
 import { authorJsonLd } from "@/lib/author";
 import { robotsForCertPage } from "@/lib/seo-indexing";
 import {
@@ -54,56 +59,54 @@ export async function generateMetadata({
   }
 
   const totalQuestions = getTotalQuestionCount(slug);
+  const freeQuestions = getTotalFreeQuestionCount(slug);
 
-  // Base keywords
+  // This page is the cert's one canonical hub (lib/hubs.ts): exam facts, the
+  // official blueprint, courses and docs, and the practice questions. What the
+  // free questions cover comes from the official blueprint domains, so the
+  // description is right for every cert.
+  const domainNames = getOfficialDomainNames(slug);
+  const coverage = (domainNames.length ? domainNames : cert.domains.map((d) => d.name)).slice(0, 3);
+  const coverageText = coverage.length
+    ? ` covering ${coverage.slice(0, -1).join(", ")}${coverage.length > 1 ? " and " : ""}${coverage[coverage.length - 1]}`
+    : "";
+
   const keywords = [
-    `${cert.name} practice test`,
+    `${cert.name} practice questions`,
     `ServiceNow ${cert.name} certification`,
-    `${cert.name} study guide`,
     `${cert.fullName} exam prep`,
   ];
 
-  const description =
-    totalQuestions > 0
-      ? `Prepare for the ServiceNow ${cert.fullName} (${cert.name}) exam with ${totalQuestions} practice questions. Free sample questions and study guides.`
-      : `${cert.name} practice questions are coming soon. See the ServiceNow ${cert.fullName} (${cert.name}) exam format, prerequisites and official resources.`;
-
-  // The landing page is the exam guide; the practice-questions hub targets
-  // "practice questions" queries, so the two titles don't compete.
-  const title = totalQuestions > 0
-    ? `${cert.fullName} (${cert.name}): Exam Guide & Practice Questions`
-    : `${cert.fullName} (${cert.name}): Exam Guide, Practice Questions Coming Soon`;
-
-  // Free certifications (lib/free-certs.ts): say the full bank is free.
-  if (isCertificationFree(slug) && totalQuestions > 0) {
+  if (totalQuestions === 0) {
+    const title = `${cert.fullName} (${cert.name}): Exam Guide, Practice Questions Coming Soon`;
+    const description = `${cert.name} practice questions are coming soon. See the ServiceNow ${cert.fullName} (${cert.name}) exam format, prerequisites and official resources.`;
     return {
       title,
-      description: `ServiceNow ${cert.fullName} (${cert.name}) exam guide with all ${totalQuestions} practice questions free, detailed explanations and a free timed mock exam. No signup, no paywall.`,
-      keywords: [...keywords, `free ${cert.name} practice test`],
-      alternates: {
-        canonical: `/${slug}`,
-      },
-      openGraph: {
-        title,
-        description: `${cert.name} exam guide with all ${totalQuestions} practice questions and a timed mock exam, free. No signup.`,
-      },
+      description,
+      keywords,
+      // "Coming soon" certs (no questions yet) stay out of the index.
+      robots: robotsForCertPage(slug, "", totalQuestions),
+      alternates: { canonical: `/${slug}` },
+      openGraph: { title, description },
     };
   }
+
+  const title = `${cert.name} Practice Questions with Explanations`;
+  const description = isCertificationFree(slug)
+    ? `All ${totalQuestions} original ${cert.name} practice questions are free, with explanations, a timed mock exam, and the official blueprint, recommended courses and docs. No signup.`
+    : `${totalQuestions} original practice questions for the ServiceNow ${cert.fullName} (${cert.name}) exam, with explanations. ${freeQuestions} free${coverageText}, plus the official blueprint, recommended courses and docs.`;
 
   return {
     title,
     description,
     keywords,
-    // "Coming soon" certs (no questions yet) stay out of the index.
     robots: robotsForCertPage(slug, "", totalQuestions),
     alternates: {
       canonical: `/${slug}`,
     },
     openGraph: {
       title,
-      description: totalQuestions > 0
-        ? `Exam format, official resources and ${totalQuestions} original practice questions for the ServiceNow ${cert.name} exam.`
-        : `Exam format and official resources for the ServiceNow ${cert.name} exam. Practice questions are coming soon.`,
+      description,
     },
   };
 }
@@ -123,11 +126,15 @@ export default async function CertificationPage({ params }: PageProps) {
   const certIsFree = isCertificationFree(slug);
   const { paidCount } = getPricingSummary();
 
-  // Load sample questions for the teaser section (5 questions from the free pool)
-  const allFreeQuestions = isReady
-    ? await getFreeQuestionsForCertification(slug)
-    : [];
-  const sampleQuestions = allFreeQuestions.slice(0, 5);
+  // Free questions render in full (with explanations); only the premium count
+  // ships in the static page. Premium content comes from /api/questions after
+  // the paid-access check.
+  const allQuestions = isReady ? await getAllQuestionsForCertification(slug) : [];
+  const freeQuestions = isReady ? await getFreeQuestionsForCertification(slug) : [];
+  const freeQuestionIds = new Set(freeQuestions.map((q) => q.id));
+  const premiumQuestionCount = allQuestions.filter((q) => !freeQuestionIds.has(q.id)).length;
+  const hasOfficialBlueprint = getOfficialDomainNames(slug).length > 0;
+  const studyGuideSlugs = new Set(getStudyGuideSlugs());
 
   // Delta exam info
   const hasDeltaExam = cert.deltaExam?.isMainline === true;
@@ -176,7 +183,7 @@ export default async function CertificationPage({ params }: PageProps) {
             priceCurrency: "USD",
             category: "Free",
             availability: "https://schema.org/InStock",
-            url: `https://snready.com/${slug}/practice-questions`,
+            url: `https://snready.com/${slug}`,
           },
         }
       : {}),
@@ -272,8 +279,11 @@ export default async function CertificationPage({ params }: PageProps) {
                   )}
                 </div>
                 <h1 className="mt-4 text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
-                  {cert.name} - {cert.fullName}
+                  {isReady ? `${cert.name} Practice Questions with Explanations` : `${cert.name} - ${cert.fullName}`}
                 </h1>
+                {isReady && (
+                  <p className="mt-2 text-xl text-emerald-600">{cert.fullName}</p>
+                )}
                 <p className="mt-4 max-w-2xl text-lg text-zinc-600 dark:text-zinc-400">
                   {deepDive ? deepDive.intro : cert.description}
                 </p>
@@ -302,12 +312,12 @@ export default async function CertificationPage({ params }: PageProps) {
                       Take Mock Exam
                     </Link>
                     <Link
-                      href={`/${slug}/practice-questions`}
+                      href={`#${HUB_QUESTIONS_ANCHOR}`}
                       className="inline-flex h-12 items-center justify-center rounded-lg border border-zinc-300 bg-white px-6 text-base font-medium text-zinc-900 transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-100"
                     >
                       Practice Questions
                     </Link>
-                    {["cis-df", "csa"].includes(slug) && (
+                    {studyGuideSlugs.has(slug) && (
                       <Link
                         href={`/${slug}/study-guide`}
                         className="inline-flex h-12 items-center justify-center rounded-lg border border-emerald-300 bg-emerald-50 px-6 text-base font-medium text-emerald-700 transition-colors hover:bg-emerald-100 dark:border-emerald-800 dark:bg-emerald-950/40 dark:text-emerald-300"
@@ -462,8 +472,11 @@ export default async function CertificationPage({ params }: PageProps) {
         {/* Sourced long-form deep dive */}
         {deepDive && <deepDive.Component />}
 
-        {/* Exam Domains */}
-        {!deepDive && (
+        {/* Official blueprint, courses and docs (merged from /{cert}/prepare) */}
+        <OfficialPrepSources certification={cert} showBlueprint={!deepDive} />
+
+        {/* Exam Domains (only when there is no official blueprint data) */}
+        {!deepDive && !hasOfficialBlueprint && (
         <section className="py-16">
           <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
@@ -588,7 +601,6 @@ export default async function CertificationPage({ params }: PageProps) {
             <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
               <ExamTipsSnippet
                 tips={examTips}
-                certSlug={slug}
                 certName={cert.name}
               />
             </div>
@@ -596,7 +608,7 @@ export default async function CertificationPage({ params }: PageProps) {
         )}
 
         {/* Topics with Questions */}
-        <section className="bg-zinc-50 py-16 dark:bg-zinc-900">
+        <section id="practice-by-topic" className="scroll-mt-24 bg-zinc-50 py-16 dark:bg-zinc-900">
           <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
             <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-50">
               Practice by Topic
@@ -675,13 +687,32 @@ export default async function CertificationPage({ params }: PageProps) {
           </div>
         </section>
 
-        {/* Sample Questions */}
-        {isReady && sampleQuestions.length > 0 && (
-          <SampleQuestions
-            questions={sampleQuestions}
-            certSlug={slug}
-            certName={cert.name}
-          />
+        {/* Practice questions (merged from /{cert}/practice-questions) */}
+        {isReady && (
+          <section id={HUB_QUESTIONS_ANCHOR} className="scroll-mt-24 py-16">
+            <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+              <div className="mb-6 flex flex-wrap items-baseline justify-between gap-2">
+                <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-50">
+                  {cert.name} practice questions
+                </h2>
+                <span className="text-sm text-zinc-500">
+                  {certIsFree
+                    ? `${totalQuestions} questions from ${topics.length} topics, all free`
+                    : `${totalQuestions} questions from ${topics.length} topics, ${freeQuestionCount} free`}
+                </span>
+              </div>
+              <QuestionListingStatus questions={allQuestions} className="mb-6" />
+              <QuestionsWithPaywall
+                freeQuestions={freeQuestions}
+                premiumQuestionCount={premiumQuestionCount}
+                certification={cert.name}
+                certificationSlug={slug}
+                examCost={cert.examDetails?.cost ?? undefined}
+                freeQuestionCount={freeQuestionCount}
+                paidCertCount={paidCount}
+              />
+            </div>
+          </section>
         )}
 
         {/* Pricing CTA */}
@@ -706,7 +737,7 @@ export default async function CertificationPage({ params }: PageProps) {
 
                   <div className="mt-10 grid max-w-2xl mx-auto gap-4 sm:grid-cols-2">
                     <Link
-                      href={`/${slug}/practice-questions`}
+                      href={`#${HUB_QUESTIONS_ANCHOR}`}
                       className="block w-full rounded-xl bg-white py-4 text-center text-lg font-semibold text-emerald-700 transition-colors hover:bg-emerald-50"
                     >
                       Start Practicing — Free
@@ -895,7 +926,7 @@ export default async function CertificationPage({ params }: PageProps) {
                     Start Free Practice
                   </Link>
                   <Link
-                    href={`/${slug}/practice-questions`}
+                    href="#practice-by-topic"
                     className="inline-flex h-12 items-center justify-center rounded-lg border border-white px-8 text-base font-medium text-white transition-colors hover:bg-emerald-500"
                   >
                     View All Topics
@@ -910,7 +941,7 @@ export default async function CertificationPage({ params }: PageProps) {
                     Try CSA Practice
                   </Link>
                   <Link
-                    href="/#certifications"
+                    href="/certifications"
                     className="inline-flex h-12 items-center justify-center rounded-lg border border-white px-8 text-base font-medium text-white transition-colors hover:bg-emerald-500"
                   >
                     Browse All Exams

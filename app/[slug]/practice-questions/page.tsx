@@ -20,6 +20,7 @@ import {
 import { generateBreadcrumbJsonLd } from "@/lib/breadcrumbs";
 import { getCanonicalUrl } from "@/lib/seo";
 import { robotsForCertPage } from "@/lib/seo-indexing";
+import { certHubPath } from "@/lib/hubs";
 import {
   CUT_SCORE_LABEL,
   CUT_SCORE_NOTE,
@@ -40,8 +41,6 @@ const CERT_LANDING_CONTENT: Record<
   {
     heroEyebrow: string;
     heroDescription: string;
-    /** What the free questions cover, completing the meta description sentence. */
-    metaCoverage: string;
     trustPoints: string[];
     featureHighlights: string[];
     roleFit: string[];
@@ -52,7 +51,6 @@ const CERT_LANDING_CONTENT: Record<
     heroEyebrow: "Built for implementation specialists: practice decisions, not memorization.",
     heroDescription:
       "Practice the decision patterns the CIS-ITSM exam blueprint covers: incident vs. problem, CAB vs. ECAB, request fulfillment design, SLA behavior, and reporting tradeoffs.",
-    metaCoverage: "Incident, Change, Problem, Request, SLA, and reporting",
     trustPoints: [
       "__TOTAL__ scenario-style questions mapped across all __TOPICS__ exam topics",
       `${FREE_QUESTIONS_PER_CERT} free questions before you pay anything`,
@@ -75,7 +73,6 @@ const CERT_LANDING_CONTENT: Record<
     heroEyebrow: "Built for Discovery implementation practice: decisions, not memorization.",
     heroDescription:
       "Practice the implementation decisions the CIS-Discovery exam emphasizes: Pattern Designer logic, MID Server and credential setup, Discovery status troubleshooting, CMDB integration, and rollout readiness.",
-    metaCoverage: "pattern design, Discovery configuration, the CMDB, and engagement readiness",
     trustPoints: [
       "__TOTAL__ scenario-style questions mapped across all __DOMAINS__ exam domains",
       `${FREE_QUESTIONS_PER_CERT} free questions before you pay anything`,
@@ -112,44 +109,34 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
-  const landingContent = CERT_LANDING_CONTENT[slug];
+  // The /{cert} hub is the canonical, indexable page for this cert and carries
+  // the same practice questions (lib/hubs.ts). This full list stays live for
+  // visitors and paid-search landings, noindexed and canonicalised to the hub.
   const questionTotal = getTotalQuestionCount(slug);
   const title = questionTotal === 0
     ? `${certification.name} Practice Questions (Coming Soon)`
-    : landingContent
-    ? `${certification.name} Practice Questions Mapped to the Exam Blueprint`
-    : `${certification.name} Practice Questions with Explanations`;
+    : `All ${certification.name} Practice Questions by Topic`;
   const description = questionTotal === 0
     ? `${certification.name} practice questions are coming soon. See the ServiceNow ${certification.fullName} exam format and official resources.`
-    : landingContent
-    ? `${getTotalQuestionCount(slug)} original ${certification.name} practice questions mapped to the current exam blueprint. ${FREE_QUESTIONS_PER_CERT} free questions covering ${landingContent.metaCoverage}, with detailed explanations.`
-    : `${getTotalQuestionCount(slug)} original practice questions for the ServiceNow ${certification.fullName} (${certification.name}) exam, organized by topic. ${FREE_QUESTIONS_PER_CERT} free questions with detailed explanations.`;
-
-  // Free certifications (lib/free-certs.ts): the whole bank is free.
-  const freeCert = isCertificationFree(slug);
-  const metaTitle = freeCert && questionTotal > 0
-    ? `${certification.name} Practice Questions — All ${getTotalQuestionCount(slug)} Free`
-    : title;
-  const metaDescription = freeCert && questionTotal > 0
-    ? `All ${getTotalQuestionCount(slug)} ServiceNow ${certification.name} practice questions free, with detailed explanations and a free timed mock exam. No signup, no paywall.`
-    : description;
+    : `The full list of ${questionTotal} original practice questions for the ServiceNow ${certification.fullName} (${certification.name}) exam, organized by topic, with explanations.`;
+  const hubUrl = getCanonicalUrl(certHubPath(slug));
 
   return {
-    title: metaTitle,
-    description: metaDescription,
+    title,
+    description,
     robots: robotsForCertPage(slug, "practice-questions", questionTotal),
     alternates: {
-      canonical: getCanonicalUrl(`/${slug}/practice-questions`),
+      canonical: hubUrl,
     },
     openGraph: {
-      title: metaTitle,
-      description: metaDescription,
-      url: getCanonicalUrl(`/${slug}/practice-questions`),
+      title,
+      description,
+      url: hubUrl,
       images: ['/og-default.png'],
     },
     twitter: {
-      title: metaTitle,
-      description: metaDescription,
+      title,
+      description,
       images: ['/og-default.png'],
     },
   };
@@ -187,7 +174,7 @@ export default async function PracticeTestPage({ params }: Props) {
   const breadcrumbItems = [
     { name: "Home", url: "/" },
     { name: "Practice Questions", url: "/practice-questions" },
-    { name: certification.name, url: `/${slug}/practice-questions` },
+    { name: certification.name, url: certHubPath(slug) },
   ];
 
   const courseSchema = {
@@ -230,7 +217,7 @@ export default async function PracticeTestPage({ params }: Props) {
             <span>→</span>
             <Link href="/practice-questions" className="hover:text-zinc-700 dark:hover:text-zinc-300">Practice Questions</Link>
             <span>→</span>
-            <span>{certification.name}</span>
+            <Link href={certHubPath(slug)} className="hover:text-zinc-700 dark:hover:text-zinc-300">{certification.name}</Link>
           </div>
 
           <h1 className="mt-4 text-4xl font-bold text-zinc-900 dark:text-zinc-100">
@@ -492,16 +479,10 @@ export default async function PracticeTestPage({ params }: Props) {
 
                 <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:justify-center">
                   <Link
-                    href={`/${slug}`}
+                    href={certHubPath(slug)}
                     className="inline-flex items-center justify-center rounded-lg bg-emerald-600 px-8 py-3 font-semibold text-white transition-colors hover:bg-emerald-700"
                   >
-                    Certification Details
-                  </Link>
-                  <Link
-                    href={`/${slug}/prepare`}
-                    className="inline-flex items-center justify-center rounded-lg border border-emerald-600 px-8 py-3 font-semibold text-emerald-600 transition-colors hover:bg-emerald-50 dark:hover:bg-emerald-950"
-                  >
-                    View Exam Prep
+                    {certification.name} exam guide, blueprint and courses
                   </Link>
                 </div>
               </div>
@@ -524,7 +505,7 @@ export default async function PracticeTestPage({ params }: Props) {
 
                 <div className="mt-6">
                   <Link
-                    href="/csa/practice-questions"
+                    href="/csa"
                     className="inline-flex items-center justify-center rounded-lg bg-emerald-600 px-8 py-3 font-semibold text-white transition-colors hover:bg-emerald-700"
                   >
                     Try CSA Practice Questions
@@ -540,7 +521,7 @@ export default async function PracticeTestPage({ params }: Props) {
               </h2>
               <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
                 <Link
-                  href="/csa/practice-questions"
+                  href="/csa"
                   className="rounded-lg border border-zinc-200 p-6 transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:hover:bg-zinc-800"
                 >
                   <h3 className="font-semibold text-zinc-900 dark:text-zinc-100">
@@ -554,7 +535,7 @@ export default async function PracticeTestPage({ params }: Props) {
                   </span>
                 </Link>
                 <Link
-                  href="/cis-df/practice-questions"
+                  href="/cis-df"
                   className="rounded-lg border border-zinc-200 p-6 transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:hover:bg-zinc-800"
                 >
                   <h3 className="font-semibold text-zinc-900 dark:text-zinc-100">

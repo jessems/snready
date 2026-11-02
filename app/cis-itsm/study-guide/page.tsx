@@ -5,7 +5,7 @@ import { generateBreadcrumbJsonLd } from "@/lib/breadcrumbs";
 import { CUT_SCORE_LABEL } from "@/lib/site-facts";
 
 export const metadata: Metadata = {
-  title: "How to Pass CIS-ITSM — Complete ServiceNow ITSM Study Guide [2026]",
+  title: "How to Pass CIS-ITSM — Complete ServiceNow ITSM Study Guide",
   description:
     "Complete ServiceNow CIS-ITSM study guide with official domain weights, a 4-week study calendar, hands-on ITSM implementation labs, scenario drills, common mistakes, readiness checklist, and CIS-ITSM practice questions.",
   keywords: [
@@ -485,7 +485,7 @@ export default async function CISITSMStudyGuidePage() {
                 Take a Timed Mock Exam
               </Link>
               <Link
-                href="/cis-itsm/practice-questions"
+                href="/cis-itsm#practice-questions"
                 className="inline-flex h-12 items-center justify-center rounded-lg border border-zinc-300 bg-white px-6 text-base font-medium text-zinc-900 transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:hover:bg-zinc-800"
               >
                 View All {totalQuestions}+ Questions
@@ -743,7 +743,7 @@ export default async function CISITSMStudyGuidePage() {
                 Start CIS-ITSM Mock Exam
               </Link>
               <Link
-                href="/cis-itsm/practice-questions"
+                href="/cis-itsm#practice-questions"
                 className="inline-flex h-12 items-center justify-center rounded-lg border border-white/40 px-6 text-base font-medium text-white transition-colors hover:bg-white/10"
               >
                 Practice All {totalQuestions}+ Questions

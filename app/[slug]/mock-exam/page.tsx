@@ -126,7 +126,7 @@ export default async function MockExamPage({ params }: Props) {
             </p>
             <div className="mt-6">
               <Link
-                href={`/${slug}/practice-questions`}
+                href={`/${slug}#practice-questions`}
                 className="inline-flex items-center justify-center rounded-lg bg-emerald-600 px-6 py-3 font-semibold text-white transition-colors hover:bg-emerald-700"
               >
                 Try Practice Questions Instead

@@ -6,7 +6,7 @@ import { generateBreadcrumbJsonLd } from "@/lib/breadcrumbs";
 import { CUT_SCORE_LABEL, EXAM_DELIVERY_SHORT } from "@/lib/site-facts";
 
 export const metadata: Metadata = {
-  title: "How to Pass CIS-DF (Data Foundations) — Complete Study Guide [2026]",
+  title: "How to Pass CIS-DF (Data Foundations) — Complete Study Guide",
   description:
     "Reddit-informed CIS-DF study guide for the ServiceNow Certified Implementation Specialist - Data Foundations exam. Includes a 4-week study calendar, domain-by-domain plan, PDI lab checklist, common mistakes, and free practice questions. Govern (35%) is the highest-weight domain — here's how to master it.",
   keywords: [
@@ -563,7 +563,7 @@ export default async function CISDFStudyGuidePage() {
                 Take a Timed Mock Exam
               </Link>
               <Link
-                href="/cis-df/practice-questions"
+                href="/cis-df#practice-questions"
                 className="inline-flex h-12 items-center justify-center gap-2 rounded-lg border border-zinc-300 bg-white px-6 text-base font-medium text-zinc-900 transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:hover:bg-zinc-800"
               >
                 View All {totalQuestions}+ Questions
@@ -1043,7 +1043,7 @@ export default async function CISDFStudyGuidePage() {
                 </p>
               </div>
               <Link
-                href="/cis-df/practice-questions"
+                href="/cis-df#practice-questions"
                 className="hidden text-sm font-medium text-emerald-600 hover:text-emerald-700 dark:text-emerald-400 sm:block"
               >
                 See all {totalQuestions}+ questions →
@@ -1310,7 +1310,7 @@ export default async function CISDFStudyGuidePage() {
                   </p>
                 </div>
                 <Link
-                  href="/cis-df/practice-questions"
+                  href="/cis-df#practice-questions"
                   className="inline-flex shrink-0 items-center justify-center rounded-lg bg-emerald-600 px-4 py-2 text-sm font-semibold text-white hover:bg-emerald-700"
                 >
                   Drill weak domains →
@@ -1365,7 +1365,7 @@ export default async function CISDFStudyGuidePage() {
                 Take the CIS-DF Timed Mock Exam
               </Link>
               <Link
-                href="/cis-df/practice-questions"
+                href="/cis-df#practice-questions"
                 className="inline-flex h-12 items-center justify-center gap-2 rounded-lg border-2 border-emerald-400 px-8 text-base font-medium text-white transition-colors hover:bg-emerald-600"
               >
                 Browse All Questions

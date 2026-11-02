@@ -7,7 +7,7 @@ import { CUT_SCORE_LABEL, EXAM_DELIVERY_SHORT } from "@/lib/site-facts";
 
 export const metadata: Metadata = {
   title:
-    "How to Pass CSA — Complete ServiceNow Administrator Study Guide [2026]",
+    "How to Pass CSA — Complete ServiceNow Administrator Study Guide",
   description:
     "Complete ServiceNow CSA study guide with official domain weights, a 4-week study calendar, PDI lab checklist, scenario drills, common mistakes, readiness checklist, and CSA practice questions.",
   keywords: [
@@ -477,7 +477,7 @@ export default function CSAStudyGuidePage() {
                 Take a Timed CSA Mock Exam
               </Link>
               <Link
-                href="/csa/practice-questions"
+                href="/csa#practice-questions"
                 className="inline-flex h-12 items-center justify-center rounded-lg border border-zinc-300 bg-white px-6 text-base font-medium text-zinc-900 transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:hover:bg-zinc-800"
               >
                 View All {totalQuestions}+ Questions
@@ -808,7 +808,7 @@ export default function CSAStudyGuidePage() {
                 </p>
               </div>
               <Link
-                href="/csa/practice-questions"
+                href="/csa#practice-questions"
                 className="hidden text-sm font-medium text-emerald-600 hover:text-emerald-700 dark:text-emerald-400 sm:block"
               >
                 See all {totalQuestions}+ questions →
@@ -906,7 +906,7 @@ export default function CSAStudyGuidePage() {
                   </p>
                 </div>
                 <Link
-                  href="/csa/practice-questions"
+                  href="/csa#practice-questions"
                   className="inline-flex shrink-0 items-center justify-center rounded-lg bg-emerald-600 px-4 py-2 text-sm font-semibold text-white hover:bg-emerald-700"
                 >
                   Drill weak domains →
@@ -948,7 +948,7 @@ export default function CSAStudyGuidePage() {
                 Take the CSA Timed Mock Exam
               </Link>
               <Link
-                href="/csa/practice-questions"
+                href="/csa#practice-questions"
                 className="inline-flex h-12 items-center justify-center rounded-lg border-2 border-emerald-400 px-8 text-base font-medium text-white transition-colors hover:bg-emerald-600"
               >
                 Browse All Questions

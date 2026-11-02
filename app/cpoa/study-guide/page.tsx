@@ -7,7 +7,7 @@ import { CUT_SCORE_LABEL } from "@/lib/site-facts";
 
 export const metadata: Metadata = {
   title:
-    "How to Pass CPOA — Complete ServiceNow Platform Owner Study Guide [2026]",
+    "How to Pass CPOA — Complete ServiceNow Platform Owner Study Guide",
   description:
     "Complete ServiceNow CPOA study guide with official domain weights, a 4-week platform-owner study calendar, governance decision matrix, hands-on lab checklist, scenario drills, common mistakes, readiness checklist, and CPOA practice questions.",
   keywords: [
@@ -546,7 +546,7 @@ export default async function CPOAStudyGuidePage() {
                 Take a Timed Mock Exam
               </Link>
               <Link
-                href="/cpoa/practice-questions"
+                href="/cpoa#practice-questions"
                 className="inline-flex h-12 items-center justify-center rounded-lg border border-zinc-300 bg-white px-6 text-base font-medium text-zinc-900 transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:hover:bg-zinc-800"
               >
                 View All {totalQuestions}+ Questions
@@ -951,7 +951,7 @@ export default async function CPOAStudyGuidePage() {
             </div>
             <div className="mt-6">
               <Link
-                href="/cpoa/practice-questions"
+                href="/cpoa#practice-questions"
                 className="inline-flex items-center justify-center rounded-lg bg-emerald-600 px-5 py-3 text-sm font-semibold text-white hover:bg-emerald-700"
               >
                 Practice all {totalQuestions}+ CPOA questions →
@@ -998,7 +998,7 @@ export default async function CPOAStudyGuidePage() {
                   Start CPOA Mock Exam
                 </Link>
                 <Link
-                  href="/cpoa/practice-questions"
+                  href="/cpoa#practice-questions"
                   className="inline-flex h-12 items-center justify-center rounded-lg border border-emerald-300 px-6 text-base font-semibold text-white hover:bg-emerald-700"
                 >
                   Browse Practice Questions

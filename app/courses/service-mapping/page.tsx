@@ -690,7 +690,7 @@ export default function ServiceMappingCoursePage() {
 
             <p className="text-lg leading-8 text-slate-700 dark:text-slate-300">
 
-              Studying for CIS-Data Foundations? The <Link href="/cis-df" className="font-semibold text-cyan-700 underline dark:text-cyan-300">CIS-Data Foundations exam overview</Link> covers how mapped services, IRE, CMDB Health and CSDM fit the exam blueprint, with <Link href="/cis-df/practice-questions" className="font-semibold text-cyan-700 underline dark:text-cyan-300">CIS-DF practice questions</Link>.
+              Studying for CIS-Data Foundations? The <Link href="/cis-df" className="font-semibold text-cyan-700 underline dark:text-cyan-300">CIS-Data Foundations exam overview</Link> covers how mapped services, IRE, CMDB Health and CSDM fit the exam blueprint, with <Link href="/cis-df#practice-questions" className="font-semibold text-cyan-700 underline dark:text-cyan-300">CIS-DF practice questions</Link>.
 
             </p>
 

@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { getAllPosts, getAllTags } from "@/data/blog/posts";
+import { getAllTags } from "@/data/blog/posts";
+import { getPublishedPosts } from "@/lib/blog";
 
 export const metadata: Metadata = {
   title: "ServiceNow Certification Blog - Tips, Guides & Resources",
@@ -15,7 +16,7 @@ export const metadata: Metadata = {
 };
 
 export default function BlogPage() {
-  const posts = getAllPosts();
+  const posts = getPublishedPosts();
   const tags = getAllTags();
 
   return (

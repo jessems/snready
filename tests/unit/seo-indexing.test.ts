@@ -1,6 +1,5 @@
 import { describe, expect, it } from "vitest";
 import {
-  INDEXABLE_COMPARE_SLUGS,
   INDEXABLE_DELTA_PAGES,
   INDEXABLE_TOPIC_PAGES,
   isIndexableCertPage,
@@ -10,7 +9,6 @@ import {
   robotsForDeltaPage,
   robotsForPath,
 } from "@/lib/seo-indexing";
-import { getAllComparisonSlugs } from "@/lib/comparisons";
 import { getAllDeltaSlugs, getAllTopicSlugs, getPublicDeltaQuestions } from "@/lib/data";
 import sitemap from "@/app/sitemap";
 
@@ -18,14 +16,11 @@ describe("isIndexablePath (lib/seo-indexing.ts)", () => {
   it.each([
     "/",
     "/csa",
-    "/csa/practice-questions",
     "/csa/practice-questions/ui-navigation",
     "/csa/delta/brazil",
     "/cad/delta/brazil",
     "/cis-df/delta/brazil",
     "/cis-itsm/delta/brazil",
-    "/compare",
-    "/compare/csa-vs-cis-itsm",
     "/blog/some-post",
     "/courses",
     "/courses/service-mapping",
@@ -36,12 +31,15 @@ describe("isIndexablePath (lib/seo-indexing.ts)", () => {
   });
 
   it.each([
+    "/csa/practice-questions",
+    "/cis-itsm/practice-questions",
     "/csa/mock-exam",
     "/csa/practice-questions/incident-management",
     "/csa/delta/zurich",
     "/cta/delta/brazil",
     "/cis-csm/delta/brazil",
-    "/compare/csa-vs-cad",
+    "/compare",
+    "/compare/csa-vs-cis-itsm",
     "/salaries",
     "/salaries/developer",
     "/vs",
@@ -53,8 +51,6 @@ describe("isIndexablePath (lib/seo-indexing.ts)", () => {
   });
 
   it("only allowlists pages that exist", () => {
-    const compare = new Set(getAllComparisonSlugs());
-    for (const slug of INDEXABLE_COMPARE_SLUGS) expect(compare.has(slug)).toBe(true);
     const topics = new Set(getAllTopicSlugs().map((t) => `${t.certification}/${t.topic}`));
     for (const key of INDEXABLE_TOPIC_PAGES) expect(topics.has(key)).toBe(true);
     const deltas = new Set(getAllDeltaSlugs().map((d) => `${d.certification}/${d.release}`));
@@ -63,13 +59,16 @@ describe("isIndexablePath (lib/seo-indexing.ts)", () => {
 });
 
 describe("isIndexableCertPage (lib/seo-indexing.ts)", () => {
-  it("noindexes landing, hub and prep pages of a cert with no questions", () => {
-    for (const page of ["", "practice-questions", "prepare"]) {
-      expect(isIndexableCertPage("cta", page, 0)).toBe(false);
-      expect(robotsForCertPage("cta", page, 0)).toEqual({ index: false, follow: true });
-      expect(isIndexableCertPage("csa", page, 216)).toBe(true);
-      expect(robotsForCertPage("csa", page, 216)).toEqual({ index: true, follow: true });
-    }
+  it("noindexes the hub of a cert with no questions", () => {
+    expect(isIndexableCertPage("cta", "", 0)).toBe(false);
+    expect(robotsForCertPage("cta", "", 0)).toEqual({ index: false, follow: true });
+    expect(isIndexableCertPage("csa", "", 216)).toBe(true);
+    expect(robotsForCertPage("csa", "", 216)).toEqual({ index: true, follow: true });
+  });
+
+  it("always noindexes the full practice-question list (the hub is canonical)", () => {
+    expect(isIndexableCertPage("csa", "practice-questions", 216)).toBe(false);
+    expect(robotsForCertPage("cta", "practice-questions", 0)).toEqual({ index: false, follow: true });
   });
 
   it("still applies the path rules", () => {
@@ -122,13 +121,13 @@ describe("sitemap", () => {
     expect(urls).not.toContain(`${base}/cta/delta/brazil`);
   });
 
-  it("leaves out the pages of certs with no questions", async () => {
+  it("lists one hub per cert with questions, and no consolidated pages", async () => {
     const urls = (await sitemap()).map((e) => e.url);
     const base = "https://snready.com";
-    for (const page of ["", "/practice-questions", "/prepare"]) {
-      expect(urls).not.toContain(`${base}/cta${page}`);
-      expect(urls).toContain(`${base}/csa${page}`);
-    }
+    expect(urls).toContain(`${base}/csa`);
+    expect(urls).not.toContain(`${base}/cta`);
+    expect(urls.some((u) => /\/(practice-questions|prepare)$/.test(u) && u !== `${base}/practice-questions`)).toBe(false);
+    expect(urls.some((u) => /\/(compare|vs|salaries)(\/|$)/.test(u))).toBe(false);
   });
 
   it("lists the practice questions index and every study guide, with no duplicates", async () => {

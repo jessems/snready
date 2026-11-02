@@ -10,12 +10,12 @@ export default function CertificationCard({ certification: cert }: { certificati
   if (!cert.isReady) {
     return <div className="cert-index-card cert-index-coming">{meta}<h3>{cert.name}</h3><p>{cert.fullName}</p>{details}<div className="cert-index-bottom"><span>In preparation</span></div></div>;
   }
-  // Two links per card (exam guide and practice-questions hub), so the card is
+  // Two links per card (the hub and its practice-question list), so the card is
   // a div rather than one wrapping link.
   return <div className={`cert-index-card ${free ? "cert-index-free" : ""}`}>
     {meta}
     <h3><Link href={`/${cert.slug}`}>{cert.name}</Link></h3><p>{cert.fullName}</p>
     {details}
-    <div className="cert-index-bottom"><Link href={`/${cert.slug}`}>Exam guide</Link><Link href={`/${cert.slug}/practice-questions`}>{cert.totalQuestions} practice questions</Link></div>
+    <div className="cert-index-bottom"><Link href={`/${cert.slug}`}>Exam guide</Link><Link href={`/${cert.slug}#practice-questions`}>{cert.totalQuestions} practice questions</Link></div>
   </div>;
 }

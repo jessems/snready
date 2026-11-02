@@ -76,16 +76,4 @@ export const breadcrumbs = {
       },
     ];
   },
-
-  comparison(
-    cert1Name: string,
-    cert2Name: string,
-    slug: string
-  ): BreadcrumbItem[] {
-    return [
-      { name: "Home", url: "/" },
-      { name: "Compare Certifications", url: "/compare" },
-      { name: `${cert1Name} vs ${cert2Name}`, url: `/compare/${slug}` },
-    ];
-  },
 };

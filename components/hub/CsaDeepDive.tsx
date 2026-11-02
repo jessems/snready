@@ -225,7 +225,7 @@ export function CsaDeepDive() {
 
       <GuideSection id="csa-practice" eyebrow="Practice" title="Test yourself on the right layer">
         <p>
-          Every CSA question on SNReady is free. Try the sample questions further down this page, then work through <In href="/csa/practice-questions">all free CSA practice questions by topic</In>. When you get one wrong, ask which layer the correct answer lives in. That habit transfers to questions you haven&apos;t seen.
+          Every CSA question on SNReady is free. Try the sample questions further down this page, then work through <In href="/csa#practice-by-topic">all free CSA practice questions by topic</In>. When you get one wrong, ask which layer the correct answer lives in. That habit transfers to questions you haven&apos;t seen.
         </p>
         <StudyCluster certSlug="csa" currentPath="/csa" />
       </GuideSection>

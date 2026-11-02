@@ -7,13 +7,6 @@
 
 import type { Metadata } from "next";
 
-/** Compare pages that had search impressions and stay indexed. */
-export const INDEXABLE_COMPARE_SLUGS = new Set([
-  "csa-vs-cis-itsm",
-  "csa-vs-cis-csm",
-  "cis-itsm-vs-cis-csm",
-]);
-
 /** Topic practice pages (`/{cert}/practice-questions/{topic}`) that stay indexed. */
 export const INDEXABLE_TOPIC_PAGES = new Set([
   "cad/ui-policies-actions",
@@ -34,13 +27,12 @@ export const INDEXABLE_DELTA_PAGES = new Set([
 
 /** Human-readable list of the noindexed URL patterns, for docs and reports. */
 export const NOINDEX_PATTERNS = [
-  "/{cert}, /{cert}/practice-questions and /{cert}/prepare when the cert has no questions yet (e.g. cta)",
+  "/{cert} when the cert has no questions yet (e.g. cta)",
+  "/{cert}/practice-questions (canonicalises to the /{cert} hub; see lib/hubs.ts)",
   "/{cert}/mock-exam",
   "/{cert}/practice-questions/{topic} (except cad/ui-policies-actions, cis-df/csdm-fundamentals, csa/ui-navigation)",
   "/{cert}/delta/{release} (except csa, cad, cis-df and cis-itsm brazil; always when it has no questions)",
-  "/compare/{slug} (except csa-vs-cis-itsm, csa-vs-cis-csm, cis-itsm-vs-cis-csm)",
   "/salaries and /salaries/{segment}",
-  "/vs and /vs/{competitor}",
   "/version-diff/{version}/{product}",
 ] as const;
 
@@ -60,13 +52,15 @@ export function isIndexablePath(path: string): boolean {
   const parts = path.split(/[?#]/)[0].split("/").filter(Boolean);
   const [first, second, third, fourth] = parts;
 
-  if (first === "salaries" || first === "vs") return false;
-  if (first === "compare") return !second || INDEXABLE_COMPARE_SLUGS.has(second);
+  // /compare and /vs 301 elsewhere (lib/hubs.ts); salaries have no sourced data in the HTML.
+  if (first === "salaries" || first === "vs" || first === "compare") return false;
   if (first === "version-diff") return parts.length <= 2;
   if (!first || SECTION_ROOTS.has(first)) return true;
 
   // /{cert}/...
   if (second === "mock-exam") return false;
+  // The /{cert} hub is canonical; the full question list is a noindexed duplicate.
+  if (second === "practice-questions" && !third) return false;
   if (second === "practice-questions" && third && !fourth) {
     return INDEXABLE_TOPIC_PAGES.has(`${first}/${third}`);
   }
@@ -84,12 +78,12 @@ export function isIndexableDeltaPage(cert: string, release: string, questionCoun
 }
 
 /** Cert pages that only make sense once the cert has practice questions. */
-const CERT_CONTENT_PAGES = new Set(["", "practice-questions", "prepare"]);
+const CERT_CONTENT_PAGES = new Set(["", "practice-questions"]);
 
 /**
- * Whether a cert page (`/{cert}`, `/{cert}/practice-questions` or
- * `/{cert}/prepare`) may be indexed. A cert with no questions yet (e.g. cta)
- * is a "coming soon" placeholder and stays noindexed until questions ship.
+ * Whether a cert page (`/{cert}` or `/{cert}/practice-questions`) may be
+ * indexed. A cert with no questions yet (e.g. cta) is a "coming soon"
+ * placeholder and stays noindexed until questions ship.
  * `page` is the path below the cert slug ("" for the landing page).
  */
 export function isIndexableCertPage(cert: string, page: string, questionCount: number): boolean {

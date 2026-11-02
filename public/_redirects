@@ -1,6 +1,6 @@
 # Redirect old practice-questions URLs to new structure
 /practice-questions/:cert/* /:cert/practice-questions/:splat 301
-/practice-questions/:cert /:cert/practice-questions 301
+/practice-questions/:cert /:cert 301
 
 
 
@@ -56,16 +56,16 @@
 
 # Old URLs reported as 404 in Search Console (2026-11-02)
 /certifications/category/* /certifications 301
-/certifications/:cert/prepare /:cert/prepare 301
-/certifications/:cert/* /:cert/practice-questions 301
+/certifications/:cert/prepare /:cert 301
+/certifications/:cert/* /:cert 301
 /certifications/:cert /:cert 301
-/:cert/free-questions /:cert/practice-questions 301
-/:cert/questions/* /:cert/practice-questions 301
-/free-questions/:cert/* /:cert/practice-questions 301
-/free-questions/:cert /:cert/practice-questions 301
+/:cert/free-questions /:cert 301
+/:cert/questions/* /:cert 301
+/free-questions/:cert/* /:cert 301
+/free-questions/:cert /:cert 301
 /free-questions /certifications 301
 /study-guide /certifications 301
-/study-guide/:cert /:cert/prepare 301
+/study-guide/:cert /:cert 301
 /glossary/certification/:cert /:cert 301
 /glossary/* /certifications 301
 /glossary /certifications 301
@@ -74,8 +74,20 @@
 /delta/:cert /:cert 301
 
 # Indexing hygiene (2026-11-02): retired routes
-/:cert/dumps /:cert/practice-questions 301
+/:cert/dumps /:cert 301
 /release/zurich /version-diff/zurich 301
 /release/* /certifications 301
 /version-diff/washington-dc/:product /version-diff/washington-dc 301
 /version-diff/xanadu/:product /version-diff/xanadu 301
+
+# Hub consolidation (2026-11): one canonical hub per cert at /{cert} (lib/hubs.ts).
+# /{cert}/prepare was merged into the hub. /{cert}/practice-questions stays live (noindex, canonical to the hub).
+/:cert/prepare /:cert 301
+/blog/servicenow-csa-practice-test-200-questions-2026 /csa 301
+/blog/servicenow-cad-practice-test-200-questions-2026 /cad 301
+/blog/servicenow-cis-itsm-practice-test-160-questions-2026 /cis-itsm 301
+# Templated sections without sourced data, retired
+/compare /certification-paths 301
+/compare/* /certification-paths 301
+/vs /how-questions-are-made 301
+/vs/* /how-questions-are-made 301

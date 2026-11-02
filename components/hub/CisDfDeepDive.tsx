@@ -248,7 +248,7 @@ export function CisDfDeepDive() {
 
       <GuideSection id="df-practice" eyebrow="Practice" title="Practise the decisions, not the definitions">
         <p>
-          Start with the free sample questions further down this page, then work through <In href="/cis-df/practice-questions">CIS-DF practice questions by topic</In> and the <In href="/cis-df/study-guide">CIS-DF study guide</In>. For each scenario, name the tool that <em>measures</em> the problem and the tool that <em>fixes</em> it.
+          Start with the free sample questions further down this page, then work through <In href="/cis-df#practice-by-topic">CIS-DF practice questions by topic</In> and the <In href="/cis-df/study-guide">CIS-DF study guide</In>. For each scenario, name the tool that <em>measures</em> the problem and the tool that <em>fixes</em> it.
         </p>
         <StudyCluster certSlug="cis-df" currentPath="/cis-df" />
       </GuideSection>

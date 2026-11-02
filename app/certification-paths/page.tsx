@@ -324,7 +324,7 @@ export default function CertificationPathsPage() {
               if (!cert) return null;
               return (
                 <li key={slug}>
-                  <Link href={`/${slug}/practice-questions`} className="block rounded-xl border border-zinc-200 bg-white p-4 font-semibold text-zinc-900 hover:border-emerald-300 hover:text-emerald-700 dark:border-zinc-700 dark:bg-zinc-950 dark:text-zinc-100">
+                  <Link href={`/${slug}#practice-questions`} className="block rounded-xl border border-zinc-200 bg-white p-4 font-semibold text-zinc-900 hover:border-emerald-300 hover:text-emerald-700 dark:border-zinc-700 dark:bg-zinc-950 dark:text-zinc-100">
                     {isCertificationFree(slug) ? `Free ${cert.name} practice questions` : `${cert.name} practice questions`}
                   </Link>
                 </li>
