@@ -8,7 +8,7 @@
       "topic": "integration-rest",
       "cognitiveLevel": "knowledge",
       "type": "multiple_choice",
-      "question": "What does the acronym REST stand for in the context of ServiceNow web services?",
+      "question": "A team is reviewing the inbound web services ServiceNow supports, including REST, SOAP, JSONv2, and RSS. What does the acronym REST stand for?",
       "options": [
         {
           "id": "a",
@@ -31,28 +31,27 @@
         "b"
       ],
       "explanation": {
-        "correct": "REST stands for REpresentational State Transfer. It is the common web service framework used in ServiceNow for both inbound and outbound integrations, as opposed to SOAP (Simple Object Access Protocol). See https://docs.servicenow.com/bundle/yokohama-api-reference/page/integrate/inbound-rest/concept/c_RESTAPI.html",
+        "correct": "The ServiceNow web services documentation defines REST as REpresentational State Transfer, a simple stateless architecture that provides standards between computer systems on the web so they can communicate more easily. ServiceNow offers REST for both inbound and outbound web services. See https://www.servicenow.com/docs/r/api-reference/web-services/r_AvailableWebServices.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Remote Execution Service Transfer is not a real acronym. REST stands for REpresentational State Transfer.",
-            "reference": "https://docs.servicenow.com/bundle/yokohama-api-reference/page/integrate/inbound-rest/concept/c_RESTAPI.html"
+            "explanation": "Remote Execution Service Transfer is not the expansion. The docs define REST as REpresentational State Transfer, a stateless web architecture.",
+            "reference": "https://www.servicenow.com/docs/r/api-reference/web-services/r_AvailableWebServices.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Reliable Endpoint Service Technology is fabricated. REST is REpresentational State Transfer, a widely adopted architectural style for web services.",
-            "reference": "https://docs.servicenow.com/bundle/yokohama-api-reference/page/integrate/inbound-rest/concept/c_RESTAPI.html"
+            "explanation": "Reliable Endpoint Service Technology is not what REST stands for; the docs expand it as REpresentational State Transfer.",
+            "reference": "https://www.servicenow.com/docs/r/api-reference/web-services/r_AvailableWebServices.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Resource Exchange Standard Transport is not a valid acronym. REST stands for REpresentational State Transfer.",
-            "reference": "https://docs.servicenow.com/bundle/yokohama-api-reference/page/integrate/inbound-rest/concept/c_RESTAPI.html"
+            "explanation": "Resource Exchange Standard Transport is not a real expansion of REST. The documented expansion is REpresentational State Transfer.",
+            "reference": "https://www.servicenow.com/docs/r/api-reference/web-services/r_AvailableWebServices.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Docs: REST API",
-        "Application Development Fundamentals Course"
+        "https://www.servicenow.com/docs/r/api-reference/web-services/r_AvailableWebServices.html"
       ],
       "isFree": true,
       "source": {
@@ -76,62 +75,63 @@
       },
       "meta": {
         "generatedAt": "2025-07-18T12:00:00.000Z",
-        "version": "1.0",
-        "release": "Yokohama",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "cad-integration-rest-002",
       "certification": "cad",
       "topic": "integration-rest",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "Which HTTP method is used to perform a partial update of a resource when working with RESTful web services in ServiceNow?",
+      "question": "An integration developer must update the State of an existing incident through the Table API, sending only the state name-value pair in the request body. The record's sys_id is known. Which request should the integration send?",
       "options": [
         {
           "id": "a",
-          "text": "PUT"
+          "text": "GET /now/table/incident/{sys_id}"
         },
         {
           "id": "b",
-          "text": "POST"
+          "text": "POST /now/table/incident"
         },
         {
           "id": "c",
-          "text": "PATCH"
+          "text": "PATCH /now/table/incident/{sys_id}"
         },
         {
           "id": "d",
-          "text": "GET"
+          "text": "DELETE /now/table/incident/{sys_id}"
         }
       ],
       "correctAnswers": [
         "c"
       ],
       "explanation": {
-        "correct": "PATCH is the HTTP method used for partial updates. Unlike PUT, which performs a complete overwrite of a resource, PATCH updates only the specified fields. See https://docs.servicenow.com/bundle/yokohama-api-reference/page/integrate/inbound-rest/concept/c_RESTAPI.html",
+        "correct": "The Table API PATCH endpoint, /now/table/{tableName}/{sys_id}, updates the specified record with the name-value pairs included in the request body. Because the integration is changing an existing incident it already has the sys_id for, PATCH against that record is the matching call. See https://www.servicenow.com/docs/r/api-reference/rest-apis/c_TableAPI.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "PUT performs a complete overwrite of a resource, replacing all fields. PATCH is used for partial updates where only specific fields are modified.",
-            "reference": "https://docs.servicenow.com/bundle/yokohama-api-reference/page/integrate/inbound-rest/concept/c_RESTAPI.html"
+            "explanation": "GET /now/table/{tableName}/{sys_id} retrieves the record identified by the sys_id; it reads data and does not apply the new State value.",
+            "reference": "https://www.servicenow.com/docs/r/api-reference/rest-apis/c_TableAPI.html"
           },
           {
             "choiceId": "b",
-            "explanation": "POST is used to create (insert) a new resource, not to update an existing one.",
-            "reference": "https://docs.servicenow.com/bundle/yokohama-api-reference/page/integrate/inbound-rest/concept/c_RESTAPI.html"
+            "explanation": "POST /now/table/{tableName} inserts one new record in the table, so it would create a new incident instead of updating the existing one.",
+            "reference": "https://www.servicenow.com/docs/r/api-reference/rest-apis/c_TableAPI.html"
           },
           {
             "choiceId": "d",
-            "explanation": "GET is used to read or retrieve data from a resource. It does not modify data.",
-            "reference": "https://docs.servicenow.com/bundle/yokohama-api-reference/page/integrate/inbound-rest/concept/c_RESTAPI.html"
+            "explanation": "DELETE /now/table/{tableName}/{sys_id} deletes the specified record from the table, which removes the incident rather than updating it.",
+            "reference": "https://www.servicenow.com/docs/r/api-reference/rest-apis/c_TableAPI.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Docs: REST API",
-        "Application Development Fundamentals Course"
+        "https://www.servicenow.com/docs/r/api-reference/rest-apis/c_TableAPI.html"
       ],
       "isFree": true,
       "source": {
@@ -150,15 +150,17 @@
         "tags": [
           "HTTP-methods",
           "PATCH",
-          "PUT",
+          "table-api",
           "REST"
         ]
       },
       "meta": {
         "generatedAt": "2025-07-18T12:00:00.000Z",
-        "version": "1.0",
-        "release": "Yokohama",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {

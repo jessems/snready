@@ -6,52 +6,53 @@
       "id": "cad-business-rules-001",
       "certification": "cad",
       "topic": "business-rules",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "Where do business rules execute in the ServiceNow architecture?",
+      "question": "A developer adds validation to a business rule on the Incident table. A colleague asks whether it also applies when incidents are updated from a list or through a web service, not only from the form. Where does the rule run, and what does that mean here?",
       "options": [
         {
           "id": "a",
-          "text": "In the user's web browser (client-side)"
+          "text": "In the user's browser, so it applies just while a form is edited"
         },
         {
           "id": "b",
-          "text": "On the ServiceNow server (server-side)"
+          "text": "On the server, so it applies to forms, lists, and web services"
         },
         {
           "id": "c",
-          "text": "In the MID Server"
+          "text": "On a MID Server, so it covers integration traffic but not forms"
         },
         {
           "id": "d",
-          "text": "In the browser's service worker"
+          "text": "As a database trigger, so it fires even when GlideRecord is bypassed"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "Business rules execute on the server side, not in the browser. They deal primarily with interaction with the database table itself. See: https://docs.servicenow.com/bundle/yokohama-application-development/page/script/business-rules/concept/c_BusinessRules.html",
+        "correct": "A business rule is a server-side script that runs when a record is displayed, inserted, updated, or deleted, or when a table is queried. Because it runs on the server, it applies consistently whether the record is accessed through a form, a list, or a web service, which is a key difference from client scripts. See https://www.servicenow.com/docs/r/api-reference/business-rules-classic/c_BusinessRules.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Business rules run on the server, not the client. Client-side scripts such as Client Scripts and UI Policies run in the browser.",
-            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/business-rules/concept/c_BusinessRules.html"
+            "explanation": "Running only while a form is edited describes client scripts, which run in the browser. The docs contrast this with business rules, which run on the server for any access path.",
+            "reference": "https://www.servicenow.com/docs/r/api-reference/business-rules-classic/c_BusinessRules.html"
           },
           {
             "choiceId": "c",
-            "explanation": "MID Servers are used for integrations and discovery, not for executing business rules.",
-            "reference": "https://docs.servicenow.com/bundle/yokohama-servicenow-platform/page/product/mid-server/concept/mid-server-landing.html"
+            "explanation": "A MID Server is a Java application on the local network that moves data between the instance and external systems; it is not where business rules execute.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/mid-server/mid-server-landing.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Service workers are a browser technology unrelated to ServiceNow business rule execution.",
-            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/business-rules/concept/c_BusinessRules.html"
+            "explanation": "Business rules are not database triggers. The docs state they run only when record operations are called through the GlideRecord API, so bypassing GlideRecord skips them.",
+            "reference": "https://www.servicenow.com/docs/r/api-reference/business-rules-classic/c_BusinessRules.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Docs - Business Rules"
+        "https://www.servicenow.com/docs/r/api-reference/business-rules-classic/c_BusinessRules.html",
+        "https://www.servicenow.com/docs/r/servicenow-platform/mid-server/mid-server-landing.html"
       ],
       "isFree": true,
       "source": {
@@ -75,9 +76,11 @@
       },
       "meta": {
         "generatedAt": "2026-02-05T20:24:19.143Z",
-        "version": "1.0",
-        "release": "Yokohama",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -86,7 +89,7 @@
       "topic": "business-rules",
       "cognitiveLevel": "knowledge",
       "type": "multiple_select",
-      "question": "Which of the following are types of business rules based on when they execute in the transaction lifecycle? (Select all that apply)",
+      "question": "A developer is configuring when a new business rule should run in relation to the database operation. Which of these are valid values for that setting? (Select all that apply)",
       "options": [
         {
           "id": "a",
@@ -98,7 +101,7 @@
         },
         {
           "id": "c",
-          "text": "Concurrent"
+          "text": "Deferred"
         },
         {
           "id": "d",
@@ -111,17 +114,17 @@
         "d"
       ],
       "explanation": {
-        "correct": "ServiceNow business rules can be configured as before, after, display, before query, or async (asynchronous) types. Before, After, and Async are all valid business rule execution types. See: https://docs.servicenow.com/bundle/yokohama-application-development/page/script/business-rules/concept/c_BusinessRules.html",
+        "correct": "The docs list the options for when a business rule runs relative to the database operation as Before, After, Async, and Display. Before runs after the form is submitted but before the database action, After runs after the database action, and Async runs after the scheduler runs a job created from the rule. See https://www.servicenow.com/docs/r/api-reference/business-rules-classic/c_BusinessRules.html",
         "wrongAnswers": [
           {
             "choiceId": "c",
-            "explanation": "There is no 'Concurrent' business rule type in ServiceNow. The valid types are before, after, async, display, and before query.",
-            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/business-rules/concept/c_BusinessRules.html"
+            "explanation": "Deferred is not one of the documented When options. Delayed background processing is handled by the Async option, which runs after the scheduler runs the job created from the rule.",
+            "reference": "https://www.servicenow.com/docs/r/api-reference/business-rules-classic/c_BusinessRules.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Docs - Business Rules"
+        "https://www.servicenow.com/docs/r/api-reference/business-rules-classic/c_BusinessRules.html"
       ],
       "isFree": true,
       "source": {
@@ -147,9 +150,11 @@
       },
       "meta": {
         "generatedAt": "2026-02-05T20:24:19.143Z",
-        "version": "1.0",
-        "release": "Yokohama",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {

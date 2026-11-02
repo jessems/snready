@@ -6,52 +6,54 @@
       "id": "csa-ua-001",
       "certification": "csa",
       "topic": "user-administration",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "Which security mechanism controls record-level access to data in ServiceNow?",
+      "question": "An administrator must ensure that users without the itil role cannot read Priority 1 Incident records, whether they open a list, a form, or call a web service API. What should be configured?",
       "options": [
         {
           "id": "a",
-          "text": "Roles"
+          "text": "A UI policy on the Incident form"
         },
         {
           "id": "b",
-          "text": "Groups"
+          "text": "A role on the Incidents application module"
         },
         {
           "id": "c",
-          "text": "Access Control Lists (ACLs)"
+          "text": "A read ACL on the Incident table"
         },
         {
           "id": "d",
-          "text": "Data Policies"
+          "text": "A data policy on the Incident table"
         }
       ],
       "correctAnswers": [
         "c"
       ],
       "explanation": {
-        "correct": "Access Control Lists (ACLs) control record-level and field-level access to data. ACLs specify what tables, fields, and operations users can access based on roles and conditions. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1",
+        "correct": "Access control lists restrict access to data by requiring users to pass a set of requirements before they can interact with it. A read ACL on the incident table can require a role and use the Applies To filter to target only Priority 1 records. Failing a read ACL hides the records in lists and forms and also blocks retrieval through web service APIs. See https://www.servicenow.com/docs/r/platform-security/access-control/exploring-access-control-list.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Roles grant access to application modules and menus, but ACLs control the actual data access.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1"
+            "explanation": "UI policies only apply to data entered on a form through the standard browser, so they cannot stop users from reading records in lists or through web service APIs.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/c_DataPolicy.html"
           },
           {
             "choiceId": "b",
-            "explanation": "Groups organize users and can be assigned roles, but they don't directly control data access.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1"
+            "explanation": "Applications and modules list the roles required to view them, so a module role only controls who sees the module. Record and field access is secured by ACL rules, not by roles on modules.",
+            "reference": "https://www.servicenow.com/docs/r/platform-security/access-control/r_ContextualSecurity.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Data Policies enforce data integrity rules on forms, not access control.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1"
+            "explanation": "Data policies enforce data consistency by setting mandatory and read-only states for fields. They do not decide which users may read a record.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/c_DataPolicy.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Access Control Documentation"
+        "https://www.servicenow.com/docs/r/platform-security/access-control/exploring-access-control-list.html",
+        "https://www.servicenow.com/docs/r/platform-security/access-control/t_CreateAnACLRule.html",
+        "https://www.servicenow.com/docs/r/platform-administration/c_DataPolicy.html"
       ],
       "isFree": true,
       "source": {
@@ -76,29 +78,31 @@
         ],
         "tags": [
           "ACL",
-          "security",
+          "read operation",
           "access control",
           "data access"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "csa-ua-002",
       "certification": "csa",
       "topic": "user-administration",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What role is required to modify Access Control Lists (ACLs) in ServiceNow?",
+      "question": "An administrator can open and debug ACL records but cannot create a new ACL or save changes to an existing one. Which role must they elevate to in their session?",
       "options": [
         {
           "id": "a",
-          "text": "admin"
+          "text": "user_admin"
         },
         {
           "id": "b",
@@ -106,38 +110,40 @@
         },
         {
           "id": "c",
-          "text": "acl_admin"
+          "text": "impersonator"
         },
         {
           "id": "d",
-          "text": "itil"
+          "text": "role_delegator"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "The security_admin role is required to modify Access Control Lists. Even users with the admin role must also be granted security_admin to manage ACLs. In the base system, only the default system administrator has this role. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1",
+        "correct": "Normal admin users can view and debug access control rules, but creating or updating ACLs requires elevating privileges to the security_admin role. In the base system security_admin is the only elevated privilege role, and it lasts only for the current session, which is why the admin must elevate before editing. See https://www.servicenow.com/docs/r/platform-security/access-control/exploring-access-control-list.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "The admin role alone cannot modify ACLs. Admins must also have security_admin for ACL management.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1"
+            "explanation": "user_admin is a user administration role; the docs note it cannot even grant the admin role. Creating or changing ACLs specifically requires the elevated security_admin role.",
+            "reference": "https://www.servicenow.com/docs/r/platform-security/c_ElevatedPrivilege.html"
           },
           {
             "choiceId": "c",
-            "explanation": "There is no standard role called 'acl_admin' in ServiceNow.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1"
+            "explanation": "The impersonator role is what lets a user impersonate other users. It does not grant the right to create or update access control rules.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/user-administration/t_ImpersonateAUserInUI16.html"
           },
           {
             "choiceId": "d",
-            "explanation": "The itil role grants access to ITSM modules, not security administration.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1"
+            "explanation": "role_delegator lets a user assign the roles they hold to members of a group. It has nothing to do with editing ACL records, which requires security_admin.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/user-administration/c_DelegateRoles.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Security Administration"
+        "https://www.servicenow.com/docs/r/platform-security/access-control/exploring-access-control-list.html",
+        "https://www.servicenow.com/docs/r/platform-security/access-control/t_CreateAnACLRule.html",
+        "https://www.servicenow.com/docs/r/platform-security/c_ElevatedPrivilege.html"
       ],
       "isFree": true,
       "source": {
@@ -164,67 +170,71 @@
         "tags": [
           "security_admin",
           "ACL",
-          "roles",
-          "security"
+          "elevated privileges",
+          "roles"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "csa-ua-003",
       "certification": "csa",
       "topic": "user-administration",
-      "cognitiveLevel": "understanding",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What happens when elevated privileges are activated in ServiceNow?",
+      "question": "An administrator elevated to security_admin yesterday to update ACLs, then logged out at the end of the day. After logging back in today, what is the status of that elevated role?",
       "options": [
         {
           "id": "a",
-          "text": "They remain active until manually deactivated"
+          "text": "It stays active until deselected in the Elevate Roles dialog"
         },
         {
           "id": "b",
-          "text": "They last only for the current session and end with logout, timeout, or impersonation"
+          "text": "It ended with the session, so the admin must elevate again"
         },
         {
           "id": "c",
-          "text": "They are permanently assigned to the user"
+          "text": "It is now saved as a permanent role on the admin's user record"
         },
         {
           "id": "d",
-          "text": "They are shared with all members of the user's group"
+          "text": "It returns automatically because the admin role contains it"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "Elevated roles last only for your session. They end with logout, session time out, or user impersonation. An upward arrow next to your avatar indicates activated elevated privileges. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1",
+        "correct": "An elevated privilege role lasts only for the duration of the user session; a session timeout or logout removes it. Users do not have elevated roles on login and must manually elevate again. Because the admin logged out yesterday, the security_admin elevation ended and must be re-selected through Elevate Roles before editing ACLs. See https://www.servicenow.com/docs/r/platform-security/c_ElevatedPrivilege.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Elevated privileges automatically end when the session ends, they don't require manual deactivation.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1"
+            "explanation": "Deselecting in the dialog is one way to end elevation, but logout also terminates elevated privileges with the session, so nothing is still active today.",
+            "reference": "https://www.servicenow.com/docs/r/platform-security/t_ElevateToAPrivilegedRole.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Elevated privileges are temporary by design for security purposes.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1"
+            "explanation": "Elevation never becomes a permanent assignment. By default users do not have elevated privilege roles upon login and must manually elevate each session.",
+            "reference": "https://www.servicenow.com/docs/r/platform-security/c_ElevatedPrivilege.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Elevated privileges apply only to the individual user who activated them.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1"
+            "explanation": "The Security Administrator role is not inherited by the admin role, and an elevated role must be manually elevated even when another role contains it.",
+            "reference": "https://www.servicenow.com/docs/r/platform-security/exploring-high-security-settings.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Elevated Privileges"
+        "https://www.servicenow.com/docs/r/platform-security/c_ElevatedPrivilege.html",
+        "https://www.servicenow.com/docs/r/platform-security/t_ElevateToAPrivilegedRole.html",
+        "https://www.servicenow.com/docs/r/platform-security/exploring-high-security-settings.html"
       ],
       "isFree": true,
       "source": {
@@ -251,66 +261,69 @@
         "tags": [
           "elevated privileges",
           "session",
-          "security"
+          "security_admin"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "csa-ua-004",
       "certification": "csa",
       "topic": "user-administration",
-      "cognitiveLevel": "understanding",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "In what order does ServiceNow evaluate Access Control rules?",
+      "question": "A security administrator adds a Deny-Unless read ACL to a custom table that already has an Allow-If read ACL. When a user requests a record from that table, how are the two decision types evaluated?",
       "options": [
         {
           "id": "a",
-          "text": "Allow rules first, then deny rules"
+          "text": "Allow-If first; a passing Allow-If ACL skips the Deny-Unless"
         },
         {
           "id": "b",
-          "text": "Field access first, then table access"
+          "text": "The ACL that was created most recently is evaluated first"
         },
         {
           "id": "c",
-          "text": "Deny rules first, then allow rules"
+          "text": "Deny-Unless first; if it fails, access is denied outright"
         },
         {
           "id": "d",
-          "text": "Alphabetically by rule name"
+          "text": "Deny-Unless first; if it passes, access is granted outright"
         }
       ],
       "correctAnswers": [
         "c"
       ],
       "explanation": {
-        "correct": "The system checks deny rules first. If any deny rules conditions are unmet, access is blocked. Allow rules are evaluated only when no deny rules apply or if you meet all deny rule criteria. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1",
+        "correct": "Deny-Unless ACLs take priority over Allow-If ACLs because they are evaluated first. A Deny-Unless ACL denies access unless its roles, conditions, security attributes and script are met; if it fails, access is denied. If it passes, evaluation continues, and because an Allow-If ACL also matches, that Allow-If ACL must still permit access. See https://www.servicenow.com/docs/r/platform-security/access-control/acl-denial-behavior.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Deny rules take precedence and are checked before allow rules.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1"
+            "explanation": "The order is the reverse: Deny-Unless ACLs are evaluated first and take priority, so a passing Allow-If ACL cannot bypass a failing Deny-Unless ACL.",
+            "reference": "https://www.servicenow.com/docs/r/platform-security/access-control/acl-denial-behavior.html"
           },
           {
             "choiceId": "b",
-            "explanation": "Table access is checked first, then field access. The order is table-level before field-level.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1"
+            "explanation": "Evaluation priority comes from the decision type, not from when the ACL was created. Deny-Unless ACLs are evaluated before Allow-If ACLs.",
+            "reference": "https://www.servicenow.com/docs/r/platform-security/access-control/acl-denial-behavior.html"
           },
           {
             "choiceId": "d",
-            "explanation": "ACL evaluation follows a specific security logic, not alphabetical order.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1"
+            "explanation": "A passing Deny-Unless ACL only lets evaluation proceed. When an Allow-If ACL also matches, access is granted only if that Allow-If ACL explicitly permits it.",
+            "reference": "https://www.servicenow.com/docs/r/platform-security/access-control/acl-denial-behavior.html"
           }
         ]
       },
       "references": [
-        "ServiceNow ACL Evaluation Order"
+        "https://www.servicenow.com/docs/r/platform-security/access-control/acl-denial-behavior.html",
+        "https://www.servicenow.com/docs/r/platform-security/access-control/exploring-access-control-list.html"
       ],
       "isFree": true,
       "source": {
@@ -336,68 +349,71 @@
         ],
         "tags": [
           "ACL",
-          "deny rules",
-          "allow rules",
+          "Deny-Unless",
+          "Allow-If",
           "evaluation order"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "csa-ua-005",
       "certification": "csa",
       "topic": "user-administration",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What automatically happens when a new table is created in ServiceNow?",
+      "question": "An administrator is creating a custom table in System Definition > Tables and wants basic security rules generated for it, along with a role that users need to access the table. What should they do on the table form?",
       "options": [
         {
           "id": "a",
-          "text": "No security is applied by default"
+          "text": "Select the Extensible check box in the Controls section"
         },
         {
           "id": "b",
-          "text": "Access controls are automatically created for the table"
+          "text": "Select Create access controls and enter a User role"
         },
         {
           "id": "c",
-          "text": "Only admin users can access the table"
+          "text": "Set Accessible from to This application scope only"
         },
         {
           "id": "d",
-          "text": "The table is marked as read-only"
+          "text": "Clear Allow access to this table via web services"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "With system created access controls, it is rare to have a table with no access control rules. When a table is created, access controls are automatically created. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1",
+        "correct": "On the table form, the Create access controls check box creates basic security rules for the new table. Once it is selected, the User role field becomes available so the administrator can enter a new role name or pick an existing role that is required to access the table. This produces the ACLs and role in one step. See https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/t_CreateATable.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "ServiceNow automatically creates baseline access controls for new tables.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1"
+            "explanation": "Extensible only controls whether other tables are allowed to extend this table. It does not create any security rules or access roles.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/t_CreateATable.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Access depends on the automatically created ACLs, not just admin restrictions.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1"
+            "explanation": "Accessible from defines which application scopes can access the table. It is an application access setting and does not generate ACLs for users.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/t_CreateATable.html"
           },
           {
             "choiceId": "d",
-            "explanation": "New tables are not automatically read-only; access is controlled by ACLs.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=400ce92b47530e10123f3975d36d43f1&child_id=8a89ef9447735ad4ca332a81736d432f&spa=1"
+            "explanation": "Clearing this check box prevents inbound web service queries to the table. It does not create the basic security rules or a required role.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/t_CreateATable.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Table Creation"
+        "https://www.servicenow.com/docs/r/platform-administration/table-administration-and-data-management/t_CreateATable.html",
+        "https://www.servicenow.com/docs/r/platform-security/access-control/exploring-access-control-list.html"
       ],
       "isFree": true,
       "source": {
@@ -423,14 +439,17 @@
         "tags": [
           "table creation",
           "ACL",
-          "automatic security"
+          "Create access controls",
+          "roles"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -1420,81 +1439,6 @@
       }
     },
     {
-      "id": "csa-ua-018",
-      "certification": "csa",
-      "topic": "user-administration",
-      "cognitiveLevel": "comprehension",
-      "type": "multiple_choice",
-      "question": "In which order does ServiceNow evaluate access control rules?",
-      "options": [
-        {
-          "id": "a",
-          "text": "Allow rules first, then deny rules"
-        },
-        {
-          "id": "b",
-          "text": "Field rules first, then table rules"
-        },
-        {
-          "id": "c",
-          "text": "Deny rules first, then allow rules if deny conditions are met"
-        },
-        {
-          "id": "d",
-          "text": "All rules are evaluated simultaneously"
-        }
-      ],
-      "correctAnswers": [
-        "c"
-      ],
-      "explanation": {
-        "correct": "The system checks deny rules first. If any deny rule conditions are unmet, access is blocked. Allow rules are evaluated only when no deny rules apply or if all deny rule criteria are satisfied.",
-        "wrongAnswers": [
-          {
-            "choiceId": "a",
-            "explanation": "Deny rules are checked before allow rules, not the other way around."
-          },
-          {
-            "choiceId": "b",
-            "explanation": "Access controls check table access first, then field access \u2014 but deny/allow ordering is the key evaluation sequence."
-          },
-          {
-            "choiceId": "d",
-            "explanation": "Rules are evaluated in a specific order: deny rules first, then allow rules."
-          }
-        ]
-      },
-      "isFree": false,
-      "source": {
-        "type": "course",
-        "course": {
-          "courseSlug": "servicenow-administration-fundamentals-xanadu",
-          "lessonTitle": "Application and access control"
-        }
-      },
-      "labels": {
-        "certification": "csa",
-        "domain": "User Administration & Security",
-        "domainSlug": "user-administration",
-        "domainPercentage": 15,
-        "subtopics": [
-          "ACL evaluation order"
-        ],
-        "tags": [
-          "ACL",
-          "deny rules",
-          "allow rules",
-          "access control"
-        ]
-      },
-      "meta": {
-        "generatedAt": "2026-03-16T02:00:00Z",
-        "version": "1.1",
-        "release": "Xanadu",
-        "reviewed": false
-      }
-    },
-    {
       "id": "csa-ua-019",
       "certification": "csa",
       "topic": "user-administration",
@@ -1717,44 +1661,47 @@
       "id": "csa-ua-022",
       "certification": "csa",
       "topic": "user-administration",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What is the purpose of the ServiceNow Security Center?",
+      "question": "A security administrator wants one place to view the instance's hardening compliance score, the top non-compliant hardening settings, and the results of security scans. Which application should they use?",
       "options": [
         {
           "id": "a",
-          "text": "To manage user passwords and authentication only"
+          "text": "Contextual Security Manager"
         },
         {
           "id": "b",
-          "text": "To monitor security compliance, manage hardening settings, and run security scans"
+          "text": "ServiceNow Security Center"
         },
         {
           "id": "c",
-          "text": "To configure firewalls and network security"
+          "text": "Instance Security Center"
         },
         {
           "id": "d",
-          "text": "To create and manage encryption keys"
+          "text": "High Security Settings"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "ServiceNow Security Center is a built-in tool that helps system administrators manage and improve instance security. It includes hardening checks, security scanning, customer actions, notifications, and compliance scoring.",
+        "correct": "Security Center is a free application, installed by default since the Vancouver release, that helps organizations maintain the security of their ServiceNow deployments. Its security configuration console shows the hardening compliance score, trends, the top non-compliant hardening settings and security scan results, which matches every need in this scenario. See https://www.servicenow.com/docs/r/platform-security/security-center/sec-center-v2.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Security Center covers much more than passwords \u2014 it includes hardening, scanning, compliance, and metrics."
+            "explanation": "Contextual Security Manager controls read, write, create and delete authorization through ACL rules. It does not provide compliance scores or scan results.",
+            "reference": "https://www.servicenow.com/docs/r/platform-security/access-control/r_ContextualSecurity.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Security Center focuses on instance security settings, not network infrastructure."
+            "explanation": "Instance Security Center reached end of sales in September 2024 and is no longer supported or available for activation; Security Center replaces it.",
+            "reference": "https://www.servicenow.com/docs/r/platform-security/security-center/sec-center-v2.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Encryption key management is not the primary purpose of Security Center."
+            "explanation": "High Security Settings is a set of security properties and features such as the security_admin role and default deny, not a dashboard of compliance and scan results.",
+            "reference": "https://www.servicenow.com/docs/r/platform-security/exploring-high-security-settings.html"
           }
         ]
       },
@@ -1783,9 +1730,14 @@
       "meta": {
         "generatedAt": "2026-03-16T02:00:00Z",
         "version": "1.1",
-        "release": "Xanadu",
-        "reviewed": false
-      }
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/platform-security/security-center/sec-center-v2.html"
+      ]
     },
     {
       "id": "csa-ua-023",
@@ -1937,50 +1889,56 @@
     },
     {
       "id": "csa-ua-025",
-      "cognitiveLevel": "understanding",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What is the evaluation order when multiple ACL rules apply to the same object and operation?",
+      "question": "A security administrator notices two Allow-If read ACLs on the incident.number field at the same point in the processing order. A user passes one of them and fails the other. What happens?",
       "options": [
         {
           "id": "a",
-          "text": "All matching ACL rules must pass \u2014 they are evaluated with AND logic"
+          "text": "The user can read the field, since passing one is enough"
         },
         {
           "id": "b",
-          "text": "Only the first matching ACL rule is evaluated"
+          "text": "Access is denied because every matching ACL must be passed"
         },
         {
           "id": "c",
-          "text": "The most restrictive ACL always wins"
+          "text": "Only the older ACL is evaluated and the newer one is ignored"
         },
         {
           "id": "d",
-          "text": "ACL rules are evaluated randomly"
+          "text": "The more restrictive ACL wins, so the field is hidden"
         }
       ],
       "correctAnswers": [
         "a"
       ],
       "explanation": {
-        "correct": "When multiple ACL rules match the same object and operation, ALL must pass. ServiceNow uses AND logic \u2014 the user must satisfy every matching ACL rule to be granted access.",
+        "correct": "When two or more ACLs match at the same point in the processing order, the user only has to pass any one of them. The docs use this exact example: with two field ACLs on incident.number, a user who passes one rule can access the number field even if they fail the other. The all-must-pass rule applies only to multiple Deny-Unless ACLs. See https://www.servicenow.com/docs/r/platform-security/access-control/exploring-access-control-list.html",
         "wrongAnswers": [
           {
             "choiceId": "b",
-            "explanation": "All matching rules are evaluated, not just the first one."
+            "explanation": "Requiring every matching ACL to pass is the behavior for multiple Deny-Unless ACLs on a resource. For Allow-If ACLs at the same point, passing any one is enough.",
+            "reference": "https://www.servicenow.com/docs/r/platform-security/access-control/acl-denial-behavior.html"
           },
           {
             "choiceId": "c",
-            "explanation": "It's not about 'most restrictive wins' \u2014 all rules must pass independently."
+            "explanation": "Both ACLs are considered. If two or more ACLs match at the same point in the processing order, passing any one of them grants access.",
+            "reference": "https://www.servicenow.com/docs/r/platform-security/access-control/exploring-access-control-list.html"
           },
           {
             "choiceId": "d",
-            "explanation": "ACL evaluation follows a defined order, not random."
+            "explanation": "There is no most-restrictive-wins rule for Allow-If ACLs at the same processing point; a user who passes one of them has access to the field.",
+            "reference": "https://www.servicenow.com/docs/r/platform-security/access-control/exploring-access-control-list.html"
           }
         ]
       },
       "certification": "csa",
       "topic": "user-administration",
-      "references": [],
+      "references": [
+        "https://www.servicenow.com/docs/r/platform-security/access-control/exploring-access-control-list.html",
+        "https://www.servicenow.com/docs/r/platform-security/access-control/acl-denial-behavior.html"
+      ],
       "isFree": false,
       "source": {
         "type": "generated",
@@ -1999,13 +1957,20 @@
         "domain": "user-administration",
         "domainSlug": "user-administration",
         "subtopics": [],
-        "tags": []
+        "tags": [
+          "ACL",
+          "multiple ACLs",
+          "Allow-If",
+          "field ACL"
+        ]
       },
       "meta": {
         "generatedAt": "2026-03-31T02:09:00Z",
-        "version": "2.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -2156,50 +2121,58 @@
     },
     {
       "id": "csa-ua-028",
-      "cognitiveLevel": "understanding",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What is the purpose of 'delegated administration' in ServiceNow?",
+      "question": "A group manager is designated as a role delegator by an administrator and wants to update her team's access. Which action can she now perform?",
       "options": [
         {
           "id": "a",
-          "text": "Allowing specific users to grant roles that they themselves possess to other users"
+          "text": "Assign roles she holds to members of a group"
         },
         {
           "id": "b",
-          "text": "Automatically assigning admin roles to all managers"
+          "text": "Assign the admin role to any member of her group"
         },
         {
           "id": "c",
-          "text": "Delegating system upgrades to non-admin users"
+          "text": "Delegate her role_delegator role to another member"
         },
         {
           "id": "d",
-          "text": "Sharing admin credentials with a team"
+          "text": "Grant any role in the instance to her group members"
         }
       ],
       "correctAnswers": [
         "a"
       ],
       "explanation": {
-        "correct": "Delegated administration allows designated users (not full admins) to manage group membership and assign specific roles that they themselves hold, reducing the burden on system administrators.",
+        "correct": "Role delegators are users that administrators allow to assign roles within groups, but they can only assign roles that they already have. On the Delegate Roles in Group form, the roles available for delegating are only the roles the role_delegator has, and the docs note delegators can assign roles inherited from a group as well as roles an administrator assigned to them. See https://www.servicenow.com/docs/r/platform-administration/user-administration/c_DelegateRoles.html and https://www.servicenow.com/docs/r/platform-administration/user-administration/t_RoleDelegation.html",
         "wrongAnswers": [
           {
             "choiceId": "b",
-            "explanation": "Delegated administration is a targeted permission, not automatic role assignment to managers."
+            "explanation": "By default the admin role cannot be delegated, so a role delegator cannot hand it out even to members of a group she manages.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/user-administration/t_PreventARoleFromBeingDelegated.html"
           },
           {
             "choiceId": "c",
-            "explanation": "System upgrades require full admin access and cannot be delegated this way."
+            "explanation": "A user with the role_delegator role can't delegate that role to other group members; role_delegator is non-delegable by default.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/user-administration/t_PreventARoleFromBeingDelegated.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Sharing credentials violates security best practices and is not what delegated administration means."
+            "explanation": "Delegators are limited to roles they already hold; the Roles to delegate list only offers roles that the role_delegator has.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/user-administration/delegate-roles.html"
           }
         ]
       },
       "certification": "csa",
       "topic": "user-administration",
-      "references": [],
+      "references": [
+        "https://www.servicenow.com/docs/r/platform-administration/user-administration/c_DelegateRoles.html",
+        "https://www.servicenow.com/docs/r/platform-administration/user-administration/delegate-roles.html",
+        "https://www.servicenow.com/docs/r/platform-administration/user-administration/t_PreventARoleFromBeingDelegated.html",
+        "https://www.servicenow.com/docs/r/platform-administration/user-administration/t_RoleDelegation.html"
+      ],
       "isFree": false,
       "source": {
         "type": "generated",
@@ -2218,13 +2191,20 @@
         "domain": "user-administration",
         "domainSlug": "user-administration",
         "subtopics": [],
-        "tags": []
+        "tags": [
+          "delegation",
+          "role_delegator",
+          "roles",
+          "groups"
+        ]
       },
       "meta": {
         "generatedAt": "2026-03-31T02:09:00Z",
-        "version": "2.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -2302,50 +2282,56 @@
     },
     {
       "id": "csa-ua-030",
-      "cognitiveLevel": "understanding",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What happens when an administrator activates the 'High Security Settings' plugin?",
+      "question": "An administrator on a new instance confirms that the High Security Settings plugin is active and wants to know what it provides. Which capability is part of High Security Settings?",
       "options": [
         {
           "id": "a",
-          "text": "It enforces stricter password policies and session timeout settings"
+          "text": "An elevated security_admin role for changing ACLs"
         },
         {
           "id": "b",
-          "text": "It encrypts all database tables automatically"
+          "text": "Automatic encryption of the tables in the database"
         },
         {
           "id": "c",
-          "text": "It requires biometric authentication for all users"
+          "text": "Multi-factor authentication enforced at user login"
         },
         {
           "id": "d",
-          "text": "It disables all REST API access"
+          "text": "Blocking of inbound SOAP and CSV web service requests"
         }
       ],
       "correctAnswers": [
         "a"
       ],
       "explanation": {
-        "correct": "The High Security Settings plugin enforces stricter password complexity requirements, shorter session timeouts, and other hardened security configurations.",
+        "correct": "High Security Settings, active by default on new instances, provides a Security Administrator role, elevated privileges, a default deny property, property access controls and ACLs. The plugin separates user functionality from access control management by requiring administrators to explicitly elevate into security_admin before making access control changes. See https://www.servicenow.com/docs/r/platform-security/exploring-high-security-settings.html and https://www.servicenow.com/docs/r/platform-security/instance-security-hardening-settings/sc-high-security-plugin.html",
         "wrongAnswers": [
           {
             "choiceId": "b",
-            "explanation": "Database encryption is handled separately through Edge Encryption, not the High Security plugin."
+            "explanation": "Database encryption is not among the High Security Settings features, which cover default properties, default deny, the security_admin role, elevated privileges and ACLs.",
+            "reference": "https://www.servicenow.com/docs/r/platform-security/exploring-high-security-settings.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Biometric authentication is not a feature of the High Security Settings plugin."
+            "explanation": "Multi-factor authentication is not one of the features delivered by High Security Settings; the plugin focuses on access control and hardened properties.",
+            "reference": "https://www.servicenow.com/docs/r/platform-security/exploring-high-security-settings.html"
           },
           {
             "choiceId": "d",
-            "explanation": "REST API access is controlled separately through ACLs and API policies."
+            "explanation": "High Security Settings properties require authorization for inbound SOAP and CSV requests rather than blocking them outright.",
+            "reference": "https://www.servicenow.com/docs/r/platform-security/exploring-high-security-settings.html"
           }
         ]
       },
       "certification": "csa",
       "topic": "user-administration",
-      "references": [],
+      "references": [
+        "https://www.servicenow.com/docs/r/platform-security/exploring-high-security-settings.html",
+        "https://www.servicenow.com/docs/r/platform-security/instance-security-hardening-settings/sc-high-security-plugin.html"
+      ],
       "isFree": false,
       "source": {
         "type": "generated",
@@ -2364,13 +2350,19 @@
         "domain": "user-administration",
         "domainSlug": "user-administration",
         "subtopics": [],
-        "tags": []
+        "tags": [
+          "high security settings",
+          "security_admin",
+          "hardening"
+        ]
       },
       "meta": {
         "generatedAt": "2026-03-31T02:09:00Z",
-        "version": "2.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     }
   ]

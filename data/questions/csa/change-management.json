@@ -92,52 +92,53 @@
       "id": "csa-cm-002",
       "certification": "csa",
       "topic": "change-management",
-      "cognitiveLevel": "understanding",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What distinguishes a Standard change from a Normal change?",
+      "question": "A team has a routine TLS certificate renewal with documented steps and a proven success record. Their change manager wants it raised as a standard change rather than a normal change. What key difference supports this?",
       "options": [
         {
           "id": "a",
-          "text": "Standard changes cost more to implement"
+          "text": "Standard changes skip peer review but still require CAB authorization"
         },
         {
           "id": "b",
-          "text": "Standard changes are pre-approved and don't require CAB approval each time"
+          "text": "Standard changes are pre-authorized and skip group, peer, and CAB approval"
         },
         {
           "id": "c",
-          "text": "Standard changes are only for emergency situations"
+          "text": "Standard changes are reserved for urgent fixes that resolve a major incident"
         },
         {
           "id": "d",
-          "text": "Standard changes cannot be tracked"
+          "text": "Standard changes require two levels of approval before implementation"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "Standard changes are pre-approved, commonly implemented changes with established implementation steps and a track record of successful outcomes. Obtaining group-level or peer approval and CAB approval is not always necessary for standard changes. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=ecb20dd947dc9a5089c7acc9126d4383&spa=1",
+        "correct": "Per the Change types page, a standard change is a pre-authorized, low-risk change that is frequently implemented, has repeatable steps and a proven history of success. Because it is pre-approved, it follows a streamlined process without group-level or peer approval and without CAB authorization, whereas a normal change requires assessment, peer or technical approval and CAB authorization. Routine TLS certificate renewals are the docs' own example of a standard change. See https://www.servicenow.com/docs/r/it-service-management/change-management/change-types.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Cost is not the distinguishing factor between change types.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=ecb20dd947dc9a5089c7acc9126d4383&spa=1"
+            "explanation": "Skipping peer review but still going to the CAB describes an emergency change, which bypasses group and peer review and moves directly to Authorize for CAB approval. Standard changes need no CAB authorization.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/change-management/change-types.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Emergency changes are for urgent situations, not standard changes.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=ecb20dd947dc9a5089c7acc9126d4383&spa=1"
+            "explanation": "Urgent fixes to resolve a major incident or apply a security patch are emergency changes, not standard changes. Standard changes are low-risk, routine, and repeatable.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/change-management/change-types.html"
           },
           {
             "choiceId": "d",
-            "explanation": "All change types are tracked in ServiceNow.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=ecb20dd947dc9a5089c7acc9126d4383&spa=1"
+            "explanation": "Two levels of approval (peer or technical approval plus CAB authorization) before implementation is the defining trait of a normal change, not a standard change.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/change-management/change-types.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Standard Changes"
+        "https://www.servicenow.com/docs/r/it-service-management/change-management/change-types.html",
+        "https://www.servicenow.com/docs/r/it-service-management/change-management/normal-standard-emergency-states.html"
       ],
       "isFree": true,
       "source": {
@@ -164,14 +165,17 @@
         "tags": [
           "standard change",
           "pre-approved",
-          "CAB"
+          "CAB",
+          "normal change"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -263,52 +267,53 @@
       "id": "csa-cm-004",
       "certification": "csa",
       "topic": "change-management",
-      "cognitiveLevel": "understanding",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What is the purpose of conflict detection in Change Management?",
+      "question": "An administrator wants conflict detection to flag any change request planned during the year-end code freeze. Which type of schedule should the administrator create for that period?",
       "options": [
         {
           "id": "a",
-          "text": "To identify employee scheduling conflicts"
+          "text": "A maintenance schedule covering the freeze"
         },
         {
           "id": "b",
-          "text": "To detect scheduling conflicts with CIs, maintenance windows, and blackout periods"
+          "text": "A blackout schedule covering the freeze"
         },
         {
           "id": "c",
-          "text": "To find conflicts in change request descriptions"
+          "text": "An information schedule covering the freeze"
         },
         {
           "id": "d",
-          "text": "To detect budget conflicts"
+          "text": "A CAB meeting schedule covering the freeze"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "The Change Management application helps identify schedule conflicts by analyzing factors such as configuration items, planned start and end dates, and change scope. Conflicts may arise from CI scheduling, maintenance windows, blackout windows, or assigned personnel availability. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=ecb20dd947dc9a5089c7acc9126d4383&spa=1",
+        "correct": "Blackout schedules specify times during which normal change activity should not be scheduled, and conflict detection raises a conflict when a change request falls inside a blackout window. The Conflict detection page even gives a year-end code freeze as the example use of a blackout schedule. Conflict detection compares a change's CIs and planned dates against blackout and maintenance windows and other active changes. See https://www.servicenow.com/docs/r/it-service-management/change-management/schedule-types-conflict-detection.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "While personnel availability is checked, conflict detection covers much more.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=ecb20dd947dc9a5089c7acc9126d4383&spa=1"
+            "explanation": "A maintenance schedule defines when changes should be scheduled. Conflict detection flags changes that fall outside a maintenance window, so it would not flag changes inside the freeze.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/change-management/schedule-types-conflict-detection.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Description conflicts are not what conflict detection analyzes.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=ecb20dd947dc9a5089c7acc9126d4383&spa=1"
+            "explanation": "Information schedules record events such as holidays that teams should know about, but conflict detection does not create conflict records for information schedules.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/change-management/schedule-types-conflict-detection.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Budget conflicts are handled separately from change conflict detection.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=ecb20dd947dc9a5089c7acc9126d4383&spa=1"
+            "explanation": "A CAB meeting schedule in the CAB workbench sets up recurring CAB meetings to review changes. Conflict detection does not evaluate it as a change blackout period.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/change-management/cab-workbench.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Conflict Detection"
+        "https://www.servicenow.com/docs/r/it-service-management/change-management/schedule-types-conflict-detection.html",
+        "https://www.servicenow.com/docs/r/it-service-management/change-management/c_ConflictDetection.html"
       ],
       "isFree": true,
       "source": {
@@ -334,67 +339,71 @@
         ],
         "tags": [
           "conflict detection",
-          "scheduling",
-          "blackout window"
+          "blackout window",
+          "maintenance window",
+          "scheduling"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "csa-cm-005",
       "certification": "csa",
       "topic": "change-management",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What does the 'Authorized' state mean in the change lifecycle?",
+      "question": "A requester asks about a normal change that has received final authorization from Change Management and the CAB. Its planned start date is next week, and no work has started yet. Which state is the change request in?",
       "options": [
         {
           "id": "a",
-          "text": "The change has been implemented"
+          "text": "Implement"
         },
         {
           "id": "b",
-          "text": "CAB has provided final authorization and we're waiting for the scheduled window"
+          "text": "Scheduled"
         },
         {
           "id": "c",
-          "text": "The change has been canceled"
+          "text": "Authorize"
         },
         {
           "id": "d",
-          "text": "The change is being assessed"
+          "text": "Assess"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "Authorized means that CAB has provided the final authorization to proceed with the change, and we're simply waiting for the scheduled window. When the scheduled window occurs, it's time to implement the change. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=ecb20dd947dc9a5089c7acc9126d4383&spa=1",
+        "correct": "In the change state model, Scheduled means the change is fully scheduled and authorized and is waiting for its planned start date; an email notification is sent to the requester when the change enters this state. Authorize is the earlier state in which Change Management and the CAB schedule the change and give final authorization, so a change that already has that authorization and is waiting for its window has moved on to Scheduled. See https://www.servicenow.com/docs/r/it-service-management/change-management/c_ChangeStateModel.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Implementation happens after the Authorized state when the scheduled window arrives.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=ecb20dd947dc9a5089c7acc9126d4383&spa=1"
+            "explanation": "Implement is the state in which the planned start date has arrived and the actual implementation work is being carried out. No work has started on this change yet.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/change-management/c_ChangeStateModel.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Canceled is a separate state from Authorized.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=ecb20dd947dc9a5089c7acc9126d4383&spa=1"
+            "explanation": "Authorize is where Change Management and the CAB schedule the change and provide final authorization. Once that authorization is granted, the change moves on to Scheduled.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/change-management/c_ChangeStateModel.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Assess is a different state where peer review is being conducted.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=ecb20dd947dc9a5089c7acc9126d4383&spa=1"
+            "explanation": "Assess is where peer review and technical approval of the change details happen. That step comes before CAB authorization, so this change is past it.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/change-management/c_ChangeStateModel.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Change States"
+        "https://www.servicenow.com/docs/r/it-service-management/change-management/c_ChangeStateModel.html",
+        "https://www.servicenow.com/docs/r/it-service-management/change-management/normal-standard-emergency-states.html"
       ],
       "isFree": false,
       "source": {
@@ -419,15 +428,18 @@
         ],
         "tags": [
           "change states",
-          "authorized",
+          "scheduled",
+          "authorize",
           "CAB"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -606,52 +618,52 @@
       "id": "csa-cm-008",
       "certification": "csa",
       "topic": "change-management",
-      "cognitiveLevel": "understanding",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What is a change model in ServiceNow?",
+      "question": "An administrator wants database refresh changes to follow their own set of states, state transitions, and approval policies, with fields pre-filled when the request is created. What should the administrator define?",
       "options": [
         {
           "id": "a",
-          "text": "A 3D visualization of the change"
+          "text": "A blackout schedule"
         },
         {
           "id": "b",
-          "text": "A template that defines the process, fields, states, approvals, and tasks for specific change types"
+          "text": "A new change model"
         },
         {
           "id": "c",
-          "text": "A cost estimation model"
+          "text": "A standard change template"
         },
         {
           "id": "d",
-          "text": "A database schema for changes"
+          "text": "A CAB meeting agenda"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "The process details, such as the specific fields, record states, approvals or pre-approvals, and tasks created are determined by the change model and change policies. Multimodal Change allows customization of activities and workflows for specific use cases. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=ecb20dd947dc9a5089c7acc9126d4383&spa=1",
+        "correct": "Change models define the process for a specific change use case. They are built from reusable elements such as change states, change state transitions, approval policies, and change templates, and they can show standard field information when a new change request is created with the model. This tailors a fit-for-purpose process for the use case, so a change model meets every requirement in the scenario. See https://www.servicenow.com/docs/r/it-service-management/change-management/manage-change-models.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Change models are process templates, not visualizations.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=ecb20dd947dc9a5089c7acc9126d4383&spa=1"
+            "explanation": "A blackout schedule sets times when normal change activity should not be scheduled. Conflict detection uses it, but it does not define states, transitions, or approvals.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/change-management/schedule-types-conflict-detection.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Cost estimation is handled separately from change models.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=ecb20dd947dc9a5089c7acc9126d4383&spa=1"
+            "explanation": "A standard change template pre-fills pre-approved values for a standard change from the catalog. It does not define its own set of states, transitions, and approval policies.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/change-management/c_StandardChangeCatalogPlugin.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Database schemas are different from change models.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=ecb20dd947dc9a5089c7acc9126d4383&spa=1"
+            "explanation": "A CAB meeting agenda uses filter criteria to pick which change requests a CAB meeting discusses. It does not define the process that a change request follows.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/change-management/cab-workbench.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Change Models"
+        "https://www.servicenow.com/docs/r/it-service-management/change-management/manage-change-models.html"
       ],
       "isFree": false,
       "source": {
@@ -676,15 +688,18 @@
         ],
         "tags": [
           "change model",
-          "template",
-          "workflow"
+          "states",
+          "approval policy",
+          "template"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -693,50 +708,52 @@
       "topic": "change-management",
       "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "A change request has scheduling conflicts detected. What should the change owner do?",
+      "question": "A change owner runs Check Conflicts on a change request, and the Conflicts tab shows that the CI is already scheduled by another change during the planned window. What is the documented next step?",
       "options": [
         {
           "id": "a",
-          "text": "Ignore the conflicts and proceed immediately"
+          "text": "Revert the change to New so that the conflicts are cleared"
         },
         {
           "id": "b",
-          "text": "Review conflicts and either amend the change to avoid them or document justification in work notes"
+          "text": "Review the conflicts and reschedule the change to resolve them"
         },
         {
           "id": "c",
-          "text": "Cancel the change request"
+          "text": "Approve the change so that it skips the conflicting time window"
         },
         {
           "id": "d",
-          "text": "Wait for the conflicts to resolve automatically"
+          "text": "Wait for the conflict status to clear in the Scheduled state"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "It is up to the change owner or assigned user to review the conflicts and decide whether to amend the change to avoid conflicts or proceed anyway. Work notes should be constantly updated with justification if conflicts are ignored, as change approvers can also see them. See: https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=ecb20dd947dc9a5089c7acc9126d4383&spa=1",
+        "correct": "After running conflict detection manually, the change owner reviews the Conflicts Detected list on the Conflicts tab, which shows the conflict type, such as CI Already Scheduled, and any conflicting change. The documented next step is to resolve the conflicts and reschedule the change. The conflict calendar's Scheduling Assistant can help by offering available time slots that avoid the conflict. See https://www.servicenow.com/docs/r/it-service-management/change-management/t_RunManualConflictDetection.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Ignoring conflicts without documentation is not best practice.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=ecb20dd947dc9a5089c7acc9126d4383&spa=1"
+            "explanation": "Revert to New restarts the workflow and cancels pending approvals. It is meant for adding missing CIs before approval and does not resolve a schedule clash.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/change-management/c_ChangeStateModel.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Cancellation may not be necessary if conflicts can be resolved or justified.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=ecb20dd947dc9a5089c7acc9126d4383&spa=1"
+            "explanation": "Approving a change moves it to Scheduled but does not change its planned dates. The CI would still be scheduled by the other change at the same time.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/change-management/t_ProcessAChangeRequest.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Conflicts don't resolve automatically; action is required.",
-            "reference": "https://learning.servicenow.com/lxp/en/pages/learning-course?id=learning_course&course_id=f782895d93d09a5c56aeb94c5cba1044&child_id=ecb20dd947dc9a5089c7acc9126d4383&spa=1"
+            "explanation": "Conflicts are recalculated when the CI, planned dates, or state change. The overlap stays until the schedule changes, so the owner must reschedule rather than wait.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/change-management/c_ConflictDetection.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Conflict Management"
+        "https://www.servicenow.com/docs/r/it-service-management/change-management/t_RunManualConflictDetection.html",
+        "https://www.servicenow.com/docs/r/it-service-management/change-management/change-conflict-calendar.html",
+        "https://www.servicenow.com/docs/r/it-service-management/change-management/c_ConflictDetection.html"
       ],
       "isFree": false,
       "source": {
@@ -761,15 +778,17 @@
         ],
         "tags": [
           "conflict resolution",
-          "work notes",
-          "scheduling"
+          "scheduling",
+          "conflict detection"
         ]
       },
       "meta": {
         "generatedAt": "2026-02-04T23:00:00Z",
-        "version": "1.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -1079,44 +1098,47 @@
       "id": "csa-cm-014",
       "certification": "csa",
       "topic": "change-management",
-      "cognitiveLevel": "comprehension",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "What is the purpose of the Change Advisory Board (CAB) Workbench?",
+      "question": "A CAB manager wants to set up a recurring weekly CAB meeting, define its attendees, and use filter criteria to pick which change requests go on each agenda. Which feature should the manager use?",
       "options": [
         {
           "id": "a",
-          "text": "To automatically approve all change requests"
+          "text": "The standard change catalog"
         },
         {
           "id": "b",
-          "text": "To help CAB managers schedule and manage meetings to review and authorize change requests"
+          "text": "The CAB workbench"
         },
         {
           "id": "c",
-          "text": "To create new change request templates"
+          "text": "The conflict calendar"
         },
         {
           "id": "d",
-          "text": "To generate reports on historical change success rates"
+          "text": "Change approval policies"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "The Change Advisory Board Workbench helps CAB managers schedule and manage meetings to review and authorize change requests.",
+        "correct": "The CAB workbench lets a CAB manager schedule, plan, and manage CAB meetings. It can define a recurring meeting schedule and the attendees for each occurrence, and it uses filter criteria to decide which change requests go on a meeting's agenda. It also provides a change calendar, lets attendees approve or reject changes based on CAB decisions, and records meeting notes. See https://www.servicenow.com/docs/r/it-service-management/change-management/cab-workbench.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "The CAB Workbench facilitates review meetings; it doesn't automatically approve changes."
+            "explanation": "The standard change catalog lists pre-approved standard change templates that users can request. It does not schedule CAB meetings or build their agendas.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/change-management/c_StandardChangeCatalogPlugin.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Change templates are created through the change management module, not the CAB Workbench."
+            "explanation": "The conflict calendar shows the scheduling conflicts for one change request and offers the Scheduling Assistant. It does not manage CAB meetings or their attendees.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/change-management/change-conflict-calendar.html"
           },
           {
             "choiceId": "d",
-            "explanation": "While reporting is available, the primary purpose is managing CAB review meetings."
+            "explanation": "Change approval policies generate approvals by evaluating decisions and approval definitions. They do not schedule recurring CAB meetings or set agendas.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/change-management/change-approval-policy.html"
           }
         ]
       },
@@ -1138,16 +1160,22 @@
         ],
         "tags": [
           "CAB",
+          "CAB workbench",
           "change advisory board",
-          "change authorization"
+          "meeting agenda"
         ]
       },
       "meta": {
         "generatedAt": "2026-03-16T02:00:00Z",
         "version": "1.1",
-        "release": "Xanadu",
-        "reviewed": false
-      }
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
+      },
+      "references": [
+        "https://www.servicenow.com/docs/r/it-service-management/change-management/cab-workbench.html"
+      ]
     },
     {
       "id": "csa-cm-015",
@@ -1302,48 +1330,54 @@
       "id": "csa-cm-017",
       "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "A change implementer discovers a critical issue during the implementation of a Normal change. The change cannot be completed as planned. What should be recorded?",
+      "question": "During the Implement state of a normal change, the implementer hits a critical issue and backs out the work, so the change cannot be completed as planned. How should this outcome be recorded?",
       "options": [
         {
           "id": "a",
-          "text": "Move the change to 'Review' state and document it as an unsuccessful implementation with rollback details"
+          "text": "Move it to Review and record the outcome in the close code and notes"
         },
         {
           "id": "b",
-          "text": "Delete the change record and create a new one"
+          "text": "Use Revert to New so that the change can be resubmitted for approval"
         },
         {
           "id": "c",
-          "text": "Close the change as successful anyway"
+          "text": "Close it with a successful close code so the change metrics stay clean"
         },
         {
           "id": "d",
-          "text": "Convert the change to an Emergency type"
+          "text": "Change its type to Emergency and send it on to the CAB for approval"
         }
       ],
       "correctAnswers": [
         "a"
       ],
       "explanation": {
-        "correct": "Failed implementations should be documented by moving the change to Review state with details about what went wrong and the rollback steps taken. This maintains the audit trail and supports post-implementation review.",
+        "correct": "After implementation work ends, the change moves to the Review state. In Review, the change requester decides whether the change was successful, and a post-implementation review can be held. To close the change, the user enters a Close code and Close notes in the Closure Information section, which records the actual outcome. A change cannot be canceled once it is in Review. See https://www.servicenow.com/docs/r/it-service-management/change-management/c_ChangeStateModel.html",
         "wrongAnswers": [
           {
             "choiceId": "b",
-            "explanation": "Deleting records destroys the audit trail; failed changes should be documented, not deleted."
+            "explanation": "Revert to New is used for Normal changes in Assess or Emergency changes in Authorize when CIs were missed before approval. It does not record a failed implementation.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/change-management/c_ChangeStateModel.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Marking a failed change as successful compromises data integrity and makes future planning unreliable."
+            "explanation": "In Review, the requester determines whether the change was successful. Recording a failed change as successful would make the closure information inaccurate.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/change-management/c_ChangeStateModel.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Converting to Emergency doesn't address the implementation failure; Emergency type is for urgent changes, not failed ones."
+            "explanation": "A change's Type can be changed only while it is in the New state and before any approvals exist, so a change in Implement cannot be converted to Emergency.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/change-management/c_ChangeStateModel.html"
           }
         ]
       },
       "certification": "csa",
       "topic": "change-management",
-      "references": [],
+      "references": [
+        "https://www.servicenow.com/docs/r/it-service-management/change-management/c_ChangeStateModel.html",
+        "https://www.servicenow.com/docs/r/it-service-management/change-management/t_ProcessAChangeRequest.html"
+      ],
       "isFree": false,
       "source": {
         "type": "generated",
@@ -1362,61 +1396,74 @@
         "domain": "change-management",
         "domainSlug": "change-management",
         "subtopics": [],
-        "tags": []
+        "tags": [
+          "review",
+          "close code",
+          "implementation",
+          "post-implementation review"
+        ]
       },
       "meta": {
         "generatedAt": "2026-03-31T02:09:00Z",
-        "version": "2.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "csa-cm-018",
       "cognitiveLevel": "understanding",
       "type": "multiple_choice",
-      "question": "What is the purpose of a 'Change Advisory Board' (CAB) in ServiceNow?",
+      "question": "A new team member asks what role the Change Advisory Board (CAB) plays in the ServiceNow change process. Which answer is accurate?",
       "options": [
         {
           "id": "a",
-          "text": "To review, assess, and approve or reject Normal and Emergency changes"
+          "text": "It authorizes normal and emergency changes before implementation"
         },
         {
           "id": "b",
-          "text": "To implement changes on behalf of the change owner"
+          "text": "It implements approved changes on behalf of the change owner"
         },
         {
           "id": "c",
-          "text": "To automatically schedule all changes"
+          "text": "It pre-approves each standard change request when it is submitted"
         },
         {
           "id": "d",
-          "text": "To create Standard change templates"
+          "text": "It runs conflict detection on every change in the Scheduled state"
         }
       ],
       "correctAnswers": [
         "a"
       ],
       "explanation": {
-        "correct": "The CAB is a group of stakeholders who review proposed changes for risk, impact, and scheduling conflicts. They provide approval or rejection decisions, particularly for Normal changes that require assessment.",
+        "correct": "According to the Change types page, normal changes need peer or technical approval and CAB authorization before implementation. Emergency changes skip group and peer review and go directly to the Authorize state for CAB approval. CAB meetings are typically used to review and authorize change requests and to review recently implemented changes, so the CAB is an authorization body, not an implementation team. See https://www.servicenow.com/docs/r/it-service-management/change-management/change-types.html",
         "wrongAnswers": [
           {
             "choiceId": "b",
-            "explanation": "The CAB reviews and approves changes; implementation is performed by the assigned team or implementer."
+            "explanation": "The CAB reviews and authorizes changes. The actual work is done by the implementer during the Implement state, not by the CAB.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/change-management/c_ChangeStateModel.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Scheduling is done by change coordinators; the CAB reviews and approves, they don't schedule."
+            "explanation": "Standard changes are already pre-authorized and need no CAB authorization. Requests created from the catalog skip the Assess and Authorize states.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/change-management/change-types.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Standard change templates are created by administrators, not typically by the CAB."
+            "explanation": "Conflict detection runs automatically when CIs or planned dates are entered or changed, or it is run manually from the change. It is not a CAB task.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/change-management/c_ConflictDetection.html"
           }
         ]
       },
       "certification": "csa",
       "topic": "change-management",
-      "references": [],
+      "references": [
+        "https://www.servicenow.com/docs/r/it-service-management/change-management/change-types.html",
+        "https://www.servicenow.com/docs/r/it-service-management/change-management/cab-workbench.html"
+      ],
       "isFree": false,
       "source": {
         "type": "generated",
@@ -1435,61 +1482,75 @@
         "domain": "change-management",
         "domainSlug": "change-management",
         "subtopics": [],
-        "tags": []
+        "tags": [
+          "CAB",
+          "change advisory board",
+          "authorization",
+          "normal change",
+          "emergency change"
+        ]
       },
       "meta": {
         "generatedAt": "2026-03-31T02:09:00Z",
-        "version": "2.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "csa-cm-019",
       "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "Which feature helps prevent scheduling conflicts between changes affecting the same Configuration Item?",
+      "question": "Two teams have planned changes on the same server CI for overlapping time windows. The change manager wants this flagged automatically when the CI or planned dates are entered. Which feature does this?",
       "options": [
         {
           "id": "a",
-          "text": "The Change Conflict detection feature that checks for overlapping change windows on the same CI"
+          "text": "Change conflict detection"
         },
         {
           "id": "b",
-          "text": "A UI Policy that prevents saving duplicate change records"
+          "text": "A UI policy on the change form"
         },
         {
           "id": "c",
-          "text": "The Assignment Rule that checks group workload"
+          "text": "The change risk calculator"
         },
         {
           "id": "d",
-          "text": "The SLA timer on the change record"
+          "text": "A change approval policy"
         }
       ],
       "correctAnswers": [
         "a"
       ],
       "explanation": {
-        "correct": "ServiceNow's Change Conflict detection (also called Change Collision) identifies scheduling overlaps when multiple changes target the same CI or related CIs during overlapping time windows, preventing conflicting changes.",
+        "correct": "Conflict detection identifies scheduling conflicts from a change's configuration items and planned start and end dates. One reason it flags a conflict is that the CI is already scheduled at the given date and time. It can run automatically when the Configuration item or planned start and end dates are entered or updated, and the results appear in the Conflicts section of the change request. See https://www.servicenow.com/docs/r/it-service-management/change-management/c_ConflictDetection.html",
         "wrongAnswers": [
           {
             "choiceId": "b",
-            "explanation": "UI Policies control form behavior; they don't detect scheduling conflicts."
+            "explanation": "UI policies change form behavior, such as making fields mandatory, read-only, or hidden. They do not compare one change's schedule against other changes on the same CI.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/t_CreateAUIPolicy.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Assignment Rules route tickets based on conditions; they don't check change schedule conflicts."
+            "explanation": "The change risk calculator calculates the risk and impact of a change from defined rules. It does not detect overlapping schedules between changes on the same CI.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/change-management/change-risk-assess-detect-conflict.html"
           },
           {
             "choiceId": "d",
-            "explanation": "SLA timers track service level compliance, not scheduling conflicts."
+            "explanation": "Change approval policies generate approvals from decision conditions. They decide who approves a change, not whether its window overlaps another change on the CI.",
+            "reference": "https://www.servicenow.com/docs/r/it-service-management/change-management/change-approval-policy.html"
           }
         ]
       },
       "certification": "csa",
       "topic": "change-management",
-      "references": [],
+      "references": [
+        "https://www.servicenow.com/docs/r/it-service-management/change-management/c_ConflictDetection.html",
+        "https://www.servicenow.com/docs/r/it-service-management/change-management/t_RunManualConflictDetection.html"
+      ],
       "isFree": false,
       "source": {
         "type": "generated",
@@ -1508,13 +1569,19 @@
         "domain": "change-management",
         "domainSlug": "change-management",
         "subtopics": [],
-        "tags": []
+        "tags": [
+          "conflict detection",
+          "scheduling",
+          "configuration item"
+        ]
       },
       "meta": {
         "generatedAt": "2026-03-31T02:09:00Z",
-        "version": "2.0",
-        "release": "Xanadu",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {

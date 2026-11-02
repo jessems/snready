@@ -6,52 +6,52 @@
       "id": "cad-ui-policies-actions-001",
       "certification": "cad",
       "topic": "ui-policies-actions",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "Which field is used to identify a UI Policy instead of a Name field?",
+      "question": "An administrator creating a UI policy on the Incident table wants to record a brief summary of what the policy does, such as \"Make Close notes mandatory when Resolved\". Which field holds this summary?",
       "options": [
         {
           "id": "a",
-          "text": "Label"
+          "text": "Field name, in the UI Policy Actions list"
         },
         {
           "id": "b",
-          "text": "Short description"
+          "text": "Short description, on the UI policy form"
         },
         {
           "id": "c",
-          "text": "Title"
+          "text": "Name, on the UI policy form"
         },
         {
           "id": "d",
-          "text": "Display name"
+          "text": "View, on the UI policy form"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "UI Policies do not have a Name field. Instead, they use the Short description field, which can hold up to 255 characters and should describe what the UI policy does (e.g., 'If category is software, then subcategory is mandatory').",
+        "correct": "The UI policy form includes a Short description field, documented as a short summary of the UI policy, alongside fields such as Table, Active, Order, and Conditions. The documented form has no separate Name field, so Short description is where the summary goes. See https://www.servicenow.com/docs/r/platform-administration/t_CreateAUIPolicy.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Label is used for fields/columns on tables, not as the identifying field for UI Policies.",
-            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/administer/form-administration/concept/c_UIPolicies.html"
+            "explanation": "Field name is on each UI policy action and identifies the field on the table that the action affects, not a summary of the whole policy.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/t_CreateAUIPolicy.html"
           },
           {
             "choiceId": "c",
-            "explanation": "Title is not a field on the UI Policy form. The Short description field serves as the identifier.",
-            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/administer/form-administration/concept/c_UIPolicies.html"
+            "explanation": "The documented UI policy fields include Table, Active, Short description, Order, and Conditions, with no Name field to hold a summary.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/t_CreateAUIPolicy.html"
           },
           {
             "choiceId": "d",
-            "explanation": "Display name is not a field on the UI Policy form. UI Policies are identified by their Short description.",
-            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/administer/form-administration/concept/c_UIPolicies.html"
+            "explanation": "View selects which form view the policy applies to when Global is cleared. It controls scope, not a description of what the policy does.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/t_CreateAUIPolicy.html"
           }
         ]
       },
       "references": [
-        "https://docs.servicenow.com/bundle/yokohama-application-development/page/administer/form-administration/concept/c_UIPolicies.html"
+        "https://www.servicenow.com/docs/r/platform-administration/t_CreateAUIPolicy.html"
       ],
       "isFree": true,
       "source": {
@@ -75,9 +75,11 @@
       },
       "meta": {
         "generatedAt": "2025-07-18T02:30:00.000Z",
-        "version": "1.0",
-        "release": "Yokohama",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -114,22 +116,22 @@
           {
             "choiceId": "a",
             "explanation": "UI policies do not execute before client scripts. Client scripts execute first, then UI policies run afterward.",
-            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/administer/form-administration/concept/c_UIPolicies.html"
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/t_CreateAUIPolicy.html"
           },
           {
             "choiceId": "b",
             "explanation": "UI policies and client scripts do not execute simultaneously. Client scripts run first, followed by UI policies.",
-            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/administer/form-administration/concept/c_UIPolicies.html"
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/t_CreateAUIPolicy.html"
           },
           {
             "choiceId": "d",
             "explanation": "While both UI policies and client scripts have an Order field, UI policies as a category always execute after all client scripts have completed, regardless of individual order values.",
-            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/administer/form-administration/concept/c_UIPolicies.html"
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/t_CreateAUIPolicy.html"
           }
         ]
       },
       "references": [
-        "https://docs.servicenow.com/bundle/yokohama-application-development/page/administer/form-administration/concept/c_UIPolicies.html"
+        "https://www.servicenow.com/docs/r/platform-administration/t_CreateAUIPolicy.html"
       ],
       "isFree": true,
       "source": {

@@ -4,6 +4,30 @@ import { authorJsonLd } from "@/lib/author";
 import { getAllCertifications, getAllQuestionsForCertification, isCertificationReady } from "@/lib/data";
 import { METHODOLOGY_UPDATED_ISO } from "@/lib/site-facts";
 import { TeamByline } from "@/components/TeamByline";
+import questionChangelog from "@/data/question-changelog.json";
+
+interface ChangelogEntry {
+  date: string;
+  certification: string;
+  summary: string;
+  counts: Record<string, number | undefined>;
+  changes: string[];
+}
+
+const changelogEntries = questionChangelog.entries as ChangelogEntry[];
+
+const CHANGELOG_COUNT_LABELS: Record<string, string> = {
+  freeQuestionsBefore: "free questions before",
+  rewritten: "rewritten",
+  answersCorrected: "answers corrected",
+  duplicatesRemoved: "duplicates removed",
+  linksFixed: "doc links fixed",
+  flaggedUnchanged: "flagged, left unchanged",
+};
+
+function formatChangelogDate(iso: string): string {
+  return new Date(`${iso}T00:00:00Z`).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
+}
 
 export const metadata: Metadata = {
   title: { absolute: "How SNReady questions are made" },
@@ -115,7 +139,31 @@ export default async function HowQuestionsAreMadePage() {
           </p>
         </section>
 
-        <section id="report-an-error" className="mt-14 space-y-5 text-lg leading-8 text-zinc-700 dark:text-zinc-300">
+        <section id="changelog" className="mt-14 space-y-5 text-lg leading-8 text-zinc-700 dark:text-zinc-300">
+          <h2 className="text-2xl font-bold text-zinc-950 dark:text-white">Question changelog</h2>
+          <p>Dated corrections and rewrites to published questions, newest first.</p>
+          {changelogEntries.map((entry) => (
+            <div key={`${entry.date}-${entry.certification}`} className="rounded-2xl border border-zinc-200 p-5 dark:border-zinc-800">
+              <h3 className="text-lg font-semibold text-zinc-950 dark:text-white">
+                <time dateTime={entry.date}>{formatChangelogDate(entry.date)}</time> · {entry.certification.toUpperCase()}
+              </h3>
+              <p className="mt-2 text-base leading-7">{entry.summary}</p>
+              <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+                {Object.entries(entry.counts)
+                  .filter(([key, value]) => key in CHANGELOG_COUNT_LABELS && typeof value === "number")
+                  .map(([key, value]) => `${value} ${CHANGELOG_COUNT_LABELS[key]}`)
+                  .join(" · ")}
+              </p>
+              <ul className="mt-3 list-disc space-y-1 pl-6 text-base leading-7">
+                {entry.changes.map((change) => (
+                  <li key={change}>{change}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </section>
+
+        <section id="report-an-error"className="mt-14 space-y-5 text-lg leading-8 text-zinc-700 dark:text-zinc-300">
           <h2 className="text-2xl font-bold text-zinc-950 dark:text-white">How to report an error</h2>
           <p>
             If a question, answer or explanation looks wrong, see{" "}

@@ -92,52 +92,52 @@
       "id": "csa-delta-brazil-002",
       "certification": "csa",
       "topic": "delta-brazil",
-      "cognitiveLevel": "understanding",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "Starting with the Brazil release, how does the instance alert administrators when SAML SP signing or encryption keystores are approaching or past their expiry date?",
+      "question": "After upgrading to Brazil, an administrator wants to know what the release adds to warn the team before a SAML SP signing keystore expires and single sign-on starts failing. What does the instance now do?",
       "options": [
         {
           "id": "a",
-          "text": "It displays two separate home page banners, one for signing and one for encryption certificates, each linking to a customer action in Security Center"
+          "text": "It shows home page banners that link to a Security Center customer action"
         },
         {
           "id": "b",
-          "text": "It sends a single email notification to all users with the admin role"
+          "text": "It emails one expiry notice to every user who has the admin role"
         },
         {
           "id": "c",
-          "text": "It automatically renews the expiring keystores and logs the change in the system log"
+          "text": "It renews the expiring keystore by itself and records that in the system log"
         },
         {
           "id": "d",
-          "text": "It disables SAML single sign-on until the certificates are replaced"
+          "text": "It suspends SAML single sign-on until the keystore is replaced"
         }
       ],
       "correctAnswers": [
         "a"
       ],
       "explanation": {
-        "correct": "The release notes state that administrators receive banner alerts on the home page when SAML SP signing or encryption keystores are approaching or past expiry. Two separate banners are shown, one for signing certificates and one for encryption certificates, each linking to a dedicated customer action in Security Center. See: https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-authentication-release-notes.html",
+        "correct": "Brazil adds SAML certificate expiry notifications: when SP signing or encryption keystores are nearing or past expiry, administrators get banner alerts on the home page. Separate banners appear for signing and for encryption certificates, and each one links to a dedicated customer action in Security Center so the admin can act before SSO is disrupted. See https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-authentication-release-notes.html",
         "wrongAnswers": [
           {
             "choiceId": "b",
-            "explanation": "The release notes describe home page banner alerts, not an email notification to admins.",
+            "explanation": "The new Brazil alerting is home page banner alerts (one for signing, one for encryption certificates). The release notes only say the existing SAML certificate expiry notification now triggers earlier with more keystore detail; they do not describe a single notice emailed to every admin user.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-authentication-release-notes.html"
           },
           {
             "choiceId": "c",
-            "explanation": "The release notes describe alerts about expiring keystores; they do not describe automatic renewal.",
+            "explanation": "The feature only alerts administrators so they can manage certificates proactively; the release notes do not describe the instance renewing keystores on its own.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-authentication-release-notes.html"
           },
           {
             "choiceId": "d",
-            "explanation": "The release notes describe alerting so you can act before SSO is disrupted, not disabling SSO.",
+            "explanation": "The notifications exist so administrators can act before SSO is disrupted and to reduce authentication failures; nothing in the release notes says SSO is suspended.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-authentication-release-notes.html"
           }
         ]
       },
       "references": [
-        "Brazil delta release notes - Authentication"
+        "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-authentication-release-notes.html"
       ],
       "isFree": true,
       "difficulty": "medium",
@@ -170,9 +170,11 @@
       },
       "meta": {
         "generatedAt": "2026-10-21T00:00:00.000Z",
-        "version": "1.0",
+        "version": "1.1",
         "release": "Brazil",
-        "reviewed": false
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -790,52 +792,53 @@
       "id": "csa-delta-brazil-010",
       "certification": "csa",
       "topic": "delta-brazil",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "Which accessibility capability do the Australia release notes describe for Employee Center administrators?",
+      "question": "An Employee Center administrator must make the title of the Topic Header widget fit the organization's heading structure so screen reader and keyboard users can navigate pages clearly. Which capability supports this?",
       "options": [
         {
           "id": "a",
-          "text": "Configuring widget heading levels (H1–H6) to meet organizational standards"
+          "text": "Setting the widget's heading level, H1 to H6, in its instance options"
         },
         {
           "id": "b",
-          "text": "Automatically translating all widgets into the user's browser language"
+          "text": "Turning on automatic translation of widgets into the browser language"
         },
         {
           "id": "c",
-          "text": "Converting every page to a high-contrast theme for all users"
+          "text": "Applying a high-contrast theme to every portal page for all users"
         },
         {
           "id": "d",
-          "text": "Disabling keyboard navigation on portal pages"
+          "text": "Hiding the widget title so that screen readers skip over the heading"
         }
       ],
       "correctAnswers": [
         "a"
       ],
       "explanation": {
-        "correct": "The release notes state that admins can configure widget heading levels (H1–H6) to meet organizational standards and support technologies, and that clear heading hierarchies improve navigation for screen reader and keyboard users. See: https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-employeecenter-release-notes.html",
+        "correct": "The Australia and Brazil releases let administrators configure widget heading levels (H1 to H6) to meet organizational standards and support assistive technologies. In Employee Center the admin opens the widget's instance options (for example on the Topic Header widget) and picks the title heading level, giving pages a clear heading hierarchy for screen reader and keyboard users. See https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-employeecenter-release-notes.html",
         "wrongAnswers": [
           {
             "choiceId": "b",
-            "explanation": "The release notes describe configurable widget heading levels, not automatic translation.",
+            "explanation": "The Employee Center accessibility enhancement in the release notes is configurable widget heading levels; it does not translate widgets, and translation would not fix the heading structure.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-employeecenter-release-notes.html"
           },
           {
             "choiceId": "c",
-            "explanation": "The release notes describe configurable widget heading levels, not a forced high-contrast theme.",
+            "explanation": "A site-wide high-contrast theme is not the capability described; the release notes describe per-widget heading levels from H1 to H6 to build a clear heading hierarchy.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-employeecenter-release-notes.html"
           },
           {
             "choiceId": "d",
-            "explanation": "The release notes say clear heading hierarchies improve navigation for keyboard users; they do not describe disabling keyboard navigation.",
-            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-employeecenter-release-notes.html"
+            "explanation": "Removing the heading works against the goal: the docs say clear heading hierarchies are what improve navigation for screen reader and keyboard users.",
+            "reference": "https://www.servicenow.com/docs/r/employee-service-management/employee-experience-foundation/config-heading-widget-instance.html"
           }
         ]
       },
       "references": [
-        "Brazil delta release notes - Employee Center"
+        "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-employeecenter-release-notes.html",
+        "https://www.servicenow.com/docs/r/employee-service-management/employee-experience-foundation/config-heading-widget-instance.html"
       ],
       "isFree": true,
       "difficulty": "easy",
@@ -867,61 +870,64 @@
       },
       "meta": {
         "generatedAt": "2026-10-21T00:00:00.000Z",
-        "version": "1.0",
-        "release": "Australia",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "csa-delta-brazil-011",
       "certification": "csa",
       "topic": "delta-brazil",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "Starting with the Brazil release, what is the status of the User Registration Request plugin (com.snc.user_registration)?",
+      "question": "An administrator setting up a new Brazil instance wants unregistered users to request accounts and looks for the User Registration Request plugin (com.snc.user_registration). What should the administrator expect?",
       "options": [
         {
           "id": "a",
-          "text": "It is being prepared for future deprecation: hidden and not activated on new instances, but still supported"
+          "text": "It is hidden and not activated on new instances, yet still supported"
         },
         {
           "id": "b",
-          "text": "It is removed from all instances during the upgrade"
+          "text": "It is removed from every instance as part of the Brazil upgrade"
         },
         {
           "id": "c",
-          "text": "It is activated by default on all new instances"
+          "text": "It is activated by default so the welcome screen shows the request form"
         },
         {
           "id": "d",
-          "text": "It is replaced by a mandatory Store application that must be installed before upgrading"
+          "text": "It is replaced by a Store app that must be installed before upgrading"
         }
       ],
       "correctAnswers": [
         "a"
       ],
       "explanation": {
-        "correct": "The release notes state that starting with the Brazil release, the User Registration Request plugin (com.snc.user_registration) is being prepared for future deprecation. It will be hidden and no longer activated on new instances but will continue to be supported. See: https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-identity-release-notes.html",
+        "correct": "Starting with Brazil, the User Registration Request plugin is being prepared for future deprecation. It is hidden and no longer activated on new instances, but it continues to be supported. The user self-registration docs add that the External User Self-Registration plugin provides the latest experience for this functionality. See https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-identity-release-notes.html",
         "wrongAnswers": [
           {
             "choiceId": "b",
-            "explanation": "The release notes say the plugin will continue to be supported; they do not describe removal during upgrade.",
+            "explanation": "The plugin is only being prepared for future deprecation; the docs state it will continue to be supported, so it is not removed during the upgrade.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-identity-release-notes.html"
           },
           {
             "choiceId": "c",
-            "explanation": "This option reverses the documented behavior: the plugin will no longer be activated on new instances.",
+            "explanation": "The opposite is true: from Brazil the plugin is hidden and no longer activated on new instances, so the request form is not there by default.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-identity-release-notes.html"
           },
           {
             "choiceId": "d",
-            "explanation": "The release notes do not describe a mandatory replacement application; the plugin is hidden but continues to be supported.",
-            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-identity-release-notes.html"
+            "explanation": "The docs point to the External User Self-Registration plugin for the latest experience, but the old plugin stays supported and nothing must be installed before upgrading.",
+            "reference": "https://www.servicenow.com/docs/r/platform-administration/user-administration/c_UserRegistration.html"
           }
         ]
       },
       "references": [
-        "Brazil delta release notes - Identity"
+        "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-identity-release-notes.html",
+        "https://www.servicenow.com/docs/r/platform-administration/user-administration/c_UserRegistration.html"
       ],
       "isFree": true,
       "difficulty": "medium",
@@ -955,61 +961,64 @@
       },
       "meta": {
         "generatedAt": "2026-10-21T00:00:00.000Z",
-        "version": "1.0",
+        "version": "1.1",
         "release": "Brazil",
-        "reviewed": false
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "csa-delta-brazil-012",
       "certification": "csa",
       "topic": "delta-brazil",
-      "cognitiveLevel": "understanding",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "Starting with the Brazil release, what change affects the Conditional Script Writer group used by the Scripting Governance Tool?",
+      "question": "After the Brazil upgrade, a service desk lead tries to set the Conditional Script Writer group as the assignment group on an incident and cannot select it. What explains this?",
       "options": [
         {
           "id": "a",
-          "text": "It can no longer be selected as the assignment group on task-based records in the base system configuration"
+          "text": "The group is permission-only and is blocked as an assignment group"
         },
         {
           "id": "b",
-          "text": "It is automatically added as the assignment group on all incidents"
+          "text": "The upgrade deleted the group and replaced it with a single role"
         },
         {
           "id": "c",
-          "text": "It is deleted from the instance during upgrade"
+          "text": "The group now accepts only members who hold the admin role"
         },
         {
           "id": "d",
-          "text": "It now grants the admin role to its members"
+          "text": "Auto-assignment must be turned off before the group can be selected"
         }
       ],
       "correctAnswers": [
         "a"
       ],
       "explanation": {
-        "correct": "The release notes state that the Conditional Script Writer group can no longer be selected as the assignment group on any task or incident through the user interface with the base system configuration, so this permission-only group is no longer used as an operational assignment target. See: https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-identity-release-notes.html",
+        "correct": "In Brazil, the Conditional Script Writer group used by the Scripting Governance Tool can no longer be selected as the assignment group on any task-based record or incident through the UI with the base system configuration. The group exists to grant scripting permissions, so it is kept out of operational assignment. See https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-identity-release-notes.html",
         "wrongAnswers": [
           {
             "choiceId": "b",
-            "explanation": "This option reverses the documented behavior: the group can no longer be selected as an assignment group.",
-            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-identity-release-notes.html"
+            "explanation": "The group still exists in Brazil: the Scripting Governance Tool docs say it grants scripting permissions to its members via the snc_required_script_writer_permission role.",
+            "reference": "https://www.servicenow.com/docs/r/platform-security/use-sgt.html"
           },
           {
             "choiceId": "c",
-            "explanation": "The release notes restrict selecting the group as an assignment group; they do not describe deleting it.",
-            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-identity-release-notes.html"
+            "explanation": "Membership is not tied to admin; auto-assignment adds internal users with one functional role, and the group grants snc_required_script_writer_permission.",
+            "reference": "https://www.servicenow.com/docs/r/platform-security/use-sgt.html"
           },
           {
             "choiceId": "d",
-            "explanation": "The release notes describe it as a permission-only group that can't be used for assignment; they say nothing about granting the admin role.",
+            "explanation": "Auto-assignment controls who becomes a member of the group; the assignment-group restriction applies in the base system configuration regardless of that setting.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-identity-release-notes.html"
           }
         ]
       },
       "references": [
-        "Brazil delta release notes - Identity"
+        "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-identity-release-notes.html",
+        "https://www.servicenow.com/docs/r/platform-security/use-sgt.html"
       ],
       "isFree": true,
       "difficulty": "hard",
@@ -1043,9 +1052,11 @@
       },
       "meta": {
         "generatedAt": "2026-10-21T00:00:00.000Z",
-        "version": "1.0",
+        "version": "1.1",
         "release": "Brazil",
-        "reviewed": false
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -1142,50 +1153,51 @@
       "topic": "delta-brazil",
       "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "Starting with the Australia release, an administrator wants to create a new application menu and modules without leaving the Next Experience UI. Which statement is supported by the release notes?",
+      "question": "On a Brazil instance, an administrator wants to add an application menu with a Dashboard module and a List module without leaving the Next Experience UI to edit UI16 platform records. What should the administrator use?",
       "options": [
         {
           "id": "a",
-          "text": "Application menus and modules can be created and edited directly from the Next Experience UI, including Record, List, Dashboard, and Custom page modules"
+          "text": "Next Experience All Menu Editing from the All menu"
         },
         {
           "id": "b",
-          "text": "Application menus can only be created in UI Builder"
+          "text": "UI Builder, creating a separate page for each module"
         },
         {
           "id": "c",
-          "text": "Modules must be created with a background script in Next Experience"
+          "text": "A background script that inserts the module records"
         },
         {
           "id": "d",
-          "text": "Only List modules can be configured from the Next Experience UI"
+          "text": "The classic UI16 application menu and module forms"
         }
       ],
       "correctAnswers": [
         "a"
       ],
       "explanation": {
-        "correct": "The release notes describe Next Experience all menu editing: create and edit application menus and modules directly from the Next Experience UI. Admins can configure Record, List, Dashboard, and Custom page modules from a centralized, platform-native interface. See: https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-nextexperience-release-notes.html",
+        "correct": "Next Experience All Menu Editing lets admins create and edit application menus and modules directly from the Next Experience UI. It supports Record, List, Dashboard and Custom page modules from a centralized, platform-native interface, so there is no need to navigate to UI16 platform records. See https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-nextexperience-release-notes.html",
         "wrongAnswers": [
           {
             "choiceId": "b",
-            "explanation": "The release notes describe creating application menus directly from the Next Experience UI, not only in UI Builder.",
+            "explanation": "UI Builder is not needed here; the release notes say menus and modules are created and edited directly from the Next Experience UI with All Menu Editing.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-nextexperience-release-notes.html"
           },
           {
             "choiceId": "c",
-            "explanation": "The release notes describe a platform-native interface for menus and modules, not background scripts.",
-            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-nextexperience-release-notes.html"
+            "explanation": "Scripting the records is unnecessary and error-prone; All Menu Editing offers inline configuration of menus and modules with real-time feedback.",
+            "reference": "https://www.servicenow.com/docs/r/platform-user-interface/next-experience-all-menu-editing.html"
           },
           {
             "choiceId": "d",
-            "explanation": "The release notes list Record, List, Dashboard, and Custom page modules, not only List modules.",
-            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-nextexperience-release-notes.html"
+            "explanation": "The admin wants to avoid UI16 records, and All Menu Editing exists precisely so admins no longer have to navigate to UI16 platform records.",
+            "reference": "https://www.servicenow.com/docs/r/platform-user-interface/next-experience-all-menu-editing.html"
           }
         ]
       },
       "references": [
-        "Brazil delta release notes - Next Experience"
+        "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-nextexperience-release-notes.html",
+        "https://www.servicenow.com/docs/r/platform-user-interface/next-experience-all-menu-editing.html"
       ],
       "isFree": true,
       "difficulty": "medium",
@@ -1219,9 +1231,11 @@
       },
       "meta": {
         "generatedAt": "2026-10-21T00:00:00.000Z",
-        "version": "1.0",
-        "release": "Australia",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -1316,52 +1330,53 @@
       "id": "csa-delta-brazil-016",
       "certification": "csa",
       "topic": "delta-brazil",
-      "cognitiveLevel": "understanding",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "Starting with the Brazil release, Service Portal supports identifier-first login (IFL). How is the authentication path determined?",
+      "question": "An administrator enables identifier-first login (IFL) on a Service Portal in Brazil. When a user reaches the portal login page, what determines the authentication path they follow?",
       "options": [
         {
           "id": "a",
-          "text": "By the username or email entered, evaluated against configured IFL policies"
+          "text": "The username or email entered, checked against IFL policies"
         },
         {
           "id": "b",
-          "text": "By the user's browser language and time zone"
+          "text": "The browser language and time zone reported by the device"
         },
         {
           "id": "c",
-          "text": "By the sys_id of the portal record only"
+          "text": "The identity provider selected in the portal's login widget"
         },
         {
           "id": "d",
-          "text": "By the role with the highest privilege assigned to the user"
+          "text": "The highest-privilege role currently held by the user"
         }
       ],
       "correctAnswers": [
         "a"
       ],
       "explanation": {
-        "correct": "The release notes state that with identifier-first login in Service Portal, the authentication path is determined by the username or email entered and is evaluated against configured IFL policies. See: https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-serviceportal-release-notes.html",
+        "correct": "With IFL in Service Portal, the login page first shows a username/email field. The authentication path is determined by the username or email entered and is evaluated against the IFL policies configured on the instance, and IFL takes precedence over other login options on the portal. See https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-serviceportal-release-notes.html",
         "wrongAnswers": [
           {
             "choiceId": "b",
-            "explanation": "The release notes say the path is determined by the username or email entered, not browser language or time zone.",
-            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-serviceportal-release-notes.html"
+            "explanation": "The docs say the path depends on the username or email entered and the configured IFL policies; browser language and time zone are not part of it.",
+            "reference": "https://www.servicenow.com/docs/r/platform-user-interface/service-portal/identifier-first-login-service-portal.html"
           },
           {
             "choiceId": "c",
-            "explanation": "The release notes say the path is determined by the username or email entered and evaluated against IFL policies, not by the portal sys_id alone.",
-            "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-serviceportal-release-notes.html"
+            "explanation": "IFL takes precedence over any identity provider or local login options configured for the portal, and admins clear those conflicting options when enabling it.",
+            "reference": "https://www.servicenow.com/docs/r/platform-user-interface/service-portal/identifier-first-login-service-portal.html"
           },
           {
             "choiceId": "d",
-            "explanation": "The release notes say the path is determined by the username or email entered, not by the user's roles.",
+            "explanation": "Roles are not what routes the login; the identifier the user types is evaluated against IFL policies to choose the authentication path.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-serviceportal-release-notes.html"
           }
         ]
       },
       "references": [
-        "Brazil delta release notes - Service Portal"
+        "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-serviceportal-release-notes.html",
+        "https://www.servicenow.com/docs/r/platform-user-interface/service-portal/identifier-first-login-service-portal.html"
       ],
       "isFree": true,
       "difficulty": "medium",
@@ -1395,9 +1410,11 @@
       },
       "meta": {
         "generatedAt": "2026-10-21T00:00:00.000Z",
-        "version": "1.0",
+        "version": "1.1",
         "release": "Brazil",
-        "reviewed": false
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
@@ -1410,46 +1427,46 @@
       "options": [
         {
           "id": "a",
-          "text": "Assign the dashboard to the dashboard_user role, which ships with the base system"
+          "text": "Share it to the dashboard_user role that ships with the base system"
         },
         {
           "id": "b",
-          "text": "Publish the dashboard as a public report"
+          "text": "Publish its reports so that anyone with the link can view them"
         },
         {
           "id": "c",
-          "text": "Add every user to a new group and share with that group"
+          "text": "Create a group containing every user and then share the dashboard to it"
         },
         {
           "id": "d",
-          "text": "Grant the pa_admin role to all users"
+          "text": "Add each user to the dashboard's sharing list one at a time"
         }
       ],
       "correctAnswers": [
         "a"
       ],
       "explanation": {
-        "correct": "The release notes state that administrators can share a Platform Analytics dashboard with all authenticated users by assigning it to the dashboard_user role, which ships with the base system. Any user who holds at least one role automatically receives read access, replacing the need to manage individual user, group, or role assignments. See: https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-platformanalyticsexperience-release-notes.html",
+        "correct": "In Brazil, an administrator can share a Platform Analytics dashboard with all authenticated users by assigning it to the dashboard_user role, which ships with the base system. Any user holding at least one role then gets read access, which replaces managing individual user, group, or role assignments for organization-wide dashboards. See https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-platformanalyticsexperience-release-notes.html",
         "wrongAnswers": [
           {
             "choiceId": "b",
-            "explanation": "The release notes describe sharing via the dashboard_user role; elsewhere they note that report publishing has been replaced and public Core UI reports are unpublished on upgrade.",
+            "explanation": "The release notes state it is no longer possible to publish a report; the Read-only link option replaces it and does not share a dashboard organization-wide.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-platformanalyticsexperience-release-notes.html"
           },
           {
             "choiceId": "c",
-            "explanation": "The documented approach replaces the need to manage individual user, group, or role assignments for organization-wide dashboards.",
+            "explanation": "A catch-all group is exactly the kind of group assignment the dashboard_user role approach replaces, and it must be maintained as users join.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-platformanalyticsexperience-release-notes.html"
           },
           {
             "choiceId": "d",
-            "explanation": "The release notes name the dashboard_user role for this purpose, not granting pa_admin to all users.",
+            "explanation": "Sharing user by user is the individual assignment work the administrator wants to avoid; the dashboard_user role gives every authenticated user read access.",
             "reference": "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-platformanalyticsexperience-release-notes.html"
           }
         ]
       },
       "references": [
-        "Brazil delta release notes - Platform Analytics experience"
+        "https://www.servicenow.com/docs/r/delta-zurich-brazil/brazil-zurich-platformanalyticsexperience-release-notes.html"
       ],
       "isFree": true,
       "difficulty": "hard",
@@ -1483,9 +1500,11 @@
       },
       "meta": {
         "generatedAt": "2026-10-21T00:00:00.000Z",
-        "version": "1.0",
+        "version": "1.1",
         "release": "Brazil",
-        "reviewed": false
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {

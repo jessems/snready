@@ -8,7 +8,7 @@
       "topic": "client-scripts",
       "cognitiveLevel": "knowledge",
       "type": "multiple_choice",
-      "question": "Which of the following is NOT one of the four types of client scripts in ServiceNow?",
+      "question": "A developer creating a new client script opens the Type field to choose when the script should run. Which of these values is NOT one of the client script types?",
       "options": [
         {
           "id": "a",
@@ -31,27 +31,28 @@
         "c"
       ],
       "explanation": {
-        "correct": "The four types of client scripts in ServiceNow are onLoad, onChange, onSubmit, and onCellEdit. 'onBefore' is not a client script type; it relates to business rule timing (before business rules). See: https://docs.servicenow.com/bundle/yokohama-application-development/page/script/client-scripts/concept/c_ClientScripts.html",
+        "correct": "The client script Type field offers onLoad(), onSubmit(), onChange(), and onCellEdit(). There is no onBefore type; Before is a business rule timing option that runs on the server before a database operation, so it is easy to confuse but does not apply to client scripts. See https://www.servicenow.com/docs/r/api-reference/scripts/client-scripts.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "onLoad is a valid client script type that runs when a form loads and before control is given to the user.",
-            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/client-scripts/concept/c_ClientScripts.html"
+            "explanation": "onLoad is a valid type. It runs when the system first renders the form and before users can enter data, typically to manipulate the form or set default values.",
+            "reference": "https://www.servicenow.com/docs/r/api-reference/scripts/client-scripts.html"
           },
           {
             "choiceId": "b",
-            "explanation": "onChange is a valid client script type that runs when a specific field value changes on a form.",
-            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/client-scripts/concept/c_ClientScripts.html"
+            "explanation": "onChange is a valid type. It runs when a particular field value changes on the form and receives parameters such as control, oldValue, newValue, and isLoading.",
+            "reference": "https://www.servicenow.com/docs/r/api-reference/scripts/client-scripts.html"
           },
           {
             "choiceId": "d",
-            "explanation": "onSubmit is a valid client script type that runs when a form is submitted, saved, or updated.",
-            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/client-scripts/concept/c_ClientScripts.html"
+            "explanation": "onSubmit is a valid type. It runs when a form is submitted, typically to validate content, and it can cancel the submission by returning false.",
+            "reference": "https://www.servicenow.com/docs/r/api-reference/scripts/client-scripts.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Docs - Client Scripts"
+        "https://www.servicenow.com/docs/r/api-reference/scripts/client-scripts.html",
+        "https://www.servicenow.com/docs/r/api-reference/business-rules-classic/c_BusinessRules.html"
       ],
       "isFree": true,
       "source": {
@@ -78,61 +79,63 @@
       },
       "meta": {
         "generatedAt": "2026-02-05T20:26:59.000Z",
-        "version": "1.0",
-        "release": "Yokohama",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
       "id": "cad-client-scripts-002",
       "certification": "cad",
       "topic": "client-scripts",
-      "cognitiveLevel": "knowledge",
+      "cognitiveLevel": "application",
       "type": "multiple_choice",
-      "question": "Where do ServiceNow client scripts execute?",
+      "question": "A developer writes an onChange client script that hides the Subcategory field when Category changes on the Incident form. Where does this script's JavaScript run?",
       "options": [
         {
           "id": "a",
-          "text": "On the ServiceNow application server"
+          "text": "On the instance's application server"
         },
         {
           "id": "b",
-          "text": "On the client's web browser"
+          "text": "In the user's web browser"
         },
         {
           "id": "c",
-          "text": "On the MID Server"
+          "text": "On a MID Server in the local network"
         },
         {
           "id": "d",
-          "text": "On the database server"
+          "text": "In the instance's database layer"
         }
       ],
       "correctAnswers": [
         "b"
       ],
       "explanation": {
-        "correct": "Client scripts execute on the client's web browser. When a form loads, client scripts are loaded with the form and execute in the browser, waiting for user interaction to trigger them. See: https://docs.servicenow.com/bundle/yokohama-application-development/page/script/client-scripts/concept/c_ClientScripts.html",
+        "correct": "Client scripts let the system run JavaScript on the client, meaning the web browser, when client-based events occur such as a form loading, a form being submitted, or a field value changing. That is why they are used to hide fields or change values while the user works on the form. See https://www.servicenow.com/docs/r/api-reference/scripts/client-scripts.html",
         "wrongAnswers": [
           {
             "choiceId": "a",
-            "explanation": "Server-side scripts such as business rules execute on the application server. Client scripts run in the user's browser.",
-            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/client-scripts/concept/c_ClientScripts.html"
+            "explanation": "Server-side logic such as business rules runs on the instance server. Client scripts are defined to run in the web browser when form events happen.",
+            "reference": "https://www.servicenow.com/docs/r/api-reference/business-rules-classic/c_BusinessRules.html"
           },
           {
             "choiceId": "c",
-            "explanation": "The MID Server facilitates communication between the ServiceNow instance and external resources for integrations and discovery. It does not execute client scripts.",
-            "reference": "https://docs.servicenow.com/bundle/yokohama-it-operations-management/page/product/mid-server/concept/mid-server-landing.html"
+            "explanation": "A MID Server is a Java application on the local network that moves data between the instance and external systems; it does not run form client scripts.",
+            "reference": "https://www.servicenow.com/docs/r/servicenow-platform/mid-server/mid-server-landing.html"
           },
           {
             "choiceId": "d",
-            "explanation": "The database server stores and retrieves data. Client scripts do not execute on the database server.",
-            "reference": "https://docs.servicenow.com/bundle/yokohama-application-development/page/script/client-scripts/concept/c_ClientScripts.html"
+            "explanation": "Client scripts do not run in the database. The docs describe them as JavaScript executed on the client (web browser) in response to form events.",
+            "reference": "https://www.servicenow.com/docs/r/api-reference/scripts/client-scripts.html"
           }
         ]
       },
       "references": [
-        "ServiceNow Docs - Client Scripts"
+        "https://www.servicenow.com/docs/r/api-reference/scripts/client-scripts.html"
       ],
       "isFree": true,
       "source": {
@@ -157,9 +160,11 @@
       },
       "meta": {
         "generatedAt": "2026-02-05T20:26:59.000Z",
-        "version": "1.0",
-        "release": "Yokohama",
-        "reviewed": false
+        "version": "1.1",
+        "release": "Brazil",
+        "reviewed": false,
+        "revisedAt": "2026-11-02",
+        "docChecked": true
       }
     },
     {
