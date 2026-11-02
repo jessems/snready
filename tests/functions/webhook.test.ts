@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { onRequestPost } from "@/functions/api/webhook";
 
 const constructEventAsync = vi.hoisted(() => vi.fn());
@@ -152,5 +152,89 @@ describe("webhook Pages Function", () => {
       expect.any(String),
       {}
     );
+  });
+
+  describe("GA4 Measurement Protocol purchase fallback", () => {
+    const fetchMock = vi.fn();
+
+    beforeEach(() => {
+      fetchMock.mockReset();
+      fetchMock.mockResolvedValue(new Response(null, { status: 204 }));
+      vi.stubGlobal("fetch", fetchMock);
+      constructEventAsync.mockResolvedValue({
+        type: "checkout.session.completed",
+        data: {
+          object: {
+            id: "cs_live_paid",
+            payment_status: "paid",
+            amount_total: 900,
+            currency: "usd",
+            customer_details: { email: "Buyer@Example.com" },
+            metadata: { plan: "single", certification: "CSA", gaClientId: "123.456", gaSessionId: "789" },
+            created: 1_726_000_000,
+          },
+        },
+      });
+    });
+
+    afterEach(() => {
+      vi.unstubAllGlobals();
+    });
+
+    it("does not call GA4 when GA4_API_SECRET is not set", async () => {
+      const response = await onRequestPost(context());
+
+      expect(response.status).toBe(200);
+      expect(fetchMock).not.toHaveBeenCalled();
+    });
+
+    it("sends a purchase with the Stripe session id as transaction_id and the stored client id", async () => {
+      const waitUntil = vi.fn();
+      const ctx = context({ GA4_API_SECRET: "secret" });
+      (ctx as unknown as { waitUntil: typeof waitUntil }).waitUntil = waitUntil;
+
+      const response = await onRequestPost(ctx);
+      await Promise.all(waitUntil.mock.calls.map(([promise]) => promise));
+
+      expect(response.status).toBe(200);
+      expect(waitUntil).toHaveBeenCalledTimes(1);
+      expect(fetchMock).toHaveBeenCalledTimes(1);
+      const [url, init] = fetchMock.mock.calls[0];
+      expect(url).toBe(
+        "https://www.google-analytics.com/mp/collect?measurement_id=G-21R4T0V162&api_secret=secret"
+      );
+      expect(JSON.parse(init.body)).toEqual({
+        client_id: "123.456",
+        events: [
+          {
+            name: "purchase",
+            params: expect.objectContaining({
+              transaction_id: "cs_live_paid",
+              value: 9,
+              currency: "USD",
+              session_id: "789",
+              items: [expect.objectContaining({ item_id: "single-CSA", price: 9, quantity: 1 })],
+            }),
+          },
+        ],
+      });
+    });
+
+    it("honours GA4_MEASUREMENT_ID", async () => {
+      await onRequestPost(context({ GA4_API_SECRET: "secret", GA4_MEASUREMENT_ID: "G-OTHER" }));
+
+      expect(fetchMock.mock.calls[0][0]).toContain("measurement_id=G-OTHER");
+    });
+
+    it("never fails the webhook when the GA4 request fails", async () => {
+      const accessKv = kvStore();
+      fetchMock.mockRejectedValue(new Error("network down"));
+
+      const response = await onRequestPost(context({ GA4_API_SECRET: "secret", SNREADY_ACCESS: accessKv }));
+
+      expect(response.status).toBe(200);
+      expect(await response.json()).toEqual({ received: true });
+      expect(accessKv.put).toHaveBeenCalledWith("access:buyer@example.com", expect.any(String), {});
+    });
   });
 });
