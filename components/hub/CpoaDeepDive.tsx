@@ -210,7 +210,7 @@ export function CpoaDeepDive() {
 
       <GuideSection id="cpoa-practice" eyebrow="Practice" title="Practise the platform owner's judgement">
         <p>
-          Try the free sample questions further down this page, then continue with <In href="/cpoa/practice-questions">CPOA practice questions by topic</In>. For every scenario, name the decision first and the tool second.
+          Try the free sample questions further down this page, then continue with <In href="/cpoa#practice-by-topic">CPOA practice questions by topic</In>. For every scenario, name the decision first and the tool second.
         </p>
         <StudyCluster certSlug="cpoa" currentPath="/cpoa" />
       </GuideSection>

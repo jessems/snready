@@ -176,7 +176,7 @@ export async function CadGuidePost() {
           <li><strong>Managing.</strong> Set up delegated development for a second user and add an ATF test you can run after changes, on your non-production instance (<Src k="docsAtf">ATF</Src>).</li>
         </ol>
         <p>
-          Then switch to <In href="/cad/practice-questions">CAD practice questions</In>. Every miss should send you back to the part of your app where that concept lives.
+          Then switch to <In href="/cad#practice-questions">CAD practice questions</In>. Every miss should send you back to the part of your app where that concept lives.
         </p>
       </GuideSection>
 
@@ -246,7 +246,7 @@ export async function CadGuidePost() {
 
       <GuideSection id="practice" eyebrow="Practice" title="Try some free CAD practice questions">
         <p>
-          Three free questions from our CAD bank are below. The rest, organised by blueprint area, are on the <In href="/cad/practice-questions">CAD practice questions page</In>.
+          Three free questions from our CAD bank are below. The rest, organised by blueprint area, are on the <In href="/cad#practice-questions">CAD practice questions page</In>.
         </p>
       </GuideSection>
       {sample.length > 0 && <SampleQuestions questions={sample} certSlug="cad" certName="CAD" />}

@@ -616,7 +616,7 @@ export default function FinancialManagementCoursePage() {
 
             <p className="text-lg leading-8 text-slate-700 dark:text-slate-300">
 
-              Preparing for the Certified Platform Owner Associate exam? The <Link href="/cpoa" className="font-semibold text-emerald-700 underline dark:text-emerald-300">CPOA exam overview</Link> covers the platform-owner operating model behind value and governance conversations, with <Link href="/cpoa/practice-questions" className="font-semibold text-emerald-700 underline dark:text-emerald-300">CPOA practice questions</Link>.
+              Preparing for the Certified Platform Owner Associate exam? The <Link href="/cpoa" className="font-semibold text-emerald-700 underline dark:text-emerald-300">CPOA exam overview</Link> covers the platform-owner operating model behind value and governance conversations, with <Link href="/cpoa#practice-questions" className="font-semibold text-emerald-700 underline dark:text-emerald-300">CPOA practice questions</Link>.
 
             </p>
 

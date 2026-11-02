@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getAllPosts, getPostBySlug } from "@/data/blog/posts";
+import { getPublishedPostBySlug as getPostBySlug, getPublishedPosts as getAllPosts } from "@/lib/blog";
 import { MarkdownContent } from "@/components/MarkdownContent";
 import { getBlogRelatedCerts } from "@/lib/internal-links";
 import { getCertificationBySlug } from "@/lib/data";
@@ -226,7 +226,7 @@ export default async function BlogPostPage({ params }: Props) {
                 {relatedCerts.length > 0 ? (
                   <>
                     <Link
-                      href={`/${relatedCerts[0]!.slug}/practice-questions`}
+                      href={`/${relatedCerts[0]!.slug}`}
                       className="inline-flex items-center rounded-lg bg-emerald-600 px-4 py-2 font-medium text-white hover:bg-emerald-700"
                     >
                       {relatedCerts[0]!.name} Practice
@@ -234,7 +234,7 @@ export default async function BlogPostPage({ params }: Props) {
                     {relatedCerts.slice(1).map((c) => (
                       <Link
                         key={c!.slug}
-                        href={`/${c!.slug}/practice-questions`}
+                        href={`/${c!.slug}`}
                         className="inline-flex items-center rounded-lg border border-emerald-600 px-4 py-2 font-medium text-emerald-600 hover:bg-emerald-50 dark:text-emerald-400 dark:hover:bg-emerald-900/30"
                       >
                         {c!.name} Practice
@@ -244,13 +244,13 @@ export default async function BlogPostPage({ params }: Props) {
                 ) : (
                   <>
                     <Link
-                      href="/csa/practice-questions"
+                      href="/csa"
                       className="inline-flex items-center rounded-lg bg-emerald-600 px-4 py-2 font-medium text-white hover:bg-emerald-700"
                     >
                       CSA Practice
                     </Link>
                     <Link
-                      href="/cad/practice-questions"
+                      href="/cad"
                       className="inline-flex items-center rounded-lg border border-emerald-600 px-4 py-2 font-medium text-emerald-600 hover:bg-emerald-50 dark:text-emerald-400 dark:hover:bg-emerald-900/30"
                     >
                       CAD Practice

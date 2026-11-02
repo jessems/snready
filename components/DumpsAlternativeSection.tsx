@@ -146,7 +146,7 @@ export function DumpsAlternativeSection({
           </p>
           <div className="mt-4">
             <Link
-              href={`/${certSlug}/practice-questions`}
+              href={`/${certSlug}#practice-questions`}
               className="inline-flex h-10 items-center justify-center rounded-lg bg-emerald-600 px-6 text-sm font-medium text-white transition-colors hover:bg-emerald-700"
             >
               Try Free Questions

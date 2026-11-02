@@ -156,7 +156,7 @@ export default function PricingPage() {
         price: "0",
         priceCurrency: "USD",
         availability: "https://schema.org/InStock",
-        url: `https://snready.com/${cert.slug}/practice-questions`,
+        url: `https://snready.com/${cert.slug}`,
       })),
       {
         "@type": "Offer",
@@ -243,7 +243,7 @@ export default function PricingPage() {
                   ))}
                 </ul>
                 <Link
-                  href={`/${cert.slug}/practice-questions`}
+                  href={`/${cert.slug}#practice-questions`}
                   className="mt-8 block w-full rounded-lg border-2 border-emerald-600 py-3 text-center font-semibold text-emerald-700 transition-colors hover:bg-emerald-50 dark:text-emerald-300 dark:hover:bg-zinc-800"
                 >
                   Start {cert.name} free
@@ -511,7 +511,7 @@ export default function PricingPage() {
           </p>
           <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
             <Link
-              href="/csa/practice-questions"
+              href="/csa#practice-questions"
               className="inline-flex items-center justify-center rounded-lg bg-emerald-600 px-6 py-3 font-semibold text-white transition-colors hover:bg-emerald-700"
             >
               Try CSA Questions Free

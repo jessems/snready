@@ -653,7 +653,7 @@ export default function StudyPlanPage() {
                 {copied ? "✓ Copied!" : "📋 Copy Plan"}
               </button>
               <Link
-                href={`/${studyPlan.certification.slug}/practice-questions`}
+                href={`/${studyPlan.certification.slug}#practice-questions`}
                 className="flex-1 py-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-medium transition-all text-center"
               >
                 Start Practicing →

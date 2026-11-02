@@ -6,7 +6,7 @@ import { CUT_SCORE_LABEL } from "@/lib/site-facts";
 
 export const metadata: Metadata = {
   title:
-    "How to Pass CIS-Discovery — Complete ServiceNow Discovery Study Guide [2026]",
+    "How to Pass CIS-Discovery — Complete ServiceNow Discovery Study Guide",
   description:
     "Complete ServiceNow CIS-Discovery study guide with official domain weights, a 4-week study calendar, MID Server and Pattern Designer labs, scenario drills, common mistakes, readiness checklist, and 100 CIS-Discovery practice questions.",
   keywords: [
@@ -503,7 +503,7 @@ export default async function CISDiscoveryStudyGuidePage() {
                 Take a Timed Mock Exam
               </Link>
               <Link
-                href="/cis-discovery/practice-questions"
+                href="/cis-discovery#practice-questions"
                 className="inline-flex h-12 items-center justify-center rounded-lg border border-zinc-300 bg-white px-6 text-base font-medium text-zinc-900 transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:hover:bg-zinc-800"
               >
                 View All {totalQuestions}+ Questions
@@ -830,7 +830,7 @@ export default async function CISDiscoveryStudyGuidePage() {
                 </p>
               </div>
               <Link
-                href="/cis-discovery/practice-questions"
+                href="/cis-discovery#practice-questions"
                 className="hidden text-sm font-medium text-emerald-600 hover:text-emerald-700 dark:text-emerald-400 sm:block"
               >
                 See all {totalQuestions}+ questions →
@@ -925,7 +925,7 @@ export default async function CISDiscoveryStudyGuidePage() {
                   Take the CIS-Discovery Mock Exam
                 </Link>
                 <Link
-                  href="/cis-discovery/practice-questions"
+                  href="/cis-discovery#practice-questions"
                   className="inline-flex h-12 items-center justify-center rounded-lg border border-zinc-300 bg-white px-6 text-base font-medium text-zinc-900 transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:hover:bg-zinc-800"
                 >
                   Practice All {totalQuestions}+ Questions

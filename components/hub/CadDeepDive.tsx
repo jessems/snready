@@ -217,7 +217,7 @@ export function CadDeepDive() {
 
       <GuideSection id="cad-practice" eyebrow="Practice" title="Practise placing code in the right place">
         <p>
-          Try the free sample questions further down this page, then continue with <In href="/cad/practice-questions">CAD practice questions by topic</In>. For each answer, say out loud where the code runs and who can reach it. If you can&apos;t, that topic needs another pass.
+          Try the free sample questions further down this page, then continue with <In href="/cad#practice-by-topic">CAD practice questions by topic</In>. For each answer, say out loud where the code runs and who can reach it. If you can&apos;t, that topic needs another pass.
         </p>
         <StudyCluster certSlug="cad" currentPath="/cad" />
       </GuideSection>

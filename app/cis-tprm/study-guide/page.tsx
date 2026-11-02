@@ -6,7 +6,7 @@ import { CUT_SCORE_LABEL, EXAM_DELIVERY_SHORT } from "@/lib/site-facts";
 
 export const metadata: Metadata = {
   title:
-    "How to Pass CIS-TPRM — Complete ServiceNow Third-Party Risk Study Guide [2026]",
+    "How to Pass CIS-TPRM — Complete ServiceNow Third-Party Risk Study Guide",
   description:
     "Complete ServiceNow CIS-TPRM study guide with official domain weights, a 4-week study calendar, hands-on TPRM lab checklist, scenario drills, common mistakes, readiness checklist, and CIS-TPRM practice questions.",
   keywords: [
@@ -486,7 +486,7 @@ export default function CISTPRMStudyGuidePage() {
                 Take a Timed CIS-TPRM Mock Exam
               </Link>
               <Link
-                href="/cis-tprm/practice-questions"
+                href="/cis-tprm#practice-questions"
                 className="inline-flex h-12 items-center justify-center rounded-lg border border-zinc-300 bg-white px-6 text-base font-medium text-zinc-900 transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:hover:bg-zinc-800"
               >
                 View All {totalQuestions}+ Questions
@@ -823,7 +823,7 @@ export default function CISTPRMStudyGuidePage() {
                 </p>
               </div>
               <Link
-                href="/cis-tprm/practice-questions"
+                href="/cis-tprm#practice-questions"
                 className="hidden text-sm font-medium text-emerald-600 hover:text-emerald-700 dark:text-emerald-400 sm:block"
               >
                 See all {totalQuestions}+ questions →
@@ -929,7 +929,7 @@ export default function CISTPRMStudyGuidePage() {
                   Start a CIS-TPRM Mock Exam
                 </Link>
                 <Link
-                  href="/cis-tprm/practice-questions"
+                  href="/cis-tprm#practice-questions"
                   className="inline-flex h-12 items-center justify-center rounded-lg border border-emerald-300 bg-white px-6 text-base font-medium text-emerald-700 transition-colors hover:bg-emerald-50 dark:border-emerald-700 dark:bg-zinc-900 dark:text-emerald-300 dark:hover:bg-emerald-950/40"
                 >
                   Drill CIS-TPRM Practice Questions

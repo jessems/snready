@@ -405,10 +405,9 @@ export default function ResourcesPage() {
             {[
               ["/exam-blueprints", "Official exam blueprints", "Links to ServiceNow's published blueprint for each exam"],
               ["/how-questions-are-made", "How SNReady questions are made", "How the practice questions are drafted, checked and updated"],
-              ["/compare", "Compare certifications", "Side-by-side comparisons of ServiceNow certifications"],
+              ["/certification-paths", "ServiceNow certification paths", "Which exam comes next, with the official blueprints"],
               ["/version-diff", "Release changes", "What changed between ServiceNow releases"],
               ["/salaries", "ServiceNow salaries", "Salary data for ServiceNow roles"],
-              ["/vs", "SNReady vs other practice tests", "How SNReady compares with other study options"],
             ].map(([href, label, description]) => (
               <li key={href}>
                 <Link
@@ -438,7 +437,7 @@ export default function ResourcesPage() {
           </p>
           <div className="mt-6 flex flex-col sm:flex-row justify-center gap-4">
             <Link
-              href="/csa/practice-questions"
+              href="/csa#practice-questions"
               className="inline-flex items-center justify-center rounded-lg bg-emerald-600 px-6 py-3 font-semibold text-white transition-colors hover:bg-emerald-700"
             >
               Try CSA Questions Free

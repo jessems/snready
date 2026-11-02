@@ -62,7 +62,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const deltaQuestions = await getPublicDeltaQuestions(slug, releaseParam);
 
   return {
-    title: `${cert.name} ${release} Delta Exam - Tips, Study Guide & Practice Questions`,
+    // Delta-specific intent; the /{cert} hub owns "{cert} practice questions".
+    title: `${cert.name} ${release} Delta Exam: What Changed and How to Prepare`,
     description: `Prepare for the ServiceNow ${cert.name} ${release} delta exam: Reddit tips, key topics, study strategies, and practice questions. Open book exam with 10 questions.`,
     keywords: [
       `${cert.name} delta exam`,
@@ -221,7 +222,7 @@ export default async function DeltaExamPage({ params }: PageProps) {
                 </p>
               </div>
               <Link
-                href={`/${slug}/practice-questions`}
+                href={`/${slug}#practice-questions`}
                 className="inline-flex items-center rounded-lg bg-violet-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-violet-700"
               >
                 Try Free Questions →
@@ -459,7 +460,7 @@ export default async function DeltaExamPage({ params }: PageProps) {
 
               <div className="mt-6 flex flex-col gap-3 sm:flex-row">
                 <Link
-                  href={`/${slug}/practice-questions`}
+                  href={`/${slug}#practice-questions`}
                   className="inline-flex items-center justify-center rounded-lg bg-violet-600 px-6 py-3 font-medium text-white transition-colors hover:bg-violet-700"
                 >
                   All {cert.name} Practice Questions
@@ -652,7 +653,7 @@ export default async function DeltaExamPage({ params }: PageProps) {
                 Go to ServiceNow University →
               </a>
               <Link
-                href={`/${slug}/practice-questions`}
+                href={`/${slug}#practice-questions`}
                 className="inline-flex h-12 items-center justify-center rounded-lg border border-white/30 px-8 text-base font-medium text-white transition-colors hover:bg-white/10"
               >
                 Practice First

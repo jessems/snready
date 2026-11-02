@@ -1,11 +1,9 @@
 "use client";
 
-import Link from "next/link";
 import type { ExamTips } from "@/types";
 
 interface ExamTipsSnippetProps {
   tips: ExamTips;
-  certSlug: string;
   certName: string;
 }
 
@@ -60,7 +58,7 @@ function TimePressureBadge({ label }: { label: string }) {
   );
 }
 
-export function ExamTipsSnippet({ tips, certSlug, certName }: ExamTipsSnippetProps) {
+export function ExamTipsSnippet({ tips, certName }: ExamTipsSnippetProps) {
   const passedCount = tips.userExperiences.filter((e) => e.outcome === "passed").length;
   const failedCount = tips.userExperiences.filter((e) => e.outcome === "failed").length;
   
@@ -70,12 +68,6 @@ export function ExamTipsSnippet({ tips, certSlug, certName }: ExamTipsSnippetPro
         <h2 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
           💡 What test-takers report
         </h2>
-        <Link
-          href={`/${certSlug}/prepare#real-experiences`}
-          className="text-sm font-medium text-emerald-600 hover:text-emerald-700 dark:text-emerald-400"
-        >
-          See all tips →
-        </Link>
       </div>
       
       <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
@@ -139,15 +131,6 @@ export function ExamTipsSnippet({ tips, certSlug, certName }: ExamTipsSnippetPro
         </blockquote>
       )}
       
-      <Link
-        href={`/${certSlug}/prepare#real-experiences`}
-        className="mt-4 inline-flex items-center gap-2 rounded-lg border border-zinc-200 bg-zinc-50 px-4 py-2 text-sm font-medium text-zinc-700 transition-colors hover:bg-zinc-100 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-300"
-      >
-        View all exam tips & experiences
-        <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-          <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-        </svg>
-      </Link>
     </section>
   );
 }

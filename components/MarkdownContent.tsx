@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo } from "react";
+import { canonicalInternalHref } from "@/lib/hubs";
 
 interface MarkdownContentProps {
   content: string;
@@ -69,10 +70,12 @@ function parseMarkdown(markdown: string): string {
   html = html.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
   html = html.replace(/\*(.+?)\*/g, "<em>$1</em>");
 
-  // Links - internal links with relative URLs
+  // Links - internal links with relative URLs. Consolidated pages (merged into
+  // a cert hub or retired) are linked at the page that replaced them.
   html = html.replace(
     /\[([^\]]+)\]\(\/([^)]+)\)/g,
-    '<a href="/$2" class="text-emerald-600 dark:text-emerald-400 hover:underline">$1</a>'
+    (_, text: string, path: string) =>
+      `<a href="${canonicalInternalHref(`/${path}`)}" class="text-emerald-600 dark:text-emerald-400 hover:underline">${text}</a>`
   );
   
   // Links - external

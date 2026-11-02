@@ -337,7 +337,7 @@ export default function MockExamResults({ result }: MockExamResultsProps) {
             Take Another Exam
           </Link>
           <Link
-            href={`/${result.certSlug}/practice-questions`}
+            href={`/${result.certSlug}#practice-questions`}
             className="inline-flex items-center justify-center rounded-lg border border-zinc-300 px-8 py-3 font-semibold text-zinc-700 transition-colors hover:bg-zinc-100 dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-800"
           >
             Practice More Questions

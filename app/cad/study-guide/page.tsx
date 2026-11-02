@@ -7,7 +7,7 @@ import { CUT_SCORE_LABEL } from "@/lib/site-facts";
 
 export const metadata: Metadata = {
   title:
-    "How to Pass CAD — Complete ServiceNow Application Developer Study Guide [2026]",
+    "How to Pass CAD — Complete ServiceNow Application Developer Study Guide",
   description:
     "Complete ServiceNow CAD study guide with official domain weights, a 4-week developer study calendar, hands-on app-building lab checklist, scenario drills, common mistakes, readiness checklist, and CAD practice questions.",
   keywords: [
@@ -539,7 +539,7 @@ export default function CADStudyGuidePage() {
                 Take a Timed CAD Mock Exam
               </Link>
               <Link
-                href="/cad/practice-questions"
+                href="/cad#practice-questions"
                 className="inline-flex h-12 items-center justify-center rounded-lg border border-zinc-300 bg-white px-6 text-base font-medium text-zinc-900 transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:hover:bg-zinc-800"
               >
                 View All {totalQuestions}+ Questions
@@ -955,7 +955,7 @@ export default function CADStudyGuidePage() {
                 </p>
               </div>
               <Link
-                href="/cad/practice-questions"
+                href="/cad#practice-questions"
                 className="hidden text-sm font-medium text-emerald-600 hover:text-emerald-700 dark:text-emerald-400 sm:block"
               >
                 See all {totalQuestions}+ questions →
@@ -1063,7 +1063,7 @@ export default function CADStudyGuidePage() {
                   Start CAD Mock Exam
                 </Link>
                 <Link
-                  href="/cad/practice-questions"
+                  href="/cad#practice-questions"
                   className="inline-flex h-12 items-center justify-center rounded-lg border border-emerald-300 bg-white px-6 text-base font-medium text-emerald-700 transition-colors hover:bg-emerald-50 dark:border-emerald-800 dark:bg-zinc-900 dark:text-emerald-300 dark:hover:bg-emerald-950/40"
                 >
                   Practice by CAD Domain

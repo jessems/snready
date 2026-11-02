@@ -174,7 +174,7 @@ export async function CsaGuidePost() {
             <strong>Build it, don&apos;t just read it.</strong> For every objective, make the thing in a personal instance: an ACL that blocks a field, a business rule that sets a value, an import with a transform map, a catalog item with an approval flow, an update set moved between two scopes of work. You&apos;ll remember what you broke.
           </li>
           <li>
-            <strong>Practise with explanations, not answer keys.</strong> When you miss a question, don&apos;t memorise the letter. Ask which layer the right answer lives in and why the distractor was tempting. Our <In href="/csa/practice-questions">free CSA practice questions</In> include explanations for this reason.
+            <strong>Practise with explanations, not answer keys.</strong> When you miss a question, don&apos;t memorise the letter. Ask which layer the right answer lives in and why the distractor was tempting. Our <In href="/csa#practice-questions">free CSA practice questions</In> include explanations for this reason.
           </li>
           <li>
             <strong>Close the weakest domain last.</strong> In the final days, go back to the domain where your practice results are lowest and re-read its documentation pages. Then stop: last-minute cramming of new topics rarely helps.
@@ -287,7 +287,7 @@ export async function CsaGuidePost() {
 
       <GuideSection id="practice" eyebrow="Practice" title="Try some free CSA practice questions">
         <p>
-          Here are three questions from our free CSA bank. Every CSA question on SNReady is free; the full set is on the <In href="/csa/practice-questions">CSA practice questions page</In>.
+          Here are three questions from our free CSA bank. Every CSA question on SNReady is free; the full set is on the <In href="/csa#practice-questions">CSA practice questions page</In>.
         </p>
       </GuideSection>
       {sample.length > 0 && <SampleQuestions questions={sample} certSlug="csa" certName="CSA" />}

@@ -4,7 +4,7 @@ import {
   getCertRelatedTools,
   type RelatedTool,
 } from "@/lib/internal-links";
-import { getPostBySlug } from "@/data/blog/posts";
+import { getPublishedPostBySlug as getPostBySlug } from "@/lib/blog";
 
 const toolIcons: Record<RelatedTool["icon"], string> = {
   mock: "🎯",
