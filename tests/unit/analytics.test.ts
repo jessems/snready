@@ -61,6 +61,8 @@ describe("analytics tracking", () => {
     document.cookie = "_ga=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
     document.cookie = "_ga_21R4T0V162=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
     window.history.replaceState({}, "", "/csa/practice-questions");
+    delete window.gtag;
+    delete window.dataLayer;
   });
 
   it("sends normalized page paths and page locations to GA4", () => {
@@ -148,6 +150,53 @@ describe("analytics tracking", () => {
         currency: "CAD",
       }),
     );
+  });
+
+  it("queues purchase into dataLayer when gtag has not loaded yet", () => {
+    trackPurchaseOnce({
+      transactionId: "cs_live_early_123",
+      certification: "CSA",
+      plan: "single",
+      value: 9,
+      currency: "usd",
+    });
+
+    expect(typeof window.gtag).toBe("function");
+    const commands = (window.dataLayer || []).map((entry) => Array.from(entry as ArrayLike<unknown>));
+    expect(commands).toContainEqual(["config", "G-21R4T0V162", { send_page_view: false }]);
+    const purchase = commands.find((c) => c[0] === "event" && c[1] === "purchase");
+    expect(purchase?.[2]).toEqual(
+      expect.objectContaining({
+        transaction_id: "cs_live_early_123",
+        value: 9,
+        currency: "USD",
+        items: [expect.objectContaining({ item_id: "single-CSA", price: 9 })],
+      }),
+    );
+    // Entries must be Arguments objects, like the standard gtag snippet pushes.
+    expect(Object.prototype.toString.call(window.dataLayer?.[0])).toBe("[object Arguments]");
+    expect(window.localStorage.getItem("snready_purchase_tracked:cs_live_early_123")).not.toBeNull();
+  });
+
+  it("does not mark a purchase as tracked when handing it to gtag fails", () => {
+    const failing = vi.fn(() => {
+      throw new Error("blocked");
+    });
+    Object.defineProperty(window, "gtag", { configurable: true, writable: true, value: failing });
+
+    trackPurchaseOnce({ transactionId: "cs_live_retry", plan: "all", value: 49 });
+    expect(window.localStorage.getItem("snready_purchase_tracked:cs_live_retry")).toBeNull();
+
+    const gtag = vi.fn();
+    Object.defineProperty(window, "gtag", { configurable: true, writable: true, value: gtag });
+    trackPurchaseOnce({ transactionId: "cs_live_retry", plan: "all", value: 49 });
+
+    expect(gtag).toHaveBeenCalledWith(
+      "event",
+      "purchase",
+      expect.objectContaining({ transaction_id: "cs_live_retry", value: 49, currency: "USD" }),
+    );
+    expect(window.localStorage.getItem("snready_purchase_tracked:cs_live_retry")).not.toBeNull();
   });
 
   it("tracks checkout_created and checkout_failed without PII while preserving begin_checkout as intent", () => {

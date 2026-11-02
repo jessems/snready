@@ -367,9 +367,39 @@ export function getStoredAttribution(): AttributionData {
   return flattenAttribution(readStoredAttribution());
 }
 
-export function trackEvent(eventName: string, params: Record<string, unknown> = {}) {
-  if (!isBrowser() || typeof window.gtag !== "function") return;
-  window.gtag("event", eventName, params);
+/**
+ * Returns a gtag function, installing the standard queueing stub when the
+ * gtag snippet in app/layout.tsx (strategy="afterInteractive") has not run yet
+ * or gtag.js is blocked. Commands land in window.dataLayer, which gtag.js
+ * drains in order once it loads. The stub also queues js/config so events
+ * queued ahead of the layout snippet still have a configured destination.
+ */
+function ensureGtag() {
+  if (typeof window.gtag === "function") return window.gtag;
+
+  const dataLayer = (window.dataLayer = window.dataLayer || []);
+  const gtag = function gtag() {
+    // gtag.js only processes Arguments objects, so push `arguments` as-is.
+    // eslint-disable-next-line prefer-rest-params
+    dataLayer.push(arguments);
+  } as (...args: unknown[]) => void;
+  window.gtag = gtag;
+
+  gtag("js", new Date());
+  gtag("config", GA_MEASUREMENT_ID, { send_page_view: false });
+  if (GOOGLE_ADS_ID) gtag("config", GOOGLE_ADS_ID);
+  return gtag;
+}
+
+/** Hands an event to gtag (or its dataLayer queue). Returns false if that failed. */
+export function trackEvent(eventName: string, params: Record<string, unknown> = {}): boolean {
+  if (!isBrowser()) return false;
+  try {
+    ensureGtag()("event", eventName, params);
+    return true;
+  } catch {
+    return false;
+  }
 }
 
 export function trackPageView(path: string) {
@@ -516,12 +546,15 @@ export function trackPurchaseOnce(params: {
   if (!isBrowser()) return;
 
   const dedupeKey = `snready_purchase_tracked:${params.transactionId}`;
-  if (window.localStorage.getItem(dedupeKey)) return;
-  window.localStorage.setItem(dedupeKey, new Date().toISOString());
+  try {
+    if (window.localStorage.getItem(dedupeKey)) return;
+  } catch {
+    // Storage unavailable: still send; GA4 dedupes purchases by transaction_id.
+  }
 
   const currency = (params.currency || "USD").toUpperCase();
 
-  trackEvent("purchase", {
+  const sent = trackEvent("purchase", {
     transaction_id: params.transactionId,
     currency,
     value: params.value,
@@ -529,6 +562,15 @@ export function trackPurchaseOnce(params: {
     certification: params.certification || "ALL",
     items: [commerceItem(params.plan, params.certification, params.value)],
   });
+  if (!sent) return;
+
+  // Only mark as tracked once the event was handed to gtag/dataLayer, so a
+  // failed attempt can be retried on the next visit to the success page.
+  try {
+    window.localStorage.setItem(dedupeKey, new Date().toISOString());
+  } catch {
+    // Ignore storage failures.
+  }
 
   if (GOOGLE_ADS_ID && GOOGLE_ADS_PURCHASE_LABEL) {
     trackEvent("conversion", {
