@@ -81,7 +81,7 @@ export const SOURCES = {
   },
   cmdbFundamentalsCourse: {
     label: "CMDB Fundamentals (Now Learning course page)",
-    href: "https://learning.servicenow.com/lxp?id=learning_course_prev&course_id=c03ca22847ec66547faa0415f16d43f4",
+    href: "https://learning.servicenow.com/lxp?id=learning_course_prev&course_id=2ad9219297d24f10f6913ce0f053afbb",
   },
   cmdbHealthDeepDiveCourse: {
     label: "CMDB Health Deep Dive (Now Learning course page)",
