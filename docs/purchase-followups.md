@@ -29,8 +29,8 @@ Cloudflare Pages environment variables/secrets:
 - `SITE_URL` — existing site URL, used for the practice/login link.
 - `FOLLOWUP_RUN_SECRET` — required shared secret for `POST /api/followups/run`.
 - `FOLLOWUP_DELAY_DAYS` — optional delay for All Access outcome surveys; defaults to `21`. New individual purchases use a fixed `15` days. Explicit historical backfill due dates remain unchanged.
-- `FOLLOWUP_FROM_EMAIL` — optional sender; defaults to `SNReady <jesse@snready.com>`.
-- `FOLLOWUP_REPLY_TO` — optional reply-to; defaults to `jesse@snready.com`.
+- `FOLLOWUP_FROM_EMAIL` — optional sender; defaults to `SNReady <support@snready.com>`.
+- `FOLLOWUP_REPLY_TO` — optional reply-to; defaults to `support@snready.com`.
 
 GitHub repository secret:
 

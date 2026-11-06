@@ -9,8 +9,8 @@ interface Env {
 
 const MAGIC_LINK_SECRET_KV_KEY = "config:magic_link_secret";
 const RESEND_API_KEY_KV_KEY = "config:resend_api_key";
-const MAGIC_LINK_FROM_EMAIL = "SNReady <jesse@snready.com>";
-const MAGIC_LINK_REPLY_TO = "jesse@snready.com";
+const MAGIC_LINK_FROM_EMAIL = "SNReady <support@snready.com>";
+const MAGIC_LINK_REPLY_TO = "support@snready.com";
 
 // Simple HMAC-like signature using Web Crypto
 async function createToken(email: string, expiresAt: number, secret: string): Promise<string> {

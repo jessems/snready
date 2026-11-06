@@ -3,6 +3,7 @@ import { INDIVIDUAL_GUARANTEE_COPY, INDIVIDUAL_GUARANTEE_SCOPE } from "@/lib/pur
 import { Metadata } from "next";
 import Link from "next/link";
 import { CheckoutButton } from "@/components/CheckoutButton";
+import LegalLinks from "@/components/LegalLinks";
 import {
   getAllCertifications,
   getPricingSummary,
@@ -496,6 +497,7 @@ export default function PricingPage() {
               </div>
             ))}
           </div>
+          <LegalLinks className="mt-12 text-center" />
         </div>
       </section>
 

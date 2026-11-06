@@ -2,6 +2,7 @@ import { MetadataRoute } from "next";
 import { getCertificationSlugs, getAllTopicSlugs, getAllDeltaSlugs, getPublicDeltaQuestions, getTotalQuestionCount } from "@/lib/data";
 import { getPublishedPosts } from "@/lib/blog";
 import { getStudyGuideSlugs } from "@/lib/study-guides";
+import { LEGAL_PAGES, LEGAL_UPDATED_ISO } from "@/lib/legal";
 import { getReleaseSummary } from "@/lib/release-notes";
 import { getAllCourses } from "@/lib/courses";
 import { isIndexableCertPage, isIndexableDeltaPage, isIndexablePath } from "@/lib/seo-indexing";
@@ -91,6 +92,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "monthly",
       priority: 0.85,
     },
+    ...LEGAL_PAGES.map((page) => ({
+      url: `${BASE_URL}${page.href}`,
+      lastModified: new Date(LEGAL_UPDATED_ISO),
+      changeFrequency: "yearly" as const,
+      priority: 0.3,
+    })),
   ];
 
   // === Certification hubs (one per cert) ===

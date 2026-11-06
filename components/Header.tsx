@@ -18,11 +18,10 @@ const navigation = [
 
 export default function Header() {
   const pathname = usePathname();
-  const { authenticated, email, logout, loading } = useAccess();
+  const { authenticated, email, isAdmin, logout, loading } = useAccess();
   const [loginOpen, setLoginOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [accountOpen, setAccountOpen] = useState(false);
-  const isAdmin = email?.toLowerCase() === "jessems@gmail.com";
 
   return <>
     <header className="site-header" onKeyDown={event => { if (event.key === "Escape") { setMenuOpen(false); setAccountOpen(false); } }}>

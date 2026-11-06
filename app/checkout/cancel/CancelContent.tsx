@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import LegalLinks from "@/components/LegalLinks";
 import { useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { CheckoutButton } from "@/components/CheckoutButton";
@@ -194,6 +195,7 @@ export default function CancelContent() {
             Browse free questions
           </Link>
         </div>
+        <LegalLinks className="mt-10 text-center" />
       </div>
     </div>
   );

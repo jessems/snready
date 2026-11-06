@@ -118,8 +118,8 @@ function buildFollowupEmail(record: PurchaseFollowupRecord, siteUrl: string): { 
 
 async function sendFollowupEmail(env: FollowupEnv, record: PurchaseFollowupRecord): Promise<string | undefined> {
   const { subject, html, text } = buildFollowupEmail(record, env.SITE_URL);
-  const from = env.FOLLOWUP_FROM_EMAIL || "SNReady <jesse@snready.com>";
-  const replyTo = env.FOLLOWUP_REPLY_TO || "jesse@snready.com";
+  const from = env.FOLLOWUP_FROM_EMAIL || "SNReady <support@snready.com>";
+  const replyTo = env.FOLLOWUP_REPLY_TO || "support@snready.com";
 
   const response = await fetch("https://api.resend.com/emails", {
     method: "POST",

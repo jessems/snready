@@ -291,241 +291,6 @@ If you've deployed Discovery in a real environment, you have a massive advantage
 `
   },
   {
-    slug: "servicenow-practice-test-comparison-2026",
-    title: "ServiceNow Practice Tests Compared: What's Worth Your Money in 2026",
-    description: "We bought and tested every major ServiceNow practice test platform. Here's an honest comparison of ExamTopics, Udemy, SkillCertPro, Dion Training, and SNReady.",
-    publishedAt: "2026-03-25",
-    author: "SNReady Team",
-    tags: ["practice tests", "comparison", "exam prep", "CSA", "CAD"],
-    featured: true,
-    readingTime: 10,
-    content: `
-## Why This Comparison Exists
-
-You're preparing for a ServiceNow certification. You want practice questions. You Google it. You find:
-
-- ExamTopics (free, crowd-sourced)
-- Udemy courses with practice tests ($10-50)
-- SkillCertPro ($20-40)
-- Dion Training ($15-30)
-- SNReady (CSA free, $9 per other cert)
-- Random websites with "free ServiceNow questions"
-
-Which one actually helps you pass?
-
-We tested all of them. Here's what we found.
-
-## The Quick Comparison
-
-| Platform | Price | Questions | Explanations | Updated? | Accuracy |
-|----------|-------|-----------|-------------|----------|----------|
-| **ExamTopics** | Free | 200-400/cert | Community-sourced | Rarely | ~60-70% |
-| **Udemy** | $10-50 | 100-300/cert | Varies by instructor | Depends | ~75-85% |
-| **SkillCertPro** | $20-40/cert | 400-600/cert | Brief | Occasionally | ~80-85% |
-| **Dion Training** | $15-30 | 150-250/cert | Good | Yes | ~85-90% |
-| **SNReady** | CSA free, $9/other cert | 90-220/cert | Detailed (why right + wrong) | Yes | ~90-95% |
-
-## ExamTopics: The Free Option
-
-**What it is:** A crowd-sourced question bank where users submit questions and vote on answers.
-
-**Pros:**
-- Free
-- Large question banks (200-400 per cert)
-- Active discussion threads
-
-**Cons:**
-- **Answers are frequently wrong.** The "community verified" answers are voted on by people who haven't passed the exam yet. We found roughly 30-40% of "verified" answers were incorrect or debatable.
-- No real explanations — just "the answer is B"
-- Questions may be leaked exam content (legal/ethical concerns)
-- No timed exam simulation
-- Ads everywhere
-
-**Our verdict:** Useful for seeing question FORMAT, but dangerous if you trust the answers. Always cross-reference with ServiceNow documentation.
-
-**Best for:** People who want free exposure to question styles but will verify answers independently.
-
-## Udemy Practice Tests
-
-**What it is:** Individual instructors create practice test courses. Quality varies enormously.
-
-**Pros:**
-- Cheap during sales ($10-15)
-- Some instructors are excellent
-- 30-day refund policy
-- Timed test simulation
-
-**Cons:**
-- **Quality is inconsistent.** Some Udemy "practice tests" are repackaged brain dumps. Others are thoughtful, original questions.
-- Hard to know which instructor is good before buying
-- Some courses haven't been updated in years
-- Explanations range from excellent to nonexistent
-- ServiceNow specifically is underserved on Udemy
-
-**Best courses we found (CSA):**
-- Look for courses with 4.5+ rating AND recent reviews mentioning the current ServiceNow version
-- Avoid anything with "100% pass guaranteed" in the title
-
-**Our verdict:** Worth $10-15 during a sale IF you pick the right instructor. Read recent reviews carefully.
-
-**Best for:** People who learn well from course platforms and want structure.
-
-## SkillCertPro
-
-**What it is:** Dedicated ServiceNow certification prep platform. Mentioned frequently on Reddit.
-
-**Pros:**
-- Large question banks (400-600 per cert)
-- Specifically focused on ServiceNow
-- Multiple test modes
-- Frequently mentioned on r/servicenow as helpful
-
-**Cons:**
-- Explanations are brief (usually 1-2 sentences)
-- Some questions feel like memorization exercises rather than concept tests
-- UI is functional but dated
-- Pricing is per-certification ($20-40 each)
-- Some questions are outdated (older versions)
-
-**Reddit says:**
-> "SkillCert Pro exam dumps. $20 for ~600 questions and I passed CSA 10 days after."
-
-> "I found that around half of the questions were already on SkillCertPro."
-
-**Our verdict:** Good volume of questions at a reasonable price. The sheer number of questions helps, but the brief explanations mean you need to self-study WHY answers are correct.
-
-**Best for:** People who want lots of questions to drill and can self-teach from brief explanations.
-
-## Dion Training
-
-**What it is:** Jason Dion's practice tests, available on Udemy and his own platform.
-
-**Pros:**
-- Good explanations for most questions
-- Updated with ServiceNow versions
-- Reasonable pricing
-- Good for understanding concepts, not just answers
-
-**Cons:**
-- Smaller question banks than SkillCertPro
-- Not all ServiceNow certifications covered
-- Some questions are easier than the actual exam
-
-**Our verdict:** Solid choice, especially for CAD and CSA. Better explanations than SkillCertPro, fewer questions.
-
-**Best for:** People who prefer quality explanations over quantity.
-
-## SNReady (Us)
-
-**What it is:** Practice questions generated from official ServiceNow course content with detailed explanations.
-
-**We're biased, so here's the honest version:**
-
-**Pros:**
-- Every question sourced from official Now Learning content
-- Detailed explanations: why the right answer is right AND why each wrong answer is wrong
-- Timed mock exams simulating real exam conditions
-- 20 certifications covered (CSA, CAD, all CIS)
-- CSA is completely free, including timed mock exams
-- $9 per other certification (cheapest paid option)
-- Free questions available for every cert (no credit card)
-- Updated with each ServiceNow release
-
-**Cons:**
-- Smaller question banks than SkillCertPro (80-220 per cert vs 400-600)
-- Newer platform — less community history
-- No mobile app (responsive web only)
-- No discussion forums (yet)
-
-**Our honest assessment:** We built SNReady because existing options either had wrong answers (ExamTopics), no explanations (SkillCertPro), or were overpriced. We optimize for learning, not volume.
-
-If you need 600 questions to drill, SkillCertPro has more. If you want to understand concepts deeply with fewer but better questions, that's us.
-
-**Best for:** People who want to understand WHY, not just memorize WHAT.
-
-## Now Learning (Official)
-
-**What it is:** ServiceNow's own training platform. Not a practice test service, but includes knowledge checks.
-
-**Pros:**
-- Free
-- Authoritative source material
-- The exam is literally based on this content
-- Includes hands-on labs
-
-**Cons:**
-- Knowledge checks are basic (not exam-level difficulty)
-- No timed exam simulation
-- Questions don't cover full exam breadth
-- More of a learning platform than a test platform
-
-**Our verdict:** Should be your FIRST resource, always. But the knowledge checks alone aren't enough to prepare for the exam.
-
-**Best for:** Everyone. Start here, then supplement with practice tests.
-
-## The Optimal Strategy (Regardless of Budget)
-
-### If you have $0:
-1. Complete Now Learning courses (free)
-2. Practice in a PDI (free)
-3. Use ExamTopics for question format exposure (free, but verify answers yourself)
-4. Use SNReady's free CSA practice test and mock exams, plus the free questions for every other cert (no credit card needed)
-
-### If you have $9-20:
-1. Complete Now Learning courses (free)
-2. Practice in a PDI (free)
-3. Buy one practice test platform (SNReady at $9 or SkillCertPro at $20-40)
-4. Use free questions from the other platforms
-
-### If you have $50+:
-1. Complete Now Learning courses (free)
-2. Practice in a PDI (free)
-3. Buy SNReady for concept understanding ($9)
-4. Buy SkillCertPro for volume drilling ($20-40)
-5. Optionally: Dion Training for additional perspective
-
-## What Actually Predicts Passing
-
-After analyzing hundreds of exam reports from Reddit, the pattern is clear:
-
-1. **Reading the official ebook** is the #1 predictor of passing
-2. **Hands-on PDI time** is #2
-3. **Practice questions that explain WHY** are #3
-4. **Volume of practice questions** matters less than understanding
-
-People who memorize 600 questions but don't understand concepts fail scenario-based questions. People who study 100 questions deeply but understand the platform pass.
-
-## Red Flags to Watch For
-
-Avoid any practice test platform that:
-- Claims to have "actual exam questions" (that's a brain dump)
-- Guarantees you'll pass (no one can guarantee that)
-- Has no explanations for answers
-- Hasn't been updated in 2+ years
-- Has suspiciously high ratings with no negative reviews
-
-## The Bottom Line
-
-| Your Priority | Best Choice |
-|--------------|------------|
-| Free only | Now Learning + SNReady CSA (fully free) + ExamTopics (verify answers) |
-| Best value | SNReady ($9) |
-| Most questions | SkillCertPro ($20-40) |
-| Best explanations | SNReady ($9) or Dion Training ($15-30) |
-| Everything | SNReady + SkillCertPro ($29-49 total) |
-
-No single platform is perfect. But the combination of official Now Learning courses + PDI practice + one good practice test platform is enough to pass any ServiceNow certification.
-
-[Try SNReady Free Questions →](/practice-questions)
-
-[Browse All 20 Certifications →](/)
-
----
-
-*Last tested: March 2026. Prices and features may change.*
-`
-  },
-  {
     slug: "servicenow-certification-cost-2026",
     title: "ServiceNow Certification Cost in 2026: Exam Fees, Retakes, Training, and Is It Worth It?",
     description: "Sourced 2026 ServiceNow exam fees ($300 CSA/CAD, $450 CIS), retake fees and waiting periods, training costs, the CIS-DF prerequisite, example budgets, and when certification is worth it.",
@@ -639,10 +404,6 @@ Here's what we found.
 - Manager: 11 entries
 - Product Owner: 4 entries
 
-**Overall range:** $9,000 to $382,500
-
-Yes, that range is real. The $9K figure is from India (adjusted to USD). The $382K figure is a Senior ServiceNow Developer at a FAANG company in the US.
-
 ## The US Numbers (What Most People Want)
 
 Since the US makes up half our data (104 entries), here's the breakdown:
@@ -668,8 +429,6 @@ Since the US makes up half our data (104 entries), here's the breakdown:
 - **Location:** 13 are in the US, 2 in Canada
 - **Experience:** Most report 6+ years in ServiceNow
 - **Company type:** Mix of product companies, consulting firms, and FAANG
-
-The highest reported salary ($382,500 base) came from a developer with 3-5 years ServiceNow experience at a major tech company. Stock grants weren't included — total comp was likely $500K+.
 
 [CHART:DISTRIBUTION]
 
@@ -759,7 +518,7 @@ The architect premium is the most consistent pattern in our data:
 - Architect: $174,533
 - **Gap: +39%**
 
-This gap is larger than most other tech roles. Why?
+Why might architects earn more?
 
 1. **Scarcity:** Far fewer CTAs (Certified Technical Architects) than developers
 2. **Responsibility:** Architects own solution design, not just implementation
@@ -837,7 +596,7 @@ We built a tool to see where you stack up. Enter your role, location, and experi
 
 ---
 
-*Data: 205 salary disclosures from r/servicenow (2021-2026). Updated monthly.*
+*Data: 205 salary disclosures from r/servicenow (2021-2026).*
 
 *Have salary data to share? [Submit anonymously](/salaries) to help the community.*
 `
@@ -871,9 +630,9 @@ Go to any brain dump site and read the discussion threads. You'll see endless de
 > "I got this on my exam and C worked"
 > "The official answer is wrong, trust me"
 
-These sites crowdsource their answers. No one actually verifies them against ServiceNow documentation. The "community votes" are from people who haven't passed the exam yet voting on what they *think* is correct.
+These sites crowdsource their answers. There's no guarantee anyone has verified them against ServiceNow documentation, and community votes may come from people who haven't taken the exam.
 
-I've seen brain dump answers that contradict the official ServiceNow documentation. If you memorize those answers, you'll confidently select the wrong option on exam day.
+Brain dump answers often contradict the official ServiceNow documentation. If you memorize those answers, you'll confidently select the wrong option on exam day.
 
 ### 2. You Learn Nothing That Helps You Work
 
@@ -895,7 +654,7 @@ ServiceNow releases a major version every year. Each release changes features, d
 
 Brain dump sites don't update their question banks with each release. That "correct" answer from the Tokyo release might be flat-out wrong in Zurich.
 
-Worse, ServiceNow actively rotates exam questions. The questions on ExamTopics from 2024 may not even appear on your 2026 exam. You've memorized answers to questions you'll never see.
+Worse, ServiceNow actively rotates exam questions. Questions collected in 2024 may not appear on your 2026 exam. You've memorized answers to questions you'll never see.
 
 ## What Actually Works
 
@@ -909,7 +668,7 @@ ServiceNow gives you a free Personal Developer Instance at developer.servicenow.
 
 Don't just read about business rules — create one. Break it. Fix it. Create another one that conflicts with it and debug why.
 
-Every hour in a PDI is worth 10 hours of reading.
+Time in a PDI is worth far more than passive reading.
 
 ### 2. Official Now Learning Courses
 
@@ -919,7 +678,7 @@ When you study from official content, you're learning the same concepts that exa
 
 ### 3. Practice Questions That Explain Why
 
-This is where most practice tests fail. They give you:
+This is where many practice tests fall short. They give you:
 
 > **Q:** What does a UI Policy do?
 > **A:** Dynamically changes form behavior
@@ -983,7 +742,7 @@ You'll spend the same amount of time either way. One path makes you competent. T
   },
   {
     slug: "csa-vs-cad-real-talk",
-    title: "CSA or CAD First? Real Talk From Someone Who's Done Both",
+    title: "CSA or CAD First? A Practical Decision Framework",
     description: "Skip the generic advice. Here's the actual decision framework for choosing between ServiceNow CSA and CAD certifications based on your background and goals.",
     publishedAt: "2026-02-24",
     author: "SNReady Team",
@@ -1029,7 +788,7 @@ Here's why: CAD tests ServiceNow-specific concepts, not JavaScript. You'll ace t
 
 These require understanding the platform, which CSA teaches.
 
-**My recommendation:** Study CSA material for 2 weeks. Take the CSA exam. Then start CAD prep immediately. You can get both within a month if you're focused.
+**Recommendation:** Study CSA material for 2 weeks. Take the CSA exam. Then start CAD prep immediately. You can get both within a month if you're focused.
 
 ### If you're already working with ServiceNow
 
@@ -1091,7 +850,7 @@ If you need a cert for your resume quickly, CSA is the faster path.
 
 ## The Actual Differences
 
-Let me be concrete about what each exam tests:
+To be concrete, here's what each exam tests:
 
 ### CSA Tests
 
@@ -1124,9 +883,9 @@ It's broad. An inch deep on many topics.
 
 It's narrower but deeper. You need to actually code.
 
-## My Recommendation
+## Our Recommendation
 
-**For 90% of people:** Get CSA first. Study for 2-4 weeks. Take the exam. Then evaluate if you need CAD.
+**For most people:** Get CSA first. Study for 2-4 weeks. Take the exam. Then evaluate if you need CAD.
 
 **For experienced developers new to ServiceNow:** Study CSA for 2 weeks, take it, then immediately prep for CAD. Get both in 4-6 weeks.
 
@@ -1161,7 +920,7 @@ You passed CSA. You've been working in ServiceNow for a year. You've resolved hu
 
 CIS-ITSM should be easy, right?
 
-Wrong. The failure rate for experienced ServiceNow admins on CIS-ITSM is higher than you'd expect.
+Not necessarily. Day-to-day experience doesn't automatically cover what CIS-ITSM tests.
 
 Here's why.
 
@@ -1640,7 +1399,7 @@ Security is critical in HR — employee data is among the most sensitive in any 
 
 ### 1. HR Criteria vs User Criteria
 
-This is the #1 gotcha. **User criteria** is platform-wide (Service Portal, Knowledge). **HR criteria** is specific to HRSD and uses HR-specific attributes. They look similar but are configured differently and used in different contexts.
+This is a common gotcha. **User criteria** is platform-wide (Service Portal, Knowledge). **HR criteria** is specific to HRSD and uses HR-specific attributes. They look similar but are configured differently and used in different contexts.
 
 ### 2. Document Templates & Generation
 
@@ -1876,8 +1635,8 @@ Every question includes:
 
 ### Matches Real Exam Format
 
-- 35% multi-select questions (matching the actual exam ratio)
-- 15% negative questions ("which is NOT...")
+- Multi-select questions, as on the real exam
+- Negative questions ("which is NOT...")
 - Scenario-based questions that test application, not recall
 
 ## Free vs Premium
@@ -1930,7 +1689,7 @@ CSA is the starting point for everyone. Period. Even if you want to be a develop
 
 **Who it's for:** Anyone starting in ServiceNow — admins, developers, consultants, managers.
 
-**Difficulty:** Moderate. Most people pass with 2-4 weeks of focused study. The exam tests practical platform knowledge: tables, forms, ACLs, workflows, import sets.
+**Difficulty:** Moderate. Many candidates prepare in 2-4 weeks of focused study. The exam tests practical platform knowledge: tables, forms, ACLs, workflows, import sets.
 
 → [Practice CSA Questions](/csa/practice-questions) | [How to pass the CSA exam](/blog/how-to-pass-servicenow-csa-first-time)
 
@@ -1992,7 +1751,7 @@ These are growing fast. CSM and HR are two of ServiceNow's fastest-growing produ
 | **[CIS-SAM](/cis-sam)** | Software Asset Management | 5 | [Practice →](/cis-sam/practice-questions) |
 | **[CIS-HAM](/cis-ham)** | Hardware Asset Management | 5 | [Practice →](/cis-ham/practice-questions) |
 
-SAM and HAM are niche but valuable. Companies with large software/hardware inventories need people who can configure these modules. Less competition = higher rates.
+SAM and HAM are niche but valuable. Companies with large software/hardware inventories need people who can configure these modules.
 
 #### Governance, Risk & Compliance
 
@@ -2003,7 +1762,7 @@ SAM and HAM are niche but valuable. Companies with large software/hardware inven
 | **[CIS-SIR](/cis-sir)** | Security Incident Response | 6 | [Practice →](/cis-sir/practice-questions) |
 | **[CIS-TPRM](/cis-tprm)** | Third Party Risk Management | 6 | [Practice →](/cis-tprm/practice-questions) |
 
-GRC and SecOps are where the money is in 2026. Security certifications command premium rates because the demand far outstrips supply.
+GRC and SecOps are specialized areas where certified skills are valued.
 
 #### Strategic Portfolio & Performance
 
@@ -2018,7 +1777,7 @@ CIS-PA is underrated. Every customer wants dashboards and reports. Performance A
 
 ### Level 3: Expert & Specialist
 
-ServiceNow also offers CTA (Certified Technical Architect) and CMA (Certified Master Architect) certifications. These require extensive experience and involve multi-day practical exams. They're the highest-earning certifications in the ecosystem but are out of scope for most people in their first few years.
+ServiceNow also offers CTA (Certified Technical Architect) and CMA (Certified Master Architect) certifications. These require extensive experience and involve multi-day practical exams. They're the most senior certifications in the ecosystem but are out of scope for most people in their first few years.
 
 ## Which Certifications Should You Get? (Decision Framework)
 
@@ -2033,7 +1792,7 @@ ServiceNow also offers CTA (Certified Technical Architect) and CMA (Certified Ma
 6. **CIS-PA** — Everyone needs dashboards. This makes you the person who builds them.
 
 ### Career Accelerators
-- **CIS-SIR + CIS-VR** — SecOps duo. Highest-paying niche.
+- **CIS-SIR + CIS-VR** — SecOps duo.
 - **CIS-SAM + CIS-HAM** — Asset management. Less competition.
 - **CIS-SPM** — Project portfolio management. Earns trust with executives.
 
@@ -2067,7 +1826,7 @@ Delta exams are:
 
 ## How Long Does Each Certification Take?
 
-Based on community feedback and our data:
+Typical study times (rough estimates):
 
 | Certification | Study Time | Prerequisite |
 |---|---|---|
@@ -2093,8 +1852,6 @@ Based on our [salary database of 200+ entries](/salaries):
 | ServiceNow Consultant (CIS-*) | $120,000 - $160,000 |
 | ServiceNow Architect (CTA) | $160,000 - $200,000+ |
 
-Each additional certification typically adds $5,000-$15,000 to your market value. The ROI on a $300 exam is enormous.
-
 → [See full salary data](/salaries)
 
 ## Start Practicing Today
@@ -2114,7 +1871,7 @@ We have **100+ practice questions for all 20 certifications**, generated from of
   {
     slug: "servicenow-csa-practice-test-200-questions-2026",
     title: "ServiceNow CSA Practice Test: 200 Questions to Pass the Exam (2026)",
-    description: "The most comprehensive free CSA practice test available. 200 exam-quality questions across all 8 domains. See where you stand before spending $300.",
+    description: "A comprehensive free CSA practice test. 200 exam-quality questions across all 8 domains. See where you stand before spending $300.",
     publishedAt: "2026-03-31",
     updatedAt: "2026-10-16",
     author: "SNReady Team",
@@ -2164,38 +1921,38 @@ Our 200 questions mirror the official exam blueprint:
 
 The real exam uses several question formats. Our practice test includes all of them:
 
-### 1. Single Choice (35%)
+### 1. Single Choice
 *"Which tool is used to define relationships between fields in an import set table and a target table?"*
 - A. Data Source
 - B. **Transform Map** ✓
 - C. Update Set
 - D. Import Log
 
-### 2. Multi-Select "Choose 2" (20%)
+### 2. Multi-Select "Choose 2"
 *"Which two field types store references to records in other tables? (Choose 2)"*
 - A. **Reference field** ✓
 - B. **Glide List field** ✓
 - C. String field
 - D. Integer field
 
-### 3. Negative Questions (15%)
+### 3. Negative Questions
 *"Which statement about Next Experience UI is NOT true?"*
 These test whether you can identify the incorrect statement among plausible options. Don't skip the "NOT" in the question.
 
-### 4. Multi-Select "Choose 3" (15%)
+### 4. Multi-Select "Choose 3"
 *"What are the three types of change in ServiceNow's Change Management? (Choose 3)"*
 These require knowing multiple correct answers — partial credit is typically not given.
 
-### 5. Scenario-Based (15%)
+### 5. Scenario-Based
 *"A user reports that a reference field on a form is not displaying expected records. Which two actions should an administrator investigate?"*
 These test your ability to apply knowledge to real situations.
 
 ## Topic Deep Dive: What Trips People Up
 
-Based on hundreds of Reddit posts and exam feedback, here are the areas where candidates struggle most:
+Here are areas candidates commonly find difficult:
 
 ### 🔴 Import Sets & Transform Maps (Database Administration)
-This is the #1 topic people underestimate. Know:
+This topic is often underestimated. Know:
 - The complete import process: Data Source → Import Set → Transform Map → Target Table
 - What coalesce fields do (determine insert vs update)
 - How to handle reference field mappings
@@ -2247,7 +2004,7 @@ If you know your weak areas, go directly to that domain:
 4. Come back and take the practice test again in 3-5 days
 5. Repeat until you're consistently above 85%
 
-**Aim for 85%+ on practice questions.** The real exam adds pressure — budget a 10-15% performance drop.
+**Aim for 85%+ on practice questions.** The real exam adds pressure, so leave yourself a margin.
 
 ## Common Mistakes to Avoid
 
@@ -2255,7 +2012,7 @@ If you know your weak areas, go directly to that domain:
 The course teaches concepts. The exam tests application. You need hands-on time in a PDI.
 
 ### ❌ Skipping multi-select questions in practice
-About 35% of the real exam is multi-select. If you only practice single-choice, you're unprepared for a third of the exam.
+The real exam includes multi-select questions. If you only practice single-choice, you'll be unprepared for them.
 
 ### ❌ Memorizing answers instead of understanding
 Our questions have detailed explanations for every option — correct AND wrong. Read the wrong-answer explanations. They teach you why common mistakes are wrong.
@@ -2268,7 +2025,7 @@ That's still 5 questions. Five easy questions if you know the material. Five los
 
 ## Ready to Start?
 
-We have **200 CSA questions** — the most comprehensive practice test available for ServiceNow CSA, and every one of them is free. No signup, no paywall.
+We have **200 CSA questions** — and every one of them is free. No signup, no paywall.
 
 | Action | Link |
 |--------|------|
@@ -2284,7 +2041,7 @@ Every question includes full explanations. No brain dumps. No memorization. Just
   {
     slug: "servicenow-cis-itsm-practice-test-160-questions-2026",
     title: "CIS-ITSM Practice Test: 160 Questions to Pass the ServiceNow ITSM Exam (2026)",
-    description: "The most comprehensive CIS-ITSM practice test available. 160 questions covering all 7 exam domains with detailed explanations. Free sample included.",
+    description: "A comprehensive CIS-ITSM practice test. 160 questions covering all 7 exam domains with detailed explanations. Free sample included.",
     publishedAt: "2026-04-01",
     updatedAt: "2026-10-16",
     author: "SNReady Team",
@@ -2296,7 +2053,7 @@ Every question includes full explanations. No brain dumps. No memorization. Just
 
 You passed CSA. You've been working with Incident, Change, and Problem Management for months. CIS-ITSM should be a breeze, right?
 
-Wrong. The CIS-ITSM exam has a **higher failure rate than most people expect** because it tests implementation knowledge, not just daily usage. You need to know *why* things are configured a certain way, not just *how* to use them.
+Wrong. The CIS-ITSM exam is **harder than many people expect** because it tests implementation knowledge, not just daily usage. You need to know *why* things are configured a certain way, not just *how* to use them.
 
 The exam has **60 questions in 90 minutes**. ServiceNow doesn't publish the cut score (and says it isn't always 70%), so aim for 80%+ on practice exams. That leaves less room than it sounds — multi-select questions are all-or-nothing.
 
@@ -2344,7 +2101,7 @@ The exam loves asking about state transitions. A change goes through New → Ass
 
 ### Problem Management (15%)
 
-The domain people study least and regret most:
+An often-underestimated domain:
 
 - **Three lifecycle stages** — Detection & Logging, Investigation & Diagnosis, Resolution
 - **Known Error Database** — When to create a Known Error, what gets auto-populated
@@ -2442,7 +2199,7 @@ Memorized answers don't help when the exam rephrases questions. Understanding *w
 
 ## Ready to Start?
 
-We have **160 CIS-ITSM questions** — the most comprehensive practice test available for this certification. Every question includes detailed explanations for both correct and incorrect answers.
+We have **160 CIS-ITSM questions**. Every question includes detailed explanations for both correct and incorrect answers.
 
 | Action | Link |
 |--------|------|
@@ -2497,27 +2254,27 @@ Our CAD question bank is distributed across all 7 exam domains:
 
 ## The 5 Question Types You'll Face
 
-### 1. Straight Knowledge Questions (~30%)
+### 1. Straight Knowledge Questions
 > "What does the 'Reverse if false' option do on a UI Policy?"
 
 These test whether you know what platform features do. They're the easiest to study for.
 
-### 2. Scenario-Based Questions (~25%)
+### 2. Scenario-Based Questions
 > "A developer creates a before business rule that sets a field value, but it's not being saved. What is the most likely cause?"
 
 These give you a situation and ask you to troubleshoot. You need real platform experience for these — not just memorized definitions.
 
-### 3. Multi-Select (Choose 2 or 3) (~20%)
+### 3. Multi-Select (Choose 2 or 3)
 > "Which TWO authentication methods are supported by ServiceNow's inbound REST APIs?"
 
-The real exam has a significant number of multi-select questions. Many practice tests skip these entirely. We don't.
+The real exam has a significant number of multi-select questions. Our practice test includes them.
 
-### 4. Negative Questions (~15%)
+### 4. Negative Questions
 > "Which of the following is NOT a valid g_form method?"
 
 These trip people up because you need to identify the wrong answer. They test the boundaries of your knowledge.
 
-### 5. Code Analysis (~10%)
+### 5. Code Analysis
 > "A developer writes an onChange client script but it does not fire when the form loads. What should they add?"
 
 These require you to read code or debug scenarios. The CAD exam has more of these than any other ServiceNow cert.
@@ -2527,7 +2284,7 @@ These require you to read code or debug scenarios. The CAD exam has more of thes
 ### Scripting & APIs — The Make-or-Break Domain
 This domain tests your fundamental scripting knowledge. The most common mistakes:
 
-- **Confusing server-side and client-side APIs** — g_form is client, GlideRecord is server. Mixing them up in the wrong context is the #1 error.
+- **Confusing server-side and client-side APIs** — g_form is client, GlideRecord is server. Mixing them up in the wrong context is a common error.
 - **Not knowing GlideRecord query patterns** — addQuery vs addEncodedQuery, when to use get() vs query()
 - **GlideAjax callback patterns** — The asynchronous nature trips up developers used to synchronous code
 
@@ -2555,7 +2312,7 @@ The exam loves testing business rule timing:
 - **onSubmit** — Form submitted (return false to cancel)
 - **onCellEdit** — List view cell editing
 
-The distinction between these events shows up in almost every CAD exam.
+The distinction between these events is a core CAD topic.
 
 ### REST Integration — HTTP Methods Matter
 | Method | Table API Use |
@@ -2596,7 +2353,6 @@ Take a mock exam first. Identify your weakest 2-3 domains. Spend focused study t
 | Coding Required | Minimal | Extensive |
 | Difficulty | Entry-level | Intermediate |
 | Study Time | 3-4 weeks | 4-6 weeks |
-| Pass Rate | Higher | Lower |
 | Practice Questions | [200 questions](/csa/practice-questions) | [200 questions](/cad/practice-questions) |
 
 If you're deciding between the two, read our [CSA vs CAD comparison](/blog/csa-vs-cad-real-talk).
@@ -2639,7 +2395,7 @@ Every question includes detailed explanations for both correct and incorrect ans
 
 Two major additions hit SNReady this week:
 
-**CPOA — 50 new Technology domain questions.** The Certified Process Optimization Administrator exam just got significantly more coverage. These new questions target the topics that trip up the most people on the actual exam: MID Server upgrades, Hermes Messaging Service, Instance Data Replication (IDR), and Cloning.
+**CPOA — 50 new Technology domain questions.** The Certified Process Optimization Administrator exam just got significantly more coverage. These new questions target topics that are hard to practise without a real system: MID Server upgrades, Hermes Messaging Service, Instance Data Replication (IDR), and Cloning.
 
 **CSA — now 214 questions.** The Certified System Administrator question bank grew from 155 to 214 questions, covering Change Management, Incident Management, Database Administration, and more. That's a 38% increase.
 
@@ -2722,7 +2478,7 @@ The CSA exam bank expanded by 59 questions across four domains. These weren't fi
 
 ## Why We Added These Specific Topics
 
-We analyzed three data sources to decide what to add:
+We used three inputs to decide what to add:
 
 1. **ServiceNow exam blueprints** — topic weights tell you WHAT to study, but not which specific sub-topics appear most
 2. **Reddit and Discord community feedback** — real exam reports from people who recently passed or failed
